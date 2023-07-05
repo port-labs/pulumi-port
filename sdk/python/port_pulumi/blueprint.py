@@ -31,7 +31,7 @@ class BlueprintArgs:
         :param pulumi.Input[str] identifier: The identifier of the blueprint
         :param pulumi.Input[Sequence[pulumi.Input['BlueprintPropertyArgs']]] properties: The metadata of the entity
         :param pulumi.Input[str] title: The display name of the blueprint
-        :param pulumi.Input[Sequence[pulumi.Input['BlueprintCalculationPropertyArgs']]] calculation_properties: A set of properties that are calculated upon Entitys regular properties.
+        :param pulumi.Input[Sequence[pulumi.Input['BlueprintCalculationPropertyArgs']]] calculation_properties: A set of properties that are calculated upon entity's regular properties.
         :param pulumi.Input['BlueprintChangelogDestinationArgs'] changelog_destination: Blueprints changelog destination, Supports WEBHOOK and KAFKA
         :param pulumi.Input[str] data_source: The data source for entities of this blueprint
         :param pulumi.Input[str] description: The description of the blueprint
@@ -101,7 +101,7 @@ class BlueprintArgs:
     @pulumi.getter(name="calculationProperties")
     def calculation_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BlueprintCalculationPropertyArgs']]]]:
         """
-        A set of properties that are calculated upon Entitys regular properties.
+        A set of properties that are calculated upon entity's regular properties.
         """
         return pulumi.get(self, "calculation_properties")
 
@@ -127,6 +127,9 @@ class BlueprintArgs:
         """
         The data source for entities of this blueprint
         """
+        warnings.warn("""Data source is ignored""", DeprecationWarning)
+        pulumi.log.warn("""data_source is deprecated: Data source is ignored""")
+
         return pulumi.get(self, "data_source")
 
     @data_source.setter
@@ -202,7 +205,7 @@ class _BlueprintState:
                  updated_by: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Blueprint resources.
-        :param pulumi.Input[Sequence[pulumi.Input['BlueprintCalculationPropertyArgs']]] calculation_properties: A set of properties that are calculated upon Entitys regular properties.
+        :param pulumi.Input[Sequence[pulumi.Input['BlueprintCalculationPropertyArgs']]] calculation_properties: A set of properties that are calculated upon entity's regular properties.
         :param pulumi.Input['BlueprintChangelogDestinationArgs'] changelog_destination: Blueprints changelog destination, Supports WEBHOOK and KAFKA
         :param pulumi.Input[str] data_source: The data source for entities of this blueprint
         :param pulumi.Input[str] description: The description of the blueprint
@@ -250,7 +253,7 @@ class _BlueprintState:
     @pulumi.getter(name="calculationProperties")
     def calculation_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BlueprintCalculationPropertyArgs']]]]:
         """
-        A set of properties that are calculated upon Entitys regular properties.
+        A set of properties that are calculated upon entity's regular properties.
         """
         return pulumi.get(self, "calculation_properties")
 
@@ -294,6 +297,9 @@ class _BlueprintState:
         """
         The data source for entities of this blueprint
         """
+        warnings.warn("""Data source is ignored""", DeprecationWarning)
+        pulumi.log.warn("""data_source is deprecated: Data source is ignored""")
+
         return pulumi.get(self, "data_source")
 
     @data_source.setter
@@ -424,7 +430,7 @@ class Blueprint(pulumi.CustomResource):
         Create a Blueprint resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BlueprintCalculationPropertyArgs']]]] calculation_properties: A set of properties that are calculated upon Entitys regular properties.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BlueprintCalculationPropertyArgs']]]] calculation_properties: A set of properties that are calculated upon entity's regular properties.
         :param pulumi.Input[pulumi.InputType['BlueprintChangelogDestinationArgs']] changelog_destination: Blueprints changelog destination, Supports WEBHOOK and KAFKA
         :param pulumi.Input[str] data_source: The data source for entities of this blueprint
         :param pulumi.Input[str] description: The description of the blueprint
@@ -532,7 +538,7 @@ class Blueprint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BlueprintCalculationPropertyArgs']]]] calculation_properties: A set of properties that are calculated upon Entitys regular properties.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BlueprintCalculationPropertyArgs']]]] calculation_properties: A set of properties that are calculated upon entity's regular properties.
         :param pulumi.Input[pulumi.InputType['BlueprintChangelogDestinationArgs']] changelog_destination: Blueprints changelog destination, Supports WEBHOOK and KAFKA
         :param pulumi.Input[str] data_source: The data source for entities of this blueprint
         :param pulumi.Input[str] description: The description of the blueprint
@@ -568,7 +574,7 @@ class Blueprint(pulumi.CustomResource):
     @pulumi.getter(name="calculationProperties")
     def calculation_properties(self) -> pulumi.Output[Optional[Sequence['outputs.BlueprintCalculationProperty']]]:
         """
-        A set of properties that are calculated upon Entitys regular properties.
+        A set of properties that are calculated upon entity's regular properties.
         """
         return pulumi.get(self, "calculation_properties")
 
@@ -596,6 +602,9 @@ class Blueprint(pulumi.CustomResource):
         """
         The data source for entities of this blueprint
         """
+        warnings.warn("""Data source is ignored""", DeprecationWarning)
+        pulumi.log.warn("""data_source is deprecated: Data source is ignored""")
+
         return pulumi.get(self, "data_source")
 
     @property

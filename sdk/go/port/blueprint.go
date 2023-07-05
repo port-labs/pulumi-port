@@ -14,7 +14,7 @@ import (
 type Blueprint struct {
 	pulumi.CustomResourceState
 
-	// A set of properties that are calculated upon Entitys regular properties.
+	// A set of properties that are calculated upon entity's regular properties.
 	CalculationProperties BlueprintCalculationPropertyArrayOutput `pulumi:"calculationProperties"`
 	// Blueprints changelog destination, Supports WEBHOOK and KAFKA
 	ChangelogDestination BlueprintChangelogDestinationPtrOutput `pulumi:"changelogDestination"`
@@ -82,7 +82,7 @@ func GetBlueprint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Blueprint resources.
 type blueprintState struct {
-	// A set of properties that are calculated upon Entitys regular properties.
+	// A set of properties that are calculated upon entity's regular properties.
 	CalculationProperties []BlueprintCalculationProperty `pulumi:"calculationProperties"`
 	// Blueprints changelog destination, Supports WEBHOOK and KAFKA
 	ChangelogDestination *BlueprintChangelogDestination `pulumi:"changelogDestination"`
@@ -112,7 +112,7 @@ type blueprintState struct {
 }
 
 type BlueprintState struct {
-	// A set of properties that are calculated upon Entitys regular properties.
+	// A set of properties that are calculated upon entity's regular properties.
 	CalculationProperties BlueprintCalculationPropertyArrayInput
 	// Blueprints changelog destination, Supports WEBHOOK and KAFKA
 	ChangelogDestination BlueprintChangelogDestinationPtrInput
@@ -146,7 +146,7 @@ func (BlueprintState) ElementType() reflect.Type {
 }
 
 type blueprintArgs struct {
-	// A set of properties that are calculated upon Entitys regular properties.
+	// A set of properties that are calculated upon entity's regular properties.
 	CalculationProperties []BlueprintCalculationProperty `pulumi:"calculationProperties"`
 	// Blueprints changelog destination, Supports WEBHOOK and KAFKA
 	ChangelogDestination *BlueprintChangelogDestination `pulumi:"changelogDestination"`
@@ -173,7 +173,7 @@ type blueprintArgs struct {
 
 // The set of arguments for constructing a Blueprint resource.
 type BlueprintArgs struct {
-	// A set of properties that are calculated upon Entitys regular properties.
+	// A set of properties that are calculated upon entity's regular properties.
 	CalculationProperties BlueprintCalculationPropertyArrayInput
 	// Blueprints changelog destination, Supports WEBHOOK and KAFKA
 	ChangelogDestination BlueprintChangelogDestinationPtrInput
@@ -285,7 +285,7 @@ func (o BlueprintOutput) ToBlueprintOutputWithContext(ctx context.Context) Bluep
 	return o
 }
 
-// A set of properties that are calculated upon Entitys regular properties.
+// A set of properties that are calculated upon entity's regular properties.
 func (o BlueprintOutput) CalculationProperties() BlueprintCalculationPropertyArrayOutput {
 	return o.ApplyT(func(v *Blueprint) BlueprintCalculationPropertyArrayOutput { return v.CalculationProperties }).(BlueprintCalculationPropertyArrayOutput)
 }

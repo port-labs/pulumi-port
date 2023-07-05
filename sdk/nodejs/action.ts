@@ -55,6 +55,10 @@ export class Action extends pulumi.CustomResource {
      */
     public readonly invocationMethod!: pulumi.Output<outputs.ActionInvocationMethod>;
     /**
+     * Whether the action requires approval or not
+     */
+    public readonly requiredApproval!: pulumi.Output<boolean | undefined>;
+    /**
      * The display name of the action
      */
     public readonly title!: pulumi.Output<string>;
@@ -85,6 +89,7 @@ export class Action extends pulumi.CustomResource {
             resourceInputs["icon"] = state ? state.icon : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["invocationMethod"] = state ? state.invocationMethod : undefined;
+            resourceInputs["requiredApproval"] = state ? state.requiredApproval : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
             resourceInputs["trigger"] = state ? state.trigger : undefined;
             resourceInputs["userProperties"] = state ? state.userProperties : undefined;
@@ -110,6 +115,7 @@ export class Action extends pulumi.CustomResource {
             resourceInputs["icon"] = args ? args.icon : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["invocationMethod"] = args ? args.invocationMethod : undefined;
+            resourceInputs["requiredApproval"] = args ? args.requiredApproval : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["trigger"] = args ? args.trigger : undefined;
             resourceInputs["userProperties"] = args ? args.userProperties : undefined;
@@ -143,6 +149,10 @@ export interface ActionState {
      * The methods the action is dispatched in. Supports WEBHOOK, KAFKA, GITHUB and AZURE-DEVOPS
      */
     invocationMethod?: pulumi.Input<inputs.ActionInvocationMethod>;
+    /**
+     * Whether the action requires approval or not
+     */
+    requiredApproval?: pulumi.Input<boolean>;
     /**
      * The display name of the action
      */
@@ -181,6 +191,10 @@ export interface ActionArgs {
      * The methods the action is dispatched in. Supports WEBHOOK, KAFKA, GITHUB and AZURE-DEVOPS
      */
     invocationMethod: pulumi.Input<inputs.ActionInvocationMethod>;
+    /**
+     * Whether the action requires approval or not
+     */
+    requiredApproval?: pulumi.Input<boolean>;
     /**
      * The display name of the action
      */

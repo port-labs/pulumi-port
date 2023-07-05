@@ -590,8 +590,9 @@ func (o BlueprintCalculationPropertyArrayOutput) Index(i pulumi.IntInput) Bluepr
 }
 
 type BlueprintChangelogDestination struct {
-	Type string  `pulumi:"type"`
-	Url  *string `pulumi:"url"`
+	Agent *bool   `pulumi:"agent"`
+	Type  string  `pulumi:"type"`
+	Url   *string `pulumi:"url"`
 }
 
 // BlueprintChangelogDestinationInput is an input type that accepts BlueprintChangelogDestinationArgs and BlueprintChangelogDestinationOutput values.
@@ -606,8 +607,9 @@ type BlueprintChangelogDestinationInput interface {
 }
 
 type BlueprintChangelogDestinationArgs struct {
-	Type pulumi.StringInput    `pulumi:"type"`
-	Url  pulumi.StringPtrInput `pulumi:"url"`
+	Agent pulumi.BoolPtrInput   `pulumi:"agent"`
+	Type  pulumi.StringInput    `pulumi:"type"`
+	Url   pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (BlueprintChangelogDestinationArgs) ElementType() reflect.Type {
@@ -687,6 +689,10 @@ func (o BlueprintChangelogDestinationOutput) ToBlueprintChangelogDestinationPtrO
 	}).(BlueprintChangelogDestinationPtrOutput)
 }
 
+func (o BlueprintChangelogDestinationOutput) Agent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BlueprintChangelogDestination) *bool { return v.Agent }).(pulumi.BoolPtrOutput)
+}
+
 func (o BlueprintChangelogDestinationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v BlueprintChangelogDestination) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -717,6 +723,15 @@ func (o BlueprintChangelogDestinationPtrOutput) Elem() BlueprintChangelogDestina
 		var ret BlueprintChangelogDestination
 		return ret
 	}).(BlueprintChangelogDestinationOutput)
+}
+
+func (o BlueprintChangelogDestinationPtrOutput) Agent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BlueprintChangelogDestination) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Agent
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o BlueprintChangelogDestinationPtrOutput) Type() pulumi.StringPtrOutput {
@@ -844,18 +859,26 @@ func (o BlueprintMirrorPropertyArrayOutput) Index(i pulumi.IntInput) BlueprintMi
 }
 
 type BlueprintProperty struct {
-	Default      *string           `pulumi:"default"`
-	DefaultItems []string          `pulumi:"defaultItems"`
-	Description  *string           `pulumi:"description"`
-	EnumColors   map[string]string `pulumi:"enumColors"`
-	Enums        []string          `pulumi:"enums"`
-	Format       *string           `pulumi:"format"`
-	Icon         *string           `pulumi:"icon"`
-	Identifier   string            `pulumi:"identifier"`
-	Required     *bool             `pulumi:"required"`
-	Spec         *string           `pulumi:"spec"`
-	Title        string            `pulumi:"title"`
-	Type         string            `pulumi:"type"`
+	// Deprecated: Use default_value instead
+	Default            *string                              `pulumi:"default"`
+	DefaultItems       []string                             `pulumi:"defaultItems"`
+	DefaultValue       map[string]string                    `pulumi:"defaultValue"`
+	Description        *string                              `pulumi:"description"`
+	EnumColors         map[string]string                    `pulumi:"enumColors"`
+	Enums              []string                             `pulumi:"enums"`
+	Format             *string                              `pulumi:"format"`
+	Icon               *string                              `pulumi:"icon"`
+	Identifier         string                               `pulumi:"identifier"`
+	Items              map[string]interface{}               `pulumi:"items"`
+	MaxItems           *int                                 `pulumi:"maxItems"`
+	MaxLength          *int                                 `pulumi:"maxLength"`
+	MinItems           *int                                 `pulumi:"minItems"`
+	MinLength          *int                                 `pulumi:"minLength"`
+	Required           *bool                                `pulumi:"required"`
+	Spec               *string                              `pulumi:"spec"`
+	SpecAuthentication *BlueprintPropertySpecAuthentication `pulumi:"specAuthentication"`
+	Title              string                               `pulumi:"title"`
+	Type               string                               `pulumi:"type"`
 }
 
 // BlueprintPropertyInput is an input type that accepts BlueprintPropertyArgs and BlueprintPropertyOutput values.
@@ -870,18 +893,26 @@ type BlueprintPropertyInput interface {
 }
 
 type BlueprintPropertyArgs struct {
-	Default      pulumi.StringPtrInput   `pulumi:"default"`
-	DefaultItems pulumi.StringArrayInput `pulumi:"defaultItems"`
-	Description  pulumi.StringPtrInput   `pulumi:"description"`
-	EnumColors   pulumi.StringMapInput   `pulumi:"enumColors"`
-	Enums        pulumi.StringArrayInput `pulumi:"enums"`
-	Format       pulumi.StringPtrInput   `pulumi:"format"`
-	Icon         pulumi.StringPtrInput   `pulumi:"icon"`
-	Identifier   pulumi.StringInput      `pulumi:"identifier"`
-	Required     pulumi.BoolPtrInput     `pulumi:"required"`
-	Spec         pulumi.StringPtrInput   `pulumi:"spec"`
-	Title        pulumi.StringInput      `pulumi:"title"`
-	Type         pulumi.StringInput      `pulumi:"type"`
+	// Deprecated: Use default_value instead
+	Default            pulumi.StringPtrInput                       `pulumi:"default"`
+	DefaultItems       pulumi.StringArrayInput                     `pulumi:"defaultItems"`
+	DefaultValue       pulumi.StringMapInput                       `pulumi:"defaultValue"`
+	Description        pulumi.StringPtrInput                       `pulumi:"description"`
+	EnumColors         pulumi.StringMapInput                       `pulumi:"enumColors"`
+	Enums              pulumi.StringArrayInput                     `pulumi:"enums"`
+	Format             pulumi.StringPtrInput                       `pulumi:"format"`
+	Icon               pulumi.StringPtrInput                       `pulumi:"icon"`
+	Identifier         pulumi.StringInput                          `pulumi:"identifier"`
+	Items              pulumi.MapInput                             `pulumi:"items"`
+	MaxItems           pulumi.IntPtrInput                          `pulumi:"maxItems"`
+	MaxLength          pulumi.IntPtrInput                          `pulumi:"maxLength"`
+	MinItems           pulumi.IntPtrInput                          `pulumi:"minItems"`
+	MinLength          pulumi.IntPtrInput                          `pulumi:"minLength"`
+	Required           pulumi.BoolPtrInput                         `pulumi:"required"`
+	Spec               pulumi.StringPtrInput                       `pulumi:"spec"`
+	SpecAuthentication BlueprintPropertySpecAuthenticationPtrInput `pulumi:"specAuthentication"`
+	Title              pulumi.StringInput                          `pulumi:"title"`
+	Type               pulumi.StringInput                          `pulumi:"type"`
 }
 
 func (BlueprintPropertyArgs) ElementType() reflect.Type {
@@ -935,12 +966,17 @@ func (o BlueprintPropertyOutput) ToBlueprintPropertyOutputWithContext(ctx contex
 	return o
 }
 
+// Deprecated: Use default_value instead
 func (o BlueprintPropertyOutput) Default() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintProperty) *string { return v.Default }).(pulumi.StringPtrOutput)
 }
 
 func (o BlueprintPropertyOutput) DefaultItems() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BlueprintProperty) []string { return v.DefaultItems }).(pulumi.StringArrayOutput)
+}
+
+func (o BlueprintPropertyOutput) DefaultValue() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BlueprintProperty) map[string]string { return v.DefaultValue }).(pulumi.StringMapOutput)
 }
 
 func (o BlueprintPropertyOutput) Description() pulumi.StringPtrOutput {
@@ -967,12 +1003,36 @@ func (o BlueprintPropertyOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v BlueprintProperty) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
+func (o BlueprintPropertyOutput) Items() pulumi.MapOutput {
+	return o.ApplyT(func(v BlueprintProperty) map[string]interface{} { return v.Items }).(pulumi.MapOutput)
+}
+
+func (o BlueprintPropertyOutput) MaxItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BlueprintProperty) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
+}
+
+func (o BlueprintPropertyOutput) MaxLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BlueprintProperty) *int { return v.MaxLength }).(pulumi.IntPtrOutput)
+}
+
+func (o BlueprintPropertyOutput) MinItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BlueprintProperty) *int { return v.MinItems }).(pulumi.IntPtrOutput)
+}
+
+func (o BlueprintPropertyOutput) MinLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BlueprintProperty) *int { return v.MinLength }).(pulumi.IntPtrOutput)
+}
+
 func (o BlueprintPropertyOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BlueprintProperty) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
 func (o BlueprintPropertyOutput) Spec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintProperty) *string { return v.Spec }).(pulumi.StringPtrOutput)
+}
+
+func (o BlueprintPropertyOutput) SpecAuthentication() BlueprintPropertySpecAuthenticationPtrOutput {
+	return o.ApplyT(func(v BlueprintProperty) *BlueprintPropertySpecAuthentication { return v.SpecAuthentication }).(BlueprintPropertySpecAuthenticationPtrOutput)
 }
 
 func (o BlueprintPropertyOutput) Title() pulumi.StringOutput {
@@ -1003,12 +1063,175 @@ func (o BlueprintPropertyArrayOutput) Index(i pulumi.IntInput) BlueprintProperty
 	}).(BlueprintPropertyOutput)
 }
 
+type BlueprintPropertySpecAuthentication struct {
+	AuthorizationUrl string `pulumi:"authorizationUrl"`
+	ClientId         string `pulumi:"clientId"`
+	TokenUrl         string `pulumi:"tokenUrl"`
+}
+
+// BlueprintPropertySpecAuthenticationInput is an input type that accepts BlueprintPropertySpecAuthenticationArgs and BlueprintPropertySpecAuthenticationOutput values.
+// You can construct a concrete instance of `BlueprintPropertySpecAuthenticationInput` via:
+//
+//	BlueprintPropertySpecAuthenticationArgs{...}
+type BlueprintPropertySpecAuthenticationInput interface {
+	pulumi.Input
+
+	ToBlueprintPropertySpecAuthenticationOutput() BlueprintPropertySpecAuthenticationOutput
+	ToBlueprintPropertySpecAuthenticationOutputWithContext(context.Context) BlueprintPropertySpecAuthenticationOutput
+}
+
+type BlueprintPropertySpecAuthenticationArgs struct {
+	AuthorizationUrl pulumi.StringInput `pulumi:"authorizationUrl"`
+	ClientId         pulumi.StringInput `pulumi:"clientId"`
+	TokenUrl         pulumi.StringInput `pulumi:"tokenUrl"`
+}
+
+func (BlueprintPropertySpecAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintPropertySpecAuthentication)(nil)).Elem()
+}
+
+func (i BlueprintPropertySpecAuthenticationArgs) ToBlueprintPropertySpecAuthenticationOutput() BlueprintPropertySpecAuthenticationOutput {
+	return i.ToBlueprintPropertySpecAuthenticationOutputWithContext(context.Background())
+}
+
+func (i BlueprintPropertySpecAuthenticationArgs) ToBlueprintPropertySpecAuthenticationOutputWithContext(ctx context.Context) BlueprintPropertySpecAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertySpecAuthenticationOutput)
+}
+
+func (i BlueprintPropertySpecAuthenticationArgs) ToBlueprintPropertySpecAuthenticationPtrOutput() BlueprintPropertySpecAuthenticationPtrOutput {
+	return i.ToBlueprintPropertySpecAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i BlueprintPropertySpecAuthenticationArgs) ToBlueprintPropertySpecAuthenticationPtrOutputWithContext(ctx context.Context) BlueprintPropertySpecAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertySpecAuthenticationOutput).ToBlueprintPropertySpecAuthenticationPtrOutputWithContext(ctx)
+}
+
+// BlueprintPropertySpecAuthenticationPtrInput is an input type that accepts BlueprintPropertySpecAuthenticationArgs, BlueprintPropertySpecAuthenticationPtr and BlueprintPropertySpecAuthenticationPtrOutput values.
+// You can construct a concrete instance of `BlueprintPropertySpecAuthenticationPtrInput` via:
+//
+//	        BlueprintPropertySpecAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type BlueprintPropertySpecAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToBlueprintPropertySpecAuthenticationPtrOutput() BlueprintPropertySpecAuthenticationPtrOutput
+	ToBlueprintPropertySpecAuthenticationPtrOutputWithContext(context.Context) BlueprintPropertySpecAuthenticationPtrOutput
+}
+
+type blueprintPropertySpecAuthenticationPtrType BlueprintPropertySpecAuthenticationArgs
+
+func BlueprintPropertySpecAuthenticationPtr(v *BlueprintPropertySpecAuthenticationArgs) BlueprintPropertySpecAuthenticationPtrInput {
+	return (*blueprintPropertySpecAuthenticationPtrType)(v)
+}
+
+func (*blueprintPropertySpecAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintPropertySpecAuthentication)(nil)).Elem()
+}
+
+func (i *blueprintPropertySpecAuthenticationPtrType) ToBlueprintPropertySpecAuthenticationPtrOutput() BlueprintPropertySpecAuthenticationPtrOutput {
+	return i.ToBlueprintPropertySpecAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *blueprintPropertySpecAuthenticationPtrType) ToBlueprintPropertySpecAuthenticationPtrOutputWithContext(ctx context.Context) BlueprintPropertySpecAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertySpecAuthenticationPtrOutput)
+}
+
+type BlueprintPropertySpecAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (BlueprintPropertySpecAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintPropertySpecAuthentication)(nil)).Elem()
+}
+
+func (o BlueprintPropertySpecAuthenticationOutput) ToBlueprintPropertySpecAuthenticationOutput() BlueprintPropertySpecAuthenticationOutput {
+	return o
+}
+
+func (o BlueprintPropertySpecAuthenticationOutput) ToBlueprintPropertySpecAuthenticationOutputWithContext(ctx context.Context) BlueprintPropertySpecAuthenticationOutput {
+	return o
+}
+
+func (o BlueprintPropertySpecAuthenticationOutput) ToBlueprintPropertySpecAuthenticationPtrOutput() BlueprintPropertySpecAuthenticationPtrOutput {
+	return o.ToBlueprintPropertySpecAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o BlueprintPropertySpecAuthenticationOutput) ToBlueprintPropertySpecAuthenticationPtrOutputWithContext(ctx context.Context) BlueprintPropertySpecAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlueprintPropertySpecAuthentication) *BlueprintPropertySpecAuthentication {
+		return &v
+	}).(BlueprintPropertySpecAuthenticationPtrOutput)
+}
+
+func (o BlueprintPropertySpecAuthenticationOutput) AuthorizationUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v BlueprintPropertySpecAuthentication) string { return v.AuthorizationUrl }).(pulumi.StringOutput)
+}
+
+func (o BlueprintPropertySpecAuthenticationOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v BlueprintPropertySpecAuthentication) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+func (o BlueprintPropertySpecAuthenticationOutput) TokenUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v BlueprintPropertySpecAuthentication) string { return v.TokenUrl }).(pulumi.StringOutput)
+}
+
+type BlueprintPropertySpecAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (BlueprintPropertySpecAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintPropertySpecAuthentication)(nil)).Elem()
+}
+
+func (o BlueprintPropertySpecAuthenticationPtrOutput) ToBlueprintPropertySpecAuthenticationPtrOutput() BlueprintPropertySpecAuthenticationPtrOutput {
+	return o
+}
+
+func (o BlueprintPropertySpecAuthenticationPtrOutput) ToBlueprintPropertySpecAuthenticationPtrOutputWithContext(ctx context.Context) BlueprintPropertySpecAuthenticationPtrOutput {
+	return o
+}
+
+func (o BlueprintPropertySpecAuthenticationPtrOutput) Elem() BlueprintPropertySpecAuthenticationOutput {
+	return o.ApplyT(func(v *BlueprintPropertySpecAuthentication) BlueprintPropertySpecAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret BlueprintPropertySpecAuthentication
+		return ret
+	}).(BlueprintPropertySpecAuthenticationOutput)
+}
+
+func (o BlueprintPropertySpecAuthenticationPtrOutput) AuthorizationUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlueprintPropertySpecAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthorizationUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BlueprintPropertySpecAuthenticationPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlueprintPropertySpecAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BlueprintPropertySpecAuthenticationPtrOutput) TokenUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlueprintPropertySpecAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenUrl
+	}).(pulumi.StringPtrOutput)
+}
+
 type BlueprintRelation struct {
-	Identifier *string `pulumi:"identifier"`
+	Identifier string  `pulumi:"identifier"`
 	Many       *bool   `pulumi:"many"`
 	Required   *bool   `pulumi:"required"`
 	Target     string  `pulumi:"target"`
-	Title      string  `pulumi:"title"`
+	Title      *string `pulumi:"title"`
 }
 
 // BlueprintRelationInput is an input type that accepts BlueprintRelationArgs and BlueprintRelationOutput values.
@@ -1023,11 +1246,11 @@ type BlueprintRelationInput interface {
 }
 
 type BlueprintRelationArgs struct {
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	Identifier pulumi.StringInput    `pulumi:"identifier"`
 	Many       pulumi.BoolPtrInput   `pulumi:"many"`
 	Required   pulumi.BoolPtrInput   `pulumi:"required"`
 	Target     pulumi.StringInput    `pulumi:"target"`
-	Title      pulumi.StringInput    `pulumi:"title"`
+	Title      pulumi.StringPtrInput `pulumi:"title"`
 }
 
 func (BlueprintRelationArgs) ElementType() reflect.Type {
@@ -1081,8 +1304,8 @@ func (o BlueprintRelationOutput) ToBlueprintRelationOutputWithContext(ctx contex
 	return o
 }
 
-func (o BlueprintRelationOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BlueprintRelation) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o BlueprintRelationOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v BlueprintRelation) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 func (o BlueprintRelationOutput) Many() pulumi.BoolPtrOutput {
@@ -1097,8 +1320,8 @@ func (o BlueprintRelationOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v BlueprintRelation) string { return v.Target }).(pulumi.StringOutput)
 }
 
-func (o BlueprintRelationOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v BlueprintRelation) string { return v.Title }).(pulumi.StringOutput)
+func (o BlueprintRelationOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintRelation) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
 type BlueprintRelationArrayOutput struct{ *pulumi.OutputState }
@@ -1237,8 +1460,9 @@ func (o EntityPropertyArrayOutput) Index(i pulumi.IntInput) EntityPropertyOutput
 }
 
 type EntityRelation struct {
-	Identifier string `pulumi:"identifier"`
-	Name       string `pulumi:"name"`
+	Identifier  *string  `pulumi:"identifier"`
+	Identifiers []string `pulumi:"identifiers"`
+	Name        string   `pulumi:"name"`
 }
 
 // EntityRelationInput is an input type that accepts EntityRelationArgs and EntityRelationOutput values.
@@ -1253,8 +1477,9 @@ type EntityRelationInput interface {
 }
 
 type EntityRelationArgs struct {
-	Identifier pulumi.StringInput `pulumi:"identifier"`
-	Name       pulumi.StringInput `pulumi:"name"`
+	Identifier  pulumi.StringPtrInput   `pulumi:"identifier"`
+	Identifiers pulumi.StringArrayInput `pulumi:"identifiers"`
+	Name        pulumi.StringInput      `pulumi:"name"`
 }
 
 func (EntityRelationArgs) ElementType() reflect.Type {
@@ -1308,8 +1533,12 @@ func (o EntityRelationOutput) ToEntityRelationOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o EntityRelationOutput) Identifier() pulumi.StringOutput {
-	return o.ApplyT(func(v EntityRelation) string { return v.Identifier }).(pulumi.StringOutput)
+func (o EntityRelationOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityRelation) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+}
+
+func (o EntityRelationOutput) Identifiers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EntityRelation) []string { return v.Identifiers }).(pulumi.StringArrayOutput)
 }
 
 func (o EntityRelationOutput) Name() pulumi.StringOutput {
@@ -1349,6 +1578,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintMirrorPropertyArrayInput)(nil)).Elem(), BlueprintMirrorPropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertyInput)(nil)).Elem(), BlueprintPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertyArrayInput)(nil)).Elem(), BlueprintPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertySpecAuthenticationInput)(nil)).Elem(), BlueprintPropertySpecAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertySpecAuthenticationPtrInput)(nil)).Elem(), BlueprintPropertySpecAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintRelationInput)(nil)).Elem(), BlueprintRelationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintRelationArrayInput)(nil)).Elem(), BlueprintRelationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityPropertyInput)(nil)).Elem(), EntityPropertyArgs{})
@@ -1367,6 +1598,8 @@ func init() {
 	pulumi.RegisterOutputType(BlueprintMirrorPropertyArrayOutput{})
 	pulumi.RegisterOutputType(BlueprintPropertyOutput{})
 	pulumi.RegisterOutputType(BlueprintPropertyArrayOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertySpecAuthenticationOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertySpecAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(BlueprintRelationOutput{})
 	pulumi.RegisterOutputType(BlueprintRelationArrayOutput{})
 	pulumi.RegisterOutputType(EntityPropertyOutput{})

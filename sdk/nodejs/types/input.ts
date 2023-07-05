@@ -46,6 +46,7 @@ export interface BlueprintCalculationProperty {
 }
 
 export interface BlueprintChangelogDestination {
+    agent?: pulumi.Input<boolean>;
     type: pulumi.Input<string>;
     url?: pulumi.Input<string>;
 }
@@ -57,26 +58,42 @@ export interface BlueprintMirrorProperty {
 }
 
 export interface BlueprintProperty {
+    /**
+     * @deprecated Use default_value instead
+     */
     default?: pulumi.Input<string>;
     defaultItems?: pulumi.Input<pulumi.Input<string>[]>;
+    defaultValue?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     description?: pulumi.Input<string>;
     enumColors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     enums?: pulumi.Input<pulumi.Input<string>[]>;
     format?: pulumi.Input<string>;
     icon?: pulumi.Input<string>;
     identifier: pulumi.Input<string>;
+    items?: pulumi.Input<{[key: string]: any}>;
+    maxItems?: pulumi.Input<number>;
+    maxLength?: pulumi.Input<number>;
+    minItems?: pulumi.Input<number>;
+    minLength?: pulumi.Input<number>;
     required?: pulumi.Input<boolean>;
     spec?: pulumi.Input<string>;
+    specAuthentication?: pulumi.Input<inputs.BlueprintPropertySpecAuthentication>;
     title: pulumi.Input<string>;
     type: pulumi.Input<string>;
 }
 
+export interface BlueprintPropertySpecAuthentication {
+    authorizationUrl: pulumi.Input<string>;
+    clientId: pulumi.Input<string>;
+    tokenUrl: pulumi.Input<string>;
+}
+
 export interface BlueprintRelation {
-    identifier?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
     many?: pulumi.Input<boolean>;
     required?: pulumi.Input<boolean>;
     target: pulumi.Input<string>;
-    title: pulumi.Input<string>;
+    title?: pulumi.Input<string>;
 }
 
 export interface EntityProperty {
@@ -90,6 +107,7 @@ export interface EntityProperty {
 }
 
 export interface EntityRelation {
-    identifier: pulumi.Input<string>;
+    identifier?: pulumi.Input<string>;
+    identifiers?: pulumi.Input<pulumi.Input<string>[]>;
     name: pulumi.Input<string>;
 }

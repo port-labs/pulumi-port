@@ -46,6 +46,7 @@ export interface BlueprintCalculationProperty {
 }
 
 export interface BlueprintChangelogDestination {
+    agent?: boolean;
     type: string;
     url?: string;
 }
@@ -57,26 +58,42 @@ export interface BlueprintMirrorProperty {
 }
 
 export interface BlueprintProperty {
+    /**
+     * @deprecated Use default_value instead
+     */
     default?: string;
     defaultItems?: string[];
+    defaultValue?: {[key: string]: string};
     description?: string;
     enumColors?: {[key: string]: string};
     enums?: string[];
     format?: string;
     icon?: string;
     identifier: string;
+    items?: {[key: string]: any};
+    maxItems?: number;
+    maxLength?: number;
+    minItems?: number;
+    minLength?: number;
     required?: boolean;
     spec?: string;
+    specAuthentication?: outputs.BlueprintPropertySpecAuthentication;
     title: string;
     type: string;
 }
 
+export interface BlueprintPropertySpecAuthentication {
+    authorizationUrl: string;
+    clientId: string;
+    tokenUrl: string;
+}
+
 export interface BlueprintRelation {
-    identifier?: string;
+    identifier: string;
     many?: boolean;
     required?: boolean;
     target: string;
-    title: string;
+    title?: string;
 }
 
 export interface EntityProperty {
@@ -90,7 +107,8 @@ export interface EntityProperty {
 }
 
 export interface EntityRelation {
-    identifier: string;
+    identifier?: string;
+    identifiers?: string[];
     name: string;
 }
 
