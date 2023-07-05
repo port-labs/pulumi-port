@@ -14,13 +14,13 @@ This package is available for several languages/platforms:
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
 ```bash
-npm install @port-labs/pulumi
+npm install port-labs/port
 ```
 
 or `yarn`:
 
 ```bash
-yarn add @port-labs/pulumi
+yarn add port-labs/port
 ```
 
 ### Python
