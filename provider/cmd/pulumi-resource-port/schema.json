@@ -1,6 +1,6 @@
 {
     "name": "port",
-    "displayName": "Port Pulumi",
+    "displayName": "Port",
     "description": "A Pulumi package for creating and managing Port resources.",
     "keywords": [
         "pulumi",
@@ -10,8 +10,8 @@
     "homepage": "https://www.pulumi.com",
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`port` Terraform Provider](https://github.com/port-labs/terraform-provider-port).",
-    "repository": "https://github.com/port-labs/pulumi",
-    "pluginDownloadURL": "github://api.github.com/port-labs/pulumi",
+    "repository": "https://github.com/port-labs/pulumi-port",
+    "pluginDownloadURL": "github://api.github.com/port-labs/pulumi-port",
     "publisher": "port-labs",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
@@ -41,14 +41,14 @@
             },
             "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing Port resources.",
-            "packageName": "@port-labs/pulumi",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/port-labs/terraform-provider-port)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-port` repo](https://github.com/port-labs/pulumi/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-port` repo](https://github.com/port-labs/terraform-provider-port/issues).",
+            "packageName": "@port-labs/port",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/port-labs/terraform-provider-port)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-port` repo](https://github.com/port-labs/pulumi-port/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-port` repo](https://github.com/port-labs/terraform-provider-port/issues).",
             "typescriptVersion": ""
         },
         "python": {
             "compatibility": "tfbridge20",
             "packageName": "port_pulumi",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/port-labs/terraform-provider-port)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-port` repo](https://github.com/port-labs/pulumi/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-port` repo](https://github.com/port-labs/terraform-provider-port/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/port-labs/terraform-provider-port)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-port` repo](https://github.com/port-labs/pulumi-port/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-port` repo](https://github.com/port-labs/terraform-provider-port/issues).",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
             }
@@ -274,12 +274,6 @@
                 },
                 "identifier": {
                     "type": "string"
-                },
-                "items": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
-                    }
                 },
                 "required": {
                     "type": "boolean"
@@ -547,7 +541,7 @@
                     "items": {
                         "$ref": "#/types/port:index/BlueprintCalculationProperty:BlueprintCalculationProperty"
                     },
-                    "description": "A set of properties that are calculated upon entity's regular properties.\n"
+                    "description": "A set of properties that are calculated upon Entitys regular properties.\n"
                 },
                 "changelogDestination": {
                     "$ref": "#/types/port:index/BlueprintChangelogDestination:BlueprintChangelogDestination",
@@ -623,7 +617,7 @@
                     "items": {
                         "$ref": "#/types/port:index/BlueprintCalculationProperty:BlueprintCalculationProperty"
                     },
-                    "description": "A set of properties that are calculated upon entity's regular properties.\n"
+                    "description": "A set of properties that are calculated upon Entitys regular properties.\n"
                 },
                 "changelogDestination": {
                     "$ref": "#/types/port:index/BlueprintChangelogDestination:BlueprintChangelogDestination",
@@ -685,7 +679,7 @@
                         "items": {
                             "$ref": "#/types/port:index/BlueprintCalculationProperty:BlueprintCalculationProperty"
                         },
-                        "description": "A set of properties that are calculated upon entity's regular properties.\n"
+                        "description": "A set of properties that are calculated upon Entitys regular properties.\n"
                     },
                     "changelogDestination": {
                         "$ref": "#/types/port:index/BlueprintChangelogDestination:BlueprintChangelogDestination",

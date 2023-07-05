@@ -117,7 +117,7 @@ func Provider() tfbridge.ProviderInfo {
 
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			PackageName: "@port-labs/pulumi",
+			PackageName: "@port-labs/port",
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
