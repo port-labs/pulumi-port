@@ -24,6 +24,8 @@ type Action struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// The methods the action is dispatched in. Supports WEBHOOK, KAFKA, GITHUB and AZURE-DEVOPS
 	InvocationMethod ActionInvocationMethodOutput `pulumi:"invocationMethod"`
+	// Whether the action requires approval or not
+	RequiredApproval pulumi.BoolPtrOutput `pulumi:"requiredApproval"`
 	// The display name of the action
 	Title pulumi.StringOutput `pulumi:"title"`
 	// The type of the action, one of CREATE, DAY-2, DELETE
@@ -87,6 +89,8 @@ type actionState struct {
 	Identifier *string `pulumi:"identifier"`
 	// The methods the action is dispatched in. Supports WEBHOOK, KAFKA, GITHUB and AZURE-DEVOPS
 	InvocationMethod *ActionInvocationMethod `pulumi:"invocationMethod"`
+	// Whether the action requires approval or not
+	RequiredApproval *bool `pulumi:"requiredApproval"`
 	// The display name of the action
 	Title *string `pulumi:"title"`
 	// The type of the action, one of CREATE, DAY-2, DELETE
@@ -106,6 +110,8 @@ type ActionState struct {
 	Identifier pulumi.StringPtrInput
 	// The methods the action is dispatched in. Supports WEBHOOK, KAFKA, GITHUB and AZURE-DEVOPS
 	InvocationMethod ActionInvocationMethodPtrInput
+	// Whether the action requires approval or not
+	RequiredApproval pulumi.BoolPtrInput
 	// The display name of the action
 	Title pulumi.StringPtrInput
 	// The type of the action, one of CREATE, DAY-2, DELETE
@@ -129,6 +135,8 @@ type actionArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// The methods the action is dispatched in. Supports WEBHOOK, KAFKA, GITHUB and AZURE-DEVOPS
 	InvocationMethod ActionInvocationMethod `pulumi:"invocationMethod"`
+	// Whether the action requires approval or not
+	RequiredApproval *bool `pulumi:"requiredApproval"`
 	// The display name of the action
 	Title string `pulumi:"title"`
 	// The type of the action, one of CREATE, DAY-2, DELETE
@@ -149,6 +157,8 @@ type ActionArgs struct {
 	Identifier pulumi.StringInput
 	// The methods the action is dispatched in. Supports WEBHOOK, KAFKA, GITHUB and AZURE-DEVOPS
 	InvocationMethod ActionInvocationMethodInput
+	// Whether the action requires approval or not
+	RequiredApproval pulumi.BoolPtrInput
 	// The display name of the action
 	Title pulumi.StringInput
 	// The type of the action, one of CREATE, DAY-2, DELETE
@@ -267,6 +277,11 @@ func (o ActionOutput) Identifier() pulumi.StringOutput {
 // The methods the action is dispatched in. Supports WEBHOOK, KAFKA, GITHUB and AZURE-DEVOPS
 func (o ActionOutput) InvocationMethod() ActionInvocationMethodOutput {
 	return o.ApplyT(func(v *Action) ActionInvocationMethodOutput { return v.InvocationMethod }).(ActionInvocationMethodOutput)
+}
+
+// Whether the action requires approval or not
+func (o ActionOutput) RequiredApproval() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Action) pulumi.BoolPtrOutput { return v.RequiredApproval }).(pulumi.BoolPtrOutput)
 }
 
 // The display name of the action

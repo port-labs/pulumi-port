@@ -16,6 +16,7 @@ __all__ = [
     'BlueprintChangelogDestinationArgs',
     'BlueprintMirrorPropertyArgs',
     'BlueprintPropertyArgs',
+    'BlueprintPropertySpecAuthenticationArgs',
     'BlueprintRelationArgs',
     'EntityPropertyArgs',
     'EntityRelationArgs',
@@ -405,8 +406,11 @@ class BlueprintCalculationPropertyArgs:
 class BlueprintChangelogDestinationArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
+                 agent: Optional[pulumi.Input[bool]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "type", type)
+        if agent is not None:
+            pulumi.set(__self__, "agent", agent)
         if url is not None:
             pulumi.set(__self__, "url", url)
 
@@ -418,6 +422,15 @@ class BlueprintChangelogDestinationArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def agent(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "agent")
+
+    @agent.setter
+    def agent(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "agent", value)
 
     @property
     @pulumi.getter
@@ -476,20 +489,32 @@ class BlueprintPropertyArgs:
                  type: pulumi.Input[str],
                  default: Optional[pulumi.Input[str]] = None,
                  default_items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 default_value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enum_colors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enums: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
+                 items: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 max_items: Optional[pulumi.Input[int]] = None,
+                 max_length: Optional[pulumi.Input[int]] = None,
+                 min_items: Optional[pulumi.Input[int]] = None,
+                 min_length: Optional[pulumi.Input[int]] = None,
                  required: Optional[pulumi.Input[bool]] = None,
-                 spec: Optional[pulumi.Input[str]] = None):
+                 spec: Optional[pulumi.Input[str]] = None,
+                 spec_authentication: Optional[pulumi.Input['BlueprintPropertySpecAuthenticationArgs']] = None):
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "title", title)
         pulumi.set(__self__, "type", type)
         if default is not None:
+            warnings.warn("""Use default_value instead""", DeprecationWarning)
+            pulumi.log.warn("""default is deprecated: Use default_value instead""")
+        if default is not None:
             pulumi.set(__self__, "default", default)
         if default_items is not None:
             pulumi.set(__self__, "default_items", default_items)
+        if default_value is not None:
+            pulumi.set(__self__, "default_value", default_value)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enum_colors is not None:
@@ -500,10 +525,22 @@ class BlueprintPropertyArgs:
             pulumi.set(__self__, "format", format)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+        if max_items is not None:
+            pulumi.set(__self__, "max_items", max_items)
+        if max_length is not None:
+            pulumi.set(__self__, "max_length", max_length)
+        if min_items is not None:
+            pulumi.set(__self__, "min_items", min_items)
+        if min_length is not None:
+            pulumi.set(__self__, "min_length", min_length)
         if required is not None:
             pulumi.set(__self__, "required", required)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
+        if spec_authentication is not None:
+            pulumi.set(__self__, "spec_authentication", spec_authentication)
 
     @property
     @pulumi.getter
@@ -535,6 +572,9 @@ class BlueprintPropertyArgs:
     @property
     @pulumi.getter
     def default(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Use default_value instead""", DeprecationWarning)
+        pulumi.log.warn("""default is deprecated: Use default_value instead""")
+
         return pulumi.get(self, "default")
 
     @default.setter
@@ -549,6 +589,15 @@ class BlueprintPropertyArgs:
     @default_items.setter
     def default_items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "default_items", value)
+
+    @property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "default_value")
+
+    @default_value.setter
+    def default_value(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "default_value", value)
 
     @property
     @pulumi.getter
@@ -597,6 +646,51 @@ class BlueprintPropertyArgs:
 
     @property
     @pulumi.getter
+    def items(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "items")
+
+    @items.setter
+    def items(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "items", value)
+
+    @property
+    @pulumi.getter(name="maxItems")
+    def max_items(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_items")
+
+    @max_items.setter
+    def max_items(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_items", value)
+
+    @property
+    @pulumi.getter(name="maxLength")
+    def max_length(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_length")
+
+    @max_length.setter
+    def max_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_length", value)
+
+    @property
+    @pulumi.getter(name="minItems")
+    def min_items(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_items")
+
+    @min_items.setter
+    def min_items(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_items", value)
+
+    @property
+    @pulumi.getter(name="minLength")
+    def min_length(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_length")
+
+    @min_length.setter
+    def min_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_length", value)
+
+    @property
+    @pulumi.getter
     def required(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "required")
 
@@ -613,23 +707,79 @@ class BlueprintPropertyArgs:
     def spec(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec", value)
 
+    @property
+    @pulumi.getter(name="specAuthentication")
+    def spec_authentication(self) -> Optional[pulumi.Input['BlueprintPropertySpecAuthenticationArgs']]:
+        return pulumi.get(self, "spec_authentication")
+
+    @spec_authentication.setter
+    def spec_authentication(self, value: Optional[pulumi.Input['BlueprintPropertySpecAuthenticationArgs']]):
+        pulumi.set(self, "spec_authentication", value)
+
+
+@pulumi.input_type
+class BlueprintPropertySpecAuthenticationArgs:
+    def __init__(__self__, *,
+                 authorization_url: pulumi.Input[str],
+                 client_id: pulumi.Input[str],
+                 token_url: pulumi.Input[str]):
+        pulumi.set(__self__, "authorization_url", authorization_url)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "token_url", token_url)
+
+    @property
+    @pulumi.getter(name="authorizationUrl")
+    def authorization_url(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "authorization_url")
+
+    @authorization_url.setter
+    def authorization_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "authorization_url", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="tokenUrl")
+    def token_url(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "token_url")
+
+    @token_url.setter
+    def token_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token_url", value)
+
 
 @pulumi.input_type
 class BlueprintRelationArgs:
     def __init__(__self__, *,
+                 identifier: pulumi.Input[str],
                  target: pulumi.Input[str],
-                 title: pulumi.Input[str],
-                 identifier: Optional[pulumi.Input[str]] = None,
                  many: Optional[pulumi.Input[bool]] = None,
-                 required: Optional[pulumi.Input[bool]] = None):
+                 required: Optional[pulumi.Input[bool]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "target", target)
-        pulumi.set(__self__, "title", title)
-        if identifier is not None:
-            pulumi.set(__self__, "identifier", identifier)
         if many is not None:
             pulumi.set(__self__, "many", many)
         if required is not None:
             pulumi.set(__self__, "required", required)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identifier", value)
 
     @property
     @pulumi.getter
@@ -639,24 +789,6 @@ class BlueprintRelationArgs:
     @target.setter
     def target(self, value: pulumi.Input[str]):
         pulumi.set(self, "target", value)
-
-    @property
-    @pulumi.getter
-    def title(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "title")
-
-    @title.setter
-    def title(self, value: pulumi.Input[str]):
-        pulumi.set(self, "title", value)
-
-    @property
-    @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "identifier")
-
-    @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "identifier", value)
 
     @property
     @pulumi.getter
@@ -675,6 +807,15 @@ class BlueprintRelationArgs:
     @required.setter
     def required(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
 
 
 @pulumi.input_type
@@ -716,6 +857,9 @@ class EntityPropertyArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""property type is not required anymore""", DeprecationWarning)
+        pulumi.log.warn("""type is deprecated: property type is not required anymore""")
+
         return pulumi.get(self, "type")
 
     @type.setter
@@ -735,19 +879,14 @@ class EntityPropertyArgs:
 @pulumi.input_type
 class EntityRelationArgs:
     def __init__(__self__, *,
-                 identifier: pulumi.Input[str],
-                 name: pulumi.Input[str]):
-        pulumi.set(__self__, "identifier", identifier)
+                 name: pulumi.Input[str],
+                 identifier: Optional[pulumi.Input[str]] = None,
+                 identifiers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def identifier(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "identifier")
-
-    @identifier.setter
-    def identifier(self, value: pulumi.Input[str]):
-        pulumi.set(self, "identifier", value)
+        if identifier is not None:
+            pulumi.set(__self__, "identifier", identifier)
+        if identifiers is not None:
+            pulumi.set(__self__, "identifiers", identifiers)
 
     @property
     @pulumi.getter
@@ -757,5 +896,23 @@ class EntityRelationArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter
+    def identifiers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "identifiers")
+
+    @identifiers.setter
+    def identifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "identifiers", value)
 
 

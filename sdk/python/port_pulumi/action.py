@@ -23,6 +23,7 @@ class ActionArgs:
                  trigger: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
+                 required_approval: Optional[pulumi.Input[bool]] = None,
                  user_properties: Optional[pulumi.Input[Sequence[pulumi.Input['ActionUserPropertyArgs']]]] = None):
         """
         The set of arguments for constructing a Action resource.
@@ -33,6 +34,7 @@ class ActionArgs:
         :param pulumi.Input[str] trigger: The type of the action, one of CREATE, DAY-2, DELETE
         :param pulumi.Input[str] description: The description of the action
         :param pulumi.Input[str] icon: The icon of the action
+        :param pulumi.Input[bool] required_approval: Whether the action requires approval or not
         :param pulumi.Input[Sequence[pulumi.Input['ActionUserPropertyArgs']]] user_properties: The input properties of the action
         """
         pulumi.set(__self__, "blueprint_identifier", blueprint_identifier)
@@ -44,6 +46,8 @@ class ActionArgs:
             pulumi.set(__self__, "description", description)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
+        if required_approval is not None:
+            pulumi.set(__self__, "required_approval", required_approval)
         if user_properties is not None:
             pulumi.set(__self__, "user_properties", user_properties)
 
@@ -132,6 +136,18 @@ class ActionArgs:
         pulumi.set(self, "icon", value)
 
     @property
+    @pulumi.getter(name="requiredApproval")
+    def required_approval(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the action requires approval or not
+        """
+        return pulumi.get(self, "required_approval")
+
+    @required_approval.setter
+    def required_approval(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required_approval", value)
+
+    @property
     @pulumi.getter(name="userProperties")
     def user_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionUserPropertyArgs']]]]:
         """
@@ -152,6 +168,7 @@ class _ActionState:
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  invocation_method: Optional[pulumi.Input['ActionInvocationMethodArgs']] = None,
+                 required_approval: Optional[pulumi.Input[bool]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  trigger: Optional[pulumi.Input[str]] = None,
                  user_properties: Optional[pulumi.Input[Sequence[pulumi.Input['ActionUserPropertyArgs']]]] = None):
@@ -162,6 +179,7 @@ class _ActionState:
         :param pulumi.Input[str] icon: The icon of the action
         :param pulumi.Input[str] identifier: The identifier of the action
         :param pulumi.Input['ActionInvocationMethodArgs'] invocation_method: The methods the action is dispatched in. Supports WEBHOOK, KAFKA, GITHUB and AZURE-DEVOPS
+        :param pulumi.Input[bool] required_approval: Whether the action requires approval or not
         :param pulumi.Input[str] title: The display name of the action
         :param pulumi.Input[str] trigger: The type of the action, one of CREATE, DAY-2, DELETE
         :param pulumi.Input[Sequence[pulumi.Input['ActionUserPropertyArgs']]] user_properties: The input properties of the action
@@ -176,6 +194,8 @@ class _ActionState:
             pulumi.set(__self__, "identifier", identifier)
         if invocation_method is not None:
             pulumi.set(__self__, "invocation_method", invocation_method)
+        if required_approval is not None:
+            pulumi.set(__self__, "required_approval", required_approval)
         if title is not None:
             pulumi.set(__self__, "title", title)
         if trigger is not None:
@@ -244,6 +264,18 @@ class _ActionState:
         pulumi.set(self, "invocation_method", value)
 
     @property
+    @pulumi.getter(name="requiredApproval")
+    def required_approval(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the action requires approval or not
+        """
+        return pulumi.get(self, "required_approval")
+
+    @required_approval.setter
+    def required_approval(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required_approval", value)
+
+    @property
     @pulumi.getter
     def title(self) -> Optional[pulumi.Input[str]]:
         """
@@ -290,6 +322,7 @@ class Action(pulumi.CustomResource):
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  invocation_method: Optional[pulumi.Input[pulumi.InputType['ActionInvocationMethodArgs']]] = None,
+                 required_approval: Optional[pulumi.Input[bool]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  trigger: Optional[pulumi.Input[str]] = None,
                  user_properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionUserPropertyArgs']]]]] = None,
@@ -303,6 +336,7 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[str] icon: The icon of the action
         :param pulumi.Input[str] identifier: The identifier of the action
         :param pulumi.Input[pulumi.InputType['ActionInvocationMethodArgs']] invocation_method: The methods the action is dispatched in. Supports WEBHOOK, KAFKA, GITHUB and AZURE-DEVOPS
+        :param pulumi.Input[bool] required_approval: Whether the action requires approval or not
         :param pulumi.Input[str] title: The display name of the action
         :param pulumi.Input[str] trigger: The type of the action, one of CREATE, DAY-2, DELETE
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionUserPropertyArgs']]]] user_properties: The input properties of the action
@@ -335,6 +369,7 @@ class Action(pulumi.CustomResource):
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  invocation_method: Optional[pulumi.Input[pulumi.InputType['ActionInvocationMethodArgs']]] = None,
+                 required_approval: Optional[pulumi.Input[bool]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  trigger: Optional[pulumi.Input[str]] = None,
                  user_properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionUserPropertyArgs']]]]] = None,
@@ -358,6 +393,7 @@ class Action(pulumi.CustomResource):
             if invocation_method is None and not opts.urn:
                 raise TypeError("Missing required property 'invocation_method'")
             __props__.__dict__["invocation_method"] = invocation_method
+            __props__.__dict__["required_approval"] = required_approval
             if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
@@ -380,6 +416,7 @@ class Action(pulumi.CustomResource):
             icon: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             invocation_method: Optional[pulumi.Input[pulumi.InputType['ActionInvocationMethodArgs']]] = None,
+            required_approval: Optional[pulumi.Input[bool]] = None,
             title: Optional[pulumi.Input[str]] = None,
             trigger: Optional[pulumi.Input[str]] = None,
             user_properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionUserPropertyArgs']]]]] = None) -> 'Action':
@@ -395,6 +432,7 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[str] icon: The icon of the action
         :param pulumi.Input[str] identifier: The identifier of the action
         :param pulumi.Input[pulumi.InputType['ActionInvocationMethodArgs']] invocation_method: The methods the action is dispatched in. Supports WEBHOOK, KAFKA, GITHUB and AZURE-DEVOPS
+        :param pulumi.Input[bool] required_approval: Whether the action requires approval or not
         :param pulumi.Input[str] title: The display name of the action
         :param pulumi.Input[str] trigger: The type of the action, one of CREATE, DAY-2, DELETE
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ActionUserPropertyArgs']]]] user_properties: The input properties of the action
@@ -408,6 +446,7 @@ class Action(pulumi.CustomResource):
         __props__.__dict__["icon"] = icon
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["invocation_method"] = invocation_method
+        __props__.__dict__["required_approval"] = required_approval
         __props__.__dict__["title"] = title
         __props__.__dict__["trigger"] = trigger
         __props__.__dict__["user_properties"] = user_properties
@@ -452,6 +491,14 @@ class Action(pulumi.CustomResource):
         The methods the action is dispatched in. Supports WEBHOOK, KAFKA, GITHUB and AZURE-DEVOPS
         """
         return pulumi.get(self, "invocation_method")
+
+    @property
+    @pulumi.getter(name="requiredApproval")
+    def required_approval(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the action requires approval or not
+        """
+        return pulumi.get(self, "required_approval")
 
     @property
     @pulumi.getter

@@ -35,7 +35,7 @@ export class Blueprint extends pulumi.CustomResource {
     }
 
     /**
-     * A set of properties that are calculated upon Entitys regular properties.
+     * A set of properties that are calculated upon entity's regular properties.
      */
     public readonly calculationProperties!: pulumi.Output<outputs.BlueprintCalculationProperty[] | undefined>;
     /**
@@ -145,7 +145,7 @@ export class Blueprint extends pulumi.CustomResource {
  */
 export interface BlueprintState {
     /**
-     * A set of properties that are calculated upon Entitys regular properties.
+     * A set of properties that are calculated upon entity's regular properties.
      */
     calculationProperties?: pulumi.Input<pulumi.Input<inputs.BlueprintCalculationProperty>[]>;
     /**
@@ -198,7 +198,7 @@ export interface BlueprintState {
  */
 export interface BlueprintArgs {
     /**
-     * A set of properties that are calculated upon Entitys regular properties.
+     * A set of properties that are calculated upon entity's regular properties.
      */
     calculationProperties?: pulumi.Input<pulumi.Input<inputs.BlueprintCalculationProperty>[]>;
     /**
