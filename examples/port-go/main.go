@@ -1,7 +1,7 @@
 package main
 
 import (
-	port "github.com/port-labs/pulumi-port/go/port"
+	"github.com/port-labs/pulumi-port/go/port"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 

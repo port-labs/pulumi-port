@@ -22,6 +22,27 @@ builds:
       - -X github.com/port-labs/pulumi-port/provider/pkg/version.Version={{.Tag }}
     main: ./cmd/pulumi-resource-port/
 
+signs:
+  - cmd: cosign
+    env:
+      - COSIGN_EXPERIMENTAL=1
+    certificate: '${artifact}.pem'
+    args:
+      - sign-blob
+      - '-y'
+      - '--output-certificate=${certificate}'
+      - '--bundle=${signature}'
+      - '${artifact}'
+    artifacts: all
+    output: true
+
+sboms:
+  - artifacts: archive
+  - id: source
+    artifacts: source
+
+source:
+  enabled: true
 
 changelog:
   sort: asc

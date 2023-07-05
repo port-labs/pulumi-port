@@ -3,6 +3,6 @@
   "main": "index.js",
   "dependencies": {
     "@pulumi/pulumi": "3.55.0",
-    "@port-labs/port": "latest"
+    "@port-labs/port": "0.10.4"
   }
 }
