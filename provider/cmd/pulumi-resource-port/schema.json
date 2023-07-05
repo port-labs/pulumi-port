@@ -42,6 +42,8 @@
             "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing Port resources.",
             "packageName": "@port-labs/port",
+            "pluginName": "",
+            "pluginVersion": "",
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/port-labs/terraform-provider-port)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-port` repo](https://github.com/port-labs/pulumi-port/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-port` repo](https://github.com/port-labs/terraform-provider-port/issues).",
             "typescriptVersion": ""
         },
@@ -210,6 +212,9 @@
         },
         "port:index/BlueprintChangelogDestination:BlueprintChangelogDestination": {
             "properties": {
+                "agent": {
+                    "type": "boolean"
+                },
                 "type": {
                     "type": "string"
                 },
@@ -243,11 +248,18 @@
         "port:index/BlueprintProperty:BlueprintProperty": {
             "properties": {
                 "default": {
-                    "type": "string"
+                    "type": "string",
+                    "deprecationMessage": "Use default_value instead"
                 },
                 "defaultItems": {
                     "type": "array",
                     "items": {
+                        "type": "string"
+                    }
+                },
+                "defaultValue": {
+                    "type": "object",
+                    "additionalProperties": {
                         "type": "string"
                     }
                 },
@@ -275,11 +287,32 @@
                 "identifier": {
                     "type": "string"
                 },
+                "items": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    }
+                },
+                "maxItems": {
+                    "type": "integer"
+                },
+                "maxLength": {
+                    "type": "integer"
+                },
+                "minItems": {
+                    "type": "integer"
+                },
+                "minLength": {
+                    "type": "integer"
+                },
                 "required": {
                     "type": "boolean"
                 },
                 "spec": {
                     "type": "string"
+                },
+                "specAuthentication": {
+                    "$ref": "#/types/port:index/BlueprintPropertySpecAuthentication:BlueprintPropertySpecAuthentication"
                 },
                 "title": {
                     "type": "string"
@@ -293,6 +326,25 @@
                 "identifier",
                 "title",
                 "type"
+            ]
+        },
+        "port:index/BlueprintPropertySpecAuthentication:BlueprintPropertySpecAuthentication": {
+            "properties": {
+                "authorizationUrl": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "tokenUrl": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "authorizationUrl",
+                "clientId",
+                "tokenUrl"
             ]
         },
         "port:index/BlueprintRelation:BlueprintRelation": {
@@ -315,8 +367,8 @@
             },
             "type": "object",
             "required": [
-                "target",
-                "title"
+                "identifier",
+                "target"
             ]
         },
         "port:index/EntityProperty:EntityProperty": {
@@ -348,13 +400,18 @@
                 "identifier": {
                     "type": "string"
                 },
+                "identifiers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "name": {
                     "type": "string"
                 }
             },
             "type": "object",
             "required": [
-                "identifier",
                 "name"
             ]
         }
@@ -425,6 +482,10 @@
                     "$ref": "#/types/port:index/ActionInvocationMethod:ActionInvocationMethod",
                     "description": "The methods the action is dispatched in. Supports WEBHOOK, KAFKA, GITHUB and AZURE-DEVOPS\n"
                 },
+                "requiredApproval": {
+                    "type": "boolean",
+                    "description": "Whether the action requires approval or not\n"
+                },
                 "title": {
                     "type": "string",
                     "description": "The display name of the action\n"
@@ -468,6 +529,10 @@
                 "invocationMethod": {
                     "$ref": "#/types/port:index/ActionInvocationMethod:ActionInvocationMethod",
                     "description": "The methods the action is dispatched in. Supports WEBHOOK, KAFKA, GITHUB and AZURE-DEVOPS\n"
+                },
+                "requiredApproval": {
+                    "type": "boolean",
+                    "description": "Whether the action requires approval or not\n"
                 },
                 "title": {
                     "type": "string",
@@ -515,6 +580,10 @@
                         "$ref": "#/types/port:index/ActionInvocationMethod:ActionInvocationMethod",
                         "description": "The methods the action is dispatched in. Supports WEBHOOK, KAFKA, GITHUB and AZURE-DEVOPS\n"
                     },
+                    "requiredApproval": {
+                        "type": "boolean",
+                        "description": "Whether the action requires approval or not\n"
+                    },
                     "title": {
                         "type": "string",
                         "description": "The display name of the action\n"
@@ -541,7 +610,7 @@
                     "items": {
                         "$ref": "#/types/port:index/BlueprintCalculationProperty:BlueprintCalculationProperty"
                     },
-                    "description": "A set of properties that are calculated upon Entitys regular properties.\n"
+                    "description": "A set of properties that are calculated upon entity's regular properties.\n"
                 },
                 "changelogDestination": {
                     "$ref": "#/types/port:index/BlueprintChangelogDestination:BlueprintChangelogDestination",
@@ -617,7 +686,7 @@
                     "items": {
                         "$ref": "#/types/port:index/BlueprintCalculationProperty:BlueprintCalculationProperty"
                     },
-                    "description": "A set of properties that are calculated upon Entitys regular properties.\n"
+                    "description": "A set of properties that are calculated upon entity's regular properties.\n"
                 },
                 "changelogDestination": {
                     "$ref": "#/types/port:index/BlueprintChangelogDestination:BlueprintChangelogDestination",
@@ -679,7 +748,7 @@
                         "items": {
                             "$ref": "#/types/port:index/BlueprintCalculationProperty:BlueprintCalculationProperty"
                         },
-                        "description": "A set of properties that are calculated upon Entitys regular properties.\n"
+                        "description": "A set of properties that are calculated upon entity's regular properties.\n"
                     },
                     "changelogDestination": {
                         "$ref": "#/types/port:index/BlueprintChangelogDestination:BlueprintChangelogDestination",
