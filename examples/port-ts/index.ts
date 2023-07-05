@@ -1,5 +1,4 @@
-import * as pulumi from "@pulumi/pulumi";
-import * as port from "@port-labs/pulumi";
+import * as port from "@port-labs/port";
 
 export const blueprint = new port.Blueprint("microservice", {
     identifier: "microservice",
@@ -9,7 +8,7 @@ export const blueprint = new port.Blueprint("microservice", {
             identifier: "language",
             title: "Language",
             type: "string",
-            required: true,
+            required: false,
         }
     ]
 });
@@ -17,7 +16,7 @@ export const blueprint = new port.Blueprint("microservice", {
 export const entity = new port.Entity("monolith", {
     identifier: "monolith",
     title: "monolith",
-    blueprint: "microservice",
+    blueprint: blueprint.identifier,
     properties: [
         {
             name: "language",

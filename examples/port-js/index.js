@@ -1,6 +1,6 @@
 "use strict";
 const pulumi = require("@pulumi/pulumi");
-const port = require("@port-labs/pulumi");
+const port = require("@port-labs/port");
 
 const entity = new port.Entity("entity", {
     identifier: "monolith",
