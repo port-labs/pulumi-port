@@ -1,1 +1,2 @@
 upstream-provider-name: terraform-provider-port-labs
+allow-missing-docs: true
