@@ -1,0 +1,11 @@
+{
+  "name": "port-ts",
+  "main": "index.ts",
+  "devDependencies": {
+    "@types/node": "^18"
+  },
+  "dependencies": {
+    "@pulumi/pulumi": "3.55.0",
+    "@port-labs/port": "latest"
+  }
+}
