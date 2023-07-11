@@ -10,7 +10,7 @@ The Pulumi Port provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@port-labs/port`](https://www.npmjs.com/package/@port-labs/port)
 * Python: [`port_pulumi`](https://pypi.org/project/port_pulumi/)
-* Go: [`github.com/port-labs/pulumi-port/sdk/go/port`](https://github.com/port-labs/pulumi-port/sdk/go/port)
+* Go: [`github.com/port-labs/pulumi-port/sdk/go/port`](https://pkg.go.dev/github.com/port-labs/pulumi-port/sdk/go/port)
 
 ## Configuration
 
