@@ -21,13 +21,22 @@ class _ExportableConfig(types.ModuleType):
 
     @property
     def client_id(self) -> Optional[str]:
+        """
+        Client ID for Port-labs
+        """
         return __config__.get('clientId')
 
     @property
     def secret(self) -> Optional[str]:
+        """
+        Client Secret for Port-labs
+        """
         return __config__.get('secret')
 
     @property
     def token(self) -> Optional[str]:
+        """
+        Token for Port-labs
+        """
         return __config__.get('token')
 

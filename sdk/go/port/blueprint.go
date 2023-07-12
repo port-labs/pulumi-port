@@ -14,33 +14,36 @@ import (
 type Blueprint struct {
 	pulumi.CustomResourceState
 
-	// A set of properties that are calculated upon entity's regular properties.
-	CalculationProperties BlueprintCalculationPropertyArrayOutput `pulumi:"calculationProperties"`
-	// Blueprints changelog destination, Supports WEBHOOK and KAFKA
-	ChangelogDestination BlueprintChangelogDestinationPtrOutput `pulumi:"changelogDestination"`
-	CreatedAt            pulumi.StringOutput                    `pulumi:"createdAt"`
-	CreatedBy            pulumi.StringOutput                    `pulumi:"createdBy"`
-	// The data source for entities of this blueprint
-	//
-	// Deprecated: Data source is ignored
-	DataSource pulumi.StringPtrOutput `pulumi:"dataSource"`
+	// The calculation properties of the blueprint
+	CalculationProperties BlueprintCalculationPropertiesMapOutput `pulumi:"calculationProperties"`
+	// The creation date of the blueprint
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// The creator of the blueprint
+	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// The description of the blueprint
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The icon of the blueprint
 	Icon pulumi.StringPtrOutput `pulumi:"icon"`
 	// The identifier of the blueprint
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
-	// When two Blueprints are connected via a Relation, a new set of properties becomes available to Entities in the source
-	// Blueprint.
-	MirrorProperties BlueprintMirrorPropertyArrayOutput `pulumi:"mirrorProperties"`
-	// The metadata of the entity
-	Properties BlueprintPropertyArrayOutput `pulumi:"properties"`
-	// The blueprints that are connected to this blueprint
-	Relations BlueprintRelationArrayOutput `pulumi:"relations"`
+	// The changelog destination of the blueprint
+	KafkaChangelogDestination BlueprintKafkaChangelogDestinationPtrOutput `pulumi:"kafkaChangelogDestination"`
+	// The mirror properties of the blueprint
+	MirrorProperties BlueprintMirrorPropertiesMapOutput `pulumi:"mirrorProperties"`
+	// The properties of the blueprint
+	Properties BlueprintPropertiesPtrOutput `pulumi:"properties"`
+	// The relations of the blueprint
+	Relations BlueprintRelationsMapOutput `pulumi:"relations"`
+	// The team inheritance of the blueprint
+	TeamInheritance BlueprintTeamInheritancePtrOutput `pulumi:"teamInheritance"`
 	// The display name of the blueprint
-	Title     pulumi.StringOutput `pulumi:"title"`
+	Title pulumi.StringOutput `pulumi:"title"`
+	// The last update date of the blueprint
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	// The last updater of the blueprint
 	UpdatedBy pulumi.StringOutput `pulumi:"updatedBy"`
+	// The webhook changelog destination of the blueprint
+	WebhookChangelogDestination BlueprintWebhookChangelogDestinationPtrOutput `pulumi:"webhookChangelogDestination"`
 }
 
 // NewBlueprint registers a new resource with the given unique name, arguments, and options.
@@ -52,9 +55,6 @@ func NewBlueprint(ctx *pulumi.Context,
 
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
-	}
-	if args.Properties == nil {
-		return nil, errors.New("invalid value for required argument 'Properties'")
 	}
 	if args.Title == nil {
 		return nil, errors.New("invalid value for required argument 'Title'")
@@ -82,63 +82,69 @@ func GetBlueprint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Blueprint resources.
 type blueprintState struct {
-	// A set of properties that are calculated upon entity's regular properties.
-	CalculationProperties []BlueprintCalculationProperty `pulumi:"calculationProperties"`
-	// Blueprints changelog destination, Supports WEBHOOK and KAFKA
-	ChangelogDestination *BlueprintChangelogDestination `pulumi:"changelogDestination"`
-	CreatedAt            *string                        `pulumi:"createdAt"`
-	CreatedBy            *string                        `pulumi:"createdBy"`
-	// The data source for entities of this blueprint
-	//
-	// Deprecated: Data source is ignored
-	DataSource *string `pulumi:"dataSource"`
+	// The calculation properties of the blueprint
+	CalculationProperties map[string]BlueprintCalculationProperties `pulumi:"calculationProperties"`
+	// The creation date of the blueprint
+	CreatedAt *string `pulumi:"createdAt"`
+	// The creator of the blueprint
+	CreatedBy *string `pulumi:"createdBy"`
 	// The description of the blueprint
 	Description *string `pulumi:"description"`
 	// The icon of the blueprint
 	Icon *string `pulumi:"icon"`
 	// The identifier of the blueprint
 	Identifier *string `pulumi:"identifier"`
-	// When two Blueprints are connected via a Relation, a new set of properties becomes available to Entities in the source
-	// Blueprint.
-	MirrorProperties []BlueprintMirrorProperty `pulumi:"mirrorProperties"`
-	// The metadata of the entity
-	Properties []BlueprintProperty `pulumi:"properties"`
-	// The blueprints that are connected to this blueprint
-	Relations []BlueprintRelation `pulumi:"relations"`
+	// The changelog destination of the blueprint
+	KafkaChangelogDestination *BlueprintKafkaChangelogDestination `pulumi:"kafkaChangelogDestination"`
+	// The mirror properties of the blueprint
+	MirrorProperties map[string]BlueprintMirrorProperties `pulumi:"mirrorProperties"`
+	// The properties of the blueprint
+	Properties *BlueprintProperties `pulumi:"properties"`
+	// The relations of the blueprint
+	Relations map[string]BlueprintRelations `pulumi:"relations"`
+	// The team inheritance of the blueprint
+	TeamInheritance *BlueprintTeamInheritance `pulumi:"teamInheritance"`
 	// The display name of the blueprint
-	Title     *string `pulumi:"title"`
+	Title *string `pulumi:"title"`
+	// The last update date of the blueprint
 	UpdatedAt *string `pulumi:"updatedAt"`
+	// The last updater of the blueprint
 	UpdatedBy *string `pulumi:"updatedBy"`
+	// The webhook changelog destination of the blueprint
+	WebhookChangelogDestination *BlueprintWebhookChangelogDestination `pulumi:"webhookChangelogDestination"`
 }
 
 type BlueprintState struct {
-	// A set of properties that are calculated upon entity's regular properties.
-	CalculationProperties BlueprintCalculationPropertyArrayInput
-	// Blueprints changelog destination, Supports WEBHOOK and KAFKA
-	ChangelogDestination BlueprintChangelogDestinationPtrInput
-	CreatedAt            pulumi.StringPtrInput
-	CreatedBy            pulumi.StringPtrInput
-	// The data source for entities of this blueprint
-	//
-	// Deprecated: Data source is ignored
-	DataSource pulumi.StringPtrInput
+	// The calculation properties of the blueprint
+	CalculationProperties BlueprintCalculationPropertiesMapInput
+	// The creation date of the blueprint
+	CreatedAt pulumi.StringPtrInput
+	// The creator of the blueprint
+	CreatedBy pulumi.StringPtrInput
 	// The description of the blueprint
 	Description pulumi.StringPtrInput
 	// The icon of the blueprint
 	Icon pulumi.StringPtrInput
 	// The identifier of the blueprint
 	Identifier pulumi.StringPtrInput
-	// When two Blueprints are connected via a Relation, a new set of properties becomes available to Entities in the source
-	// Blueprint.
-	MirrorProperties BlueprintMirrorPropertyArrayInput
-	// The metadata of the entity
-	Properties BlueprintPropertyArrayInput
-	// The blueprints that are connected to this blueprint
-	Relations BlueprintRelationArrayInput
+	// The changelog destination of the blueprint
+	KafkaChangelogDestination BlueprintKafkaChangelogDestinationPtrInput
+	// The mirror properties of the blueprint
+	MirrorProperties BlueprintMirrorPropertiesMapInput
+	// The properties of the blueprint
+	Properties BlueprintPropertiesPtrInput
+	// The relations of the blueprint
+	Relations BlueprintRelationsMapInput
+	// The team inheritance of the blueprint
+	TeamInheritance BlueprintTeamInheritancePtrInput
 	// The display name of the blueprint
-	Title     pulumi.StringPtrInput
+	Title pulumi.StringPtrInput
+	// The last update date of the blueprint
 	UpdatedAt pulumi.StringPtrInput
+	// The last updater of the blueprint
 	UpdatedBy pulumi.StringPtrInput
+	// The webhook changelog destination of the blueprint
+	WebhookChangelogDestination BlueprintWebhookChangelogDestinationPtrInput
 }
 
 func (BlueprintState) ElementType() reflect.Type {
@@ -146,56 +152,54 @@ func (BlueprintState) ElementType() reflect.Type {
 }
 
 type blueprintArgs struct {
-	// A set of properties that are calculated upon entity's regular properties.
-	CalculationProperties []BlueprintCalculationProperty `pulumi:"calculationProperties"`
-	// Blueprints changelog destination, Supports WEBHOOK and KAFKA
-	ChangelogDestination *BlueprintChangelogDestination `pulumi:"changelogDestination"`
-	// The data source for entities of this blueprint
-	//
-	// Deprecated: Data source is ignored
-	DataSource *string `pulumi:"dataSource"`
+	// The calculation properties of the blueprint
+	CalculationProperties map[string]BlueprintCalculationProperties `pulumi:"calculationProperties"`
 	// The description of the blueprint
 	Description *string `pulumi:"description"`
 	// The icon of the blueprint
 	Icon *string `pulumi:"icon"`
 	// The identifier of the blueprint
 	Identifier string `pulumi:"identifier"`
-	// When two Blueprints are connected via a Relation, a new set of properties becomes available to Entities in the source
-	// Blueprint.
-	MirrorProperties []BlueprintMirrorProperty `pulumi:"mirrorProperties"`
-	// The metadata of the entity
-	Properties []BlueprintProperty `pulumi:"properties"`
-	// The blueprints that are connected to this blueprint
-	Relations []BlueprintRelation `pulumi:"relations"`
+	// The changelog destination of the blueprint
+	KafkaChangelogDestination *BlueprintKafkaChangelogDestination `pulumi:"kafkaChangelogDestination"`
+	// The mirror properties of the blueprint
+	MirrorProperties map[string]BlueprintMirrorProperties `pulumi:"mirrorProperties"`
+	// The properties of the blueprint
+	Properties *BlueprintProperties `pulumi:"properties"`
+	// The relations of the blueprint
+	Relations map[string]BlueprintRelations `pulumi:"relations"`
+	// The team inheritance of the blueprint
+	TeamInheritance *BlueprintTeamInheritance `pulumi:"teamInheritance"`
 	// The display name of the blueprint
 	Title string `pulumi:"title"`
+	// The webhook changelog destination of the blueprint
+	WebhookChangelogDestination *BlueprintWebhookChangelogDestination `pulumi:"webhookChangelogDestination"`
 }
 
 // The set of arguments for constructing a Blueprint resource.
 type BlueprintArgs struct {
-	// A set of properties that are calculated upon entity's regular properties.
-	CalculationProperties BlueprintCalculationPropertyArrayInput
-	// Blueprints changelog destination, Supports WEBHOOK and KAFKA
-	ChangelogDestination BlueprintChangelogDestinationPtrInput
-	// The data source for entities of this blueprint
-	//
-	// Deprecated: Data source is ignored
-	DataSource pulumi.StringPtrInput
+	// The calculation properties of the blueprint
+	CalculationProperties BlueprintCalculationPropertiesMapInput
 	// The description of the blueprint
 	Description pulumi.StringPtrInput
 	// The icon of the blueprint
 	Icon pulumi.StringPtrInput
 	// The identifier of the blueprint
 	Identifier pulumi.StringInput
-	// When two Blueprints are connected via a Relation, a new set of properties becomes available to Entities in the source
-	// Blueprint.
-	MirrorProperties BlueprintMirrorPropertyArrayInput
-	// The metadata of the entity
-	Properties BlueprintPropertyArrayInput
-	// The blueprints that are connected to this blueprint
-	Relations BlueprintRelationArrayInput
+	// The changelog destination of the blueprint
+	KafkaChangelogDestination BlueprintKafkaChangelogDestinationPtrInput
+	// The mirror properties of the blueprint
+	MirrorProperties BlueprintMirrorPropertiesMapInput
+	// The properties of the blueprint
+	Properties BlueprintPropertiesPtrInput
+	// The relations of the blueprint
+	Relations BlueprintRelationsMapInput
+	// The team inheritance of the blueprint
+	TeamInheritance BlueprintTeamInheritancePtrInput
 	// The display name of the blueprint
 	Title pulumi.StringInput
+	// The webhook changelog destination of the blueprint
+	WebhookChangelogDestination BlueprintWebhookChangelogDestinationPtrInput
 }
 
 func (BlueprintArgs) ElementType() reflect.Type {
@@ -285,29 +289,19 @@ func (o BlueprintOutput) ToBlueprintOutputWithContext(ctx context.Context) Bluep
 	return o
 }
 
-// A set of properties that are calculated upon entity's regular properties.
-func (o BlueprintOutput) CalculationProperties() BlueprintCalculationPropertyArrayOutput {
-	return o.ApplyT(func(v *Blueprint) BlueprintCalculationPropertyArrayOutput { return v.CalculationProperties }).(BlueprintCalculationPropertyArrayOutput)
+// The calculation properties of the blueprint
+func (o BlueprintOutput) CalculationProperties() BlueprintCalculationPropertiesMapOutput {
+	return o.ApplyT(func(v *Blueprint) BlueprintCalculationPropertiesMapOutput { return v.CalculationProperties }).(BlueprintCalculationPropertiesMapOutput)
 }
 
-// Blueprints changelog destination, Supports WEBHOOK and KAFKA
-func (o BlueprintOutput) ChangelogDestination() BlueprintChangelogDestinationPtrOutput {
-	return o.ApplyT(func(v *Blueprint) BlueprintChangelogDestinationPtrOutput { return v.ChangelogDestination }).(BlueprintChangelogDestinationPtrOutput)
-}
-
+// The creation date of the blueprint
 func (o BlueprintOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Blueprint) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// The creator of the blueprint
 func (o BlueprintOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Blueprint) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
-}
-
-// The data source for entities of this blueprint
-//
-// Deprecated: Data source is ignored
-func (o BlueprintOutput) DataSource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Blueprint) pulumi.StringPtrOutput { return v.DataSource }).(pulumi.StringPtrOutput)
 }
 
 // The description of the blueprint
@@ -325,20 +319,29 @@ func (o BlueprintOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Blueprint) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// When two Blueprints are connected via a Relation, a new set of properties becomes available to Entities in the source
-// Blueprint.
-func (o BlueprintOutput) MirrorProperties() BlueprintMirrorPropertyArrayOutput {
-	return o.ApplyT(func(v *Blueprint) BlueprintMirrorPropertyArrayOutput { return v.MirrorProperties }).(BlueprintMirrorPropertyArrayOutput)
+// The changelog destination of the blueprint
+func (o BlueprintOutput) KafkaChangelogDestination() BlueprintKafkaChangelogDestinationPtrOutput {
+	return o.ApplyT(func(v *Blueprint) BlueprintKafkaChangelogDestinationPtrOutput { return v.KafkaChangelogDestination }).(BlueprintKafkaChangelogDestinationPtrOutput)
 }
 
-// The metadata of the entity
-func (o BlueprintOutput) Properties() BlueprintPropertyArrayOutput {
-	return o.ApplyT(func(v *Blueprint) BlueprintPropertyArrayOutput { return v.Properties }).(BlueprintPropertyArrayOutput)
+// The mirror properties of the blueprint
+func (o BlueprintOutput) MirrorProperties() BlueprintMirrorPropertiesMapOutput {
+	return o.ApplyT(func(v *Blueprint) BlueprintMirrorPropertiesMapOutput { return v.MirrorProperties }).(BlueprintMirrorPropertiesMapOutput)
 }
 
-// The blueprints that are connected to this blueprint
-func (o BlueprintOutput) Relations() BlueprintRelationArrayOutput {
-	return o.ApplyT(func(v *Blueprint) BlueprintRelationArrayOutput { return v.Relations }).(BlueprintRelationArrayOutput)
+// The properties of the blueprint
+func (o BlueprintOutput) Properties() BlueprintPropertiesPtrOutput {
+	return o.ApplyT(func(v *Blueprint) BlueprintPropertiesPtrOutput { return v.Properties }).(BlueprintPropertiesPtrOutput)
+}
+
+// The relations of the blueprint
+func (o BlueprintOutput) Relations() BlueprintRelationsMapOutput {
+	return o.ApplyT(func(v *Blueprint) BlueprintRelationsMapOutput { return v.Relations }).(BlueprintRelationsMapOutput)
+}
+
+// The team inheritance of the blueprint
+func (o BlueprintOutput) TeamInheritance() BlueprintTeamInheritancePtrOutput {
+	return o.ApplyT(func(v *Blueprint) BlueprintTeamInheritancePtrOutput { return v.TeamInheritance }).(BlueprintTeamInheritancePtrOutput)
 }
 
 // The display name of the blueprint
@@ -346,12 +349,19 @@ func (o BlueprintOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v *Blueprint) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
 }
 
+// The last update date of the blueprint
 func (o BlueprintOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Blueprint) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
+// The last updater of the blueprint
 func (o BlueprintOutput) UpdatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Blueprint) pulumi.StringOutput { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// The webhook changelog destination of the blueprint
+func (o BlueprintOutput) WebhookChangelogDestination() BlueprintWebhookChangelogDestinationPtrOutput {
+	return o.ApplyT(func(v *Blueprint) BlueprintWebhookChangelogDestinationPtrOutput { return v.WebhookChangelogDestination }).(BlueprintWebhookChangelogDestinationPtrOutput)
 }
 
 type BlueprintArrayOutput struct{ *pulumi.OutputState }

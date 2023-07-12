@@ -35,21 +35,17 @@ export class Blueprint extends pulumi.CustomResource {
     }
 
     /**
-     * A set of properties that are calculated upon entity's regular properties.
+     * The calculation properties of the blueprint
      */
-    public readonly calculationProperties!: pulumi.Output<outputs.BlueprintCalculationProperty[] | undefined>;
+    public readonly calculationProperties!: pulumi.Output<{[key: string]: outputs.BlueprintCalculationProperties} | undefined>;
     /**
-     * Blueprints changelog destination, Supports WEBHOOK and KAFKA
+     * The creation date of the blueprint
      */
-    public readonly changelogDestination!: pulumi.Output<outputs.BlueprintChangelogDestination | undefined>;
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
-    public /*out*/ readonly createdBy!: pulumi.Output<string>;
     /**
-     * The data source for entities of this blueprint
-     *
-     * @deprecated Data source is ignored
+     * The creator of the blueprint
      */
-    public readonly dataSource!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly createdBy!: pulumi.Output<string>;
     /**
      * The description of the blueprint
      */
@@ -63,24 +59,41 @@ export class Blueprint extends pulumi.CustomResource {
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
-     * When two Blueprints are connected via a Relation, a new set of properties becomes available to Entities in the source
-     * Blueprint.
+     * The changelog destination of the blueprint
      */
-    public readonly mirrorProperties!: pulumi.Output<outputs.BlueprintMirrorProperty[] | undefined>;
+    public readonly kafkaChangelogDestination!: pulumi.Output<outputs.BlueprintKafkaChangelogDestination | undefined>;
     /**
-     * The metadata of the entity
+     * The mirror properties of the blueprint
      */
-    public readonly properties!: pulumi.Output<outputs.BlueprintProperty[]>;
+    public readonly mirrorProperties!: pulumi.Output<{[key: string]: outputs.BlueprintMirrorProperties} | undefined>;
     /**
-     * The blueprints that are connected to this blueprint
+     * The properties of the blueprint
      */
-    public readonly relations!: pulumi.Output<outputs.BlueprintRelation[] | undefined>;
+    public readonly properties!: pulumi.Output<outputs.BlueprintProperties | undefined>;
+    /**
+     * The relations of the blueprint
+     */
+    public readonly relations!: pulumi.Output<{[key: string]: outputs.BlueprintRelations} | undefined>;
+    /**
+     * The team inheritance of the blueprint
+     */
+    public readonly teamInheritance!: pulumi.Output<outputs.BlueprintTeamInheritance | undefined>;
     /**
      * The display name of the blueprint
      */
     public readonly title!: pulumi.Output<string>;
+    /**
+     * The last update date of the blueprint
+     */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    /**
+     * The last updater of the blueprint
+     */
     public /*out*/ readonly updatedBy!: pulumi.Output<string>;
+    /**
+     * The webhook changelog destination of the blueprint
+     */
+    public readonly webhookChangelogDestination!: pulumi.Output<outputs.BlueprintWebhookChangelogDestination | undefined>;
 
     /**
      * Create a Blueprint resource with the given unique name, arguments, and options.
@@ -96,40 +109,39 @@ export class Blueprint extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as BlueprintState | undefined;
             resourceInputs["calculationProperties"] = state ? state.calculationProperties : undefined;
-            resourceInputs["changelogDestination"] = state ? state.changelogDestination : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["dataSource"] = state ? state.dataSource : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["icon"] = state ? state.icon : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
+            resourceInputs["kafkaChangelogDestination"] = state ? state.kafkaChangelogDestination : undefined;
             resourceInputs["mirrorProperties"] = state ? state.mirrorProperties : undefined;
             resourceInputs["properties"] = state ? state.properties : undefined;
             resourceInputs["relations"] = state ? state.relations : undefined;
+            resourceInputs["teamInheritance"] = state ? state.teamInheritance : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["updatedBy"] = state ? state.updatedBy : undefined;
+            resourceInputs["webhookChangelogDestination"] = state ? state.webhookChangelogDestination : undefined;
         } else {
             const args = argsOrState as BlueprintArgs | undefined;
             if ((!args || args.identifier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.properties === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'properties'");
-            }
             if ((!args || args.title === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
             resourceInputs["calculationProperties"] = args ? args.calculationProperties : undefined;
-            resourceInputs["changelogDestination"] = args ? args.changelogDestination : undefined;
-            resourceInputs["dataSource"] = args ? args.dataSource : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["icon"] = args ? args.icon : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
+            resourceInputs["kafkaChangelogDestination"] = args ? args.kafkaChangelogDestination : undefined;
             resourceInputs["mirrorProperties"] = args ? args.mirrorProperties : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["relations"] = args ? args.relations : undefined;
+            resourceInputs["teamInheritance"] = args ? args.teamInheritance : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["webhookChangelogDestination"] = args ? args.webhookChangelogDestination : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
@@ -145,21 +157,17 @@ export class Blueprint extends pulumi.CustomResource {
  */
 export interface BlueprintState {
     /**
-     * A set of properties that are calculated upon entity's regular properties.
+     * The calculation properties of the blueprint
      */
-    calculationProperties?: pulumi.Input<pulumi.Input<inputs.BlueprintCalculationProperty>[]>;
+    calculationProperties?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintCalculationProperties>}>;
     /**
-     * Blueprints changelog destination, Supports WEBHOOK and KAFKA
+     * The creation date of the blueprint
      */
-    changelogDestination?: pulumi.Input<inputs.BlueprintChangelogDestination>;
     createdAt?: pulumi.Input<string>;
-    createdBy?: pulumi.Input<string>;
     /**
-     * The data source for entities of this blueprint
-     *
-     * @deprecated Data source is ignored
+     * The creator of the blueprint
      */
-    dataSource?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string>;
     /**
      * The description of the blueprint
      */
@@ -173,24 +181,41 @@ export interface BlueprintState {
      */
     identifier?: pulumi.Input<string>;
     /**
-     * When two Blueprints are connected via a Relation, a new set of properties becomes available to Entities in the source
-     * Blueprint.
+     * The changelog destination of the blueprint
      */
-    mirrorProperties?: pulumi.Input<pulumi.Input<inputs.BlueprintMirrorProperty>[]>;
+    kafkaChangelogDestination?: pulumi.Input<inputs.BlueprintKafkaChangelogDestination>;
     /**
-     * The metadata of the entity
+     * The mirror properties of the blueprint
      */
-    properties?: pulumi.Input<pulumi.Input<inputs.BlueprintProperty>[]>;
+    mirrorProperties?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintMirrorProperties>}>;
     /**
-     * The blueprints that are connected to this blueprint
+     * The properties of the blueprint
      */
-    relations?: pulumi.Input<pulumi.Input<inputs.BlueprintRelation>[]>;
+    properties?: pulumi.Input<inputs.BlueprintProperties>;
+    /**
+     * The relations of the blueprint
+     */
+    relations?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintRelations>}>;
+    /**
+     * The team inheritance of the blueprint
+     */
+    teamInheritance?: pulumi.Input<inputs.BlueprintTeamInheritance>;
     /**
      * The display name of the blueprint
      */
     title?: pulumi.Input<string>;
+    /**
+     * The last update date of the blueprint
+     */
     updatedAt?: pulumi.Input<string>;
+    /**
+     * The last updater of the blueprint
+     */
     updatedBy?: pulumi.Input<string>;
+    /**
+     * The webhook changelog destination of the blueprint
+     */
+    webhookChangelogDestination?: pulumi.Input<inputs.BlueprintWebhookChangelogDestination>;
 }
 
 /**
@@ -198,19 +223,9 @@ export interface BlueprintState {
  */
 export interface BlueprintArgs {
     /**
-     * A set of properties that are calculated upon entity's regular properties.
+     * The calculation properties of the blueprint
      */
-    calculationProperties?: pulumi.Input<pulumi.Input<inputs.BlueprintCalculationProperty>[]>;
-    /**
-     * Blueprints changelog destination, Supports WEBHOOK and KAFKA
-     */
-    changelogDestination?: pulumi.Input<inputs.BlueprintChangelogDestination>;
-    /**
-     * The data source for entities of this blueprint
-     *
-     * @deprecated Data source is ignored
-     */
-    dataSource?: pulumi.Input<string>;
+    calculationProperties?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintCalculationProperties>}>;
     /**
      * The description of the blueprint
      */
@@ -224,20 +239,31 @@ export interface BlueprintArgs {
      */
     identifier: pulumi.Input<string>;
     /**
-     * When two Blueprints are connected via a Relation, a new set of properties becomes available to Entities in the source
-     * Blueprint.
+     * The changelog destination of the blueprint
      */
-    mirrorProperties?: pulumi.Input<pulumi.Input<inputs.BlueprintMirrorProperty>[]>;
+    kafkaChangelogDestination?: pulumi.Input<inputs.BlueprintKafkaChangelogDestination>;
     /**
-     * The metadata of the entity
+     * The mirror properties of the blueprint
      */
-    properties: pulumi.Input<pulumi.Input<inputs.BlueprintProperty>[]>;
+    mirrorProperties?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintMirrorProperties>}>;
     /**
-     * The blueprints that are connected to this blueprint
+     * The properties of the blueprint
      */
-    relations?: pulumi.Input<pulumi.Input<inputs.BlueprintRelation>[]>;
+    properties?: pulumi.Input<inputs.BlueprintProperties>;
+    /**
+     * The relations of the blueprint
+     */
+    relations?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintRelations>}>;
+    /**
+     * The team inheritance of the blueprint
+     */
+    teamInheritance?: pulumi.Input<inputs.BlueprintTeamInheritance>;
     /**
      * The display name of the blueprint
      */
     title: pulumi.Input<string>;
+    /**
+     * The webhook changelog destination of the blueprint
+     */
+    webhookChangelogDestination?: pulumi.Input<inputs.BlueprintWebhookChangelogDestination>;
 }

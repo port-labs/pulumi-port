@@ -35,41 +35,61 @@ export class Action extends pulumi.CustomResource {
     }
 
     /**
-     * The identifier of the blueprint
+     * The email notification of the approval
      */
-    public readonly blueprintIdentifier!: pulumi.Output<string>;
+    public readonly approvalEmailNotification!: pulumi.Output<outputs.ActionApprovalEmailNotification | undefined>;
     /**
-     * The description of the action
+     * The webhook notification of the approval
+     */
+    public readonly approvalWebhookNotification!: pulumi.Output<outputs.ActionApprovalWebhookNotification | undefined>;
+    /**
+     * The invocation method of the action
+     */
+    public readonly azureMethod!: pulumi.Output<outputs.ActionAzureMethod | undefined>;
+    /**
+     * The blueprint identifier the action relates to
+     */
+    public readonly blueprint!: pulumi.Output<string>;
+    /**
+     * Description
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The icon of the action
+     * The invocation method of the action
+     */
+    public readonly githubMethod!: pulumi.Output<outputs.ActionGithubMethod | undefined>;
+    /**
+     * Icon
      */
     public readonly icon!: pulumi.Output<string | undefined>;
     /**
-     * The identifier of the action
+     * Identifier
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
-     * The methods the action is dispatched in. Supports WEBHOOK, KAFKA, GITHUB and AZURE-DEVOPS
+     * The invocation method of the action
      */
-    public readonly invocationMethod!: pulumi.Output<outputs.ActionInvocationMethod>;
+    public readonly kafkaMethod!: pulumi.Output<outputs.ActionKafkaMethod | undefined>;
     /**
-     * Whether the action requires approval or not
+     * Require approval before invoking the action
      */
     public readonly requiredApproval!: pulumi.Output<boolean | undefined>;
     /**
-     * The display name of the action
+     * Title
      */
     public readonly title!: pulumi.Output<string>;
     /**
-     * The type of the action, one of CREATE, DAY-2, DELETE
+     * The trigger type of the action
      */
     public readonly trigger!: pulumi.Output<string>;
     /**
-     * The input properties of the action
+     * User properties
      */
-    public readonly userProperties!: pulumi.Output<outputs.ActionUserProperty[] | undefined>;
+    public readonly userProperties!: pulumi.Output<outputs.ActionUserProperties | undefined>;
+    /**
+     * The invocation method of the action
+     */
+    public readonly webhookMethod!: pulumi.Output<outputs.ActionWebhookMethod | undefined>;
 
     /**
      * Create a Action resource with the given unique name, arguments, and options.
@@ -84,25 +104,27 @@ export class Action extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ActionState | undefined;
-            resourceInputs["blueprintIdentifier"] = state ? state.blueprintIdentifier : undefined;
+            resourceInputs["approvalEmailNotification"] = state ? state.approvalEmailNotification : undefined;
+            resourceInputs["approvalWebhookNotification"] = state ? state.approvalWebhookNotification : undefined;
+            resourceInputs["azureMethod"] = state ? state.azureMethod : undefined;
+            resourceInputs["blueprint"] = state ? state.blueprint : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["githubMethod"] = state ? state.githubMethod : undefined;
             resourceInputs["icon"] = state ? state.icon : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["invocationMethod"] = state ? state.invocationMethod : undefined;
+            resourceInputs["kafkaMethod"] = state ? state.kafkaMethod : undefined;
             resourceInputs["requiredApproval"] = state ? state.requiredApproval : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
             resourceInputs["trigger"] = state ? state.trigger : undefined;
             resourceInputs["userProperties"] = state ? state.userProperties : undefined;
+            resourceInputs["webhookMethod"] = state ? state.webhookMethod : undefined;
         } else {
             const args = argsOrState as ActionArgs | undefined;
-            if ((!args || args.blueprintIdentifier === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'blueprintIdentifier'");
+            if ((!args || args.blueprint === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'blueprint'");
             }
             if ((!args || args.identifier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
-            }
-            if ((!args || args.invocationMethod === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'invocationMethod'");
             }
             if ((!args || args.title === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'title'");
@@ -110,15 +132,20 @@ export class Action extends pulumi.CustomResource {
             if ((!args || args.trigger === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'trigger'");
             }
-            resourceInputs["blueprintIdentifier"] = args ? args.blueprintIdentifier : undefined;
+            resourceInputs["approvalEmailNotification"] = args ? args.approvalEmailNotification : undefined;
+            resourceInputs["approvalWebhookNotification"] = args ? args.approvalWebhookNotification : undefined;
+            resourceInputs["azureMethod"] = args ? args.azureMethod : undefined;
+            resourceInputs["blueprint"] = args ? args.blueprint : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["githubMethod"] = args ? args.githubMethod : undefined;
             resourceInputs["icon"] = args ? args.icon : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["invocationMethod"] = args ? args.invocationMethod : undefined;
+            resourceInputs["kafkaMethod"] = args ? args.kafkaMethod : undefined;
             resourceInputs["requiredApproval"] = args ? args.requiredApproval : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["trigger"] = args ? args.trigger : undefined;
             resourceInputs["userProperties"] = args ? args.userProperties : undefined;
+            resourceInputs["webhookMethod"] = args ? args.webhookMethod : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Action.__pulumiType, name, resourceInputs, opts);
@@ -130,41 +157,61 @@ export class Action extends pulumi.CustomResource {
  */
 export interface ActionState {
     /**
-     * The identifier of the blueprint
+     * The email notification of the approval
      */
-    blueprintIdentifier?: pulumi.Input<string>;
+    approvalEmailNotification?: pulumi.Input<inputs.ActionApprovalEmailNotification>;
     /**
-     * The description of the action
+     * The webhook notification of the approval
+     */
+    approvalWebhookNotification?: pulumi.Input<inputs.ActionApprovalWebhookNotification>;
+    /**
+     * The invocation method of the action
+     */
+    azureMethod?: pulumi.Input<inputs.ActionAzureMethod>;
+    /**
+     * The blueprint identifier the action relates to
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * Description
      */
     description?: pulumi.Input<string>;
     /**
-     * The icon of the action
+     * The invocation method of the action
+     */
+    githubMethod?: pulumi.Input<inputs.ActionGithubMethod>;
+    /**
+     * Icon
      */
     icon?: pulumi.Input<string>;
     /**
-     * The identifier of the action
+     * Identifier
      */
     identifier?: pulumi.Input<string>;
     /**
-     * The methods the action is dispatched in. Supports WEBHOOK, KAFKA, GITHUB and AZURE-DEVOPS
+     * The invocation method of the action
      */
-    invocationMethod?: pulumi.Input<inputs.ActionInvocationMethod>;
+    kafkaMethod?: pulumi.Input<inputs.ActionKafkaMethod>;
     /**
-     * Whether the action requires approval or not
+     * Require approval before invoking the action
      */
     requiredApproval?: pulumi.Input<boolean>;
     /**
-     * The display name of the action
+     * Title
      */
     title?: pulumi.Input<string>;
     /**
-     * The type of the action, one of CREATE, DAY-2, DELETE
+     * The trigger type of the action
      */
     trigger?: pulumi.Input<string>;
     /**
-     * The input properties of the action
+     * User properties
      */
-    userProperties?: pulumi.Input<pulumi.Input<inputs.ActionUserProperty>[]>;
+    userProperties?: pulumi.Input<inputs.ActionUserProperties>;
+    /**
+     * The invocation method of the action
+     */
+    webhookMethod?: pulumi.Input<inputs.ActionWebhookMethod>;
 }
 
 /**
@@ -172,39 +219,59 @@ export interface ActionState {
  */
 export interface ActionArgs {
     /**
-     * The identifier of the blueprint
+     * The email notification of the approval
      */
-    blueprintIdentifier: pulumi.Input<string>;
+    approvalEmailNotification?: pulumi.Input<inputs.ActionApprovalEmailNotification>;
     /**
-     * The description of the action
+     * The webhook notification of the approval
+     */
+    approvalWebhookNotification?: pulumi.Input<inputs.ActionApprovalWebhookNotification>;
+    /**
+     * The invocation method of the action
+     */
+    azureMethod?: pulumi.Input<inputs.ActionAzureMethod>;
+    /**
+     * The blueprint identifier the action relates to
+     */
+    blueprint: pulumi.Input<string>;
+    /**
+     * Description
      */
     description?: pulumi.Input<string>;
     /**
-     * The icon of the action
+     * The invocation method of the action
+     */
+    githubMethod?: pulumi.Input<inputs.ActionGithubMethod>;
+    /**
+     * Icon
      */
     icon?: pulumi.Input<string>;
     /**
-     * The identifier of the action
+     * Identifier
      */
     identifier: pulumi.Input<string>;
     /**
-     * The methods the action is dispatched in. Supports WEBHOOK, KAFKA, GITHUB and AZURE-DEVOPS
+     * The invocation method of the action
      */
-    invocationMethod: pulumi.Input<inputs.ActionInvocationMethod>;
+    kafkaMethod?: pulumi.Input<inputs.ActionKafkaMethod>;
     /**
-     * Whether the action requires approval or not
+     * Require approval before invoking the action
      */
     requiredApproval?: pulumi.Input<boolean>;
     /**
-     * The display name of the action
+     * Title
      */
     title: pulumi.Input<string>;
     /**
-     * The type of the action, one of CREATE, DAY-2, DELETE
+     * The trigger type of the action
      */
     trigger: pulumi.Input<string>;
     /**
-     * The input properties of the action
+     * User properties
      */
-    userProperties?: pulumi.Input<pulumi.Input<inputs.ActionUserProperty>[]>;
+    userProperties?: pulumi.Input<inputs.ActionUserProperties>;
+    /**
+     * The invocation method of the action
+     */
+    webhookMethod?: pulumi.Input<inputs.ActionWebhookMethod>;
 }

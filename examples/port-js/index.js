@@ -6,12 +6,11 @@ const entity = new port.Entity("entity", {
     identifier: "monolith",
     title: "monolith",
     blueprint: "microservice",
-    properties: [
-        {
-            name: "language",
-            value: "Node",
+    properties: {
+        stringProps: {
+            "language": "typescript",
         }
-    ]
+    }
 });
 
 exports.title = entity.title;

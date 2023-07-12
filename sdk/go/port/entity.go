@@ -16,23 +16,27 @@ type Entity struct {
 
 	// The blueprint identifier the entity relates to
 	Blueprint pulumi.StringOutput `pulumi:"blueprint"`
+	// The creation date of the entity
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// The creator of the entity
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
+	// The icon of the entity
+	Icon pulumi.StringPtrOutput `pulumi:"icon"`
 	// The identifier of the entity
-	Identifier pulumi.StringPtrOutput `pulumi:"identifier"`
-	// The metadata of the entity
-	Properties EntityPropertyArrayOutput `pulumi:"properties"`
-	// The other entities that are connected
-	Relations EntityRelationArrayOutput `pulumi:"relations"`
+	Identifier pulumi.StringOutput `pulumi:"identifier"`
+	// The properties of the entity
+	Properties EntityPropertiesPtrOutput `pulumi:"properties"`
+	// The relations of the entity
+	Relations EntityRelationsPtrOutput `pulumi:"relations"`
 	// The runID of the action run that created the entity
 	RunId pulumi.StringPtrOutput `pulumi:"runId"`
-	// The team related to the entity
-	Team pulumi.StringPtrOutput `pulumi:"team"`
-	// The teams related to the entity
+	// The teams the entity belongs to
 	Teams pulumi.StringArrayOutput `pulumi:"teams"`
-	// The display name of the entity
-	Title     pulumi.StringOutput `pulumi:"title"`
+	// The title of the entity
+	Title pulumi.StringPtrOutput `pulumi:"title"`
+	// The last update date of the entity
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	// The last updater of the entity
 	UpdatedBy pulumi.StringOutput `pulumi:"updatedBy"`
 }
 
@@ -45,12 +49,6 @@ func NewEntity(ctx *pulumi.Context,
 
 	if args.Blueprint == nil {
 		return nil, errors.New("invalid value for required argument 'Blueprint'")
-	}
-	if args.Properties == nil {
-		return nil, errors.New("invalid value for required argument 'Properties'")
-	}
-	if args.Title == nil {
-		return nil, errors.New("invalid value for required argument 'Title'")
 	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Entity
@@ -77,46 +75,54 @@ func GetEntity(ctx *pulumi.Context,
 type entityState struct {
 	// The blueprint identifier the entity relates to
 	Blueprint *string `pulumi:"blueprint"`
+	// The creation date of the entity
 	CreatedAt *string `pulumi:"createdAt"`
+	// The creator of the entity
 	CreatedBy *string `pulumi:"createdBy"`
+	// The icon of the entity
+	Icon *string `pulumi:"icon"`
 	// The identifier of the entity
 	Identifier *string `pulumi:"identifier"`
-	// The metadata of the entity
-	Properties []EntityProperty `pulumi:"properties"`
-	// The other entities that are connected
-	Relations []EntityRelation `pulumi:"relations"`
+	// The properties of the entity
+	Properties *EntityProperties `pulumi:"properties"`
+	// The relations of the entity
+	Relations *EntityRelations `pulumi:"relations"`
 	// The runID of the action run that created the entity
 	RunId *string `pulumi:"runId"`
-	// The team related to the entity
-	Team *string `pulumi:"team"`
-	// The teams related to the entity
+	// The teams the entity belongs to
 	Teams []string `pulumi:"teams"`
-	// The display name of the entity
-	Title     *string `pulumi:"title"`
+	// The title of the entity
+	Title *string `pulumi:"title"`
+	// The last update date of the entity
 	UpdatedAt *string `pulumi:"updatedAt"`
+	// The last updater of the entity
 	UpdatedBy *string `pulumi:"updatedBy"`
 }
 
 type EntityState struct {
 	// The blueprint identifier the entity relates to
 	Blueprint pulumi.StringPtrInput
+	// The creation date of the entity
 	CreatedAt pulumi.StringPtrInput
+	// The creator of the entity
 	CreatedBy pulumi.StringPtrInput
+	// The icon of the entity
+	Icon pulumi.StringPtrInput
 	// The identifier of the entity
 	Identifier pulumi.StringPtrInput
-	// The metadata of the entity
-	Properties EntityPropertyArrayInput
-	// The other entities that are connected
-	Relations EntityRelationArrayInput
+	// The properties of the entity
+	Properties EntityPropertiesPtrInput
+	// The relations of the entity
+	Relations EntityRelationsPtrInput
 	// The runID of the action run that created the entity
 	RunId pulumi.StringPtrInput
-	// The team related to the entity
-	Team pulumi.StringPtrInput
-	// The teams related to the entity
+	// The teams the entity belongs to
 	Teams pulumi.StringArrayInput
-	// The display name of the entity
-	Title     pulumi.StringPtrInput
+	// The title of the entity
+	Title pulumi.StringPtrInput
+	// The last update date of the entity
 	UpdatedAt pulumi.StringPtrInput
+	// The last updater of the entity
 	UpdatedBy pulumi.StringPtrInput
 }
 
@@ -127,40 +133,40 @@ func (EntityState) ElementType() reflect.Type {
 type entityArgs struct {
 	// The blueprint identifier the entity relates to
 	Blueprint string `pulumi:"blueprint"`
+	// The icon of the entity
+	Icon *string `pulumi:"icon"`
 	// The identifier of the entity
 	Identifier *string `pulumi:"identifier"`
-	// The metadata of the entity
-	Properties []EntityProperty `pulumi:"properties"`
-	// The other entities that are connected
-	Relations []EntityRelation `pulumi:"relations"`
+	// The properties of the entity
+	Properties *EntityProperties `pulumi:"properties"`
+	// The relations of the entity
+	Relations *EntityRelations `pulumi:"relations"`
 	// The runID of the action run that created the entity
 	RunId *string `pulumi:"runId"`
-	// The team related to the entity
-	Team *string `pulumi:"team"`
-	// The teams related to the entity
+	// The teams the entity belongs to
 	Teams []string `pulumi:"teams"`
-	// The display name of the entity
-	Title string `pulumi:"title"`
+	// The title of the entity
+	Title *string `pulumi:"title"`
 }
 
 // The set of arguments for constructing a Entity resource.
 type EntityArgs struct {
 	// The blueprint identifier the entity relates to
 	Blueprint pulumi.StringInput
+	// The icon of the entity
+	Icon pulumi.StringPtrInput
 	// The identifier of the entity
 	Identifier pulumi.StringPtrInput
-	// The metadata of the entity
-	Properties EntityPropertyArrayInput
-	// The other entities that are connected
-	Relations EntityRelationArrayInput
+	// The properties of the entity
+	Properties EntityPropertiesPtrInput
+	// The relations of the entity
+	Relations EntityRelationsPtrInput
 	// The runID of the action run that created the entity
 	RunId pulumi.StringPtrInput
-	// The team related to the entity
-	Team pulumi.StringPtrInput
-	// The teams related to the entity
+	// The teams the entity belongs to
 	Teams pulumi.StringArrayInput
-	// The display name of the entity
-	Title pulumi.StringInput
+	// The title of the entity
+	Title pulumi.StringPtrInput
 }
 
 func (EntityArgs) ElementType() reflect.Type {
@@ -255,27 +261,34 @@ func (o EntityOutput) Blueprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.Blueprint }).(pulumi.StringOutput)
 }
 
+// The creation date of the entity
 func (o EntityOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// The creator of the entity
 func (o EntityOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
+// The icon of the entity
+func (o EntityOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringPtrOutput { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
 // The identifier of the entity
-func (o EntityOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Entity) pulumi.StringPtrOutput { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o EntityOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// The metadata of the entity
-func (o EntityOutput) Properties() EntityPropertyArrayOutput {
-	return o.ApplyT(func(v *Entity) EntityPropertyArrayOutput { return v.Properties }).(EntityPropertyArrayOutput)
+// The properties of the entity
+func (o EntityOutput) Properties() EntityPropertiesPtrOutput {
+	return o.ApplyT(func(v *Entity) EntityPropertiesPtrOutput { return v.Properties }).(EntityPropertiesPtrOutput)
 }
 
-// The other entities that are connected
-func (o EntityOutput) Relations() EntityRelationArrayOutput {
-	return o.ApplyT(func(v *Entity) EntityRelationArrayOutput { return v.Relations }).(EntityRelationArrayOutput)
+// The relations of the entity
+func (o EntityOutput) Relations() EntityRelationsPtrOutput {
+	return o.ApplyT(func(v *Entity) EntityRelationsPtrOutput { return v.Relations }).(EntityRelationsPtrOutput)
 }
 
 // The runID of the action run that created the entity
@@ -283,25 +296,22 @@ func (o EntityOutput) RunId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Entity) pulumi.StringPtrOutput { return v.RunId }).(pulumi.StringPtrOutput)
 }
 
-// The team related to the entity
-func (o EntityOutput) Team() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Entity) pulumi.StringPtrOutput { return v.Team }).(pulumi.StringPtrOutput)
-}
-
-// The teams related to the entity
+// The teams the entity belongs to
 func (o EntityOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Entity) pulumi.StringArrayOutput { return v.Teams }).(pulumi.StringArrayOutput)
 }
 
-// The display name of the entity
-func (o EntityOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
+// The title of the entity
+func (o EntityOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringPtrOutput { return v.Title }).(pulumi.StringPtrOutput)
 }
 
+// The last update date of the entity
 func (o EntityOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
+// The last updater of the entity
 func (o EntityOutput) UpdatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.UpdatedBy }).(pulumi.StringOutput)
 }

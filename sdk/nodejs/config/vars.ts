@@ -15,6 +15,9 @@ Object.defineProperty(exports, "baseUrl", {
     enumerable: true,
 });
 
+/**
+ * Client ID for Port-labs
+ */
 export declare const clientId: string | undefined;
 Object.defineProperty(exports, "clientId", {
     get() {
@@ -23,6 +26,9 @@ Object.defineProperty(exports, "clientId", {
     enumerable: true,
 });
 
+/**
+ * Client Secret for Port-labs
+ */
 export declare const secret: string | undefined;
 Object.defineProperty(exports, "secret", {
     get() {
@@ -31,6 +37,9 @@ Object.defineProperty(exports, "secret", {
     enumerable: true,
 });
 
+/**
+ * Token for Port-labs
+ */
 export declare const token: string | undefined;
 Object.defineProperty(exports, "token", {
     get() {

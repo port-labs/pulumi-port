@@ -7,7 +7,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -430,7 +430,7 @@ class Entity(pulumi.CustomResource):
             __props__.__dict__["updated_at"] = None
             __props__.__dict__["updated_by"] = None
         super(Entity, __self__).__init__(
-            'port:index/entity:Entity',
+            'port:port/entity:Entity',
             resource_name,
             __props__,
             opts)

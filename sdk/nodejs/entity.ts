@@ -38,37 +38,49 @@ export class Entity extends pulumi.CustomResource {
      * The blueprint identifier the entity relates to
      */
     public readonly blueprint!: pulumi.Output<string>;
+    /**
+     * The creation date of the entity
+     */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * The creator of the entity
+     */
     public /*out*/ readonly createdBy!: pulumi.Output<string>;
+    /**
+     * The icon of the entity
+     */
+    public readonly icon!: pulumi.Output<string | undefined>;
     /**
      * The identifier of the entity
      */
-    public readonly identifier!: pulumi.Output<string | undefined>;
+    public readonly identifier!: pulumi.Output<string>;
     /**
-     * The metadata of the entity
+     * The properties of the entity
      */
-    public readonly properties!: pulumi.Output<outputs.EntityProperty[]>;
+    public readonly properties!: pulumi.Output<outputs.EntityProperties | undefined>;
     /**
-     * The other entities that are connected
+     * The relations of the entity
      */
-    public readonly relations!: pulumi.Output<outputs.EntityRelation[] | undefined>;
+    public readonly relations!: pulumi.Output<outputs.EntityRelations | undefined>;
     /**
      * The runID of the action run that created the entity
      */
     public readonly runId!: pulumi.Output<string | undefined>;
     /**
-     * The team related to the entity
-     */
-    public readonly team!: pulumi.Output<string | undefined>;
-    /**
-     * The teams related to the entity
+     * The teams the entity belongs to
      */
     public readonly teams!: pulumi.Output<string[] | undefined>;
     /**
-     * The display name of the entity
+     * The title of the entity
      */
-    public readonly title!: pulumi.Output<string>;
+    public readonly title!: pulumi.Output<string | undefined>;
+    /**
+     * The last update date of the entity
+     */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    /**
+     * The last updater of the entity
+     */
     public /*out*/ readonly updatedBy!: pulumi.Output<string>;
 
     /**
@@ -87,11 +99,11 @@ export class Entity extends pulumi.CustomResource {
             resourceInputs["blueprint"] = state ? state.blueprint : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["createdBy"] = state ? state.createdBy : undefined;
+            resourceInputs["icon"] = state ? state.icon : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["properties"] = state ? state.properties : undefined;
             resourceInputs["relations"] = state ? state.relations : undefined;
             resourceInputs["runId"] = state ? state.runId : undefined;
-            resourceInputs["team"] = state ? state.team : undefined;
             resourceInputs["teams"] = state ? state.teams : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
@@ -101,18 +113,12 @@ export class Entity extends pulumi.CustomResource {
             if ((!args || args.blueprint === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'blueprint'");
             }
-            if ((!args || args.properties === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'properties'");
-            }
-            if ((!args || args.title === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'title'");
-            }
             resourceInputs["blueprint"] = args ? args.blueprint : undefined;
+            resourceInputs["icon"] = args ? args.icon : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["relations"] = args ? args.relations : undefined;
             resourceInputs["runId"] = args ? args.runId : undefined;
-            resourceInputs["team"] = args ? args.team : undefined;
             resourceInputs["teams"] = args ? args.teams : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
@@ -133,37 +139,49 @@ export interface EntityState {
      * The blueprint identifier the entity relates to
      */
     blueprint?: pulumi.Input<string>;
+    /**
+     * The creation date of the entity
+     */
     createdAt?: pulumi.Input<string>;
+    /**
+     * The creator of the entity
+     */
     createdBy?: pulumi.Input<string>;
+    /**
+     * The icon of the entity
+     */
+    icon?: pulumi.Input<string>;
     /**
      * The identifier of the entity
      */
     identifier?: pulumi.Input<string>;
     /**
-     * The metadata of the entity
+     * The properties of the entity
      */
-    properties?: pulumi.Input<pulumi.Input<inputs.EntityProperty>[]>;
+    properties?: pulumi.Input<inputs.EntityProperties>;
     /**
-     * The other entities that are connected
+     * The relations of the entity
      */
-    relations?: pulumi.Input<pulumi.Input<inputs.EntityRelation>[]>;
+    relations?: pulumi.Input<inputs.EntityRelations>;
     /**
      * The runID of the action run that created the entity
      */
     runId?: pulumi.Input<string>;
     /**
-     * The team related to the entity
-     */
-    team?: pulumi.Input<string>;
-    /**
-     * The teams related to the entity
+     * The teams the entity belongs to
      */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The display name of the entity
+     * The title of the entity
      */
     title?: pulumi.Input<string>;
+    /**
+     * The last update date of the entity
+     */
     updatedAt?: pulumi.Input<string>;
+    /**
+     * The last updater of the entity
+     */
     updatedBy?: pulumi.Input<string>;
 }
 
@@ -176,31 +194,31 @@ export interface EntityArgs {
      */
     blueprint: pulumi.Input<string>;
     /**
+     * The icon of the entity
+     */
+    icon?: pulumi.Input<string>;
+    /**
      * The identifier of the entity
      */
     identifier?: pulumi.Input<string>;
     /**
-     * The metadata of the entity
+     * The properties of the entity
      */
-    properties: pulumi.Input<pulumi.Input<inputs.EntityProperty>[]>;
+    properties?: pulumi.Input<inputs.EntityProperties>;
     /**
-     * The other entities that are connected
+     * The relations of the entity
      */
-    relations?: pulumi.Input<pulumi.Input<inputs.EntityRelation>[]>;
+    relations?: pulumi.Input<inputs.EntityRelations>;
     /**
      * The runID of the action run that created the entity
      */
     runId?: pulumi.Input<string>;
     /**
-     * The team related to the entity
-     */
-    team?: pulumi.Input<string>;
-    /**
-     * The teams related to the entity
+     * The teams the entity belongs to
      */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The display name of the entity
+     * The title of the entity
      */
-    title: pulumi.Input<string>;
+    title?: pulumi.Input<string>;
 }

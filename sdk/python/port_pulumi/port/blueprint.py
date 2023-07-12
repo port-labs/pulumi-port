@@ -7,7 +7,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -539,7 +539,7 @@ class Blueprint(pulumi.CustomResource):
             __props__.__dict__["updated_at"] = None
             __props__.__dict__["updated_by"] = None
         super(Blueprint, __self__).__init__(
-            'port:index/blueprint:Blueprint',
+            'port:port/blueprint:Blueprint',
             resource_name,
             __props__,
             opts)

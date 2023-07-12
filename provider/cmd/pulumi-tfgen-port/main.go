@@ -16,11 +16,10 @@ package main
 
 import (
 	port "github.com/port-labs/pulumi-port/provider"
-	"github.com/port-labs/pulumi-port/provider/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/pf/tfgen"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfgen.Main("port", version.Version, port.Provider())
+	tfgen.Main("port", port.Provider())
 }

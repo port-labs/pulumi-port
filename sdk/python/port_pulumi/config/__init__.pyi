@@ -12,8 +12,17 @@ from .. import _utilities
 baseUrl: Optional[str]
 
 clientId: Optional[str]
+"""
+Client ID for Port-labs
+"""
 
 secret: Optional[str]
+"""
+Client Secret for Port-labs
+"""
 
 token: Optional[str]
+"""
+Token for Port-labs
+"""
 

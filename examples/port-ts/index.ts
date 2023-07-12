@@ -3,25 +3,23 @@ import * as port from "@port-labs/port";
 export const blueprint = new port.Blueprint("microservice", {
     identifier: "microservice",
     title: "Microservice",
-    properties: [
-        {
-            identifier: "language",
-            title: "Language",
-            type: "string",
-            required: false,
+    properties: {
+        stringProps: {
+            "language": {
+                default: "Go",
+            }
         }
-    ]
+    }
 });
 
 export const entity = new port.Entity("monolith", {
     identifier: "monolith",
     title: "monolith",
     blueprint: blueprint.identifier,
-    properties: [
-        {
-            name: "language",
-            value: "Node",
+    properties: {
+        stringProps: {
+            "language": "Node",
         }
-    ]
+    }
 });
 

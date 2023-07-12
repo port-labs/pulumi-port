@@ -7,7 +7,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -581,7 +581,7 @@ class Action(pulumi.CustomResource):
             __props__.__dict__["user_properties"] = user_properties
             __props__.__dict__["webhook_method"] = webhook_method
         super(Action, __self__).__init__(
-            'port:index/action:Action',
+            'port:port/action:Action',
             resource_name,
             __props__,
             opts)

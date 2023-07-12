@@ -1,0 +1,152 @@
+{
+    "renames": {
+        "resources": {
+            "port:index/action:Action": "port_action",
+            "port:index/blueprint:Blueprint": "port_blueprint",
+            "port:index/entity:Entity": "port_entity"
+        },
+        "renamedProperties": {
+            "port:index/ActionGithubMethod:ActionGithubMethod": {
+                "omitPayload": "omit_payload",
+                "omitUserInputs": "omit_user_inputs",
+                "reportWorkflowStatus": "report_workflow_status"
+            },
+            "port:index/ActionUserProperties:ActionUserProperties": {
+                "arrayProps": "array_props",
+                "booleanProps": "boolean_props",
+                "numberProps": "number_props",
+                "objectProps": "object_props",
+                "stringProps": "string_props"
+            },
+            "port:index/ActionUserPropertiesArrayProps:ActionUserPropertiesArrayProps": {
+                "booleanItems": "boolean_items",
+                "maxItems": "max_items",
+                "minItems": "min_items",
+                "numberItems": "number_items",
+                "objectItems": "object_items",
+                "stringItems": "string_items"
+            },
+            "port:index/ActionUserPropertiesArrayPropsBooleanItems:ActionUserPropertiesArrayPropsBooleanItems": {
+                "defaults": "default"
+            },
+            "port:index/ActionUserPropertiesArrayPropsNumberItems:ActionUserPropertiesArrayPropsNumberItems": {
+                "defaults": "default"
+            },
+            "port:index/ActionUserPropertiesArrayPropsObjectItems:ActionUserPropertiesArrayPropsObjectItems": {
+                "defaults": "default"
+            },
+            "port:index/ActionUserPropertiesArrayPropsStringItems:ActionUserPropertiesArrayPropsStringItems": {
+                "defaults": "default"
+            },
+            "port:index/ActionUserPropertiesNumberProps:ActionUserPropertiesNumberProps": {
+                "enums": "enum"
+            },
+            "port:index/ActionUserPropertiesStringProps:ActionUserPropertiesStringProps": {
+                "enums": "enum",
+                "maxLength": "max_length",
+                "minLength": "min_length"
+            },
+            "port:index/BlueprintProperties:BlueprintProperties": {
+                "arrayProps": "array_props",
+                "booleanProps": "boolean_props",
+                "numberProps": "number_props",
+                "objectProps": "object_props",
+                "stringProps": "string_props"
+            },
+            "port:index/BlueprintPropertiesArrayProps:BlueprintPropertiesArrayProps": {
+                "booleanItems": "boolean_items",
+                "maxItems": "max_items",
+                "minItems": "min_items",
+                "numberItems": "number_items",
+                "objectItems": "object_items",
+                "stringItems": "string_items"
+            },
+            "port:index/BlueprintPropertiesArrayPropsBooleanItems:BlueprintPropertiesArrayPropsBooleanItems": {
+                "defaults": "default"
+            },
+            "port:index/BlueprintPropertiesArrayPropsNumberItems:BlueprintPropertiesArrayPropsNumberItems": {
+                "defaults": "default"
+            },
+            "port:index/BlueprintPropertiesArrayPropsObjectItems:BlueprintPropertiesArrayPropsObjectItems": {
+                "defaults": "default"
+            },
+            "port:index/BlueprintPropertiesArrayPropsStringItems:BlueprintPropertiesArrayPropsStringItems": {
+                "defaults": "default"
+            },
+            "port:index/BlueprintPropertiesNumberProps:BlueprintPropertiesNumberProps": {
+                "enumColors": "enum_colors",
+                "enums": "enum"
+            },
+            "port:index/BlueprintPropertiesStringProps:BlueprintPropertiesStringProps": {
+                "enumColors": "enum_colors",
+                "enums": "enum",
+                "maxLength": "max_length",
+                "minLength": "min_length",
+                "specAuthentication": "spec_authentication"
+            },
+            "port:index/BlueprintPropertiesStringPropsSpecAuthentication:BlueprintPropertiesStringPropsSpecAuthentication": {
+                "authorizationUrl": "authorization_url",
+                "clientId": "client_id",
+                "tokenUrl": "token_url"
+            },
+            "port:index/EntityProperties:EntityProperties": {
+                "arrayProps": "array_props",
+                "booleanProps": "boolean_props",
+                "numberProps": "number_props",
+                "objectProps": "object_props",
+                "stringProps": "string_props"
+            },
+            "port:index/EntityPropertiesArrayProps:EntityPropertiesArrayProps": {
+                "booleanItems": "boolean_items",
+                "numberItems": "number_items",
+                "objectItems": "object_items",
+                "stringItems": "string_items"
+            },
+            "port:index/EntityRelations:EntityRelations": {
+                "manyRelations": "many_relations",
+                "singleRelations": "single_relations"
+            },
+            "port:index/action:Action": {
+                "approvalEmailNotification": "approval_email_notification",
+                "approvalWebhookNotification": "approval_webhook_notification",
+                "azureMethod": "azure_method",
+                "githubMethod": "github_method",
+                "kafkaMethod": "kafka_method",
+                "requiredApproval": "required_approval",
+                "userProperties": "user_properties",
+                "webhookMethod": "webhook_method"
+            },
+            "port:index/blueprint:Blueprint": {
+                "calculationProperties": "calculation_properties",
+                "createdAt": "created_at",
+                "createdBy": "created_by",
+                "kafkaChangelogDestination": "kafka_changelog_destination",
+                "mirrorProperties": "mirror_properties",
+                "teamInheritance": "team_inheritance",
+                "updatedAt": "updated_at",
+                "updatedBy": "updated_by",
+                "webhookChangelogDestination": "webhook_changelog_destination"
+            },
+            "port:index/entity:Entity": {
+                "createdAt": "created_at",
+                "createdBy": "created_by",
+                "runId": "run_id",
+                "updatedAt": "updated_at",
+                "updatedBy": "updated_by"
+            },
+            "port:index:Provider": {
+                "baseUrl": "base_url",
+                "clientId": "client_id"
+            }
+        },
+        "renamedConfigProperties": {
+            "baseUrl": "base_url",
+            "clientId": "client_id"
+        }
+    },
+    "resources": {
+        "port:index/action:Action": "port_action",
+        "port:index/blueprint:Blueprint": "port_blueprint",
+        "port:index/entity:Entity": "port_entity"
+    }
+}

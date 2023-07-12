@@ -18,10 +18,13 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	BaseUrl  pulumi.StringPtrOutput `pulumi:"baseUrl"`
-	ClientId pulumi.StringOutput    `pulumi:"clientId"`
-	Secret   pulumi.StringOutput    `pulumi:"secret"`
-	Token    pulumi.StringPtrOutput `pulumi:"token"`
+	BaseUrl pulumi.StringPtrOutput `pulumi:"baseUrl"`
+	// Client ID for Port-labs
+	ClientId pulumi.StringOutput `pulumi:"clientId"`
+	// Client Secret for Port-labs
+	Secret pulumi.StringOutput `pulumi:"secret"`
+	// Token for Port-labs
+	Token pulumi.StringPtrOutput `pulumi:"token"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -58,18 +61,24 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	BaseUrl  *string `pulumi:"baseUrl"`
-	ClientId string  `pulumi:"clientId"`
-	Secret   string  `pulumi:"secret"`
-	Token    *string `pulumi:"token"`
+	BaseUrl *string `pulumi:"baseUrl"`
+	// Client ID for Port-labs
+	ClientId string `pulumi:"clientId"`
+	// Client Secret for Port-labs
+	Secret string `pulumi:"secret"`
+	// Token for Port-labs
+	Token *string `pulumi:"token"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	BaseUrl  pulumi.StringPtrInput
+	BaseUrl pulumi.StringPtrInput
+	// Client ID for Port-labs
 	ClientId pulumi.StringInput
-	Secret   pulumi.StringInput
-	Token    pulumi.StringPtrInput
+	// Client Secret for Port-labs
+	Secret pulumi.StringInput
+	// Token for Port-labs
+	Token pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -113,14 +122,17 @@ func (o ProviderOutput) BaseUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.BaseUrl }).(pulumi.StringPtrOutput)
 }
 
+// Client ID for Port-labs
 func (o ProviderOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
 }
 
+// Client Secret for Port-labs
 func (o ProviderOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
 }
 
+// Token for Port-labs
 func (o ProviderOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
 }

@@ -11,12 +11,18 @@ import (
 func GetBaseUrl(ctx *pulumi.Context) string {
 	return config.Get(ctx, "port:baseUrl")
 }
+
+// Client ID for Port-labs
 func GetClientId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "port:clientId")
 }
+
+// Client Secret for Port-labs
 func GetSecret(ctx *pulumi.Context) string {
 	return config.Get(ctx, "port:secret")
 }
+
+// Token for Port-labs
 func GetToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "port:token")
 }
