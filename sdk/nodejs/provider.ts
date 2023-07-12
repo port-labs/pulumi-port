@@ -22,12 +22,21 @@ export class Provider extends pulumi.ProviderResource {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === Provider.__pulumiType;
+        return obj['__pulumiType'] === "pulumi:providers:" + Provider.__pulumiType;
     }
 
     public readonly baseUrl!: pulumi.Output<string | undefined>;
+    /**
+     * Client ID for Port-labs
+     */
     public readonly clientId!: pulumi.Output<string>;
+    /**
+     * Client Secret for Port-labs
+     */
     public readonly secret!: pulumi.Output<string>;
+    /**
+     * Token for Port-labs
+     */
     public readonly token!: pulumi.Output<string | undefined>;
 
     /**
@@ -64,7 +73,16 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     baseUrl?: pulumi.Input<string>;
+    /**
+     * Client ID for Port-labs
+     */
     clientId: pulumi.Input<string>;
+    /**
+     * Client Secret for Port-labs
+     */
     secret: pulumi.Input<string>;
+    /**
+     * Token for Port-labs
+     */
     token?: pulumi.Input<string>;
 }

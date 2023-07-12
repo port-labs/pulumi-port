@@ -10,210 +10,561 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-type ActionInvocationMethod struct {
-	Agent                *bool   `pulumi:"agent"`
-	AzureOrg             *string `pulumi:"azureOrg"`
-	OmitPayload          *bool   `pulumi:"omitPayload"`
-	OmitUserInputs       *bool   `pulumi:"omitUserInputs"`
-	Org                  *string `pulumi:"org"`
-	Repo                 *string `pulumi:"repo"`
-	ReportWorkflowStatus *bool   `pulumi:"reportWorkflowStatus"`
-	Type                 string  `pulumi:"type"`
-	Url                  *string `pulumi:"url"`
-	Webhook              *string `pulumi:"webhook"`
-	Workflow             *string `pulumi:"workflow"`
+type ActionApprovalEmailNotification struct {
 }
 
-// ActionInvocationMethodInput is an input type that accepts ActionInvocationMethodArgs and ActionInvocationMethodOutput values.
-// You can construct a concrete instance of `ActionInvocationMethodInput` via:
+// ActionApprovalEmailNotificationInput is an input type that accepts ActionApprovalEmailNotificationArgs and ActionApprovalEmailNotificationOutput values.
+// You can construct a concrete instance of `ActionApprovalEmailNotificationInput` via:
 //
-//	ActionInvocationMethodArgs{...}
-type ActionInvocationMethodInput interface {
+//	ActionApprovalEmailNotificationArgs{...}
+type ActionApprovalEmailNotificationInput interface {
 	pulumi.Input
 
-	ToActionInvocationMethodOutput() ActionInvocationMethodOutput
-	ToActionInvocationMethodOutputWithContext(context.Context) ActionInvocationMethodOutput
+	ToActionApprovalEmailNotificationOutput() ActionApprovalEmailNotificationOutput
+	ToActionApprovalEmailNotificationOutputWithContext(context.Context) ActionApprovalEmailNotificationOutput
 }
 
-type ActionInvocationMethodArgs struct {
-	Agent                pulumi.BoolPtrInput   `pulumi:"agent"`
-	AzureOrg             pulumi.StringPtrInput `pulumi:"azureOrg"`
-	OmitPayload          pulumi.BoolPtrInput   `pulumi:"omitPayload"`
-	OmitUserInputs       pulumi.BoolPtrInput   `pulumi:"omitUserInputs"`
-	Org                  pulumi.StringPtrInput `pulumi:"org"`
-	Repo                 pulumi.StringPtrInput `pulumi:"repo"`
-	ReportWorkflowStatus pulumi.BoolPtrInput   `pulumi:"reportWorkflowStatus"`
-	Type                 pulumi.StringInput    `pulumi:"type"`
-	Url                  pulumi.StringPtrInput `pulumi:"url"`
-	Webhook              pulumi.StringPtrInput `pulumi:"webhook"`
-	Workflow             pulumi.StringPtrInput `pulumi:"workflow"`
+type ActionApprovalEmailNotificationArgs struct {
 }
 
-func (ActionInvocationMethodArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionInvocationMethod)(nil)).Elem()
+func (ActionApprovalEmailNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionApprovalEmailNotification)(nil)).Elem()
 }
 
-func (i ActionInvocationMethodArgs) ToActionInvocationMethodOutput() ActionInvocationMethodOutput {
-	return i.ToActionInvocationMethodOutputWithContext(context.Background())
+func (i ActionApprovalEmailNotificationArgs) ToActionApprovalEmailNotificationOutput() ActionApprovalEmailNotificationOutput {
+	return i.ToActionApprovalEmailNotificationOutputWithContext(context.Background())
 }
 
-func (i ActionInvocationMethodArgs) ToActionInvocationMethodOutputWithContext(ctx context.Context) ActionInvocationMethodOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionInvocationMethodOutput)
+func (i ActionApprovalEmailNotificationArgs) ToActionApprovalEmailNotificationOutputWithContext(ctx context.Context) ActionApprovalEmailNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionApprovalEmailNotificationOutput)
 }
 
-func (i ActionInvocationMethodArgs) ToActionInvocationMethodPtrOutput() ActionInvocationMethodPtrOutput {
-	return i.ToActionInvocationMethodPtrOutputWithContext(context.Background())
+func (i ActionApprovalEmailNotificationArgs) ToActionApprovalEmailNotificationPtrOutput() ActionApprovalEmailNotificationPtrOutput {
+	return i.ToActionApprovalEmailNotificationPtrOutputWithContext(context.Background())
 }
 
-func (i ActionInvocationMethodArgs) ToActionInvocationMethodPtrOutputWithContext(ctx context.Context) ActionInvocationMethodPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionInvocationMethodOutput).ToActionInvocationMethodPtrOutputWithContext(ctx)
+func (i ActionApprovalEmailNotificationArgs) ToActionApprovalEmailNotificationPtrOutputWithContext(ctx context.Context) ActionApprovalEmailNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionApprovalEmailNotificationOutput).ToActionApprovalEmailNotificationPtrOutputWithContext(ctx)
 }
 
-// ActionInvocationMethodPtrInput is an input type that accepts ActionInvocationMethodArgs, ActionInvocationMethodPtr and ActionInvocationMethodPtrOutput values.
-// You can construct a concrete instance of `ActionInvocationMethodPtrInput` via:
+// ActionApprovalEmailNotificationPtrInput is an input type that accepts ActionApprovalEmailNotificationArgs, ActionApprovalEmailNotificationPtr and ActionApprovalEmailNotificationPtrOutput values.
+// You can construct a concrete instance of `ActionApprovalEmailNotificationPtrInput` via:
 //
-//	        ActionInvocationMethodArgs{...}
+//	        ActionApprovalEmailNotificationArgs{...}
 //
 //	or:
 //
 //	        nil
-type ActionInvocationMethodPtrInput interface {
+type ActionApprovalEmailNotificationPtrInput interface {
 	pulumi.Input
 
-	ToActionInvocationMethodPtrOutput() ActionInvocationMethodPtrOutput
-	ToActionInvocationMethodPtrOutputWithContext(context.Context) ActionInvocationMethodPtrOutput
+	ToActionApprovalEmailNotificationPtrOutput() ActionApprovalEmailNotificationPtrOutput
+	ToActionApprovalEmailNotificationPtrOutputWithContext(context.Context) ActionApprovalEmailNotificationPtrOutput
 }
 
-type actionInvocationMethodPtrType ActionInvocationMethodArgs
+type actionApprovalEmailNotificationPtrType ActionApprovalEmailNotificationArgs
 
-func ActionInvocationMethodPtr(v *ActionInvocationMethodArgs) ActionInvocationMethodPtrInput {
-	return (*actionInvocationMethodPtrType)(v)
+func ActionApprovalEmailNotificationPtr(v *ActionApprovalEmailNotificationArgs) ActionApprovalEmailNotificationPtrInput {
+	return (*actionApprovalEmailNotificationPtrType)(v)
 }
 
-func (*actionInvocationMethodPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActionInvocationMethod)(nil)).Elem()
+func (*actionApprovalEmailNotificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionApprovalEmailNotification)(nil)).Elem()
 }
 
-func (i *actionInvocationMethodPtrType) ToActionInvocationMethodPtrOutput() ActionInvocationMethodPtrOutput {
-	return i.ToActionInvocationMethodPtrOutputWithContext(context.Background())
+func (i *actionApprovalEmailNotificationPtrType) ToActionApprovalEmailNotificationPtrOutput() ActionApprovalEmailNotificationPtrOutput {
+	return i.ToActionApprovalEmailNotificationPtrOutputWithContext(context.Background())
 }
 
-func (i *actionInvocationMethodPtrType) ToActionInvocationMethodPtrOutputWithContext(ctx context.Context) ActionInvocationMethodPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionInvocationMethodPtrOutput)
+func (i *actionApprovalEmailNotificationPtrType) ToActionApprovalEmailNotificationPtrOutputWithContext(ctx context.Context) ActionApprovalEmailNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionApprovalEmailNotificationPtrOutput)
 }
 
-type ActionInvocationMethodOutput struct{ *pulumi.OutputState }
+type ActionApprovalEmailNotificationOutput struct{ *pulumi.OutputState }
 
-func (ActionInvocationMethodOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionInvocationMethod)(nil)).Elem()
+func (ActionApprovalEmailNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionApprovalEmailNotification)(nil)).Elem()
 }
 
-func (o ActionInvocationMethodOutput) ToActionInvocationMethodOutput() ActionInvocationMethodOutput {
+func (o ActionApprovalEmailNotificationOutput) ToActionApprovalEmailNotificationOutput() ActionApprovalEmailNotificationOutput {
 	return o
 }
 
-func (o ActionInvocationMethodOutput) ToActionInvocationMethodOutputWithContext(ctx context.Context) ActionInvocationMethodOutput {
+func (o ActionApprovalEmailNotificationOutput) ToActionApprovalEmailNotificationOutputWithContext(ctx context.Context) ActionApprovalEmailNotificationOutput {
 	return o
 }
 
-func (o ActionInvocationMethodOutput) ToActionInvocationMethodPtrOutput() ActionInvocationMethodPtrOutput {
-	return o.ToActionInvocationMethodPtrOutputWithContext(context.Background())
+func (o ActionApprovalEmailNotificationOutput) ToActionApprovalEmailNotificationPtrOutput() ActionApprovalEmailNotificationPtrOutput {
+	return o.ToActionApprovalEmailNotificationPtrOutputWithContext(context.Background())
 }
 
-func (o ActionInvocationMethodOutput) ToActionInvocationMethodPtrOutputWithContext(ctx context.Context) ActionInvocationMethodPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionInvocationMethod) *ActionInvocationMethod {
+func (o ActionApprovalEmailNotificationOutput) ToActionApprovalEmailNotificationPtrOutputWithContext(ctx context.Context) ActionApprovalEmailNotificationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionApprovalEmailNotification) *ActionApprovalEmailNotification {
 		return &v
-	}).(ActionInvocationMethodPtrOutput)
+	}).(ActionApprovalEmailNotificationPtrOutput)
 }
 
-func (o ActionInvocationMethodOutput) Agent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionInvocationMethod) *bool { return v.Agent }).(pulumi.BoolPtrOutput)
+type ActionApprovalEmailNotificationPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionApprovalEmailNotificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionApprovalEmailNotification)(nil)).Elem()
 }
 
-func (o ActionInvocationMethodOutput) AzureOrg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionInvocationMethod) *string { return v.AzureOrg }).(pulumi.StringPtrOutput)
-}
-
-func (o ActionInvocationMethodOutput) OmitPayload() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionInvocationMethod) *bool { return v.OmitPayload }).(pulumi.BoolPtrOutput)
-}
-
-func (o ActionInvocationMethodOutput) OmitUserInputs() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionInvocationMethod) *bool { return v.OmitUserInputs }).(pulumi.BoolPtrOutput)
-}
-
-func (o ActionInvocationMethodOutput) Org() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionInvocationMethod) *string { return v.Org }).(pulumi.StringPtrOutput)
-}
-
-func (o ActionInvocationMethodOutput) Repo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionInvocationMethod) *string { return v.Repo }).(pulumi.StringPtrOutput)
-}
-
-func (o ActionInvocationMethodOutput) ReportWorkflowStatus() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionInvocationMethod) *bool { return v.ReportWorkflowStatus }).(pulumi.BoolPtrOutput)
-}
-
-func (o ActionInvocationMethodOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionInvocationMethod) string { return v.Type }).(pulumi.StringOutput)
-}
-
-func (o ActionInvocationMethodOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionInvocationMethod) *string { return v.Url }).(pulumi.StringPtrOutput)
-}
-
-func (o ActionInvocationMethodOutput) Webhook() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionInvocationMethod) *string { return v.Webhook }).(pulumi.StringPtrOutput)
-}
-
-func (o ActionInvocationMethodOutput) Workflow() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionInvocationMethod) *string { return v.Workflow }).(pulumi.StringPtrOutput)
-}
-
-type ActionInvocationMethodPtrOutput struct{ *pulumi.OutputState }
-
-func (ActionInvocationMethodPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActionInvocationMethod)(nil)).Elem()
-}
-
-func (o ActionInvocationMethodPtrOutput) ToActionInvocationMethodPtrOutput() ActionInvocationMethodPtrOutput {
+func (o ActionApprovalEmailNotificationPtrOutput) ToActionApprovalEmailNotificationPtrOutput() ActionApprovalEmailNotificationPtrOutput {
 	return o
 }
 
-func (o ActionInvocationMethodPtrOutput) ToActionInvocationMethodPtrOutputWithContext(ctx context.Context) ActionInvocationMethodPtrOutput {
+func (o ActionApprovalEmailNotificationPtrOutput) ToActionApprovalEmailNotificationPtrOutputWithContext(ctx context.Context) ActionApprovalEmailNotificationPtrOutput {
 	return o
 }
 
-func (o ActionInvocationMethodPtrOutput) Elem() ActionInvocationMethodOutput {
-	return o.ApplyT(func(v *ActionInvocationMethod) ActionInvocationMethod {
+func (o ActionApprovalEmailNotificationPtrOutput) Elem() ActionApprovalEmailNotificationOutput {
+	return o.ApplyT(func(v *ActionApprovalEmailNotification) ActionApprovalEmailNotification {
 		if v != nil {
 			return *v
 		}
-		var ret ActionInvocationMethod
+		var ret ActionApprovalEmailNotification
 		return ret
-	}).(ActionInvocationMethodOutput)
+	}).(ActionApprovalEmailNotificationOutput)
 }
 
-func (o ActionInvocationMethodPtrOutput) Agent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ActionInvocationMethod) *bool {
+type ActionApprovalWebhookNotification struct {
+	Url string `pulumi:"url"`
+}
+
+// ActionApprovalWebhookNotificationInput is an input type that accepts ActionApprovalWebhookNotificationArgs and ActionApprovalWebhookNotificationOutput values.
+// You can construct a concrete instance of `ActionApprovalWebhookNotificationInput` via:
+//
+//	ActionApprovalWebhookNotificationArgs{...}
+type ActionApprovalWebhookNotificationInput interface {
+	pulumi.Input
+
+	ToActionApprovalWebhookNotificationOutput() ActionApprovalWebhookNotificationOutput
+	ToActionApprovalWebhookNotificationOutputWithContext(context.Context) ActionApprovalWebhookNotificationOutput
+}
+
+type ActionApprovalWebhookNotificationArgs struct {
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (ActionApprovalWebhookNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionApprovalWebhookNotification)(nil)).Elem()
+}
+
+func (i ActionApprovalWebhookNotificationArgs) ToActionApprovalWebhookNotificationOutput() ActionApprovalWebhookNotificationOutput {
+	return i.ToActionApprovalWebhookNotificationOutputWithContext(context.Background())
+}
+
+func (i ActionApprovalWebhookNotificationArgs) ToActionApprovalWebhookNotificationOutputWithContext(ctx context.Context) ActionApprovalWebhookNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionApprovalWebhookNotificationOutput)
+}
+
+func (i ActionApprovalWebhookNotificationArgs) ToActionApprovalWebhookNotificationPtrOutput() ActionApprovalWebhookNotificationPtrOutput {
+	return i.ToActionApprovalWebhookNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i ActionApprovalWebhookNotificationArgs) ToActionApprovalWebhookNotificationPtrOutputWithContext(ctx context.Context) ActionApprovalWebhookNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionApprovalWebhookNotificationOutput).ToActionApprovalWebhookNotificationPtrOutputWithContext(ctx)
+}
+
+// ActionApprovalWebhookNotificationPtrInput is an input type that accepts ActionApprovalWebhookNotificationArgs, ActionApprovalWebhookNotificationPtr and ActionApprovalWebhookNotificationPtrOutput values.
+// You can construct a concrete instance of `ActionApprovalWebhookNotificationPtrInput` via:
+//
+//	        ActionApprovalWebhookNotificationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionApprovalWebhookNotificationPtrInput interface {
+	pulumi.Input
+
+	ToActionApprovalWebhookNotificationPtrOutput() ActionApprovalWebhookNotificationPtrOutput
+	ToActionApprovalWebhookNotificationPtrOutputWithContext(context.Context) ActionApprovalWebhookNotificationPtrOutput
+}
+
+type actionApprovalWebhookNotificationPtrType ActionApprovalWebhookNotificationArgs
+
+func ActionApprovalWebhookNotificationPtr(v *ActionApprovalWebhookNotificationArgs) ActionApprovalWebhookNotificationPtrInput {
+	return (*actionApprovalWebhookNotificationPtrType)(v)
+}
+
+func (*actionApprovalWebhookNotificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionApprovalWebhookNotification)(nil)).Elem()
+}
+
+func (i *actionApprovalWebhookNotificationPtrType) ToActionApprovalWebhookNotificationPtrOutput() ActionApprovalWebhookNotificationPtrOutput {
+	return i.ToActionApprovalWebhookNotificationPtrOutputWithContext(context.Background())
+}
+
+func (i *actionApprovalWebhookNotificationPtrType) ToActionApprovalWebhookNotificationPtrOutputWithContext(ctx context.Context) ActionApprovalWebhookNotificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionApprovalWebhookNotificationPtrOutput)
+}
+
+type ActionApprovalWebhookNotificationOutput struct{ *pulumi.OutputState }
+
+func (ActionApprovalWebhookNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionApprovalWebhookNotification)(nil)).Elem()
+}
+
+func (o ActionApprovalWebhookNotificationOutput) ToActionApprovalWebhookNotificationOutput() ActionApprovalWebhookNotificationOutput {
+	return o
+}
+
+func (o ActionApprovalWebhookNotificationOutput) ToActionApprovalWebhookNotificationOutputWithContext(ctx context.Context) ActionApprovalWebhookNotificationOutput {
+	return o
+}
+
+func (o ActionApprovalWebhookNotificationOutput) ToActionApprovalWebhookNotificationPtrOutput() ActionApprovalWebhookNotificationPtrOutput {
+	return o.ToActionApprovalWebhookNotificationPtrOutputWithContext(context.Background())
+}
+
+func (o ActionApprovalWebhookNotificationOutput) ToActionApprovalWebhookNotificationPtrOutputWithContext(ctx context.Context) ActionApprovalWebhookNotificationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionApprovalWebhookNotification) *ActionApprovalWebhookNotification {
+		return &v
+	}).(ActionApprovalWebhookNotificationPtrOutput)
+}
+
+func (o ActionApprovalWebhookNotificationOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionApprovalWebhookNotification) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type ActionApprovalWebhookNotificationPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionApprovalWebhookNotificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionApprovalWebhookNotification)(nil)).Elem()
+}
+
+func (o ActionApprovalWebhookNotificationPtrOutput) ToActionApprovalWebhookNotificationPtrOutput() ActionApprovalWebhookNotificationPtrOutput {
+	return o
+}
+
+func (o ActionApprovalWebhookNotificationPtrOutput) ToActionApprovalWebhookNotificationPtrOutputWithContext(ctx context.Context) ActionApprovalWebhookNotificationPtrOutput {
+	return o
+}
+
+func (o ActionApprovalWebhookNotificationPtrOutput) Elem() ActionApprovalWebhookNotificationOutput {
+	return o.ApplyT(func(v *ActionApprovalWebhookNotification) ActionApprovalWebhookNotification {
+		if v != nil {
+			return *v
+		}
+		var ret ActionApprovalWebhookNotification
+		return ret
+	}).(ActionApprovalWebhookNotificationOutput)
+}
+
+func (o ActionApprovalWebhookNotificationPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionApprovalWebhookNotification) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Agent
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o ActionInvocationMethodPtrOutput) AzureOrg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActionInvocationMethod) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AzureOrg
+		return &v.Url
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ActionInvocationMethodPtrOutput) OmitPayload() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ActionInvocationMethod) *bool {
+type ActionAzureMethod struct {
+	Org     string `pulumi:"org"`
+	Webhook string `pulumi:"webhook"`
+}
+
+// ActionAzureMethodInput is an input type that accepts ActionAzureMethodArgs and ActionAzureMethodOutput values.
+// You can construct a concrete instance of `ActionAzureMethodInput` via:
+//
+//	ActionAzureMethodArgs{...}
+type ActionAzureMethodInput interface {
+	pulumi.Input
+
+	ToActionAzureMethodOutput() ActionAzureMethodOutput
+	ToActionAzureMethodOutputWithContext(context.Context) ActionAzureMethodOutput
+}
+
+type ActionAzureMethodArgs struct {
+	Org     pulumi.StringInput `pulumi:"org"`
+	Webhook pulumi.StringInput `pulumi:"webhook"`
+}
+
+func (ActionAzureMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionAzureMethod)(nil)).Elem()
+}
+
+func (i ActionAzureMethodArgs) ToActionAzureMethodOutput() ActionAzureMethodOutput {
+	return i.ToActionAzureMethodOutputWithContext(context.Background())
+}
+
+func (i ActionAzureMethodArgs) ToActionAzureMethodOutputWithContext(ctx context.Context) ActionAzureMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAzureMethodOutput)
+}
+
+func (i ActionAzureMethodArgs) ToActionAzureMethodPtrOutput() ActionAzureMethodPtrOutput {
+	return i.ToActionAzureMethodPtrOutputWithContext(context.Background())
+}
+
+func (i ActionAzureMethodArgs) ToActionAzureMethodPtrOutputWithContext(ctx context.Context) ActionAzureMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAzureMethodOutput).ToActionAzureMethodPtrOutputWithContext(ctx)
+}
+
+// ActionAzureMethodPtrInput is an input type that accepts ActionAzureMethodArgs, ActionAzureMethodPtr and ActionAzureMethodPtrOutput values.
+// You can construct a concrete instance of `ActionAzureMethodPtrInput` via:
+//
+//	        ActionAzureMethodArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionAzureMethodPtrInput interface {
+	pulumi.Input
+
+	ToActionAzureMethodPtrOutput() ActionAzureMethodPtrOutput
+	ToActionAzureMethodPtrOutputWithContext(context.Context) ActionAzureMethodPtrOutput
+}
+
+type actionAzureMethodPtrType ActionAzureMethodArgs
+
+func ActionAzureMethodPtr(v *ActionAzureMethodArgs) ActionAzureMethodPtrInput {
+	return (*actionAzureMethodPtrType)(v)
+}
+
+func (*actionAzureMethodPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionAzureMethod)(nil)).Elem()
+}
+
+func (i *actionAzureMethodPtrType) ToActionAzureMethodPtrOutput() ActionAzureMethodPtrOutput {
+	return i.ToActionAzureMethodPtrOutputWithContext(context.Background())
+}
+
+func (i *actionAzureMethodPtrType) ToActionAzureMethodPtrOutputWithContext(ctx context.Context) ActionAzureMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAzureMethodPtrOutput)
+}
+
+type ActionAzureMethodOutput struct{ *pulumi.OutputState }
+
+func (ActionAzureMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionAzureMethod)(nil)).Elem()
+}
+
+func (o ActionAzureMethodOutput) ToActionAzureMethodOutput() ActionAzureMethodOutput {
+	return o
+}
+
+func (o ActionAzureMethodOutput) ToActionAzureMethodOutputWithContext(ctx context.Context) ActionAzureMethodOutput {
+	return o
+}
+
+func (o ActionAzureMethodOutput) ToActionAzureMethodPtrOutput() ActionAzureMethodPtrOutput {
+	return o.ToActionAzureMethodPtrOutputWithContext(context.Background())
+}
+
+func (o ActionAzureMethodOutput) ToActionAzureMethodPtrOutputWithContext(ctx context.Context) ActionAzureMethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionAzureMethod) *ActionAzureMethod {
+		return &v
+	}).(ActionAzureMethodPtrOutput)
+}
+
+func (o ActionAzureMethodOutput) Org() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionAzureMethod) string { return v.Org }).(pulumi.StringOutput)
+}
+
+func (o ActionAzureMethodOutput) Webhook() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionAzureMethod) string { return v.Webhook }).(pulumi.StringOutput)
+}
+
+type ActionAzureMethodPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionAzureMethodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionAzureMethod)(nil)).Elem()
+}
+
+func (o ActionAzureMethodPtrOutput) ToActionAzureMethodPtrOutput() ActionAzureMethodPtrOutput {
+	return o
+}
+
+func (o ActionAzureMethodPtrOutput) ToActionAzureMethodPtrOutputWithContext(ctx context.Context) ActionAzureMethodPtrOutput {
+	return o
+}
+
+func (o ActionAzureMethodPtrOutput) Elem() ActionAzureMethodOutput {
+	return o.ApplyT(func(v *ActionAzureMethod) ActionAzureMethod {
+		if v != nil {
+			return *v
+		}
+		var ret ActionAzureMethod
+		return ret
+	}).(ActionAzureMethodOutput)
+}
+
+func (o ActionAzureMethodPtrOutput) Org() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionAzureMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Org
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ActionAzureMethodPtrOutput) Webhook() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionAzureMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Webhook
+	}).(pulumi.StringPtrOutput)
+}
+
+type ActionGithubMethod struct {
+	OmitPayload          *bool  `pulumi:"omitPayload"`
+	OmitUserInputs       *bool  `pulumi:"omitUserInputs"`
+	Org                  string `pulumi:"org"`
+	Repo                 string `pulumi:"repo"`
+	ReportWorkflowStatus *bool  `pulumi:"reportWorkflowStatus"`
+	Workflow             string `pulumi:"workflow"`
+}
+
+// ActionGithubMethodInput is an input type that accepts ActionGithubMethodArgs and ActionGithubMethodOutput values.
+// You can construct a concrete instance of `ActionGithubMethodInput` via:
+//
+//	ActionGithubMethodArgs{...}
+type ActionGithubMethodInput interface {
+	pulumi.Input
+
+	ToActionGithubMethodOutput() ActionGithubMethodOutput
+	ToActionGithubMethodOutputWithContext(context.Context) ActionGithubMethodOutput
+}
+
+type ActionGithubMethodArgs struct {
+	OmitPayload          pulumi.BoolPtrInput `pulumi:"omitPayload"`
+	OmitUserInputs       pulumi.BoolPtrInput `pulumi:"omitUserInputs"`
+	Org                  pulumi.StringInput  `pulumi:"org"`
+	Repo                 pulumi.StringInput  `pulumi:"repo"`
+	ReportWorkflowStatus pulumi.BoolPtrInput `pulumi:"reportWorkflowStatus"`
+	Workflow             pulumi.StringInput  `pulumi:"workflow"`
+}
+
+func (ActionGithubMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionGithubMethod)(nil)).Elem()
+}
+
+func (i ActionGithubMethodArgs) ToActionGithubMethodOutput() ActionGithubMethodOutput {
+	return i.ToActionGithubMethodOutputWithContext(context.Background())
+}
+
+func (i ActionGithubMethodArgs) ToActionGithubMethodOutputWithContext(ctx context.Context) ActionGithubMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionGithubMethodOutput)
+}
+
+func (i ActionGithubMethodArgs) ToActionGithubMethodPtrOutput() ActionGithubMethodPtrOutput {
+	return i.ToActionGithubMethodPtrOutputWithContext(context.Background())
+}
+
+func (i ActionGithubMethodArgs) ToActionGithubMethodPtrOutputWithContext(ctx context.Context) ActionGithubMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionGithubMethodOutput).ToActionGithubMethodPtrOutputWithContext(ctx)
+}
+
+// ActionGithubMethodPtrInput is an input type that accepts ActionGithubMethodArgs, ActionGithubMethodPtr and ActionGithubMethodPtrOutput values.
+// You can construct a concrete instance of `ActionGithubMethodPtrInput` via:
+//
+//	        ActionGithubMethodArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionGithubMethodPtrInput interface {
+	pulumi.Input
+
+	ToActionGithubMethodPtrOutput() ActionGithubMethodPtrOutput
+	ToActionGithubMethodPtrOutputWithContext(context.Context) ActionGithubMethodPtrOutput
+}
+
+type actionGithubMethodPtrType ActionGithubMethodArgs
+
+func ActionGithubMethodPtr(v *ActionGithubMethodArgs) ActionGithubMethodPtrInput {
+	return (*actionGithubMethodPtrType)(v)
+}
+
+func (*actionGithubMethodPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionGithubMethod)(nil)).Elem()
+}
+
+func (i *actionGithubMethodPtrType) ToActionGithubMethodPtrOutput() ActionGithubMethodPtrOutput {
+	return i.ToActionGithubMethodPtrOutputWithContext(context.Background())
+}
+
+func (i *actionGithubMethodPtrType) ToActionGithubMethodPtrOutputWithContext(ctx context.Context) ActionGithubMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionGithubMethodPtrOutput)
+}
+
+type ActionGithubMethodOutput struct{ *pulumi.OutputState }
+
+func (ActionGithubMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionGithubMethod)(nil)).Elem()
+}
+
+func (o ActionGithubMethodOutput) ToActionGithubMethodOutput() ActionGithubMethodOutput {
+	return o
+}
+
+func (o ActionGithubMethodOutput) ToActionGithubMethodOutputWithContext(ctx context.Context) ActionGithubMethodOutput {
+	return o
+}
+
+func (o ActionGithubMethodOutput) ToActionGithubMethodPtrOutput() ActionGithubMethodPtrOutput {
+	return o.ToActionGithubMethodPtrOutputWithContext(context.Background())
+}
+
+func (o ActionGithubMethodOutput) ToActionGithubMethodPtrOutputWithContext(ctx context.Context) ActionGithubMethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionGithubMethod) *ActionGithubMethod {
+		return &v
+	}).(ActionGithubMethodPtrOutput)
+}
+
+func (o ActionGithubMethodOutput) OmitPayload() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionGithubMethod) *bool { return v.OmitPayload }).(pulumi.BoolPtrOutput)
+}
+
+func (o ActionGithubMethodOutput) OmitUserInputs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionGithubMethod) *bool { return v.OmitUserInputs }).(pulumi.BoolPtrOutput)
+}
+
+func (o ActionGithubMethodOutput) Org() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionGithubMethod) string { return v.Org }).(pulumi.StringOutput)
+}
+
+func (o ActionGithubMethodOutput) Repo() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionGithubMethod) string { return v.Repo }).(pulumi.StringOutput)
+}
+
+func (o ActionGithubMethodOutput) ReportWorkflowStatus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionGithubMethod) *bool { return v.ReportWorkflowStatus }).(pulumi.BoolPtrOutput)
+}
+
+func (o ActionGithubMethodOutput) Workflow() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionGithubMethod) string { return v.Workflow }).(pulumi.StringOutput)
+}
+
+type ActionGithubMethodPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionGithubMethodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionGithubMethod)(nil)).Elem()
+}
+
+func (o ActionGithubMethodPtrOutput) ToActionGithubMethodPtrOutput() ActionGithubMethodPtrOutput {
+	return o
+}
+
+func (o ActionGithubMethodPtrOutput) ToActionGithubMethodPtrOutputWithContext(ctx context.Context) ActionGithubMethodPtrOutput {
+	return o
+}
+
+func (o ActionGithubMethodPtrOutput) Elem() ActionGithubMethodOutput {
+	return o.ApplyT(func(v *ActionGithubMethod) ActionGithubMethod {
+		if v != nil {
+			return *v
+		}
+		var ret ActionGithubMethod
+		return ret
+	}).(ActionGithubMethodOutput)
+}
+
+func (o ActionGithubMethodPtrOutput) OmitPayload() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ActionGithubMethod) *bool {
 		if v == nil {
 			return nil
 		}
@@ -221,8 +572,8 @@ func (o ActionInvocationMethodPtrOutput) OmitPayload() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o ActionInvocationMethodPtrOutput) OmitUserInputs() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ActionInvocationMethod) *bool {
+func (o ActionGithubMethodPtrOutput) OmitUserInputs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ActionGithubMethod) *bool {
 		if v == nil {
 			return nil
 		}
@@ -230,26 +581,26 @@ func (o ActionInvocationMethodPtrOutput) OmitUserInputs() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o ActionInvocationMethodPtrOutput) Org() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActionInvocationMethod) *string {
+func (o ActionGithubMethodPtrOutput) Org() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionGithubMethod) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Org
+		return &v.Org
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ActionInvocationMethodPtrOutput) Repo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActionInvocationMethod) *string {
+func (o ActionGithubMethodPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionGithubMethod) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Repo
+		return &v.Repo
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ActionInvocationMethodPtrOutput) ReportWorkflowStatus() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ActionInvocationMethod) *bool {
+func (o ActionGithubMethodPtrOutput) ReportWorkflowStatus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ActionGithubMethod) *bool {
 		if v == nil {
 			return nil
 		}
@@ -257,476 +608,1702 @@ func (o ActionInvocationMethodPtrOutput) ReportWorkflowStatus() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o ActionInvocationMethodPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActionInvocationMethod) *string {
+func (o ActionGithubMethodPtrOutput) Workflow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionGithubMethod) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Type
+		return &v.Workflow
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ActionInvocationMethodPtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActionInvocationMethod) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Url
-	}).(pulumi.StringPtrOutput)
+type ActionKafkaMethod struct {
 }
 
-func (o ActionInvocationMethodPtrOutput) Webhook() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActionInvocationMethod) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Webhook
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ActionInvocationMethodPtrOutput) Workflow() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActionInvocationMethod) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Workflow
-	}).(pulumi.StringPtrOutput)
-}
-
-type ActionUserProperty struct {
-	Blueprint    *string  `pulumi:"blueprint"`
-	Default      *string  `pulumi:"default"`
-	DefaultItems []string `pulumi:"defaultItems"`
-	Description  *string  `pulumi:"description"`
-	Enums        []string `pulumi:"enums"`
-	Format       *string  `pulumi:"format"`
-	Identifier   string   `pulumi:"identifier"`
-	Pattern      *string  `pulumi:"pattern"`
-	Required     *bool    `pulumi:"required"`
-	Title        string   `pulumi:"title"`
-	Type         string   `pulumi:"type"`
-}
-
-// ActionUserPropertyInput is an input type that accepts ActionUserPropertyArgs and ActionUserPropertyOutput values.
-// You can construct a concrete instance of `ActionUserPropertyInput` via:
+// ActionKafkaMethodInput is an input type that accepts ActionKafkaMethodArgs and ActionKafkaMethodOutput values.
+// You can construct a concrete instance of `ActionKafkaMethodInput` via:
 //
-//	ActionUserPropertyArgs{...}
-type ActionUserPropertyInput interface {
+//	ActionKafkaMethodArgs{...}
+type ActionKafkaMethodInput interface {
 	pulumi.Input
 
-	ToActionUserPropertyOutput() ActionUserPropertyOutput
-	ToActionUserPropertyOutputWithContext(context.Context) ActionUserPropertyOutput
+	ToActionKafkaMethodOutput() ActionKafkaMethodOutput
+	ToActionKafkaMethodOutputWithContext(context.Context) ActionKafkaMethodOutput
 }
 
-type ActionUserPropertyArgs struct {
-	Blueprint    pulumi.StringPtrInput   `pulumi:"blueprint"`
-	Default      pulumi.StringPtrInput   `pulumi:"default"`
-	DefaultItems pulumi.StringArrayInput `pulumi:"defaultItems"`
-	Description  pulumi.StringPtrInput   `pulumi:"description"`
-	Enums        pulumi.StringArrayInput `pulumi:"enums"`
-	Format       pulumi.StringPtrInput   `pulumi:"format"`
-	Identifier   pulumi.StringInput      `pulumi:"identifier"`
-	Pattern      pulumi.StringPtrInput   `pulumi:"pattern"`
-	Required     pulumi.BoolPtrInput     `pulumi:"required"`
-	Title        pulumi.StringInput      `pulumi:"title"`
-	Type         pulumi.StringInput      `pulumi:"type"`
+type ActionKafkaMethodArgs struct {
 }
 
-func (ActionUserPropertyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserProperty)(nil)).Elem()
+func (ActionKafkaMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionKafkaMethod)(nil)).Elem()
 }
 
-func (i ActionUserPropertyArgs) ToActionUserPropertyOutput() ActionUserPropertyOutput {
-	return i.ToActionUserPropertyOutputWithContext(context.Background())
+func (i ActionKafkaMethodArgs) ToActionKafkaMethodOutput() ActionKafkaMethodOutput {
+	return i.ToActionKafkaMethodOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertyArgs) ToActionUserPropertyOutputWithContext(ctx context.Context) ActionUserPropertyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertyOutput)
+func (i ActionKafkaMethodArgs) ToActionKafkaMethodOutputWithContext(ctx context.Context) ActionKafkaMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionKafkaMethodOutput)
 }
 
-// ActionUserPropertyArrayInput is an input type that accepts ActionUserPropertyArray and ActionUserPropertyArrayOutput values.
-// You can construct a concrete instance of `ActionUserPropertyArrayInput` via:
+func (i ActionKafkaMethodArgs) ToActionKafkaMethodPtrOutput() ActionKafkaMethodPtrOutput {
+	return i.ToActionKafkaMethodPtrOutputWithContext(context.Background())
+}
+
+func (i ActionKafkaMethodArgs) ToActionKafkaMethodPtrOutputWithContext(ctx context.Context) ActionKafkaMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionKafkaMethodOutput).ToActionKafkaMethodPtrOutputWithContext(ctx)
+}
+
+// ActionKafkaMethodPtrInput is an input type that accepts ActionKafkaMethodArgs, ActionKafkaMethodPtr and ActionKafkaMethodPtrOutput values.
+// You can construct a concrete instance of `ActionKafkaMethodPtrInput` via:
 //
-//	ActionUserPropertyArray{ ActionUserPropertyArgs{...} }
-type ActionUserPropertyArrayInput interface {
-	pulumi.Input
-
-	ToActionUserPropertyArrayOutput() ActionUserPropertyArrayOutput
-	ToActionUserPropertyArrayOutputWithContext(context.Context) ActionUserPropertyArrayOutput
-}
-
-type ActionUserPropertyArray []ActionUserPropertyInput
-
-func (ActionUserPropertyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ActionUserProperty)(nil)).Elem()
-}
-
-func (i ActionUserPropertyArray) ToActionUserPropertyArrayOutput() ActionUserPropertyArrayOutput {
-	return i.ToActionUserPropertyArrayOutputWithContext(context.Background())
-}
-
-func (i ActionUserPropertyArray) ToActionUserPropertyArrayOutputWithContext(ctx context.Context) ActionUserPropertyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertyArrayOutput)
-}
-
-type ActionUserPropertyOutput struct{ *pulumi.OutputState }
-
-func (ActionUserPropertyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserProperty)(nil)).Elem()
-}
-
-func (o ActionUserPropertyOutput) ToActionUserPropertyOutput() ActionUserPropertyOutput {
-	return o
-}
-
-func (o ActionUserPropertyOutput) ToActionUserPropertyOutputWithContext(ctx context.Context) ActionUserPropertyOutput {
-	return o
-}
-
-func (o ActionUserPropertyOutput) Blueprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserProperty) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
-}
-
-func (o ActionUserPropertyOutput) Default() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserProperty) *string { return v.Default }).(pulumi.StringPtrOutput)
-}
-
-func (o ActionUserPropertyOutput) DefaultItems() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ActionUserProperty) []string { return v.DefaultItems }).(pulumi.StringArrayOutput)
-}
-
-func (o ActionUserPropertyOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserProperty) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-func (o ActionUserPropertyOutput) Enums() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ActionUserProperty) []string { return v.Enums }).(pulumi.StringArrayOutput)
-}
-
-func (o ActionUserPropertyOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserProperty) *string { return v.Format }).(pulumi.StringPtrOutput)
-}
-
-func (o ActionUserPropertyOutput) Identifier() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionUserProperty) string { return v.Identifier }).(pulumi.StringOutput)
-}
-
-func (o ActionUserPropertyOutput) Pattern() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserProperty) *string { return v.Pattern }).(pulumi.StringPtrOutput)
-}
-
-func (o ActionUserPropertyOutput) Required() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionUserProperty) *bool { return v.Required }).(pulumi.BoolPtrOutput)
-}
-
-func (o ActionUserPropertyOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionUserProperty) string { return v.Title }).(pulumi.StringOutput)
-}
-
-func (o ActionUserPropertyOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionUserProperty) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type ActionUserPropertyArrayOutput struct{ *pulumi.OutputState }
-
-func (ActionUserPropertyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ActionUserProperty)(nil)).Elem()
-}
-
-func (o ActionUserPropertyArrayOutput) ToActionUserPropertyArrayOutput() ActionUserPropertyArrayOutput {
-	return o
-}
-
-func (o ActionUserPropertyArrayOutput) ToActionUserPropertyArrayOutputWithContext(ctx context.Context) ActionUserPropertyArrayOutput {
-	return o
-}
-
-func (o ActionUserPropertyArrayOutput) Index(i pulumi.IntInput) ActionUserPropertyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionUserProperty {
-		return vs[0].([]ActionUserProperty)[vs[1].(int)]
-	}).(ActionUserPropertyOutput)
-}
-
-type BlueprintCalculationProperty struct {
-	Calculation string            `pulumi:"calculation"`
-	Colorized   *bool             `pulumi:"colorized"`
-	Colors      map[string]string `pulumi:"colors"`
-	Description *string           `pulumi:"description"`
-	Format      *string           `pulumi:"format"`
-	Icon        *string           `pulumi:"icon"`
-	Identifier  string            `pulumi:"identifier"`
-	Title       *string           `pulumi:"title"`
-	Type        string            `pulumi:"type"`
-}
-
-// BlueprintCalculationPropertyInput is an input type that accepts BlueprintCalculationPropertyArgs and BlueprintCalculationPropertyOutput values.
-// You can construct a concrete instance of `BlueprintCalculationPropertyInput` via:
-//
-//	BlueprintCalculationPropertyArgs{...}
-type BlueprintCalculationPropertyInput interface {
-	pulumi.Input
-
-	ToBlueprintCalculationPropertyOutput() BlueprintCalculationPropertyOutput
-	ToBlueprintCalculationPropertyOutputWithContext(context.Context) BlueprintCalculationPropertyOutput
-}
-
-type BlueprintCalculationPropertyArgs struct {
-	Calculation pulumi.StringInput    `pulumi:"calculation"`
-	Colorized   pulumi.BoolPtrInput   `pulumi:"colorized"`
-	Colors      pulumi.StringMapInput `pulumi:"colors"`
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	Format      pulumi.StringPtrInput `pulumi:"format"`
-	Icon        pulumi.StringPtrInput `pulumi:"icon"`
-	Identifier  pulumi.StringInput    `pulumi:"identifier"`
-	Title       pulumi.StringPtrInput `pulumi:"title"`
-	Type        pulumi.StringInput    `pulumi:"type"`
-}
-
-func (BlueprintCalculationPropertyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BlueprintCalculationProperty)(nil)).Elem()
-}
-
-func (i BlueprintCalculationPropertyArgs) ToBlueprintCalculationPropertyOutput() BlueprintCalculationPropertyOutput {
-	return i.ToBlueprintCalculationPropertyOutputWithContext(context.Background())
-}
-
-func (i BlueprintCalculationPropertyArgs) ToBlueprintCalculationPropertyOutputWithContext(ctx context.Context) BlueprintCalculationPropertyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BlueprintCalculationPropertyOutput)
-}
-
-// BlueprintCalculationPropertyArrayInput is an input type that accepts BlueprintCalculationPropertyArray and BlueprintCalculationPropertyArrayOutput values.
-// You can construct a concrete instance of `BlueprintCalculationPropertyArrayInput` via:
-//
-//	BlueprintCalculationPropertyArray{ BlueprintCalculationPropertyArgs{...} }
-type BlueprintCalculationPropertyArrayInput interface {
-	pulumi.Input
-
-	ToBlueprintCalculationPropertyArrayOutput() BlueprintCalculationPropertyArrayOutput
-	ToBlueprintCalculationPropertyArrayOutputWithContext(context.Context) BlueprintCalculationPropertyArrayOutput
-}
-
-type BlueprintCalculationPropertyArray []BlueprintCalculationPropertyInput
-
-func (BlueprintCalculationPropertyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BlueprintCalculationProperty)(nil)).Elem()
-}
-
-func (i BlueprintCalculationPropertyArray) ToBlueprintCalculationPropertyArrayOutput() BlueprintCalculationPropertyArrayOutput {
-	return i.ToBlueprintCalculationPropertyArrayOutputWithContext(context.Background())
-}
-
-func (i BlueprintCalculationPropertyArray) ToBlueprintCalculationPropertyArrayOutputWithContext(ctx context.Context) BlueprintCalculationPropertyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BlueprintCalculationPropertyArrayOutput)
-}
-
-type BlueprintCalculationPropertyOutput struct{ *pulumi.OutputState }
-
-func (BlueprintCalculationPropertyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BlueprintCalculationProperty)(nil)).Elem()
-}
-
-func (o BlueprintCalculationPropertyOutput) ToBlueprintCalculationPropertyOutput() BlueprintCalculationPropertyOutput {
-	return o
-}
-
-func (o BlueprintCalculationPropertyOutput) ToBlueprintCalculationPropertyOutputWithContext(ctx context.Context) BlueprintCalculationPropertyOutput {
-	return o
-}
-
-func (o BlueprintCalculationPropertyOutput) Calculation() pulumi.StringOutput {
-	return o.ApplyT(func(v BlueprintCalculationProperty) string { return v.Calculation }).(pulumi.StringOutput)
-}
-
-func (o BlueprintCalculationPropertyOutput) Colorized() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v BlueprintCalculationProperty) *bool { return v.Colorized }).(pulumi.BoolPtrOutput)
-}
-
-func (o BlueprintCalculationPropertyOutput) Colors() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BlueprintCalculationProperty) map[string]string { return v.Colors }).(pulumi.StringMapOutput)
-}
-
-func (o BlueprintCalculationPropertyOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BlueprintCalculationProperty) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-func (o BlueprintCalculationPropertyOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BlueprintCalculationProperty) *string { return v.Format }).(pulumi.StringPtrOutput)
-}
-
-func (o BlueprintCalculationPropertyOutput) Icon() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BlueprintCalculationProperty) *string { return v.Icon }).(pulumi.StringPtrOutput)
-}
-
-func (o BlueprintCalculationPropertyOutput) Identifier() pulumi.StringOutput {
-	return o.ApplyT(func(v BlueprintCalculationProperty) string { return v.Identifier }).(pulumi.StringOutput)
-}
-
-func (o BlueprintCalculationPropertyOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BlueprintCalculationProperty) *string { return v.Title }).(pulumi.StringPtrOutput)
-}
-
-func (o BlueprintCalculationPropertyOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v BlueprintCalculationProperty) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type BlueprintCalculationPropertyArrayOutput struct{ *pulumi.OutputState }
-
-func (BlueprintCalculationPropertyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BlueprintCalculationProperty)(nil)).Elem()
-}
-
-func (o BlueprintCalculationPropertyArrayOutput) ToBlueprintCalculationPropertyArrayOutput() BlueprintCalculationPropertyArrayOutput {
-	return o
-}
-
-func (o BlueprintCalculationPropertyArrayOutput) ToBlueprintCalculationPropertyArrayOutputWithContext(ctx context.Context) BlueprintCalculationPropertyArrayOutput {
-	return o
-}
-
-func (o BlueprintCalculationPropertyArrayOutput) Index(i pulumi.IntInput) BlueprintCalculationPropertyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BlueprintCalculationProperty {
-		return vs[0].([]BlueprintCalculationProperty)[vs[1].(int)]
-	}).(BlueprintCalculationPropertyOutput)
-}
-
-type BlueprintChangelogDestination struct {
-	Agent *bool   `pulumi:"agent"`
-	Type  string  `pulumi:"type"`
-	Url   *string `pulumi:"url"`
-}
-
-// BlueprintChangelogDestinationInput is an input type that accepts BlueprintChangelogDestinationArgs and BlueprintChangelogDestinationOutput values.
-// You can construct a concrete instance of `BlueprintChangelogDestinationInput` via:
-//
-//	BlueprintChangelogDestinationArgs{...}
-type BlueprintChangelogDestinationInput interface {
-	pulumi.Input
-
-	ToBlueprintChangelogDestinationOutput() BlueprintChangelogDestinationOutput
-	ToBlueprintChangelogDestinationOutputWithContext(context.Context) BlueprintChangelogDestinationOutput
-}
-
-type BlueprintChangelogDestinationArgs struct {
-	Agent pulumi.BoolPtrInput   `pulumi:"agent"`
-	Type  pulumi.StringInput    `pulumi:"type"`
-	Url   pulumi.StringPtrInput `pulumi:"url"`
-}
-
-func (BlueprintChangelogDestinationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BlueprintChangelogDestination)(nil)).Elem()
-}
-
-func (i BlueprintChangelogDestinationArgs) ToBlueprintChangelogDestinationOutput() BlueprintChangelogDestinationOutput {
-	return i.ToBlueprintChangelogDestinationOutputWithContext(context.Background())
-}
-
-func (i BlueprintChangelogDestinationArgs) ToBlueprintChangelogDestinationOutputWithContext(ctx context.Context) BlueprintChangelogDestinationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BlueprintChangelogDestinationOutput)
-}
-
-func (i BlueprintChangelogDestinationArgs) ToBlueprintChangelogDestinationPtrOutput() BlueprintChangelogDestinationPtrOutput {
-	return i.ToBlueprintChangelogDestinationPtrOutputWithContext(context.Background())
-}
-
-func (i BlueprintChangelogDestinationArgs) ToBlueprintChangelogDestinationPtrOutputWithContext(ctx context.Context) BlueprintChangelogDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BlueprintChangelogDestinationOutput).ToBlueprintChangelogDestinationPtrOutputWithContext(ctx)
-}
-
-// BlueprintChangelogDestinationPtrInput is an input type that accepts BlueprintChangelogDestinationArgs, BlueprintChangelogDestinationPtr and BlueprintChangelogDestinationPtrOutput values.
-// You can construct a concrete instance of `BlueprintChangelogDestinationPtrInput` via:
-//
-//	        BlueprintChangelogDestinationArgs{...}
+//	        ActionKafkaMethodArgs{...}
 //
 //	or:
 //
 //	        nil
-type BlueprintChangelogDestinationPtrInput interface {
+type ActionKafkaMethodPtrInput interface {
 	pulumi.Input
 
-	ToBlueprintChangelogDestinationPtrOutput() BlueprintChangelogDestinationPtrOutput
-	ToBlueprintChangelogDestinationPtrOutputWithContext(context.Context) BlueprintChangelogDestinationPtrOutput
+	ToActionKafkaMethodPtrOutput() ActionKafkaMethodPtrOutput
+	ToActionKafkaMethodPtrOutputWithContext(context.Context) ActionKafkaMethodPtrOutput
 }
 
-type blueprintChangelogDestinationPtrType BlueprintChangelogDestinationArgs
+type actionKafkaMethodPtrType ActionKafkaMethodArgs
 
-func BlueprintChangelogDestinationPtr(v *BlueprintChangelogDestinationArgs) BlueprintChangelogDestinationPtrInput {
-	return (*blueprintChangelogDestinationPtrType)(v)
+func ActionKafkaMethodPtr(v *ActionKafkaMethodArgs) ActionKafkaMethodPtrInput {
+	return (*actionKafkaMethodPtrType)(v)
 }
 
-func (*blueprintChangelogDestinationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BlueprintChangelogDestination)(nil)).Elem()
+func (*actionKafkaMethodPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionKafkaMethod)(nil)).Elem()
 }
 
-func (i *blueprintChangelogDestinationPtrType) ToBlueprintChangelogDestinationPtrOutput() BlueprintChangelogDestinationPtrOutput {
-	return i.ToBlueprintChangelogDestinationPtrOutputWithContext(context.Background())
+func (i *actionKafkaMethodPtrType) ToActionKafkaMethodPtrOutput() ActionKafkaMethodPtrOutput {
+	return i.ToActionKafkaMethodPtrOutputWithContext(context.Background())
 }
 
-func (i *blueprintChangelogDestinationPtrType) ToBlueprintChangelogDestinationPtrOutputWithContext(ctx context.Context) BlueprintChangelogDestinationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BlueprintChangelogDestinationPtrOutput)
+func (i *actionKafkaMethodPtrType) ToActionKafkaMethodPtrOutputWithContext(ctx context.Context) ActionKafkaMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionKafkaMethodPtrOutput)
 }
 
-type BlueprintChangelogDestinationOutput struct{ *pulumi.OutputState }
+type ActionKafkaMethodOutput struct{ *pulumi.OutputState }
 
-func (BlueprintChangelogDestinationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BlueprintChangelogDestination)(nil)).Elem()
+func (ActionKafkaMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionKafkaMethod)(nil)).Elem()
 }
 
-func (o BlueprintChangelogDestinationOutput) ToBlueprintChangelogDestinationOutput() BlueprintChangelogDestinationOutput {
+func (o ActionKafkaMethodOutput) ToActionKafkaMethodOutput() ActionKafkaMethodOutput {
 	return o
 }
 
-func (o BlueprintChangelogDestinationOutput) ToBlueprintChangelogDestinationOutputWithContext(ctx context.Context) BlueprintChangelogDestinationOutput {
+func (o ActionKafkaMethodOutput) ToActionKafkaMethodOutputWithContext(ctx context.Context) ActionKafkaMethodOutput {
 	return o
 }
 
-func (o BlueprintChangelogDestinationOutput) ToBlueprintChangelogDestinationPtrOutput() BlueprintChangelogDestinationPtrOutput {
-	return o.ToBlueprintChangelogDestinationPtrOutputWithContext(context.Background())
+func (o ActionKafkaMethodOutput) ToActionKafkaMethodPtrOutput() ActionKafkaMethodPtrOutput {
+	return o.ToActionKafkaMethodPtrOutputWithContext(context.Background())
 }
 
-func (o BlueprintChangelogDestinationOutput) ToBlueprintChangelogDestinationPtrOutputWithContext(ctx context.Context) BlueprintChangelogDestinationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlueprintChangelogDestination) *BlueprintChangelogDestination {
+func (o ActionKafkaMethodOutput) ToActionKafkaMethodPtrOutputWithContext(ctx context.Context) ActionKafkaMethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionKafkaMethod) *ActionKafkaMethod {
 		return &v
-	}).(BlueprintChangelogDestinationPtrOutput)
+	}).(ActionKafkaMethodPtrOutput)
 }
 
-func (o BlueprintChangelogDestinationOutput) Agent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v BlueprintChangelogDestination) *bool { return v.Agent }).(pulumi.BoolPtrOutput)
+type ActionKafkaMethodPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionKafkaMethodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionKafkaMethod)(nil)).Elem()
 }
 
-func (o BlueprintChangelogDestinationOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v BlueprintChangelogDestination) string { return v.Type }).(pulumi.StringOutput)
-}
-
-func (o BlueprintChangelogDestinationOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BlueprintChangelogDestination) *string { return v.Url }).(pulumi.StringPtrOutput)
-}
-
-type BlueprintChangelogDestinationPtrOutput struct{ *pulumi.OutputState }
-
-func (BlueprintChangelogDestinationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BlueprintChangelogDestination)(nil)).Elem()
-}
-
-func (o BlueprintChangelogDestinationPtrOutput) ToBlueprintChangelogDestinationPtrOutput() BlueprintChangelogDestinationPtrOutput {
+func (o ActionKafkaMethodPtrOutput) ToActionKafkaMethodPtrOutput() ActionKafkaMethodPtrOutput {
 	return o
 }
 
-func (o BlueprintChangelogDestinationPtrOutput) ToBlueprintChangelogDestinationPtrOutputWithContext(ctx context.Context) BlueprintChangelogDestinationPtrOutput {
+func (o ActionKafkaMethodPtrOutput) ToActionKafkaMethodPtrOutputWithContext(ctx context.Context) ActionKafkaMethodPtrOutput {
 	return o
 }
 
-func (o BlueprintChangelogDestinationPtrOutput) Elem() BlueprintChangelogDestinationOutput {
-	return o.ApplyT(func(v *BlueprintChangelogDestination) BlueprintChangelogDestination {
+func (o ActionKafkaMethodPtrOutput) Elem() ActionKafkaMethodOutput {
+	return o.ApplyT(func(v *ActionKafkaMethod) ActionKafkaMethod {
 		if v != nil {
 			return *v
 		}
-		var ret BlueprintChangelogDestination
+		var ret ActionKafkaMethod
 		return ret
-	}).(BlueprintChangelogDestinationOutput)
+	}).(ActionKafkaMethodOutput)
 }
 
-func (o BlueprintChangelogDestinationPtrOutput) Agent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *BlueprintChangelogDestination) *bool {
+type ActionUserProperties struct {
+	ArrayProps   map[string]ActionUserPropertiesArrayProps   `pulumi:"arrayProps"`
+	BooleanProps map[string]ActionUserPropertiesBooleanProps `pulumi:"booleanProps"`
+	NumberProps  map[string]ActionUserPropertiesNumberProps  `pulumi:"numberProps"`
+	ObjectProps  map[string]ActionUserPropertiesObjectProps  `pulumi:"objectProps"`
+	StringProps  map[string]ActionUserPropertiesStringProps  `pulumi:"stringProps"`
+}
+
+// ActionUserPropertiesInput is an input type that accepts ActionUserPropertiesArgs and ActionUserPropertiesOutput values.
+// You can construct a concrete instance of `ActionUserPropertiesInput` via:
+//
+//	ActionUserPropertiesArgs{...}
+type ActionUserPropertiesInput interface {
+	pulumi.Input
+
+	ToActionUserPropertiesOutput() ActionUserPropertiesOutput
+	ToActionUserPropertiesOutputWithContext(context.Context) ActionUserPropertiesOutput
+}
+
+type ActionUserPropertiesArgs struct {
+	ArrayProps   ActionUserPropertiesArrayPropsMapInput   `pulumi:"arrayProps"`
+	BooleanProps ActionUserPropertiesBooleanPropsMapInput `pulumi:"booleanProps"`
+	NumberProps  ActionUserPropertiesNumberPropsMapInput  `pulumi:"numberProps"`
+	ObjectProps  ActionUserPropertiesObjectPropsMapInput  `pulumi:"objectProps"`
+	StringProps  ActionUserPropertiesStringPropsMapInput  `pulumi:"stringProps"`
+}
+
+func (ActionUserPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUserProperties)(nil)).Elem()
+}
+
+func (i ActionUserPropertiesArgs) ToActionUserPropertiesOutput() ActionUserPropertiesOutput {
+	return i.ToActionUserPropertiesOutputWithContext(context.Background())
+}
+
+func (i ActionUserPropertiesArgs) ToActionUserPropertiesOutputWithContext(ctx context.Context) ActionUserPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesOutput)
+}
+
+func (i ActionUserPropertiesArgs) ToActionUserPropertiesPtrOutput() ActionUserPropertiesPtrOutput {
+	return i.ToActionUserPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ActionUserPropertiesArgs) ToActionUserPropertiesPtrOutputWithContext(ctx context.Context) ActionUserPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesOutput).ToActionUserPropertiesPtrOutputWithContext(ctx)
+}
+
+// ActionUserPropertiesPtrInput is an input type that accepts ActionUserPropertiesArgs, ActionUserPropertiesPtr and ActionUserPropertiesPtrOutput values.
+// You can construct a concrete instance of `ActionUserPropertiesPtrInput` via:
+//
+//	        ActionUserPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionUserPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToActionUserPropertiesPtrOutput() ActionUserPropertiesPtrOutput
+	ToActionUserPropertiesPtrOutputWithContext(context.Context) ActionUserPropertiesPtrOutput
+}
+
+type actionUserPropertiesPtrType ActionUserPropertiesArgs
+
+func ActionUserPropertiesPtr(v *ActionUserPropertiesArgs) ActionUserPropertiesPtrInput {
+	return (*actionUserPropertiesPtrType)(v)
+}
+
+func (*actionUserPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionUserProperties)(nil)).Elem()
+}
+
+func (i *actionUserPropertiesPtrType) ToActionUserPropertiesPtrOutput() ActionUserPropertiesPtrOutput {
+	return i.ToActionUserPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *actionUserPropertiesPtrType) ToActionUserPropertiesPtrOutputWithContext(ctx context.Context) ActionUserPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesPtrOutput)
+}
+
+type ActionUserPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ActionUserPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUserProperties)(nil)).Elem()
+}
+
+func (o ActionUserPropertiesOutput) ToActionUserPropertiesOutput() ActionUserPropertiesOutput {
+	return o
+}
+
+func (o ActionUserPropertiesOutput) ToActionUserPropertiesOutputWithContext(ctx context.Context) ActionUserPropertiesOutput {
+	return o
+}
+
+func (o ActionUserPropertiesOutput) ToActionUserPropertiesPtrOutput() ActionUserPropertiesPtrOutput {
+	return o.ToActionUserPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ActionUserPropertiesOutput) ToActionUserPropertiesPtrOutputWithContext(ctx context.Context) ActionUserPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionUserProperties) *ActionUserProperties {
+		return &v
+	}).(ActionUserPropertiesPtrOutput)
+}
+
+func (o ActionUserPropertiesOutput) ArrayProps() ActionUserPropertiesArrayPropsMapOutput {
+	return o.ApplyT(func(v ActionUserProperties) map[string]ActionUserPropertiesArrayProps { return v.ArrayProps }).(ActionUserPropertiesArrayPropsMapOutput)
+}
+
+func (o ActionUserPropertiesOutput) BooleanProps() ActionUserPropertiesBooleanPropsMapOutput {
+	return o.ApplyT(func(v ActionUserProperties) map[string]ActionUserPropertiesBooleanProps { return v.BooleanProps }).(ActionUserPropertiesBooleanPropsMapOutput)
+}
+
+func (o ActionUserPropertiesOutput) NumberProps() ActionUserPropertiesNumberPropsMapOutput {
+	return o.ApplyT(func(v ActionUserProperties) map[string]ActionUserPropertiesNumberProps { return v.NumberProps }).(ActionUserPropertiesNumberPropsMapOutput)
+}
+
+func (o ActionUserPropertiesOutput) ObjectProps() ActionUserPropertiesObjectPropsMapOutput {
+	return o.ApplyT(func(v ActionUserProperties) map[string]ActionUserPropertiesObjectProps { return v.ObjectProps }).(ActionUserPropertiesObjectPropsMapOutput)
+}
+
+func (o ActionUserPropertiesOutput) StringProps() ActionUserPropertiesStringPropsMapOutput {
+	return o.ApplyT(func(v ActionUserProperties) map[string]ActionUserPropertiesStringProps { return v.StringProps }).(ActionUserPropertiesStringPropsMapOutput)
+}
+
+type ActionUserPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionUserPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionUserProperties)(nil)).Elem()
+}
+
+func (o ActionUserPropertiesPtrOutput) ToActionUserPropertiesPtrOutput() ActionUserPropertiesPtrOutput {
+	return o
+}
+
+func (o ActionUserPropertiesPtrOutput) ToActionUserPropertiesPtrOutputWithContext(ctx context.Context) ActionUserPropertiesPtrOutput {
+	return o
+}
+
+func (o ActionUserPropertiesPtrOutput) Elem() ActionUserPropertiesOutput {
+	return o.ApplyT(func(v *ActionUserProperties) ActionUserProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ActionUserProperties
+		return ret
+	}).(ActionUserPropertiesOutput)
+}
+
+func (o ActionUserPropertiesPtrOutput) ArrayProps() ActionUserPropertiesArrayPropsMapOutput {
+	return o.ApplyT(func(v *ActionUserProperties) map[string]ActionUserPropertiesArrayProps {
+		if v == nil {
+			return nil
+		}
+		return v.ArrayProps
+	}).(ActionUserPropertiesArrayPropsMapOutput)
+}
+
+func (o ActionUserPropertiesPtrOutput) BooleanProps() ActionUserPropertiesBooleanPropsMapOutput {
+	return o.ApplyT(func(v *ActionUserProperties) map[string]ActionUserPropertiesBooleanProps {
+		if v == nil {
+			return nil
+		}
+		return v.BooleanProps
+	}).(ActionUserPropertiesBooleanPropsMapOutput)
+}
+
+func (o ActionUserPropertiesPtrOutput) NumberProps() ActionUserPropertiesNumberPropsMapOutput {
+	return o.ApplyT(func(v *ActionUserProperties) map[string]ActionUserPropertiesNumberProps {
+		if v == nil {
+			return nil
+		}
+		return v.NumberProps
+	}).(ActionUserPropertiesNumberPropsMapOutput)
+}
+
+func (o ActionUserPropertiesPtrOutput) ObjectProps() ActionUserPropertiesObjectPropsMapOutput {
+	return o.ApplyT(func(v *ActionUserProperties) map[string]ActionUserPropertiesObjectProps {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectProps
+	}).(ActionUserPropertiesObjectPropsMapOutput)
+}
+
+func (o ActionUserPropertiesPtrOutput) StringProps() ActionUserPropertiesStringPropsMapOutput {
+	return o.ApplyT(func(v *ActionUserProperties) map[string]ActionUserPropertiesStringProps {
+		if v == nil {
+			return nil
+		}
+		return v.StringProps
+	}).(ActionUserPropertiesStringPropsMapOutput)
+}
+
+type ActionUserPropertiesArrayProps struct {
+	BooleanItems *ActionUserPropertiesArrayPropsBooleanItems `pulumi:"booleanItems"`
+	Description  *string                                     `pulumi:"description"`
+	Icon         *string                                     `pulumi:"icon"`
+	MaxItems     *int                                        `pulumi:"maxItems"`
+	MinItems     *int                                        `pulumi:"minItems"`
+	NumberItems  *ActionUserPropertiesArrayPropsNumberItems  `pulumi:"numberItems"`
+	ObjectItems  *ActionUserPropertiesArrayPropsObjectItems  `pulumi:"objectItems"`
+	Required     *bool                                       `pulumi:"required"`
+	StringItems  *ActionUserPropertiesArrayPropsStringItems  `pulumi:"stringItems"`
+	Title        *string                                     `pulumi:"title"`
+}
+
+// ActionUserPropertiesArrayPropsInput is an input type that accepts ActionUserPropertiesArrayPropsArgs and ActionUserPropertiesArrayPropsOutput values.
+// You can construct a concrete instance of `ActionUserPropertiesArrayPropsInput` via:
+//
+//	ActionUserPropertiesArrayPropsArgs{...}
+type ActionUserPropertiesArrayPropsInput interface {
+	pulumi.Input
+
+	ToActionUserPropertiesArrayPropsOutput() ActionUserPropertiesArrayPropsOutput
+	ToActionUserPropertiesArrayPropsOutputWithContext(context.Context) ActionUserPropertiesArrayPropsOutput
+}
+
+type ActionUserPropertiesArrayPropsArgs struct {
+	BooleanItems ActionUserPropertiesArrayPropsBooleanItemsPtrInput `pulumi:"booleanItems"`
+	Description  pulumi.StringPtrInput                              `pulumi:"description"`
+	Icon         pulumi.StringPtrInput                              `pulumi:"icon"`
+	MaxItems     pulumi.IntPtrInput                                 `pulumi:"maxItems"`
+	MinItems     pulumi.IntPtrInput                                 `pulumi:"minItems"`
+	NumberItems  ActionUserPropertiesArrayPropsNumberItemsPtrInput  `pulumi:"numberItems"`
+	ObjectItems  ActionUserPropertiesArrayPropsObjectItemsPtrInput  `pulumi:"objectItems"`
+	Required     pulumi.BoolPtrInput                                `pulumi:"required"`
+	StringItems  ActionUserPropertiesArrayPropsStringItemsPtrInput  `pulumi:"stringItems"`
+	Title        pulumi.StringPtrInput                              `pulumi:"title"`
+}
+
+func (ActionUserPropertiesArrayPropsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUserPropertiesArrayProps)(nil)).Elem()
+}
+
+func (i ActionUserPropertiesArrayPropsArgs) ToActionUserPropertiesArrayPropsOutput() ActionUserPropertiesArrayPropsOutput {
+	return i.ToActionUserPropertiesArrayPropsOutputWithContext(context.Background())
+}
+
+func (i ActionUserPropertiesArrayPropsArgs) ToActionUserPropertiesArrayPropsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsOutput)
+}
+
+// ActionUserPropertiesArrayPropsMapInput is an input type that accepts ActionUserPropertiesArrayPropsMap and ActionUserPropertiesArrayPropsMapOutput values.
+// You can construct a concrete instance of `ActionUserPropertiesArrayPropsMapInput` via:
+//
+//	ActionUserPropertiesArrayPropsMap{ "key": ActionUserPropertiesArrayPropsArgs{...} }
+type ActionUserPropertiesArrayPropsMapInput interface {
+	pulumi.Input
+
+	ToActionUserPropertiesArrayPropsMapOutput() ActionUserPropertiesArrayPropsMapOutput
+	ToActionUserPropertiesArrayPropsMapOutputWithContext(context.Context) ActionUserPropertiesArrayPropsMapOutput
+}
+
+type ActionUserPropertiesArrayPropsMap map[string]ActionUserPropertiesArrayPropsInput
+
+func (ActionUserPropertiesArrayPropsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActionUserPropertiesArrayProps)(nil)).Elem()
+}
+
+func (i ActionUserPropertiesArrayPropsMap) ToActionUserPropertiesArrayPropsMapOutput() ActionUserPropertiesArrayPropsMapOutput {
+	return i.ToActionUserPropertiesArrayPropsMapOutputWithContext(context.Background())
+}
+
+func (i ActionUserPropertiesArrayPropsMap) ToActionUserPropertiesArrayPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsMapOutput)
+}
+
+type ActionUserPropertiesArrayPropsOutput struct{ *pulumi.OutputState }
+
+func (ActionUserPropertiesArrayPropsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUserPropertiesArrayProps)(nil)).Elem()
+}
+
+func (o ActionUserPropertiesArrayPropsOutput) ToActionUserPropertiesArrayPropsOutput() ActionUserPropertiesArrayPropsOutput {
+	return o
+}
+
+func (o ActionUserPropertiesArrayPropsOutput) ToActionUserPropertiesArrayPropsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsOutput {
+	return o
+}
+
+func (o ActionUserPropertiesArrayPropsOutput) BooleanItems() ActionUserPropertiesArrayPropsBooleanItemsPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *ActionUserPropertiesArrayPropsBooleanItems {
+		return v.BooleanItems
+	}).(ActionUserPropertiesArrayPropsBooleanItemsPtrOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsOutput) MaxItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsOutput) MinItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *int { return v.MinItems }).(pulumi.IntPtrOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsOutput) NumberItems() ActionUserPropertiesArrayPropsNumberItemsPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *ActionUserPropertiesArrayPropsNumberItems {
+		return v.NumberItems
+	}).(ActionUserPropertiesArrayPropsNumberItemsPtrOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsOutput) ObjectItems() ActionUserPropertiesArrayPropsObjectItemsPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *ActionUserPropertiesArrayPropsObjectItems {
+		return v.ObjectItems
+	}).(ActionUserPropertiesArrayPropsObjectItemsPtrOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsOutput) StringItems() ActionUserPropertiesArrayPropsStringItemsPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *ActionUserPropertiesArrayPropsStringItems {
+		return v.StringItems
+	}).(ActionUserPropertiesArrayPropsStringItemsPtrOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type ActionUserPropertiesArrayPropsMapOutput struct{ *pulumi.OutputState }
+
+func (ActionUserPropertiesArrayPropsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActionUserPropertiesArrayProps)(nil)).Elem()
+}
+
+func (o ActionUserPropertiesArrayPropsMapOutput) ToActionUserPropertiesArrayPropsMapOutput() ActionUserPropertiesArrayPropsMapOutput {
+	return o
+}
+
+func (o ActionUserPropertiesArrayPropsMapOutput) ToActionUserPropertiesArrayPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsMapOutput {
+	return o
+}
+
+func (o ActionUserPropertiesArrayPropsMapOutput) MapIndex(k pulumi.StringInput) ActionUserPropertiesArrayPropsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ActionUserPropertiesArrayProps {
+		return vs[0].(map[string]ActionUserPropertiesArrayProps)[vs[1].(string)]
+	}).(ActionUserPropertiesArrayPropsOutput)
+}
+
+type ActionUserPropertiesArrayPropsBooleanItems struct {
+	Defaults []bool `pulumi:"defaults"`
+}
+
+// ActionUserPropertiesArrayPropsBooleanItemsInput is an input type that accepts ActionUserPropertiesArrayPropsBooleanItemsArgs and ActionUserPropertiesArrayPropsBooleanItemsOutput values.
+// You can construct a concrete instance of `ActionUserPropertiesArrayPropsBooleanItemsInput` via:
+//
+//	ActionUserPropertiesArrayPropsBooleanItemsArgs{...}
+type ActionUserPropertiesArrayPropsBooleanItemsInput interface {
+	pulumi.Input
+
+	ToActionUserPropertiesArrayPropsBooleanItemsOutput() ActionUserPropertiesArrayPropsBooleanItemsOutput
+	ToActionUserPropertiesArrayPropsBooleanItemsOutputWithContext(context.Context) ActionUserPropertiesArrayPropsBooleanItemsOutput
+}
+
+type ActionUserPropertiesArrayPropsBooleanItemsArgs struct {
+	Defaults pulumi.BoolArrayInput `pulumi:"defaults"`
+}
+
+func (ActionUserPropertiesArrayPropsBooleanItemsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUserPropertiesArrayPropsBooleanItems)(nil)).Elem()
+}
+
+func (i ActionUserPropertiesArrayPropsBooleanItemsArgs) ToActionUserPropertiesArrayPropsBooleanItemsOutput() ActionUserPropertiesArrayPropsBooleanItemsOutput {
+	return i.ToActionUserPropertiesArrayPropsBooleanItemsOutputWithContext(context.Background())
+}
+
+func (i ActionUserPropertiesArrayPropsBooleanItemsArgs) ToActionUserPropertiesArrayPropsBooleanItemsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsBooleanItemsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsBooleanItemsOutput)
+}
+
+func (i ActionUserPropertiesArrayPropsBooleanItemsArgs) ToActionUserPropertiesArrayPropsBooleanItemsPtrOutput() ActionUserPropertiesArrayPropsBooleanItemsPtrOutput {
+	return i.ToActionUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(context.Background())
+}
+
+func (i ActionUserPropertiesArrayPropsBooleanItemsArgs) ToActionUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsBooleanItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsBooleanItemsOutput).ToActionUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx)
+}
+
+// ActionUserPropertiesArrayPropsBooleanItemsPtrInput is an input type that accepts ActionUserPropertiesArrayPropsBooleanItemsArgs, ActionUserPropertiesArrayPropsBooleanItemsPtr and ActionUserPropertiesArrayPropsBooleanItemsPtrOutput values.
+// You can construct a concrete instance of `ActionUserPropertiesArrayPropsBooleanItemsPtrInput` via:
+//
+//	        ActionUserPropertiesArrayPropsBooleanItemsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionUserPropertiesArrayPropsBooleanItemsPtrInput interface {
+	pulumi.Input
+
+	ToActionUserPropertiesArrayPropsBooleanItemsPtrOutput() ActionUserPropertiesArrayPropsBooleanItemsPtrOutput
+	ToActionUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(context.Context) ActionUserPropertiesArrayPropsBooleanItemsPtrOutput
+}
+
+type actionUserPropertiesArrayPropsBooleanItemsPtrType ActionUserPropertiesArrayPropsBooleanItemsArgs
+
+func ActionUserPropertiesArrayPropsBooleanItemsPtr(v *ActionUserPropertiesArrayPropsBooleanItemsArgs) ActionUserPropertiesArrayPropsBooleanItemsPtrInput {
+	return (*actionUserPropertiesArrayPropsBooleanItemsPtrType)(v)
+}
+
+func (*actionUserPropertiesArrayPropsBooleanItemsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionUserPropertiesArrayPropsBooleanItems)(nil)).Elem()
+}
+
+func (i *actionUserPropertiesArrayPropsBooleanItemsPtrType) ToActionUserPropertiesArrayPropsBooleanItemsPtrOutput() ActionUserPropertiesArrayPropsBooleanItemsPtrOutput {
+	return i.ToActionUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(context.Background())
+}
+
+func (i *actionUserPropertiesArrayPropsBooleanItemsPtrType) ToActionUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsBooleanItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsBooleanItemsPtrOutput)
+}
+
+type ActionUserPropertiesArrayPropsBooleanItemsOutput struct{ *pulumi.OutputState }
+
+func (ActionUserPropertiesArrayPropsBooleanItemsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUserPropertiesArrayPropsBooleanItems)(nil)).Elem()
+}
+
+func (o ActionUserPropertiesArrayPropsBooleanItemsOutput) ToActionUserPropertiesArrayPropsBooleanItemsOutput() ActionUserPropertiesArrayPropsBooleanItemsOutput {
+	return o
+}
+
+func (o ActionUserPropertiesArrayPropsBooleanItemsOutput) ToActionUserPropertiesArrayPropsBooleanItemsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsBooleanItemsOutput {
+	return o
+}
+
+func (o ActionUserPropertiesArrayPropsBooleanItemsOutput) ToActionUserPropertiesArrayPropsBooleanItemsPtrOutput() ActionUserPropertiesArrayPropsBooleanItemsPtrOutput {
+	return o.ToActionUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(context.Background())
+}
+
+func (o ActionUserPropertiesArrayPropsBooleanItemsOutput) ToActionUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsBooleanItemsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionUserPropertiesArrayPropsBooleanItems) *ActionUserPropertiesArrayPropsBooleanItems {
+		return &v
+	}).(ActionUserPropertiesArrayPropsBooleanItemsPtrOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsBooleanItemsOutput) Defaults() pulumi.BoolArrayOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayPropsBooleanItems) []bool { return v.Defaults }).(pulumi.BoolArrayOutput)
+}
+
+type ActionUserPropertiesArrayPropsBooleanItemsPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionUserPropertiesArrayPropsBooleanItemsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionUserPropertiesArrayPropsBooleanItems)(nil)).Elem()
+}
+
+func (o ActionUserPropertiesArrayPropsBooleanItemsPtrOutput) ToActionUserPropertiesArrayPropsBooleanItemsPtrOutput() ActionUserPropertiesArrayPropsBooleanItemsPtrOutput {
+	return o
+}
+
+func (o ActionUserPropertiesArrayPropsBooleanItemsPtrOutput) ToActionUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsBooleanItemsPtrOutput {
+	return o
+}
+
+func (o ActionUserPropertiesArrayPropsBooleanItemsPtrOutput) Elem() ActionUserPropertiesArrayPropsBooleanItemsOutput {
+	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsBooleanItems) ActionUserPropertiesArrayPropsBooleanItems {
+		if v != nil {
+			return *v
+		}
+		var ret ActionUserPropertiesArrayPropsBooleanItems
+		return ret
+	}).(ActionUserPropertiesArrayPropsBooleanItemsOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsBooleanItemsPtrOutput) Defaults() pulumi.BoolArrayOutput {
+	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsBooleanItems) []bool {
+		if v == nil {
+			return nil
+		}
+		return v.Defaults
+	}).(pulumi.BoolArrayOutput)
+}
+
+type ActionUserPropertiesArrayPropsNumberItems struct {
+	Defaults []float64 `pulumi:"defaults"`
+}
+
+// ActionUserPropertiesArrayPropsNumberItemsInput is an input type that accepts ActionUserPropertiesArrayPropsNumberItemsArgs and ActionUserPropertiesArrayPropsNumberItemsOutput values.
+// You can construct a concrete instance of `ActionUserPropertiesArrayPropsNumberItemsInput` via:
+//
+//	ActionUserPropertiesArrayPropsNumberItemsArgs{...}
+type ActionUserPropertiesArrayPropsNumberItemsInput interface {
+	pulumi.Input
+
+	ToActionUserPropertiesArrayPropsNumberItemsOutput() ActionUserPropertiesArrayPropsNumberItemsOutput
+	ToActionUserPropertiesArrayPropsNumberItemsOutputWithContext(context.Context) ActionUserPropertiesArrayPropsNumberItemsOutput
+}
+
+type ActionUserPropertiesArrayPropsNumberItemsArgs struct {
+	Defaults pulumi.Float64ArrayInput `pulumi:"defaults"`
+}
+
+func (ActionUserPropertiesArrayPropsNumberItemsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUserPropertiesArrayPropsNumberItems)(nil)).Elem()
+}
+
+func (i ActionUserPropertiesArrayPropsNumberItemsArgs) ToActionUserPropertiesArrayPropsNumberItemsOutput() ActionUserPropertiesArrayPropsNumberItemsOutput {
+	return i.ToActionUserPropertiesArrayPropsNumberItemsOutputWithContext(context.Background())
+}
+
+func (i ActionUserPropertiesArrayPropsNumberItemsArgs) ToActionUserPropertiesArrayPropsNumberItemsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsNumberItemsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsNumberItemsOutput)
+}
+
+func (i ActionUserPropertiesArrayPropsNumberItemsArgs) ToActionUserPropertiesArrayPropsNumberItemsPtrOutput() ActionUserPropertiesArrayPropsNumberItemsPtrOutput {
+	return i.ToActionUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(context.Background())
+}
+
+func (i ActionUserPropertiesArrayPropsNumberItemsArgs) ToActionUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsNumberItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsNumberItemsOutput).ToActionUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx)
+}
+
+// ActionUserPropertiesArrayPropsNumberItemsPtrInput is an input type that accepts ActionUserPropertiesArrayPropsNumberItemsArgs, ActionUserPropertiesArrayPropsNumberItemsPtr and ActionUserPropertiesArrayPropsNumberItemsPtrOutput values.
+// You can construct a concrete instance of `ActionUserPropertiesArrayPropsNumberItemsPtrInput` via:
+//
+//	        ActionUserPropertiesArrayPropsNumberItemsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionUserPropertiesArrayPropsNumberItemsPtrInput interface {
+	pulumi.Input
+
+	ToActionUserPropertiesArrayPropsNumberItemsPtrOutput() ActionUserPropertiesArrayPropsNumberItemsPtrOutput
+	ToActionUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(context.Context) ActionUserPropertiesArrayPropsNumberItemsPtrOutput
+}
+
+type actionUserPropertiesArrayPropsNumberItemsPtrType ActionUserPropertiesArrayPropsNumberItemsArgs
+
+func ActionUserPropertiesArrayPropsNumberItemsPtr(v *ActionUserPropertiesArrayPropsNumberItemsArgs) ActionUserPropertiesArrayPropsNumberItemsPtrInput {
+	return (*actionUserPropertiesArrayPropsNumberItemsPtrType)(v)
+}
+
+func (*actionUserPropertiesArrayPropsNumberItemsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionUserPropertiesArrayPropsNumberItems)(nil)).Elem()
+}
+
+func (i *actionUserPropertiesArrayPropsNumberItemsPtrType) ToActionUserPropertiesArrayPropsNumberItemsPtrOutput() ActionUserPropertiesArrayPropsNumberItemsPtrOutput {
+	return i.ToActionUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(context.Background())
+}
+
+func (i *actionUserPropertiesArrayPropsNumberItemsPtrType) ToActionUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsNumberItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsNumberItemsPtrOutput)
+}
+
+type ActionUserPropertiesArrayPropsNumberItemsOutput struct{ *pulumi.OutputState }
+
+func (ActionUserPropertiesArrayPropsNumberItemsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUserPropertiesArrayPropsNumberItems)(nil)).Elem()
+}
+
+func (o ActionUserPropertiesArrayPropsNumberItemsOutput) ToActionUserPropertiesArrayPropsNumberItemsOutput() ActionUserPropertiesArrayPropsNumberItemsOutput {
+	return o
+}
+
+func (o ActionUserPropertiesArrayPropsNumberItemsOutput) ToActionUserPropertiesArrayPropsNumberItemsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsNumberItemsOutput {
+	return o
+}
+
+func (o ActionUserPropertiesArrayPropsNumberItemsOutput) ToActionUserPropertiesArrayPropsNumberItemsPtrOutput() ActionUserPropertiesArrayPropsNumberItemsPtrOutput {
+	return o.ToActionUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(context.Background())
+}
+
+func (o ActionUserPropertiesArrayPropsNumberItemsOutput) ToActionUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsNumberItemsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionUserPropertiesArrayPropsNumberItems) *ActionUserPropertiesArrayPropsNumberItems {
+		return &v
+	}).(ActionUserPropertiesArrayPropsNumberItemsPtrOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsNumberItemsOutput) Defaults() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayPropsNumberItems) []float64 { return v.Defaults }).(pulumi.Float64ArrayOutput)
+}
+
+type ActionUserPropertiesArrayPropsNumberItemsPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionUserPropertiesArrayPropsNumberItemsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionUserPropertiesArrayPropsNumberItems)(nil)).Elem()
+}
+
+func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) ToActionUserPropertiesArrayPropsNumberItemsPtrOutput() ActionUserPropertiesArrayPropsNumberItemsPtrOutput {
+	return o
+}
+
+func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) ToActionUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsNumberItemsPtrOutput {
+	return o
+}
+
+func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) Elem() ActionUserPropertiesArrayPropsNumberItemsOutput {
+	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsNumberItems) ActionUserPropertiesArrayPropsNumberItems {
+		if v != nil {
+			return *v
+		}
+		var ret ActionUserPropertiesArrayPropsNumberItems
+		return ret
+	}).(ActionUserPropertiesArrayPropsNumberItemsOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) Defaults() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsNumberItems) []float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Defaults
+	}).(pulumi.Float64ArrayOutput)
+}
+
+type ActionUserPropertiesArrayPropsObjectItems struct {
+	Defaults []map[string]string `pulumi:"defaults"`
+}
+
+// ActionUserPropertiesArrayPropsObjectItemsInput is an input type that accepts ActionUserPropertiesArrayPropsObjectItemsArgs and ActionUserPropertiesArrayPropsObjectItemsOutput values.
+// You can construct a concrete instance of `ActionUserPropertiesArrayPropsObjectItemsInput` via:
+//
+//	ActionUserPropertiesArrayPropsObjectItemsArgs{...}
+type ActionUserPropertiesArrayPropsObjectItemsInput interface {
+	pulumi.Input
+
+	ToActionUserPropertiesArrayPropsObjectItemsOutput() ActionUserPropertiesArrayPropsObjectItemsOutput
+	ToActionUserPropertiesArrayPropsObjectItemsOutputWithContext(context.Context) ActionUserPropertiesArrayPropsObjectItemsOutput
+}
+
+type ActionUserPropertiesArrayPropsObjectItemsArgs struct {
+	Defaults pulumi.StringMapArrayInput `pulumi:"defaults"`
+}
+
+func (ActionUserPropertiesArrayPropsObjectItemsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUserPropertiesArrayPropsObjectItems)(nil)).Elem()
+}
+
+func (i ActionUserPropertiesArrayPropsObjectItemsArgs) ToActionUserPropertiesArrayPropsObjectItemsOutput() ActionUserPropertiesArrayPropsObjectItemsOutput {
+	return i.ToActionUserPropertiesArrayPropsObjectItemsOutputWithContext(context.Background())
+}
+
+func (i ActionUserPropertiesArrayPropsObjectItemsArgs) ToActionUserPropertiesArrayPropsObjectItemsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsObjectItemsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsObjectItemsOutput)
+}
+
+func (i ActionUserPropertiesArrayPropsObjectItemsArgs) ToActionUserPropertiesArrayPropsObjectItemsPtrOutput() ActionUserPropertiesArrayPropsObjectItemsPtrOutput {
+	return i.ToActionUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(context.Background())
+}
+
+func (i ActionUserPropertiesArrayPropsObjectItemsArgs) ToActionUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsObjectItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsObjectItemsOutput).ToActionUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx)
+}
+
+// ActionUserPropertiesArrayPropsObjectItemsPtrInput is an input type that accepts ActionUserPropertiesArrayPropsObjectItemsArgs, ActionUserPropertiesArrayPropsObjectItemsPtr and ActionUserPropertiesArrayPropsObjectItemsPtrOutput values.
+// You can construct a concrete instance of `ActionUserPropertiesArrayPropsObjectItemsPtrInput` via:
+//
+//	        ActionUserPropertiesArrayPropsObjectItemsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionUserPropertiesArrayPropsObjectItemsPtrInput interface {
+	pulumi.Input
+
+	ToActionUserPropertiesArrayPropsObjectItemsPtrOutput() ActionUserPropertiesArrayPropsObjectItemsPtrOutput
+	ToActionUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(context.Context) ActionUserPropertiesArrayPropsObjectItemsPtrOutput
+}
+
+type actionUserPropertiesArrayPropsObjectItemsPtrType ActionUserPropertiesArrayPropsObjectItemsArgs
+
+func ActionUserPropertiesArrayPropsObjectItemsPtr(v *ActionUserPropertiesArrayPropsObjectItemsArgs) ActionUserPropertiesArrayPropsObjectItemsPtrInput {
+	return (*actionUserPropertiesArrayPropsObjectItemsPtrType)(v)
+}
+
+func (*actionUserPropertiesArrayPropsObjectItemsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionUserPropertiesArrayPropsObjectItems)(nil)).Elem()
+}
+
+func (i *actionUserPropertiesArrayPropsObjectItemsPtrType) ToActionUserPropertiesArrayPropsObjectItemsPtrOutput() ActionUserPropertiesArrayPropsObjectItemsPtrOutput {
+	return i.ToActionUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(context.Background())
+}
+
+func (i *actionUserPropertiesArrayPropsObjectItemsPtrType) ToActionUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsObjectItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsObjectItemsPtrOutput)
+}
+
+type ActionUserPropertiesArrayPropsObjectItemsOutput struct{ *pulumi.OutputState }
+
+func (ActionUserPropertiesArrayPropsObjectItemsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUserPropertiesArrayPropsObjectItems)(nil)).Elem()
+}
+
+func (o ActionUserPropertiesArrayPropsObjectItemsOutput) ToActionUserPropertiesArrayPropsObjectItemsOutput() ActionUserPropertiesArrayPropsObjectItemsOutput {
+	return o
+}
+
+func (o ActionUserPropertiesArrayPropsObjectItemsOutput) ToActionUserPropertiesArrayPropsObjectItemsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsObjectItemsOutput {
+	return o
+}
+
+func (o ActionUserPropertiesArrayPropsObjectItemsOutput) ToActionUserPropertiesArrayPropsObjectItemsPtrOutput() ActionUserPropertiesArrayPropsObjectItemsPtrOutput {
+	return o.ToActionUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(context.Background())
+}
+
+func (o ActionUserPropertiesArrayPropsObjectItemsOutput) ToActionUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsObjectItemsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionUserPropertiesArrayPropsObjectItems) *ActionUserPropertiesArrayPropsObjectItems {
+		return &v
+	}).(ActionUserPropertiesArrayPropsObjectItemsPtrOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsObjectItemsOutput) Defaults() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayPropsObjectItems) []map[string]string { return v.Defaults }).(pulumi.StringMapArrayOutput)
+}
+
+type ActionUserPropertiesArrayPropsObjectItemsPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionUserPropertiesArrayPropsObjectItemsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionUserPropertiesArrayPropsObjectItems)(nil)).Elem()
+}
+
+func (o ActionUserPropertiesArrayPropsObjectItemsPtrOutput) ToActionUserPropertiesArrayPropsObjectItemsPtrOutput() ActionUserPropertiesArrayPropsObjectItemsPtrOutput {
+	return o
+}
+
+func (o ActionUserPropertiesArrayPropsObjectItemsPtrOutput) ToActionUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsObjectItemsPtrOutput {
+	return o
+}
+
+func (o ActionUserPropertiesArrayPropsObjectItemsPtrOutput) Elem() ActionUserPropertiesArrayPropsObjectItemsOutput {
+	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsObjectItems) ActionUserPropertiesArrayPropsObjectItems {
+		if v != nil {
+			return *v
+		}
+		var ret ActionUserPropertiesArrayPropsObjectItems
+		return ret
+	}).(ActionUserPropertiesArrayPropsObjectItemsOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsObjectItemsPtrOutput) Defaults() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsObjectItems) []map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Defaults
+	}).(pulumi.StringMapArrayOutput)
+}
+
+type ActionUserPropertiesArrayPropsStringItems struct {
+	Blueprint *string  `pulumi:"blueprint"`
+	Defaults  []string `pulumi:"defaults"`
+	Format    *string  `pulumi:"format"`
+}
+
+// ActionUserPropertiesArrayPropsStringItemsInput is an input type that accepts ActionUserPropertiesArrayPropsStringItemsArgs and ActionUserPropertiesArrayPropsStringItemsOutput values.
+// You can construct a concrete instance of `ActionUserPropertiesArrayPropsStringItemsInput` via:
+//
+//	ActionUserPropertiesArrayPropsStringItemsArgs{...}
+type ActionUserPropertiesArrayPropsStringItemsInput interface {
+	pulumi.Input
+
+	ToActionUserPropertiesArrayPropsStringItemsOutput() ActionUserPropertiesArrayPropsStringItemsOutput
+	ToActionUserPropertiesArrayPropsStringItemsOutputWithContext(context.Context) ActionUserPropertiesArrayPropsStringItemsOutput
+}
+
+type ActionUserPropertiesArrayPropsStringItemsArgs struct {
+	Blueprint pulumi.StringPtrInput   `pulumi:"blueprint"`
+	Defaults  pulumi.StringArrayInput `pulumi:"defaults"`
+	Format    pulumi.StringPtrInput   `pulumi:"format"`
+}
+
+func (ActionUserPropertiesArrayPropsStringItemsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUserPropertiesArrayPropsStringItems)(nil)).Elem()
+}
+
+func (i ActionUserPropertiesArrayPropsStringItemsArgs) ToActionUserPropertiesArrayPropsStringItemsOutput() ActionUserPropertiesArrayPropsStringItemsOutput {
+	return i.ToActionUserPropertiesArrayPropsStringItemsOutputWithContext(context.Background())
+}
+
+func (i ActionUserPropertiesArrayPropsStringItemsArgs) ToActionUserPropertiesArrayPropsStringItemsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsStringItemsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsStringItemsOutput)
+}
+
+func (i ActionUserPropertiesArrayPropsStringItemsArgs) ToActionUserPropertiesArrayPropsStringItemsPtrOutput() ActionUserPropertiesArrayPropsStringItemsPtrOutput {
+	return i.ToActionUserPropertiesArrayPropsStringItemsPtrOutputWithContext(context.Background())
+}
+
+func (i ActionUserPropertiesArrayPropsStringItemsArgs) ToActionUserPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsStringItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsStringItemsOutput).ToActionUserPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx)
+}
+
+// ActionUserPropertiesArrayPropsStringItemsPtrInput is an input type that accepts ActionUserPropertiesArrayPropsStringItemsArgs, ActionUserPropertiesArrayPropsStringItemsPtr and ActionUserPropertiesArrayPropsStringItemsPtrOutput values.
+// You can construct a concrete instance of `ActionUserPropertiesArrayPropsStringItemsPtrInput` via:
+//
+//	        ActionUserPropertiesArrayPropsStringItemsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionUserPropertiesArrayPropsStringItemsPtrInput interface {
+	pulumi.Input
+
+	ToActionUserPropertiesArrayPropsStringItemsPtrOutput() ActionUserPropertiesArrayPropsStringItemsPtrOutput
+	ToActionUserPropertiesArrayPropsStringItemsPtrOutputWithContext(context.Context) ActionUserPropertiesArrayPropsStringItemsPtrOutput
+}
+
+type actionUserPropertiesArrayPropsStringItemsPtrType ActionUserPropertiesArrayPropsStringItemsArgs
+
+func ActionUserPropertiesArrayPropsStringItemsPtr(v *ActionUserPropertiesArrayPropsStringItemsArgs) ActionUserPropertiesArrayPropsStringItemsPtrInput {
+	return (*actionUserPropertiesArrayPropsStringItemsPtrType)(v)
+}
+
+func (*actionUserPropertiesArrayPropsStringItemsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionUserPropertiesArrayPropsStringItems)(nil)).Elem()
+}
+
+func (i *actionUserPropertiesArrayPropsStringItemsPtrType) ToActionUserPropertiesArrayPropsStringItemsPtrOutput() ActionUserPropertiesArrayPropsStringItemsPtrOutput {
+	return i.ToActionUserPropertiesArrayPropsStringItemsPtrOutputWithContext(context.Background())
+}
+
+func (i *actionUserPropertiesArrayPropsStringItemsPtrType) ToActionUserPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsStringItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsStringItemsPtrOutput)
+}
+
+type ActionUserPropertiesArrayPropsStringItemsOutput struct{ *pulumi.OutputState }
+
+func (ActionUserPropertiesArrayPropsStringItemsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUserPropertiesArrayPropsStringItems)(nil)).Elem()
+}
+
+func (o ActionUserPropertiesArrayPropsStringItemsOutput) ToActionUserPropertiesArrayPropsStringItemsOutput() ActionUserPropertiesArrayPropsStringItemsOutput {
+	return o
+}
+
+func (o ActionUserPropertiesArrayPropsStringItemsOutput) ToActionUserPropertiesArrayPropsStringItemsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsStringItemsOutput {
+	return o
+}
+
+func (o ActionUserPropertiesArrayPropsStringItemsOutput) ToActionUserPropertiesArrayPropsStringItemsPtrOutput() ActionUserPropertiesArrayPropsStringItemsPtrOutput {
+	return o.ToActionUserPropertiesArrayPropsStringItemsPtrOutputWithContext(context.Background())
+}
+
+func (o ActionUserPropertiesArrayPropsStringItemsOutput) ToActionUserPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsStringItemsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionUserPropertiesArrayPropsStringItems) *ActionUserPropertiesArrayPropsStringItems {
+		return &v
+	}).(ActionUserPropertiesArrayPropsStringItemsPtrOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsStringItemsOutput) Blueprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayPropsStringItems) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsStringItemsOutput) Defaults() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayPropsStringItems) []string { return v.Defaults }).(pulumi.StringArrayOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsStringItemsOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayPropsStringItems) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+type ActionUserPropertiesArrayPropsStringItemsPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionUserPropertiesArrayPropsStringItemsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionUserPropertiesArrayPropsStringItems)(nil)).Elem()
+}
+
+func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) ToActionUserPropertiesArrayPropsStringItemsPtrOutput() ActionUserPropertiesArrayPropsStringItemsPtrOutput {
+	return o
+}
+
+func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) ToActionUserPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsStringItemsPtrOutput {
+	return o
+}
+
+func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Elem() ActionUserPropertiesArrayPropsStringItemsOutput {
+	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsStringItems) ActionUserPropertiesArrayPropsStringItems {
+		if v != nil {
+			return *v
+		}
+		var ret ActionUserPropertiesArrayPropsStringItems
+		return ret
+	}).(ActionUserPropertiesArrayPropsStringItemsOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Blueprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsStringItems) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Blueprint
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Defaults() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsStringItems) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Defaults
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsStringItems) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Format
+	}).(pulumi.StringPtrOutput)
+}
+
+type ActionUserPropertiesBooleanProps struct {
+	Default     *bool   `pulumi:"default"`
+	Description *string `pulumi:"description"`
+	Icon        *string `pulumi:"icon"`
+	Required    *bool   `pulumi:"required"`
+	Title       *string `pulumi:"title"`
+}
+
+// ActionUserPropertiesBooleanPropsInput is an input type that accepts ActionUserPropertiesBooleanPropsArgs and ActionUserPropertiesBooleanPropsOutput values.
+// You can construct a concrete instance of `ActionUserPropertiesBooleanPropsInput` via:
+//
+//	ActionUserPropertiesBooleanPropsArgs{...}
+type ActionUserPropertiesBooleanPropsInput interface {
+	pulumi.Input
+
+	ToActionUserPropertiesBooleanPropsOutput() ActionUserPropertiesBooleanPropsOutput
+	ToActionUserPropertiesBooleanPropsOutputWithContext(context.Context) ActionUserPropertiesBooleanPropsOutput
+}
+
+type ActionUserPropertiesBooleanPropsArgs struct {
+	Default     pulumi.BoolPtrInput   `pulumi:"default"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Icon        pulumi.StringPtrInput `pulumi:"icon"`
+	Required    pulumi.BoolPtrInput   `pulumi:"required"`
+	Title       pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (ActionUserPropertiesBooleanPropsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUserPropertiesBooleanProps)(nil)).Elem()
+}
+
+func (i ActionUserPropertiesBooleanPropsArgs) ToActionUserPropertiesBooleanPropsOutput() ActionUserPropertiesBooleanPropsOutput {
+	return i.ToActionUserPropertiesBooleanPropsOutputWithContext(context.Background())
+}
+
+func (i ActionUserPropertiesBooleanPropsArgs) ToActionUserPropertiesBooleanPropsOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesBooleanPropsOutput)
+}
+
+// ActionUserPropertiesBooleanPropsMapInput is an input type that accepts ActionUserPropertiesBooleanPropsMap and ActionUserPropertiesBooleanPropsMapOutput values.
+// You can construct a concrete instance of `ActionUserPropertiesBooleanPropsMapInput` via:
+//
+//	ActionUserPropertiesBooleanPropsMap{ "key": ActionUserPropertiesBooleanPropsArgs{...} }
+type ActionUserPropertiesBooleanPropsMapInput interface {
+	pulumi.Input
+
+	ToActionUserPropertiesBooleanPropsMapOutput() ActionUserPropertiesBooleanPropsMapOutput
+	ToActionUserPropertiesBooleanPropsMapOutputWithContext(context.Context) ActionUserPropertiesBooleanPropsMapOutput
+}
+
+type ActionUserPropertiesBooleanPropsMap map[string]ActionUserPropertiesBooleanPropsInput
+
+func (ActionUserPropertiesBooleanPropsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActionUserPropertiesBooleanProps)(nil)).Elem()
+}
+
+func (i ActionUserPropertiesBooleanPropsMap) ToActionUserPropertiesBooleanPropsMapOutput() ActionUserPropertiesBooleanPropsMapOutput {
+	return i.ToActionUserPropertiesBooleanPropsMapOutputWithContext(context.Background())
+}
+
+func (i ActionUserPropertiesBooleanPropsMap) ToActionUserPropertiesBooleanPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesBooleanPropsMapOutput)
+}
+
+type ActionUserPropertiesBooleanPropsOutput struct{ *pulumi.OutputState }
+
+func (ActionUserPropertiesBooleanPropsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUserPropertiesBooleanProps)(nil)).Elem()
+}
+
+func (o ActionUserPropertiesBooleanPropsOutput) ToActionUserPropertiesBooleanPropsOutput() ActionUserPropertiesBooleanPropsOutput {
+	return o
+}
+
+func (o ActionUserPropertiesBooleanPropsOutput) ToActionUserPropertiesBooleanPropsOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsOutput {
+	return o
+}
+
+func (o ActionUserPropertiesBooleanPropsOutput) Default() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *bool { return v.Default }).(pulumi.BoolPtrOutput)
+}
+
+func (o ActionUserPropertiesBooleanPropsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesBooleanPropsOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesBooleanPropsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+func (o ActionUserPropertiesBooleanPropsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type ActionUserPropertiesBooleanPropsMapOutput struct{ *pulumi.OutputState }
+
+func (ActionUserPropertiesBooleanPropsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActionUserPropertiesBooleanProps)(nil)).Elem()
+}
+
+func (o ActionUserPropertiesBooleanPropsMapOutput) ToActionUserPropertiesBooleanPropsMapOutput() ActionUserPropertiesBooleanPropsMapOutput {
+	return o
+}
+
+func (o ActionUserPropertiesBooleanPropsMapOutput) ToActionUserPropertiesBooleanPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsMapOutput {
+	return o
+}
+
+func (o ActionUserPropertiesBooleanPropsMapOutput) MapIndex(k pulumi.StringInput) ActionUserPropertiesBooleanPropsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ActionUserPropertiesBooleanProps {
+		return vs[0].(map[string]ActionUserPropertiesBooleanProps)[vs[1].(string)]
+	}).(ActionUserPropertiesBooleanPropsOutput)
+}
+
+type ActionUserPropertiesNumberProps struct {
+	Default     *float64  `pulumi:"default"`
+	Description *string   `pulumi:"description"`
+	Enums       []float64 `pulumi:"enums"`
+	Icon        *string   `pulumi:"icon"`
+	Maximum     *float64  `pulumi:"maximum"`
+	Minimum     *float64  `pulumi:"minimum"`
+	Required    *bool     `pulumi:"required"`
+	Title       *string   `pulumi:"title"`
+}
+
+// ActionUserPropertiesNumberPropsInput is an input type that accepts ActionUserPropertiesNumberPropsArgs and ActionUserPropertiesNumberPropsOutput values.
+// You can construct a concrete instance of `ActionUserPropertiesNumberPropsInput` via:
+//
+//	ActionUserPropertiesNumberPropsArgs{...}
+type ActionUserPropertiesNumberPropsInput interface {
+	pulumi.Input
+
+	ToActionUserPropertiesNumberPropsOutput() ActionUserPropertiesNumberPropsOutput
+	ToActionUserPropertiesNumberPropsOutputWithContext(context.Context) ActionUserPropertiesNumberPropsOutput
+}
+
+type ActionUserPropertiesNumberPropsArgs struct {
+	Default     pulumi.Float64PtrInput   `pulumi:"default"`
+	Description pulumi.StringPtrInput    `pulumi:"description"`
+	Enums       pulumi.Float64ArrayInput `pulumi:"enums"`
+	Icon        pulumi.StringPtrInput    `pulumi:"icon"`
+	Maximum     pulumi.Float64PtrInput   `pulumi:"maximum"`
+	Minimum     pulumi.Float64PtrInput   `pulumi:"minimum"`
+	Required    pulumi.BoolPtrInput      `pulumi:"required"`
+	Title       pulumi.StringPtrInput    `pulumi:"title"`
+}
+
+func (ActionUserPropertiesNumberPropsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUserPropertiesNumberProps)(nil)).Elem()
+}
+
+func (i ActionUserPropertiesNumberPropsArgs) ToActionUserPropertiesNumberPropsOutput() ActionUserPropertiesNumberPropsOutput {
+	return i.ToActionUserPropertiesNumberPropsOutputWithContext(context.Background())
+}
+
+func (i ActionUserPropertiesNumberPropsArgs) ToActionUserPropertiesNumberPropsOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesNumberPropsOutput)
+}
+
+// ActionUserPropertiesNumberPropsMapInput is an input type that accepts ActionUserPropertiesNumberPropsMap and ActionUserPropertiesNumberPropsMapOutput values.
+// You can construct a concrete instance of `ActionUserPropertiesNumberPropsMapInput` via:
+//
+//	ActionUserPropertiesNumberPropsMap{ "key": ActionUserPropertiesNumberPropsArgs{...} }
+type ActionUserPropertiesNumberPropsMapInput interface {
+	pulumi.Input
+
+	ToActionUserPropertiesNumberPropsMapOutput() ActionUserPropertiesNumberPropsMapOutput
+	ToActionUserPropertiesNumberPropsMapOutputWithContext(context.Context) ActionUserPropertiesNumberPropsMapOutput
+}
+
+type ActionUserPropertiesNumberPropsMap map[string]ActionUserPropertiesNumberPropsInput
+
+func (ActionUserPropertiesNumberPropsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActionUserPropertiesNumberProps)(nil)).Elem()
+}
+
+func (i ActionUserPropertiesNumberPropsMap) ToActionUserPropertiesNumberPropsMapOutput() ActionUserPropertiesNumberPropsMapOutput {
+	return i.ToActionUserPropertiesNumberPropsMapOutputWithContext(context.Background())
+}
+
+func (i ActionUserPropertiesNumberPropsMap) ToActionUserPropertiesNumberPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesNumberPropsMapOutput)
+}
+
+type ActionUserPropertiesNumberPropsOutput struct{ *pulumi.OutputState }
+
+func (ActionUserPropertiesNumberPropsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUserPropertiesNumberProps)(nil)).Elem()
+}
+
+func (o ActionUserPropertiesNumberPropsOutput) ToActionUserPropertiesNumberPropsOutput() ActionUserPropertiesNumberPropsOutput {
+	return o
+}
+
+func (o ActionUserPropertiesNumberPropsOutput) ToActionUserPropertiesNumberPropsOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsOutput {
+	return o
+}
+
+func (o ActionUserPropertiesNumberPropsOutput) Default() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *float64 { return v.Default }).(pulumi.Float64PtrOutput)
+}
+
+func (o ActionUserPropertiesNumberPropsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesNumberPropsOutput) Enums() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v ActionUserPropertiesNumberProps) []float64 { return v.Enums }).(pulumi.Float64ArrayOutput)
+}
+
+func (o ActionUserPropertiesNumberPropsOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesNumberPropsOutput) Maximum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *float64 { return v.Maximum }).(pulumi.Float64PtrOutput)
+}
+
+func (o ActionUserPropertiesNumberPropsOutput) Minimum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *float64 { return v.Minimum }).(pulumi.Float64PtrOutput)
+}
+
+func (o ActionUserPropertiesNumberPropsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+func (o ActionUserPropertiesNumberPropsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type ActionUserPropertiesNumberPropsMapOutput struct{ *pulumi.OutputState }
+
+func (ActionUserPropertiesNumberPropsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActionUserPropertiesNumberProps)(nil)).Elem()
+}
+
+func (o ActionUserPropertiesNumberPropsMapOutput) ToActionUserPropertiesNumberPropsMapOutput() ActionUserPropertiesNumberPropsMapOutput {
+	return o
+}
+
+func (o ActionUserPropertiesNumberPropsMapOutput) ToActionUserPropertiesNumberPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsMapOutput {
+	return o
+}
+
+func (o ActionUserPropertiesNumberPropsMapOutput) MapIndex(k pulumi.StringInput) ActionUserPropertiesNumberPropsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ActionUserPropertiesNumberProps {
+		return vs[0].(map[string]ActionUserPropertiesNumberProps)[vs[1].(string)]
+	}).(ActionUserPropertiesNumberPropsOutput)
+}
+
+type ActionUserPropertiesObjectProps struct {
+	Default     *string `pulumi:"default"`
+	Description *string `pulumi:"description"`
+	Icon        *string `pulumi:"icon"`
+	Required    *bool   `pulumi:"required"`
+	Title       *string `pulumi:"title"`
+}
+
+// ActionUserPropertiesObjectPropsInput is an input type that accepts ActionUserPropertiesObjectPropsArgs and ActionUserPropertiesObjectPropsOutput values.
+// You can construct a concrete instance of `ActionUserPropertiesObjectPropsInput` via:
+//
+//	ActionUserPropertiesObjectPropsArgs{...}
+type ActionUserPropertiesObjectPropsInput interface {
+	pulumi.Input
+
+	ToActionUserPropertiesObjectPropsOutput() ActionUserPropertiesObjectPropsOutput
+	ToActionUserPropertiesObjectPropsOutputWithContext(context.Context) ActionUserPropertiesObjectPropsOutput
+}
+
+type ActionUserPropertiesObjectPropsArgs struct {
+	Default     pulumi.StringPtrInput `pulumi:"default"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Icon        pulumi.StringPtrInput `pulumi:"icon"`
+	Required    pulumi.BoolPtrInput   `pulumi:"required"`
+	Title       pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (ActionUserPropertiesObjectPropsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUserPropertiesObjectProps)(nil)).Elem()
+}
+
+func (i ActionUserPropertiesObjectPropsArgs) ToActionUserPropertiesObjectPropsOutput() ActionUserPropertiesObjectPropsOutput {
+	return i.ToActionUserPropertiesObjectPropsOutputWithContext(context.Background())
+}
+
+func (i ActionUserPropertiesObjectPropsArgs) ToActionUserPropertiesObjectPropsOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesObjectPropsOutput)
+}
+
+// ActionUserPropertiesObjectPropsMapInput is an input type that accepts ActionUserPropertiesObjectPropsMap and ActionUserPropertiesObjectPropsMapOutput values.
+// You can construct a concrete instance of `ActionUserPropertiesObjectPropsMapInput` via:
+//
+//	ActionUserPropertiesObjectPropsMap{ "key": ActionUserPropertiesObjectPropsArgs{...} }
+type ActionUserPropertiesObjectPropsMapInput interface {
+	pulumi.Input
+
+	ToActionUserPropertiesObjectPropsMapOutput() ActionUserPropertiesObjectPropsMapOutput
+	ToActionUserPropertiesObjectPropsMapOutputWithContext(context.Context) ActionUserPropertiesObjectPropsMapOutput
+}
+
+type ActionUserPropertiesObjectPropsMap map[string]ActionUserPropertiesObjectPropsInput
+
+func (ActionUserPropertiesObjectPropsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActionUserPropertiesObjectProps)(nil)).Elem()
+}
+
+func (i ActionUserPropertiesObjectPropsMap) ToActionUserPropertiesObjectPropsMapOutput() ActionUserPropertiesObjectPropsMapOutput {
+	return i.ToActionUserPropertiesObjectPropsMapOutputWithContext(context.Background())
+}
+
+func (i ActionUserPropertiesObjectPropsMap) ToActionUserPropertiesObjectPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesObjectPropsMapOutput)
+}
+
+type ActionUserPropertiesObjectPropsOutput struct{ *pulumi.OutputState }
+
+func (ActionUserPropertiesObjectPropsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUserPropertiesObjectProps)(nil)).Elem()
+}
+
+func (o ActionUserPropertiesObjectPropsOutput) ToActionUserPropertiesObjectPropsOutput() ActionUserPropertiesObjectPropsOutput {
+	return o
+}
+
+func (o ActionUserPropertiesObjectPropsOutput) ToActionUserPropertiesObjectPropsOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsOutput {
+	return o
+}
+
+func (o ActionUserPropertiesObjectPropsOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.Default }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesObjectPropsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesObjectPropsOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesObjectPropsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+func (o ActionUserPropertiesObjectPropsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type ActionUserPropertiesObjectPropsMapOutput struct{ *pulumi.OutputState }
+
+func (ActionUserPropertiesObjectPropsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActionUserPropertiesObjectProps)(nil)).Elem()
+}
+
+func (o ActionUserPropertiesObjectPropsMapOutput) ToActionUserPropertiesObjectPropsMapOutput() ActionUserPropertiesObjectPropsMapOutput {
+	return o
+}
+
+func (o ActionUserPropertiesObjectPropsMapOutput) ToActionUserPropertiesObjectPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsMapOutput {
+	return o
+}
+
+func (o ActionUserPropertiesObjectPropsMapOutput) MapIndex(k pulumi.StringInput) ActionUserPropertiesObjectPropsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ActionUserPropertiesObjectProps {
+		return vs[0].(map[string]ActionUserPropertiesObjectProps)[vs[1].(string)]
+	}).(ActionUserPropertiesObjectPropsOutput)
+}
+
+type ActionUserPropertiesStringProps struct {
+	Blueprint   *string  `pulumi:"blueprint"`
+	Default     *string  `pulumi:"default"`
+	Description *string  `pulumi:"description"`
+	Enums       []string `pulumi:"enums"`
+	Format      *string  `pulumi:"format"`
+	Icon        *string  `pulumi:"icon"`
+	MaxLength   *int     `pulumi:"maxLength"`
+	MinLength   *int     `pulumi:"minLength"`
+	Pattern     *string  `pulumi:"pattern"`
+	Required    *bool    `pulumi:"required"`
+	Title       *string  `pulumi:"title"`
+}
+
+// ActionUserPropertiesStringPropsInput is an input type that accepts ActionUserPropertiesStringPropsArgs and ActionUserPropertiesStringPropsOutput values.
+// You can construct a concrete instance of `ActionUserPropertiesStringPropsInput` via:
+//
+//	ActionUserPropertiesStringPropsArgs{...}
+type ActionUserPropertiesStringPropsInput interface {
+	pulumi.Input
+
+	ToActionUserPropertiesStringPropsOutput() ActionUserPropertiesStringPropsOutput
+	ToActionUserPropertiesStringPropsOutputWithContext(context.Context) ActionUserPropertiesStringPropsOutput
+}
+
+type ActionUserPropertiesStringPropsArgs struct {
+	Blueprint   pulumi.StringPtrInput   `pulumi:"blueprint"`
+	Default     pulumi.StringPtrInput   `pulumi:"default"`
+	Description pulumi.StringPtrInput   `pulumi:"description"`
+	Enums       pulumi.StringArrayInput `pulumi:"enums"`
+	Format      pulumi.StringPtrInput   `pulumi:"format"`
+	Icon        pulumi.StringPtrInput   `pulumi:"icon"`
+	MaxLength   pulumi.IntPtrInput      `pulumi:"maxLength"`
+	MinLength   pulumi.IntPtrInput      `pulumi:"minLength"`
+	Pattern     pulumi.StringPtrInput   `pulumi:"pattern"`
+	Required    pulumi.BoolPtrInput     `pulumi:"required"`
+	Title       pulumi.StringPtrInput   `pulumi:"title"`
+}
+
+func (ActionUserPropertiesStringPropsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUserPropertiesStringProps)(nil)).Elem()
+}
+
+func (i ActionUserPropertiesStringPropsArgs) ToActionUserPropertiesStringPropsOutput() ActionUserPropertiesStringPropsOutput {
+	return i.ToActionUserPropertiesStringPropsOutputWithContext(context.Background())
+}
+
+func (i ActionUserPropertiesStringPropsArgs) ToActionUserPropertiesStringPropsOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesStringPropsOutput)
+}
+
+// ActionUserPropertiesStringPropsMapInput is an input type that accepts ActionUserPropertiesStringPropsMap and ActionUserPropertiesStringPropsMapOutput values.
+// You can construct a concrete instance of `ActionUserPropertiesStringPropsMapInput` via:
+//
+//	ActionUserPropertiesStringPropsMap{ "key": ActionUserPropertiesStringPropsArgs{...} }
+type ActionUserPropertiesStringPropsMapInput interface {
+	pulumi.Input
+
+	ToActionUserPropertiesStringPropsMapOutput() ActionUserPropertiesStringPropsMapOutput
+	ToActionUserPropertiesStringPropsMapOutputWithContext(context.Context) ActionUserPropertiesStringPropsMapOutput
+}
+
+type ActionUserPropertiesStringPropsMap map[string]ActionUserPropertiesStringPropsInput
+
+func (ActionUserPropertiesStringPropsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActionUserPropertiesStringProps)(nil)).Elem()
+}
+
+func (i ActionUserPropertiesStringPropsMap) ToActionUserPropertiesStringPropsMapOutput() ActionUserPropertiesStringPropsMapOutput {
+	return i.ToActionUserPropertiesStringPropsMapOutputWithContext(context.Background())
+}
+
+func (i ActionUserPropertiesStringPropsMap) ToActionUserPropertiesStringPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesStringPropsMapOutput)
+}
+
+type ActionUserPropertiesStringPropsOutput struct{ *pulumi.OutputState }
+
+func (ActionUserPropertiesStringPropsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUserPropertiesStringProps)(nil)).Elem()
+}
+
+func (o ActionUserPropertiesStringPropsOutput) ToActionUserPropertiesStringPropsOutput() ActionUserPropertiesStringPropsOutput {
+	return o
+}
+
+func (o ActionUserPropertiesStringPropsOutput) ToActionUserPropertiesStringPropsOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsOutput {
+	return o
+}
+
+func (o ActionUserPropertiesStringPropsOutput) Blueprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesStringPropsOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Default }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesStringPropsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesStringPropsOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionUserPropertiesStringProps) []string { return v.Enums }).(pulumi.StringArrayOutput)
+}
+
+func (o ActionUserPropertiesStringPropsOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesStringPropsOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesStringPropsOutput) MaxLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesStringProps) *int { return v.MaxLength }).(pulumi.IntPtrOutput)
+}
+
+func (o ActionUserPropertiesStringPropsOutput) MinLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesStringProps) *int { return v.MinLength }).(pulumi.IntPtrOutput)
+}
+
+func (o ActionUserPropertiesStringPropsOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Pattern }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesStringPropsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesStringProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+func (o ActionUserPropertiesStringPropsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type ActionUserPropertiesStringPropsMapOutput struct{ *pulumi.OutputState }
+
+func (ActionUserPropertiesStringPropsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActionUserPropertiesStringProps)(nil)).Elem()
+}
+
+func (o ActionUserPropertiesStringPropsMapOutput) ToActionUserPropertiesStringPropsMapOutput() ActionUserPropertiesStringPropsMapOutput {
+	return o
+}
+
+func (o ActionUserPropertiesStringPropsMapOutput) ToActionUserPropertiesStringPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsMapOutput {
+	return o
+}
+
+func (o ActionUserPropertiesStringPropsMapOutput) MapIndex(k pulumi.StringInput) ActionUserPropertiesStringPropsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ActionUserPropertiesStringProps {
+		return vs[0].(map[string]ActionUserPropertiesStringProps)[vs[1].(string)]
+	}).(ActionUserPropertiesStringPropsOutput)
+}
+
+type ActionWebhookMethod struct {
+	Agent *bool  `pulumi:"agent"`
+	Url   string `pulumi:"url"`
+}
+
+// ActionWebhookMethodInput is an input type that accepts ActionWebhookMethodArgs and ActionWebhookMethodOutput values.
+// You can construct a concrete instance of `ActionWebhookMethodInput` via:
+//
+//	ActionWebhookMethodArgs{...}
+type ActionWebhookMethodInput interface {
+	pulumi.Input
+
+	ToActionWebhookMethodOutput() ActionWebhookMethodOutput
+	ToActionWebhookMethodOutputWithContext(context.Context) ActionWebhookMethodOutput
+}
+
+type ActionWebhookMethodArgs struct {
+	Agent pulumi.BoolPtrInput `pulumi:"agent"`
+	Url   pulumi.StringInput  `pulumi:"url"`
+}
+
+func (ActionWebhookMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionWebhookMethod)(nil)).Elem()
+}
+
+func (i ActionWebhookMethodArgs) ToActionWebhookMethodOutput() ActionWebhookMethodOutput {
+	return i.ToActionWebhookMethodOutputWithContext(context.Background())
+}
+
+func (i ActionWebhookMethodArgs) ToActionWebhookMethodOutputWithContext(ctx context.Context) ActionWebhookMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionWebhookMethodOutput)
+}
+
+func (i ActionWebhookMethodArgs) ToActionWebhookMethodPtrOutput() ActionWebhookMethodPtrOutput {
+	return i.ToActionWebhookMethodPtrOutputWithContext(context.Background())
+}
+
+func (i ActionWebhookMethodArgs) ToActionWebhookMethodPtrOutputWithContext(ctx context.Context) ActionWebhookMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionWebhookMethodOutput).ToActionWebhookMethodPtrOutputWithContext(ctx)
+}
+
+// ActionWebhookMethodPtrInput is an input type that accepts ActionWebhookMethodArgs, ActionWebhookMethodPtr and ActionWebhookMethodPtrOutput values.
+// You can construct a concrete instance of `ActionWebhookMethodPtrInput` via:
+//
+//	        ActionWebhookMethodArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionWebhookMethodPtrInput interface {
+	pulumi.Input
+
+	ToActionWebhookMethodPtrOutput() ActionWebhookMethodPtrOutput
+	ToActionWebhookMethodPtrOutputWithContext(context.Context) ActionWebhookMethodPtrOutput
+}
+
+type actionWebhookMethodPtrType ActionWebhookMethodArgs
+
+func ActionWebhookMethodPtr(v *ActionWebhookMethodArgs) ActionWebhookMethodPtrInput {
+	return (*actionWebhookMethodPtrType)(v)
+}
+
+func (*actionWebhookMethodPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionWebhookMethod)(nil)).Elem()
+}
+
+func (i *actionWebhookMethodPtrType) ToActionWebhookMethodPtrOutput() ActionWebhookMethodPtrOutput {
+	return i.ToActionWebhookMethodPtrOutputWithContext(context.Background())
+}
+
+func (i *actionWebhookMethodPtrType) ToActionWebhookMethodPtrOutputWithContext(ctx context.Context) ActionWebhookMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionWebhookMethodPtrOutput)
+}
+
+type ActionWebhookMethodOutput struct{ *pulumi.OutputState }
+
+func (ActionWebhookMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionWebhookMethod)(nil)).Elem()
+}
+
+func (o ActionWebhookMethodOutput) ToActionWebhookMethodOutput() ActionWebhookMethodOutput {
+	return o
+}
+
+func (o ActionWebhookMethodOutput) ToActionWebhookMethodOutputWithContext(ctx context.Context) ActionWebhookMethodOutput {
+	return o
+}
+
+func (o ActionWebhookMethodOutput) ToActionWebhookMethodPtrOutput() ActionWebhookMethodPtrOutput {
+	return o.ToActionWebhookMethodPtrOutputWithContext(context.Background())
+}
+
+func (o ActionWebhookMethodOutput) ToActionWebhookMethodPtrOutputWithContext(ctx context.Context) ActionWebhookMethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionWebhookMethod) *ActionWebhookMethod {
+		return &v
+	}).(ActionWebhookMethodPtrOutput)
+}
+
+func (o ActionWebhookMethodOutput) Agent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionWebhookMethod) *bool { return v.Agent }).(pulumi.BoolPtrOutput)
+}
+
+func (o ActionWebhookMethodOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionWebhookMethod) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type ActionWebhookMethodPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionWebhookMethodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionWebhookMethod)(nil)).Elem()
+}
+
+func (o ActionWebhookMethodPtrOutput) ToActionWebhookMethodPtrOutput() ActionWebhookMethodPtrOutput {
+	return o
+}
+
+func (o ActionWebhookMethodPtrOutput) ToActionWebhookMethodPtrOutputWithContext(ctx context.Context) ActionWebhookMethodPtrOutput {
+	return o
+}
+
+func (o ActionWebhookMethodPtrOutput) Elem() ActionWebhookMethodOutput {
+	return o.ApplyT(func(v *ActionWebhookMethod) ActionWebhookMethod {
+		if v != nil {
+			return *v
+		}
+		var ret ActionWebhookMethod
+		return ret
+	}).(ActionWebhookMethodOutput)
+}
+
+func (o ActionWebhookMethodPtrOutput) Agent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ActionWebhookMethod) *bool {
 		if v == nil {
 			return nil
 		}
@@ -734,473 +2311,1949 @@ func (o BlueprintChangelogDestinationPtrOutput) Agent() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o BlueprintChangelogDestinationPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BlueprintChangelogDestination) *string {
+func (o ActionWebhookMethodPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionWebhookMethod) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Type
+		return &v.Url
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o BlueprintChangelogDestinationPtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BlueprintChangelogDestination) *string {
+type BlueprintCalculationProperties struct {
+	Calculation string            `pulumi:"calculation"`
+	Colorized   *bool             `pulumi:"colorized"`
+	Colors      map[string]string `pulumi:"colors"`
+	Description *string           `pulumi:"description"`
+	Format      *string           `pulumi:"format"`
+	Icon        *string           `pulumi:"icon"`
+	Title       *string           `pulumi:"title"`
+	Type        string            `pulumi:"type"`
+}
+
+// BlueprintCalculationPropertiesInput is an input type that accepts BlueprintCalculationPropertiesArgs and BlueprintCalculationPropertiesOutput values.
+// You can construct a concrete instance of `BlueprintCalculationPropertiesInput` via:
+//
+//	BlueprintCalculationPropertiesArgs{...}
+type BlueprintCalculationPropertiesInput interface {
+	pulumi.Input
+
+	ToBlueprintCalculationPropertiesOutput() BlueprintCalculationPropertiesOutput
+	ToBlueprintCalculationPropertiesOutputWithContext(context.Context) BlueprintCalculationPropertiesOutput
+}
+
+type BlueprintCalculationPropertiesArgs struct {
+	Calculation pulumi.StringInput    `pulumi:"calculation"`
+	Colorized   pulumi.BoolPtrInput   `pulumi:"colorized"`
+	Colors      pulumi.StringMapInput `pulumi:"colors"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Format      pulumi.StringPtrInput `pulumi:"format"`
+	Icon        pulumi.StringPtrInput `pulumi:"icon"`
+	Title       pulumi.StringPtrInput `pulumi:"title"`
+	Type        pulumi.StringInput    `pulumi:"type"`
+}
+
+func (BlueprintCalculationPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintCalculationProperties)(nil)).Elem()
+}
+
+func (i BlueprintCalculationPropertiesArgs) ToBlueprintCalculationPropertiesOutput() BlueprintCalculationPropertiesOutput {
+	return i.ToBlueprintCalculationPropertiesOutputWithContext(context.Background())
+}
+
+func (i BlueprintCalculationPropertiesArgs) ToBlueprintCalculationPropertiesOutputWithContext(ctx context.Context) BlueprintCalculationPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintCalculationPropertiesOutput)
+}
+
+// BlueprintCalculationPropertiesMapInput is an input type that accepts BlueprintCalculationPropertiesMap and BlueprintCalculationPropertiesMapOutput values.
+// You can construct a concrete instance of `BlueprintCalculationPropertiesMapInput` via:
+//
+//	BlueprintCalculationPropertiesMap{ "key": BlueprintCalculationPropertiesArgs{...} }
+type BlueprintCalculationPropertiesMapInput interface {
+	pulumi.Input
+
+	ToBlueprintCalculationPropertiesMapOutput() BlueprintCalculationPropertiesMapOutput
+	ToBlueprintCalculationPropertiesMapOutputWithContext(context.Context) BlueprintCalculationPropertiesMapOutput
+}
+
+type BlueprintCalculationPropertiesMap map[string]BlueprintCalculationPropertiesInput
+
+func (BlueprintCalculationPropertiesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BlueprintCalculationProperties)(nil)).Elem()
+}
+
+func (i BlueprintCalculationPropertiesMap) ToBlueprintCalculationPropertiesMapOutput() BlueprintCalculationPropertiesMapOutput {
+	return i.ToBlueprintCalculationPropertiesMapOutputWithContext(context.Background())
+}
+
+func (i BlueprintCalculationPropertiesMap) ToBlueprintCalculationPropertiesMapOutputWithContext(ctx context.Context) BlueprintCalculationPropertiesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintCalculationPropertiesMapOutput)
+}
+
+type BlueprintCalculationPropertiesOutput struct{ *pulumi.OutputState }
+
+func (BlueprintCalculationPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintCalculationProperties)(nil)).Elem()
+}
+
+func (o BlueprintCalculationPropertiesOutput) ToBlueprintCalculationPropertiesOutput() BlueprintCalculationPropertiesOutput {
+	return o
+}
+
+func (o BlueprintCalculationPropertiesOutput) ToBlueprintCalculationPropertiesOutputWithContext(ctx context.Context) BlueprintCalculationPropertiesOutput {
+	return o
+}
+
+func (o BlueprintCalculationPropertiesOutput) Calculation() pulumi.StringOutput {
+	return o.ApplyT(func(v BlueprintCalculationProperties) string { return v.Calculation }).(pulumi.StringOutput)
+}
+
+func (o BlueprintCalculationPropertiesOutput) Colorized() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BlueprintCalculationProperties) *bool { return v.Colorized }).(pulumi.BoolPtrOutput)
+}
+
+func (o BlueprintCalculationPropertiesOutput) Colors() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BlueprintCalculationProperties) map[string]string { return v.Colors }).(pulumi.StringMapOutput)
+}
+
+func (o BlueprintCalculationPropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintCalculationProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o BlueprintCalculationPropertiesOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintCalculationProperties) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+func (o BlueprintCalculationPropertiesOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintCalculationProperties) *string { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
+func (o BlueprintCalculationPropertiesOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintCalculationProperties) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+func (o BlueprintCalculationPropertiesOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v BlueprintCalculationProperties) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type BlueprintCalculationPropertiesMapOutput struct{ *pulumi.OutputState }
+
+func (BlueprintCalculationPropertiesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BlueprintCalculationProperties)(nil)).Elem()
+}
+
+func (o BlueprintCalculationPropertiesMapOutput) ToBlueprintCalculationPropertiesMapOutput() BlueprintCalculationPropertiesMapOutput {
+	return o
+}
+
+func (o BlueprintCalculationPropertiesMapOutput) ToBlueprintCalculationPropertiesMapOutputWithContext(ctx context.Context) BlueprintCalculationPropertiesMapOutput {
+	return o
+}
+
+func (o BlueprintCalculationPropertiesMapOutput) MapIndex(k pulumi.StringInput) BlueprintCalculationPropertiesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BlueprintCalculationProperties {
+		return vs[0].(map[string]BlueprintCalculationProperties)[vs[1].(string)]
+	}).(BlueprintCalculationPropertiesOutput)
+}
+
+type BlueprintKafkaChangelogDestination struct {
+}
+
+// BlueprintKafkaChangelogDestinationInput is an input type that accepts BlueprintKafkaChangelogDestinationArgs and BlueprintKafkaChangelogDestinationOutput values.
+// You can construct a concrete instance of `BlueprintKafkaChangelogDestinationInput` via:
+//
+//	BlueprintKafkaChangelogDestinationArgs{...}
+type BlueprintKafkaChangelogDestinationInput interface {
+	pulumi.Input
+
+	ToBlueprintKafkaChangelogDestinationOutput() BlueprintKafkaChangelogDestinationOutput
+	ToBlueprintKafkaChangelogDestinationOutputWithContext(context.Context) BlueprintKafkaChangelogDestinationOutput
+}
+
+type BlueprintKafkaChangelogDestinationArgs struct {
+}
+
+func (BlueprintKafkaChangelogDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintKafkaChangelogDestination)(nil)).Elem()
+}
+
+func (i BlueprintKafkaChangelogDestinationArgs) ToBlueprintKafkaChangelogDestinationOutput() BlueprintKafkaChangelogDestinationOutput {
+	return i.ToBlueprintKafkaChangelogDestinationOutputWithContext(context.Background())
+}
+
+func (i BlueprintKafkaChangelogDestinationArgs) ToBlueprintKafkaChangelogDestinationOutputWithContext(ctx context.Context) BlueprintKafkaChangelogDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintKafkaChangelogDestinationOutput)
+}
+
+func (i BlueprintKafkaChangelogDestinationArgs) ToBlueprintKafkaChangelogDestinationPtrOutput() BlueprintKafkaChangelogDestinationPtrOutput {
+	return i.ToBlueprintKafkaChangelogDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i BlueprintKafkaChangelogDestinationArgs) ToBlueprintKafkaChangelogDestinationPtrOutputWithContext(ctx context.Context) BlueprintKafkaChangelogDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintKafkaChangelogDestinationOutput).ToBlueprintKafkaChangelogDestinationPtrOutputWithContext(ctx)
+}
+
+// BlueprintKafkaChangelogDestinationPtrInput is an input type that accepts BlueprintKafkaChangelogDestinationArgs, BlueprintKafkaChangelogDestinationPtr and BlueprintKafkaChangelogDestinationPtrOutput values.
+// You can construct a concrete instance of `BlueprintKafkaChangelogDestinationPtrInput` via:
+//
+//	        BlueprintKafkaChangelogDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type BlueprintKafkaChangelogDestinationPtrInput interface {
+	pulumi.Input
+
+	ToBlueprintKafkaChangelogDestinationPtrOutput() BlueprintKafkaChangelogDestinationPtrOutput
+	ToBlueprintKafkaChangelogDestinationPtrOutputWithContext(context.Context) BlueprintKafkaChangelogDestinationPtrOutput
+}
+
+type blueprintKafkaChangelogDestinationPtrType BlueprintKafkaChangelogDestinationArgs
+
+func BlueprintKafkaChangelogDestinationPtr(v *BlueprintKafkaChangelogDestinationArgs) BlueprintKafkaChangelogDestinationPtrInput {
+	return (*blueprintKafkaChangelogDestinationPtrType)(v)
+}
+
+func (*blueprintKafkaChangelogDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintKafkaChangelogDestination)(nil)).Elem()
+}
+
+func (i *blueprintKafkaChangelogDestinationPtrType) ToBlueprintKafkaChangelogDestinationPtrOutput() BlueprintKafkaChangelogDestinationPtrOutput {
+	return i.ToBlueprintKafkaChangelogDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *blueprintKafkaChangelogDestinationPtrType) ToBlueprintKafkaChangelogDestinationPtrOutputWithContext(ctx context.Context) BlueprintKafkaChangelogDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintKafkaChangelogDestinationPtrOutput)
+}
+
+type BlueprintKafkaChangelogDestinationOutput struct{ *pulumi.OutputState }
+
+func (BlueprintKafkaChangelogDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintKafkaChangelogDestination)(nil)).Elem()
+}
+
+func (o BlueprintKafkaChangelogDestinationOutput) ToBlueprintKafkaChangelogDestinationOutput() BlueprintKafkaChangelogDestinationOutput {
+	return o
+}
+
+func (o BlueprintKafkaChangelogDestinationOutput) ToBlueprintKafkaChangelogDestinationOutputWithContext(ctx context.Context) BlueprintKafkaChangelogDestinationOutput {
+	return o
+}
+
+func (o BlueprintKafkaChangelogDestinationOutput) ToBlueprintKafkaChangelogDestinationPtrOutput() BlueprintKafkaChangelogDestinationPtrOutput {
+	return o.ToBlueprintKafkaChangelogDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o BlueprintKafkaChangelogDestinationOutput) ToBlueprintKafkaChangelogDestinationPtrOutputWithContext(ctx context.Context) BlueprintKafkaChangelogDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlueprintKafkaChangelogDestination) *BlueprintKafkaChangelogDestination {
+		return &v
+	}).(BlueprintKafkaChangelogDestinationPtrOutput)
+}
+
+type BlueprintKafkaChangelogDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (BlueprintKafkaChangelogDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintKafkaChangelogDestination)(nil)).Elem()
+}
+
+func (o BlueprintKafkaChangelogDestinationPtrOutput) ToBlueprintKafkaChangelogDestinationPtrOutput() BlueprintKafkaChangelogDestinationPtrOutput {
+	return o
+}
+
+func (o BlueprintKafkaChangelogDestinationPtrOutput) ToBlueprintKafkaChangelogDestinationPtrOutputWithContext(ctx context.Context) BlueprintKafkaChangelogDestinationPtrOutput {
+	return o
+}
+
+func (o BlueprintKafkaChangelogDestinationPtrOutput) Elem() BlueprintKafkaChangelogDestinationOutput {
+	return o.ApplyT(func(v *BlueprintKafkaChangelogDestination) BlueprintKafkaChangelogDestination {
+		if v != nil {
+			return *v
+		}
+		var ret BlueprintKafkaChangelogDestination
+		return ret
+	}).(BlueprintKafkaChangelogDestinationOutput)
+}
+
+type BlueprintMirrorProperties struct {
+	Path  string  `pulumi:"path"`
+	Title *string `pulumi:"title"`
+}
+
+// BlueprintMirrorPropertiesInput is an input type that accepts BlueprintMirrorPropertiesArgs and BlueprintMirrorPropertiesOutput values.
+// You can construct a concrete instance of `BlueprintMirrorPropertiesInput` via:
+//
+//	BlueprintMirrorPropertiesArgs{...}
+type BlueprintMirrorPropertiesInput interface {
+	pulumi.Input
+
+	ToBlueprintMirrorPropertiesOutput() BlueprintMirrorPropertiesOutput
+	ToBlueprintMirrorPropertiesOutputWithContext(context.Context) BlueprintMirrorPropertiesOutput
+}
+
+type BlueprintMirrorPropertiesArgs struct {
+	Path  pulumi.StringInput    `pulumi:"path"`
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (BlueprintMirrorPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintMirrorProperties)(nil)).Elem()
+}
+
+func (i BlueprintMirrorPropertiesArgs) ToBlueprintMirrorPropertiesOutput() BlueprintMirrorPropertiesOutput {
+	return i.ToBlueprintMirrorPropertiesOutputWithContext(context.Background())
+}
+
+func (i BlueprintMirrorPropertiesArgs) ToBlueprintMirrorPropertiesOutputWithContext(ctx context.Context) BlueprintMirrorPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintMirrorPropertiesOutput)
+}
+
+// BlueprintMirrorPropertiesMapInput is an input type that accepts BlueprintMirrorPropertiesMap and BlueprintMirrorPropertiesMapOutput values.
+// You can construct a concrete instance of `BlueprintMirrorPropertiesMapInput` via:
+//
+//	BlueprintMirrorPropertiesMap{ "key": BlueprintMirrorPropertiesArgs{...} }
+type BlueprintMirrorPropertiesMapInput interface {
+	pulumi.Input
+
+	ToBlueprintMirrorPropertiesMapOutput() BlueprintMirrorPropertiesMapOutput
+	ToBlueprintMirrorPropertiesMapOutputWithContext(context.Context) BlueprintMirrorPropertiesMapOutput
+}
+
+type BlueprintMirrorPropertiesMap map[string]BlueprintMirrorPropertiesInput
+
+func (BlueprintMirrorPropertiesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BlueprintMirrorProperties)(nil)).Elem()
+}
+
+func (i BlueprintMirrorPropertiesMap) ToBlueprintMirrorPropertiesMapOutput() BlueprintMirrorPropertiesMapOutput {
+	return i.ToBlueprintMirrorPropertiesMapOutputWithContext(context.Background())
+}
+
+func (i BlueprintMirrorPropertiesMap) ToBlueprintMirrorPropertiesMapOutputWithContext(ctx context.Context) BlueprintMirrorPropertiesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintMirrorPropertiesMapOutput)
+}
+
+type BlueprintMirrorPropertiesOutput struct{ *pulumi.OutputState }
+
+func (BlueprintMirrorPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintMirrorProperties)(nil)).Elem()
+}
+
+func (o BlueprintMirrorPropertiesOutput) ToBlueprintMirrorPropertiesOutput() BlueprintMirrorPropertiesOutput {
+	return o
+}
+
+func (o BlueprintMirrorPropertiesOutput) ToBlueprintMirrorPropertiesOutputWithContext(ctx context.Context) BlueprintMirrorPropertiesOutput {
+	return o
+}
+
+func (o BlueprintMirrorPropertiesOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v BlueprintMirrorProperties) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o BlueprintMirrorPropertiesOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintMirrorProperties) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type BlueprintMirrorPropertiesMapOutput struct{ *pulumi.OutputState }
+
+func (BlueprintMirrorPropertiesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BlueprintMirrorProperties)(nil)).Elem()
+}
+
+func (o BlueprintMirrorPropertiesMapOutput) ToBlueprintMirrorPropertiesMapOutput() BlueprintMirrorPropertiesMapOutput {
+	return o
+}
+
+func (o BlueprintMirrorPropertiesMapOutput) ToBlueprintMirrorPropertiesMapOutputWithContext(ctx context.Context) BlueprintMirrorPropertiesMapOutput {
+	return o
+}
+
+func (o BlueprintMirrorPropertiesMapOutput) MapIndex(k pulumi.StringInput) BlueprintMirrorPropertiesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BlueprintMirrorProperties {
+		return vs[0].(map[string]BlueprintMirrorProperties)[vs[1].(string)]
+	}).(BlueprintMirrorPropertiesOutput)
+}
+
+type BlueprintProperties struct {
+	ArrayProps   map[string]BlueprintPropertiesArrayProps   `pulumi:"arrayProps"`
+	BooleanProps map[string]BlueprintPropertiesBooleanProps `pulumi:"booleanProps"`
+	NumberProps  map[string]BlueprintPropertiesNumberProps  `pulumi:"numberProps"`
+	ObjectProps  map[string]BlueprintPropertiesObjectProps  `pulumi:"objectProps"`
+	StringProps  map[string]BlueprintPropertiesStringProps  `pulumi:"stringProps"`
+}
+
+// BlueprintPropertiesInput is an input type that accepts BlueprintPropertiesArgs and BlueprintPropertiesOutput values.
+// You can construct a concrete instance of `BlueprintPropertiesInput` via:
+//
+//	BlueprintPropertiesArgs{...}
+type BlueprintPropertiesInput interface {
+	pulumi.Input
+
+	ToBlueprintPropertiesOutput() BlueprintPropertiesOutput
+	ToBlueprintPropertiesOutputWithContext(context.Context) BlueprintPropertiesOutput
+}
+
+type BlueprintPropertiesArgs struct {
+	ArrayProps   BlueprintPropertiesArrayPropsMapInput   `pulumi:"arrayProps"`
+	BooleanProps BlueprintPropertiesBooleanPropsMapInput `pulumi:"booleanProps"`
+	NumberProps  BlueprintPropertiesNumberPropsMapInput  `pulumi:"numberProps"`
+	ObjectProps  BlueprintPropertiesObjectPropsMapInput  `pulumi:"objectProps"`
+	StringProps  BlueprintPropertiesStringPropsMapInput  `pulumi:"stringProps"`
+}
+
+func (BlueprintPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintProperties)(nil)).Elem()
+}
+
+func (i BlueprintPropertiesArgs) ToBlueprintPropertiesOutput() BlueprintPropertiesOutput {
+	return i.ToBlueprintPropertiesOutputWithContext(context.Background())
+}
+
+func (i BlueprintPropertiesArgs) ToBlueprintPropertiesOutputWithContext(ctx context.Context) BlueprintPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesOutput)
+}
+
+func (i BlueprintPropertiesArgs) ToBlueprintPropertiesPtrOutput() BlueprintPropertiesPtrOutput {
+	return i.ToBlueprintPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i BlueprintPropertiesArgs) ToBlueprintPropertiesPtrOutputWithContext(ctx context.Context) BlueprintPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesOutput).ToBlueprintPropertiesPtrOutputWithContext(ctx)
+}
+
+// BlueprintPropertiesPtrInput is an input type that accepts BlueprintPropertiesArgs, BlueprintPropertiesPtr and BlueprintPropertiesPtrOutput values.
+// You can construct a concrete instance of `BlueprintPropertiesPtrInput` via:
+//
+//	        BlueprintPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type BlueprintPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToBlueprintPropertiesPtrOutput() BlueprintPropertiesPtrOutput
+	ToBlueprintPropertiesPtrOutputWithContext(context.Context) BlueprintPropertiesPtrOutput
+}
+
+type blueprintPropertiesPtrType BlueprintPropertiesArgs
+
+func BlueprintPropertiesPtr(v *BlueprintPropertiesArgs) BlueprintPropertiesPtrInput {
+	return (*blueprintPropertiesPtrType)(v)
+}
+
+func (*blueprintPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintProperties)(nil)).Elem()
+}
+
+func (i *blueprintPropertiesPtrType) ToBlueprintPropertiesPtrOutput() BlueprintPropertiesPtrOutput {
+	return i.ToBlueprintPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *blueprintPropertiesPtrType) ToBlueprintPropertiesPtrOutputWithContext(ctx context.Context) BlueprintPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesPtrOutput)
+}
+
+type BlueprintPropertiesOutput struct{ *pulumi.OutputState }
+
+func (BlueprintPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintProperties)(nil)).Elem()
+}
+
+func (o BlueprintPropertiesOutput) ToBlueprintPropertiesOutput() BlueprintPropertiesOutput {
+	return o
+}
+
+func (o BlueprintPropertiesOutput) ToBlueprintPropertiesOutputWithContext(ctx context.Context) BlueprintPropertiesOutput {
+	return o
+}
+
+func (o BlueprintPropertiesOutput) ToBlueprintPropertiesPtrOutput() BlueprintPropertiesPtrOutput {
+	return o.ToBlueprintPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o BlueprintPropertiesOutput) ToBlueprintPropertiesPtrOutputWithContext(ctx context.Context) BlueprintPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlueprintProperties) *BlueprintProperties {
+		return &v
+	}).(BlueprintPropertiesPtrOutput)
+}
+
+func (o BlueprintPropertiesOutput) ArrayProps() BlueprintPropertiesArrayPropsMapOutput {
+	return o.ApplyT(func(v BlueprintProperties) map[string]BlueprintPropertiesArrayProps { return v.ArrayProps }).(BlueprintPropertiesArrayPropsMapOutput)
+}
+
+func (o BlueprintPropertiesOutput) BooleanProps() BlueprintPropertiesBooleanPropsMapOutput {
+	return o.ApplyT(func(v BlueprintProperties) map[string]BlueprintPropertiesBooleanProps { return v.BooleanProps }).(BlueprintPropertiesBooleanPropsMapOutput)
+}
+
+func (o BlueprintPropertiesOutput) NumberProps() BlueprintPropertiesNumberPropsMapOutput {
+	return o.ApplyT(func(v BlueprintProperties) map[string]BlueprintPropertiesNumberProps { return v.NumberProps }).(BlueprintPropertiesNumberPropsMapOutput)
+}
+
+func (o BlueprintPropertiesOutput) ObjectProps() BlueprintPropertiesObjectPropsMapOutput {
+	return o.ApplyT(func(v BlueprintProperties) map[string]BlueprintPropertiesObjectProps { return v.ObjectProps }).(BlueprintPropertiesObjectPropsMapOutput)
+}
+
+func (o BlueprintPropertiesOutput) StringProps() BlueprintPropertiesStringPropsMapOutput {
+	return o.ApplyT(func(v BlueprintProperties) map[string]BlueprintPropertiesStringProps { return v.StringProps }).(BlueprintPropertiesStringPropsMapOutput)
+}
+
+type BlueprintPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (BlueprintPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintProperties)(nil)).Elem()
+}
+
+func (o BlueprintPropertiesPtrOutput) ToBlueprintPropertiesPtrOutput() BlueprintPropertiesPtrOutput {
+	return o
+}
+
+func (o BlueprintPropertiesPtrOutput) ToBlueprintPropertiesPtrOutputWithContext(ctx context.Context) BlueprintPropertiesPtrOutput {
+	return o
+}
+
+func (o BlueprintPropertiesPtrOutput) Elem() BlueprintPropertiesOutput {
+	return o.ApplyT(func(v *BlueprintProperties) BlueprintProperties {
+		if v != nil {
+			return *v
+		}
+		var ret BlueprintProperties
+		return ret
+	}).(BlueprintPropertiesOutput)
+}
+
+func (o BlueprintPropertiesPtrOutput) ArrayProps() BlueprintPropertiesArrayPropsMapOutput {
+	return o.ApplyT(func(v *BlueprintProperties) map[string]BlueprintPropertiesArrayProps {
 		if v == nil {
 			return nil
 		}
-		return v.Url
+		return v.ArrayProps
+	}).(BlueprintPropertiesArrayPropsMapOutput)
+}
+
+func (o BlueprintPropertiesPtrOutput) BooleanProps() BlueprintPropertiesBooleanPropsMapOutput {
+	return o.ApplyT(func(v *BlueprintProperties) map[string]BlueprintPropertiesBooleanProps {
+		if v == nil {
+			return nil
+		}
+		return v.BooleanProps
+	}).(BlueprintPropertiesBooleanPropsMapOutput)
+}
+
+func (o BlueprintPropertiesPtrOutput) NumberProps() BlueprintPropertiesNumberPropsMapOutput {
+	return o.ApplyT(func(v *BlueprintProperties) map[string]BlueprintPropertiesNumberProps {
+		if v == nil {
+			return nil
+		}
+		return v.NumberProps
+	}).(BlueprintPropertiesNumberPropsMapOutput)
+}
+
+func (o BlueprintPropertiesPtrOutput) ObjectProps() BlueprintPropertiesObjectPropsMapOutput {
+	return o.ApplyT(func(v *BlueprintProperties) map[string]BlueprintPropertiesObjectProps {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectProps
+	}).(BlueprintPropertiesObjectPropsMapOutput)
+}
+
+func (o BlueprintPropertiesPtrOutput) StringProps() BlueprintPropertiesStringPropsMapOutput {
+	return o.ApplyT(func(v *BlueprintProperties) map[string]BlueprintPropertiesStringProps {
+		if v == nil {
+			return nil
+		}
+		return v.StringProps
+	}).(BlueprintPropertiesStringPropsMapOutput)
+}
+
+type BlueprintPropertiesArrayProps struct {
+	BooleanItems *BlueprintPropertiesArrayPropsBooleanItems `pulumi:"booleanItems"`
+	Description  *string                                    `pulumi:"description"`
+	Icon         *string                                    `pulumi:"icon"`
+	MaxItems     *int                                       `pulumi:"maxItems"`
+	MinItems     *int                                       `pulumi:"minItems"`
+	NumberItems  *BlueprintPropertiesArrayPropsNumberItems  `pulumi:"numberItems"`
+	ObjectItems  *BlueprintPropertiesArrayPropsObjectItems  `pulumi:"objectItems"`
+	Required     *bool                                      `pulumi:"required"`
+	StringItems  *BlueprintPropertiesArrayPropsStringItems  `pulumi:"stringItems"`
+	Title        *string                                    `pulumi:"title"`
+}
+
+// BlueprintPropertiesArrayPropsInput is an input type that accepts BlueprintPropertiesArrayPropsArgs and BlueprintPropertiesArrayPropsOutput values.
+// You can construct a concrete instance of `BlueprintPropertiesArrayPropsInput` via:
+//
+//	BlueprintPropertiesArrayPropsArgs{...}
+type BlueprintPropertiesArrayPropsInput interface {
+	pulumi.Input
+
+	ToBlueprintPropertiesArrayPropsOutput() BlueprintPropertiesArrayPropsOutput
+	ToBlueprintPropertiesArrayPropsOutputWithContext(context.Context) BlueprintPropertiesArrayPropsOutput
+}
+
+type BlueprintPropertiesArrayPropsArgs struct {
+	BooleanItems BlueprintPropertiesArrayPropsBooleanItemsPtrInput `pulumi:"booleanItems"`
+	Description  pulumi.StringPtrInput                             `pulumi:"description"`
+	Icon         pulumi.StringPtrInput                             `pulumi:"icon"`
+	MaxItems     pulumi.IntPtrInput                                `pulumi:"maxItems"`
+	MinItems     pulumi.IntPtrInput                                `pulumi:"minItems"`
+	NumberItems  BlueprintPropertiesArrayPropsNumberItemsPtrInput  `pulumi:"numberItems"`
+	ObjectItems  BlueprintPropertiesArrayPropsObjectItemsPtrInput  `pulumi:"objectItems"`
+	Required     pulumi.BoolPtrInput                               `pulumi:"required"`
+	StringItems  BlueprintPropertiesArrayPropsStringItemsPtrInput  `pulumi:"stringItems"`
+	Title        pulumi.StringPtrInput                             `pulumi:"title"`
+}
+
+func (BlueprintPropertiesArrayPropsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintPropertiesArrayProps)(nil)).Elem()
+}
+
+func (i BlueprintPropertiesArrayPropsArgs) ToBlueprintPropertiesArrayPropsOutput() BlueprintPropertiesArrayPropsOutput {
+	return i.ToBlueprintPropertiesArrayPropsOutputWithContext(context.Background())
+}
+
+func (i BlueprintPropertiesArrayPropsArgs) ToBlueprintPropertiesArrayPropsOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsOutput)
+}
+
+// BlueprintPropertiesArrayPropsMapInput is an input type that accepts BlueprintPropertiesArrayPropsMap and BlueprintPropertiesArrayPropsMapOutput values.
+// You can construct a concrete instance of `BlueprintPropertiesArrayPropsMapInput` via:
+//
+//	BlueprintPropertiesArrayPropsMap{ "key": BlueprintPropertiesArrayPropsArgs{...} }
+type BlueprintPropertiesArrayPropsMapInput interface {
+	pulumi.Input
+
+	ToBlueprintPropertiesArrayPropsMapOutput() BlueprintPropertiesArrayPropsMapOutput
+	ToBlueprintPropertiesArrayPropsMapOutputWithContext(context.Context) BlueprintPropertiesArrayPropsMapOutput
+}
+
+type BlueprintPropertiesArrayPropsMap map[string]BlueprintPropertiesArrayPropsInput
+
+func (BlueprintPropertiesArrayPropsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BlueprintPropertiesArrayProps)(nil)).Elem()
+}
+
+func (i BlueprintPropertiesArrayPropsMap) ToBlueprintPropertiesArrayPropsMapOutput() BlueprintPropertiesArrayPropsMapOutput {
+	return i.ToBlueprintPropertiesArrayPropsMapOutputWithContext(context.Background())
+}
+
+func (i BlueprintPropertiesArrayPropsMap) ToBlueprintPropertiesArrayPropsMapOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsMapOutput)
+}
+
+type BlueprintPropertiesArrayPropsOutput struct{ *pulumi.OutputState }
+
+func (BlueprintPropertiesArrayPropsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintPropertiesArrayProps)(nil)).Elem()
+}
+
+func (o BlueprintPropertiesArrayPropsOutput) ToBlueprintPropertiesArrayPropsOutput() BlueprintPropertiesArrayPropsOutput {
+	return o
+}
+
+func (o BlueprintPropertiesArrayPropsOutput) ToBlueprintPropertiesArrayPropsOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsOutput {
+	return o
+}
+
+func (o BlueprintPropertiesArrayPropsOutput) BooleanItems() BlueprintPropertiesArrayPropsBooleanItemsPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesArrayProps) *BlueprintPropertiesArrayPropsBooleanItems {
+		return v.BooleanItems
+	}).(BlueprintPropertiesArrayPropsBooleanItemsPtrOutput)
+}
+
+func (o BlueprintPropertiesArrayPropsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesArrayProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o BlueprintPropertiesArrayPropsOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesArrayProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
+func (o BlueprintPropertiesArrayPropsOutput) MaxItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesArrayProps) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
+}
+
+func (o BlueprintPropertiesArrayPropsOutput) MinItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesArrayProps) *int { return v.MinItems }).(pulumi.IntPtrOutput)
+}
+
+func (o BlueprintPropertiesArrayPropsOutput) NumberItems() BlueprintPropertiesArrayPropsNumberItemsPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesArrayProps) *BlueprintPropertiesArrayPropsNumberItems { return v.NumberItems }).(BlueprintPropertiesArrayPropsNumberItemsPtrOutput)
+}
+
+func (o BlueprintPropertiesArrayPropsOutput) ObjectItems() BlueprintPropertiesArrayPropsObjectItemsPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesArrayProps) *BlueprintPropertiesArrayPropsObjectItems { return v.ObjectItems }).(BlueprintPropertiesArrayPropsObjectItemsPtrOutput)
+}
+
+func (o BlueprintPropertiesArrayPropsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesArrayProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+func (o BlueprintPropertiesArrayPropsOutput) StringItems() BlueprintPropertiesArrayPropsStringItemsPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesArrayProps) *BlueprintPropertiesArrayPropsStringItems { return v.StringItems }).(BlueprintPropertiesArrayPropsStringItemsPtrOutput)
+}
+
+func (o BlueprintPropertiesArrayPropsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesArrayProps) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type BlueprintPropertiesArrayPropsMapOutput struct{ *pulumi.OutputState }
+
+func (BlueprintPropertiesArrayPropsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BlueprintPropertiesArrayProps)(nil)).Elem()
+}
+
+func (o BlueprintPropertiesArrayPropsMapOutput) ToBlueprintPropertiesArrayPropsMapOutput() BlueprintPropertiesArrayPropsMapOutput {
+	return o
+}
+
+func (o BlueprintPropertiesArrayPropsMapOutput) ToBlueprintPropertiesArrayPropsMapOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsMapOutput {
+	return o
+}
+
+func (o BlueprintPropertiesArrayPropsMapOutput) MapIndex(k pulumi.StringInput) BlueprintPropertiesArrayPropsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BlueprintPropertiesArrayProps {
+		return vs[0].(map[string]BlueprintPropertiesArrayProps)[vs[1].(string)]
+	}).(BlueprintPropertiesArrayPropsOutput)
+}
+
+type BlueprintPropertiesArrayPropsBooleanItems struct {
+	Defaults []bool `pulumi:"defaults"`
+}
+
+// BlueprintPropertiesArrayPropsBooleanItemsInput is an input type that accepts BlueprintPropertiesArrayPropsBooleanItemsArgs and BlueprintPropertiesArrayPropsBooleanItemsOutput values.
+// You can construct a concrete instance of `BlueprintPropertiesArrayPropsBooleanItemsInput` via:
+//
+//	BlueprintPropertiesArrayPropsBooleanItemsArgs{...}
+type BlueprintPropertiesArrayPropsBooleanItemsInput interface {
+	pulumi.Input
+
+	ToBlueprintPropertiesArrayPropsBooleanItemsOutput() BlueprintPropertiesArrayPropsBooleanItemsOutput
+	ToBlueprintPropertiesArrayPropsBooleanItemsOutputWithContext(context.Context) BlueprintPropertiesArrayPropsBooleanItemsOutput
+}
+
+type BlueprintPropertiesArrayPropsBooleanItemsArgs struct {
+	Defaults pulumi.BoolArrayInput `pulumi:"defaults"`
+}
+
+func (BlueprintPropertiesArrayPropsBooleanItemsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintPropertiesArrayPropsBooleanItems)(nil)).Elem()
+}
+
+func (i BlueprintPropertiesArrayPropsBooleanItemsArgs) ToBlueprintPropertiesArrayPropsBooleanItemsOutput() BlueprintPropertiesArrayPropsBooleanItemsOutput {
+	return i.ToBlueprintPropertiesArrayPropsBooleanItemsOutputWithContext(context.Background())
+}
+
+func (i BlueprintPropertiesArrayPropsBooleanItemsArgs) ToBlueprintPropertiesArrayPropsBooleanItemsOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsBooleanItemsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsBooleanItemsOutput)
+}
+
+func (i BlueprintPropertiesArrayPropsBooleanItemsArgs) ToBlueprintPropertiesArrayPropsBooleanItemsPtrOutput() BlueprintPropertiesArrayPropsBooleanItemsPtrOutput {
+	return i.ToBlueprintPropertiesArrayPropsBooleanItemsPtrOutputWithContext(context.Background())
+}
+
+func (i BlueprintPropertiesArrayPropsBooleanItemsArgs) ToBlueprintPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsBooleanItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsBooleanItemsOutput).ToBlueprintPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx)
+}
+
+// BlueprintPropertiesArrayPropsBooleanItemsPtrInput is an input type that accepts BlueprintPropertiesArrayPropsBooleanItemsArgs, BlueprintPropertiesArrayPropsBooleanItemsPtr and BlueprintPropertiesArrayPropsBooleanItemsPtrOutput values.
+// You can construct a concrete instance of `BlueprintPropertiesArrayPropsBooleanItemsPtrInput` via:
+//
+//	        BlueprintPropertiesArrayPropsBooleanItemsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BlueprintPropertiesArrayPropsBooleanItemsPtrInput interface {
+	pulumi.Input
+
+	ToBlueprintPropertiesArrayPropsBooleanItemsPtrOutput() BlueprintPropertiesArrayPropsBooleanItemsPtrOutput
+	ToBlueprintPropertiesArrayPropsBooleanItemsPtrOutputWithContext(context.Context) BlueprintPropertiesArrayPropsBooleanItemsPtrOutput
+}
+
+type blueprintPropertiesArrayPropsBooleanItemsPtrType BlueprintPropertiesArrayPropsBooleanItemsArgs
+
+func BlueprintPropertiesArrayPropsBooleanItemsPtr(v *BlueprintPropertiesArrayPropsBooleanItemsArgs) BlueprintPropertiesArrayPropsBooleanItemsPtrInput {
+	return (*blueprintPropertiesArrayPropsBooleanItemsPtrType)(v)
+}
+
+func (*blueprintPropertiesArrayPropsBooleanItemsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintPropertiesArrayPropsBooleanItems)(nil)).Elem()
+}
+
+func (i *blueprintPropertiesArrayPropsBooleanItemsPtrType) ToBlueprintPropertiesArrayPropsBooleanItemsPtrOutput() BlueprintPropertiesArrayPropsBooleanItemsPtrOutput {
+	return i.ToBlueprintPropertiesArrayPropsBooleanItemsPtrOutputWithContext(context.Background())
+}
+
+func (i *blueprintPropertiesArrayPropsBooleanItemsPtrType) ToBlueprintPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsBooleanItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsBooleanItemsPtrOutput)
+}
+
+type BlueprintPropertiesArrayPropsBooleanItemsOutput struct{ *pulumi.OutputState }
+
+func (BlueprintPropertiesArrayPropsBooleanItemsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintPropertiesArrayPropsBooleanItems)(nil)).Elem()
+}
+
+func (o BlueprintPropertiesArrayPropsBooleanItemsOutput) ToBlueprintPropertiesArrayPropsBooleanItemsOutput() BlueprintPropertiesArrayPropsBooleanItemsOutput {
+	return o
+}
+
+func (o BlueprintPropertiesArrayPropsBooleanItemsOutput) ToBlueprintPropertiesArrayPropsBooleanItemsOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsBooleanItemsOutput {
+	return o
+}
+
+func (o BlueprintPropertiesArrayPropsBooleanItemsOutput) ToBlueprintPropertiesArrayPropsBooleanItemsPtrOutput() BlueprintPropertiesArrayPropsBooleanItemsPtrOutput {
+	return o.ToBlueprintPropertiesArrayPropsBooleanItemsPtrOutputWithContext(context.Background())
+}
+
+func (o BlueprintPropertiesArrayPropsBooleanItemsOutput) ToBlueprintPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsBooleanItemsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlueprintPropertiesArrayPropsBooleanItems) *BlueprintPropertiesArrayPropsBooleanItems {
+		return &v
+	}).(BlueprintPropertiesArrayPropsBooleanItemsPtrOutput)
+}
+
+func (o BlueprintPropertiesArrayPropsBooleanItemsOutput) Defaults() pulumi.BoolArrayOutput {
+	return o.ApplyT(func(v BlueprintPropertiesArrayPropsBooleanItems) []bool { return v.Defaults }).(pulumi.BoolArrayOutput)
+}
+
+type BlueprintPropertiesArrayPropsBooleanItemsPtrOutput struct{ *pulumi.OutputState }
+
+func (BlueprintPropertiesArrayPropsBooleanItemsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintPropertiesArrayPropsBooleanItems)(nil)).Elem()
+}
+
+func (o BlueprintPropertiesArrayPropsBooleanItemsPtrOutput) ToBlueprintPropertiesArrayPropsBooleanItemsPtrOutput() BlueprintPropertiesArrayPropsBooleanItemsPtrOutput {
+	return o
+}
+
+func (o BlueprintPropertiesArrayPropsBooleanItemsPtrOutput) ToBlueprintPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsBooleanItemsPtrOutput {
+	return o
+}
+
+func (o BlueprintPropertiesArrayPropsBooleanItemsPtrOutput) Elem() BlueprintPropertiesArrayPropsBooleanItemsOutput {
+	return o.ApplyT(func(v *BlueprintPropertiesArrayPropsBooleanItems) BlueprintPropertiesArrayPropsBooleanItems {
+		if v != nil {
+			return *v
+		}
+		var ret BlueprintPropertiesArrayPropsBooleanItems
+		return ret
+	}).(BlueprintPropertiesArrayPropsBooleanItemsOutput)
+}
+
+func (o BlueprintPropertiesArrayPropsBooleanItemsPtrOutput) Defaults() pulumi.BoolArrayOutput {
+	return o.ApplyT(func(v *BlueprintPropertiesArrayPropsBooleanItems) []bool {
+		if v == nil {
+			return nil
+		}
+		return v.Defaults
+	}).(pulumi.BoolArrayOutput)
+}
+
+type BlueprintPropertiesArrayPropsNumberItems struct {
+	Defaults []float64 `pulumi:"defaults"`
+}
+
+// BlueprintPropertiesArrayPropsNumberItemsInput is an input type that accepts BlueprintPropertiesArrayPropsNumberItemsArgs and BlueprintPropertiesArrayPropsNumberItemsOutput values.
+// You can construct a concrete instance of `BlueprintPropertiesArrayPropsNumberItemsInput` via:
+//
+//	BlueprintPropertiesArrayPropsNumberItemsArgs{...}
+type BlueprintPropertiesArrayPropsNumberItemsInput interface {
+	pulumi.Input
+
+	ToBlueprintPropertiesArrayPropsNumberItemsOutput() BlueprintPropertiesArrayPropsNumberItemsOutput
+	ToBlueprintPropertiesArrayPropsNumberItemsOutputWithContext(context.Context) BlueprintPropertiesArrayPropsNumberItemsOutput
+}
+
+type BlueprintPropertiesArrayPropsNumberItemsArgs struct {
+	Defaults pulumi.Float64ArrayInput `pulumi:"defaults"`
+}
+
+func (BlueprintPropertiesArrayPropsNumberItemsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintPropertiesArrayPropsNumberItems)(nil)).Elem()
+}
+
+func (i BlueprintPropertiesArrayPropsNumberItemsArgs) ToBlueprintPropertiesArrayPropsNumberItemsOutput() BlueprintPropertiesArrayPropsNumberItemsOutput {
+	return i.ToBlueprintPropertiesArrayPropsNumberItemsOutputWithContext(context.Background())
+}
+
+func (i BlueprintPropertiesArrayPropsNumberItemsArgs) ToBlueprintPropertiesArrayPropsNumberItemsOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsNumberItemsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsNumberItemsOutput)
+}
+
+func (i BlueprintPropertiesArrayPropsNumberItemsArgs) ToBlueprintPropertiesArrayPropsNumberItemsPtrOutput() BlueprintPropertiesArrayPropsNumberItemsPtrOutput {
+	return i.ToBlueprintPropertiesArrayPropsNumberItemsPtrOutputWithContext(context.Background())
+}
+
+func (i BlueprintPropertiesArrayPropsNumberItemsArgs) ToBlueprintPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsNumberItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsNumberItemsOutput).ToBlueprintPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx)
+}
+
+// BlueprintPropertiesArrayPropsNumberItemsPtrInput is an input type that accepts BlueprintPropertiesArrayPropsNumberItemsArgs, BlueprintPropertiesArrayPropsNumberItemsPtr and BlueprintPropertiesArrayPropsNumberItemsPtrOutput values.
+// You can construct a concrete instance of `BlueprintPropertiesArrayPropsNumberItemsPtrInput` via:
+//
+//	        BlueprintPropertiesArrayPropsNumberItemsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BlueprintPropertiesArrayPropsNumberItemsPtrInput interface {
+	pulumi.Input
+
+	ToBlueprintPropertiesArrayPropsNumberItemsPtrOutput() BlueprintPropertiesArrayPropsNumberItemsPtrOutput
+	ToBlueprintPropertiesArrayPropsNumberItemsPtrOutputWithContext(context.Context) BlueprintPropertiesArrayPropsNumberItemsPtrOutput
+}
+
+type blueprintPropertiesArrayPropsNumberItemsPtrType BlueprintPropertiesArrayPropsNumberItemsArgs
+
+func BlueprintPropertiesArrayPropsNumberItemsPtr(v *BlueprintPropertiesArrayPropsNumberItemsArgs) BlueprintPropertiesArrayPropsNumberItemsPtrInput {
+	return (*blueprintPropertiesArrayPropsNumberItemsPtrType)(v)
+}
+
+func (*blueprintPropertiesArrayPropsNumberItemsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintPropertiesArrayPropsNumberItems)(nil)).Elem()
+}
+
+func (i *blueprintPropertiesArrayPropsNumberItemsPtrType) ToBlueprintPropertiesArrayPropsNumberItemsPtrOutput() BlueprintPropertiesArrayPropsNumberItemsPtrOutput {
+	return i.ToBlueprintPropertiesArrayPropsNumberItemsPtrOutputWithContext(context.Background())
+}
+
+func (i *blueprintPropertiesArrayPropsNumberItemsPtrType) ToBlueprintPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsNumberItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsNumberItemsPtrOutput)
+}
+
+type BlueprintPropertiesArrayPropsNumberItemsOutput struct{ *pulumi.OutputState }
+
+func (BlueprintPropertiesArrayPropsNumberItemsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintPropertiesArrayPropsNumberItems)(nil)).Elem()
+}
+
+func (o BlueprintPropertiesArrayPropsNumberItemsOutput) ToBlueprintPropertiesArrayPropsNumberItemsOutput() BlueprintPropertiesArrayPropsNumberItemsOutput {
+	return o
+}
+
+func (o BlueprintPropertiesArrayPropsNumberItemsOutput) ToBlueprintPropertiesArrayPropsNumberItemsOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsNumberItemsOutput {
+	return o
+}
+
+func (o BlueprintPropertiesArrayPropsNumberItemsOutput) ToBlueprintPropertiesArrayPropsNumberItemsPtrOutput() BlueprintPropertiesArrayPropsNumberItemsPtrOutput {
+	return o.ToBlueprintPropertiesArrayPropsNumberItemsPtrOutputWithContext(context.Background())
+}
+
+func (o BlueprintPropertiesArrayPropsNumberItemsOutput) ToBlueprintPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsNumberItemsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlueprintPropertiesArrayPropsNumberItems) *BlueprintPropertiesArrayPropsNumberItems {
+		return &v
+	}).(BlueprintPropertiesArrayPropsNumberItemsPtrOutput)
+}
+
+func (o BlueprintPropertiesArrayPropsNumberItemsOutput) Defaults() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v BlueprintPropertiesArrayPropsNumberItems) []float64 { return v.Defaults }).(pulumi.Float64ArrayOutput)
+}
+
+type BlueprintPropertiesArrayPropsNumberItemsPtrOutput struct{ *pulumi.OutputState }
+
+func (BlueprintPropertiesArrayPropsNumberItemsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintPropertiesArrayPropsNumberItems)(nil)).Elem()
+}
+
+func (o BlueprintPropertiesArrayPropsNumberItemsPtrOutput) ToBlueprintPropertiesArrayPropsNumberItemsPtrOutput() BlueprintPropertiesArrayPropsNumberItemsPtrOutput {
+	return o
+}
+
+func (o BlueprintPropertiesArrayPropsNumberItemsPtrOutput) ToBlueprintPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsNumberItemsPtrOutput {
+	return o
+}
+
+func (o BlueprintPropertiesArrayPropsNumberItemsPtrOutput) Elem() BlueprintPropertiesArrayPropsNumberItemsOutput {
+	return o.ApplyT(func(v *BlueprintPropertiesArrayPropsNumberItems) BlueprintPropertiesArrayPropsNumberItems {
+		if v != nil {
+			return *v
+		}
+		var ret BlueprintPropertiesArrayPropsNumberItems
+		return ret
+	}).(BlueprintPropertiesArrayPropsNumberItemsOutput)
+}
+
+func (o BlueprintPropertiesArrayPropsNumberItemsPtrOutput) Defaults() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v *BlueprintPropertiesArrayPropsNumberItems) []float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Defaults
+	}).(pulumi.Float64ArrayOutput)
+}
+
+type BlueprintPropertiesArrayPropsObjectItems struct {
+	Defaults []string `pulumi:"defaults"`
+}
+
+// BlueprintPropertiesArrayPropsObjectItemsInput is an input type that accepts BlueprintPropertiesArrayPropsObjectItemsArgs and BlueprintPropertiesArrayPropsObjectItemsOutput values.
+// You can construct a concrete instance of `BlueprintPropertiesArrayPropsObjectItemsInput` via:
+//
+//	BlueprintPropertiesArrayPropsObjectItemsArgs{...}
+type BlueprintPropertiesArrayPropsObjectItemsInput interface {
+	pulumi.Input
+
+	ToBlueprintPropertiesArrayPropsObjectItemsOutput() BlueprintPropertiesArrayPropsObjectItemsOutput
+	ToBlueprintPropertiesArrayPropsObjectItemsOutputWithContext(context.Context) BlueprintPropertiesArrayPropsObjectItemsOutput
+}
+
+type BlueprintPropertiesArrayPropsObjectItemsArgs struct {
+	Defaults pulumi.StringArrayInput `pulumi:"defaults"`
+}
+
+func (BlueprintPropertiesArrayPropsObjectItemsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintPropertiesArrayPropsObjectItems)(nil)).Elem()
+}
+
+func (i BlueprintPropertiesArrayPropsObjectItemsArgs) ToBlueprintPropertiesArrayPropsObjectItemsOutput() BlueprintPropertiesArrayPropsObjectItemsOutput {
+	return i.ToBlueprintPropertiesArrayPropsObjectItemsOutputWithContext(context.Background())
+}
+
+func (i BlueprintPropertiesArrayPropsObjectItemsArgs) ToBlueprintPropertiesArrayPropsObjectItemsOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsObjectItemsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsObjectItemsOutput)
+}
+
+func (i BlueprintPropertiesArrayPropsObjectItemsArgs) ToBlueprintPropertiesArrayPropsObjectItemsPtrOutput() BlueprintPropertiesArrayPropsObjectItemsPtrOutput {
+	return i.ToBlueprintPropertiesArrayPropsObjectItemsPtrOutputWithContext(context.Background())
+}
+
+func (i BlueprintPropertiesArrayPropsObjectItemsArgs) ToBlueprintPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsObjectItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsObjectItemsOutput).ToBlueprintPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx)
+}
+
+// BlueprintPropertiesArrayPropsObjectItemsPtrInput is an input type that accepts BlueprintPropertiesArrayPropsObjectItemsArgs, BlueprintPropertiesArrayPropsObjectItemsPtr and BlueprintPropertiesArrayPropsObjectItemsPtrOutput values.
+// You can construct a concrete instance of `BlueprintPropertiesArrayPropsObjectItemsPtrInput` via:
+//
+//	        BlueprintPropertiesArrayPropsObjectItemsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BlueprintPropertiesArrayPropsObjectItemsPtrInput interface {
+	pulumi.Input
+
+	ToBlueprintPropertiesArrayPropsObjectItemsPtrOutput() BlueprintPropertiesArrayPropsObjectItemsPtrOutput
+	ToBlueprintPropertiesArrayPropsObjectItemsPtrOutputWithContext(context.Context) BlueprintPropertiesArrayPropsObjectItemsPtrOutput
+}
+
+type blueprintPropertiesArrayPropsObjectItemsPtrType BlueprintPropertiesArrayPropsObjectItemsArgs
+
+func BlueprintPropertiesArrayPropsObjectItemsPtr(v *BlueprintPropertiesArrayPropsObjectItemsArgs) BlueprintPropertiesArrayPropsObjectItemsPtrInput {
+	return (*blueprintPropertiesArrayPropsObjectItemsPtrType)(v)
+}
+
+func (*blueprintPropertiesArrayPropsObjectItemsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintPropertiesArrayPropsObjectItems)(nil)).Elem()
+}
+
+func (i *blueprintPropertiesArrayPropsObjectItemsPtrType) ToBlueprintPropertiesArrayPropsObjectItemsPtrOutput() BlueprintPropertiesArrayPropsObjectItemsPtrOutput {
+	return i.ToBlueprintPropertiesArrayPropsObjectItemsPtrOutputWithContext(context.Background())
+}
+
+func (i *blueprintPropertiesArrayPropsObjectItemsPtrType) ToBlueprintPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsObjectItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsObjectItemsPtrOutput)
+}
+
+type BlueprintPropertiesArrayPropsObjectItemsOutput struct{ *pulumi.OutputState }
+
+func (BlueprintPropertiesArrayPropsObjectItemsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintPropertiesArrayPropsObjectItems)(nil)).Elem()
+}
+
+func (o BlueprintPropertiesArrayPropsObjectItemsOutput) ToBlueprintPropertiesArrayPropsObjectItemsOutput() BlueprintPropertiesArrayPropsObjectItemsOutput {
+	return o
+}
+
+func (o BlueprintPropertiesArrayPropsObjectItemsOutput) ToBlueprintPropertiesArrayPropsObjectItemsOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsObjectItemsOutput {
+	return o
+}
+
+func (o BlueprintPropertiesArrayPropsObjectItemsOutput) ToBlueprintPropertiesArrayPropsObjectItemsPtrOutput() BlueprintPropertiesArrayPropsObjectItemsPtrOutput {
+	return o.ToBlueprintPropertiesArrayPropsObjectItemsPtrOutputWithContext(context.Background())
+}
+
+func (o BlueprintPropertiesArrayPropsObjectItemsOutput) ToBlueprintPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsObjectItemsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlueprintPropertiesArrayPropsObjectItems) *BlueprintPropertiesArrayPropsObjectItems {
+		return &v
+	}).(BlueprintPropertiesArrayPropsObjectItemsPtrOutput)
+}
+
+func (o BlueprintPropertiesArrayPropsObjectItemsOutput) Defaults() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BlueprintPropertiesArrayPropsObjectItems) []string { return v.Defaults }).(pulumi.StringArrayOutput)
+}
+
+type BlueprintPropertiesArrayPropsObjectItemsPtrOutput struct{ *pulumi.OutputState }
+
+func (BlueprintPropertiesArrayPropsObjectItemsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintPropertiesArrayPropsObjectItems)(nil)).Elem()
+}
+
+func (o BlueprintPropertiesArrayPropsObjectItemsPtrOutput) ToBlueprintPropertiesArrayPropsObjectItemsPtrOutput() BlueprintPropertiesArrayPropsObjectItemsPtrOutput {
+	return o
+}
+
+func (o BlueprintPropertiesArrayPropsObjectItemsPtrOutput) ToBlueprintPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsObjectItemsPtrOutput {
+	return o
+}
+
+func (o BlueprintPropertiesArrayPropsObjectItemsPtrOutput) Elem() BlueprintPropertiesArrayPropsObjectItemsOutput {
+	return o.ApplyT(func(v *BlueprintPropertiesArrayPropsObjectItems) BlueprintPropertiesArrayPropsObjectItems {
+		if v != nil {
+			return *v
+		}
+		var ret BlueprintPropertiesArrayPropsObjectItems
+		return ret
+	}).(BlueprintPropertiesArrayPropsObjectItemsOutput)
+}
+
+func (o BlueprintPropertiesArrayPropsObjectItemsPtrOutput) Defaults() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BlueprintPropertiesArrayPropsObjectItems) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Defaults
+	}).(pulumi.StringArrayOutput)
+}
+
+type BlueprintPropertiesArrayPropsStringItems struct {
+	Defaults []string `pulumi:"defaults"`
+	Format   *string  `pulumi:"format"`
+}
+
+// BlueprintPropertiesArrayPropsStringItemsInput is an input type that accepts BlueprintPropertiesArrayPropsStringItemsArgs and BlueprintPropertiesArrayPropsStringItemsOutput values.
+// You can construct a concrete instance of `BlueprintPropertiesArrayPropsStringItemsInput` via:
+//
+//	BlueprintPropertiesArrayPropsStringItemsArgs{...}
+type BlueprintPropertiesArrayPropsStringItemsInput interface {
+	pulumi.Input
+
+	ToBlueprintPropertiesArrayPropsStringItemsOutput() BlueprintPropertiesArrayPropsStringItemsOutput
+	ToBlueprintPropertiesArrayPropsStringItemsOutputWithContext(context.Context) BlueprintPropertiesArrayPropsStringItemsOutput
+}
+
+type BlueprintPropertiesArrayPropsStringItemsArgs struct {
+	Defaults pulumi.StringArrayInput `pulumi:"defaults"`
+	Format   pulumi.StringPtrInput   `pulumi:"format"`
+}
+
+func (BlueprintPropertiesArrayPropsStringItemsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintPropertiesArrayPropsStringItems)(nil)).Elem()
+}
+
+func (i BlueprintPropertiesArrayPropsStringItemsArgs) ToBlueprintPropertiesArrayPropsStringItemsOutput() BlueprintPropertiesArrayPropsStringItemsOutput {
+	return i.ToBlueprintPropertiesArrayPropsStringItemsOutputWithContext(context.Background())
+}
+
+func (i BlueprintPropertiesArrayPropsStringItemsArgs) ToBlueprintPropertiesArrayPropsStringItemsOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsStringItemsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsStringItemsOutput)
+}
+
+func (i BlueprintPropertiesArrayPropsStringItemsArgs) ToBlueprintPropertiesArrayPropsStringItemsPtrOutput() BlueprintPropertiesArrayPropsStringItemsPtrOutput {
+	return i.ToBlueprintPropertiesArrayPropsStringItemsPtrOutputWithContext(context.Background())
+}
+
+func (i BlueprintPropertiesArrayPropsStringItemsArgs) ToBlueprintPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsStringItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsStringItemsOutput).ToBlueprintPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx)
+}
+
+// BlueprintPropertiesArrayPropsStringItemsPtrInput is an input type that accepts BlueprintPropertiesArrayPropsStringItemsArgs, BlueprintPropertiesArrayPropsStringItemsPtr and BlueprintPropertiesArrayPropsStringItemsPtrOutput values.
+// You can construct a concrete instance of `BlueprintPropertiesArrayPropsStringItemsPtrInput` via:
+//
+//	        BlueprintPropertiesArrayPropsStringItemsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BlueprintPropertiesArrayPropsStringItemsPtrInput interface {
+	pulumi.Input
+
+	ToBlueprintPropertiesArrayPropsStringItemsPtrOutput() BlueprintPropertiesArrayPropsStringItemsPtrOutput
+	ToBlueprintPropertiesArrayPropsStringItemsPtrOutputWithContext(context.Context) BlueprintPropertiesArrayPropsStringItemsPtrOutput
+}
+
+type blueprintPropertiesArrayPropsStringItemsPtrType BlueprintPropertiesArrayPropsStringItemsArgs
+
+func BlueprintPropertiesArrayPropsStringItemsPtr(v *BlueprintPropertiesArrayPropsStringItemsArgs) BlueprintPropertiesArrayPropsStringItemsPtrInput {
+	return (*blueprintPropertiesArrayPropsStringItemsPtrType)(v)
+}
+
+func (*blueprintPropertiesArrayPropsStringItemsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintPropertiesArrayPropsStringItems)(nil)).Elem()
+}
+
+func (i *blueprintPropertiesArrayPropsStringItemsPtrType) ToBlueprintPropertiesArrayPropsStringItemsPtrOutput() BlueprintPropertiesArrayPropsStringItemsPtrOutput {
+	return i.ToBlueprintPropertiesArrayPropsStringItemsPtrOutputWithContext(context.Background())
+}
+
+func (i *blueprintPropertiesArrayPropsStringItemsPtrType) ToBlueprintPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsStringItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsStringItemsPtrOutput)
+}
+
+type BlueprintPropertiesArrayPropsStringItemsOutput struct{ *pulumi.OutputState }
+
+func (BlueprintPropertiesArrayPropsStringItemsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintPropertiesArrayPropsStringItems)(nil)).Elem()
+}
+
+func (o BlueprintPropertiesArrayPropsStringItemsOutput) ToBlueprintPropertiesArrayPropsStringItemsOutput() BlueprintPropertiesArrayPropsStringItemsOutput {
+	return o
+}
+
+func (o BlueprintPropertiesArrayPropsStringItemsOutput) ToBlueprintPropertiesArrayPropsStringItemsOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsStringItemsOutput {
+	return o
+}
+
+func (o BlueprintPropertiesArrayPropsStringItemsOutput) ToBlueprintPropertiesArrayPropsStringItemsPtrOutput() BlueprintPropertiesArrayPropsStringItemsPtrOutput {
+	return o.ToBlueprintPropertiesArrayPropsStringItemsPtrOutputWithContext(context.Background())
+}
+
+func (o BlueprintPropertiesArrayPropsStringItemsOutput) ToBlueprintPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsStringItemsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlueprintPropertiesArrayPropsStringItems) *BlueprintPropertiesArrayPropsStringItems {
+		return &v
+	}).(BlueprintPropertiesArrayPropsStringItemsPtrOutput)
+}
+
+func (o BlueprintPropertiesArrayPropsStringItemsOutput) Defaults() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BlueprintPropertiesArrayPropsStringItems) []string { return v.Defaults }).(pulumi.StringArrayOutput)
+}
+
+func (o BlueprintPropertiesArrayPropsStringItemsOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesArrayPropsStringItems) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+type BlueprintPropertiesArrayPropsStringItemsPtrOutput struct{ *pulumi.OutputState }
+
+func (BlueprintPropertiesArrayPropsStringItemsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintPropertiesArrayPropsStringItems)(nil)).Elem()
+}
+
+func (o BlueprintPropertiesArrayPropsStringItemsPtrOutput) ToBlueprintPropertiesArrayPropsStringItemsPtrOutput() BlueprintPropertiesArrayPropsStringItemsPtrOutput {
+	return o
+}
+
+func (o BlueprintPropertiesArrayPropsStringItemsPtrOutput) ToBlueprintPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsStringItemsPtrOutput {
+	return o
+}
+
+func (o BlueprintPropertiesArrayPropsStringItemsPtrOutput) Elem() BlueprintPropertiesArrayPropsStringItemsOutput {
+	return o.ApplyT(func(v *BlueprintPropertiesArrayPropsStringItems) BlueprintPropertiesArrayPropsStringItems {
+		if v != nil {
+			return *v
+		}
+		var ret BlueprintPropertiesArrayPropsStringItems
+		return ret
+	}).(BlueprintPropertiesArrayPropsStringItemsOutput)
+}
+
+func (o BlueprintPropertiesArrayPropsStringItemsPtrOutput) Defaults() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BlueprintPropertiesArrayPropsStringItems) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Defaults
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o BlueprintPropertiesArrayPropsStringItemsPtrOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlueprintPropertiesArrayPropsStringItems) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Format
 	}).(pulumi.StringPtrOutput)
 }
 
-type BlueprintMirrorProperty struct {
-	Identifier string  `pulumi:"identifier"`
-	Path       string  `pulumi:"path"`
-	Title      *string `pulumi:"title"`
+type BlueprintPropertiesBooleanProps struct {
+	Default     *bool   `pulumi:"default"`
+	Description *string `pulumi:"description"`
+	Icon        *string `pulumi:"icon"`
+	Required    *bool   `pulumi:"required"`
+	Title       *string `pulumi:"title"`
 }
 
-// BlueprintMirrorPropertyInput is an input type that accepts BlueprintMirrorPropertyArgs and BlueprintMirrorPropertyOutput values.
-// You can construct a concrete instance of `BlueprintMirrorPropertyInput` via:
+// BlueprintPropertiesBooleanPropsInput is an input type that accepts BlueprintPropertiesBooleanPropsArgs and BlueprintPropertiesBooleanPropsOutput values.
+// You can construct a concrete instance of `BlueprintPropertiesBooleanPropsInput` via:
 //
-//	BlueprintMirrorPropertyArgs{...}
-type BlueprintMirrorPropertyInput interface {
+//	BlueprintPropertiesBooleanPropsArgs{...}
+type BlueprintPropertiesBooleanPropsInput interface {
 	pulumi.Input
 
-	ToBlueprintMirrorPropertyOutput() BlueprintMirrorPropertyOutput
-	ToBlueprintMirrorPropertyOutputWithContext(context.Context) BlueprintMirrorPropertyOutput
+	ToBlueprintPropertiesBooleanPropsOutput() BlueprintPropertiesBooleanPropsOutput
+	ToBlueprintPropertiesBooleanPropsOutputWithContext(context.Context) BlueprintPropertiesBooleanPropsOutput
 }
 
-type BlueprintMirrorPropertyArgs struct {
-	Identifier pulumi.StringInput    `pulumi:"identifier"`
-	Path       pulumi.StringInput    `pulumi:"path"`
-	Title      pulumi.StringPtrInput `pulumi:"title"`
+type BlueprintPropertiesBooleanPropsArgs struct {
+	Default     pulumi.BoolPtrInput   `pulumi:"default"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Icon        pulumi.StringPtrInput `pulumi:"icon"`
+	Required    pulumi.BoolPtrInput   `pulumi:"required"`
+	Title       pulumi.StringPtrInput `pulumi:"title"`
 }
 
-func (BlueprintMirrorPropertyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BlueprintMirrorProperty)(nil)).Elem()
+func (BlueprintPropertiesBooleanPropsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintPropertiesBooleanProps)(nil)).Elem()
 }
 
-func (i BlueprintMirrorPropertyArgs) ToBlueprintMirrorPropertyOutput() BlueprintMirrorPropertyOutput {
-	return i.ToBlueprintMirrorPropertyOutputWithContext(context.Background())
+func (i BlueprintPropertiesBooleanPropsArgs) ToBlueprintPropertiesBooleanPropsOutput() BlueprintPropertiesBooleanPropsOutput {
+	return i.ToBlueprintPropertiesBooleanPropsOutputWithContext(context.Background())
 }
 
-func (i BlueprintMirrorPropertyArgs) ToBlueprintMirrorPropertyOutputWithContext(ctx context.Context) BlueprintMirrorPropertyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BlueprintMirrorPropertyOutput)
+func (i BlueprintPropertiesBooleanPropsArgs) ToBlueprintPropertiesBooleanPropsOutputWithContext(ctx context.Context) BlueprintPropertiesBooleanPropsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesBooleanPropsOutput)
 }
 
-// BlueprintMirrorPropertyArrayInput is an input type that accepts BlueprintMirrorPropertyArray and BlueprintMirrorPropertyArrayOutput values.
-// You can construct a concrete instance of `BlueprintMirrorPropertyArrayInput` via:
+// BlueprintPropertiesBooleanPropsMapInput is an input type that accepts BlueprintPropertiesBooleanPropsMap and BlueprintPropertiesBooleanPropsMapOutput values.
+// You can construct a concrete instance of `BlueprintPropertiesBooleanPropsMapInput` via:
 //
-//	BlueprintMirrorPropertyArray{ BlueprintMirrorPropertyArgs{...} }
-type BlueprintMirrorPropertyArrayInput interface {
+//	BlueprintPropertiesBooleanPropsMap{ "key": BlueprintPropertiesBooleanPropsArgs{...} }
+type BlueprintPropertiesBooleanPropsMapInput interface {
 	pulumi.Input
 
-	ToBlueprintMirrorPropertyArrayOutput() BlueprintMirrorPropertyArrayOutput
-	ToBlueprintMirrorPropertyArrayOutputWithContext(context.Context) BlueprintMirrorPropertyArrayOutput
+	ToBlueprintPropertiesBooleanPropsMapOutput() BlueprintPropertiesBooleanPropsMapOutput
+	ToBlueprintPropertiesBooleanPropsMapOutputWithContext(context.Context) BlueprintPropertiesBooleanPropsMapOutput
 }
 
-type BlueprintMirrorPropertyArray []BlueprintMirrorPropertyInput
+type BlueprintPropertiesBooleanPropsMap map[string]BlueprintPropertiesBooleanPropsInput
 
-func (BlueprintMirrorPropertyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BlueprintMirrorProperty)(nil)).Elem()
+func (BlueprintPropertiesBooleanPropsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BlueprintPropertiesBooleanProps)(nil)).Elem()
 }
 
-func (i BlueprintMirrorPropertyArray) ToBlueprintMirrorPropertyArrayOutput() BlueprintMirrorPropertyArrayOutput {
-	return i.ToBlueprintMirrorPropertyArrayOutputWithContext(context.Background())
+func (i BlueprintPropertiesBooleanPropsMap) ToBlueprintPropertiesBooleanPropsMapOutput() BlueprintPropertiesBooleanPropsMapOutput {
+	return i.ToBlueprintPropertiesBooleanPropsMapOutputWithContext(context.Background())
 }
 
-func (i BlueprintMirrorPropertyArray) ToBlueprintMirrorPropertyArrayOutputWithContext(ctx context.Context) BlueprintMirrorPropertyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BlueprintMirrorPropertyArrayOutput)
+func (i BlueprintPropertiesBooleanPropsMap) ToBlueprintPropertiesBooleanPropsMapOutputWithContext(ctx context.Context) BlueprintPropertiesBooleanPropsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesBooleanPropsMapOutput)
 }
 
-type BlueprintMirrorPropertyOutput struct{ *pulumi.OutputState }
+type BlueprintPropertiesBooleanPropsOutput struct{ *pulumi.OutputState }
 
-func (BlueprintMirrorPropertyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BlueprintMirrorProperty)(nil)).Elem()
+func (BlueprintPropertiesBooleanPropsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintPropertiesBooleanProps)(nil)).Elem()
 }
 
-func (o BlueprintMirrorPropertyOutput) ToBlueprintMirrorPropertyOutput() BlueprintMirrorPropertyOutput {
+func (o BlueprintPropertiesBooleanPropsOutput) ToBlueprintPropertiesBooleanPropsOutput() BlueprintPropertiesBooleanPropsOutput {
 	return o
 }
 
-func (o BlueprintMirrorPropertyOutput) ToBlueprintMirrorPropertyOutputWithContext(ctx context.Context) BlueprintMirrorPropertyOutput {
+func (o BlueprintPropertiesBooleanPropsOutput) ToBlueprintPropertiesBooleanPropsOutputWithContext(ctx context.Context) BlueprintPropertiesBooleanPropsOutput {
 	return o
 }
 
-func (o BlueprintMirrorPropertyOutput) Identifier() pulumi.StringOutput {
-	return o.ApplyT(func(v BlueprintMirrorProperty) string { return v.Identifier }).(pulumi.StringOutput)
+func (o BlueprintPropertiesBooleanPropsOutput) Default() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesBooleanProps) *bool { return v.Default }).(pulumi.BoolPtrOutput)
 }
 
-func (o BlueprintMirrorPropertyOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v BlueprintMirrorProperty) string { return v.Path }).(pulumi.StringOutput)
+func (o BlueprintPropertiesBooleanPropsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesBooleanProps) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o BlueprintMirrorPropertyOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BlueprintMirrorProperty) *string { return v.Title }).(pulumi.StringPtrOutput)
+func (o BlueprintPropertiesBooleanPropsOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesBooleanProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
-type BlueprintMirrorPropertyArrayOutput struct{ *pulumi.OutputState }
-
-func (BlueprintMirrorPropertyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BlueprintMirrorProperty)(nil)).Elem()
+func (o BlueprintPropertiesBooleanPropsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesBooleanProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
-func (o BlueprintMirrorPropertyArrayOutput) ToBlueprintMirrorPropertyArrayOutput() BlueprintMirrorPropertyArrayOutput {
+func (o BlueprintPropertiesBooleanPropsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesBooleanProps) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type BlueprintPropertiesBooleanPropsMapOutput struct{ *pulumi.OutputState }
+
+func (BlueprintPropertiesBooleanPropsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BlueprintPropertiesBooleanProps)(nil)).Elem()
+}
+
+func (o BlueprintPropertiesBooleanPropsMapOutput) ToBlueprintPropertiesBooleanPropsMapOutput() BlueprintPropertiesBooleanPropsMapOutput {
 	return o
 }
 
-func (o BlueprintMirrorPropertyArrayOutput) ToBlueprintMirrorPropertyArrayOutputWithContext(ctx context.Context) BlueprintMirrorPropertyArrayOutput {
+func (o BlueprintPropertiesBooleanPropsMapOutput) ToBlueprintPropertiesBooleanPropsMapOutputWithContext(ctx context.Context) BlueprintPropertiesBooleanPropsMapOutput {
 	return o
 }
 
-func (o BlueprintMirrorPropertyArrayOutput) Index(i pulumi.IntInput) BlueprintMirrorPropertyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BlueprintMirrorProperty {
-		return vs[0].([]BlueprintMirrorProperty)[vs[1].(int)]
-	}).(BlueprintMirrorPropertyOutput)
+func (o BlueprintPropertiesBooleanPropsMapOutput) MapIndex(k pulumi.StringInput) BlueprintPropertiesBooleanPropsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BlueprintPropertiesBooleanProps {
+		return vs[0].(map[string]BlueprintPropertiesBooleanProps)[vs[1].(string)]
+	}).(BlueprintPropertiesBooleanPropsOutput)
 }
 
-type BlueprintProperty struct {
-	// Deprecated: Use default_value instead
-	Default            *string                              `pulumi:"default"`
-	DefaultItems       []string                             `pulumi:"defaultItems"`
-	DefaultValue       map[string]string                    `pulumi:"defaultValue"`
-	Description        *string                              `pulumi:"description"`
-	EnumColors         map[string]string                    `pulumi:"enumColors"`
-	Enums              []string                             `pulumi:"enums"`
-	Format             *string                              `pulumi:"format"`
-	Icon               *string                              `pulumi:"icon"`
-	Identifier         string                               `pulumi:"identifier"`
-	Items              map[string]interface{}               `pulumi:"items"`
-	MaxItems           *int                                 `pulumi:"maxItems"`
-	MaxLength          *int                                 `pulumi:"maxLength"`
-	MinItems           *int                                 `pulumi:"minItems"`
-	MinLength          *int                                 `pulumi:"minLength"`
-	Required           *bool                                `pulumi:"required"`
-	Spec               *string                              `pulumi:"spec"`
-	SpecAuthentication *BlueprintPropertySpecAuthentication `pulumi:"specAuthentication"`
-	Title              string                               `pulumi:"title"`
-	Type               string                               `pulumi:"type"`
+type BlueprintPropertiesNumberProps struct {
+	Default     *float64          `pulumi:"default"`
+	Description *string           `pulumi:"description"`
+	EnumColors  map[string]string `pulumi:"enumColors"`
+	Enums       []float64         `pulumi:"enums"`
+	Icon        *string           `pulumi:"icon"`
+	Maximum     *float64          `pulumi:"maximum"`
+	Minimum     *float64          `pulumi:"minimum"`
+	Required    *bool             `pulumi:"required"`
+	Title       *string           `pulumi:"title"`
 }
 
-// BlueprintPropertyInput is an input type that accepts BlueprintPropertyArgs and BlueprintPropertyOutput values.
-// You can construct a concrete instance of `BlueprintPropertyInput` via:
+// BlueprintPropertiesNumberPropsInput is an input type that accepts BlueprintPropertiesNumberPropsArgs and BlueprintPropertiesNumberPropsOutput values.
+// You can construct a concrete instance of `BlueprintPropertiesNumberPropsInput` via:
 //
-//	BlueprintPropertyArgs{...}
-type BlueprintPropertyInput interface {
+//	BlueprintPropertiesNumberPropsArgs{...}
+type BlueprintPropertiesNumberPropsInput interface {
 	pulumi.Input
 
-	ToBlueprintPropertyOutput() BlueprintPropertyOutput
-	ToBlueprintPropertyOutputWithContext(context.Context) BlueprintPropertyOutput
+	ToBlueprintPropertiesNumberPropsOutput() BlueprintPropertiesNumberPropsOutput
+	ToBlueprintPropertiesNumberPropsOutputWithContext(context.Context) BlueprintPropertiesNumberPropsOutput
 }
 
-type BlueprintPropertyArgs struct {
-	// Deprecated: Use default_value instead
-	Default            pulumi.StringPtrInput                       `pulumi:"default"`
-	DefaultItems       pulumi.StringArrayInput                     `pulumi:"defaultItems"`
-	DefaultValue       pulumi.StringMapInput                       `pulumi:"defaultValue"`
-	Description        pulumi.StringPtrInput                       `pulumi:"description"`
-	EnumColors         pulumi.StringMapInput                       `pulumi:"enumColors"`
-	Enums              pulumi.StringArrayInput                     `pulumi:"enums"`
-	Format             pulumi.StringPtrInput                       `pulumi:"format"`
-	Icon               pulumi.StringPtrInput                       `pulumi:"icon"`
-	Identifier         pulumi.StringInput                          `pulumi:"identifier"`
-	Items              pulumi.MapInput                             `pulumi:"items"`
-	MaxItems           pulumi.IntPtrInput                          `pulumi:"maxItems"`
-	MaxLength          pulumi.IntPtrInput                          `pulumi:"maxLength"`
-	MinItems           pulumi.IntPtrInput                          `pulumi:"minItems"`
-	MinLength          pulumi.IntPtrInput                          `pulumi:"minLength"`
-	Required           pulumi.BoolPtrInput                         `pulumi:"required"`
-	Spec               pulumi.StringPtrInput                       `pulumi:"spec"`
-	SpecAuthentication BlueprintPropertySpecAuthenticationPtrInput `pulumi:"specAuthentication"`
-	Title              pulumi.StringInput                          `pulumi:"title"`
-	Type               pulumi.StringInput                          `pulumi:"type"`
+type BlueprintPropertiesNumberPropsArgs struct {
+	Default     pulumi.Float64PtrInput   `pulumi:"default"`
+	Description pulumi.StringPtrInput    `pulumi:"description"`
+	EnumColors  pulumi.StringMapInput    `pulumi:"enumColors"`
+	Enums       pulumi.Float64ArrayInput `pulumi:"enums"`
+	Icon        pulumi.StringPtrInput    `pulumi:"icon"`
+	Maximum     pulumi.Float64PtrInput   `pulumi:"maximum"`
+	Minimum     pulumi.Float64PtrInput   `pulumi:"minimum"`
+	Required    pulumi.BoolPtrInput      `pulumi:"required"`
+	Title       pulumi.StringPtrInput    `pulumi:"title"`
 }
 
-func (BlueprintPropertyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BlueprintProperty)(nil)).Elem()
+func (BlueprintPropertiesNumberPropsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintPropertiesNumberProps)(nil)).Elem()
 }
 
-func (i BlueprintPropertyArgs) ToBlueprintPropertyOutput() BlueprintPropertyOutput {
-	return i.ToBlueprintPropertyOutputWithContext(context.Background())
+func (i BlueprintPropertiesNumberPropsArgs) ToBlueprintPropertiesNumberPropsOutput() BlueprintPropertiesNumberPropsOutput {
+	return i.ToBlueprintPropertiesNumberPropsOutputWithContext(context.Background())
 }
 
-func (i BlueprintPropertyArgs) ToBlueprintPropertyOutputWithContext(ctx context.Context) BlueprintPropertyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertyOutput)
+func (i BlueprintPropertiesNumberPropsArgs) ToBlueprintPropertiesNumberPropsOutputWithContext(ctx context.Context) BlueprintPropertiesNumberPropsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesNumberPropsOutput)
 }
 
-// BlueprintPropertyArrayInput is an input type that accepts BlueprintPropertyArray and BlueprintPropertyArrayOutput values.
-// You can construct a concrete instance of `BlueprintPropertyArrayInput` via:
+// BlueprintPropertiesNumberPropsMapInput is an input type that accepts BlueprintPropertiesNumberPropsMap and BlueprintPropertiesNumberPropsMapOutput values.
+// You can construct a concrete instance of `BlueprintPropertiesNumberPropsMapInput` via:
 //
-//	BlueprintPropertyArray{ BlueprintPropertyArgs{...} }
-type BlueprintPropertyArrayInput interface {
+//	BlueprintPropertiesNumberPropsMap{ "key": BlueprintPropertiesNumberPropsArgs{...} }
+type BlueprintPropertiesNumberPropsMapInput interface {
 	pulumi.Input
 
-	ToBlueprintPropertyArrayOutput() BlueprintPropertyArrayOutput
-	ToBlueprintPropertyArrayOutputWithContext(context.Context) BlueprintPropertyArrayOutput
+	ToBlueprintPropertiesNumberPropsMapOutput() BlueprintPropertiesNumberPropsMapOutput
+	ToBlueprintPropertiesNumberPropsMapOutputWithContext(context.Context) BlueprintPropertiesNumberPropsMapOutput
 }
 
-type BlueprintPropertyArray []BlueprintPropertyInput
+type BlueprintPropertiesNumberPropsMap map[string]BlueprintPropertiesNumberPropsInput
 
-func (BlueprintPropertyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BlueprintProperty)(nil)).Elem()
+func (BlueprintPropertiesNumberPropsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BlueprintPropertiesNumberProps)(nil)).Elem()
 }
 
-func (i BlueprintPropertyArray) ToBlueprintPropertyArrayOutput() BlueprintPropertyArrayOutput {
-	return i.ToBlueprintPropertyArrayOutputWithContext(context.Background())
+func (i BlueprintPropertiesNumberPropsMap) ToBlueprintPropertiesNumberPropsMapOutput() BlueprintPropertiesNumberPropsMapOutput {
+	return i.ToBlueprintPropertiesNumberPropsMapOutputWithContext(context.Background())
 }
 
-func (i BlueprintPropertyArray) ToBlueprintPropertyArrayOutputWithContext(ctx context.Context) BlueprintPropertyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertyArrayOutput)
+func (i BlueprintPropertiesNumberPropsMap) ToBlueprintPropertiesNumberPropsMapOutputWithContext(ctx context.Context) BlueprintPropertiesNumberPropsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesNumberPropsMapOutput)
 }
 
-type BlueprintPropertyOutput struct{ *pulumi.OutputState }
+type BlueprintPropertiesNumberPropsOutput struct{ *pulumi.OutputState }
 
-func (BlueprintPropertyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BlueprintProperty)(nil)).Elem()
+func (BlueprintPropertiesNumberPropsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintPropertiesNumberProps)(nil)).Elem()
 }
 
-func (o BlueprintPropertyOutput) ToBlueprintPropertyOutput() BlueprintPropertyOutput {
+func (o BlueprintPropertiesNumberPropsOutput) ToBlueprintPropertiesNumberPropsOutput() BlueprintPropertiesNumberPropsOutput {
 	return o
 }
 
-func (o BlueprintPropertyOutput) ToBlueprintPropertyOutputWithContext(ctx context.Context) BlueprintPropertyOutput {
+func (o BlueprintPropertiesNumberPropsOutput) ToBlueprintPropertiesNumberPropsOutputWithContext(ctx context.Context) BlueprintPropertiesNumberPropsOutput {
 	return o
 }
 
-// Deprecated: Use default_value instead
-func (o BlueprintPropertyOutput) Default() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BlueprintProperty) *string { return v.Default }).(pulumi.StringPtrOutput)
+func (o BlueprintPropertiesNumberPropsOutput) Default() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesNumberProps) *float64 { return v.Default }).(pulumi.Float64PtrOutput)
 }
 
-func (o BlueprintPropertyOutput) DefaultItems() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v BlueprintProperty) []string { return v.DefaultItems }).(pulumi.StringArrayOutput)
+func (o BlueprintPropertiesNumberPropsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesNumberProps) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o BlueprintPropertyOutput) DefaultValue() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BlueprintProperty) map[string]string { return v.DefaultValue }).(pulumi.StringMapOutput)
+func (o BlueprintPropertiesNumberPropsOutput) EnumColors() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BlueprintPropertiesNumberProps) map[string]string { return v.EnumColors }).(pulumi.StringMapOutput)
 }
 
-func (o BlueprintPropertyOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BlueprintProperty) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o BlueprintPropertiesNumberPropsOutput) Enums() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v BlueprintPropertiesNumberProps) []float64 { return v.Enums }).(pulumi.Float64ArrayOutput)
 }
 
-func (o BlueprintPropertyOutput) EnumColors() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BlueprintProperty) map[string]string { return v.EnumColors }).(pulumi.StringMapOutput)
+func (o BlueprintPropertiesNumberPropsOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesNumberProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
-func (o BlueprintPropertyOutput) Enums() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v BlueprintProperty) []string { return v.Enums }).(pulumi.StringArrayOutput)
+func (o BlueprintPropertiesNumberPropsOutput) Maximum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesNumberProps) *float64 { return v.Maximum }).(pulumi.Float64PtrOutput)
 }
 
-func (o BlueprintPropertyOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BlueprintProperty) *string { return v.Format }).(pulumi.StringPtrOutput)
+func (o BlueprintPropertiesNumberPropsOutput) Minimum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesNumberProps) *float64 { return v.Minimum }).(pulumi.Float64PtrOutput)
 }
 
-func (o BlueprintPropertyOutput) Icon() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BlueprintProperty) *string { return v.Icon }).(pulumi.StringPtrOutput)
+func (o BlueprintPropertiesNumberPropsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesNumberProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
-func (o BlueprintPropertyOutput) Identifier() pulumi.StringOutput {
-	return o.ApplyT(func(v BlueprintProperty) string { return v.Identifier }).(pulumi.StringOutput)
+func (o BlueprintPropertiesNumberPropsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesNumberProps) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
-func (o BlueprintPropertyOutput) Items() pulumi.MapOutput {
-	return o.ApplyT(func(v BlueprintProperty) map[string]interface{} { return v.Items }).(pulumi.MapOutput)
+type BlueprintPropertiesNumberPropsMapOutput struct{ *pulumi.OutputState }
+
+func (BlueprintPropertiesNumberPropsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BlueprintPropertiesNumberProps)(nil)).Elem()
 }
 
-func (o BlueprintPropertyOutput) MaxItems() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v BlueprintProperty) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
-}
-
-func (o BlueprintPropertyOutput) MaxLength() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v BlueprintProperty) *int { return v.MaxLength }).(pulumi.IntPtrOutput)
-}
-
-func (o BlueprintPropertyOutput) MinItems() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v BlueprintProperty) *int { return v.MinItems }).(pulumi.IntPtrOutput)
-}
-
-func (o BlueprintPropertyOutput) MinLength() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v BlueprintProperty) *int { return v.MinLength }).(pulumi.IntPtrOutput)
-}
-
-func (o BlueprintPropertyOutput) Required() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v BlueprintProperty) *bool { return v.Required }).(pulumi.BoolPtrOutput)
-}
-
-func (o BlueprintPropertyOutput) Spec() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BlueprintProperty) *string { return v.Spec }).(pulumi.StringPtrOutput)
-}
-
-func (o BlueprintPropertyOutput) SpecAuthentication() BlueprintPropertySpecAuthenticationPtrOutput {
-	return o.ApplyT(func(v BlueprintProperty) *BlueprintPropertySpecAuthentication { return v.SpecAuthentication }).(BlueprintPropertySpecAuthenticationPtrOutput)
-}
-
-func (o BlueprintPropertyOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v BlueprintProperty) string { return v.Title }).(pulumi.StringOutput)
-}
-
-func (o BlueprintPropertyOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v BlueprintProperty) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type BlueprintPropertyArrayOutput struct{ *pulumi.OutputState }
-
-func (BlueprintPropertyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BlueprintProperty)(nil)).Elem()
-}
-
-func (o BlueprintPropertyArrayOutput) ToBlueprintPropertyArrayOutput() BlueprintPropertyArrayOutput {
+func (o BlueprintPropertiesNumberPropsMapOutput) ToBlueprintPropertiesNumberPropsMapOutput() BlueprintPropertiesNumberPropsMapOutput {
 	return o
 }
 
-func (o BlueprintPropertyArrayOutput) ToBlueprintPropertyArrayOutputWithContext(ctx context.Context) BlueprintPropertyArrayOutput {
+func (o BlueprintPropertiesNumberPropsMapOutput) ToBlueprintPropertiesNumberPropsMapOutputWithContext(ctx context.Context) BlueprintPropertiesNumberPropsMapOutput {
 	return o
 }
 
-func (o BlueprintPropertyArrayOutput) Index(i pulumi.IntInput) BlueprintPropertyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BlueprintProperty {
-		return vs[0].([]BlueprintProperty)[vs[1].(int)]
-	}).(BlueprintPropertyOutput)
+func (o BlueprintPropertiesNumberPropsMapOutput) MapIndex(k pulumi.StringInput) BlueprintPropertiesNumberPropsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BlueprintPropertiesNumberProps {
+		return vs[0].(map[string]BlueprintPropertiesNumberProps)[vs[1].(string)]
+	}).(BlueprintPropertiesNumberPropsOutput)
 }
 
-type BlueprintPropertySpecAuthentication struct {
+type BlueprintPropertiesObjectProps struct {
+	Default     *string `pulumi:"default"`
+	Description *string `pulumi:"description"`
+	Icon        *string `pulumi:"icon"`
+	Required    *bool   `pulumi:"required"`
+	Spec        *string `pulumi:"spec"`
+	Title       *string `pulumi:"title"`
+}
+
+// BlueprintPropertiesObjectPropsInput is an input type that accepts BlueprintPropertiesObjectPropsArgs and BlueprintPropertiesObjectPropsOutput values.
+// You can construct a concrete instance of `BlueprintPropertiesObjectPropsInput` via:
+//
+//	BlueprintPropertiesObjectPropsArgs{...}
+type BlueprintPropertiesObjectPropsInput interface {
+	pulumi.Input
+
+	ToBlueprintPropertiesObjectPropsOutput() BlueprintPropertiesObjectPropsOutput
+	ToBlueprintPropertiesObjectPropsOutputWithContext(context.Context) BlueprintPropertiesObjectPropsOutput
+}
+
+type BlueprintPropertiesObjectPropsArgs struct {
+	Default     pulumi.StringPtrInput `pulumi:"default"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Icon        pulumi.StringPtrInput `pulumi:"icon"`
+	Required    pulumi.BoolPtrInput   `pulumi:"required"`
+	Spec        pulumi.StringPtrInput `pulumi:"spec"`
+	Title       pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (BlueprintPropertiesObjectPropsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintPropertiesObjectProps)(nil)).Elem()
+}
+
+func (i BlueprintPropertiesObjectPropsArgs) ToBlueprintPropertiesObjectPropsOutput() BlueprintPropertiesObjectPropsOutput {
+	return i.ToBlueprintPropertiesObjectPropsOutputWithContext(context.Background())
+}
+
+func (i BlueprintPropertiesObjectPropsArgs) ToBlueprintPropertiesObjectPropsOutputWithContext(ctx context.Context) BlueprintPropertiesObjectPropsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesObjectPropsOutput)
+}
+
+// BlueprintPropertiesObjectPropsMapInput is an input type that accepts BlueprintPropertiesObjectPropsMap and BlueprintPropertiesObjectPropsMapOutput values.
+// You can construct a concrete instance of `BlueprintPropertiesObjectPropsMapInput` via:
+//
+//	BlueprintPropertiesObjectPropsMap{ "key": BlueprintPropertiesObjectPropsArgs{...} }
+type BlueprintPropertiesObjectPropsMapInput interface {
+	pulumi.Input
+
+	ToBlueprintPropertiesObjectPropsMapOutput() BlueprintPropertiesObjectPropsMapOutput
+	ToBlueprintPropertiesObjectPropsMapOutputWithContext(context.Context) BlueprintPropertiesObjectPropsMapOutput
+}
+
+type BlueprintPropertiesObjectPropsMap map[string]BlueprintPropertiesObjectPropsInput
+
+func (BlueprintPropertiesObjectPropsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BlueprintPropertiesObjectProps)(nil)).Elem()
+}
+
+func (i BlueprintPropertiesObjectPropsMap) ToBlueprintPropertiesObjectPropsMapOutput() BlueprintPropertiesObjectPropsMapOutput {
+	return i.ToBlueprintPropertiesObjectPropsMapOutputWithContext(context.Background())
+}
+
+func (i BlueprintPropertiesObjectPropsMap) ToBlueprintPropertiesObjectPropsMapOutputWithContext(ctx context.Context) BlueprintPropertiesObjectPropsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesObjectPropsMapOutput)
+}
+
+type BlueprintPropertiesObjectPropsOutput struct{ *pulumi.OutputState }
+
+func (BlueprintPropertiesObjectPropsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintPropertiesObjectProps)(nil)).Elem()
+}
+
+func (o BlueprintPropertiesObjectPropsOutput) ToBlueprintPropertiesObjectPropsOutput() BlueprintPropertiesObjectPropsOutput {
+	return o
+}
+
+func (o BlueprintPropertiesObjectPropsOutput) ToBlueprintPropertiesObjectPropsOutputWithContext(ctx context.Context) BlueprintPropertiesObjectPropsOutput {
+	return o
+}
+
+func (o BlueprintPropertiesObjectPropsOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesObjectProps) *string { return v.Default }).(pulumi.StringPtrOutput)
+}
+
+func (o BlueprintPropertiesObjectPropsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesObjectProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o BlueprintPropertiesObjectPropsOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesObjectProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
+func (o BlueprintPropertiesObjectPropsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesObjectProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+func (o BlueprintPropertiesObjectPropsOutput) Spec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesObjectProps) *string { return v.Spec }).(pulumi.StringPtrOutput)
+}
+
+func (o BlueprintPropertiesObjectPropsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesObjectProps) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type BlueprintPropertiesObjectPropsMapOutput struct{ *pulumi.OutputState }
+
+func (BlueprintPropertiesObjectPropsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BlueprintPropertiesObjectProps)(nil)).Elem()
+}
+
+func (o BlueprintPropertiesObjectPropsMapOutput) ToBlueprintPropertiesObjectPropsMapOutput() BlueprintPropertiesObjectPropsMapOutput {
+	return o
+}
+
+func (o BlueprintPropertiesObjectPropsMapOutput) ToBlueprintPropertiesObjectPropsMapOutputWithContext(ctx context.Context) BlueprintPropertiesObjectPropsMapOutput {
+	return o
+}
+
+func (o BlueprintPropertiesObjectPropsMapOutput) MapIndex(k pulumi.StringInput) BlueprintPropertiesObjectPropsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BlueprintPropertiesObjectProps {
+		return vs[0].(map[string]BlueprintPropertiesObjectProps)[vs[1].(string)]
+	}).(BlueprintPropertiesObjectPropsOutput)
+}
+
+type BlueprintPropertiesStringProps struct {
+	Default            *string                                           `pulumi:"default"`
+	Description        *string                                           `pulumi:"description"`
+	EnumColors         map[string]string                                 `pulumi:"enumColors"`
+	Enums              []string                                          `pulumi:"enums"`
+	Format             *string                                           `pulumi:"format"`
+	Icon               *string                                           `pulumi:"icon"`
+	MaxLength          *int                                              `pulumi:"maxLength"`
+	MinLength          *int                                              `pulumi:"minLength"`
+	Pattern            *string                                           `pulumi:"pattern"`
+	Required           *bool                                             `pulumi:"required"`
+	Spec               *string                                           `pulumi:"spec"`
+	SpecAuthentication *BlueprintPropertiesStringPropsSpecAuthentication `pulumi:"specAuthentication"`
+	Title              *string                                           `pulumi:"title"`
+}
+
+// BlueprintPropertiesStringPropsInput is an input type that accepts BlueprintPropertiesStringPropsArgs and BlueprintPropertiesStringPropsOutput values.
+// You can construct a concrete instance of `BlueprintPropertiesStringPropsInput` via:
+//
+//	BlueprintPropertiesStringPropsArgs{...}
+type BlueprintPropertiesStringPropsInput interface {
+	pulumi.Input
+
+	ToBlueprintPropertiesStringPropsOutput() BlueprintPropertiesStringPropsOutput
+	ToBlueprintPropertiesStringPropsOutputWithContext(context.Context) BlueprintPropertiesStringPropsOutput
+}
+
+type BlueprintPropertiesStringPropsArgs struct {
+	Default            pulumi.StringPtrInput                                    `pulumi:"default"`
+	Description        pulumi.StringPtrInput                                    `pulumi:"description"`
+	EnumColors         pulumi.StringMapInput                                    `pulumi:"enumColors"`
+	Enums              pulumi.StringArrayInput                                  `pulumi:"enums"`
+	Format             pulumi.StringPtrInput                                    `pulumi:"format"`
+	Icon               pulumi.StringPtrInput                                    `pulumi:"icon"`
+	MaxLength          pulumi.IntPtrInput                                       `pulumi:"maxLength"`
+	MinLength          pulumi.IntPtrInput                                       `pulumi:"minLength"`
+	Pattern            pulumi.StringPtrInput                                    `pulumi:"pattern"`
+	Required           pulumi.BoolPtrInput                                      `pulumi:"required"`
+	Spec               pulumi.StringPtrInput                                    `pulumi:"spec"`
+	SpecAuthentication BlueprintPropertiesStringPropsSpecAuthenticationPtrInput `pulumi:"specAuthentication"`
+	Title              pulumi.StringPtrInput                                    `pulumi:"title"`
+}
+
+func (BlueprintPropertiesStringPropsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintPropertiesStringProps)(nil)).Elem()
+}
+
+func (i BlueprintPropertiesStringPropsArgs) ToBlueprintPropertiesStringPropsOutput() BlueprintPropertiesStringPropsOutput {
+	return i.ToBlueprintPropertiesStringPropsOutputWithContext(context.Background())
+}
+
+func (i BlueprintPropertiesStringPropsArgs) ToBlueprintPropertiesStringPropsOutputWithContext(ctx context.Context) BlueprintPropertiesStringPropsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesStringPropsOutput)
+}
+
+// BlueprintPropertiesStringPropsMapInput is an input type that accepts BlueprintPropertiesStringPropsMap and BlueprintPropertiesStringPropsMapOutput values.
+// You can construct a concrete instance of `BlueprintPropertiesStringPropsMapInput` via:
+//
+//	BlueprintPropertiesStringPropsMap{ "key": BlueprintPropertiesStringPropsArgs{...} }
+type BlueprintPropertiesStringPropsMapInput interface {
+	pulumi.Input
+
+	ToBlueprintPropertiesStringPropsMapOutput() BlueprintPropertiesStringPropsMapOutput
+	ToBlueprintPropertiesStringPropsMapOutputWithContext(context.Context) BlueprintPropertiesStringPropsMapOutput
+}
+
+type BlueprintPropertiesStringPropsMap map[string]BlueprintPropertiesStringPropsInput
+
+func (BlueprintPropertiesStringPropsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BlueprintPropertiesStringProps)(nil)).Elem()
+}
+
+func (i BlueprintPropertiesStringPropsMap) ToBlueprintPropertiesStringPropsMapOutput() BlueprintPropertiesStringPropsMapOutput {
+	return i.ToBlueprintPropertiesStringPropsMapOutputWithContext(context.Background())
+}
+
+func (i BlueprintPropertiesStringPropsMap) ToBlueprintPropertiesStringPropsMapOutputWithContext(ctx context.Context) BlueprintPropertiesStringPropsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesStringPropsMapOutput)
+}
+
+type BlueprintPropertiesStringPropsOutput struct{ *pulumi.OutputState }
+
+func (BlueprintPropertiesStringPropsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintPropertiesStringProps)(nil)).Elem()
+}
+
+func (o BlueprintPropertiesStringPropsOutput) ToBlueprintPropertiesStringPropsOutput() BlueprintPropertiesStringPropsOutput {
+	return o
+}
+
+func (o BlueprintPropertiesStringPropsOutput) ToBlueprintPropertiesStringPropsOutputWithContext(ctx context.Context) BlueprintPropertiesStringPropsOutput {
+	return o
+}
+
+func (o BlueprintPropertiesStringPropsOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesStringProps) *string { return v.Default }).(pulumi.StringPtrOutput)
+}
+
+func (o BlueprintPropertiesStringPropsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesStringProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o BlueprintPropertiesStringPropsOutput) EnumColors() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BlueprintPropertiesStringProps) map[string]string { return v.EnumColors }).(pulumi.StringMapOutput)
+}
+
+func (o BlueprintPropertiesStringPropsOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BlueprintPropertiesStringProps) []string { return v.Enums }).(pulumi.StringArrayOutput)
+}
+
+func (o BlueprintPropertiesStringPropsOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesStringProps) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+func (o BlueprintPropertiesStringPropsOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesStringProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
+func (o BlueprintPropertiesStringPropsOutput) MaxLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesStringProps) *int { return v.MaxLength }).(pulumi.IntPtrOutput)
+}
+
+func (o BlueprintPropertiesStringPropsOutput) MinLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesStringProps) *int { return v.MinLength }).(pulumi.IntPtrOutput)
+}
+
+func (o BlueprintPropertiesStringPropsOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesStringProps) *string { return v.Pattern }).(pulumi.StringPtrOutput)
+}
+
+func (o BlueprintPropertiesStringPropsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesStringProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+func (o BlueprintPropertiesStringPropsOutput) Spec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesStringProps) *string { return v.Spec }).(pulumi.StringPtrOutput)
+}
+
+func (o BlueprintPropertiesStringPropsOutput) SpecAuthentication() BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesStringProps) *BlueprintPropertiesStringPropsSpecAuthentication {
+		return v.SpecAuthentication
+	}).(BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput)
+}
+
+func (o BlueprintPropertiesStringPropsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesStringProps) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type BlueprintPropertiesStringPropsMapOutput struct{ *pulumi.OutputState }
+
+func (BlueprintPropertiesStringPropsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BlueprintPropertiesStringProps)(nil)).Elem()
+}
+
+func (o BlueprintPropertiesStringPropsMapOutput) ToBlueprintPropertiesStringPropsMapOutput() BlueprintPropertiesStringPropsMapOutput {
+	return o
+}
+
+func (o BlueprintPropertiesStringPropsMapOutput) ToBlueprintPropertiesStringPropsMapOutputWithContext(ctx context.Context) BlueprintPropertiesStringPropsMapOutput {
+	return o
+}
+
+func (o BlueprintPropertiesStringPropsMapOutput) MapIndex(k pulumi.StringInput) BlueprintPropertiesStringPropsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BlueprintPropertiesStringProps {
+		return vs[0].(map[string]BlueprintPropertiesStringProps)[vs[1].(string)]
+	}).(BlueprintPropertiesStringPropsOutput)
+}
+
+type BlueprintPropertiesStringPropsSpecAuthentication struct {
 	AuthorizationUrl string `pulumi:"authorizationUrl"`
 	ClientId         string `pulumi:"clientId"`
 	TokenUrl         string `pulumi:"tokenUrl"`
 }
 
-// BlueprintPropertySpecAuthenticationInput is an input type that accepts BlueprintPropertySpecAuthenticationArgs and BlueprintPropertySpecAuthenticationOutput values.
-// You can construct a concrete instance of `BlueprintPropertySpecAuthenticationInput` via:
+// BlueprintPropertiesStringPropsSpecAuthenticationInput is an input type that accepts BlueprintPropertiesStringPropsSpecAuthenticationArgs and BlueprintPropertiesStringPropsSpecAuthenticationOutput values.
+// You can construct a concrete instance of `BlueprintPropertiesStringPropsSpecAuthenticationInput` via:
 //
-//	BlueprintPropertySpecAuthenticationArgs{...}
-type BlueprintPropertySpecAuthenticationInput interface {
+//	BlueprintPropertiesStringPropsSpecAuthenticationArgs{...}
+type BlueprintPropertiesStringPropsSpecAuthenticationInput interface {
 	pulumi.Input
 
-	ToBlueprintPropertySpecAuthenticationOutput() BlueprintPropertySpecAuthenticationOutput
-	ToBlueprintPropertySpecAuthenticationOutputWithContext(context.Context) BlueprintPropertySpecAuthenticationOutput
+	ToBlueprintPropertiesStringPropsSpecAuthenticationOutput() BlueprintPropertiesStringPropsSpecAuthenticationOutput
+	ToBlueprintPropertiesStringPropsSpecAuthenticationOutputWithContext(context.Context) BlueprintPropertiesStringPropsSpecAuthenticationOutput
 }
 
-type BlueprintPropertySpecAuthenticationArgs struct {
+type BlueprintPropertiesStringPropsSpecAuthenticationArgs struct {
 	AuthorizationUrl pulumi.StringInput `pulumi:"authorizationUrl"`
 	ClientId         pulumi.StringInput `pulumi:"clientId"`
 	TokenUrl         pulumi.StringInput `pulumi:"tokenUrl"`
 }
 
-func (BlueprintPropertySpecAuthenticationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BlueprintPropertySpecAuthentication)(nil)).Elem()
+func (BlueprintPropertiesStringPropsSpecAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintPropertiesStringPropsSpecAuthentication)(nil)).Elem()
 }
 
-func (i BlueprintPropertySpecAuthenticationArgs) ToBlueprintPropertySpecAuthenticationOutput() BlueprintPropertySpecAuthenticationOutput {
-	return i.ToBlueprintPropertySpecAuthenticationOutputWithContext(context.Background())
+func (i BlueprintPropertiesStringPropsSpecAuthenticationArgs) ToBlueprintPropertiesStringPropsSpecAuthenticationOutput() BlueprintPropertiesStringPropsSpecAuthenticationOutput {
+	return i.ToBlueprintPropertiesStringPropsSpecAuthenticationOutputWithContext(context.Background())
 }
 
-func (i BlueprintPropertySpecAuthenticationArgs) ToBlueprintPropertySpecAuthenticationOutputWithContext(ctx context.Context) BlueprintPropertySpecAuthenticationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertySpecAuthenticationOutput)
+func (i BlueprintPropertiesStringPropsSpecAuthenticationArgs) ToBlueprintPropertiesStringPropsSpecAuthenticationOutputWithContext(ctx context.Context) BlueprintPropertiesStringPropsSpecAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesStringPropsSpecAuthenticationOutput)
 }
 
-func (i BlueprintPropertySpecAuthenticationArgs) ToBlueprintPropertySpecAuthenticationPtrOutput() BlueprintPropertySpecAuthenticationPtrOutput {
-	return i.ToBlueprintPropertySpecAuthenticationPtrOutputWithContext(context.Background())
+func (i BlueprintPropertiesStringPropsSpecAuthenticationArgs) ToBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput() BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput {
+	return i.ToBlueprintPropertiesStringPropsSpecAuthenticationPtrOutputWithContext(context.Background())
 }
 
-func (i BlueprintPropertySpecAuthenticationArgs) ToBlueprintPropertySpecAuthenticationPtrOutputWithContext(ctx context.Context) BlueprintPropertySpecAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertySpecAuthenticationOutput).ToBlueprintPropertySpecAuthenticationPtrOutputWithContext(ctx)
+func (i BlueprintPropertiesStringPropsSpecAuthenticationArgs) ToBlueprintPropertiesStringPropsSpecAuthenticationPtrOutputWithContext(ctx context.Context) BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesStringPropsSpecAuthenticationOutput).ToBlueprintPropertiesStringPropsSpecAuthenticationPtrOutputWithContext(ctx)
 }
 
-// BlueprintPropertySpecAuthenticationPtrInput is an input type that accepts BlueprintPropertySpecAuthenticationArgs, BlueprintPropertySpecAuthenticationPtr and BlueprintPropertySpecAuthenticationPtrOutput values.
-// You can construct a concrete instance of `BlueprintPropertySpecAuthenticationPtrInput` via:
+// BlueprintPropertiesStringPropsSpecAuthenticationPtrInput is an input type that accepts BlueprintPropertiesStringPropsSpecAuthenticationArgs, BlueprintPropertiesStringPropsSpecAuthenticationPtr and BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput values.
+// You can construct a concrete instance of `BlueprintPropertiesStringPropsSpecAuthenticationPtrInput` via:
 //
-//	        BlueprintPropertySpecAuthenticationArgs{...}
+//	        BlueprintPropertiesStringPropsSpecAuthenticationArgs{...}
 //
 //	or:
 //
 //	        nil
-type BlueprintPropertySpecAuthenticationPtrInput interface {
+type BlueprintPropertiesStringPropsSpecAuthenticationPtrInput interface {
 	pulumi.Input
 
-	ToBlueprintPropertySpecAuthenticationPtrOutput() BlueprintPropertySpecAuthenticationPtrOutput
-	ToBlueprintPropertySpecAuthenticationPtrOutputWithContext(context.Context) BlueprintPropertySpecAuthenticationPtrOutput
+	ToBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput() BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput
+	ToBlueprintPropertiesStringPropsSpecAuthenticationPtrOutputWithContext(context.Context) BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput
 }
 
-type blueprintPropertySpecAuthenticationPtrType BlueprintPropertySpecAuthenticationArgs
+type blueprintPropertiesStringPropsSpecAuthenticationPtrType BlueprintPropertiesStringPropsSpecAuthenticationArgs
 
-func BlueprintPropertySpecAuthenticationPtr(v *BlueprintPropertySpecAuthenticationArgs) BlueprintPropertySpecAuthenticationPtrInput {
-	return (*blueprintPropertySpecAuthenticationPtrType)(v)
+func BlueprintPropertiesStringPropsSpecAuthenticationPtr(v *BlueprintPropertiesStringPropsSpecAuthenticationArgs) BlueprintPropertiesStringPropsSpecAuthenticationPtrInput {
+	return (*blueprintPropertiesStringPropsSpecAuthenticationPtrType)(v)
 }
 
-func (*blueprintPropertySpecAuthenticationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BlueprintPropertySpecAuthentication)(nil)).Elem()
+func (*blueprintPropertiesStringPropsSpecAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintPropertiesStringPropsSpecAuthentication)(nil)).Elem()
 }
 
-func (i *blueprintPropertySpecAuthenticationPtrType) ToBlueprintPropertySpecAuthenticationPtrOutput() BlueprintPropertySpecAuthenticationPtrOutput {
-	return i.ToBlueprintPropertySpecAuthenticationPtrOutputWithContext(context.Background())
+func (i *blueprintPropertiesStringPropsSpecAuthenticationPtrType) ToBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput() BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput {
+	return i.ToBlueprintPropertiesStringPropsSpecAuthenticationPtrOutputWithContext(context.Background())
 }
 
-func (i *blueprintPropertySpecAuthenticationPtrType) ToBlueprintPropertySpecAuthenticationPtrOutputWithContext(ctx context.Context) BlueprintPropertySpecAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertySpecAuthenticationPtrOutput)
+func (i *blueprintPropertiesStringPropsSpecAuthenticationPtrType) ToBlueprintPropertiesStringPropsSpecAuthenticationPtrOutputWithContext(ctx context.Context) BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput)
 }
 
-type BlueprintPropertySpecAuthenticationOutput struct{ *pulumi.OutputState }
+type BlueprintPropertiesStringPropsSpecAuthenticationOutput struct{ *pulumi.OutputState }
 
-func (BlueprintPropertySpecAuthenticationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BlueprintPropertySpecAuthentication)(nil)).Elem()
+func (BlueprintPropertiesStringPropsSpecAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintPropertiesStringPropsSpecAuthentication)(nil)).Elem()
 }
 
-func (o BlueprintPropertySpecAuthenticationOutput) ToBlueprintPropertySpecAuthenticationOutput() BlueprintPropertySpecAuthenticationOutput {
+func (o BlueprintPropertiesStringPropsSpecAuthenticationOutput) ToBlueprintPropertiesStringPropsSpecAuthenticationOutput() BlueprintPropertiesStringPropsSpecAuthenticationOutput {
 	return o
 }
 
-func (o BlueprintPropertySpecAuthenticationOutput) ToBlueprintPropertySpecAuthenticationOutputWithContext(ctx context.Context) BlueprintPropertySpecAuthenticationOutput {
+func (o BlueprintPropertiesStringPropsSpecAuthenticationOutput) ToBlueprintPropertiesStringPropsSpecAuthenticationOutputWithContext(ctx context.Context) BlueprintPropertiesStringPropsSpecAuthenticationOutput {
 	return o
 }
 
-func (o BlueprintPropertySpecAuthenticationOutput) ToBlueprintPropertySpecAuthenticationPtrOutput() BlueprintPropertySpecAuthenticationPtrOutput {
-	return o.ToBlueprintPropertySpecAuthenticationPtrOutputWithContext(context.Background())
+func (o BlueprintPropertiesStringPropsSpecAuthenticationOutput) ToBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput() BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput {
+	return o.ToBlueprintPropertiesStringPropsSpecAuthenticationPtrOutputWithContext(context.Background())
 }
 
-func (o BlueprintPropertySpecAuthenticationOutput) ToBlueprintPropertySpecAuthenticationPtrOutputWithContext(ctx context.Context) BlueprintPropertySpecAuthenticationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlueprintPropertySpecAuthentication) *BlueprintPropertySpecAuthentication {
+func (o BlueprintPropertiesStringPropsSpecAuthenticationOutput) ToBlueprintPropertiesStringPropsSpecAuthenticationPtrOutputWithContext(ctx context.Context) BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlueprintPropertiesStringPropsSpecAuthentication) *BlueprintPropertiesStringPropsSpecAuthentication {
 		return &v
-	}).(BlueprintPropertySpecAuthenticationPtrOutput)
+	}).(BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput)
 }
 
-func (o BlueprintPropertySpecAuthenticationOutput) AuthorizationUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v BlueprintPropertySpecAuthentication) string { return v.AuthorizationUrl }).(pulumi.StringOutput)
+func (o BlueprintPropertiesStringPropsSpecAuthenticationOutput) AuthorizationUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v BlueprintPropertiesStringPropsSpecAuthentication) string { return v.AuthorizationUrl }).(pulumi.StringOutput)
 }
 
-func (o BlueprintPropertySpecAuthenticationOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v BlueprintPropertySpecAuthentication) string { return v.ClientId }).(pulumi.StringOutput)
+func (o BlueprintPropertiesStringPropsSpecAuthenticationOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v BlueprintPropertiesStringPropsSpecAuthentication) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
-func (o BlueprintPropertySpecAuthenticationOutput) TokenUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v BlueprintPropertySpecAuthentication) string { return v.TokenUrl }).(pulumi.StringOutput)
+func (o BlueprintPropertiesStringPropsSpecAuthenticationOutput) TokenUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v BlueprintPropertiesStringPropsSpecAuthentication) string { return v.TokenUrl }).(pulumi.StringOutput)
 }
 
-type BlueprintPropertySpecAuthenticationPtrOutput struct{ *pulumi.OutputState }
+type BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput struct{ *pulumi.OutputState }
 
-func (BlueprintPropertySpecAuthenticationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BlueprintPropertySpecAuthentication)(nil)).Elem()
+func (BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintPropertiesStringPropsSpecAuthentication)(nil)).Elem()
 }
 
-func (o BlueprintPropertySpecAuthenticationPtrOutput) ToBlueprintPropertySpecAuthenticationPtrOutput() BlueprintPropertySpecAuthenticationPtrOutput {
+func (o BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) ToBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput() BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput {
 	return o
 }
 
-func (o BlueprintPropertySpecAuthenticationPtrOutput) ToBlueprintPropertySpecAuthenticationPtrOutputWithContext(ctx context.Context) BlueprintPropertySpecAuthenticationPtrOutput {
+func (o BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) ToBlueprintPropertiesStringPropsSpecAuthenticationPtrOutputWithContext(ctx context.Context) BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput {
 	return o
 }
 
-func (o BlueprintPropertySpecAuthenticationPtrOutput) Elem() BlueprintPropertySpecAuthenticationOutput {
-	return o.ApplyT(func(v *BlueprintPropertySpecAuthentication) BlueprintPropertySpecAuthentication {
+func (o BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) Elem() BlueprintPropertiesStringPropsSpecAuthenticationOutput {
+	return o.ApplyT(func(v *BlueprintPropertiesStringPropsSpecAuthentication) BlueprintPropertiesStringPropsSpecAuthentication {
 		if v != nil {
 			return *v
 		}
-		var ret BlueprintPropertySpecAuthentication
+		var ret BlueprintPropertiesStringPropsSpecAuthentication
 		return ret
-	}).(BlueprintPropertySpecAuthenticationOutput)
+	}).(BlueprintPropertiesStringPropsSpecAuthenticationOutput)
 }
 
-func (o BlueprintPropertySpecAuthenticationPtrOutput) AuthorizationUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BlueprintPropertySpecAuthentication) *string {
+func (o BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) AuthorizationUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlueprintPropertiesStringPropsSpecAuthentication) *string {
 		if v == nil {
 			return nil
 		}
@@ -1208,8 +4261,8 @@ func (o BlueprintPropertySpecAuthenticationPtrOutput) AuthorizationUrl() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o BlueprintPropertySpecAuthenticationPtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BlueprintPropertySpecAuthentication) *string {
+func (o BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlueprintPropertiesStringPropsSpecAuthentication) *string {
 		if v == nil {
 			return nil
 		}
@@ -1217,8 +4270,8 @@ func (o BlueprintPropertySpecAuthenticationPtrOutput) ClientId() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o BlueprintPropertySpecAuthenticationPtrOutput) TokenUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BlueprintPropertySpecAuthentication) *string {
+func (o BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) TokenUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlueprintPropertiesStringPropsSpecAuthentication) *string {
 		if v == nil {
 			return nil
 		}
@@ -1226,384 +4279,1061 @@ func (o BlueprintPropertySpecAuthenticationPtrOutput) TokenUrl() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-type BlueprintRelation struct {
-	Identifier string  `pulumi:"identifier"`
-	Many       *bool   `pulumi:"many"`
-	Required   *bool   `pulumi:"required"`
-	Target     string  `pulumi:"target"`
-	Title      *string `pulumi:"title"`
+type BlueprintRelations struct {
+	Many     *bool   `pulumi:"many"`
+	Required *bool   `pulumi:"required"`
+	Target   string  `pulumi:"target"`
+	Title    *string `pulumi:"title"`
 }
 
-// BlueprintRelationInput is an input type that accepts BlueprintRelationArgs and BlueprintRelationOutput values.
-// You can construct a concrete instance of `BlueprintRelationInput` via:
+// BlueprintRelationsInput is an input type that accepts BlueprintRelationsArgs and BlueprintRelationsOutput values.
+// You can construct a concrete instance of `BlueprintRelationsInput` via:
 //
-//	BlueprintRelationArgs{...}
-type BlueprintRelationInput interface {
+//	BlueprintRelationsArgs{...}
+type BlueprintRelationsInput interface {
 	pulumi.Input
 
-	ToBlueprintRelationOutput() BlueprintRelationOutput
-	ToBlueprintRelationOutputWithContext(context.Context) BlueprintRelationOutput
+	ToBlueprintRelationsOutput() BlueprintRelationsOutput
+	ToBlueprintRelationsOutputWithContext(context.Context) BlueprintRelationsOutput
 }
 
-type BlueprintRelationArgs struct {
-	Identifier pulumi.StringInput    `pulumi:"identifier"`
-	Many       pulumi.BoolPtrInput   `pulumi:"many"`
-	Required   pulumi.BoolPtrInput   `pulumi:"required"`
-	Target     pulumi.StringInput    `pulumi:"target"`
-	Title      pulumi.StringPtrInput `pulumi:"title"`
+type BlueprintRelationsArgs struct {
+	Many     pulumi.BoolPtrInput   `pulumi:"many"`
+	Required pulumi.BoolPtrInput   `pulumi:"required"`
+	Target   pulumi.StringInput    `pulumi:"target"`
+	Title    pulumi.StringPtrInput `pulumi:"title"`
 }
 
-func (BlueprintRelationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BlueprintRelation)(nil)).Elem()
+func (BlueprintRelationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintRelations)(nil)).Elem()
 }
 
-func (i BlueprintRelationArgs) ToBlueprintRelationOutput() BlueprintRelationOutput {
-	return i.ToBlueprintRelationOutputWithContext(context.Background())
+func (i BlueprintRelationsArgs) ToBlueprintRelationsOutput() BlueprintRelationsOutput {
+	return i.ToBlueprintRelationsOutputWithContext(context.Background())
 }
 
-func (i BlueprintRelationArgs) ToBlueprintRelationOutputWithContext(ctx context.Context) BlueprintRelationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BlueprintRelationOutput)
+func (i BlueprintRelationsArgs) ToBlueprintRelationsOutputWithContext(ctx context.Context) BlueprintRelationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintRelationsOutput)
 }
 
-// BlueprintRelationArrayInput is an input type that accepts BlueprintRelationArray and BlueprintRelationArrayOutput values.
-// You can construct a concrete instance of `BlueprintRelationArrayInput` via:
+// BlueprintRelationsMapInput is an input type that accepts BlueprintRelationsMap and BlueprintRelationsMapOutput values.
+// You can construct a concrete instance of `BlueprintRelationsMapInput` via:
 //
-//	BlueprintRelationArray{ BlueprintRelationArgs{...} }
-type BlueprintRelationArrayInput interface {
+//	BlueprintRelationsMap{ "key": BlueprintRelationsArgs{...} }
+type BlueprintRelationsMapInput interface {
 	pulumi.Input
 
-	ToBlueprintRelationArrayOutput() BlueprintRelationArrayOutput
-	ToBlueprintRelationArrayOutputWithContext(context.Context) BlueprintRelationArrayOutput
+	ToBlueprintRelationsMapOutput() BlueprintRelationsMapOutput
+	ToBlueprintRelationsMapOutputWithContext(context.Context) BlueprintRelationsMapOutput
 }
 
-type BlueprintRelationArray []BlueprintRelationInput
+type BlueprintRelationsMap map[string]BlueprintRelationsInput
 
-func (BlueprintRelationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BlueprintRelation)(nil)).Elem()
+func (BlueprintRelationsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BlueprintRelations)(nil)).Elem()
 }
 
-func (i BlueprintRelationArray) ToBlueprintRelationArrayOutput() BlueprintRelationArrayOutput {
-	return i.ToBlueprintRelationArrayOutputWithContext(context.Background())
+func (i BlueprintRelationsMap) ToBlueprintRelationsMapOutput() BlueprintRelationsMapOutput {
+	return i.ToBlueprintRelationsMapOutputWithContext(context.Background())
 }
 
-func (i BlueprintRelationArray) ToBlueprintRelationArrayOutputWithContext(ctx context.Context) BlueprintRelationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BlueprintRelationArrayOutput)
+func (i BlueprintRelationsMap) ToBlueprintRelationsMapOutputWithContext(ctx context.Context) BlueprintRelationsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintRelationsMapOutput)
 }
 
-type BlueprintRelationOutput struct{ *pulumi.OutputState }
+type BlueprintRelationsOutput struct{ *pulumi.OutputState }
 
-func (BlueprintRelationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BlueprintRelation)(nil)).Elem()
+func (BlueprintRelationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintRelations)(nil)).Elem()
 }
 
-func (o BlueprintRelationOutput) ToBlueprintRelationOutput() BlueprintRelationOutput {
+func (o BlueprintRelationsOutput) ToBlueprintRelationsOutput() BlueprintRelationsOutput {
 	return o
 }
 
-func (o BlueprintRelationOutput) ToBlueprintRelationOutputWithContext(ctx context.Context) BlueprintRelationOutput {
+func (o BlueprintRelationsOutput) ToBlueprintRelationsOutputWithContext(ctx context.Context) BlueprintRelationsOutput {
 	return o
 }
 
-func (o BlueprintRelationOutput) Identifier() pulumi.StringOutput {
-	return o.ApplyT(func(v BlueprintRelation) string { return v.Identifier }).(pulumi.StringOutput)
+func (o BlueprintRelationsOutput) Many() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BlueprintRelations) *bool { return v.Many }).(pulumi.BoolPtrOutput)
 }
 
-func (o BlueprintRelationOutput) Many() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v BlueprintRelation) *bool { return v.Many }).(pulumi.BoolPtrOutput)
+func (o BlueprintRelationsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BlueprintRelations) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
-func (o BlueprintRelationOutput) Required() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v BlueprintRelation) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+func (o BlueprintRelationsOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v BlueprintRelations) string { return v.Target }).(pulumi.StringOutput)
 }
 
-func (o BlueprintRelationOutput) Target() pulumi.StringOutput {
-	return o.ApplyT(func(v BlueprintRelation) string { return v.Target }).(pulumi.StringOutput)
+func (o BlueprintRelationsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintRelations) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
-func (o BlueprintRelationOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BlueprintRelation) *string { return v.Title }).(pulumi.StringPtrOutput)
+type BlueprintRelationsMapOutput struct{ *pulumi.OutputState }
+
+func (BlueprintRelationsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BlueprintRelations)(nil)).Elem()
 }
 
-type BlueprintRelationArrayOutput struct{ *pulumi.OutputState }
-
-func (BlueprintRelationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BlueprintRelation)(nil)).Elem()
-}
-
-func (o BlueprintRelationArrayOutput) ToBlueprintRelationArrayOutput() BlueprintRelationArrayOutput {
+func (o BlueprintRelationsMapOutput) ToBlueprintRelationsMapOutput() BlueprintRelationsMapOutput {
 	return o
 }
 
-func (o BlueprintRelationArrayOutput) ToBlueprintRelationArrayOutputWithContext(ctx context.Context) BlueprintRelationArrayOutput {
+func (o BlueprintRelationsMapOutput) ToBlueprintRelationsMapOutputWithContext(ctx context.Context) BlueprintRelationsMapOutput {
 	return o
 }
 
-func (o BlueprintRelationArrayOutput) Index(i pulumi.IntInput) BlueprintRelationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BlueprintRelation {
-		return vs[0].([]BlueprintRelation)[vs[1].(int)]
-	}).(BlueprintRelationOutput)
+func (o BlueprintRelationsMapOutput) MapIndex(k pulumi.StringInput) BlueprintRelationsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BlueprintRelations {
+		return vs[0].(map[string]BlueprintRelations)[vs[1].(string)]
+	}).(BlueprintRelationsOutput)
 }
 
-type EntityProperty struct {
-	Items []string `pulumi:"items"`
-	Name  string   `pulumi:"name"`
-	// Deprecated: property type is not required anymore
-	Type  *string `pulumi:"type"`
-	Value *string `pulumi:"value"`
+type BlueprintTeamInheritance struct {
+	Path string `pulumi:"path"`
 }
 
-// EntityPropertyInput is an input type that accepts EntityPropertyArgs and EntityPropertyOutput values.
-// You can construct a concrete instance of `EntityPropertyInput` via:
+// BlueprintTeamInheritanceInput is an input type that accepts BlueprintTeamInheritanceArgs and BlueprintTeamInheritanceOutput values.
+// You can construct a concrete instance of `BlueprintTeamInheritanceInput` via:
 //
-//	EntityPropertyArgs{...}
-type EntityPropertyInput interface {
+//	BlueprintTeamInheritanceArgs{...}
+type BlueprintTeamInheritanceInput interface {
 	pulumi.Input
 
-	ToEntityPropertyOutput() EntityPropertyOutput
-	ToEntityPropertyOutputWithContext(context.Context) EntityPropertyOutput
+	ToBlueprintTeamInheritanceOutput() BlueprintTeamInheritanceOutput
+	ToBlueprintTeamInheritanceOutputWithContext(context.Context) BlueprintTeamInheritanceOutput
 }
 
-type EntityPropertyArgs struct {
-	Items pulumi.StringArrayInput `pulumi:"items"`
-	Name  pulumi.StringInput      `pulumi:"name"`
-	// Deprecated: property type is not required anymore
-	Type  pulumi.StringPtrInput `pulumi:"type"`
-	Value pulumi.StringPtrInput `pulumi:"value"`
+type BlueprintTeamInheritanceArgs struct {
+	Path pulumi.StringInput `pulumi:"path"`
 }
 
-func (EntityPropertyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EntityProperty)(nil)).Elem()
+func (BlueprintTeamInheritanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintTeamInheritance)(nil)).Elem()
 }
 
-func (i EntityPropertyArgs) ToEntityPropertyOutput() EntityPropertyOutput {
-	return i.ToEntityPropertyOutputWithContext(context.Background())
+func (i BlueprintTeamInheritanceArgs) ToBlueprintTeamInheritanceOutput() BlueprintTeamInheritanceOutput {
+	return i.ToBlueprintTeamInheritanceOutputWithContext(context.Background())
 }
 
-func (i EntityPropertyArgs) ToEntityPropertyOutputWithContext(ctx context.Context) EntityPropertyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EntityPropertyOutput)
+func (i BlueprintTeamInheritanceArgs) ToBlueprintTeamInheritanceOutputWithContext(ctx context.Context) BlueprintTeamInheritanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintTeamInheritanceOutput)
 }
 
-// EntityPropertyArrayInput is an input type that accepts EntityPropertyArray and EntityPropertyArrayOutput values.
-// You can construct a concrete instance of `EntityPropertyArrayInput` via:
+func (i BlueprintTeamInheritanceArgs) ToBlueprintTeamInheritancePtrOutput() BlueprintTeamInheritancePtrOutput {
+	return i.ToBlueprintTeamInheritancePtrOutputWithContext(context.Background())
+}
+
+func (i BlueprintTeamInheritanceArgs) ToBlueprintTeamInheritancePtrOutputWithContext(ctx context.Context) BlueprintTeamInheritancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintTeamInheritanceOutput).ToBlueprintTeamInheritancePtrOutputWithContext(ctx)
+}
+
+// BlueprintTeamInheritancePtrInput is an input type that accepts BlueprintTeamInheritanceArgs, BlueprintTeamInheritancePtr and BlueprintTeamInheritancePtrOutput values.
+// You can construct a concrete instance of `BlueprintTeamInheritancePtrInput` via:
 //
-//	EntityPropertyArray{ EntityPropertyArgs{...} }
-type EntityPropertyArrayInput interface {
+//	        BlueprintTeamInheritanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type BlueprintTeamInheritancePtrInput interface {
 	pulumi.Input
 
-	ToEntityPropertyArrayOutput() EntityPropertyArrayOutput
-	ToEntityPropertyArrayOutputWithContext(context.Context) EntityPropertyArrayOutput
+	ToBlueprintTeamInheritancePtrOutput() BlueprintTeamInheritancePtrOutput
+	ToBlueprintTeamInheritancePtrOutputWithContext(context.Context) BlueprintTeamInheritancePtrOutput
 }
 
-type EntityPropertyArray []EntityPropertyInput
+type blueprintTeamInheritancePtrType BlueprintTeamInheritanceArgs
 
-func (EntityPropertyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EntityProperty)(nil)).Elem()
+func BlueprintTeamInheritancePtr(v *BlueprintTeamInheritanceArgs) BlueprintTeamInheritancePtrInput {
+	return (*blueprintTeamInheritancePtrType)(v)
 }
 
-func (i EntityPropertyArray) ToEntityPropertyArrayOutput() EntityPropertyArrayOutput {
-	return i.ToEntityPropertyArrayOutputWithContext(context.Background())
+func (*blueprintTeamInheritancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintTeamInheritance)(nil)).Elem()
 }
 
-func (i EntityPropertyArray) ToEntityPropertyArrayOutputWithContext(ctx context.Context) EntityPropertyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EntityPropertyArrayOutput)
+func (i *blueprintTeamInheritancePtrType) ToBlueprintTeamInheritancePtrOutput() BlueprintTeamInheritancePtrOutput {
+	return i.ToBlueprintTeamInheritancePtrOutputWithContext(context.Background())
 }
 
-type EntityPropertyOutput struct{ *pulumi.OutputState }
-
-func (EntityPropertyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EntityProperty)(nil)).Elem()
+func (i *blueprintTeamInheritancePtrType) ToBlueprintTeamInheritancePtrOutputWithContext(ctx context.Context) BlueprintTeamInheritancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintTeamInheritancePtrOutput)
 }
 
-func (o EntityPropertyOutput) ToEntityPropertyOutput() EntityPropertyOutput {
+type BlueprintTeamInheritanceOutput struct{ *pulumi.OutputState }
+
+func (BlueprintTeamInheritanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintTeamInheritance)(nil)).Elem()
+}
+
+func (o BlueprintTeamInheritanceOutput) ToBlueprintTeamInheritanceOutput() BlueprintTeamInheritanceOutput {
 	return o
 }
 
-func (o EntityPropertyOutput) ToEntityPropertyOutputWithContext(ctx context.Context) EntityPropertyOutput {
+func (o BlueprintTeamInheritanceOutput) ToBlueprintTeamInheritanceOutputWithContext(ctx context.Context) BlueprintTeamInheritanceOutput {
 	return o
 }
 
-func (o EntityPropertyOutput) Items() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v EntityProperty) []string { return v.Items }).(pulumi.StringArrayOutput)
+func (o BlueprintTeamInheritanceOutput) ToBlueprintTeamInheritancePtrOutput() BlueprintTeamInheritancePtrOutput {
+	return o.ToBlueprintTeamInheritancePtrOutputWithContext(context.Background())
 }
 
-func (o EntityPropertyOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v EntityProperty) string { return v.Name }).(pulumi.StringOutput)
+func (o BlueprintTeamInheritanceOutput) ToBlueprintTeamInheritancePtrOutputWithContext(ctx context.Context) BlueprintTeamInheritancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlueprintTeamInheritance) *BlueprintTeamInheritance {
+		return &v
+	}).(BlueprintTeamInheritancePtrOutput)
 }
 
-// Deprecated: property type is not required anymore
-func (o EntityPropertyOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EntityProperty) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o BlueprintTeamInheritanceOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v BlueprintTeamInheritance) string { return v.Path }).(pulumi.StringOutput)
 }
 
-func (o EntityPropertyOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EntityProperty) *string { return v.Value }).(pulumi.StringPtrOutput)
+type BlueprintTeamInheritancePtrOutput struct{ *pulumi.OutputState }
+
+func (BlueprintTeamInheritancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintTeamInheritance)(nil)).Elem()
 }
 
-type EntityPropertyArrayOutput struct{ *pulumi.OutputState }
-
-func (EntityPropertyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EntityProperty)(nil)).Elem()
-}
-
-func (o EntityPropertyArrayOutput) ToEntityPropertyArrayOutput() EntityPropertyArrayOutput {
+func (o BlueprintTeamInheritancePtrOutput) ToBlueprintTeamInheritancePtrOutput() BlueprintTeamInheritancePtrOutput {
 	return o
 }
 
-func (o EntityPropertyArrayOutput) ToEntityPropertyArrayOutputWithContext(ctx context.Context) EntityPropertyArrayOutput {
+func (o BlueprintTeamInheritancePtrOutput) ToBlueprintTeamInheritancePtrOutputWithContext(ctx context.Context) BlueprintTeamInheritancePtrOutput {
 	return o
 }
 
-func (o EntityPropertyArrayOutput) Index(i pulumi.IntInput) EntityPropertyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntityProperty {
-		return vs[0].([]EntityProperty)[vs[1].(int)]
-	}).(EntityPropertyOutput)
+func (o BlueprintTeamInheritancePtrOutput) Elem() BlueprintTeamInheritanceOutput {
+	return o.ApplyT(func(v *BlueprintTeamInheritance) BlueprintTeamInheritance {
+		if v != nil {
+			return *v
+		}
+		var ret BlueprintTeamInheritance
+		return ret
+	}).(BlueprintTeamInheritanceOutput)
 }
 
-type EntityRelation struct {
-	Identifier  *string  `pulumi:"identifier"`
-	Identifiers []string `pulumi:"identifiers"`
-	Name        string   `pulumi:"name"`
+func (o BlueprintTeamInheritancePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlueprintTeamInheritance) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
 }
 
-// EntityRelationInput is an input type that accepts EntityRelationArgs and EntityRelationOutput values.
-// You can construct a concrete instance of `EntityRelationInput` via:
+type BlueprintWebhookChangelogDestination struct {
+	Agent *bool  `pulumi:"agent"`
+	Url   string `pulumi:"url"`
+}
+
+// BlueprintWebhookChangelogDestinationInput is an input type that accepts BlueprintWebhookChangelogDestinationArgs and BlueprintWebhookChangelogDestinationOutput values.
+// You can construct a concrete instance of `BlueprintWebhookChangelogDestinationInput` via:
 //
-//	EntityRelationArgs{...}
-type EntityRelationInput interface {
+//	BlueprintWebhookChangelogDestinationArgs{...}
+type BlueprintWebhookChangelogDestinationInput interface {
 	pulumi.Input
 
-	ToEntityRelationOutput() EntityRelationOutput
-	ToEntityRelationOutputWithContext(context.Context) EntityRelationOutput
+	ToBlueprintWebhookChangelogDestinationOutput() BlueprintWebhookChangelogDestinationOutput
+	ToBlueprintWebhookChangelogDestinationOutputWithContext(context.Context) BlueprintWebhookChangelogDestinationOutput
 }
 
-type EntityRelationArgs struct {
-	Identifier  pulumi.StringPtrInput   `pulumi:"identifier"`
-	Identifiers pulumi.StringArrayInput `pulumi:"identifiers"`
-	Name        pulumi.StringInput      `pulumi:"name"`
+type BlueprintWebhookChangelogDestinationArgs struct {
+	Agent pulumi.BoolPtrInput `pulumi:"agent"`
+	Url   pulumi.StringInput  `pulumi:"url"`
 }
 
-func (EntityRelationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EntityRelation)(nil)).Elem()
+func (BlueprintWebhookChangelogDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintWebhookChangelogDestination)(nil)).Elem()
 }
 
-func (i EntityRelationArgs) ToEntityRelationOutput() EntityRelationOutput {
-	return i.ToEntityRelationOutputWithContext(context.Background())
+func (i BlueprintWebhookChangelogDestinationArgs) ToBlueprintWebhookChangelogDestinationOutput() BlueprintWebhookChangelogDestinationOutput {
+	return i.ToBlueprintWebhookChangelogDestinationOutputWithContext(context.Background())
 }
 
-func (i EntityRelationArgs) ToEntityRelationOutputWithContext(ctx context.Context) EntityRelationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EntityRelationOutput)
+func (i BlueprintWebhookChangelogDestinationArgs) ToBlueprintWebhookChangelogDestinationOutputWithContext(ctx context.Context) BlueprintWebhookChangelogDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintWebhookChangelogDestinationOutput)
 }
 
-// EntityRelationArrayInput is an input type that accepts EntityRelationArray and EntityRelationArrayOutput values.
-// You can construct a concrete instance of `EntityRelationArrayInput` via:
+func (i BlueprintWebhookChangelogDestinationArgs) ToBlueprintWebhookChangelogDestinationPtrOutput() BlueprintWebhookChangelogDestinationPtrOutput {
+	return i.ToBlueprintWebhookChangelogDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i BlueprintWebhookChangelogDestinationArgs) ToBlueprintWebhookChangelogDestinationPtrOutputWithContext(ctx context.Context) BlueprintWebhookChangelogDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintWebhookChangelogDestinationOutput).ToBlueprintWebhookChangelogDestinationPtrOutputWithContext(ctx)
+}
+
+// BlueprintWebhookChangelogDestinationPtrInput is an input type that accepts BlueprintWebhookChangelogDestinationArgs, BlueprintWebhookChangelogDestinationPtr and BlueprintWebhookChangelogDestinationPtrOutput values.
+// You can construct a concrete instance of `BlueprintWebhookChangelogDestinationPtrInput` via:
 //
-//	EntityRelationArray{ EntityRelationArgs{...} }
-type EntityRelationArrayInput interface {
+//	        BlueprintWebhookChangelogDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type BlueprintWebhookChangelogDestinationPtrInput interface {
 	pulumi.Input
 
-	ToEntityRelationArrayOutput() EntityRelationArrayOutput
-	ToEntityRelationArrayOutputWithContext(context.Context) EntityRelationArrayOutput
+	ToBlueprintWebhookChangelogDestinationPtrOutput() BlueprintWebhookChangelogDestinationPtrOutput
+	ToBlueprintWebhookChangelogDestinationPtrOutputWithContext(context.Context) BlueprintWebhookChangelogDestinationPtrOutput
 }
 
-type EntityRelationArray []EntityRelationInput
+type blueprintWebhookChangelogDestinationPtrType BlueprintWebhookChangelogDestinationArgs
 
-func (EntityRelationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EntityRelation)(nil)).Elem()
+func BlueprintWebhookChangelogDestinationPtr(v *BlueprintWebhookChangelogDestinationArgs) BlueprintWebhookChangelogDestinationPtrInput {
+	return (*blueprintWebhookChangelogDestinationPtrType)(v)
 }
 
-func (i EntityRelationArray) ToEntityRelationArrayOutput() EntityRelationArrayOutput {
-	return i.ToEntityRelationArrayOutputWithContext(context.Background())
+func (*blueprintWebhookChangelogDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintWebhookChangelogDestination)(nil)).Elem()
 }
 
-func (i EntityRelationArray) ToEntityRelationArrayOutputWithContext(ctx context.Context) EntityRelationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EntityRelationArrayOutput)
+func (i *blueprintWebhookChangelogDestinationPtrType) ToBlueprintWebhookChangelogDestinationPtrOutput() BlueprintWebhookChangelogDestinationPtrOutput {
+	return i.ToBlueprintWebhookChangelogDestinationPtrOutputWithContext(context.Background())
 }
 
-type EntityRelationOutput struct{ *pulumi.OutputState }
-
-func (EntityRelationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EntityRelation)(nil)).Elem()
+func (i *blueprintWebhookChangelogDestinationPtrType) ToBlueprintWebhookChangelogDestinationPtrOutputWithContext(ctx context.Context) BlueprintWebhookChangelogDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintWebhookChangelogDestinationPtrOutput)
 }
 
-func (o EntityRelationOutput) ToEntityRelationOutput() EntityRelationOutput {
+type BlueprintWebhookChangelogDestinationOutput struct{ *pulumi.OutputState }
+
+func (BlueprintWebhookChangelogDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintWebhookChangelogDestination)(nil)).Elem()
+}
+
+func (o BlueprintWebhookChangelogDestinationOutput) ToBlueprintWebhookChangelogDestinationOutput() BlueprintWebhookChangelogDestinationOutput {
 	return o
 }
 
-func (o EntityRelationOutput) ToEntityRelationOutputWithContext(ctx context.Context) EntityRelationOutput {
+func (o BlueprintWebhookChangelogDestinationOutput) ToBlueprintWebhookChangelogDestinationOutputWithContext(ctx context.Context) BlueprintWebhookChangelogDestinationOutput {
 	return o
 }
 
-func (o EntityRelationOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EntityRelation) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+func (o BlueprintWebhookChangelogDestinationOutput) ToBlueprintWebhookChangelogDestinationPtrOutput() BlueprintWebhookChangelogDestinationPtrOutput {
+	return o.ToBlueprintWebhookChangelogDestinationPtrOutputWithContext(context.Background())
 }
 
-func (o EntityRelationOutput) Identifiers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v EntityRelation) []string { return v.Identifiers }).(pulumi.StringArrayOutput)
+func (o BlueprintWebhookChangelogDestinationOutput) ToBlueprintWebhookChangelogDestinationPtrOutputWithContext(ctx context.Context) BlueprintWebhookChangelogDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlueprintWebhookChangelogDestination) *BlueprintWebhookChangelogDestination {
+		return &v
+	}).(BlueprintWebhookChangelogDestinationPtrOutput)
 }
 
-func (o EntityRelationOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v EntityRelation) string { return v.Name }).(pulumi.StringOutput)
+func (o BlueprintWebhookChangelogDestinationOutput) Agent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BlueprintWebhookChangelogDestination) *bool { return v.Agent }).(pulumi.BoolPtrOutput)
 }
 
-type EntityRelationArrayOutput struct{ *pulumi.OutputState }
-
-func (EntityRelationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EntityRelation)(nil)).Elem()
+func (o BlueprintWebhookChangelogDestinationOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v BlueprintWebhookChangelogDestination) string { return v.Url }).(pulumi.StringOutput)
 }
 
-func (o EntityRelationArrayOutput) ToEntityRelationArrayOutput() EntityRelationArrayOutput {
+type BlueprintWebhookChangelogDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (BlueprintWebhookChangelogDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintWebhookChangelogDestination)(nil)).Elem()
+}
+
+func (o BlueprintWebhookChangelogDestinationPtrOutput) ToBlueprintWebhookChangelogDestinationPtrOutput() BlueprintWebhookChangelogDestinationPtrOutput {
 	return o
 }
 
-func (o EntityRelationArrayOutput) ToEntityRelationArrayOutputWithContext(ctx context.Context) EntityRelationArrayOutput {
+func (o BlueprintWebhookChangelogDestinationPtrOutput) ToBlueprintWebhookChangelogDestinationPtrOutputWithContext(ctx context.Context) BlueprintWebhookChangelogDestinationPtrOutput {
 	return o
 }
 
-func (o EntityRelationArrayOutput) Index(i pulumi.IntInput) EntityRelationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntityRelation {
-		return vs[0].([]EntityRelation)[vs[1].(int)]
-	}).(EntityRelationOutput)
+func (o BlueprintWebhookChangelogDestinationPtrOutput) Elem() BlueprintWebhookChangelogDestinationOutput {
+	return o.ApplyT(func(v *BlueprintWebhookChangelogDestination) BlueprintWebhookChangelogDestination {
+		if v != nil {
+			return *v
+		}
+		var ret BlueprintWebhookChangelogDestination
+		return ret
+	}).(BlueprintWebhookChangelogDestinationOutput)
+}
+
+func (o BlueprintWebhookChangelogDestinationPtrOutput) Agent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BlueprintWebhookChangelogDestination) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Agent
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o BlueprintWebhookChangelogDestinationPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlueprintWebhookChangelogDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type EntityProperties struct {
+	ArrayProps   *EntityPropertiesArrayProps `pulumi:"arrayProps"`
+	BooleanProps map[string]bool             `pulumi:"booleanProps"`
+	NumberProps  map[string]float64          `pulumi:"numberProps"`
+	ObjectProps  map[string]string           `pulumi:"objectProps"`
+	StringProps  map[string]string           `pulumi:"stringProps"`
+}
+
+// EntityPropertiesInput is an input type that accepts EntityPropertiesArgs and EntityPropertiesOutput values.
+// You can construct a concrete instance of `EntityPropertiesInput` via:
+//
+//	EntityPropertiesArgs{...}
+type EntityPropertiesInput interface {
+	pulumi.Input
+
+	ToEntityPropertiesOutput() EntityPropertiesOutput
+	ToEntityPropertiesOutputWithContext(context.Context) EntityPropertiesOutput
+}
+
+type EntityPropertiesArgs struct {
+	ArrayProps   EntityPropertiesArrayPropsPtrInput `pulumi:"arrayProps"`
+	BooleanProps pulumi.BoolMapInput                `pulumi:"booleanProps"`
+	NumberProps  pulumi.Float64MapInput             `pulumi:"numberProps"`
+	ObjectProps  pulumi.StringMapInput              `pulumi:"objectProps"`
+	StringProps  pulumi.StringMapInput              `pulumi:"stringProps"`
+}
+
+func (EntityPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityProperties)(nil)).Elem()
+}
+
+func (i EntityPropertiesArgs) ToEntityPropertiesOutput() EntityPropertiesOutput {
+	return i.ToEntityPropertiesOutputWithContext(context.Background())
+}
+
+func (i EntityPropertiesArgs) ToEntityPropertiesOutputWithContext(ctx context.Context) EntityPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityPropertiesOutput)
+}
+
+func (i EntityPropertiesArgs) ToEntityPropertiesPtrOutput() EntityPropertiesPtrOutput {
+	return i.ToEntityPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i EntityPropertiesArgs) ToEntityPropertiesPtrOutputWithContext(ctx context.Context) EntityPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityPropertiesOutput).ToEntityPropertiesPtrOutputWithContext(ctx)
+}
+
+// EntityPropertiesPtrInput is an input type that accepts EntityPropertiesArgs, EntityPropertiesPtr and EntityPropertiesPtrOutput values.
+// You can construct a concrete instance of `EntityPropertiesPtrInput` via:
+//
+//	        EntityPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type EntityPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToEntityPropertiesPtrOutput() EntityPropertiesPtrOutput
+	ToEntityPropertiesPtrOutputWithContext(context.Context) EntityPropertiesPtrOutput
+}
+
+type entityPropertiesPtrType EntityPropertiesArgs
+
+func EntityPropertiesPtr(v *EntityPropertiesArgs) EntityPropertiesPtrInput {
+	return (*entityPropertiesPtrType)(v)
+}
+
+func (*entityPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityProperties)(nil)).Elem()
+}
+
+func (i *entityPropertiesPtrType) ToEntityPropertiesPtrOutput() EntityPropertiesPtrOutput {
+	return i.ToEntityPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *entityPropertiesPtrType) ToEntityPropertiesPtrOutputWithContext(ctx context.Context) EntityPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityPropertiesPtrOutput)
+}
+
+type EntityPropertiesOutput struct{ *pulumi.OutputState }
+
+func (EntityPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityProperties)(nil)).Elem()
+}
+
+func (o EntityPropertiesOutput) ToEntityPropertiesOutput() EntityPropertiesOutput {
+	return o
+}
+
+func (o EntityPropertiesOutput) ToEntityPropertiesOutputWithContext(ctx context.Context) EntityPropertiesOutput {
+	return o
+}
+
+func (o EntityPropertiesOutput) ToEntityPropertiesPtrOutput() EntityPropertiesPtrOutput {
+	return o.ToEntityPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o EntityPropertiesOutput) ToEntityPropertiesPtrOutputWithContext(ctx context.Context) EntityPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntityProperties) *EntityProperties {
+		return &v
+	}).(EntityPropertiesPtrOutput)
+}
+
+func (o EntityPropertiesOutput) ArrayProps() EntityPropertiesArrayPropsPtrOutput {
+	return o.ApplyT(func(v EntityProperties) *EntityPropertiesArrayProps { return v.ArrayProps }).(EntityPropertiesArrayPropsPtrOutput)
+}
+
+func (o EntityPropertiesOutput) BooleanProps() pulumi.BoolMapOutput {
+	return o.ApplyT(func(v EntityProperties) map[string]bool { return v.BooleanProps }).(pulumi.BoolMapOutput)
+}
+
+func (o EntityPropertiesOutput) NumberProps() pulumi.Float64MapOutput {
+	return o.ApplyT(func(v EntityProperties) map[string]float64 { return v.NumberProps }).(pulumi.Float64MapOutput)
+}
+
+func (o EntityPropertiesOutput) ObjectProps() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EntityProperties) map[string]string { return v.ObjectProps }).(pulumi.StringMapOutput)
+}
+
+func (o EntityPropertiesOutput) StringProps() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EntityProperties) map[string]string { return v.StringProps }).(pulumi.StringMapOutput)
+}
+
+type EntityPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (EntityPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityProperties)(nil)).Elem()
+}
+
+func (o EntityPropertiesPtrOutput) ToEntityPropertiesPtrOutput() EntityPropertiesPtrOutput {
+	return o
+}
+
+func (o EntityPropertiesPtrOutput) ToEntityPropertiesPtrOutputWithContext(ctx context.Context) EntityPropertiesPtrOutput {
+	return o
+}
+
+func (o EntityPropertiesPtrOutput) Elem() EntityPropertiesOutput {
+	return o.ApplyT(func(v *EntityProperties) EntityProperties {
+		if v != nil {
+			return *v
+		}
+		var ret EntityProperties
+		return ret
+	}).(EntityPropertiesOutput)
+}
+
+func (o EntityPropertiesPtrOutput) ArrayProps() EntityPropertiesArrayPropsPtrOutput {
+	return o.ApplyT(func(v *EntityProperties) *EntityPropertiesArrayProps {
+		if v == nil {
+			return nil
+		}
+		return v.ArrayProps
+	}).(EntityPropertiesArrayPropsPtrOutput)
+}
+
+func (o EntityPropertiesPtrOutput) BooleanProps() pulumi.BoolMapOutput {
+	return o.ApplyT(func(v *EntityProperties) map[string]bool {
+		if v == nil {
+			return nil
+		}
+		return v.BooleanProps
+	}).(pulumi.BoolMapOutput)
+}
+
+func (o EntityPropertiesPtrOutput) NumberProps() pulumi.Float64MapOutput {
+	return o.ApplyT(func(v *EntityProperties) map[string]float64 {
+		if v == nil {
+			return nil
+		}
+		return v.NumberProps
+	}).(pulumi.Float64MapOutput)
+}
+
+func (o EntityPropertiesPtrOutput) ObjectProps() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EntityProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectProps
+	}).(pulumi.StringMapOutput)
+}
+
+func (o EntityPropertiesPtrOutput) StringProps() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EntityProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.StringProps
+	}).(pulumi.StringMapOutput)
+}
+
+type EntityPropertiesArrayProps struct {
+	BooleanItems map[string][]bool    `pulumi:"booleanItems"`
+	NumberItems  map[string][]float64 `pulumi:"numberItems"`
+	ObjectItems  map[string][]string  `pulumi:"objectItems"`
+	StringItems  map[string][]string  `pulumi:"stringItems"`
+}
+
+// EntityPropertiesArrayPropsInput is an input type that accepts EntityPropertiesArrayPropsArgs and EntityPropertiesArrayPropsOutput values.
+// You can construct a concrete instance of `EntityPropertiesArrayPropsInput` via:
+//
+//	EntityPropertiesArrayPropsArgs{...}
+type EntityPropertiesArrayPropsInput interface {
+	pulumi.Input
+
+	ToEntityPropertiesArrayPropsOutput() EntityPropertiesArrayPropsOutput
+	ToEntityPropertiesArrayPropsOutputWithContext(context.Context) EntityPropertiesArrayPropsOutput
+}
+
+type EntityPropertiesArrayPropsArgs struct {
+	BooleanItems pulumi.BoolArrayMapInput    `pulumi:"booleanItems"`
+	NumberItems  pulumi.Float64ArrayMapInput `pulumi:"numberItems"`
+	ObjectItems  pulumi.StringArrayMapInput  `pulumi:"objectItems"`
+	StringItems  pulumi.StringArrayMapInput  `pulumi:"stringItems"`
+}
+
+func (EntityPropertiesArrayPropsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityPropertiesArrayProps)(nil)).Elem()
+}
+
+func (i EntityPropertiesArrayPropsArgs) ToEntityPropertiesArrayPropsOutput() EntityPropertiesArrayPropsOutput {
+	return i.ToEntityPropertiesArrayPropsOutputWithContext(context.Background())
+}
+
+func (i EntityPropertiesArrayPropsArgs) ToEntityPropertiesArrayPropsOutputWithContext(ctx context.Context) EntityPropertiesArrayPropsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityPropertiesArrayPropsOutput)
+}
+
+func (i EntityPropertiesArrayPropsArgs) ToEntityPropertiesArrayPropsPtrOutput() EntityPropertiesArrayPropsPtrOutput {
+	return i.ToEntityPropertiesArrayPropsPtrOutputWithContext(context.Background())
+}
+
+func (i EntityPropertiesArrayPropsArgs) ToEntityPropertiesArrayPropsPtrOutputWithContext(ctx context.Context) EntityPropertiesArrayPropsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityPropertiesArrayPropsOutput).ToEntityPropertiesArrayPropsPtrOutputWithContext(ctx)
+}
+
+// EntityPropertiesArrayPropsPtrInput is an input type that accepts EntityPropertiesArrayPropsArgs, EntityPropertiesArrayPropsPtr and EntityPropertiesArrayPropsPtrOutput values.
+// You can construct a concrete instance of `EntityPropertiesArrayPropsPtrInput` via:
+//
+//	        EntityPropertiesArrayPropsArgs{...}
+//
+//	or:
+//
+//	        nil
+type EntityPropertiesArrayPropsPtrInput interface {
+	pulumi.Input
+
+	ToEntityPropertiesArrayPropsPtrOutput() EntityPropertiesArrayPropsPtrOutput
+	ToEntityPropertiesArrayPropsPtrOutputWithContext(context.Context) EntityPropertiesArrayPropsPtrOutput
+}
+
+type entityPropertiesArrayPropsPtrType EntityPropertiesArrayPropsArgs
+
+func EntityPropertiesArrayPropsPtr(v *EntityPropertiesArrayPropsArgs) EntityPropertiesArrayPropsPtrInput {
+	return (*entityPropertiesArrayPropsPtrType)(v)
+}
+
+func (*entityPropertiesArrayPropsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityPropertiesArrayProps)(nil)).Elem()
+}
+
+func (i *entityPropertiesArrayPropsPtrType) ToEntityPropertiesArrayPropsPtrOutput() EntityPropertiesArrayPropsPtrOutput {
+	return i.ToEntityPropertiesArrayPropsPtrOutputWithContext(context.Background())
+}
+
+func (i *entityPropertiesArrayPropsPtrType) ToEntityPropertiesArrayPropsPtrOutputWithContext(ctx context.Context) EntityPropertiesArrayPropsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityPropertiesArrayPropsPtrOutput)
+}
+
+type EntityPropertiesArrayPropsOutput struct{ *pulumi.OutputState }
+
+func (EntityPropertiesArrayPropsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityPropertiesArrayProps)(nil)).Elem()
+}
+
+func (o EntityPropertiesArrayPropsOutput) ToEntityPropertiesArrayPropsOutput() EntityPropertiesArrayPropsOutput {
+	return o
+}
+
+func (o EntityPropertiesArrayPropsOutput) ToEntityPropertiesArrayPropsOutputWithContext(ctx context.Context) EntityPropertiesArrayPropsOutput {
+	return o
+}
+
+func (o EntityPropertiesArrayPropsOutput) ToEntityPropertiesArrayPropsPtrOutput() EntityPropertiesArrayPropsPtrOutput {
+	return o.ToEntityPropertiesArrayPropsPtrOutputWithContext(context.Background())
+}
+
+func (o EntityPropertiesArrayPropsOutput) ToEntityPropertiesArrayPropsPtrOutputWithContext(ctx context.Context) EntityPropertiesArrayPropsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntityPropertiesArrayProps) *EntityPropertiesArrayProps {
+		return &v
+	}).(EntityPropertiesArrayPropsPtrOutput)
+}
+
+func (o EntityPropertiesArrayPropsOutput) BooleanItems() pulumi.BoolArrayMapOutput {
+	return o.ApplyT(func(v EntityPropertiesArrayProps) map[string][]bool { return v.BooleanItems }).(pulumi.BoolArrayMapOutput)
+}
+
+func (o EntityPropertiesArrayPropsOutput) NumberItems() pulumi.Float64ArrayMapOutput {
+	return o.ApplyT(func(v EntityPropertiesArrayProps) map[string][]float64 { return v.NumberItems }).(pulumi.Float64ArrayMapOutput)
+}
+
+func (o EntityPropertiesArrayPropsOutput) ObjectItems() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v EntityPropertiesArrayProps) map[string][]string { return v.ObjectItems }).(pulumi.StringArrayMapOutput)
+}
+
+func (o EntityPropertiesArrayPropsOutput) StringItems() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v EntityPropertiesArrayProps) map[string][]string { return v.StringItems }).(pulumi.StringArrayMapOutput)
+}
+
+type EntityPropertiesArrayPropsPtrOutput struct{ *pulumi.OutputState }
+
+func (EntityPropertiesArrayPropsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityPropertiesArrayProps)(nil)).Elem()
+}
+
+func (o EntityPropertiesArrayPropsPtrOutput) ToEntityPropertiesArrayPropsPtrOutput() EntityPropertiesArrayPropsPtrOutput {
+	return o
+}
+
+func (o EntityPropertiesArrayPropsPtrOutput) ToEntityPropertiesArrayPropsPtrOutputWithContext(ctx context.Context) EntityPropertiesArrayPropsPtrOutput {
+	return o
+}
+
+func (o EntityPropertiesArrayPropsPtrOutput) Elem() EntityPropertiesArrayPropsOutput {
+	return o.ApplyT(func(v *EntityPropertiesArrayProps) EntityPropertiesArrayProps {
+		if v != nil {
+			return *v
+		}
+		var ret EntityPropertiesArrayProps
+		return ret
+	}).(EntityPropertiesArrayPropsOutput)
+}
+
+func (o EntityPropertiesArrayPropsPtrOutput) BooleanItems() pulumi.BoolArrayMapOutput {
+	return o.ApplyT(func(v *EntityPropertiesArrayProps) map[string][]bool {
+		if v == nil {
+			return nil
+		}
+		return v.BooleanItems
+	}).(pulumi.BoolArrayMapOutput)
+}
+
+func (o EntityPropertiesArrayPropsPtrOutput) NumberItems() pulumi.Float64ArrayMapOutput {
+	return o.ApplyT(func(v *EntityPropertiesArrayProps) map[string][]float64 {
+		if v == nil {
+			return nil
+		}
+		return v.NumberItems
+	}).(pulumi.Float64ArrayMapOutput)
+}
+
+func (o EntityPropertiesArrayPropsPtrOutput) ObjectItems() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v *EntityPropertiesArrayProps) map[string][]string {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectItems
+	}).(pulumi.StringArrayMapOutput)
+}
+
+func (o EntityPropertiesArrayPropsPtrOutput) StringItems() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v *EntityPropertiesArrayProps) map[string][]string {
+		if v == nil {
+			return nil
+		}
+		return v.StringItems
+	}).(pulumi.StringArrayMapOutput)
+}
+
+type EntityRelations struct {
+	ManyRelations   map[string][]string `pulumi:"manyRelations"`
+	SingleRelations map[string]string   `pulumi:"singleRelations"`
+}
+
+// EntityRelationsInput is an input type that accepts EntityRelationsArgs and EntityRelationsOutput values.
+// You can construct a concrete instance of `EntityRelationsInput` via:
+//
+//	EntityRelationsArgs{...}
+type EntityRelationsInput interface {
+	pulumi.Input
+
+	ToEntityRelationsOutput() EntityRelationsOutput
+	ToEntityRelationsOutputWithContext(context.Context) EntityRelationsOutput
+}
+
+type EntityRelationsArgs struct {
+	ManyRelations   pulumi.StringArrayMapInput `pulumi:"manyRelations"`
+	SingleRelations pulumi.StringMapInput      `pulumi:"singleRelations"`
+}
+
+func (EntityRelationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityRelations)(nil)).Elem()
+}
+
+func (i EntityRelationsArgs) ToEntityRelationsOutput() EntityRelationsOutput {
+	return i.ToEntityRelationsOutputWithContext(context.Background())
+}
+
+func (i EntityRelationsArgs) ToEntityRelationsOutputWithContext(ctx context.Context) EntityRelationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityRelationsOutput)
+}
+
+func (i EntityRelationsArgs) ToEntityRelationsPtrOutput() EntityRelationsPtrOutput {
+	return i.ToEntityRelationsPtrOutputWithContext(context.Background())
+}
+
+func (i EntityRelationsArgs) ToEntityRelationsPtrOutputWithContext(ctx context.Context) EntityRelationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityRelationsOutput).ToEntityRelationsPtrOutputWithContext(ctx)
+}
+
+// EntityRelationsPtrInput is an input type that accepts EntityRelationsArgs, EntityRelationsPtr and EntityRelationsPtrOutput values.
+// You can construct a concrete instance of `EntityRelationsPtrInput` via:
+//
+//	        EntityRelationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type EntityRelationsPtrInput interface {
+	pulumi.Input
+
+	ToEntityRelationsPtrOutput() EntityRelationsPtrOutput
+	ToEntityRelationsPtrOutputWithContext(context.Context) EntityRelationsPtrOutput
+}
+
+type entityRelationsPtrType EntityRelationsArgs
+
+func EntityRelationsPtr(v *EntityRelationsArgs) EntityRelationsPtrInput {
+	return (*entityRelationsPtrType)(v)
+}
+
+func (*entityRelationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityRelations)(nil)).Elem()
+}
+
+func (i *entityRelationsPtrType) ToEntityRelationsPtrOutput() EntityRelationsPtrOutput {
+	return i.ToEntityRelationsPtrOutputWithContext(context.Background())
+}
+
+func (i *entityRelationsPtrType) ToEntityRelationsPtrOutputWithContext(ctx context.Context) EntityRelationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityRelationsPtrOutput)
+}
+
+type EntityRelationsOutput struct{ *pulumi.OutputState }
+
+func (EntityRelationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityRelations)(nil)).Elem()
+}
+
+func (o EntityRelationsOutput) ToEntityRelationsOutput() EntityRelationsOutput {
+	return o
+}
+
+func (o EntityRelationsOutput) ToEntityRelationsOutputWithContext(ctx context.Context) EntityRelationsOutput {
+	return o
+}
+
+func (o EntityRelationsOutput) ToEntityRelationsPtrOutput() EntityRelationsPtrOutput {
+	return o.ToEntityRelationsPtrOutputWithContext(context.Background())
+}
+
+func (o EntityRelationsOutput) ToEntityRelationsPtrOutputWithContext(ctx context.Context) EntityRelationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntityRelations) *EntityRelations {
+		return &v
+	}).(EntityRelationsPtrOutput)
+}
+
+func (o EntityRelationsOutput) ManyRelations() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v EntityRelations) map[string][]string { return v.ManyRelations }).(pulumi.StringArrayMapOutput)
+}
+
+func (o EntityRelationsOutput) SingleRelations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EntityRelations) map[string]string { return v.SingleRelations }).(pulumi.StringMapOutput)
+}
+
+type EntityRelationsPtrOutput struct{ *pulumi.OutputState }
+
+func (EntityRelationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityRelations)(nil)).Elem()
+}
+
+func (o EntityRelationsPtrOutput) ToEntityRelationsPtrOutput() EntityRelationsPtrOutput {
+	return o
+}
+
+func (o EntityRelationsPtrOutput) ToEntityRelationsPtrOutputWithContext(ctx context.Context) EntityRelationsPtrOutput {
+	return o
+}
+
+func (o EntityRelationsPtrOutput) Elem() EntityRelationsOutput {
+	return o.ApplyT(func(v *EntityRelations) EntityRelations {
+		if v != nil {
+			return *v
+		}
+		var ret EntityRelations
+		return ret
+	}).(EntityRelationsOutput)
+}
+
+func (o EntityRelationsPtrOutput) ManyRelations() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v *EntityRelations) map[string][]string {
+		if v == nil {
+			return nil
+		}
+		return v.ManyRelations
+	}).(pulumi.StringArrayMapOutput)
+}
+
+func (o EntityRelationsPtrOutput) SingleRelations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EntityRelations) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.SingleRelations
+	}).(pulumi.StringMapOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionInvocationMethodInput)(nil)).Elem(), ActionInvocationMethodArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionInvocationMethodPtrInput)(nil)).Elem(), ActionInvocationMethodArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertyInput)(nil)).Elem(), ActionUserPropertyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertyArrayInput)(nil)).Elem(), ActionUserPropertyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintCalculationPropertyInput)(nil)).Elem(), BlueprintCalculationPropertyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintCalculationPropertyArrayInput)(nil)).Elem(), BlueprintCalculationPropertyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintChangelogDestinationInput)(nil)).Elem(), BlueprintChangelogDestinationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintChangelogDestinationPtrInput)(nil)).Elem(), BlueprintChangelogDestinationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintMirrorPropertyInput)(nil)).Elem(), BlueprintMirrorPropertyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintMirrorPropertyArrayInput)(nil)).Elem(), BlueprintMirrorPropertyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertyInput)(nil)).Elem(), BlueprintPropertyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertyArrayInput)(nil)).Elem(), BlueprintPropertyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertySpecAuthenticationInput)(nil)).Elem(), BlueprintPropertySpecAuthenticationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertySpecAuthenticationPtrInput)(nil)).Elem(), BlueprintPropertySpecAuthenticationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintRelationInput)(nil)).Elem(), BlueprintRelationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintRelationArrayInput)(nil)).Elem(), BlueprintRelationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EntityPropertyInput)(nil)).Elem(), EntityPropertyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EntityPropertyArrayInput)(nil)).Elem(), EntityPropertyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EntityRelationInput)(nil)).Elem(), EntityRelationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EntityRelationArrayInput)(nil)).Elem(), EntityRelationArray{})
-	pulumi.RegisterOutputType(ActionInvocationMethodOutput{})
-	pulumi.RegisterOutputType(ActionInvocationMethodPtrOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertyOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertyArrayOutput{})
-	pulumi.RegisterOutputType(BlueprintCalculationPropertyOutput{})
-	pulumi.RegisterOutputType(BlueprintCalculationPropertyArrayOutput{})
-	pulumi.RegisterOutputType(BlueprintChangelogDestinationOutput{})
-	pulumi.RegisterOutputType(BlueprintChangelogDestinationPtrOutput{})
-	pulumi.RegisterOutputType(BlueprintMirrorPropertyOutput{})
-	pulumi.RegisterOutputType(BlueprintMirrorPropertyArrayOutput{})
-	pulumi.RegisterOutputType(BlueprintPropertyOutput{})
-	pulumi.RegisterOutputType(BlueprintPropertyArrayOutput{})
-	pulumi.RegisterOutputType(BlueprintPropertySpecAuthenticationOutput{})
-	pulumi.RegisterOutputType(BlueprintPropertySpecAuthenticationPtrOutput{})
-	pulumi.RegisterOutputType(BlueprintRelationOutput{})
-	pulumi.RegisterOutputType(BlueprintRelationArrayOutput{})
-	pulumi.RegisterOutputType(EntityPropertyOutput{})
-	pulumi.RegisterOutputType(EntityPropertyArrayOutput{})
-	pulumi.RegisterOutputType(EntityRelationOutput{})
-	pulumi.RegisterOutputType(EntityRelationArrayOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionApprovalEmailNotificationInput)(nil)).Elem(), ActionApprovalEmailNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionApprovalEmailNotificationPtrInput)(nil)).Elem(), ActionApprovalEmailNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionApprovalWebhookNotificationInput)(nil)).Elem(), ActionApprovalWebhookNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionApprovalWebhookNotificationPtrInput)(nil)).Elem(), ActionApprovalWebhookNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionAzureMethodInput)(nil)).Elem(), ActionAzureMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionAzureMethodPtrInput)(nil)).Elem(), ActionAzureMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionGithubMethodInput)(nil)).Elem(), ActionGithubMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionGithubMethodPtrInput)(nil)).Elem(), ActionGithubMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionKafkaMethodInput)(nil)).Elem(), ActionKafkaMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionKafkaMethodPtrInput)(nil)).Elem(), ActionKafkaMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesInput)(nil)).Elem(), ActionUserPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesPtrInput)(nil)).Elem(), ActionUserPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsInput)(nil)).Elem(), ActionUserPropertiesArrayPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsMapInput)(nil)).Elem(), ActionUserPropertiesArrayPropsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsBooleanItemsInput)(nil)).Elem(), ActionUserPropertiesArrayPropsBooleanItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsBooleanItemsPtrInput)(nil)).Elem(), ActionUserPropertiesArrayPropsBooleanItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsNumberItemsInput)(nil)).Elem(), ActionUserPropertiesArrayPropsNumberItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsNumberItemsPtrInput)(nil)).Elem(), ActionUserPropertiesArrayPropsNumberItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsObjectItemsInput)(nil)).Elem(), ActionUserPropertiesArrayPropsObjectItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsObjectItemsPtrInput)(nil)).Elem(), ActionUserPropertiesArrayPropsObjectItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsStringItemsInput)(nil)).Elem(), ActionUserPropertiesArrayPropsStringItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsStringItemsPtrInput)(nil)).Elem(), ActionUserPropertiesArrayPropsStringItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesBooleanPropsInput)(nil)).Elem(), ActionUserPropertiesBooleanPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesBooleanPropsMapInput)(nil)).Elem(), ActionUserPropertiesBooleanPropsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesNumberPropsInput)(nil)).Elem(), ActionUserPropertiesNumberPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesNumberPropsMapInput)(nil)).Elem(), ActionUserPropertiesNumberPropsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesObjectPropsInput)(nil)).Elem(), ActionUserPropertiesObjectPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesObjectPropsMapInput)(nil)).Elem(), ActionUserPropertiesObjectPropsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesStringPropsInput)(nil)).Elem(), ActionUserPropertiesStringPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesStringPropsMapInput)(nil)).Elem(), ActionUserPropertiesStringPropsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionWebhookMethodInput)(nil)).Elem(), ActionWebhookMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionWebhookMethodPtrInput)(nil)).Elem(), ActionWebhookMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintCalculationPropertiesInput)(nil)).Elem(), BlueprintCalculationPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintCalculationPropertiesMapInput)(nil)).Elem(), BlueprintCalculationPropertiesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintKafkaChangelogDestinationInput)(nil)).Elem(), BlueprintKafkaChangelogDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintKafkaChangelogDestinationPtrInput)(nil)).Elem(), BlueprintKafkaChangelogDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintMirrorPropertiesInput)(nil)).Elem(), BlueprintMirrorPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintMirrorPropertiesMapInput)(nil)).Elem(), BlueprintMirrorPropertiesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertiesInput)(nil)).Elem(), BlueprintPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertiesPtrInput)(nil)).Elem(), BlueprintPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertiesArrayPropsInput)(nil)).Elem(), BlueprintPropertiesArrayPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertiesArrayPropsMapInput)(nil)).Elem(), BlueprintPropertiesArrayPropsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertiesArrayPropsBooleanItemsInput)(nil)).Elem(), BlueprintPropertiesArrayPropsBooleanItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertiesArrayPropsBooleanItemsPtrInput)(nil)).Elem(), BlueprintPropertiesArrayPropsBooleanItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertiesArrayPropsNumberItemsInput)(nil)).Elem(), BlueprintPropertiesArrayPropsNumberItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertiesArrayPropsNumberItemsPtrInput)(nil)).Elem(), BlueprintPropertiesArrayPropsNumberItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertiesArrayPropsObjectItemsInput)(nil)).Elem(), BlueprintPropertiesArrayPropsObjectItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertiesArrayPropsObjectItemsPtrInput)(nil)).Elem(), BlueprintPropertiesArrayPropsObjectItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertiesArrayPropsStringItemsInput)(nil)).Elem(), BlueprintPropertiesArrayPropsStringItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertiesArrayPropsStringItemsPtrInput)(nil)).Elem(), BlueprintPropertiesArrayPropsStringItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertiesBooleanPropsInput)(nil)).Elem(), BlueprintPropertiesBooleanPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertiesBooleanPropsMapInput)(nil)).Elem(), BlueprintPropertiesBooleanPropsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertiesNumberPropsInput)(nil)).Elem(), BlueprintPropertiesNumberPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertiesNumberPropsMapInput)(nil)).Elem(), BlueprintPropertiesNumberPropsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertiesObjectPropsInput)(nil)).Elem(), BlueprintPropertiesObjectPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertiesObjectPropsMapInput)(nil)).Elem(), BlueprintPropertiesObjectPropsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertiesStringPropsInput)(nil)).Elem(), BlueprintPropertiesStringPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertiesStringPropsMapInput)(nil)).Elem(), BlueprintPropertiesStringPropsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertiesStringPropsSpecAuthenticationInput)(nil)).Elem(), BlueprintPropertiesStringPropsSpecAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPropertiesStringPropsSpecAuthenticationPtrInput)(nil)).Elem(), BlueprintPropertiesStringPropsSpecAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintRelationsInput)(nil)).Elem(), BlueprintRelationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintRelationsMapInput)(nil)).Elem(), BlueprintRelationsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintTeamInheritanceInput)(nil)).Elem(), BlueprintTeamInheritanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintTeamInheritancePtrInput)(nil)).Elem(), BlueprintTeamInheritanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintWebhookChangelogDestinationInput)(nil)).Elem(), BlueprintWebhookChangelogDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintWebhookChangelogDestinationPtrInput)(nil)).Elem(), BlueprintWebhookChangelogDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityPropertiesInput)(nil)).Elem(), EntityPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityPropertiesPtrInput)(nil)).Elem(), EntityPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityPropertiesArrayPropsInput)(nil)).Elem(), EntityPropertiesArrayPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityPropertiesArrayPropsPtrInput)(nil)).Elem(), EntityPropertiesArrayPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityRelationsInput)(nil)).Elem(), EntityRelationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EntityRelationsPtrInput)(nil)).Elem(), EntityRelationsArgs{})
+	pulumi.RegisterOutputType(ActionApprovalEmailNotificationOutput{})
+	pulumi.RegisterOutputType(ActionApprovalEmailNotificationPtrOutput{})
+	pulumi.RegisterOutputType(ActionApprovalWebhookNotificationOutput{})
+	pulumi.RegisterOutputType(ActionApprovalWebhookNotificationPtrOutput{})
+	pulumi.RegisterOutputType(ActionAzureMethodOutput{})
+	pulumi.RegisterOutputType(ActionAzureMethodPtrOutput{})
+	pulumi.RegisterOutputType(ActionGithubMethodOutput{})
+	pulumi.RegisterOutputType(ActionGithubMethodPtrOutput{})
+	pulumi.RegisterOutputType(ActionKafkaMethodOutput{})
+	pulumi.RegisterOutputType(ActionKafkaMethodPtrOutput{})
+	pulumi.RegisterOutputType(ActionUserPropertiesOutput{})
+	pulumi.RegisterOutputType(ActionUserPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsOutput{})
+	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsMapOutput{})
+	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsBooleanItemsOutput{})
+	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsBooleanItemsPtrOutput{})
+	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsNumberItemsOutput{})
+	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsNumberItemsPtrOutput{})
+	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsObjectItemsOutput{})
+	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsObjectItemsPtrOutput{})
+	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsStringItemsOutput{})
+	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsStringItemsPtrOutput{})
+	pulumi.RegisterOutputType(ActionUserPropertiesBooleanPropsOutput{})
+	pulumi.RegisterOutputType(ActionUserPropertiesBooleanPropsMapOutput{})
+	pulumi.RegisterOutputType(ActionUserPropertiesNumberPropsOutput{})
+	pulumi.RegisterOutputType(ActionUserPropertiesNumberPropsMapOutput{})
+	pulumi.RegisterOutputType(ActionUserPropertiesObjectPropsOutput{})
+	pulumi.RegisterOutputType(ActionUserPropertiesObjectPropsMapOutput{})
+	pulumi.RegisterOutputType(ActionUserPropertiesStringPropsOutput{})
+	pulumi.RegisterOutputType(ActionUserPropertiesStringPropsMapOutput{})
+	pulumi.RegisterOutputType(ActionWebhookMethodOutput{})
+	pulumi.RegisterOutputType(ActionWebhookMethodPtrOutput{})
+	pulumi.RegisterOutputType(BlueprintCalculationPropertiesOutput{})
+	pulumi.RegisterOutputType(BlueprintCalculationPropertiesMapOutput{})
+	pulumi.RegisterOutputType(BlueprintKafkaChangelogDestinationOutput{})
+	pulumi.RegisterOutputType(BlueprintKafkaChangelogDestinationPtrOutput{})
+	pulumi.RegisterOutputType(BlueprintMirrorPropertiesOutput{})
+	pulumi.RegisterOutputType(BlueprintMirrorPropertiesMapOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertiesOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertiesArrayPropsOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertiesArrayPropsMapOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertiesArrayPropsBooleanItemsOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertiesArrayPropsBooleanItemsPtrOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertiesArrayPropsNumberItemsOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertiesArrayPropsNumberItemsPtrOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertiesArrayPropsObjectItemsOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertiesArrayPropsObjectItemsPtrOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertiesArrayPropsStringItemsOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertiesArrayPropsStringItemsPtrOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertiesBooleanPropsOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertiesBooleanPropsMapOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertiesNumberPropsOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertiesNumberPropsMapOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertiesObjectPropsOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertiesObjectPropsMapOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertiesStringPropsOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertiesStringPropsMapOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertiesStringPropsSpecAuthenticationOutput{})
+	pulumi.RegisterOutputType(BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(BlueprintRelationsOutput{})
+	pulumi.RegisterOutputType(BlueprintRelationsMapOutput{})
+	pulumi.RegisterOutputType(BlueprintTeamInheritanceOutput{})
+	pulumi.RegisterOutputType(BlueprintTeamInheritancePtrOutput{})
+	pulumi.RegisterOutputType(BlueprintWebhookChangelogDestinationOutput{})
+	pulumi.RegisterOutputType(BlueprintWebhookChangelogDestinationPtrOutput{})
+	pulumi.RegisterOutputType(EntityPropertiesOutput{})
+	pulumi.RegisterOutputType(EntityPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(EntityPropertiesArrayPropsOutput{})
+	pulumi.RegisterOutputType(EntityPropertiesArrayPropsPtrOutput{})
+	pulumi.RegisterOutputType(EntityRelationsOutput{})
+	pulumi.RegisterOutputType(EntityRelationsPtrOutput{})
 }

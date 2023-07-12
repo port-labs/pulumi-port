@@ -15,16 +15,16 @@
 package port
 
 import (
+	_ "embed"
 	"fmt"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"path/filepath"
+	"unicode"
 
 	"github.com/port-labs/pulumi-port/provider/pkg/version"
-	"github.com/port-labs/terraform-provider-port-labs/port"
-
+	port "github.com/port-labs/terraform-provider-port-labs/provider"
+	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
-	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 )
 
 // all of the token components used below.
@@ -36,53 +36,50 @@ const (
 	mainMod = "index" // the vultr module
 )
 
-// preConfigureCallback is called before the providerConfigure function of the underlying provider.
-// It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
-// for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
-	return nil
+//go:embed cmd/pulumi-resource-port/bridge-metadata.json
+var metadata []byte
+
+// portMember manufactures a type token for the random package and the given module and type.
+func portMember(mod string, mem string) tokens.ModuleMember {
+	return tokens.ModuleMember(mainPkg + ":" + mod + ":" + mem)
+}
+
+// portType manufactures a type token for the random package and the given module and type.
+func portType(mod string, typ string) tokens.Type {
+	return tokens.Type(portMember(mod, typ))
+}
+
+// fly package and names the file by simply lower casing the resource's first character.
+func portResource(mod string, res string) tokens.Type {
+	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
+	return portType(mod+"/"+fn, res)
+}
+
+// portDataSource manufactures a standard resource token given a module and resource name.  It automatically uses the
+// fly package and names the file by simply lower casing the resource's first character.
+func portDataSource(mod string, res string) tokens.ModuleMember {
+	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
+	return portMember(mod+"/"+fn, res)
 }
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
-	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(port.Provider())
-
-	// Create a Pulumi provider mapping
-	prov := tfbridge.ProviderInfo{
-		P:    p,
-		Name: "port",
-		// DisplayName is a way to be able to change the casing of the provider
-		// name when being displayed on the Pulumi registry
-		DisplayName: "Port",
-		// The default publisher for all packages is Pulumi.
-		// Change this to your personal name (or a company name) that you
-		// would like to be shown in the Pulumi Registry if this package is published
-		// there.
-		Publisher: "port-labs",
-		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
-		// if this package is published there.
-		//
-		// You may host a logo on a domain you control or add an SVG logo for your package
-		// in your repository and use the raw content URL for that file as your logo URL.
-		LogoURL: "",
-		// PluginDownloadURL is an optional URL used to download the Provider
-		// for use in Pulumi programs
-		// e.g https://github.com/org/pulumi-provider-name/releases/
+	info := tfbridge.ProviderInfo{
+		P:                 pf.ShimProvider(port.New()),
+		Name:              "port",
+		DisplayName:       "Port",
+		Publisher:         "port-labs",
+		LogoURL:           "",
 		PluginDownloadURL: "github://api.github.com/port-labs/pulumi-port",
+		Version:           version.Version,
+		MetadataInfo:      tfbridge.NewProviderMetadata(metadata),
 		Description:       "A Pulumi package for creating and managing Port resources.",
-		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
-		// For all available categories, see `Keywords` in
-		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{"pulumi", "port", "category/utility"},
-		License:    "Apache-2.0",
-		Homepage:   "https://www.pulumi.com",
-		Repository: "https://github.com/port-labs/pulumi-port",
-		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
-		// should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg: "port-labs",
-		Config:    map[string]*tfbridge.SchemaInfo{
+		Keywords:          []string{"pulumi", "port", "category/utility"},
+		License:           "Apache-2.0",
+		Homepage:          "https://www.pulumi.com",
+		Repository:        "https://github.com/port-labs/pulumi-port",
+		GitHubOrg:         "port-labs",
+		Config:            map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
 			// "region": {
@@ -92,7 +89,6 @@ func Provider() tfbridge.ProviderInfo {
 			// 	},
 			// },
 		},
-		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi type. Two examples
 			// are below - the single line form is the common case. The multi-line form is
@@ -106,9 +102,9 @@ func Provider() tfbridge.ProviderInfo {
 			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
 			// 	},
 			// },
-			"port-labs_action":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Action")},
-			"port-labs_blueprint": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Blueprint")},
-			"port-labs_entity":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Entity")},
+			"port_action":    {Tok: portResource(mainMod, "Action")},
+			"port_blueprint": {Tok: portResource(mainMod, "Blueprint")},
+			"port_entity":    {Tok: portResource(mainMod, "Entity")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
@@ -154,8 +150,5 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 	}
-
-	prov.SetAutonaming(255, "-")
-
-	return prov
+	return info
 }

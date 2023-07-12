@@ -62,32 +62,57 @@
                 "type": "string"
             },
             "clientId": {
-                "type": "string"
+                "type": "string",
+                "description": "Client ID for Port-labs\n"
             },
             "secret": {
                 "type": "string",
+                "description": "Client Secret for Port-labs\n",
                 "secret": true
             },
             "token": {
                 "type": "string",
+                "description": "Token for Port-labs\n",
                 "secret": true
             }
         },
         "defaults": [
             "clientId",
-            "secret",
-            "token"
+            "secret"
         ]
     },
     "types": {
-        "port:index/ActionInvocationMethod:ActionInvocationMethod": {
+        "port:index/ActionApprovalEmailNotification:ActionApprovalEmailNotification": {
+            "type": "object"
+        },
+        "port:index/ActionApprovalWebhookNotification:ActionApprovalWebhookNotification": {
             "properties": {
-                "agent": {
-                    "type": "boolean"
-                },
-                "azureOrg": {
+                "url": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "url"
+            ]
+        },
+        "port:index/ActionAzureMethod:ActionAzureMethod": {
+            "properties": {
+                "org": {
                     "type": "string"
                 },
+                "webhook": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "org",
+                "webhook"
+            ]
+        },
+        "port:index/ActionGithubMethod:ActionGithubMethod": {
+            "properties": {
                 "omitPayload": {
                     "type": "boolean"
                 },
@@ -103,37 +128,250 @@
                 "reportWorkflowStatus": {
                     "type": "boolean"
                 },
-                "type": {
-                    "type": "string"
-                },
-                "url": {
-                    "type": "string"
-                },
-                "webhook": {
-                    "type": "string"
-                },
                 "workflow": {
                     "type": "string"
                 }
             },
             "type": "object",
             "required": [
-                "type"
+                "org",
+                "repo",
+                "workflow"
             ]
         },
-        "port:index/ActionUserProperty:ActionUserProperty": {
+        "port:index/ActionKafkaMethod:ActionKafkaMethod": {
+            "type": "object"
+        },
+        "port:index/ActionUserProperties:ActionUserProperties": {
+            "properties": {
+                "arrayProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/ActionUserPropertiesArrayProps:ActionUserPropertiesArrayProps"
+                    }
+                },
+                "booleanProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/ActionUserPropertiesBooleanProps:ActionUserPropertiesBooleanProps"
+                    }
+                },
+                "numberProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/ActionUserPropertiesNumberProps:ActionUserPropertiesNumberProps"
+                    }
+                },
+                "objectProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/ActionUserPropertiesObjectProps:ActionUserPropertiesObjectProps"
+                    }
+                },
+                "stringProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/ActionUserPropertiesStringProps:ActionUserPropertiesStringProps"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "port:index/ActionUserPropertiesArrayProps:ActionUserPropertiesArrayProps": {
+            "properties": {
+                "booleanItems": {
+                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsBooleanItems:ActionUserPropertiesArrayPropsBooleanItems"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "maxItems": {
+                    "type": "integer"
+                },
+                "minItems": {
+                    "type": "integer"
+                },
+                "numberItems": {
+                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsNumberItems:ActionUserPropertiesArrayPropsNumberItems"
+                },
+                "objectItems": {
+                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsObjectItems:ActionUserPropertiesArrayPropsObjectItems"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "stringItems": {
+                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsStringItems:ActionUserPropertiesArrayPropsStringItems"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "required"
+                    ]
+                }
+            }
+        },
+        "port:index/ActionUserPropertiesArrayPropsBooleanItems:ActionUserPropertiesArrayPropsBooleanItems": {
+            "properties": {
+                "defaults": {
+                    "type": "array",
+                    "items": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "port:index/ActionUserPropertiesArrayPropsNumberItems:ActionUserPropertiesArrayPropsNumberItems": {
+            "properties": {
+                "defaults": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "port:index/ActionUserPropertiesArrayPropsObjectItems:ActionUserPropertiesArrayPropsObjectItems": {
+            "properties": {
+                "defaults": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "port:index/ActionUserPropertiesArrayPropsStringItems:ActionUserPropertiesArrayPropsStringItems": {
+            "properties": {
+                "blueprint": {
+                    "type": "string"
+                },
+                "defaults": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "format": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/ActionUserPropertiesBooleanProps:ActionUserPropertiesBooleanProps": {
+            "properties": {
+                "default": {
+                    "type": "boolean"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "required"
+                    ]
+                }
+            }
+        },
+        "port:index/ActionUserPropertiesNumberProps:ActionUserPropertiesNumberProps": {
+            "properties": {
+                "default": {
+                    "type": "number"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "enums": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "maximum": {
+                    "type": "number"
+                },
+                "minimum": {
+                    "type": "number"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "required"
+                    ]
+                }
+            }
+        },
+        "port:index/ActionUserPropertiesObjectProps:ActionUserPropertiesObjectProps": {
+            "properties": {
+                "default": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "required"
+                    ]
+                }
+            }
+        },
+        "port:index/ActionUserPropertiesStringProps:ActionUserPropertiesStringProps": {
             "properties": {
                 "blueprint": {
                     "type": "string"
                 },
                 "default": {
                     "type": "string"
-                },
-                "defaultItems": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
                 },
                 "description": {
                     "type": "string"
@@ -147,8 +385,14 @@
                 "format": {
                     "type": "string"
                 },
-                "identifier": {
+                "icon": {
                     "type": "string"
+                },
+                "maxLength": {
+                    "type": "integer"
+                },
+                "minLength": {
+                    "type": "integer"
                 },
                 "pattern": {
                     "type": "string"
@@ -158,19 +402,32 @@
                 },
                 "title": {
                     "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "required"
+                    ]
+                }
+            }
+        },
+        "port:index/ActionWebhookMethod:ActionWebhookMethod": {
+            "properties": {
+                "agent": {
+                    "type": "boolean"
                 },
-                "type": {
+                "url": {
                     "type": "string"
                 }
             },
             "type": "object",
             "required": [
-                "identifier",
-                "title",
-                "type"
+                "url"
             ]
         },
-        "port:index/BlueprintCalculationProperty:BlueprintCalculationProperty": {
+        "port:index/BlueprintCalculationProperties:BlueprintCalculationProperties": {
             "properties": {
                 "calculation": {
                     "type": "string"
@@ -193,9 +450,6 @@
                 "icon": {
                     "type": "string"
                 },
-                "identifier": {
-                    "type": "string"
-                },
                 "title": {
                     "type": "string"
                 },
@@ -206,32 +460,14 @@
             "type": "object",
             "required": [
                 "calculation",
-                "identifier",
                 "type"
             ]
         },
-        "port:index/BlueprintChangelogDestination:BlueprintChangelogDestination": {
-            "properties": {
-                "agent": {
-                    "type": "boolean"
-                },
-                "type": {
-                    "type": "string"
-                },
-                "url": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "type"
-            ]
+        "port:index/BlueprintKafkaChangelogDestination:BlueprintKafkaChangelogDestination": {
+            "type": "object"
         },
-        "port:index/BlueprintMirrorProperty:BlueprintMirrorProperty": {
+        "port:index/BlueprintMirrorProperties:BlueprintMirrorProperties": {
             "properties": {
-                "identifier": {
-                    "type": "string"
-                },
                 "path": {
                     "type": "string"
                 },
@@ -241,27 +477,239 @@
             },
             "type": "object",
             "required": [
-                "identifier",
                 "path"
             ]
         },
-        "port:index/BlueprintProperty:BlueprintProperty": {
+        "port:index/BlueprintProperties:BlueprintProperties": {
             "properties": {
-                "default": {
-                    "type": "string",
-                    "deprecationMessage": "Use default_value instead"
+                "arrayProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/BlueprintPropertiesArrayProps:BlueprintPropertiesArrayProps"
+                    }
                 },
-                "defaultItems": {
+                "booleanProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/BlueprintPropertiesBooleanProps:BlueprintPropertiesBooleanProps"
+                    }
+                },
+                "numberProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/BlueprintPropertiesNumberProps:BlueprintPropertiesNumberProps"
+                    }
+                },
+                "objectProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/BlueprintPropertiesObjectProps:BlueprintPropertiesObjectProps"
+                    }
+                },
+                "stringProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/BlueprintPropertiesStringProps:BlueprintPropertiesStringProps"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "port:index/BlueprintPropertiesArrayProps:BlueprintPropertiesArrayProps": {
+            "properties": {
+                "booleanItems": {
+                    "$ref": "#/types/port:index/BlueprintPropertiesArrayPropsBooleanItems:BlueprintPropertiesArrayPropsBooleanItems"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "maxItems": {
+                    "type": "integer"
+                },
+                "minItems": {
+                    "type": "integer"
+                },
+                "numberItems": {
+                    "$ref": "#/types/port:index/BlueprintPropertiesArrayPropsNumberItems:BlueprintPropertiesArrayPropsNumberItems"
+                },
+                "objectItems": {
+                    "$ref": "#/types/port:index/BlueprintPropertiesArrayPropsObjectItems:BlueprintPropertiesArrayPropsObjectItems"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "stringItems": {
+                    "$ref": "#/types/port:index/BlueprintPropertiesArrayPropsStringItems:BlueprintPropertiesArrayPropsStringItems"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "required"
+                    ]
+                }
+            }
+        },
+        "port:index/BlueprintPropertiesArrayPropsBooleanItems:BlueprintPropertiesArrayPropsBooleanItems": {
+            "properties": {
+                "defaults": {
+                    "type": "array",
+                    "items": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "port:index/BlueprintPropertiesArrayPropsNumberItems:BlueprintPropertiesArrayPropsNumberItems": {
+            "properties": {
+                "defaults": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "port:index/BlueprintPropertiesArrayPropsObjectItems:BlueprintPropertiesArrayPropsObjectItems": {
+            "properties": {
+                "defaults": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "port:index/BlueprintPropertiesArrayPropsStringItems:BlueprintPropertiesArrayPropsStringItems": {
+            "properties": {
+                "defaults": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
                 },
-                "defaultValue": {
+                "format": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/BlueprintPropertiesBooleanProps:BlueprintPropertiesBooleanProps": {
+            "properties": {
+                "default": {
+                    "type": "boolean"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "required"
+                    ]
+                }
+            }
+        },
+        "port:index/BlueprintPropertiesNumberProps:BlueprintPropertiesNumberProps": {
+            "properties": {
+                "default": {
+                    "type": "number"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "enumColors": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     }
+                },
+                "enums": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "maximum": {
+                    "type": "number"
+                },
+                "minimum": {
+                    "type": "number"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "required"
+                    ]
+                }
+            }
+        },
+        "port:index/BlueprintPropertiesObjectProps:BlueprintPropertiesObjectProps": {
+            "properties": {
+                "default": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "spec": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "required"
+                    ]
+                }
+            }
+        },
+        "port:index/BlueprintPropertiesStringProps:BlueprintPropertiesStringProps": {
+            "properties": {
+                "default": {
+                    "type": "string"
                 },
                 "description": {
                     "type": "string"
@@ -284,26 +732,14 @@
                 "icon": {
                     "type": "string"
                 },
-                "identifier": {
-                    "type": "string"
-                },
-                "items": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
-                    }
-                },
-                "maxItems": {
-                    "type": "integer"
-                },
                 "maxLength": {
-                    "type": "integer"
-                },
-                "minItems": {
                     "type": "integer"
                 },
                 "minLength": {
                     "type": "integer"
+                },
+                "pattern": {
+                    "type": "string"
                 },
                 "required": {
                     "type": "boolean"
@@ -312,23 +748,22 @@
                     "type": "string"
                 },
                 "specAuthentication": {
-                    "$ref": "#/types/port:index/BlueprintPropertySpecAuthentication:BlueprintPropertySpecAuthentication"
+                    "$ref": "#/types/port:index/BlueprintPropertiesStringPropsSpecAuthentication:BlueprintPropertiesStringPropsSpecAuthentication"
                 },
                 "title": {
-                    "type": "string"
-                },
-                "type": {
                     "type": "string"
                 }
             },
             "type": "object",
-            "required": [
-                "identifier",
-                "title",
-                "type"
-            ]
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "required"
+                    ]
+                }
+            }
         },
-        "port:index/BlueprintPropertySpecAuthentication:BlueprintPropertySpecAuthentication": {
+        "port:index/BlueprintPropertiesStringPropsSpecAuthentication:BlueprintPropertiesStringPropsSpecAuthentication": {
             "properties": {
                 "authorizationUrl": {
                     "type": "string"
@@ -347,11 +782,8 @@
                 "tokenUrl"
             ]
         },
-        "port:index/BlueprintRelation:BlueprintRelation": {
+        "port:index/BlueprintRelations:BlueprintRelations": {
             "properties": {
-                "identifier": {
-                    "type": "string"
-                },
                 "many": {
                     "type": "boolean"
                 },
@@ -367,53 +799,135 @@
             },
             "type": "object",
             "required": [
-                "identifier",
                 "target"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "many",
+                        "required",
+                        "target"
+                    ]
+                }
+            }
         },
-        "port:index/EntityProperty:EntityProperty": {
+        "port:index/BlueprintTeamInheritance:BlueprintTeamInheritance": {
             "properties": {
-                "items": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "name": {
-                    "type": "string"
-                },
-                "type": {
-                    "type": "string",
-                    "deprecationMessage": "property type is not required anymore"
-                },
-                "value": {
+                "path": {
                     "type": "string"
                 }
             },
             "type": "object",
             "required": [
-                "name"
+                "path"
             ]
         },
-        "port:index/EntityRelation:EntityRelation": {
+        "port:index/BlueprintWebhookChangelogDestination:BlueprintWebhookChangelogDestination": {
             "properties": {
-                "identifier": {
-                    "type": "string"
+                "agent": {
+                    "type": "boolean"
                 },
-                "identifiers": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "name": {
+                "url": {
                     "type": "string"
                 }
             },
             "type": "object",
             "required": [
-                "name"
+                "url"
             ]
+        },
+        "port:index/EntityProperties:EntityProperties": {
+            "properties": {
+                "arrayProps": {
+                    "$ref": "#/types/port:index/EntityPropertiesArrayProps:EntityPropertiesArrayProps"
+                },
+                "booleanProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "boolean"
+                    }
+                },
+                "numberProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "number"
+                    }
+                },
+                "objectProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "stringProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "port:index/EntityPropertiesArrayProps:EntityPropertiesArrayProps": {
+            "properties": {
+                "booleanItems": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "numberItems": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "number"
+                        }
+                    }
+                },
+                "objectItems": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "stringItems": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "port:index/EntityRelations:EntityRelations": {
+            "properties": {
+                "manyRelations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "singleRelations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object"
         }
     },
     "provider": {
@@ -423,14 +937,17 @@
                 "type": "string"
             },
             "clientId": {
-                "type": "string"
+                "type": "string",
+                "description": "Client ID for Port-labs\n"
             },
             "secret": {
                 "type": "string",
+                "description": "Client Secret for Port-labs\n",
                 "secret": true
             },
             "token": {
                 "type": "string",
+                "description": "Token for Port-labs\n",
                 "secret": true
             }
         },
@@ -443,14 +960,17 @@
                 "type": "string"
             },
             "clientId": {
-                "type": "string"
+                "type": "string",
+                "description": "Client ID for Port-labs\n"
             },
             "secret": {
                 "type": "string",
+                "description": "Client Secret for Port-labs\n",
                 "secret": true
             },
             "token": {
                 "type": "string",
+                "description": "Token for Port-labs\n",
                 "secret": true
             }
         },
@@ -462,142 +982,191 @@
     "resources": {
         "port:index/action:Action": {
             "properties": {
-                "blueprintIdentifier": {
+                "approvalEmailNotification": {
+                    "$ref": "#/types/port:index/ActionApprovalEmailNotification:ActionApprovalEmailNotification",
+                    "description": "The email notification of the approval\n"
+                },
+                "approvalWebhookNotification": {
+                    "$ref": "#/types/port:index/ActionApprovalWebhookNotification:ActionApprovalWebhookNotification",
+                    "description": "The webhook notification of the approval\n"
+                },
+                "azureMethod": {
+                    "$ref": "#/types/port:index/ActionAzureMethod:ActionAzureMethod",
+                    "description": "The invocation method of the action\n"
+                },
+                "blueprint": {
                     "type": "string",
-                    "description": "The identifier of the blueprint\n"
+                    "description": "The blueprint identifier the action relates to\n"
                 },
                 "description": {
                     "type": "string",
-                    "description": "The description of the action\n"
+                    "description": "Description\n"
+                },
+                "githubMethod": {
+                    "$ref": "#/types/port:index/ActionGithubMethod:ActionGithubMethod",
+                    "description": "The invocation method of the action\n"
                 },
                 "icon": {
                     "type": "string",
-                    "description": "The icon of the action\n"
+                    "description": "Icon\n"
                 },
                 "identifier": {
                     "type": "string",
-                    "description": "The identifier of the action\n"
+                    "description": "Identifier\n"
                 },
-                "invocationMethod": {
-                    "$ref": "#/types/port:index/ActionInvocationMethod:ActionInvocationMethod",
-                    "description": "The methods the action is dispatched in. Supports WEBHOOK, KAFKA, GITHUB and AZURE-DEVOPS\n"
+                "kafkaMethod": {
+                    "$ref": "#/types/port:index/ActionKafkaMethod:ActionKafkaMethod",
+                    "description": "The invocation method of the action\n"
                 },
                 "requiredApproval": {
                     "type": "boolean",
-                    "description": "Whether the action requires approval or not\n"
+                    "description": "Require approval before invoking the action\n"
                 },
                 "title": {
                     "type": "string",
-                    "description": "The display name of the action\n"
+                    "description": "Title\n"
                 },
                 "trigger": {
                     "type": "string",
-                    "description": "The type of the action, one of CREATE, DAY-2, DELETE\n"
+                    "description": "The trigger type of the action\n"
                 },
                 "userProperties": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/port:index/ActionUserProperty:ActionUserProperty"
-                    },
-                    "description": "The input properties of the action\n"
+                    "$ref": "#/types/port:index/ActionUserProperties:ActionUserProperties",
+                    "description": "User properties\n"
+                },
+                "webhookMethod": {
+                    "$ref": "#/types/port:index/ActionWebhookMethod:ActionWebhookMethod",
+                    "description": "The invocation method of the action\n"
                 }
             },
             "required": [
-                "blueprintIdentifier",
+                "blueprint",
                 "identifier",
-                "invocationMethod",
                 "title",
                 "trigger"
             ],
             "inputProperties": {
-                "blueprintIdentifier": {
+                "approvalEmailNotification": {
+                    "$ref": "#/types/port:index/ActionApprovalEmailNotification:ActionApprovalEmailNotification",
+                    "description": "The email notification of the approval\n"
+                },
+                "approvalWebhookNotification": {
+                    "$ref": "#/types/port:index/ActionApprovalWebhookNotification:ActionApprovalWebhookNotification",
+                    "description": "The webhook notification of the approval\n"
+                },
+                "azureMethod": {
+                    "$ref": "#/types/port:index/ActionAzureMethod:ActionAzureMethod",
+                    "description": "The invocation method of the action\n"
+                },
+                "blueprint": {
                     "type": "string",
-                    "description": "The identifier of the blueprint\n"
+                    "description": "The blueprint identifier the action relates to\n"
                 },
                 "description": {
                     "type": "string",
-                    "description": "The description of the action\n"
+                    "description": "Description\n"
+                },
+                "githubMethod": {
+                    "$ref": "#/types/port:index/ActionGithubMethod:ActionGithubMethod",
+                    "description": "The invocation method of the action\n"
                 },
                 "icon": {
                     "type": "string",
-                    "description": "The icon of the action\n"
+                    "description": "Icon\n"
                 },
                 "identifier": {
                     "type": "string",
-                    "description": "The identifier of the action\n"
+                    "description": "Identifier\n"
                 },
-                "invocationMethod": {
-                    "$ref": "#/types/port:index/ActionInvocationMethod:ActionInvocationMethod",
-                    "description": "The methods the action is dispatched in. Supports WEBHOOK, KAFKA, GITHUB and AZURE-DEVOPS\n"
+                "kafkaMethod": {
+                    "$ref": "#/types/port:index/ActionKafkaMethod:ActionKafkaMethod",
+                    "description": "The invocation method of the action\n"
                 },
                 "requiredApproval": {
                     "type": "boolean",
-                    "description": "Whether the action requires approval or not\n"
+                    "description": "Require approval before invoking the action\n"
                 },
                 "title": {
                     "type": "string",
-                    "description": "The display name of the action\n"
+                    "description": "Title\n"
                 },
                 "trigger": {
                     "type": "string",
-                    "description": "The type of the action, one of CREATE, DAY-2, DELETE\n"
+                    "description": "The trigger type of the action\n"
                 },
                 "userProperties": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/port:index/ActionUserProperty:ActionUserProperty"
-                    },
-                    "description": "The input properties of the action\n"
+                    "$ref": "#/types/port:index/ActionUserProperties:ActionUserProperties",
+                    "description": "User properties\n"
+                },
+                "webhookMethod": {
+                    "$ref": "#/types/port:index/ActionWebhookMethod:ActionWebhookMethod",
+                    "description": "The invocation method of the action\n"
                 }
             },
             "requiredInputs": [
-                "blueprintIdentifier",
+                "blueprint",
                 "identifier",
-                "invocationMethod",
                 "title",
                 "trigger"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Action resources.\n",
                 "properties": {
-                    "blueprintIdentifier": {
+                    "approvalEmailNotification": {
+                        "$ref": "#/types/port:index/ActionApprovalEmailNotification:ActionApprovalEmailNotification",
+                        "description": "The email notification of the approval\n"
+                    },
+                    "approvalWebhookNotification": {
+                        "$ref": "#/types/port:index/ActionApprovalWebhookNotification:ActionApprovalWebhookNotification",
+                        "description": "The webhook notification of the approval\n"
+                    },
+                    "azureMethod": {
+                        "$ref": "#/types/port:index/ActionAzureMethod:ActionAzureMethod",
+                        "description": "The invocation method of the action\n"
+                    },
+                    "blueprint": {
                         "type": "string",
-                        "description": "The identifier of the blueprint\n"
+                        "description": "The blueprint identifier the action relates to\n"
                     },
                     "description": {
                         "type": "string",
-                        "description": "The description of the action\n"
+                        "description": "Description\n"
+                    },
+                    "githubMethod": {
+                        "$ref": "#/types/port:index/ActionGithubMethod:ActionGithubMethod",
+                        "description": "The invocation method of the action\n"
                     },
                     "icon": {
                         "type": "string",
-                        "description": "The icon of the action\n"
+                        "description": "Icon\n"
                     },
                     "identifier": {
                         "type": "string",
-                        "description": "The identifier of the action\n"
+                        "description": "Identifier\n"
                     },
-                    "invocationMethod": {
-                        "$ref": "#/types/port:index/ActionInvocationMethod:ActionInvocationMethod",
-                        "description": "The methods the action is dispatched in. Supports WEBHOOK, KAFKA, GITHUB and AZURE-DEVOPS\n"
+                    "kafkaMethod": {
+                        "$ref": "#/types/port:index/ActionKafkaMethod:ActionKafkaMethod",
+                        "description": "The invocation method of the action\n"
                     },
                     "requiredApproval": {
                         "type": "boolean",
-                        "description": "Whether the action requires approval or not\n"
+                        "description": "Require approval before invoking the action\n"
                     },
                     "title": {
                         "type": "string",
-                        "description": "The display name of the action\n"
+                        "description": "Title\n"
                     },
                     "trigger": {
                         "type": "string",
-                        "description": "The type of the action, one of CREATE, DAY-2, DELETE\n"
+                        "description": "The trigger type of the action\n"
                     },
                     "userProperties": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/port:index/ActionUserProperty:ActionUserProperty"
-                        },
-                        "description": "The input properties of the action\n"
+                        "$ref": "#/types/port:index/ActionUserProperties:ActionUserProperties",
+                        "description": "User properties\n"
+                    },
+                    "webhookMethod": {
+                        "$ref": "#/types/port:index/ActionWebhookMethod:ActionWebhookMethod",
+                        "description": "The invocation method of the action\n"
                     }
                 },
                 "type": "object"
@@ -606,26 +1175,19 @@
         "port:index/blueprint:Blueprint": {
             "properties": {
                 "calculationProperties": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/port:index/BlueprintCalculationProperty:BlueprintCalculationProperty"
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/BlueprintCalculationProperties:BlueprintCalculationProperties"
                     },
-                    "description": "A set of properties that are calculated upon entity's regular properties.\n"
-                },
-                "changelogDestination": {
-                    "$ref": "#/types/port:index/BlueprintChangelogDestination:BlueprintChangelogDestination",
-                    "description": "Blueprints changelog destination, Supports WEBHOOK and KAFKA\n"
+                    "description": "The calculation properties of the blueprint\n"
                 },
                 "createdAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The creation date of the blueprint\n"
                 },
                 "createdBy": {
-                    "type": "string"
-                },
-                "dataSource": {
                     "type": "string",
-                    "description": "The data source for entities of this blueprint\n",
-                    "deprecationMessage": "Data source is ignored"
+                    "description": "The creator of the blueprint\n"
                 },
                 "description": {
                     "type": "string",
@@ -639,63 +1201,64 @@
                     "type": "string",
                     "description": "The identifier of the blueprint\n"
                 },
+                "kafkaChangelogDestination": {
+                    "$ref": "#/types/port:index/BlueprintKafkaChangelogDestination:BlueprintKafkaChangelogDestination",
+                    "description": "The changelog destination of the blueprint\n"
+                },
                 "mirrorProperties": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/port:index/BlueprintMirrorProperty:BlueprintMirrorProperty"
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/BlueprintMirrorProperties:BlueprintMirrorProperties"
                     },
-                    "description": "When two Blueprints are connected via a Relation, a new set of properties becomes available to Entities in the source\nBlueprint.\n"
+                    "description": "The mirror properties of the blueprint\n"
                 },
                 "properties": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/port:index/BlueprintProperty:BlueprintProperty"
-                    },
-                    "description": "The metadata of the entity\n"
+                    "$ref": "#/types/port:index/BlueprintProperties:BlueprintProperties",
+                    "description": "The properties of the blueprint\n"
                 },
                 "relations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/port:index/BlueprintRelation:BlueprintRelation"
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/BlueprintRelations:BlueprintRelations"
                     },
-                    "description": "The blueprints that are connected to this blueprint\n"
+                    "description": "The relations of the blueprint\n"
+                },
+                "teamInheritance": {
+                    "$ref": "#/types/port:index/BlueprintTeamInheritance:BlueprintTeamInheritance",
+                    "description": "The team inheritance of the blueprint\n"
                 },
                 "title": {
                     "type": "string",
                     "description": "The display name of the blueprint\n"
                 },
                 "updatedAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The last update date of the blueprint\n"
                 },
                 "updatedBy": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The last updater of the blueprint\n"
+                },
+                "webhookChangelogDestination": {
+                    "$ref": "#/types/port:index/BlueprintWebhookChangelogDestination:BlueprintWebhookChangelogDestination",
+                    "description": "The webhook changelog destination of the blueprint\n"
                 }
             },
             "required": [
                 "createdAt",
                 "createdBy",
                 "identifier",
-                "properties",
                 "title",
                 "updatedAt",
                 "updatedBy"
             ],
             "inputProperties": {
                 "calculationProperties": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/port:index/BlueprintCalculationProperty:BlueprintCalculationProperty"
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/BlueprintCalculationProperties:BlueprintCalculationProperties"
                     },
-                    "description": "A set of properties that are calculated upon entity's regular properties.\n"
-                },
-                "changelogDestination": {
-                    "$ref": "#/types/port:index/BlueprintChangelogDestination:BlueprintChangelogDestination",
-                    "description": "Blueprints changelog destination, Supports WEBHOOK and KAFKA\n"
-                },
-                "dataSource": {
-                    "type": "string",
-                    "description": "The data source for entities of this blueprint\n",
-                    "deprecationMessage": "Data source is ignored"
+                    "description": "The calculation properties of the blueprint\n"
                 },
                 "description": {
                     "type": "string",
@@ -709,61 +1272,62 @@
                     "type": "string",
                     "description": "The identifier of the blueprint\n"
                 },
+                "kafkaChangelogDestination": {
+                    "$ref": "#/types/port:index/BlueprintKafkaChangelogDestination:BlueprintKafkaChangelogDestination",
+                    "description": "The changelog destination of the blueprint\n"
+                },
                 "mirrorProperties": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/port:index/BlueprintMirrorProperty:BlueprintMirrorProperty"
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/BlueprintMirrorProperties:BlueprintMirrorProperties"
                     },
-                    "description": "When two Blueprints are connected via a Relation, a new set of properties becomes available to Entities in the source\nBlueprint.\n"
+                    "description": "The mirror properties of the blueprint\n"
                 },
                 "properties": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/port:index/BlueprintProperty:BlueprintProperty"
-                    },
-                    "description": "The metadata of the entity\n"
+                    "$ref": "#/types/port:index/BlueprintProperties:BlueprintProperties",
+                    "description": "The properties of the blueprint\n"
                 },
                 "relations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/port:index/BlueprintRelation:BlueprintRelation"
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/BlueprintRelations:BlueprintRelations"
                     },
-                    "description": "The blueprints that are connected to this blueprint\n"
+                    "description": "The relations of the blueprint\n"
+                },
+                "teamInheritance": {
+                    "$ref": "#/types/port:index/BlueprintTeamInheritance:BlueprintTeamInheritance",
+                    "description": "The team inheritance of the blueprint\n"
                 },
                 "title": {
                     "type": "string",
                     "description": "The display name of the blueprint\n"
+                },
+                "webhookChangelogDestination": {
+                    "$ref": "#/types/port:index/BlueprintWebhookChangelogDestination:BlueprintWebhookChangelogDestination",
+                    "description": "The webhook changelog destination of the blueprint\n"
                 }
             },
             "requiredInputs": [
                 "identifier",
-                "properties",
                 "title"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Blueprint resources.\n",
                 "properties": {
                     "calculationProperties": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/port:index/BlueprintCalculationProperty:BlueprintCalculationProperty"
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/port:index/BlueprintCalculationProperties:BlueprintCalculationProperties"
                         },
-                        "description": "A set of properties that are calculated upon entity's regular properties.\n"
-                    },
-                    "changelogDestination": {
-                        "$ref": "#/types/port:index/BlueprintChangelogDestination:BlueprintChangelogDestination",
-                        "description": "Blueprints changelog destination, Supports WEBHOOK and KAFKA\n"
+                        "description": "The calculation properties of the blueprint\n"
                     },
                     "createdAt": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The creation date of the blueprint\n"
                     },
                     "createdBy": {
-                        "type": "string"
-                    },
-                    "dataSource": {
                         "type": "string",
-                        "description": "The data source for entities of this blueprint\n",
-                        "deprecationMessage": "Data source is ignored"
+                        "description": "The creator of the blueprint\n"
                     },
                     "description": {
                         "type": "string",
@@ -777,36 +1341,47 @@
                         "type": "string",
                         "description": "The identifier of the blueprint\n"
                     },
+                    "kafkaChangelogDestination": {
+                        "$ref": "#/types/port:index/BlueprintKafkaChangelogDestination:BlueprintKafkaChangelogDestination",
+                        "description": "The changelog destination of the blueprint\n"
+                    },
                     "mirrorProperties": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/port:index/BlueprintMirrorProperty:BlueprintMirrorProperty"
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/port:index/BlueprintMirrorProperties:BlueprintMirrorProperties"
                         },
-                        "description": "When two Blueprints are connected via a Relation, a new set of properties becomes available to Entities in the source\nBlueprint.\n"
+                        "description": "The mirror properties of the blueprint\n"
                     },
                     "properties": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/port:index/BlueprintProperty:BlueprintProperty"
-                        },
-                        "description": "The metadata of the entity\n"
+                        "$ref": "#/types/port:index/BlueprintProperties:BlueprintProperties",
+                        "description": "The properties of the blueprint\n"
                     },
                     "relations": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/port:index/BlueprintRelation:BlueprintRelation"
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/port:index/BlueprintRelations:BlueprintRelations"
                         },
-                        "description": "The blueprints that are connected to this blueprint\n"
+                        "description": "The relations of the blueprint\n"
+                    },
+                    "teamInheritance": {
+                        "$ref": "#/types/port:index/BlueprintTeamInheritance:BlueprintTeamInheritance",
+                        "description": "The team inheritance of the blueprint\n"
                     },
                     "title": {
                         "type": "string",
                         "description": "The display name of the blueprint\n"
                     },
                     "updatedAt": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The last update date of the blueprint\n"
                     },
                     "updatedBy": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The last updater of the blueprint\n"
+                    },
+                    "webhookChangelogDestination": {
+                        "$ref": "#/types/port:index/BlueprintWebhookChangelogDestination:BlueprintWebhookChangelogDestination",
+                        "description": "The webhook changelog destination of the blueprint\n"
                     }
                 },
                 "type": "object"
@@ -819,61 +1394,58 @@
                     "description": "The blueprint identifier the entity relates to\n"
                 },
                 "createdAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The creation date of the entity\n"
                 },
                 "createdBy": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The creator of the entity\n"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of the entity\n"
                 },
                 "identifier": {
                     "type": "string",
                     "description": "The identifier of the entity\n"
                 },
                 "properties": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/port:index/EntityProperty:EntityProperty"
-                    },
-                    "description": "The metadata of the entity\n"
+                    "$ref": "#/types/port:index/EntityProperties:EntityProperties",
+                    "description": "The properties of the entity\n"
                 },
                 "relations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/port:index/EntityRelation:EntityRelation"
-                    },
-                    "description": "The other entities that are connected\n"
+                    "$ref": "#/types/port:index/EntityRelations:EntityRelations",
+                    "description": "The relations of the entity\n"
                 },
                 "runId": {
                     "type": "string",
                     "description": "The runID of the action run that created the entity\n"
-                },
-                "team": {
-                    "type": "string",
-                    "description": "The team related to the entity\n"
                 },
                 "teams": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The teams related to the entity\n"
+                    "description": "The teams the entity belongs to\n"
                 },
                 "title": {
                     "type": "string",
-                    "description": "The display name of the entity\n"
+                    "description": "The title of the entity\n"
                 },
                 "updatedAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The last update date of the entity\n"
                 },
                 "updatedBy": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The last updater of the entity\n"
                 }
             },
             "required": [
                 "blueprint",
                 "createdAt",
                 "createdBy",
-                "properties",
-                "title",
+                "identifier",
                 "updatedAt",
                 "updatedBy"
             ],
@@ -882,48 +1454,40 @@
                     "type": "string",
                     "description": "The blueprint identifier the entity relates to\n"
                 },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of the entity\n"
+                },
                 "identifier": {
                     "type": "string",
                     "description": "The identifier of the entity\n"
                 },
                 "properties": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/port:index/EntityProperty:EntityProperty"
-                    },
-                    "description": "The metadata of the entity\n"
+                    "$ref": "#/types/port:index/EntityProperties:EntityProperties",
+                    "description": "The properties of the entity\n"
                 },
                 "relations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/port:index/EntityRelation:EntityRelation"
-                    },
-                    "description": "The other entities that are connected\n"
+                    "$ref": "#/types/port:index/EntityRelations:EntityRelations",
+                    "description": "The relations of the entity\n"
                 },
                 "runId": {
                     "type": "string",
                     "description": "The runID of the action run that created the entity\n"
-                },
-                "team": {
-                    "type": "string",
-                    "description": "The team related to the entity\n"
                 },
                 "teams": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The teams related to the entity\n"
+                    "description": "The teams the entity belongs to\n"
                 },
                 "title": {
                     "type": "string",
-                    "description": "The display name of the entity\n"
+                    "description": "The title of the entity\n"
                 }
             },
             "requiredInputs": [
-                "blueprint",
-                "properties",
-                "title"
+                "blueprint"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Entity resources.\n",
@@ -933,53 +1497,51 @@
                         "description": "The blueprint identifier the entity relates to\n"
                     },
                     "createdAt": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The creation date of the entity\n"
                     },
                     "createdBy": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The creator of the entity\n"
+                    },
+                    "icon": {
+                        "type": "string",
+                        "description": "The icon of the entity\n"
                     },
                     "identifier": {
                         "type": "string",
                         "description": "The identifier of the entity\n"
                     },
                     "properties": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/port:index/EntityProperty:EntityProperty"
-                        },
-                        "description": "The metadata of the entity\n"
+                        "$ref": "#/types/port:index/EntityProperties:EntityProperties",
+                        "description": "The properties of the entity\n"
                     },
                     "relations": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/port:index/EntityRelation:EntityRelation"
-                        },
-                        "description": "The other entities that are connected\n"
+                        "$ref": "#/types/port:index/EntityRelations:EntityRelations",
+                        "description": "The relations of the entity\n"
                     },
                     "runId": {
                         "type": "string",
                         "description": "The runID of the action run that created the entity\n"
-                    },
-                    "team": {
-                        "type": "string",
-                        "description": "The team related to the entity\n"
                     },
                     "teams": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "The teams related to the entity\n"
+                        "description": "The teams the entity belongs to\n"
                     },
                     "title": {
                         "type": "string",
-                        "description": "The display name of the entity\n"
+                        "description": "The title of the entity\n"
                     },
                     "updatedAt": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The last update date of the entity\n"
                     },
                     "updatedBy": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The last updater of the entity\n"
                     }
                 },
                 "type": "object"
