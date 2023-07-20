@@ -26,6 +26,15 @@ export interface ActionGithubMethod {
     workflow: string;
 }
 
+export interface ActionGitlabMethod {
+    agent: boolean;
+    defaultRef?: string;
+    groupName: string;
+    omitPayload?: boolean;
+    omitUserInputs?: boolean;
+    projectName: string;
+}
+
 export interface ActionKafkaMethod {
 }
 
@@ -39,6 +48,9 @@ export interface ActionUserProperties {
 
 export interface ActionUserPropertiesArrayProps {
     booleanItems?: outputs.ActionUserPropertiesArrayPropsBooleanItems;
+    dataset?: outputs.ActionUserPropertiesArrayPropsDataset;
+    defaultJqQuery?: string;
+    dependsOns?: string[];
     description?: string;
     icon?: string;
     maxItems?: number;
@@ -52,6 +64,22 @@ export interface ActionUserPropertiesArrayProps {
 
 export interface ActionUserPropertiesArrayPropsBooleanItems {
     defaults?: boolean[];
+}
+
+export interface ActionUserPropertiesArrayPropsDataset {
+    combinator: string;
+    rules: outputs.ActionUserPropertiesArrayPropsDatasetRule[];
+}
+
+export interface ActionUserPropertiesArrayPropsDatasetRule {
+    blueprint?: string;
+    operator: string;
+    property?: string;
+    value: outputs.ActionUserPropertiesArrayPropsDatasetRuleValue;
+}
+
+export interface ActionUserPropertiesArrayPropsDatasetRuleValue {
+    jqQuery: string;
 }
 
 export interface ActionUserPropertiesArrayPropsNumberItems {
@@ -69,16 +97,39 @@ export interface ActionUserPropertiesArrayPropsStringItems {
 }
 
 export interface ActionUserPropertiesBooleanProps {
+    dataset?: outputs.ActionUserPropertiesBooleanPropsDataset;
     default?: boolean;
+    defaultJqQuery?: string;
+    dependsOns?: string[];
     description?: string;
     icon?: string;
     required: boolean;
     title?: string;
 }
 
+export interface ActionUserPropertiesBooleanPropsDataset {
+    combinator: string;
+    rules: outputs.ActionUserPropertiesBooleanPropsDatasetRule[];
+}
+
+export interface ActionUserPropertiesBooleanPropsDatasetRule {
+    blueprint?: string;
+    operator: string;
+    property?: string;
+    value: outputs.ActionUserPropertiesBooleanPropsDatasetRuleValue;
+}
+
+export interface ActionUserPropertiesBooleanPropsDatasetRuleValue {
+    jqQuery: string;
+}
+
 export interface ActionUserPropertiesNumberProps {
+    dataset?: outputs.ActionUserPropertiesNumberPropsDataset;
     default?: number;
+    defaultJqQuery?: string;
+    dependsOns?: string[];
     description?: string;
+    enumJqQuery?: string;
     enums?: number[];
     icon?: string;
     maximum?: number;
@@ -87,18 +138,57 @@ export interface ActionUserPropertiesNumberProps {
     title?: string;
 }
 
+export interface ActionUserPropertiesNumberPropsDataset {
+    combinator: string;
+    rules: outputs.ActionUserPropertiesNumberPropsDatasetRule[];
+}
+
+export interface ActionUserPropertiesNumberPropsDatasetRule {
+    blueprint?: string;
+    operator: string;
+    property?: string;
+    value: outputs.ActionUserPropertiesNumberPropsDatasetRuleValue;
+}
+
+export interface ActionUserPropertiesNumberPropsDatasetRuleValue {
+    jqQuery: string;
+}
+
 export interface ActionUserPropertiesObjectProps {
+    dataset?: outputs.ActionUserPropertiesObjectPropsDataset;
     default?: string;
+    defaultJqQuery?: string;
+    dependsOns?: string[];
     description?: string;
     icon?: string;
     required: boolean;
     title?: string;
 }
 
+export interface ActionUserPropertiesObjectPropsDataset {
+    combinator: string;
+    rules: outputs.ActionUserPropertiesObjectPropsDatasetRule[];
+}
+
+export interface ActionUserPropertiesObjectPropsDatasetRule {
+    blueprint?: string;
+    operator: string;
+    property?: string;
+    value: outputs.ActionUserPropertiesObjectPropsDatasetRuleValue;
+}
+
+export interface ActionUserPropertiesObjectPropsDatasetRuleValue {
+    jqQuery: string;
+}
+
 export interface ActionUserPropertiesStringProps {
     blueprint?: string;
+    dataset?: outputs.ActionUserPropertiesStringPropsDataset;
     default?: string;
+    defaultJqQuery?: string;
+    dependsOns?: string[];
     description?: string;
+    enumJqQuery?: string;
     enums?: string[];
     format?: string;
     icon?: string;
@@ -107,6 +197,22 @@ export interface ActionUserPropertiesStringProps {
     pattern?: string;
     required: boolean;
     title?: string;
+}
+
+export interface ActionUserPropertiesStringPropsDataset {
+    combinator: string;
+    rules: outputs.ActionUserPropertiesStringPropsDatasetRule[];
+}
+
+export interface ActionUserPropertiesStringPropsDatasetRule {
+    blueprint?: string;
+    operator: string;
+    property?: string;
+    value: outputs.ActionUserPropertiesStringPropsDatasetRuleValue;
+}
+
+export interface ActionUserPropertiesStringPropsDatasetRuleValue {
+    jqQuery: string;
 }
 
 export interface ActionWebhookMethod {
