@@ -25,6 +25,7 @@ class ActionArgs:
                  azure_method: Optional[pulumi.Input['ActionAzureMethodArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  github_method: Optional[pulumi.Input['ActionGithubMethodArgs']] = None,
+                 gitlab_method: Optional[pulumi.Input['ActionGitlabMethodArgs']] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  kafka_method: Optional[pulumi.Input['ActionKafkaMethodArgs']] = None,
                  required_approval: Optional[pulumi.Input[bool]] = None,
@@ -41,6 +42,7 @@ class ActionArgs:
         :param pulumi.Input['ActionAzureMethodArgs'] azure_method: The invocation method of the action
         :param pulumi.Input[str] description: Description
         :param pulumi.Input['ActionGithubMethodArgs'] github_method: The invocation method of the action
+        :param pulumi.Input['ActionGitlabMethodArgs'] gitlab_method: The invocation method of the action
         :param pulumi.Input[str] icon: Icon
         :param pulumi.Input['ActionKafkaMethodArgs'] kafka_method: The invocation method of the action
         :param pulumi.Input[bool] required_approval: Require approval before invoking the action
@@ -61,6 +63,8 @@ class ActionArgs:
             pulumi.set(__self__, "description", description)
         if github_method is not None:
             pulumi.set(__self__, "github_method", github_method)
+        if gitlab_method is not None:
+            pulumi.set(__self__, "gitlab_method", gitlab_method)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
         if kafka_method is not None:
@@ -181,6 +185,18 @@ class ActionArgs:
         pulumi.set(self, "github_method", value)
 
     @property
+    @pulumi.getter(name="gitlabMethod")
+    def gitlab_method(self) -> Optional[pulumi.Input['ActionGitlabMethodArgs']]:
+        """
+        The invocation method of the action
+        """
+        return pulumi.get(self, "gitlab_method")
+
+    @gitlab_method.setter
+    def gitlab_method(self, value: Optional[pulumi.Input['ActionGitlabMethodArgs']]):
+        pulumi.set(self, "gitlab_method", value)
+
+    @property
     @pulumi.getter
     def icon(self) -> Optional[pulumi.Input[str]]:
         """
@@ -250,6 +266,7 @@ class _ActionState:
                  blueprint: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  github_method: Optional[pulumi.Input['ActionGithubMethodArgs']] = None,
+                 gitlab_method: Optional[pulumi.Input['ActionGitlabMethodArgs']] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  kafka_method: Optional[pulumi.Input['ActionKafkaMethodArgs']] = None,
@@ -266,6 +283,7 @@ class _ActionState:
         :param pulumi.Input[str] blueprint: The blueprint identifier the action relates to
         :param pulumi.Input[str] description: Description
         :param pulumi.Input['ActionGithubMethodArgs'] github_method: The invocation method of the action
+        :param pulumi.Input['ActionGitlabMethodArgs'] gitlab_method: The invocation method of the action
         :param pulumi.Input[str] icon: Icon
         :param pulumi.Input[str] identifier: Identifier
         :param pulumi.Input['ActionKafkaMethodArgs'] kafka_method: The invocation method of the action
@@ -287,6 +305,8 @@ class _ActionState:
             pulumi.set(__self__, "description", description)
         if github_method is not None:
             pulumi.set(__self__, "github_method", github_method)
+        if gitlab_method is not None:
+            pulumi.set(__self__, "gitlab_method", gitlab_method)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
         if identifier is not None:
@@ -375,6 +395,18 @@ class _ActionState:
     @github_method.setter
     def github_method(self, value: Optional[pulumi.Input['ActionGithubMethodArgs']]):
         pulumi.set(self, "github_method", value)
+
+    @property
+    @pulumi.getter(name="gitlabMethod")
+    def gitlab_method(self) -> Optional[pulumi.Input['ActionGitlabMethodArgs']]:
+        """
+        The invocation method of the action
+        """
+        return pulumi.get(self, "gitlab_method")
+
+    @gitlab_method.setter
+    def gitlab_method(self, value: Optional[pulumi.Input['ActionGitlabMethodArgs']]):
+        pulumi.set(self, "gitlab_method", value)
 
     @property
     @pulumi.getter
@@ -484,6 +516,7 @@ class Action(pulumi.CustomResource):
                  blueprint: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  github_method: Optional[pulumi.Input[pulumi.InputType['ActionGithubMethodArgs']]] = None,
+                 gitlab_method: Optional[pulumi.Input[pulumi.InputType['ActionGitlabMethodArgs']]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  kafka_method: Optional[pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']]] = None,
@@ -503,6 +536,7 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[str] blueprint: The blueprint identifier the action relates to
         :param pulumi.Input[str] description: Description
         :param pulumi.Input[pulumi.InputType['ActionGithubMethodArgs']] github_method: The invocation method of the action
+        :param pulumi.Input[pulumi.InputType['ActionGitlabMethodArgs']] gitlab_method: The invocation method of the action
         :param pulumi.Input[str] icon: Icon
         :param pulumi.Input[str] identifier: Identifier
         :param pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']] kafka_method: The invocation method of the action
@@ -541,6 +575,7 @@ class Action(pulumi.CustomResource):
                  blueprint: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  github_method: Optional[pulumi.Input[pulumi.InputType['ActionGithubMethodArgs']]] = None,
+                 gitlab_method: Optional[pulumi.Input[pulumi.InputType['ActionGitlabMethodArgs']]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  kafka_method: Optional[pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']]] = None,
@@ -566,6 +601,7 @@ class Action(pulumi.CustomResource):
             __props__.__dict__["blueprint"] = blueprint
             __props__.__dict__["description"] = description
             __props__.__dict__["github_method"] = github_method
+            __props__.__dict__["gitlab_method"] = gitlab_method
             __props__.__dict__["icon"] = icon
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
@@ -596,6 +632,7 @@ class Action(pulumi.CustomResource):
             blueprint: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             github_method: Optional[pulumi.Input[pulumi.InputType['ActionGithubMethodArgs']]] = None,
+            gitlab_method: Optional[pulumi.Input[pulumi.InputType['ActionGitlabMethodArgs']]] = None,
             icon: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             kafka_method: Optional[pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']]] = None,
@@ -617,6 +654,7 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[str] blueprint: The blueprint identifier the action relates to
         :param pulumi.Input[str] description: Description
         :param pulumi.Input[pulumi.InputType['ActionGithubMethodArgs']] github_method: The invocation method of the action
+        :param pulumi.Input[pulumi.InputType['ActionGitlabMethodArgs']] gitlab_method: The invocation method of the action
         :param pulumi.Input[str] icon: Icon
         :param pulumi.Input[str] identifier: Identifier
         :param pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']] kafka_method: The invocation method of the action
@@ -636,6 +674,7 @@ class Action(pulumi.CustomResource):
         __props__.__dict__["blueprint"] = blueprint
         __props__.__dict__["description"] = description
         __props__.__dict__["github_method"] = github_method
+        __props__.__dict__["gitlab_method"] = gitlab_method
         __props__.__dict__["icon"] = icon
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["kafka_method"] = kafka_method
@@ -693,6 +732,14 @@ class Action(pulumi.CustomResource):
         The invocation method of the action
         """
         return pulumi.get(self, "github_method")
+
+    @property
+    @pulumi.getter(name="gitlabMethod")
+    def gitlab_method(self) -> pulumi.Output[Optional['outputs.ActionGitlabMethod']]:
+        """
+        The invocation method of the action
+        """
+        return pulumi.get(self, "gitlab_method")
 
     @property
     @pulumi.getter

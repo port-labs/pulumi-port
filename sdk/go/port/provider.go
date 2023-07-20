@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/port-labs/pulumi-port/sdk/go/port/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,7 +52,7 @@ func NewProvider(ctx *pulumi.Context,
 		"token",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:port", name, args, &resource, opts...)
 	if err != nil {

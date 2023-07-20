@@ -59,6 +59,10 @@ export class Action extends pulumi.CustomResource {
      */
     public readonly githubMethod!: pulumi.Output<outputs.ActionGithubMethod | undefined>;
     /**
+     * The invocation method of the action
+     */
+    public readonly gitlabMethod!: pulumi.Output<outputs.ActionGitlabMethod | undefined>;
+    /**
      * Icon
      */
     public readonly icon!: pulumi.Output<string | undefined>;
@@ -110,6 +114,7 @@ export class Action extends pulumi.CustomResource {
             resourceInputs["blueprint"] = state ? state.blueprint : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["githubMethod"] = state ? state.githubMethod : undefined;
+            resourceInputs["gitlabMethod"] = state ? state.gitlabMethod : undefined;
             resourceInputs["icon"] = state ? state.icon : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["kafkaMethod"] = state ? state.kafkaMethod : undefined;
@@ -138,6 +143,7 @@ export class Action extends pulumi.CustomResource {
             resourceInputs["blueprint"] = args ? args.blueprint : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["githubMethod"] = args ? args.githubMethod : undefined;
+            resourceInputs["gitlabMethod"] = args ? args.gitlabMethod : undefined;
             resourceInputs["icon"] = args ? args.icon : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["kafkaMethod"] = args ? args.kafkaMethod : undefined;
@@ -180,6 +186,10 @@ export interface ActionState {
      * The invocation method of the action
      */
     githubMethod?: pulumi.Input<inputs.ActionGithubMethod>;
+    /**
+     * The invocation method of the action
+     */
+    gitlabMethod?: pulumi.Input<inputs.ActionGitlabMethod>;
     /**
      * Icon
      */
@@ -242,6 +252,10 @@ export interface ActionArgs {
      * The invocation method of the action
      */
     githubMethod?: pulumi.Input<inputs.ActionGithubMethod>;
+    /**
+     * The invocation method of the action
+     */
+    gitlabMethod?: pulumi.Input<inputs.ActionGitlabMethod>;
     /**
      * Icon
      */

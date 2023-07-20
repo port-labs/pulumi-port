@@ -14,17 +14,33 @@ __all__ = [
     'ActionApprovalWebhookNotificationArgs',
     'ActionAzureMethodArgs',
     'ActionGithubMethodArgs',
+    'ActionGitlabMethodArgs',
     'ActionKafkaMethodArgs',
     'ActionUserPropertiesArgs',
     'ActionUserPropertiesArrayPropsArgs',
     'ActionUserPropertiesArrayPropsBooleanItemsArgs',
+    'ActionUserPropertiesArrayPropsDatasetArgs',
+    'ActionUserPropertiesArrayPropsDatasetRuleArgs',
+    'ActionUserPropertiesArrayPropsDatasetRuleValueArgs',
     'ActionUserPropertiesArrayPropsNumberItemsArgs',
     'ActionUserPropertiesArrayPropsObjectItemsArgs',
     'ActionUserPropertiesArrayPropsStringItemsArgs',
     'ActionUserPropertiesBooleanPropsArgs',
+    'ActionUserPropertiesBooleanPropsDatasetArgs',
+    'ActionUserPropertiesBooleanPropsDatasetRuleArgs',
+    'ActionUserPropertiesBooleanPropsDatasetRuleValueArgs',
     'ActionUserPropertiesNumberPropsArgs',
+    'ActionUserPropertiesNumberPropsDatasetArgs',
+    'ActionUserPropertiesNumberPropsDatasetRuleArgs',
+    'ActionUserPropertiesNumberPropsDatasetRuleValueArgs',
     'ActionUserPropertiesObjectPropsArgs',
+    'ActionUserPropertiesObjectPropsDatasetArgs',
+    'ActionUserPropertiesObjectPropsDatasetRuleArgs',
+    'ActionUserPropertiesObjectPropsDatasetRuleValueArgs',
     'ActionUserPropertiesStringPropsArgs',
+    'ActionUserPropertiesStringPropsDatasetArgs',
+    'ActionUserPropertiesStringPropsDatasetRuleArgs',
+    'ActionUserPropertiesStringPropsDatasetRuleValueArgs',
     'ActionWebhookMethodArgs',
     'BlueprintCalculationPropertiesArgs',
     'BlueprintKafkaChangelogDestinationArgs',
@@ -172,6 +188,81 @@ class ActionGithubMethodArgs:
 
 
 @pulumi.input_type
+class ActionGitlabMethodArgs:
+    def __init__(__self__, *,
+                 group_name: pulumi.Input[str],
+                 project_name: pulumi.Input[str],
+                 agent: Optional[pulumi.Input[bool]] = None,
+                 default_ref: Optional[pulumi.Input[str]] = None,
+                 omit_payload: Optional[pulumi.Input[bool]] = None,
+                 omit_user_inputs: Optional[pulumi.Input[bool]] = None):
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "project_name", project_name)
+        if agent is not None:
+            pulumi.set(__self__, "agent", agent)
+        if default_ref is not None:
+            pulumi.set(__self__, "default_ref", default_ref)
+        if omit_payload is not None:
+            pulumi.set(__self__, "omit_payload", omit_payload)
+        if omit_user_inputs is not None:
+            pulumi.set(__self__, "omit_user_inputs", omit_user_inputs)
+
+    @property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "group_name")
+
+    @group_name.setter
+    def group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_name", value)
+
+    @property
+    @pulumi.getter(name="projectName")
+    def project_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project_name")
+
+    @project_name.setter
+    def project_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_name", value)
+
+    @property
+    @pulumi.getter
+    def agent(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "agent")
+
+    @agent.setter
+    def agent(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "agent", value)
+
+    @property
+    @pulumi.getter(name="defaultRef")
+    def default_ref(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "default_ref")
+
+    @default_ref.setter
+    def default_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_ref", value)
+
+    @property
+    @pulumi.getter(name="omitPayload")
+    def omit_payload(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "omit_payload")
+
+    @omit_payload.setter
+    def omit_payload(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "omit_payload", value)
+
+    @property
+    @pulumi.getter(name="omitUserInputs")
+    def omit_user_inputs(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "omit_user_inputs")
+
+    @omit_user_inputs.setter
+    def omit_user_inputs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "omit_user_inputs", value)
+
+
+@pulumi.input_type
 class ActionKafkaMethodArgs:
     def __init__(__self__):
         pass
@@ -246,6 +337,9 @@ class ActionUserPropertiesArgs:
 class ActionUserPropertiesArrayPropsArgs:
     def __init__(__self__, *,
                  boolean_items: Optional[pulumi.Input['ActionUserPropertiesArrayPropsBooleanItemsArgs']] = None,
+                 dataset: Optional[pulumi.Input['ActionUserPropertiesArrayPropsDatasetArgs']] = None,
+                 default_jq_query: Optional[pulumi.Input[str]] = None,
+                 depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  max_items: Optional[pulumi.Input[int]] = None,
@@ -257,6 +351,12 @@ class ActionUserPropertiesArrayPropsArgs:
                  title: Optional[pulumi.Input[str]] = None):
         if boolean_items is not None:
             pulumi.set(__self__, "boolean_items", boolean_items)
+        if dataset is not None:
+            pulumi.set(__self__, "dataset", dataset)
+        if default_jq_query is not None:
+            pulumi.set(__self__, "default_jq_query", default_jq_query)
+        if depends_ons is not None:
+            pulumi.set(__self__, "depends_ons", depends_ons)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if icon is not None:
@@ -284,6 +384,33 @@ class ActionUserPropertiesArrayPropsArgs:
     @boolean_items.setter
     def boolean_items(self, value: Optional[pulumi.Input['ActionUserPropertiesArrayPropsBooleanItemsArgs']]):
         pulumi.set(self, "boolean_items", value)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> Optional[pulumi.Input['ActionUserPropertiesArrayPropsDatasetArgs']]:
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: Optional[pulumi.Input['ActionUserPropertiesArrayPropsDatasetArgs']]):
+        pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter(name="defaultJqQuery")
+    def default_jq_query(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "default_jq_query")
+
+    @default_jq_query.setter
+    def default_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_jq_query", value)
+
+    @property
+    @pulumi.getter(name="dependsOns")
+    def depends_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "depends_ons")
+
+    @depends_ons.setter
+    def depends_ons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "depends_ons", value)
 
     @property
     @pulumi.getter
@@ -385,6 +512,100 @@ class ActionUserPropertiesArrayPropsBooleanItemsArgs:
 
 
 @pulumi.input_type
+class ActionUserPropertiesArrayPropsDatasetArgs:
+    def __init__(__self__, *,
+                 combinator: pulumi.Input[str],
+                 rules: pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesArrayPropsDatasetRuleArgs']]]):
+        pulumi.set(__self__, "combinator", combinator)
+        pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesArrayPropsDatasetRuleArgs']]]:
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesArrayPropsDatasetRuleArgs']]]):
+        pulumi.set(self, "rules", value)
+
+
+@pulumi.input_type
+class ActionUserPropertiesArrayPropsDatasetRuleArgs:
+    def __init__(__self__, *,
+                 operator: pulumi.Input[str],
+                 value: pulumi.Input['ActionUserPropertiesArrayPropsDatasetRuleValueArgs'],
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input['ActionUserPropertiesArrayPropsDatasetRuleValueArgs']:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input['ActionUserPropertiesArrayPropsDatasetRuleValueArgs']):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+@pulumi.input_type
+class ActionUserPropertiesArrayPropsDatasetRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+@pulumi.input_type
 class ActionUserPropertiesArrayPropsNumberItemsArgs:
     def __init__(__self__, *,
                  defaults: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]] = None):
@@ -462,13 +683,22 @@ class ActionUserPropertiesArrayPropsStringItemsArgs:
 @pulumi.input_type
 class ActionUserPropertiesBooleanPropsArgs:
     def __init__(__self__, *,
+                 dataset: Optional[pulumi.Input['ActionUserPropertiesBooleanPropsDatasetArgs']] = None,
                  default: Optional[pulumi.Input[bool]] = None,
+                 default_jq_query: Optional[pulumi.Input[str]] = None,
+                 depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  required: Optional[pulumi.Input[bool]] = None,
                  title: Optional[pulumi.Input[str]] = None):
+        if dataset is not None:
+            pulumi.set(__self__, "dataset", dataset)
         if default is not None:
             pulumi.set(__self__, "default", default)
+        if default_jq_query is not None:
+            pulumi.set(__self__, "default_jq_query", default_jq_query)
+        if depends_ons is not None:
+            pulumi.set(__self__, "depends_ons", depends_ons)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if icon is not None:
@@ -480,12 +710,39 @@ class ActionUserPropertiesBooleanPropsArgs:
 
     @property
     @pulumi.getter
+    def dataset(self) -> Optional[pulumi.Input['ActionUserPropertiesBooleanPropsDatasetArgs']]:
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: Optional[pulumi.Input['ActionUserPropertiesBooleanPropsDatasetArgs']]):
+        pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter
     def default(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "default")
 
     @default.setter
     def default(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "default", value)
+
+    @property
+    @pulumi.getter(name="defaultJqQuery")
+    def default_jq_query(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "default_jq_query")
+
+    @default_jq_query.setter
+    def default_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_jq_query", value)
+
+    @property
+    @pulumi.getter(name="dependsOns")
+    def depends_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "depends_ons")
+
+    @depends_ons.setter
+    def depends_ons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "depends_ons", value)
 
     @property
     @pulumi.getter
@@ -525,20 +782,126 @@ class ActionUserPropertiesBooleanPropsArgs:
 
 
 @pulumi.input_type
+class ActionUserPropertiesBooleanPropsDatasetArgs:
+    def __init__(__self__, *,
+                 combinator: pulumi.Input[str],
+                 rules: pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesBooleanPropsDatasetRuleArgs']]]):
+        pulumi.set(__self__, "combinator", combinator)
+        pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesBooleanPropsDatasetRuleArgs']]]:
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesBooleanPropsDatasetRuleArgs']]]):
+        pulumi.set(self, "rules", value)
+
+
+@pulumi.input_type
+class ActionUserPropertiesBooleanPropsDatasetRuleArgs:
+    def __init__(__self__, *,
+                 operator: pulumi.Input[str],
+                 value: pulumi.Input['ActionUserPropertiesBooleanPropsDatasetRuleValueArgs'],
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input['ActionUserPropertiesBooleanPropsDatasetRuleValueArgs']:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input['ActionUserPropertiesBooleanPropsDatasetRuleValueArgs']):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+@pulumi.input_type
+class ActionUserPropertiesBooleanPropsDatasetRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+@pulumi.input_type
 class ActionUserPropertiesNumberPropsArgs:
     def __init__(__self__, *,
+                 dataset: Optional[pulumi.Input['ActionUserPropertiesNumberPropsDatasetArgs']] = None,
                  default: Optional[pulumi.Input[float]] = None,
+                 default_jq_query: Optional[pulumi.Input[str]] = None,
+                 depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enum_jq_query: Optional[pulumi.Input[str]] = None,
                  enums: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  maximum: Optional[pulumi.Input[float]] = None,
                  minimum: Optional[pulumi.Input[float]] = None,
                  required: Optional[pulumi.Input[bool]] = None,
                  title: Optional[pulumi.Input[str]] = None):
+        if dataset is not None:
+            pulumi.set(__self__, "dataset", dataset)
         if default is not None:
             pulumi.set(__self__, "default", default)
+        if default_jq_query is not None:
+            pulumi.set(__self__, "default_jq_query", default_jq_query)
+        if depends_ons is not None:
+            pulumi.set(__self__, "depends_ons", depends_ons)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enum_jq_query is not None:
+            pulumi.set(__self__, "enum_jq_query", enum_jq_query)
         if enums is not None:
             pulumi.set(__self__, "enums", enums)
         if icon is not None:
@@ -554,12 +917,39 @@ class ActionUserPropertiesNumberPropsArgs:
 
     @property
     @pulumi.getter
+    def dataset(self) -> Optional[pulumi.Input['ActionUserPropertiesNumberPropsDatasetArgs']]:
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: Optional[pulumi.Input['ActionUserPropertiesNumberPropsDatasetArgs']]):
+        pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter
     def default(self) -> Optional[pulumi.Input[float]]:
         return pulumi.get(self, "default")
 
     @default.setter
     def default(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "default", value)
+
+    @property
+    @pulumi.getter(name="defaultJqQuery")
+    def default_jq_query(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "default_jq_query")
+
+    @default_jq_query.setter
+    def default_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_jq_query", value)
+
+    @property
+    @pulumi.getter(name="dependsOns")
+    def depends_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "depends_ons")
+
+    @depends_ons.setter
+    def depends_ons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "depends_ons", value)
 
     @property
     @pulumi.getter
@@ -569,6 +959,15 @@ class ActionUserPropertiesNumberPropsArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enumJqQuery")
+    def enum_jq_query(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "enum_jq_query")
+
+    @enum_jq_query.setter
+    def enum_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enum_jq_query", value)
 
     @property
     @pulumi.getter
@@ -626,15 +1025,118 @@ class ActionUserPropertiesNumberPropsArgs:
 
 
 @pulumi.input_type
+class ActionUserPropertiesNumberPropsDatasetArgs:
+    def __init__(__self__, *,
+                 combinator: pulumi.Input[str],
+                 rules: pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesNumberPropsDatasetRuleArgs']]]):
+        pulumi.set(__self__, "combinator", combinator)
+        pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesNumberPropsDatasetRuleArgs']]]:
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesNumberPropsDatasetRuleArgs']]]):
+        pulumi.set(self, "rules", value)
+
+
+@pulumi.input_type
+class ActionUserPropertiesNumberPropsDatasetRuleArgs:
+    def __init__(__self__, *,
+                 operator: pulumi.Input[str],
+                 value: pulumi.Input['ActionUserPropertiesNumberPropsDatasetRuleValueArgs'],
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input['ActionUserPropertiesNumberPropsDatasetRuleValueArgs']:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input['ActionUserPropertiesNumberPropsDatasetRuleValueArgs']):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+@pulumi.input_type
+class ActionUserPropertiesNumberPropsDatasetRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+@pulumi.input_type
 class ActionUserPropertiesObjectPropsArgs:
     def __init__(__self__, *,
+                 dataset: Optional[pulumi.Input['ActionUserPropertiesObjectPropsDatasetArgs']] = None,
                  default: Optional[pulumi.Input[str]] = None,
+                 default_jq_query: Optional[pulumi.Input[str]] = None,
+                 depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  required: Optional[pulumi.Input[bool]] = None,
                  title: Optional[pulumi.Input[str]] = None):
+        if dataset is not None:
+            pulumi.set(__self__, "dataset", dataset)
         if default is not None:
             pulumi.set(__self__, "default", default)
+        if default_jq_query is not None:
+            pulumi.set(__self__, "default_jq_query", default_jq_query)
+        if depends_ons is not None:
+            pulumi.set(__self__, "depends_ons", depends_ons)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if icon is not None:
@@ -646,12 +1148,39 @@ class ActionUserPropertiesObjectPropsArgs:
 
     @property
     @pulumi.getter
+    def dataset(self) -> Optional[pulumi.Input['ActionUserPropertiesObjectPropsDatasetArgs']]:
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: Optional[pulumi.Input['ActionUserPropertiesObjectPropsDatasetArgs']]):
+        pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter
     def default(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "default")
 
     @default.setter
     def default(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "default", value)
+
+    @property
+    @pulumi.getter(name="defaultJqQuery")
+    def default_jq_query(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "default_jq_query")
+
+    @default_jq_query.setter
+    def default_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_jq_query", value)
+
+    @property
+    @pulumi.getter(name="dependsOns")
+    def depends_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "depends_ons")
+
+    @depends_ons.setter
+    def depends_ons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "depends_ons", value)
 
     @property
     @pulumi.getter
@@ -691,11 +1220,109 @@ class ActionUserPropertiesObjectPropsArgs:
 
 
 @pulumi.input_type
+class ActionUserPropertiesObjectPropsDatasetArgs:
+    def __init__(__self__, *,
+                 combinator: pulumi.Input[str],
+                 rules: pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesObjectPropsDatasetRuleArgs']]]):
+        pulumi.set(__self__, "combinator", combinator)
+        pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesObjectPropsDatasetRuleArgs']]]:
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesObjectPropsDatasetRuleArgs']]]):
+        pulumi.set(self, "rules", value)
+
+
+@pulumi.input_type
+class ActionUserPropertiesObjectPropsDatasetRuleArgs:
+    def __init__(__self__, *,
+                 operator: pulumi.Input[str],
+                 value: pulumi.Input['ActionUserPropertiesObjectPropsDatasetRuleValueArgs'],
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input['ActionUserPropertiesObjectPropsDatasetRuleValueArgs']:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input['ActionUserPropertiesObjectPropsDatasetRuleValueArgs']):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+@pulumi.input_type
+class ActionUserPropertiesObjectPropsDatasetRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+@pulumi.input_type
 class ActionUserPropertiesStringPropsArgs:
     def __init__(__self__, *,
                  blueprint: Optional[pulumi.Input[str]] = None,
+                 dataset: Optional[pulumi.Input['ActionUserPropertiesStringPropsDatasetArgs']] = None,
                  default: Optional[pulumi.Input[str]] = None,
+                 default_jq_query: Optional[pulumi.Input[str]] = None,
+                 depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enum_jq_query: Optional[pulumi.Input[str]] = None,
                  enums: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
@@ -706,10 +1333,18 @@ class ActionUserPropertiesStringPropsArgs:
                  title: Optional[pulumi.Input[str]] = None):
         if blueprint is not None:
             pulumi.set(__self__, "blueprint", blueprint)
+        if dataset is not None:
+            pulumi.set(__self__, "dataset", dataset)
         if default is not None:
             pulumi.set(__self__, "default", default)
+        if default_jq_query is not None:
+            pulumi.set(__self__, "default_jq_query", default_jq_query)
+        if depends_ons is not None:
+            pulumi.set(__self__, "depends_ons", depends_ons)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enum_jq_query is not None:
+            pulumi.set(__self__, "enum_jq_query", enum_jq_query)
         if enums is not None:
             pulumi.set(__self__, "enums", enums)
         if format is not None:
@@ -738,12 +1373,39 @@ class ActionUserPropertiesStringPropsArgs:
 
     @property
     @pulumi.getter
+    def dataset(self) -> Optional[pulumi.Input['ActionUserPropertiesStringPropsDatasetArgs']]:
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: Optional[pulumi.Input['ActionUserPropertiesStringPropsDatasetArgs']]):
+        pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter
     def default(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "default")
 
     @default.setter
     def default(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "default", value)
+
+    @property
+    @pulumi.getter(name="defaultJqQuery")
+    def default_jq_query(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "default_jq_query")
+
+    @default_jq_query.setter
+    def default_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_jq_query", value)
+
+    @property
+    @pulumi.getter(name="dependsOns")
+    def depends_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "depends_ons")
+
+    @depends_ons.setter
+    def depends_ons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "depends_ons", value)
 
     @property
     @pulumi.getter
@@ -753,6 +1415,15 @@ class ActionUserPropertiesStringPropsArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enumJqQuery")
+    def enum_jq_query(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "enum_jq_query")
+
+    @enum_jq_query.setter
+    def enum_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enum_jq_query", value)
 
     @property
     @pulumi.getter
@@ -825,6 +1496,100 @@ class ActionUserPropertiesStringPropsArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class ActionUserPropertiesStringPropsDatasetArgs:
+    def __init__(__self__, *,
+                 combinator: pulumi.Input[str],
+                 rules: pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleArgs']]]):
+        pulumi.set(__self__, "combinator", combinator)
+        pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleArgs']]]:
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleArgs']]]):
+        pulumi.set(self, "rules", value)
+
+
+@pulumi.input_type
+class ActionUserPropertiesStringPropsDatasetRuleArgs:
+    def __init__(__self__, *,
+                 operator: pulumi.Input[str],
+                 value: pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleValueArgs'],
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleValueArgs']:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleValueArgs']):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+@pulumi.input_type
+class ActionUserPropertiesStringPropsDatasetRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
 
 
 @pulumi.input_type

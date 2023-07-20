@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/port-labs/pulumi-port/sdk/go/port/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,6 +27,8 @@ type Action struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The invocation method of the action
 	GithubMethod ActionGithubMethodPtrOutput `pulumi:"githubMethod"`
+	// The invocation method of the action
+	GitlabMethod ActionGitlabMethodPtrOutput `pulumi:"gitlabMethod"`
 	// Icon
 	Icon pulumi.StringPtrOutput `pulumi:"icon"`
 	// Identifier
@@ -63,7 +66,7 @@ func NewAction(ctx *pulumi.Context,
 	if args.Trigger == nil {
 		return nil, errors.New("invalid value for required argument 'Trigger'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Action
 	err := ctx.RegisterResource("port:index/action:Action", name, args, &resource, opts...)
 	if err != nil {
@@ -98,6 +101,8 @@ type actionState struct {
 	Description *string `pulumi:"description"`
 	// The invocation method of the action
 	GithubMethod *ActionGithubMethod `pulumi:"githubMethod"`
+	// The invocation method of the action
+	GitlabMethod *ActionGitlabMethod `pulumi:"gitlabMethod"`
 	// Icon
 	Icon *string `pulumi:"icon"`
 	// Identifier
@@ -129,6 +134,8 @@ type ActionState struct {
 	Description pulumi.StringPtrInput
 	// The invocation method of the action
 	GithubMethod ActionGithubMethodPtrInput
+	// The invocation method of the action
+	GitlabMethod ActionGitlabMethodPtrInput
 	// Icon
 	Icon pulumi.StringPtrInput
 	// Identifier
@@ -164,6 +171,8 @@ type actionArgs struct {
 	Description *string `pulumi:"description"`
 	// The invocation method of the action
 	GithubMethod *ActionGithubMethod `pulumi:"githubMethod"`
+	// The invocation method of the action
+	GitlabMethod *ActionGitlabMethod `pulumi:"gitlabMethod"`
 	// Icon
 	Icon *string `pulumi:"icon"`
 	// Identifier
@@ -196,6 +205,8 @@ type ActionArgs struct {
 	Description pulumi.StringPtrInput
 	// The invocation method of the action
 	GithubMethod ActionGithubMethodPtrInput
+	// The invocation method of the action
+	GitlabMethod ActionGitlabMethodPtrInput
 	// Icon
 	Icon pulumi.StringPtrInput
 	// Identifier
@@ -329,6 +340,11 @@ func (o ActionOutput) Description() pulumi.StringPtrOutput {
 // The invocation method of the action
 func (o ActionOutput) GithubMethod() ActionGithubMethodPtrOutput {
 	return o.ApplyT(func(v *Action) ActionGithubMethodPtrOutput { return v.GithubMethod }).(ActionGithubMethodPtrOutput)
+}
+
+// The invocation method of the action
+func (o ActionOutput) GitlabMethod() ActionGitlabMethodPtrOutput {
+	return o.ApplyT(func(v *Action) ActionGitlabMethodPtrOutput { return v.GitlabMethod }).(ActionGitlabMethodPtrOutput)
 }
 
 // Icon

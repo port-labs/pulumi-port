@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/port-labs/pulumi-port/sdk/go/port/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -50,7 +51,7 @@ func NewEntity(ctx *pulumi.Context,
 	if args.Blueprint == nil {
 		return nil, errors.New("invalid value for required argument 'Blueprint'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Entity
 	err := ctx.RegisterResource("port:index/entity:Entity", name, args, &resource, opts...)
 	if err != nil {

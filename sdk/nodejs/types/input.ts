@@ -26,6 +26,15 @@ export interface ActionGithubMethod {
     workflow: pulumi.Input<string>;
 }
 
+export interface ActionGitlabMethod {
+    agent?: pulumi.Input<boolean>;
+    defaultRef?: pulumi.Input<string>;
+    groupName: pulumi.Input<string>;
+    omitPayload?: pulumi.Input<boolean>;
+    omitUserInputs?: pulumi.Input<boolean>;
+    projectName: pulumi.Input<string>;
+}
+
 export interface ActionKafkaMethod {
 }
 
@@ -39,6 +48,9 @@ export interface ActionUserProperties {
 
 export interface ActionUserPropertiesArrayProps {
     booleanItems?: pulumi.Input<inputs.ActionUserPropertiesArrayPropsBooleanItems>;
+    dataset?: pulumi.Input<inputs.ActionUserPropertiesArrayPropsDataset>;
+    defaultJqQuery?: pulumi.Input<string>;
+    dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
     description?: pulumi.Input<string>;
     icon?: pulumi.Input<string>;
     maxItems?: pulumi.Input<number>;
@@ -52,6 +64,22 @@ export interface ActionUserPropertiesArrayProps {
 
 export interface ActionUserPropertiesArrayPropsBooleanItems {
     defaults?: pulumi.Input<pulumi.Input<boolean>[]>;
+}
+
+export interface ActionUserPropertiesArrayPropsDataset {
+    combinator: pulumi.Input<string>;
+    rules: pulumi.Input<pulumi.Input<inputs.ActionUserPropertiesArrayPropsDatasetRule>[]>;
+}
+
+export interface ActionUserPropertiesArrayPropsDatasetRule {
+    blueprint?: pulumi.Input<string>;
+    operator: pulumi.Input<string>;
+    property?: pulumi.Input<string>;
+    value: pulumi.Input<inputs.ActionUserPropertiesArrayPropsDatasetRuleValue>;
+}
+
+export interface ActionUserPropertiesArrayPropsDatasetRuleValue {
+    jqQuery: pulumi.Input<string>;
 }
 
 export interface ActionUserPropertiesArrayPropsNumberItems {
@@ -69,16 +97,39 @@ export interface ActionUserPropertiesArrayPropsStringItems {
 }
 
 export interface ActionUserPropertiesBooleanProps {
+    dataset?: pulumi.Input<inputs.ActionUserPropertiesBooleanPropsDataset>;
     default?: pulumi.Input<boolean>;
+    defaultJqQuery?: pulumi.Input<string>;
+    dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
     description?: pulumi.Input<string>;
     icon?: pulumi.Input<string>;
     required?: pulumi.Input<boolean>;
     title?: pulumi.Input<string>;
 }
 
+export interface ActionUserPropertiesBooleanPropsDataset {
+    combinator: pulumi.Input<string>;
+    rules: pulumi.Input<pulumi.Input<inputs.ActionUserPropertiesBooleanPropsDatasetRule>[]>;
+}
+
+export interface ActionUserPropertiesBooleanPropsDatasetRule {
+    blueprint?: pulumi.Input<string>;
+    operator: pulumi.Input<string>;
+    property?: pulumi.Input<string>;
+    value: pulumi.Input<inputs.ActionUserPropertiesBooleanPropsDatasetRuleValue>;
+}
+
+export interface ActionUserPropertiesBooleanPropsDatasetRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
 export interface ActionUserPropertiesNumberProps {
+    dataset?: pulumi.Input<inputs.ActionUserPropertiesNumberPropsDataset>;
     default?: pulumi.Input<number>;
+    defaultJqQuery?: pulumi.Input<string>;
+    dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
     description?: pulumi.Input<string>;
+    enumJqQuery?: pulumi.Input<string>;
     enums?: pulumi.Input<pulumi.Input<number>[]>;
     icon?: pulumi.Input<string>;
     maximum?: pulumi.Input<number>;
@@ -87,18 +138,57 @@ export interface ActionUserPropertiesNumberProps {
     title?: pulumi.Input<string>;
 }
 
+export interface ActionUserPropertiesNumberPropsDataset {
+    combinator: pulumi.Input<string>;
+    rules: pulumi.Input<pulumi.Input<inputs.ActionUserPropertiesNumberPropsDatasetRule>[]>;
+}
+
+export interface ActionUserPropertiesNumberPropsDatasetRule {
+    blueprint?: pulumi.Input<string>;
+    operator: pulumi.Input<string>;
+    property?: pulumi.Input<string>;
+    value: pulumi.Input<inputs.ActionUserPropertiesNumberPropsDatasetRuleValue>;
+}
+
+export interface ActionUserPropertiesNumberPropsDatasetRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
 export interface ActionUserPropertiesObjectProps {
+    dataset?: pulumi.Input<inputs.ActionUserPropertiesObjectPropsDataset>;
     default?: pulumi.Input<string>;
+    defaultJqQuery?: pulumi.Input<string>;
+    dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
     description?: pulumi.Input<string>;
     icon?: pulumi.Input<string>;
     required?: pulumi.Input<boolean>;
     title?: pulumi.Input<string>;
 }
 
+export interface ActionUserPropertiesObjectPropsDataset {
+    combinator: pulumi.Input<string>;
+    rules: pulumi.Input<pulumi.Input<inputs.ActionUserPropertiesObjectPropsDatasetRule>[]>;
+}
+
+export interface ActionUserPropertiesObjectPropsDatasetRule {
+    blueprint?: pulumi.Input<string>;
+    operator: pulumi.Input<string>;
+    property?: pulumi.Input<string>;
+    value: pulumi.Input<inputs.ActionUserPropertiesObjectPropsDatasetRuleValue>;
+}
+
+export interface ActionUserPropertiesObjectPropsDatasetRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
 export interface ActionUserPropertiesStringProps {
     blueprint?: pulumi.Input<string>;
+    dataset?: pulumi.Input<inputs.ActionUserPropertiesStringPropsDataset>;
     default?: pulumi.Input<string>;
+    defaultJqQuery?: pulumi.Input<string>;
+    dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
     description?: pulumi.Input<string>;
+    enumJqQuery?: pulumi.Input<string>;
     enums?: pulumi.Input<pulumi.Input<string>[]>;
     format?: pulumi.Input<string>;
     icon?: pulumi.Input<string>;
@@ -107,6 +197,22 @@ export interface ActionUserPropertiesStringProps {
     pattern?: pulumi.Input<string>;
     required?: pulumi.Input<boolean>;
     title?: pulumi.Input<string>;
+}
+
+export interface ActionUserPropertiesStringPropsDataset {
+    combinator: pulumi.Input<string>;
+    rules: pulumi.Input<pulumi.Input<inputs.ActionUserPropertiesStringPropsDatasetRule>[]>;
+}
+
+export interface ActionUserPropertiesStringPropsDatasetRule {
+    blueprint?: pulumi.Input<string>;
+    operator: pulumi.Input<string>;
+    property?: pulumi.Input<string>;
+    value: pulumi.Input<inputs.ActionUserPropertiesStringPropsDatasetRuleValue>;
+}
+
+export interface ActionUserPropertiesStringPropsDatasetRuleValue {
+    jqQuery: pulumi.Input<string>;
 }
 
 export interface ActionWebhookMethod {
