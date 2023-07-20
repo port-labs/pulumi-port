@@ -139,6 +139,42 @@
                 "workflow"
             ]
         },
+        "port:index/ActionGitlabMethod:ActionGitlabMethod": {
+            "properties": {
+                "agent": {
+                    "type": "boolean"
+                },
+                "defaultRef": {
+                    "type": "string"
+                },
+                "groupName": {
+                    "type": "string"
+                },
+                "omitPayload": {
+                    "type": "boolean"
+                },
+                "omitUserInputs": {
+                    "type": "boolean"
+                },
+                "projectName": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "groupName",
+                "projectName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "agent",
+                        "groupName",
+                        "projectName"
+                    ]
+                }
+            }
+        },
         "port:index/ActionKafkaMethod:ActionKafkaMethod": {
             "type": "object"
         },
@@ -181,6 +217,18 @@
             "properties": {
                 "booleanItems": {
                     "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsBooleanItems:ActionUserPropertiesArrayPropsBooleanItems"
+                },
+                "dataset": {
+                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsDataset:ActionUserPropertiesArrayPropsDataset"
+                },
+                "defaultJqQuery": {
+                    "type": "string"
+                },
+                "dependsOns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "description": {
                     "type": "string"
@@ -230,6 +278,56 @@
             },
             "type": "object"
         },
+        "port:index/ActionUserPropertiesArrayPropsDataset:ActionUserPropertiesArrayPropsDataset": {
+            "properties": {
+                "combinator": {
+                    "type": "string"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsDatasetRule:ActionUserPropertiesArrayPropsDatasetRule"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "combinator",
+                "rules"
+            ]
+        },
+        "port:index/ActionUserPropertiesArrayPropsDatasetRule:ActionUserPropertiesArrayPropsDatasetRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string"
+                },
+                "operator": {
+                    "type": "string"
+                },
+                "property": {
+                    "type": "string"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsDatasetRuleValue:ActionUserPropertiesArrayPropsDatasetRuleValue"
+                }
+            },
+            "type": "object",
+            "required": [
+                "operator",
+                "value"
+            ]
+        },
+        "port:index/ActionUserPropertiesArrayPropsDatasetRuleValue:ActionUserPropertiesArrayPropsDatasetRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
         "port:index/ActionUserPropertiesArrayPropsNumberItems:ActionUserPropertiesArrayPropsNumberItems": {
             "properties": {
                 "defaults": {
@@ -274,8 +372,20 @@
         },
         "port:index/ActionUserPropertiesBooleanProps:ActionUserPropertiesBooleanProps": {
             "properties": {
+                "dataset": {
+                    "$ref": "#/types/port:index/ActionUserPropertiesBooleanPropsDataset:ActionUserPropertiesBooleanPropsDataset"
+                },
                 "default": {
                     "type": "boolean"
+                },
+                "defaultJqQuery": {
+                    "type": "string"
+                },
+                "dependsOns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "description": {
                     "type": "string"
@@ -299,12 +409,77 @@
                 }
             }
         },
+        "port:index/ActionUserPropertiesBooleanPropsDataset:ActionUserPropertiesBooleanPropsDataset": {
+            "properties": {
+                "combinator": {
+                    "type": "string"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/ActionUserPropertiesBooleanPropsDatasetRule:ActionUserPropertiesBooleanPropsDatasetRule"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "combinator",
+                "rules"
+            ]
+        },
+        "port:index/ActionUserPropertiesBooleanPropsDatasetRule:ActionUserPropertiesBooleanPropsDatasetRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string"
+                },
+                "operator": {
+                    "type": "string"
+                },
+                "property": {
+                    "type": "string"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/ActionUserPropertiesBooleanPropsDatasetRuleValue:ActionUserPropertiesBooleanPropsDatasetRuleValue"
+                }
+            },
+            "type": "object",
+            "required": [
+                "operator",
+                "value"
+            ]
+        },
+        "port:index/ActionUserPropertiesBooleanPropsDatasetRuleValue:ActionUserPropertiesBooleanPropsDatasetRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
         "port:index/ActionUserPropertiesNumberProps:ActionUserPropertiesNumberProps": {
             "properties": {
+                "dataset": {
+                    "$ref": "#/types/port:index/ActionUserPropertiesNumberPropsDataset:ActionUserPropertiesNumberPropsDataset"
+                },
                 "default": {
                     "type": "number"
                 },
+                "defaultJqQuery": {
+                    "type": "string"
+                },
+                "dependsOns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "description": {
+                    "type": "string"
+                },
+                "enumJqQuery": {
                     "type": "string"
                 },
                 "enums": {
@@ -338,10 +513,72 @@
                 }
             }
         },
+        "port:index/ActionUserPropertiesNumberPropsDataset:ActionUserPropertiesNumberPropsDataset": {
+            "properties": {
+                "combinator": {
+                    "type": "string"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/ActionUserPropertiesNumberPropsDatasetRule:ActionUserPropertiesNumberPropsDatasetRule"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "combinator",
+                "rules"
+            ]
+        },
+        "port:index/ActionUserPropertiesNumberPropsDatasetRule:ActionUserPropertiesNumberPropsDatasetRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string"
+                },
+                "operator": {
+                    "type": "string"
+                },
+                "property": {
+                    "type": "string"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/ActionUserPropertiesNumberPropsDatasetRuleValue:ActionUserPropertiesNumberPropsDatasetRuleValue"
+                }
+            },
+            "type": "object",
+            "required": [
+                "operator",
+                "value"
+            ]
+        },
+        "port:index/ActionUserPropertiesNumberPropsDatasetRuleValue:ActionUserPropertiesNumberPropsDatasetRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
         "port:index/ActionUserPropertiesObjectProps:ActionUserPropertiesObjectProps": {
             "properties": {
+                "dataset": {
+                    "$ref": "#/types/port:index/ActionUserPropertiesObjectPropsDataset:ActionUserPropertiesObjectPropsDataset"
+                },
                 "default": {
                     "type": "string"
+                },
+                "defaultJqQuery": {
+                    "type": "string"
+                },
+                "dependsOns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "description": {
                     "type": "string"
@@ -365,15 +602,80 @@
                 }
             }
         },
+        "port:index/ActionUserPropertiesObjectPropsDataset:ActionUserPropertiesObjectPropsDataset": {
+            "properties": {
+                "combinator": {
+                    "type": "string"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/ActionUserPropertiesObjectPropsDatasetRule:ActionUserPropertiesObjectPropsDatasetRule"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "combinator",
+                "rules"
+            ]
+        },
+        "port:index/ActionUserPropertiesObjectPropsDatasetRule:ActionUserPropertiesObjectPropsDatasetRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string"
+                },
+                "operator": {
+                    "type": "string"
+                },
+                "property": {
+                    "type": "string"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/ActionUserPropertiesObjectPropsDatasetRuleValue:ActionUserPropertiesObjectPropsDatasetRuleValue"
+                }
+            },
+            "type": "object",
+            "required": [
+                "operator",
+                "value"
+            ]
+        },
+        "port:index/ActionUserPropertiesObjectPropsDatasetRuleValue:ActionUserPropertiesObjectPropsDatasetRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
         "port:index/ActionUserPropertiesStringProps:ActionUserPropertiesStringProps": {
             "properties": {
                 "blueprint": {
                     "type": "string"
                 },
+                "dataset": {
+                    "$ref": "#/types/port:index/ActionUserPropertiesStringPropsDataset:ActionUserPropertiesStringPropsDataset"
+                },
                 "default": {
                     "type": "string"
                 },
+                "defaultJqQuery": {
+                    "type": "string"
+                },
+                "dependsOns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "description": {
+                    "type": "string"
+                },
+                "enumJqQuery": {
                     "type": "string"
                 },
                 "enums": {
@@ -412,6 +714,56 @@
                     ]
                 }
             }
+        },
+        "port:index/ActionUserPropertiesStringPropsDataset:ActionUserPropertiesStringPropsDataset": {
+            "properties": {
+                "combinator": {
+                    "type": "string"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/ActionUserPropertiesStringPropsDatasetRule:ActionUserPropertiesStringPropsDatasetRule"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "combinator",
+                "rules"
+            ]
+        },
+        "port:index/ActionUserPropertiesStringPropsDatasetRule:ActionUserPropertiesStringPropsDatasetRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string"
+                },
+                "operator": {
+                    "type": "string"
+                },
+                "property": {
+                    "type": "string"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/ActionUserPropertiesStringPropsDatasetRuleValue:ActionUserPropertiesStringPropsDatasetRuleValue"
+                }
+            },
+            "type": "object",
+            "required": [
+                "operator",
+                "value"
+            ]
+        },
+        "port:index/ActionUserPropertiesStringPropsDatasetRuleValue:ActionUserPropertiesStringPropsDatasetRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
         },
         "port:index/ActionWebhookMethod:ActionWebhookMethod": {
             "properties": {
@@ -1006,6 +1358,10 @@
                     "$ref": "#/types/port:index/ActionGithubMethod:ActionGithubMethod",
                     "description": "The invocation method of the action\n"
                 },
+                "gitlabMethod": {
+                    "$ref": "#/types/port:index/ActionGitlabMethod:ActionGitlabMethod",
+                    "description": "The invocation method of the action\n"
+                },
                 "icon": {
                     "type": "string",
                     "description": "Icon\n"
@@ -1068,6 +1424,10 @@
                 },
                 "githubMethod": {
                     "$ref": "#/types/port:index/ActionGithubMethod:ActionGithubMethod",
+                    "description": "The invocation method of the action\n"
+                },
+                "gitlabMethod": {
+                    "$ref": "#/types/port:index/ActionGitlabMethod:ActionGitlabMethod",
                     "description": "The invocation method of the action\n"
                 },
                 "icon": {
@@ -1134,6 +1494,10 @@
                     },
                     "githubMethod": {
                         "$ref": "#/types/port:index/ActionGithubMethod:ActionGithubMethod",
+                        "description": "The invocation method of the action\n"
+                    },
+                    "gitlabMethod": {
+                        "$ref": "#/types/port:index/ActionGitlabMethod:ActionGitlabMethod",
                         "description": "The invocation method of the action\n"
                     },
                     "icon": {

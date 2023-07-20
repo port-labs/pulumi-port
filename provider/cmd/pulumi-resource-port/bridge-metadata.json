@@ -11,6 +11,13 @@
                 "omitUserInputs": "omit_user_inputs",
                 "reportWorkflowStatus": "report_workflow_status"
             },
+            "port:index/ActionGitlabMethod:ActionGitlabMethod": {
+                "defaultRef": "default_ref",
+                "groupName": "group_name",
+                "omitPayload": "omit_payload",
+                "omitUserInputs": "omit_user_inputs",
+                "projectName": "project_name"
+            },
             "port:index/ActionUserProperties:ActionUserProperties": {
                 "arrayProps": "array_props",
                 "booleanProps": "boolean_props",
@@ -20,6 +27,8 @@
             },
             "port:index/ActionUserPropertiesArrayProps:ActionUserPropertiesArrayProps": {
                 "booleanItems": "boolean_items",
+                "defaultJqQuery": "default_jq_query",
+                "dependsOns": "depends_on",
                 "maxItems": "max_items",
                 "minItems": "min_items",
                 "numberItems": "number_items",
@@ -28,6 +37,9 @@
             },
             "port:index/ActionUserPropertiesArrayPropsBooleanItems:ActionUserPropertiesArrayPropsBooleanItems": {
                 "defaults": "default"
+            },
+            "port:index/ActionUserPropertiesArrayPropsDatasetRuleValue:ActionUserPropertiesArrayPropsDatasetRuleValue": {
+                "jqQuery": "jq_query"
             },
             "port:index/ActionUserPropertiesArrayPropsNumberItems:ActionUserPropertiesArrayPropsNumberItems": {
                 "defaults": "default"
@@ -38,13 +50,39 @@
             "port:index/ActionUserPropertiesArrayPropsStringItems:ActionUserPropertiesArrayPropsStringItems": {
                 "defaults": "default"
             },
+            "port:index/ActionUserPropertiesBooleanProps:ActionUserPropertiesBooleanProps": {
+                "defaultJqQuery": "default_jq_query",
+                "dependsOns": "depends_on"
+            },
+            "port:index/ActionUserPropertiesBooleanPropsDatasetRuleValue:ActionUserPropertiesBooleanPropsDatasetRuleValue": {
+                "jqQuery": "jq_query"
+            },
             "port:index/ActionUserPropertiesNumberProps:ActionUserPropertiesNumberProps": {
+                "defaultJqQuery": "default_jq_query",
+                "dependsOns": "depends_on",
+                "enumJqQuery": "enum_jq_query",
                 "enums": "enum"
             },
+            "port:index/ActionUserPropertiesNumberPropsDatasetRuleValue:ActionUserPropertiesNumberPropsDatasetRuleValue": {
+                "jqQuery": "jq_query"
+            },
+            "port:index/ActionUserPropertiesObjectProps:ActionUserPropertiesObjectProps": {
+                "defaultJqQuery": "default_jq_query",
+                "dependsOns": "depends_on"
+            },
+            "port:index/ActionUserPropertiesObjectPropsDatasetRuleValue:ActionUserPropertiesObjectPropsDatasetRuleValue": {
+                "jqQuery": "jq_query"
+            },
             "port:index/ActionUserPropertiesStringProps:ActionUserPropertiesStringProps": {
+                "defaultJqQuery": "default_jq_query",
+                "dependsOns": "depends_on",
+                "enumJqQuery": "enum_jq_query",
                 "enums": "enum",
                 "maxLength": "max_length",
                 "minLength": "min_length"
+            },
+            "port:index/ActionUserPropertiesStringPropsDatasetRuleValue:ActionUserPropertiesStringPropsDatasetRuleValue": {
+                "jqQuery": "jq_query"
             },
             "port:index/BlueprintProperties:BlueprintProperties": {
                 "arrayProps": "array_props",
@@ -111,6 +149,7 @@
                 "approvalWebhookNotification": "approval_webhook_notification",
                 "azureMethod": "azure_method",
                 "githubMethod": "github_method",
+                "gitlabMethod": "gitlab_method",
                 "kafkaMethod": "kafka_method",
                 "requiredApproval": "required_approval",
                 "userProperties": "user_properties",
