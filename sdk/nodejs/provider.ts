@@ -29,11 +29,11 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * Client ID for Port-labs
      */
-    public readonly clientId!: pulumi.Output<string>;
+    public readonly clientId!: pulumi.Output<string | undefined>;
     /**
      * Client Secret for Port-labs
      */
-    public readonly secret!: pulumi.Output<string>;
+    public readonly secret!: pulumi.Output<string | undefined>;
     /**
      * Token for Port-labs
      */
@@ -46,16 +46,10 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.clientId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'clientId'");
-            }
-            if ((!args || args.secret === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'secret'");
-            }
             resourceInputs["baseUrl"] = args ? args.baseUrl : undefined;
             resourceInputs["clientId"] = args ? args.clientId : undefined;
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
@@ -76,11 +70,11 @@ export interface ProviderArgs {
     /**
      * Client ID for Port-labs
      */
-    clientId: pulumi.Input<string>;
+    clientId?: pulumi.Input<string>;
     /**
      * Client Secret for Port-labs
      */
-    secret: pulumi.Input<string>;
+    secret?: pulumi.Input<string>;
     /**
      * Token for Port-labs
      */
