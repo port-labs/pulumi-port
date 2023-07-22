@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/port-labs/pulumi-port/sdk/go/port/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -21,9 +20,9 @@ type Provider struct {
 
 	BaseUrl pulumi.StringPtrOutput `pulumi:"baseUrl"`
 	// Client ID for Port-labs
-	ClientId pulumi.StringOutput `pulumi:"clientId"`
+	ClientId pulumi.StringPtrOutput `pulumi:"clientId"`
 	// Client Secret for Port-labs
-	Secret pulumi.StringOutput `pulumi:"secret"`
+	Secret pulumi.StringPtrOutput `pulumi:"secret"`
 	// Token for Port-labs
 	Token pulumi.StringPtrOutput `pulumi:"token"`
 }
@@ -32,17 +31,11 @@ type Provider struct {
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProviderArgs{}
 	}
 
-	if args.ClientId == nil {
-		return nil, errors.New("invalid value for required argument 'ClientId'")
-	}
-	if args.Secret == nil {
-		return nil, errors.New("invalid value for required argument 'Secret'")
-	}
 	if args.Secret != nil {
-		args.Secret = pulumi.ToSecret(args.Secret).(pulumi.StringInput)
+		args.Secret = pulumi.ToSecret(args.Secret).(pulumi.StringPtrInput)
 	}
 	if args.Token != nil {
 		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrInput)
@@ -64,9 +57,9 @@ func NewProvider(ctx *pulumi.Context,
 type providerArgs struct {
 	BaseUrl *string `pulumi:"baseUrl"`
 	// Client ID for Port-labs
-	ClientId string `pulumi:"clientId"`
+	ClientId *string `pulumi:"clientId"`
 	// Client Secret for Port-labs
-	Secret string `pulumi:"secret"`
+	Secret *string `pulumi:"secret"`
 	// Token for Port-labs
 	Token *string `pulumi:"token"`
 }
@@ -75,9 +68,9 @@ type providerArgs struct {
 type ProviderArgs struct {
 	BaseUrl pulumi.StringPtrInput
 	// Client ID for Port-labs
-	ClientId pulumi.StringInput
+	ClientId pulumi.StringPtrInput
 	// Client Secret for Port-labs
-	Secret pulumi.StringInput
+	Secret pulumi.StringPtrInput
 	// Token for Port-labs
 	Token pulumi.StringPtrInput
 }
@@ -124,13 +117,13 @@ func (o ProviderOutput) BaseUrl() pulumi.StringPtrOutput {
 }
 
 // Client ID for Port-labs
-func (o ProviderOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
+func (o ProviderOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
 // Client Secret for Port-labs
-func (o ProviderOutput) Secret() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
+func (o ProviderOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Secret }).(pulumi.StringPtrOutput)
 }
 
 // Token for Port-labs

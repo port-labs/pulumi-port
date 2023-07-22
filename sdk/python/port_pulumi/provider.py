@@ -14,9 +14,9 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 client_id: pulumi.Input[str],
-                 secret: pulumi.Input[str],
                  base_url: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 secret: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
@@ -24,36 +24,14 @@ class ProviderArgs:
         :param pulumi.Input[str] secret: Client Secret for Port-labs
         :param pulumi.Input[str] token: Token for Port-labs
         """
-        pulumi.set(__self__, "client_id", client_id)
-        pulumi.set(__self__, "secret", secret)
         if base_url is not None:
             pulumi.set(__self__, "base_url", base_url)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
         if token is not None:
             pulumi.set(__self__, "token", token)
-
-    @property
-    @pulumi.getter(name="clientId")
-    def client_id(self) -> pulumi.Input[str]:
-        """
-        Client ID for Port-labs
-        """
-        return pulumi.get(self, "client_id")
-
-    @client_id.setter
-    def client_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "client_id", value)
-
-    @property
-    @pulumi.getter
-    def secret(self) -> pulumi.Input[str]:
-        """
-        Client Secret for Port-labs
-        """
-        return pulumi.get(self, "secret")
-
-    @secret.setter
-    def secret(self, value: pulumi.Input[str]):
-        pulumi.set(self, "secret", value)
 
     @property
     @pulumi.getter(name="baseUrl")
@@ -63,6 +41,30 @@ class ProviderArgs:
     @base_url.setter
     def base_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "base_url", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Client ID for Port-labs
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Client Secret for Port-labs
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret", value)
 
     @property
     @pulumi.getter
@@ -103,7 +105,7 @@ class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProviderArgs,
+                 args: Optional[ProviderArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The provider type for the port package. By default, resources use package-wide configuration
@@ -140,11 +142,7 @@ class Provider(pulumi.ProviderResource):
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
             __props__.__dict__["base_url"] = base_url
-            if client_id is None and not opts.urn:
-                raise TypeError("Missing required property 'client_id'")
             __props__.__dict__["client_id"] = client_id
-            if secret is None and not opts.urn:
-                raise TypeError("Missing required property 'secret'")
             __props__.__dict__["secret"] = None if secret is None else pulumi.Output.secret(secret)
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret", "token"])
@@ -162,7 +160,7 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> pulumi.Output[str]:
+    def client_id(self) -> pulumi.Output[Optional[str]]:
         """
         Client ID for Port-labs
         """
@@ -170,7 +168,7 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter
-    def secret(self) -> pulumi.Output[str]:
+    def secret(self) -> pulumi.Output[Optional[str]]:
         """
         Client Secret for Port-labs
         """

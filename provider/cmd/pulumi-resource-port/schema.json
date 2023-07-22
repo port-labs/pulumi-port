@@ -75,11 +75,7 @@
                 "description": "Token for Port-labs\n",
                 "secret": true
             }
-        },
-        "defaults": [
-            "clientId",
-            "secret"
-        ]
+        }
     },
     "types": {
         "port:index/ActionApprovalEmailNotification:ActionApprovalEmailNotification": {
@@ -1303,10 +1299,6 @@
                 "secret": true
             }
         },
-        "required": [
-            "clientId",
-            "secret"
-        ],
         "inputProperties": {
             "baseUrl": {
                 "type": "string"
@@ -1325,11 +1317,7 @@
                 "description": "Token for Port-labs\n",
                 "secret": true
             }
-        },
-        "requiredInputs": [
-            "clientId",
-            "secret"
-        ]
+        }
     },
     "resources": {
         "port:index/action:Action": {
