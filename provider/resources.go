@@ -20,9 +20,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"path/filepath"
 	"unicode"
-
 	"github.com/port-labs/pulumi-port/provider/pkg/version"
 	port "github.com/port-labs/terraform-provider-port-labs/provider"
+	portVersion "github.com/port-labs/terraform-provider-port-labs/version"
 	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 )
@@ -64,6 +64,7 @@ func portDataSource(mod string, res string) tokens.ModuleMember {
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
+	portVersion.ProviderVersion = "pulumi-provider-port-labs/" + version.Version
 	info := tfbridge.ProviderInfo{
 		P:                 pf.ShimProvider(port.New()),
 		Name:              "port",
