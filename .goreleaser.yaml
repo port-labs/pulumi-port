@@ -20,7 +20,6 @@ builds:
     ldflags:
       # The line below MUST align with the module in current provider/go.mod
       - -X github.com/port-labs/pulumi-port/provider/pkg/version.Version={{.Tag }}
-      - -X github.com/port-labs/terraform-provider-port-labs/version.ProviderVersion=pulumi-provider-port-labs/{{ .Tag }}
     main: ./cmd/pulumi-resource-port/
 
 signs:
