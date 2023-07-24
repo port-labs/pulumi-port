@@ -20,7 +20,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"path/filepath"
 	"unicode"
-
 	"github.com/port-labs/pulumi-port/provider/pkg/version"
 	port "github.com/port-labs/terraform-provider-port-labs/provider"
 	portVersion "github.com/port-labs/terraform-provider-port-labs/version"
