@@ -75,6 +75,10 @@ export class Action extends pulumi.CustomResource {
      */
     public readonly kafkaMethod!: pulumi.Output<outputs.ActionKafkaMethod | undefined>;
     /**
+     * Order properties
+     */
+    public readonly orderProperties!: pulumi.Output<string[] | undefined>;
+    /**
      * Require approval before invoking the action
      */
     public readonly requiredApproval!: pulumi.Output<boolean | undefined>;
@@ -118,6 +122,7 @@ export class Action extends pulumi.CustomResource {
             resourceInputs["icon"] = state ? state.icon : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["kafkaMethod"] = state ? state.kafkaMethod : undefined;
+            resourceInputs["orderProperties"] = state ? state.orderProperties : undefined;
             resourceInputs["requiredApproval"] = state ? state.requiredApproval : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
             resourceInputs["trigger"] = state ? state.trigger : undefined;
@@ -147,6 +152,7 @@ export class Action extends pulumi.CustomResource {
             resourceInputs["icon"] = args ? args.icon : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["kafkaMethod"] = args ? args.kafkaMethod : undefined;
+            resourceInputs["orderProperties"] = args ? args.orderProperties : undefined;
             resourceInputs["requiredApproval"] = args ? args.requiredApproval : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["trigger"] = args ? args.trigger : undefined;
@@ -202,6 +208,10 @@ export interface ActionState {
      * The invocation method of the action
      */
     kafkaMethod?: pulumi.Input<inputs.ActionKafkaMethod>;
+    /**
+     * Order properties
+     */
+    orderProperties?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Require approval before invoking the action
      */
@@ -268,6 +278,10 @@ export interface ActionArgs {
      * The invocation method of the action
      */
     kafkaMethod?: pulumi.Input<inputs.ActionKafkaMethod>;
+    /**
+     * Order properties
+     */
+    orderProperties?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Require approval before invoking the action
      */
