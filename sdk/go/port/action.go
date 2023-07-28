@@ -35,6 +35,8 @@ type Action struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// The invocation method of the action
 	KafkaMethod ActionKafkaMethodPtrOutput `pulumi:"kafkaMethod"`
+	// Order properties
+	OrderProperties pulumi.StringArrayOutput `pulumi:"orderProperties"`
 	// Require approval before invoking the action
 	RequiredApproval pulumi.BoolPtrOutput `pulumi:"requiredApproval"`
 	// Title
@@ -109,6 +111,8 @@ type actionState struct {
 	Identifier *string `pulumi:"identifier"`
 	// The invocation method of the action
 	KafkaMethod *ActionKafkaMethod `pulumi:"kafkaMethod"`
+	// Order properties
+	OrderProperties []string `pulumi:"orderProperties"`
 	// Require approval before invoking the action
 	RequiredApproval *bool `pulumi:"requiredApproval"`
 	// Title
@@ -142,6 +146,8 @@ type ActionState struct {
 	Identifier pulumi.StringPtrInput
 	// The invocation method of the action
 	KafkaMethod ActionKafkaMethodPtrInput
+	// Order properties
+	OrderProperties pulumi.StringArrayInput
 	// Require approval before invoking the action
 	RequiredApproval pulumi.BoolPtrInput
 	// Title
@@ -179,6 +185,8 @@ type actionArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// The invocation method of the action
 	KafkaMethod *ActionKafkaMethod `pulumi:"kafkaMethod"`
+	// Order properties
+	OrderProperties []string `pulumi:"orderProperties"`
 	// Require approval before invoking the action
 	RequiredApproval *bool `pulumi:"requiredApproval"`
 	// Title
@@ -213,6 +221,8 @@ type ActionArgs struct {
 	Identifier pulumi.StringInput
 	// The invocation method of the action
 	KafkaMethod ActionKafkaMethodPtrInput
+	// Order properties
+	OrderProperties pulumi.StringArrayInput
 	// Require approval before invoking the action
 	RequiredApproval pulumi.BoolPtrInput
 	// Title
@@ -360,6 +370,11 @@ func (o ActionOutput) Identifier() pulumi.StringOutput {
 // The invocation method of the action
 func (o ActionOutput) KafkaMethod() ActionKafkaMethodPtrOutput {
 	return o.ApplyT(func(v *Action) ActionKafkaMethodPtrOutput { return v.KafkaMethod }).(ActionKafkaMethodPtrOutput)
+}
+
+// Order properties
+func (o ActionOutput) OrderProperties() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Action) pulumi.StringArrayOutput { return v.OrderProperties }).(pulumi.StringArrayOutput)
 }
 
 // Require approval before invoking the action
