@@ -1362,6 +1362,13 @@
                     "$ref": "#/types/port:index/ActionKafkaMethod:ActionKafkaMethod",
                     "description": "The invocation method of the action\n"
                 },
+                "orderProperties": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Order properties\n"
+                },
                 "requiredApproval": {
                     "type": "boolean",
                     "description": "Require approval before invoking the action\n"
@@ -1429,6 +1436,13 @@
                 "kafkaMethod": {
                     "$ref": "#/types/port:index/ActionKafkaMethod:ActionKafkaMethod",
                     "description": "The invocation method of the action\n"
+                },
+                "orderProperties": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Order properties\n"
                 },
                 "requiredApproval": {
                     "type": "boolean",
@@ -1499,6 +1513,13 @@
                     "kafkaMethod": {
                         "$ref": "#/types/port:index/ActionKafkaMethod:ActionKafkaMethod",
                         "description": "The invocation method of the action\n"
+                    },
+                    "orderProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Order properties\n"
                     },
                     "requiredApproval": {
                         "type": "boolean",

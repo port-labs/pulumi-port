@@ -151,6 +151,7 @@
                 "githubMethod": "github_method",
                 "gitlabMethod": "gitlab_method",
                 "kafkaMethod": "kafka_method",
+                "orderProperties": "order_properties",
                 "requiredApproval": "required_approval",
                 "userProperties": "user_properties",
                 "webhookMethod": "webhook_method"
