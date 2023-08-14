@@ -84,6 +84,8 @@ export interface ActionUserPropertiesArrayPropsDatasetRuleValue {
 
 export interface ActionUserPropertiesArrayPropsNumberItems {
     defaults?: pulumi.Input<pulumi.Input<number>[]>;
+    enumJqQuery?: pulumi.Input<string>;
+    enums?: pulumi.Input<pulumi.Input<number>[]>;
 }
 
 export interface ActionUserPropertiesArrayPropsObjectItems {
@@ -93,6 +95,8 @@ export interface ActionUserPropertiesArrayPropsObjectItems {
 export interface ActionUserPropertiesArrayPropsStringItems {
     blueprint?: pulumi.Input<string>;
     defaults?: pulumi.Input<pulumi.Input<string>[]>;
+    enumJqQuery?: pulumi.Input<string>;
+    enums?: pulumi.Input<pulumi.Input<string>[]>;
     format?: pulumi.Input<string>;
 }
 
@@ -362,4 +366,28 @@ export interface EntityPropertiesArrayProps {
 export interface EntityRelations {
     manyRelations?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
     singleRelations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface WebhookMapping {
+    blueprint: pulumi.Input<string>;
+    entity: pulumi.Input<inputs.WebhookMappingEntity>;
+    filter?: pulumi.Input<string>;
+    itemsToParse?: pulumi.Input<string>;
+}
+
+export interface WebhookMappingEntity {
+    icon?: pulumi.Input<string>;
+    identifier: pulumi.Input<string>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    relations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    team?: pulumi.Input<string>;
+    title?: pulumi.Input<string>;
+}
+
+export interface WebhookSecurity {
+    requestIdentifierPath?: pulumi.Input<string>;
+    secret?: pulumi.Input<string>;
+    signatureAlgorithm?: pulumi.Input<string>;
+    signatureHeaderName?: pulumi.Input<string>;
+    signaturePrefix?: pulumi.Input<string>;
 }

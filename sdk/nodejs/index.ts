@@ -25,6 +25,11 @@ export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
+export { WebhookArgs, WebhookState } from "./webhook";
+export type Webhook = import("./webhook").Webhook;
+export const Webhook: typeof import("./webhook").Webhook = null as any;
+utilities.lazyLoad(exports, ["Webhook"], () => require("./webhook"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -45,6 +50,8 @@ const _module = {
                 return new Blueprint(name, <any>undefined, { urn })
             case "port:index/entity:Entity":
                 return new Entity(name, <any>undefined, { urn })
+            case "port:index/webhook:Webhook":
+                return new Webhook(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -53,6 +60,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("port", "index/action", _module)
 pulumi.runtime.registerResourceModule("port", "index/blueprint", _module)
 pulumi.runtime.registerResourceModule("port", "index/entity", _module)
+pulumi.runtime.registerResourceModule("port", "index/webhook", _module)
 pulumi.runtime.registerResourcePackage("port", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

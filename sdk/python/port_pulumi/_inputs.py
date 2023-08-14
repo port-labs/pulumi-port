@@ -62,6 +62,9 @@ __all__ = [
     'EntityPropertiesArgs',
     'EntityPropertiesArrayPropsArgs',
     'EntityRelationsArgs',
+    'WebhookMappingArgs',
+    'WebhookMappingEntityArgs',
+    'WebhookSecurityArgs',
 ]
 
 @pulumi.input_type
@@ -608,9 +611,15 @@ class ActionUserPropertiesArrayPropsDatasetRuleValueArgs:
 @pulumi.input_type
 class ActionUserPropertiesArrayPropsNumberItemsArgs:
     def __init__(__self__, *,
-                 defaults: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]] = None):
+                 defaults: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]] = None,
+                 enum_jq_query: Optional[pulumi.Input[str]] = None,
+                 enums: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]] = None):
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
+        if enum_jq_query is not None:
+            pulumi.set(__self__, "enum_jq_query", enum_jq_query)
+        if enums is not None:
+            pulumi.set(__self__, "enums", enums)
 
     @property
     @pulumi.getter
@@ -620,6 +629,24 @@ class ActionUserPropertiesArrayPropsNumberItemsArgs:
     @defaults.setter
     def defaults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]]):
         pulumi.set(self, "defaults", value)
+
+    @property
+    @pulumi.getter(name="enumJqQuery")
+    def enum_jq_query(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "enum_jq_query")
+
+    @enum_jq_query.setter
+    def enum_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enum_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def enums(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[float]]]]:
+        return pulumi.get(self, "enums")
+
+    @enums.setter
+    def enums(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]]):
+        pulumi.set(self, "enums", value)
 
 
 @pulumi.input_type
@@ -644,11 +671,17 @@ class ActionUserPropertiesArrayPropsStringItemsArgs:
     def __init__(__self__, *,
                  blueprint: Optional[pulumi.Input[str]] = None,
                  defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 enum_jq_query: Optional[pulumi.Input[str]] = None,
+                 enums: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  format: Optional[pulumi.Input[str]] = None):
         if blueprint is not None:
             pulumi.set(__self__, "blueprint", blueprint)
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
+        if enum_jq_query is not None:
+            pulumi.set(__self__, "enum_jq_query", enum_jq_query)
+        if enums is not None:
+            pulumi.set(__self__, "enums", enums)
         if format is not None:
             pulumi.set(__self__, "format", format)
 
@@ -669,6 +702,24 @@ class ActionUserPropertiesArrayPropsStringItemsArgs:
     @defaults.setter
     def defaults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "defaults", value)
+
+    @property
+    @pulumi.getter(name="enumJqQuery")
+    def enum_jq_query(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "enum_jq_query")
+
+    @enum_jq_query.setter
+    def enum_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enum_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def enums(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "enums")
+
+    @enums.setter
+    def enums(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "enums", value)
 
     @property
     @pulumi.getter
@@ -2718,5 +2769,197 @@ class EntityRelationsArgs:
     @single_relations.setter
     def single_relations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "single_relations", value)
+
+
+@pulumi.input_type
+class WebhookMappingArgs:
+    def __init__(__self__, *,
+                 blueprint: pulumi.Input[str],
+                 entity: pulumi.Input['WebhookMappingEntityArgs'],
+                 filter: Optional[pulumi.Input[str]] = None,
+                 items_to_parse: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "blueprint", blueprint)
+        pulumi.set(__self__, "entity", entity)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if items_to_parse is not None:
+            pulumi.set(__self__, "items_to_parse", items_to_parse)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: pulumi.Input[str]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def entity(self) -> pulumi.Input['WebhookMappingEntityArgs']:
+        return pulumi.get(self, "entity")
+
+    @entity.setter
+    def entity(self, value: pulumi.Input['WebhookMappingEntityArgs']):
+        pulumi.set(self, "entity", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter(name="itemsToParse")
+    def items_to_parse(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "items_to_parse")
+
+    @items_to_parse.setter
+    def items_to_parse(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "items_to_parse", value)
+
+
+@pulumi.input_type
+class WebhookMappingEntityArgs:
+    def __init__(__self__, *,
+                 identifier: pulumi.Input[str],
+                 icon: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 relations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 team: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "identifier", identifier)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if relations is not None:
+            pulumi.set(__self__, "relations", relations)
+        if team is not None:
+            pulumi.set(__self__, "team", team)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "icon", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter
+    def relations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "relations")
+
+    @relations.setter
+    def relations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "relations", value)
+
+    @property
+    @pulumi.getter
+    def team(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "team")
+
+    @team.setter
+    def team(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class WebhookSecurityArgs:
+    def __init__(__self__, *,
+                 request_identifier_path: Optional[pulumi.Input[str]] = None,
+                 secret: Optional[pulumi.Input[str]] = None,
+                 signature_algorithm: Optional[pulumi.Input[str]] = None,
+                 signature_header_name: Optional[pulumi.Input[str]] = None,
+                 signature_prefix: Optional[pulumi.Input[str]] = None):
+        if request_identifier_path is not None:
+            pulumi.set(__self__, "request_identifier_path", request_identifier_path)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+        if signature_algorithm is not None:
+            pulumi.set(__self__, "signature_algorithm", signature_algorithm)
+        if signature_header_name is not None:
+            pulumi.set(__self__, "signature_header_name", signature_header_name)
+        if signature_prefix is not None:
+            pulumi.set(__self__, "signature_prefix", signature_prefix)
+
+    @property
+    @pulumi.getter(name="requestIdentifierPath")
+    def request_identifier_path(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_identifier_path")
+
+    @request_identifier_path.setter
+    def request_identifier_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_identifier_path", value)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret", value)
+
+    @property
+    @pulumi.getter(name="signatureAlgorithm")
+    def signature_algorithm(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "signature_algorithm")
+
+    @signature_algorithm.setter
+    def signature_algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "signature_algorithm", value)
+
+    @property
+    @pulumi.getter(name="signatureHeaderName")
+    def signature_header_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "signature_header_name")
+
+    @signature_header_name.setter
+    def signature_header_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "signature_header_name", value)
+
+    @property
+    @pulumi.getter(name="signaturePrefix")
+    def signature_prefix(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "signature_prefix")
+
+    @signature_prefix.setter
+    def signature_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "signature_prefix", value)
 
 

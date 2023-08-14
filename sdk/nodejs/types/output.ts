@@ -84,6 +84,8 @@ export interface ActionUserPropertiesArrayPropsDatasetRuleValue {
 
 export interface ActionUserPropertiesArrayPropsNumberItems {
     defaults?: number[];
+    enumJqQuery?: string;
+    enums?: number[];
 }
 
 export interface ActionUserPropertiesArrayPropsObjectItems {
@@ -93,6 +95,8 @@ export interface ActionUserPropertiesArrayPropsObjectItems {
 export interface ActionUserPropertiesArrayPropsStringItems {
     blueprint?: string;
     defaults?: string[];
+    enumJqQuery?: string;
+    enums?: string[];
     format?: string;
 }
 
@@ -362,5 +366,29 @@ export interface EntityPropertiesArrayProps {
 export interface EntityRelations {
     manyRelations?: {[key: string]: string[]};
     singleRelations?: {[key: string]: string};
+}
+
+export interface WebhookMapping {
+    blueprint: string;
+    entity: outputs.WebhookMappingEntity;
+    filter?: string;
+    itemsToParse?: string;
+}
+
+export interface WebhookMappingEntity {
+    icon?: string;
+    identifier: string;
+    properties?: {[key: string]: string};
+    relations?: {[key: string]: string};
+    team?: string;
+    title?: string;
+}
+
+export interface WebhookSecurity {
+    requestIdentifierPath?: string;
+    secret?: string;
+    signatureAlgorithm?: string;
+    signatureHeaderName?: string;
+    signaturePrefix?: string;
 }
 

@@ -3,7 +3,8 @@
         "resources": {
             "port:index/action:Action": "port_action",
             "port:index/blueprint:Blueprint": "port_blueprint",
-            "port:index/entity:Entity": "port_entity"
+            "port:index/entity:Entity": "port_entity",
+            "port:index/webhook:Webhook": "port_webhook"
         },
         "renamedProperties": {
             "port:index/ActionGithubMethod:ActionGithubMethod": {
@@ -42,13 +43,17 @@
                 "jqQuery": "jq_query"
             },
             "port:index/ActionUserPropertiesArrayPropsNumberItems:ActionUserPropertiesArrayPropsNumberItems": {
-                "defaults": "default"
+                "defaults": "default",
+                "enumJqQuery": "enum_jq_query",
+                "enums": "enum"
             },
             "port:index/ActionUserPropertiesArrayPropsObjectItems:ActionUserPropertiesArrayPropsObjectItems": {
                 "defaults": "default"
             },
             "port:index/ActionUserPropertiesArrayPropsStringItems:ActionUserPropertiesArrayPropsStringItems": {
-                "defaults": "default"
+                "defaults": "default",
+                "enumJqQuery": "enum_jq_query",
+                "enums": "enum"
             },
             "port:index/ActionUserPropertiesBooleanProps:ActionUserPropertiesBooleanProps": {
                 "defaultJqQuery": "default_jq_query",
@@ -144,6 +149,15 @@
                 "manyRelations": "many_relations",
                 "singleRelations": "single_relations"
             },
+            "port:index/WebhookMapping:WebhookMapping": {
+                "itemsToParse": "items_to_parse"
+            },
+            "port:index/WebhookSecurity:WebhookSecurity": {
+                "requestIdentifierPath": "request_identifier_path",
+                "signatureAlgorithm": "signature_algorithm",
+                "signatureHeaderName": "signature_header_name",
+                "signaturePrefix": "signature_prefix"
+            },
             "port:index/action:Action": {
                 "approvalEmailNotification": "approval_email_notification",
                 "approvalWebhookNotification": "approval_webhook_notification",
@@ -171,6 +185,12 @@
                 "createdAt": "created_at",
                 "createdBy": "created_by",
                 "runId": "run_id",
+                "updatedAt": "updated_at",
+                "updatedBy": "updated_by"
+            },
+            "port:index/webhook:Webhook": {
+                "createdAt": "created_at",
+                "createdBy": "created_by",
                 "updatedAt": "updated_at",
                 "updatedBy": "updated_by"
             },
