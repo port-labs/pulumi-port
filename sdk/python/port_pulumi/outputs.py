@@ -63,6 +63,9 @@ __all__ = [
     'EntityProperties',
     'EntityPropertiesArrayProps',
     'EntityRelations',
+    'WebhookMapping',
+    'WebhookMappingEntity',
+    'WebhookSecurity',
 ]
 
 @pulumi.output_type
@@ -563,15 +566,48 @@ class ActionUserPropertiesArrayPropsDatasetRuleValue(dict):
 
 @pulumi.output_type
 class ActionUserPropertiesArrayPropsNumberItems(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enumJqQuery":
+            suggest = "enum_jq_query"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionUserPropertiesArrayPropsNumberItems. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionUserPropertiesArrayPropsNumberItems.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionUserPropertiesArrayPropsNumberItems.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 defaults: Optional[Sequence[float]] = None):
+                 defaults: Optional[Sequence[float]] = None,
+                 enum_jq_query: Optional[str] = None,
+                 enums: Optional[Sequence[float]] = None):
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
+        if enum_jq_query is not None:
+            pulumi.set(__self__, "enum_jq_query", enum_jq_query)
+        if enums is not None:
+            pulumi.set(__self__, "enums", enums)
 
     @property
     @pulumi.getter
     def defaults(self) -> Optional[Sequence[float]]:
         return pulumi.get(self, "defaults")
+
+    @property
+    @pulumi.getter(name="enumJqQuery")
+    def enum_jq_query(self) -> Optional[str]:
+        return pulumi.get(self, "enum_jq_query")
+
+    @property
+    @pulumi.getter
+    def enums(self) -> Optional[Sequence[float]]:
+        return pulumi.get(self, "enums")
 
 
 @pulumi.output_type
@@ -589,14 +625,37 @@ class ActionUserPropertiesArrayPropsObjectItems(dict):
 
 @pulumi.output_type
 class ActionUserPropertiesArrayPropsStringItems(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enumJqQuery":
+            suggest = "enum_jq_query"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionUserPropertiesArrayPropsStringItems. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionUserPropertiesArrayPropsStringItems.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionUserPropertiesArrayPropsStringItems.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  defaults: Optional[Sequence[str]] = None,
+                 enum_jq_query: Optional[str] = None,
+                 enums: Optional[Sequence[str]] = None,
                  format: Optional[str] = None):
         if blueprint is not None:
             pulumi.set(__self__, "blueprint", blueprint)
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
+        if enum_jq_query is not None:
+            pulumi.set(__self__, "enum_jq_query", enum_jq_query)
+        if enums is not None:
+            pulumi.set(__self__, "enums", enums)
         if format is not None:
             pulumi.set(__self__, "format", format)
 
@@ -609,6 +668,16 @@ class ActionUserPropertiesArrayPropsStringItems(dict):
     @pulumi.getter
     def defaults(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "defaults")
+
+    @property
+    @pulumi.getter(name="enumJqQuery")
+    def enum_jq_query(self) -> Optional[str]:
+        return pulumi.get(self, "enum_jq_query")
+
+    @property
+    @pulumi.getter
+    def enums(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "enums")
 
     @property
     @pulumi.getter
@@ -2358,5 +2427,177 @@ class EntityRelations(dict):
     @pulumi.getter(name="singleRelations")
     def single_relations(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "single_relations")
+
+
+@pulumi.output_type
+class WebhookMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "itemsToParse":
+            suggest = "items_to_parse"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WebhookMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WebhookMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WebhookMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 blueprint: str,
+                 entity: 'outputs.WebhookMappingEntity',
+                 filter: Optional[str] = None,
+                 items_to_parse: Optional[str] = None):
+        pulumi.set(__self__, "blueprint", blueprint)
+        pulumi.set(__self__, "entity", entity)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if items_to_parse is not None:
+            pulumi.set(__self__, "items_to_parse", items_to_parse)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> str:
+        return pulumi.get(self, "blueprint")
+
+    @property
+    @pulumi.getter
+    def entity(self) -> 'outputs.WebhookMappingEntity':
+        return pulumi.get(self, "entity")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[str]:
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter(name="itemsToParse")
+    def items_to_parse(self) -> Optional[str]:
+        return pulumi.get(self, "items_to_parse")
+
+
+@pulumi.output_type
+class WebhookMappingEntity(dict):
+    def __init__(__self__, *,
+                 identifier: str,
+                 icon: Optional[str] = None,
+                 properties: Optional[Mapping[str, str]] = None,
+                 relations: Optional[Mapping[str, str]] = None,
+                 team: Optional[str] = None,
+                 title: Optional[str] = None):
+        pulumi.set(__self__, "identifier", identifier)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if relations is not None:
+            pulumi.set(__self__, "relations", relations)
+        if team is not None:
+            pulumi.set(__self__, "team", team)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> str:
+        return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[str]:
+        return pulumi.get(self, "icon")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter
+    def relations(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "relations")
+
+    @property
+    @pulumi.getter
+    def team(self) -> Optional[str]:
+        return pulumi.get(self, "team")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class WebhookSecurity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requestIdentifierPath":
+            suggest = "request_identifier_path"
+        elif key == "signatureAlgorithm":
+            suggest = "signature_algorithm"
+        elif key == "signatureHeaderName":
+            suggest = "signature_header_name"
+        elif key == "signaturePrefix":
+            suggest = "signature_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WebhookSecurity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WebhookSecurity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WebhookSecurity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 request_identifier_path: Optional[str] = None,
+                 secret: Optional[str] = None,
+                 signature_algorithm: Optional[str] = None,
+                 signature_header_name: Optional[str] = None,
+                 signature_prefix: Optional[str] = None):
+        if request_identifier_path is not None:
+            pulumi.set(__self__, "request_identifier_path", request_identifier_path)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+        if signature_algorithm is not None:
+            pulumi.set(__self__, "signature_algorithm", signature_algorithm)
+        if signature_header_name is not None:
+            pulumi.set(__self__, "signature_header_name", signature_header_name)
+        if signature_prefix is not None:
+            pulumi.set(__self__, "signature_prefix", signature_prefix)
+
+    @property
+    @pulumi.getter(name="requestIdentifierPath")
+    def request_identifier_path(self) -> Optional[str]:
+        return pulumi.get(self, "request_identifier_path")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional[str]:
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter(name="signatureAlgorithm")
+    def signature_algorithm(self) -> Optional[str]:
+        return pulumi.get(self, "signature_algorithm")
+
+    @property
+    @pulumi.getter(name="signatureHeaderName")
+    def signature_header_name(self) -> Optional[str]:
+        return pulumi.get(self, "signature_header_name")
+
+    @property
+    @pulumi.getter(name="signaturePrefix")
+    def signature_prefix(self) -> Optional[str]:
+        return pulumi.get(self, "signature_prefix")
 
 

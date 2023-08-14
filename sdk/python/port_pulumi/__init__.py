@@ -9,6 +9,7 @@ from .action import *
 from .blueprint import *
 from .entity import *
 from .provider import *
+from .webhook import *
 from ._inputs import *
 from . import outputs
 
@@ -44,6 +45,14 @@ _utilities.register(
   "fqn": "port_pulumi",
   "classes": {
    "port:index/entity:Entity": "Entity"
+  }
+ },
+ {
+  "pkg": "port",
+  "mod": "index/webhook",
+  "fqn": "port_pulumi",
+  "classes": {
+   "port:index/webhook:Webhook": "Webhook"
   }
  }
 ]

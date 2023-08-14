@@ -1760,7 +1760,9 @@ func (o ActionUserPropertiesArrayPropsDatasetRuleValueOutput) JqQuery() pulumi.S
 }
 
 type ActionUserPropertiesArrayPropsNumberItems struct {
-	Defaults []float64 `pulumi:"defaults"`
+	Defaults    []float64 `pulumi:"defaults"`
+	EnumJqQuery *string   `pulumi:"enumJqQuery"`
+	Enums       []float64 `pulumi:"enums"`
 }
 
 // ActionUserPropertiesArrayPropsNumberItemsInput is an input type that accepts ActionUserPropertiesArrayPropsNumberItemsArgs and ActionUserPropertiesArrayPropsNumberItemsOutput values.
@@ -1775,7 +1777,9 @@ type ActionUserPropertiesArrayPropsNumberItemsInput interface {
 }
 
 type ActionUserPropertiesArrayPropsNumberItemsArgs struct {
-	Defaults pulumi.Float64ArrayInput `pulumi:"defaults"`
+	Defaults    pulumi.Float64ArrayInput `pulumi:"defaults"`
+	EnumJqQuery pulumi.StringPtrInput    `pulumi:"enumJqQuery"`
+	Enums       pulumi.Float64ArrayInput `pulumi:"enums"`
 }
 
 func (ActionUserPropertiesArrayPropsNumberItemsArgs) ElementType() reflect.Type {
@@ -1859,6 +1863,14 @@ func (o ActionUserPropertiesArrayPropsNumberItemsOutput) Defaults() pulumi.Float
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsNumberItems) []float64 { return v.Defaults }).(pulumi.Float64ArrayOutput)
 }
 
+func (o ActionUserPropertiesArrayPropsNumberItemsOutput) EnumJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayPropsNumberItems) *string { return v.EnumJqQuery }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsNumberItemsOutput) Enums() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayPropsNumberItems) []float64 { return v.Enums }).(pulumi.Float64ArrayOutput)
+}
+
 type ActionUserPropertiesArrayPropsNumberItemsPtrOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesArrayPropsNumberItemsPtrOutput) ElementType() reflect.Type {
@@ -1889,6 +1901,24 @@ func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) Defaults() pulumi.Fl
 			return nil
 		}
 		return v.Defaults
+	}).(pulumi.Float64ArrayOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) EnumJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsNumberItems) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnumJqQuery
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) Enums() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsNumberItems) []float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Enums
 	}).(pulumi.Float64ArrayOutput)
 }
 
@@ -2026,9 +2056,11 @@ func (o ActionUserPropertiesArrayPropsObjectItemsPtrOutput) Defaults() pulumi.St
 }
 
 type ActionUserPropertiesArrayPropsStringItems struct {
-	Blueprint *string  `pulumi:"blueprint"`
-	Defaults  []string `pulumi:"defaults"`
-	Format    *string  `pulumi:"format"`
+	Blueprint   *string  `pulumi:"blueprint"`
+	Defaults    []string `pulumi:"defaults"`
+	EnumJqQuery *string  `pulumi:"enumJqQuery"`
+	Enums       []string `pulumi:"enums"`
+	Format      *string  `pulumi:"format"`
 }
 
 // ActionUserPropertiesArrayPropsStringItemsInput is an input type that accepts ActionUserPropertiesArrayPropsStringItemsArgs and ActionUserPropertiesArrayPropsStringItemsOutput values.
@@ -2043,9 +2075,11 @@ type ActionUserPropertiesArrayPropsStringItemsInput interface {
 }
 
 type ActionUserPropertiesArrayPropsStringItemsArgs struct {
-	Blueprint pulumi.StringPtrInput   `pulumi:"blueprint"`
-	Defaults  pulumi.StringArrayInput `pulumi:"defaults"`
-	Format    pulumi.StringPtrInput   `pulumi:"format"`
+	Blueprint   pulumi.StringPtrInput   `pulumi:"blueprint"`
+	Defaults    pulumi.StringArrayInput `pulumi:"defaults"`
+	EnumJqQuery pulumi.StringPtrInput   `pulumi:"enumJqQuery"`
+	Enums       pulumi.StringArrayInput `pulumi:"enums"`
+	Format      pulumi.StringPtrInput   `pulumi:"format"`
 }
 
 func (ActionUserPropertiesArrayPropsStringItemsArgs) ElementType() reflect.Type {
@@ -2133,6 +2167,14 @@ func (o ActionUserPropertiesArrayPropsStringItemsOutput) Defaults() pulumi.Strin
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsStringItems) []string { return v.Defaults }).(pulumi.StringArrayOutput)
 }
 
+func (o ActionUserPropertiesArrayPropsStringItemsOutput) EnumJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayPropsStringItems) *string { return v.EnumJqQuery }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsStringItemsOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayPropsStringItems) []string { return v.Enums }).(pulumi.StringArrayOutput)
+}
+
 func (o ActionUserPropertiesArrayPropsStringItemsOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsStringItems) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
@@ -2176,6 +2218,24 @@ func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Defaults() pulumi.St
 			return nil
 		}
 		return v.Defaults
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) EnumJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsStringItems) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnumJqQuery
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsStringItems) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Enums
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -7069,6 +7129,390 @@ func (o EntityRelationsPtrOutput) SingleRelations() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type WebhookMapping struct {
+	Blueprint    string               `pulumi:"blueprint"`
+	Entity       WebhookMappingEntity `pulumi:"entity"`
+	Filter       *string              `pulumi:"filter"`
+	ItemsToParse *string              `pulumi:"itemsToParse"`
+}
+
+// WebhookMappingInput is an input type that accepts WebhookMappingArgs and WebhookMappingOutput values.
+// You can construct a concrete instance of `WebhookMappingInput` via:
+//
+//	WebhookMappingArgs{...}
+type WebhookMappingInput interface {
+	pulumi.Input
+
+	ToWebhookMappingOutput() WebhookMappingOutput
+	ToWebhookMappingOutputWithContext(context.Context) WebhookMappingOutput
+}
+
+type WebhookMappingArgs struct {
+	Blueprint    pulumi.StringInput        `pulumi:"blueprint"`
+	Entity       WebhookMappingEntityInput `pulumi:"entity"`
+	Filter       pulumi.StringPtrInput     `pulumi:"filter"`
+	ItemsToParse pulumi.StringPtrInput     `pulumi:"itemsToParse"`
+}
+
+func (WebhookMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookMapping)(nil)).Elem()
+}
+
+func (i WebhookMappingArgs) ToWebhookMappingOutput() WebhookMappingOutput {
+	return i.ToWebhookMappingOutputWithContext(context.Background())
+}
+
+func (i WebhookMappingArgs) ToWebhookMappingOutputWithContext(ctx context.Context) WebhookMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookMappingOutput)
+}
+
+// WebhookMappingArrayInput is an input type that accepts WebhookMappingArray and WebhookMappingArrayOutput values.
+// You can construct a concrete instance of `WebhookMappingArrayInput` via:
+//
+//	WebhookMappingArray{ WebhookMappingArgs{...} }
+type WebhookMappingArrayInput interface {
+	pulumi.Input
+
+	ToWebhookMappingArrayOutput() WebhookMappingArrayOutput
+	ToWebhookMappingArrayOutputWithContext(context.Context) WebhookMappingArrayOutput
+}
+
+type WebhookMappingArray []WebhookMappingInput
+
+func (WebhookMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebhookMapping)(nil)).Elem()
+}
+
+func (i WebhookMappingArray) ToWebhookMappingArrayOutput() WebhookMappingArrayOutput {
+	return i.ToWebhookMappingArrayOutputWithContext(context.Background())
+}
+
+func (i WebhookMappingArray) ToWebhookMappingArrayOutputWithContext(ctx context.Context) WebhookMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookMappingArrayOutput)
+}
+
+type WebhookMappingOutput struct{ *pulumi.OutputState }
+
+func (WebhookMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookMapping)(nil)).Elem()
+}
+
+func (o WebhookMappingOutput) ToWebhookMappingOutput() WebhookMappingOutput {
+	return o
+}
+
+func (o WebhookMappingOutput) ToWebhookMappingOutputWithContext(ctx context.Context) WebhookMappingOutput {
+	return o
+}
+
+func (o WebhookMappingOutput) Blueprint() pulumi.StringOutput {
+	return o.ApplyT(func(v WebhookMapping) string { return v.Blueprint }).(pulumi.StringOutput)
+}
+
+func (o WebhookMappingOutput) Entity() WebhookMappingEntityOutput {
+	return o.ApplyT(func(v WebhookMapping) WebhookMappingEntity { return v.Entity }).(WebhookMappingEntityOutput)
+}
+
+func (o WebhookMappingOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookMapping) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+func (o WebhookMappingOutput) ItemsToParse() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookMapping) *string { return v.ItemsToParse }).(pulumi.StringPtrOutput)
+}
+
+type WebhookMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (WebhookMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebhookMapping)(nil)).Elem()
+}
+
+func (o WebhookMappingArrayOutput) ToWebhookMappingArrayOutput() WebhookMappingArrayOutput {
+	return o
+}
+
+func (o WebhookMappingArrayOutput) ToWebhookMappingArrayOutputWithContext(ctx context.Context) WebhookMappingArrayOutput {
+	return o
+}
+
+func (o WebhookMappingArrayOutput) Index(i pulumi.IntInput) WebhookMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebhookMapping {
+		return vs[0].([]WebhookMapping)[vs[1].(int)]
+	}).(WebhookMappingOutput)
+}
+
+type WebhookMappingEntity struct {
+	Icon       *string           `pulumi:"icon"`
+	Identifier string            `pulumi:"identifier"`
+	Properties map[string]string `pulumi:"properties"`
+	Relations  map[string]string `pulumi:"relations"`
+	Team       *string           `pulumi:"team"`
+	Title      *string           `pulumi:"title"`
+}
+
+// WebhookMappingEntityInput is an input type that accepts WebhookMappingEntityArgs and WebhookMappingEntityOutput values.
+// You can construct a concrete instance of `WebhookMappingEntityInput` via:
+//
+//	WebhookMappingEntityArgs{...}
+type WebhookMappingEntityInput interface {
+	pulumi.Input
+
+	ToWebhookMappingEntityOutput() WebhookMappingEntityOutput
+	ToWebhookMappingEntityOutputWithContext(context.Context) WebhookMappingEntityOutput
+}
+
+type WebhookMappingEntityArgs struct {
+	Icon       pulumi.StringPtrInput `pulumi:"icon"`
+	Identifier pulumi.StringInput    `pulumi:"identifier"`
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	Relations  pulumi.StringMapInput `pulumi:"relations"`
+	Team       pulumi.StringPtrInput `pulumi:"team"`
+	Title      pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (WebhookMappingEntityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookMappingEntity)(nil)).Elem()
+}
+
+func (i WebhookMappingEntityArgs) ToWebhookMappingEntityOutput() WebhookMappingEntityOutput {
+	return i.ToWebhookMappingEntityOutputWithContext(context.Background())
+}
+
+func (i WebhookMappingEntityArgs) ToWebhookMappingEntityOutputWithContext(ctx context.Context) WebhookMappingEntityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookMappingEntityOutput)
+}
+
+type WebhookMappingEntityOutput struct{ *pulumi.OutputState }
+
+func (WebhookMappingEntityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookMappingEntity)(nil)).Elem()
+}
+
+func (o WebhookMappingEntityOutput) ToWebhookMappingEntityOutput() WebhookMappingEntityOutput {
+	return o
+}
+
+func (o WebhookMappingEntityOutput) ToWebhookMappingEntityOutputWithContext(ctx context.Context) WebhookMappingEntityOutput {
+	return o
+}
+
+func (o WebhookMappingEntityOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookMappingEntity) *string { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
+func (o WebhookMappingEntityOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v WebhookMappingEntity) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+func (o WebhookMappingEntityOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WebhookMappingEntity) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+func (o WebhookMappingEntityOutput) Relations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WebhookMappingEntity) map[string]string { return v.Relations }).(pulumi.StringMapOutput)
+}
+
+func (o WebhookMappingEntityOutput) Team() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookMappingEntity) *string { return v.Team }).(pulumi.StringPtrOutput)
+}
+
+func (o WebhookMappingEntityOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookMappingEntity) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type WebhookSecurity struct {
+	RequestIdentifierPath *string `pulumi:"requestIdentifierPath"`
+	Secret                *string `pulumi:"secret"`
+	SignatureAlgorithm    *string `pulumi:"signatureAlgorithm"`
+	SignatureHeaderName   *string `pulumi:"signatureHeaderName"`
+	SignaturePrefix       *string `pulumi:"signaturePrefix"`
+}
+
+// WebhookSecurityInput is an input type that accepts WebhookSecurityArgs and WebhookSecurityOutput values.
+// You can construct a concrete instance of `WebhookSecurityInput` via:
+//
+//	WebhookSecurityArgs{...}
+type WebhookSecurityInput interface {
+	pulumi.Input
+
+	ToWebhookSecurityOutput() WebhookSecurityOutput
+	ToWebhookSecurityOutputWithContext(context.Context) WebhookSecurityOutput
+}
+
+type WebhookSecurityArgs struct {
+	RequestIdentifierPath pulumi.StringPtrInput `pulumi:"requestIdentifierPath"`
+	Secret                pulumi.StringPtrInput `pulumi:"secret"`
+	SignatureAlgorithm    pulumi.StringPtrInput `pulumi:"signatureAlgorithm"`
+	SignatureHeaderName   pulumi.StringPtrInput `pulumi:"signatureHeaderName"`
+	SignaturePrefix       pulumi.StringPtrInput `pulumi:"signaturePrefix"`
+}
+
+func (WebhookSecurityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookSecurity)(nil)).Elem()
+}
+
+func (i WebhookSecurityArgs) ToWebhookSecurityOutput() WebhookSecurityOutput {
+	return i.ToWebhookSecurityOutputWithContext(context.Background())
+}
+
+func (i WebhookSecurityArgs) ToWebhookSecurityOutputWithContext(ctx context.Context) WebhookSecurityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookSecurityOutput)
+}
+
+func (i WebhookSecurityArgs) ToWebhookSecurityPtrOutput() WebhookSecurityPtrOutput {
+	return i.ToWebhookSecurityPtrOutputWithContext(context.Background())
+}
+
+func (i WebhookSecurityArgs) ToWebhookSecurityPtrOutputWithContext(ctx context.Context) WebhookSecurityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookSecurityOutput).ToWebhookSecurityPtrOutputWithContext(ctx)
+}
+
+// WebhookSecurityPtrInput is an input type that accepts WebhookSecurityArgs, WebhookSecurityPtr and WebhookSecurityPtrOutput values.
+// You can construct a concrete instance of `WebhookSecurityPtrInput` via:
+//
+//	        WebhookSecurityArgs{...}
+//
+//	or:
+//
+//	        nil
+type WebhookSecurityPtrInput interface {
+	pulumi.Input
+
+	ToWebhookSecurityPtrOutput() WebhookSecurityPtrOutput
+	ToWebhookSecurityPtrOutputWithContext(context.Context) WebhookSecurityPtrOutput
+}
+
+type webhookSecurityPtrType WebhookSecurityArgs
+
+func WebhookSecurityPtr(v *WebhookSecurityArgs) WebhookSecurityPtrInput {
+	return (*webhookSecurityPtrType)(v)
+}
+
+func (*webhookSecurityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebhookSecurity)(nil)).Elem()
+}
+
+func (i *webhookSecurityPtrType) ToWebhookSecurityPtrOutput() WebhookSecurityPtrOutput {
+	return i.ToWebhookSecurityPtrOutputWithContext(context.Background())
+}
+
+func (i *webhookSecurityPtrType) ToWebhookSecurityPtrOutputWithContext(ctx context.Context) WebhookSecurityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookSecurityPtrOutput)
+}
+
+type WebhookSecurityOutput struct{ *pulumi.OutputState }
+
+func (WebhookSecurityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookSecurity)(nil)).Elem()
+}
+
+func (o WebhookSecurityOutput) ToWebhookSecurityOutput() WebhookSecurityOutput {
+	return o
+}
+
+func (o WebhookSecurityOutput) ToWebhookSecurityOutputWithContext(ctx context.Context) WebhookSecurityOutput {
+	return o
+}
+
+func (o WebhookSecurityOutput) ToWebhookSecurityPtrOutput() WebhookSecurityPtrOutput {
+	return o.ToWebhookSecurityPtrOutputWithContext(context.Background())
+}
+
+func (o WebhookSecurityOutput) ToWebhookSecurityPtrOutputWithContext(ctx context.Context) WebhookSecurityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebhookSecurity) *WebhookSecurity {
+		return &v
+	}).(WebhookSecurityPtrOutput)
+}
+
+func (o WebhookSecurityOutput) RequestIdentifierPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookSecurity) *string { return v.RequestIdentifierPath }).(pulumi.StringPtrOutput)
+}
+
+func (o WebhookSecurityOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookSecurity) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+func (o WebhookSecurityOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookSecurity) *string { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+func (o WebhookSecurityOutput) SignatureHeaderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookSecurity) *string { return v.SignatureHeaderName }).(pulumi.StringPtrOutput)
+}
+
+func (o WebhookSecurityOutput) SignaturePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookSecurity) *string { return v.SignaturePrefix }).(pulumi.StringPtrOutput)
+}
+
+type WebhookSecurityPtrOutput struct{ *pulumi.OutputState }
+
+func (WebhookSecurityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebhookSecurity)(nil)).Elem()
+}
+
+func (o WebhookSecurityPtrOutput) ToWebhookSecurityPtrOutput() WebhookSecurityPtrOutput {
+	return o
+}
+
+func (o WebhookSecurityPtrOutput) ToWebhookSecurityPtrOutputWithContext(ctx context.Context) WebhookSecurityPtrOutput {
+	return o
+}
+
+func (o WebhookSecurityPtrOutput) Elem() WebhookSecurityOutput {
+	return o.ApplyT(func(v *WebhookSecurity) WebhookSecurity {
+		if v != nil {
+			return *v
+		}
+		var ret WebhookSecurity
+		return ret
+	}).(WebhookSecurityOutput)
+}
+
+func (o WebhookSecurityPtrOutput) RequestIdentifierPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebhookSecurity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestIdentifierPath
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WebhookSecurityPtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebhookSecurity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WebhookSecurityPtrOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebhookSecurity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SignatureAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WebhookSecurityPtrOutput) SignatureHeaderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebhookSecurity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SignatureHeaderName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WebhookSecurityPtrOutput) SignaturePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebhookSecurity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SignaturePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionApprovalEmailNotificationInput)(nil)).Elem(), ActionApprovalEmailNotificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionApprovalEmailNotificationPtrInput)(nil)).Elem(), ActionApprovalEmailNotificationArgs{})
@@ -7169,6 +7613,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityPropertiesArrayPropsPtrInput)(nil)).Elem(), EntityPropertiesArrayPropsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityRelationsInput)(nil)).Elem(), EntityRelationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityRelationsPtrInput)(nil)).Elem(), EntityRelationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebhookMappingInput)(nil)).Elem(), WebhookMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebhookMappingArrayInput)(nil)).Elem(), WebhookMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebhookMappingEntityInput)(nil)).Elem(), WebhookMappingEntityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebhookSecurityInput)(nil)).Elem(), WebhookSecurityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebhookSecurityPtrInput)(nil)).Elem(), WebhookSecurityArgs{})
 	pulumi.RegisterOutputType(ActionApprovalEmailNotificationOutput{})
 	pulumi.RegisterOutputType(ActionApprovalEmailNotificationPtrOutput{})
 	pulumi.RegisterOutputType(ActionApprovalWebhookNotificationOutput{})
@@ -7268,4 +7717,9 @@ func init() {
 	pulumi.RegisterOutputType(EntityPropertiesArrayPropsPtrOutput{})
 	pulumi.RegisterOutputType(EntityRelationsOutput{})
 	pulumi.RegisterOutputType(EntityRelationsPtrOutput{})
+	pulumi.RegisterOutputType(WebhookMappingOutput{})
+	pulumi.RegisterOutputType(WebhookMappingArrayOutput{})
+	pulumi.RegisterOutputType(WebhookMappingEntityOutput{})
+	pulumi.RegisterOutputType(WebhookSecurityOutput{})
+	pulumi.RegisterOutputType(WebhookSecurityPtrOutput{})
 }

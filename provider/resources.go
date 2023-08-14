@@ -17,14 +17,15 @@ package port
 import (
 	_ "embed"
 	"fmt"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"path/filepath"
 	"unicode"
+
 	"github.com/port-labs/pulumi-port/provider/pkg/version"
 	port "github.com/port-labs/terraform-provider-port-labs/provider"
 	portVersion "github.com/port-labs/terraform-provider-port-labs/version"
 	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 )
 
 // all of the token components used below.
@@ -106,6 +107,7 @@ func Provider() tfbridge.ProviderInfo {
 			"port_action":    {Tok: portResource(mainMod, "Action")},
 			"port_blueprint": {Tok: portResource(mainMod, "Blueprint")},
 			"port_entity":    {Tok: portResource(mainMod, "Entity")},
+			"port_webhook":   {Tok: portResource(mainMod, "Webhook")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example

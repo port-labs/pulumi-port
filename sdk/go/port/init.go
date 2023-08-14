@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Blueprint{}
 	case "port:index/entity:Entity":
 		r = &Entity{}
+	case "port:index/webhook:Webhook":
+		r = &Webhook{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -71,6 +73,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"port",
 		"index/entity",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"port",
+		"index/webhook",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

@@ -328,6 +328,15 @@
                     "items": {
                         "type": "number"
                     }
+                },
+                "enumJqQuery": {
+                    "type": "string"
+                },
+                "enums": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
                 }
             },
             "type": "object"
@@ -352,6 +361,15 @@
                     "type": "string"
                 },
                 "defaults": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "enumJqQuery": {
+                    "type": "string"
+                },
+                "enums": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -1273,6 +1291,79 @@
                 }
             },
             "type": "object"
+        },
+        "port:index/WebhookMapping:WebhookMapping": {
+            "properties": {
+                "blueprint": {
+                    "type": "string"
+                },
+                "entity": {
+                    "$ref": "#/types/port:index/WebhookMappingEntity:WebhookMappingEntity"
+                },
+                "filter": {
+                    "type": "string"
+                },
+                "itemsToParse": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "blueprint",
+                "entity"
+            ]
+        },
+        "port:index/WebhookMappingEntity:WebhookMappingEntity": {
+            "properties": {
+                "icon": {
+                    "type": "string"
+                },
+                "identifier": {
+                    "type": "string"
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "relations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "team": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "identifier"
+            ]
+        },
+        "port:index/WebhookSecurity:WebhookSecurity": {
+            "properties": {
+                "requestIdentifierPath": {
+                    "type": "string"
+                },
+                "secret": {
+                    "type": "string"
+                },
+                "signatureAlgorithm": {
+                    "type": "string"
+                },
+                "signatureHeaderName": {
+                    "type": "string"
+                },
+                "signaturePrefix": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
         }
     },
     "provider": {
@@ -1912,6 +2003,151 @@
                     "updatedBy": {
                         "type": "string",
                         "description": "The last updater of the entity\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "port:index/webhook:Webhook": {
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "The creation date of the webhook\n"
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "The creator of the webhook\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the webhook\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the webhook is enabled\n"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of the webhook\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the webhook\n"
+                },
+                "mappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WebhookMapping:WebhookMapping"
+                    },
+                    "description": "The mappings of the webhook\n"
+                },
+                "security": {
+                    "$ref": "#/types/port:index/WebhookSecurity:WebhookSecurity",
+                    "description": "The security of the webhook\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the webhook\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The last update date of the webhook\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "The last updater of the webhook\n"
+                }
+            },
+            "required": [
+                "createdAt",
+                "createdBy",
+                "enabled",
+                "identifier",
+                "updatedAt",
+                "updatedBy"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the webhook\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the webhook is enabled\n"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of the webhook\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the webhook\n"
+                },
+                "mappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WebhookMapping:WebhookMapping"
+                    },
+                    "description": "The mappings of the webhook\n"
+                },
+                "security": {
+                    "$ref": "#/types/port:index/WebhookSecurity:WebhookSecurity",
+                    "description": "The security of the webhook\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the webhook\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Webhook resources.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The creation date of the webhook\n"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "description": "The creator of the webhook\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the webhook\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Whether the webhook is enabled\n"
+                    },
+                    "icon": {
+                        "type": "string",
+                        "description": "The icon of the webhook\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "The identifier of the webhook\n"
+                    },
+                    "mappings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/port:index/WebhookMapping:WebhookMapping"
+                        },
+                        "description": "The mappings of the webhook\n"
+                    },
+                    "security": {
+                        "$ref": "#/types/port:index/WebhookSecurity:WebhookSecurity",
+                        "description": "The security of the webhook\n"
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "The title of the webhook\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "The last update date of the webhook\n"
+                    },
+                    "updatedBy": {
+                        "type": "string",
+                        "description": "The last updater of the webhook\n"
                     }
                 },
                 "type": "object"
