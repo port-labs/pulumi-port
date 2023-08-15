@@ -2056,6 +2056,14 @@
                 "updatedBy": {
                     "type": "string",
                     "description": "The last updater of the webhook\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The url of the webhook\n"
+                },
+                "webhookKey": {
+                    "type": "string",
+                    "description": "The webhook key of the webhook\n"
                 }
             },
             "required": [
@@ -2064,7 +2072,9 @@
                 "enabled",
                 "identifier",
                 "updatedAt",
-                "updatedBy"
+                "updatedBy",
+                "url",
+                "webhookKey"
             ],
             "inputProperties": {
                 "description": {
@@ -2148,6 +2158,14 @@
                     "updatedBy": {
                         "type": "string",
                         "description": "The last updater of the webhook\n"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The url of the webhook\n"
+                    },
+                    "webhookKey": {
+                        "type": "string",
+                        "description": "The webhook key of the webhook\n"
                     }
                 },
                 "type": "object"

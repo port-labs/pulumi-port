@@ -192,7 +192,8 @@
                 "createdAt": "created_at",
                 "createdBy": "created_by",
                 "updatedAt": "updated_at",
-                "updatedBy": "updated_by"
+                "updatedBy": "updated_by",
+                "webhookKey": "webhook_key"
             },
             "port:index:Provider": {
                 "baseUrl": "base_url",
