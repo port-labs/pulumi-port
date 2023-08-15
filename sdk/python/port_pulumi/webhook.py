@@ -146,7 +146,9 @@ class _WebhookState:
                  security: Optional[pulumi.Input['WebhookSecurityArgs']] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
-                 updated_by: Optional[pulumi.Input[str]] = None):
+                 updated_by: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None,
+                 webhook_key: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Webhook resources.
         :param pulumi.Input[str] created_at: The creation date of the webhook
@@ -160,6 +162,8 @@ class _WebhookState:
         :param pulumi.Input[str] title: The title of the webhook
         :param pulumi.Input[str] updated_at: The last update date of the webhook
         :param pulumi.Input[str] updated_by: The last updater of the webhook
+        :param pulumi.Input[str] url: The url of the webhook
+        :param pulumi.Input[str] webhook_key: The webhook key of the webhook
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -183,6 +187,10 @@ class _WebhookState:
             pulumi.set(__self__, "updated_at", updated_at)
         if updated_by is not None:
             pulumi.set(__self__, "updated_by", updated_by)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if webhook_key is not None:
+            pulumi.set(__self__, "webhook_key", webhook_key)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -316,6 +324,30 @@ class _WebhookState:
     def updated_by(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "updated_by", value)
 
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The url of the webhook
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="webhookKey")
+    def webhook_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The webhook key of the webhook
+        """
+        return pulumi.get(self, "webhook_key")
+
+    @webhook_key.setter
+    def webhook_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "webhook_key", value)
+
 
 class Webhook(pulumi.CustomResource):
     @overload
@@ -392,6 +424,8 @@ class Webhook(pulumi.CustomResource):
             __props__.__dict__["created_by"] = None
             __props__.__dict__["updated_at"] = None
             __props__.__dict__["updated_by"] = None
+            __props__.__dict__["url"] = None
+            __props__.__dict__["webhook_key"] = None
         super(Webhook, __self__).__init__(
             'port:index/webhook:Webhook',
             resource_name,
@@ -412,7 +446,9 @@ class Webhook(pulumi.CustomResource):
             security: Optional[pulumi.Input[pulumi.InputType['WebhookSecurityArgs']]] = None,
             title: Optional[pulumi.Input[str]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
-            updated_by: Optional[pulumi.Input[str]] = None) -> 'Webhook':
+            updated_by: Optional[pulumi.Input[str]] = None,
+            url: Optional[pulumi.Input[str]] = None,
+            webhook_key: Optional[pulumi.Input[str]] = None) -> 'Webhook':
         """
         Get an existing Webhook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -431,6 +467,8 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.Input[str] title: The title of the webhook
         :param pulumi.Input[str] updated_at: The last update date of the webhook
         :param pulumi.Input[str] updated_by: The last updater of the webhook
+        :param pulumi.Input[str] url: The url of the webhook
+        :param pulumi.Input[str] webhook_key: The webhook key of the webhook
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -447,6 +485,8 @@ class Webhook(pulumi.CustomResource):
         __props__.__dict__["title"] = title
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["updated_by"] = updated_by
+        __props__.__dict__["url"] = url
+        __props__.__dict__["webhook_key"] = webhook_key
         return Webhook(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -536,4 +576,20 @@ class Webhook(pulumi.CustomResource):
         The last updater of the webhook
         """
         return pulumi.get(self, "updated_by")
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Output[str]:
+        """
+        The url of the webhook
+        """
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="webhookKey")
+    def webhook_key(self) -> pulumi.Output[str]:
+        """
+        The webhook key of the webhook
+        """
+        return pulumi.get(self, "webhook_key")
 

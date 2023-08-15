@@ -5,10 +5,10 @@ go 1.20
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20230327102345-3fa930f86570
 
 require (
-	github.com/port-labs/terraform-provider-port-labs v1.4.0
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.16.0
+	github.com/port-labs/terraform-provider-port-labs v1.4.1
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.15.2
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.57.0
-	github.com/pulumi/pulumi/sdk/v3 v3.78.1
+	github.com/pulumi/pulumi/sdk/v3 v3.77.1
 )
 
 require (
@@ -51,7 +51,7 @@ require (
 	github.com/apparentlymart/go-textseg/v13 v13.0.0 // indirect
 	github.com/armon/go-metrics v0.4.0 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
-	github.com/aws/aws-sdk-go v1.44.122 // indirect
+	github.com/aws/aws-sdk-go v1.44.298 // indirect
 	github.com/aws/aws-sdk-go-v2 v1.17.3 // indirect
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.4.3 // indirect
 	github.com/aws/aws-sdk-go-v2/config v1.15.15 // indirect

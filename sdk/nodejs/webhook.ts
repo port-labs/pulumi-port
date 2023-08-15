@@ -78,6 +78,14 @@ export class Webhook extends pulumi.CustomResource {
      * The last updater of the webhook
      */
     public /*out*/ readonly updatedBy!: pulumi.Output<string>;
+    /**
+     * The url of the webhook
+     */
+    public /*out*/ readonly url!: pulumi.Output<string>;
+    /**
+     * The webhook key of the webhook
+     */
+    public /*out*/ readonly webhookKey!: pulumi.Output<string>;
 
     /**
      * Create a Webhook resource with the given unique name, arguments, and options.
@@ -103,6 +111,8 @@ export class Webhook extends pulumi.CustomResource {
             resourceInputs["title"] = state ? state.title : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["updatedBy"] = state ? state.updatedBy : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["webhookKey"] = state ? state.webhookKey : undefined;
         } else {
             const args = argsOrState as WebhookArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -116,6 +126,8 @@ export class Webhook extends pulumi.CustomResource {
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
             resourceInputs["updatedBy"] = undefined /*out*/;
+            resourceInputs["url"] = undefined /*out*/;
+            resourceInputs["webhookKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Webhook.__pulumiType, name, resourceInputs, opts);
@@ -170,6 +182,14 @@ export interface WebhookState {
      * The last updater of the webhook
      */
     updatedBy?: pulumi.Input<string>;
+    /**
+     * The url of the webhook
+     */
+    url?: pulumi.Input<string>;
+    /**
+     * The webhook key of the webhook
+     */
+    webhookKey?: pulumi.Input<string>;
 }
 
 /**

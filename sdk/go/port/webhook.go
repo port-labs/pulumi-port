@@ -36,6 +36,10 @@ type Webhook struct {
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// The last updater of the webhook
 	UpdatedBy pulumi.StringOutput `pulumi:"updatedBy"`
+	// The url of the webhook
+	Url pulumi.StringOutput `pulumi:"url"`
+	// The webhook key of the webhook
+	WebhookKey pulumi.StringOutput `pulumi:"webhookKey"`
 }
 
 // NewWebhook registers a new resource with the given unique name, arguments, and options.
@@ -90,6 +94,10 @@ type webhookState struct {
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// The last updater of the webhook
 	UpdatedBy *string `pulumi:"updatedBy"`
+	// The url of the webhook
+	Url *string `pulumi:"url"`
+	// The webhook key of the webhook
+	WebhookKey *string `pulumi:"webhookKey"`
 }
 
 type WebhookState struct {
@@ -115,6 +123,10 @@ type WebhookState struct {
 	UpdatedAt pulumi.StringPtrInput
 	// The last updater of the webhook
 	UpdatedBy pulumi.StringPtrInput
+	// The url of the webhook
+	Url pulumi.StringPtrInput
+	// The webhook key of the webhook
+	WebhookKey pulumi.StringPtrInput
 }
 
 func (WebhookState) ElementType() reflect.Type {
@@ -296,6 +308,16 @@ func (o WebhookOutput) UpdatedAt() pulumi.StringOutput {
 // The last updater of the webhook
 func (o WebhookOutput) UpdatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// The url of the webhook
+func (o WebhookOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+// The webhook key of the webhook
+func (o WebhookOutput) WebhookKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.WebhookKey }).(pulumi.StringOutput)
 }
 
 type WebhookArrayOutput struct{ *pulumi.OutputState }
