@@ -1292,6 +1292,65 @@
             },
             "type": "object"
         },
+        "port:index/ScorecardRule:ScorecardRule": {
+            "properties": {
+                "identifier": {
+                    "type": "string"
+                },
+                "level": {
+                    "type": "string"
+                },
+                "query": {
+                    "$ref": "#/types/port:index/ScorecardRuleQuery:ScorecardRuleQuery"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "identifier",
+                "level",
+                "query",
+                "title"
+            ]
+        },
+        "port:index/ScorecardRuleQuery:ScorecardRuleQuery": {
+            "properties": {
+                "combinator": {
+                    "type": "string"
+                },
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/ScorecardRuleQueryCondition:ScorecardRuleQueryCondition"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "combinator",
+                "conditions"
+            ]
+        },
+        "port:index/ScorecardRuleQueryCondition:ScorecardRuleQueryCondition": {
+            "properties": {
+                "operator": {
+                    "type": "string"
+                },
+                "property": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "operator",
+                "property"
+            ]
+        },
         "port:index/WebhookMapping:WebhookMapping": {
             "properties": {
                 "blueprint": {
@@ -2003,6 +2062,123 @@
                     "updatedBy": {
                         "type": "string",
                         "description": "The last updater of the entity\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "port:index/scorecard:Scorecard": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint of the scorecard\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The creation date of the scorecard\n"
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "The creator of the scorecard\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the scorecard\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/ScorecardRule:ScorecardRule"
+                    },
+                    "description": "The rules of the scorecard\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the scorecard\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The last update date of the scorecard\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "The last updater of the scorecard\n"
+                }
+            },
+            "required": [
+                "blueprint",
+                "createdAt",
+                "createdBy",
+                "identifier",
+                "rules",
+                "title",
+                "updatedAt",
+                "updatedBy"
+            ],
+            "inputProperties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint of the scorecard\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the scorecard\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/ScorecardRule:ScorecardRule"
+                    },
+                    "description": "The rules of the scorecard\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the scorecard\n"
+                }
+            },
+            "requiredInputs": [
+                "blueprint",
+                "identifier",
+                "rules",
+                "title"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Scorecard resources.\n",
+                "properties": {
+                    "blueprint": {
+                        "type": "string",
+                        "description": "The blueprint of the scorecard\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The creation date of the scorecard\n"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "description": "The creator of the scorecard\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "The identifier of the scorecard\n"
+                    },
+                    "rules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/port:index/ScorecardRule:ScorecardRule"
+                        },
+                        "description": "The rules of the scorecard\n"
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "The title of the scorecard\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "The last update date of the scorecard\n"
+                    },
+                    "updatedBy": {
+                        "type": "string",
+                        "description": "The last updater of the scorecard\n"
                     }
                 },
                 "type": "object"
