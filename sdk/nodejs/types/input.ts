@@ -368,6 +368,24 @@ export interface EntityRelations {
     singleRelations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
+export interface ScorecardRule {
+    identifier: pulumi.Input<string>;
+    level: pulumi.Input<string>;
+    query: pulumi.Input<inputs.ScorecardRuleQuery>;
+    title: pulumi.Input<string>;
+}
+
+export interface ScorecardRuleQuery {
+    combinator: pulumi.Input<string>;
+    conditions: pulumi.Input<pulumi.Input<inputs.ScorecardRuleQueryCondition>[]>;
+}
+
+export interface ScorecardRuleQueryCondition {
+    operator: pulumi.Input<string>;
+    property: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
 export interface WebhookMapping {
     blueprint: pulumi.Input<string>;
     entity: pulumi.Input<inputs.WebhookMappingEntity>;

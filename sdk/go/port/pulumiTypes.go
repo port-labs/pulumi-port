@@ -7129,6 +7129,279 @@ func (o EntityRelationsPtrOutput) SingleRelations() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type ScorecardRule struct {
+	Identifier string             `pulumi:"identifier"`
+	Level      string             `pulumi:"level"`
+	Query      ScorecardRuleQuery `pulumi:"query"`
+	Title      string             `pulumi:"title"`
+}
+
+// ScorecardRuleInput is an input type that accepts ScorecardRuleArgs and ScorecardRuleOutput values.
+// You can construct a concrete instance of `ScorecardRuleInput` via:
+//
+//	ScorecardRuleArgs{...}
+type ScorecardRuleInput interface {
+	pulumi.Input
+
+	ToScorecardRuleOutput() ScorecardRuleOutput
+	ToScorecardRuleOutputWithContext(context.Context) ScorecardRuleOutput
+}
+
+type ScorecardRuleArgs struct {
+	Identifier pulumi.StringInput      `pulumi:"identifier"`
+	Level      pulumi.StringInput      `pulumi:"level"`
+	Query      ScorecardRuleQueryInput `pulumi:"query"`
+	Title      pulumi.StringInput      `pulumi:"title"`
+}
+
+func (ScorecardRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardRule)(nil)).Elem()
+}
+
+func (i ScorecardRuleArgs) ToScorecardRuleOutput() ScorecardRuleOutput {
+	return i.ToScorecardRuleOutputWithContext(context.Background())
+}
+
+func (i ScorecardRuleArgs) ToScorecardRuleOutputWithContext(ctx context.Context) ScorecardRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardRuleOutput)
+}
+
+// ScorecardRuleArrayInput is an input type that accepts ScorecardRuleArray and ScorecardRuleArrayOutput values.
+// You can construct a concrete instance of `ScorecardRuleArrayInput` via:
+//
+//	ScorecardRuleArray{ ScorecardRuleArgs{...} }
+type ScorecardRuleArrayInput interface {
+	pulumi.Input
+
+	ToScorecardRuleArrayOutput() ScorecardRuleArrayOutput
+	ToScorecardRuleArrayOutputWithContext(context.Context) ScorecardRuleArrayOutput
+}
+
+type ScorecardRuleArray []ScorecardRuleInput
+
+func (ScorecardRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScorecardRule)(nil)).Elem()
+}
+
+func (i ScorecardRuleArray) ToScorecardRuleArrayOutput() ScorecardRuleArrayOutput {
+	return i.ToScorecardRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ScorecardRuleArray) ToScorecardRuleArrayOutputWithContext(ctx context.Context) ScorecardRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardRuleArrayOutput)
+}
+
+type ScorecardRuleOutput struct{ *pulumi.OutputState }
+
+func (ScorecardRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardRule)(nil)).Elem()
+}
+
+func (o ScorecardRuleOutput) ToScorecardRuleOutput() ScorecardRuleOutput {
+	return o
+}
+
+func (o ScorecardRuleOutput) ToScorecardRuleOutputWithContext(ctx context.Context) ScorecardRuleOutput {
+	return o
+}
+
+func (o ScorecardRuleOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v ScorecardRule) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+func (o ScorecardRuleOutput) Level() pulumi.StringOutput {
+	return o.ApplyT(func(v ScorecardRule) string { return v.Level }).(pulumi.StringOutput)
+}
+
+func (o ScorecardRuleOutput) Query() ScorecardRuleQueryOutput {
+	return o.ApplyT(func(v ScorecardRule) ScorecardRuleQuery { return v.Query }).(ScorecardRuleQueryOutput)
+}
+
+func (o ScorecardRuleOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ScorecardRule) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ScorecardRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ScorecardRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScorecardRule)(nil)).Elem()
+}
+
+func (o ScorecardRuleArrayOutput) ToScorecardRuleArrayOutput() ScorecardRuleArrayOutput {
+	return o
+}
+
+func (o ScorecardRuleArrayOutput) ToScorecardRuleArrayOutputWithContext(ctx context.Context) ScorecardRuleArrayOutput {
+	return o
+}
+
+func (o ScorecardRuleArrayOutput) Index(i pulumi.IntInput) ScorecardRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScorecardRule {
+		return vs[0].([]ScorecardRule)[vs[1].(int)]
+	}).(ScorecardRuleOutput)
+}
+
+type ScorecardRuleQuery struct {
+	Combinator string                        `pulumi:"combinator"`
+	Conditions []ScorecardRuleQueryCondition `pulumi:"conditions"`
+}
+
+// ScorecardRuleQueryInput is an input type that accepts ScorecardRuleQueryArgs and ScorecardRuleQueryOutput values.
+// You can construct a concrete instance of `ScorecardRuleQueryInput` via:
+//
+//	ScorecardRuleQueryArgs{...}
+type ScorecardRuleQueryInput interface {
+	pulumi.Input
+
+	ToScorecardRuleQueryOutput() ScorecardRuleQueryOutput
+	ToScorecardRuleQueryOutputWithContext(context.Context) ScorecardRuleQueryOutput
+}
+
+type ScorecardRuleQueryArgs struct {
+	Combinator pulumi.StringInput                    `pulumi:"combinator"`
+	Conditions ScorecardRuleQueryConditionArrayInput `pulumi:"conditions"`
+}
+
+func (ScorecardRuleQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardRuleQuery)(nil)).Elem()
+}
+
+func (i ScorecardRuleQueryArgs) ToScorecardRuleQueryOutput() ScorecardRuleQueryOutput {
+	return i.ToScorecardRuleQueryOutputWithContext(context.Background())
+}
+
+func (i ScorecardRuleQueryArgs) ToScorecardRuleQueryOutputWithContext(ctx context.Context) ScorecardRuleQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardRuleQueryOutput)
+}
+
+type ScorecardRuleQueryOutput struct{ *pulumi.OutputState }
+
+func (ScorecardRuleQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardRuleQuery)(nil)).Elem()
+}
+
+func (o ScorecardRuleQueryOutput) ToScorecardRuleQueryOutput() ScorecardRuleQueryOutput {
+	return o
+}
+
+func (o ScorecardRuleQueryOutput) ToScorecardRuleQueryOutputWithContext(ctx context.Context) ScorecardRuleQueryOutput {
+	return o
+}
+
+func (o ScorecardRuleQueryOutput) Combinator() pulumi.StringOutput {
+	return o.ApplyT(func(v ScorecardRuleQuery) string { return v.Combinator }).(pulumi.StringOutput)
+}
+
+func (o ScorecardRuleQueryOutput) Conditions() ScorecardRuleQueryConditionArrayOutput {
+	return o.ApplyT(func(v ScorecardRuleQuery) []ScorecardRuleQueryCondition { return v.Conditions }).(ScorecardRuleQueryConditionArrayOutput)
+}
+
+type ScorecardRuleQueryCondition struct {
+	Operator string  `pulumi:"operator"`
+	Property string  `pulumi:"property"`
+	Value    *string `pulumi:"value"`
+}
+
+// ScorecardRuleQueryConditionInput is an input type that accepts ScorecardRuleQueryConditionArgs and ScorecardRuleQueryConditionOutput values.
+// You can construct a concrete instance of `ScorecardRuleQueryConditionInput` via:
+//
+//	ScorecardRuleQueryConditionArgs{...}
+type ScorecardRuleQueryConditionInput interface {
+	pulumi.Input
+
+	ToScorecardRuleQueryConditionOutput() ScorecardRuleQueryConditionOutput
+	ToScorecardRuleQueryConditionOutputWithContext(context.Context) ScorecardRuleQueryConditionOutput
+}
+
+type ScorecardRuleQueryConditionArgs struct {
+	Operator pulumi.StringInput    `pulumi:"operator"`
+	Property pulumi.StringInput    `pulumi:"property"`
+	Value    pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ScorecardRuleQueryConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardRuleQueryCondition)(nil)).Elem()
+}
+
+func (i ScorecardRuleQueryConditionArgs) ToScorecardRuleQueryConditionOutput() ScorecardRuleQueryConditionOutput {
+	return i.ToScorecardRuleQueryConditionOutputWithContext(context.Background())
+}
+
+func (i ScorecardRuleQueryConditionArgs) ToScorecardRuleQueryConditionOutputWithContext(ctx context.Context) ScorecardRuleQueryConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardRuleQueryConditionOutput)
+}
+
+// ScorecardRuleQueryConditionArrayInput is an input type that accepts ScorecardRuleQueryConditionArray and ScorecardRuleQueryConditionArrayOutput values.
+// You can construct a concrete instance of `ScorecardRuleQueryConditionArrayInput` via:
+//
+//	ScorecardRuleQueryConditionArray{ ScorecardRuleQueryConditionArgs{...} }
+type ScorecardRuleQueryConditionArrayInput interface {
+	pulumi.Input
+
+	ToScorecardRuleQueryConditionArrayOutput() ScorecardRuleQueryConditionArrayOutput
+	ToScorecardRuleQueryConditionArrayOutputWithContext(context.Context) ScorecardRuleQueryConditionArrayOutput
+}
+
+type ScorecardRuleQueryConditionArray []ScorecardRuleQueryConditionInput
+
+func (ScorecardRuleQueryConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScorecardRuleQueryCondition)(nil)).Elem()
+}
+
+func (i ScorecardRuleQueryConditionArray) ToScorecardRuleQueryConditionArrayOutput() ScorecardRuleQueryConditionArrayOutput {
+	return i.ToScorecardRuleQueryConditionArrayOutputWithContext(context.Background())
+}
+
+func (i ScorecardRuleQueryConditionArray) ToScorecardRuleQueryConditionArrayOutputWithContext(ctx context.Context) ScorecardRuleQueryConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardRuleQueryConditionArrayOutput)
+}
+
+type ScorecardRuleQueryConditionOutput struct{ *pulumi.OutputState }
+
+func (ScorecardRuleQueryConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardRuleQueryCondition)(nil)).Elem()
+}
+
+func (o ScorecardRuleQueryConditionOutput) ToScorecardRuleQueryConditionOutput() ScorecardRuleQueryConditionOutput {
+	return o
+}
+
+func (o ScorecardRuleQueryConditionOutput) ToScorecardRuleQueryConditionOutputWithContext(ctx context.Context) ScorecardRuleQueryConditionOutput {
+	return o
+}
+
+func (o ScorecardRuleQueryConditionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v ScorecardRuleQueryCondition) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+func (o ScorecardRuleQueryConditionOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v ScorecardRuleQueryCondition) string { return v.Property }).(pulumi.StringOutput)
+}
+
+func (o ScorecardRuleQueryConditionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScorecardRuleQueryCondition) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ScorecardRuleQueryConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (ScorecardRuleQueryConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScorecardRuleQueryCondition)(nil)).Elem()
+}
+
+func (o ScorecardRuleQueryConditionArrayOutput) ToScorecardRuleQueryConditionArrayOutput() ScorecardRuleQueryConditionArrayOutput {
+	return o
+}
+
+func (o ScorecardRuleQueryConditionArrayOutput) ToScorecardRuleQueryConditionArrayOutputWithContext(ctx context.Context) ScorecardRuleQueryConditionArrayOutput {
+	return o
+}
+
+func (o ScorecardRuleQueryConditionArrayOutput) Index(i pulumi.IntInput) ScorecardRuleQueryConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScorecardRuleQueryCondition {
+		return vs[0].([]ScorecardRuleQueryCondition)[vs[1].(int)]
+	}).(ScorecardRuleQueryConditionOutput)
+}
+
 type WebhookMapping struct {
 	Blueprint    string               `pulumi:"blueprint"`
 	Entity       WebhookMappingEntity `pulumi:"entity"`
@@ -7613,6 +7886,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityPropertiesArrayPropsPtrInput)(nil)).Elem(), EntityPropertiesArrayPropsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityRelationsInput)(nil)).Elem(), EntityRelationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityRelationsPtrInput)(nil)).Elem(), EntityRelationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardRuleInput)(nil)).Elem(), ScorecardRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardRuleArrayInput)(nil)).Elem(), ScorecardRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardRuleQueryInput)(nil)).Elem(), ScorecardRuleQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardRuleQueryConditionInput)(nil)).Elem(), ScorecardRuleQueryConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardRuleQueryConditionArrayInput)(nil)).Elem(), ScorecardRuleQueryConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookMappingInput)(nil)).Elem(), WebhookMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookMappingArrayInput)(nil)).Elem(), WebhookMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookMappingEntityInput)(nil)).Elem(), WebhookMappingEntityArgs{})
@@ -7717,6 +7995,11 @@ func init() {
 	pulumi.RegisterOutputType(EntityPropertiesArrayPropsPtrOutput{})
 	pulumi.RegisterOutputType(EntityRelationsOutput{})
 	pulumi.RegisterOutputType(EntityRelationsPtrOutput{})
+	pulumi.RegisterOutputType(ScorecardRuleOutput{})
+	pulumi.RegisterOutputType(ScorecardRuleArrayOutput{})
+	pulumi.RegisterOutputType(ScorecardRuleQueryOutput{})
+	pulumi.RegisterOutputType(ScorecardRuleQueryConditionOutput{})
+	pulumi.RegisterOutputType(ScorecardRuleQueryConditionArrayOutput{})
 	pulumi.RegisterOutputType(WebhookMappingOutput{})
 	pulumi.RegisterOutputType(WebhookMappingArrayOutput{})
 	pulumi.RegisterOutputType(WebhookMappingEntityOutput{})

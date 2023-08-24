@@ -62,6 +62,9 @@ __all__ = [
     'EntityPropertiesArgs',
     'EntityPropertiesArrayPropsArgs',
     'EntityRelationsArgs',
+    'ScorecardRuleArgs',
+    'ScorecardRuleQueryArgs',
+    'ScorecardRuleQueryConditionArgs',
     'WebhookMappingArgs',
     'WebhookMappingEntityArgs',
     'WebhookSecurityArgs',
@@ -2769,6 +2772,121 @@ class EntityRelationsArgs:
     @single_relations.setter
     def single_relations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "single_relations", value)
+
+
+@pulumi.input_type
+class ScorecardRuleArgs:
+    def __init__(__self__, *,
+                 identifier: pulumi.Input[str],
+                 level: pulumi.Input[str],
+                 query: pulumi.Input['ScorecardRuleQueryArgs'],
+                 title: pulumi.Input[str]):
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "level", level)
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter
+    def level(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "level")
+
+    @level.setter
+    def level(self, value: pulumi.Input[str]):
+        pulumi.set(self, "level", value)
+
+    @property
+    @pulumi.getter
+    def query(self) -> pulumi.Input['ScorecardRuleQueryArgs']:
+        return pulumi.get(self, "query")
+
+    @query.setter
+    def query(self, value: pulumi.Input['ScorecardRuleQueryArgs']):
+        pulumi.set(self, "query", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class ScorecardRuleQueryArgs:
+    def __init__(__self__, *,
+                 combinator: pulumi.Input[str],
+                 conditions: pulumi.Input[Sequence[pulumi.Input['ScorecardRuleQueryConditionArgs']]]):
+        pulumi.set(__self__, "combinator", combinator)
+        pulumi.set(__self__, "conditions", conditions)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> pulumi.Input[Sequence[pulumi.Input['ScorecardRuleQueryConditionArgs']]]:
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: pulumi.Input[Sequence[pulumi.Input['ScorecardRuleQueryConditionArgs']]]):
+        pulumi.set(self, "conditions", value)
+
+
+@pulumi.input_type
+class ScorecardRuleQueryConditionArgs:
+    def __init__(__self__, *,
+                 operator: pulumi.Input[str],
+                 property: pulumi.Input[str],
+                 value: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: pulumi.Input[str]):
+        pulumi.set(self, "property", value)
 
 
 @pulumi.input_type

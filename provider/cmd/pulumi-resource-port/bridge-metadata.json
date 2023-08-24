@@ -4,6 +4,7 @@
             "port:index/action:Action": "port_action",
             "port:index/blueprint:Blueprint": "port_blueprint",
             "port:index/entity:Entity": "port_entity",
+            "port:index/scorecard:Scorecard": "port_scorecard",
             "port:index/webhook:Webhook": "port_webhook"
         },
         "renamedProperties": {
@@ -185,6 +186,12 @@
                 "createdAt": "created_at",
                 "createdBy": "created_by",
                 "runId": "run_id",
+                "updatedAt": "updated_at",
+                "updatedBy": "updated_by"
+            },
+            "port:index/scorecard:Scorecard": {
+                "createdAt": "created_at",
+                "createdBy": "created_by",
                 "updatedAt": "updated_at",
                 "updatedBy": "updated_by"
             },

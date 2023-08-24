@@ -63,6 +63,9 @@ __all__ = [
     'EntityProperties',
     'EntityPropertiesArrayProps',
     'EntityRelations',
+    'ScorecardRule',
+    'ScorecardRuleQuery',
+    'ScorecardRuleQueryCondition',
     'WebhookMapping',
     'WebhookMappingEntity',
     'WebhookSecurity',
@@ -2427,6 +2430,85 @@ class EntityRelations(dict):
     @pulumi.getter(name="singleRelations")
     def single_relations(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "single_relations")
+
+
+@pulumi.output_type
+class ScorecardRule(dict):
+    def __init__(__self__, *,
+                 identifier: str,
+                 level: str,
+                 query: 'outputs.ScorecardRuleQuery',
+                 title: str):
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "level", level)
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> str:
+        return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter
+    def level(self) -> str:
+        return pulumi.get(self, "level")
+
+    @property
+    @pulumi.getter
+    def query(self) -> 'outputs.ScorecardRuleQuery':
+        return pulumi.get(self, "query")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class ScorecardRuleQuery(dict):
+    def __init__(__self__, *,
+                 combinator: str,
+                 conditions: Sequence['outputs.ScorecardRuleQueryCondition']):
+        pulumi.set(__self__, "combinator", combinator)
+        pulumi.set(__self__, "conditions", conditions)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> str:
+        return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Sequence['outputs.ScorecardRuleQueryCondition']:
+        return pulumi.get(self, "conditions")
+
+
+@pulumi.output_type
+class ScorecardRuleQueryCondition(dict):
+    def __init__(__self__, *,
+                 operator: str,
+                 property: str,
+                 value: Optional[str] = None):
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "property", property)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        return pulumi.get(self, "property")
 
 
 @pulumi.output_type

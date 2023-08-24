@@ -368,6 +368,24 @@ export interface EntityRelations {
     singleRelations?: {[key: string]: string};
 }
 
+export interface ScorecardRule {
+    identifier: string;
+    level: string;
+    query: outputs.ScorecardRuleQuery;
+    title: string;
+}
+
+export interface ScorecardRuleQuery {
+    combinator: string;
+    conditions: outputs.ScorecardRuleQueryCondition[];
+}
+
+export interface ScorecardRuleQueryCondition {
+    operator: string;
+    property: string;
+    value?: string;
+}
+
 export interface WebhookMapping {
     blueprint: string;
     entity: outputs.WebhookMappingEntity;
