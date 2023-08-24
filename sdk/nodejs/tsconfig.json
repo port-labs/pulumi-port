@@ -20,6 +20,7 @@
         "entity.ts",
         "index.ts",
         "provider.ts",
+        "scorecard.ts",
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",
