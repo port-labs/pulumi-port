@@ -5,6 +5,7 @@
             "port:index/blueprint:Blueprint": "port_blueprint",
             "port:index/entity:Entity": "port_entity",
             "port:index/scorecard:Scorecard": "port_scorecard",
+            "port:index/team:Team": "port_team",
             "port:index/webhook:Webhook": "port_webhook"
         },
         "renamedProperties": {
@@ -194,6 +195,11 @@
                 "createdBy": "created_by",
                 "updatedAt": "updated_at",
                 "updatedBy": "updated_by"
+            },
+            "port:index/team:Team": {
+                "createdAt": "created_at",
+                "providerName": "provider_name",
+                "updatedAt": "updated_at"
             },
             "port:index/webhook:Webhook": {
                 "createdAt": "created_at",
