@@ -109,7 +109,7 @@ func Provider() tfbridge.ProviderInfo {
 			"port_entity":    {Tok: portResource(mainMod, "Entity")},
 			"port_webhook":   {Tok: portResource(mainMod, "Webhook")},
 			"port_scorecard": {Tok: portResource(mainMod, "Scorecard")},
-			"port_team": {Tok: portResource(mainMod, "Team")},
+			"port_team":      {Tok: portResource(mainMod, "Team")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example

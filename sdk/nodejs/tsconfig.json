@@ -21,6 +21,7 @@
         "index.ts",
         "provider.ts",
         "scorecard.ts",
+        "team.ts",
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",
