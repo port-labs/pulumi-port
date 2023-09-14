@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Entity{}
 	case "port:index/scorecard:Scorecard":
 		r = &Scorecard{}
+	case "port:index/team:Team":
+		r = &Team{}
 	case "port:index/webhook:Webhook":
 		r = &Webhook{}
 	default:
@@ -80,6 +82,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"port",
 		"index/scorecard",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"port",
+		"index/team",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

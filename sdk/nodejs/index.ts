@@ -30,6 +30,11 @@ export type Scorecard = import("./scorecard").Scorecard;
 export const Scorecard: typeof import("./scorecard").Scorecard = null as any;
 utilities.lazyLoad(exports, ["Scorecard"], () => require("./scorecard"));
 
+export { TeamArgs, TeamState } from "./team";
+export type Team = import("./team").Team;
+export const Team: typeof import("./team").Team = null as any;
+utilities.lazyLoad(exports, ["Team"], () => require("./team"));
+
 export { WebhookArgs, WebhookState } from "./webhook";
 export type Webhook = import("./webhook").Webhook;
 export const Webhook: typeof import("./webhook").Webhook = null as any;
@@ -57,6 +62,8 @@ const _module = {
                 return new Entity(name, <any>undefined, { urn })
             case "port:index/scorecard:Scorecard":
                 return new Scorecard(name, <any>undefined, { urn })
+            case "port:index/team:Team":
+                return new Team(name, <any>undefined, { urn })
             case "port:index/webhook:Webhook":
                 return new Webhook(name, <any>undefined, { urn })
             default:
@@ -68,6 +75,7 @@ pulumi.runtime.registerResourceModule("port", "index/action", _module)
 pulumi.runtime.registerResourceModule("port", "index/blueprint", _module)
 pulumi.runtime.registerResourceModule("port", "index/entity", _module)
 pulumi.runtime.registerResourceModule("port", "index/scorecard", _module)
+pulumi.runtime.registerResourceModule("port", "index/team", _module)
 pulumi.runtime.registerResourceModule("port", "index/webhook", _module)
 pulumi.runtime.registerResourcePackage("port", {
     version: utilities.getVersion(),

@@ -2184,6 +2184,96 @@
                 "type": "object"
             }
         },
+        "port:index/team:Team": {
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "The creation date of the team\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the team\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the team\n"
+                },
+                "providerName": {
+                    "type": "string",
+                    "description": "The provider of the team\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The last update date of the team\n"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The users of the team\n"
+                }
+            },
+            "required": [
+                "createdAt",
+                "name",
+                "providerName",
+                "updatedAt"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the team\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the team\n"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The users of the team\n"
+                }
+            },
+            "requiredInputs": [
+                "name"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Team resources.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The creation date of the team\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the team\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the team\n"
+                    },
+                    "providerName": {
+                        "type": "string",
+                        "description": "The provider of the team\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "The last update date of the team\n"
+                    },
+                    "users": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The users of the team\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "port:index/webhook:Webhook": {
             "properties": {
                 "createdAt": {
