@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/port-labs/pulumi-port/sdk/go/port/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type Entity struct {
@@ -193,6 +194,12 @@ func (i *Entity) ToEntityOutputWithContext(ctx context.Context) EntityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EntityOutput)
 }
 
+func (i *Entity) ToOutput(ctx context.Context) pulumix.Output[*Entity] {
+	return pulumix.Output[*Entity]{
+		OutputState: i.ToEntityOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EntityArrayInput is an input type that accepts EntityArray and EntityArrayOutput values.
 // You can construct a concrete instance of `EntityArrayInput` via:
 //
@@ -216,6 +223,12 @@ func (i EntityArray) ToEntityArrayOutput() EntityArrayOutput {
 
 func (i EntityArray) ToEntityArrayOutputWithContext(ctx context.Context) EntityArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EntityArrayOutput)
+}
+
+func (i EntityArray) ToOutput(ctx context.Context) pulumix.Output[[]*Entity] {
+	return pulumix.Output[[]*Entity]{
+		OutputState: i.ToEntityArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EntityMapInput is an input type that accepts EntityMap and EntityMapOutput values.
@@ -243,6 +256,12 @@ func (i EntityMap) ToEntityMapOutputWithContext(ctx context.Context) EntityMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(EntityMapOutput)
 }
 
+func (i EntityMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Entity] {
+	return pulumix.Output[map[string]*Entity]{
+		OutputState: i.ToEntityMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EntityOutput struct{ *pulumi.OutputState }
 
 func (EntityOutput) ElementType() reflect.Type {
@@ -255,6 +274,12 @@ func (o EntityOutput) ToEntityOutput() EntityOutput {
 
 func (o EntityOutput) ToEntityOutputWithContext(ctx context.Context) EntityOutput {
 	return o
+}
+
+func (o EntityOutput) ToOutput(ctx context.Context) pulumix.Output[*Entity] {
+	return pulumix.Output[*Entity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The blueprint identifier the entity relates to
@@ -331,6 +356,12 @@ func (o EntityArrayOutput) ToEntityArrayOutputWithContext(ctx context.Context) E
 	return o
 }
 
+func (o EntityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Entity] {
+	return pulumix.Output[[]*Entity]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EntityArrayOutput) Index(i pulumi.IntInput) EntityOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Entity {
 		return vs[0].([]*Entity)[vs[1].(int)]
@@ -349,6 +380,12 @@ func (o EntityMapOutput) ToEntityMapOutput() EntityMapOutput {
 
 func (o EntityMapOutput) ToEntityMapOutputWithContext(ctx context.Context) EntityMapOutput {
 	return o
+}
+
+func (o EntityMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Entity] {
+	return pulumix.Output[map[string]*Entity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntityMapOutput) MapIndex(k pulumi.StringInput) EntityOutput {

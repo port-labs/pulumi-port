@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/port-labs/pulumi-port/sdk/go/port/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type Scorecard struct {
@@ -162,6 +163,12 @@ func (i *Scorecard) ToScorecardOutputWithContext(ctx context.Context) ScorecardO
 	return pulumi.ToOutputWithContext(ctx, i).(ScorecardOutput)
 }
 
+func (i *Scorecard) ToOutput(ctx context.Context) pulumix.Output[*Scorecard] {
+	return pulumix.Output[*Scorecard]{
+		OutputState: i.ToScorecardOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ScorecardArrayInput is an input type that accepts ScorecardArray and ScorecardArrayOutput values.
 // You can construct a concrete instance of `ScorecardArrayInput` via:
 //
@@ -185,6 +192,12 @@ func (i ScorecardArray) ToScorecardArrayOutput() ScorecardArrayOutput {
 
 func (i ScorecardArray) ToScorecardArrayOutputWithContext(ctx context.Context) ScorecardArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScorecardArrayOutput)
+}
+
+func (i ScorecardArray) ToOutput(ctx context.Context) pulumix.Output[[]*Scorecard] {
+	return pulumix.Output[[]*Scorecard]{
+		OutputState: i.ToScorecardArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ScorecardMapInput is an input type that accepts ScorecardMap and ScorecardMapOutput values.
@@ -212,6 +225,12 @@ func (i ScorecardMap) ToScorecardMapOutputWithContext(ctx context.Context) Score
 	return pulumi.ToOutputWithContext(ctx, i).(ScorecardMapOutput)
 }
 
+func (i ScorecardMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Scorecard] {
+	return pulumix.Output[map[string]*Scorecard]{
+		OutputState: i.ToScorecardMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ScorecardOutput struct{ *pulumi.OutputState }
 
 func (ScorecardOutput) ElementType() reflect.Type {
@@ -224,6 +243,12 @@ func (o ScorecardOutput) ToScorecardOutput() ScorecardOutput {
 
 func (o ScorecardOutput) ToScorecardOutputWithContext(ctx context.Context) ScorecardOutput {
 	return o
+}
+
+func (o ScorecardOutput) ToOutput(ctx context.Context) pulumix.Output[*Scorecard] {
+	return pulumix.Output[*Scorecard]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The blueprint of the scorecard
@@ -280,6 +305,12 @@ func (o ScorecardArrayOutput) ToScorecardArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ScorecardArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Scorecard] {
+	return pulumix.Output[[]*Scorecard]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ScorecardArrayOutput) Index(i pulumi.IntInput) ScorecardOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Scorecard {
 		return vs[0].([]*Scorecard)[vs[1].(int)]
@@ -298,6 +329,12 @@ func (o ScorecardMapOutput) ToScorecardMapOutput() ScorecardMapOutput {
 
 func (o ScorecardMapOutput) ToScorecardMapOutputWithContext(ctx context.Context) ScorecardMapOutput {
 	return o
+}
+
+func (o ScorecardMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Scorecard] {
+	return pulumix.Output[map[string]*Scorecard]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScorecardMapOutput) MapIndex(k pulumi.StringInput) ScorecardOutput {
