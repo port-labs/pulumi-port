@@ -1650,10 +1650,16 @@ class ActionUserPropertiesStringPropsDatasetRuleValueArgs:
 class ActionWebhookMethodArgs:
     def __init__(__self__, *,
                  url: pulumi.Input[str],
-                 agent: Optional[pulumi.Input[bool]] = None):
+                 agent: Optional[pulumi.Input[bool]] = None,
+                 method: Optional[pulumi.Input[str]] = None,
+                 synchronized: Optional[pulumi.Input[bool]] = None):
         pulumi.set(__self__, "url", url)
         if agent is not None:
             pulumi.set(__self__, "agent", agent)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+        if synchronized is not None:
+            pulumi.set(__self__, "synchronized", synchronized)
 
     @property
     @pulumi.getter
@@ -1672,6 +1678,24 @@ class ActionWebhookMethodArgs:
     @agent.setter
     def agent(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "agent", value)
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "method", value)
+
+    @property
+    @pulumi.getter
+    def synchronized(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "synchronized")
+
+    @synchronized.setter
+    def synchronized(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "synchronized", value)
 
 
 @pulumi.input_type

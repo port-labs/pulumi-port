@@ -221,6 +221,8 @@ export interface ActionUserPropertiesStringPropsDatasetRuleValue {
 
 export interface ActionWebhookMethod {
     agent?: pulumi.Input<boolean>;
+    method?: pulumi.Input<string>;
+    synchronized?: pulumi.Input<boolean>;
     url: pulumi.Input<string>;
 }
 
