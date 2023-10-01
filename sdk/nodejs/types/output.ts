@@ -221,6 +221,8 @@ export interface ActionUserPropertiesStringPropsDatasetRuleValue {
 
 export interface ActionWebhookMethod {
     agent?: boolean;
+    method?: string;
+    synchronized?: boolean;
     url: string;
 }
 

@@ -1472,10 +1472,16 @@ class ActionUserPropertiesStringPropsDatasetRuleValue(dict):
 class ActionWebhookMethod(dict):
     def __init__(__self__, *,
                  url: str,
-                 agent: Optional[bool] = None):
+                 agent: Optional[bool] = None,
+                 method: Optional[str] = None,
+                 synchronized: Optional[bool] = None):
         pulumi.set(__self__, "url", url)
         if agent is not None:
             pulumi.set(__self__, "agent", agent)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+        if synchronized is not None:
+            pulumi.set(__self__, "synchronized", synchronized)
 
     @property
     @pulumi.getter
@@ -1486,6 +1492,16 @@ class ActionWebhookMethod(dict):
     @pulumi.getter
     def agent(self) -> Optional[bool]:
         return pulumi.get(self, "agent")
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[str]:
+        return pulumi.get(self, "method")
+
+    @property
+    @pulumi.getter
+    def synchronized(self) -> Optional[bool]:
+        return pulumi.get(self, "synchronized")
 
 
 @pulumi.output_type

@@ -4796,8 +4796,10 @@ func (o ActionUserPropertiesStringPropsDatasetRuleValueOutput) JqQuery() pulumi.
 }
 
 type ActionWebhookMethod struct {
-	Agent *bool  `pulumi:"agent"`
-	Url   string `pulumi:"url"`
+	Agent        *bool   `pulumi:"agent"`
+	Method       *string `pulumi:"method"`
+	Synchronized *bool   `pulumi:"synchronized"`
+	Url          string  `pulumi:"url"`
 }
 
 // ActionWebhookMethodInput is an input type that accepts ActionWebhookMethodArgs and ActionWebhookMethodOutput values.
@@ -4812,8 +4814,10 @@ type ActionWebhookMethodInput interface {
 }
 
 type ActionWebhookMethodArgs struct {
-	Agent pulumi.BoolPtrInput `pulumi:"agent"`
-	Url   pulumi.StringInput  `pulumi:"url"`
+	Agent        pulumi.BoolPtrInput   `pulumi:"agent"`
+	Method       pulumi.StringPtrInput `pulumi:"method"`
+	Synchronized pulumi.BoolPtrInput   `pulumi:"synchronized"`
+	Url          pulumi.StringInput    `pulumi:"url"`
 }
 
 func (ActionWebhookMethodArgs) ElementType() reflect.Type {
@@ -4915,6 +4919,14 @@ func (o ActionWebhookMethodOutput) Agent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionWebhookMethod) *bool { return v.Agent }).(pulumi.BoolPtrOutput)
 }
 
+func (o ActionWebhookMethodOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionWebhookMethod) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionWebhookMethodOutput) Synchronized() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionWebhookMethod) *bool { return v.Synchronized }).(pulumi.BoolPtrOutput)
+}
+
 func (o ActionWebhookMethodOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionWebhookMethod) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -4955,6 +4967,24 @@ func (o ActionWebhookMethodPtrOutput) Agent() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.Agent
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ActionWebhookMethodPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionWebhookMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ActionWebhookMethodPtrOutput) Synchronized() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ActionWebhookMethod) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Synchronized
 	}).(pulumi.BoolPtrOutput)
 }
 
