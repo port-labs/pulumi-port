@@ -781,6 +781,12 @@
                 "agent": {
                     "type": "boolean"
                 },
+                "method": {
+                    "type": "string"
+                },
+                "synchronized": {
+                    "type": "boolean"
+                },
                 "url": {
                     "type": "string"
                 }
