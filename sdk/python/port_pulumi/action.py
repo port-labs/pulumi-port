@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -51,34 +51,73 @@ class ActionArgs:
         :param pulumi.Input['ActionUserPropertiesArgs'] user_properties: User properties
         :param pulumi.Input['ActionWebhookMethodArgs'] webhook_method: The invocation method of the action
         """
-        pulumi.set(__self__, "blueprint", blueprint)
-        pulumi.set(__self__, "identifier", identifier)
-        pulumi.set(__self__, "title", title)
-        pulumi.set(__self__, "trigger", trigger)
+        ActionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            blueprint=blueprint,
+            identifier=identifier,
+            title=title,
+            trigger=trigger,
+            approval_email_notification=approval_email_notification,
+            approval_webhook_notification=approval_webhook_notification,
+            azure_method=azure_method,
+            description=description,
+            github_method=github_method,
+            gitlab_method=gitlab_method,
+            icon=icon,
+            kafka_method=kafka_method,
+            order_properties=order_properties,
+            required_approval=required_approval,
+            user_properties=user_properties,
+            webhook_method=webhook_method,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             blueprint: pulumi.Input[str],
+             identifier: pulumi.Input[str],
+             title: pulumi.Input[str],
+             trigger: pulumi.Input[str],
+             approval_email_notification: Optional[pulumi.Input['ActionApprovalEmailNotificationArgs']] = None,
+             approval_webhook_notification: Optional[pulumi.Input['ActionApprovalWebhookNotificationArgs']] = None,
+             azure_method: Optional[pulumi.Input['ActionAzureMethodArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             github_method: Optional[pulumi.Input['ActionGithubMethodArgs']] = None,
+             gitlab_method: Optional[pulumi.Input['ActionGitlabMethodArgs']] = None,
+             icon: Optional[pulumi.Input[str]] = None,
+             kafka_method: Optional[pulumi.Input['ActionKafkaMethodArgs']] = None,
+             order_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             required_approval: Optional[pulumi.Input[bool]] = None,
+             user_properties: Optional[pulumi.Input['ActionUserPropertiesArgs']] = None,
+             webhook_method: Optional[pulumi.Input['ActionWebhookMethodArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("blueprint", blueprint)
+        _setter("identifier", identifier)
+        _setter("title", title)
+        _setter("trigger", trigger)
         if approval_email_notification is not None:
-            pulumi.set(__self__, "approval_email_notification", approval_email_notification)
+            _setter("approval_email_notification", approval_email_notification)
         if approval_webhook_notification is not None:
-            pulumi.set(__self__, "approval_webhook_notification", approval_webhook_notification)
+            _setter("approval_webhook_notification", approval_webhook_notification)
         if azure_method is not None:
-            pulumi.set(__self__, "azure_method", azure_method)
+            _setter("azure_method", azure_method)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if github_method is not None:
-            pulumi.set(__self__, "github_method", github_method)
+            _setter("github_method", github_method)
         if gitlab_method is not None:
-            pulumi.set(__self__, "gitlab_method", gitlab_method)
+            _setter("gitlab_method", gitlab_method)
         if icon is not None:
-            pulumi.set(__self__, "icon", icon)
+            _setter("icon", icon)
         if kafka_method is not None:
-            pulumi.set(__self__, "kafka_method", kafka_method)
+            _setter("kafka_method", kafka_method)
         if order_properties is not None:
-            pulumi.set(__self__, "order_properties", order_properties)
+            _setter("order_properties", order_properties)
         if required_approval is not None:
-            pulumi.set(__self__, "required_approval", required_approval)
+            _setter("required_approval", required_approval)
         if user_properties is not None:
-            pulumi.set(__self__, "user_properties", user_properties)
+            _setter("user_properties", user_properties)
         if webhook_method is not None:
-            pulumi.set(__self__, "webhook_method", webhook_method)
+            _setter("webhook_method", webhook_method)
 
     @property
     @pulumi.getter
@@ -311,38 +350,77 @@ class _ActionState:
         :param pulumi.Input['ActionUserPropertiesArgs'] user_properties: User properties
         :param pulumi.Input['ActionWebhookMethodArgs'] webhook_method: The invocation method of the action
         """
+        _ActionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            approval_email_notification=approval_email_notification,
+            approval_webhook_notification=approval_webhook_notification,
+            azure_method=azure_method,
+            blueprint=blueprint,
+            description=description,
+            github_method=github_method,
+            gitlab_method=gitlab_method,
+            icon=icon,
+            identifier=identifier,
+            kafka_method=kafka_method,
+            order_properties=order_properties,
+            required_approval=required_approval,
+            title=title,
+            trigger=trigger,
+            user_properties=user_properties,
+            webhook_method=webhook_method,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             approval_email_notification: Optional[pulumi.Input['ActionApprovalEmailNotificationArgs']] = None,
+             approval_webhook_notification: Optional[pulumi.Input['ActionApprovalWebhookNotificationArgs']] = None,
+             azure_method: Optional[pulumi.Input['ActionAzureMethodArgs']] = None,
+             blueprint: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             github_method: Optional[pulumi.Input['ActionGithubMethodArgs']] = None,
+             gitlab_method: Optional[pulumi.Input['ActionGitlabMethodArgs']] = None,
+             icon: Optional[pulumi.Input[str]] = None,
+             identifier: Optional[pulumi.Input[str]] = None,
+             kafka_method: Optional[pulumi.Input['ActionKafkaMethodArgs']] = None,
+             order_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             required_approval: Optional[pulumi.Input[bool]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             trigger: Optional[pulumi.Input[str]] = None,
+             user_properties: Optional[pulumi.Input['ActionUserPropertiesArgs']] = None,
+             webhook_method: Optional[pulumi.Input['ActionWebhookMethodArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if approval_email_notification is not None:
-            pulumi.set(__self__, "approval_email_notification", approval_email_notification)
+            _setter("approval_email_notification", approval_email_notification)
         if approval_webhook_notification is not None:
-            pulumi.set(__self__, "approval_webhook_notification", approval_webhook_notification)
+            _setter("approval_webhook_notification", approval_webhook_notification)
         if azure_method is not None:
-            pulumi.set(__self__, "azure_method", azure_method)
+            _setter("azure_method", azure_method)
         if blueprint is not None:
-            pulumi.set(__self__, "blueprint", blueprint)
+            _setter("blueprint", blueprint)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if github_method is not None:
-            pulumi.set(__self__, "github_method", github_method)
+            _setter("github_method", github_method)
         if gitlab_method is not None:
-            pulumi.set(__self__, "gitlab_method", gitlab_method)
+            _setter("gitlab_method", gitlab_method)
         if icon is not None:
-            pulumi.set(__self__, "icon", icon)
+            _setter("icon", icon)
         if identifier is not None:
-            pulumi.set(__self__, "identifier", identifier)
+            _setter("identifier", identifier)
         if kafka_method is not None:
-            pulumi.set(__self__, "kafka_method", kafka_method)
+            _setter("kafka_method", kafka_method)
         if order_properties is not None:
-            pulumi.set(__self__, "order_properties", order_properties)
+            _setter("order_properties", order_properties)
         if required_approval is not None:
-            pulumi.set(__self__, "required_approval", required_approval)
+            _setter("required_approval", required_approval)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if trigger is not None:
-            pulumi.set(__self__, "trigger", trigger)
+            _setter("trigger", trigger)
         if user_properties is not None:
-            pulumi.set(__self__, "user_properties", user_properties)
+            _setter("user_properties", user_properties)
         if webhook_method is not None:
-            pulumi.set(__self__, "webhook_method", webhook_method)
+            _setter("webhook_method", webhook_method)
 
     @property
     @pulumi.getter(name="approvalEmailNotification")
@@ -598,6 +676,10 @@ class Action(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ActionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -628,19 +710,49 @@ class Action(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ActionArgs.__new__(ActionArgs)
 
+            if approval_email_notification is not None and not isinstance(approval_email_notification, ActionApprovalEmailNotificationArgs):
+                approval_email_notification = approval_email_notification or {}
+                def _setter(key, value):
+                    approval_email_notification[key] = value
+                ActionApprovalEmailNotificationArgs._configure(_setter, **approval_email_notification)
             __props__.__dict__["approval_email_notification"] = approval_email_notification
+            if approval_webhook_notification is not None and not isinstance(approval_webhook_notification, ActionApprovalWebhookNotificationArgs):
+                approval_webhook_notification = approval_webhook_notification or {}
+                def _setter(key, value):
+                    approval_webhook_notification[key] = value
+                ActionApprovalWebhookNotificationArgs._configure(_setter, **approval_webhook_notification)
             __props__.__dict__["approval_webhook_notification"] = approval_webhook_notification
+            if azure_method is not None and not isinstance(azure_method, ActionAzureMethodArgs):
+                azure_method = azure_method or {}
+                def _setter(key, value):
+                    azure_method[key] = value
+                ActionAzureMethodArgs._configure(_setter, **azure_method)
             __props__.__dict__["azure_method"] = azure_method
             if blueprint is None and not opts.urn:
                 raise TypeError("Missing required property 'blueprint'")
             __props__.__dict__["blueprint"] = blueprint
             __props__.__dict__["description"] = description
+            if github_method is not None and not isinstance(github_method, ActionGithubMethodArgs):
+                github_method = github_method or {}
+                def _setter(key, value):
+                    github_method[key] = value
+                ActionGithubMethodArgs._configure(_setter, **github_method)
             __props__.__dict__["github_method"] = github_method
+            if gitlab_method is not None and not isinstance(gitlab_method, ActionGitlabMethodArgs):
+                gitlab_method = gitlab_method or {}
+                def _setter(key, value):
+                    gitlab_method[key] = value
+                ActionGitlabMethodArgs._configure(_setter, **gitlab_method)
             __props__.__dict__["gitlab_method"] = gitlab_method
             __props__.__dict__["icon"] = icon
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
+            if kafka_method is not None and not isinstance(kafka_method, ActionKafkaMethodArgs):
+                kafka_method = kafka_method or {}
+                def _setter(key, value):
+                    kafka_method[key] = value
+                ActionKafkaMethodArgs._configure(_setter, **kafka_method)
             __props__.__dict__["kafka_method"] = kafka_method
             __props__.__dict__["order_properties"] = order_properties
             __props__.__dict__["required_approval"] = required_approval
@@ -650,7 +762,17 @@ class Action(pulumi.CustomResource):
             if trigger is None and not opts.urn:
                 raise TypeError("Missing required property 'trigger'")
             __props__.__dict__["trigger"] = trigger
+            if user_properties is not None and not isinstance(user_properties, ActionUserPropertiesArgs):
+                user_properties = user_properties or {}
+                def _setter(key, value):
+                    user_properties[key] = value
+                ActionUserPropertiesArgs._configure(_setter, **user_properties)
             __props__.__dict__["user_properties"] = user_properties
+            if webhook_method is not None and not isinstance(webhook_method, ActionWebhookMethodArgs):
+                webhook_method = webhook_method or {}
+                def _setter(key, value):
+                    webhook_method[key] = value
+                ActionWebhookMethodArgs._configure(_setter, **webhook_method)
             __props__.__dict__["webhook_method"] = webhook_method
         super(Action, __self__).__init__(
             'port:index/action:Action',
