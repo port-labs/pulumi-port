@@ -594,6 +594,9 @@
                 "description": {
                     "type": "string"
                 },
+                "encryption": {
+                    "type": "string"
+                },
                 "icon": {
                     "type": "string"
                 },
@@ -684,6 +687,9 @@
                     }
                 },
                 "description": {
+                    "type": "string"
+                },
+                "encryption": {
                     "type": "string"
                 },
                 "enumJqQuery": {

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,26 +41,55 @@ class BlueprintArgs:
         :param pulumi.Input['BlueprintTeamInheritanceArgs'] team_inheritance: The team inheritance of the blueprint
         :param pulumi.Input['BlueprintWebhookChangelogDestinationArgs'] webhook_changelog_destination: The webhook changelog destination of the blueprint
         """
-        pulumi.set(__self__, "identifier", identifier)
-        pulumi.set(__self__, "title", title)
+        BlueprintArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            identifier=identifier,
+            title=title,
+            calculation_properties=calculation_properties,
+            description=description,
+            icon=icon,
+            kafka_changelog_destination=kafka_changelog_destination,
+            mirror_properties=mirror_properties,
+            properties=properties,
+            relations=relations,
+            team_inheritance=team_inheritance,
+            webhook_changelog_destination=webhook_changelog_destination,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             identifier: pulumi.Input[str],
+             title: pulumi.Input[str],
+             calculation_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintCalculationPropertiesArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             icon: Optional[pulumi.Input[str]] = None,
+             kafka_changelog_destination: Optional[pulumi.Input['BlueprintKafkaChangelogDestinationArgs']] = None,
+             mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintMirrorPropertiesArgs']]]] = None,
+             properties: Optional[pulumi.Input['BlueprintPropertiesArgs']] = None,
+             relations: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintRelationsArgs']]]] = None,
+             team_inheritance: Optional[pulumi.Input['BlueprintTeamInheritanceArgs']] = None,
+             webhook_changelog_destination: Optional[pulumi.Input['BlueprintWebhookChangelogDestinationArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("identifier", identifier)
+        _setter("title", title)
         if calculation_properties is not None:
-            pulumi.set(__self__, "calculation_properties", calculation_properties)
+            _setter("calculation_properties", calculation_properties)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if icon is not None:
-            pulumi.set(__self__, "icon", icon)
+            _setter("icon", icon)
         if kafka_changelog_destination is not None:
-            pulumi.set(__self__, "kafka_changelog_destination", kafka_changelog_destination)
+            _setter("kafka_changelog_destination", kafka_changelog_destination)
         if mirror_properties is not None:
-            pulumi.set(__self__, "mirror_properties", mirror_properties)
+            _setter("mirror_properties", mirror_properties)
         if properties is not None:
-            pulumi.set(__self__, "properties", properties)
+            _setter("properties", properties)
         if relations is not None:
-            pulumi.set(__self__, "relations", relations)
+            _setter("relations", relations)
         if team_inheritance is not None:
-            pulumi.set(__self__, "team_inheritance", team_inheritance)
+            _setter("team_inheritance", team_inheritance)
         if webhook_changelog_destination is not None:
-            pulumi.set(__self__, "webhook_changelog_destination", webhook_changelog_destination)
+            _setter("webhook_changelog_destination", webhook_changelog_destination)
 
     @property
     @pulumi.getter
@@ -231,36 +260,73 @@ class _BlueprintState:
         :param pulumi.Input[str] updated_by: The last updater of the blueprint
         :param pulumi.Input['BlueprintWebhookChangelogDestinationArgs'] webhook_changelog_destination: The webhook changelog destination of the blueprint
         """
+        _BlueprintState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            calculation_properties=calculation_properties,
+            created_at=created_at,
+            created_by=created_by,
+            description=description,
+            icon=icon,
+            identifier=identifier,
+            kafka_changelog_destination=kafka_changelog_destination,
+            mirror_properties=mirror_properties,
+            properties=properties,
+            relations=relations,
+            team_inheritance=team_inheritance,
+            title=title,
+            updated_at=updated_at,
+            updated_by=updated_by,
+            webhook_changelog_destination=webhook_changelog_destination,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             calculation_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintCalculationPropertiesArgs']]]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             created_by: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             icon: Optional[pulumi.Input[str]] = None,
+             identifier: Optional[pulumi.Input[str]] = None,
+             kafka_changelog_destination: Optional[pulumi.Input['BlueprintKafkaChangelogDestinationArgs']] = None,
+             mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintMirrorPropertiesArgs']]]] = None,
+             properties: Optional[pulumi.Input['BlueprintPropertiesArgs']] = None,
+             relations: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintRelationsArgs']]]] = None,
+             team_inheritance: Optional[pulumi.Input['BlueprintTeamInheritanceArgs']] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             updated_by: Optional[pulumi.Input[str]] = None,
+             webhook_changelog_destination: Optional[pulumi.Input['BlueprintWebhookChangelogDestinationArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if calculation_properties is not None:
-            pulumi.set(__self__, "calculation_properties", calculation_properties)
+            _setter("calculation_properties", calculation_properties)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if created_by is not None:
-            pulumi.set(__self__, "created_by", created_by)
+            _setter("created_by", created_by)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if icon is not None:
-            pulumi.set(__self__, "icon", icon)
+            _setter("icon", icon)
         if identifier is not None:
-            pulumi.set(__self__, "identifier", identifier)
+            _setter("identifier", identifier)
         if kafka_changelog_destination is not None:
-            pulumi.set(__self__, "kafka_changelog_destination", kafka_changelog_destination)
+            _setter("kafka_changelog_destination", kafka_changelog_destination)
         if mirror_properties is not None:
-            pulumi.set(__self__, "mirror_properties", mirror_properties)
+            _setter("mirror_properties", mirror_properties)
         if properties is not None:
-            pulumi.set(__self__, "properties", properties)
+            _setter("properties", properties)
         if relations is not None:
-            pulumi.set(__self__, "relations", relations)
+            _setter("relations", relations)
         if team_inheritance is not None:
-            pulumi.set(__self__, "team_inheritance", team_inheritance)
+            _setter("team_inheritance", team_inheritance)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
         if updated_by is not None:
-            pulumi.set(__self__, "updated_by", updated_by)
+            _setter("updated_by", updated_by)
         if webhook_changelog_destination is not None:
-            pulumi.set(__self__, "webhook_changelog_destination", webhook_changelog_destination)
+            _setter("webhook_changelog_destination", webhook_changelog_destination)
 
     @property
     @pulumi.getter(name="calculationProperties")
@@ -494,6 +560,10 @@ class Blueprint(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BlueprintArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -525,14 +595,34 @@ class Blueprint(pulumi.CustomResource):
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
+            if kafka_changelog_destination is not None and not isinstance(kafka_changelog_destination, BlueprintKafkaChangelogDestinationArgs):
+                kafka_changelog_destination = kafka_changelog_destination or {}
+                def _setter(key, value):
+                    kafka_changelog_destination[key] = value
+                BlueprintKafkaChangelogDestinationArgs._configure(_setter, **kafka_changelog_destination)
             __props__.__dict__["kafka_changelog_destination"] = kafka_changelog_destination
             __props__.__dict__["mirror_properties"] = mirror_properties
+            if properties is not None and not isinstance(properties, BlueprintPropertiesArgs):
+                properties = properties or {}
+                def _setter(key, value):
+                    properties[key] = value
+                BlueprintPropertiesArgs._configure(_setter, **properties)
             __props__.__dict__["properties"] = properties
             __props__.__dict__["relations"] = relations
+            if team_inheritance is not None and not isinstance(team_inheritance, BlueprintTeamInheritanceArgs):
+                team_inheritance = team_inheritance or {}
+                def _setter(key, value):
+                    team_inheritance[key] = value
+                BlueprintTeamInheritanceArgs._configure(_setter, **team_inheritance)
             __props__.__dict__["team_inheritance"] = team_inheritance
             if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
+            if webhook_changelog_destination is not None and not isinstance(webhook_changelog_destination, BlueprintWebhookChangelogDestinationArgs):
+                webhook_changelog_destination = webhook_changelog_destination or {}
+                def _setter(key, value):
+                    webhook_changelog_destination[key] = value
+                BlueprintWebhookChangelogDestinationArgs._configure(_setter, **webhook_changelog_destination)
             __props__.__dict__["webhook_changelog_destination"] = webhook_changelog_destination
             __props__.__dict__["created_at"] = None
             __props__.__dict__["created_by"] = None

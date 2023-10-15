@@ -3693,6 +3693,7 @@ type ActionUserPropertiesObjectProps struct {
 	DefaultJqQuery *string                                 `pulumi:"defaultJqQuery"`
 	DependsOns     []string                                `pulumi:"dependsOns"`
 	Description    *string                                 `pulumi:"description"`
+	Encryption     *string                                 `pulumi:"encryption"`
 	Icon           *string                                 `pulumi:"icon"`
 	Required       *bool                                   `pulumi:"required"`
 	Title          *string                                 `pulumi:"title"`
@@ -3715,6 +3716,7 @@ type ActionUserPropertiesObjectPropsArgs struct {
 	DefaultJqQuery pulumi.StringPtrInput                          `pulumi:"defaultJqQuery"`
 	DependsOns     pulumi.StringArrayInput                        `pulumi:"dependsOns"`
 	Description    pulumi.StringPtrInput                          `pulumi:"description"`
+	Encryption     pulumi.StringPtrInput                          `pulumi:"encryption"`
 	Icon           pulumi.StringPtrInput                          `pulumi:"icon"`
 	Required       pulumi.BoolPtrInput                            `pulumi:"required"`
 	Title          pulumi.StringPtrInput                          `pulumi:"title"`
@@ -3807,6 +3809,10 @@ func (o ActionUserPropertiesObjectPropsOutput) DependsOns() pulumi.StringArrayOu
 
 func (o ActionUserPropertiesObjectPropsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesObjectPropsOutput) Encryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.Encryption }).(pulumi.StringPtrOutput)
 }
 
 func (o ActionUserPropertiesObjectPropsOutput) Icon() pulumi.StringPtrOutput {
@@ -4227,6 +4233,7 @@ type ActionUserPropertiesStringProps struct {
 	DefaultJqQuery *string                                 `pulumi:"defaultJqQuery"`
 	DependsOns     []string                                `pulumi:"dependsOns"`
 	Description    *string                                 `pulumi:"description"`
+	Encryption     *string                                 `pulumi:"encryption"`
 	EnumJqQuery    *string                                 `pulumi:"enumJqQuery"`
 	Enums          []string                                `pulumi:"enums"`
 	Format         *string                                 `pulumi:"format"`
@@ -4256,6 +4263,7 @@ type ActionUserPropertiesStringPropsArgs struct {
 	DefaultJqQuery pulumi.StringPtrInput                          `pulumi:"defaultJqQuery"`
 	DependsOns     pulumi.StringArrayInput                        `pulumi:"dependsOns"`
 	Description    pulumi.StringPtrInput                          `pulumi:"description"`
+	Encryption     pulumi.StringPtrInput                          `pulumi:"encryption"`
 	EnumJqQuery    pulumi.StringPtrInput                          `pulumi:"enumJqQuery"`
 	Enums          pulumi.StringArrayInput                        `pulumi:"enums"`
 	Format         pulumi.StringPtrInput                          `pulumi:"format"`
@@ -4358,6 +4366,10 @@ func (o ActionUserPropertiesStringPropsOutput) DependsOns() pulumi.StringArrayOu
 
 func (o ActionUserPropertiesStringPropsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionUserPropertiesStringPropsOutput) Encryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Encryption }).(pulumi.StringPtrOutput)
 }
 
 func (o ActionUserPropertiesStringPropsOutput) EnumJqQuery() pulumi.StringPtrOutput {

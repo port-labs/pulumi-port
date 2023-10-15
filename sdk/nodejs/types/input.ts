@@ -164,6 +164,7 @@ export interface ActionUserPropertiesObjectProps {
     defaultJqQuery?: pulumi.Input<string>;
     dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
     description?: pulumi.Input<string>;
+    encryption?: pulumi.Input<string>;
     icon?: pulumi.Input<string>;
     required?: pulumi.Input<boolean>;
     title?: pulumi.Input<string>;
@@ -192,6 +193,7 @@ export interface ActionUserPropertiesStringProps {
     defaultJqQuery?: pulumi.Input<string>;
     dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
     description?: pulumi.Input<string>;
+    encryption?: pulumi.Input<string>;
     enumJqQuery?: pulumi.Input<string>;
     enums?: pulumi.Input<pulumi.Input<string>[]>;
     format?: pulumi.Input<string>;

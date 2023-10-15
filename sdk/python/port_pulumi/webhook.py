@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,20 +33,41 @@ class WebhookArgs:
         :param pulumi.Input['WebhookSecurityArgs'] security: The security of the webhook
         :param pulumi.Input[str] title: The title of the webhook
         """
+        WebhookArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            enabled=enabled,
+            icon=icon,
+            identifier=identifier,
+            mappings=mappings,
+            security=security,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             icon: Optional[pulumi.Input[str]] = None,
+             identifier: Optional[pulumi.Input[str]] = None,
+             mappings: Optional[pulumi.Input[Sequence[pulumi.Input['WebhookMappingArgs']]]] = None,
+             security: Optional[pulumi.Input['WebhookSecurityArgs']] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if icon is not None:
-            pulumi.set(__self__, "icon", icon)
+            _setter("icon", icon)
         if identifier is not None:
-            pulumi.set(__self__, "identifier", identifier)
+            _setter("identifier", identifier)
         if mappings is not None:
-            pulumi.set(__self__, "mappings", mappings)
+            _setter("mappings", mappings)
         if security is not None:
-            pulumi.set(__self__, "security", security)
+            _setter("security", security)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter
@@ -165,32 +186,65 @@ class _WebhookState:
         :param pulumi.Input[str] url: The url of the webhook
         :param pulumi.Input[str] webhook_key: The webhook key of the webhook
         """
+        _WebhookState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            created_by=created_by,
+            description=description,
+            enabled=enabled,
+            icon=icon,
+            identifier=identifier,
+            mappings=mappings,
+            security=security,
+            title=title,
+            updated_at=updated_at,
+            updated_by=updated_by,
+            url=url,
+            webhook_key=webhook_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: Optional[pulumi.Input[str]] = None,
+             created_by: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             icon: Optional[pulumi.Input[str]] = None,
+             identifier: Optional[pulumi.Input[str]] = None,
+             mappings: Optional[pulumi.Input[Sequence[pulumi.Input['WebhookMappingArgs']]]] = None,
+             security: Optional[pulumi.Input['WebhookSecurityArgs']] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             updated_by: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             webhook_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if created_by is not None:
-            pulumi.set(__self__, "created_by", created_by)
+            _setter("created_by", created_by)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if icon is not None:
-            pulumi.set(__self__, "icon", icon)
+            _setter("icon", icon)
         if identifier is not None:
-            pulumi.set(__self__, "identifier", identifier)
+            _setter("identifier", identifier)
         if mappings is not None:
-            pulumi.set(__self__, "mappings", mappings)
+            _setter("mappings", mappings)
         if security is not None:
-            pulumi.set(__self__, "security", security)
+            _setter("security", security)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
         if updated_by is not None:
-            pulumi.set(__self__, "updated_by", updated_by)
+            _setter("updated_by", updated_by)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
         if webhook_key is not None:
-            pulumi.set(__self__, "webhook_key", webhook_key)
+            _setter("webhook_key", webhook_key)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -392,6 +446,10 @@ class Webhook(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WebhookArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -418,6 +476,11 @@ class Webhook(pulumi.CustomResource):
             __props__.__dict__["icon"] = icon
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["mappings"] = mappings
+            if security is not None and not isinstance(security, WebhookSecurityArgs):
+                security = security or {}
+                def _setter(key, value):
+                    security[key] = value
+                WebhookSecurityArgs._configure(_setter, **security)
             __props__.__dict__["security"] = security
             __props__.__dict__["title"] = title
             __props__.__dict__["created_at"] = None

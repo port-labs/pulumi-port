@@ -164,6 +164,7 @@ export interface ActionUserPropertiesObjectProps {
     defaultJqQuery?: string;
     dependsOns?: string[];
     description?: string;
+    encryption?: string;
     icon?: string;
     required: boolean;
     title?: string;
@@ -192,6 +193,7 @@ export interface ActionUserPropertiesStringProps {
     defaultJqQuery?: string;
     dependsOns?: string[];
     description?: string;
+    encryption?: string;
     enumJqQuery?: string;
     enums?: string[];
     format?: string;
