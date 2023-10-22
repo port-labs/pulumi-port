@@ -41,7 +41,9 @@ class ScorecardArgs:
              identifier: pulumi.Input[str],
              rules: pulumi.Input[Sequence[pulumi.Input['ScorecardRuleArgs']]],
              title: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("blueprint", blueprint)
         _setter("identifier", identifier)
         _setter("rules", rules)
@@ -140,7 +142,17 @@ class _ScorecardState:
              title: Optional[pulumi.Input[str]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
              updated_by: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if 'updatedBy' in kwargs:
+            updated_by = kwargs['updatedBy']
+
         if blueprint is not None:
             _setter("blueprint", blueprint)
         if created_at is not None:
