@@ -57,7 +57,11 @@ class EntityArgs:
              run_id: Optional[pulumi.Input[str]] = None,
              teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'runId' in kwargs:
+            run_id = kwargs['runId']
+
         _setter("blueprint", blueprint)
         if icon is not None:
             _setter("icon", icon)
@@ -231,7 +235,19 @@ class _EntityState:
              title: Optional[pulumi.Input[str]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
              updated_by: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if 'runId' in kwargs:
+            run_id = kwargs['runId']
+        if 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if 'updatedBy' in kwargs:
+            updated_by = kwargs['updatedBy']
+
         if blueprint is not None:
             _setter("blueprint", blueprint)
         if created_at is not None:

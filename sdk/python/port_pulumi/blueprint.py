@@ -69,7 +69,19 @@ class BlueprintArgs:
              relations: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintRelationsArgs']]]] = None,
              team_inheritance: Optional[pulumi.Input['BlueprintTeamInheritanceArgs']] = None,
              webhook_changelog_destination: Optional[pulumi.Input['BlueprintWebhookChangelogDestinationArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'calculationProperties' in kwargs:
+            calculation_properties = kwargs['calculationProperties']
+        if 'kafkaChangelogDestination' in kwargs:
+            kafka_changelog_destination = kwargs['kafkaChangelogDestination']
+        if 'mirrorProperties' in kwargs:
+            mirror_properties = kwargs['mirrorProperties']
+        if 'teamInheritance' in kwargs:
+            team_inheritance = kwargs['teamInheritance']
+        if 'webhookChangelogDestination' in kwargs:
+            webhook_changelog_destination = kwargs['webhookChangelogDestination']
+
         _setter("identifier", identifier)
         _setter("title", title)
         if calculation_properties is not None:
@@ -296,7 +308,27 @@ class _BlueprintState:
              updated_at: Optional[pulumi.Input[str]] = None,
              updated_by: Optional[pulumi.Input[str]] = None,
              webhook_changelog_destination: Optional[pulumi.Input['BlueprintWebhookChangelogDestinationArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'calculationProperties' in kwargs:
+            calculation_properties = kwargs['calculationProperties']
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if 'kafkaChangelogDestination' in kwargs:
+            kafka_changelog_destination = kwargs['kafkaChangelogDestination']
+        if 'mirrorProperties' in kwargs:
+            mirror_properties = kwargs['mirrorProperties']
+        if 'teamInheritance' in kwargs:
+            team_inheritance = kwargs['teamInheritance']
+        if 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if 'updatedBy' in kwargs:
+            updated_by = kwargs['updatedBy']
+        if 'webhookChangelogDestination' in kwargs:
+            webhook_changelog_destination = kwargs['webhookChangelogDestination']
+
         if calculation_properties is not None:
             _setter("calculation_properties", calculation_properties)
         if created_at is not None:

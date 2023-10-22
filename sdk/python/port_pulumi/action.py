@@ -89,7 +89,29 @@ class ActionArgs:
              required_approval: Optional[pulumi.Input[bool]] = None,
              user_properties: Optional[pulumi.Input['ActionUserPropertiesArgs']] = None,
              webhook_method: Optional[pulumi.Input['ActionWebhookMethodArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'approvalEmailNotification' in kwargs:
+            approval_email_notification = kwargs['approvalEmailNotification']
+        if 'approvalWebhookNotification' in kwargs:
+            approval_webhook_notification = kwargs['approvalWebhookNotification']
+        if 'azureMethod' in kwargs:
+            azure_method = kwargs['azureMethod']
+        if 'githubMethod' in kwargs:
+            github_method = kwargs['githubMethod']
+        if 'gitlabMethod' in kwargs:
+            gitlab_method = kwargs['gitlabMethod']
+        if 'kafkaMethod' in kwargs:
+            kafka_method = kwargs['kafkaMethod']
+        if 'orderProperties' in kwargs:
+            order_properties = kwargs['orderProperties']
+        if 'requiredApproval' in kwargs:
+            required_approval = kwargs['requiredApproval']
+        if 'userProperties' in kwargs:
+            user_properties = kwargs['userProperties']
+        if 'webhookMethod' in kwargs:
+            webhook_method = kwargs['webhookMethod']
+
         _setter("blueprint", blueprint)
         _setter("identifier", identifier)
         _setter("title", title)
@@ -388,7 +410,29 @@ class _ActionState:
              trigger: Optional[pulumi.Input[str]] = None,
              user_properties: Optional[pulumi.Input['ActionUserPropertiesArgs']] = None,
              webhook_method: Optional[pulumi.Input['ActionWebhookMethodArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'approvalEmailNotification' in kwargs:
+            approval_email_notification = kwargs['approvalEmailNotification']
+        if 'approvalWebhookNotification' in kwargs:
+            approval_webhook_notification = kwargs['approvalWebhookNotification']
+        if 'azureMethod' in kwargs:
+            azure_method = kwargs['azureMethod']
+        if 'githubMethod' in kwargs:
+            github_method = kwargs['githubMethod']
+        if 'gitlabMethod' in kwargs:
+            gitlab_method = kwargs['gitlabMethod']
+        if 'kafkaMethod' in kwargs:
+            kafka_method = kwargs['kafkaMethod']
+        if 'orderProperties' in kwargs:
+            order_properties = kwargs['orderProperties']
+        if 'requiredApproval' in kwargs:
+            required_approval = kwargs['requiredApproval']
+        if 'userProperties' in kwargs:
+            user_properties = kwargs['userProperties']
+        if 'webhookMethod' in kwargs:
+            webhook_method = kwargs['webhookMethod']
+
         if approval_email_notification is not None:
             _setter("approval_email_notification", approval_email_notification)
         if approval_webhook_notification is not None:

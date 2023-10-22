@@ -77,8 +77,10 @@ class ActionApprovalEmailNotificationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -93,7 +95,9 @@ class ActionApprovalWebhookNotificationArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              url: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("url", url)
 
     @property
@@ -121,7 +125,9 @@ class ActionAzureMethodArgs:
              _setter: Callable[[Any, Any], None],
              org: pulumi.Input[str],
              webhook: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("org", org)
         _setter("webhook", webhook)
 
@@ -171,7 +177,15 @@ class ActionGithubMethodArgs:
              omit_payload: Optional[pulumi.Input[bool]] = None,
              omit_user_inputs: Optional[pulumi.Input[bool]] = None,
              report_workflow_status: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'omitPayload' in kwargs:
+            omit_payload = kwargs['omitPayload']
+        if 'omitUserInputs' in kwargs:
+            omit_user_inputs = kwargs['omitUserInputs']
+        if 'reportWorkflowStatus' in kwargs:
+            report_workflow_status = kwargs['reportWorkflowStatus']
+
         _setter("org", org)
         _setter("repo", repo)
         _setter("workflow", workflow)
@@ -264,7 +278,19 @@ class ActionGitlabMethodArgs:
              default_ref: Optional[pulumi.Input[str]] = None,
              omit_payload: Optional[pulumi.Input[bool]] = None,
              omit_user_inputs: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if 'defaultRef' in kwargs:
+            default_ref = kwargs['defaultRef']
+        if 'omitPayload' in kwargs:
+            omit_payload = kwargs['omitPayload']
+        if 'omitUserInputs' in kwargs:
+            omit_user_inputs = kwargs['omitUserInputs']
+
         _setter("group_name", group_name)
         _setter("project_name", project_name)
         if agent is not None:
@@ -338,8 +364,10 @@ class ActionKafkaMethodArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -366,7 +394,19 @@ class ActionUserPropertiesArgs:
              number_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesNumberPropsArgs']]]] = None,
              object_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesObjectPropsArgs']]]] = None,
              string_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesStringPropsArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'arrayProps' in kwargs:
+            array_props = kwargs['arrayProps']
+        if 'booleanProps' in kwargs:
+            boolean_props = kwargs['booleanProps']
+        if 'numberProps' in kwargs:
+            number_props = kwargs['numberProps']
+        if 'objectProps' in kwargs:
+            object_props = kwargs['objectProps']
+        if 'stringProps' in kwargs:
+            string_props = kwargs['stringProps']
+
         if array_props is not None:
             _setter("array_props", array_props)
         if boolean_props is not None:
@@ -472,7 +512,25 @@ class ActionUserPropertiesArrayPropsArgs:
              required: Optional[pulumi.Input[bool]] = None,
              string_items: Optional[pulumi.Input['ActionUserPropertiesArrayPropsStringItemsArgs']] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'booleanItems' in kwargs:
+            boolean_items = kwargs['booleanItems']
+        if 'defaultJqQuery' in kwargs:
+            default_jq_query = kwargs['defaultJqQuery']
+        if 'dependsOns' in kwargs:
+            depends_ons = kwargs['dependsOns']
+        if 'maxItems' in kwargs:
+            max_items = kwargs['maxItems']
+        if 'minItems' in kwargs:
+            min_items = kwargs['minItems']
+        if 'numberItems' in kwargs:
+            number_items = kwargs['numberItems']
+        if 'objectItems' in kwargs:
+            object_items = kwargs['objectItems']
+        if 'stringItems' in kwargs:
+            string_items = kwargs['stringItems']
+
         if boolean_items is not None:
             _setter("boolean_items", boolean_items)
         if dataset is not None:
@@ -630,7 +688,9 @@ class ActionUserPropertiesArrayPropsBooleanItemsArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              defaults: Optional[pulumi.Input[Sequence[pulumi.Input[bool]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if defaults is not None:
             _setter("defaults", defaults)
 
@@ -659,7 +719,9 @@ class ActionUserPropertiesArrayPropsDatasetArgs:
              _setter: Callable[[Any, Any], None],
              combinator: pulumi.Input[str],
              rules: pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesArrayPropsDatasetRuleArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("combinator", combinator)
         _setter("rules", rules)
 
@@ -703,7 +765,9 @@ class ActionUserPropertiesArrayPropsDatasetRuleArgs:
              value: pulumi.Input['ActionUserPropertiesArrayPropsDatasetRuleValueArgs'],
              blueprint: Optional[pulumi.Input[str]] = None,
              property: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("operator", operator)
         _setter("value", value)
         if blueprint is not None:
@@ -760,7 +824,11 @@ class ActionUserPropertiesArrayPropsDatasetRuleValueArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              jq_query: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'jqQuery' in kwargs:
+            jq_query = kwargs['jqQuery']
+
         _setter("jq_query", jq_query)
 
     @property
@@ -791,7 +859,11 @@ class ActionUserPropertiesArrayPropsNumberItemsArgs:
              defaults: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]] = None,
              enum_jq_query: Optional[pulumi.Input[str]] = None,
              enums: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'enumJqQuery' in kwargs:
+            enum_jq_query = kwargs['enumJqQuery']
+
         if defaults is not None:
             _setter("defaults", defaults)
         if enum_jq_query is not None:
@@ -839,7 +911,9 @@ class ActionUserPropertiesArrayPropsObjectItemsArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              defaults: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if defaults is not None:
             _setter("defaults", defaults)
 
@@ -877,7 +951,11 @@ class ActionUserPropertiesArrayPropsStringItemsArgs:
              enum_jq_query: Optional[pulumi.Input[str]] = None,
              enums: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              format: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'enumJqQuery' in kwargs:
+            enum_jq_query = kwargs['enumJqQuery']
+
         if blueprint is not None:
             _setter("blueprint", blueprint)
         if defaults is not None:
@@ -968,7 +1046,13 @@ class ActionUserPropertiesBooleanPropsArgs:
              icon: Optional[pulumi.Input[str]] = None,
              required: Optional[pulumi.Input[bool]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultJqQuery' in kwargs:
+            default_jq_query = kwargs['defaultJqQuery']
+        if 'dependsOns' in kwargs:
+            depends_ons = kwargs['dependsOns']
+
         if dataset is not None:
             _setter("dataset", dataset)
         if default is not None:
@@ -1074,7 +1158,9 @@ class ActionUserPropertiesBooleanPropsDatasetArgs:
              _setter: Callable[[Any, Any], None],
              combinator: pulumi.Input[str],
              rules: pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesBooleanPropsDatasetRuleArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("combinator", combinator)
         _setter("rules", rules)
 
@@ -1118,7 +1204,9 @@ class ActionUserPropertiesBooleanPropsDatasetRuleArgs:
              value: pulumi.Input['ActionUserPropertiesBooleanPropsDatasetRuleValueArgs'],
              blueprint: Optional[pulumi.Input[str]] = None,
              property: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("operator", operator)
         _setter("value", value)
         if blueprint is not None:
@@ -1175,7 +1263,11 @@ class ActionUserPropertiesBooleanPropsDatasetRuleValueArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              jq_query: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'jqQuery' in kwargs:
+            jq_query = kwargs['jqQuery']
+
         _setter("jq_query", jq_query)
 
     @property
@@ -1233,7 +1325,15 @@ class ActionUserPropertiesNumberPropsArgs:
              minimum: Optional[pulumi.Input[float]] = None,
              required: Optional[pulumi.Input[bool]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultJqQuery' in kwargs:
+            default_jq_query = kwargs['defaultJqQuery']
+        if 'dependsOns' in kwargs:
+            depends_ons = kwargs['dependsOns']
+        if 'enumJqQuery' in kwargs:
+            enum_jq_query = kwargs['enumJqQuery']
+
         if dataset is not None:
             _setter("dataset", dataset)
         if default is not None:
@@ -1383,7 +1483,9 @@ class ActionUserPropertiesNumberPropsDatasetArgs:
              _setter: Callable[[Any, Any], None],
              combinator: pulumi.Input[str],
              rules: pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesNumberPropsDatasetRuleArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("combinator", combinator)
         _setter("rules", rules)
 
@@ -1427,7 +1529,9 @@ class ActionUserPropertiesNumberPropsDatasetRuleArgs:
              value: pulumi.Input['ActionUserPropertiesNumberPropsDatasetRuleValueArgs'],
              blueprint: Optional[pulumi.Input[str]] = None,
              property: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("operator", operator)
         _setter("value", value)
         if blueprint is not None:
@@ -1484,7 +1588,11 @@ class ActionUserPropertiesNumberPropsDatasetRuleValueArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              jq_query: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'jqQuery' in kwargs:
+            jq_query = kwargs['jqQuery']
+
         _setter("jq_query", jq_query)
 
     @property
@@ -1533,7 +1641,13 @@ class ActionUserPropertiesObjectPropsArgs:
              icon: Optional[pulumi.Input[str]] = None,
              required: Optional[pulumi.Input[bool]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultJqQuery' in kwargs:
+            default_jq_query = kwargs['defaultJqQuery']
+        if 'dependsOns' in kwargs:
+            depends_ons = kwargs['dependsOns']
+
         if dataset is not None:
             _setter("dataset", dataset)
         if default is not None:
@@ -1650,7 +1764,9 @@ class ActionUserPropertiesObjectPropsDatasetArgs:
              _setter: Callable[[Any, Any], None],
              combinator: pulumi.Input[str],
              rules: pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesObjectPropsDatasetRuleArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("combinator", combinator)
         _setter("rules", rules)
 
@@ -1694,7 +1810,9 @@ class ActionUserPropertiesObjectPropsDatasetRuleArgs:
              value: pulumi.Input['ActionUserPropertiesObjectPropsDatasetRuleValueArgs'],
              blueprint: Optional[pulumi.Input[str]] = None,
              property: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("operator", operator)
         _setter("value", value)
         if blueprint is not None:
@@ -1751,7 +1869,11 @@ class ActionUserPropertiesObjectPropsDatasetRuleValueArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              jq_query: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'jqQuery' in kwargs:
+            jq_query = kwargs['jqQuery']
+
         _setter("jq_query", jq_query)
 
     @property
@@ -1821,7 +1943,19 @@ class ActionUserPropertiesStringPropsArgs:
              pattern: Optional[pulumi.Input[str]] = None,
              required: Optional[pulumi.Input[bool]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultJqQuery' in kwargs:
+            default_jq_query = kwargs['defaultJqQuery']
+        if 'dependsOns' in kwargs:
+            depends_ons = kwargs['dependsOns']
+        if 'enumJqQuery' in kwargs:
+            enum_jq_query = kwargs['enumJqQuery']
+        if 'maxLength' in kwargs:
+            max_length = kwargs['maxLength']
+        if 'minLength' in kwargs:
+            min_length = kwargs['minLength']
+
         if blueprint is not None:
             _setter("blueprint", blueprint)
         if dataset is not None:
@@ -2015,7 +2149,9 @@ class ActionUserPropertiesStringPropsDatasetArgs:
              _setter: Callable[[Any, Any], None],
              combinator: pulumi.Input[str],
              rules: pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("combinator", combinator)
         _setter("rules", rules)
 
@@ -2059,7 +2195,9 @@ class ActionUserPropertiesStringPropsDatasetRuleArgs:
              value: pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleValueArgs'],
              blueprint: Optional[pulumi.Input[str]] = None,
              property: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("operator", operator)
         _setter("value", value)
         if blueprint is not None:
@@ -2116,7 +2254,11 @@ class ActionUserPropertiesStringPropsDatasetRuleValueArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              jq_query: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'jqQuery' in kwargs:
+            jq_query = kwargs['jqQuery']
+
         _setter("jq_query", jq_query)
 
     @property
@@ -2150,7 +2292,9 @@ class ActionWebhookMethodArgs:
              agent: Optional[pulumi.Input[bool]] = None,
              method: Optional[pulumi.Input[str]] = None,
              synchronized: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("url", url)
         if agent is not None:
             _setter("agent", agent)
@@ -2229,7 +2373,9 @@ class BlueprintCalculationPropertiesArgs:
              format: Optional[pulumi.Input[str]] = None,
              icon: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("calculation", calculation)
         _setter("type", type)
         if colorized is not None:
@@ -2325,8 +2471,10 @@ class BlueprintKafkaChangelogDestinationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
         pass
+
 
 
 @pulumi.input_type
@@ -2344,7 +2492,9 @@ class BlueprintMirrorPropertiesArgs:
              _setter: Callable[[Any, Any], None],
              path: pulumi.Input[str],
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("path", path)
         if title is not None:
             _setter("title", title)
@@ -2392,7 +2542,19 @@ class BlueprintPropertiesArgs:
              number_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPropertiesNumberPropsArgs']]]] = None,
              object_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPropertiesObjectPropsArgs']]]] = None,
              string_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPropertiesStringPropsArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'arrayProps' in kwargs:
+            array_props = kwargs['arrayProps']
+        if 'booleanProps' in kwargs:
+            boolean_props = kwargs['booleanProps']
+        if 'numberProps' in kwargs:
+            number_props = kwargs['numberProps']
+        if 'objectProps' in kwargs:
+            object_props = kwargs['objectProps']
+        if 'stringProps' in kwargs:
+            string_props = kwargs['stringProps']
+
         if array_props is not None:
             _setter("array_props", array_props)
         if boolean_props is not None:
@@ -2489,7 +2651,21 @@ class BlueprintPropertiesArrayPropsArgs:
              required: Optional[pulumi.Input[bool]] = None,
              string_items: Optional[pulumi.Input['BlueprintPropertiesArrayPropsStringItemsArgs']] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'booleanItems' in kwargs:
+            boolean_items = kwargs['booleanItems']
+        if 'maxItems' in kwargs:
+            max_items = kwargs['maxItems']
+        if 'minItems' in kwargs:
+            min_items = kwargs['minItems']
+        if 'numberItems' in kwargs:
+            number_items = kwargs['numberItems']
+        if 'objectItems' in kwargs:
+            object_items = kwargs['objectItems']
+        if 'stringItems' in kwargs:
+            string_items = kwargs['stringItems']
+
         if boolean_items is not None:
             _setter("boolean_items", boolean_items)
         if description is not None:
@@ -2614,7 +2790,9 @@ class BlueprintPropertiesArrayPropsBooleanItemsArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              defaults: Optional[pulumi.Input[Sequence[pulumi.Input[bool]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if defaults is not None:
             _setter("defaults", defaults)
 
@@ -2640,7 +2818,9 @@ class BlueprintPropertiesArrayPropsNumberItemsArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              defaults: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if defaults is not None:
             _setter("defaults", defaults)
 
@@ -2666,7 +2846,9 @@ class BlueprintPropertiesArrayPropsObjectItemsArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if defaults is not None:
             _setter("defaults", defaults)
 
@@ -2695,7 +2877,9 @@ class BlueprintPropertiesArrayPropsStringItemsArgs:
              _setter: Callable[[Any, Any], None],
              defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              format: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if defaults is not None:
             _setter("defaults", defaults)
         if format is not None:
@@ -2744,7 +2928,9 @@ class BlueprintPropertiesBooleanPropsArgs:
              icon: Optional[pulumi.Input[str]] = None,
              required: Optional[pulumi.Input[bool]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if default is not None:
             _setter("default", default)
         if description is not None:
@@ -2838,7 +3024,11 @@ class BlueprintPropertiesNumberPropsArgs:
              minimum: Optional[pulumi.Input[float]] = None,
              required: Optional[pulumi.Input[bool]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'enumColors' in kwargs:
+            enum_colors = kwargs['enumColors']
+
         if default is not None:
             _setter("default", default)
         if description is not None:
@@ -2967,7 +3157,9 @@ class BlueprintPropertiesObjectPropsArgs:
              required: Optional[pulumi.Input[bool]] = None,
              spec: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if default is not None:
             _setter("default", default)
         if description is not None:
@@ -3084,7 +3276,17 @@ class BlueprintPropertiesStringPropsArgs:
              spec: Optional[pulumi.Input[str]] = None,
              spec_authentication: Optional[pulumi.Input['BlueprintPropertiesStringPropsSpecAuthenticationArgs']] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'enumColors' in kwargs:
+            enum_colors = kwargs['enumColors']
+        if 'maxLength' in kwargs:
+            max_length = kwargs['maxLength']
+        if 'minLength' in kwargs:
+            min_length = kwargs['minLength']
+        if 'specAuthentication' in kwargs:
+            spec_authentication = kwargs['specAuthentication']
+
         if default is not None:
             _setter("default", default)
         if description is not None:
@@ -3248,7 +3450,15 @@ class BlueprintPropertiesStringPropsSpecAuthenticationArgs:
              authorization_url: pulumi.Input[str],
              client_id: pulumi.Input[str],
              token_url: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authorizationUrl' in kwargs:
+            authorization_url = kwargs['authorizationUrl']
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if 'tokenUrl' in kwargs:
+            token_url = kwargs['tokenUrl']
+
         _setter("authorization_url", authorization_url)
         _setter("client_id", client_id)
         _setter("token_url", token_url)
@@ -3302,7 +3512,9 @@ class BlueprintRelationsArgs:
              many: Optional[pulumi.Input[bool]] = None,
              required: Optional[pulumi.Input[bool]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("target", target)
         if many is not None:
             _setter("many", many)
@@ -3360,7 +3572,9 @@ class BlueprintTeamInheritanceArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              path: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("path", path)
 
     @property
@@ -3388,7 +3602,9 @@ class BlueprintWebhookChangelogDestinationArgs:
              _setter: Callable[[Any, Any], None],
              url: pulumi.Input[str],
              agent: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("url", url)
         if agent is not None:
             _setter("agent", agent)
@@ -3436,7 +3652,19 @@ class EntityPropertiesArgs:
              number_props: Optional[pulumi.Input[Mapping[str, pulumi.Input[float]]]] = None,
              object_props: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              string_props: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'arrayProps' in kwargs:
+            array_props = kwargs['arrayProps']
+        if 'booleanProps' in kwargs:
+            boolean_props = kwargs['booleanProps']
+        if 'numberProps' in kwargs:
+            number_props = kwargs['numberProps']
+        if 'objectProps' in kwargs:
+            object_props = kwargs['objectProps']
+        if 'stringProps' in kwargs:
+            string_props = kwargs['stringProps']
+
         if array_props is not None:
             _setter("array_props", array_props)
         if boolean_props is not None:
@@ -3515,7 +3743,17 @@ class EntityPropertiesArrayPropsArgs:
              number_items: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[float]]]]]] = None,
              object_items: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
              string_items: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'booleanItems' in kwargs:
+            boolean_items = kwargs['booleanItems']
+        if 'numberItems' in kwargs:
+            number_items = kwargs['numberItems']
+        if 'objectItems' in kwargs:
+            object_items = kwargs['objectItems']
+        if 'stringItems' in kwargs:
+            string_items = kwargs['stringItems']
+
         if boolean_items is not None:
             _setter("boolean_items", boolean_items)
         if number_items is not None:
@@ -3577,7 +3815,13 @@ class EntityRelationsArgs:
              _setter: Callable[[Any, Any], None],
              many_relations: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[str]]]]]] = None,
              single_relations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'manyRelations' in kwargs:
+            many_relations = kwargs['manyRelations']
+        if 'singleRelations' in kwargs:
+            single_relations = kwargs['singleRelations']
+
         if many_relations is not None:
             _setter("many_relations", many_relations)
         if single_relations is not None:
@@ -3623,7 +3867,9 @@ class ScorecardRuleArgs:
              level: pulumi.Input[str],
              query: pulumi.Input['ScorecardRuleQueryArgs'],
              title: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("identifier", identifier)
         _setter("level", level)
         _setter("query", query)
@@ -3681,7 +3927,9 @@ class ScorecardRuleQueryArgs:
              _setter: Callable[[Any, Any], None],
              combinator: pulumi.Input[str],
              conditions: pulumi.Input[Sequence[pulumi.Input['ScorecardRuleQueryConditionArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("combinator", combinator)
         _setter("conditions", conditions)
 
@@ -3722,7 +3970,9 @@ class ScorecardRuleQueryConditionArgs:
              operator: pulumi.Input[str],
              property: pulumi.Input[str],
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("operator", operator)
         _setter("property", property)
         if value is not None:
@@ -3777,7 +4027,11 @@ class WebhookMappingArgs:
              entity: pulumi.Input['WebhookMappingEntityArgs'],
              filter: Optional[pulumi.Input[str]] = None,
              items_to_parse: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'itemsToParse' in kwargs:
+            items_to_parse = kwargs['itemsToParse']
+
         _setter("blueprint", blueprint)
         _setter("entity", entity)
         if filter is not None:
@@ -3849,7 +4103,9 @@ class WebhookMappingEntityArgs:
              relations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              team: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("identifier", identifier)
         if icon is not None:
             _setter("icon", icon)
@@ -3941,7 +4197,17 @@ class WebhookSecurityArgs:
              signature_algorithm: Optional[pulumi.Input[str]] = None,
              signature_header_name: Optional[pulumi.Input[str]] = None,
              signature_prefix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'requestIdentifierPath' in kwargs:
+            request_identifier_path = kwargs['requestIdentifierPath']
+        if 'signatureAlgorithm' in kwargs:
+            signature_algorithm = kwargs['signatureAlgorithm']
+        if 'signatureHeaderName' in kwargs:
+            signature_header_name = kwargs['signatureHeaderName']
+        if 'signaturePrefix' in kwargs:
+            signature_prefix = kwargs['signaturePrefix']
+
         if request_identifier_path is not None:
             _setter("request_identifier_path", request_identifier_path)
         if secret is not None:

@@ -38,7 +38,13 @@ class ProviderArgs:
              client_id: Optional[pulumi.Input[str]] = None,
              secret: Optional[pulumi.Input[str]] = None,
              token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'baseUrl' in kwargs:
+            base_url = kwargs['baseUrl']
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+
         if base_url is not None:
             _setter("base_url", base_url)
         if client_id is not None:

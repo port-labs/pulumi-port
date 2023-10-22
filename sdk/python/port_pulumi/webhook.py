@@ -53,7 +53,9 @@ class WebhookArgs:
              mappings: Optional[pulumi.Input[Sequence[pulumi.Input['WebhookMappingArgs']]]] = None,
              security: Optional[pulumi.Input['WebhookSecurityArgs']] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if description is not None:
             _setter("description", description)
         if enabled is not None:
@@ -218,7 +220,19 @@ class _WebhookState:
              updated_by: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              webhook_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if 'updatedBy' in kwargs:
+            updated_by = kwargs['updatedBy']
+        if 'webhookKey' in kwargs:
+            webhook_key = kwargs['webhookKey']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if created_by is not None:
