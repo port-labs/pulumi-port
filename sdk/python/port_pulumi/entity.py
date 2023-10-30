@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,48 +35,21 @@ class EntityArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The teams the entity belongs to
         :param pulumi.Input[str] title: The title of the entity
         """
-        EntityArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            blueprint=blueprint,
-            icon=icon,
-            identifier=identifier,
-            properties=properties,
-            relations=relations,
-            run_id=run_id,
-            teams=teams,
-            title=title,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             blueprint: pulumi.Input[str],
-             icon: Optional[pulumi.Input[str]] = None,
-             identifier: Optional[pulumi.Input[str]] = None,
-             properties: Optional[pulumi.Input['EntityPropertiesArgs']] = None,
-             relations: Optional[pulumi.Input['EntityRelationsArgs']] = None,
-             run_id: Optional[pulumi.Input[str]] = None,
-             teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'runId' in kwargs:
-            run_id = kwargs['runId']
-
-        _setter("blueprint", blueprint)
+        pulumi.set(__self__, "blueprint", blueprint)
         if icon is not None:
-            _setter("icon", icon)
+            pulumi.set(__self__, "icon", icon)
         if identifier is not None:
-            _setter("identifier", identifier)
+            pulumi.set(__self__, "identifier", identifier)
         if properties is not None:
-            _setter("properties", properties)
+            pulumi.set(__self__, "properties", properties)
         if relations is not None:
-            _setter("relations", relations)
+            pulumi.set(__self__, "relations", relations)
         if run_id is not None:
-            _setter("run_id", run_id)
+            pulumi.set(__self__, "run_id", run_id)
         if teams is not None:
-            _setter("teams", teams)
+            pulumi.set(__self__, "teams", teams)
         if title is not None:
-            _setter("title", title)
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter
@@ -205,73 +178,30 @@ class _EntityState:
         :param pulumi.Input[str] updated_at: The last update date of the entity
         :param pulumi.Input[str] updated_by: The last updater of the entity
         """
-        _EntityState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            blueprint=blueprint,
-            created_at=created_at,
-            created_by=created_by,
-            icon=icon,
-            identifier=identifier,
-            properties=properties,
-            relations=relations,
-            run_id=run_id,
-            teams=teams,
-            title=title,
-            updated_at=updated_at,
-            updated_by=updated_by,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             blueprint: Optional[pulumi.Input[str]] = None,
-             created_at: Optional[pulumi.Input[str]] = None,
-             created_by: Optional[pulumi.Input[str]] = None,
-             icon: Optional[pulumi.Input[str]] = None,
-             identifier: Optional[pulumi.Input[str]] = None,
-             properties: Optional[pulumi.Input['EntityPropertiesArgs']] = None,
-             relations: Optional[pulumi.Input['EntityRelationsArgs']] = None,
-             run_id: Optional[pulumi.Input[str]] = None,
-             teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             updated_at: Optional[pulumi.Input[str]] = None,
-             updated_by: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if 'createdBy' in kwargs:
-            created_by = kwargs['createdBy']
-        if 'runId' in kwargs:
-            run_id = kwargs['runId']
-        if 'updatedAt' in kwargs:
-            updated_at = kwargs['updatedAt']
-        if 'updatedBy' in kwargs:
-            updated_by = kwargs['updatedBy']
-
         if blueprint is not None:
-            _setter("blueprint", blueprint)
+            pulumi.set(__self__, "blueprint", blueprint)
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if created_by is not None:
-            _setter("created_by", created_by)
+            pulumi.set(__self__, "created_by", created_by)
         if icon is not None:
-            _setter("icon", icon)
+            pulumi.set(__self__, "icon", icon)
         if identifier is not None:
-            _setter("identifier", identifier)
+            pulumi.set(__self__, "identifier", identifier)
         if properties is not None:
-            _setter("properties", properties)
+            pulumi.set(__self__, "properties", properties)
         if relations is not None:
-            _setter("relations", relations)
+            pulumi.set(__self__, "relations", relations)
         if run_id is not None:
-            _setter("run_id", run_id)
+            pulumi.set(__self__, "run_id", run_id)
         if teams is not None:
-            _setter("teams", teams)
+            pulumi.set(__self__, "teams", teams)
         if title is not None:
-            _setter("title", title)
+            pulumi.set(__self__, "title", title)
         if updated_at is not None:
-            _setter("updated_at", updated_at)
+            pulumi.set(__self__, "updated_at", updated_at)
         if updated_by is not None:
-            _setter("updated_by", updated_by)
+            pulumi.set(__self__, "updated_by", updated_by)
 
     @property
     @pulumi.getter
@@ -463,10 +393,6 @@ class Entity(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EntityArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -494,17 +420,7 @@ class Entity(pulumi.CustomResource):
             __props__.__dict__["blueprint"] = blueprint
             __props__.__dict__["icon"] = icon
             __props__.__dict__["identifier"] = identifier
-            if properties is not None and not isinstance(properties, EntityPropertiesArgs):
-                properties = properties or {}
-                def _setter(key, value):
-                    properties[key] = value
-                EntityPropertiesArgs._configure(_setter, **properties)
             __props__.__dict__["properties"] = properties
-            if relations is not None and not isinstance(relations, EntityRelationsArgs):
-                relations = relations or {}
-                def _setter(key, value):
-                    relations[key] = value
-                EntityRelationsArgs._configure(_setter, **relations)
             __props__.__dict__["relations"] = relations
             __props__.__dict__["run_id"] = run_id
             __props__.__dict__["teams"] = teams
