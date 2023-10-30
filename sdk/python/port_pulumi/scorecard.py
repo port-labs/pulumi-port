@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,27 +27,10 @@ class ScorecardArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ScorecardRuleArgs']]] rules: The rules of the scorecard
         :param pulumi.Input[str] title: The title of the scorecard
         """
-        ScorecardArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            blueprint=blueprint,
-            identifier=identifier,
-            rules=rules,
-            title=title,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             blueprint: pulumi.Input[str],
-             identifier: pulumi.Input[str],
-             rules: pulumi.Input[Sequence[pulumi.Input['ScorecardRuleArgs']]],
-             title: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
-        _setter("blueprint", blueprint)
-        _setter("identifier", identifier)
-        _setter("rules", rules)
-        _setter("title", title)
+        pulumi.set(__self__, "blueprint", blueprint)
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "rules", rules)
+        pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter
@@ -120,55 +103,22 @@ class _ScorecardState:
         :param pulumi.Input[str] updated_at: The last update date of the scorecard
         :param pulumi.Input[str] updated_by: The last updater of the scorecard
         """
-        _ScorecardState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            blueprint=blueprint,
-            created_at=created_at,
-            created_by=created_by,
-            identifier=identifier,
-            rules=rules,
-            title=title,
-            updated_at=updated_at,
-            updated_by=updated_by,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             blueprint: Optional[pulumi.Input[str]] = None,
-             created_at: Optional[pulumi.Input[str]] = None,
-             created_by: Optional[pulumi.Input[str]] = None,
-             identifier: Optional[pulumi.Input[str]] = None,
-             rules: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardRuleArgs']]]] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             updated_at: Optional[pulumi.Input[str]] = None,
-             updated_by: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if 'createdBy' in kwargs:
-            created_by = kwargs['createdBy']
-        if 'updatedAt' in kwargs:
-            updated_at = kwargs['updatedAt']
-        if 'updatedBy' in kwargs:
-            updated_by = kwargs['updatedBy']
-
         if blueprint is not None:
-            _setter("blueprint", blueprint)
+            pulumi.set(__self__, "blueprint", blueprint)
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if created_by is not None:
-            _setter("created_by", created_by)
+            pulumi.set(__self__, "created_by", created_by)
         if identifier is not None:
-            _setter("identifier", identifier)
+            pulumi.set(__self__, "identifier", identifier)
         if rules is not None:
-            _setter("rules", rules)
+            pulumi.set(__self__, "rules", rules)
         if title is not None:
-            _setter("title", title)
+            pulumi.set(__self__, "title", title)
         if updated_at is not None:
-            _setter("updated_at", updated_at)
+            pulumi.set(__self__, "updated_at", updated_at)
         if updated_by is not None:
-            _setter("updated_by", updated_by)
+            pulumi.set(__self__, "updated_by", updated_by)
 
     @property
     @pulumi.getter
@@ -304,10 +254,6 @@ class Scorecard(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ScorecardArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TeamArgs', 'Team']
@@ -23,26 +23,11 @@ class TeamArgs:
         :param pulumi.Input[str] description: The description of the team
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: The users of the team
         """
-        TeamArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            description=description,
-            users=users,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             description: Optional[pulumi.Input[str]] = None,
-             users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if users is not None:
-            _setter("users", users)
+            pulumi.set(__self__, "users", users)
 
     @property
     @pulumi.getter
@@ -99,45 +84,18 @@ class _TeamState:
         :param pulumi.Input[str] updated_at: The last update date of the team
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: The users of the team
         """
-        _TeamState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            created_at=created_at,
-            description=description,
-            name=name,
-            provider_name=provider_name,
-            updated_at=updated_at,
-            users=users,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             created_at: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             provider_name: Optional[pulumi.Input[str]] = None,
-             updated_at: Optional[pulumi.Input[str]] = None,
-             users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if 'providerName' in kwargs:
-            provider_name = kwargs['providerName']
-        if 'updatedAt' in kwargs:
-            updated_at = kwargs['updatedAt']
-
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if provider_name is not None:
-            _setter("provider_name", provider_name)
+            pulumi.set(__self__, "provider_name", provider_name)
         if updated_at is not None:
-            _setter("updated_at", updated_at)
+            pulumi.set(__self__, "updated_at", updated_at)
         if users is not None:
-            _setter("users", users)
+            pulumi.set(__self__, "users", users)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -247,10 +205,6 @@ class Team(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TeamArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
