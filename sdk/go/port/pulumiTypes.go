@@ -9,7 +9,6 @@ import (
 
 	"github.com/port-labs/pulumi-port/sdk/go/port/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -41,12 +40,6 @@ func (i ActionApprovalEmailNotificationArgs) ToActionApprovalEmailNotificationOu
 
 func (i ActionApprovalEmailNotificationArgs) ToActionApprovalEmailNotificationOutputWithContext(ctx context.Context) ActionApprovalEmailNotificationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActionApprovalEmailNotificationOutput)
-}
-
-func (i ActionApprovalEmailNotificationArgs) ToOutput(ctx context.Context) pulumix.Output[ActionApprovalEmailNotification] {
-	return pulumix.Output[ActionApprovalEmailNotification]{
-		OutputState: i.ToActionApprovalEmailNotificationOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ActionApprovalEmailNotificationArgs) ToActionApprovalEmailNotificationPtrOutput() ActionApprovalEmailNotificationPtrOutput {
@@ -90,12 +83,6 @@ func (i *actionApprovalEmailNotificationPtrType) ToActionApprovalEmailNotificati
 	return pulumi.ToOutputWithContext(ctx, i).(ActionApprovalEmailNotificationPtrOutput)
 }
 
-func (i *actionApprovalEmailNotificationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ActionApprovalEmailNotification] {
-	return pulumix.Output[*ActionApprovalEmailNotification]{
-		OutputState: i.ToActionApprovalEmailNotificationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionApprovalEmailNotificationOutput struct{ *pulumi.OutputState }
 
 func (ActionApprovalEmailNotificationOutput) ElementType() reflect.Type {
@@ -120,12 +107,6 @@ func (o ActionApprovalEmailNotificationOutput) ToActionApprovalEmailNotification
 	}).(ActionApprovalEmailNotificationPtrOutput)
 }
 
-func (o ActionApprovalEmailNotificationOutput) ToOutput(ctx context.Context) pulumix.Output[ActionApprovalEmailNotification] {
-	return pulumix.Output[ActionApprovalEmailNotification]{
-		OutputState: o.OutputState,
-	}
-}
-
 type ActionApprovalEmailNotificationPtrOutput struct{ *pulumi.OutputState }
 
 func (ActionApprovalEmailNotificationPtrOutput) ElementType() reflect.Type {
@@ -138,12 +119,6 @@ func (o ActionApprovalEmailNotificationPtrOutput) ToActionApprovalEmailNotificat
 
 func (o ActionApprovalEmailNotificationPtrOutput) ToActionApprovalEmailNotificationPtrOutputWithContext(ctx context.Context) ActionApprovalEmailNotificationPtrOutput {
 	return o
-}
-
-func (o ActionApprovalEmailNotificationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ActionApprovalEmailNotification] {
-	return pulumix.Output[*ActionApprovalEmailNotification]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionApprovalEmailNotificationPtrOutput) Elem() ActionApprovalEmailNotificationOutput {
@@ -187,12 +162,6 @@ func (i ActionApprovalWebhookNotificationArgs) ToActionApprovalWebhookNotificati
 	return pulumi.ToOutputWithContext(ctx, i).(ActionApprovalWebhookNotificationOutput)
 }
 
-func (i ActionApprovalWebhookNotificationArgs) ToOutput(ctx context.Context) pulumix.Output[ActionApprovalWebhookNotification] {
-	return pulumix.Output[ActionApprovalWebhookNotification]{
-		OutputState: i.ToActionApprovalWebhookNotificationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ActionApprovalWebhookNotificationArgs) ToActionApprovalWebhookNotificationPtrOutput() ActionApprovalWebhookNotificationPtrOutput {
 	return i.ToActionApprovalWebhookNotificationPtrOutputWithContext(context.Background())
 }
@@ -234,12 +203,6 @@ func (i *actionApprovalWebhookNotificationPtrType) ToActionApprovalWebhookNotifi
 	return pulumi.ToOutputWithContext(ctx, i).(ActionApprovalWebhookNotificationPtrOutput)
 }
 
-func (i *actionApprovalWebhookNotificationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ActionApprovalWebhookNotification] {
-	return pulumix.Output[*ActionApprovalWebhookNotification]{
-		OutputState: i.ToActionApprovalWebhookNotificationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionApprovalWebhookNotificationOutput struct{ *pulumi.OutputState }
 
 func (ActionApprovalWebhookNotificationOutput) ElementType() reflect.Type {
@@ -264,12 +227,6 @@ func (o ActionApprovalWebhookNotificationOutput) ToActionApprovalWebhookNotifica
 	}).(ActionApprovalWebhookNotificationPtrOutput)
 }
 
-func (o ActionApprovalWebhookNotificationOutput) ToOutput(ctx context.Context) pulumix.Output[ActionApprovalWebhookNotification] {
-	return pulumix.Output[ActionApprovalWebhookNotification]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ActionApprovalWebhookNotificationOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionApprovalWebhookNotification) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -286,12 +243,6 @@ func (o ActionApprovalWebhookNotificationPtrOutput) ToActionApprovalWebhookNotif
 
 func (o ActionApprovalWebhookNotificationPtrOutput) ToActionApprovalWebhookNotificationPtrOutputWithContext(ctx context.Context) ActionApprovalWebhookNotificationPtrOutput {
 	return o
-}
-
-func (o ActionApprovalWebhookNotificationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ActionApprovalWebhookNotification] {
-	return pulumix.Output[*ActionApprovalWebhookNotification]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionApprovalWebhookNotificationPtrOutput) Elem() ActionApprovalWebhookNotificationOutput {
@@ -346,12 +297,6 @@ func (i ActionAzureMethodArgs) ToActionAzureMethodOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ActionAzureMethodOutput)
 }
 
-func (i ActionAzureMethodArgs) ToOutput(ctx context.Context) pulumix.Output[ActionAzureMethod] {
-	return pulumix.Output[ActionAzureMethod]{
-		OutputState: i.ToActionAzureMethodOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ActionAzureMethodArgs) ToActionAzureMethodPtrOutput() ActionAzureMethodPtrOutput {
 	return i.ToActionAzureMethodPtrOutputWithContext(context.Background())
 }
@@ -393,12 +338,6 @@ func (i *actionAzureMethodPtrType) ToActionAzureMethodPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ActionAzureMethodPtrOutput)
 }
 
-func (i *actionAzureMethodPtrType) ToOutput(ctx context.Context) pulumix.Output[*ActionAzureMethod] {
-	return pulumix.Output[*ActionAzureMethod]{
-		OutputState: i.ToActionAzureMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionAzureMethodOutput struct{ *pulumi.OutputState }
 
 func (ActionAzureMethodOutput) ElementType() reflect.Type {
@@ -423,12 +362,6 @@ func (o ActionAzureMethodOutput) ToActionAzureMethodPtrOutputWithContext(ctx con
 	}).(ActionAzureMethodPtrOutput)
 }
 
-func (o ActionAzureMethodOutput) ToOutput(ctx context.Context) pulumix.Output[ActionAzureMethod] {
-	return pulumix.Output[ActionAzureMethod]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ActionAzureMethodOutput) Org() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionAzureMethod) string { return v.Org }).(pulumi.StringOutput)
 }
@@ -449,12 +382,6 @@ func (o ActionAzureMethodPtrOutput) ToActionAzureMethodPtrOutput() ActionAzureMe
 
 func (o ActionAzureMethodPtrOutput) ToActionAzureMethodPtrOutputWithContext(ctx context.Context) ActionAzureMethodPtrOutput {
 	return o
-}
-
-func (o ActionAzureMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ActionAzureMethod] {
-	return pulumix.Output[*ActionAzureMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionAzureMethodPtrOutput) Elem() ActionAzureMethodOutput {
@@ -526,12 +453,6 @@ func (i ActionGithubMethodArgs) ToActionGithubMethodOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ActionGithubMethodOutput)
 }
 
-func (i ActionGithubMethodArgs) ToOutput(ctx context.Context) pulumix.Output[ActionGithubMethod] {
-	return pulumix.Output[ActionGithubMethod]{
-		OutputState: i.ToActionGithubMethodOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ActionGithubMethodArgs) ToActionGithubMethodPtrOutput() ActionGithubMethodPtrOutput {
 	return i.ToActionGithubMethodPtrOutputWithContext(context.Background())
 }
@@ -573,12 +494,6 @@ func (i *actionGithubMethodPtrType) ToActionGithubMethodPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ActionGithubMethodPtrOutput)
 }
 
-func (i *actionGithubMethodPtrType) ToOutput(ctx context.Context) pulumix.Output[*ActionGithubMethod] {
-	return pulumix.Output[*ActionGithubMethod]{
-		OutputState: i.ToActionGithubMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionGithubMethodOutput struct{ *pulumi.OutputState }
 
 func (ActionGithubMethodOutput) ElementType() reflect.Type {
@@ -601,12 +516,6 @@ func (o ActionGithubMethodOutput) ToActionGithubMethodPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionGithubMethod) *ActionGithubMethod {
 		return &v
 	}).(ActionGithubMethodPtrOutput)
-}
-
-func (o ActionGithubMethodOutput) ToOutput(ctx context.Context) pulumix.Output[ActionGithubMethod] {
-	return pulumix.Output[ActionGithubMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionGithubMethodOutput) OmitPayload() pulumi.BoolPtrOutput {
@@ -645,12 +554,6 @@ func (o ActionGithubMethodPtrOutput) ToActionGithubMethodPtrOutput() ActionGithu
 
 func (o ActionGithubMethodPtrOutput) ToActionGithubMethodPtrOutputWithContext(ctx context.Context) ActionGithubMethodPtrOutput {
 	return o
-}
-
-func (o ActionGithubMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ActionGithubMethod] {
-	return pulumix.Output[*ActionGithubMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionGithubMethodPtrOutput) Elem() ActionGithubMethodOutput {
@@ -758,12 +661,6 @@ func (i ActionGitlabMethodArgs) ToActionGitlabMethodOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ActionGitlabMethodOutput)
 }
 
-func (i ActionGitlabMethodArgs) ToOutput(ctx context.Context) pulumix.Output[ActionGitlabMethod] {
-	return pulumix.Output[ActionGitlabMethod]{
-		OutputState: i.ToActionGitlabMethodOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ActionGitlabMethodArgs) ToActionGitlabMethodPtrOutput() ActionGitlabMethodPtrOutput {
 	return i.ToActionGitlabMethodPtrOutputWithContext(context.Background())
 }
@@ -805,12 +702,6 @@ func (i *actionGitlabMethodPtrType) ToActionGitlabMethodPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ActionGitlabMethodPtrOutput)
 }
 
-func (i *actionGitlabMethodPtrType) ToOutput(ctx context.Context) pulumix.Output[*ActionGitlabMethod] {
-	return pulumix.Output[*ActionGitlabMethod]{
-		OutputState: i.ToActionGitlabMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionGitlabMethodOutput struct{ *pulumi.OutputState }
 
 func (ActionGitlabMethodOutput) ElementType() reflect.Type {
@@ -833,12 +724,6 @@ func (o ActionGitlabMethodOutput) ToActionGitlabMethodPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionGitlabMethod) *ActionGitlabMethod {
 		return &v
 	}).(ActionGitlabMethodPtrOutput)
-}
-
-func (o ActionGitlabMethodOutput) ToOutput(ctx context.Context) pulumix.Output[ActionGitlabMethod] {
-	return pulumix.Output[ActionGitlabMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionGitlabMethodOutput) Agent() pulumi.BoolPtrOutput {
@@ -877,12 +762,6 @@ func (o ActionGitlabMethodPtrOutput) ToActionGitlabMethodPtrOutput() ActionGitla
 
 func (o ActionGitlabMethodPtrOutput) ToActionGitlabMethodPtrOutputWithContext(ctx context.Context) ActionGitlabMethodPtrOutput {
 	return o
-}
-
-func (o ActionGitlabMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ActionGitlabMethod] {
-	return pulumix.Output[*ActionGitlabMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionGitlabMethodPtrOutput) Elem() ActionGitlabMethodOutput {
@@ -978,12 +857,6 @@ func (i ActionKafkaMethodArgs) ToActionKafkaMethodOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ActionKafkaMethodOutput)
 }
 
-func (i ActionKafkaMethodArgs) ToOutput(ctx context.Context) pulumix.Output[ActionKafkaMethod] {
-	return pulumix.Output[ActionKafkaMethod]{
-		OutputState: i.ToActionKafkaMethodOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ActionKafkaMethodArgs) ToActionKafkaMethodPtrOutput() ActionKafkaMethodPtrOutput {
 	return i.ToActionKafkaMethodPtrOutputWithContext(context.Background())
 }
@@ -1025,12 +898,6 @@ func (i *actionKafkaMethodPtrType) ToActionKafkaMethodPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ActionKafkaMethodPtrOutput)
 }
 
-func (i *actionKafkaMethodPtrType) ToOutput(ctx context.Context) pulumix.Output[*ActionKafkaMethod] {
-	return pulumix.Output[*ActionKafkaMethod]{
-		OutputState: i.ToActionKafkaMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionKafkaMethodOutput struct{ *pulumi.OutputState }
 
 func (ActionKafkaMethodOutput) ElementType() reflect.Type {
@@ -1055,12 +922,6 @@ func (o ActionKafkaMethodOutput) ToActionKafkaMethodPtrOutputWithContext(ctx con
 	}).(ActionKafkaMethodPtrOutput)
 }
 
-func (o ActionKafkaMethodOutput) ToOutput(ctx context.Context) pulumix.Output[ActionKafkaMethod] {
-	return pulumix.Output[ActionKafkaMethod]{
-		OutputState: o.OutputState,
-	}
-}
-
 type ActionKafkaMethodPtrOutput struct{ *pulumi.OutputState }
 
 func (ActionKafkaMethodPtrOutput) ElementType() reflect.Type {
@@ -1073,12 +934,6 @@ func (o ActionKafkaMethodPtrOutput) ToActionKafkaMethodPtrOutput() ActionKafkaMe
 
 func (o ActionKafkaMethodPtrOutput) ToActionKafkaMethodPtrOutputWithContext(ctx context.Context) ActionKafkaMethodPtrOutput {
 	return o
-}
-
-func (o ActionKafkaMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ActionKafkaMethod] {
-	return pulumix.Output[*ActionKafkaMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionKafkaMethodPtrOutput) Elem() ActionKafkaMethodOutput {
@@ -1130,12 +985,6 @@ func (i ActionUserPropertiesArgs) ToActionUserPropertiesOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesOutput)
 }
 
-func (i ActionUserPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserProperties] {
-	return pulumix.Output[ActionUserProperties]{
-		OutputState: i.ToActionUserPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ActionUserPropertiesArgs) ToActionUserPropertiesPtrOutput() ActionUserPropertiesPtrOutput {
 	return i.ToActionUserPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1177,12 +1026,6 @@ func (i *actionUserPropertiesPtrType) ToActionUserPropertiesPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesPtrOutput)
 }
 
-func (i *actionUserPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ActionUserProperties] {
-	return pulumix.Output[*ActionUserProperties]{
-		OutputState: i.ToActionUserPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesOutput) ElementType() reflect.Type {
@@ -1205,12 +1048,6 @@ func (o ActionUserPropertiesOutput) ToActionUserPropertiesPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionUserProperties) *ActionUserProperties {
 		return &v
 	}).(ActionUserPropertiesPtrOutput)
-}
-
-func (o ActionUserPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserProperties] {
-	return pulumix.Output[ActionUserProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesOutput) ArrayProps() ActionUserPropertiesArrayPropsMapOutput {
@@ -1245,12 +1082,6 @@ func (o ActionUserPropertiesPtrOutput) ToActionUserPropertiesPtrOutput() ActionU
 
 func (o ActionUserPropertiesPtrOutput) ToActionUserPropertiesPtrOutputWithContext(ctx context.Context) ActionUserPropertiesPtrOutput {
 	return o
-}
-
-func (o ActionUserPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ActionUserProperties] {
-	return pulumix.Output[*ActionUserProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesPtrOutput) Elem() ActionUserPropertiesOutput {
@@ -1322,6 +1153,8 @@ type ActionUserPropertiesArrayProps struct {
 	Required       *bool                                       `pulumi:"required"`
 	StringItems    *ActionUserPropertiesArrayPropsStringItems  `pulumi:"stringItems"`
 	Title          *string                                     `pulumi:"title"`
+	Visible        *bool                                       `pulumi:"visible"`
+	VisibleJqQuery *string                                     `pulumi:"visibleJqQuery"`
 }
 
 // ActionUserPropertiesArrayPropsInput is an input type that accepts ActionUserPropertiesArrayPropsArgs and ActionUserPropertiesArrayPropsOutput values.
@@ -1349,6 +1182,8 @@ type ActionUserPropertiesArrayPropsArgs struct {
 	Required       pulumi.BoolPtrInput                                `pulumi:"required"`
 	StringItems    ActionUserPropertiesArrayPropsStringItemsPtrInput  `pulumi:"stringItems"`
 	Title          pulumi.StringPtrInput                              `pulumi:"title"`
+	Visible        pulumi.BoolPtrInput                                `pulumi:"visible"`
+	VisibleJqQuery pulumi.StringPtrInput                              `pulumi:"visibleJqQuery"`
 }
 
 func (ActionUserPropertiesArrayPropsArgs) ElementType() reflect.Type {
@@ -1361,12 +1196,6 @@ func (i ActionUserPropertiesArrayPropsArgs) ToActionUserPropertiesArrayPropsOutp
 
 func (i ActionUserPropertiesArrayPropsArgs) ToActionUserPropertiesArrayPropsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsOutput)
-}
-
-func (i ActionUserPropertiesArrayPropsArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesArrayProps] {
-	return pulumix.Output[ActionUserPropertiesArrayProps]{
-		OutputState: i.ToActionUserPropertiesArrayPropsOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ActionUserPropertiesArrayPropsMapInput is an input type that accepts ActionUserPropertiesArrayPropsMap and ActionUserPropertiesArrayPropsMapOutput values.
@@ -1394,12 +1223,6 @@ func (i ActionUserPropertiesArrayPropsMap) ToActionUserPropertiesArrayPropsMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsMapOutput)
 }
 
-func (i ActionUserPropertiesArrayPropsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ActionUserPropertiesArrayProps] {
-	return pulumix.Output[map[string]ActionUserPropertiesArrayProps]{
-		OutputState: i.ToActionUserPropertiesArrayPropsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesArrayPropsOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesArrayPropsOutput) ElementType() reflect.Type {
@@ -1412,12 +1235,6 @@ func (o ActionUserPropertiesArrayPropsOutput) ToActionUserPropertiesArrayPropsOu
 
 func (o ActionUserPropertiesArrayPropsOutput) ToActionUserPropertiesArrayPropsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsOutput {
 	return o
-}
-
-func (o ActionUserPropertiesArrayPropsOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesArrayProps] {
-	return pulumix.Output[ActionUserPropertiesArrayProps]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesArrayPropsOutput) BooleanItems() ActionUserPropertiesArrayPropsBooleanItemsPtrOutput {
@@ -1480,6 +1297,14 @@ func (o ActionUserPropertiesArrayPropsOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
+func (o ActionUserPropertiesArrayPropsOutput) Visible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
+}
+
+func (o ActionUserPropertiesArrayPropsOutput) VisibleJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *string { return v.VisibleJqQuery }).(pulumi.StringPtrOutput)
+}
+
 type ActionUserPropertiesArrayPropsMapOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesArrayPropsMapOutput) ElementType() reflect.Type {
@@ -1492,12 +1317,6 @@ func (o ActionUserPropertiesArrayPropsMapOutput) ToActionUserPropertiesArrayProp
 
 func (o ActionUserPropertiesArrayPropsMapOutput) ToActionUserPropertiesArrayPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsMapOutput {
 	return o
-}
-
-func (o ActionUserPropertiesArrayPropsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ActionUserPropertiesArrayProps] {
-	return pulumix.Output[map[string]ActionUserPropertiesArrayProps]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesArrayPropsMapOutput) MapIndex(k pulumi.StringInput) ActionUserPropertiesArrayPropsOutput {
@@ -1535,12 +1354,6 @@ func (i ActionUserPropertiesArrayPropsBooleanItemsArgs) ToActionUserPropertiesAr
 
 func (i ActionUserPropertiesArrayPropsBooleanItemsArgs) ToActionUserPropertiesArrayPropsBooleanItemsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsBooleanItemsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsBooleanItemsOutput)
-}
-
-func (i ActionUserPropertiesArrayPropsBooleanItemsArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesArrayPropsBooleanItems] {
-	return pulumix.Output[ActionUserPropertiesArrayPropsBooleanItems]{
-		OutputState: i.ToActionUserPropertiesArrayPropsBooleanItemsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ActionUserPropertiesArrayPropsBooleanItemsArgs) ToActionUserPropertiesArrayPropsBooleanItemsPtrOutput() ActionUserPropertiesArrayPropsBooleanItemsPtrOutput {
@@ -1584,12 +1397,6 @@ func (i *actionUserPropertiesArrayPropsBooleanItemsPtrType) ToActionUserProperti
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsBooleanItemsPtrOutput)
 }
 
-func (i *actionUserPropertiesArrayPropsBooleanItemsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ActionUserPropertiesArrayPropsBooleanItems] {
-	return pulumix.Output[*ActionUserPropertiesArrayPropsBooleanItems]{
-		OutputState: i.ToActionUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesArrayPropsBooleanItemsOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesArrayPropsBooleanItemsOutput) ElementType() reflect.Type {
@@ -1614,12 +1421,6 @@ func (o ActionUserPropertiesArrayPropsBooleanItemsOutput) ToActionUserProperties
 	}).(ActionUserPropertiesArrayPropsBooleanItemsPtrOutput)
 }
 
-func (o ActionUserPropertiesArrayPropsBooleanItemsOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesArrayPropsBooleanItems] {
-	return pulumix.Output[ActionUserPropertiesArrayPropsBooleanItems]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ActionUserPropertiesArrayPropsBooleanItemsOutput) Defaults() pulumi.BoolArrayOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsBooleanItems) []bool { return v.Defaults }).(pulumi.BoolArrayOutput)
 }
@@ -1636,12 +1437,6 @@ func (o ActionUserPropertiesArrayPropsBooleanItemsPtrOutput) ToActionUserPropert
 
 func (o ActionUserPropertiesArrayPropsBooleanItemsPtrOutput) ToActionUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsBooleanItemsPtrOutput {
 	return o
-}
-
-func (o ActionUserPropertiesArrayPropsBooleanItemsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ActionUserPropertiesArrayPropsBooleanItems] {
-	return pulumix.Output[*ActionUserPropertiesArrayPropsBooleanItems]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesArrayPropsBooleanItemsPtrOutput) Elem() ActionUserPropertiesArrayPropsBooleanItemsOutput {
@@ -1696,12 +1491,6 @@ func (i ActionUserPropertiesArrayPropsDatasetArgs) ToActionUserPropertiesArrayPr
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsDatasetOutput)
 }
 
-func (i ActionUserPropertiesArrayPropsDatasetArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesArrayPropsDataset] {
-	return pulumix.Output[ActionUserPropertiesArrayPropsDataset]{
-		OutputState: i.ToActionUserPropertiesArrayPropsDatasetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ActionUserPropertiesArrayPropsDatasetArgs) ToActionUserPropertiesArrayPropsDatasetPtrOutput() ActionUserPropertiesArrayPropsDatasetPtrOutput {
 	return i.ToActionUserPropertiesArrayPropsDatasetPtrOutputWithContext(context.Background())
 }
@@ -1743,12 +1532,6 @@ func (i *actionUserPropertiesArrayPropsDatasetPtrType) ToActionUserPropertiesArr
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsDatasetPtrOutput)
 }
 
-func (i *actionUserPropertiesArrayPropsDatasetPtrType) ToOutput(ctx context.Context) pulumix.Output[*ActionUserPropertiesArrayPropsDataset] {
-	return pulumix.Output[*ActionUserPropertiesArrayPropsDataset]{
-		OutputState: i.ToActionUserPropertiesArrayPropsDatasetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesArrayPropsDatasetOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesArrayPropsDatasetOutput) ElementType() reflect.Type {
@@ -1773,12 +1556,6 @@ func (o ActionUserPropertiesArrayPropsDatasetOutput) ToActionUserPropertiesArray
 	}).(ActionUserPropertiesArrayPropsDatasetPtrOutput)
 }
 
-func (o ActionUserPropertiesArrayPropsDatasetOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesArrayPropsDataset] {
-	return pulumix.Output[ActionUserPropertiesArrayPropsDataset]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ActionUserPropertiesArrayPropsDatasetOutput) Combinator() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsDataset) string { return v.Combinator }).(pulumi.StringOutput)
 }
@@ -1801,12 +1578,6 @@ func (o ActionUserPropertiesArrayPropsDatasetPtrOutput) ToActionUserPropertiesAr
 
 func (o ActionUserPropertiesArrayPropsDatasetPtrOutput) ToActionUserPropertiesArrayPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsDatasetPtrOutput {
 	return o
-}
-
-func (o ActionUserPropertiesArrayPropsDatasetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ActionUserPropertiesArrayPropsDataset] {
-	return pulumix.Output[*ActionUserPropertiesArrayPropsDataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesArrayPropsDatasetPtrOutput) Elem() ActionUserPropertiesArrayPropsDatasetOutput {
@@ -1874,12 +1645,6 @@ func (i ActionUserPropertiesArrayPropsDatasetRuleArgs) ToActionUserPropertiesArr
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsDatasetRuleOutput)
 }
 
-func (i ActionUserPropertiesArrayPropsDatasetRuleArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesArrayPropsDatasetRule] {
-	return pulumix.Output[ActionUserPropertiesArrayPropsDatasetRule]{
-		OutputState: i.ToActionUserPropertiesArrayPropsDatasetRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ActionUserPropertiesArrayPropsDatasetRuleArrayInput is an input type that accepts ActionUserPropertiesArrayPropsDatasetRuleArray and ActionUserPropertiesArrayPropsDatasetRuleArrayOutput values.
 // You can construct a concrete instance of `ActionUserPropertiesArrayPropsDatasetRuleArrayInput` via:
 //
@@ -1905,12 +1670,6 @@ func (i ActionUserPropertiesArrayPropsDatasetRuleArray) ToActionUserPropertiesAr
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsDatasetRuleArrayOutput)
 }
 
-func (i ActionUserPropertiesArrayPropsDatasetRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]ActionUserPropertiesArrayPropsDatasetRule] {
-	return pulumix.Output[[]ActionUserPropertiesArrayPropsDatasetRule]{
-		OutputState: i.ToActionUserPropertiesArrayPropsDatasetRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesArrayPropsDatasetRuleOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesArrayPropsDatasetRuleOutput) ElementType() reflect.Type {
@@ -1923,12 +1682,6 @@ func (o ActionUserPropertiesArrayPropsDatasetRuleOutput) ToActionUserPropertiesA
 
 func (o ActionUserPropertiesArrayPropsDatasetRuleOutput) ToActionUserPropertiesArrayPropsDatasetRuleOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsDatasetRuleOutput {
 	return o
-}
-
-func (o ActionUserPropertiesArrayPropsDatasetRuleOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesArrayPropsDatasetRule] {
-	return pulumix.Output[ActionUserPropertiesArrayPropsDatasetRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesArrayPropsDatasetRuleOutput) Blueprint() pulumi.StringPtrOutput {
@@ -1961,12 +1714,6 @@ func (o ActionUserPropertiesArrayPropsDatasetRuleArrayOutput) ToActionUserProper
 
 func (o ActionUserPropertiesArrayPropsDatasetRuleArrayOutput) ToActionUserPropertiesArrayPropsDatasetRuleArrayOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsDatasetRuleArrayOutput {
 	return o
-}
-
-func (o ActionUserPropertiesArrayPropsDatasetRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ActionUserPropertiesArrayPropsDatasetRule] {
-	return pulumix.Output[[]ActionUserPropertiesArrayPropsDatasetRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesArrayPropsDatasetRuleArrayOutput) Index(i pulumi.IntInput) ActionUserPropertiesArrayPropsDatasetRuleOutput {
@@ -2006,12 +1753,6 @@ func (i ActionUserPropertiesArrayPropsDatasetRuleValueArgs) ToActionUserProperti
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsDatasetRuleValueOutput)
 }
 
-func (i ActionUserPropertiesArrayPropsDatasetRuleValueArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesArrayPropsDatasetRuleValue] {
-	return pulumix.Output[ActionUserPropertiesArrayPropsDatasetRuleValue]{
-		OutputState: i.ToActionUserPropertiesArrayPropsDatasetRuleValueOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesArrayPropsDatasetRuleValueOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesArrayPropsDatasetRuleValueOutput) ElementType() reflect.Type {
@@ -2024,12 +1765,6 @@ func (o ActionUserPropertiesArrayPropsDatasetRuleValueOutput) ToActionUserProper
 
 func (o ActionUserPropertiesArrayPropsDatasetRuleValueOutput) ToActionUserPropertiesArrayPropsDatasetRuleValueOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsDatasetRuleValueOutput {
 	return o
-}
-
-func (o ActionUserPropertiesArrayPropsDatasetRuleValueOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesArrayPropsDatasetRuleValue] {
-	return pulumix.Output[ActionUserPropertiesArrayPropsDatasetRuleValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesArrayPropsDatasetRuleValueOutput) JqQuery() pulumi.StringOutput {
@@ -2069,12 +1804,6 @@ func (i ActionUserPropertiesArrayPropsNumberItemsArgs) ToActionUserPropertiesArr
 
 func (i ActionUserPropertiesArrayPropsNumberItemsArgs) ToActionUserPropertiesArrayPropsNumberItemsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsNumberItemsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsNumberItemsOutput)
-}
-
-func (i ActionUserPropertiesArrayPropsNumberItemsArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesArrayPropsNumberItems] {
-	return pulumix.Output[ActionUserPropertiesArrayPropsNumberItems]{
-		OutputState: i.ToActionUserPropertiesArrayPropsNumberItemsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ActionUserPropertiesArrayPropsNumberItemsArgs) ToActionUserPropertiesArrayPropsNumberItemsPtrOutput() ActionUserPropertiesArrayPropsNumberItemsPtrOutput {
@@ -2118,12 +1847,6 @@ func (i *actionUserPropertiesArrayPropsNumberItemsPtrType) ToActionUserPropertie
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsNumberItemsPtrOutput)
 }
 
-func (i *actionUserPropertiesArrayPropsNumberItemsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ActionUserPropertiesArrayPropsNumberItems] {
-	return pulumix.Output[*ActionUserPropertiesArrayPropsNumberItems]{
-		OutputState: i.ToActionUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesArrayPropsNumberItemsOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesArrayPropsNumberItemsOutput) ElementType() reflect.Type {
@@ -2146,12 +1869,6 @@ func (o ActionUserPropertiesArrayPropsNumberItemsOutput) ToActionUserPropertiesA
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionUserPropertiesArrayPropsNumberItems) *ActionUserPropertiesArrayPropsNumberItems {
 		return &v
 	}).(ActionUserPropertiesArrayPropsNumberItemsPtrOutput)
-}
-
-func (o ActionUserPropertiesArrayPropsNumberItemsOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesArrayPropsNumberItems] {
-	return pulumix.Output[ActionUserPropertiesArrayPropsNumberItems]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesArrayPropsNumberItemsOutput) Defaults() pulumi.Float64ArrayOutput {
@@ -2178,12 +1895,6 @@ func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) ToActionUserProperti
 
 func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) ToActionUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsNumberItemsPtrOutput {
 	return o
-}
-
-func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ActionUserPropertiesArrayPropsNumberItems] {
-	return pulumix.Output[*ActionUserPropertiesArrayPropsNumberItems]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) Elem() ActionUserPropertiesArrayPropsNumberItemsOutput {
@@ -2254,12 +1965,6 @@ func (i ActionUserPropertiesArrayPropsObjectItemsArgs) ToActionUserPropertiesArr
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsObjectItemsOutput)
 }
 
-func (i ActionUserPropertiesArrayPropsObjectItemsArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesArrayPropsObjectItems] {
-	return pulumix.Output[ActionUserPropertiesArrayPropsObjectItems]{
-		OutputState: i.ToActionUserPropertiesArrayPropsObjectItemsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ActionUserPropertiesArrayPropsObjectItemsArgs) ToActionUserPropertiesArrayPropsObjectItemsPtrOutput() ActionUserPropertiesArrayPropsObjectItemsPtrOutput {
 	return i.ToActionUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(context.Background())
 }
@@ -2301,12 +2006,6 @@ func (i *actionUserPropertiesArrayPropsObjectItemsPtrType) ToActionUserPropertie
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsObjectItemsPtrOutput)
 }
 
-func (i *actionUserPropertiesArrayPropsObjectItemsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ActionUserPropertiesArrayPropsObjectItems] {
-	return pulumix.Output[*ActionUserPropertiesArrayPropsObjectItems]{
-		OutputState: i.ToActionUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesArrayPropsObjectItemsOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesArrayPropsObjectItemsOutput) ElementType() reflect.Type {
@@ -2331,12 +2030,6 @@ func (o ActionUserPropertiesArrayPropsObjectItemsOutput) ToActionUserPropertiesA
 	}).(ActionUserPropertiesArrayPropsObjectItemsPtrOutput)
 }
 
-func (o ActionUserPropertiesArrayPropsObjectItemsOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesArrayPropsObjectItems] {
-	return pulumix.Output[ActionUserPropertiesArrayPropsObjectItems]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ActionUserPropertiesArrayPropsObjectItemsOutput) Defaults() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsObjectItems) []map[string]string { return v.Defaults }).(pulumi.StringMapArrayOutput)
 }
@@ -2353,12 +2046,6 @@ func (o ActionUserPropertiesArrayPropsObjectItemsPtrOutput) ToActionUserProperti
 
 func (o ActionUserPropertiesArrayPropsObjectItemsPtrOutput) ToActionUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsObjectItemsPtrOutput {
 	return o
-}
-
-func (o ActionUserPropertiesArrayPropsObjectItemsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ActionUserPropertiesArrayPropsObjectItems] {
-	return pulumix.Output[*ActionUserPropertiesArrayPropsObjectItems]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesArrayPropsObjectItemsPtrOutput) Elem() ActionUserPropertiesArrayPropsObjectItemsOutput {
@@ -2419,12 +2106,6 @@ func (i ActionUserPropertiesArrayPropsStringItemsArgs) ToActionUserPropertiesArr
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsStringItemsOutput)
 }
 
-func (i ActionUserPropertiesArrayPropsStringItemsArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesArrayPropsStringItems] {
-	return pulumix.Output[ActionUserPropertiesArrayPropsStringItems]{
-		OutputState: i.ToActionUserPropertiesArrayPropsStringItemsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ActionUserPropertiesArrayPropsStringItemsArgs) ToActionUserPropertiesArrayPropsStringItemsPtrOutput() ActionUserPropertiesArrayPropsStringItemsPtrOutput {
 	return i.ToActionUserPropertiesArrayPropsStringItemsPtrOutputWithContext(context.Background())
 }
@@ -2466,12 +2147,6 @@ func (i *actionUserPropertiesArrayPropsStringItemsPtrType) ToActionUserPropertie
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsStringItemsPtrOutput)
 }
 
-func (i *actionUserPropertiesArrayPropsStringItemsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ActionUserPropertiesArrayPropsStringItems] {
-	return pulumix.Output[*ActionUserPropertiesArrayPropsStringItems]{
-		OutputState: i.ToActionUserPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesArrayPropsStringItemsOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesArrayPropsStringItemsOutput) ElementType() reflect.Type {
@@ -2494,12 +2169,6 @@ func (o ActionUserPropertiesArrayPropsStringItemsOutput) ToActionUserPropertiesA
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionUserPropertiesArrayPropsStringItems) *ActionUserPropertiesArrayPropsStringItems {
 		return &v
 	}).(ActionUserPropertiesArrayPropsStringItemsPtrOutput)
-}
-
-func (o ActionUserPropertiesArrayPropsStringItemsOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesArrayPropsStringItems] {
-	return pulumix.Output[ActionUserPropertiesArrayPropsStringItems]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesArrayPropsStringItemsOutput) Blueprint() pulumi.StringPtrOutput {
@@ -2534,12 +2203,6 @@ func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) ToActionUserProperti
 
 func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) ToActionUserPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsStringItemsPtrOutput {
 	return o
-}
-
-func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ActionUserPropertiesArrayPropsStringItems] {
-	return pulumix.Output[*ActionUserPropertiesArrayPropsStringItems]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Elem() ActionUserPropertiesArrayPropsStringItemsOutput {
@@ -2606,6 +2269,8 @@ type ActionUserPropertiesBooleanProps struct {
 	Icon           *string                                  `pulumi:"icon"`
 	Required       *bool                                    `pulumi:"required"`
 	Title          *string                                  `pulumi:"title"`
+	Visible        *bool                                    `pulumi:"visible"`
+	VisibleJqQuery *string                                  `pulumi:"visibleJqQuery"`
 }
 
 // ActionUserPropertiesBooleanPropsInput is an input type that accepts ActionUserPropertiesBooleanPropsArgs and ActionUserPropertiesBooleanPropsOutput values.
@@ -2628,6 +2293,8 @@ type ActionUserPropertiesBooleanPropsArgs struct {
 	Icon           pulumi.StringPtrInput                           `pulumi:"icon"`
 	Required       pulumi.BoolPtrInput                             `pulumi:"required"`
 	Title          pulumi.StringPtrInput                           `pulumi:"title"`
+	Visible        pulumi.BoolPtrInput                             `pulumi:"visible"`
+	VisibleJqQuery pulumi.StringPtrInput                           `pulumi:"visibleJqQuery"`
 }
 
 func (ActionUserPropertiesBooleanPropsArgs) ElementType() reflect.Type {
@@ -2640,12 +2307,6 @@ func (i ActionUserPropertiesBooleanPropsArgs) ToActionUserPropertiesBooleanProps
 
 func (i ActionUserPropertiesBooleanPropsArgs) ToActionUserPropertiesBooleanPropsOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesBooleanPropsOutput)
-}
-
-func (i ActionUserPropertiesBooleanPropsArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesBooleanProps] {
-	return pulumix.Output[ActionUserPropertiesBooleanProps]{
-		OutputState: i.ToActionUserPropertiesBooleanPropsOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ActionUserPropertiesBooleanPropsMapInput is an input type that accepts ActionUserPropertiesBooleanPropsMap and ActionUserPropertiesBooleanPropsMapOutput values.
@@ -2673,12 +2334,6 @@ func (i ActionUserPropertiesBooleanPropsMap) ToActionUserPropertiesBooleanPropsM
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesBooleanPropsMapOutput)
 }
 
-func (i ActionUserPropertiesBooleanPropsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ActionUserPropertiesBooleanProps] {
-	return pulumix.Output[map[string]ActionUserPropertiesBooleanProps]{
-		OutputState: i.ToActionUserPropertiesBooleanPropsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesBooleanPropsOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesBooleanPropsOutput) ElementType() reflect.Type {
@@ -2691,12 +2346,6 @@ func (o ActionUserPropertiesBooleanPropsOutput) ToActionUserPropertiesBooleanPro
 
 func (o ActionUserPropertiesBooleanPropsOutput) ToActionUserPropertiesBooleanPropsOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsOutput {
 	return o
-}
-
-func (o ActionUserPropertiesBooleanPropsOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesBooleanProps] {
-	return pulumix.Output[ActionUserPropertiesBooleanProps]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesBooleanPropsOutput) Dataset() ActionUserPropertiesBooleanPropsDatasetPtrOutput {
@@ -2731,6 +2380,14 @@ func (o ActionUserPropertiesBooleanPropsOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
+func (o ActionUserPropertiesBooleanPropsOutput) Visible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
+}
+
+func (o ActionUserPropertiesBooleanPropsOutput) VisibleJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *string { return v.VisibleJqQuery }).(pulumi.StringPtrOutput)
+}
+
 type ActionUserPropertiesBooleanPropsMapOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesBooleanPropsMapOutput) ElementType() reflect.Type {
@@ -2743,12 +2400,6 @@ func (o ActionUserPropertiesBooleanPropsMapOutput) ToActionUserPropertiesBoolean
 
 func (o ActionUserPropertiesBooleanPropsMapOutput) ToActionUserPropertiesBooleanPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsMapOutput {
 	return o
-}
-
-func (o ActionUserPropertiesBooleanPropsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ActionUserPropertiesBooleanProps] {
-	return pulumix.Output[map[string]ActionUserPropertiesBooleanProps]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesBooleanPropsMapOutput) MapIndex(k pulumi.StringInput) ActionUserPropertiesBooleanPropsOutput {
@@ -2788,12 +2439,6 @@ func (i ActionUserPropertiesBooleanPropsDatasetArgs) ToActionUserPropertiesBoole
 
 func (i ActionUserPropertiesBooleanPropsDatasetArgs) ToActionUserPropertiesBooleanPropsDatasetOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsDatasetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesBooleanPropsDatasetOutput)
-}
-
-func (i ActionUserPropertiesBooleanPropsDatasetArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesBooleanPropsDataset] {
-	return pulumix.Output[ActionUserPropertiesBooleanPropsDataset]{
-		OutputState: i.ToActionUserPropertiesBooleanPropsDatasetOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ActionUserPropertiesBooleanPropsDatasetArgs) ToActionUserPropertiesBooleanPropsDatasetPtrOutput() ActionUserPropertiesBooleanPropsDatasetPtrOutput {
@@ -2837,12 +2482,6 @@ func (i *actionUserPropertiesBooleanPropsDatasetPtrType) ToActionUserPropertiesB
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesBooleanPropsDatasetPtrOutput)
 }
 
-func (i *actionUserPropertiesBooleanPropsDatasetPtrType) ToOutput(ctx context.Context) pulumix.Output[*ActionUserPropertiesBooleanPropsDataset] {
-	return pulumix.Output[*ActionUserPropertiesBooleanPropsDataset]{
-		OutputState: i.ToActionUserPropertiesBooleanPropsDatasetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesBooleanPropsDatasetOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesBooleanPropsDatasetOutput) ElementType() reflect.Type {
@@ -2867,12 +2506,6 @@ func (o ActionUserPropertiesBooleanPropsDatasetOutput) ToActionUserPropertiesBoo
 	}).(ActionUserPropertiesBooleanPropsDatasetPtrOutput)
 }
 
-func (o ActionUserPropertiesBooleanPropsDatasetOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesBooleanPropsDataset] {
-	return pulumix.Output[ActionUserPropertiesBooleanPropsDataset]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ActionUserPropertiesBooleanPropsDatasetOutput) Combinator() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionUserPropertiesBooleanPropsDataset) string { return v.Combinator }).(pulumi.StringOutput)
 }
@@ -2895,12 +2528,6 @@ func (o ActionUserPropertiesBooleanPropsDatasetPtrOutput) ToActionUserProperties
 
 func (o ActionUserPropertiesBooleanPropsDatasetPtrOutput) ToActionUserPropertiesBooleanPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsDatasetPtrOutput {
 	return o
-}
-
-func (o ActionUserPropertiesBooleanPropsDatasetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ActionUserPropertiesBooleanPropsDataset] {
-	return pulumix.Output[*ActionUserPropertiesBooleanPropsDataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesBooleanPropsDatasetPtrOutput) Elem() ActionUserPropertiesBooleanPropsDatasetOutput {
@@ -2968,12 +2595,6 @@ func (i ActionUserPropertiesBooleanPropsDatasetRuleArgs) ToActionUserPropertiesB
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesBooleanPropsDatasetRuleOutput)
 }
 
-func (i ActionUserPropertiesBooleanPropsDatasetRuleArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesBooleanPropsDatasetRule] {
-	return pulumix.Output[ActionUserPropertiesBooleanPropsDatasetRule]{
-		OutputState: i.ToActionUserPropertiesBooleanPropsDatasetRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ActionUserPropertiesBooleanPropsDatasetRuleArrayInput is an input type that accepts ActionUserPropertiesBooleanPropsDatasetRuleArray and ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput values.
 // You can construct a concrete instance of `ActionUserPropertiesBooleanPropsDatasetRuleArrayInput` via:
 //
@@ -2999,12 +2620,6 @@ func (i ActionUserPropertiesBooleanPropsDatasetRuleArray) ToActionUserProperties
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput)
 }
 
-func (i ActionUserPropertiesBooleanPropsDatasetRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]ActionUserPropertiesBooleanPropsDatasetRule] {
-	return pulumix.Output[[]ActionUserPropertiesBooleanPropsDatasetRule]{
-		OutputState: i.ToActionUserPropertiesBooleanPropsDatasetRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesBooleanPropsDatasetRuleOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesBooleanPropsDatasetRuleOutput) ElementType() reflect.Type {
@@ -3017,12 +2632,6 @@ func (o ActionUserPropertiesBooleanPropsDatasetRuleOutput) ToActionUserPropertie
 
 func (o ActionUserPropertiesBooleanPropsDatasetRuleOutput) ToActionUserPropertiesBooleanPropsDatasetRuleOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsDatasetRuleOutput {
 	return o
-}
-
-func (o ActionUserPropertiesBooleanPropsDatasetRuleOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesBooleanPropsDatasetRule] {
-	return pulumix.Output[ActionUserPropertiesBooleanPropsDatasetRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesBooleanPropsDatasetRuleOutput) Blueprint() pulumi.StringPtrOutput {
@@ -3055,12 +2664,6 @@ func (o ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput) ToActionUserProp
 
 func (o ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput) ToActionUserPropertiesBooleanPropsDatasetRuleArrayOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput {
 	return o
-}
-
-func (o ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ActionUserPropertiesBooleanPropsDatasetRule] {
-	return pulumix.Output[[]ActionUserPropertiesBooleanPropsDatasetRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput) Index(i pulumi.IntInput) ActionUserPropertiesBooleanPropsDatasetRuleOutput {
@@ -3100,12 +2703,6 @@ func (i ActionUserPropertiesBooleanPropsDatasetRuleValueArgs) ToActionUserProper
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesBooleanPropsDatasetRuleValueOutput)
 }
 
-func (i ActionUserPropertiesBooleanPropsDatasetRuleValueArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesBooleanPropsDatasetRuleValue] {
-	return pulumix.Output[ActionUserPropertiesBooleanPropsDatasetRuleValue]{
-		OutputState: i.ToActionUserPropertiesBooleanPropsDatasetRuleValueOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesBooleanPropsDatasetRuleValueOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesBooleanPropsDatasetRuleValueOutput) ElementType() reflect.Type {
@@ -3118,12 +2715,6 @@ func (o ActionUserPropertiesBooleanPropsDatasetRuleValueOutput) ToActionUserProp
 
 func (o ActionUserPropertiesBooleanPropsDatasetRuleValueOutput) ToActionUserPropertiesBooleanPropsDatasetRuleValueOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsDatasetRuleValueOutput {
 	return o
-}
-
-func (o ActionUserPropertiesBooleanPropsDatasetRuleValueOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesBooleanPropsDatasetRuleValue] {
-	return pulumix.Output[ActionUserPropertiesBooleanPropsDatasetRuleValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesBooleanPropsDatasetRuleValueOutput) JqQuery() pulumi.StringOutput {
@@ -3143,6 +2734,8 @@ type ActionUserPropertiesNumberProps struct {
 	Minimum        *float64                                `pulumi:"minimum"`
 	Required       *bool                                   `pulumi:"required"`
 	Title          *string                                 `pulumi:"title"`
+	Visible        *bool                                   `pulumi:"visible"`
+	VisibleJqQuery *string                                 `pulumi:"visibleJqQuery"`
 }
 
 // ActionUserPropertiesNumberPropsInput is an input type that accepts ActionUserPropertiesNumberPropsArgs and ActionUserPropertiesNumberPropsOutput values.
@@ -3169,6 +2762,8 @@ type ActionUserPropertiesNumberPropsArgs struct {
 	Minimum        pulumi.Float64PtrInput                         `pulumi:"minimum"`
 	Required       pulumi.BoolPtrInput                            `pulumi:"required"`
 	Title          pulumi.StringPtrInput                          `pulumi:"title"`
+	Visible        pulumi.BoolPtrInput                            `pulumi:"visible"`
+	VisibleJqQuery pulumi.StringPtrInput                          `pulumi:"visibleJqQuery"`
 }
 
 func (ActionUserPropertiesNumberPropsArgs) ElementType() reflect.Type {
@@ -3181,12 +2776,6 @@ func (i ActionUserPropertiesNumberPropsArgs) ToActionUserPropertiesNumberPropsOu
 
 func (i ActionUserPropertiesNumberPropsArgs) ToActionUserPropertiesNumberPropsOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesNumberPropsOutput)
-}
-
-func (i ActionUserPropertiesNumberPropsArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesNumberProps] {
-	return pulumix.Output[ActionUserPropertiesNumberProps]{
-		OutputState: i.ToActionUserPropertiesNumberPropsOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ActionUserPropertiesNumberPropsMapInput is an input type that accepts ActionUserPropertiesNumberPropsMap and ActionUserPropertiesNumberPropsMapOutput values.
@@ -3214,12 +2803,6 @@ func (i ActionUserPropertiesNumberPropsMap) ToActionUserPropertiesNumberPropsMap
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesNumberPropsMapOutput)
 }
 
-func (i ActionUserPropertiesNumberPropsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ActionUserPropertiesNumberProps] {
-	return pulumix.Output[map[string]ActionUserPropertiesNumberProps]{
-		OutputState: i.ToActionUserPropertiesNumberPropsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesNumberPropsOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesNumberPropsOutput) ElementType() reflect.Type {
@@ -3232,12 +2815,6 @@ func (o ActionUserPropertiesNumberPropsOutput) ToActionUserPropertiesNumberProps
 
 func (o ActionUserPropertiesNumberPropsOutput) ToActionUserPropertiesNumberPropsOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsOutput {
 	return o
-}
-
-func (o ActionUserPropertiesNumberPropsOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesNumberProps] {
-	return pulumix.Output[ActionUserPropertiesNumberProps]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesNumberPropsOutput) Dataset() ActionUserPropertiesNumberPropsDatasetPtrOutput {
@@ -3288,6 +2865,14 @@ func (o ActionUserPropertiesNumberPropsOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
+func (o ActionUserPropertiesNumberPropsOutput) Visible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
+}
+
+func (o ActionUserPropertiesNumberPropsOutput) VisibleJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *string { return v.VisibleJqQuery }).(pulumi.StringPtrOutput)
+}
+
 type ActionUserPropertiesNumberPropsMapOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesNumberPropsMapOutput) ElementType() reflect.Type {
@@ -3300,12 +2885,6 @@ func (o ActionUserPropertiesNumberPropsMapOutput) ToActionUserPropertiesNumberPr
 
 func (o ActionUserPropertiesNumberPropsMapOutput) ToActionUserPropertiesNumberPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsMapOutput {
 	return o
-}
-
-func (o ActionUserPropertiesNumberPropsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ActionUserPropertiesNumberProps] {
-	return pulumix.Output[map[string]ActionUserPropertiesNumberProps]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesNumberPropsMapOutput) MapIndex(k pulumi.StringInput) ActionUserPropertiesNumberPropsOutput {
@@ -3345,12 +2924,6 @@ func (i ActionUserPropertiesNumberPropsDatasetArgs) ToActionUserPropertiesNumber
 
 func (i ActionUserPropertiesNumberPropsDatasetArgs) ToActionUserPropertiesNumberPropsDatasetOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsDatasetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesNumberPropsDatasetOutput)
-}
-
-func (i ActionUserPropertiesNumberPropsDatasetArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesNumberPropsDataset] {
-	return pulumix.Output[ActionUserPropertiesNumberPropsDataset]{
-		OutputState: i.ToActionUserPropertiesNumberPropsDatasetOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ActionUserPropertiesNumberPropsDatasetArgs) ToActionUserPropertiesNumberPropsDatasetPtrOutput() ActionUserPropertiesNumberPropsDatasetPtrOutput {
@@ -3394,12 +2967,6 @@ func (i *actionUserPropertiesNumberPropsDatasetPtrType) ToActionUserPropertiesNu
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesNumberPropsDatasetPtrOutput)
 }
 
-func (i *actionUserPropertiesNumberPropsDatasetPtrType) ToOutput(ctx context.Context) pulumix.Output[*ActionUserPropertiesNumberPropsDataset] {
-	return pulumix.Output[*ActionUserPropertiesNumberPropsDataset]{
-		OutputState: i.ToActionUserPropertiesNumberPropsDatasetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesNumberPropsDatasetOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesNumberPropsDatasetOutput) ElementType() reflect.Type {
@@ -3424,12 +2991,6 @@ func (o ActionUserPropertiesNumberPropsDatasetOutput) ToActionUserPropertiesNumb
 	}).(ActionUserPropertiesNumberPropsDatasetPtrOutput)
 }
 
-func (o ActionUserPropertiesNumberPropsDatasetOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesNumberPropsDataset] {
-	return pulumix.Output[ActionUserPropertiesNumberPropsDataset]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ActionUserPropertiesNumberPropsDatasetOutput) Combinator() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionUserPropertiesNumberPropsDataset) string { return v.Combinator }).(pulumi.StringOutput)
 }
@@ -3452,12 +3013,6 @@ func (o ActionUserPropertiesNumberPropsDatasetPtrOutput) ToActionUserPropertiesN
 
 func (o ActionUserPropertiesNumberPropsDatasetPtrOutput) ToActionUserPropertiesNumberPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsDatasetPtrOutput {
 	return o
-}
-
-func (o ActionUserPropertiesNumberPropsDatasetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ActionUserPropertiesNumberPropsDataset] {
-	return pulumix.Output[*ActionUserPropertiesNumberPropsDataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesNumberPropsDatasetPtrOutput) Elem() ActionUserPropertiesNumberPropsDatasetOutput {
@@ -3525,12 +3080,6 @@ func (i ActionUserPropertiesNumberPropsDatasetRuleArgs) ToActionUserPropertiesNu
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesNumberPropsDatasetRuleOutput)
 }
 
-func (i ActionUserPropertiesNumberPropsDatasetRuleArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesNumberPropsDatasetRule] {
-	return pulumix.Output[ActionUserPropertiesNumberPropsDatasetRule]{
-		OutputState: i.ToActionUserPropertiesNumberPropsDatasetRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ActionUserPropertiesNumberPropsDatasetRuleArrayInput is an input type that accepts ActionUserPropertiesNumberPropsDatasetRuleArray and ActionUserPropertiesNumberPropsDatasetRuleArrayOutput values.
 // You can construct a concrete instance of `ActionUserPropertiesNumberPropsDatasetRuleArrayInput` via:
 //
@@ -3556,12 +3105,6 @@ func (i ActionUserPropertiesNumberPropsDatasetRuleArray) ToActionUserPropertiesN
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesNumberPropsDatasetRuleArrayOutput)
 }
 
-func (i ActionUserPropertiesNumberPropsDatasetRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]ActionUserPropertiesNumberPropsDatasetRule] {
-	return pulumix.Output[[]ActionUserPropertiesNumberPropsDatasetRule]{
-		OutputState: i.ToActionUserPropertiesNumberPropsDatasetRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesNumberPropsDatasetRuleOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesNumberPropsDatasetRuleOutput) ElementType() reflect.Type {
@@ -3574,12 +3117,6 @@ func (o ActionUserPropertiesNumberPropsDatasetRuleOutput) ToActionUserProperties
 
 func (o ActionUserPropertiesNumberPropsDatasetRuleOutput) ToActionUserPropertiesNumberPropsDatasetRuleOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsDatasetRuleOutput {
 	return o
-}
-
-func (o ActionUserPropertiesNumberPropsDatasetRuleOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesNumberPropsDatasetRule] {
-	return pulumix.Output[ActionUserPropertiesNumberPropsDatasetRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesNumberPropsDatasetRuleOutput) Blueprint() pulumi.StringPtrOutput {
@@ -3612,12 +3149,6 @@ func (o ActionUserPropertiesNumberPropsDatasetRuleArrayOutput) ToActionUserPrope
 
 func (o ActionUserPropertiesNumberPropsDatasetRuleArrayOutput) ToActionUserPropertiesNumberPropsDatasetRuleArrayOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsDatasetRuleArrayOutput {
 	return o
-}
-
-func (o ActionUserPropertiesNumberPropsDatasetRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ActionUserPropertiesNumberPropsDatasetRule] {
-	return pulumix.Output[[]ActionUserPropertiesNumberPropsDatasetRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesNumberPropsDatasetRuleArrayOutput) Index(i pulumi.IntInput) ActionUserPropertiesNumberPropsDatasetRuleOutput {
@@ -3657,12 +3188,6 @@ func (i ActionUserPropertiesNumberPropsDatasetRuleValueArgs) ToActionUserPropert
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesNumberPropsDatasetRuleValueOutput)
 }
 
-func (i ActionUserPropertiesNumberPropsDatasetRuleValueArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesNumberPropsDatasetRuleValue] {
-	return pulumix.Output[ActionUserPropertiesNumberPropsDatasetRuleValue]{
-		OutputState: i.ToActionUserPropertiesNumberPropsDatasetRuleValueOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesNumberPropsDatasetRuleValueOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesNumberPropsDatasetRuleValueOutput) ElementType() reflect.Type {
@@ -3675,12 +3200,6 @@ func (o ActionUserPropertiesNumberPropsDatasetRuleValueOutput) ToActionUserPrope
 
 func (o ActionUserPropertiesNumberPropsDatasetRuleValueOutput) ToActionUserPropertiesNumberPropsDatasetRuleValueOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsDatasetRuleValueOutput {
 	return o
-}
-
-func (o ActionUserPropertiesNumberPropsDatasetRuleValueOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesNumberPropsDatasetRuleValue] {
-	return pulumix.Output[ActionUserPropertiesNumberPropsDatasetRuleValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesNumberPropsDatasetRuleValueOutput) JqQuery() pulumi.StringOutput {
@@ -3697,6 +3216,8 @@ type ActionUserPropertiesObjectProps struct {
 	Icon           *string                                 `pulumi:"icon"`
 	Required       *bool                                   `pulumi:"required"`
 	Title          *string                                 `pulumi:"title"`
+	Visible        *bool                                   `pulumi:"visible"`
+	VisibleJqQuery *string                                 `pulumi:"visibleJqQuery"`
 }
 
 // ActionUserPropertiesObjectPropsInput is an input type that accepts ActionUserPropertiesObjectPropsArgs and ActionUserPropertiesObjectPropsOutput values.
@@ -3720,6 +3241,8 @@ type ActionUserPropertiesObjectPropsArgs struct {
 	Icon           pulumi.StringPtrInput                          `pulumi:"icon"`
 	Required       pulumi.BoolPtrInput                            `pulumi:"required"`
 	Title          pulumi.StringPtrInput                          `pulumi:"title"`
+	Visible        pulumi.BoolPtrInput                            `pulumi:"visible"`
+	VisibleJqQuery pulumi.StringPtrInput                          `pulumi:"visibleJqQuery"`
 }
 
 func (ActionUserPropertiesObjectPropsArgs) ElementType() reflect.Type {
@@ -3732,12 +3255,6 @@ func (i ActionUserPropertiesObjectPropsArgs) ToActionUserPropertiesObjectPropsOu
 
 func (i ActionUserPropertiesObjectPropsArgs) ToActionUserPropertiesObjectPropsOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesObjectPropsOutput)
-}
-
-func (i ActionUserPropertiesObjectPropsArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesObjectProps] {
-	return pulumix.Output[ActionUserPropertiesObjectProps]{
-		OutputState: i.ToActionUserPropertiesObjectPropsOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ActionUserPropertiesObjectPropsMapInput is an input type that accepts ActionUserPropertiesObjectPropsMap and ActionUserPropertiesObjectPropsMapOutput values.
@@ -3765,12 +3282,6 @@ func (i ActionUserPropertiesObjectPropsMap) ToActionUserPropertiesObjectPropsMap
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesObjectPropsMapOutput)
 }
 
-func (i ActionUserPropertiesObjectPropsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ActionUserPropertiesObjectProps] {
-	return pulumix.Output[map[string]ActionUserPropertiesObjectProps]{
-		OutputState: i.ToActionUserPropertiesObjectPropsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesObjectPropsOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesObjectPropsOutput) ElementType() reflect.Type {
@@ -3783,12 +3294,6 @@ func (o ActionUserPropertiesObjectPropsOutput) ToActionUserPropertiesObjectProps
 
 func (o ActionUserPropertiesObjectPropsOutput) ToActionUserPropertiesObjectPropsOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsOutput {
 	return o
-}
-
-func (o ActionUserPropertiesObjectPropsOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesObjectProps] {
-	return pulumix.Output[ActionUserPropertiesObjectProps]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesObjectPropsOutput) Dataset() ActionUserPropertiesObjectPropsDatasetPtrOutput {
@@ -3827,6 +3332,14 @@ func (o ActionUserPropertiesObjectPropsOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
+func (o ActionUserPropertiesObjectPropsOutput) Visible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
+}
+
+func (o ActionUserPropertiesObjectPropsOutput) VisibleJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.VisibleJqQuery }).(pulumi.StringPtrOutput)
+}
+
 type ActionUserPropertiesObjectPropsMapOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesObjectPropsMapOutput) ElementType() reflect.Type {
@@ -3839,12 +3352,6 @@ func (o ActionUserPropertiesObjectPropsMapOutput) ToActionUserPropertiesObjectPr
 
 func (o ActionUserPropertiesObjectPropsMapOutput) ToActionUserPropertiesObjectPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsMapOutput {
 	return o
-}
-
-func (o ActionUserPropertiesObjectPropsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ActionUserPropertiesObjectProps] {
-	return pulumix.Output[map[string]ActionUserPropertiesObjectProps]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesObjectPropsMapOutput) MapIndex(k pulumi.StringInput) ActionUserPropertiesObjectPropsOutput {
@@ -3884,12 +3391,6 @@ func (i ActionUserPropertiesObjectPropsDatasetArgs) ToActionUserPropertiesObject
 
 func (i ActionUserPropertiesObjectPropsDatasetArgs) ToActionUserPropertiesObjectPropsDatasetOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsDatasetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesObjectPropsDatasetOutput)
-}
-
-func (i ActionUserPropertiesObjectPropsDatasetArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesObjectPropsDataset] {
-	return pulumix.Output[ActionUserPropertiesObjectPropsDataset]{
-		OutputState: i.ToActionUserPropertiesObjectPropsDatasetOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ActionUserPropertiesObjectPropsDatasetArgs) ToActionUserPropertiesObjectPropsDatasetPtrOutput() ActionUserPropertiesObjectPropsDatasetPtrOutput {
@@ -3933,12 +3434,6 @@ func (i *actionUserPropertiesObjectPropsDatasetPtrType) ToActionUserPropertiesOb
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesObjectPropsDatasetPtrOutput)
 }
 
-func (i *actionUserPropertiesObjectPropsDatasetPtrType) ToOutput(ctx context.Context) pulumix.Output[*ActionUserPropertiesObjectPropsDataset] {
-	return pulumix.Output[*ActionUserPropertiesObjectPropsDataset]{
-		OutputState: i.ToActionUserPropertiesObjectPropsDatasetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesObjectPropsDatasetOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesObjectPropsDatasetOutput) ElementType() reflect.Type {
@@ -3963,12 +3458,6 @@ func (o ActionUserPropertiesObjectPropsDatasetOutput) ToActionUserPropertiesObje
 	}).(ActionUserPropertiesObjectPropsDatasetPtrOutput)
 }
 
-func (o ActionUserPropertiesObjectPropsDatasetOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesObjectPropsDataset] {
-	return pulumix.Output[ActionUserPropertiesObjectPropsDataset]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ActionUserPropertiesObjectPropsDatasetOutput) Combinator() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionUserPropertiesObjectPropsDataset) string { return v.Combinator }).(pulumi.StringOutput)
 }
@@ -3991,12 +3480,6 @@ func (o ActionUserPropertiesObjectPropsDatasetPtrOutput) ToActionUserPropertiesO
 
 func (o ActionUserPropertiesObjectPropsDatasetPtrOutput) ToActionUserPropertiesObjectPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsDatasetPtrOutput {
 	return o
-}
-
-func (o ActionUserPropertiesObjectPropsDatasetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ActionUserPropertiesObjectPropsDataset] {
-	return pulumix.Output[*ActionUserPropertiesObjectPropsDataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesObjectPropsDatasetPtrOutput) Elem() ActionUserPropertiesObjectPropsDatasetOutput {
@@ -4064,12 +3547,6 @@ func (i ActionUserPropertiesObjectPropsDatasetRuleArgs) ToActionUserPropertiesOb
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesObjectPropsDatasetRuleOutput)
 }
 
-func (i ActionUserPropertiesObjectPropsDatasetRuleArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesObjectPropsDatasetRule] {
-	return pulumix.Output[ActionUserPropertiesObjectPropsDatasetRule]{
-		OutputState: i.ToActionUserPropertiesObjectPropsDatasetRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ActionUserPropertiesObjectPropsDatasetRuleArrayInput is an input type that accepts ActionUserPropertiesObjectPropsDatasetRuleArray and ActionUserPropertiesObjectPropsDatasetRuleArrayOutput values.
 // You can construct a concrete instance of `ActionUserPropertiesObjectPropsDatasetRuleArrayInput` via:
 //
@@ -4095,12 +3572,6 @@ func (i ActionUserPropertiesObjectPropsDatasetRuleArray) ToActionUserPropertiesO
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesObjectPropsDatasetRuleArrayOutput)
 }
 
-func (i ActionUserPropertiesObjectPropsDatasetRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]ActionUserPropertiesObjectPropsDatasetRule] {
-	return pulumix.Output[[]ActionUserPropertiesObjectPropsDatasetRule]{
-		OutputState: i.ToActionUserPropertiesObjectPropsDatasetRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesObjectPropsDatasetRuleOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesObjectPropsDatasetRuleOutput) ElementType() reflect.Type {
@@ -4113,12 +3584,6 @@ func (o ActionUserPropertiesObjectPropsDatasetRuleOutput) ToActionUserProperties
 
 func (o ActionUserPropertiesObjectPropsDatasetRuleOutput) ToActionUserPropertiesObjectPropsDatasetRuleOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsDatasetRuleOutput {
 	return o
-}
-
-func (o ActionUserPropertiesObjectPropsDatasetRuleOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesObjectPropsDatasetRule] {
-	return pulumix.Output[ActionUserPropertiesObjectPropsDatasetRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesObjectPropsDatasetRuleOutput) Blueprint() pulumi.StringPtrOutput {
@@ -4151,12 +3616,6 @@ func (o ActionUserPropertiesObjectPropsDatasetRuleArrayOutput) ToActionUserPrope
 
 func (o ActionUserPropertiesObjectPropsDatasetRuleArrayOutput) ToActionUserPropertiesObjectPropsDatasetRuleArrayOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsDatasetRuleArrayOutput {
 	return o
-}
-
-func (o ActionUserPropertiesObjectPropsDatasetRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ActionUserPropertiesObjectPropsDatasetRule] {
-	return pulumix.Output[[]ActionUserPropertiesObjectPropsDatasetRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesObjectPropsDatasetRuleArrayOutput) Index(i pulumi.IntInput) ActionUserPropertiesObjectPropsDatasetRuleOutput {
@@ -4196,12 +3655,6 @@ func (i ActionUserPropertiesObjectPropsDatasetRuleValueArgs) ToActionUserPropert
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesObjectPropsDatasetRuleValueOutput)
 }
 
-func (i ActionUserPropertiesObjectPropsDatasetRuleValueArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesObjectPropsDatasetRuleValue] {
-	return pulumix.Output[ActionUserPropertiesObjectPropsDatasetRuleValue]{
-		OutputState: i.ToActionUserPropertiesObjectPropsDatasetRuleValueOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesObjectPropsDatasetRuleValueOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesObjectPropsDatasetRuleValueOutput) ElementType() reflect.Type {
@@ -4214,12 +3667,6 @@ func (o ActionUserPropertiesObjectPropsDatasetRuleValueOutput) ToActionUserPrope
 
 func (o ActionUserPropertiesObjectPropsDatasetRuleValueOutput) ToActionUserPropertiesObjectPropsDatasetRuleValueOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsDatasetRuleValueOutput {
 	return o
-}
-
-func (o ActionUserPropertiesObjectPropsDatasetRuleValueOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesObjectPropsDatasetRuleValue] {
-	return pulumix.Output[ActionUserPropertiesObjectPropsDatasetRuleValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesObjectPropsDatasetRuleValueOutput) JqQuery() pulumi.StringOutput {
@@ -4243,6 +3690,8 @@ type ActionUserPropertiesStringProps struct {
 	Pattern        *string                                 `pulumi:"pattern"`
 	Required       *bool                                   `pulumi:"required"`
 	Title          *string                                 `pulumi:"title"`
+	Visible        *bool                                   `pulumi:"visible"`
+	VisibleJqQuery *string                                 `pulumi:"visibleJqQuery"`
 }
 
 // ActionUserPropertiesStringPropsInput is an input type that accepts ActionUserPropertiesStringPropsArgs and ActionUserPropertiesStringPropsOutput values.
@@ -4273,6 +3722,8 @@ type ActionUserPropertiesStringPropsArgs struct {
 	Pattern        pulumi.StringPtrInput                          `pulumi:"pattern"`
 	Required       pulumi.BoolPtrInput                            `pulumi:"required"`
 	Title          pulumi.StringPtrInput                          `pulumi:"title"`
+	Visible        pulumi.BoolPtrInput                            `pulumi:"visible"`
+	VisibleJqQuery pulumi.StringPtrInput                          `pulumi:"visibleJqQuery"`
 }
 
 func (ActionUserPropertiesStringPropsArgs) ElementType() reflect.Type {
@@ -4285,12 +3736,6 @@ func (i ActionUserPropertiesStringPropsArgs) ToActionUserPropertiesStringPropsOu
 
 func (i ActionUserPropertiesStringPropsArgs) ToActionUserPropertiesStringPropsOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesStringPropsOutput)
-}
-
-func (i ActionUserPropertiesStringPropsArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesStringProps] {
-	return pulumix.Output[ActionUserPropertiesStringProps]{
-		OutputState: i.ToActionUserPropertiesStringPropsOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ActionUserPropertiesStringPropsMapInput is an input type that accepts ActionUserPropertiesStringPropsMap and ActionUserPropertiesStringPropsMapOutput values.
@@ -4318,12 +3763,6 @@ func (i ActionUserPropertiesStringPropsMap) ToActionUserPropertiesStringPropsMap
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesStringPropsMapOutput)
 }
 
-func (i ActionUserPropertiesStringPropsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ActionUserPropertiesStringProps] {
-	return pulumix.Output[map[string]ActionUserPropertiesStringProps]{
-		OutputState: i.ToActionUserPropertiesStringPropsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesStringPropsOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesStringPropsOutput) ElementType() reflect.Type {
@@ -4336,12 +3775,6 @@ func (o ActionUserPropertiesStringPropsOutput) ToActionUserPropertiesStringProps
 
 func (o ActionUserPropertiesStringPropsOutput) ToActionUserPropertiesStringPropsOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsOutput {
 	return o
-}
-
-func (o ActionUserPropertiesStringPropsOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesStringProps] {
-	return pulumix.Output[ActionUserPropertiesStringProps]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesStringPropsOutput) Blueprint() pulumi.StringPtrOutput {
@@ -4408,6 +3841,14 @@ func (o ActionUserPropertiesStringPropsOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
+func (o ActionUserPropertiesStringPropsOutput) Visible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesStringProps) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
+}
+
+func (o ActionUserPropertiesStringPropsOutput) VisibleJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.VisibleJqQuery }).(pulumi.StringPtrOutput)
+}
+
 type ActionUserPropertiesStringPropsMapOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesStringPropsMapOutput) ElementType() reflect.Type {
@@ -4420,12 +3861,6 @@ func (o ActionUserPropertiesStringPropsMapOutput) ToActionUserPropertiesStringPr
 
 func (o ActionUserPropertiesStringPropsMapOutput) ToActionUserPropertiesStringPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsMapOutput {
 	return o
-}
-
-func (o ActionUserPropertiesStringPropsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ActionUserPropertiesStringProps] {
-	return pulumix.Output[map[string]ActionUserPropertiesStringProps]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesStringPropsMapOutput) MapIndex(k pulumi.StringInput) ActionUserPropertiesStringPropsOutput {
@@ -4465,12 +3900,6 @@ func (i ActionUserPropertiesStringPropsDatasetArgs) ToActionUserPropertiesString
 
 func (i ActionUserPropertiesStringPropsDatasetArgs) ToActionUserPropertiesStringPropsDatasetOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsDatasetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesStringPropsDatasetOutput)
-}
-
-func (i ActionUserPropertiesStringPropsDatasetArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesStringPropsDataset] {
-	return pulumix.Output[ActionUserPropertiesStringPropsDataset]{
-		OutputState: i.ToActionUserPropertiesStringPropsDatasetOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ActionUserPropertiesStringPropsDatasetArgs) ToActionUserPropertiesStringPropsDatasetPtrOutput() ActionUserPropertiesStringPropsDatasetPtrOutput {
@@ -4514,12 +3943,6 @@ func (i *actionUserPropertiesStringPropsDatasetPtrType) ToActionUserPropertiesSt
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesStringPropsDatasetPtrOutput)
 }
 
-func (i *actionUserPropertiesStringPropsDatasetPtrType) ToOutput(ctx context.Context) pulumix.Output[*ActionUserPropertiesStringPropsDataset] {
-	return pulumix.Output[*ActionUserPropertiesStringPropsDataset]{
-		OutputState: i.ToActionUserPropertiesStringPropsDatasetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesStringPropsDatasetOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesStringPropsDatasetOutput) ElementType() reflect.Type {
@@ -4544,12 +3967,6 @@ func (o ActionUserPropertiesStringPropsDatasetOutput) ToActionUserPropertiesStri
 	}).(ActionUserPropertiesStringPropsDatasetPtrOutput)
 }
 
-func (o ActionUserPropertiesStringPropsDatasetOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesStringPropsDataset] {
-	return pulumix.Output[ActionUserPropertiesStringPropsDataset]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ActionUserPropertiesStringPropsDatasetOutput) Combinator() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringPropsDataset) string { return v.Combinator }).(pulumi.StringOutput)
 }
@@ -4572,12 +3989,6 @@ func (o ActionUserPropertiesStringPropsDatasetPtrOutput) ToActionUserPropertiesS
 
 func (o ActionUserPropertiesStringPropsDatasetPtrOutput) ToActionUserPropertiesStringPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsDatasetPtrOutput {
 	return o
-}
-
-func (o ActionUserPropertiesStringPropsDatasetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ActionUserPropertiesStringPropsDataset] {
-	return pulumix.Output[*ActionUserPropertiesStringPropsDataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesStringPropsDatasetPtrOutput) Elem() ActionUserPropertiesStringPropsDatasetOutput {
@@ -4645,12 +4056,6 @@ func (i ActionUserPropertiesStringPropsDatasetRuleArgs) ToActionUserPropertiesSt
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesStringPropsDatasetRuleOutput)
 }
 
-func (i ActionUserPropertiesStringPropsDatasetRuleArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesStringPropsDatasetRule] {
-	return pulumix.Output[ActionUserPropertiesStringPropsDatasetRule]{
-		OutputState: i.ToActionUserPropertiesStringPropsDatasetRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ActionUserPropertiesStringPropsDatasetRuleArrayInput is an input type that accepts ActionUserPropertiesStringPropsDatasetRuleArray and ActionUserPropertiesStringPropsDatasetRuleArrayOutput values.
 // You can construct a concrete instance of `ActionUserPropertiesStringPropsDatasetRuleArrayInput` via:
 //
@@ -4676,12 +4081,6 @@ func (i ActionUserPropertiesStringPropsDatasetRuleArray) ToActionUserPropertiesS
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesStringPropsDatasetRuleArrayOutput)
 }
 
-func (i ActionUserPropertiesStringPropsDatasetRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]ActionUserPropertiesStringPropsDatasetRule] {
-	return pulumix.Output[[]ActionUserPropertiesStringPropsDatasetRule]{
-		OutputState: i.ToActionUserPropertiesStringPropsDatasetRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesStringPropsDatasetRuleOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesStringPropsDatasetRuleOutput) ElementType() reflect.Type {
@@ -4694,12 +4093,6 @@ func (o ActionUserPropertiesStringPropsDatasetRuleOutput) ToActionUserProperties
 
 func (o ActionUserPropertiesStringPropsDatasetRuleOutput) ToActionUserPropertiesStringPropsDatasetRuleOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsDatasetRuleOutput {
 	return o
-}
-
-func (o ActionUserPropertiesStringPropsDatasetRuleOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesStringPropsDatasetRule] {
-	return pulumix.Output[ActionUserPropertiesStringPropsDatasetRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesStringPropsDatasetRuleOutput) Blueprint() pulumi.StringPtrOutput {
@@ -4732,12 +4125,6 @@ func (o ActionUserPropertiesStringPropsDatasetRuleArrayOutput) ToActionUserPrope
 
 func (o ActionUserPropertiesStringPropsDatasetRuleArrayOutput) ToActionUserPropertiesStringPropsDatasetRuleArrayOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsDatasetRuleArrayOutput {
 	return o
-}
-
-func (o ActionUserPropertiesStringPropsDatasetRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ActionUserPropertiesStringPropsDatasetRule] {
-	return pulumix.Output[[]ActionUserPropertiesStringPropsDatasetRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesStringPropsDatasetRuleArrayOutput) Index(i pulumi.IntInput) ActionUserPropertiesStringPropsDatasetRuleOutput {
@@ -4777,12 +4164,6 @@ func (i ActionUserPropertiesStringPropsDatasetRuleValueArgs) ToActionUserPropert
 	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesStringPropsDatasetRuleValueOutput)
 }
 
-func (i ActionUserPropertiesStringPropsDatasetRuleValueArgs) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesStringPropsDatasetRuleValue] {
-	return pulumix.Output[ActionUserPropertiesStringPropsDatasetRuleValue]{
-		OutputState: i.ToActionUserPropertiesStringPropsDatasetRuleValueOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionUserPropertiesStringPropsDatasetRuleValueOutput struct{ *pulumi.OutputState }
 
 func (ActionUserPropertiesStringPropsDatasetRuleValueOutput) ElementType() reflect.Type {
@@ -4795,12 +4176,6 @@ func (o ActionUserPropertiesStringPropsDatasetRuleValueOutput) ToActionUserPrope
 
 func (o ActionUserPropertiesStringPropsDatasetRuleValueOutput) ToActionUserPropertiesStringPropsDatasetRuleValueOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsDatasetRuleValueOutput {
 	return o
-}
-
-func (o ActionUserPropertiesStringPropsDatasetRuleValueOutput) ToOutput(ctx context.Context) pulumix.Output[ActionUserPropertiesStringPropsDatasetRuleValue] {
-	return pulumix.Output[ActionUserPropertiesStringPropsDatasetRuleValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionUserPropertiesStringPropsDatasetRuleValueOutput) JqQuery() pulumi.StringOutput {
@@ -4844,12 +4219,6 @@ func (i ActionWebhookMethodArgs) ToActionWebhookMethodOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ActionWebhookMethodOutput)
 }
 
-func (i ActionWebhookMethodArgs) ToOutput(ctx context.Context) pulumix.Output[ActionWebhookMethod] {
-	return pulumix.Output[ActionWebhookMethod]{
-		OutputState: i.ToActionWebhookMethodOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ActionWebhookMethodArgs) ToActionWebhookMethodPtrOutput() ActionWebhookMethodPtrOutput {
 	return i.ToActionWebhookMethodPtrOutputWithContext(context.Background())
 }
@@ -4891,12 +4260,6 @@ func (i *actionWebhookMethodPtrType) ToActionWebhookMethodPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ActionWebhookMethodPtrOutput)
 }
 
-func (i *actionWebhookMethodPtrType) ToOutput(ctx context.Context) pulumix.Output[*ActionWebhookMethod] {
-	return pulumix.Output[*ActionWebhookMethod]{
-		OutputState: i.ToActionWebhookMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionWebhookMethodOutput struct{ *pulumi.OutputState }
 
 func (ActionWebhookMethodOutput) ElementType() reflect.Type {
@@ -4919,12 +4282,6 @@ func (o ActionWebhookMethodOutput) ToActionWebhookMethodPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionWebhookMethod) *ActionWebhookMethod {
 		return &v
 	}).(ActionWebhookMethodPtrOutput)
-}
-
-func (o ActionWebhookMethodOutput) ToOutput(ctx context.Context) pulumix.Output[ActionWebhookMethod] {
-	return pulumix.Output[ActionWebhookMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionWebhookMethodOutput) Agent() pulumi.BoolPtrOutput {
@@ -4955,12 +4312,6 @@ func (o ActionWebhookMethodPtrOutput) ToActionWebhookMethodPtrOutput() ActionWeb
 
 func (o ActionWebhookMethodPtrOutput) ToActionWebhookMethodPtrOutputWithContext(ctx context.Context) ActionWebhookMethodPtrOutput {
 	return o
-}
-
-func (o ActionWebhookMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ActionWebhookMethod] {
-	return pulumix.Output[*ActionWebhookMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionWebhookMethodPtrOutput) Elem() ActionWebhookMethodOutput {
@@ -5054,12 +4405,6 @@ func (i BlueprintCalculationPropertiesArgs) ToBlueprintCalculationPropertiesOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintCalculationPropertiesOutput)
 }
 
-func (i BlueprintCalculationPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[BlueprintCalculationProperties] {
-	return pulumix.Output[BlueprintCalculationProperties]{
-		OutputState: i.ToBlueprintCalculationPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BlueprintCalculationPropertiesMapInput is an input type that accepts BlueprintCalculationPropertiesMap and BlueprintCalculationPropertiesMapOutput values.
 // You can construct a concrete instance of `BlueprintCalculationPropertiesMapInput` via:
 //
@@ -5085,12 +4430,6 @@ func (i BlueprintCalculationPropertiesMap) ToBlueprintCalculationPropertiesMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintCalculationPropertiesMapOutput)
 }
 
-func (i BlueprintCalculationPropertiesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]BlueprintCalculationProperties] {
-	return pulumix.Output[map[string]BlueprintCalculationProperties]{
-		OutputState: i.ToBlueprintCalculationPropertiesMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BlueprintCalculationPropertiesOutput struct{ *pulumi.OutputState }
 
 func (BlueprintCalculationPropertiesOutput) ElementType() reflect.Type {
@@ -5103,12 +4442,6 @@ func (o BlueprintCalculationPropertiesOutput) ToBlueprintCalculationPropertiesOu
 
 func (o BlueprintCalculationPropertiesOutput) ToBlueprintCalculationPropertiesOutputWithContext(ctx context.Context) BlueprintCalculationPropertiesOutput {
 	return o
-}
-
-func (o BlueprintCalculationPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[BlueprintCalculationProperties] {
-	return pulumix.Output[BlueprintCalculationProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintCalculationPropertiesOutput) Calculation() pulumi.StringOutput {
@@ -5157,12 +4490,6 @@ func (o BlueprintCalculationPropertiesMapOutput) ToBlueprintCalculationPropertie
 	return o
 }
 
-func (o BlueprintCalculationPropertiesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]BlueprintCalculationProperties] {
-	return pulumix.Output[map[string]BlueprintCalculationProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BlueprintCalculationPropertiesMapOutput) MapIndex(k pulumi.StringInput) BlueprintCalculationPropertiesOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BlueprintCalculationProperties {
 		return vs[0].(map[string]BlueprintCalculationProperties)[vs[1].(string)]
@@ -5196,12 +4523,6 @@ func (i BlueprintKafkaChangelogDestinationArgs) ToBlueprintKafkaChangelogDestina
 
 func (i BlueprintKafkaChangelogDestinationArgs) ToBlueprintKafkaChangelogDestinationOutputWithContext(ctx context.Context) BlueprintKafkaChangelogDestinationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintKafkaChangelogDestinationOutput)
-}
-
-func (i BlueprintKafkaChangelogDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[BlueprintKafkaChangelogDestination] {
-	return pulumix.Output[BlueprintKafkaChangelogDestination]{
-		OutputState: i.ToBlueprintKafkaChangelogDestinationOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i BlueprintKafkaChangelogDestinationArgs) ToBlueprintKafkaChangelogDestinationPtrOutput() BlueprintKafkaChangelogDestinationPtrOutput {
@@ -5245,12 +4566,6 @@ func (i *blueprintKafkaChangelogDestinationPtrType) ToBlueprintKafkaChangelogDes
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintKafkaChangelogDestinationPtrOutput)
 }
 
-func (i *blueprintKafkaChangelogDestinationPtrType) ToOutput(ctx context.Context) pulumix.Output[*BlueprintKafkaChangelogDestination] {
-	return pulumix.Output[*BlueprintKafkaChangelogDestination]{
-		OutputState: i.ToBlueprintKafkaChangelogDestinationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BlueprintKafkaChangelogDestinationOutput struct{ *pulumi.OutputState }
 
 func (BlueprintKafkaChangelogDestinationOutput) ElementType() reflect.Type {
@@ -5275,12 +4590,6 @@ func (o BlueprintKafkaChangelogDestinationOutput) ToBlueprintKafkaChangelogDesti
 	}).(BlueprintKafkaChangelogDestinationPtrOutput)
 }
 
-func (o BlueprintKafkaChangelogDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[BlueprintKafkaChangelogDestination] {
-	return pulumix.Output[BlueprintKafkaChangelogDestination]{
-		OutputState: o.OutputState,
-	}
-}
-
 type BlueprintKafkaChangelogDestinationPtrOutput struct{ *pulumi.OutputState }
 
 func (BlueprintKafkaChangelogDestinationPtrOutput) ElementType() reflect.Type {
@@ -5293,12 +4602,6 @@ func (o BlueprintKafkaChangelogDestinationPtrOutput) ToBlueprintKafkaChangelogDe
 
 func (o BlueprintKafkaChangelogDestinationPtrOutput) ToBlueprintKafkaChangelogDestinationPtrOutputWithContext(ctx context.Context) BlueprintKafkaChangelogDestinationPtrOutput {
 	return o
-}
-
-func (o BlueprintKafkaChangelogDestinationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BlueprintKafkaChangelogDestination] {
-	return pulumix.Output[*BlueprintKafkaChangelogDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintKafkaChangelogDestinationPtrOutput) Elem() BlueprintKafkaChangelogDestinationOutput {
@@ -5344,12 +4647,6 @@ func (i BlueprintMirrorPropertiesArgs) ToBlueprintMirrorPropertiesOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintMirrorPropertiesOutput)
 }
 
-func (i BlueprintMirrorPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[BlueprintMirrorProperties] {
-	return pulumix.Output[BlueprintMirrorProperties]{
-		OutputState: i.ToBlueprintMirrorPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BlueprintMirrorPropertiesMapInput is an input type that accepts BlueprintMirrorPropertiesMap and BlueprintMirrorPropertiesMapOutput values.
 // You can construct a concrete instance of `BlueprintMirrorPropertiesMapInput` via:
 //
@@ -5375,12 +4672,6 @@ func (i BlueprintMirrorPropertiesMap) ToBlueprintMirrorPropertiesMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintMirrorPropertiesMapOutput)
 }
 
-func (i BlueprintMirrorPropertiesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]BlueprintMirrorProperties] {
-	return pulumix.Output[map[string]BlueprintMirrorProperties]{
-		OutputState: i.ToBlueprintMirrorPropertiesMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BlueprintMirrorPropertiesOutput struct{ *pulumi.OutputState }
 
 func (BlueprintMirrorPropertiesOutput) ElementType() reflect.Type {
@@ -5393,12 +4684,6 @@ func (o BlueprintMirrorPropertiesOutput) ToBlueprintMirrorPropertiesOutput() Blu
 
 func (o BlueprintMirrorPropertiesOutput) ToBlueprintMirrorPropertiesOutputWithContext(ctx context.Context) BlueprintMirrorPropertiesOutput {
 	return o
-}
-
-func (o BlueprintMirrorPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[BlueprintMirrorProperties] {
-	return pulumix.Output[BlueprintMirrorProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintMirrorPropertiesOutput) Path() pulumi.StringOutput {
@@ -5421,12 +4706,6 @@ func (o BlueprintMirrorPropertiesMapOutput) ToBlueprintMirrorPropertiesMapOutput
 
 func (o BlueprintMirrorPropertiesMapOutput) ToBlueprintMirrorPropertiesMapOutputWithContext(ctx context.Context) BlueprintMirrorPropertiesMapOutput {
 	return o
-}
-
-func (o BlueprintMirrorPropertiesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]BlueprintMirrorProperties] {
-	return pulumix.Output[map[string]BlueprintMirrorProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintMirrorPropertiesMapOutput) MapIndex(k pulumi.StringInput) BlueprintMirrorPropertiesOutput {
@@ -5474,12 +4753,6 @@ func (i BlueprintPropertiesArgs) ToBlueprintPropertiesOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesOutput)
 }
 
-func (i BlueprintPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[BlueprintProperties] {
-	return pulumix.Output[BlueprintProperties]{
-		OutputState: i.ToBlueprintPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BlueprintPropertiesArgs) ToBlueprintPropertiesPtrOutput() BlueprintPropertiesPtrOutput {
 	return i.ToBlueprintPropertiesPtrOutputWithContext(context.Background())
 }
@@ -5521,12 +4794,6 @@ func (i *blueprintPropertiesPtrType) ToBlueprintPropertiesPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesPtrOutput)
 }
 
-func (i *blueprintPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*BlueprintProperties] {
-	return pulumix.Output[*BlueprintProperties]{
-		OutputState: i.ToBlueprintPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BlueprintPropertiesOutput struct{ *pulumi.OutputState }
 
 func (BlueprintPropertiesOutput) ElementType() reflect.Type {
@@ -5549,12 +4816,6 @@ func (o BlueprintPropertiesOutput) ToBlueprintPropertiesPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlueprintProperties) *BlueprintProperties {
 		return &v
 	}).(BlueprintPropertiesPtrOutput)
-}
-
-func (o BlueprintPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[BlueprintProperties] {
-	return pulumix.Output[BlueprintProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintPropertiesOutput) ArrayProps() BlueprintPropertiesArrayPropsMapOutput {
@@ -5589,12 +4850,6 @@ func (o BlueprintPropertiesPtrOutput) ToBlueprintPropertiesPtrOutput() Blueprint
 
 func (o BlueprintPropertiesPtrOutput) ToBlueprintPropertiesPtrOutputWithContext(ctx context.Context) BlueprintPropertiesPtrOutput {
 	return o
-}
-
-func (o BlueprintPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BlueprintProperties] {
-	return pulumix.Output[*BlueprintProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintPropertiesPtrOutput) Elem() BlueprintPropertiesOutput {
@@ -5701,12 +4956,6 @@ func (i BlueprintPropertiesArrayPropsArgs) ToBlueprintPropertiesArrayPropsOutput
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsOutput)
 }
 
-func (i BlueprintPropertiesArrayPropsArgs) ToOutput(ctx context.Context) pulumix.Output[BlueprintPropertiesArrayProps] {
-	return pulumix.Output[BlueprintPropertiesArrayProps]{
-		OutputState: i.ToBlueprintPropertiesArrayPropsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BlueprintPropertiesArrayPropsMapInput is an input type that accepts BlueprintPropertiesArrayPropsMap and BlueprintPropertiesArrayPropsMapOutput values.
 // You can construct a concrete instance of `BlueprintPropertiesArrayPropsMapInput` via:
 //
@@ -5732,12 +4981,6 @@ func (i BlueprintPropertiesArrayPropsMap) ToBlueprintPropertiesArrayPropsMapOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsMapOutput)
 }
 
-func (i BlueprintPropertiesArrayPropsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]BlueprintPropertiesArrayProps] {
-	return pulumix.Output[map[string]BlueprintPropertiesArrayProps]{
-		OutputState: i.ToBlueprintPropertiesArrayPropsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BlueprintPropertiesArrayPropsOutput struct{ *pulumi.OutputState }
 
 func (BlueprintPropertiesArrayPropsOutput) ElementType() reflect.Type {
@@ -5750,12 +4993,6 @@ func (o BlueprintPropertiesArrayPropsOutput) ToBlueprintPropertiesArrayPropsOutp
 
 func (o BlueprintPropertiesArrayPropsOutput) ToBlueprintPropertiesArrayPropsOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsOutput {
 	return o
-}
-
-func (o BlueprintPropertiesArrayPropsOutput) ToOutput(ctx context.Context) pulumix.Output[BlueprintPropertiesArrayProps] {
-	return pulumix.Output[BlueprintPropertiesArrayProps]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintPropertiesArrayPropsOutput) BooleanItems() BlueprintPropertiesArrayPropsBooleanItemsPtrOutput {
@@ -5814,12 +5051,6 @@ func (o BlueprintPropertiesArrayPropsMapOutput) ToBlueprintPropertiesArrayPropsM
 	return o
 }
 
-func (o BlueprintPropertiesArrayPropsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]BlueprintPropertiesArrayProps] {
-	return pulumix.Output[map[string]BlueprintPropertiesArrayProps]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BlueprintPropertiesArrayPropsMapOutput) MapIndex(k pulumi.StringInput) BlueprintPropertiesArrayPropsOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BlueprintPropertiesArrayProps {
 		return vs[0].(map[string]BlueprintPropertiesArrayProps)[vs[1].(string)]
@@ -5855,12 +5086,6 @@ func (i BlueprintPropertiesArrayPropsBooleanItemsArgs) ToBlueprintPropertiesArra
 
 func (i BlueprintPropertiesArrayPropsBooleanItemsArgs) ToBlueprintPropertiesArrayPropsBooleanItemsOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsBooleanItemsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsBooleanItemsOutput)
-}
-
-func (i BlueprintPropertiesArrayPropsBooleanItemsArgs) ToOutput(ctx context.Context) pulumix.Output[BlueprintPropertiesArrayPropsBooleanItems] {
-	return pulumix.Output[BlueprintPropertiesArrayPropsBooleanItems]{
-		OutputState: i.ToBlueprintPropertiesArrayPropsBooleanItemsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i BlueprintPropertiesArrayPropsBooleanItemsArgs) ToBlueprintPropertiesArrayPropsBooleanItemsPtrOutput() BlueprintPropertiesArrayPropsBooleanItemsPtrOutput {
@@ -5904,12 +5129,6 @@ func (i *blueprintPropertiesArrayPropsBooleanItemsPtrType) ToBlueprintProperties
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsBooleanItemsPtrOutput)
 }
 
-func (i *blueprintPropertiesArrayPropsBooleanItemsPtrType) ToOutput(ctx context.Context) pulumix.Output[*BlueprintPropertiesArrayPropsBooleanItems] {
-	return pulumix.Output[*BlueprintPropertiesArrayPropsBooleanItems]{
-		OutputState: i.ToBlueprintPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BlueprintPropertiesArrayPropsBooleanItemsOutput struct{ *pulumi.OutputState }
 
 func (BlueprintPropertiesArrayPropsBooleanItemsOutput) ElementType() reflect.Type {
@@ -5934,12 +5153,6 @@ func (o BlueprintPropertiesArrayPropsBooleanItemsOutput) ToBlueprintPropertiesAr
 	}).(BlueprintPropertiesArrayPropsBooleanItemsPtrOutput)
 }
 
-func (o BlueprintPropertiesArrayPropsBooleanItemsOutput) ToOutput(ctx context.Context) pulumix.Output[BlueprintPropertiesArrayPropsBooleanItems] {
-	return pulumix.Output[BlueprintPropertiesArrayPropsBooleanItems]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BlueprintPropertiesArrayPropsBooleanItemsOutput) Defaults() pulumi.BoolArrayOutput {
 	return o.ApplyT(func(v BlueprintPropertiesArrayPropsBooleanItems) []bool { return v.Defaults }).(pulumi.BoolArrayOutput)
 }
@@ -5956,12 +5169,6 @@ func (o BlueprintPropertiesArrayPropsBooleanItemsPtrOutput) ToBlueprintPropertie
 
 func (o BlueprintPropertiesArrayPropsBooleanItemsPtrOutput) ToBlueprintPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsBooleanItemsPtrOutput {
 	return o
-}
-
-func (o BlueprintPropertiesArrayPropsBooleanItemsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BlueprintPropertiesArrayPropsBooleanItems] {
-	return pulumix.Output[*BlueprintPropertiesArrayPropsBooleanItems]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintPropertiesArrayPropsBooleanItemsPtrOutput) Elem() BlueprintPropertiesArrayPropsBooleanItemsOutput {
@@ -6014,12 +5221,6 @@ func (i BlueprintPropertiesArrayPropsNumberItemsArgs) ToBlueprintPropertiesArray
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsNumberItemsOutput)
 }
 
-func (i BlueprintPropertiesArrayPropsNumberItemsArgs) ToOutput(ctx context.Context) pulumix.Output[BlueprintPropertiesArrayPropsNumberItems] {
-	return pulumix.Output[BlueprintPropertiesArrayPropsNumberItems]{
-		OutputState: i.ToBlueprintPropertiesArrayPropsNumberItemsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BlueprintPropertiesArrayPropsNumberItemsArgs) ToBlueprintPropertiesArrayPropsNumberItemsPtrOutput() BlueprintPropertiesArrayPropsNumberItemsPtrOutput {
 	return i.ToBlueprintPropertiesArrayPropsNumberItemsPtrOutputWithContext(context.Background())
 }
@@ -6061,12 +5262,6 @@ func (i *blueprintPropertiesArrayPropsNumberItemsPtrType) ToBlueprintPropertiesA
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsNumberItemsPtrOutput)
 }
 
-func (i *blueprintPropertiesArrayPropsNumberItemsPtrType) ToOutput(ctx context.Context) pulumix.Output[*BlueprintPropertiesArrayPropsNumberItems] {
-	return pulumix.Output[*BlueprintPropertiesArrayPropsNumberItems]{
-		OutputState: i.ToBlueprintPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BlueprintPropertiesArrayPropsNumberItemsOutput struct{ *pulumi.OutputState }
 
 func (BlueprintPropertiesArrayPropsNumberItemsOutput) ElementType() reflect.Type {
@@ -6091,12 +5286,6 @@ func (o BlueprintPropertiesArrayPropsNumberItemsOutput) ToBlueprintPropertiesArr
 	}).(BlueprintPropertiesArrayPropsNumberItemsPtrOutput)
 }
 
-func (o BlueprintPropertiesArrayPropsNumberItemsOutput) ToOutput(ctx context.Context) pulumix.Output[BlueprintPropertiesArrayPropsNumberItems] {
-	return pulumix.Output[BlueprintPropertiesArrayPropsNumberItems]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BlueprintPropertiesArrayPropsNumberItemsOutput) Defaults() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v BlueprintPropertiesArrayPropsNumberItems) []float64 { return v.Defaults }).(pulumi.Float64ArrayOutput)
 }
@@ -6113,12 +5302,6 @@ func (o BlueprintPropertiesArrayPropsNumberItemsPtrOutput) ToBlueprintProperties
 
 func (o BlueprintPropertiesArrayPropsNumberItemsPtrOutput) ToBlueprintPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsNumberItemsPtrOutput {
 	return o
-}
-
-func (o BlueprintPropertiesArrayPropsNumberItemsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BlueprintPropertiesArrayPropsNumberItems] {
-	return pulumix.Output[*BlueprintPropertiesArrayPropsNumberItems]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintPropertiesArrayPropsNumberItemsPtrOutput) Elem() BlueprintPropertiesArrayPropsNumberItemsOutput {
@@ -6171,12 +5354,6 @@ func (i BlueprintPropertiesArrayPropsObjectItemsArgs) ToBlueprintPropertiesArray
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsObjectItemsOutput)
 }
 
-func (i BlueprintPropertiesArrayPropsObjectItemsArgs) ToOutput(ctx context.Context) pulumix.Output[BlueprintPropertiesArrayPropsObjectItems] {
-	return pulumix.Output[BlueprintPropertiesArrayPropsObjectItems]{
-		OutputState: i.ToBlueprintPropertiesArrayPropsObjectItemsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BlueprintPropertiesArrayPropsObjectItemsArgs) ToBlueprintPropertiesArrayPropsObjectItemsPtrOutput() BlueprintPropertiesArrayPropsObjectItemsPtrOutput {
 	return i.ToBlueprintPropertiesArrayPropsObjectItemsPtrOutputWithContext(context.Background())
 }
@@ -6218,12 +5395,6 @@ func (i *blueprintPropertiesArrayPropsObjectItemsPtrType) ToBlueprintPropertiesA
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsObjectItemsPtrOutput)
 }
 
-func (i *blueprintPropertiesArrayPropsObjectItemsPtrType) ToOutput(ctx context.Context) pulumix.Output[*BlueprintPropertiesArrayPropsObjectItems] {
-	return pulumix.Output[*BlueprintPropertiesArrayPropsObjectItems]{
-		OutputState: i.ToBlueprintPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BlueprintPropertiesArrayPropsObjectItemsOutput struct{ *pulumi.OutputState }
 
 func (BlueprintPropertiesArrayPropsObjectItemsOutput) ElementType() reflect.Type {
@@ -6248,12 +5419,6 @@ func (o BlueprintPropertiesArrayPropsObjectItemsOutput) ToBlueprintPropertiesArr
 	}).(BlueprintPropertiesArrayPropsObjectItemsPtrOutput)
 }
 
-func (o BlueprintPropertiesArrayPropsObjectItemsOutput) ToOutput(ctx context.Context) pulumix.Output[BlueprintPropertiesArrayPropsObjectItems] {
-	return pulumix.Output[BlueprintPropertiesArrayPropsObjectItems]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BlueprintPropertiesArrayPropsObjectItemsOutput) Defaults() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BlueprintPropertiesArrayPropsObjectItems) []string { return v.Defaults }).(pulumi.StringArrayOutput)
 }
@@ -6270,12 +5435,6 @@ func (o BlueprintPropertiesArrayPropsObjectItemsPtrOutput) ToBlueprintProperties
 
 func (o BlueprintPropertiesArrayPropsObjectItemsPtrOutput) ToBlueprintPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsObjectItemsPtrOutput {
 	return o
-}
-
-func (o BlueprintPropertiesArrayPropsObjectItemsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BlueprintPropertiesArrayPropsObjectItems] {
-	return pulumix.Output[*BlueprintPropertiesArrayPropsObjectItems]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintPropertiesArrayPropsObjectItemsPtrOutput) Elem() BlueprintPropertiesArrayPropsObjectItemsOutput {
@@ -6330,12 +5489,6 @@ func (i BlueprintPropertiesArrayPropsStringItemsArgs) ToBlueprintPropertiesArray
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsStringItemsOutput)
 }
 
-func (i BlueprintPropertiesArrayPropsStringItemsArgs) ToOutput(ctx context.Context) pulumix.Output[BlueprintPropertiesArrayPropsStringItems] {
-	return pulumix.Output[BlueprintPropertiesArrayPropsStringItems]{
-		OutputState: i.ToBlueprintPropertiesArrayPropsStringItemsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BlueprintPropertiesArrayPropsStringItemsArgs) ToBlueprintPropertiesArrayPropsStringItemsPtrOutput() BlueprintPropertiesArrayPropsStringItemsPtrOutput {
 	return i.ToBlueprintPropertiesArrayPropsStringItemsPtrOutputWithContext(context.Background())
 }
@@ -6377,12 +5530,6 @@ func (i *blueprintPropertiesArrayPropsStringItemsPtrType) ToBlueprintPropertiesA
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesArrayPropsStringItemsPtrOutput)
 }
 
-func (i *blueprintPropertiesArrayPropsStringItemsPtrType) ToOutput(ctx context.Context) pulumix.Output[*BlueprintPropertiesArrayPropsStringItems] {
-	return pulumix.Output[*BlueprintPropertiesArrayPropsStringItems]{
-		OutputState: i.ToBlueprintPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BlueprintPropertiesArrayPropsStringItemsOutput struct{ *pulumi.OutputState }
 
 func (BlueprintPropertiesArrayPropsStringItemsOutput) ElementType() reflect.Type {
@@ -6407,12 +5554,6 @@ func (o BlueprintPropertiesArrayPropsStringItemsOutput) ToBlueprintPropertiesArr
 	}).(BlueprintPropertiesArrayPropsStringItemsPtrOutput)
 }
 
-func (o BlueprintPropertiesArrayPropsStringItemsOutput) ToOutput(ctx context.Context) pulumix.Output[BlueprintPropertiesArrayPropsStringItems] {
-	return pulumix.Output[BlueprintPropertiesArrayPropsStringItems]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BlueprintPropertiesArrayPropsStringItemsOutput) Defaults() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BlueprintPropertiesArrayPropsStringItems) []string { return v.Defaults }).(pulumi.StringArrayOutput)
 }
@@ -6433,12 +5574,6 @@ func (o BlueprintPropertiesArrayPropsStringItemsPtrOutput) ToBlueprintProperties
 
 func (o BlueprintPropertiesArrayPropsStringItemsPtrOutput) ToBlueprintPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx context.Context) BlueprintPropertiesArrayPropsStringItemsPtrOutput {
 	return o
-}
-
-func (o BlueprintPropertiesArrayPropsStringItemsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BlueprintPropertiesArrayPropsStringItems] {
-	return pulumix.Output[*BlueprintPropertiesArrayPropsStringItems]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintPropertiesArrayPropsStringItemsPtrOutput) Elem() BlueprintPropertiesArrayPropsStringItemsOutput {
@@ -6508,12 +5643,6 @@ func (i BlueprintPropertiesBooleanPropsArgs) ToBlueprintPropertiesBooleanPropsOu
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesBooleanPropsOutput)
 }
 
-func (i BlueprintPropertiesBooleanPropsArgs) ToOutput(ctx context.Context) pulumix.Output[BlueprintPropertiesBooleanProps] {
-	return pulumix.Output[BlueprintPropertiesBooleanProps]{
-		OutputState: i.ToBlueprintPropertiesBooleanPropsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BlueprintPropertiesBooleanPropsMapInput is an input type that accepts BlueprintPropertiesBooleanPropsMap and BlueprintPropertiesBooleanPropsMapOutput values.
 // You can construct a concrete instance of `BlueprintPropertiesBooleanPropsMapInput` via:
 //
@@ -6539,12 +5668,6 @@ func (i BlueprintPropertiesBooleanPropsMap) ToBlueprintPropertiesBooleanPropsMap
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesBooleanPropsMapOutput)
 }
 
-func (i BlueprintPropertiesBooleanPropsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]BlueprintPropertiesBooleanProps] {
-	return pulumix.Output[map[string]BlueprintPropertiesBooleanProps]{
-		OutputState: i.ToBlueprintPropertiesBooleanPropsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BlueprintPropertiesBooleanPropsOutput struct{ *pulumi.OutputState }
 
 func (BlueprintPropertiesBooleanPropsOutput) ElementType() reflect.Type {
@@ -6557,12 +5680,6 @@ func (o BlueprintPropertiesBooleanPropsOutput) ToBlueprintPropertiesBooleanProps
 
 func (o BlueprintPropertiesBooleanPropsOutput) ToBlueprintPropertiesBooleanPropsOutputWithContext(ctx context.Context) BlueprintPropertiesBooleanPropsOutput {
 	return o
-}
-
-func (o BlueprintPropertiesBooleanPropsOutput) ToOutput(ctx context.Context) pulumix.Output[BlueprintPropertiesBooleanProps] {
-	return pulumix.Output[BlueprintPropertiesBooleanProps]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintPropertiesBooleanPropsOutput) Default() pulumi.BoolPtrOutput {
@@ -6597,12 +5714,6 @@ func (o BlueprintPropertiesBooleanPropsMapOutput) ToBlueprintPropertiesBooleanPr
 
 func (o BlueprintPropertiesBooleanPropsMapOutput) ToBlueprintPropertiesBooleanPropsMapOutputWithContext(ctx context.Context) BlueprintPropertiesBooleanPropsMapOutput {
 	return o
-}
-
-func (o BlueprintPropertiesBooleanPropsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]BlueprintPropertiesBooleanProps] {
-	return pulumix.Output[map[string]BlueprintPropertiesBooleanProps]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintPropertiesBooleanPropsMapOutput) MapIndex(k pulumi.StringInput) BlueprintPropertiesBooleanPropsOutput {
@@ -6658,12 +5769,6 @@ func (i BlueprintPropertiesNumberPropsArgs) ToBlueprintPropertiesNumberPropsOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesNumberPropsOutput)
 }
 
-func (i BlueprintPropertiesNumberPropsArgs) ToOutput(ctx context.Context) pulumix.Output[BlueprintPropertiesNumberProps] {
-	return pulumix.Output[BlueprintPropertiesNumberProps]{
-		OutputState: i.ToBlueprintPropertiesNumberPropsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BlueprintPropertiesNumberPropsMapInput is an input type that accepts BlueprintPropertiesNumberPropsMap and BlueprintPropertiesNumberPropsMapOutput values.
 // You can construct a concrete instance of `BlueprintPropertiesNumberPropsMapInput` via:
 //
@@ -6689,12 +5794,6 @@ func (i BlueprintPropertiesNumberPropsMap) ToBlueprintPropertiesNumberPropsMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesNumberPropsMapOutput)
 }
 
-func (i BlueprintPropertiesNumberPropsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]BlueprintPropertiesNumberProps] {
-	return pulumix.Output[map[string]BlueprintPropertiesNumberProps]{
-		OutputState: i.ToBlueprintPropertiesNumberPropsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BlueprintPropertiesNumberPropsOutput struct{ *pulumi.OutputState }
 
 func (BlueprintPropertiesNumberPropsOutput) ElementType() reflect.Type {
@@ -6707,12 +5806,6 @@ func (o BlueprintPropertiesNumberPropsOutput) ToBlueprintPropertiesNumberPropsOu
 
 func (o BlueprintPropertiesNumberPropsOutput) ToBlueprintPropertiesNumberPropsOutputWithContext(ctx context.Context) BlueprintPropertiesNumberPropsOutput {
 	return o
-}
-
-func (o BlueprintPropertiesNumberPropsOutput) ToOutput(ctx context.Context) pulumix.Output[BlueprintPropertiesNumberProps] {
-	return pulumix.Output[BlueprintPropertiesNumberProps]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintPropertiesNumberPropsOutput) Default() pulumi.Float64PtrOutput {
@@ -6765,12 +5858,6 @@ func (o BlueprintPropertiesNumberPropsMapOutput) ToBlueprintPropertiesNumberProp
 	return o
 }
 
-func (o BlueprintPropertiesNumberPropsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]BlueprintPropertiesNumberProps] {
-	return pulumix.Output[map[string]BlueprintPropertiesNumberProps]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BlueprintPropertiesNumberPropsMapOutput) MapIndex(k pulumi.StringInput) BlueprintPropertiesNumberPropsOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BlueprintPropertiesNumberProps {
 		return vs[0].(map[string]BlueprintPropertiesNumberProps)[vs[1].(string)]
@@ -6818,12 +5905,6 @@ func (i BlueprintPropertiesObjectPropsArgs) ToBlueprintPropertiesObjectPropsOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesObjectPropsOutput)
 }
 
-func (i BlueprintPropertiesObjectPropsArgs) ToOutput(ctx context.Context) pulumix.Output[BlueprintPropertiesObjectProps] {
-	return pulumix.Output[BlueprintPropertiesObjectProps]{
-		OutputState: i.ToBlueprintPropertiesObjectPropsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BlueprintPropertiesObjectPropsMapInput is an input type that accepts BlueprintPropertiesObjectPropsMap and BlueprintPropertiesObjectPropsMapOutput values.
 // You can construct a concrete instance of `BlueprintPropertiesObjectPropsMapInput` via:
 //
@@ -6849,12 +5930,6 @@ func (i BlueprintPropertiesObjectPropsMap) ToBlueprintPropertiesObjectPropsMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesObjectPropsMapOutput)
 }
 
-func (i BlueprintPropertiesObjectPropsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]BlueprintPropertiesObjectProps] {
-	return pulumix.Output[map[string]BlueprintPropertiesObjectProps]{
-		OutputState: i.ToBlueprintPropertiesObjectPropsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BlueprintPropertiesObjectPropsOutput struct{ *pulumi.OutputState }
 
 func (BlueprintPropertiesObjectPropsOutput) ElementType() reflect.Type {
@@ -6867,12 +5942,6 @@ func (o BlueprintPropertiesObjectPropsOutput) ToBlueprintPropertiesObjectPropsOu
 
 func (o BlueprintPropertiesObjectPropsOutput) ToBlueprintPropertiesObjectPropsOutputWithContext(ctx context.Context) BlueprintPropertiesObjectPropsOutput {
 	return o
-}
-
-func (o BlueprintPropertiesObjectPropsOutput) ToOutput(ctx context.Context) pulumix.Output[BlueprintPropertiesObjectProps] {
-	return pulumix.Output[BlueprintPropertiesObjectProps]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintPropertiesObjectPropsOutput) Default() pulumi.StringPtrOutput {
@@ -6911,12 +5980,6 @@ func (o BlueprintPropertiesObjectPropsMapOutput) ToBlueprintPropertiesObjectProp
 
 func (o BlueprintPropertiesObjectPropsMapOutput) ToBlueprintPropertiesObjectPropsMapOutputWithContext(ctx context.Context) BlueprintPropertiesObjectPropsMapOutput {
 	return o
-}
-
-func (o BlueprintPropertiesObjectPropsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]BlueprintPropertiesObjectProps] {
-	return pulumix.Output[map[string]BlueprintPropertiesObjectProps]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintPropertiesObjectPropsMapOutput) MapIndex(k pulumi.StringInput) BlueprintPropertiesObjectPropsOutput {
@@ -6980,12 +6043,6 @@ func (i BlueprintPropertiesStringPropsArgs) ToBlueprintPropertiesStringPropsOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesStringPropsOutput)
 }
 
-func (i BlueprintPropertiesStringPropsArgs) ToOutput(ctx context.Context) pulumix.Output[BlueprintPropertiesStringProps] {
-	return pulumix.Output[BlueprintPropertiesStringProps]{
-		OutputState: i.ToBlueprintPropertiesStringPropsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BlueprintPropertiesStringPropsMapInput is an input type that accepts BlueprintPropertiesStringPropsMap and BlueprintPropertiesStringPropsMapOutput values.
 // You can construct a concrete instance of `BlueprintPropertiesStringPropsMapInput` via:
 //
@@ -7011,12 +6068,6 @@ func (i BlueprintPropertiesStringPropsMap) ToBlueprintPropertiesStringPropsMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesStringPropsMapOutput)
 }
 
-func (i BlueprintPropertiesStringPropsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]BlueprintPropertiesStringProps] {
-	return pulumix.Output[map[string]BlueprintPropertiesStringProps]{
-		OutputState: i.ToBlueprintPropertiesStringPropsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BlueprintPropertiesStringPropsOutput struct{ *pulumi.OutputState }
 
 func (BlueprintPropertiesStringPropsOutput) ElementType() reflect.Type {
@@ -7029,12 +6080,6 @@ func (o BlueprintPropertiesStringPropsOutput) ToBlueprintPropertiesStringPropsOu
 
 func (o BlueprintPropertiesStringPropsOutput) ToBlueprintPropertiesStringPropsOutputWithContext(ctx context.Context) BlueprintPropertiesStringPropsOutput {
 	return o
-}
-
-func (o BlueprintPropertiesStringPropsOutput) ToOutput(ctx context.Context) pulumix.Output[BlueprintPropertiesStringProps] {
-	return pulumix.Output[BlueprintPropertiesStringProps]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintPropertiesStringPropsOutput) Default() pulumi.StringPtrOutput {
@@ -7105,12 +6150,6 @@ func (o BlueprintPropertiesStringPropsMapOutput) ToBlueprintPropertiesStringProp
 	return o
 }
 
-func (o BlueprintPropertiesStringPropsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]BlueprintPropertiesStringProps] {
-	return pulumix.Output[map[string]BlueprintPropertiesStringProps]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BlueprintPropertiesStringPropsMapOutput) MapIndex(k pulumi.StringInput) BlueprintPropertiesStringPropsOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BlueprintPropertiesStringProps {
 		return vs[0].(map[string]BlueprintPropertiesStringProps)[vs[1].(string)]
@@ -7150,12 +6189,6 @@ func (i BlueprintPropertiesStringPropsSpecAuthenticationArgs) ToBlueprintPropert
 
 func (i BlueprintPropertiesStringPropsSpecAuthenticationArgs) ToBlueprintPropertiesStringPropsSpecAuthenticationOutputWithContext(ctx context.Context) BlueprintPropertiesStringPropsSpecAuthenticationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesStringPropsSpecAuthenticationOutput)
-}
-
-func (i BlueprintPropertiesStringPropsSpecAuthenticationArgs) ToOutput(ctx context.Context) pulumix.Output[BlueprintPropertiesStringPropsSpecAuthentication] {
-	return pulumix.Output[BlueprintPropertiesStringPropsSpecAuthentication]{
-		OutputState: i.ToBlueprintPropertiesStringPropsSpecAuthenticationOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i BlueprintPropertiesStringPropsSpecAuthenticationArgs) ToBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput() BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput {
@@ -7199,12 +6232,6 @@ func (i *blueprintPropertiesStringPropsSpecAuthenticationPtrType) ToBlueprintPro
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput)
 }
 
-func (i *blueprintPropertiesStringPropsSpecAuthenticationPtrType) ToOutput(ctx context.Context) pulumix.Output[*BlueprintPropertiesStringPropsSpecAuthentication] {
-	return pulumix.Output[*BlueprintPropertiesStringPropsSpecAuthentication]{
-		OutputState: i.ToBlueprintPropertiesStringPropsSpecAuthenticationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BlueprintPropertiesStringPropsSpecAuthenticationOutput struct{ *pulumi.OutputState }
 
 func (BlueprintPropertiesStringPropsSpecAuthenticationOutput) ElementType() reflect.Type {
@@ -7227,12 +6254,6 @@ func (o BlueprintPropertiesStringPropsSpecAuthenticationOutput) ToBlueprintPrope
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlueprintPropertiesStringPropsSpecAuthentication) *BlueprintPropertiesStringPropsSpecAuthentication {
 		return &v
 	}).(BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput)
-}
-
-func (o BlueprintPropertiesStringPropsSpecAuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[BlueprintPropertiesStringPropsSpecAuthentication] {
-	return pulumix.Output[BlueprintPropertiesStringPropsSpecAuthentication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintPropertiesStringPropsSpecAuthenticationOutput) AuthorizationUrl() pulumi.StringOutput {
@@ -7259,12 +6280,6 @@ func (o BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) ToBlueprintPr
 
 func (o BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) ToBlueprintPropertiesStringPropsSpecAuthenticationPtrOutputWithContext(ctx context.Context) BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput {
 	return o
-}
-
-func (o BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BlueprintPropertiesStringPropsSpecAuthentication] {
-	return pulumix.Output[*BlueprintPropertiesStringPropsSpecAuthentication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) Elem() BlueprintPropertiesStringPropsSpecAuthenticationOutput {
@@ -7341,12 +6356,6 @@ func (i BlueprintRelationsArgs) ToBlueprintRelationsOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintRelationsOutput)
 }
 
-func (i BlueprintRelationsArgs) ToOutput(ctx context.Context) pulumix.Output[BlueprintRelations] {
-	return pulumix.Output[BlueprintRelations]{
-		OutputState: i.ToBlueprintRelationsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BlueprintRelationsMapInput is an input type that accepts BlueprintRelationsMap and BlueprintRelationsMapOutput values.
 // You can construct a concrete instance of `BlueprintRelationsMapInput` via:
 //
@@ -7372,12 +6381,6 @@ func (i BlueprintRelationsMap) ToBlueprintRelationsMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintRelationsMapOutput)
 }
 
-func (i BlueprintRelationsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]BlueprintRelations] {
-	return pulumix.Output[map[string]BlueprintRelations]{
-		OutputState: i.ToBlueprintRelationsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BlueprintRelationsOutput struct{ *pulumi.OutputState }
 
 func (BlueprintRelationsOutput) ElementType() reflect.Type {
@@ -7390,12 +6393,6 @@ func (o BlueprintRelationsOutput) ToBlueprintRelationsOutput() BlueprintRelation
 
 func (o BlueprintRelationsOutput) ToBlueprintRelationsOutputWithContext(ctx context.Context) BlueprintRelationsOutput {
 	return o
-}
-
-func (o BlueprintRelationsOutput) ToOutput(ctx context.Context) pulumix.Output[BlueprintRelations] {
-	return pulumix.Output[BlueprintRelations]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintRelationsOutput) Many() pulumi.BoolPtrOutput {
@@ -7426,12 +6423,6 @@ func (o BlueprintRelationsMapOutput) ToBlueprintRelationsMapOutput() BlueprintRe
 
 func (o BlueprintRelationsMapOutput) ToBlueprintRelationsMapOutputWithContext(ctx context.Context) BlueprintRelationsMapOutput {
 	return o
-}
-
-func (o BlueprintRelationsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]BlueprintRelations] {
-	return pulumix.Output[map[string]BlueprintRelations]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintRelationsMapOutput) MapIndex(k pulumi.StringInput) BlueprintRelationsOutput {
@@ -7469,12 +6460,6 @@ func (i BlueprintTeamInheritanceArgs) ToBlueprintTeamInheritanceOutput() Bluepri
 
 func (i BlueprintTeamInheritanceArgs) ToBlueprintTeamInheritanceOutputWithContext(ctx context.Context) BlueprintTeamInheritanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintTeamInheritanceOutput)
-}
-
-func (i BlueprintTeamInheritanceArgs) ToOutput(ctx context.Context) pulumix.Output[BlueprintTeamInheritance] {
-	return pulumix.Output[BlueprintTeamInheritance]{
-		OutputState: i.ToBlueprintTeamInheritanceOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i BlueprintTeamInheritanceArgs) ToBlueprintTeamInheritancePtrOutput() BlueprintTeamInheritancePtrOutput {
@@ -7518,12 +6503,6 @@ func (i *blueprintTeamInheritancePtrType) ToBlueprintTeamInheritancePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintTeamInheritancePtrOutput)
 }
 
-func (i *blueprintTeamInheritancePtrType) ToOutput(ctx context.Context) pulumix.Output[*BlueprintTeamInheritance] {
-	return pulumix.Output[*BlueprintTeamInheritance]{
-		OutputState: i.ToBlueprintTeamInheritancePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BlueprintTeamInheritanceOutput struct{ *pulumi.OutputState }
 
 func (BlueprintTeamInheritanceOutput) ElementType() reflect.Type {
@@ -7548,12 +6527,6 @@ func (o BlueprintTeamInheritanceOutput) ToBlueprintTeamInheritancePtrOutputWithC
 	}).(BlueprintTeamInheritancePtrOutput)
 }
 
-func (o BlueprintTeamInheritanceOutput) ToOutput(ctx context.Context) pulumix.Output[BlueprintTeamInheritance] {
-	return pulumix.Output[BlueprintTeamInheritance]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BlueprintTeamInheritanceOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v BlueprintTeamInheritance) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -7570,12 +6543,6 @@ func (o BlueprintTeamInheritancePtrOutput) ToBlueprintTeamInheritancePtrOutput()
 
 func (o BlueprintTeamInheritancePtrOutput) ToBlueprintTeamInheritancePtrOutputWithContext(ctx context.Context) BlueprintTeamInheritancePtrOutput {
 	return o
-}
-
-func (o BlueprintTeamInheritancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BlueprintTeamInheritance] {
-	return pulumix.Output[*BlueprintTeamInheritance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintTeamInheritancePtrOutput) Elem() BlueprintTeamInheritanceOutput {
@@ -7630,12 +6597,6 @@ func (i BlueprintWebhookChangelogDestinationArgs) ToBlueprintWebhookChangelogDes
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintWebhookChangelogDestinationOutput)
 }
 
-func (i BlueprintWebhookChangelogDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[BlueprintWebhookChangelogDestination] {
-	return pulumix.Output[BlueprintWebhookChangelogDestination]{
-		OutputState: i.ToBlueprintWebhookChangelogDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BlueprintWebhookChangelogDestinationArgs) ToBlueprintWebhookChangelogDestinationPtrOutput() BlueprintWebhookChangelogDestinationPtrOutput {
 	return i.ToBlueprintWebhookChangelogDestinationPtrOutputWithContext(context.Background())
 }
@@ -7677,12 +6638,6 @@ func (i *blueprintWebhookChangelogDestinationPtrType) ToBlueprintWebhookChangelo
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintWebhookChangelogDestinationPtrOutput)
 }
 
-func (i *blueprintWebhookChangelogDestinationPtrType) ToOutput(ctx context.Context) pulumix.Output[*BlueprintWebhookChangelogDestination] {
-	return pulumix.Output[*BlueprintWebhookChangelogDestination]{
-		OutputState: i.ToBlueprintWebhookChangelogDestinationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BlueprintWebhookChangelogDestinationOutput struct{ *pulumi.OutputState }
 
 func (BlueprintWebhookChangelogDestinationOutput) ElementType() reflect.Type {
@@ -7707,12 +6662,6 @@ func (o BlueprintWebhookChangelogDestinationOutput) ToBlueprintWebhookChangelogD
 	}).(BlueprintWebhookChangelogDestinationPtrOutput)
 }
 
-func (o BlueprintWebhookChangelogDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[BlueprintWebhookChangelogDestination] {
-	return pulumix.Output[BlueprintWebhookChangelogDestination]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BlueprintWebhookChangelogDestinationOutput) Agent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BlueprintWebhookChangelogDestination) *bool { return v.Agent }).(pulumi.BoolPtrOutput)
 }
@@ -7733,12 +6682,6 @@ func (o BlueprintWebhookChangelogDestinationPtrOutput) ToBlueprintWebhookChangel
 
 func (o BlueprintWebhookChangelogDestinationPtrOutput) ToBlueprintWebhookChangelogDestinationPtrOutputWithContext(ctx context.Context) BlueprintWebhookChangelogDestinationPtrOutput {
 	return o
-}
-
-func (o BlueprintWebhookChangelogDestinationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BlueprintWebhookChangelogDestination] {
-	return pulumix.Output[*BlueprintWebhookChangelogDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlueprintWebhookChangelogDestinationPtrOutput) Elem() BlueprintWebhookChangelogDestinationOutput {
@@ -7808,12 +6751,6 @@ func (i EntityPropertiesArgs) ToEntityPropertiesOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EntityPropertiesOutput)
 }
 
-func (i EntityPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[EntityProperties] {
-	return pulumix.Output[EntityProperties]{
-		OutputState: i.ToEntityPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EntityPropertiesArgs) ToEntityPropertiesPtrOutput() EntityPropertiesPtrOutput {
 	return i.ToEntityPropertiesPtrOutputWithContext(context.Background())
 }
@@ -7855,12 +6792,6 @@ func (i *entityPropertiesPtrType) ToEntityPropertiesPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(EntityPropertiesPtrOutput)
 }
 
-func (i *entityPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*EntityProperties] {
-	return pulumix.Output[*EntityProperties]{
-		OutputState: i.ToEntityPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EntityPropertiesOutput struct{ *pulumi.OutputState }
 
 func (EntityPropertiesOutput) ElementType() reflect.Type {
@@ -7883,12 +6814,6 @@ func (o EntityPropertiesOutput) ToEntityPropertiesPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntityProperties) *EntityProperties {
 		return &v
 	}).(EntityPropertiesPtrOutput)
-}
-
-func (o EntityPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[EntityProperties] {
-	return pulumix.Output[EntityProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EntityPropertiesOutput) ArrayProps() EntityPropertiesArrayPropsPtrOutput {
@@ -7923,12 +6848,6 @@ func (o EntityPropertiesPtrOutput) ToEntityPropertiesPtrOutput() EntityPropertie
 
 func (o EntityPropertiesPtrOutput) ToEntityPropertiesPtrOutputWithContext(ctx context.Context) EntityPropertiesPtrOutput {
 	return o
-}
-
-func (o EntityPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityProperties] {
-	return pulumix.Output[*EntityProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EntityPropertiesPtrOutput) Elem() EntityPropertiesOutput {
@@ -8023,12 +6942,6 @@ func (i EntityPropertiesArrayPropsArgs) ToEntityPropertiesArrayPropsOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(EntityPropertiesArrayPropsOutput)
 }
 
-func (i EntityPropertiesArrayPropsArgs) ToOutput(ctx context.Context) pulumix.Output[EntityPropertiesArrayProps] {
-	return pulumix.Output[EntityPropertiesArrayProps]{
-		OutputState: i.ToEntityPropertiesArrayPropsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EntityPropertiesArrayPropsArgs) ToEntityPropertiesArrayPropsPtrOutput() EntityPropertiesArrayPropsPtrOutput {
 	return i.ToEntityPropertiesArrayPropsPtrOutputWithContext(context.Background())
 }
@@ -8070,12 +6983,6 @@ func (i *entityPropertiesArrayPropsPtrType) ToEntityPropertiesArrayPropsPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(EntityPropertiesArrayPropsPtrOutput)
 }
 
-func (i *entityPropertiesArrayPropsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EntityPropertiesArrayProps] {
-	return pulumix.Output[*EntityPropertiesArrayProps]{
-		OutputState: i.ToEntityPropertiesArrayPropsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EntityPropertiesArrayPropsOutput struct{ *pulumi.OutputState }
 
 func (EntityPropertiesArrayPropsOutput) ElementType() reflect.Type {
@@ -8098,12 +7005,6 @@ func (o EntityPropertiesArrayPropsOutput) ToEntityPropertiesArrayPropsPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntityPropertiesArrayProps) *EntityPropertiesArrayProps {
 		return &v
 	}).(EntityPropertiesArrayPropsPtrOutput)
-}
-
-func (o EntityPropertiesArrayPropsOutput) ToOutput(ctx context.Context) pulumix.Output[EntityPropertiesArrayProps] {
-	return pulumix.Output[EntityPropertiesArrayProps]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EntityPropertiesArrayPropsOutput) BooleanItems() pulumi.BoolArrayMapOutput {
@@ -8134,12 +7035,6 @@ func (o EntityPropertiesArrayPropsPtrOutput) ToEntityPropertiesArrayPropsPtrOutp
 
 func (o EntityPropertiesArrayPropsPtrOutput) ToEntityPropertiesArrayPropsPtrOutputWithContext(ctx context.Context) EntityPropertiesArrayPropsPtrOutput {
 	return o
-}
-
-func (o EntityPropertiesArrayPropsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityPropertiesArrayProps] {
-	return pulumix.Output[*EntityPropertiesArrayProps]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EntityPropertiesArrayPropsPtrOutput) Elem() EntityPropertiesArrayPropsOutput {
@@ -8221,12 +7116,6 @@ func (i EntityRelationsArgs) ToEntityRelationsOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(EntityRelationsOutput)
 }
 
-func (i EntityRelationsArgs) ToOutput(ctx context.Context) pulumix.Output[EntityRelations] {
-	return pulumix.Output[EntityRelations]{
-		OutputState: i.ToEntityRelationsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EntityRelationsArgs) ToEntityRelationsPtrOutput() EntityRelationsPtrOutput {
 	return i.ToEntityRelationsPtrOutputWithContext(context.Background())
 }
@@ -8268,12 +7157,6 @@ func (i *entityRelationsPtrType) ToEntityRelationsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(EntityRelationsPtrOutput)
 }
 
-func (i *entityRelationsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EntityRelations] {
-	return pulumix.Output[*EntityRelations]{
-		OutputState: i.ToEntityRelationsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EntityRelationsOutput struct{ *pulumi.OutputState }
 
 func (EntityRelationsOutput) ElementType() reflect.Type {
@@ -8298,12 +7181,6 @@ func (o EntityRelationsOutput) ToEntityRelationsPtrOutputWithContext(ctx context
 	}).(EntityRelationsPtrOutput)
 }
 
-func (o EntityRelationsOutput) ToOutput(ctx context.Context) pulumix.Output[EntityRelations] {
-	return pulumix.Output[EntityRelations]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EntityRelationsOutput) ManyRelations() pulumi.StringArrayMapOutput {
 	return o.ApplyT(func(v EntityRelations) map[string][]string { return v.ManyRelations }).(pulumi.StringArrayMapOutput)
 }
@@ -8324,12 +7201,6 @@ func (o EntityRelationsPtrOutput) ToEntityRelationsPtrOutput() EntityRelationsPt
 
 func (o EntityRelationsPtrOutput) ToEntityRelationsPtrOutputWithContext(ctx context.Context) EntityRelationsPtrOutput {
 	return o
-}
-
-func (o EntityRelationsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityRelations] {
-	return pulumix.Output[*EntityRelations]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EntityRelationsPtrOutput) Elem() EntityRelationsOutput {
@@ -8397,12 +7268,6 @@ func (i ScorecardRuleArgs) ToScorecardRuleOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ScorecardRuleOutput)
 }
 
-func (i ScorecardRuleArgs) ToOutput(ctx context.Context) pulumix.Output[ScorecardRule] {
-	return pulumix.Output[ScorecardRule]{
-		OutputState: i.ToScorecardRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ScorecardRuleArrayInput is an input type that accepts ScorecardRuleArray and ScorecardRuleArrayOutput values.
 // You can construct a concrete instance of `ScorecardRuleArrayInput` via:
 //
@@ -8428,12 +7293,6 @@ func (i ScorecardRuleArray) ToScorecardRuleArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ScorecardRuleArrayOutput)
 }
 
-func (i ScorecardRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]ScorecardRule] {
-	return pulumix.Output[[]ScorecardRule]{
-		OutputState: i.ToScorecardRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScorecardRuleOutput struct{ *pulumi.OutputState }
 
 func (ScorecardRuleOutput) ElementType() reflect.Type {
@@ -8446,12 +7305,6 @@ func (o ScorecardRuleOutput) ToScorecardRuleOutput() ScorecardRuleOutput {
 
 func (o ScorecardRuleOutput) ToScorecardRuleOutputWithContext(ctx context.Context) ScorecardRuleOutput {
 	return o
-}
-
-func (o ScorecardRuleOutput) ToOutput(ctx context.Context) pulumix.Output[ScorecardRule] {
-	return pulumix.Output[ScorecardRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScorecardRuleOutput) Identifier() pulumi.StringOutput {
@@ -8482,12 +7335,6 @@ func (o ScorecardRuleArrayOutput) ToScorecardRuleArrayOutput() ScorecardRuleArra
 
 func (o ScorecardRuleArrayOutput) ToScorecardRuleArrayOutputWithContext(ctx context.Context) ScorecardRuleArrayOutput {
 	return o
-}
-
-func (o ScorecardRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScorecardRule] {
-	return pulumix.Output[[]ScorecardRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScorecardRuleArrayOutput) Index(i pulumi.IntInput) ScorecardRuleOutput {
@@ -8529,12 +7376,6 @@ func (i ScorecardRuleQueryArgs) ToScorecardRuleQueryOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ScorecardRuleQueryOutput)
 }
 
-func (i ScorecardRuleQueryArgs) ToOutput(ctx context.Context) pulumix.Output[ScorecardRuleQuery] {
-	return pulumix.Output[ScorecardRuleQuery]{
-		OutputState: i.ToScorecardRuleQueryOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScorecardRuleQueryOutput struct{ *pulumi.OutputState }
 
 func (ScorecardRuleQueryOutput) ElementType() reflect.Type {
@@ -8547,12 +7388,6 @@ func (o ScorecardRuleQueryOutput) ToScorecardRuleQueryOutput() ScorecardRuleQuer
 
 func (o ScorecardRuleQueryOutput) ToScorecardRuleQueryOutputWithContext(ctx context.Context) ScorecardRuleQueryOutput {
 	return o
-}
-
-func (o ScorecardRuleQueryOutput) ToOutput(ctx context.Context) pulumix.Output[ScorecardRuleQuery] {
-	return pulumix.Output[ScorecardRuleQuery]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScorecardRuleQueryOutput) Combinator() pulumi.StringOutput {
@@ -8598,12 +7433,6 @@ func (i ScorecardRuleQueryConditionArgs) ToScorecardRuleQueryConditionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ScorecardRuleQueryConditionOutput)
 }
 
-func (i ScorecardRuleQueryConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ScorecardRuleQueryCondition] {
-	return pulumix.Output[ScorecardRuleQueryCondition]{
-		OutputState: i.ToScorecardRuleQueryConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ScorecardRuleQueryConditionArrayInput is an input type that accepts ScorecardRuleQueryConditionArray and ScorecardRuleQueryConditionArrayOutput values.
 // You can construct a concrete instance of `ScorecardRuleQueryConditionArrayInput` via:
 //
@@ -8629,12 +7458,6 @@ func (i ScorecardRuleQueryConditionArray) ToScorecardRuleQueryConditionArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ScorecardRuleQueryConditionArrayOutput)
 }
 
-func (i ScorecardRuleQueryConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]ScorecardRuleQueryCondition] {
-	return pulumix.Output[[]ScorecardRuleQueryCondition]{
-		OutputState: i.ToScorecardRuleQueryConditionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScorecardRuleQueryConditionOutput struct{ *pulumi.OutputState }
 
 func (ScorecardRuleQueryConditionOutput) ElementType() reflect.Type {
@@ -8647,12 +7470,6 @@ func (o ScorecardRuleQueryConditionOutput) ToScorecardRuleQueryConditionOutput()
 
 func (o ScorecardRuleQueryConditionOutput) ToScorecardRuleQueryConditionOutputWithContext(ctx context.Context) ScorecardRuleQueryConditionOutput {
 	return o
-}
-
-func (o ScorecardRuleQueryConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ScorecardRuleQueryCondition] {
-	return pulumix.Output[ScorecardRuleQueryCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScorecardRuleQueryConditionOutput) Operator() pulumi.StringOutput {
@@ -8679,12 +7496,6 @@ func (o ScorecardRuleQueryConditionArrayOutput) ToScorecardRuleQueryConditionArr
 
 func (o ScorecardRuleQueryConditionArrayOutput) ToScorecardRuleQueryConditionArrayOutputWithContext(ctx context.Context) ScorecardRuleQueryConditionArrayOutput {
 	return o
-}
-
-func (o ScorecardRuleQueryConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScorecardRuleQueryCondition] {
-	return pulumix.Output[[]ScorecardRuleQueryCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScorecardRuleQueryConditionArrayOutput) Index(i pulumi.IntInput) ScorecardRuleQueryConditionOutput {
@@ -8730,12 +7541,6 @@ func (i WebhookMappingArgs) ToWebhookMappingOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookMappingOutput)
 }
 
-func (i WebhookMappingArgs) ToOutput(ctx context.Context) pulumix.Output[WebhookMapping] {
-	return pulumix.Output[WebhookMapping]{
-		OutputState: i.ToWebhookMappingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WebhookMappingArrayInput is an input type that accepts WebhookMappingArray and WebhookMappingArrayOutput values.
 // You can construct a concrete instance of `WebhookMappingArrayInput` via:
 //
@@ -8761,12 +7566,6 @@ func (i WebhookMappingArray) ToWebhookMappingArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookMappingArrayOutput)
 }
 
-func (i WebhookMappingArray) ToOutput(ctx context.Context) pulumix.Output[[]WebhookMapping] {
-	return pulumix.Output[[]WebhookMapping]{
-		OutputState: i.ToWebhookMappingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebhookMappingOutput struct{ *pulumi.OutputState }
 
 func (WebhookMappingOutput) ElementType() reflect.Type {
@@ -8779,12 +7578,6 @@ func (o WebhookMappingOutput) ToWebhookMappingOutput() WebhookMappingOutput {
 
 func (o WebhookMappingOutput) ToWebhookMappingOutputWithContext(ctx context.Context) WebhookMappingOutput {
 	return o
-}
-
-func (o WebhookMappingOutput) ToOutput(ctx context.Context) pulumix.Output[WebhookMapping] {
-	return pulumix.Output[WebhookMapping]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebhookMappingOutput) Blueprint() pulumi.StringOutput {
@@ -8815,12 +7608,6 @@ func (o WebhookMappingArrayOutput) ToWebhookMappingArrayOutput() WebhookMappingA
 
 func (o WebhookMappingArrayOutput) ToWebhookMappingArrayOutputWithContext(ctx context.Context) WebhookMappingArrayOutput {
 	return o
-}
-
-func (o WebhookMappingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WebhookMapping] {
-	return pulumix.Output[[]WebhookMapping]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebhookMappingArrayOutput) Index(i pulumi.IntInput) WebhookMappingOutput {
@@ -8870,12 +7657,6 @@ func (i WebhookMappingEntityArgs) ToWebhookMappingEntityOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookMappingEntityOutput)
 }
 
-func (i WebhookMappingEntityArgs) ToOutput(ctx context.Context) pulumix.Output[WebhookMappingEntity] {
-	return pulumix.Output[WebhookMappingEntity]{
-		OutputState: i.ToWebhookMappingEntityOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebhookMappingEntityOutput struct{ *pulumi.OutputState }
 
 func (WebhookMappingEntityOutput) ElementType() reflect.Type {
@@ -8888,12 +7669,6 @@ func (o WebhookMappingEntityOutput) ToWebhookMappingEntityOutput() WebhookMappin
 
 func (o WebhookMappingEntityOutput) ToWebhookMappingEntityOutputWithContext(ctx context.Context) WebhookMappingEntityOutput {
 	return o
-}
-
-func (o WebhookMappingEntityOutput) ToOutput(ctx context.Context) pulumix.Output[WebhookMappingEntity] {
-	return pulumix.Output[WebhookMappingEntity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebhookMappingEntityOutput) Icon() pulumi.StringPtrOutput {
@@ -8959,12 +7734,6 @@ func (i WebhookSecurityArgs) ToWebhookSecurityOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookSecurityOutput)
 }
 
-func (i WebhookSecurityArgs) ToOutput(ctx context.Context) pulumix.Output[WebhookSecurity] {
-	return pulumix.Output[WebhookSecurity]{
-		OutputState: i.ToWebhookSecurityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WebhookSecurityArgs) ToWebhookSecurityPtrOutput() WebhookSecurityPtrOutput {
 	return i.ToWebhookSecurityPtrOutputWithContext(context.Background())
 }
@@ -9006,12 +7775,6 @@ func (i *webhookSecurityPtrType) ToWebhookSecurityPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookSecurityPtrOutput)
 }
 
-func (i *webhookSecurityPtrType) ToOutput(ctx context.Context) pulumix.Output[*WebhookSecurity] {
-	return pulumix.Output[*WebhookSecurity]{
-		OutputState: i.ToWebhookSecurityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebhookSecurityOutput struct{ *pulumi.OutputState }
 
 func (WebhookSecurityOutput) ElementType() reflect.Type {
@@ -9034,12 +7797,6 @@ func (o WebhookSecurityOutput) ToWebhookSecurityPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebhookSecurity) *WebhookSecurity {
 		return &v
 	}).(WebhookSecurityPtrOutput)
-}
-
-func (o WebhookSecurityOutput) ToOutput(ctx context.Context) pulumix.Output[WebhookSecurity] {
-	return pulumix.Output[WebhookSecurity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebhookSecurityOutput) RequestIdentifierPath() pulumi.StringPtrOutput {
@@ -9074,12 +7831,6 @@ func (o WebhookSecurityPtrOutput) ToWebhookSecurityPtrOutput() WebhookSecurityPt
 
 func (o WebhookSecurityPtrOutput) ToWebhookSecurityPtrOutputWithContext(ctx context.Context) WebhookSecurityPtrOutput {
 	return o
-}
-
-func (o WebhookSecurityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WebhookSecurity] {
-	return pulumix.Output[*WebhookSecurity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebhookSecurityPtrOutput) Elem() WebhookSecurityOutput {

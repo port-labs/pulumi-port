@@ -9,7 +9,6 @@ import (
 
 	"github.com/port-labs/pulumi-port/sdk/go/port/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type Webhook struct {
@@ -192,12 +191,6 @@ func (i *Webhook) ToWebhookOutputWithContext(ctx context.Context) WebhookOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookOutput)
 }
 
-func (i *Webhook) ToOutput(ctx context.Context) pulumix.Output[*Webhook] {
-	return pulumix.Output[*Webhook]{
-		OutputState: i.ToWebhookOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WebhookArrayInput is an input type that accepts WebhookArray and WebhookArrayOutput values.
 // You can construct a concrete instance of `WebhookArrayInput` via:
 //
@@ -221,12 +214,6 @@ func (i WebhookArray) ToWebhookArrayOutput() WebhookArrayOutput {
 
 func (i WebhookArray) ToWebhookArrayOutputWithContext(ctx context.Context) WebhookArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookArrayOutput)
-}
-
-func (i WebhookArray) ToOutput(ctx context.Context) pulumix.Output[[]*Webhook] {
-	return pulumix.Output[[]*Webhook]{
-		OutputState: i.ToWebhookArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WebhookMapInput is an input type that accepts WebhookMap and WebhookMapOutput values.
@@ -254,12 +241,6 @@ func (i WebhookMap) ToWebhookMapOutputWithContext(ctx context.Context) WebhookMa
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookMapOutput)
 }
 
-func (i WebhookMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Webhook] {
-	return pulumix.Output[map[string]*Webhook]{
-		OutputState: i.ToWebhookMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebhookOutput struct{ *pulumi.OutputState }
 
 func (WebhookOutput) ElementType() reflect.Type {
@@ -272,12 +253,6 @@ func (o WebhookOutput) ToWebhookOutput() WebhookOutput {
 
 func (o WebhookOutput) ToWebhookOutputWithContext(ctx context.Context) WebhookOutput {
 	return o
-}
-
-func (o WebhookOutput) ToOutput(ctx context.Context) pulumix.Output[*Webhook] {
-	return pulumix.Output[*Webhook]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation date of the webhook
@@ -359,12 +334,6 @@ func (o WebhookArrayOutput) ToWebhookArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o WebhookArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Webhook] {
-	return pulumix.Output[[]*Webhook]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WebhookArrayOutput) Index(i pulumi.IntInput) WebhookOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Webhook {
 		return vs[0].([]*Webhook)[vs[1].(int)]
@@ -383,12 +352,6 @@ func (o WebhookMapOutput) ToWebhookMapOutput() WebhookMapOutput {
 
 func (o WebhookMapOutput) ToWebhookMapOutputWithContext(ctx context.Context) WebhookMapOutput {
 	return o
-}
-
-func (o WebhookMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Webhook] {
-	return pulumix.Output[map[string]*Webhook]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebhookMapOutput) MapIndex(k pulumi.StringInput) WebhookOutput {

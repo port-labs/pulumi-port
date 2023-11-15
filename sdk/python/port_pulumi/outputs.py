@@ -352,6 +352,8 @@ class ActionUserPropertiesArrayProps(dict):
             suggest = "object_items"
         elif key == "stringItems":
             suggest = "string_items"
+        elif key == "visibleJqQuery":
+            suggest = "visible_jq_query"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ActionUserPropertiesArrayProps. Access the value via the '{suggest}' property getter instead.")
@@ -377,7 +379,9 @@ class ActionUserPropertiesArrayProps(dict):
                  object_items: Optional['outputs.ActionUserPropertiesArrayPropsObjectItems'] = None,
                  required: Optional[bool] = None,
                  string_items: Optional['outputs.ActionUserPropertiesArrayPropsStringItems'] = None,
-                 title: Optional[str] = None):
+                 title: Optional[str] = None,
+                 visible: Optional[bool] = None,
+                 visible_jq_query: Optional[str] = None):
         if boolean_items is not None:
             pulumi.set(__self__, "boolean_items", boolean_items)
         if dataset is not None:
@@ -404,6 +408,10 @@ class ActionUserPropertiesArrayProps(dict):
             pulumi.set(__self__, "string_items", string_items)
         if title is not None:
             pulumi.set(__self__, "title", title)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
 
     @property
     @pulumi.getter(name="booleanItems")
@@ -469,6 +477,16 @@ class ActionUserPropertiesArrayProps(dict):
     @pulumi.getter
     def title(self) -> Optional[str]:
         return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[bool]:
+        return pulumi.get(self, "visible")
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[str]:
+        return pulumi.get(self, "visible_jq_query")
 
 
 @pulumi.output_type
@@ -697,6 +715,8 @@ class ActionUserPropertiesBooleanProps(dict):
             suggest = "default_jq_query"
         elif key == "dependsOns":
             suggest = "depends_ons"
+        elif key == "visibleJqQuery":
+            suggest = "visible_jq_query"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ActionUserPropertiesBooleanProps. Access the value via the '{suggest}' property getter instead.")
@@ -717,7 +737,9 @@ class ActionUserPropertiesBooleanProps(dict):
                  description: Optional[str] = None,
                  icon: Optional[str] = None,
                  required: Optional[bool] = None,
-                 title: Optional[str] = None):
+                 title: Optional[str] = None,
+                 visible: Optional[bool] = None,
+                 visible_jq_query: Optional[str] = None):
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
         if default is not None:
@@ -734,6 +756,10 @@ class ActionUserPropertiesBooleanProps(dict):
             pulumi.set(__self__, "required", required)
         if title is not None:
             pulumi.set(__self__, "title", title)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
 
     @property
     @pulumi.getter
@@ -774,6 +800,16 @@ class ActionUserPropertiesBooleanProps(dict):
     @pulumi.getter
     def title(self) -> Optional[str]:
         return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[bool]:
+        return pulumi.get(self, "visible")
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[str]:
+        return pulumi.get(self, "visible_jq_query")
 
 
 @pulumi.output_type
@@ -870,6 +906,8 @@ class ActionUserPropertiesNumberProps(dict):
             suggest = "depends_ons"
         elif key == "enumJqQuery":
             suggest = "enum_jq_query"
+        elif key == "visibleJqQuery":
+            suggest = "visible_jq_query"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ActionUserPropertiesNumberProps. Access the value via the '{suggest}' property getter instead.")
@@ -894,7 +932,9 @@ class ActionUserPropertiesNumberProps(dict):
                  maximum: Optional[float] = None,
                  minimum: Optional[float] = None,
                  required: Optional[bool] = None,
-                 title: Optional[str] = None):
+                 title: Optional[str] = None,
+                 visible: Optional[bool] = None,
+                 visible_jq_query: Optional[str] = None):
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
         if default is not None:
@@ -919,6 +959,10 @@ class ActionUserPropertiesNumberProps(dict):
             pulumi.set(__self__, "required", required)
         if title is not None:
             pulumi.set(__self__, "title", title)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
 
     @property
     @pulumi.getter
@@ -979,6 +1023,16 @@ class ActionUserPropertiesNumberProps(dict):
     @pulumi.getter
     def title(self) -> Optional[str]:
         return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[bool]:
+        return pulumi.get(self, "visible")
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[str]:
+        return pulumi.get(self, "visible_jq_query")
 
 
 @pulumi.output_type
@@ -1073,6 +1127,8 @@ class ActionUserPropertiesObjectProps(dict):
             suggest = "default_jq_query"
         elif key == "dependsOns":
             suggest = "depends_ons"
+        elif key == "visibleJqQuery":
+            suggest = "visible_jq_query"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ActionUserPropertiesObjectProps. Access the value via the '{suggest}' property getter instead.")
@@ -1094,7 +1150,9 @@ class ActionUserPropertiesObjectProps(dict):
                  encryption: Optional[str] = None,
                  icon: Optional[str] = None,
                  required: Optional[bool] = None,
-                 title: Optional[str] = None):
+                 title: Optional[str] = None,
+                 visible: Optional[bool] = None,
+                 visible_jq_query: Optional[str] = None):
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
         if default is not None:
@@ -1113,6 +1171,10 @@ class ActionUserPropertiesObjectProps(dict):
             pulumi.set(__self__, "required", required)
         if title is not None:
             pulumi.set(__self__, "title", title)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
 
     @property
     @pulumi.getter
@@ -1158,6 +1220,16 @@ class ActionUserPropertiesObjectProps(dict):
     @pulumi.getter
     def title(self) -> Optional[str]:
         return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[bool]:
+        return pulumi.get(self, "visible")
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[str]:
+        return pulumi.get(self, "visible_jq_query")
 
 
 @pulumi.output_type
@@ -1258,6 +1330,8 @@ class ActionUserPropertiesStringProps(dict):
             suggest = "max_length"
         elif key == "minLength":
             suggest = "min_length"
+        elif key == "visibleJqQuery":
+            suggest = "visible_jq_query"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ActionUserPropertiesStringProps. Access the value via the '{suggest}' property getter instead.")
@@ -1286,7 +1360,9 @@ class ActionUserPropertiesStringProps(dict):
                  min_length: Optional[int] = None,
                  pattern: Optional[str] = None,
                  required: Optional[bool] = None,
-                 title: Optional[str] = None):
+                 title: Optional[str] = None,
+                 visible: Optional[bool] = None,
+                 visible_jq_query: Optional[str] = None):
         if blueprint is not None:
             pulumi.set(__self__, "blueprint", blueprint)
         if dataset is not None:
@@ -1319,6 +1395,10 @@ class ActionUserPropertiesStringProps(dict):
             pulumi.set(__self__, "required", required)
         if title is not None:
             pulumi.set(__self__, "title", title)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
 
     @property
     @pulumi.getter
@@ -1399,6 +1479,16 @@ class ActionUserPropertiesStringProps(dict):
     @pulumi.getter
     def title(self) -> Optional[str]:
         return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[bool]:
+        return pulumi.get(self, "visible")
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[str]:
+        return pulumi.get(self, "visible_jq_query")
 
 
 @pulumi.output_type
