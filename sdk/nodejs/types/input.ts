@@ -60,6 +60,8 @@ export interface ActionUserPropertiesArrayProps {
     required?: pulumi.Input<boolean>;
     stringItems?: pulumi.Input<inputs.ActionUserPropertiesArrayPropsStringItems>;
     title?: pulumi.Input<string>;
+    visible?: pulumi.Input<boolean>;
+    visibleJqQuery?: pulumi.Input<string>;
 }
 
 export interface ActionUserPropertiesArrayPropsBooleanItems {
@@ -109,6 +111,8 @@ export interface ActionUserPropertiesBooleanProps {
     icon?: pulumi.Input<string>;
     required?: pulumi.Input<boolean>;
     title?: pulumi.Input<string>;
+    visible?: pulumi.Input<boolean>;
+    visibleJqQuery?: pulumi.Input<string>;
 }
 
 export interface ActionUserPropertiesBooleanPropsDataset {
@@ -140,6 +144,8 @@ export interface ActionUserPropertiesNumberProps {
     minimum?: pulumi.Input<number>;
     required?: pulumi.Input<boolean>;
     title?: pulumi.Input<string>;
+    visible?: pulumi.Input<boolean>;
+    visibleJqQuery?: pulumi.Input<string>;
 }
 
 export interface ActionUserPropertiesNumberPropsDataset {
@@ -168,6 +174,8 @@ export interface ActionUserPropertiesObjectProps {
     icon?: pulumi.Input<string>;
     required?: pulumi.Input<boolean>;
     title?: pulumi.Input<string>;
+    visible?: pulumi.Input<boolean>;
+    visibleJqQuery?: pulumi.Input<string>;
 }
 
 export interface ActionUserPropertiesObjectPropsDataset {
@@ -203,6 +211,8 @@ export interface ActionUserPropertiesStringProps {
     pattern?: pulumi.Input<string>;
     required?: pulumi.Input<boolean>;
     title?: pulumi.Input<string>;
+    visible?: pulumi.Input<boolean>;
+    visibleJqQuery?: pulumi.Input<string>;
 }
 
 export interface ActionUserPropertiesStringPropsDataset {

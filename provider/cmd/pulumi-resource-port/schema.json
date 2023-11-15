@@ -249,6 +249,12 @@
                 },
                 "title": {
                     "type": "string"
+                },
+                "visible": {
+                    "type": "boolean"
+                },
+                "visibleJqQuery": {
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -409,6 +415,12 @@
                 },
                 "title": {
                     "type": "string"
+                },
+                "visible": {
+                    "type": "boolean"
+                },
+                "visibleJqQuery": {
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -513,6 +525,12 @@
                 },
                 "title": {
                     "type": "string"
+                },
+                "visible": {
+                    "type": "boolean"
+                },
+                "visibleJqQuery": {
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -604,6 +622,12 @@
                     "type": "boolean"
                 },
                 "title": {
+                    "type": "string"
+                },
+                "visible": {
+                    "type": "boolean"
+                },
+                "visibleJqQuery": {
                     "type": "string"
                 }
             },
@@ -720,6 +744,12 @@
                     "type": "boolean"
                 },
                 "title": {
+                    "type": "string"
+                },
+                "visible": {
+                    "type": "boolean"
+                },
+                "visibleJqQuery": {
                     "type": "string"
                 }
             },

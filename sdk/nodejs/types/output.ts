@@ -60,6 +60,8 @@ export interface ActionUserPropertiesArrayProps {
     required: boolean;
     stringItems?: outputs.ActionUserPropertiesArrayPropsStringItems;
     title?: string;
+    visible?: boolean;
+    visibleJqQuery?: string;
 }
 
 export interface ActionUserPropertiesArrayPropsBooleanItems {
@@ -109,6 +111,8 @@ export interface ActionUserPropertiesBooleanProps {
     icon?: string;
     required: boolean;
     title?: string;
+    visible?: boolean;
+    visibleJqQuery?: string;
 }
 
 export interface ActionUserPropertiesBooleanPropsDataset {
@@ -140,6 +144,8 @@ export interface ActionUserPropertiesNumberProps {
     minimum?: number;
     required: boolean;
     title?: string;
+    visible?: boolean;
+    visibleJqQuery?: string;
 }
 
 export interface ActionUserPropertiesNumberPropsDataset {
@@ -168,6 +174,8 @@ export interface ActionUserPropertiesObjectProps {
     icon?: string;
     required: boolean;
     title?: string;
+    visible?: boolean;
+    visibleJqQuery?: string;
 }
 
 export interface ActionUserPropertiesObjectPropsDataset {
@@ -203,6 +211,8 @@ export interface ActionUserPropertiesStringProps {
     pattern?: string;
     required: boolean;
     title?: string;
+    visible?: boolean;
+    visibleJqQuery?: string;
 }
 
 export interface ActionUserPropertiesStringPropsDataset {

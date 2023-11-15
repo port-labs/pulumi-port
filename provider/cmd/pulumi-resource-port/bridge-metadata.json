@@ -36,7 +36,8 @@
                 "minItems": "min_items",
                 "numberItems": "number_items",
                 "objectItems": "object_items",
-                "stringItems": "string_items"
+                "stringItems": "string_items",
+                "visibleJqQuery": "visible_jq_query"
             },
             "port:index/ActionUserPropertiesArrayPropsBooleanItems:ActionUserPropertiesArrayPropsBooleanItems": {
                 "defaults": "default"
@@ -59,7 +60,8 @@
             },
             "port:index/ActionUserPropertiesBooleanProps:ActionUserPropertiesBooleanProps": {
                 "defaultJqQuery": "default_jq_query",
-                "dependsOns": "depends_on"
+                "dependsOns": "depends_on",
+                "visibleJqQuery": "visible_jq_query"
             },
             "port:index/ActionUserPropertiesBooleanPropsDatasetRuleValue:ActionUserPropertiesBooleanPropsDatasetRuleValue": {
                 "jqQuery": "jq_query"
@@ -68,14 +70,16 @@
                 "defaultJqQuery": "default_jq_query",
                 "dependsOns": "depends_on",
                 "enumJqQuery": "enum_jq_query",
-                "enums": "enum"
+                "enums": "enum",
+                "visibleJqQuery": "visible_jq_query"
             },
             "port:index/ActionUserPropertiesNumberPropsDatasetRuleValue:ActionUserPropertiesNumberPropsDatasetRuleValue": {
                 "jqQuery": "jq_query"
             },
             "port:index/ActionUserPropertiesObjectProps:ActionUserPropertiesObjectProps": {
                 "defaultJqQuery": "default_jq_query",
-                "dependsOns": "depends_on"
+                "dependsOns": "depends_on",
+                "visibleJqQuery": "visible_jq_query"
             },
             "port:index/ActionUserPropertiesObjectPropsDatasetRuleValue:ActionUserPropertiesObjectPropsDatasetRuleValue": {
                 "jqQuery": "jq_query"
@@ -86,7 +90,8 @@
                 "enumJqQuery": "enum_jq_query",
                 "enums": "enum",
                 "maxLength": "max_length",
-                "minLength": "min_length"
+                "minLength": "min_length",
+                "visibleJqQuery": "visible_jq_query"
             },
             "port:index/ActionUserPropertiesStringPropsDatasetRuleValue:ActionUserPropertiesStringPropsDatasetRuleValue": {
                 "jqQuery": "jq_query"

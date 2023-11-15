@@ -354,7 +354,9 @@ class ActionUserPropertiesArrayPropsArgs:
                  object_items: Optional[pulumi.Input['ActionUserPropertiesArrayPropsObjectItemsArgs']] = None,
                  required: Optional[pulumi.Input[bool]] = None,
                  string_items: Optional[pulumi.Input['ActionUserPropertiesArrayPropsStringItemsArgs']] = None,
-                 title: Optional[pulumi.Input[str]] = None):
+                 title: Optional[pulumi.Input[str]] = None,
+                 visible: Optional[pulumi.Input[bool]] = None,
+                 visible_jq_query: Optional[pulumi.Input[str]] = None):
         if boolean_items is not None:
             pulumi.set(__self__, "boolean_items", boolean_items)
         if dataset is not None:
@@ -381,6 +383,10 @@ class ActionUserPropertiesArrayPropsArgs:
             pulumi.set(__self__, "string_items", string_items)
         if title is not None:
             pulumi.set(__self__, "title", title)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
 
     @property
     @pulumi.getter(name="booleanItems")
@@ -498,6 +504,24 @@ class ActionUserPropertiesArrayPropsArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "visible")
+
+    @visible.setter
+    def visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "visible", value)
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "visible_jq_query")
+
+    @visible_jq_query.setter
+    def visible_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visible_jq_query", value)
 
 
 @pulumi.input_type
@@ -744,7 +768,9 @@ class ActionUserPropertiesBooleanPropsArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  required: Optional[pulumi.Input[bool]] = None,
-                 title: Optional[pulumi.Input[str]] = None):
+                 title: Optional[pulumi.Input[str]] = None,
+                 visible: Optional[pulumi.Input[bool]] = None,
+                 visible_jq_query: Optional[pulumi.Input[str]] = None):
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
         if default is not None:
@@ -761,6 +787,10 @@ class ActionUserPropertiesBooleanPropsArgs:
             pulumi.set(__self__, "required", required)
         if title is not None:
             pulumi.set(__self__, "title", title)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
 
     @property
     @pulumi.getter
@@ -833,6 +863,24 @@ class ActionUserPropertiesBooleanPropsArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "visible")
+
+    @visible.setter
+    def visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "visible", value)
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "visible_jq_query")
+
+    @visible_jq_query.setter
+    def visible_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visible_jq_query", value)
 
 
 @pulumi.input_type
@@ -943,7 +991,9 @@ class ActionUserPropertiesNumberPropsArgs:
                  maximum: Optional[pulumi.Input[float]] = None,
                  minimum: Optional[pulumi.Input[float]] = None,
                  required: Optional[pulumi.Input[bool]] = None,
-                 title: Optional[pulumi.Input[str]] = None):
+                 title: Optional[pulumi.Input[str]] = None,
+                 visible: Optional[pulumi.Input[bool]] = None,
+                 visible_jq_query: Optional[pulumi.Input[str]] = None):
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
         if default is not None:
@@ -968,6 +1018,10 @@ class ActionUserPropertiesNumberPropsArgs:
             pulumi.set(__self__, "required", required)
         if title is not None:
             pulumi.set(__self__, "title", title)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
 
     @property
     @pulumi.getter
@@ -1077,6 +1131,24 @@ class ActionUserPropertiesNumberPropsArgs:
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
 
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "visible")
+
+    @visible.setter
+    def visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "visible", value)
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "visible_jq_query")
+
+    @visible_jq_query.setter
+    def visible_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visible_jq_query", value)
+
 
 @pulumi.input_type
 class ActionUserPropertiesNumberPropsDatasetArgs:
@@ -1183,7 +1255,9 @@ class ActionUserPropertiesObjectPropsArgs:
                  encryption: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  required: Optional[pulumi.Input[bool]] = None,
-                 title: Optional[pulumi.Input[str]] = None):
+                 title: Optional[pulumi.Input[str]] = None,
+                 visible: Optional[pulumi.Input[bool]] = None,
+                 visible_jq_query: Optional[pulumi.Input[str]] = None):
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
         if default is not None:
@@ -1202,6 +1276,10 @@ class ActionUserPropertiesObjectPropsArgs:
             pulumi.set(__self__, "required", required)
         if title is not None:
             pulumi.set(__self__, "title", title)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
 
     @property
     @pulumi.getter
@@ -1283,6 +1361,24 @@ class ActionUserPropertiesObjectPropsArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "visible")
+
+    @visible.setter
+    def visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "visible", value)
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "visible_jq_query")
+
+    @visible_jq_query.setter
+    def visible_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visible_jq_query", value)
 
 
 @pulumi.input_type
@@ -1397,7 +1493,9 @@ class ActionUserPropertiesStringPropsArgs:
                  min_length: Optional[pulumi.Input[int]] = None,
                  pattern: Optional[pulumi.Input[str]] = None,
                  required: Optional[pulumi.Input[bool]] = None,
-                 title: Optional[pulumi.Input[str]] = None):
+                 title: Optional[pulumi.Input[str]] = None,
+                 visible: Optional[pulumi.Input[bool]] = None,
+                 visible_jq_query: Optional[pulumi.Input[str]] = None):
         if blueprint is not None:
             pulumi.set(__self__, "blueprint", blueprint)
         if dataset is not None:
@@ -1430,6 +1528,10 @@ class ActionUserPropertiesStringPropsArgs:
             pulumi.set(__self__, "required", required)
         if title is not None:
             pulumi.set(__self__, "title", title)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
 
     @property
     @pulumi.getter
@@ -1574,6 +1676,24 @@ class ActionUserPropertiesStringPropsArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "visible")
+
+    @visible.setter
+    def visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "visible", value)
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "visible_jq_query")
+
+    @visible_jq_query.setter
+    def visible_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visible_jq_query", value)
 
 
 @pulumi.input_type
