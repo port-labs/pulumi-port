@@ -6,8 +6,6 @@ The Pulumi Port Provider is a wrapper around the Terraform Provider. The Terrafo
 
 ## Preparation Steps:
 
-### Setup Environment
-
 - Clone the pulumi-port repository.
 - Start the project in a devcontainer (local, DevPod, or GH workspaces).
 - Open Terminal in remote VS Code. ( F1 -> Dev Container: Open Folder in Container -> pulumi-port )
@@ -18,6 +16,11 @@ The Pulumi Port Provider is a wrapper around the Terraform Provider. The Terrafo
         - Add new resources to the Resources field.
     - Run `upgrade-provider port-labs/pulumi-port` (this will update everything and create a PR in the repository).
 
+## Releasing Steps:
+
+- Once the PR is merged, create a new release in the pulumi-port repository.
+- The release should be named after the Terraform Provider version.
+- The release will trigger a GitHub Action that will publish the provider to the pulumi registry.
 
 ### Steps for Handling Errors:
 
