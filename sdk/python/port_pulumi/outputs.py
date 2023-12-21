@@ -17,6 +17,9 @@ __all__ = [
     'ActionGithubMethod',
     'ActionGitlabMethod',
     'ActionKafkaMethod',
+    'ActionPermissionsPermissions',
+    'ActionPermissionsPermissionsApprove',
+    'ActionPermissionsPermissionsExecute',
     'ActionUserProperties',
     'ActionUserPropertiesArrayProps',
     'ActionUserPropertiesArrayPropsBooleanItems',
@@ -259,6 +262,126 @@ class ActionGitlabMethod(dict):
 class ActionKafkaMethod(dict):
     def __init__(__self__):
         pass
+
+
+@pulumi.output_type
+class ActionPermissionsPermissions(dict):
+    def __init__(__self__, *,
+                 approve: Optional['outputs.ActionPermissionsPermissionsApprove'] = None,
+                 execute: Optional['outputs.ActionPermissionsPermissionsExecute'] = None):
+        if approve is not None:
+            pulumi.set(__self__, "approve", approve)
+        if execute is not None:
+            pulumi.set(__self__, "execute", execute)
+
+    @property
+    @pulumi.getter
+    def approve(self) -> Optional['outputs.ActionPermissionsPermissionsApprove']:
+        return pulumi.get(self, "approve")
+
+    @property
+    @pulumi.getter
+    def execute(self) -> Optional['outputs.ActionPermissionsPermissionsExecute']:
+        return pulumi.get(self, "execute")
+
+
+@pulumi.output_type
+class ActionPermissionsPermissionsApprove(dict):
+    def __init__(__self__, *,
+                 policy: Optional[str] = None,
+                 roles: Optional[Sequence[str]] = None,
+                 teams: Optional[Sequence[str]] = None,
+                 users: Optional[Sequence[str]] = None):
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[str]:
+        return pulumi.get(self, "policy")
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "roles")
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "teams")
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "users")
+
+
+@pulumi.output_type
+class ActionPermissionsPermissionsExecute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ownedByTeam":
+            suggest = "owned_by_team"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionPermissionsPermissionsExecute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionPermissionsPermissionsExecute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionPermissionsPermissionsExecute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 owned_by_team: Optional[bool] = None,
+                 policy: Optional[str] = None,
+                 roles: Optional[Sequence[str]] = None,
+                 teams: Optional[Sequence[str]] = None,
+                 users: Optional[Sequence[str]] = None):
+        if owned_by_team is not None:
+            pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="ownedByTeam")
+    def owned_by_team(self) -> Optional[bool]:
+        return pulumi.get(self, "owned_by_team")
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[str]:
+        return pulumi.get(self, "policy")
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "roles")
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "teams")
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "users")
 
 
 @pulumi.output_type

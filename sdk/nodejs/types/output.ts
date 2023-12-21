@@ -38,6 +38,26 @@ export interface ActionGitlabMethod {
 export interface ActionKafkaMethod {
 }
 
+export interface ActionPermissionsPermissions {
+    approve?: outputs.ActionPermissionsPermissionsApprove;
+    execute?: outputs.ActionPermissionsPermissionsExecute;
+}
+
+export interface ActionPermissionsPermissionsApprove {
+    policy?: string;
+    roles?: string[];
+    teams?: string[];
+    users?: string[];
+}
+
+export interface ActionPermissionsPermissionsExecute {
+    ownedByTeam?: boolean;
+    policy?: string;
+    roles?: string[];
+    teams?: string[];
+    users?: string[];
+}
+
 export interface ActionUserProperties {
     arrayProps?: {[key: string]: outputs.ActionUserPropertiesArrayProps};
     booleanProps?: {[key: string]: outputs.ActionUserPropertiesBooleanProps};

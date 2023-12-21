@@ -38,6 +38,26 @@ export interface ActionGitlabMethod {
 export interface ActionKafkaMethod {
 }
 
+export interface ActionPermissionsPermissions {
+    approve?: pulumi.Input<inputs.ActionPermissionsPermissionsApprove>;
+    execute?: pulumi.Input<inputs.ActionPermissionsPermissionsExecute>;
+}
+
+export interface ActionPermissionsPermissionsApprove {
+    policy?: pulumi.Input<string>;
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
+    users?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ActionPermissionsPermissionsExecute {
+    ownedByTeam?: pulumi.Input<boolean>;
+    policy?: pulumi.Input<string>;
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
+    users?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface ActionUserProperties {
     arrayProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionUserPropertiesArrayProps>}>;
     booleanProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionUserPropertiesBooleanProps>}>;

@@ -946,6 +946,525 @@ func (o ActionKafkaMethodPtrOutput) Elem() ActionKafkaMethodOutput {
 	}).(ActionKafkaMethodOutput)
 }
 
+type ActionPermissionsPermissions struct {
+	Approve *ActionPermissionsPermissionsApprove `pulumi:"approve"`
+	Execute *ActionPermissionsPermissionsExecute `pulumi:"execute"`
+}
+
+// ActionPermissionsPermissionsInput is an input type that accepts ActionPermissionsPermissionsArgs and ActionPermissionsPermissionsOutput values.
+// You can construct a concrete instance of `ActionPermissionsPermissionsInput` via:
+//
+//	ActionPermissionsPermissionsArgs{...}
+type ActionPermissionsPermissionsInput interface {
+	pulumi.Input
+
+	ToActionPermissionsPermissionsOutput() ActionPermissionsPermissionsOutput
+	ToActionPermissionsPermissionsOutputWithContext(context.Context) ActionPermissionsPermissionsOutput
+}
+
+type ActionPermissionsPermissionsArgs struct {
+	Approve ActionPermissionsPermissionsApprovePtrInput `pulumi:"approve"`
+	Execute ActionPermissionsPermissionsExecutePtrInput `pulumi:"execute"`
+}
+
+func (ActionPermissionsPermissionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionPermissionsPermissions)(nil)).Elem()
+}
+
+func (i ActionPermissionsPermissionsArgs) ToActionPermissionsPermissionsOutput() ActionPermissionsPermissionsOutput {
+	return i.ToActionPermissionsPermissionsOutputWithContext(context.Background())
+}
+
+func (i ActionPermissionsPermissionsArgs) ToActionPermissionsPermissionsOutputWithContext(ctx context.Context) ActionPermissionsPermissionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionPermissionsPermissionsOutput)
+}
+
+func (i ActionPermissionsPermissionsArgs) ToActionPermissionsPermissionsPtrOutput() ActionPermissionsPermissionsPtrOutput {
+	return i.ToActionPermissionsPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (i ActionPermissionsPermissionsArgs) ToActionPermissionsPermissionsPtrOutputWithContext(ctx context.Context) ActionPermissionsPermissionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionPermissionsPermissionsOutput).ToActionPermissionsPermissionsPtrOutputWithContext(ctx)
+}
+
+// ActionPermissionsPermissionsPtrInput is an input type that accepts ActionPermissionsPermissionsArgs, ActionPermissionsPermissionsPtr and ActionPermissionsPermissionsPtrOutput values.
+// You can construct a concrete instance of `ActionPermissionsPermissionsPtrInput` via:
+//
+//	        ActionPermissionsPermissionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionPermissionsPermissionsPtrInput interface {
+	pulumi.Input
+
+	ToActionPermissionsPermissionsPtrOutput() ActionPermissionsPermissionsPtrOutput
+	ToActionPermissionsPermissionsPtrOutputWithContext(context.Context) ActionPermissionsPermissionsPtrOutput
+}
+
+type actionPermissionsPermissionsPtrType ActionPermissionsPermissionsArgs
+
+func ActionPermissionsPermissionsPtr(v *ActionPermissionsPermissionsArgs) ActionPermissionsPermissionsPtrInput {
+	return (*actionPermissionsPermissionsPtrType)(v)
+}
+
+func (*actionPermissionsPermissionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionPermissionsPermissions)(nil)).Elem()
+}
+
+func (i *actionPermissionsPermissionsPtrType) ToActionPermissionsPermissionsPtrOutput() ActionPermissionsPermissionsPtrOutput {
+	return i.ToActionPermissionsPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (i *actionPermissionsPermissionsPtrType) ToActionPermissionsPermissionsPtrOutputWithContext(ctx context.Context) ActionPermissionsPermissionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionPermissionsPermissionsPtrOutput)
+}
+
+type ActionPermissionsPermissionsOutput struct{ *pulumi.OutputState }
+
+func (ActionPermissionsPermissionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionPermissionsPermissions)(nil)).Elem()
+}
+
+func (o ActionPermissionsPermissionsOutput) ToActionPermissionsPermissionsOutput() ActionPermissionsPermissionsOutput {
+	return o
+}
+
+func (o ActionPermissionsPermissionsOutput) ToActionPermissionsPermissionsOutputWithContext(ctx context.Context) ActionPermissionsPermissionsOutput {
+	return o
+}
+
+func (o ActionPermissionsPermissionsOutput) ToActionPermissionsPermissionsPtrOutput() ActionPermissionsPermissionsPtrOutput {
+	return o.ToActionPermissionsPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (o ActionPermissionsPermissionsOutput) ToActionPermissionsPermissionsPtrOutputWithContext(ctx context.Context) ActionPermissionsPermissionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionPermissionsPermissions) *ActionPermissionsPermissions {
+		return &v
+	}).(ActionPermissionsPermissionsPtrOutput)
+}
+
+func (o ActionPermissionsPermissionsOutput) Approve() ActionPermissionsPermissionsApprovePtrOutput {
+	return o.ApplyT(func(v ActionPermissionsPermissions) *ActionPermissionsPermissionsApprove { return v.Approve }).(ActionPermissionsPermissionsApprovePtrOutput)
+}
+
+func (o ActionPermissionsPermissionsOutput) Execute() ActionPermissionsPermissionsExecutePtrOutput {
+	return o.ApplyT(func(v ActionPermissionsPermissions) *ActionPermissionsPermissionsExecute { return v.Execute }).(ActionPermissionsPermissionsExecutePtrOutput)
+}
+
+type ActionPermissionsPermissionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionPermissionsPermissionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionPermissionsPermissions)(nil)).Elem()
+}
+
+func (o ActionPermissionsPermissionsPtrOutput) ToActionPermissionsPermissionsPtrOutput() ActionPermissionsPermissionsPtrOutput {
+	return o
+}
+
+func (o ActionPermissionsPermissionsPtrOutput) ToActionPermissionsPermissionsPtrOutputWithContext(ctx context.Context) ActionPermissionsPermissionsPtrOutput {
+	return o
+}
+
+func (o ActionPermissionsPermissionsPtrOutput) Elem() ActionPermissionsPermissionsOutput {
+	return o.ApplyT(func(v *ActionPermissionsPermissions) ActionPermissionsPermissions {
+		if v != nil {
+			return *v
+		}
+		var ret ActionPermissionsPermissions
+		return ret
+	}).(ActionPermissionsPermissionsOutput)
+}
+
+func (o ActionPermissionsPermissionsPtrOutput) Approve() ActionPermissionsPermissionsApprovePtrOutput {
+	return o.ApplyT(func(v *ActionPermissionsPermissions) *ActionPermissionsPermissionsApprove {
+		if v == nil {
+			return nil
+		}
+		return v.Approve
+	}).(ActionPermissionsPermissionsApprovePtrOutput)
+}
+
+func (o ActionPermissionsPermissionsPtrOutput) Execute() ActionPermissionsPermissionsExecutePtrOutput {
+	return o.ApplyT(func(v *ActionPermissionsPermissions) *ActionPermissionsPermissionsExecute {
+		if v == nil {
+			return nil
+		}
+		return v.Execute
+	}).(ActionPermissionsPermissionsExecutePtrOutput)
+}
+
+type ActionPermissionsPermissionsApprove struct {
+	Policy *string  `pulumi:"policy"`
+	Roles  []string `pulumi:"roles"`
+	Teams  []string `pulumi:"teams"`
+	Users  []string `pulumi:"users"`
+}
+
+// ActionPermissionsPermissionsApproveInput is an input type that accepts ActionPermissionsPermissionsApproveArgs and ActionPermissionsPermissionsApproveOutput values.
+// You can construct a concrete instance of `ActionPermissionsPermissionsApproveInput` via:
+//
+//	ActionPermissionsPermissionsApproveArgs{...}
+type ActionPermissionsPermissionsApproveInput interface {
+	pulumi.Input
+
+	ToActionPermissionsPermissionsApproveOutput() ActionPermissionsPermissionsApproveOutput
+	ToActionPermissionsPermissionsApproveOutputWithContext(context.Context) ActionPermissionsPermissionsApproveOutput
+}
+
+type ActionPermissionsPermissionsApproveArgs struct {
+	Policy pulumi.StringPtrInput   `pulumi:"policy"`
+	Roles  pulumi.StringArrayInput `pulumi:"roles"`
+	Teams  pulumi.StringArrayInput `pulumi:"teams"`
+	Users  pulumi.StringArrayInput `pulumi:"users"`
+}
+
+func (ActionPermissionsPermissionsApproveArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionPermissionsPermissionsApprove)(nil)).Elem()
+}
+
+func (i ActionPermissionsPermissionsApproveArgs) ToActionPermissionsPermissionsApproveOutput() ActionPermissionsPermissionsApproveOutput {
+	return i.ToActionPermissionsPermissionsApproveOutputWithContext(context.Background())
+}
+
+func (i ActionPermissionsPermissionsApproveArgs) ToActionPermissionsPermissionsApproveOutputWithContext(ctx context.Context) ActionPermissionsPermissionsApproveOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionPermissionsPermissionsApproveOutput)
+}
+
+func (i ActionPermissionsPermissionsApproveArgs) ToActionPermissionsPermissionsApprovePtrOutput() ActionPermissionsPermissionsApprovePtrOutput {
+	return i.ToActionPermissionsPermissionsApprovePtrOutputWithContext(context.Background())
+}
+
+func (i ActionPermissionsPermissionsApproveArgs) ToActionPermissionsPermissionsApprovePtrOutputWithContext(ctx context.Context) ActionPermissionsPermissionsApprovePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionPermissionsPermissionsApproveOutput).ToActionPermissionsPermissionsApprovePtrOutputWithContext(ctx)
+}
+
+// ActionPermissionsPermissionsApprovePtrInput is an input type that accepts ActionPermissionsPermissionsApproveArgs, ActionPermissionsPermissionsApprovePtr and ActionPermissionsPermissionsApprovePtrOutput values.
+// You can construct a concrete instance of `ActionPermissionsPermissionsApprovePtrInput` via:
+//
+//	        ActionPermissionsPermissionsApproveArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionPermissionsPermissionsApprovePtrInput interface {
+	pulumi.Input
+
+	ToActionPermissionsPermissionsApprovePtrOutput() ActionPermissionsPermissionsApprovePtrOutput
+	ToActionPermissionsPermissionsApprovePtrOutputWithContext(context.Context) ActionPermissionsPermissionsApprovePtrOutput
+}
+
+type actionPermissionsPermissionsApprovePtrType ActionPermissionsPermissionsApproveArgs
+
+func ActionPermissionsPermissionsApprovePtr(v *ActionPermissionsPermissionsApproveArgs) ActionPermissionsPermissionsApprovePtrInput {
+	return (*actionPermissionsPermissionsApprovePtrType)(v)
+}
+
+func (*actionPermissionsPermissionsApprovePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionPermissionsPermissionsApprove)(nil)).Elem()
+}
+
+func (i *actionPermissionsPermissionsApprovePtrType) ToActionPermissionsPermissionsApprovePtrOutput() ActionPermissionsPermissionsApprovePtrOutput {
+	return i.ToActionPermissionsPermissionsApprovePtrOutputWithContext(context.Background())
+}
+
+func (i *actionPermissionsPermissionsApprovePtrType) ToActionPermissionsPermissionsApprovePtrOutputWithContext(ctx context.Context) ActionPermissionsPermissionsApprovePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionPermissionsPermissionsApprovePtrOutput)
+}
+
+type ActionPermissionsPermissionsApproveOutput struct{ *pulumi.OutputState }
+
+func (ActionPermissionsPermissionsApproveOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionPermissionsPermissionsApprove)(nil)).Elem()
+}
+
+func (o ActionPermissionsPermissionsApproveOutput) ToActionPermissionsPermissionsApproveOutput() ActionPermissionsPermissionsApproveOutput {
+	return o
+}
+
+func (o ActionPermissionsPermissionsApproveOutput) ToActionPermissionsPermissionsApproveOutputWithContext(ctx context.Context) ActionPermissionsPermissionsApproveOutput {
+	return o
+}
+
+func (o ActionPermissionsPermissionsApproveOutput) ToActionPermissionsPermissionsApprovePtrOutput() ActionPermissionsPermissionsApprovePtrOutput {
+	return o.ToActionPermissionsPermissionsApprovePtrOutputWithContext(context.Background())
+}
+
+func (o ActionPermissionsPermissionsApproveOutput) ToActionPermissionsPermissionsApprovePtrOutputWithContext(ctx context.Context) ActionPermissionsPermissionsApprovePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionPermissionsPermissionsApprove) *ActionPermissionsPermissionsApprove {
+		return &v
+	}).(ActionPermissionsPermissionsApprovePtrOutput)
+}
+
+func (o ActionPermissionsPermissionsApproveOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionPermissionsPermissionsApprove) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionPermissionsPermissionsApproveOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionPermissionsPermissionsApprove) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+func (o ActionPermissionsPermissionsApproveOutput) Teams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionPermissionsPermissionsApprove) []string { return v.Teams }).(pulumi.StringArrayOutput)
+}
+
+func (o ActionPermissionsPermissionsApproveOutput) Users() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionPermissionsPermissionsApprove) []string { return v.Users }).(pulumi.StringArrayOutput)
+}
+
+type ActionPermissionsPermissionsApprovePtrOutput struct{ *pulumi.OutputState }
+
+func (ActionPermissionsPermissionsApprovePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionPermissionsPermissionsApprove)(nil)).Elem()
+}
+
+func (o ActionPermissionsPermissionsApprovePtrOutput) ToActionPermissionsPermissionsApprovePtrOutput() ActionPermissionsPermissionsApprovePtrOutput {
+	return o
+}
+
+func (o ActionPermissionsPermissionsApprovePtrOutput) ToActionPermissionsPermissionsApprovePtrOutputWithContext(ctx context.Context) ActionPermissionsPermissionsApprovePtrOutput {
+	return o
+}
+
+func (o ActionPermissionsPermissionsApprovePtrOutput) Elem() ActionPermissionsPermissionsApproveOutput {
+	return o.ApplyT(func(v *ActionPermissionsPermissionsApprove) ActionPermissionsPermissionsApprove {
+		if v != nil {
+			return *v
+		}
+		var ret ActionPermissionsPermissionsApprove
+		return ret
+	}).(ActionPermissionsPermissionsApproveOutput)
+}
+
+func (o ActionPermissionsPermissionsApprovePtrOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionPermissionsPermissionsApprove) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Policy
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ActionPermissionsPermissionsApprovePtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ActionPermissionsPermissionsApprove) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ActionPermissionsPermissionsApprovePtrOutput) Teams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ActionPermissionsPermissionsApprove) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Teams
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ActionPermissionsPermissionsApprovePtrOutput) Users() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ActionPermissionsPermissionsApprove) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Users
+	}).(pulumi.StringArrayOutput)
+}
+
+type ActionPermissionsPermissionsExecute struct {
+	OwnedByTeam *bool    `pulumi:"ownedByTeam"`
+	Policy      *string  `pulumi:"policy"`
+	Roles       []string `pulumi:"roles"`
+	Teams       []string `pulumi:"teams"`
+	Users       []string `pulumi:"users"`
+}
+
+// ActionPermissionsPermissionsExecuteInput is an input type that accepts ActionPermissionsPermissionsExecuteArgs and ActionPermissionsPermissionsExecuteOutput values.
+// You can construct a concrete instance of `ActionPermissionsPermissionsExecuteInput` via:
+//
+//	ActionPermissionsPermissionsExecuteArgs{...}
+type ActionPermissionsPermissionsExecuteInput interface {
+	pulumi.Input
+
+	ToActionPermissionsPermissionsExecuteOutput() ActionPermissionsPermissionsExecuteOutput
+	ToActionPermissionsPermissionsExecuteOutputWithContext(context.Context) ActionPermissionsPermissionsExecuteOutput
+}
+
+type ActionPermissionsPermissionsExecuteArgs struct {
+	OwnedByTeam pulumi.BoolPtrInput     `pulumi:"ownedByTeam"`
+	Policy      pulumi.StringPtrInput   `pulumi:"policy"`
+	Roles       pulumi.StringArrayInput `pulumi:"roles"`
+	Teams       pulumi.StringArrayInput `pulumi:"teams"`
+	Users       pulumi.StringArrayInput `pulumi:"users"`
+}
+
+func (ActionPermissionsPermissionsExecuteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionPermissionsPermissionsExecute)(nil)).Elem()
+}
+
+func (i ActionPermissionsPermissionsExecuteArgs) ToActionPermissionsPermissionsExecuteOutput() ActionPermissionsPermissionsExecuteOutput {
+	return i.ToActionPermissionsPermissionsExecuteOutputWithContext(context.Background())
+}
+
+func (i ActionPermissionsPermissionsExecuteArgs) ToActionPermissionsPermissionsExecuteOutputWithContext(ctx context.Context) ActionPermissionsPermissionsExecuteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionPermissionsPermissionsExecuteOutput)
+}
+
+func (i ActionPermissionsPermissionsExecuteArgs) ToActionPermissionsPermissionsExecutePtrOutput() ActionPermissionsPermissionsExecutePtrOutput {
+	return i.ToActionPermissionsPermissionsExecutePtrOutputWithContext(context.Background())
+}
+
+func (i ActionPermissionsPermissionsExecuteArgs) ToActionPermissionsPermissionsExecutePtrOutputWithContext(ctx context.Context) ActionPermissionsPermissionsExecutePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionPermissionsPermissionsExecuteOutput).ToActionPermissionsPermissionsExecutePtrOutputWithContext(ctx)
+}
+
+// ActionPermissionsPermissionsExecutePtrInput is an input type that accepts ActionPermissionsPermissionsExecuteArgs, ActionPermissionsPermissionsExecutePtr and ActionPermissionsPermissionsExecutePtrOutput values.
+// You can construct a concrete instance of `ActionPermissionsPermissionsExecutePtrInput` via:
+//
+//	        ActionPermissionsPermissionsExecuteArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionPermissionsPermissionsExecutePtrInput interface {
+	pulumi.Input
+
+	ToActionPermissionsPermissionsExecutePtrOutput() ActionPermissionsPermissionsExecutePtrOutput
+	ToActionPermissionsPermissionsExecutePtrOutputWithContext(context.Context) ActionPermissionsPermissionsExecutePtrOutput
+}
+
+type actionPermissionsPermissionsExecutePtrType ActionPermissionsPermissionsExecuteArgs
+
+func ActionPermissionsPermissionsExecutePtr(v *ActionPermissionsPermissionsExecuteArgs) ActionPermissionsPermissionsExecutePtrInput {
+	return (*actionPermissionsPermissionsExecutePtrType)(v)
+}
+
+func (*actionPermissionsPermissionsExecutePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionPermissionsPermissionsExecute)(nil)).Elem()
+}
+
+func (i *actionPermissionsPermissionsExecutePtrType) ToActionPermissionsPermissionsExecutePtrOutput() ActionPermissionsPermissionsExecutePtrOutput {
+	return i.ToActionPermissionsPermissionsExecutePtrOutputWithContext(context.Background())
+}
+
+func (i *actionPermissionsPermissionsExecutePtrType) ToActionPermissionsPermissionsExecutePtrOutputWithContext(ctx context.Context) ActionPermissionsPermissionsExecutePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionPermissionsPermissionsExecutePtrOutput)
+}
+
+type ActionPermissionsPermissionsExecuteOutput struct{ *pulumi.OutputState }
+
+func (ActionPermissionsPermissionsExecuteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionPermissionsPermissionsExecute)(nil)).Elem()
+}
+
+func (o ActionPermissionsPermissionsExecuteOutput) ToActionPermissionsPermissionsExecuteOutput() ActionPermissionsPermissionsExecuteOutput {
+	return o
+}
+
+func (o ActionPermissionsPermissionsExecuteOutput) ToActionPermissionsPermissionsExecuteOutputWithContext(ctx context.Context) ActionPermissionsPermissionsExecuteOutput {
+	return o
+}
+
+func (o ActionPermissionsPermissionsExecuteOutput) ToActionPermissionsPermissionsExecutePtrOutput() ActionPermissionsPermissionsExecutePtrOutput {
+	return o.ToActionPermissionsPermissionsExecutePtrOutputWithContext(context.Background())
+}
+
+func (o ActionPermissionsPermissionsExecuteOutput) ToActionPermissionsPermissionsExecutePtrOutputWithContext(ctx context.Context) ActionPermissionsPermissionsExecutePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionPermissionsPermissionsExecute) *ActionPermissionsPermissionsExecute {
+		return &v
+	}).(ActionPermissionsPermissionsExecutePtrOutput)
+}
+
+func (o ActionPermissionsPermissionsExecuteOutput) OwnedByTeam() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionPermissionsPermissionsExecute) *bool { return v.OwnedByTeam }).(pulumi.BoolPtrOutput)
+}
+
+func (o ActionPermissionsPermissionsExecuteOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionPermissionsPermissionsExecute) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+func (o ActionPermissionsPermissionsExecuteOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionPermissionsPermissionsExecute) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+func (o ActionPermissionsPermissionsExecuteOutput) Teams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionPermissionsPermissionsExecute) []string { return v.Teams }).(pulumi.StringArrayOutput)
+}
+
+func (o ActionPermissionsPermissionsExecuteOutput) Users() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionPermissionsPermissionsExecute) []string { return v.Users }).(pulumi.StringArrayOutput)
+}
+
+type ActionPermissionsPermissionsExecutePtrOutput struct{ *pulumi.OutputState }
+
+func (ActionPermissionsPermissionsExecutePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionPermissionsPermissionsExecute)(nil)).Elem()
+}
+
+func (o ActionPermissionsPermissionsExecutePtrOutput) ToActionPermissionsPermissionsExecutePtrOutput() ActionPermissionsPermissionsExecutePtrOutput {
+	return o
+}
+
+func (o ActionPermissionsPermissionsExecutePtrOutput) ToActionPermissionsPermissionsExecutePtrOutputWithContext(ctx context.Context) ActionPermissionsPermissionsExecutePtrOutput {
+	return o
+}
+
+func (o ActionPermissionsPermissionsExecutePtrOutput) Elem() ActionPermissionsPermissionsExecuteOutput {
+	return o.ApplyT(func(v *ActionPermissionsPermissionsExecute) ActionPermissionsPermissionsExecute {
+		if v != nil {
+			return *v
+		}
+		var ret ActionPermissionsPermissionsExecute
+		return ret
+	}).(ActionPermissionsPermissionsExecuteOutput)
+}
+
+func (o ActionPermissionsPermissionsExecutePtrOutput) OwnedByTeam() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ActionPermissionsPermissionsExecute) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OwnedByTeam
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ActionPermissionsPermissionsExecutePtrOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionPermissionsPermissionsExecute) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Policy
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ActionPermissionsPermissionsExecutePtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ActionPermissionsPermissionsExecute) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ActionPermissionsPermissionsExecutePtrOutput) Teams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ActionPermissionsPermissionsExecute) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Teams
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ActionPermissionsPermissionsExecutePtrOutput) Users() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ActionPermissionsPermissionsExecute) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Users
+	}).(pulumi.StringArrayOutput)
+}
+
 type ActionUserProperties struct {
 	ArrayProps   map[string]ActionUserPropertiesArrayProps   `pulumi:"arrayProps"`
 	BooleanProps map[string]ActionUserPropertiesBooleanProps `pulumi:"booleanProps"`
@@ -7901,6 +8420,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionGitlabMethodPtrInput)(nil)).Elem(), ActionGitlabMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionKafkaMethodInput)(nil)).Elem(), ActionKafkaMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionKafkaMethodPtrInput)(nil)).Elem(), ActionKafkaMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionPermissionsPermissionsInput)(nil)).Elem(), ActionPermissionsPermissionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionPermissionsPermissionsPtrInput)(nil)).Elem(), ActionPermissionsPermissionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionPermissionsPermissionsApproveInput)(nil)).Elem(), ActionPermissionsPermissionsApproveArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionPermissionsPermissionsApprovePtrInput)(nil)).Elem(), ActionPermissionsPermissionsApproveArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionPermissionsPermissionsExecuteInput)(nil)).Elem(), ActionPermissionsPermissionsExecuteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionPermissionsPermissionsExecutePtrInput)(nil)).Elem(), ActionPermissionsPermissionsExecuteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesInput)(nil)).Elem(), ActionUserPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesPtrInput)(nil)).Elem(), ActionUserPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsInput)(nil)).Elem(), ActionUserPropertiesArrayPropsArgs{})
@@ -8010,6 +8535,12 @@ func init() {
 	pulumi.RegisterOutputType(ActionGitlabMethodPtrOutput{})
 	pulumi.RegisterOutputType(ActionKafkaMethodOutput{})
 	pulumi.RegisterOutputType(ActionKafkaMethodPtrOutput{})
+	pulumi.RegisterOutputType(ActionPermissionsPermissionsOutput{})
+	pulumi.RegisterOutputType(ActionPermissionsPermissionsPtrOutput{})
+	pulumi.RegisterOutputType(ActionPermissionsPermissionsApproveOutput{})
+	pulumi.RegisterOutputType(ActionPermissionsPermissionsApprovePtrOutput{})
+	pulumi.RegisterOutputType(ActionPermissionsPermissionsExecuteOutput{})
+	pulumi.RegisterOutputType(ActionPermissionsPermissionsExecutePtrOutput{})
 	pulumi.RegisterOutputType(ActionUserPropertiesOutput{})
 	pulumi.RegisterOutputType(ActionUserPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsOutput{})
