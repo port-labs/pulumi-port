@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "port:index/action:Action":
 		r = &Action{}
+	case "port:index/actionPermissions:ActionPermissions":
+		r = &ActionPermissions{}
 	case "port:index/blueprint:Blueprint":
 		r = &Blueprint{}
 	case "port:index/entity:Entity":
@@ -67,6 +69,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"port",
 		"index/action",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"port",
+		"index/actionPermissions",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

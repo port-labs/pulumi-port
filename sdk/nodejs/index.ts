@@ -10,6 +10,11 @@ export type Action = import("./action").Action;
 export const Action: typeof import("./action").Action = null as any;
 utilities.lazyLoad(exports, ["Action"], () => require("./action"));
 
+export { ActionPermissionsArgs, ActionPermissionsState } from "./actionPermissions";
+export type ActionPermissions = import("./actionPermissions").ActionPermissions;
+export const ActionPermissions: typeof import("./actionPermissions").ActionPermissions = null as any;
+utilities.lazyLoad(exports, ["ActionPermissions"], () => require("./actionPermissions"));
+
 export { BlueprintArgs, BlueprintState } from "./blueprint";
 export type Blueprint = import("./blueprint").Blueprint;
 export const Blueprint: typeof import("./blueprint").Blueprint = null as any;
@@ -56,6 +61,8 @@ const _module = {
         switch (type) {
             case "port:index/action:Action":
                 return new Action(name, <any>undefined, { urn })
+            case "port:index/actionPermissions:ActionPermissions":
+                return new ActionPermissions(name, <any>undefined, { urn })
             case "port:index/blueprint:Blueprint":
                 return new Blueprint(name, <any>undefined, { urn })
             case "port:index/entity:Entity":
@@ -72,6 +79,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("port", "index/action", _module)
+pulumi.runtime.registerResourceModule("port", "index/actionPermissions", _module)
 pulumi.runtime.registerResourceModule("port", "index/blueprint", _module)
 pulumi.runtime.registerResourceModule("port", "index/entity", _module)
 pulumi.runtime.registerResourceModule("port", "index/scorecard", _module)
