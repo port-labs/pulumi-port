@@ -2,6 +2,7 @@
     "renames": {
         "resources": {
             "port:index/action:Action": "port_action",
+            "port:index/actionPermissions:ActionPermissions": "port_action_permissions",
             "port:index/blueprint:Blueprint": "port_blueprint",
             "port:index/entity:Entity": "port_entity",
             "port:index/scorecard:Scorecard": "port_scorecard",
@@ -20,6 +21,9 @@
                 "omitPayload": "omit_payload",
                 "omitUserInputs": "omit_user_inputs",
                 "projectName": "project_name"
+            },
+            "port:index/ActionPermissionsPermissionsExecute:ActionPermissionsPermissionsExecute": {
+                "ownedByTeam": "owned_by_team"
             },
             "port:index/ActionUserProperties:ActionUserProperties": {
                 "arrayProps": "array_props",
@@ -176,6 +180,10 @@
                 "requiredApproval": "required_approval",
                 "userProperties": "user_properties",
                 "webhookMethod": "webhook_method"
+            },
+            "port:index/actionPermissions:ActionPermissions": {
+                "actionIdentifier": "action_identifier",
+                "blueprintIdentifier": "blueprint_identifier"
             },
             "port:index/blueprint:Blueprint": {
                 "calculationProperties": "calculation_properties",

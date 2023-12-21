@@ -171,6 +171,72 @@
         "port:index/ActionKafkaMethod:ActionKafkaMethod": {
             "type": "object"
         },
+        "port:index/ActionPermissionsPermissions:ActionPermissionsPermissions": {
+            "properties": {
+                "approve": {
+                    "$ref": "#/types/port:index/ActionPermissionsPermissionsApprove:ActionPermissionsPermissionsApprove"
+                },
+                "execute": {
+                    "$ref": "#/types/port:index/ActionPermissionsPermissionsExecute:ActionPermissionsPermissionsExecute"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/ActionPermissionsPermissionsApprove:ActionPermissionsPermissionsApprove": {
+            "properties": {
+                "policy": {
+                    "type": "string"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "port:index/ActionPermissionsPermissionsExecute:ActionPermissionsPermissionsExecute": {
+            "properties": {
+                "ownedByTeam": {
+                    "type": "boolean"
+                },
+                "policy": {
+                    "type": "string"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object"
+        },
         "port:index/ActionUserProperties:ActionUserProperties": {
             "properties": {
                 "arrayProps": {
@@ -1729,6 +1795,62 @@
                     "webhookMethod": {
                         "$ref": "#/types/port:index/ActionWebhookMethod:ActionWebhookMethod",
                         "description": "The invocation method of the action\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "port:index/actionPermissions:ActionPermissions": {
+            "properties": {
+                "actionIdentifier": {
+                    "type": "string",
+                    "description": "The ID of the action\n"
+                },
+                "blueprintIdentifier": {
+                    "type": "string",
+                    "description": "The ID of the blueprint\n"
+                },
+                "permissions": {
+                    "$ref": "#/types/port:index/ActionPermissionsPermissions:ActionPermissionsPermissions",
+                    "description": "The permissions for the action\n"
+                }
+            },
+            "required": [
+                "actionIdentifier",
+                "blueprintIdentifier"
+            ],
+            "inputProperties": {
+                "actionIdentifier": {
+                    "type": "string",
+                    "description": "The ID of the action\n"
+                },
+                "blueprintIdentifier": {
+                    "type": "string",
+                    "description": "The ID of the blueprint\n"
+                },
+                "permissions": {
+                    "$ref": "#/types/port:index/ActionPermissionsPermissions:ActionPermissionsPermissions",
+                    "description": "The permissions for the action\n"
+                }
+            },
+            "requiredInputs": [
+                "actionIdentifier",
+                "blueprintIdentifier"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ActionPermissions resources.\n",
+                "properties": {
+                    "actionIdentifier": {
+                        "type": "string",
+                        "description": "The ID of the action\n"
+                    },
+                    "blueprintIdentifier": {
+                        "type": "string",
+                        "description": "The ID of the blueprint\n"
+                    },
+                    "permissions": {
+                        "$ref": "#/types/port:index/ActionPermissionsPermissions:ActionPermissionsPermissions",
+                        "description": "The permissions for the action\n"
                     }
                 },
                 "type": "object"
