@@ -178,6 +178,7 @@
                 "kafkaMethod": "kafka_method",
                 "orderProperties": "order_properties",
                 "requiredApproval": "required_approval",
+                "requiredJqQuery": "required_jq_query",
                 "userProperties": "user_properties",
                 "webhookMethod": "webhook_method"
             },

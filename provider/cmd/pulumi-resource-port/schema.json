@@ -130,7 +130,18 @@
                 "org",
                 "repo",
                 "workflow"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "omitPayload",
+                        "omitUserInputs",
+                        "org",
+                        "repo",
+                        "workflow"
+                    ]
+                }
+            }
         },
         "port:index/ActionGitlabMethod:ActionGitlabMethod": {
             "properties": {
@@ -163,6 +174,8 @@
                     "requiredOutputs": [
                         "agent",
                         "groupName",
+                        "omitPayload",
+                        "omitUserInputs",
                         "projectName"
                     ]
                 }
@@ -323,14 +336,7 @@
                     "type": "string"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "required"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "port:index/ActionUserPropertiesArrayPropsBooleanItems:ActionUserPropertiesArrayPropsBooleanItems": {
             "properties": {
@@ -489,14 +495,7 @@
                     "type": "string"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "required"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "port:index/ActionUserPropertiesBooleanPropsDataset:ActionUserPropertiesBooleanPropsDataset": {
             "properties": {
@@ -599,14 +598,7 @@
                     "type": "string"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "required"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "port:index/ActionUserPropertiesNumberPropsDataset:ActionUserPropertiesNumberPropsDataset": {
             "properties": {
@@ -697,14 +689,7 @@
                     "type": "string"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "required"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "port:index/ActionUserPropertiesObjectPropsDataset:ActionUserPropertiesObjectPropsDataset": {
             "properties": {
@@ -819,14 +804,7 @@
                     "type": "string"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "required"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "port:index/ActionUserPropertiesStringPropsDataset:ActionUserPropertiesStringPropsDataset": {
             "properties": {
@@ -1628,6 +1606,10 @@
                     "type": "boolean",
                     "description": "Require approval before invoking the action\n"
                 },
+                "requiredJqQuery": {
+                    "type": "string",
+                    "description": "The required jq query of the property\n"
+                },
                 "title": {
                     "type": "string",
                     "description": "Title\n"
@@ -1702,6 +1684,10 @@
                 "requiredApproval": {
                     "type": "boolean",
                     "description": "Require approval before invoking the action\n"
+                },
+                "requiredJqQuery": {
+                    "type": "string",
+                    "description": "The required jq query of the property\n"
                 },
                 "title": {
                     "type": "string",
@@ -1779,6 +1765,10 @@
                     "requiredApproval": {
                         "type": "boolean",
                         "description": "Require approval before invoking the action\n"
+                    },
+                    "requiredJqQuery": {
+                        "type": "string",
+                        "description": "The required jq query of the property\n"
                     },
                     "title": {
                         "type": "string",
