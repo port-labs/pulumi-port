@@ -83,6 +83,10 @@ export class Action extends pulumi.CustomResource {
      */
     public readonly requiredApproval!: pulumi.Output<boolean | undefined>;
     /**
+     * The required jq query of the property
+     */
+    public readonly requiredJqQuery!: pulumi.Output<string | undefined>;
+    /**
      * Title
      */
     public readonly title!: pulumi.Output<string>;
@@ -124,6 +128,7 @@ export class Action extends pulumi.CustomResource {
             resourceInputs["kafkaMethod"] = state ? state.kafkaMethod : undefined;
             resourceInputs["orderProperties"] = state ? state.orderProperties : undefined;
             resourceInputs["requiredApproval"] = state ? state.requiredApproval : undefined;
+            resourceInputs["requiredJqQuery"] = state ? state.requiredJqQuery : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
             resourceInputs["trigger"] = state ? state.trigger : undefined;
             resourceInputs["userProperties"] = state ? state.userProperties : undefined;
@@ -154,6 +159,7 @@ export class Action extends pulumi.CustomResource {
             resourceInputs["kafkaMethod"] = args ? args.kafkaMethod : undefined;
             resourceInputs["orderProperties"] = args ? args.orderProperties : undefined;
             resourceInputs["requiredApproval"] = args ? args.requiredApproval : undefined;
+            resourceInputs["requiredJqQuery"] = args ? args.requiredJqQuery : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["trigger"] = args ? args.trigger : undefined;
             resourceInputs["userProperties"] = args ? args.userProperties : undefined;
@@ -216,6 +222,10 @@ export interface ActionState {
      * Require approval before invoking the action
      */
     requiredApproval?: pulumi.Input<boolean>;
+    /**
+     * The required jq query of the property
+     */
+    requiredJqQuery?: pulumi.Input<string>;
     /**
      * Title
      */
@@ -286,6 +296,10 @@ export interface ActionArgs {
      * Require approval before invoking the action
      */
     requiredApproval?: pulumi.Input<boolean>;
+    /**
+     * The required jq query of the property
+     */
+    requiredJqQuery?: pulumi.Input<string>;
     /**
      * Title
      */

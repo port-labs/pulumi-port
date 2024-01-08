@@ -18,8 +18,8 @@ export interface ActionAzureMethod {
 }
 
 export interface ActionGithubMethod {
-    omitPayload?: boolean;
-    omitUserInputs?: boolean;
+    omitPayload: boolean;
+    omitUserInputs: boolean;
     org: string;
     repo: string;
     reportWorkflowStatus?: boolean;
@@ -30,8 +30,8 @@ export interface ActionGitlabMethod {
     agent: boolean;
     defaultRef?: string;
     groupName: string;
-    omitPayload?: boolean;
-    omitUserInputs?: boolean;
+    omitPayload: boolean;
+    omitUserInputs: boolean;
     projectName: string;
 }
 
@@ -77,7 +77,7 @@ export interface ActionUserPropertiesArrayProps {
     minItems?: number;
     numberItems?: outputs.ActionUserPropertiesArrayPropsNumberItems;
     objectItems?: outputs.ActionUserPropertiesArrayPropsObjectItems;
-    required: boolean;
+    required?: boolean;
     stringItems?: outputs.ActionUserPropertiesArrayPropsStringItems;
     title?: string;
     visible?: boolean;
@@ -129,7 +129,7 @@ export interface ActionUserPropertiesBooleanProps {
     dependsOns?: string[];
     description?: string;
     icon?: string;
-    required: boolean;
+    required?: boolean;
     title?: string;
     visible?: boolean;
     visibleJqQuery?: string;
@@ -162,7 +162,7 @@ export interface ActionUserPropertiesNumberProps {
     icon?: string;
     maximum?: number;
     minimum?: number;
-    required: boolean;
+    required?: boolean;
     title?: string;
     visible?: boolean;
     visibleJqQuery?: string;
@@ -192,7 +192,7 @@ export interface ActionUserPropertiesObjectProps {
     description?: string;
     encryption?: string;
     icon?: string;
-    required: boolean;
+    required?: boolean;
     title?: string;
     visible?: boolean;
     visibleJqQuery?: string;
@@ -229,7 +229,7 @@ export interface ActionUserPropertiesStringProps {
     maxLength?: number;
     minLength?: number;
     pattern?: string;
-    required: boolean;
+    required?: boolean;
     title?: string;
     visible?: boolean;
     visibleJqQuery?: string;
