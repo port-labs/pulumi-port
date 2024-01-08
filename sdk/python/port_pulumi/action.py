@@ -30,6 +30,7 @@ class ActionArgs:
                  kafka_method: Optional[pulumi.Input['ActionKafkaMethodArgs']] = None,
                  order_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_approval: Optional[pulumi.Input[bool]] = None,
+                 required_jq_query: Optional[pulumi.Input[str]] = None,
                  user_properties: Optional[pulumi.Input['ActionUserPropertiesArgs']] = None,
                  webhook_method: Optional[pulumi.Input['ActionWebhookMethodArgs']] = None):
         """
@@ -48,6 +49,7 @@ class ActionArgs:
         :param pulumi.Input['ActionKafkaMethodArgs'] kafka_method: The invocation method of the action
         :param pulumi.Input[Sequence[pulumi.Input[str]]] order_properties: Order properties
         :param pulumi.Input[bool] required_approval: Require approval before invoking the action
+        :param pulumi.Input[str] required_jq_query: The required jq query of the property
         :param pulumi.Input['ActionUserPropertiesArgs'] user_properties: User properties
         :param pulumi.Input['ActionWebhookMethodArgs'] webhook_method: The invocation method of the action
         """
@@ -75,6 +77,8 @@ class ActionArgs:
             pulumi.set(__self__, "order_properties", order_properties)
         if required_approval is not None:
             pulumi.set(__self__, "required_approval", required_approval)
+        if required_jq_query is not None:
+            pulumi.set(__self__, "required_jq_query", required_jq_query)
         if user_properties is not None:
             pulumi.set(__self__, "user_properties", user_properties)
         if webhook_method is not None:
@@ -249,6 +253,18 @@ class ActionArgs:
         pulumi.set(self, "required_approval", value)
 
     @property
+    @pulumi.getter(name="requiredJqQuery")
+    def required_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The required jq query of the property
+        """
+        return pulumi.get(self, "required_jq_query")
+
+    @required_jq_query.setter
+    def required_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "required_jq_query", value)
+
+    @property
     @pulumi.getter(name="userProperties")
     def user_properties(self) -> Optional[pulumi.Input['ActionUserPropertiesArgs']]:
         """
@@ -288,6 +304,7 @@ class _ActionState:
                  kafka_method: Optional[pulumi.Input['ActionKafkaMethodArgs']] = None,
                  order_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_approval: Optional[pulumi.Input[bool]] = None,
+                 required_jq_query: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  trigger: Optional[pulumi.Input[str]] = None,
                  user_properties: Optional[pulumi.Input['ActionUserPropertiesArgs']] = None,
@@ -306,6 +323,7 @@ class _ActionState:
         :param pulumi.Input['ActionKafkaMethodArgs'] kafka_method: The invocation method of the action
         :param pulumi.Input[Sequence[pulumi.Input[str]]] order_properties: Order properties
         :param pulumi.Input[bool] required_approval: Require approval before invoking the action
+        :param pulumi.Input[str] required_jq_query: The required jq query of the property
         :param pulumi.Input[str] title: Title
         :param pulumi.Input[str] trigger: The trigger type of the action
         :param pulumi.Input['ActionUserPropertiesArgs'] user_properties: User properties
@@ -335,6 +353,8 @@ class _ActionState:
             pulumi.set(__self__, "order_properties", order_properties)
         if required_approval is not None:
             pulumi.set(__self__, "required_approval", required_approval)
+        if required_jq_query is not None:
+            pulumi.set(__self__, "required_jq_query", required_jq_query)
         if title is not None:
             pulumi.set(__self__, "title", title)
         if trigger is not None:
@@ -489,6 +509,18 @@ class _ActionState:
         pulumi.set(self, "required_approval", value)
 
     @property
+    @pulumi.getter(name="requiredJqQuery")
+    def required_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The required jq query of the property
+        """
+        return pulumi.get(self, "required_jq_query")
+
+    @required_jq_query.setter
+    def required_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "required_jq_query", value)
+
+    @property
     @pulumi.getter
     def title(self) -> Optional[pulumi.Input[str]]:
         """
@@ -554,6 +586,7 @@ class Action(pulumi.CustomResource):
                  kafka_method: Optional[pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']]] = None,
                  order_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_approval: Optional[pulumi.Input[bool]] = None,
+                 required_jq_query: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  trigger: Optional[pulumi.Input[str]] = None,
                  user_properties: Optional[pulumi.Input[pulumi.InputType['ActionUserPropertiesArgs']]] = None,
@@ -575,6 +608,7 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']] kafka_method: The invocation method of the action
         :param pulumi.Input[Sequence[pulumi.Input[str]]] order_properties: Order properties
         :param pulumi.Input[bool] required_approval: Require approval before invoking the action
+        :param pulumi.Input[str] required_jq_query: The required jq query of the property
         :param pulumi.Input[str] title: Title
         :param pulumi.Input[str] trigger: The trigger type of the action
         :param pulumi.Input[pulumi.InputType['ActionUserPropertiesArgs']] user_properties: User properties
@@ -615,6 +649,7 @@ class Action(pulumi.CustomResource):
                  kafka_method: Optional[pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']]] = None,
                  order_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_approval: Optional[pulumi.Input[bool]] = None,
+                 required_jq_query: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  trigger: Optional[pulumi.Input[str]] = None,
                  user_properties: Optional[pulumi.Input[pulumi.InputType['ActionUserPropertiesArgs']]] = None,
@@ -644,6 +679,7 @@ class Action(pulumi.CustomResource):
             __props__.__dict__["kafka_method"] = kafka_method
             __props__.__dict__["order_properties"] = order_properties
             __props__.__dict__["required_approval"] = required_approval
+            __props__.__dict__["required_jq_query"] = required_jq_query
             if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
@@ -674,6 +710,7 @@ class Action(pulumi.CustomResource):
             kafka_method: Optional[pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']]] = None,
             order_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             required_approval: Optional[pulumi.Input[bool]] = None,
+            required_jq_query: Optional[pulumi.Input[str]] = None,
             title: Optional[pulumi.Input[str]] = None,
             trigger: Optional[pulumi.Input[str]] = None,
             user_properties: Optional[pulumi.Input[pulumi.InputType['ActionUserPropertiesArgs']]] = None,
@@ -697,6 +734,7 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']] kafka_method: The invocation method of the action
         :param pulumi.Input[Sequence[pulumi.Input[str]]] order_properties: Order properties
         :param pulumi.Input[bool] required_approval: Require approval before invoking the action
+        :param pulumi.Input[str] required_jq_query: The required jq query of the property
         :param pulumi.Input[str] title: Title
         :param pulumi.Input[str] trigger: The trigger type of the action
         :param pulumi.Input[pulumi.InputType['ActionUserPropertiesArgs']] user_properties: User properties
@@ -718,6 +756,7 @@ class Action(pulumi.CustomResource):
         __props__.__dict__["kafka_method"] = kafka_method
         __props__.__dict__["order_properties"] = order_properties
         __props__.__dict__["required_approval"] = required_approval
+        __props__.__dict__["required_jq_query"] = required_jq_query
         __props__.__dict__["title"] = title
         __props__.__dict__["trigger"] = trigger
         __props__.__dict__["user_properties"] = user_properties
@@ -819,6 +858,14 @@ class Action(pulumi.CustomResource):
         Require approval before invoking the action
         """
         return pulumi.get(self, "required_approval")
+
+    @property
+    @pulumi.getter(name="requiredJqQuery")
+    def required_jq_query(self) -> pulumi.Output[Optional[str]]:
+        """
+        The required jq query of the property
+        """
+        return pulumi.get(self, "required_jq_query")
 
     @property
     @pulumi.getter

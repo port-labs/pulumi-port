@@ -39,6 +39,8 @@ type Action struct {
 	OrderProperties pulumi.StringArrayOutput `pulumi:"orderProperties"`
 	// Require approval before invoking the action
 	RequiredApproval pulumi.BoolPtrOutput `pulumi:"requiredApproval"`
+	// The required jq query of the property
+	RequiredJqQuery pulumi.StringPtrOutput `pulumi:"requiredJqQuery"`
 	// Title
 	Title pulumi.StringOutput `pulumi:"title"`
 	// The trigger type of the action
@@ -115,6 +117,8 @@ type actionState struct {
 	OrderProperties []string `pulumi:"orderProperties"`
 	// Require approval before invoking the action
 	RequiredApproval *bool `pulumi:"requiredApproval"`
+	// The required jq query of the property
+	RequiredJqQuery *string `pulumi:"requiredJqQuery"`
 	// Title
 	Title *string `pulumi:"title"`
 	// The trigger type of the action
@@ -150,6 +154,8 @@ type ActionState struct {
 	OrderProperties pulumi.StringArrayInput
 	// Require approval before invoking the action
 	RequiredApproval pulumi.BoolPtrInput
+	// The required jq query of the property
+	RequiredJqQuery pulumi.StringPtrInput
 	// Title
 	Title pulumi.StringPtrInput
 	// The trigger type of the action
@@ -189,6 +195,8 @@ type actionArgs struct {
 	OrderProperties []string `pulumi:"orderProperties"`
 	// Require approval before invoking the action
 	RequiredApproval *bool `pulumi:"requiredApproval"`
+	// The required jq query of the property
+	RequiredJqQuery *string `pulumi:"requiredJqQuery"`
 	// Title
 	Title string `pulumi:"title"`
 	// The trigger type of the action
@@ -225,6 +233,8 @@ type ActionArgs struct {
 	OrderProperties pulumi.StringArrayInput
 	// Require approval before invoking the action
 	RequiredApproval pulumi.BoolPtrInput
+	// The required jq query of the property
+	RequiredJqQuery pulumi.StringPtrInput
 	// Title
 	Title pulumi.StringInput
 	// The trigger type of the action
@@ -380,6 +390,11 @@ func (o ActionOutput) OrderProperties() pulumi.StringArrayOutput {
 // Require approval before invoking the action
 func (o ActionOutput) RequiredApproval() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Action) pulumi.BoolPtrOutput { return v.RequiredApproval }).(pulumi.BoolPtrOutput)
+}
+
+// The required jq query of the property
+func (o ActionOutput) RequiredJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Action) pulumi.StringPtrOutput { return v.RequiredJqQuery }).(pulumi.StringPtrOutput)
 }
 
 // Title
