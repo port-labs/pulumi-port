@@ -46,6 +46,10 @@ __all__ = [
     'ActionUserPropertiesStringPropsDatasetRule',
     'ActionUserPropertiesStringPropsDatasetRuleValue',
     'ActionWebhookMethod',
+    'AggregationPropertyMethod',
+    'AggregationPropertyMethodAggregateByProperty',
+    'AggregationPropertyMethodAverageByProperty',
+    'AggregationPropertyMethodAverageEntities',
     'BlueprintCalculationProperties',
     'BlueprintKafkaChangelogDestination',
     'BlueprintMirrorProperties',
@@ -1731,6 +1735,170 @@ class ActionWebhookMethod(dict):
     @pulumi.getter
     def synchronized(self) -> Optional[bool]:
         return pulumi.get(self, "synchronized")
+
+
+@pulumi.output_type
+class AggregationPropertyMethod(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aggregateByProperty":
+            suggest = "aggregate_by_property"
+        elif key == "averageByProperty":
+            suggest = "average_by_property"
+        elif key == "averageEntities":
+            suggest = "average_entities"
+        elif key == "countEntities":
+            suggest = "count_entities"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AggregationPropertyMethod. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AggregationPropertyMethod.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AggregationPropertyMethod.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aggregate_by_property: Optional['outputs.AggregationPropertyMethodAggregateByProperty'] = None,
+                 average_by_property: Optional['outputs.AggregationPropertyMethodAverageByProperty'] = None,
+                 average_entities: Optional['outputs.AggregationPropertyMethodAverageEntities'] = None,
+                 count_entities: Optional[bool] = None):
+        if aggregate_by_property is not None:
+            pulumi.set(__self__, "aggregate_by_property", aggregate_by_property)
+        if average_by_property is not None:
+            pulumi.set(__self__, "average_by_property", average_by_property)
+        if average_entities is not None:
+            pulumi.set(__self__, "average_entities", average_entities)
+        if count_entities is not None:
+            pulumi.set(__self__, "count_entities", count_entities)
+
+    @property
+    @pulumi.getter(name="aggregateByProperty")
+    def aggregate_by_property(self) -> Optional['outputs.AggregationPropertyMethodAggregateByProperty']:
+        return pulumi.get(self, "aggregate_by_property")
+
+    @property
+    @pulumi.getter(name="averageByProperty")
+    def average_by_property(self) -> Optional['outputs.AggregationPropertyMethodAverageByProperty']:
+        return pulumi.get(self, "average_by_property")
+
+    @property
+    @pulumi.getter(name="averageEntities")
+    def average_entities(self) -> Optional['outputs.AggregationPropertyMethodAverageEntities']:
+        return pulumi.get(self, "average_entities")
+
+    @property
+    @pulumi.getter(name="countEntities")
+    def count_entities(self) -> Optional[bool]:
+        return pulumi.get(self, "count_entities")
+
+
+@pulumi.output_type
+class AggregationPropertyMethodAggregateByProperty(dict):
+    def __init__(__self__, *,
+                 func: str,
+                 property: str):
+        pulumi.set(__self__, "func", func)
+        pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def func(self) -> str:
+        return pulumi.get(self, "func")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        return pulumi.get(self, "property")
+
+
+@pulumi.output_type
+class AggregationPropertyMethodAverageByProperty(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "averageOf":
+            suggest = "average_of"
+        elif key == "measureTimeBy":
+            suggest = "measure_time_by"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AggregationPropertyMethodAverageByProperty. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AggregationPropertyMethodAverageByProperty.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AggregationPropertyMethodAverageByProperty.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 average_of: str,
+                 measure_time_by: str,
+                 property: str):
+        pulumi.set(__self__, "average_of", average_of)
+        pulumi.set(__self__, "measure_time_by", measure_time_by)
+        pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter(name="averageOf")
+    def average_of(self) -> str:
+        return pulumi.get(self, "average_of")
+
+    @property
+    @pulumi.getter(name="measureTimeBy")
+    def measure_time_by(self) -> str:
+        return pulumi.get(self, "measure_time_by")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        return pulumi.get(self, "property")
+
+
+@pulumi.output_type
+class AggregationPropertyMethodAverageEntities(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "averageOf":
+            suggest = "average_of"
+        elif key == "measureTimeBy":
+            suggest = "measure_time_by"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AggregationPropertyMethodAverageEntities. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AggregationPropertyMethodAverageEntities.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AggregationPropertyMethodAverageEntities.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 average_of: Optional[str] = None,
+                 measure_time_by: Optional[str] = None):
+        if average_of is not None:
+            pulumi.set(__self__, "average_of", average_of)
+        if measure_time_by is not None:
+            pulumi.set(__self__, "measure_time_by", measure_time_by)
+
+    @property
+    @pulumi.getter(name="averageOf")
+    def average_of(self) -> Optional[str]:
+        return pulumi.get(self, "average_of")
+
+    @property
+    @pulumi.getter(name="measureTimeBy")
+    def measure_time_by(self) -> Optional[str]:
+        return pulumi.get(self, "measure_time_by")
 
 
 @pulumi.output_type

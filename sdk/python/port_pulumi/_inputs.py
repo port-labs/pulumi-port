@@ -45,6 +45,10 @@ __all__ = [
     'ActionUserPropertiesStringPropsDatasetRuleArgs',
     'ActionUserPropertiesStringPropsDatasetRuleValueArgs',
     'ActionWebhookMethodArgs',
+    'AggregationPropertyMethodArgs',
+    'AggregationPropertyMethodAggregateByPropertyArgs',
+    'AggregationPropertyMethodAverageByPropertyArgs',
+    'AggregationPropertyMethodAverageEntitiesArgs',
     'BlueprintCalculationPropertiesArgs',
     'BlueprintKafkaChangelogDestinationArgs',
     'BlueprintMirrorPropertiesArgs',
@@ -1990,6 +1994,153 @@ class ActionWebhookMethodArgs:
     @synchronized.setter
     def synchronized(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "synchronized", value)
+
+
+@pulumi.input_type
+class AggregationPropertyMethodArgs:
+    def __init__(__self__, *,
+                 aggregate_by_property: Optional[pulumi.Input['AggregationPropertyMethodAggregateByPropertyArgs']] = None,
+                 average_by_property: Optional[pulumi.Input['AggregationPropertyMethodAverageByPropertyArgs']] = None,
+                 average_entities: Optional[pulumi.Input['AggregationPropertyMethodAverageEntitiesArgs']] = None,
+                 count_entities: Optional[pulumi.Input[bool]] = None):
+        if aggregate_by_property is not None:
+            pulumi.set(__self__, "aggregate_by_property", aggregate_by_property)
+        if average_by_property is not None:
+            pulumi.set(__self__, "average_by_property", average_by_property)
+        if average_entities is not None:
+            pulumi.set(__self__, "average_entities", average_entities)
+        if count_entities is not None:
+            pulumi.set(__self__, "count_entities", count_entities)
+
+    @property
+    @pulumi.getter(name="aggregateByProperty")
+    def aggregate_by_property(self) -> Optional[pulumi.Input['AggregationPropertyMethodAggregateByPropertyArgs']]:
+        return pulumi.get(self, "aggregate_by_property")
+
+    @aggregate_by_property.setter
+    def aggregate_by_property(self, value: Optional[pulumi.Input['AggregationPropertyMethodAggregateByPropertyArgs']]):
+        pulumi.set(self, "aggregate_by_property", value)
+
+    @property
+    @pulumi.getter(name="averageByProperty")
+    def average_by_property(self) -> Optional[pulumi.Input['AggregationPropertyMethodAverageByPropertyArgs']]:
+        return pulumi.get(self, "average_by_property")
+
+    @average_by_property.setter
+    def average_by_property(self, value: Optional[pulumi.Input['AggregationPropertyMethodAverageByPropertyArgs']]):
+        pulumi.set(self, "average_by_property", value)
+
+    @property
+    @pulumi.getter(name="averageEntities")
+    def average_entities(self) -> Optional[pulumi.Input['AggregationPropertyMethodAverageEntitiesArgs']]:
+        return pulumi.get(self, "average_entities")
+
+    @average_entities.setter
+    def average_entities(self, value: Optional[pulumi.Input['AggregationPropertyMethodAverageEntitiesArgs']]):
+        pulumi.set(self, "average_entities", value)
+
+    @property
+    @pulumi.getter(name="countEntities")
+    def count_entities(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "count_entities")
+
+    @count_entities.setter
+    def count_entities(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "count_entities", value)
+
+
+@pulumi.input_type
+class AggregationPropertyMethodAggregateByPropertyArgs:
+    def __init__(__self__, *,
+                 func: pulumi.Input[str],
+                 property: pulumi.Input[str]):
+        pulumi.set(__self__, "func", func)
+        pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter
+    def func(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "func")
+
+    @func.setter
+    def func(self, value: pulumi.Input[str]):
+        pulumi.set(self, "func", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: pulumi.Input[str]):
+        pulumi.set(self, "property", value)
+
+
+@pulumi.input_type
+class AggregationPropertyMethodAverageByPropertyArgs:
+    def __init__(__self__, *,
+                 average_of: pulumi.Input[str],
+                 measure_time_by: pulumi.Input[str],
+                 property: pulumi.Input[str]):
+        pulumi.set(__self__, "average_of", average_of)
+        pulumi.set(__self__, "measure_time_by", measure_time_by)
+        pulumi.set(__self__, "property", property)
+
+    @property
+    @pulumi.getter(name="averageOf")
+    def average_of(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "average_of")
+
+    @average_of.setter
+    def average_of(self, value: pulumi.Input[str]):
+        pulumi.set(self, "average_of", value)
+
+    @property
+    @pulumi.getter(name="measureTimeBy")
+    def measure_time_by(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "measure_time_by")
+
+    @measure_time_by.setter
+    def measure_time_by(self, value: pulumi.Input[str]):
+        pulumi.set(self, "measure_time_by", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: pulumi.Input[str]):
+        pulumi.set(self, "property", value)
+
+
+@pulumi.input_type
+class AggregationPropertyMethodAverageEntitiesArgs:
+    def __init__(__self__, *,
+                 average_of: Optional[pulumi.Input[str]] = None,
+                 measure_time_by: Optional[pulumi.Input[str]] = None):
+        if average_of is not None:
+            pulumi.set(__self__, "average_of", average_of)
+        if measure_time_by is not None:
+            pulumi.set(__self__, "measure_time_by", measure_time_by)
+
+    @property
+    @pulumi.getter(name="averageOf")
+    def average_of(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "average_of")
+
+    @average_of.setter
+    def average_of(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "average_of", value)
+
+    @property
+    @pulumi.getter(name="measureTimeBy")
+    def measure_time_by(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "measure_time_by")
+
+    @measure_time_by.setter
+    def measure_time_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "measure_time_by", value)
 
 
 @pulumi.input_type

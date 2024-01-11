@@ -258,6 +258,29 @@ export interface ActionWebhookMethod {
     url: pulumi.Input<string>;
 }
 
+export interface AggregationPropertyMethod {
+    aggregateByProperty?: pulumi.Input<inputs.AggregationPropertyMethodAggregateByProperty>;
+    averageByProperty?: pulumi.Input<inputs.AggregationPropertyMethodAverageByProperty>;
+    averageEntities?: pulumi.Input<inputs.AggregationPropertyMethodAverageEntities>;
+    countEntities?: pulumi.Input<boolean>;
+}
+
+export interface AggregationPropertyMethodAggregateByProperty {
+    func: pulumi.Input<string>;
+    property: pulumi.Input<string>;
+}
+
+export interface AggregationPropertyMethodAverageByProperty {
+    averageOf: pulumi.Input<string>;
+    measureTimeBy: pulumi.Input<string>;
+    property: pulumi.Input<string>;
+}
+
+export interface AggregationPropertyMethodAverageEntities {
+    averageOf?: pulumi.Input<string>;
+    measureTimeBy?: pulumi.Input<string>;
+}
+
 export interface BlueprintCalculationProperties {
     calculation: pulumi.Input<string>;
     colorized?: pulumi.Input<boolean>;

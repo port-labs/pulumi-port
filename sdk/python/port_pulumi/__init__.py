@@ -7,6 +7,7 @@ import typing
 # Export this package's modules as members:
 from .action import *
 from .action_permissions import *
+from .aggregation_property import *
 from .blueprint import *
 from .entity import *
 from .provider import *
@@ -40,6 +41,14 @@ _utilities.register(
   "fqn": "port_pulumi",
   "classes": {
    "port:index/actionPermissions:ActionPermissions": "ActionPermissions"
+  }
+ },
+ {
+  "pkg": "port",
+  "mod": "index/aggregationProperty",
+  "fqn": "port_pulumi",
+  "classes": {
+   "port:index/aggregationProperty:AggregationProperty": "AggregationProperty"
   }
  },
  {

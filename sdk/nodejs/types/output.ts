@@ -258,6 +258,29 @@ export interface ActionWebhookMethod {
     url: string;
 }
 
+export interface AggregationPropertyMethod {
+    aggregateByProperty?: outputs.AggregationPropertyMethodAggregateByProperty;
+    averageByProperty?: outputs.AggregationPropertyMethodAverageByProperty;
+    averageEntities?: outputs.AggregationPropertyMethodAverageEntities;
+    countEntities?: boolean;
+}
+
+export interface AggregationPropertyMethodAggregateByProperty {
+    func: string;
+    property: string;
+}
+
+export interface AggregationPropertyMethodAverageByProperty {
+    averageOf: string;
+    measureTimeBy: string;
+    property: string;
+}
+
+export interface AggregationPropertyMethodAverageEntities {
+    averageOf: string;
+    measureTimeBy: string;
+}
+
 export interface BlueprintCalculationProperties {
     calculation: string;
     colorized?: boolean;
