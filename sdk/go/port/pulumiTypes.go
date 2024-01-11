@@ -4879,6 +4879,647 @@ func (o ActionWebhookMethodPtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AggregationPropertyMethod struct {
+	AggregateByProperty *AggregationPropertyMethodAggregateByProperty `pulumi:"aggregateByProperty"`
+	AverageByProperty   *AggregationPropertyMethodAverageByProperty   `pulumi:"averageByProperty"`
+	AverageEntities     *AggregationPropertyMethodAverageEntities     `pulumi:"averageEntities"`
+	CountEntities       *bool                                         `pulumi:"countEntities"`
+}
+
+// AggregationPropertyMethodInput is an input type that accepts AggregationPropertyMethodArgs and AggregationPropertyMethodOutput values.
+// You can construct a concrete instance of `AggregationPropertyMethodInput` via:
+//
+//	AggregationPropertyMethodArgs{...}
+type AggregationPropertyMethodInput interface {
+	pulumi.Input
+
+	ToAggregationPropertyMethodOutput() AggregationPropertyMethodOutput
+	ToAggregationPropertyMethodOutputWithContext(context.Context) AggregationPropertyMethodOutput
+}
+
+type AggregationPropertyMethodArgs struct {
+	AggregateByProperty AggregationPropertyMethodAggregateByPropertyPtrInput `pulumi:"aggregateByProperty"`
+	AverageByProperty   AggregationPropertyMethodAverageByPropertyPtrInput   `pulumi:"averageByProperty"`
+	AverageEntities     AggregationPropertyMethodAverageEntitiesPtrInput     `pulumi:"averageEntities"`
+	CountEntities       pulumi.BoolPtrInput                                  `pulumi:"countEntities"`
+}
+
+func (AggregationPropertyMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationPropertyMethod)(nil)).Elem()
+}
+
+func (i AggregationPropertyMethodArgs) ToAggregationPropertyMethodOutput() AggregationPropertyMethodOutput {
+	return i.ToAggregationPropertyMethodOutputWithContext(context.Background())
+}
+
+func (i AggregationPropertyMethodArgs) ToAggregationPropertyMethodOutputWithContext(ctx context.Context) AggregationPropertyMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregationPropertyMethodOutput)
+}
+
+func (i AggregationPropertyMethodArgs) ToAggregationPropertyMethodPtrOutput() AggregationPropertyMethodPtrOutput {
+	return i.ToAggregationPropertyMethodPtrOutputWithContext(context.Background())
+}
+
+func (i AggregationPropertyMethodArgs) ToAggregationPropertyMethodPtrOutputWithContext(ctx context.Context) AggregationPropertyMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregationPropertyMethodOutput).ToAggregationPropertyMethodPtrOutputWithContext(ctx)
+}
+
+// AggregationPropertyMethodPtrInput is an input type that accepts AggregationPropertyMethodArgs, AggregationPropertyMethodPtr and AggregationPropertyMethodPtrOutput values.
+// You can construct a concrete instance of `AggregationPropertyMethodPtrInput` via:
+//
+//	        AggregationPropertyMethodArgs{...}
+//
+//	or:
+//
+//	        nil
+type AggregationPropertyMethodPtrInput interface {
+	pulumi.Input
+
+	ToAggregationPropertyMethodPtrOutput() AggregationPropertyMethodPtrOutput
+	ToAggregationPropertyMethodPtrOutputWithContext(context.Context) AggregationPropertyMethodPtrOutput
+}
+
+type aggregationPropertyMethodPtrType AggregationPropertyMethodArgs
+
+func AggregationPropertyMethodPtr(v *AggregationPropertyMethodArgs) AggregationPropertyMethodPtrInput {
+	return (*aggregationPropertyMethodPtrType)(v)
+}
+
+func (*aggregationPropertyMethodPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AggregationPropertyMethod)(nil)).Elem()
+}
+
+func (i *aggregationPropertyMethodPtrType) ToAggregationPropertyMethodPtrOutput() AggregationPropertyMethodPtrOutput {
+	return i.ToAggregationPropertyMethodPtrOutputWithContext(context.Background())
+}
+
+func (i *aggregationPropertyMethodPtrType) ToAggregationPropertyMethodPtrOutputWithContext(ctx context.Context) AggregationPropertyMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregationPropertyMethodPtrOutput)
+}
+
+type AggregationPropertyMethodOutput struct{ *pulumi.OutputState }
+
+func (AggregationPropertyMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationPropertyMethod)(nil)).Elem()
+}
+
+func (o AggregationPropertyMethodOutput) ToAggregationPropertyMethodOutput() AggregationPropertyMethodOutput {
+	return o
+}
+
+func (o AggregationPropertyMethodOutput) ToAggregationPropertyMethodOutputWithContext(ctx context.Context) AggregationPropertyMethodOutput {
+	return o
+}
+
+func (o AggregationPropertyMethodOutput) ToAggregationPropertyMethodPtrOutput() AggregationPropertyMethodPtrOutput {
+	return o.ToAggregationPropertyMethodPtrOutputWithContext(context.Background())
+}
+
+func (o AggregationPropertyMethodOutput) ToAggregationPropertyMethodPtrOutputWithContext(ctx context.Context) AggregationPropertyMethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AggregationPropertyMethod) *AggregationPropertyMethod {
+		return &v
+	}).(AggregationPropertyMethodPtrOutput)
+}
+
+func (o AggregationPropertyMethodOutput) AggregateByProperty() AggregationPropertyMethodAggregateByPropertyPtrOutput {
+	return o.ApplyT(func(v AggregationPropertyMethod) *AggregationPropertyMethodAggregateByProperty {
+		return v.AggregateByProperty
+	}).(AggregationPropertyMethodAggregateByPropertyPtrOutput)
+}
+
+func (o AggregationPropertyMethodOutput) AverageByProperty() AggregationPropertyMethodAverageByPropertyPtrOutput {
+	return o.ApplyT(func(v AggregationPropertyMethod) *AggregationPropertyMethodAverageByProperty {
+		return v.AverageByProperty
+	}).(AggregationPropertyMethodAverageByPropertyPtrOutput)
+}
+
+func (o AggregationPropertyMethodOutput) AverageEntities() AggregationPropertyMethodAverageEntitiesPtrOutput {
+	return o.ApplyT(func(v AggregationPropertyMethod) *AggregationPropertyMethodAverageEntities { return v.AverageEntities }).(AggregationPropertyMethodAverageEntitiesPtrOutput)
+}
+
+func (o AggregationPropertyMethodOutput) CountEntities() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AggregationPropertyMethod) *bool { return v.CountEntities }).(pulumi.BoolPtrOutput)
+}
+
+type AggregationPropertyMethodPtrOutput struct{ *pulumi.OutputState }
+
+func (AggregationPropertyMethodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AggregationPropertyMethod)(nil)).Elem()
+}
+
+func (o AggregationPropertyMethodPtrOutput) ToAggregationPropertyMethodPtrOutput() AggregationPropertyMethodPtrOutput {
+	return o
+}
+
+func (o AggregationPropertyMethodPtrOutput) ToAggregationPropertyMethodPtrOutputWithContext(ctx context.Context) AggregationPropertyMethodPtrOutput {
+	return o
+}
+
+func (o AggregationPropertyMethodPtrOutput) Elem() AggregationPropertyMethodOutput {
+	return o.ApplyT(func(v *AggregationPropertyMethod) AggregationPropertyMethod {
+		if v != nil {
+			return *v
+		}
+		var ret AggregationPropertyMethod
+		return ret
+	}).(AggregationPropertyMethodOutput)
+}
+
+func (o AggregationPropertyMethodPtrOutput) AggregateByProperty() AggregationPropertyMethodAggregateByPropertyPtrOutput {
+	return o.ApplyT(func(v *AggregationPropertyMethod) *AggregationPropertyMethodAggregateByProperty {
+		if v == nil {
+			return nil
+		}
+		return v.AggregateByProperty
+	}).(AggregationPropertyMethodAggregateByPropertyPtrOutput)
+}
+
+func (o AggregationPropertyMethodPtrOutput) AverageByProperty() AggregationPropertyMethodAverageByPropertyPtrOutput {
+	return o.ApplyT(func(v *AggregationPropertyMethod) *AggregationPropertyMethodAverageByProperty {
+		if v == nil {
+			return nil
+		}
+		return v.AverageByProperty
+	}).(AggregationPropertyMethodAverageByPropertyPtrOutput)
+}
+
+func (o AggregationPropertyMethodPtrOutput) AverageEntities() AggregationPropertyMethodAverageEntitiesPtrOutput {
+	return o.ApplyT(func(v *AggregationPropertyMethod) *AggregationPropertyMethodAverageEntities {
+		if v == nil {
+			return nil
+		}
+		return v.AverageEntities
+	}).(AggregationPropertyMethodAverageEntitiesPtrOutput)
+}
+
+func (o AggregationPropertyMethodPtrOutput) CountEntities() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AggregationPropertyMethod) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CountEntities
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AggregationPropertyMethodAggregateByProperty struct {
+	Func     string `pulumi:"func"`
+	Property string `pulumi:"property"`
+}
+
+// AggregationPropertyMethodAggregateByPropertyInput is an input type that accepts AggregationPropertyMethodAggregateByPropertyArgs and AggregationPropertyMethodAggregateByPropertyOutput values.
+// You can construct a concrete instance of `AggregationPropertyMethodAggregateByPropertyInput` via:
+//
+//	AggregationPropertyMethodAggregateByPropertyArgs{...}
+type AggregationPropertyMethodAggregateByPropertyInput interface {
+	pulumi.Input
+
+	ToAggregationPropertyMethodAggregateByPropertyOutput() AggregationPropertyMethodAggregateByPropertyOutput
+	ToAggregationPropertyMethodAggregateByPropertyOutputWithContext(context.Context) AggregationPropertyMethodAggregateByPropertyOutput
+}
+
+type AggregationPropertyMethodAggregateByPropertyArgs struct {
+	Func     pulumi.StringInput `pulumi:"func"`
+	Property pulumi.StringInput `pulumi:"property"`
+}
+
+func (AggregationPropertyMethodAggregateByPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationPropertyMethodAggregateByProperty)(nil)).Elem()
+}
+
+func (i AggregationPropertyMethodAggregateByPropertyArgs) ToAggregationPropertyMethodAggregateByPropertyOutput() AggregationPropertyMethodAggregateByPropertyOutput {
+	return i.ToAggregationPropertyMethodAggregateByPropertyOutputWithContext(context.Background())
+}
+
+func (i AggregationPropertyMethodAggregateByPropertyArgs) ToAggregationPropertyMethodAggregateByPropertyOutputWithContext(ctx context.Context) AggregationPropertyMethodAggregateByPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregationPropertyMethodAggregateByPropertyOutput)
+}
+
+func (i AggregationPropertyMethodAggregateByPropertyArgs) ToAggregationPropertyMethodAggregateByPropertyPtrOutput() AggregationPropertyMethodAggregateByPropertyPtrOutput {
+	return i.ToAggregationPropertyMethodAggregateByPropertyPtrOutputWithContext(context.Background())
+}
+
+func (i AggregationPropertyMethodAggregateByPropertyArgs) ToAggregationPropertyMethodAggregateByPropertyPtrOutputWithContext(ctx context.Context) AggregationPropertyMethodAggregateByPropertyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregationPropertyMethodAggregateByPropertyOutput).ToAggregationPropertyMethodAggregateByPropertyPtrOutputWithContext(ctx)
+}
+
+// AggregationPropertyMethodAggregateByPropertyPtrInput is an input type that accepts AggregationPropertyMethodAggregateByPropertyArgs, AggregationPropertyMethodAggregateByPropertyPtr and AggregationPropertyMethodAggregateByPropertyPtrOutput values.
+// You can construct a concrete instance of `AggregationPropertyMethodAggregateByPropertyPtrInput` via:
+//
+//	        AggregationPropertyMethodAggregateByPropertyArgs{...}
+//
+//	or:
+//
+//	        nil
+type AggregationPropertyMethodAggregateByPropertyPtrInput interface {
+	pulumi.Input
+
+	ToAggregationPropertyMethodAggregateByPropertyPtrOutput() AggregationPropertyMethodAggregateByPropertyPtrOutput
+	ToAggregationPropertyMethodAggregateByPropertyPtrOutputWithContext(context.Context) AggregationPropertyMethodAggregateByPropertyPtrOutput
+}
+
+type aggregationPropertyMethodAggregateByPropertyPtrType AggregationPropertyMethodAggregateByPropertyArgs
+
+func AggregationPropertyMethodAggregateByPropertyPtr(v *AggregationPropertyMethodAggregateByPropertyArgs) AggregationPropertyMethodAggregateByPropertyPtrInput {
+	return (*aggregationPropertyMethodAggregateByPropertyPtrType)(v)
+}
+
+func (*aggregationPropertyMethodAggregateByPropertyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AggregationPropertyMethodAggregateByProperty)(nil)).Elem()
+}
+
+func (i *aggregationPropertyMethodAggregateByPropertyPtrType) ToAggregationPropertyMethodAggregateByPropertyPtrOutput() AggregationPropertyMethodAggregateByPropertyPtrOutput {
+	return i.ToAggregationPropertyMethodAggregateByPropertyPtrOutputWithContext(context.Background())
+}
+
+func (i *aggregationPropertyMethodAggregateByPropertyPtrType) ToAggregationPropertyMethodAggregateByPropertyPtrOutputWithContext(ctx context.Context) AggregationPropertyMethodAggregateByPropertyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregationPropertyMethodAggregateByPropertyPtrOutput)
+}
+
+type AggregationPropertyMethodAggregateByPropertyOutput struct{ *pulumi.OutputState }
+
+func (AggregationPropertyMethodAggregateByPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationPropertyMethodAggregateByProperty)(nil)).Elem()
+}
+
+func (o AggregationPropertyMethodAggregateByPropertyOutput) ToAggregationPropertyMethodAggregateByPropertyOutput() AggregationPropertyMethodAggregateByPropertyOutput {
+	return o
+}
+
+func (o AggregationPropertyMethodAggregateByPropertyOutput) ToAggregationPropertyMethodAggregateByPropertyOutputWithContext(ctx context.Context) AggregationPropertyMethodAggregateByPropertyOutput {
+	return o
+}
+
+func (o AggregationPropertyMethodAggregateByPropertyOutput) ToAggregationPropertyMethodAggregateByPropertyPtrOutput() AggregationPropertyMethodAggregateByPropertyPtrOutput {
+	return o.ToAggregationPropertyMethodAggregateByPropertyPtrOutputWithContext(context.Background())
+}
+
+func (o AggregationPropertyMethodAggregateByPropertyOutput) ToAggregationPropertyMethodAggregateByPropertyPtrOutputWithContext(ctx context.Context) AggregationPropertyMethodAggregateByPropertyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AggregationPropertyMethodAggregateByProperty) *AggregationPropertyMethodAggregateByProperty {
+		return &v
+	}).(AggregationPropertyMethodAggregateByPropertyPtrOutput)
+}
+
+func (o AggregationPropertyMethodAggregateByPropertyOutput) Func() pulumi.StringOutput {
+	return o.ApplyT(func(v AggregationPropertyMethodAggregateByProperty) string { return v.Func }).(pulumi.StringOutput)
+}
+
+func (o AggregationPropertyMethodAggregateByPropertyOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v AggregationPropertyMethodAggregateByProperty) string { return v.Property }).(pulumi.StringOutput)
+}
+
+type AggregationPropertyMethodAggregateByPropertyPtrOutput struct{ *pulumi.OutputState }
+
+func (AggregationPropertyMethodAggregateByPropertyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AggregationPropertyMethodAggregateByProperty)(nil)).Elem()
+}
+
+func (o AggregationPropertyMethodAggregateByPropertyPtrOutput) ToAggregationPropertyMethodAggregateByPropertyPtrOutput() AggregationPropertyMethodAggregateByPropertyPtrOutput {
+	return o
+}
+
+func (o AggregationPropertyMethodAggregateByPropertyPtrOutput) ToAggregationPropertyMethodAggregateByPropertyPtrOutputWithContext(ctx context.Context) AggregationPropertyMethodAggregateByPropertyPtrOutput {
+	return o
+}
+
+func (o AggregationPropertyMethodAggregateByPropertyPtrOutput) Elem() AggregationPropertyMethodAggregateByPropertyOutput {
+	return o.ApplyT(func(v *AggregationPropertyMethodAggregateByProperty) AggregationPropertyMethodAggregateByProperty {
+		if v != nil {
+			return *v
+		}
+		var ret AggregationPropertyMethodAggregateByProperty
+		return ret
+	}).(AggregationPropertyMethodAggregateByPropertyOutput)
+}
+
+func (o AggregationPropertyMethodAggregateByPropertyPtrOutput) Func() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AggregationPropertyMethodAggregateByProperty) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Func
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AggregationPropertyMethodAggregateByPropertyPtrOutput) Property() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AggregationPropertyMethodAggregateByProperty) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+type AggregationPropertyMethodAverageByProperty struct {
+	AverageOf     string `pulumi:"averageOf"`
+	MeasureTimeBy string `pulumi:"measureTimeBy"`
+	Property      string `pulumi:"property"`
+}
+
+// AggregationPropertyMethodAverageByPropertyInput is an input type that accepts AggregationPropertyMethodAverageByPropertyArgs and AggregationPropertyMethodAverageByPropertyOutput values.
+// You can construct a concrete instance of `AggregationPropertyMethodAverageByPropertyInput` via:
+//
+//	AggregationPropertyMethodAverageByPropertyArgs{...}
+type AggregationPropertyMethodAverageByPropertyInput interface {
+	pulumi.Input
+
+	ToAggregationPropertyMethodAverageByPropertyOutput() AggregationPropertyMethodAverageByPropertyOutput
+	ToAggregationPropertyMethodAverageByPropertyOutputWithContext(context.Context) AggregationPropertyMethodAverageByPropertyOutput
+}
+
+type AggregationPropertyMethodAverageByPropertyArgs struct {
+	AverageOf     pulumi.StringInput `pulumi:"averageOf"`
+	MeasureTimeBy pulumi.StringInput `pulumi:"measureTimeBy"`
+	Property      pulumi.StringInput `pulumi:"property"`
+}
+
+func (AggregationPropertyMethodAverageByPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationPropertyMethodAverageByProperty)(nil)).Elem()
+}
+
+func (i AggregationPropertyMethodAverageByPropertyArgs) ToAggregationPropertyMethodAverageByPropertyOutput() AggregationPropertyMethodAverageByPropertyOutput {
+	return i.ToAggregationPropertyMethodAverageByPropertyOutputWithContext(context.Background())
+}
+
+func (i AggregationPropertyMethodAverageByPropertyArgs) ToAggregationPropertyMethodAverageByPropertyOutputWithContext(ctx context.Context) AggregationPropertyMethodAverageByPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregationPropertyMethodAverageByPropertyOutput)
+}
+
+func (i AggregationPropertyMethodAverageByPropertyArgs) ToAggregationPropertyMethodAverageByPropertyPtrOutput() AggregationPropertyMethodAverageByPropertyPtrOutput {
+	return i.ToAggregationPropertyMethodAverageByPropertyPtrOutputWithContext(context.Background())
+}
+
+func (i AggregationPropertyMethodAverageByPropertyArgs) ToAggregationPropertyMethodAverageByPropertyPtrOutputWithContext(ctx context.Context) AggregationPropertyMethodAverageByPropertyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregationPropertyMethodAverageByPropertyOutput).ToAggregationPropertyMethodAverageByPropertyPtrOutputWithContext(ctx)
+}
+
+// AggregationPropertyMethodAverageByPropertyPtrInput is an input type that accepts AggregationPropertyMethodAverageByPropertyArgs, AggregationPropertyMethodAverageByPropertyPtr and AggregationPropertyMethodAverageByPropertyPtrOutput values.
+// You can construct a concrete instance of `AggregationPropertyMethodAverageByPropertyPtrInput` via:
+//
+//	        AggregationPropertyMethodAverageByPropertyArgs{...}
+//
+//	or:
+//
+//	        nil
+type AggregationPropertyMethodAverageByPropertyPtrInput interface {
+	pulumi.Input
+
+	ToAggregationPropertyMethodAverageByPropertyPtrOutput() AggregationPropertyMethodAverageByPropertyPtrOutput
+	ToAggregationPropertyMethodAverageByPropertyPtrOutputWithContext(context.Context) AggregationPropertyMethodAverageByPropertyPtrOutput
+}
+
+type aggregationPropertyMethodAverageByPropertyPtrType AggregationPropertyMethodAverageByPropertyArgs
+
+func AggregationPropertyMethodAverageByPropertyPtr(v *AggregationPropertyMethodAverageByPropertyArgs) AggregationPropertyMethodAverageByPropertyPtrInput {
+	return (*aggregationPropertyMethodAverageByPropertyPtrType)(v)
+}
+
+func (*aggregationPropertyMethodAverageByPropertyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AggregationPropertyMethodAverageByProperty)(nil)).Elem()
+}
+
+func (i *aggregationPropertyMethodAverageByPropertyPtrType) ToAggregationPropertyMethodAverageByPropertyPtrOutput() AggregationPropertyMethodAverageByPropertyPtrOutput {
+	return i.ToAggregationPropertyMethodAverageByPropertyPtrOutputWithContext(context.Background())
+}
+
+func (i *aggregationPropertyMethodAverageByPropertyPtrType) ToAggregationPropertyMethodAverageByPropertyPtrOutputWithContext(ctx context.Context) AggregationPropertyMethodAverageByPropertyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregationPropertyMethodAverageByPropertyPtrOutput)
+}
+
+type AggregationPropertyMethodAverageByPropertyOutput struct{ *pulumi.OutputState }
+
+func (AggregationPropertyMethodAverageByPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationPropertyMethodAverageByProperty)(nil)).Elem()
+}
+
+func (o AggregationPropertyMethodAverageByPropertyOutput) ToAggregationPropertyMethodAverageByPropertyOutput() AggregationPropertyMethodAverageByPropertyOutput {
+	return o
+}
+
+func (o AggregationPropertyMethodAverageByPropertyOutput) ToAggregationPropertyMethodAverageByPropertyOutputWithContext(ctx context.Context) AggregationPropertyMethodAverageByPropertyOutput {
+	return o
+}
+
+func (o AggregationPropertyMethodAverageByPropertyOutput) ToAggregationPropertyMethodAverageByPropertyPtrOutput() AggregationPropertyMethodAverageByPropertyPtrOutput {
+	return o.ToAggregationPropertyMethodAverageByPropertyPtrOutputWithContext(context.Background())
+}
+
+func (o AggregationPropertyMethodAverageByPropertyOutput) ToAggregationPropertyMethodAverageByPropertyPtrOutputWithContext(ctx context.Context) AggregationPropertyMethodAverageByPropertyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AggregationPropertyMethodAverageByProperty) *AggregationPropertyMethodAverageByProperty {
+		return &v
+	}).(AggregationPropertyMethodAverageByPropertyPtrOutput)
+}
+
+func (o AggregationPropertyMethodAverageByPropertyOutput) AverageOf() pulumi.StringOutput {
+	return o.ApplyT(func(v AggregationPropertyMethodAverageByProperty) string { return v.AverageOf }).(pulumi.StringOutput)
+}
+
+func (o AggregationPropertyMethodAverageByPropertyOutput) MeasureTimeBy() pulumi.StringOutput {
+	return o.ApplyT(func(v AggregationPropertyMethodAverageByProperty) string { return v.MeasureTimeBy }).(pulumi.StringOutput)
+}
+
+func (o AggregationPropertyMethodAverageByPropertyOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v AggregationPropertyMethodAverageByProperty) string { return v.Property }).(pulumi.StringOutput)
+}
+
+type AggregationPropertyMethodAverageByPropertyPtrOutput struct{ *pulumi.OutputState }
+
+func (AggregationPropertyMethodAverageByPropertyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AggregationPropertyMethodAverageByProperty)(nil)).Elem()
+}
+
+func (o AggregationPropertyMethodAverageByPropertyPtrOutput) ToAggregationPropertyMethodAverageByPropertyPtrOutput() AggregationPropertyMethodAverageByPropertyPtrOutput {
+	return o
+}
+
+func (o AggregationPropertyMethodAverageByPropertyPtrOutput) ToAggregationPropertyMethodAverageByPropertyPtrOutputWithContext(ctx context.Context) AggregationPropertyMethodAverageByPropertyPtrOutput {
+	return o
+}
+
+func (o AggregationPropertyMethodAverageByPropertyPtrOutput) Elem() AggregationPropertyMethodAverageByPropertyOutput {
+	return o.ApplyT(func(v *AggregationPropertyMethodAverageByProperty) AggregationPropertyMethodAverageByProperty {
+		if v != nil {
+			return *v
+		}
+		var ret AggregationPropertyMethodAverageByProperty
+		return ret
+	}).(AggregationPropertyMethodAverageByPropertyOutput)
+}
+
+func (o AggregationPropertyMethodAverageByPropertyPtrOutput) AverageOf() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AggregationPropertyMethodAverageByProperty) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AverageOf
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AggregationPropertyMethodAverageByPropertyPtrOutput) MeasureTimeBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AggregationPropertyMethodAverageByProperty) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MeasureTimeBy
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AggregationPropertyMethodAverageByPropertyPtrOutput) Property() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AggregationPropertyMethodAverageByProperty) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+type AggregationPropertyMethodAverageEntities struct {
+	AverageOf     *string `pulumi:"averageOf"`
+	MeasureTimeBy *string `pulumi:"measureTimeBy"`
+}
+
+// AggregationPropertyMethodAverageEntitiesInput is an input type that accepts AggregationPropertyMethodAverageEntitiesArgs and AggregationPropertyMethodAverageEntitiesOutput values.
+// You can construct a concrete instance of `AggregationPropertyMethodAverageEntitiesInput` via:
+//
+//	AggregationPropertyMethodAverageEntitiesArgs{...}
+type AggregationPropertyMethodAverageEntitiesInput interface {
+	pulumi.Input
+
+	ToAggregationPropertyMethodAverageEntitiesOutput() AggregationPropertyMethodAverageEntitiesOutput
+	ToAggregationPropertyMethodAverageEntitiesOutputWithContext(context.Context) AggregationPropertyMethodAverageEntitiesOutput
+}
+
+type AggregationPropertyMethodAverageEntitiesArgs struct {
+	AverageOf     pulumi.StringPtrInput `pulumi:"averageOf"`
+	MeasureTimeBy pulumi.StringPtrInput `pulumi:"measureTimeBy"`
+}
+
+func (AggregationPropertyMethodAverageEntitiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationPropertyMethodAverageEntities)(nil)).Elem()
+}
+
+func (i AggregationPropertyMethodAverageEntitiesArgs) ToAggregationPropertyMethodAverageEntitiesOutput() AggregationPropertyMethodAverageEntitiesOutput {
+	return i.ToAggregationPropertyMethodAverageEntitiesOutputWithContext(context.Background())
+}
+
+func (i AggregationPropertyMethodAverageEntitiesArgs) ToAggregationPropertyMethodAverageEntitiesOutputWithContext(ctx context.Context) AggregationPropertyMethodAverageEntitiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregationPropertyMethodAverageEntitiesOutput)
+}
+
+func (i AggregationPropertyMethodAverageEntitiesArgs) ToAggregationPropertyMethodAverageEntitiesPtrOutput() AggregationPropertyMethodAverageEntitiesPtrOutput {
+	return i.ToAggregationPropertyMethodAverageEntitiesPtrOutputWithContext(context.Background())
+}
+
+func (i AggregationPropertyMethodAverageEntitiesArgs) ToAggregationPropertyMethodAverageEntitiesPtrOutputWithContext(ctx context.Context) AggregationPropertyMethodAverageEntitiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregationPropertyMethodAverageEntitiesOutput).ToAggregationPropertyMethodAverageEntitiesPtrOutputWithContext(ctx)
+}
+
+// AggregationPropertyMethodAverageEntitiesPtrInput is an input type that accepts AggregationPropertyMethodAverageEntitiesArgs, AggregationPropertyMethodAverageEntitiesPtr and AggregationPropertyMethodAverageEntitiesPtrOutput values.
+// You can construct a concrete instance of `AggregationPropertyMethodAverageEntitiesPtrInput` via:
+//
+//	        AggregationPropertyMethodAverageEntitiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AggregationPropertyMethodAverageEntitiesPtrInput interface {
+	pulumi.Input
+
+	ToAggregationPropertyMethodAverageEntitiesPtrOutput() AggregationPropertyMethodAverageEntitiesPtrOutput
+	ToAggregationPropertyMethodAverageEntitiesPtrOutputWithContext(context.Context) AggregationPropertyMethodAverageEntitiesPtrOutput
+}
+
+type aggregationPropertyMethodAverageEntitiesPtrType AggregationPropertyMethodAverageEntitiesArgs
+
+func AggregationPropertyMethodAverageEntitiesPtr(v *AggregationPropertyMethodAverageEntitiesArgs) AggregationPropertyMethodAverageEntitiesPtrInput {
+	return (*aggregationPropertyMethodAverageEntitiesPtrType)(v)
+}
+
+func (*aggregationPropertyMethodAverageEntitiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AggregationPropertyMethodAverageEntities)(nil)).Elem()
+}
+
+func (i *aggregationPropertyMethodAverageEntitiesPtrType) ToAggregationPropertyMethodAverageEntitiesPtrOutput() AggregationPropertyMethodAverageEntitiesPtrOutput {
+	return i.ToAggregationPropertyMethodAverageEntitiesPtrOutputWithContext(context.Background())
+}
+
+func (i *aggregationPropertyMethodAverageEntitiesPtrType) ToAggregationPropertyMethodAverageEntitiesPtrOutputWithContext(ctx context.Context) AggregationPropertyMethodAverageEntitiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregationPropertyMethodAverageEntitiesPtrOutput)
+}
+
+type AggregationPropertyMethodAverageEntitiesOutput struct{ *pulumi.OutputState }
+
+func (AggregationPropertyMethodAverageEntitiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationPropertyMethodAverageEntities)(nil)).Elem()
+}
+
+func (o AggregationPropertyMethodAverageEntitiesOutput) ToAggregationPropertyMethodAverageEntitiesOutput() AggregationPropertyMethodAverageEntitiesOutput {
+	return o
+}
+
+func (o AggregationPropertyMethodAverageEntitiesOutput) ToAggregationPropertyMethodAverageEntitiesOutputWithContext(ctx context.Context) AggregationPropertyMethodAverageEntitiesOutput {
+	return o
+}
+
+func (o AggregationPropertyMethodAverageEntitiesOutput) ToAggregationPropertyMethodAverageEntitiesPtrOutput() AggregationPropertyMethodAverageEntitiesPtrOutput {
+	return o.ToAggregationPropertyMethodAverageEntitiesPtrOutputWithContext(context.Background())
+}
+
+func (o AggregationPropertyMethodAverageEntitiesOutput) ToAggregationPropertyMethodAverageEntitiesPtrOutputWithContext(ctx context.Context) AggregationPropertyMethodAverageEntitiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AggregationPropertyMethodAverageEntities) *AggregationPropertyMethodAverageEntities {
+		return &v
+	}).(AggregationPropertyMethodAverageEntitiesPtrOutput)
+}
+
+func (o AggregationPropertyMethodAverageEntitiesOutput) AverageOf() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AggregationPropertyMethodAverageEntities) *string { return v.AverageOf }).(pulumi.StringPtrOutput)
+}
+
+func (o AggregationPropertyMethodAverageEntitiesOutput) MeasureTimeBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AggregationPropertyMethodAverageEntities) *string { return v.MeasureTimeBy }).(pulumi.StringPtrOutput)
+}
+
+type AggregationPropertyMethodAverageEntitiesPtrOutput struct{ *pulumi.OutputState }
+
+func (AggregationPropertyMethodAverageEntitiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AggregationPropertyMethodAverageEntities)(nil)).Elem()
+}
+
+func (o AggregationPropertyMethodAverageEntitiesPtrOutput) ToAggregationPropertyMethodAverageEntitiesPtrOutput() AggregationPropertyMethodAverageEntitiesPtrOutput {
+	return o
+}
+
+func (o AggregationPropertyMethodAverageEntitiesPtrOutput) ToAggregationPropertyMethodAverageEntitiesPtrOutputWithContext(ctx context.Context) AggregationPropertyMethodAverageEntitiesPtrOutput {
+	return o
+}
+
+func (o AggregationPropertyMethodAverageEntitiesPtrOutput) Elem() AggregationPropertyMethodAverageEntitiesOutput {
+	return o.ApplyT(func(v *AggregationPropertyMethodAverageEntities) AggregationPropertyMethodAverageEntities {
+		if v != nil {
+			return *v
+		}
+		var ret AggregationPropertyMethodAverageEntities
+		return ret
+	}).(AggregationPropertyMethodAverageEntitiesOutput)
+}
+
+func (o AggregationPropertyMethodAverageEntitiesPtrOutput) AverageOf() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AggregationPropertyMethodAverageEntities) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AverageOf
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AggregationPropertyMethodAverageEntitiesPtrOutput) MeasureTimeBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AggregationPropertyMethodAverageEntities) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MeasureTimeBy
+	}).(pulumi.StringPtrOutput)
+}
+
 type BlueprintCalculationProperties struct {
 	Calculation string            `pulumi:"calculation"`
 	Colorized   *bool             `pulumi:"colorized"`
@@ -8473,6 +9114,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesStringPropsDatasetRuleValueInput)(nil)).Elem(), ActionUserPropertiesStringPropsDatasetRuleValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionWebhookMethodInput)(nil)).Elem(), ActionWebhookMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionWebhookMethodPtrInput)(nil)).Elem(), ActionWebhookMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregationPropertyMethodInput)(nil)).Elem(), AggregationPropertyMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregationPropertyMethodPtrInput)(nil)).Elem(), AggregationPropertyMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregationPropertyMethodAggregateByPropertyInput)(nil)).Elem(), AggregationPropertyMethodAggregateByPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregationPropertyMethodAggregateByPropertyPtrInput)(nil)).Elem(), AggregationPropertyMethodAggregateByPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregationPropertyMethodAverageByPropertyInput)(nil)).Elem(), AggregationPropertyMethodAverageByPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregationPropertyMethodAverageByPropertyPtrInput)(nil)).Elem(), AggregationPropertyMethodAverageByPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregationPropertyMethodAverageEntitiesInput)(nil)).Elem(), AggregationPropertyMethodAverageEntitiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregationPropertyMethodAverageEntitiesPtrInput)(nil)).Elem(), AggregationPropertyMethodAverageEntitiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintCalculationPropertiesInput)(nil)).Elem(), BlueprintCalculationPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintCalculationPropertiesMapInput)(nil)).Elem(), BlueprintCalculationPropertiesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintKafkaChangelogDestinationInput)(nil)).Elem(), BlueprintKafkaChangelogDestinationArgs{})
@@ -8588,6 +9237,14 @@ func init() {
 	pulumi.RegisterOutputType(ActionUserPropertiesStringPropsDatasetRuleValueOutput{})
 	pulumi.RegisterOutputType(ActionWebhookMethodOutput{})
 	pulumi.RegisterOutputType(ActionWebhookMethodPtrOutput{})
+	pulumi.RegisterOutputType(AggregationPropertyMethodOutput{})
+	pulumi.RegisterOutputType(AggregationPropertyMethodPtrOutput{})
+	pulumi.RegisterOutputType(AggregationPropertyMethodAggregateByPropertyOutput{})
+	pulumi.RegisterOutputType(AggregationPropertyMethodAggregateByPropertyPtrOutput{})
+	pulumi.RegisterOutputType(AggregationPropertyMethodAverageByPropertyOutput{})
+	pulumi.RegisterOutputType(AggregationPropertyMethodAverageByPropertyPtrOutput{})
+	pulumi.RegisterOutputType(AggregationPropertyMethodAverageEntitiesOutput{})
+	pulumi.RegisterOutputType(AggregationPropertyMethodAverageEntitiesPtrOutput{})
 	pulumi.RegisterOutputType(BlueprintCalculationPropertiesOutput{})
 	pulumi.RegisterOutputType(BlueprintCalculationPropertiesMapOutput{})
 	pulumi.RegisterOutputType(BlueprintKafkaChangelogDestinationOutput{})

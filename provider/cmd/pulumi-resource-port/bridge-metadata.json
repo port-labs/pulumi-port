@@ -3,6 +3,7 @@
         "resources": {
             "port:index/action:Action": "port_action",
             "port:index/actionPermissions:ActionPermissions": "port_action_permissions",
+            "port:index/aggregationProperty:AggregationProperty": "port_aggregation_property",
             "port:index/blueprint:Blueprint": "port_blueprint",
             "port:index/entity:Entity": "port_entity",
             "port:index/scorecard:Scorecard": "port_scorecard",
@@ -100,6 +101,20 @@
             "port:index/ActionUserPropertiesStringPropsDatasetRuleValue:ActionUserPropertiesStringPropsDatasetRuleValue": {
                 "jqQuery": "jq_query"
             },
+            "port:index/AggregationPropertyMethod:AggregationPropertyMethod": {
+                "aggregateByProperty": "aggregate_by_property",
+                "averageByProperty": "average_by_property",
+                "averageEntities": "average_entities",
+                "countEntities": "count_entities"
+            },
+            "port:index/AggregationPropertyMethodAverageByProperty:AggregationPropertyMethodAverageByProperty": {
+                "averageOf": "average_of",
+                "measureTimeBy": "measure_time_by"
+            },
+            "port:index/AggregationPropertyMethodAverageEntities:AggregationPropertyMethodAverageEntities": {
+                "averageOf": "average_of",
+                "measureTimeBy": "measure_time_by"
+            },
             "port:index/BlueprintProperties:BlueprintProperties": {
                 "arrayProps": "array_props",
                 "booleanProps": "boolean_props",
@@ -185,6 +200,11 @@
             "port:index/actionPermissions:ActionPermissions": {
                 "actionIdentifier": "action_identifier",
                 "blueprintIdentifier": "blueprint_identifier"
+            },
+            "port:index/aggregationProperty:AggregationProperty": {
+                "aggregationIdentifier": "aggregation_identifier",
+                "blueprintIdentifier": "blueprint_identifier",
+                "targetBlueprintIdentifier": "target_blueprint_identifier"
             },
             "port:index/blueprint:Blueprint": {
                 "calculationProperties": "calculation_properties",

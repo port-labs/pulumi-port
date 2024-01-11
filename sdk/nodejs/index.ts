@@ -15,6 +15,11 @@ export type ActionPermissions = import("./actionPermissions").ActionPermissions;
 export const ActionPermissions: typeof import("./actionPermissions").ActionPermissions = null as any;
 utilities.lazyLoad(exports, ["ActionPermissions"], () => require("./actionPermissions"));
 
+export { AggregationPropertyArgs, AggregationPropertyState } from "./aggregationProperty";
+export type AggregationProperty = import("./aggregationProperty").AggregationProperty;
+export const AggregationProperty: typeof import("./aggregationProperty").AggregationProperty = null as any;
+utilities.lazyLoad(exports, ["AggregationProperty"], () => require("./aggregationProperty"));
+
 export { BlueprintArgs, BlueprintState } from "./blueprint";
 export type Blueprint = import("./blueprint").Blueprint;
 export const Blueprint: typeof import("./blueprint").Blueprint = null as any;
@@ -63,6 +68,8 @@ const _module = {
                 return new Action(name, <any>undefined, { urn })
             case "port:index/actionPermissions:ActionPermissions":
                 return new ActionPermissions(name, <any>undefined, { urn })
+            case "port:index/aggregationProperty:AggregationProperty":
+                return new AggregationProperty(name, <any>undefined, { urn })
             case "port:index/blueprint:Blueprint":
                 return new Blueprint(name, <any>undefined, { urn })
             case "port:index/entity:Entity":
@@ -80,6 +87,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("port", "index/action", _module)
 pulumi.runtime.registerResourceModule("port", "index/actionPermissions", _module)
+pulumi.runtime.registerResourceModule("port", "index/aggregationProperty", _module)
 pulumi.runtime.registerResourceModule("port", "index/blueprint", _module)
 pulumi.runtime.registerResourceModule("port", "index/entity", _module)
 pulumi.runtime.registerResourceModule("port", "index/scorecard", _module)

@@ -25,6 +25,7 @@ import (
 	portVersion "github.com/port-labs/terraform-provider-port-labs/version"
 	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 )
 
@@ -104,19 +105,11 @@ func Provider() tfbridge.ProviderInfo {
 			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
 			// 	},
 			// },
-			"port_action":             {Tok: portResource(mainMod, "Action")},
-			"port_blueprint":          {Tok: portResource(mainMod, "Blueprint")},
-			"port_entity":             {Tok: portResource(mainMod, "Entity")},
-			"port_webhook":            {Tok: portResource(mainMod, "Webhook")},
-			"port_scorecard":          {Tok: portResource(mainMod, "Scorecard")},
-			"port_team":               {Tok: portResource(mainMod, "Team")},
-			"port_action_permissions": {Tok: portResource(mainMod, "ActionPermissions")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
 			// is below.
 			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAmi")},
-
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			PackageName: "@port-labs/port",
@@ -156,5 +149,8 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 	}
+	info.MustComputeTokens(tfbridgetokens.SingleModule("port_", mainMod,
+		tfbridgetokens.MakeStandard(mainPkg)))
+
 	return info
 }
