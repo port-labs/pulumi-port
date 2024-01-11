@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/port-labs/pulumi-port/sdk v1.0.0
-	github.com/pulumi/pulumi/sdk/v3 v3.99.0
+	github.com/pulumi/pulumi/sdk/v3 v3.100.0
 )
 
 replace github.com/port-labs/pulumi-port/sdk => ../../sdk
