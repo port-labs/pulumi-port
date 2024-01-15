@@ -876,16 +876,43 @@
                 "url"
             ]
         },
-        "port:index/AggregationPropertyMethod:AggregationPropertyMethod": {
+        "port:index/AggregationPropertiesProperties:AggregationPropertiesProperties": {
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "method": {
+                    "$ref": "#/types/port:index/AggregationPropertiesPropertiesMethod:AggregationPropertiesPropertiesMethod"
+                },
+                "query": {
+                    "type": "string"
+                },
+                "targetBlueprintIdentifier": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "method",
+                "targetBlueprintIdentifier"
+            ]
+        },
+        "port:index/AggregationPropertiesPropertiesMethod:AggregationPropertiesPropertiesMethod": {
             "properties": {
                 "aggregateByProperty": {
-                    "$ref": "#/types/port:index/AggregationPropertyMethodAggregateByProperty:AggregationPropertyMethodAggregateByProperty"
+                    "$ref": "#/types/port:index/AggregationPropertiesPropertiesMethodAggregateByProperty:AggregationPropertiesPropertiesMethodAggregateByProperty"
                 },
                 "averageByProperty": {
-                    "$ref": "#/types/port:index/AggregationPropertyMethodAverageByProperty:AggregationPropertyMethodAverageByProperty"
+                    "$ref": "#/types/port:index/AggregationPropertiesPropertiesMethodAverageByProperty:AggregationPropertiesPropertiesMethodAverageByProperty"
                 },
                 "averageEntities": {
-                    "$ref": "#/types/port:index/AggregationPropertyMethodAverageEntities:AggregationPropertyMethodAverageEntities"
+                    "$ref": "#/types/port:index/AggregationPropertiesPropertiesMethodAverageEntities:AggregationPropertiesPropertiesMethodAverageEntities"
                 },
                 "countEntities": {
                     "type": "boolean"
@@ -893,7 +920,7 @@
             },
             "type": "object"
         },
-        "port:index/AggregationPropertyMethodAggregateByProperty:AggregationPropertyMethodAggregateByProperty": {
+        "port:index/AggregationPropertiesPropertiesMethodAggregateByProperty:AggregationPropertiesPropertiesMethodAggregateByProperty": {
             "properties": {
                 "func": {
                     "type": "string"
@@ -908,7 +935,7 @@
                 "property"
             ]
         },
-        "port:index/AggregationPropertyMethodAverageByProperty:AggregationPropertyMethodAverageByProperty": {
+        "port:index/AggregationPropertiesPropertiesMethodAverageByProperty:AggregationPropertiesPropertiesMethodAverageByProperty": {
             "properties": {
                 "averageOf": {
                     "type": "string"
@@ -927,7 +954,7 @@
                 "property"
             ]
         },
-        "port:index/AggregationPropertyMethodAverageEntities:AggregationPropertyMethodAverageEntities": {
+        "port:index/AggregationPropertiesPropertiesMethodAverageEntities:AggregationPropertiesPropertiesMethodAverageEntities": {
             "properties": {
                 "averageOf": {
                     "type": "string"
@@ -1916,121 +1943,54 @@
                 "type": "object"
             }
         },
-        "port:index/aggregationProperty:AggregationProperty": {
+        "port:index/aggregationProperties:AggregationProperties": {
             "properties": {
-                "aggregationIdentifier": {
-                    "type": "string",
-                    "description": "The identifier of the aggregation property in the blueprint\n"
-                },
                 "blueprintIdentifier": {
                     "type": "string",
                     "description": "The identifier of the blueprint the aggregation property will be added to\n"
                 },
-                "description": {
-                    "type": "string",
-                    "description": "The description of the aggregation property\n"
-                },
-                "icon": {
-                    "type": "string",
-                    "description": "The icon of the aggregation property\n"
-                },
-                "method": {
-                    "$ref": "#/types/port:index/AggregationPropertyMethod:AggregationPropertyMethod",
-                    "description": "The aggregation method to perform on the target blueprint, one of count_entities, average_entities, average_by_property,\naggregate_by_property\n"
-                },
-                "query": {
-                    "type": "string",
-                    "description": "Query to filter the target entities\n"
-                },
-                "targetBlueprintIdentifier": {
-                    "type": "string",
-                    "description": "The identifier of the blueprint to perform the aggregation on\n"
-                },
-                "title": {
-                    "type": "string",
-                    "description": "The title of the aggregation property\n"
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/AggregationPropertiesProperties:AggregationPropertiesProperties"
+                    },
+                    "description": "The aggregation property of the blueprint\n"
                 }
             },
             "required": [
-                "aggregationIdentifier",
                 "blueprintIdentifier",
-                "method",
-                "targetBlueprintIdentifier"
+                "properties"
             ],
             "inputProperties": {
-                "aggregationIdentifier": {
-                    "type": "string",
-                    "description": "The identifier of the aggregation property in the blueprint\n"
-                },
                 "blueprintIdentifier": {
                     "type": "string",
                     "description": "The identifier of the blueprint the aggregation property will be added to\n"
                 },
-                "description": {
-                    "type": "string",
-                    "description": "The description of the aggregation property\n"
-                },
-                "icon": {
-                    "type": "string",
-                    "description": "The icon of the aggregation property\n"
-                },
-                "method": {
-                    "$ref": "#/types/port:index/AggregationPropertyMethod:AggregationPropertyMethod",
-                    "description": "The aggregation method to perform on the target blueprint, one of count_entities, average_entities, average_by_property,\naggregate_by_property\n"
-                },
-                "query": {
-                    "type": "string",
-                    "description": "Query to filter the target entities\n"
-                },
-                "targetBlueprintIdentifier": {
-                    "type": "string",
-                    "description": "The identifier of the blueprint to perform the aggregation on\n"
-                },
-                "title": {
-                    "type": "string",
-                    "description": "The title of the aggregation property\n"
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/AggregationPropertiesProperties:AggregationPropertiesProperties"
+                    },
+                    "description": "The aggregation property of the blueprint\n"
                 }
             },
             "requiredInputs": [
-                "aggregationIdentifier",
                 "blueprintIdentifier",
-                "method",
-                "targetBlueprintIdentifier"
+                "properties"
             ],
             "stateInputs": {
-                "description": "Input properties used for looking up and filtering AggregationProperty resources.\n",
+                "description": "Input properties used for looking up and filtering AggregationProperties resources.\n",
                 "properties": {
-                    "aggregationIdentifier": {
-                        "type": "string",
-                        "description": "The identifier of the aggregation property in the blueprint\n"
-                    },
                     "blueprintIdentifier": {
                         "type": "string",
                         "description": "The identifier of the blueprint the aggregation property will be added to\n"
                     },
-                    "description": {
-                        "type": "string",
-                        "description": "The description of the aggregation property\n"
-                    },
-                    "icon": {
-                        "type": "string",
-                        "description": "The icon of the aggregation property\n"
-                    },
-                    "method": {
-                        "$ref": "#/types/port:index/AggregationPropertyMethod:AggregationPropertyMethod",
-                        "description": "The aggregation method to perform on the target blueprint, one of count_entities, average_entities, average_by_property,\naggregate_by_property\n"
-                    },
-                    "query": {
-                        "type": "string",
-                        "description": "Query to filter the target entities\n"
-                    },
-                    "targetBlueprintIdentifier": {
-                        "type": "string",
-                        "description": "The identifier of the blueprint to perform the aggregation on\n"
-                    },
-                    "title": {
-                        "type": "string",
-                        "description": "The title of the aggregation property\n"
+                    "properties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/port:index/AggregationPropertiesProperties:AggregationPropertiesProperties"
+                        },
+                        "description": "The aggregation property of the blueprint\n"
                     }
                 },
                 "type": "object"

@@ -3,7 +3,7 @@
         "resources": {
             "port:index/action:Action": "port_action",
             "port:index/actionPermissions:ActionPermissions": "port_action_permissions",
-            "port:index/aggregationProperty:AggregationProperty": "port_aggregation_property",
+            "port:index/aggregationProperties:AggregationProperties": "port_aggregation_properties",
             "port:index/blueprint:Blueprint": "port_blueprint",
             "port:index/entity:Entity": "port_entity",
             "port:index/scorecard:Scorecard": "port_scorecard",
@@ -101,17 +101,20 @@
             "port:index/ActionUserPropertiesStringPropsDatasetRuleValue:ActionUserPropertiesStringPropsDatasetRuleValue": {
                 "jqQuery": "jq_query"
             },
-            "port:index/AggregationPropertyMethod:AggregationPropertyMethod": {
+            "port:index/AggregationPropertiesProperties:AggregationPropertiesProperties": {
+                "targetBlueprintIdentifier": "target_blueprint_identifier"
+            },
+            "port:index/AggregationPropertiesPropertiesMethod:AggregationPropertiesPropertiesMethod": {
                 "aggregateByProperty": "aggregate_by_property",
                 "averageByProperty": "average_by_property",
                 "averageEntities": "average_entities",
                 "countEntities": "count_entities"
             },
-            "port:index/AggregationPropertyMethodAverageByProperty:AggregationPropertyMethodAverageByProperty": {
+            "port:index/AggregationPropertiesPropertiesMethodAverageByProperty:AggregationPropertiesPropertiesMethodAverageByProperty": {
                 "averageOf": "average_of",
                 "measureTimeBy": "measure_time_by"
             },
-            "port:index/AggregationPropertyMethodAverageEntities:AggregationPropertyMethodAverageEntities": {
+            "port:index/AggregationPropertiesPropertiesMethodAverageEntities:AggregationPropertiesPropertiesMethodAverageEntities": {
                 "averageOf": "average_of",
                 "measureTimeBy": "measure_time_by"
             },
@@ -201,10 +204,8 @@
                 "actionIdentifier": "action_identifier",
                 "blueprintIdentifier": "blueprint_identifier"
             },
-            "port:index/aggregationProperty:AggregationProperty": {
-                "aggregationIdentifier": "aggregation_identifier",
-                "blueprintIdentifier": "blueprint_identifier",
-                "targetBlueprintIdentifier": "target_blueprint_identifier"
+            "port:index/aggregationProperties:AggregationProperties": {
+                "blueprintIdentifier": "blueprint_identifier"
             },
             "port:index/blueprint:Blueprint": {
                 "calculationProperties": "calculation_properties",
