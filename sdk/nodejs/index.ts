@@ -15,10 +15,10 @@ export type ActionPermissions = import("./actionPermissions").ActionPermissions;
 export const ActionPermissions: typeof import("./actionPermissions").ActionPermissions = null as any;
 utilities.lazyLoad(exports, ["ActionPermissions"], () => require("./actionPermissions"));
 
-export { AggregationPropertyArgs, AggregationPropertyState } from "./aggregationProperty";
-export type AggregationProperty = import("./aggregationProperty").AggregationProperty;
-export const AggregationProperty: typeof import("./aggregationProperty").AggregationProperty = null as any;
-utilities.lazyLoad(exports, ["AggregationProperty"], () => require("./aggregationProperty"));
+export { AggregationPropertiesArgs, AggregationPropertiesState } from "./aggregationProperties";
+export type AggregationProperties = import("./aggregationProperties").AggregationProperties;
+export const AggregationProperties: typeof import("./aggregationProperties").AggregationProperties = null as any;
+utilities.lazyLoad(exports, ["AggregationProperties"], () => require("./aggregationProperties"));
 
 export { BlueprintArgs, BlueprintState } from "./blueprint";
 export type Blueprint = import("./blueprint").Blueprint;
@@ -68,8 +68,8 @@ const _module = {
                 return new Action(name, <any>undefined, { urn })
             case "port:index/actionPermissions:ActionPermissions":
                 return new ActionPermissions(name, <any>undefined, { urn })
-            case "port:index/aggregationProperty:AggregationProperty":
-                return new AggregationProperty(name, <any>undefined, { urn })
+            case "port:index/aggregationProperties:AggregationProperties":
+                return new AggregationProperties(name, <any>undefined, { urn })
             case "port:index/blueprint:Blueprint":
                 return new Blueprint(name, <any>undefined, { urn })
             case "port:index/entity:Entity":
@@ -87,7 +87,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("port", "index/action", _module)
 pulumi.runtime.registerResourceModule("port", "index/actionPermissions", _module)
-pulumi.runtime.registerResourceModule("port", "index/aggregationProperty", _module)
+pulumi.runtime.registerResourceModule("port", "index/aggregationProperties", _module)
 pulumi.runtime.registerResourceModule("port", "index/blueprint", _module)
 pulumi.runtime.registerResourceModule("port", "index/entity", _module)
 pulumi.runtime.registerResourceModule("port", "index/scorecard", _module)

@@ -45,10 +45,11 @@ __all__ = [
     'ActionUserPropertiesStringPropsDatasetRuleArgs',
     'ActionUserPropertiesStringPropsDatasetRuleValueArgs',
     'ActionWebhookMethodArgs',
-    'AggregationPropertyMethodArgs',
-    'AggregationPropertyMethodAggregateByPropertyArgs',
-    'AggregationPropertyMethodAverageByPropertyArgs',
-    'AggregationPropertyMethodAverageEntitiesArgs',
+    'AggregationPropertiesPropertiesArgs',
+    'AggregationPropertiesPropertiesMethodArgs',
+    'AggregationPropertiesPropertiesMethodAggregateByPropertyArgs',
+    'AggregationPropertiesPropertiesMethodAverageByPropertyArgs',
+    'AggregationPropertiesPropertiesMethodAverageEntitiesArgs',
     'BlueprintCalculationPropertiesArgs',
     'BlueprintKafkaChangelogDestinationArgs',
     'BlueprintMirrorPropertiesArgs',
@@ -1997,11 +1998,86 @@ class ActionWebhookMethodArgs:
 
 
 @pulumi.input_type
-class AggregationPropertyMethodArgs:
+class AggregationPropertiesPropertiesArgs:
     def __init__(__self__, *,
-                 aggregate_by_property: Optional[pulumi.Input['AggregationPropertyMethodAggregateByPropertyArgs']] = None,
-                 average_by_property: Optional[pulumi.Input['AggregationPropertyMethodAverageByPropertyArgs']] = None,
-                 average_entities: Optional[pulumi.Input['AggregationPropertyMethodAverageEntitiesArgs']] = None,
+                 method: pulumi.Input['AggregationPropertiesPropertiesMethodArgs'],
+                 target_blueprint_identifier: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 icon: Optional[pulumi.Input[str]] = None,
+                 query: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "method", method)
+        pulumi.set(__self__, "target_blueprint_identifier", target_blueprint_identifier)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if query is not None:
+            pulumi.set(__self__, "query", query)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def method(self) -> pulumi.Input['AggregationPropertiesPropertiesMethodArgs']:
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: pulumi.Input['AggregationPropertiesPropertiesMethodArgs']):
+        pulumi.set(self, "method", value)
+
+    @property
+    @pulumi.getter(name="targetBlueprintIdentifier")
+    def target_blueprint_identifier(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "target_blueprint_identifier")
+
+    @target_blueprint_identifier.setter
+    def target_blueprint_identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_blueprint_identifier", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "icon", value)
+
+    @property
+    @pulumi.getter
+    def query(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "query")
+
+    @query.setter
+    def query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "query", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class AggregationPropertiesPropertiesMethodArgs:
+    def __init__(__self__, *,
+                 aggregate_by_property: Optional[pulumi.Input['AggregationPropertiesPropertiesMethodAggregateByPropertyArgs']] = None,
+                 average_by_property: Optional[pulumi.Input['AggregationPropertiesPropertiesMethodAverageByPropertyArgs']] = None,
+                 average_entities: Optional[pulumi.Input['AggregationPropertiesPropertiesMethodAverageEntitiesArgs']] = None,
                  count_entities: Optional[pulumi.Input[bool]] = None):
         if aggregate_by_property is not None:
             pulumi.set(__self__, "aggregate_by_property", aggregate_by_property)
@@ -2014,29 +2090,29 @@ class AggregationPropertyMethodArgs:
 
     @property
     @pulumi.getter(name="aggregateByProperty")
-    def aggregate_by_property(self) -> Optional[pulumi.Input['AggregationPropertyMethodAggregateByPropertyArgs']]:
+    def aggregate_by_property(self) -> Optional[pulumi.Input['AggregationPropertiesPropertiesMethodAggregateByPropertyArgs']]:
         return pulumi.get(self, "aggregate_by_property")
 
     @aggregate_by_property.setter
-    def aggregate_by_property(self, value: Optional[pulumi.Input['AggregationPropertyMethodAggregateByPropertyArgs']]):
+    def aggregate_by_property(self, value: Optional[pulumi.Input['AggregationPropertiesPropertiesMethodAggregateByPropertyArgs']]):
         pulumi.set(self, "aggregate_by_property", value)
 
     @property
     @pulumi.getter(name="averageByProperty")
-    def average_by_property(self) -> Optional[pulumi.Input['AggregationPropertyMethodAverageByPropertyArgs']]:
+    def average_by_property(self) -> Optional[pulumi.Input['AggregationPropertiesPropertiesMethodAverageByPropertyArgs']]:
         return pulumi.get(self, "average_by_property")
 
     @average_by_property.setter
-    def average_by_property(self, value: Optional[pulumi.Input['AggregationPropertyMethodAverageByPropertyArgs']]):
+    def average_by_property(self, value: Optional[pulumi.Input['AggregationPropertiesPropertiesMethodAverageByPropertyArgs']]):
         pulumi.set(self, "average_by_property", value)
 
     @property
     @pulumi.getter(name="averageEntities")
-    def average_entities(self) -> Optional[pulumi.Input['AggregationPropertyMethodAverageEntitiesArgs']]:
+    def average_entities(self) -> Optional[pulumi.Input['AggregationPropertiesPropertiesMethodAverageEntitiesArgs']]:
         return pulumi.get(self, "average_entities")
 
     @average_entities.setter
-    def average_entities(self, value: Optional[pulumi.Input['AggregationPropertyMethodAverageEntitiesArgs']]):
+    def average_entities(self, value: Optional[pulumi.Input['AggregationPropertiesPropertiesMethodAverageEntitiesArgs']]):
         pulumi.set(self, "average_entities", value)
 
     @property
@@ -2050,7 +2126,7 @@ class AggregationPropertyMethodArgs:
 
 
 @pulumi.input_type
-class AggregationPropertyMethodAggregateByPropertyArgs:
+class AggregationPropertiesPropertiesMethodAggregateByPropertyArgs:
     def __init__(__self__, *,
                  func: pulumi.Input[str],
                  property: pulumi.Input[str]):
@@ -2077,7 +2153,7 @@ class AggregationPropertyMethodAggregateByPropertyArgs:
 
 
 @pulumi.input_type
-class AggregationPropertyMethodAverageByPropertyArgs:
+class AggregationPropertiesPropertiesMethodAverageByPropertyArgs:
     def __init__(__self__, *,
                  average_of: pulumi.Input[str],
                  measure_time_by: pulumi.Input[str],
@@ -2115,7 +2191,7 @@ class AggregationPropertyMethodAverageByPropertyArgs:
 
 
 @pulumi.input_type
-class AggregationPropertyMethodAverageEntitiesArgs:
+class AggregationPropertiesPropertiesMethodAverageEntitiesArgs:
     def __init__(__self__, *,
                  average_of: Optional[pulumi.Input[str]] = None,
                  measure_time_by: Optional[pulumi.Input[str]] = None):

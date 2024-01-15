@@ -5,7 +5,7 @@ go 1.20
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20230912190043-e6d96b3b8f7e
 
 require (
-	github.com/port-labs/terraform-provider-port-labs v1.8.1
+	github.com/port-labs/terraform-provider-port-labs v1.9.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.23.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.70.0
 	github.com/pulumi/pulumi/sdk/v3 v3.101.1
