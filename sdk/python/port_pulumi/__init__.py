@@ -7,7 +7,7 @@ import typing
 # Export this package's modules as members:
 from .action import *
 from .action_permissions import *
-from .aggregation_property import *
+from .aggregation_properties import *
 from .blueprint import *
 from .entity import *
 from .provider import *
@@ -45,10 +45,10 @@ _utilities.register(
  },
  {
   "pkg": "port",
-  "mod": "index/aggregationProperty",
+  "mod": "index/aggregationProperties",
   "fqn": "port_pulumi",
   "classes": {
-   "port:index/aggregationProperty:AggregationProperty": "AggregationProperty"
+   "port:index/aggregationProperties:AggregationProperties": "AggregationProperties"
   }
  },
  {

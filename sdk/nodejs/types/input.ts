@@ -258,25 +258,34 @@ export interface ActionWebhookMethod {
     url: pulumi.Input<string>;
 }
 
-export interface AggregationPropertyMethod {
-    aggregateByProperty?: pulumi.Input<inputs.AggregationPropertyMethodAggregateByProperty>;
-    averageByProperty?: pulumi.Input<inputs.AggregationPropertyMethodAverageByProperty>;
-    averageEntities?: pulumi.Input<inputs.AggregationPropertyMethodAverageEntities>;
+export interface AggregationPropertiesProperties {
+    description?: pulumi.Input<string>;
+    icon?: pulumi.Input<string>;
+    method: pulumi.Input<inputs.AggregationPropertiesPropertiesMethod>;
+    query?: pulumi.Input<string>;
+    targetBlueprintIdentifier: pulumi.Input<string>;
+    title?: pulumi.Input<string>;
+}
+
+export interface AggregationPropertiesPropertiesMethod {
+    aggregateByProperty?: pulumi.Input<inputs.AggregationPropertiesPropertiesMethodAggregateByProperty>;
+    averageByProperty?: pulumi.Input<inputs.AggregationPropertiesPropertiesMethodAverageByProperty>;
+    averageEntities?: pulumi.Input<inputs.AggregationPropertiesPropertiesMethodAverageEntities>;
     countEntities?: pulumi.Input<boolean>;
 }
 
-export interface AggregationPropertyMethodAggregateByProperty {
+export interface AggregationPropertiesPropertiesMethodAggregateByProperty {
     func: pulumi.Input<string>;
     property: pulumi.Input<string>;
 }
 
-export interface AggregationPropertyMethodAverageByProperty {
+export interface AggregationPropertiesPropertiesMethodAverageByProperty {
     averageOf: pulumi.Input<string>;
     measureTimeBy: pulumi.Input<string>;
     property: pulumi.Input<string>;
 }
 
-export interface AggregationPropertyMethodAverageEntities {
+export interface AggregationPropertiesPropertiesMethodAverageEntities {
     averageOf?: pulumi.Input<string>;
     measureTimeBy?: pulumi.Input<string>;
 }
