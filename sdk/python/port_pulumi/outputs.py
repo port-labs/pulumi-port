@@ -88,13 +88,21 @@ class ActionApprovalEmailNotification(dict):
 @pulumi.output_type
 class ActionApprovalWebhookNotification(dict):
     def __init__(__self__, *,
-                 url: str):
+                 url: str,
+                 format: Optional[str] = None):
         pulumi.set(__self__, "url", url)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
 
     @property
     @pulumi.getter
     def url(self) -> str:
         return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[str]:
+        return pulumi.get(self, "format")
 
 
 @pulumi.output_type

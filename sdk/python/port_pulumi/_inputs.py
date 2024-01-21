@@ -87,8 +87,11 @@ class ActionApprovalEmailNotificationArgs:
 @pulumi.input_type
 class ActionApprovalWebhookNotificationArgs:
     def __init__(__self__, *,
-                 url: pulumi.Input[str]):
+                 url: pulumi.Input[str],
+                 format: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "url", url)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
 
     @property
     @pulumi.getter
@@ -98,6 +101,15 @@ class ActionApprovalWebhookNotificationArgs:
     @url.setter
     def url(self, value: pulumi.Input[str]):
         pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "format", value)
 
 
 @pulumi.input_type

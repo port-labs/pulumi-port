@@ -132,7 +132,8 @@ func (o ActionApprovalEmailNotificationPtrOutput) Elem() ActionApprovalEmailNoti
 }
 
 type ActionApprovalWebhookNotification struct {
-	Url string `pulumi:"url"`
+	Format *string `pulumi:"format"`
+	Url    string  `pulumi:"url"`
 }
 
 // ActionApprovalWebhookNotificationInput is an input type that accepts ActionApprovalWebhookNotificationArgs and ActionApprovalWebhookNotificationOutput values.
@@ -147,7 +148,8 @@ type ActionApprovalWebhookNotificationInput interface {
 }
 
 type ActionApprovalWebhookNotificationArgs struct {
-	Url pulumi.StringInput `pulumi:"url"`
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	Url    pulumi.StringInput    `pulumi:"url"`
 }
 
 func (ActionApprovalWebhookNotificationArgs) ElementType() reflect.Type {
@@ -227,6 +229,10 @@ func (o ActionApprovalWebhookNotificationOutput) ToActionApprovalWebhookNotifica
 	}).(ActionApprovalWebhookNotificationPtrOutput)
 }
 
+func (o ActionApprovalWebhookNotificationOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionApprovalWebhookNotification) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
 func (o ActionApprovalWebhookNotificationOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionApprovalWebhookNotification) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -253,6 +259,15 @@ func (o ActionApprovalWebhookNotificationPtrOutput) Elem() ActionApprovalWebhook
 		var ret ActionApprovalWebhookNotification
 		return ret
 	}).(ActionApprovalWebhookNotificationOutput)
+}
+
+func (o ActionApprovalWebhookNotificationPtrOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionApprovalWebhookNotification) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Format
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ActionApprovalWebhookNotificationPtrOutput) Url() pulumi.StringPtrOutput {
