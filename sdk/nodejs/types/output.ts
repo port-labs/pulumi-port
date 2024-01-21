@@ -9,6 +9,7 @@ export interface ActionApprovalEmailNotification {
 }
 
 export interface ActionApprovalWebhookNotification {
+    format?: string;
     url: string;
 }
 

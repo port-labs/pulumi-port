@@ -9,6 +9,7 @@ export interface ActionApprovalEmailNotification {
 }
 
 export interface ActionApprovalWebhookNotification {
+    format?: pulumi.Input<string>;
     url: pulumi.Input<string>;
 }
 

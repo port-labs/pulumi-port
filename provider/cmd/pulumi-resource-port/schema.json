@@ -80,6 +80,9 @@
         },
         "port:index/ActionApprovalWebhookNotification:ActionApprovalWebhookNotification": {
             "properties": {
+                "format": {
+                    "type": "string"
+                },
                 "url": {
                     "type": "string"
                 }
