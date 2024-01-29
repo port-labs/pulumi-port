@@ -1509,7 +1509,7 @@
                 "conditions": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/port:index/ScorecardRuleQueryCondition:ScorecardRuleQueryCondition"
+                        "type": "string"
                     }
                 }
             },
@@ -1517,24 +1517,6 @@
             "required": [
                 "combinator",
                 "conditions"
-            ]
-        },
-        "port:index/ScorecardRuleQueryCondition:ScorecardRuleQueryCondition": {
-            "properties": {
-                "operator": {
-                    "type": "string"
-                },
-                "property": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "operator",
-                "property"
             ]
         },
         "port:index/WebhookMapping:WebhookMapping": {
