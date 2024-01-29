@@ -444,13 +444,7 @@ export interface ScorecardRule {
 
 export interface ScorecardRuleQuery {
     combinator: pulumi.Input<string>;
-    conditions: pulumi.Input<pulumi.Input<inputs.ScorecardRuleQueryCondition>[]>;
-}
-
-export interface ScorecardRuleQueryCondition {
-    operator: pulumi.Input<string>;
-    property: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    conditions: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface WebhookMapping {

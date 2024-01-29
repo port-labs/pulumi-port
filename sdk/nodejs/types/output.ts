@@ -444,13 +444,7 @@ export interface ScorecardRule {
 
 export interface ScorecardRuleQuery {
     combinator: string;
-    conditions: outputs.ScorecardRuleQueryCondition[];
-}
-
-export interface ScorecardRuleQueryCondition {
-    operator: string;
-    property: string;
-    value?: string;
+    conditions: string[];
 }
 
 export interface WebhookMapping {
