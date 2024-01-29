@@ -73,7 +73,6 @@ __all__ = [
     'EntityRelations',
     'ScorecardRule',
     'ScorecardRuleQuery',
-    'ScorecardRuleQueryCondition',
     'WebhookMapping',
     'WebhookMappingEntity',
     'WebhookSecurity',
@@ -2959,7 +2958,7 @@ class ScorecardRule(dict):
 class ScorecardRuleQuery(dict):
     def __init__(__self__, *,
                  combinator: str,
-                 conditions: Sequence['outputs.ScorecardRuleQueryCondition']):
+                 conditions: Sequence[str]):
         pulumi.set(__self__, "combinator", combinator)
         pulumi.set(__self__, "conditions", conditions)
 
@@ -2970,35 +2969,8 @@ class ScorecardRuleQuery(dict):
 
     @property
     @pulumi.getter
-    def conditions(self) -> Sequence['outputs.ScorecardRuleQueryCondition']:
+    def conditions(self) -> Sequence[str]:
         return pulumi.get(self, "conditions")
-
-
-@pulumi.output_type
-class ScorecardRuleQueryCondition(dict):
-    def __init__(__self__, *,
-                 operator: str,
-                 property: str,
-                 value: Optional[str] = None):
-        pulumi.set(__self__, "operator", operator)
-        pulumi.set(__self__, "property", property)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def operator(self) -> str:
-        return pulumi.get(self, "operator")
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[str]:
-        return pulumi.get(self, "value")
-
-    @property
-    @pulumi.getter
-    def property(self) -> str:
-        return pulumi.get(self, "property")
 
 
 @pulumi.output_type

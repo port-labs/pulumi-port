@@ -72,7 +72,6 @@ __all__ = [
     'EntityRelationsArgs',
     'ScorecardRuleArgs',
     'ScorecardRuleQueryArgs',
-    'ScorecardRuleQueryConditionArgs',
     'WebhookMappingArgs',
     'WebhookMappingEntityArgs',
     'WebhookSecurityArgs',
@@ -3384,7 +3383,7 @@ class ScorecardRuleArgs:
 class ScorecardRuleQueryArgs:
     def __init__(__self__, *,
                  combinator: pulumi.Input[str],
-                 conditions: pulumi.Input[Sequence[pulumi.Input['ScorecardRuleQueryConditionArgs']]]):
+                 conditions: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(__self__, "combinator", combinator)
         pulumi.set(__self__, "conditions", conditions)
 
@@ -3399,51 +3398,12 @@ class ScorecardRuleQueryArgs:
 
     @property
     @pulumi.getter
-    def conditions(self) -> pulumi.Input[Sequence[pulumi.Input['ScorecardRuleQueryConditionArgs']]]:
+    def conditions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: pulumi.Input[Sequence[pulumi.Input['ScorecardRuleQueryConditionArgs']]]):
+    def conditions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "conditions", value)
-
-
-@pulumi.input_type
-class ScorecardRuleQueryConditionArgs:
-    def __init__(__self__, *,
-                 operator: pulumi.Input[str],
-                 property: pulumi.Input[str],
-                 value: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "operator", operator)
-        pulumi.set(__self__, "property", property)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def operator(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "operator")
-
-    @operator.setter
-    def operator(self, value: pulumi.Input[str]):
-        pulumi.set(self, "operator", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "value", value)
-
-    @property
-    @pulumi.getter
-    def property(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "property")
-
-    @property.setter
-    def property(self, value: pulumi.Input[str]):
-        pulumi.set(self, "property", value)
 
 
 @pulumi.input_type
