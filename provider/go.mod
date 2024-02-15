@@ -2,7 +2,7 @@ module github.com/port-labs/pulumi-port/provider
 
 go 1.20
 
-replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20230912190043-e6d96b3b8f7e
+replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240202163305-e2a20ae13ef9
 
 require (
 	github.com/port-labs/terraform-provider-port-labs v1.10.0
