@@ -20,7 +20,7 @@ type ActionPermissions struct {
 	// The ID of the blueprint
 	BlueprintIdentifier pulumi.StringOutput `pulumi:"blueprintIdentifier"`
 	// The permissions for the action
-	Permissions ActionPermissionsPermissionsPtrOutput `pulumi:"permissions"`
+	Permissions ActionPermissionsPermissionsOutput `pulumi:"permissions"`
 }
 
 // NewActionPermissions registers a new resource with the given unique name, arguments, and options.
@@ -35,6 +35,9 @@ func NewActionPermissions(ctx *pulumi.Context,
 	}
 	if args.BlueprintIdentifier == nil {
 		return nil, errors.New("invalid value for required argument 'BlueprintIdentifier'")
+	}
+	if args.Permissions == nil {
+		return nil, errors.New("invalid value for required argument 'Permissions'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ActionPermissions
@@ -86,7 +89,7 @@ type actionPermissionsArgs struct {
 	// The ID of the blueprint
 	BlueprintIdentifier string `pulumi:"blueprintIdentifier"`
 	// The permissions for the action
-	Permissions *ActionPermissionsPermissions `pulumi:"permissions"`
+	Permissions ActionPermissionsPermissions `pulumi:"permissions"`
 }
 
 // The set of arguments for constructing a ActionPermissions resource.
@@ -96,7 +99,7 @@ type ActionPermissionsArgs struct {
 	// The ID of the blueprint
 	BlueprintIdentifier pulumi.StringInput
 	// The permissions for the action
-	Permissions ActionPermissionsPermissionsPtrInput
+	Permissions ActionPermissionsPermissionsInput
 }
 
 func (ActionPermissionsArgs) ElementType() reflect.Type {
@@ -197,8 +200,8 @@ func (o ActionPermissionsOutput) BlueprintIdentifier() pulumi.StringOutput {
 }
 
 // The permissions for the action
-func (o ActionPermissionsOutput) Permissions() ActionPermissionsPermissionsPtrOutput {
-	return o.ApplyT(func(v *ActionPermissions) ActionPermissionsPermissionsPtrOutput { return v.Permissions }).(ActionPermissionsPermissionsPtrOutput)
+func (o ActionPermissionsOutput) Permissions() ActionPermissionsPermissionsOutput {
+	return o.ApplyT(func(v *ActionPermissions) ActionPermissionsPermissionsOutput { return v.Permissions }).(ActionPermissionsPermissionsOutput)
 }
 
 type ActionPermissionsArrayOutput struct{ *pulumi.OutputState }

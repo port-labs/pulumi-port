@@ -81,10 +81,12 @@
         "port:index/ActionApprovalWebhookNotification:ActionApprovalWebhookNotification": {
             "properties": {
                 "format": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The format to invoke the webhook\n"
                 },
                 "url": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The URL to invoke the webhook\n"
                 }
             },
             "type": "object",
@@ -95,10 +97,12 @@
         "port:index/ActionAzureMethod:ActionAzureMethod": {
             "properties": {
                 "org": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Required when selecting type AZURE. The Azure org that the workflow belongs to\n"
                 },
                 "webhook": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Required when selecting type AZURE. The Azure webhook that the workflow belongs to\n"
                 }
             },
             "type": "object",
@@ -110,22 +114,28 @@
         "port:index/ActionGithubMethod:ActionGithubMethod": {
             "properties": {
                 "omitPayload": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Omit the payload when invoking the action\n"
                 },
                 "omitUserInputs": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Omit the user inputs when invoking the action\n"
                 },
                 "org": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Required when selecting type GITHUB. The GitHub org that the workflow belongs to\n"
                 },
                 "repo": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Required when selecting type GITHUB. The GitHub repo that the workflow belongs to\n"
                 },
                 "reportWorkflowStatus": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Report the workflow status when invoking the action\n"
                 },
                 "workflow": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The GitHub workflow that the action belongs to\n"
                 }
             },
             "type": "object",
@@ -149,22 +159,28 @@
         "port:index/ActionGitlabMethod:ActionGitlabMethod": {
             "properties": {
                 "agent": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Use the agent to invoke the action\n"
                 },
                 "defaultRef": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default ref of the action\n"
                 },
                 "groupName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Required when selecting type GITLAB. The GitLab group name that the workflow belongs to\n"
                 },
                 "omitPayload": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Omit the payload when invoking the action\n"
                 },
                 "omitUserInputs": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Omit the user inputs when invoking the action\n"
                 },
                 "projectName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Required when selecting type GITLAB. The GitLab project name that the workflow belongs to\n"
                 }
             },
             "type": "object",
@@ -190,68 +206,102 @@
         "port:index/ActionPermissionsPermissions:ActionPermissionsPermissions": {
             "properties": {
                 "approve": {
-                    "$ref": "#/types/port:index/ActionPermissionsPermissionsApprove:ActionPermissionsPermissionsApprove"
+                    "$ref": "#/types/port:index/ActionPermissionsPermissionsApprove:ActionPermissionsPermissionsApprove",
+                    "description": "The permission to approve the action's runs\n"
                 },
                 "execute": {
-                    "$ref": "#/types/port:index/ActionPermissionsPermissionsExecute:ActionPermissionsPermissionsExecute"
+                    "$ref": "#/types/port:index/ActionPermissionsPermissionsExecute:ActionPermissionsPermissionsExecute",
+                    "description": "The permission to execute the action\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "approve",
+                "execute"
+            ]
         },
         "port:index/ActionPermissionsPermissionsApprove:ActionPermissionsPermissionsApprove": {
             "properties": {
                 "policy": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The policy to use for approval\n"
                 },
                 "roles": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The roles with approval permission\n"
                 },
                 "teams": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The teams with approval permission\n"
                 },
                 "users": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The users with approval permission\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "roles",
+                        "teams",
+                        "users"
+                    ]
+                }
+            }
         },
         "port:index/ActionPermissionsPermissionsExecute:ActionPermissionsPermissionsExecute": {
             "properties": {
                 "ownedByTeam": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Give execution permission to the teams who own the entity\n"
                 },
                 "policy": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The policy to use for execution\n"
                 },
                 "roles": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The roles with execution permission\n"
                 },
                 "teams": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The teams with execution permission\n"
                 },
                 "users": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The users with execution permission\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "ownedByTeam",
+                        "roles",
+                        "teams",
+                        "users"
+                    ]
+                }
+            }
         },
         "port:index/ActionUserProperties:ActionUserProperties": {
             "properties": {
@@ -259,31 +309,36 @@
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/port:index/ActionUserPropertiesArrayProps:ActionUserPropertiesArrayProps"
-                    }
+                    },
+                    "description": "The array property of the action\n"
                 },
                 "booleanProps": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/port:index/ActionUserPropertiesBooleanProps:ActionUserPropertiesBooleanProps"
-                    }
+                    },
+                    "description": "The boolean property of the action\n"
                 },
                 "numberProps": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/port:index/ActionUserPropertiesNumberProps:ActionUserPropertiesNumberProps"
-                    }
+                    },
+                    "description": "The number property of the action\n"
                 },
                 "objectProps": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/port:index/ActionUserPropertiesObjectProps:ActionUserPropertiesObjectProps"
-                    }
+                    },
+                    "description": "The object property of the action\n"
                 },
                 "stringProps": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/port:index/ActionUserPropertiesStringProps:ActionUserPropertiesStringProps"
-                    }
+                    },
+                    "description": "The string property of the action\n"
                 }
             },
             "type": "object"
@@ -291,52 +346,67 @@
         "port:index/ActionUserPropertiesArrayProps:ActionUserPropertiesArrayProps": {
             "properties": {
                 "booleanItems": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsBooleanItems:ActionUserPropertiesArrayPropsBooleanItems"
+                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsBooleanItems:ActionUserPropertiesArrayPropsBooleanItems",
+                    "description": "The items of the array property\n"
                 },
                 "dataset": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsDataset:ActionUserPropertiesArrayPropsDataset"
+                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsDataset:ActionUserPropertiesArrayPropsDataset",
+                    "description": "The dataset of the property\n"
                 },
                 "defaultJqQuery": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default jq query of the array property\n"
                 },
                 "dependsOns": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The properties that this property depends on\n"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The description of the property\n"
                 },
                 "icon": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The icon of the property\n"
                 },
                 "maxItems": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The max items of the array property\n"
                 },
                 "minItems": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The min items of the array property\n"
                 },
                 "numberItems": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsNumberItems:ActionUserPropertiesArrayPropsNumberItems"
+                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsNumberItems:ActionUserPropertiesArrayPropsNumberItems",
+                    "description": "The items of the array property\n"
                 },
                 "objectItems": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsObjectItems:ActionUserPropertiesArrayPropsObjectItems"
+                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsObjectItems:ActionUserPropertiesArrayPropsObjectItems",
+                    "description": "The items of the array property\n"
                 },
                 "required": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value\n"
                 },
                 "stringItems": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsStringItems:ActionUserPropertiesArrayPropsStringItems"
+                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsStringItems:ActionUserPropertiesArrayPropsStringItems",
+                    "description": "The items of the array property\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the property\n"
                 },
                 "visible": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "The visibility of the array property\n"
                 },
                 "visibleJqQuery": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The visibility condition jq query of the array property\n"
                 }
             },
             "type": "object"
@@ -347,7 +417,8 @@
                     "type": "array",
                     "items": {
                         "type": "boolean"
-                    }
+                    },
+                    "description": "The default of the items\n"
                 }
             },
             "type": "object"
@@ -355,13 +426,15 @@
         "port:index/ActionUserPropertiesArrayPropsDataset:ActionUserPropertiesArrayPropsDataset": {
             "properties": {
                 "combinator": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The combinator of the dataset\n"
                 },
                 "rules": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsDatasetRule:ActionUserPropertiesArrayPropsDatasetRule"
-                    }
+                    },
+                    "description": "The rules of the dataset\n"
                 }
             },
             "type": "object",
@@ -373,16 +446,20 @@
         "port:index/ActionUserPropertiesArrayPropsDatasetRule:ActionUserPropertiesArrayPropsDatasetRule": {
             "properties": {
                 "blueprint": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule\n"
                 },
                 "operator": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The operator of the rule\n"
                 },
                 "property": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The property identifier of the rule\n"
                 },
                 "value": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsDatasetRuleValue:ActionUserPropertiesArrayPropsDatasetRuleValue"
+                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsDatasetRuleValue:ActionUserPropertiesArrayPropsDatasetRuleValue",
+                    "description": "The value of the rule\n"
                 }
             },
             "type": "object",
@@ -408,16 +485,19 @@
                     "type": "array",
                     "items": {
                         "type": "number"
-                    }
+                    },
+                    "description": "The default of the items\n"
                 },
                 "enumJqQuery": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The enum jq query of the number items\n"
                 },
                 "enums": {
                     "type": "array",
                     "items": {
                         "type": "number"
-                    }
+                    },
+                    "description": "The enum of the items\n"
                 }
             },
             "type": "object"
@@ -431,7 +511,8 @@
                         "additionalProperties": {
                             "type": "string"
                         }
-                    }
+                    },
+                    "description": "The default of the items\n"
                 }
             },
             "type": "object"
@@ -439,25 +520,30 @@
         "port:index/ActionUserPropertiesArrayPropsStringItems:ActionUserPropertiesArrayPropsStringItems": {
             "properties": {
                 "blueprint": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The blueprint identifier the property relates to\n"
                 },
                 "defaults": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The default of the items\n"
                 },
                 "enumJqQuery": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The enum jq query of the string items\n"
                 },
                 "enums": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The enum of the items\n"
                 },
                 "format": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The format of the items\n"
                 }
             },
             "type": "object"
@@ -465,37 +551,47 @@
         "port:index/ActionUserPropertiesBooleanProps:ActionUserPropertiesBooleanProps": {
             "properties": {
                 "dataset": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesBooleanPropsDataset:ActionUserPropertiesBooleanPropsDataset"
+                    "$ref": "#/types/port:index/ActionUserPropertiesBooleanPropsDataset:ActionUserPropertiesBooleanPropsDataset",
+                    "description": "The dataset of the property\n"
                 },
                 "default": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "The default of the boolean property\n"
                 },
                 "defaultJqQuery": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default jq query of the boolean property\n"
                 },
                 "dependsOns": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The properties that this property depends on\n"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The description of the property\n"
                 },
                 "icon": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The icon of the property\n"
                 },
                 "required": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the property\n"
                 },
                 "visible": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "The visibility of the boolean property\n"
                 },
                 "visibleJqQuery": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The visibility condition jq query of the boolean property\n"
                 }
             },
             "type": "object"
@@ -503,13 +599,15 @@
         "port:index/ActionUserPropertiesBooleanPropsDataset:ActionUserPropertiesBooleanPropsDataset": {
             "properties": {
                 "combinator": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The combinator of the dataset\n"
                 },
                 "rules": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/port:index/ActionUserPropertiesBooleanPropsDatasetRule:ActionUserPropertiesBooleanPropsDatasetRule"
-                    }
+                    },
+                    "description": "The rules of the dataset\n"
                 }
             },
             "type": "object",
@@ -521,16 +619,20 @@
         "port:index/ActionUserPropertiesBooleanPropsDatasetRule:ActionUserPropertiesBooleanPropsDatasetRule": {
             "properties": {
                 "blueprint": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule\n"
                 },
                 "operator": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The operator of the rule\n"
                 },
                 "property": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The property identifier of the rule\n"
                 },
                 "value": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesBooleanPropsDatasetRuleValue:ActionUserPropertiesBooleanPropsDatasetRuleValue"
+                    "$ref": "#/types/port:index/ActionUserPropertiesBooleanPropsDatasetRuleValue:ActionUserPropertiesBooleanPropsDatasetRuleValue",
+                    "description": "The value of the rule\n"
                 }
             },
             "type": "object",
@@ -553,52 +655,66 @@
         "port:index/ActionUserPropertiesNumberProps:ActionUserPropertiesNumberProps": {
             "properties": {
                 "dataset": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesNumberPropsDataset:ActionUserPropertiesNumberPropsDataset"
+                    "$ref": "#/types/port:index/ActionUserPropertiesNumberPropsDataset:ActionUserPropertiesNumberPropsDataset",
+                    "description": "The dataset of the property\n"
                 },
                 "default": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "The default of the number property\n"
                 },
                 "defaultJqQuery": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default jq query of the number property\n"
                 },
                 "dependsOns": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The properties that this property depends on\n"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The description of the property\n"
                 },
                 "enumJqQuery": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The enum jq query of the string property\n"
                 },
                 "enums": {
                     "type": "array",
                     "items": {
                         "type": "number"
-                    }
+                    },
+                    "description": "The enum of the number property\n"
                 },
                 "icon": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The icon of the property\n"
                 },
                 "maximum": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "The min of the number property\n"
                 },
                 "minimum": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "The max of the number property\n"
                 },
                 "required": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the property\n"
                 },
                 "visible": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "The visibility of the number property\n"
                 },
                 "visibleJqQuery": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The visibility condition jq query of the number property\n"
                 }
             },
             "type": "object"
@@ -606,13 +722,15 @@
         "port:index/ActionUserPropertiesNumberPropsDataset:ActionUserPropertiesNumberPropsDataset": {
             "properties": {
                 "combinator": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The combinator of the dataset\n"
                 },
                 "rules": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/port:index/ActionUserPropertiesNumberPropsDatasetRule:ActionUserPropertiesNumberPropsDatasetRule"
-                    }
+                    },
+                    "description": "The rules of the dataset\n"
                 }
             },
             "type": "object",
@@ -624,16 +742,20 @@
         "port:index/ActionUserPropertiesNumberPropsDatasetRule:ActionUserPropertiesNumberPropsDatasetRule": {
             "properties": {
                 "blueprint": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule\n"
                 },
                 "operator": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The operator of the rule\n"
                 },
                 "property": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The property identifier of the rule\n"
                 },
                 "value": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesNumberPropsDatasetRuleValue:ActionUserPropertiesNumberPropsDatasetRuleValue"
+                    "$ref": "#/types/port:index/ActionUserPropertiesNumberPropsDatasetRuleValue:ActionUserPropertiesNumberPropsDatasetRuleValue",
+                    "description": "The value of the rule\n"
                 }
             },
             "type": "object",
@@ -656,40 +778,51 @@
         "port:index/ActionUserPropertiesObjectProps:ActionUserPropertiesObjectProps": {
             "properties": {
                 "dataset": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesObjectPropsDataset:ActionUserPropertiesObjectPropsDataset"
+                    "$ref": "#/types/port:index/ActionUserPropertiesObjectPropsDataset:ActionUserPropertiesObjectPropsDataset",
+                    "description": "The dataset of the property\n"
                 },
                 "default": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default of the object property\n"
                 },
                 "defaultJqQuery": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default jq query of the object property\n"
                 },
                 "dependsOns": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The properties that this property depends on\n"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The description of the property\n"
                 },
                 "encryption": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The algorithm to encrypt the property with\n"
                 },
                 "icon": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The icon of the property\n"
                 },
                 "required": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the property\n"
                 },
                 "visible": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "The visibility of the object property\n"
                 },
                 "visibleJqQuery": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The visibility condition jq query of the object property\n"
                 }
             },
             "type": "object"
@@ -697,13 +830,15 @@
         "port:index/ActionUserPropertiesObjectPropsDataset:ActionUserPropertiesObjectPropsDataset": {
             "properties": {
                 "combinator": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The combinator of the dataset\n"
                 },
                 "rules": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/port:index/ActionUserPropertiesObjectPropsDatasetRule:ActionUserPropertiesObjectPropsDatasetRule"
-                    }
+                    },
+                    "description": "The rules of the dataset\n"
                 }
             },
             "type": "object",
@@ -715,16 +850,20 @@
         "port:index/ActionUserPropertiesObjectPropsDatasetRule:ActionUserPropertiesObjectPropsDatasetRule": {
             "properties": {
                 "blueprint": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule\n"
                 },
                 "operator": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The operator of the rule\n"
                 },
                 "property": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The property identifier of the rule\n"
                 },
                 "value": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesObjectPropsDatasetRuleValue:ActionUserPropertiesObjectPropsDatasetRuleValue"
+                    "$ref": "#/types/port:index/ActionUserPropertiesObjectPropsDatasetRuleValue:ActionUserPropertiesObjectPropsDatasetRuleValue",
+                    "description": "The value of the rule\n"
                 }
             },
             "type": "object",
@@ -747,64 +886,82 @@
         "port:index/ActionUserPropertiesStringProps:ActionUserPropertiesStringProps": {
             "properties": {
                 "blueprint": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The blueprint identifier the string property relates to\n"
                 },
                 "dataset": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesStringPropsDataset:ActionUserPropertiesStringPropsDataset"
+                    "$ref": "#/types/port:index/ActionUserPropertiesStringPropsDataset:ActionUserPropertiesStringPropsDataset",
+                    "description": "The dataset of the property\n"
                 },
                 "default": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default of the string property\n"
                 },
                 "defaultJqQuery": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default jq query of the string property\n"
                 },
                 "dependsOns": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The properties that this property depends on\n"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The description of the property\n"
                 },
                 "encryption": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The algorithm to encrypt the property with\n"
                 },
                 "enumJqQuery": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The enum jq query of the string property\n"
                 },
                 "enums": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The enum of the string property\n"
                 },
                 "format": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The format of the string property\n"
                 },
                 "icon": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The icon of the property\n"
                 },
                 "maxLength": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The max length of the string property\n"
                 },
                 "minLength": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The min length of the string property\n"
                 },
                 "pattern": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The pattern of the string property\n"
                 },
                 "required": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the property\n"
                 },
                 "visible": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "The visibility of the string property\n"
                 },
                 "visibleJqQuery": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The visibility condition jq query of the string property\n"
                 }
             },
             "type": "object"
@@ -812,13 +969,15 @@
         "port:index/ActionUserPropertiesStringPropsDataset:ActionUserPropertiesStringPropsDataset": {
             "properties": {
                 "combinator": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The combinator of the dataset\n"
                 },
                 "rules": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/port:index/ActionUserPropertiesStringPropsDatasetRule:ActionUserPropertiesStringPropsDatasetRule"
-                    }
+                    },
+                    "description": "The rules of the dataset\n"
                 }
             },
             "type": "object",
@@ -830,16 +989,20 @@
         "port:index/ActionUserPropertiesStringPropsDatasetRule:ActionUserPropertiesStringPropsDatasetRule": {
             "properties": {
                 "blueprint": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule\n"
                 },
                 "operator": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The operator of the rule\n"
                 },
                 "property": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The property identifier of the rule\n"
                 },
                 "value": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesStringPropsDatasetRuleValue:ActionUserPropertiesStringPropsDatasetRuleValue"
+                    "$ref": "#/types/port:index/ActionUserPropertiesStringPropsDatasetRuleValue:ActionUserPropertiesStringPropsDatasetRuleValue",
+                    "description": "The value of the rule\n"
                 }
             },
             "type": "object",
@@ -862,16 +1025,20 @@
         "port:index/ActionWebhookMethod:ActionWebhookMethod": {
             "properties": {
                 "agent": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Use the agent to invoke the action\n"
                 },
                 "method": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The HTTP method to invoke the action\n"
                 },
                 "synchronized": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Synchronize the action\n"
                 },
                 "url": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Required when selecting type WEBHOOK. The URL to invoke the action\n"
                 }
             },
             "type": "object",
@@ -882,22 +1049,28 @@
         "port:index/AggregationPropertiesProperties:AggregationPropertiesProperties": {
             "properties": {
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The description of the aggregation property\n"
                 },
                 "icon": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The icon of the aggregation property\n"
                 },
                 "method": {
-                    "$ref": "#/types/port:index/AggregationPropertiesPropertiesMethod:AggregationPropertiesPropertiesMethod"
+                    "$ref": "#/types/port:index/AggregationPropertiesPropertiesMethod:AggregationPropertiesPropertiesMethod",
+                    "description": "The aggregation method to perform on the target blueprint, one of count_entities, average_entities, average_by_property, aggregate_by_property\n"
                 },
                 "query": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Query to filter the target entities\n"
                 },
                 "targetBlueprintIdentifier": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The identifier of the blueprint to perform the aggregation on\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the aggregation property\n"
                 }
             },
             "type": "object",
@@ -909,16 +1082,20 @@
         "port:index/AggregationPropertiesPropertiesMethod:AggregationPropertiesPropertiesMethod": {
             "properties": {
                 "aggregateByProperty": {
-                    "$ref": "#/types/port:index/AggregationPropertiesPropertiesMethodAggregateByProperty:AggregationPropertiesPropertiesMethodAggregateByProperty"
+                    "$ref": "#/types/port:index/AggregationPropertiesPropertiesMethodAggregateByProperty:AggregationPropertiesPropertiesMethodAggregateByProperty",
+                    "description": "Function to calculate the aggregate by property value of the target entities, such as sum, min, max, median\n"
                 },
                 "averageByProperty": {
-                    "$ref": "#/types/port:index/AggregationPropertiesPropertiesMethodAverageByProperty:AggregationPropertiesPropertiesMethodAverageByProperty"
+                    "$ref": "#/types/port:index/AggregationPropertiesPropertiesMethodAverageByProperty:AggregationPropertiesPropertiesMethodAverageByProperty",
+                    "description": "Function to calculate the average by property value of the target entities\n"
                 },
                 "averageEntities": {
-                    "$ref": "#/types/port:index/AggregationPropertiesPropertiesMethodAverageEntities:AggregationPropertiesPropertiesMethodAverageEntities"
+                    "$ref": "#/types/port:index/AggregationPropertiesPropertiesMethodAverageEntities:AggregationPropertiesPropertiesMethodAverageEntities",
+                    "description": "Function to average the entities of the target entities\n"
                 },
                 "countEntities": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Function to count the entities of the target entities\n"
                 }
             },
             "type": "object"
@@ -926,10 +1103,12 @@
         "port:index/AggregationPropertiesPropertiesMethodAggregateByProperty:AggregationPropertiesPropertiesMethodAggregateByProperty": {
             "properties": {
                 "func": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The func of the aggregate by property\n"
                 },
                 "property": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The property of the aggregate by property\n"
                 }
             },
             "type": "object",
@@ -941,13 +1120,16 @@
         "port:index/AggregationPropertiesPropertiesMethodAverageByProperty:AggregationPropertiesPropertiesMethodAverageByProperty": {
             "properties": {
                 "averageOf": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The time periods to calculate the average by, e.g. hour, day, week, month\n"
                 },
                 "measureTimeBy": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The property name on which to calculate the the time periods, e.g. $createdAt, $updated_at or any other date property\n"
                 },
                 "property": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The property name on which to calculate the average by\n"
                 }
             },
             "type": "object",
@@ -960,10 +1142,12 @@
         "port:index/AggregationPropertiesPropertiesMethodAverageEntities:AggregationPropertiesPropertiesMethodAverageEntities": {
             "properties": {
                 "averageOf": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The time periods to calculate the average of, e.g. hour, day, week, month\n"
                 },
                 "measureTimeBy": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The property name on which to calculate the the time periods, e.g. $createdAt, $updated_at or any other date property\n"
                 }
             },
             "type": "object",
@@ -979,31 +1163,39 @@
         "port:index/BlueprintCalculationProperties:BlueprintCalculationProperties": {
             "properties": {
                 "calculation": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The calculation of the calculation property\n"
                 },
                 "colorized": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "The colorized of the calculation property\n"
                 },
                 "colors": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The colors of the calculation property\n"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The description of the calculation property\n"
                 },
                 "format": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The format of the calculation property\n"
                 },
                 "icon": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The icon of the calculation property\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the calculation property\n"
                 },
                 "type": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of the calculation property\n"
                 }
             },
             "type": "object",
@@ -1018,10 +1210,12 @@
         "port:index/BlueprintMirrorProperties:BlueprintMirrorProperties": {
             "properties": {
                 "path": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The path of the mirror property\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the mirror property\n"
                 }
             },
             "type": "object",
@@ -1035,31 +1229,36 @@
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/port:index/BlueprintPropertiesArrayProps:BlueprintPropertiesArrayProps"
-                    }
+                    },
+                    "description": "The array property of the blueprint\n"
                 },
                 "booleanProps": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/port:index/BlueprintPropertiesBooleanProps:BlueprintPropertiesBooleanProps"
-                    }
+                    },
+                    "description": "The boolean property of the blueprint\n"
                 },
                 "numberProps": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/port:index/BlueprintPropertiesNumberProps:BlueprintPropertiesNumberProps"
-                    }
+                    },
+                    "description": "The number property of the blueprint\n"
                 },
                 "objectProps": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/port:index/BlueprintPropertiesObjectProps:BlueprintPropertiesObjectProps"
-                    }
+                    },
+                    "description": "The object property of the blueprint\n"
                 },
                 "stringProps": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/port:index/BlueprintPropertiesStringProps:BlueprintPropertiesStringProps"
-                    }
+                    },
+                    "description": "The string property of the blueprint\n"
                 }
             },
             "type": "object"
@@ -1067,34 +1266,44 @@
         "port:index/BlueprintPropertiesArrayProps:BlueprintPropertiesArrayProps": {
             "properties": {
                 "booleanItems": {
-                    "$ref": "#/types/port:index/BlueprintPropertiesArrayPropsBooleanItems:BlueprintPropertiesArrayPropsBooleanItems"
+                    "$ref": "#/types/port:index/BlueprintPropertiesArrayPropsBooleanItems:BlueprintPropertiesArrayPropsBooleanItems",
+                    "description": "The items of the array property\n"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The description of the property\n"
                 },
                 "icon": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The icon of the property\n"
                 },
                 "maxItems": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The max items of the array property\n"
                 },
                 "minItems": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The min items of the array property\n"
                 },
                 "numberItems": {
-                    "$ref": "#/types/port:index/BlueprintPropertiesArrayPropsNumberItems:BlueprintPropertiesArrayPropsNumberItems"
+                    "$ref": "#/types/port:index/BlueprintPropertiesArrayPropsNumberItems:BlueprintPropertiesArrayPropsNumberItems",
+                    "description": "The items of the array property\n"
                 },
                 "objectItems": {
-                    "$ref": "#/types/port:index/BlueprintPropertiesArrayPropsObjectItems:BlueprintPropertiesArrayPropsObjectItems"
+                    "$ref": "#/types/port:index/BlueprintPropertiesArrayPropsObjectItems:BlueprintPropertiesArrayPropsObjectItems",
+                    "description": "The items of the array property\n"
                 },
                 "required": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the property is required\n"
                 },
                 "stringItems": {
-                    "$ref": "#/types/port:index/BlueprintPropertiesArrayPropsStringItems:BlueprintPropertiesArrayPropsStringItems"
+                    "$ref": "#/types/port:index/BlueprintPropertiesArrayPropsStringItems:BlueprintPropertiesArrayPropsStringItems",
+                    "description": "The items of the array property\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the property\n"
                 }
             },
             "type": "object",
@@ -1112,7 +1321,8 @@
                     "type": "array",
                     "items": {
                         "type": "boolean"
-                    }
+                    },
+                    "description": "The default of the items\n"
                 }
             },
             "type": "object"
@@ -1123,7 +1333,8 @@
                     "type": "array",
                     "items": {
                         "type": "number"
-                    }
+                    },
+                    "description": "The default of the items\n"
                 }
             },
             "type": "object"
@@ -1134,7 +1345,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The default of the items\n"
                 }
             },
             "type": "object"
@@ -1145,10 +1357,12 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The default of the items\n"
                 },
                 "format": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The format of the items\n"
                 }
             },
             "type": "object"
@@ -1156,19 +1370,24 @@
         "port:index/BlueprintPropertiesBooleanProps:BlueprintPropertiesBooleanProps": {
             "properties": {
                 "default": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "The default of the boolean property\n"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The description of the property\n"
                 },
                 "icon": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The icon of the property\n"
                 },
                 "required": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the property is required\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the property\n"
                 }
             },
             "type": "object",
@@ -1183,37 +1402,46 @@
         "port:index/BlueprintPropertiesNumberProps:BlueprintPropertiesNumberProps": {
             "properties": {
                 "default": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "The default of the number property\n"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The description of the property\n"
                 },
                 "enumColors": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The enum colors of the number property\n"
                 },
                 "enums": {
                     "type": "array",
                     "items": {
                         "type": "number"
-                    }
+                    },
+                    "description": "The enum of the number property\n"
                 },
                 "icon": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The icon of the property\n"
                 },
                 "maximum": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "The min of the number property\n"
                 },
                 "minimum": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "The max of the number property\n"
                 },
                 "required": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the property is required\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the property\n"
                 }
             },
             "type": "object",
@@ -1228,22 +1456,28 @@
         "port:index/BlueprintPropertiesObjectProps:BlueprintPropertiesObjectProps": {
             "properties": {
                 "default": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default of the object property\n"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The description of the property\n"
                 },
                 "icon": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The icon of the property\n"
                 },
                 "required": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the property is required\n"
                 },
                 "spec": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The spec of the object property\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the property\n"
                 }
             },
             "type": "object",
@@ -1258,49 +1492,62 @@
         "port:index/BlueprintPropertiesStringProps:BlueprintPropertiesStringProps": {
             "properties": {
                 "default": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The default of the string property\n"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The description of the property\n"
                 },
                 "enumColors": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The enum colors of the string property\n"
                 },
                 "enums": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The enum of the string property\n"
                 },
                 "format": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The format of the string property\n"
                 },
                 "icon": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The icon of the property\n"
                 },
                 "maxLength": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The max length of the string property\n"
                 },
                 "minLength": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The min length of the string property\n"
                 },
                 "pattern": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The pattern of the string property\n"
                 },
                 "required": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the property is required\n"
                 },
                 "spec": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The spec of the string property\n"
                 },
                 "specAuthentication": {
-                    "$ref": "#/types/port:index/BlueprintPropertiesStringPropsSpecAuthentication:BlueprintPropertiesStringPropsSpecAuthentication"
+                    "$ref": "#/types/port:index/BlueprintPropertiesStringPropsSpecAuthentication:BlueprintPropertiesStringPropsSpecAuthentication",
+                    "description": "The spec authentication of the string property\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the property\n"
                 }
             },
             "type": "object",
@@ -1315,13 +1562,16 @@
         "port:index/BlueprintPropertiesStringPropsSpecAuthentication:BlueprintPropertiesStringPropsSpecAuthentication": {
             "properties": {
                 "authorizationUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The authorizationUrl of the spec authentication\n"
                 },
                 "clientId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The clientId of the spec authentication\n"
                 },
                 "tokenUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The tokenUrl of the spec authentication\n"
                 }
             },
             "type": "object",
@@ -1334,16 +1584,20 @@
         "port:index/BlueprintRelations:BlueprintRelations": {
             "properties": {
                 "many": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "The many of the relation\n"
                 },
                 "required": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "The required of the relation\n"
                 },
                 "target": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The target of the relation\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the relation\n"
                 }
             },
             "type": "object",
@@ -1363,7 +1617,8 @@
         "port:index/BlueprintTeamInheritance:BlueprintTeamInheritance": {
             "properties": {
                 "path": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The path of the team inheritance\n"
                 }
             },
             "type": "object",
@@ -1374,10 +1629,12 @@
         "port:index/BlueprintWebhookChangelogDestination:BlueprintWebhookChangelogDestination": {
             "properties": {
                 "agent": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "The agent of the webhook changelog destination\n"
                 },
                 "url": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The url of the webhook changelog destination\n"
                 }
             },
             "type": "object",
@@ -1388,31 +1645,36 @@
         "port:index/EntityProperties:EntityProperties": {
             "properties": {
                 "arrayProps": {
-                    "$ref": "#/types/port:index/EntityPropertiesArrayProps:EntityPropertiesArrayProps"
+                    "$ref": "#/types/port:index/EntityPropertiesArrayProps:EntityPropertiesArrayProps",
+                    "description": "The array properties of the entity\n"
                 },
                 "booleanProps": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "boolean"
-                    }
+                    },
+                    "description": "The bool properties of the entity\n"
                 },
                 "numberProps": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "number"
-                    }
+                    },
+                    "description": "The number properties of the entity\n"
                 },
                 "objectProps": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The object properties of the entity\n"
                 },
                 "stringProps": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The string properties of the entity\n"
                 }
             },
             "type": "object"
@@ -1467,13 +1729,15 @@
                         "items": {
                             "type": "string"
                         }
-                    }
+                    },
+                    "description": "The many relation of the entity\n"
                 },
                 "singleRelations": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The single relation of the entity\n"
                 }
             },
             "type": "object"
@@ -1481,16 +1745,20 @@
         "port:index/ScorecardRule:ScorecardRule": {
             "properties": {
                 "identifier": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The identifier of the rule\n"
                 },
                 "level": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The level of the rule\n"
                 },
                 "query": {
-                    "$ref": "#/types/port:index/ScorecardRuleQuery:ScorecardRuleQuery"
+                    "$ref": "#/types/port:index/ScorecardRuleQuery:ScorecardRuleQuery",
+                    "description": "The query of the rule\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the rule\n"
                 }
             },
             "type": "object",
@@ -1504,13 +1772,15 @@
         "port:index/ScorecardRuleQuery:ScorecardRuleQuery": {
             "properties": {
                 "combinator": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The combinator of the query\n"
                 },
                 "conditions": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The conditions of the query. Each condition object should be encoded to a string\n"
                 }
             },
             "type": "object",
@@ -1522,16 +1792,20 @@
         "port:index/WebhookMapping:WebhookMapping": {
             "properties": {
                 "blueprint": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The blueprint of the mapping\n"
                 },
                 "entity": {
-                    "$ref": "#/types/port:index/WebhookMappingEntity:WebhookMappingEntity"
+                    "$ref": "#/types/port:index/WebhookMappingEntity:WebhookMappingEntity",
+                    "description": "The entity of the mapping\n"
                 },
                 "filter": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The filter of the mapping\n"
                 },
                 "itemsToParse": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The items to parser of the mapping\n"
                 }
             },
             "type": "object",
@@ -1543,28 +1817,34 @@
         "port:index/WebhookMappingEntity:WebhookMappingEntity": {
             "properties": {
                 "icon": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The icon of the entity\n"
                 },
                 "identifier": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The identifier of the entity\n"
                 },
                 "properties": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The properties of the entity\n"
                 },
                 "relations": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The relations of the entity\n"
                 },
                 "team": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The team of the entity\n"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The title of the entity\n"
                 }
             },
             "type": "object",
@@ -1575,19 +1855,24 @@
         "port:index/WebhookSecurity:WebhookSecurity": {
             "properties": {
                 "requestIdentifierPath": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The request identifier path of the webhook\n"
                 },
                 "secret": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The secret of the webhook\n"
                 },
                 "signatureAlgorithm": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The signature algorithm of the webhook\n"
                 },
                 "signatureHeaderName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The signature header name of the webhook\n"
                 },
                 "signaturePrefix": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The signature prefix of the webhook\n"
                 }
             },
             "type": "object"
@@ -1889,7 +2174,8 @@
             },
             "required": [
                 "actionIdentifier",
-                "blueprintIdentifier"
+                "blueprintIdentifier",
+                "permissions"
             ],
             "inputProperties": {
                 "actionIdentifier": {
@@ -1907,7 +2193,8 @@
             },
             "requiredInputs": [
                 "actionIdentifier",
-                "blueprintIdentifier"
+                "blueprintIdentifier",
+                "permissions"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ActionPermissions resources.\n",
@@ -2002,6 +2289,10 @@
                     "type": "string",
                     "description": "The description of the blueprint\n"
                 },
+                "forceDeleteEntities": {
+                    "type": "boolean",
+                    "description": "If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform\n"
+                },
                 "icon": {
                     "type": "string",
                     "description": "The icon of the blueprint\n"
@@ -2056,6 +2347,7 @@
             "required": [
                 "createdAt",
                 "createdBy",
+                "forceDeleteEntities",
                 "identifier",
                 "title",
                 "updatedAt",
@@ -2072,6 +2364,10 @@
                 "description": {
                     "type": "string",
                     "description": "The description of the blueprint\n"
+                },
+                "forceDeleteEntities": {
+                    "type": "boolean",
+                    "description": "If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform\n"
                 },
                 "icon": {
                     "type": "string",
@@ -2141,6 +2437,10 @@
                     "description": {
                         "type": "string",
                         "description": "The description of the blueprint\n"
+                    },
+                    "forceDeleteEntities": {
+                        "type": "boolean",
+                        "description": "If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform\n"
                     },
                     "icon": {
                         "type": "string",

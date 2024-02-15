@@ -211,6 +211,7 @@
                 "calculationProperties": "calculation_properties",
                 "createdAt": "created_at",
                 "createdBy": "created_by",
+                "forceDeleteEntities": "force_delete_entities",
                 "kafkaChangelogDestination": "kafka_changelog_destination",
                 "mirrorProperties": "mirror_properties",
                 "teamInheritance": "team_inheritance",

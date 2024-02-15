@@ -45,7 +45,7 @@ export class ActionPermissions extends pulumi.CustomResource {
     /**
      * The permissions for the action
      */
-    public readonly permissions!: pulumi.Output<outputs.ActionPermissionsPermissions | undefined>;
+    public readonly permissions!: pulumi.Output<outputs.ActionPermissionsPermissions>;
 
     /**
      * Create a ActionPermissions resource with the given unique name, arguments, and options.
@@ -70,6 +70,9 @@ export class ActionPermissions extends pulumi.CustomResource {
             }
             if ((!args || args.blueprintIdentifier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'blueprintIdentifier'");
+            }
+            if ((!args || args.permissions === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'permissions'");
             }
             resourceInputs["actionIdentifier"] = args ? args.actionIdentifier : undefined;
             resourceInputs["blueprintIdentifier"] = args ? args.blueprintIdentifier : undefined;
@@ -113,5 +116,5 @@ export interface ActionPermissionsArgs {
     /**
      * The permissions for the action
      */
-    permissions?: pulumi.Input<inputs.ActionPermissionsPermissions>;
+    permissions: pulumi.Input<inputs.ActionPermissionsPermissions>;
 }

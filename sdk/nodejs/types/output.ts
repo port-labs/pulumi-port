@@ -9,30 +9,78 @@ export interface ActionApprovalEmailNotification {
 }
 
 export interface ActionApprovalWebhookNotification {
+    /**
+     * The format to invoke the webhook
+     */
     format?: string;
+    /**
+     * The URL to invoke the webhook
+     */
     url: string;
 }
 
 export interface ActionAzureMethod {
+    /**
+     * Required when selecting type AZURE. The Azure org that the workflow belongs to
+     */
     org: string;
+    /**
+     * Required when selecting type AZURE. The Azure webhook that the workflow belongs to
+     */
     webhook: string;
 }
 
 export interface ActionGithubMethod {
+    /**
+     * Omit the payload when invoking the action
+     */
     omitPayload: boolean;
+    /**
+     * Omit the user inputs when invoking the action
+     */
     omitUserInputs: boolean;
+    /**
+     * Required when selecting type GITHUB. The GitHub org that the workflow belongs to
+     */
     org: string;
+    /**
+     * Required when selecting type GITHUB. The GitHub repo that the workflow belongs to
+     */
     repo: string;
+    /**
+     * Report the workflow status when invoking the action
+     */
     reportWorkflowStatus?: boolean;
+    /**
+     * The GitHub workflow that the action belongs to
+     */
     workflow: string;
 }
 
 export interface ActionGitlabMethod {
+    /**
+     * Use the agent to invoke the action
+     */
     agent: boolean;
+    /**
+     * The default ref of the action
+     */
     defaultRef?: string;
+    /**
+     * Required when selecting type GITLAB. The GitLab group name that the workflow belongs to
+     */
     groupName: string;
+    /**
+     * Omit the payload when invoking the action
+     */
     omitPayload: boolean;
+    /**
+     * Omit the user inputs when invoking the action
+     */
     omitUserInputs: boolean;
+    /**
+     * Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
+     */
     projectName: string;
 }
 
@@ -40,64 +88,178 @@ export interface ActionKafkaMethod {
 }
 
 export interface ActionPermissionsPermissions {
-    approve?: outputs.ActionPermissionsPermissionsApprove;
-    execute?: outputs.ActionPermissionsPermissionsExecute;
+    /**
+     * The permission to approve the action's runs
+     */
+    approve: outputs.ActionPermissionsPermissionsApprove;
+    /**
+     * The permission to execute the action
+     */
+    execute: outputs.ActionPermissionsPermissionsExecute;
 }
 
 export interface ActionPermissionsPermissionsApprove {
+    /**
+     * The policy to use for approval
+     */
     policy?: string;
-    roles?: string[];
-    teams?: string[];
-    users?: string[];
+    /**
+     * The roles with approval permission
+     */
+    roles: string[];
+    /**
+     * The teams with approval permission
+     */
+    teams: string[];
+    /**
+     * The users with approval permission
+     */
+    users: string[];
 }
 
 export interface ActionPermissionsPermissionsExecute {
-    ownedByTeam?: boolean;
+    /**
+     * Give execution permission to the teams who own the entity
+     */
+    ownedByTeam: boolean;
+    /**
+     * The policy to use for execution
+     */
     policy?: string;
-    roles?: string[];
-    teams?: string[];
-    users?: string[];
+    /**
+     * The roles with execution permission
+     */
+    roles: string[];
+    /**
+     * The teams with execution permission
+     */
+    teams: string[];
+    /**
+     * The users with execution permission
+     */
+    users: string[];
 }
 
 export interface ActionUserProperties {
+    /**
+     * The array property of the action
+     */
     arrayProps?: {[key: string]: outputs.ActionUserPropertiesArrayProps};
+    /**
+     * The boolean property of the action
+     */
     booleanProps?: {[key: string]: outputs.ActionUserPropertiesBooleanProps};
+    /**
+     * The number property of the action
+     */
     numberProps?: {[key: string]: outputs.ActionUserPropertiesNumberProps};
+    /**
+     * The object property of the action
+     */
     objectProps?: {[key: string]: outputs.ActionUserPropertiesObjectProps};
+    /**
+     * The string property of the action
+     */
     stringProps?: {[key: string]: outputs.ActionUserPropertiesStringProps};
 }
 
 export interface ActionUserPropertiesArrayProps {
+    /**
+     * The items of the array property
+     */
     booleanItems?: outputs.ActionUserPropertiesArrayPropsBooleanItems;
+    /**
+     * The dataset of the property
+     */
     dataset?: outputs.ActionUserPropertiesArrayPropsDataset;
+    /**
+     * The default jq query of the array property
+     */
     defaultJqQuery?: string;
+    /**
+     * The properties that this property depends on
+     */
     dependsOns?: string[];
+    /**
+     * The description of the property
+     */
     description?: string;
+    /**
+     * The icon of the property
+     */
     icon?: string;
+    /**
+     * The max items of the array property
+     */
     maxItems?: number;
+    /**
+     * The min items of the array property
+     */
     minItems?: number;
+    /**
+     * The items of the array property
+     */
     numberItems?: outputs.ActionUserPropertiesArrayPropsNumberItems;
+    /**
+     * The items of the array property
+     */
     objectItems?: outputs.ActionUserPropertiesArrayPropsObjectItems;
+    /**
+     * Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
+     */
     required?: boolean;
+    /**
+     * The items of the array property
+     */
     stringItems?: outputs.ActionUserPropertiesArrayPropsStringItems;
+    /**
+     * The title of the property
+     */
     title?: string;
+    /**
+     * The visibility of the array property
+     */
     visible?: boolean;
+    /**
+     * The visibility condition jq query of the array property
+     */
     visibleJqQuery?: string;
 }
 
 export interface ActionUserPropertiesArrayPropsBooleanItems {
+    /**
+     * The default of the items
+     */
     defaults?: boolean[];
 }
 
 export interface ActionUserPropertiesArrayPropsDataset {
+    /**
+     * The combinator of the dataset
+     */
     combinator: string;
+    /**
+     * The rules of the dataset
+     */
     rules: outputs.ActionUserPropertiesArrayPropsDatasetRule[];
 }
 
 export interface ActionUserPropertiesArrayPropsDatasetRule {
+    /**
+     * The blueprint identifier of the rule
+     */
     blueprint?: string;
+    /**
+     * The operator of the rule
+     */
     operator: string;
+    /**
+     * The property identifier of the rule
+     */
     property?: string;
+    /**
+     * The value of the rule
+     */
     value: outputs.ActionUserPropertiesArrayPropsDatasetRuleValue;
 }
 
@@ -106,45 +268,120 @@ export interface ActionUserPropertiesArrayPropsDatasetRuleValue {
 }
 
 export interface ActionUserPropertiesArrayPropsNumberItems {
+    /**
+     * The default of the items
+     */
     defaults?: number[];
+    /**
+     * The enum jq query of the number items
+     */
     enumJqQuery?: string;
+    /**
+     * The enum of the items
+     */
     enums?: number[];
 }
 
 export interface ActionUserPropertiesArrayPropsObjectItems {
+    /**
+     * The default of the items
+     */
     defaults?: {[key: string]: string}[];
 }
 
 export interface ActionUserPropertiesArrayPropsStringItems {
+    /**
+     * The blueprint identifier the property relates to
+     */
     blueprint?: string;
+    /**
+     * The default of the items
+     */
     defaults?: string[];
+    /**
+     * The enum jq query of the string items
+     */
     enumJqQuery?: string;
+    /**
+     * The enum of the items
+     */
     enums?: string[];
+    /**
+     * The format of the items
+     */
     format?: string;
 }
 
 export interface ActionUserPropertiesBooleanProps {
+    /**
+     * The dataset of the property
+     */
     dataset?: outputs.ActionUserPropertiesBooleanPropsDataset;
+    /**
+     * The default of the boolean property
+     */
     default?: boolean;
+    /**
+     * The default jq query of the boolean property
+     */
     defaultJqQuery?: string;
+    /**
+     * The properties that this property depends on
+     */
     dependsOns?: string[];
+    /**
+     * The description of the property
+     */
     description?: string;
+    /**
+     * The icon of the property
+     */
     icon?: string;
+    /**
+     * Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
+     */
     required?: boolean;
+    /**
+     * The title of the property
+     */
     title?: string;
+    /**
+     * The visibility of the boolean property
+     */
     visible?: boolean;
+    /**
+     * The visibility condition jq query of the boolean property
+     */
     visibleJqQuery?: string;
 }
 
 export interface ActionUserPropertiesBooleanPropsDataset {
+    /**
+     * The combinator of the dataset
+     */
     combinator: string;
+    /**
+     * The rules of the dataset
+     */
     rules: outputs.ActionUserPropertiesBooleanPropsDatasetRule[];
 }
 
 export interface ActionUserPropertiesBooleanPropsDatasetRule {
+    /**
+     * The blueprint identifier of the rule
+     */
     blueprint?: string;
+    /**
+     * The operator of the rule
+     */
     operator: string;
+    /**
+     * The property identifier of the rule
+     */
     property?: string;
+    /**
+     * The value of the rule
+     */
     value: outputs.ActionUserPropertiesBooleanPropsDatasetRuleValue;
 }
 
@@ -153,31 +390,91 @@ export interface ActionUserPropertiesBooleanPropsDatasetRuleValue {
 }
 
 export interface ActionUserPropertiesNumberProps {
+    /**
+     * The dataset of the property
+     */
     dataset?: outputs.ActionUserPropertiesNumberPropsDataset;
+    /**
+     * The default of the number property
+     */
     default?: number;
+    /**
+     * The default jq query of the number property
+     */
     defaultJqQuery?: string;
+    /**
+     * The properties that this property depends on
+     */
     dependsOns?: string[];
+    /**
+     * The description of the property
+     */
     description?: string;
+    /**
+     * The enum jq query of the string property
+     */
     enumJqQuery?: string;
+    /**
+     * The enum of the number property
+     */
     enums?: number[];
+    /**
+     * The icon of the property
+     */
     icon?: string;
+    /**
+     * The min of the number property
+     */
     maximum?: number;
+    /**
+     * The max of the number property
+     */
     minimum?: number;
+    /**
+     * Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
+     */
     required?: boolean;
+    /**
+     * The title of the property
+     */
     title?: string;
+    /**
+     * The visibility of the number property
+     */
     visible?: boolean;
+    /**
+     * The visibility condition jq query of the number property
+     */
     visibleJqQuery?: string;
 }
 
 export interface ActionUserPropertiesNumberPropsDataset {
+    /**
+     * The combinator of the dataset
+     */
     combinator: string;
+    /**
+     * The rules of the dataset
+     */
     rules: outputs.ActionUserPropertiesNumberPropsDatasetRule[];
 }
 
 export interface ActionUserPropertiesNumberPropsDatasetRule {
+    /**
+     * The blueprint identifier of the rule
+     */
     blueprint?: string;
+    /**
+     * The operator of the rule
+     */
     operator: string;
+    /**
+     * The property identifier of the rule
+     */
     property?: string;
+    /**
+     * The value of the rule
+     */
     value: outputs.ActionUserPropertiesNumberPropsDatasetRuleValue;
 }
 
@@ -186,28 +483,79 @@ export interface ActionUserPropertiesNumberPropsDatasetRuleValue {
 }
 
 export interface ActionUserPropertiesObjectProps {
+    /**
+     * The dataset of the property
+     */
     dataset?: outputs.ActionUserPropertiesObjectPropsDataset;
+    /**
+     * The default of the object property
+     */
     default?: string;
+    /**
+     * The default jq query of the object property
+     */
     defaultJqQuery?: string;
+    /**
+     * The properties that this property depends on
+     */
     dependsOns?: string[];
+    /**
+     * The description of the property
+     */
     description?: string;
+    /**
+     * The algorithm to encrypt the property with
+     */
     encryption?: string;
+    /**
+     * The icon of the property
+     */
     icon?: string;
+    /**
+     * Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
+     */
     required?: boolean;
+    /**
+     * The title of the property
+     */
     title?: string;
+    /**
+     * The visibility of the object property
+     */
     visible?: boolean;
+    /**
+     * The visibility condition jq query of the object property
+     */
     visibleJqQuery?: string;
 }
 
 export interface ActionUserPropertiesObjectPropsDataset {
+    /**
+     * The combinator of the dataset
+     */
     combinator: string;
+    /**
+     * The rules of the dataset
+     */
     rules: outputs.ActionUserPropertiesObjectPropsDatasetRule[];
 }
 
 export interface ActionUserPropertiesObjectPropsDatasetRule {
+    /**
+     * The blueprint identifier of the rule
+     */
     blueprint?: string;
+    /**
+     * The operator of the rule
+     */
     operator: string;
+    /**
+     * The property identifier of the rule
+     */
     property?: string;
+    /**
+     * The value of the rule
+     */
     value: outputs.ActionUserPropertiesObjectPropsDatasetRuleValue;
 }
 
@@ -216,35 +564,107 @@ export interface ActionUserPropertiesObjectPropsDatasetRuleValue {
 }
 
 export interface ActionUserPropertiesStringProps {
+    /**
+     * The blueprint identifier the string property relates to
+     */
     blueprint?: string;
+    /**
+     * The dataset of the property
+     */
     dataset?: outputs.ActionUserPropertiesStringPropsDataset;
+    /**
+     * The default of the string property
+     */
     default?: string;
+    /**
+     * The default jq query of the string property
+     */
     defaultJqQuery?: string;
+    /**
+     * The properties that this property depends on
+     */
     dependsOns?: string[];
+    /**
+     * The description of the property
+     */
     description?: string;
+    /**
+     * The algorithm to encrypt the property with
+     */
     encryption?: string;
+    /**
+     * The enum jq query of the string property
+     */
     enumJqQuery?: string;
+    /**
+     * The enum of the string property
+     */
     enums?: string[];
+    /**
+     * The format of the string property
+     */
     format?: string;
+    /**
+     * The icon of the property
+     */
     icon?: string;
+    /**
+     * The max length of the string property
+     */
     maxLength?: number;
+    /**
+     * The min length of the string property
+     */
     minLength?: number;
+    /**
+     * The pattern of the string property
+     */
     pattern?: string;
+    /**
+     * Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
+     */
     required?: boolean;
+    /**
+     * The title of the property
+     */
     title?: string;
+    /**
+     * The visibility of the string property
+     */
     visible?: boolean;
+    /**
+     * The visibility condition jq query of the string property
+     */
     visibleJqQuery?: string;
 }
 
 export interface ActionUserPropertiesStringPropsDataset {
+    /**
+     * The combinator of the dataset
+     */
     combinator: string;
+    /**
+     * The rules of the dataset
+     */
     rules: outputs.ActionUserPropertiesStringPropsDatasetRule[];
 }
 
 export interface ActionUserPropertiesStringPropsDatasetRule {
+    /**
+     * The blueprint identifier of the rule
+     */
     blueprint?: string;
+    /**
+     * The operator of the rule
+     */
     operator: string;
+    /**
+     * The property identifier of the rule
+     */
     property?: string;
+    /**
+     * The value of the rule
+     */
     value: outputs.ActionUserPropertiesStringPropsDatasetRuleValue;
 }
 
@@ -253,52 +673,139 @@ export interface ActionUserPropertiesStringPropsDatasetRuleValue {
 }
 
 export interface ActionWebhookMethod {
+    /**
+     * Use the agent to invoke the action
+     */
     agent?: boolean;
+    /**
+     * The HTTP method to invoke the action
+     */
     method?: string;
+    /**
+     * Synchronize the action
+     */
     synchronized?: boolean;
+    /**
+     * Required when selecting type WEBHOOK. The URL to invoke the action
+     */
     url: string;
 }
 
 export interface AggregationPropertiesProperties {
+    /**
+     * The description of the aggregation property
+     */
     description?: string;
+    /**
+     * The icon of the aggregation property
+     */
     icon?: string;
+    /**
+     * The aggregation method to perform on the target blueprint, one of count_entities, average_entities, average_by_property, aggregate_by_property
+     */
     method: outputs.AggregationPropertiesPropertiesMethod;
+    /**
+     * Query to filter the target entities
+     */
     query?: string;
+    /**
+     * The identifier of the blueprint to perform the aggregation on
+     */
     targetBlueprintIdentifier: string;
+    /**
+     * The title of the aggregation property
+     */
     title?: string;
 }
 
 export interface AggregationPropertiesPropertiesMethod {
+    /**
+     * Function to calculate the aggregate by property value of the target entities, such as sum, min, max, median
+     */
     aggregateByProperty?: outputs.AggregationPropertiesPropertiesMethodAggregateByProperty;
+    /**
+     * Function to calculate the average by property value of the target entities
+     */
     averageByProperty?: outputs.AggregationPropertiesPropertiesMethodAverageByProperty;
+    /**
+     * Function to average the entities of the target entities
+     */
     averageEntities?: outputs.AggregationPropertiesPropertiesMethodAverageEntities;
+    /**
+     * Function to count the entities of the target entities
+     */
     countEntities?: boolean;
 }
 
 export interface AggregationPropertiesPropertiesMethodAggregateByProperty {
+    /**
+     * The func of the aggregate by property
+     */
     func: string;
+    /**
+     * The property of the aggregate by property
+     */
     property: string;
 }
 
 export interface AggregationPropertiesPropertiesMethodAverageByProperty {
+    /**
+     * The time periods to calculate the average by, e.g. hour, day, week, month
+     */
     averageOf: string;
+    /**
+     * The property name on which to calculate the the time periods, e.g. $createdAt, $updated_at or any other date property
+     */
     measureTimeBy: string;
+    /**
+     * The property name on which to calculate the average by
+     */
     property: string;
 }
 
 export interface AggregationPropertiesPropertiesMethodAverageEntities {
+    /**
+     * The time periods to calculate the average of, e.g. hour, day, week, month
+     */
     averageOf: string;
+    /**
+     * The property name on which to calculate the the time periods, e.g. $createdAt, $updated_at or any other date property
+     */
     measureTimeBy: string;
 }
 
 export interface BlueprintCalculationProperties {
+    /**
+     * The calculation of the calculation property
+     */
     calculation: string;
+    /**
+     * The colorized of the calculation property
+     */
     colorized?: boolean;
+    /**
+     * The colors of the calculation property
+     */
     colors?: {[key: string]: string};
+    /**
+     * The description of the calculation property
+     */
     description?: string;
+    /**
+     * The format of the calculation property
+     */
     format?: string;
+    /**
+     * The icon of the calculation property
+     */
     icon?: string;
+    /**
+     * The title of the calculation property
+     */
     title?: string;
+    /**
+     * The type of the calculation property
+     */
     type: string;
 }
 
@@ -306,120 +813,330 @@ export interface BlueprintKafkaChangelogDestination {
 }
 
 export interface BlueprintMirrorProperties {
+    /**
+     * The path of the mirror property
+     */
     path: string;
+    /**
+     * The title of the mirror property
+     */
     title?: string;
 }
 
 export interface BlueprintProperties {
+    /**
+     * The array property of the blueprint
+     */
     arrayProps?: {[key: string]: outputs.BlueprintPropertiesArrayProps};
+    /**
+     * The boolean property of the blueprint
+     */
     booleanProps?: {[key: string]: outputs.BlueprintPropertiesBooleanProps};
+    /**
+     * The number property of the blueprint
+     */
     numberProps?: {[key: string]: outputs.BlueprintPropertiesNumberProps};
+    /**
+     * The object property of the blueprint
+     */
     objectProps?: {[key: string]: outputs.BlueprintPropertiesObjectProps};
+    /**
+     * The string property of the blueprint
+     */
     stringProps?: {[key: string]: outputs.BlueprintPropertiesStringProps};
 }
 
 export interface BlueprintPropertiesArrayProps {
+    /**
+     * The items of the array property
+     */
     booleanItems?: outputs.BlueprintPropertiesArrayPropsBooleanItems;
+    /**
+     * The description of the property
+     */
     description?: string;
+    /**
+     * The icon of the property
+     */
     icon?: string;
+    /**
+     * The max items of the array property
+     */
     maxItems?: number;
+    /**
+     * The min items of the array property
+     */
     minItems?: number;
+    /**
+     * The items of the array property
+     */
     numberItems?: outputs.BlueprintPropertiesArrayPropsNumberItems;
+    /**
+     * The items of the array property
+     */
     objectItems?: outputs.BlueprintPropertiesArrayPropsObjectItems;
+    /**
+     * Whether the property is required
+     */
     required: boolean;
+    /**
+     * The items of the array property
+     */
     stringItems?: outputs.BlueprintPropertiesArrayPropsStringItems;
+    /**
+     * The title of the property
+     */
     title?: string;
 }
 
 export interface BlueprintPropertiesArrayPropsBooleanItems {
+    /**
+     * The default of the items
+     */
     defaults?: boolean[];
 }
 
 export interface BlueprintPropertiesArrayPropsNumberItems {
+    /**
+     * The default of the items
+     */
     defaults?: number[];
 }
 
 export interface BlueprintPropertiesArrayPropsObjectItems {
+    /**
+     * The default of the items
+     */
     defaults?: string[];
 }
 
 export interface BlueprintPropertiesArrayPropsStringItems {
+    /**
+     * The default of the items
+     */
     defaults?: string[];
+    /**
+     * The format of the items
+     */
     format?: string;
 }
 
 export interface BlueprintPropertiesBooleanProps {
+    /**
+     * The default of the boolean property
+     */
     default?: boolean;
+    /**
+     * The description of the property
+     */
     description?: string;
+    /**
+     * The icon of the property
+     */
     icon?: string;
+    /**
+     * Whether the property is required
+     */
     required: boolean;
+    /**
+     * The title of the property
+     */
     title?: string;
 }
 
 export interface BlueprintPropertiesNumberProps {
+    /**
+     * The default of the number property
+     */
     default?: number;
+    /**
+     * The description of the property
+     */
     description?: string;
+    /**
+     * The enum colors of the number property
+     */
     enumColors?: {[key: string]: string};
+    /**
+     * The enum of the number property
+     */
     enums?: number[];
+    /**
+     * The icon of the property
+     */
     icon?: string;
+    /**
+     * The min of the number property
+     */
     maximum?: number;
+    /**
+     * The max of the number property
+     */
     minimum?: number;
+    /**
+     * Whether the property is required
+     */
     required: boolean;
+    /**
+     * The title of the property
+     */
     title?: string;
 }
 
 export interface BlueprintPropertiesObjectProps {
+    /**
+     * The default of the object property
+     */
     default?: string;
+    /**
+     * The description of the property
+     */
     description?: string;
+    /**
+     * The icon of the property
+     */
     icon?: string;
+    /**
+     * Whether the property is required
+     */
     required: boolean;
+    /**
+     * The spec of the object property
+     */
     spec?: string;
+    /**
+     * The title of the property
+     */
     title?: string;
 }
 
 export interface BlueprintPropertiesStringProps {
+    /**
+     * The default of the string property
+     */
     default?: string;
+    /**
+     * The description of the property
+     */
     description?: string;
+    /**
+     * The enum colors of the string property
+     */
     enumColors?: {[key: string]: string};
+    /**
+     * The enum of the string property
+     */
     enums?: string[];
+    /**
+     * The format of the string property
+     */
     format?: string;
+    /**
+     * The icon of the property
+     */
     icon?: string;
+    /**
+     * The max length of the string property
+     */
     maxLength?: number;
+    /**
+     * The min length of the string property
+     */
     minLength?: number;
+    /**
+     * The pattern of the string property
+     */
     pattern?: string;
+    /**
+     * Whether the property is required
+     */
     required: boolean;
+    /**
+     * The spec of the string property
+     */
     spec?: string;
+    /**
+     * The spec authentication of the string property
+     */
     specAuthentication?: outputs.BlueprintPropertiesStringPropsSpecAuthentication;
+    /**
+     * The title of the property
+     */
     title?: string;
 }
 
 export interface BlueprintPropertiesStringPropsSpecAuthentication {
+    /**
+     * The authorizationUrl of the spec authentication
+     */
     authorizationUrl: string;
+    /**
+     * The clientId of the spec authentication
+     */
     clientId: string;
+    /**
+     * The tokenUrl of the spec authentication
+     */
     tokenUrl: string;
 }
 
 export interface BlueprintRelations {
+    /**
+     * The many of the relation
+     */
     many: boolean;
+    /**
+     * The required of the relation
+     */
     required: boolean;
+    /**
+     * The target of the relation
+     */
     target: string;
+    /**
+     * The title of the relation
+     */
     title?: string;
 }
 
 export interface BlueprintTeamInheritance {
+    /**
+     * The path of the team inheritance
+     */
     path: string;
 }
 
 export interface BlueprintWebhookChangelogDestination {
+    /**
+     * The agent of the webhook changelog destination
+     */
     agent?: boolean;
+    /**
+     * The url of the webhook changelog destination
+     */
     url: string;
 }
 
 export interface EntityProperties {
+    /**
+     * The array properties of the entity
+     */
     arrayProps?: outputs.EntityPropertiesArrayProps;
+    /**
+     * The bool properties of the entity
+     */
     booleanProps?: {[key: string]: boolean};
+    /**
+     * The number properties of the entity
+     */
     numberProps?: {[key: string]: number};
+    /**
+     * The object properties of the entity
+     */
     objectProps?: {[key: string]: string};
+    /**
+     * The string properties of the entity
+     */
     stringProps?: {[key: string]: string};
 }
 
@@ -431,43 +1148,112 @@ export interface EntityPropertiesArrayProps {
 }
 
 export interface EntityRelations {
+    /**
+     * The many relation of the entity
+     */
     manyRelations?: {[key: string]: string[]};
+    /**
+     * The single relation of the entity
+     */
     singleRelations?: {[key: string]: string};
 }
 
 export interface ScorecardRule {
+    /**
+     * The identifier of the rule
+     */
     identifier: string;
+    /**
+     * The level of the rule
+     */
     level: string;
+    /**
+     * The query of the rule
+     */
     query: outputs.ScorecardRuleQuery;
+    /**
+     * The title of the rule
+     */
     title: string;
 }
 
 export interface ScorecardRuleQuery {
+    /**
+     * The combinator of the query
+     */
     combinator: string;
+    /**
+     * The conditions of the query. Each condition object should be encoded to a string
+     */
     conditions: string[];
 }
 
 export interface WebhookMapping {
+    /**
+     * The blueprint of the mapping
+     */
     blueprint: string;
+    /**
+     * The entity of the mapping
+     */
     entity: outputs.WebhookMappingEntity;
+    /**
+     * The filter of the mapping
+     */
     filter?: string;
+    /**
+     * The items to parser of the mapping
+     */
     itemsToParse?: string;
 }
 
 export interface WebhookMappingEntity {
+    /**
+     * The icon of the entity
+     */
     icon?: string;
+    /**
+     * The identifier of the entity
+     */
     identifier: string;
+    /**
+     * The properties of the entity
+     */
     properties?: {[key: string]: string};
+    /**
+     * The relations of the entity
+     */
     relations?: {[key: string]: string};
+    /**
+     * The team of the entity
+     */
     team?: string;
+    /**
+     * The title of the entity
+     */
     title?: string;
 }
 
 export interface WebhookSecurity {
+    /**
+     * The request identifier path of the webhook
+     */
     requestIdentifierPath?: string;
+    /**
+     * The secret of the webhook
+     */
     secret?: string;
+    /**
+     * The signature algorithm of the webhook
+     */
     signatureAlgorithm?: string;
+    /**
+     * The signature header name of the webhook
+     */
     signatureHeaderName?: string;
+    /**
+     * The signature prefix of the webhook
+     */
     signaturePrefix?: string;
 }
 

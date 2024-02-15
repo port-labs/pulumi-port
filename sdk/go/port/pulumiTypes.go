@@ -132,8 +132,10 @@ func (o ActionApprovalEmailNotificationPtrOutput) Elem() ActionApprovalEmailNoti
 }
 
 type ActionApprovalWebhookNotification struct {
+	// The format to invoke the webhook
 	Format *string `pulumi:"format"`
-	Url    string  `pulumi:"url"`
+	// The URL to invoke the webhook
+	Url string `pulumi:"url"`
 }
 
 // ActionApprovalWebhookNotificationInput is an input type that accepts ActionApprovalWebhookNotificationArgs and ActionApprovalWebhookNotificationOutput values.
@@ -148,8 +150,10 @@ type ActionApprovalWebhookNotificationInput interface {
 }
 
 type ActionApprovalWebhookNotificationArgs struct {
+	// The format to invoke the webhook
 	Format pulumi.StringPtrInput `pulumi:"format"`
-	Url    pulumi.StringInput    `pulumi:"url"`
+	// The URL to invoke the webhook
+	Url pulumi.StringInput `pulumi:"url"`
 }
 
 func (ActionApprovalWebhookNotificationArgs) ElementType() reflect.Type {
@@ -229,10 +233,12 @@ func (o ActionApprovalWebhookNotificationOutput) ToActionApprovalWebhookNotifica
 	}).(ActionApprovalWebhookNotificationPtrOutput)
 }
 
+// The format to invoke the webhook
 func (o ActionApprovalWebhookNotificationOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionApprovalWebhookNotification) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
+// The URL to invoke the webhook
 func (o ActionApprovalWebhookNotificationOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionApprovalWebhookNotification) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -261,6 +267,7 @@ func (o ActionApprovalWebhookNotificationPtrOutput) Elem() ActionApprovalWebhook
 	}).(ActionApprovalWebhookNotificationOutput)
 }
 
+// The format to invoke the webhook
 func (o ActionApprovalWebhookNotificationPtrOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionApprovalWebhookNotification) *string {
 		if v == nil {
@@ -270,6 +277,7 @@ func (o ActionApprovalWebhookNotificationPtrOutput) Format() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// The URL to invoke the webhook
 func (o ActionApprovalWebhookNotificationPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionApprovalWebhookNotification) *string {
 		if v == nil {
@@ -280,7 +288,9 @@ func (o ActionApprovalWebhookNotificationPtrOutput) Url() pulumi.StringPtrOutput
 }
 
 type ActionAzureMethod struct {
-	Org     string `pulumi:"org"`
+	// Required when selecting type AZURE. The Azure org that the workflow belongs to
+	Org string `pulumi:"org"`
+	// Required when selecting type AZURE. The Azure webhook that the workflow belongs to
 	Webhook string `pulumi:"webhook"`
 }
 
@@ -296,7 +306,9 @@ type ActionAzureMethodInput interface {
 }
 
 type ActionAzureMethodArgs struct {
-	Org     pulumi.StringInput `pulumi:"org"`
+	// Required when selecting type AZURE. The Azure org that the workflow belongs to
+	Org pulumi.StringInput `pulumi:"org"`
+	// Required when selecting type AZURE. The Azure webhook that the workflow belongs to
 	Webhook pulumi.StringInput `pulumi:"webhook"`
 }
 
@@ -377,10 +389,12 @@ func (o ActionAzureMethodOutput) ToActionAzureMethodPtrOutputWithContext(ctx con
 	}).(ActionAzureMethodPtrOutput)
 }
 
+// Required when selecting type AZURE. The Azure org that the workflow belongs to
 func (o ActionAzureMethodOutput) Org() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionAzureMethod) string { return v.Org }).(pulumi.StringOutput)
 }
 
+// Required when selecting type AZURE. The Azure webhook that the workflow belongs to
 func (o ActionAzureMethodOutput) Webhook() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionAzureMethod) string { return v.Webhook }).(pulumi.StringOutput)
 }
@@ -409,6 +423,7 @@ func (o ActionAzureMethodPtrOutput) Elem() ActionAzureMethodOutput {
 	}).(ActionAzureMethodOutput)
 }
 
+// Required when selecting type AZURE. The Azure org that the workflow belongs to
 func (o ActionAzureMethodPtrOutput) Org() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionAzureMethod) *string {
 		if v == nil {
@@ -418,6 +433,7 @@ func (o ActionAzureMethodPtrOutput) Org() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Required when selecting type AZURE. The Azure webhook that the workflow belongs to
 func (o ActionAzureMethodPtrOutput) Webhook() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionAzureMethod) *string {
 		if v == nil {
@@ -428,12 +444,18 @@ func (o ActionAzureMethodPtrOutput) Webhook() pulumi.StringPtrOutput {
 }
 
 type ActionGithubMethod struct {
-	OmitPayload          *bool  `pulumi:"omitPayload"`
-	OmitUserInputs       *bool  `pulumi:"omitUserInputs"`
-	Org                  string `pulumi:"org"`
-	Repo                 string `pulumi:"repo"`
-	ReportWorkflowStatus *bool  `pulumi:"reportWorkflowStatus"`
-	Workflow             string `pulumi:"workflow"`
+	// Omit the payload when invoking the action
+	OmitPayload *bool `pulumi:"omitPayload"`
+	// Omit the user inputs when invoking the action
+	OmitUserInputs *bool `pulumi:"omitUserInputs"`
+	// Required when selecting type GITHUB. The GitHub org that the workflow belongs to
+	Org string `pulumi:"org"`
+	// Required when selecting type GITHUB. The GitHub repo that the workflow belongs to
+	Repo string `pulumi:"repo"`
+	// Report the workflow status when invoking the action
+	ReportWorkflowStatus *bool `pulumi:"reportWorkflowStatus"`
+	// The GitHub workflow that the action belongs to
+	Workflow string `pulumi:"workflow"`
 }
 
 // ActionGithubMethodInput is an input type that accepts ActionGithubMethodArgs and ActionGithubMethodOutput values.
@@ -448,12 +470,18 @@ type ActionGithubMethodInput interface {
 }
 
 type ActionGithubMethodArgs struct {
-	OmitPayload          pulumi.BoolPtrInput `pulumi:"omitPayload"`
-	OmitUserInputs       pulumi.BoolPtrInput `pulumi:"omitUserInputs"`
-	Org                  pulumi.StringInput  `pulumi:"org"`
-	Repo                 pulumi.StringInput  `pulumi:"repo"`
+	// Omit the payload when invoking the action
+	OmitPayload pulumi.BoolPtrInput `pulumi:"omitPayload"`
+	// Omit the user inputs when invoking the action
+	OmitUserInputs pulumi.BoolPtrInput `pulumi:"omitUserInputs"`
+	// Required when selecting type GITHUB. The GitHub org that the workflow belongs to
+	Org pulumi.StringInput `pulumi:"org"`
+	// Required when selecting type GITHUB. The GitHub repo that the workflow belongs to
+	Repo pulumi.StringInput `pulumi:"repo"`
+	// Report the workflow status when invoking the action
 	ReportWorkflowStatus pulumi.BoolPtrInput `pulumi:"reportWorkflowStatus"`
-	Workflow             pulumi.StringInput  `pulumi:"workflow"`
+	// The GitHub workflow that the action belongs to
+	Workflow pulumi.StringInput `pulumi:"workflow"`
 }
 
 func (ActionGithubMethodArgs) ElementType() reflect.Type {
@@ -533,26 +561,32 @@ func (o ActionGithubMethodOutput) ToActionGithubMethodPtrOutputWithContext(ctx c
 	}).(ActionGithubMethodPtrOutput)
 }
 
+// Omit the payload when invoking the action
 func (o ActionGithubMethodOutput) OmitPayload() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionGithubMethod) *bool { return v.OmitPayload }).(pulumi.BoolPtrOutput)
 }
 
+// Omit the user inputs when invoking the action
 func (o ActionGithubMethodOutput) OmitUserInputs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionGithubMethod) *bool { return v.OmitUserInputs }).(pulumi.BoolPtrOutput)
 }
 
+// Required when selecting type GITHUB. The GitHub org that the workflow belongs to
 func (o ActionGithubMethodOutput) Org() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionGithubMethod) string { return v.Org }).(pulumi.StringOutput)
 }
 
+// Required when selecting type GITHUB. The GitHub repo that the workflow belongs to
 func (o ActionGithubMethodOutput) Repo() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionGithubMethod) string { return v.Repo }).(pulumi.StringOutput)
 }
 
+// Report the workflow status when invoking the action
 func (o ActionGithubMethodOutput) ReportWorkflowStatus() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionGithubMethod) *bool { return v.ReportWorkflowStatus }).(pulumi.BoolPtrOutput)
 }
 
+// The GitHub workflow that the action belongs to
 func (o ActionGithubMethodOutput) Workflow() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionGithubMethod) string { return v.Workflow }).(pulumi.StringOutput)
 }
@@ -581,6 +615,7 @@ func (o ActionGithubMethodPtrOutput) Elem() ActionGithubMethodOutput {
 	}).(ActionGithubMethodOutput)
 }
 
+// Omit the payload when invoking the action
 func (o ActionGithubMethodPtrOutput) OmitPayload() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ActionGithubMethod) *bool {
 		if v == nil {
@@ -590,6 +625,7 @@ func (o ActionGithubMethodPtrOutput) OmitPayload() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Omit the user inputs when invoking the action
 func (o ActionGithubMethodPtrOutput) OmitUserInputs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ActionGithubMethod) *bool {
 		if v == nil {
@@ -599,6 +635,7 @@ func (o ActionGithubMethodPtrOutput) OmitUserInputs() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Required when selecting type GITHUB. The GitHub org that the workflow belongs to
 func (o ActionGithubMethodPtrOutput) Org() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionGithubMethod) *string {
 		if v == nil {
@@ -608,6 +645,7 @@ func (o ActionGithubMethodPtrOutput) Org() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Required when selecting type GITHUB. The GitHub repo that the workflow belongs to
 func (o ActionGithubMethodPtrOutput) Repo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionGithubMethod) *string {
 		if v == nil {
@@ -617,6 +655,7 @@ func (o ActionGithubMethodPtrOutput) Repo() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Report the workflow status when invoking the action
 func (o ActionGithubMethodPtrOutput) ReportWorkflowStatus() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ActionGithubMethod) *bool {
 		if v == nil {
@@ -626,6 +665,7 @@ func (o ActionGithubMethodPtrOutput) ReportWorkflowStatus() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The GitHub workflow that the action belongs to
 func (o ActionGithubMethodPtrOutput) Workflow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionGithubMethod) *string {
 		if v == nil {
@@ -636,12 +676,18 @@ func (o ActionGithubMethodPtrOutput) Workflow() pulumi.StringPtrOutput {
 }
 
 type ActionGitlabMethod struct {
-	Agent          *bool   `pulumi:"agent"`
-	DefaultRef     *string `pulumi:"defaultRef"`
-	GroupName      string  `pulumi:"groupName"`
-	OmitPayload    *bool   `pulumi:"omitPayload"`
-	OmitUserInputs *bool   `pulumi:"omitUserInputs"`
-	ProjectName    string  `pulumi:"projectName"`
+	// Use the agent to invoke the action
+	Agent *bool `pulumi:"agent"`
+	// The default ref of the action
+	DefaultRef *string `pulumi:"defaultRef"`
+	// Required when selecting type GITLAB. The GitLab group name that the workflow belongs to
+	GroupName string `pulumi:"groupName"`
+	// Omit the payload when invoking the action
+	OmitPayload *bool `pulumi:"omitPayload"`
+	// Omit the user inputs when invoking the action
+	OmitUserInputs *bool `pulumi:"omitUserInputs"`
+	// Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
+	ProjectName string `pulumi:"projectName"`
 }
 
 // ActionGitlabMethodInput is an input type that accepts ActionGitlabMethodArgs and ActionGitlabMethodOutput values.
@@ -656,12 +702,18 @@ type ActionGitlabMethodInput interface {
 }
 
 type ActionGitlabMethodArgs struct {
-	Agent          pulumi.BoolPtrInput   `pulumi:"agent"`
-	DefaultRef     pulumi.StringPtrInput `pulumi:"defaultRef"`
-	GroupName      pulumi.StringInput    `pulumi:"groupName"`
-	OmitPayload    pulumi.BoolPtrInput   `pulumi:"omitPayload"`
-	OmitUserInputs pulumi.BoolPtrInput   `pulumi:"omitUserInputs"`
-	ProjectName    pulumi.StringInput    `pulumi:"projectName"`
+	// Use the agent to invoke the action
+	Agent pulumi.BoolPtrInput `pulumi:"agent"`
+	// The default ref of the action
+	DefaultRef pulumi.StringPtrInput `pulumi:"defaultRef"`
+	// Required when selecting type GITLAB. The GitLab group name that the workflow belongs to
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// Omit the payload when invoking the action
+	OmitPayload pulumi.BoolPtrInput `pulumi:"omitPayload"`
+	// Omit the user inputs when invoking the action
+	OmitUserInputs pulumi.BoolPtrInput `pulumi:"omitUserInputs"`
+	// Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
+	ProjectName pulumi.StringInput `pulumi:"projectName"`
 }
 
 func (ActionGitlabMethodArgs) ElementType() reflect.Type {
@@ -741,26 +793,32 @@ func (o ActionGitlabMethodOutput) ToActionGitlabMethodPtrOutputWithContext(ctx c
 	}).(ActionGitlabMethodPtrOutput)
 }
 
+// Use the agent to invoke the action
 func (o ActionGitlabMethodOutput) Agent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionGitlabMethod) *bool { return v.Agent }).(pulumi.BoolPtrOutput)
 }
 
+// The default ref of the action
 func (o ActionGitlabMethodOutput) DefaultRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionGitlabMethod) *string { return v.DefaultRef }).(pulumi.StringPtrOutput)
 }
 
+// Required when selecting type GITLAB. The GitLab group name that the workflow belongs to
 func (o ActionGitlabMethodOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionGitlabMethod) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
+// Omit the payload when invoking the action
 func (o ActionGitlabMethodOutput) OmitPayload() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionGitlabMethod) *bool { return v.OmitPayload }).(pulumi.BoolPtrOutput)
 }
 
+// Omit the user inputs when invoking the action
 func (o ActionGitlabMethodOutput) OmitUserInputs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionGitlabMethod) *bool { return v.OmitUserInputs }).(pulumi.BoolPtrOutput)
 }
 
+// Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
 func (o ActionGitlabMethodOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionGitlabMethod) string { return v.ProjectName }).(pulumi.StringOutput)
 }
@@ -789,6 +847,7 @@ func (o ActionGitlabMethodPtrOutput) Elem() ActionGitlabMethodOutput {
 	}).(ActionGitlabMethodOutput)
 }
 
+// Use the agent to invoke the action
 func (o ActionGitlabMethodPtrOutput) Agent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ActionGitlabMethod) *bool {
 		if v == nil {
@@ -798,6 +857,7 @@ func (o ActionGitlabMethodPtrOutput) Agent() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The default ref of the action
 func (o ActionGitlabMethodPtrOutput) DefaultRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionGitlabMethod) *string {
 		if v == nil {
@@ -807,6 +867,7 @@ func (o ActionGitlabMethodPtrOutput) DefaultRef() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Required when selecting type GITLAB. The GitLab group name that the workflow belongs to
 func (o ActionGitlabMethodPtrOutput) GroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionGitlabMethod) *string {
 		if v == nil {
@@ -816,6 +877,7 @@ func (o ActionGitlabMethodPtrOutput) GroupName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Omit the payload when invoking the action
 func (o ActionGitlabMethodPtrOutput) OmitPayload() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ActionGitlabMethod) *bool {
 		if v == nil {
@@ -825,6 +887,7 @@ func (o ActionGitlabMethodPtrOutput) OmitPayload() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Omit the user inputs when invoking the action
 func (o ActionGitlabMethodPtrOutput) OmitUserInputs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ActionGitlabMethod) *bool {
 		if v == nil {
@@ -834,6 +897,7 @@ func (o ActionGitlabMethodPtrOutput) OmitUserInputs() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
 func (o ActionGitlabMethodPtrOutput) ProjectName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionGitlabMethod) *string {
 		if v == nil {
@@ -962,8 +1026,10 @@ func (o ActionKafkaMethodPtrOutput) Elem() ActionKafkaMethodOutput {
 }
 
 type ActionPermissionsPermissions struct {
-	Approve *ActionPermissionsPermissionsApprove `pulumi:"approve"`
-	Execute *ActionPermissionsPermissionsExecute `pulumi:"execute"`
+	// The permission to approve the action's runs
+	Approve ActionPermissionsPermissionsApprove `pulumi:"approve"`
+	// The permission to execute the action
+	Execute ActionPermissionsPermissionsExecute `pulumi:"execute"`
 }
 
 // ActionPermissionsPermissionsInput is an input type that accepts ActionPermissionsPermissionsArgs and ActionPermissionsPermissionsOutput values.
@@ -978,8 +1044,10 @@ type ActionPermissionsPermissionsInput interface {
 }
 
 type ActionPermissionsPermissionsArgs struct {
-	Approve ActionPermissionsPermissionsApprovePtrInput `pulumi:"approve"`
-	Execute ActionPermissionsPermissionsExecutePtrInput `pulumi:"execute"`
+	// The permission to approve the action's runs
+	Approve ActionPermissionsPermissionsApproveInput `pulumi:"approve"`
+	// The permission to execute the action
+	Execute ActionPermissionsPermissionsExecuteInput `pulumi:"execute"`
 }
 
 func (ActionPermissionsPermissionsArgs) ElementType() reflect.Type {
@@ -1059,12 +1127,14 @@ func (o ActionPermissionsPermissionsOutput) ToActionPermissionsPermissionsPtrOut
 	}).(ActionPermissionsPermissionsPtrOutput)
 }
 
-func (o ActionPermissionsPermissionsOutput) Approve() ActionPermissionsPermissionsApprovePtrOutput {
-	return o.ApplyT(func(v ActionPermissionsPermissions) *ActionPermissionsPermissionsApprove { return v.Approve }).(ActionPermissionsPermissionsApprovePtrOutput)
+// The permission to approve the action's runs
+func (o ActionPermissionsPermissionsOutput) Approve() ActionPermissionsPermissionsApproveOutput {
+	return o.ApplyT(func(v ActionPermissionsPermissions) ActionPermissionsPermissionsApprove { return v.Approve }).(ActionPermissionsPermissionsApproveOutput)
 }
 
-func (o ActionPermissionsPermissionsOutput) Execute() ActionPermissionsPermissionsExecutePtrOutput {
-	return o.ApplyT(func(v ActionPermissionsPermissions) *ActionPermissionsPermissionsExecute { return v.Execute }).(ActionPermissionsPermissionsExecutePtrOutput)
+// The permission to execute the action
+func (o ActionPermissionsPermissionsOutput) Execute() ActionPermissionsPermissionsExecuteOutput {
+	return o.ApplyT(func(v ActionPermissionsPermissions) ActionPermissionsPermissionsExecute { return v.Execute }).(ActionPermissionsPermissionsExecuteOutput)
 }
 
 type ActionPermissionsPermissionsPtrOutput struct{ *pulumi.OutputState }
@@ -1091,29 +1161,35 @@ func (o ActionPermissionsPermissionsPtrOutput) Elem() ActionPermissionsPermissio
 	}).(ActionPermissionsPermissionsOutput)
 }
 
+// The permission to approve the action's runs
 func (o ActionPermissionsPermissionsPtrOutput) Approve() ActionPermissionsPermissionsApprovePtrOutput {
 	return o.ApplyT(func(v *ActionPermissionsPermissions) *ActionPermissionsPermissionsApprove {
 		if v == nil {
 			return nil
 		}
-		return v.Approve
+		return &v.Approve
 	}).(ActionPermissionsPermissionsApprovePtrOutput)
 }
 
+// The permission to execute the action
 func (o ActionPermissionsPermissionsPtrOutput) Execute() ActionPermissionsPermissionsExecutePtrOutput {
 	return o.ApplyT(func(v *ActionPermissionsPermissions) *ActionPermissionsPermissionsExecute {
 		if v == nil {
 			return nil
 		}
-		return v.Execute
+		return &v.Execute
 	}).(ActionPermissionsPermissionsExecutePtrOutput)
 }
 
 type ActionPermissionsPermissionsApprove struct {
-	Policy *string  `pulumi:"policy"`
-	Roles  []string `pulumi:"roles"`
-	Teams  []string `pulumi:"teams"`
-	Users  []string `pulumi:"users"`
+	// The policy to use for approval
+	Policy *string `pulumi:"policy"`
+	// The roles with approval permission
+	Roles []string `pulumi:"roles"`
+	// The teams with approval permission
+	Teams []string `pulumi:"teams"`
+	// The users with approval permission
+	Users []string `pulumi:"users"`
 }
 
 // ActionPermissionsPermissionsApproveInput is an input type that accepts ActionPermissionsPermissionsApproveArgs and ActionPermissionsPermissionsApproveOutput values.
@@ -1128,10 +1204,14 @@ type ActionPermissionsPermissionsApproveInput interface {
 }
 
 type ActionPermissionsPermissionsApproveArgs struct {
-	Policy pulumi.StringPtrInput   `pulumi:"policy"`
-	Roles  pulumi.StringArrayInput `pulumi:"roles"`
-	Teams  pulumi.StringArrayInput `pulumi:"teams"`
-	Users  pulumi.StringArrayInput `pulumi:"users"`
+	// The policy to use for approval
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+	// The roles with approval permission
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
+	// The teams with approval permission
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
+	// The users with approval permission
+	Users pulumi.StringArrayInput `pulumi:"users"`
 }
 
 func (ActionPermissionsPermissionsApproveArgs) ElementType() reflect.Type {
@@ -1211,18 +1291,22 @@ func (o ActionPermissionsPermissionsApproveOutput) ToActionPermissionsPermission
 	}).(ActionPermissionsPermissionsApprovePtrOutput)
 }
 
+// The policy to use for approval
 func (o ActionPermissionsPermissionsApproveOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionPermissionsPermissionsApprove) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
+// The roles with approval permission
 func (o ActionPermissionsPermissionsApproveOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ActionPermissionsPermissionsApprove) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
+// The teams with approval permission
 func (o ActionPermissionsPermissionsApproveOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ActionPermissionsPermissionsApprove) []string { return v.Teams }).(pulumi.StringArrayOutput)
 }
 
+// The users with approval permission
 func (o ActionPermissionsPermissionsApproveOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ActionPermissionsPermissionsApprove) []string { return v.Users }).(pulumi.StringArrayOutput)
 }
@@ -1251,6 +1335,7 @@ func (o ActionPermissionsPermissionsApprovePtrOutput) Elem() ActionPermissionsPe
 	}).(ActionPermissionsPermissionsApproveOutput)
 }
 
+// The policy to use for approval
 func (o ActionPermissionsPermissionsApprovePtrOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionPermissionsPermissionsApprove) *string {
 		if v == nil {
@@ -1260,6 +1345,7 @@ func (o ActionPermissionsPermissionsApprovePtrOutput) Policy() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// The roles with approval permission
 func (o ActionPermissionsPermissionsApprovePtrOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ActionPermissionsPermissionsApprove) []string {
 		if v == nil {
@@ -1269,6 +1355,7 @@ func (o ActionPermissionsPermissionsApprovePtrOutput) Roles() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+// The teams with approval permission
 func (o ActionPermissionsPermissionsApprovePtrOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ActionPermissionsPermissionsApprove) []string {
 		if v == nil {
@@ -1278,6 +1365,7 @@ func (o ActionPermissionsPermissionsApprovePtrOutput) Teams() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+// The users with approval permission
 func (o ActionPermissionsPermissionsApprovePtrOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ActionPermissionsPermissionsApprove) []string {
 		if v == nil {
@@ -1288,11 +1376,16 @@ func (o ActionPermissionsPermissionsApprovePtrOutput) Users() pulumi.StringArray
 }
 
 type ActionPermissionsPermissionsExecute struct {
-	OwnedByTeam *bool    `pulumi:"ownedByTeam"`
-	Policy      *string  `pulumi:"policy"`
-	Roles       []string `pulumi:"roles"`
-	Teams       []string `pulumi:"teams"`
-	Users       []string `pulumi:"users"`
+	// Give execution permission to the teams who own the entity
+	OwnedByTeam *bool `pulumi:"ownedByTeam"`
+	// The policy to use for execution
+	Policy *string `pulumi:"policy"`
+	// The roles with execution permission
+	Roles []string `pulumi:"roles"`
+	// The teams with execution permission
+	Teams []string `pulumi:"teams"`
+	// The users with execution permission
+	Users []string `pulumi:"users"`
 }
 
 // ActionPermissionsPermissionsExecuteInput is an input type that accepts ActionPermissionsPermissionsExecuteArgs and ActionPermissionsPermissionsExecuteOutput values.
@@ -1307,11 +1400,16 @@ type ActionPermissionsPermissionsExecuteInput interface {
 }
 
 type ActionPermissionsPermissionsExecuteArgs struct {
-	OwnedByTeam pulumi.BoolPtrInput     `pulumi:"ownedByTeam"`
-	Policy      pulumi.StringPtrInput   `pulumi:"policy"`
-	Roles       pulumi.StringArrayInput `pulumi:"roles"`
-	Teams       pulumi.StringArrayInput `pulumi:"teams"`
-	Users       pulumi.StringArrayInput `pulumi:"users"`
+	// Give execution permission to the teams who own the entity
+	OwnedByTeam pulumi.BoolPtrInput `pulumi:"ownedByTeam"`
+	// The policy to use for execution
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+	// The roles with execution permission
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
+	// The teams with execution permission
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
+	// The users with execution permission
+	Users pulumi.StringArrayInput `pulumi:"users"`
 }
 
 func (ActionPermissionsPermissionsExecuteArgs) ElementType() reflect.Type {
@@ -1391,22 +1489,27 @@ func (o ActionPermissionsPermissionsExecuteOutput) ToActionPermissionsPermission
 	}).(ActionPermissionsPermissionsExecutePtrOutput)
 }
 
+// Give execution permission to the teams who own the entity
 func (o ActionPermissionsPermissionsExecuteOutput) OwnedByTeam() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionPermissionsPermissionsExecute) *bool { return v.OwnedByTeam }).(pulumi.BoolPtrOutput)
 }
 
+// The policy to use for execution
 func (o ActionPermissionsPermissionsExecuteOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionPermissionsPermissionsExecute) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
+// The roles with execution permission
 func (o ActionPermissionsPermissionsExecuteOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ActionPermissionsPermissionsExecute) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
+// The teams with execution permission
 func (o ActionPermissionsPermissionsExecuteOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ActionPermissionsPermissionsExecute) []string { return v.Teams }).(pulumi.StringArrayOutput)
 }
 
+// The users with execution permission
 func (o ActionPermissionsPermissionsExecuteOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ActionPermissionsPermissionsExecute) []string { return v.Users }).(pulumi.StringArrayOutput)
 }
@@ -1435,6 +1538,7 @@ func (o ActionPermissionsPermissionsExecutePtrOutput) Elem() ActionPermissionsPe
 	}).(ActionPermissionsPermissionsExecuteOutput)
 }
 
+// Give execution permission to the teams who own the entity
 func (o ActionPermissionsPermissionsExecutePtrOutput) OwnedByTeam() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ActionPermissionsPermissionsExecute) *bool {
 		if v == nil {
@@ -1444,6 +1548,7 @@ func (o ActionPermissionsPermissionsExecutePtrOutput) OwnedByTeam() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The policy to use for execution
 func (o ActionPermissionsPermissionsExecutePtrOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionPermissionsPermissionsExecute) *string {
 		if v == nil {
@@ -1453,6 +1558,7 @@ func (o ActionPermissionsPermissionsExecutePtrOutput) Policy() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// The roles with execution permission
 func (o ActionPermissionsPermissionsExecutePtrOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ActionPermissionsPermissionsExecute) []string {
 		if v == nil {
@@ -1462,6 +1568,7 @@ func (o ActionPermissionsPermissionsExecutePtrOutput) Roles() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+// The teams with execution permission
 func (o ActionPermissionsPermissionsExecutePtrOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ActionPermissionsPermissionsExecute) []string {
 		if v == nil {
@@ -1471,6 +1578,7 @@ func (o ActionPermissionsPermissionsExecutePtrOutput) Teams() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+// The users with execution permission
 func (o ActionPermissionsPermissionsExecutePtrOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ActionPermissionsPermissionsExecute) []string {
 		if v == nil {
@@ -1481,11 +1589,16 @@ func (o ActionPermissionsPermissionsExecutePtrOutput) Users() pulumi.StringArray
 }
 
 type ActionUserProperties struct {
-	ArrayProps   map[string]ActionUserPropertiesArrayProps   `pulumi:"arrayProps"`
+	// The array property of the action
+	ArrayProps map[string]ActionUserPropertiesArrayProps `pulumi:"arrayProps"`
+	// The boolean property of the action
 	BooleanProps map[string]ActionUserPropertiesBooleanProps `pulumi:"booleanProps"`
-	NumberProps  map[string]ActionUserPropertiesNumberProps  `pulumi:"numberProps"`
-	ObjectProps  map[string]ActionUserPropertiesObjectProps  `pulumi:"objectProps"`
-	StringProps  map[string]ActionUserPropertiesStringProps  `pulumi:"stringProps"`
+	// The number property of the action
+	NumberProps map[string]ActionUserPropertiesNumberProps `pulumi:"numberProps"`
+	// The object property of the action
+	ObjectProps map[string]ActionUserPropertiesObjectProps `pulumi:"objectProps"`
+	// The string property of the action
+	StringProps map[string]ActionUserPropertiesStringProps `pulumi:"stringProps"`
 }
 
 // ActionUserPropertiesInput is an input type that accepts ActionUserPropertiesArgs and ActionUserPropertiesOutput values.
@@ -1500,11 +1613,16 @@ type ActionUserPropertiesInput interface {
 }
 
 type ActionUserPropertiesArgs struct {
-	ArrayProps   ActionUserPropertiesArrayPropsMapInput   `pulumi:"arrayProps"`
+	// The array property of the action
+	ArrayProps ActionUserPropertiesArrayPropsMapInput `pulumi:"arrayProps"`
+	// The boolean property of the action
 	BooleanProps ActionUserPropertiesBooleanPropsMapInput `pulumi:"booleanProps"`
-	NumberProps  ActionUserPropertiesNumberPropsMapInput  `pulumi:"numberProps"`
-	ObjectProps  ActionUserPropertiesObjectPropsMapInput  `pulumi:"objectProps"`
-	StringProps  ActionUserPropertiesStringPropsMapInput  `pulumi:"stringProps"`
+	// The number property of the action
+	NumberProps ActionUserPropertiesNumberPropsMapInput `pulumi:"numberProps"`
+	// The object property of the action
+	ObjectProps ActionUserPropertiesObjectPropsMapInput `pulumi:"objectProps"`
+	// The string property of the action
+	StringProps ActionUserPropertiesStringPropsMapInput `pulumi:"stringProps"`
 }
 
 func (ActionUserPropertiesArgs) ElementType() reflect.Type {
@@ -1584,22 +1702,27 @@ func (o ActionUserPropertiesOutput) ToActionUserPropertiesPtrOutputWithContext(c
 	}).(ActionUserPropertiesPtrOutput)
 }
 
+// The array property of the action
 func (o ActionUserPropertiesOutput) ArrayProps() ActionUserPropertiesArrayPropsMapOutput {
 	return o.ApplyT(func(v ActionUserProperties) map[string]ActionUserPropertiesArrayProps { return v.ArrayProps }).(ActionUserPropertiesArrayPropsMapOutput)
 }
 
+// The boolean property of the action
 func (o ActionUserPropertiesOutput) BooleanProps() ActionUserPropertiesBooleanPropsMapOutput {
 	return o.ApplyT(func(v ActionUserProperties) map[string]ActionUserPropertiesBooleanProps { return v.BooleanProps }).(ActionUserPropertiesBooleanPropsMapOutput)
 }
 
+// The number property of the action
 func (o ActionUserPropertiesOutput) NumberProps() ActionUserPropertiesNumberPropsMapOutput {
 	return o.ApplyT(func(v ActionUserProperties) map[string]ActionUserPropertiesNumberProps { return v.NumberProps }).(ActionUserPropertiesNumberPropsMapOutput)
 }
 
+// The object property of the action
 func (o ActionUserPropertiesOutput) ObjectProps() ActionUserPropertiesObjectPropsMapOutput {
 	return o.ApplyT(func(v ActionUserProperties) map[string]ActionUserPropertiesObjectProps { return v.ObjectProps }).(ActionUserPropertiesObjectPropsMapOutput)
 }
 
+// The string property of the action
 func (o ActionUserPropertiesOutput) StringProps() ActionUserPropertiesStringPropsMapOutput {
 	return o.ApplyT(func(v ActionUserProperties) map[string]ActionUserPropertiesStringProps { return v.StringProps }).(ActionUserPropertiesStringPropsMapOutput)
 }
@@ -1628,6 +1751,7 @@ func (o ActionUserPropertiesPtrOutput) Elem() ActionUserPropertiesOutput {
 	}).(ActionUserPropertiesOutput)
 }
 
+// The array property of the action
 func (o ActionUserPropertiesPtrOutput) ArrayProps() ActionUserPropertiesArrayPropsMapOutput {
 	return o.ApplyT(func(v *ActionUserProperties) map[string]ActionUserPropertiesArrayProps {
 		if v == nil {
@@ -1637,6 +1761,7 @@ func (o ActionUserPropertiesPtrOutput) ArrayProps() ActionUserPropertiesArrayPro
 	}).(ActionUserPropertiesArrayPropsMapOutput)
 }
 
+// The boolean property of the action
 func (o ActionUserPropertiesPtrOutput) BooleanProps() ActionUserPropertiesBooleanPropsMapOutput {
 	return o.ApplyT(func(v *ActionUserProperties) map[string]ActionUserPropertiesBooleanProps {
 		if v == nil {
@@ -1646,6 +1771,7 @@ func (o ActionUserPropertiesPtrOutput) BooleanProps() ActionUserPropertiesBoolea
 	}).(ActionUserPropertiesBooleanPropsMapOutput)
 }
 
+// The number property of the action
 func (o ActionUserPropertiesPtrOutput) NumberProps() ActionUserPropertiesNumberPropsMapOutput {
 	return o.ApplyT(func(v *ActionUserProperties) map[string]ActionUserPropertiesNumberProps {
 		if v == nil {
@@ -1655,6 +1781,7 @@ func (o ActionUserPropertiesPtrOutput) NumberProps() ActionUserPropertiesNumberP
 	}).(ActionUserPropertiesNumberPropsMapOutput)
 }
 
+// The object property of the action
 func (o ActionUserPropertiesPtrOutput) ObjectProps() ActionUserPropertiesObjectPropsMapOutput {
 	return o.ApplyT(func(v *ActionUserProperties) map[string]ActionUserPropertiesObjectProps {
 		if v == nil {
@@ -1664,6 +1791,7 @@ func (o ActionUserPropertiesPtrOutput) ObjectProps() ActionUserPropertiesObjectP
 	}).(ActionUserPropertiesObjectPropsMapOutput)
 }
 
+// The string property of the action
 func (o ActionUserPropertiesPtrOutput) StringProps() ActionUserPropertiesStringPropsMapOutput {
 	return o.ApplyT(func(v *ActionUserProperties) map[string]ActionUserPropertiesStringProps {
 		if v == nil {
@@ -1674,21 +1802,36 @@ func (o ActionUserPropertiesPtrOutput) StringProps() ActionUserPropertiesStringP
 }
 
 type ActionUserPropertiesArrayProps struct {
-	BooleanItems   *ActionUserPropertiesArrayPropsBooleanItems `pulumi:"booleanItems"`
-	Dataset        *ActionUserPropertiesArrayPropsDataset      `pulumi:"dataset"`
-	DefaultJqQuery *string                                     `pulumi:"defaultJqQuery"`
-	DependsOns     []string                                    `pulumi:"dependsOns"`
-	Description    *string                                     `pulumi:"description"`
-	Icon           *string                                     `pulumi:"icon"`
-	MaxItems       *int                                        `pulumi:"maxItems"`
-	MinItems       *int                                        `pulumi:"minItems"`
-	NumberItems    *ActionUserPropertiesArrayPropsNumberItems  `pulumi:"numberItems"`
-	ObjectItems    *ActionUserPropertiesArrayPropsObjectItems  `pulumi:"objectItems"`
-	Required       *bool                                       `pulumi:"required"`
-	StringItems    *ActionUserPropertiesArrayPropsStringItems  `pulumi:"stringItems"`
-	Title          *string                                     `pulumi:"title"`
-	Visible        *bool                                       `pulumi:"visible"`
-	VisibleJqQuery *string                                     `pulumi:"visibleJqQuery"`
+	// The items of the array property
+	BooleanItems *ActionUserPropertiesArrayPropsBooleanItems `pulumi:"booleanItems"`
+	// The dataset of the property
+	Dataset *ActionUserPropertiesArrayPropsDataset `pulumi:"dataset"`
+	// The default jq query of the array property
+	DefaultJqQuery *string `pulumi:"defaultJqQuery"`
+	// The properties that this property depends on
+	DependsOns []string `pulumi:"dependsOns"`
+	// The description of the property
+	Description *string `pulumi:"description"`
+	// The icon of the property
+	Icon *string `pulumi:"icon"`
+	// The max items of the array property
+	MaxItems *int `pulumi:"maxItems"`
+	// The min items of the array property
+	MinItems *int `pulumi:"minItems"`
+	// The items of the array property
+	NumberItems *ActionUserPropertiesArrayPropsNumberItems `pulumi:"numberItems"`
+	// The items of the array property
+	ObjectItems *ActionUserPropertiesArrayPropsObjectItems `pulumi:"objectItems"`
+	// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
+	Required *bool `pulumi:"required"`
+	// The items of the array property
+	StringItems *ActionUserPropertiesArrayPropsStringItems `pulumi:"stringItems"`
+	// The title of the property
+	Title *string `pulumi:"title"`
+	// The visibility of the array property
+	Visible *bool `pulumi:"visible"`
+	// The visibility condition jq query of the array property
+	VisibleJqQuery *string `pulumi:"visibleJqQuery"`
 }
 
 // ActionUserPropertiesArrayPropsInput is an input type that accepts ActionUserPropertiesArrayPropsArgs and ActionUserPropertiesArrayPropsOutput values.
@@ -1703,21 +1846,36 @@ type ActionUserPropertiesArrayPropsInput interface {
 }
 
 type ActionUserPropertiesArrayPropsArgs struct {
-	BooleanItems   ActionUserPropertiesArrayPropsBooleanItemsPtrInput `pulumi:"booleanItems"`
-	Dataset        ActionUserPropertiesArrayPropsDatasetPtrInput      `pulumi:"dataset"`
-	DefaultJqQuery pulumi.StringPtrInput                              `pulumi:"defaultJqQuery"`
-	DependsOns     pulumi.StringArrayInput                            `pulumi:"dependsOns"`
-	Description    pulumi.StringPtrInput                              `pulumi:"description"`
-	Icon           pulumi.StringPtrInput                              `pulumi:"icon"`
-	MaxItems       pulumi.IntPtrInput                                 `pulumi:"maxItems"`
-	MinItems       pulumi.IntPtrInput                                 `pulumi:"minItems"`
-	NumberItems    ActionUserPropertiesArrayPropsNumberItemsPtrInput  `pulumi:"numberItems"`
-	ObjectItems    ActionUserPropertiesArrayPropsObjectItemsPtrInput  `pulumi:"objectItems"`
-	Required       pulumi.BoolPtrInput                                `pulumi:"required"`
-	StringItems    ActionUserPropertiesArrayPropsStringItemsPtrInput  `pulumi:"stringItems"`
-	Title          pulumi.StringPtrInput                              `pulumi:"title"`
-	Visible        pulumi.BoolPtrInput                                `pulumi:"visible"`
-	VisibleJqQuery pulumi.StringPtrInput                              `pulumi:"visibleJqQuery"`
+	// The items of the array property
+	BooleanItems ActionUserPropertiesArrayPropsBooleanItemsPtrInput `pulumi:"booleanItems"`
+	// The dataset of the property
+	Dataset ActionUserPropertiesArrayPropsDatasetPtrInput `pulumi:"dataset"`
+	// The default jq query of the array property
+	DefaultJqQuery pulumi.StringPtrInput `pulumi:"defaultJqQuery"`
+	// The properties that this property depends on
+	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
+	// The description of the property
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The icon of the property
+	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// The max items of the array property
+	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	// The min items of the array property
+	MinItems pulumi.IntPtrInput `pulumi:"minItems"`
+	// The items of the array property
+	NumberItems ActionUserPropertiesArrayPropsNumberItemsPtrInput `pulumi:"numberItems"`
+	// The items of the array property
+	ObjectItems ActionUserPropertiesArrayPropsObjectItemsPtrInput `pulumi:"objectItems"`
+	// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// The items of the array property
+	StringItems ActionUserPropertiesArrayPropsStringItemsPtrInput `pulumi:"stringItems"`
+	// The title of the property
+	Title pulumi.StringPtrInput `pulumi:"title"`
+	// The visibility of the array property
+	Visible pulumi.BoolPtrInput `pulumi:"visible"`
+	// The visibility condition jq query of the array property
+	VisibleJqQuery pulumi.StringPtrInput `pulumi:"visibleJqQuery"`
 }
 
 func (ActionUserPropertiesArrayPropsArgs) ElementType() reflect.Type {
@@ -1771,70 +1929,85 @@ func (o ActionUserPropertiesArrayPropsOutput) ToActionUserPropertiesArrayPropsOu
 	return o
 }
 
+// The items of the array property
 func (o ActionUserPropertiesArrayPropsOutput) BooleanItems() ActionUserPropertiesArrayPropsBooleanItemsPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *ActionUserPropertiesArrayPropsBooleanItems {
 		return v.BooleanItems
 	}).(ActionUserPropertiesArrayPropsBooleanItemsPtrOutput)
 }
 
+// The dataset of the property
 func (o ActionUserPropertiesArrayPropsOutput) Dataset() ActionUserPropertiesArrayPropsDatasetPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *ActionUserPropertiesArrayPropsDataset { return v.Dataset }).(ActionUserPropertiesArrayPropsDatasetPtrOutput)
 }
 
+// The default jq query of the array property
 func (o ActionUserPropertiesArrayPropsOutput) DefaultJqQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *string { return v.DefaultJqQuery }).(pulumi.StringPtrOutput)
 }
 
+// The properties that this property depends on
 func (o ActionUserPropertiesArrayPropsOutput) DependsOns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayProps) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
 }
 
+// The description of the property
 func (o ActionUserPropertiesArrayPropsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The icon of the property
 func (o ActionUserPropertiesArrayPropsOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
+// The max items of the array property
 func (o ActionUserPropertiesArrayPropsOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
+// The min items of the array property
 func (o ActionUserPropertiesArrayPropsOutput) MinItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *int { return v.MinItems }).(pulumi.IntPtrOutput)
 }
 
+// The items of the array property
 func (o ActionUserPropertiesArrayPropsOutput) NumberItems() ActionUserPropertiesArrayPropsNumberItemsPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *ActionUserPropertiesArrayPropsNumberItems {
 		return v.NumberItems
 	}).(ActionUserPropertiesArrayPropsNumberItemsPtrOutput)
 }
 
+// The items of the array property
 func (o ActionUserPropertiesArrayPropsOutput) ObjectItems() ActionUserPropertiesArrayPropsObjectItemsPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *ActionUserPropertiesArrayPropsObjectItems {
 		return v.ObjectItems
 	}).(ActionUserPropertiesArrayPropsObjectItemsPtrOutput)
 }
 
+// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
 func (o ActionUserPropertiesArrayPropsOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
+// The items of the array property
 func (o ActionUserPropertiesArrayPropsOutput) StringItems() ActionUserPropertiesArrayPropsStringItemsPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *ActionUserPropertiesArrayPropsStringItems {
 		return v.StringItems
 	}).(ActionUserPropertiesArrayPropsStringItemsPtrOutput)
 }
 
+// The title of the property
 func (o ActionUserPropertiesArrayPropsOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
+// The visibility of the array property
 func (o ActionUserPropertiesArrayPropsOutput) Visible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
 }
 
+// The visibility condition jq query of the array property
 func (o ActionUserPropertiesArrayPropsOutput) VisibleJqQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *string { return v.VisibleJqQuery }).(pulumi.StringPtrOutput)
 }
@@ -1860,6 +2033,7 @@ func (o ActionUserPropertiesArrayPropsMapOutput) MapIndex(k pulumi.StringInput) 
 }
 
 type ActionUserPropertiesArrayPropsBooleanItems struct {
+	// The default of the items
 	Defaults []bool `pulumi:"defaults"`
 }
 
@@ -1875,6 +2049,7 @@ type ActionUserPropertiesArrayPropsBooleanItemsInput interface {
 }
 
 type ActionUserPropertiesArrayPropsBooleanItemsArgs struct {
+	// The default of the items
 	Defaults pulumi.BoolArrayInput `pulumi:"defaults"`
 }
 
@@ -1955,6 +2130,7 @@ func (o ActionUserPropertiesArrayPropsBooleanItemsOutput) ToActionUserProperties
 	}).(ActionUserPropertiesArrayPropsBooleanItemsPtrOutput)
 }
 
+// The default of the items
 func (o ActionUserPropertiesArrayPropsBooleanItemsOutput) Defaults() pulumi.BoolArrayOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsBooleanItems) []bool { return v.Defaults }).(pulumi.BoolArrayOutput)
 }
@@ -1983,6 +2159,7 @@ func (o ActionUserPropertiesArrayPropsBooleanItemsPtrOutput) Elem() ActionUserPr
 	}).(ActionUserPropertiesArrayPropsBooleanItemsOutput)
 }
 
+// The default of the items
 func (o ActionUserPropertiesArrayPropsBooleanItemsPtrOutput) Defaults() pulumi.BoolArrayOutput {
 	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsBooleanItems) []bool {
 		if v == nil {
@@ -1993,8 +2170,10 @@ func (o ActionUserPropertiesArrayPropsBooleanItemsPtrOutput) Defaults() pulumi.B
 }
 
 type ActionUserPropertiesArrayPropsDataset struct {
-	Combinator string                                      `pulumi:"combinator"`
-	Rules      []ActionUserPropertiesArrayPropsDatasetRule `pulumi:"rules"`
+	// The combinator of the dataset
+	Combinator string `pulumi:"combinator"`
+	// The rules of the dataset
+	Rules []ActionUserPropertiesArrayPropsDatasetRule `pulumi:"rules"`
 }
 
 // ActionUserPropertiesArrayPropsDatasetInput is an input type that accepts ActionUserPropertiesArrayPropsDatasetArgs and ActionUserPropertiesArrayPropsDatasetOutput values.
@@ -2009,8 +2188,10 @@ type ActionUserPropertiesArrayPropsDatasetInput interface {
 }
 
 type ActionUserPropertiesArrayPropsDatasetArgs struct {
-	Combinator pulumi.StringInput                                  `pulumi:"combinator"`
-	Rules      ActionUserPropertiesArrayPropsDatasetRuleArrayInput `pulumi:"rules"`
+	// The combinator of the dataset
+	Combinator pulumi.StringInput `pulumi:"combinator"`
+	// The rules of the dataset
+	Rules ActionUserPropertiesArrayPropsDatasetRuleArrayInput `pulumi:"rules"`
 }
 
 func (ActionUserPropertiesArrayPropsDatasetArgs) ElementType() reflect.Type {
@@ -2090,10 +2271,12 @@ func (o ActionUserPropertiesArrayPropsDatasetOutput) ToActionUserPropertiesArray
 	}).(ActionUserPropertiesArrayPropsDatasetPtrOutput)
 }
 
+// The combinator of the dataset
 func (o ActionUserPropertiesArrayPropsDatasetOutput) Combinator() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsDataset) string { return v.Combinator }).(pulumi.StringOutput)
 }
 
+// The rules of the dataset
 func (o ActionUserPropertiesArrayPropsDatasetOutput) Rules() ActionUserPropertiesArrayPropsDatasetRuleArrayOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsDataset) []ActionUserPropertiesArrayPropsDatasetRule {
 		return v.Rules
@@ -2124,6 +2307,7 @@ func (o ActionUserPropertiesArrayPropsDatasetPtrOutput) Elem() ActionUserPropert
 	}).(ActionUserPropertiesArrayPropsDatasetOutput)
 }
 
+// The combinator of the dataset
 func (o ActionUserPropertiesArrayPropsDatasetPtrOutput) Combinator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsDataset) *string {
 		if v == nil {
@@ -2133,6 +2317,7 @@ func (o ActionUserPropertiesArrayPropsDatasetPtrOutput) Combinator() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// The rules of the dataset
 func (o ActionUserPropertiesArrayPropsDatasetPtrOutput) Rules() ActionUserPropertiesArrayPropsDatasetRuleArrayOutput {
 	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsDataset) []ActionUserPropertiesArrayPropsDatasetRule {
 		if v == nil {
@@ -2143,10 +2328,14 @@ func (o ActionUserPropertiesArrayPropsDatasetPtrOutput) Rules() ActionUserProper
 }
 
 type ActionUserPropertiesArrayPropsDatasetRule struct {
-	Blueprint *string                                        `pulumi:"blueprint"`
-	Operator  string                                         `pulumi:"operator"`
-	Property  *string                                        `pulumi:"property"`
-	Value     ActionUserPropertiesArrayPropsDatasetRuleValue `pulumi:"value"`
+	// The blueprint identifier of the rule
+	Blueprint *string `pulumi:"blueprint"`
+	// The operator of the rule
+	Operator string `pulumi:"operator"`
+	// The property identifier of the rule
+	Property *string `pulumi:"property"`
+	// The value of the rule
+	Value ActionUserPropertiesArrayPropsDatasetRuleValue `pulumi:"value"`
 }
 
 // ActionUserPropertiesArrayPropsDatasetRuleInput is an input type that accepts ActionUserPropertiesArrayPropsDatasetRuleArgs and ActionUserPropertiesArrayPropsDatasetRuleOutput values.
@@ -2161,10 +2350,14 @@ type ActionUserPropertiesArrayPropsDatasetRuleInput interface {
 }
 
 type ActionUserPropertiesArrayPropsDatasetRuleArgs struct {
-	Blueprint pulumi.StringPtrInput                               `pulumi:"blueprint"`
-	Operator  pulumi.StringInput                                  `pulumi:"operator"`
-	Property  pulumi.StringPtrInput                               `pulumi:"property"`
-	Value     ActionUserPropertiesArrayPropsDatasetRuleValueInput `pulumi:"value"`
+	// The blueprint identifier of the rule
+	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
+	// The operator of the rule
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The property identifier of the rule
+	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The value of the rule
+	Value ActionUserPropertiesArrayPropsDatasetRuleValueInput `pulumi:"value"`
 }
 
 func (ActionUserPropertiesArrayPropsDatasetRuleArgs) ElementType() reflect.Type {
@@ -2218,18 +2411,22 @@ func (o ActionUserPropertiesArrayPropsDatasetRuleOutput) ToActionUserPropertiesA
 	return o
 }
 
+// The blueprint identifier of the rule
 func (o ActionUserPropertiesArrayPropsDatasetRuleOutput) Blueprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsDatasetRule) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
 }
 
+// The operator of the rule
 func (o ActionUserPropertiesArrayPropsDatasetRuleOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsDatasetRule) string { return v.Operator }).(pulumi.StringOutput)
 }
 
+// The property identifier of the rule
 func (o ActionUserPropertiesArrayPropsDatasetRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsDatasetRule) *string { return v.Property }).(pulumi.StringPtrOutput)
 }
 
+// The value of the rule
 func (o ActionUserPropertiesArrayPropsDatasetRuleOutput) Value() ActionUserPropertiesArrayPropsDatasetRuleValueOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsDatasetRule) ActionUserPropertiesArrayPropsDatasetRuleValue {
 		return v.Value
@@ -2306,9 +2503,12 @@ func (o ActionUserPropertiesArrayPropsDatasetRuleValueOutput) JqQuery() pulumi.S
 }
 
 type ActionUserPropertiesArrayPropsNumberItems struct {
-	Defaults    []float64 `pulumi:"defaults"`
-	EnumJqQuery *string   `pulumi:"enumJqQuery"`
-	Enums       []float64 `pulumi:"enums"`
+	// The default of the items
+	Defaults []float64 `pulumi:"defaults"`
+	// The enum jq query of the number items
+	EnumJqQuery *string `pulumi:"enumJqQuery"`
+	// The enum of the items
+	Enums []float64 `pulumi:"enums"`
 }
 
 // ActionUserPropertiesArrayPropsNumberItemsInput is an input type that accepts ActionUserPropertiesArrayPropsNumberItemsArgs and ActionUserPropertiesArrayPropsNumberItemsOutput values.
@@ -2323,9 +2523,12 @@ type ActionUserPropertiesArrayPropsNumberItemsInput interface {
 }
 
 type ActionUserPropertiesArrayPropsNumberItemsArgs struct {
-	Defaults    pulumi.Float64ArrayInput `pulumi:"defaults"`
-	EnumJqQuery pulumi.StringPtrInput    `pulumi:"enumJqQuery"`
-	Enums       pulumi.Float64ArrayInput `pulumi:"enums"`
+	// The default of the items
+	Defaults pulumi.Float64ArrayInput `pulumi:"defaults"`
+	// The enum jq query of the number items
+	EnumJqQuery pulumi.StringPtrInput `pulumi:"enumJqQuery"`
+	// The enum of the items
+	Enums pulumi.Float64ArrayInput `pulumi:"enums"`
 }
 
 func (ActionUserPropertiesArrayPropsNumberItemsArgs) ElementType() reflect.Type {
@@ -2405,14 +2608,17 @@ func (o ActionUserPropertiesArrayPropsNumberItemsOutput) ToActionUserPropertiesA
 	}).(ActionUserPropertiesArrayPropsNumberItemsPtrOutput)
 }
 
+// The default of the items
 func (o ActionUserPropertiesArrayPropsNumberItemsOutput) Defaults() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsNumberItems) []float64 { return v.Defaults }).(pulumi.Float64ArrayOutput)
 }
 
+// The enum jq query of the number items
 func (o ActionUserPropertiesArrayPropsNumberItemsOutput) EnumJqQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsNumberItems) *string { return v.EnumJqQuery }).(pulumi.StringPtrOutput)
 }
 
+// The enum of the items
 func (o ActionUserPropertiesArrayPropsNumberItemsOutput) Enums() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsNumberItems) []float64 { return v.Enums }).(pulumi.Float64ArrayOutput)
 }
@@ -2441,6 +2647,7 @@ func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) Elem() ActionUserPro
 	}).(ActionUserPropertiesArrayPropsNumberItemsOutput)
 }
 
+// The default of the items
 func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) Defaults() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsNumberItems) []float64 {
 		if v == nil {
@@ -2450,6 +2657,7 @@ func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) Defaults() pulumi.Fl
 	}).(pulumi.Float64ArrayOutput)
 }
 
+// The enum jq query of the number items
 func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) EnumJqQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsNumberItems) *string {
 		if v == nil {
@@ -2459,6 +2667,7 @@ func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) EnumJqQuery() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// The enum of the items
 func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) Enums() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsNumberItems) []float64 {
 		if v == nil {
@@ -2469,6 +2678,7 @@ func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) Enums() pulumi.Float
 }
 
 type ActionUserPropertiesArrayPropsObjectItems struct {
+	// The default of the items
 	Defaults []map[string]string `pulumi:"defaults"`
 }
 
@@ -2484,6 +2694,7 @@ type ActionUserPropertiesArrayPropsObjectItemsInput interface {
 }
 
 type ActionUserPropertiesArrayPropsObjectItemsArgs struct {
+	// The default of the items
 	Defaults pulumi.StringMapArrayInput `pulumi:"defaults"`
 }
 
@@ -2564,6 +2775,7 @@ func (o ActionUserPropertiesArrayPropsObjectItemsOutput) ToActionUserPropertiesA
 	}).(ActionUserPropertiesArrayPropsObjectItemsPtrOutput)
 }
 
+// The default of the items
 func (o ActionUserPropertiesArrayPropsObjectItemsOutput) Defaults() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsObjectItems) []map[string]string { return v.Defaults }).(pulumi.StringMapArrayOutput)
 }
@@ -2592,6 +2804,7 @@ func (o ActionUserPropertiesArrayPropsObjectItemsPtrOutput) Elem() ActionUserPro
 	}).(ActionUserPropertiesArrayPropsObjectItemsOutput)
 }
 
+// The default of the items
 func (o ActionUserPropertiesArrayPropsObjectItemsPtrOutput) Defaults() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsObjectItems) []map[string]string {
 		if v == nil {
@@ -2602,11 +2815,16 @@ func (o ActionUserPropertiesArrayPropsObjectItemsPtrOutput) Defaults() pulumi.St
 }
 
 type ActionUserPropertiesArrayPropsStringItems struct {
-	Blueprint   *string  `pulumi:"blueprint"`
-	Defaults    []string `pulumi:"defaults"`
-	EnumJqQuery *string  `pulumi:"enumJqQuery"`
-	Enums       []string `pulumi:"enums"`
-	Format      *string  `pulumi:"format"`
+	// The blueprint identifier the property relates to
+	Blueprint *string `pulumi:"blueprint"`
+	// The default of the items
+	Defaults []string `pulumi:"defaults"`
+	// The enum jq query of the string items
+	EnumJqQuery *string `pulumi:"enumJqQuery"`
+	// The enum of the items
+	Enums []string `pulumi:"enums"`
+	// The format of the items
+	Format *string `pulumi:"format"`
 }
 
 // ActionUserPropertiesArrayPropsStringItemsInput is an input type that accepts ActionUserPropertiesArrayPropsStringItemsArgs and ActionUserPropertiesArrayPropsStringItemsOutput values.
@@ -2621,11 +2839,16 @@ type ActionUserPropertiesArrayPropsStringItemsInput interface {
 }
 
 type ActionUserPropertiesArrayPropsStringItemsArgs struct {
-	Blueprint   pulumi.StringPtrInput   `pulumi:"blueprint"`
-	Defaults    pulumi.StringArrayInput `pulumi:"defaults"`
-	EnumJqQuery pulumi.StringPtrInput   `pulumi:"enumJqQuery"`
-	Enums       pulumi.StringArrayInput `pulumi:"enums"`
-	Format      pulumi.StringPtrInput   `pulumi:"format"`
+	// The blueprint identifier the property relates to
+	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
+	// The default of the items
+	Defaults pulumi.StringArrayInput `pulumi:"defaults"`
+	// The enum jq query of the string items
+	EnumJqQuery pulumi.StringPtrInput `pulumi:"enumJqQuery"`
+	// The enum of the items
+	Enums pulumi.StringArrayInput `pulumi:"enums"`
+	// The format of the items
+	Format pulumi.StringPtrInput `pulumi:"format"`
 }
 
 func (ActionUserPropertiesArrayPropsStringItemsArgs) ElementType() reflect.Type {
@@ -2705,22 +2928,27 @@ func (o ActionUserPropertiesArrayPropsStringItemsOutput) ToActionUserPropertiesA
 	}).(ActionUserPropertiesArrayPropsStringItemsPtrOutput)
 }
 
+// The blueprint identifier the property relates to
 func (o ActionUserPropertiesArrayPropsStringItemsOutput) Blueprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsStringItems) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
 }
 
+// The default of the items
 func (o ActionUserPropertiesArrayPropsStringItemsOutput) Defaults() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsStringItems) []string { return v.Defaults }).(pulumi.StringArrayOutput)
 }
 
+// The enum jq query of the string items
 func (o ActionUserPropertiesArrayPropsStringItemsOutput) EnumJqQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsStringItems) *string { return v.EnumJqQuery }).(pulumi.StringPtrOutput)
 }
 
+// The enum of the items
 func (o ActionUserPropertiesArrayPropsStringItemsOutput) Enums() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsStringItems) []string { return v.Enums }).(pulumi.StringArrayOutput)
 }
 
+// The format of the items
 func (o ActionUserPropertiesArrayPropsStringItemsOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsStringItems) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
@@ -2749,6 +2977,7 @@ func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Elem() ActionUserPro
 	}).(ActionUserPropertiesArrayPropsStringItemsOutput)
 }
 
+// The blueprint identifier the property relates to
 func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Blueprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsStringItems) *string {
 		if v == nil {
@@ -2758,6 +2987,7 @@ func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Blueprint() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// The default of the items
 func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Defaults() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsStringItems) []string {
 		if v == nil {
@@ -2767,6 +2997,7 @@ func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Defaults() pulumi.St
 	}).(pulumi.StringArrayOutput)
 }
 
+// The enum jq query of the string items
 func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) EnumJqQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsStringItems) *string {
 		if v == nil {
@@ -2776,6 +3007,7 @@ func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) EnumJqQuery() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// The enum of the items
 func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Enums() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsStringItems) []string {
 		if v == nil {
@@ -2785,6 +3017,7 @@ func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Enums() pulumi.Strin
 	}).(pulumi.StringArrayOutput)
 }
 
+// The format of the items
 func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsStringItems) *string {
 		if v == nil {
@@ -2795,16 +3028,26 @@ func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Format() pulumi.Stri
 }
 
 type ActionUserPropertiesBooleanProps struct {
-	Dataset        *ActionUserPropertiesBooleanPropsDataset `pulumi:"dataset"`
-	Default        *bool                                    `pulumi:"default"`
-	DefaultJqQuery *string                                  `pulumi:"defaultJqQuery"`
-	DependsOns     []string                                 `pulumi:"dependsOns"`
-	Description    *string                                  `pulumi:"description"`
-	Icon           *string                                  `pulumi:"icon"`
-	Required       *bool                                    `pulumi:"required"`
-	Title          *string                                  `pulumi:"title"`
-	Visible        *bool                                    `pulumi:"visible"`
-	VisibleJqQuery *string                                  `pulumi:"visibleJqQuery"`
+	// The dataset of the property
+	Dataset *ActionUserPropertiesBooleanPropsDataset `pulumi:"dataset"`
+	// The default of the boolean property
+	Default *bool `pulumi:"default"`
+	// The default jq query of the boolean property
+	DefaultJqQuery *string `pulumi:"defaultJqQuery"`
+	// The properties that this property depends on
+	DependsOns []string `pulumi:"dependsOns"`
+	// The description of the property
+	Description *string `pulumi:"description"`
+	// The icon of the property
+	Icon *string `pulumi:"icon"`
+	// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
+	Required *bool `pulumi:"required"`
+	// The title of the property
+	Title *string `pulumi:"title"`
+	// The visibility of the boolean property
+	Visible *bool `pulumi:"visible"`
+	// The visibility condition jq query of the boolean property
+	VisibleJqQuery *string `pulumi:"visibleJqQuery"`
 }
 
 // ActionUserPropertiesBooleanPropsInput is an input type that accepts ActionUserPropertiesBooleanPropsArgs and ActionUserPropertiesBooleanPropsOutput values.
@@ -2819,16 +3062,26 @@ type ActionUserPropertiesBooleanPropsInput interface {
 }
 
 type ActionUserPropertiesBooleanPropsArgs struct {
-	Dataset        ActionUserPropertiesBooleanPropsDatasetPtrInput `pulumi:"dataset"`
-	Default        pulumi.BoolPtrInput                             `pulumi:"default"`
-	DefaultJqQuery pulumi.StringPtrInput                           `pulumi:"defaultJqQuery"`
-	DependsOns     pulumi.StringArrayInput                         `pulumi:"dependsOns"`
-	Description    pulumi.StringPtrInput                           `pulumi:"description"`
-	Icon           pulumi.StringPtrInput                           `pulumi:"icon"`
-	Required       pulumi.BoolPtrInput                             `pulumi:"required"`
-	Title          pulumi.StringPtrInput                           `pulumi:"title"`
-	Visible        pulumi.BoolPtrInput                             `pulumi:"visible"`
-	VisibleJqQuery pulumi.StringPtrInput                           `pulumi:"visibleJqQuery"`
+	// The dataset of the property
+	Dataset ActionUserPropertiesBooleanPropsDatasetPtrInput `pulumi:"dataset"`
+	// The default of the boolean property
+	Default pulumi.BoolPtrInput `pulumi:"default"`
+	// The default jq query of the boolean property
+	DefaultJqQuery pulumi.StringPtrInput `pulumi:"defaultJqQuery"`
+	// The properties that this property depends on
+	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
+	// The description of the property
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The icon of the property
+	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// The title of the property
+	Title pulumi.StringPtrInput `pulumi:"title"`
+	// The visibility of the boolean property
+	Visible pulumi.BoolPtrInput `pulumi:"visible"`
+	// The visibility condition jq query of the boolean property
+	VisibleJqQuery pulumi.StringPtrInput `pulumi:"visibleJqQuery"`
 }
 
 func (ActionUserPropertiesBooleanPropsArgs) ElementType() reflect.Type {
@@ -2882,42 +3135,52 @@ func (o ActionUserPropertiesBooleanPropsOutput) ToActionUserPropertiesBooleanPro
 	return o
 }
 
+// The dataset of the property
 func (o ActionUserPropertiesBooleanPropsOutput) Dataset() ActionUserPropertiesBooleanPropsDatasetPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *ActionUserPropertiesBooleanPropsDataset { return v.Dataset }).(ActionUserPropertiesBooleanPropsDatasetPtrOutput)
 }
 
+// The default of the boolean property
 func (o ActionUserPropertiesBooleanPropsOutput) Default() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *bool { return v.Default }).(pulumi.BoolPtrOutput)
 }
 
+// The default jq query of the boolean property
 func (o ActionUserPropertiesBooleanPropsOutput) DefaultJqQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *string { return v.DefaultJqQuery }).(pulumi.StringPtrOutput)
 }
 
+// The properties that this property depends on
 func (o ActionUserPropertiesBooleanPropsOutput) DependsOns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
 }
 
+// The description of the property
 func (o ActionUserPropertiesBooleanPropsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The icon of the property
 func (o ActionUserPropertiesBooleanPropsOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
+// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
 func (o ActionUserPropertiesBooleanPropsOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
+// The title of the property
 func (o ActionUserPropertiesBooleanPropsOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
+// The visibility of the boolean property
 func (o ActionUserPropertiesBooleanPropsOutput) Visible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
 }
 
+// The visibility condition jq query of the boolean property
 func (o ActionUserPropertiesBooleanPropsOutput) VisibleJqQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *string { return v.VisibleJqQuery }).(pulumi.StringPtrOutput)
 }
@@ -2943,8 +3206,10 @@ func (o ActionUserPropertiesBooleanPropsMapOutput) MapIndex(k pulumi.StringInput
 }
 
 type ActionUserPropertiesBooleanPropsDataset struct {
-	Combinator string                                        `pulumi:"combinator"`
-	Rules      []ActionUserPropertiesBooleanPropsDatasetRule `pulumi:"rules"`
+	// The combinator of the dataset
+	Combinator string `pulumi:"combinator"`
+	// The rules of the dataset
+	Rules []ActionUserPropertiesBooleanPropsDatasetRule `pulumi:"rules"`
 }
 
 // ActionUserPropertiesBooleanPropsDatasetInput is an input type that accepts ActionUserPropertiesBooleanPropsDatasetArgs and ActionUserPropertiesBooleanPropsDatasetOutput values.
@@ -2959,8 +3224,10 @@ type ActionUserPropertiesBooleanPropsDatasetInput interface {
 }
 
 type ActionUserPropertiesBooleanPropsDatasetArgs struct {
-	Combinator pulumi.StringInput                                    `pulumi:"combinator"`
-	Rules      ActionUserPropertiesBooleanPropsDatasetRuleArrayInput `pulumi:"rules"`
+	// The combinator of the dataset
+	Combinator pulumi.StringInput `pulumi:"combinator"`
+	// The rules of the dataset
+	Rules ActionUserPropertiesBooleanPropsDatasetRuleArrayInput `pulumi:"rules"`
 }
 
 func (ActionUserPropertiesBooleanPropsDatasetArgs) ElementType() reflect.Type {
@@ -3040,10 +3307,12 @@ func (o ActionUserPropertiesBooleanPropsDatasetOutput) ToActionUserPropertiesBoo
 	}).(ActionUserPropertiesBooleanPropsDatasetPtrOutput)
 }
 
+// The combinator of the dataset
 func (o ActionUserPropertiesBooleanPropsDatasetOutput) Combinator() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionUserPropertiesBooleanPropsDataset) string { return v.Combinator }).(pulumi.StringOutput)
 }
 
+// The rules of the dataset
 func (o ActionUserPropertiesBooleanPropsDatasetOutput) Rules() ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput {
 	return o.ApplyT(func(v ActionUserPropertiesBooleanPropsDataset) []ActionUserPropertiesBooleanPropsDatasetRule {
 		return v.Rules
@@ -3074,6 +3343,7 @@ func (o ActionUserPropertiesBooleanPropsDatasetPtrOutput) Elem() ActionUserPrope
 	}).(ActionUserPropertiesBooleanPropsDatasetOutput)
 }
 
+// The combinator of the dataset
 func (o ActionUserPropertiesBooleanPropsDatasetPtrOutput) Combinator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionUserPropertiesBooleanPropsDataset) *string {
 		if v == nil {
@@ -3083,6 +3353,7 @@ func (o ActionUserPropertiesBooleanPropsDatasetPtrOutput) Combinator() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// The rules of the dataset
 func (o ActionUserPropertiesBooleanPropsDatasetPtrOutput) Rules() ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput {
 	return o.ApplyT(func(v *ActionUserPropertiesBooleanPropsDataset) []ActionUserPropertiesBooleanPropsDatasetRule {
 		if v == nil {
@@ -3093,10 +3364,14 @@ func (o ActionUserPropertiesBooleanPropsDatasetPtrOutput) Rules() ActionUserProp
 }
 
 type ActionUserPropertiesBooleanPropsDatasetRule struct {
-	Blueprint *string                                          `pulumi:"blueprint"`
-	Operator  string                                           `pulumi:"operator"`
-	Property  *string                                          `pulumi:"property"`
-	Value     ActionUserPropertiesBooleanPropsDatasetRuleValue `pulumi:"value"`
+	// The blueprint identifier of the rule
+	Blueprint *string `pulumi:"blueprint"`
+	// The operator of the rule
+	Operator string `pulumi:"operator"`
+	// The property identifier of the rule
+	Property *string `pulumi:"property"`
+	// The value of the rule
+	Value ActionUserPropertiesBooleanPropsDatasetRuleValue `pulumi:"value"`
 }
 
 // ActionUserPropertiesBooleanPropsDatasetRuleInput is an input type that accepts ActionUserPropertiesBooleanPropsDatasetRuleArgs and ActionUserPropertiesBooleanPropsDatasetRuleOutput values.
@@ -3111,10 +3386,14 @@ type ActionUserPropertiesBooleanPropsDatasetRuleInput interface {
 }
 
 type ActionUserPropertiesBooleanPropsDatasetRuleArgs struct {
-	Blueprint pulumi.StringPtrInput                                 `pulumi:"blueprint"`
-	Operator  pulumi.StringInput                                    `pulumi:"operator"`
-	Property  pulumi.StringPtrInput                                 `pulumi:"property"`
-	Value     ActionUserPropertiesBooleanPropsDatasetRuleValueInput `pulumi:"value"`
+	// The blueprint identifier of the rule
+	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
+	// The operator of the rule
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The property identifier of the rule
+	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The value of the rule
+	Value ActionUserPropertiesBooleanPropsDatasetRuleValueInput `pulumi:"value"`
 }
 
 func (ActionUserPropertiesBooleanPropsDatasetRuleArgs) ElementType() reflect.Type {
@@ -3168,18 +3447,22 @@ func (o ActionUserPropertiesBooleanPropsDatasetRuleOutput) ToActionUserPropertie
 	return o
 }
 
+// The blueprint identifier of the rule
 func (o ActionUserPropertiesBooleanPropsDatasetRuleOutput) Blueprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesBooleanPropsDatasetRule) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
 }
 
+// The operator of the rule
 func (o ActionUserPropertiesBooleanPropsDatasetRuleOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionUserPropertiesBooleanPropsDatasetRule) string { return v.Operator }).(pulumi.StringOutput)
 }
 
+// The property identifier of the rule
 func (o ActionUserPropertiesBooleanPropsDatasetRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesBooleanPropsDatasetRule) *string { return v.Property }).(pulumi.StringPtrOutput)
 }
 
+// The value of the rule
 func (o ActionUserPropertiesBooleanPropsDatasetRuleOutput) Value() ActionUserPropertiesBooleanPropsDatasetRuleValueOutput {
 	return o.ApplyT(func(v ActionUserPropertiesBooleanPropsDatasetRule) ActionUserPropertiesBooleanPropsDatasetRuleValue {
 		return v.Value
@@ -3256,20 +3539,34 @@ func (o ActionUserPropertiesBooleanPropsDatasetRuleValueOutput) JqQuery() pulumi
 }
 
 type ActionUserPropertiesNumberProps struct {
-	Dataset        *ActionUserPropertiesNumberPropsDataset `pulumi:"dataset"`
-	Default        *float64                                `pulumi:"default"`
-	DefaultJqQuery *string                                 `pulumi:"defaultJqQuery"`
-	DependsOns     []string                                `pulumi:"dependsOns"`
-	Description    *string                                 `pulumi:"description"`
-	EnumJqQuery    *string                                 `pulumi:"enumJqQuery"`
-	Enums          []float64                               `pulumi:"enums"`
-	Icon           *string                                 `pulumi:"icon"`
-	Maximum        *float64                                `pulumi:"maximum"`
-	Minimum        *float64                                `pulumi:"minimum"`
-	Required       *bool                                   `pulumi:"required"`
-	Title          *string                                 `pulumi:"title"`
-	Visible        *bool                                   `pulumi:"visible"`
-	VisibleJqQuery *string                                 `pulumi:"visibleJqQuery"`
+	// The dataset of the property
+	Dataset *ActionUserPropertiesNumberPropsDataset `pulumi:"dataset"`
+	// The default of the number property
+	Default *float64 `pulumi:"default"`
+	// The default jq query of the number property
+	DefaultJqQuery *string `pulumi:"defaultJqQuery"`
+	// The properties that this property depends on
+	DependsOns []string `pulumi:"dependsOns"`
+	// The description of the property
+	Description *string `pulumi:"description"`
+	// The enum jq query of the string property
+	EnumJqQuery *string `pulumi:"enumJqQuery"`
+	// The enum of the number property
+	Enums []float64 `pulumi:"enums"`
+	// The icon of the property
+	Icon *string `pulumi:"icon"`
+	// The min of the number property
+	Maximum *float64 `pulumi:"maximum"`
+	// The max of the number property
+	Minimum *float64 `pulumi:"minimum"`
+	// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
+	Required *bool `pulumi:"required"`
+	// The title of the property
+	Title *string `pulumi:"title"`
+	// The visibility of the number property
+	Visible *bool `pulumi:"visible"`
+	// The visibility condition jq query of the number property
+	VisibleJqQuery *string `pulumi:"visibleJqQuery"`
 }
 
 // ActionUserPropertiesNumberPropsInput is an input type that accepts ActionUserPropertiesNumberPropsArgs and ActionUserPropertiesNumberPropsOutput values.
@@ -3284,20 +3581,34 @@ type ActionUserPropertiesNumberPropsInput interface {
 }
 
 type ActionUserPropertiesNumberPropsArgs struct {
-	Dataset        ActionUserPropertiesNumberPropsDatasetPtrInput `pulumi:"dataset"`
-	Default        pulumi.Float64PtrInput                         `pulumi:"default"`
-	DefaultJqQuery pulumi.StringPtrInput                          `pulumi:"defaultJqQuery"`
-	DependsOns     pulumi.StringArrayInput                        `pulumi:"dependsOns"`
-	Description    pulumi.StringPtrInput                          `pulumi:"description"`
-	EnumJqQuery    pulumi.StringPtrInput                          `pulumi:"enumJqQuery"`
-	Enums          pulumi.Float64ArrayInput                       `pulumi:"enums"`
-	Icon           pulumi.StringPtrInput                          `pulumi:"icon"`
-	Maximum        pulumi.Float64PtrInput                         `pulumi:"maximum"`
-	Minimum        pulumi.Float64PtrInput                         `pulumi:"minimum"`
-	Required       pulumi.BoolPtrInput                            `pulumi:"required"`
-	Title          pulumi.StringPtrInput                          `pulumi:"title"`
-	Visible        pulumi.BoolPtrInput                            `pulumi:"visible"`
-	VisibleJqQuery pulumi.StringPtrInput                          `pulumi:"visibleJqQuery"`
+	// The dataset of the property
+	Dataset ActionUserPropertiesNumberPropsDatasetPtrInput `pulumi:"dataset"`
+	// The default of the number property
+	Default pulumi.Float64PtrInput `pulumi:"default"`
+	// The default jq query of the number property
+	DefaultJqQuery pulumi.StringPtrInput `pulumi:"defaultJqQuery"`
+	// The properties that this property depends on
+	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
+	// The description of the property
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The enum jq query of the string property
+	EnumJqQuery pulumi.StringPtrInput `pulumi:"enumJqQuery"`
+	// The enum of the number property
+	Enums pulumi.Float64ArrayInput `pulumi:"enums"`
+	// The icon of the property
+	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// The min of the number property
+	Maximum pulumi.Float64PtrInput `pulumi:"maximum"`
+	// The max of the number property
+	Minimum pulumi.Float64PtrInput `pulumi:"minimum"`
+	// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// The title of the property
+	Title pulumi.StringPtrInput `pulumi:"title"`
+	// The visibility of the number property
+	Visible pulumi.BoolPtrInput `pulumi:"visible"`
+	// The visibility condition jq query of the number property
+	VisibleJqQuery pulumi.StringPtrInput `pulumi:"visibleJqQuery"`
 }
 
 func (ActionUserPropertiesNumberPropsArgs) ElementType() reflect.Type {
@@ -3351,58 +3662,72 @@ func (o ActionUserPropertiesNumberPropsOutput) ToActionUserPropertiesNumberProps
 	return o
 }
 
+// The dataset of the property
 func (o ActionUserPropertiesNumberPropsOutput) Dataset() ActionUserPropertiesNumberPropsDatasetPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *ActionUserPropertiesNumberPropsDataset { return v.Dataset }).(ActionUserPropertiesNumberPropsDatasetPtrOutput)
 }
 
+// The default of the number property
 func (o ActionUserPropertiesNumberPropsOutput) Default() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *float64 { return v.Default }).(pulumi.Float64PtrOutput)
 }
 
+// The default jq query of the number property
 func (o ActionUserPropertiesNumberPropsOutput) DefaultJqQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *string { return v.DefaultJqQuery }).(pulumi.StringPtrOutput)
 }
 
+// The properties that this property depends on
 func (o ActionUserPropertiesNumberPropsOutput) DependsOns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ActionUserPropertiesNumberProps) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
 }
 
+// The description of the property
 func (o ActionUserPropertiesNumberPropsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The enum jq query of the string property
 func (o ActionUserPropertiesNumberPropsOutput) EnumJqQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *string { return v.EnumJqQuery }).(pulumi.StringPtrOutput)
 }
 
+// The enum of the number property
 func (o ActionUserPropertiesNumberPropsOutput) Enums() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v ActionUserPropertiesNumberProps) []float64 { return v.Enums }).(pulumi.Float64ArrayOutput)
 }
 
+// The icon of the property
 func (o ActionUserPropertiesNumberPropsOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
+// The min of the number property
 func (o ActionUserPropertiesNumberPropsOutput) Maximum() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *float64 { return v.Maximum }).(pulumi.Float64PtrOutput)
 }
 
+// The max of the number property
 func (o ActionUserPropertiesNumberPropsOutput) Minimum() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *float64 { return v.Minimum }).(pulumi.Float64PtrOutput)
 }
 
+// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
 func (o ActionUserPropertiesNumberPropsOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
+// The title of the property
 func (o ActionUserPropertiesNumberPropsOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
+// The visibility of the number property
 func (o ActionUserPropertiesNumberPropsOutput) Visible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
 }
 
+// The visibility condition jq query of the number property
 func (o ActionUserPropertiesNumberPropsOutput) VisibleJqQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *string { return v.VisibleJqQuery }).(pulumi.StringPtrOutput)
 }
@@ -3428,8 +3753,10 @@ func (o ActionUserPropertiesNumberPropsMapOutput) MapIndex(k pulumi.StringInput)
 }
 
 type ActionUserPropertiesNumberPropsDataset struct {
-	Combinator string                                       `pulumi:"combinator"`
-	Rules      []ActionUserPropertiesNumberPropsDatasetRule `pulumi:"rules"`
+	// The combinator of the dataset
+	Combinator string `pulumi:"combinator"`
+	// The rules of the dataset
+	Rules []ActionUserPropertiesNumberPropsDatasetRule `pulumi:"rules"`
 }
 
 // ActionUserPropertiesNumberPropsDatasetInput is an input type that accepts ActionUserPropertiesNumberPropsDatasetArgs and ActionUserPropertiesNumberPropsDatasetOutput values.
@@ -3444,8 +3771,10 @@ type ActionUserPropertiesNumberPropsDatasetInput interface {
 }
 
 type ActionUserPropertiesNumberPropsDatasetArgs struct {
-	Combinator pulumi.StringInput                                   `pulumi:"combinator"`
-	Rules      ActionUserPropertiesNumberPropsDatasetRuleArrayInput `pulumi:"rules"`
+	// The combinator of the dataset
+	Combinator pulumi.StringInput `pulumi:"combinator"`
+	// The rules of the dataset
+	Rules ActionUserPropertiesNumberPropsDatasetRuleArrayInput `pulumi:"rules"`
 }
 
 func (ActionUserPropertiesNumberPropsDatasetArgs) ElementType() reflect.Type {
@@ -3525,10 +3854,12 @@ func (o ActionUserPropertiesNumberPropsDatasetOutput) ToActionUserPropertiesNumb
 	}).(ActionUserPropertiesNumberPropsDatasetPtrOutput)
 }
 
+// The combinator of the dataset
 func (o ActionUserPropertiesNumberPropsDatasetOutput) Combinator() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionUserPropertiesNumberPropsDataset) string { return v.Combinator }).(pulumi.StringOutput)
 }
 
+// The rules of the dataset
 func (o ActionUserPropertiesNumberPropsDatasetOutput) Rules() ActionUserPropertiesNumberPropsDatasetRuleArrayOutput {
 	return o.ApplyT(func(v ActionUserPropertiesNumberPropsDataset) []ActionUserPropertiesNumberPropsDatasetRule {
 		return v.Rules
@@ -3559,6 +3890,7 @@ func (o ActionUserPropertiesNumberPropsDatasetPtrOutput) Elem() ActionUserProper
 	}).(ActionUserPropertiesNumberPropsDatasetOutput)
 }
 
+// The combinator of the dataset
 func (o ActionUserPropertiesNumberPropsDatasetPtrOutput) Combinator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionUserPropertiesNumberPropsDataset) *string {
 		if v == nil {
@@ -3568,6 +3900,7 @@ func (o ActionUserPropertiesNumberPropsDatasetPtrOutput) Combinator() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// The rules of the dataset
 func (o ActionUserPropertiesNumberPropsDatasetPtrOutput) Rules() ActionUserPropertiesNumberPropsDatasetRuleArrayOutput {
 	return o.ApplyT(func(v *ActionUserPropertiesNumberPropsDataset) []ActionUserPropertiesNumberPropsDatasetRule {
 		if v == nil {
@@ -3578,10 +3911,14 @@ func (o ActionUserPropertiesNumberPropsDatasetPtrOutput) Rules() ActionUserPrope
 }
 
 type ActionUserPropertiesNumberPropsDatasetRule struct {
-	Blueprint *string                                         `pulumi:"blueprint"`
-	Operator  string                                          `pulumi:"operator"`
-	Property  *string                                         `pulumi:"property"`
-	Value     ActionUserPropertiesNumberPropsDatasetRuleValue `pulumi:"value"`
+	// The blueprint identifier of the rule
+	Blueprint *string `pulumi:"blueprint"`
+	// The operator of the rule
+	Operator string `pulumi:"operator"`
+	// The property identifier of the rule
+	Property *string `pulumi:"property"`
+	// The value of the rule
+	Value ActionUserPropertiesNumberPropsDatasetRuleValue `pulumi:"value"`
 }
 
 // ActionUserPropertiesNumberPropsDatasetRuleInput is an input type that accepts ActionUserPropertiesNumberPropsDatasetRuleArgs and ActionUserPropertiesNumberPropsDatasetRuleOutput values.
@@ -3596,10 +3933,14 @@ type ActionUserPropertiesNumberPropsDatasetRuleInput interface {
 }
 
 type ActionUserPropertiesNumberPropsDatasetRuleArgs struct {
-	Blueprint pulumi.StringPtrInput                                `pulumi:"blueprint"`
-	Operator  pulumi.StringInput                                   `pulumi:"operator"`
-	Property  pulumi.StringPtrInput                                `pulumi:"property"`
-	Value     ActionUserPropertiesNumberPropsDatasetRuleValueInput `pulumi:"value"`
+	// The blueprint identifier of the rule
+	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
+	// The operator of the rule
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The property identifier of the rule
+	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The value of the rule
+	Value ActionUserPropertiesNumberPropsDatasetRuleValueInput `pulumi:"value"`
 }
 
 func (ActionUserPropertiesNumberPropsDatasetRuleArgs) ElementType() reflect.Type {
@@ -3653,18 +3994,22 @@ func (o ActionUserPropertiesNumberPropsDatasetRuleOutput) ToActionUserProperties
 	return o
 }
 
+// The blueprint identifier of the rule
 func (o ActionUserPropertiesNumberPropsDatasetRuleOutput) Blueprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesNumberPropsDatasetRule) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
 }
 
+// The operator of the rule
 func (o ActionUserPropertiesNumberPropsDatasetRuleOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionUserPropertiesNumberPropsDatasetRule) string { return v.Operator }).(pulumi.StringOutput)
 }
 
+// The property identifier of the rule
 func (o ActionUserPropertiesNumberPropsDatasetRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesNumberPropsDatasetRule) *string { return v.Property }).(pulumi.StringPtrOutput)
 }
 
+// The value of the rule
 func (o ActionUserPropertiesNumberPropsDatasetRuleOutput) Value() ActionUserPropertiesNumberPropsDatasetRuleValueOutput {
 	return o.ApplyT(func(v ActionUserPropertiesNumberPropsDatasetRule) ActionUserPropertiesNumberPropsDatasetRuleValue {
 		return v.Value
@@ -3741,17 +4086,28 @@ func (o ActionUserPropertiesNumberPropsDatasetRuleValueOutput) JqQuery() pulumi.
 }
 
 type ActionUserPropertiesObjectProps struct {
-	Dataset        *ActionUserPropertiesObjectPropsDataset `pulumi:"dataset"`
-	Default        *string                                 `pulumi:"default"`
-	DefaultJqQuery *string                                 `pulumi:"defaultJqQuery"`
-	DependsOns     []string                                `pulumi:"dependsOns"`
-	Description    *string                                 `pulumi:"description"`
-	Encryption     *string                                 `pulumi:"encryption"`
-	Icon           *string                                 `pulumi:"icon"`
-	Required       *bool                                   `pulumi:"required"`
-	Title          *string                                 `pulumi:"title"`
-	Visible        *bool                                   `pulumi:"visible"`
-	VisibleJqQuery *string                                 `pulumi:"visibleJqQuery"`
+	// The dataset of the property
+	Dataset *ActionUserPropertiesObjectPropsDataset `pulumi:"dataset"`
+	// The default of the object property
+	Default *string `pulumi:"default"`
+	// The default jq query of the object property
+	DefaultJqQuery *string `pulumi:"defaultJqQuery"`
+	// The properties that this property depends on
+	DependsOns []string `pulumi:"dependsOns"`
+	// The description of the property
+	Description *string `pulumi:"description"`
+	// The algorithm to encrypt the property with
+	Encryption *string `pulumi:"encryption"`
+	// The icon of the property
+	Icon *string `pulumi:"icon"`
+	// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
+	Required *bool `pulumi:"required"`
+	// The title of the property
+	Title *string `pulumi:"title"`
+	// The visibility of the object property
+	Visible *bool `pulumi:"visible"`
+	// The visibility condition jq query of the object property
+	VisibleJqQuery *string `pulumi:"visibleJqQuery"`
 }
 
 // ActionUserPropertiesObjectPropsInput is an input type that accepts ActionUserPropertiesObjectPropsArgs and ActionUserPropertiesObjectPropsOutput values.
@@ -3766,17 +4122,28 @@ type ActionUserPropertiesObjectPropsInput interface {
 }
 
 type ActionUserPropertiesObjectPropsArgs struct {
-	Dataset        ActionUserPropertiesObjectPropsDatasetPtrInput `pulumi:"dataset"`
-	Default        pulumi.StringPtrInput                          `pulumi:"default"`
-	DefaultJqQuery pulumi.StringPtrInput                          `pulumi:"defaultJqQuery"`
-	DependsOns     pulumi.StringArrayInput                        `pulumi:"dependsOns"`
-	Description    pulumi.StringPtrInput                          `pulumi:"description"`
-	Encryption     pulumi.StringPtrInput                          `pulumi:"encryption"`
-	Icon           pulumi.StringPtrInput                          `pulumi:"icon"`
-	Required       pulumi.BoolPtrInput                            `pulumi:"required"`
-	Title          pulumi.StringPtrInput                          `pulumi:"title"`
-	Visible        pulumi.BoolPtrInput                            `pulumi:"visible"`
-	VisibleJqQuery pulumi.StringPtrInput                          `pulumi:"visibleJqQuery"`
+	// The dataset of the property
+	Dataset ActionUserPropertiesObjectPropsDatasetPtrInput `pulumi:"dataset"`
+	// The default of the object property
+	Default pulumi.StringPtrInput `pulumi:"default"`
+	// The default jq query of the object property
+	DefaultJqQuery pulumi.StringPtrInput `pulumi:"defaultJqQuery"`
+	// The properties that this property depends on
+	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
+	// The description of the property
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The algorithm to encrypt the property with
+	Encryption pulumi.StringPtrInput `pulumi:"encryption"`
+	// The icon of the property
+	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// The title of the property
+	Title pulumi.StringPtrInput `pulumi:"title"`
+	// The visibility of the object property
+	Visible pulumi.BoolPtrInput `pulumi:"visible"`
+	// The visibility condition jq query of the object property
+	VisibleJqQuery pulumi.StringPtrInput `pulumi:"visibleJqQuery"`
 }
 
 func (ActionUserPropertiesObjectPropsArgs) ElementType() reflect.Type {
@@ -3830,46 +4197,57 @@ func (o ActionUserPropertiesObjectPropsOutput) ToActionUserPropertiesObjectProps
 	return o
 }
 
+// The dataset of the property
 func (o ActionUserPropertiesObjectPropsOutput) Dataset() ActionUserPropertiesObjectPropsDatasetPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *ActionUserPropertiesObjectPropsDataset { return v.Dataset }).(ActionUserPropertiesObjectPropsDatasetPtrOutput)
 }
 
+// The default of the object property
 func (o ActionUserPropertiesObjectPropsOutput) Default() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.Default }).(pulumi.StringPtrOutput)
 }
 
+// The default jq query of the object property
 func (o ActionUserPropertiesObjectPropsOutput) DefaultJqQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.DefaultJqQuery }).(pulumi.StringPtrOutput)
 }
 
+// The properties that this property depends on
 func (o ActionUserPropertiesObjectPropsOutput) DependsOns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ActionUserPropertiesObjectProps) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
 }
 
+// The description of the property
 func (o ActionUserPropertiesObjectPropsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The algorithm to encrypt the property with
 func (o ActionUserPropertiesObjectPropsOutput) Encryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.Encryption }).(pulumi.StringPtrOutput)
 }
 
+// The icon of the property
 func (o ActionUserPropertiesObjectPropsOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
+// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
 func (o ActionUserPropertiesObjectPropsOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
+// The title of the property
 func (o ActionUserPropertiesObjectPropsOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
+// The visibility of the object property
 func (o ActionUserPropertiesObjectPropsOutput) Visible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
 }
 
+// The visibility condition jq query of the object property
 func (o ActionUserPropertiesObjectPropsOutput) VisibleJqQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.VisibleJqQuery }).(pulumi.StringPtrOutput)
 }
@@ -3895,8 +4273,10 @@ func (o ActionUserPropertiesObjectPropsMapOutput) MapIndex(k pulumi.StringInput)
 }
 
 type ActionUserPropertiesObjectPropsDataset struct {
-	Combinator string                                       `pulumi:"combinator"`
-	Rules      []ActionUserPropertiesObjectPropsDatasetRule `pulumi:"rules"`
+	// The combinator of the dataset
+	Combinator string `pulumi:"combinator"`
+	// The rules of the dataset
+	Rules []ActionUserPropertiesObjectPropsDatasetRule `pulumi:"rules"`
 }
 
 // ActionUserPropertiesObjectPropsDatasetInput is an input type that accepts ActionUserPropertiesObjectPropsDatasetArgs and ActionUserPropertiesObjectPropsDatasetOutput values.
@@ -3911,8 +4291,10 @@ type ActionUserPropertiesObjectPropsDatasetInput interface {
 }
 
 type ActionUserPropertiesObjectPropsDatasetArgs struct {
-	Combinator pulumi.StringInput                                   `pulumi:"combinator"`
-	Rules      ActionUserPropertiesObjectPropsDatasetRuleArrayInput `pulumi:"rules"`
+	// The combinator of the dataset
+	Combinator pulumi.StringInput `pulumi:"combinator"`
+	// The rules of the dataset
+	Rules ActionUserPropertiesObjectPropsDatasetRuleArrayInput `pulumi:"rules"`
 }
 
 func (ActionUserPropertiesObjectPropsDatasetArgs) ElementType() reflect.Type {
@@ -3992,10 +4374,12 @@ func (o ActionUserPropertiesObjectPropsDatasetOutput) ToActionUserPropertiesObje
 	}).(ActionUserPropertiesObjectPropsDatasetPtrOutput)
 }
 
+// The combinator of the dataset
 func (o ActionUserPropertiesObjectPropsDatasetOutput) Combinator() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionUserPropertiesObjectPropsDataset) string { return v.Combinator }).(pulumi.StringOutput)
 }
 
+// The rules of the dataset
 func (o ActionUserPropertiesObjectPropsDatasetOutput) Rules() ActionUserPropertiesObjectPropsDatasetRuleArrayOutput {
 	return o.ApplyT(func(v ActionUserPropertiesObjectPropsDataset) []ActionUserPropertiesObjectPropsDatasetRule {
 		return v.Rules
@@ -4026,6 +4410,7 @@ func (o ActionUserPropertiesObjectPropsDatasetPtrOutput) Elem() ActionUserProper
 	}).(ActionUserPropertiesObjectPropsDatasetOutput)
 }
 
+// The combinator of the dataset
 func (o ActionUserPropertiesObjectPropsDatasetPtrOutput) Combinator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionUserPropertiesObjectPropsDataset) *string {
 		if v == nil {
@@ -4035,6 +4420,7 @@ func (o ActionUserPropertiesObjectPropsDatasetPtrOutput) Combinator() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// The rules of the dataset
 func (o ActionUserPropertiesObjectPropsDatasetPtrOutput) Rules() ActionUserPropertiesObjectPropsDatasetRuleArrayOutput {
 	return o.ApplyT(func(v *ActionUserPropertiesObjectPropsDataset) []ActionUserPropertiesObjectPropsDatasetRule {
 		if v == nil {
@@ -4045,10 +4431,14 @@ func (o ActionUserPropertiesObjectPropsDatasetPtrOutput) Rules() ActionUserPrope
 }
 
 type ActionUserPropertiesObjectPropsDatasetRule struct {
-	Blueprint *string                                         `pulumi:"blueprint"`
-	Operator  string                                          `pulumi:"operator"`
-	Property  *string                                         `pulumi:"property"`
-	Value     ActionUserPropertiesObjectPropsDatasetRuleValue `pulumi:"value"`
+	// The blueprint identifier of the rule
+	Blueprint *string `pulumi:"blueprint"`
+	// The operator of the rule
+	Operator string `pulumi:"operator"`
+	// The property identifier of the rule
+	Property *string `pulumi:"property"`
+	// The value of the rule
+	Value ActionUserPropertiesObjectPropsDatasetRuleValue `pulumi:"value"`
 }
 
 // ActionUserPropertiesObjectPropsDatasetRuleInput is an input type that accepts ActionUserPropertiesObjectPropsDatasetRuleArgs and ActionUserPropertiesObjectPropsDatasetRuleOutput values.
@@ -4063,10 +4453,14 @@ type ActionUserPropertiesObjectPropsDatasetRuleInput interface {
 }
 
 type ActionUserPropertiesObjectPropsDatasetRuleArgs struct {
-	Blueprint pulumi.StringPtrInput                                `pulumi:"blueprint"`
-	Operator  pulumi.StringInput                                   `pulumi:"operator"`
-	Property  pulumi.StringPtrInput                                `pulumi:"property"`
-	Value     ActionUserPropertiesObjectPropsDatasetRuleValueInput `pulumi:"value"`
+	// The blueprint identifier of the rule
+	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
+	// The operator of the rule
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The property identifier of the rule
+	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The value of the rule
+	Value ActionUserPropertiesObjectPropsDatasetRuleValueInput `pulumi:"value"`
 }
 
 func (ActionUserPropertiesObjectPropsDatasetRuleArgs) ElementType() reflect.Type {
@@ -4120,18 +4514,22 @@ func (o ActionUserPropertiesObjectPropsDatasetRuleOutput) ToActionUserProperties
 	return o
 }
 
+// The blueprint identifier of the rule
 func (o ActionUserPropertiesObjectPropsDatasetRuleOutput) Blueprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesObjectPropsDatasetRule) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
 }
 
+// The operator of the rule
 func (o ActionUserPropertiesObjectPropsDatasetRuleOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionUserPropertiesObjectPropsDatasetRule) string { return v.Operator }).(pulumi.StringOutput)
 }
 
+// The property identifier of the rule
 func (o ActionUserPropertiesObjectPropsDatasetRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesObjectPropsDatasetRule) *string { return v.Property }).(pulumi.StringPtrOutput)
 }
 
+// The value of the rule
 func (o ActionUserPropertiesObjectPropsDatasetRuleOutput) Value() ActionUserPropertiesObjectPropsDatasetRuleValueOutput {
 	return o.ApplyT(func(v ActionUserPropertiesObjectPropsDatasetRule) ActionUserPropertiesObjectPropsDatasetRuleValue {
 		return v.Value
@@ -4208,24 +4606,42 @@ func (o ActionUserPropertiesObjectPropsDatasetRuleValueOutput) JqQuery() pulumi.
 }
 
 type ActionUserPropertiesStringProps struct {
-	Blueprint      *string                                 `pulumi:"blueprint"`
-	Dataset        *ActionUserPropertiesStringPropsDataset `pulumi:"dataset"`
-	Default        *string                                 `pulumi:"default"`
-	DefaultJqQuery *string                                 `pulumi:"defaultJqQuery"`
-	DependsOns     []string                                `pulumi:"dependsOns"`
-	Description    *string                                 `pulumi:"description"`
-	Encryption     *string                                 `pulumi:"encryption"`
-	EnumJqQuery    *string                                 `pulumi:"enumJqQuery"`
-	Enums          []string                                `pulumi:"enums"`
-	Format         *string                                 `pulumi:"format"`
-	Icon           *string                                 `pulumi:"icon"`
-	MaxLength      *int                                    `pulumi:"maxLength"`
-	MinLength      *int                                    `pulumi:"minLength"`
-	Pattern        *string                                 `pulumi:"pattern"`
-	Required       *bool                                   `pulumi:"required"`
-	Title          *string                                 `pulumi:"title"`
-	Visible        *bool                                   `pulumi:"visible"`
-	VisibleJqQuery *string                                 `pulumi:"visibleJqQuery"`
+	// The blueprint identifier the string property relates to
+	Blueprint *string `pulumi:"blueprint"`
+	// The dataset of the property
+	Dataset *ActionUserPropertiesStringPropsDataset `pulumi:"dataset"`
+	// The default of the string property
+	Default *string `pulumi:"default"`
+	// The default jq query of the string property
+	DefaultJqQuery *string `pulumi:"defaultJqQuery"`
+	// The properties that this property depends on
+	DependsOns []string `pulumi:"dependsOns"`
+	// The description of the property
+	Description *string `pulumi:"description"`
+	// The algorithm to encrypt the property with
+	Encryption *string `pulumi:"encryption"`
+	// The enum jq query of the string property
+	EnumJqQuery *string `pulumi:"enumJqQuery"`
+	// The enum of the string property
+	Enums []string `pulumi:"enums"`
+	// The format of the string property
+	Format *string `pulumi:"format"`
+	// The icon of the property
+	Icon *string `pulumi:"icon"`
+	// The max length of the string property
+	MaxLength *int `pulumi:"maxLength"`
+	// The min length of the string property
+	MinLength *int `pulumi:"minLength"`
+	// The pattern of the string property
+	Pattern *string `pulumi:"pattern"`
+	// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
+	Required *bool `pulumi:"required"`
+	// The title of the property
+	Title *string `pulumi:"title"`
+	// The visibility of the string property
+	Visible *bool `pulumi:"visible"`
+	// The visibility condition jq query of the string property
+	VisibleJqQuery *string `pulumi:"visibleJqQuery"`
 }
 
 // ActionUserPropertiesStringPropsInput is an input type that accepts ActionUserPropertiesStringPropsArgs and ActionUserPropertiesStringPropsOutput values.
@@ -4240,24 +4656,42 @@ type ActionUserPropertiesStringPropsInput interface {
 }
 
 type ActionUserPropertiesStringPropsArgs struct {
-	Blueprint      pulumi.StringPtrInput                          `pulumi:"blueprint"`
-	Dataset        ActionUserPropertiesStringPropsDatasetPtrInput `pulumi:"dataset"`
-	Default        pulumi.StringPtrInput                          `pulumi:"default"`
-	DefaultJqQuery pulumi.StringPtrInput                          `pulumi:"defaultJqQuery"`
-	DependsOns     pulumi.StringArrayInput                        `pulumi:"dependsOns"`
-	Description    pulumi.StringPtrInput                          `pulumi:"description"`
-	Encryption     pulumi.StringPtrInput                          `pulumi:"encryption"`
-	EnumJqQuery    pulumi.StringPtrInput                          `pulumi:"enumJqQuery"`
-	Enums          pulumi.StringArrayInput                        `pulumi:"enums"`
-	Format         pulumi.StringPtrInput                          `pulumi:"format"`
-	Icon           pulumi.StringPtrInput                          `pulumi:"icon"`
-	MaxLength      pulumi.IntPtrInput                             `pulumi:"maxLength"`
-	MinLength      pulumi.IntPtrInput                             `pulumi:"minLength"`
-	Pattern        pulumi.StringPtrInput                          `pulumi:"pattern"`
-	Required       pulumi.BoolPtrInput                            `pulumi:"required"`
-	Title          pulumi.StringPtrInput                          `pulumi:"title"`
-	Visible        pulumi.BoolPtrInput                            `pulumi:"visible"`
-	VisibleJqQuery pulumi.StringPtrInput                          `pulumi:"visibleJqQuery"`
+	// The blueprint identifier the string property relates to
+	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
+	// The dataset of the property
+	Dataset ActionUserPropertiesStringPropsDatasetPtrInput `pulumi:"dataset"`
+	// The default of the string property
+	Default pulumi.StringPtrInput `pulumi:"default"`
+	// The default jq query of the string property
+	DefaultJqQuery pulumi.StringPtrInput `pulumi:"defaultJqQuery"`
+	// The properties that this property depends on
+	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
+	// The description of the property
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The algorithm to encrypt the property with
+	Encryption pulumi.StringPtrInput `pulumi:"encryption"`
+	// The enum jq query of the string property
+	EnumJqQuery pulumi.StringPtrInput `pulumi:"enumJqQuery"`
+	// The enum of the string property
+	Enums pulumi.StringArrayInput `pulumi:"enums"`
+	// The format of the string property
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	// The icon of the property
+	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// The max length of the string property
+	MaxLength pulumi.IntPtrInput `pulumi:"maxLength"`
+	// The min length of the string property
+	MinLength pulumi.IntPtrInput `pulumi:"minLength"`
+	// The pattern of the string property
+	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
+	// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// The title of the property
+	Title pulumi.StringPtrInput `pulumi:"title"`
+	// The visibility of the string property
+	Visible pulumi.BoolPtrInput `pulumi:"visible"`
+	// The visibility condition jq query of the string property
+	VisibleJqQuery pulumi.StringPtrInput `pulumi:"visibleJqQuery"`
 }
 
 func (ActionUserPropertiesStringPropsArgs) ElementType() reflect.Type {
@@ -4311,74 +4745,92 @@ func (o ActionUserPropertiesStringPropsOutput) ToActionUserPropertiesStringProps
 	return o
 }
 
+// The blueprint identifier the string property relates to
 func (o ActionUserPropertiesStringPropsOutput) Blueprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
 }
 
+// The dataset of the property
 func (o ActionUserPropertiesStringPropsOutput) Dataset() ActionUserPropertiesStringPropsDatasetPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringProps) *ActionUserPropertiesStringPropsDataset { return v.Dataset }).(ActionUserPropertiesStringPropsDatasetPtrOutput)
 }
 
+// The default of the string property
 func (o ActionUserPropertiesStringPropsOutput) Default() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Default }).(pulumi.StringPtrOutput)
 }
 
+// The default jq query of the string property
 func (o ActionUserPropertiesStringPropsOutput) DefaultJqQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.DefaultJqQuery }).(pulumi.StringPtrOutput)
 }
 
+// The properties that this property depends on
 func (o ActionUserPropertiesStringPropsOutput) DependsOns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringProps) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
 }
 
+// The description of the property
 func (o ActionUserPropertiesStringPropsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The algorithm to encrypt the property with
 func (o ActionUserPropertiesStringPropsOutput) Encryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Encryption }).(pulumi.StringPtrOutput)
 }
 
+// The enum jq query of the string property
 func (o ActionUserPropertiesStringPropsOutput) EnumJqQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.EnumJqQuery }).(pulumi.StringPtrOutput)
 }
 
+// The enum of the string property
 func (o ActionUserPropertiesStringPropsOutput) Enums() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringProps) []string { return v.Enums }).(pulumi.StringArrayOutput)
 }
 
+// The format of the string property
 func (o ActionUserPropertiesStringPropsOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
+// The icon of the property
 func (o ActionUserPropertiesStringPropsOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
+// The max length of the string property
 func (o ActionUserPropertiesStringPropsOutput) MaxLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringProps) *int { return v.MaxLength }).(pulumi.IntPtrOutput)
 }
 
+// The min length of the string property
 func (o ActionUserPropertiesStringPropsOutput) MinLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringProps) *int { return v.MinLength }).(pulumi.IntPtrOutput)
 }
 
+// The pattern of the string property
 func (o ActionUserPropertiesStringPropsOutput) Pattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Pattern }).(pulumi.StringPtrOutput)
 }
 
+// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
 func (o ActionUserPropertiesStringPropsOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
+// The title of the property
 func (o ActionUserPropertiesStringPropsOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
+// The visibility of the string property
 func (o ActionUserPropertiesStringPropsOutput) Visible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringProps) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
 }
 
+// The visibility condition jq query of the string property
 func (o ActionUserPropertiesStringPropsOutput) VisibleJqQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.VisibleJqQuery }).(pulumi.StringPtrOutput)
 }
@@ -4404,8 +4856,10 @@ func (o ActionUserPropertiesStringPropsMapOutput) MapIndex(k pulumi.StringInput)
 }
 
 type ActionUserPropertiesStringPropsDataset struct {
-	Combinator string                                       `pulumi:"combinator"`
-	Rules      []ActionUserPropertiesStringPropsDatasetRule `pulumi:"rules"`
+	// The combinator of the dataset
+	Combinator string `pulumi:"combinator"`
+	// The rules of the dataset
+	Rules []ActionUserPropertiesStringPropsDatasetRule `pulumi:"rules"`
 }
 
 // ActionUserPropertiesStringPropsDatasetInput is an input type that accepts ActionUserPropertiesStringPropsDatasetArgs and ActionUserPropertiesStringPropsDatasetOutput values.
@@ -4420,8 +4874,10 @@ type ActionUserPropertiesStringPropsDatasetInput interface {
 }
 
 type ActionUserPropertiesStringPropsDatasetArgs struct {
-	Combinator pulumi.StringInput                                   `pulumi:"combinator"`
-	Rules      ActionUserPropertiesStringPropsDatasetRuleArrayInput `pulumi:"rules"`
+	// The combinator of the dataset
+	Combinator pulumi.StringInput `pulumi:"combinator"`
+	// The rules of the dataset
+	Rules ActionUserPropertiesStringPropsDatasetRuleArrayInput `pulumi:"rules"`
 }
 
 func (ActionUserPropertiesStringPropsDatasetArgs) ElementType() reflect.Type {
@@ -4501,10 +4957,12 @@ func (o ActionUserPropertiesStringPropsDatasetOutput) ToActionUserPropertiesStri
 	}).(ActionUserPropertiesStringPropsDatasetPtrOutput)
 }
 
+// The combinator of the dataset
 func (o ActionUserPropertiesStringPropsDatasetOutput) Combinator() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringPropsDataset) string { return v.Combinator }).(pulumi.StringOutput)
 }
 
+// The rules of the dataset
 func (o ActionUserPropertiesStringPropsDatasetOutput) Rules() ActionUserPropertiesStringPropsDatasetRuleArrayOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringPropsDataset) []ActionUserPropertiesStringPropsDatasetRule {
 		return v.Rules
@@ -4535,6 +4993,7 @@ func (o ActionUserPropertiesStringPropsDatasetPtrOutput) Elem() ActionUserProper
 	}).(ActionUserPropertiesStringPropsDatasetOutput)
 }
 
+// The combinator of the dataset
 func (o ActionUserPropertiesStringPropsDatasetPtrOutput) Combinator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionUserPropertiesStringPropsDataset) *string {
 		if v == nil {
@@ -4544,6 +5003,7 @@ func (o ActionUserPropertiesStringPropsDatasetPtrOutput) Combinator() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// The rules of the dataset
 func (o ActionUserPropertiesStringPropsDatasetPtrOutput) Rules() ActionUserPropertiesStringPropsDatasetRuleArrayOutput {
 	return o.ApplyT(func(v *ActionUserPropertiesStringPropsDataset) []ActionUserPropertiesStringPropsDatasetRule {
 		if v == nil {
@@ -4554,10 +5014,14 @@ func (o ActionUserPropertiesStringPropsDatasetPtrOutput) Rules() ActionUserPrope
 }
 
 type ActionUserPropertiesStringPropsDatasetRule struct {
-	Blueprint *string                                         `pulumi:"blueprint"`
-	Operator  string                                          `pulumi:"operator"`
-	Property  *string                                         `pulumi:"property"`
-	Value     ActionUserPropertiesStringPropsDatasetRuleValue `pulumi:"value"`
+	// The blueprint identifier of the rule
+	Blueprint *string `pulumi:"blueprint"`
+	// The operator of the rule
+	Operator string `pulumi:"operator"`
+	// The property identifier of the rule
+	Property *string `pulumi:"property"`
+	// The value of the rule
+	Value ActionUserPropertiesStringPropsDatasetRuleValue `pulumi:"value"`
 }
 
 // ActionUserPropertiesStringPropsDatasetRuleInput is an input type that accepts ActionUserPropertiesStringPropsDatasetRuleArgs and ActionUserPropertiesStringPropsDatasetRuleOutput values.
@@ -4572,10 +5036,14 @@ type ActionUserPropertiesStringPropsDatasetRuleInput interface {
 }
 
 type ActionUserPropertiesStringPropsDatasetRuleArgs struct {
-	Blueprint pulumi.StringPtrInput                                `pulumi:"blueprint"`
-	Operator  pulumi.StringInput                                   `pulumi:"operator"`
-	Property  pulumi.StringPtrInput                                `pulumi:"property"`
-	Value     ActionUserPropertiesStringPropsDatasetRuleValueInput `pulumi:"value"`
+	// The blueprint identifier of the rule
+	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
+	// The operator of the rule
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The property identifier of the rule
+	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The value of the rule
+	Value ActionUserPropertiesStringPropsDatasetRuleValueInput `pulumi:"value"`
 }
 
 func (ActionUserPropertiesStringPropsDatasetRuleArgs) ElementType() reflect.Type {
@@ -4629,18 +5097,22 @@ func (o ActionUserPropertiesStringPropsDatasetRuleOutput) ToActionUserProperties
 	return o
 }
 
+// The blueprint identifier of the rule
 func (o ActionUserPropertiesStringPropsDatasetRuleOutput) Blueprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringPropsDatasetRule) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
 }
 
+// The operator of the rule
 func (o ActionUserPropertiesStringPropsDatasetRuleOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringPropsDatasetRule) string { return v.Operator }).(pulumi.StringOutput)
 }
 
+// The property identifier of the rule
 func (o ActionUserPropertiesStringPropsDatasetRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringPropsDatasetRule) *string { return v.Property }).(pulumi.StringPtrOutput)
 }
 
+// The value of the rule
 func (o ActionUserPropertiesStringPropsDatasetRuleOutput) Value() ActionUserPropertiesStringPropsDatasetRuleValueOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringPropsDatasetRule) ActionUserPropertiesStringPropsDatasetRuleValue {
 		return v.Value
@@ -4717,10 +5189,14 @@ func (o ActionUserPropertiesStringPropsDatasetRuleValueOutput) JqQuery() pulumi.
 }
 
 type ActionWebhookMethod struct {
-	Agent        *bool   `pulumi:"agent"`
-	Method       *string `pulumi:"method"`
-	Synchronized *bool   `pulumi:"synchronized"`
-	Url          string  `pulumi:"url"`
+	// Use the agent to invoke the action
+	Agent *bool `pulumi:"agent"`
+	// The HTTP method to invoke the action
+	Method *string `pulumi:"method"`
+	// Synchronize the action
+	Synchronized *bool `pulumi:"synchronized"`
+	// Required when selecting type WEBHOOK. The URL to invoke the action
+	Url string `pulumi:"url"`
 }
 
 // ActionWebhookMethodInput is an input type that accepts ActionWebhookMethodArgs and ActionWebhookMethodOutput values.
@@ -4735,10 +5211,14 @@ type ActionWebhookMethodInput interface {
 }
 
 type ActionWebhookMethodArgs struct {
-	Agent        pulumi.BoolPtrInput   `pulumi:"agent"`
-	Method       pulumi.StringPtrInput `pulumi:"method"`
-	Synchronized pulumi.BoolPtrInput   `pulumi:"synchronized"`
-	Url          pulumi.StringInput    `pulumi:"url"`
+	// Use the agent to invoke the action
+	Agent pulumi.BoolPtrInput `pulumi:"agent"`
+	// The HTTP method to invoke the action
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// Synchronize the action
+	Synchronized pulumi.BoolPtrInput `pulumi:"synchronized"`
+	// Required when selecting type WEBHOOK. The URL to invoke the action
+	Url pulumi.StringInput `pulumi:"url"`
 }
 
 func (ActionWebhookMethodArgs) ElementType() reflect.Type {
@@ -4818,18 +5298,22 @@ func (o ActionWebhookMethodOutput) ToActionWebhookMethodPtrOutputWithContext(ctx
 	}).(ActionWebhookMethodPtrOutput)
 }
 
+// Use the agent to invoke the action
 func (o ActionWebhookMethodOutput) Agent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionWebhookMethod) *bool { return v.Agent }).(pulumi.BoolPtrOutput)
 }
 
+// The HTTP method to invoke the action
 func (o ActionWebhookMethodOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionWebhookMethod) *string { return v.Method }).(pulumi.StringPtrOutput)
 }
 
+// Synchronize the action
 func (o ActionWebhookMethodOutput) Synchronized() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionWebhookMethod) *bool { return v.Synchronized }).(pulumi.BoolPtrOutput)
 }
 
+// Required when selecting type WEBHOOK. The URL to invoke the action
 func (o ActionWebhookMethodOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionWebhookMethod) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -4858,6 +5342,7 @@ func (o ActionWebhookMethodPtrOutput) Elem() ActionWebhookMethodOutput {
 	}).(ActionWebhookMethodOutput)
 }
 
+// Use the agent to invoke the action
 func (o ActionWebhookMethodPtrOutput) Agent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ActionWebhookMethod) *bool {
 		if v == nil {
@@ -4867,6 +5352,7 @@ func (o ActionWebhookMethodPtrOutput) Agent() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The HTTP method to invoke the action
 func (o ActionWebhookMethodPtrOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionWebhookMethod) *string {
 		if v == nil {
@@ -4876,6 +5362,7 @@ func (o ActionWebhookMethodPtrOutput) Method() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Synchronize the action
 func (o ActionWebhookMethodPtrOutput) Synchronized() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ActionWebhookMethod) *bool {
 		if v == nil {
@@ -4885,6 +5372,7 @@ func (o ActionWebhookMethodPtrOutput) Synchronized() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Required when selecting type WEBHOOK. The URL to invoke the action
 func (o ActionWebhookMethodPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionWebhookMethod) *string {
 		if v == nil {
@@ -4895,12 +5383,18 @@ func (o ActionWebhookMethodPtrOutput) Url() pulumi.StringPtrOutput {
 }
 
 type AggregationPropertiesProperties struct {
-	Description               *string                               `pulumi:"description"`
-	Icon                      *string                               `pulumi:"icon"`
-	Method                    AggregationPropertiesPropertiesMethod `pulumi:"method"`
-	Query                     *string                               `pulumi:"query"`
-	TargetBlueprintIdentifier string                                `pulumi:"targetBlueprintIdentifier"`
-	Title                     *string                               `pulumi:"title"`
+	// The description of the aggregation property
+	Description *string `pulumi:"description"`
+	// The icon of the aggregation property
+	Icon *string `pulumi:"icon"`
+	// The aggregation method to perform on the target blueprint, one of count_entities, average_entities, average_by_property, aggregate_by_property
+	Method AggregationPropertiesPropertiesMethod `pulumi:"method"`
+	// Query to filter the target entities
+	Query *string `pulumi:"query"`
+	// The identifier of the blueprint to perform the aggregation on
+	TargetBlueprintIdentifier string `pulumi:"targetBlueprintIdentifier"`
+	// The title of the aggregation property
+	Title *string `pulumi:"title"`
 }
 
 // AggregationPropertiesPropertiesInput is an input type that accepts AggregationPropertiesPropertiesArgs and AggregationPropertiesPropertiesOutput values.
@@ -4915,12 +5409,18 @@ type AggregationPropertiesPropertiesInput interface {
 }
 
 type AggregationPropertiesPropertiesArgs struct {
-	Description               pulumi.StringPtrInput                      `pulumi:"description"`
-	Icon                      pulumi.StringPtrInput                      `pulumi:"icon"`
-	Method                    AggregationPropertiesPropertiesMethodInput `pulumi:"method"`
-	Query                     pulumi.StringPtrInput                      `pulumi:"query"`
-	TargetBlueprintIdentifier pulumi.StringInput                         `pulumi:"targetBlueprintIdentifier"`
-	Title                     pulumi.StringPtrInput                      `pulumi:"title"`
+	// The description of the aggregation property
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The icon of the aggregation property
+	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// The aggregation method to perform on the target blueprint, one of count_entities, average_entities, average_by_property, aggregate_by_property
+	Method AggregationPropertiesPropertiesMethodInput `pulumi:"method"`
+	// Query to filter the target entities
+	Query pulumi.StringPtrInput `pulumi:"query"`
+	// The identifier of the blueprint to perform the aggregation on
+	TargetBlueprintIdentifier pulumi.StringInput `pulumi:"targetBlueprintIdentifier"`
+	// The title of the aggregation property
+	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
 func (AggregationPropertiesPropertiesArgs) ElementType() reflect.Type {
@@ -4974,26 +5474,32 @@ func (o AggregationPropertiesPropertiesOutput) ToAggregationPropertiesProperties
 	return o
 }
 
+// The description of the aggregation property
 func (o AggregationPropertiesPropertiesOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AggregationPropertiesProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The icon of the aggregation property
 func (o AggregationPropertiesPropertiesOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AggregationPropertiesProperties) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
+// The aggregation method to perform on the target blueprint, one of count_entities, average_entities, average_by_property, aggregate_by_property
 func (o AggregationPropertiesPropertiesOutput) Method() AggregationPropertiesPropertiesMethodOutput {
 	return o.ApplyT(func(v AggregationPropertiesProperties) AggregationPropertiesPropertiesMethod { return v.Method }).(AggregationPropertiesPropertiesMethodOutput)
 }
 
+// Query to filter the target entities
 func (o AggregationPropertiesPropertiesOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AggregationPropertiesProperties) *string { return v.Query }).(pulumi.StringPtrOutput)
 }
 
+// The identifier of the blueprint to perform the aggregation on
 func (o AggregationPropertiesPropertiesOutput) TargetBlueprintIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v AggregationPropertiesProperties) string { return v.TargetBlueprintIdentifier }).(pulumi.StringOutput)
 }
 
+// The title of the aggregation property
 func (o AggregationPropertiesPropertiesOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AggregationPropertiesProperties) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
@@ -5019,10 +5525,14 @@ func (o AggregationPropertiesPropertiesMapOutput) MapIndex(k pulumi.StringInput)
 }
 
 type AggregationPropertiesPropertiesMethod struct {
+	// Function to calculate the aggregate by property value of the target entities, such as sum, min, max, median
 	AggregateByProperty *AggregationPropertiesPropertiesMethodAggregateByProperty `pulumi:"aggregateByProperty"`
-	AverageByProperty   *AggregationPropertiesPropertiesMethodAverageByProperty   `pulumi:"averageByProperty"`
-	AverageEntities     *AggregationPropertiesPropertiesMethodAverageEntities     `pulumi:"averageEntities"`
-	CountEntities       *bool                                                     `pulumi:"countEntities"`
+	// Function to calculate the average by property value of the target entities
+	AverageByProperty *AggregationPropertiesPropertiesMethodAverageByProperty `pulumi:"averageByProperty"`
+	// Function to average the entities of the target entities
+	AverageEntities *AggregationPropertiesPropertiesMethodAverageEntities `pulumi:"averageEntities"`
+	// Function to count the entities of the target entities
+	CountEntities *bool `pulumi:"countEntities"`
 }
 
 // AggregationPropertiesPropertiesMethodInput is an input type that accepts AggregationPropertiesPropertiesMethodArgs and AggregationPropertiesPropertiesMethodOutput values.
@@ -5037,10 +5547,14 @@ type AggregationPropertiesPropertiesMethodInput interface {
 }
 
 type AggregationPropertiesPropertiesMethodArgs struct {
+	// Function to calculate the aggregate by property value of the target entities, such as sum, min, max, median
 	AggregateByProperty AggregationPropertiesPropertiesMethodAggregateByPropertyPtrInput `pulumi:"aggregateByProperty"`
-	AverageByProperty   AggregationPropertiesPropertiesMethodAverageByPropertyPtrInput   `pulumi:"averageByProperty"`
-	AverageEntities     AggregationPropertiesPropertiesMethodAverageEntitiesPtrInput     `pulumi:"averageEntities"`
-	CountEntities       pulumi.BoolPtrInput                                              `pulumi:"countEntities"`
+	// Function to calculate the average by property value of the target entities
+	AverageByProperty AggregationPropertiesPropertiesMethodAverageByPropertyPtrInput `pulumi:"averageByProperty"`
+	// Function to average the entities of the target entities
+	AverageEntities AggregationPropertiesPropertiesMethodAverageEntitiesPtrInput `pulumi:"averageEntities"`
+	// Function to count the entities of the target entities
+	CountEntities pulumi.BoolPtrInput `pulumi:"countEntities"`
 }
 
 func (AggregationPropertiesPropertiesMethodArgs) ElementType() reflect.Type {
@@ -5069,30 +5583,36 @@ func (o AggregationPropertiesPropertiesMethodOutput) ToAggregationPropertiesProp
 	return o
 }
 
+// Function to calculate the aggregate by property value of the target entities, such as sum, min, max, median
 func (o AggregationPropertiesPropertiesMethodOutput) AggregateByProperty() AggregationPropertiesPropertiesMethodAggregateByPropertyPtrOutput {
 	return o.ApplyT(func(v AggregationPropertiesPropertiesMethod) *AggregationPropertiesPropertiesMethodAggregateByProperty {
 		return v.AggregateByProperty
 	}).(AggregationPropertiesPropertiesMethodAggregateByPropertyPtrOutput)
 }
 
+// Function to calculate the average by property value of the target entities
 func (o AggregationPropertiesPropertiesMethodOutput) AverageByProperty() AggregationPropertiesPropertiesMethodAverageByPropertyPtrOutput {
 	return o.ApplyT(func(v AggregationPropertiesPropertiesMethod) *AggregationPropertiesPropertiesMethodAverageByProperty {
 		return v.AverageByProperty
 	}).(AggregationPropertiesPropertiesMethodAverageByPropertyPtrOutput)
 }
 
+// Function to average the entities of the target entities
 func (o AggregationPropertiesPropertiesMethodOutput) AverageEntities() AggregationPropertiesPropertiesMethodAverageEntitiesPtrOutput {
 	return o.ApplyT(func(v AggregationPropertiesPropertiesMethod) *AggregationPropertiesPropertiesMethodAverageEntities {
 		return v.AverageEntities
 	}).(AggregationPropertiesPropertiesMethodAverageEntitiesPtrOutput)
 }
 
+// Function to count the entities of the target entities
 func (o AggregationPropertiesPropertiesMethodOutput) CountEntities() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AggregationPropertiesPropertiesMethod) *bool { return v.CountEntities }).(pulumi.BoolPtrOutput)
 }
 
 type AggregationPropertiesPropertiesMethodAggregateByProperty struct {
-	Func     string `pulumi:"func"`
+	// The func of the aggregate by property
+	Func string `pulumi:"func"`
+	// The property of the aggregate by property
 	Property string `pulumi:"property"`
 }
 
@@ -5108,7 +5628,9 @@ type AggregationPropertiesPropertiesMethodAggregateByPropertyInput interface {
 }
 
 type AggregationPropertiesPropertiesMethodAggregateByPropertyArgs struct {
-	Func     pulumi.StringInput `pulumi:"func"`
+	// The func of the aggregate by property
+	Func pulumi.StringInput `pulumi:"func"`
+	// The property of the aggregate by property
 	Property pulumi.StringInput `pulumi:"property"`
 }
 
@@ -5189,10 +5711,12 @@ func (o AggregationPropertiesPropertiesMethodAggregateByPropertyOutput) ToAggreg
 	}).(AggregationPropertiesPropertiesMethodAggregateByPropertyPtrOutput)
 }
 
+// The func of the aggregate by property
 func (o AggregationPropertiesPropertiesMethodAggregateByPropertyOutput) Func() pulumi.StringOutput {
 	return o.ApplyT(func(v AggregationPropertiesPropertiesMethodAggregateByProperty) string { return v.Func }).(pulumi.StringOutput)
 }
 
+// The property of the aggregate by property
 func (o AggregationPropertiesPropertiesMethodAggregateByPropertyOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v AggregationPropertiesPropertiesMethodAggregateByProperty) string { return v.Property }).(pulumi.StringOutput)
 }
@@ -5221,6 +5745,7 @@ func (o AggregationPropertiesPropertiesMethodAggregateByPropertyPtrOutput) Elem(
 	}).(AggregationPropertiesPropertiesMethodAggregateByPropertyOutput)
 }
 
+// The func of the aggregate by property
 func (o AggregationPropertiesPropertiesMethodAggregateByPropertyPtrOutput) Func() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AggregationPropertiesPropertiesMethodAggregateByProperty) *string {
 		if v == nil {
@@ -5230,6 +5755,7 @@ func (o AggregationPropertiesPropertiesMethodAggregateByPropertyPtrOutput) Func(
 	}).(pulumi.StringPtrOutput)
 }
 
+// The property of the aggregate by property
 func (o AggregationPropertiesPropertiesMethodAggregateByPropertyPtrOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AggregationPropertiesPropertiesMethodAggregateByProperty) *string {
 		if v == nil {
@@ -5240,9 +5766,12 @@ func (o AggregationPropertiesPropertiesMethodAggregateByPropertyPtrOutput) Prope
 }
 
 type AggregationPropertiesPropertiesMethodAverageByProperty struct {
-	AverageOf     string `pulumi:"averageOf"`
+	// The time periods to calculate the average by, e.g. hour, day, week, month
+	AverageOf string `pulumi:"averageOf"`
+	// The property name on which to calculate the the time periods, e.g. $createdAt, $updated_at or any other date property
 	MeasureTimeBy string `pulumi:"measureTimeBy"`
-	Property      string `pulumi:"property"`
+	// The property name on which to calculate the average by
+	Property string `pulumi:"property"`
 }
 
 // AggregationPropertiesPropertiesMethodAverageByPropertyInput is an input type that accepts AggregationPropertiesPropertiesMethodAverageByPropertyArgs and AggregationPropertiesPropertiesMethodAverageByPropertyOutput values.
@@ -5257,9 +5786,12 @@ type AggregationPropertiesPropertiesMethodAverageByPropertyInput interface {
 }
 
 type AggregationPropertiesPropertiesMethodAverageByPropertyArgs struct {
-	AverageOf     pulumi.StringInput `pulumi:"averageOf"`
+	// The time periods to calculate the average by, e.g. hour, day, week, month
+	AverageOf pulumi.StringInput `pulumi:"averageOf"`
+	// The property name on which to calculate the the time periods, e.g. $createdAt, $updated_at or any other date property
 	MeasureTimeBy pulumi.StringInput `pulumi:"measureTimeBy"`
-	Property      pulumi.StringInput `pulumi:"property"`
+	// The property name on which to calculate the average by
+	Property pulumi.StringInput `pulumi:"property"`
 }
 
 func (AggregationPropertiesPropertiesMethodAverageByPropertyArgs) ElementType() reflect.Type {
@@ -5339,14 +5871,17 @@ func (o AggregationPropertiesPropertiesMethodAverageByPropertyOutput) ToAggregat
 	}).(AggregationPropertiesPropertiesMethodAverageByPropertyPtrOutput)
 }
 
+// The time periods to calculate the average by, e.g. hour, day, week, month
 func (o AggregationPropertiesPropertiesMethodAverageByPropertyOutput) AverageOf() pulumi.StringOutput {
 	return o.ApplyT(func(v AggregationPropertiesPropertiesMethodAverageByProperty) string { return v.AverageOf }).(pulumi.StringOutput)
 }
 
+// The property name on which to calculate the the time periods, e.g. $createdAt, $updated_at or any other date property
 func (o AggregationPropertiesPropertiesMethodAverageByPropertyOutput) MeasureTimeBy() pulumi.StringOutput {
 	return o.ApplyT(func(v AggregationPropertiesPropertiesMethodAverageByProperty) string { return v.MeasureTimeBy }).(pulumi.StringOutput)
 }
 
+// The property name on which to calculate the average by
 func (o AggregationPropertiesPropertiesMethodAverageByPropertyOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v AggregationPropertiesPropertiesMethodAverageByProperty) string { return v.Property }).(pulumi.StringOutput)
 }
@@ -5375,6 +5910,7 @@ func (o AggregationPropertiesPropertiesMethodAverageByPropertyPtrOutput) Elem() 
 	}).(AggregationPropertiesPropertiesMethodAverageByPropertyOutput)
 }
 
+// The time periods to calculate the average by, e.g. hour, day, week, month
 func (o AggregationPropertiesPropertiesMethodAverageByPropertyPtrOutput) AverageOf() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AggregationPropertiesPropertiesMethodAverageByProperty) *string {
 		if v == nil {
@@ -5384,6 +5920,7 @@ func (o AggregationPropertiesPropertiesMethodAverageByPropertyPtrOutput) Average
 	}).(pulumi.StringPtrOutput)
 }
 
+// The property name on which to calculate the the time periods, e.g. $createdAt, $updated_at or any other date property
 func (o AggregationPropertiesPropertiesMethodAverageByPropertyPtrOutput) MeasureTimeBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AggregationPropertiesPropertiesMethodAverageByProperty) *string {
 		if v == nil {
@@ -5393,6 +5930,7 @@ func (o AggregationPropertiesPropertiesMethodAverageByPropertyPtrOutput) Measure
 	}).(pulumi.StringPtrOutput)
 }
 
+// The property name on which to calculate the average by
 func (o AggregationPropertiesPropertiesMethodAverageByPropertyPtrOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AggregationPropertiesPropertiesMethodAverageByProperty) *string {
 		if v == nil {
@@ -5403,7 +5941,9 @@ func (o AggregationPropertiesPropertiesMethodAverageByPropertyPtrOutput) Propert
 }
 
 type AggregationPropertiesPropertiesMethodAverageEntities struct {
-	AverageOf     *string `pulumi:"averageOf"`
+	// The time periods to calculate the average of, e.g. hour, day, week, month
+	AverageOf *string `pulumi:"averageOf"`
+	// The property name on which to calculate the the time periods, e.g. $createdAt, $updated_at or any other date property
 	MeasureTimeBy *string `pulumi:"measureTimeBy"`
 }
 
@@ -5419,7 +5959,9 @@ type AggregationPropertiesPropertiesMethodAverageEntitiesInput interface {
 }
 
 type AggregationPropertiesPropertiesMethodAverageEntitiesArgs struct {
-	AverageOf     pulumi.StringPtrInput `pulumi:"averageOf"`
+	// The time periods to calculate the average of, e.g. hour, day, week, month
+	AverageOf pulumi.StringPtrInput `pulumi:"averageOf"`
+	// The property name on which to calculate the the time periods, e.g. $createdAt, $updated_at or any other date property
 	MeasureTimeBy pulumi.StringPtrInput `pulumi:"measureTimeBy"`
 }
 
@@ -5500,10 +6042,12 @@ func (o AggregationPropertiesPropertiesMethodAverageEntitiesOutput) ToAggregatio
 	}).(AggregationPropertiesPropertiesMethodAverageEntitiesPtrOutput)
 }
 
+// The time periods to calculate the average of, e.g. hour, day, week, month
 func (o AggregationPropertiesPropertiesMethodAverageEntitiesOutput) AverageOf() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AggregationPropertiesPropertiesMethodAverageEntities) *string { return v.AverageOf }).(pulumi.StringPtrOutput)
 }
 
+// The property name on which to calculate the the time periods, e.g. $createdAt, $updated_at or any other date property
 func (o AggregationPropertiesPropertiesMethodAverageEntitiesOutput) MeasureTimeBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AggregationPropertiesPropertiesMethodAverageEntities) *string { return v.MeasureTimeBy }).(pulumi.StringPtrOutput)
 }
@@ -5532,6 +6076,7 @@ func (o AggregationPropertiesPropertiesMethodAverageEntitiesPtrOutput) Elem() Ag
 	}).(AggregationPropertiesPropertiesMethodAverageEntitiesOutput)
 }
 
+// The time periods to calculate the average of, e.g. hour, day, week, month
 func (o AggregationPropertiesPropertiesMethodAverageEntitiesPtrOutput) AverageOf() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AggregationPropertiesPropertiesMethodAverageEntities) *string {
 		if v == nil {
@@ -5541,6 +6086,7 @@ func (o AggregationPropertiesPropertiesMethodAverageEntitiesPtrOutput) AverageOf
 	}).(pulumi.StringPtrOutput)
 }
 
+// The property name on which to calculate the the time periods, e.g. $createdAt, $updated_at or any other date property
 func (o AggregationPropertiesPropertiesMethodAverageEntitiesPtrOutput) MeasureTimeBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AggregationPropertiesPropertiesMethodAverageEntities) *string {
 		if v == nil {
@@ -5551,14 +6097,22 @@ func (o AggregationPropertiesPropertiesMethodAverageEntitiesPtrOutput) MeasureTi
 }
 
 type BlueprintCalculationProperties struct {
-	Calculation string            `pulumi:"calculation"`
-	Colorized   *bool             `pulumi:"colorized"`
-	Colors      map[string]string `pulumi:"colors"`
-	Description *string           `pulumi:"description"`
-	Format      *string           `pulumi:"format"`
-	Icon        *string           `pulumi:"icon"`
-	Title       *string           `pulumi:"title"`
-	Type        string            `pulumi:"type"`
+	// The calculation of the calculation property
+	Calculation string `pulumi:"calculation"`
+	// The colorized of the calculation property
+	Colorized *bool `pulumi:"colorized"`
+	// The colors of the calculation property
+	Colors map[string]string `pulumi:"colors"`
+	// The description of the calculation property
+	Description *string `pulumi:"description"`
+	// The format of the calculation property
+	Format *string `pulumi:"format"`
+	// The icon of the calculation property
+	Icon *string `pulumi:"icon"`
+	// The title of the calculation property
+	Title *string `pulumi:"title"`
+	// The type of the calculation property
+	Type string `pulumi:"type"`
 }
 
 // BlueprintCalculationPropertiesInput is an input type that accepts BlueprintCalculationPropertiesArgs and BlueprintCalculationPropertiesOutput values.
@@ -5573,14 +6127,22 @@ type BlueprintCalculationPropertiesInput interface {
 }
 
 type BlueprintCalculationPropertiesArgs struct {
-	Calculation pulumi.StringInput    `pulumi:"calculation"`
-	Colorized   pulumi.BoolPtrInput   `pulumi:"colorized"`
-	Colors      pulumi.StringMapInput `pulumi:"colors"`
+	// The calculation of the calculation property
+	Calculation pulumi.StringInput `pulumi:"calculation"`
+	// The colorized of the calculation property
+	Colorized pulumi.BoolPtrInput `pulumi:"colorized"`
+	// The colors of the calculation property
+	Colors pulumi.StringMapInput `pulumi:"colors"`
+	// The description of the calculation property
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Format      pulumi.StringPtrInput `pulumi:"format"`
-	Icon        pulumi.StringPtrInput `pulumi:"icon"`
-	Title       pulumi.StringPtrInput `pulumi:"title"`
-	Type        pulumi.StringInput    `pulumi:"type"`
+	// The format of the calculation property
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	// The icon of the calculation property
+	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// The title of the calculation property
+	Title pulumi.StringPtrInput `pulumi:"title"`
+	// The type of the calculation property
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (BlueprintCalculationPropertiesArgs) ElementType() reflect.Type {
@@ -5634,34 +6196,42 @@ func (o BlueprintCalculationPropertiesOutput) ToBlueprintCalculationPropertiesOu
 	return o
 }
 
+// The calculation of the calculation property
 func (o BlueprintCalculationPropertiesOutput) Calculation() pulumi.StringOutput {
 	return o.ApplyT(func(v BlueprintCalculationProperties) string { return v.Calculation }).(pulumi.StringOutput)
 }
 
+// The colorized of the calculation property
 func (o BlueprintCalculationPropertiesOutput) Colorized() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BlueprintCalculationProperties) *bool { return v.Colorized }).(pulumi.BoolPtrOutput)
 }
 
+// The colors of the calculation property
 func (o BlueprintCalculationPropertiesOutput) Colors() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BlueprintCalculationProperties) map[string]string { return v.Colors }).(pulumi.StringMapOutput)
 }
 
+// The description of the calculation property
 func (o BlueprintCalculationPropertiesOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintCalculationProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The format of the calculation property
 func (o BlueprintCalculationPropertiesOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintCalculationProperties) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
+// The icon of the calculation property
 func (o BlueprintCalculationPropertiesOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintCalculationProperties) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
+// The title of the calculation property
 func (o BlueprintCalculationPropertiesOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintCalculationProperties) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
+// The type of the calculation property
 func (o BlueprintCalculationPropertiesOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v BlueprintCalculationProperties) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -5805,7 +6375,9 @@ func (o BlueprintKafkaChangelogDestinationPtrOutput) Elem() BlueprintKafkaChange
 }
 
 type BlueprintMirrorProperties struct {
-	Path  string  `pulumi:"path"`
+	// The path of the mirror property
+	Path string `pulumi:"path"`
+	// The title of the mirror property
 	Title *string `pulumi:"title"`
 }
 
@@ -5821,7 +6393,9 @@ type BlueprintMirrorPropertiesInput interface {
 }
 
 type BlueprintMirrorPropertiesArgs struct {
-	Path  pulumi.StringInput    `pulumi:"path"`
+	// The path of the mirror property
+	Path pulumi.StringInput `pulumi:"path"`
+	// The title of the mirror property
 	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
@@ -5876,10 +6450,12 @@ func (o BlueprintMirrorPropertiesOutput) ToBlueprintMirrorPropertiesOutputWithCo
 	return o
 }
 
+// The path of the mirror property
 func (o BlueprintMirrorPropertiesOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v BlueprintMirrorProperties) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// The title of the mirror property
 func (o BlueprintMirrorPropertiesOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintMirrorProperties) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
@@ -5905,11 +6481,16 @@ func (o BlueprintMirrorPropertiesMapOutput) MapIndex(k pulumi.StringInput) Bluep
 }
 
 type BlueprintProperties struct {
-	ArrayProps   map[string]BlueprintPropertiesArrayProps   `pulumi:"arrayProps"`
+	// The array property of the blueprint
+	ArrayProps map[string]BlueprintPropertiesArrayProps `pulumi:"arrayProps"`
+	// The boolean property of the blueprint
 	BooleanProps map[string]BlueprintPropertiesBooleanProps `pulumi:"booleanProps"`
-	NumberProps  map[string]BlueprintPropertiesNumberProps  `pulumi:"numberProps"`
-	ObjectProps  map[string]BlueprintPropertiesObjectProps  `pulumi:"objectProps"`
-	StringProps  map[string]BlueprintPropertiesStringProps  `pulumi:"stringProps"`
+	// The number property of the blueprint
+	NumberProps map[string]BlueprintPropertiesNumberProps `pulumi:"numberProps"`
+	// The object property of the blueprint
+	ObjectProps map[string]BlueprintPropertiesObjectProps `pulumi:"objectProps"`
+	// The string property of the blueprint
+	StringProps map[string]BlueprintPropertiesStringProps `pulumi:"stringProps"`
 }
 
 // BlueprintPropertiesInput is an input type that accepts BlueprintPropertiesArgs and BlueprintPropertiesOutput values.
@@ -5924,11 +6505,16 @@ type BlueprintPropertiesInput interface {
 }
 
 type BlueprintPropertiesArgs struct {
-	ArrayProps   BlueprintPropertiesArrayPropsMapInput   `pulumi:"arrayProps"`
+	// The array property of the blueprint
+	ArrayProps BlueprintPropertiesArrayPropsMapInput `pulumi:"arrayProps"`
+	// The boolean property of the blueprint
 	BooleanProps BlueprintPropertiesBooleanPropsMapInput `pulumi:"booleanProps"`
-	NumberProps  BlueprintPropertiesNumberPropsMapInput  `pulumi:"numberProps"`
-	ObjectProps  BlueprintPropertiesObjectPropsMapInput  `pulumi:"objectProps"`
-	StringProps  BlueprintPropertiesStringPropsMapInput  `pulumi:"stringProps"`
+	// The number property of the blueprint
+	NumberProps BlueprintPropertiesNumberPropsMapInput `pulumi:"numberProps"`
+	// The object property of the blueprint
+	ObjectProps BlueprintPropertiesObjectPropsMapInput `pulumi:"objectProps"`
+	// The string property of the blueprint
+	StringProps BlueprintPropertiesStringPropsMapInput `pulumi:"stringProps"`
 }
 
 func (BlueprintPropertiesArgs) ElementType() reflect.Type {
@@ -6008,22 +6594,27 @@ func (o BlueprintPropertiesOutput) ToBlueprintPropertiesPtrOutputWithContext(ctx
 	}).(BlueprintPropertiesPtrOutput)
 }
 
+// The array property of the blueprint
 func (o BlueprintPropertiesOutput) ArrayProps() BlueprintPropertiesArrayPropsMapOutput {
 	return o.ApplyT(func(v BlueprintProperties) map[string]BlueprintPropertiesArrayProps { return v.ArrayProps }).(BlueprintPropertiesArrayPropsMapOutput)
 }
 
+// The boolean property of the blueprint
 func (o BlueprintPropertiesOutput) BooleanProps() BlueprintPropertiesBooleanPropsMapOutput {
 	return o.ApplyT(func(v BlueprintProperties) map[string]BlueprintPropertiesBooleanProps { return v.BooleanProps }).(BlueprintPropertiesBooleanPropsMapOutput)
 }
 
+// The number property of the blueprint
 func (o BlueprintPropertiesOutput) NumberProps() BlueprintPropertiesNumberPropsMapOutput {
 	return o.ApplyT(func(v BlueprintProperties) map[string]BlueprintPropertiesNumberProps { return v.NumberProps }).(BlueprintPropertiesNumberPropsMapOutput)
 }
 
+// The object property of the blueprint
 func (o BlueprintPropertiesOutput) ObjectProps() BlueprintPropertiesObjectPropsMapOutput {
 	return o.ApplyT(func(v BlueprintProperties) map[string]BlueprintPropertiesObjectProps { return v.ObjectProps }).(BlueprintPropertiesObjectPropsMapOutput)
 }
 
+// The string property of the blueprint
 func (o BlueprintPropertiesOutput) StringProps() BlueprintPropertiesStringPropsMapOutput {
 	return o.ApplyT(func(v BlueprintProperties) map[string]BlueprintPropertiesStringProps { return v.StringProps }).(BlueprintPropertiesStringPropsMapOutput)
 }
@@ -6052,6 +6643,7 @@ func (o BlueprintPropertiesPtrOutput) Elem() BlueprintPropertiesOutput {
 	}).(BlueprintPropertiesOutput)
 }
 
+// The array property of the blueprint
 func (o BlueprintPropertiesPtrOutput) ArrayProps() BlueprintPropertiesArrayPropsMapOutput {
 	return o.ApplyT(func(v *BlueprintProperties) map[string]BlueprintPropertiesArrayProps {
 		if v == nil {
@@ -6061,6 +6653,7 @@ func (o BlueprintPropertiesPtrOutput) ArrayProps() BlueprintPropertiesArrayProps
 	}).(BlueprintPropertiesArrayPropsMapOutput)
 }
 
+// The boolean property of the blueprint
 func (o BlueprintPropertiesPtrOutput) BooleanProps() BlueprintPropertiesBooleanPropsMapOutput {
 	return o.ApplyT(func(v *BlueprintProperties) map[string]BlueprintPropertiesBooleanProps {
 		if v == nil {
@@ -6070,6 +6663,7 @@ func (o BlueprintPropertiesPtrOutput) BooleanProps() BlueprintPropertiesBooleanP
 	}).(BlueprintPropertiesBooleanPropsMapOutput)
 }
 
+// The number property of the blueprint
 func (o BlueprintPropertiesPtrOutput) NumberProps() BlueprintPropertiesNumberPropsMapOutput {
 	return o.ApplyT(func(v *BlueprintProperties) map[string]BlueprintPropertiesNumberProps {
 		if v == nil {
@@ -6079,6 +6673,7 @@ func (o BlueprintPropertiesPtrOutput) NumberProps() BlueprintPropertiesNumberPro
 	}).(BlueprintPropertiesNumberPropsMapOutput)
 }
 
+// The object property of the blueprint
 func (o BlueprintPropertiesPtrOutput) ObjectProps() BlueprintPropertiesObjectPropsMapOutput {
 	return o.ApplyT(func(v *BlueprintProperties) map[string]BlueprintPropertiesObjectProps {
 		if v == nil {
@@ -6088,6 +6683,7 @@ func (o BlueprintPropertiesPtrOutput) ObjectProps() BlueprintPropertiesObjectPro
 	}).(BlueprintPropertiesObjectPropsMapOutput)
 }
 
+// The string property of the blueprint
 func (o BlueprintPropertiesPtrOutput) StringProps() BlueprintPropertiesStringPropsMapOutput {
 	return o.ApplyT(func(v *BlueprintProperties) map[string]BlueprintPropertiesStringProps {
 		if v == nil {
@@ -6098,16 +6694,26 @@ func (o BlueprintPropertiesPtrOutput) StringProps() BlueprintPropertiesStringPro
 }
 
 type BlueprintPropertiesArrayProps struct {
+	// The items of the array property
 	BooleanItems *BlueprintPropertiesArrayPropsBooleanItems `pulumi:"booleanItems"`
-	Description  *string                                    `pulumi:"description"`
-	Icon         *string                                    `pulumi:"icon"`
-	MaxItems     *int                                       `pulumi:"maxItems"`
-	MinItems     *int                                       `pulumi:"minItems"`
-	NumberItems  *BlueprintPropertiesArrayPropsNumberItems  `pulumi:"numberItems"`
-	ObjectItems  *BlueprintPropertiesArrayPropsObjectItems  `pulumi:"objectItems"`
-	Required     *bool                                      `pulumi:"required"`
-	StringItems  *BlueprintPropertiesArrayPropsStringItems  `pulumi:"stringItems"`
-	Title        *string                                    `pulumi:"title"`
+	// The description of the property
+	Description *string `pulumi:"description"`
+	// The icon of the property
+	Icon *string `pulumi:"icon"`
+	// The max items of the array property
+	MaxItems *int `pulumi:"maxItems"`
+	// The min items of the array property
+	MinItems *int `pulumi:"minItems"`
+	// The items of the array property
+	NumberItems *BlueprintPropertiesArrayPropsNumberItems `pulumi:"numberItems"`
+	// The items of the array property
+	ObjectItems *BlueprintPropertiesArrayPropsObjectItems `pulumi:"objectItems"`
+	// Whether the property is required
+	Required *bool `pulumi:"required"`
+	// The items of the array property
+	StringItems *BlueprintPropertiesArrayPropsStringItems `pulumi:"stringItems"`
+	// The title of the property
+	Title *string `pulumi:"title"`
 }
 
 // BlueprintPropertiesArrayPropsInput is an input type that accepts BlueprintPropertiesArrayPropsArgs and BlueprintPropertiesArrayPropsOutput values.
@@ -6122,16 +6728,26 @@ type BlueprintPropertiesArrayPropsInput interface {
 }
 
 type BlueprintPropertiesArrayPropsArgs struct {
+	// The items of the array property
 	BooleanItems BlueprintPropertiesArrayPropsBooleanItemsPtrInput `pulumi:"booleanItems"`
-	Description  pulumi.StringPtrInput                             `pulumi:"description"`
-	Icon         pulumi.StringPtrInput                             `pulumi:"icon"`
-	MaxItems     pulumi.IntPtrInput                                `pulumi:"maxItems"`
-	MinItems     pulumi.IntPtrInput                                `pulumi:"minItems"`
-	NumberItems  BlueprintPropertiesArrayPropsNumberItemsPtrInput  `pulumi:"numberItems"`
-	ObjectItems  BlueprintPropertiesArrayPropsObjectItemsPtrInput  `pulumi:"objectItems"`
-	Required     pulumi.BoolPtrInput                               `pulumi:"required"`
-	StringItems  BlueprintPropertiesArrayPropsStringItemsPtrInput  `pulumi:"stringItems"`
-	Title        pulumi.StringPtrInput                             `pulumi:"title"`
+	// The description of the property
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The icon of the property
+	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// The max items of the array property
+	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	// The min items of the array property
+	MinItems pulumi.IntPtrInput `pulumi:"minItems"`
+	// The items of the array property
+	NumberItems BlueprintPropertiesArrayPropsNumberItemsPtrInput `pulumi:"numberItems"`
+	// The items of the array property
+	ObjectItems BlueprintPropertiesArrayPropsObjectItemsPtrInput `pulumi:"objectItems"`
+	// Whether the property is required
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// The items of the array property
+	StringItems BlueprintPropertiesArrayPropsStringItemsPtrInput `pulumi:"stringItems"`
+	// The title of the property
+	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
 func (BlueprintPropertiesArrayPropsArgs) ElementType() reflect.Type {
@@ -6185,44 +6801,54 @@ func (o BlueprintPropertiesArrayPropsOutput) ToBlueprintPropertiesArrayPropsOutp
 	return o
 }
 
+// The items of the array property
 func (o BlueprintPropertiesArrayPropsOutput) BooleanItems() BlueprintPropertiesArrayPropsBooleanItemsPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesArrayProps) *BlueprintPropertiesArrayPropsBooleanItems {
 		return v.BooleanItems
 	}).(BlueprintPropertiesArrayPropsBooleanItemsPtrOutput)
 }
 
+// The description of the property
 func (o BlueprintPropertiesArrayPropsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesArrayProps) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The icon of the property
 func (o BlueprintPropertiesArrayPropsOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesArrayProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
+// The max items of the array property
 func (o BlueprintPropertiesArrayPropsOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesArrayProps) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
+// The min items of the array property
 func (o BlueprintPropertiesArrayPropsOutput) MinItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesArrayProps) *int { return v.MinItems }).(pulumi.IntPtrOutput)
 }
 
+// The items of the array property
 func (o BlueprintPropertiesArrayPropsOutput) NumberItems() BlueprintPropertiesArrayPropsNumberItemsPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesArrayProps) *BlueprintPropertiesArrayPropsNumberItems { return v.NumberItems }).(BlueprintPropertiesArrayPropsNumberItemsPtrOutput)
 }
 
+// The items of the array property
 func (o BlueprintPropertiesArrayPropsOutput) ObjectItems() BlueprintPropertiesArrayPropsObjectItemsPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesArrayProps) *BlueprintPropertiesArrayPropsObjectItems { return v.ObjectItems }).(BlueprintPropertiesArrayPropsObjectItemsPtrOutput)
 }
 
+// Whether the property is required
 func (o BlueprintPropertiesArrayPropsOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesArrayProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
+// The items of the array property
 func (o BlueprintPropertiesArrayPropsOutput) StringItems() BlueprintPropertiesArrayPropsStringItemsPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesArrayProps) *BlueprintPropertiesArrayPropsStringItems { return v.StringItems }).(BlueprintPropertiesArrayPropsStringItemsPtrOutput)
 }
 
+// The title of the property
 func (o BlueprintPropertiesArrayPropsOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesArrayProps) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
@@ -6248,6 +6874,7 @@ func (o BlueprintPropertiesArrayPropsMapOutput) MapIndex(k pulumi.StringInput) B
 }
 
 type BlueprintPropertiesArrayPropsBooleanItems struct {
+	// The default of the items
 	Defaults []bool `pulumi:"defaults"`
 }
 
@@ -6263,6 +6890,7 @@ type BlueprintPropertiesArrayPropsBooleanItemsInput interface {
 }
 
 type BlueprintPropertiesArrayPropsBooleanItemsArgs struct {
+	// The default of the items
 	Defaults pulumi.BoolArrayInput `pulumi:"defaults"`
 }
 
@@ -6343,6 +6971,7 @@ func (o BlueprintPropertiesArrayPropsBooleanItemsOutput) ToBlueprintPropertiesAr
 	}).(BlueprintPropertiesArrayPropsBooleanItemsPtrOutput)
 }
 
+// The default of the items
 func (o BlueprintPropertiesArrayPropsBooleanItemsOutput) Defaults() pulumi.BoolArrayOutput {
 	return o.ApplyT(func(v BlueprintPropertiesArrayPropsBooleanItems) []bool { return v.Defaults }).(pulumi.BoolArrayOutput)
 }
@@ -6371,6 +7000,7 @@ func (o BlueprintPropertiesArrayPropsBooleanItemsPtrOutput) Elem() BlueprintProp
 	}).(BlueprintPropertiesArrayPropsBooleanItemsOutput)
 }
 
+// The default of the items
 func (o BlueprintPropertiesArrayPropsBooleanItemsPtrOutput) Defaults() pulumi.BoolArrayOutput {
 	return o.ApplyT(func(v *BlueprintPropertiesArrayPropsBooleanItems) []bool {
 		if v == nil {
@@ -6381,6 +7011,7 @@ func (o BlueprintPropertiesArrayPropsBooleanItemsPtrOutput) Defaults() pulumi.Bo
 }
 
 type BlueprintPropertiesArrayPropsNumberItems struct {
+	// The default of the items
 	Defaults []float64 `pulumi:"defaults"`
 }
 
@@ -6396,6 +7027,7 @@ type BlueprintPropertiesArrayPropsNumberItemsInput interface {
 }
 
 type BlueprintPropertiesArrayPropsNumberItemsArgs struct {
+	// The default of the items
 	Defaults pulumi.Float64ArrayInput `pulumi:"defaults"`
 }
 
@@ -6476,6 +7108,7 @@ func (o BlueprintPropertiesArrayPropsNumberItemsOutput) ToBlueprintPropertiesArr
 	}).(BlueprintPropertiesArrayPropsNumberItemsPtrOutput)
 }
 
+// The default of the items
 func (o BlueprintPropertiesArrayPropsNumberItemsOutput) Defaults() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v BlueprintPropertiesArrayPropsNumberItems) []float64 { return v.Defaults }).(pulumi.Float64ArrayOutput)
 }
@@ -6504,6 +7137,7 @@ func (o BlueprintPropertiesArrayPropsNumberItemsPtrOutput) Elem() BlueprintPrope
 	}).(BlueprintPropertiesArrayPropsNumberItemsOutput)
 }
 
+// The default of the items
 func (o BlueprintPropertiesArrayPropsNumberItemsPtrOutput) Defaults() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v *BlueprintPropertiesArrayPropsNumberItems) []float64 {
 		if v == nil {
@@ -6514,6 +7148,7 @@ func (o BlueprintPropertiesArrayPropsNumberItemsPtrOutput) Defaults() pulumi.Flo
 }
 
 type BlueprintPropertiesArrayPropsObjectItems struct {
+	// The default of the items
 	Defaults []string `pulumi:"defaults"`
 }
 
@@ -6529,6 +7164,7 @@ type BlueprintPropertiesArrayPropsObjectItemsInput interface {
 }
 
 type BlueprintPropertiesArrayPropsObjectItemsArgs struct {
+	// The default of the items
 	Defaults pulumi.StringArrayInput `pulumi:"defaults"`
 }
 
@@ -6609,6 +7245,7 @@ func (o BlueprintPropertiesArrayPropsObjectItemsOutput) ToBlueprintPropertiesArr
 	}).(BlueprintPropertiesArrayPropsObjectItemsPtrOutput)
 }
 
+// The default of the items
 func (o BlueprintPropertiesArrayPropsObjectItemsOutput) Defaults() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BlueprintPropertiesArrayPropsObjectItems) []string { return v.Defaults }).(pulumi.StringArrayOutput)
 }
@@ -6637,6 +7274,7 @@ func (o BlueprintPropertiesArrayPropsObjectItemsPtrOutput) Elem() BlueprintPrope
 	}).(BlueprintPropertiesArrayPropsObjectItemsOutput)
 }
 
+// The default of the items
 func (o BlueprintPropertiesArrayPropsObjectItemsPtrOutput) Defaults() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BlueprintPropertiesArrayPropsObjectItems) []string {
 		if v == nil {
@@ -6647,8 +7285,10 @@ func (o BlueprintPropertiesArrayPropsObjectItemsPtrOutput) Defaults() pulumi.Str
 }
 
 type BlueprintPropertiesArrayPropsStringItems struct {
+	// The default of the items
 	Defaults []string `pulumi:"defaults"`
-	Format   *string  `pulumi:"format"`
+	// The format of the items
+	Format *string `pulumi:"format"`
 }
 
 // BlueprintPropertiesArrayPropsStringItemsInput is an input type that accepts BlueprintPropertiesArrayPropsStringItemsArgs and BlueprintPropertiesArrayPropsStringItemsOutput values.
@@ -6663,8 +7303,10 @@ type BlueprintPropertiesArrayPropsStringItemsInput interface {
 }
 
 type BlueprintPropertiesArrayPropsStringItemsArgs struct {
+	// The default of the items
 	Defaults pulumi.StringArrayInput `pulumi:"defaults"`
-	Format   pulumi.StringPtrInput   `pulumi:"format"`
+	// The format of the items
+	Format pulumi.StringPtrInput `pulumi:"format"`
 }
 
 func (BlueprintPropertiesArrayPropsStringItemsArgs) ElementType() reflect.Type {
@@ -6744,10 +7386,12 @@ func (o BlueprintPropertiesArrayPropsStringItemsOutput) ToBlueprintPropertiesArr
 	}).(BlueprintPropertiesArrayPropsStringItemsPtrOutput)
 }
 
+// The default of the items
 func (o BlueprintPropertiesArrayPropsStringItemsOutput) Defaults() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BlueprintPropertiesArrayPropsStringItems) []string { return v.Defaults }).(pulumi.StringArrayOutput)
 }
 
+// The format of the items
 func (o BlueprintPropertiesArrayPropsStringItemsOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesArrayPropsStringItems) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
@@ -6776,6 +7420,7 @@ func (o BlueprintPropertiesArrayPropsStringItemsPtrOutput) Elem() BlueprintPrope
 	}).(BlueprintPropertiesArrayPropsStringItemsOutput)
 }
 
+// The default of the items
 func (o BlueprintPropertiesArrayPropsStringItemsPtrOutput) Defaults() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BlueprintPropertiesArrayPropsStringItems) []string {
 		if v == nil {
@@ -6785,6 +7430,7 @@ func (o BlueprintPropertiesArrayPropsStringItemsPtrOutput) Defaults() pulumi.Str
 	}).(pulumi.StringArrayOutput)
 }
 
+// The format of the items
 func (o BlueprintPropertiesArrayPropsStringItemsPtrOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BlueprintPropertiesArrayPropsStringItems) *string {
 		if v == nil {
@@ -6795,11 +7441,16 @@ func (o BlueprintPropertiesArrayPropsStringItemsPtrOutput) Format() pulumi.Strin
 }
 
 type BlueprintPropertiesBooleanProps struct {
-	Default     *bool   `pulumi:"default"`
+	// The default of the boolean property
+	Default *bool `pulumi:"default"`
+	// The description of the property
 	Description *string `pulumi:"description"`
-	Icon        *string `pulumi:"icon"`
-	Required    *bool   `pulumi:"required"`
-	Title       *string `pulumi:"title"`
+	// The icon of the property
+	Icon *string `pulumi:"icon"`
+	// Whether the property is required
+	Required *bool `pulumi:"required"`
+	// The title of the property
+	Title *string `pulumi:"title"`
 }
 
 // BlueprintPropertiesBooleanPropsInput is an input type that accepts BlueprintPropertiesBooleanPropsArgs and BlueprintPropertiesBooleanPropsOutput values.
@@ -6814,11 +7465,16 @@ type BlueprintPropertiesBooleanPropsInput interface {
 }
 
 type BlueprintPropertiesBooleanPropsArgs struct {
-	Default     pulumi.BoolPtrInput   `pulumi:"default"`
+	// The default of the boolean property
+	Default pulumi.BoolPtrInput `pulumi:"default"`
+	// The description of the property
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Icon        pulumi.StringPtrInput `pulumi:"icon"`
-	Required    pulumi.BoolPtrInput   `pulumi:"required"`
-	Title       pulumi.StringPtrInput `pulumi:"title"`
+	// The icon of the property
+	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// Whether the property is required
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// The title of the property
+	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
 func (BlueprintPropertiesBooleanPropsArgs) ElementType() reflect.Type {
@@ -6872,22 +7528,27 @@ func (o BlueprintPropertiesBooleanPropsOutput) ToBlueprintPropertiesBooleanProps
 	return o
 }
 
+// The default of the boolean property
 func (o BlueprintPropertiesBooleanPropsOutput) Default() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesBooleanProps) *bool { return v.Default }).(pulumi.BoolPtrOutput)
 }
 
+// The description of the property
 func (o BlueprintPropertiesBooleanPropsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesBooleanProps) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The icon of the property
 func (o BlueprintPropertiesBooleanPropsOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesBooleanProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
+// Whether the property is required
 func (o BlueprintPropertiesBooleanPropsOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesBooleanProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
+// The title of the property
 func (o BlueprintPropertiesBooleanPropsOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesBooleanProps) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
@@ -6913,15 +7574,24 @@ func (o BlueprintPropertiesBooleanPropsMapOutput) MapIndex(k pulumi.StringInput)
 }
 
 type BlueprintPropertiesNumberProps struct {
-	Default     *float64          `pulumi:"default"`
-	Description *string           `pulumi:"description"`
-	EnumColors  map[string]string `pulumi:"enumColors"`
-	Enums       []float64         `pulumi:"enums"`
-	Icon        *string           `pulumi:"icon"`
-	Maximum     *float64          `pulumi:"maximum"`
-	Minimum     *float64          `pulumi:"minimum"`
-	Required    *bool             `pulumi:"required"`
-	Title       *string           `pulumi:"title"`
+	// The default of the number property
+	Default *float64 `pulumi:"default"`
+	// The description of the property
+	Description *string `pulumi:"description"`
+	// The enum colors of the number property
+	EnumColors map[string]string `pulumi:"enumColors"`
+	// The enum of the number property
+	Enums []float64 `pulumi:"enums"`
+	// The icon of the property
+	Icon *string `pulumi:"icon"`
+	// The min of the number property
+	Maximum *float64 `pulumi:"maximum"`
+	// The max of the number property
+	Minimum *float64 `pulumi:"minimum"`
+	// Whether the property is required
+	Required *bool `pulumi:"required"`
+	// The title of the property
+	Title *string `pulumi:"title"`
 }
 
 // BlueprintPropertiesNumberPropsInput is an input type that accepts BlueprintPropertiesNumberPropsArgs and BlueprintPropertiesNumberPropsOutput values.
@@ -6936,15 +7606,24 @@ type BlueprintPropertiesNumberPropsInput interface {
 }
 
 type BlueprintPropertiesNumberPropsArgs struct {
-	Default     pulumi.Float64PtrInput   `pulumi:"default"`
-	Description pulumi.StringPtrInput    `pulumi:"description"`
-	EnumColors  pulumi.StringMapInput    `pulumi:"enumColors"`
-	Enums       pulumi.Float64ArrayInput `pulumi:"enums"`
-	Icon        pulumi.StringPtrInput    `pulumi:"icon"`
-	Maximum     pulumi.Float64PtrInput   `pulumi:"maximum"`
-	Minimum     pulumi.Float64PtrInput   `pulumi:"minimum"`
-	Required    pulumi.BoolPtrInput      `pulumi:"required"`
-	Title       pulumi.StringPtrInput    `pulumi:"title"`
+	// The default of the number property
+	Default pulumi.Float64PtrInput `pulumi:"default"`
+	// The description of the property
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The enum colors of the number property
+	EnumColors pulumi.StringMapInput `pulumi:"enumColors"`
+	// The enum of the number property
+	Enums pulumi.Float64ArrayInput `pulumi:"enums"`
+	// The icon of the property
+	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// The min of the number property
+	Maximum pulumi.Float64PtrInput `pulumi:"maximum"`
+	// The max of the number property
+	Minimum pulumi.Float64PtrInput `pulumi:"minimum"`
+	// Whether the property is required
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// The title of the property
+	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
 func (BlueprintPropertiesNumberPropsArgs) ElementType() reflect.Type {
@@ -6998,38 +7677,47 @@ func (o BlueprintPropertiesNumberPropsOutput) ToBlueprintPropertiesNumberPropsOu
 	return o
 }
 
+// The default of the number property
 func (o BlueprintPropertiesNumberPropsOutput) Default() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesNumberProps) *float64 { return v.Default }).(pulumi.Float64PtrOutput)
 }
 
+// The description of the property
 func (o BlueprintPropertiesNumberPropsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesNumberProps) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The enum colors of the number property
 func (o BlueprintPropertiesNumberPropsOutput) EnumColors() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BlueprintPropertiesNumberProps) map[string]string { return v.EnumColors }).(pulumi.StringMapOutput)
 }
 
+// The enum of the number property
 func (o BlueprintPropertiesNumberPropsOutput) Enums() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v BlueprintPropertiesNumberProps) []float64 { return v.Enums }).(pulumi.Float64ArrayOutput)
 }
 
+// The icon of the property
 func (o BlueprintPropertiesNumberPropsOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesNumberProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
+// The min of the number property
 func (o BlueprintPropertiesNumberPropsOutput) Maximum() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesNumberProps) *float64 { return v.Maximum }).(pulumi.Float64PtrOutput)
 }
 
+// The max of the number property
 func (o BlueprintPropertiesNumberPropsOutput) Minimum() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesNumberProps) *float64 { return v.Minimum }).(pulumi.Float64PtrOutput)
 }
 
+// Whether the property is required
 func (o BlueprintPropertiesNumberPropsOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesNumberProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
+// The title of the property
 func (o BlueprintPropertiesNumberPropsOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesNumberProps) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
@@ -7055,12 +7743,18 @@ func (o BlueprintPropertiesNumberPropsMapOutput) MapIndex(k pulumi.StringInput) 
 }
 
 type BlueprintPropertiesObjectProps struct {
-	Default     *string `pulumi:"default"`
+	// The default of the object property
+	Default *string `pulumi:"default"`
+	// The description of the property
 	Description *string `pulumi:"description"`
-	Icon        *string `pulumi:"icon"`
-	Required    *bool   `pulumi:"required"`
-	Spec        *string `pulumi:"spec"`
-	Title       *string `pulumi:"title"`
+	// The icon of the property
+	Icon *string `pulumi:"icon"`
+	// Whether the property is required
+	Required *bool `pulumi:"required"`
+	// The spec of the object property
+	Spec *string `pulumi:"spec"`
+	// The title of the property
+	Title *string `pulumi:"title"`
 }
 
 // BlueprintPropertiesObjectPropsInput is an input type that accepts BlueprintPropertiesObjectPropsArgs and BlueprintPropertiesObjectPropsOutput values.
@@ -7075,12 +7769,18 @@ type BlueprintPropertiesObjectPropsInput interface {
 }
 
 type BlueprintPropertiesObjectPropsArgs struct {
-	Default     pulumi.StringPtrInput `pulumi:"default"`
+	// The default of the object property
+	Default pulumi.StringPtrInput `pulumi:"default"`
+	// The description of the property
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Icon        pulumi.StringPtrInput `pulumi:"icon"`
-	Required    pulumi.BoolPtrInput   `pulumi:"required"`
-	Spec        pulumi.StringPtrInput `pulumi:"spec"`
-	Title       pulumi.StringPtrInput `pulumi:"title"`
+	// The icon of the property
+	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// Whether the property is required
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// The spec of the object property
+	Spec pulumi.StringPtrInput `pulumi:"spec"`
+	// The title of the property
+	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
 func (BlueprintPropertiesObjectPropsArgs) ElementType() reflect.Type {
@@ -7134,26 +7834,32 @@ func (o BlueprintPropertiesObjectPropsOutput) ToBlueprintPropertiesObjectPropsOu
 	return o
 }
 
+// The default of the object property
 func (o BlueprintPropertiesObjectPropsOutput) Default() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesObjectProps) *string { return v.Default }).(pulumi.StringPtrOutput)
 }
 
+// The description of the property
 func (o BlueprintPropertiesObjectPropsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesObjectProps) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The icon of the property
 func (o BlueprintPropertiesObjectPropsOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesObjectProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
+// Whether the property is required
 func (o BlueprintPropertiesObjectPropsOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesObjectProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
+// The spec of the object property
 func (o BlueprintPropertiesObjectPropsOutput) Spec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesObjectProps) *string { return v.Spec }).(pulumi.StringPtrOutput)
 }
 
+// The title of the property
 func (o BlueprintPropertiesObjectPropsOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesObjectProps) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
@@ -7179,19 +7885,32 @@ func (o BlueprintPropertiesObjectPropsMapOutput) MapIndex(k pulumi.StringInput) 
 }
 
 type BlueprintPropertiesStringProps struct {
-	Default            *string                                           `pulumi:"default"`
-	Description        *string                                           `pulumi:"description"`
-	EnumColors         map[string]string                                 `pulumi:"enumColors"`
-	Enums              []string                                          `pulumi:"enums"`
-	Format             *string                                           `pulumi:"format"`
-	Icon               *string                                           `pulumi:"icon"`
-	MaxLength          *int                                              `pulumi:"maxLength"`
-	MinLength          *int                                              `pulumi:"minLength"`
-	Pattern            *string                                           `pulumi:"pattern"`
-	Required           *bool                                             `pulumi:"required"`
-	Spec               *string                                           `pulumi:"spec"`
+	// The default of the string property
+	Default *string `pulumi:"default"`
+	// The description of the property
+	Description *string `pulumi:"description"`
+	// The enum colors of the string property
+	EnumColors map[string]string `pulumi:"enumColors"`
+	// The enum of the string property
+	Enums []string `pulumi:"enums"`
+	// The format of the string property
+	Format *string `pulumi:"format"`
+	// The icon of the property
+	Icon *string `pulumi:"icon"`
+	// The max length of the string property
+	MaxLength *int `pulumi:"maxLength"`
+	// The min length of the string property
+	MinLength *int `pulumi:"minLength"`
+	// The pattern of the string property
+	Pattern *string `pulumi:"pattern"`
+	// Whether the property is required
+	Required *bool `pulumi:"required"`
+	// The spec of the string property
+	Spec *string `pulumi:"spec"`
+	// The spec authentication of the string property
 	SpecAuthentication *BlueprintPropertiesStringPropsSpecAuthentication `pulumi:"specAuthentication"`
-	Title              *string                                           `pulumi:"title"`
+	// The title of the property
+	Title *string `pulumi:"title"`
 }
 
 // BlueprintPropertiesStringPropsInput is an input type that accepts BlueprintPropertiesStringPropsArgs and BlueprintPropertiesStringPropsOutput values.
@@ -7206,19 +7925,32 @@ type BlueprintPropertiesStringPropsInput interface {
 }
 
 type BlueprintPropertiesStringPropsArgs struct {
-	Default            pulumi.StringPtrInput                                    `pulumi:"default"`
-	Description        pulumi.StringPtrInput                                    `pulumi:"description"`
-	EnumColors         pulumi.StringMapInput                                    `pulumi:"enumColors"`
-	Enums              pulumi.StringArrayInput                                  `pulumi:"enums"`
-	Format             pulumi.StringPtrInput                                    `pulumi:"format"`
-	Icon               pulumi.StringPtrInput                                    `pulumi:"icon"`
-	MaxLength          pulumi.IntPtrInput                                       `pulumi:"maxLength"`
-	MinLength          pulumi.IntPtrInput                                       `pulumi:"minLength"`
-	Pattern            pulumi.StringPtrInput                                    `pulumi:"pattern"`
-	Required           pulumi.BoolPtrInput                                      `pulumi:"required"`
-	Spec               pulumi.StringPtrInput                                    `pulumi:"spec"`
+	// The default of the string property
+	Default pulumi.StringPtrInput `pulumi:"default"`
+	// The description of the property
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The enum colors of the string property
+	EnumColors pulumi.StringMapInput `pulumi:"enumColors"`
+	// The enum of the string property
+	Enums pulumi.StringArrayInput `pulumi:"enums"`
+	// The format of the string property
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	// The icon of the property
+	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// The max length of the string property
+	MaxLength pulumi.IntPtrInput `pulumi:"maxLength"`
+	// The min length of the string property
+	MinLength pulumi.IntPtrInput `pulumi:"minLength"`
+	// The pattern of the string property
+	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
+	// Whether the property is required
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// The spec of the string property
+	Spec pulumi.StringPtrInput `pulumi:"spec"`
+	// The spec authentication of the string property
 	SpecAuthentication BlueprintPropertiesStringPropsSpecAuthenticationPtrInput `pulumi:"specAuthentication"`
-	Title              pulumi.StringPtrInput                                    `pulumi:"title"`
+	// The title of the property
+	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
 func (BlueprintPropertiesStringPropsArgs) ElementType() reflect.Type {
@@ -7272,56 +8004,69 @@ func (o BlueprintPropertiesStringPropsOutput) ToBlueprintPropertiesStringPropsOu
 	return o
 }
 
+// The default of the string property
 func (o BlueprintPropertiesStringPropsOutput) Default() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesStringProps) *string { return v.Default }).(pulumi.StringPtrOutput)
 }
 
+// The description of the property
 func (o BlueprintPropertiesStringPropsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesStringProps) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The enum colors of the string property
 func (o BlueprintPropertiesStringPropsOutput) EnumColors() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BlueprintPropertiesStringProps) map[string]string { return v.EnumColors }).(pulumi.StringMapOutput)
 }
 
+// The enum of the string property
 func (o BlueprintPropertiesStringPropsOutput) Enums() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BlueprintPropertiesStringProps) []string { return v.Enums }).(pulumi.StringArrayOutput)
 }
 
+// The format of the string property
 func (o BlueprintPropertiesStringPropsOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesStringProps) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
+// The icon of the property
 func (o BlueprintPropertiesStringPropsOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesStringProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
+// The max length of the string property
 func (o BlueprintPropertiesStringPropsOutput) MaxLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesStringProps) *int { return v.MaxLength }).(pulumi.IntPtrOutput)
 }
 
+// The min length of the string property
 func (o BlueprintPropertiesStringPropsOutput) MinLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesStringProps) *int { return v.MinLength }).(pulumi.IntPtrOutput)
 }
 
+// The pattern of the string property
 func (o BlueprintPropertiesStringPropsOutput) Pattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesStringProps) *string { return v.Pattern }).(pulumi.StringPtrOutput)
 }
 
+// Whether the property is required
 func (o BlueprintPropertiesStringPropsOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesStringProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
+// The spec of the string property
 func (o BlueprintPropertiesStringPropsOutput) Spec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesStringProps) *string { return v.Spec }).(pulumi.StringPtrOutput)
 }
 
+// The spec authentication of the string property
 func (o BlueprintPropertiesStringPropsOutput) SpecAuthentication() BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesStringProps) *BlueprintPropertiesStringPropsSpecAuthentication {
 		return v.SpecAuthentication
 	}).(BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput)
 }
 
+// The title of the property
 func (o BlueprintPropertiesStringPropsOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesStringProps) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
@@ -7347,9 +8092,12 @@ func (o BlueprintPropertiesStringPropsMapOutput) MapIndex(k pulumi.StringInput) 
 }
 
 type BlueprintPropertiesStringPropsSpecAuthentication struct {
+	// The authorizationUrl of the spec authentication
 	AuthorizationUrl string `pulumi:"authorizationUrl"`
-	ClientId         string `pulumi:"clientId"`
-	TokenUrl         string `pulumi:"tokenUrl"`
+	// The clientId of the spec authentication
+	ClientId string `pulumi:"clientId"`
+	// The tokenUrl of the spec authentication
+	TokenUrl string `pulumi:"tokenUrl"`
 }
 
 // BlueprintPropertiesStringPropsSpecAuthenticationInput is an input type that accepts BlueprintPropertiesStringPropsSpecAuthenticationArgs and BlueprintPropertiesStringPropsSpecAuthenticationOutput values.
@@ -7364,9 +8112,12 @@ type BlueprintPropertiesStringPropsSpecAuthenticationInput interface {
 }
 
 type BlueprintPropertiesStringPropsSpecAuthenticationArgs struct {
+	// The authorizationUrl of the spec authentication
 	AuthorizationUrl pulumi.StringInput `pulumi:"authorizationUrl"`
-	ClientId         pulumi.StringInput `pulumi:"clientId"`
-	TokenUrl         pulumi.StringInput `pulumi:"tokenUrl"`
+	// The clientId of the spec authentication
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The tokenUrl of the spec authentication
+	TokenUrl pulumi.StringInput `pulumi:"tokenUrl"`
 }
 
 func (BlueprintPropertiesStringPropsSpecAuthenticationArgs) ElementType() reflect.Type {
@@ -7446,14 +8197,17 @@ func (o BlueprintPropertiesStringPropsSpecAuthenticationOutput) ToBlueprintPrope
 	}).(BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput)
 }
 
+// The authorizationUrl of the spec authentication
 func (o BlueprintPropertiesStringPropsSpecAuthenticationOutput) AuthorizationUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v BlueprintPropertiesStringPropsSpecAuthentication) string { return v.AuthorizationUrl }).(pulumi.StringOutput)
 }
 
+// The clientId of the spec authentication
 func (o BlueprintPropertiesStringPropsSpecAuthenticationOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v BlueprintPropertiesStringPropsSpecAuthentication) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
+// The tokenUrl of the spec authentication
 func (o BlueprintPropertiesStringPropsSpecAuthenticationOutput) TokenUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v BlueprintPropertiesStringPropsSpecAuthentication) string { return v.TokenUrl }).(pulumi.StringOutput)
 }
@@ -7482,6 +8236,7 @@ func (o BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) Elem() Bluepr
 	}).(BlueprintPropertiesStringPropsSpecAuthenticationOutput)
 }
 
+// The authorizationUrl of the spec authentication
 func (o BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) AuthorizationUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BlueprintPropertiesStringPropsSpecAuthentication) *string {
 		if v == nil {
@@ -7491,6 +8246,7 @@ func (o BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) Authorization
 	}).(pulumi.StringPtrOutput)
 }
 
+// The clientId of the spec authentication
 func (o BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BlueprintPropertiesStringPropsSpecAuthentication) *string {
 		if v == nil {
@@ -7500,6 +8256,7 @@ func (o BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) ClientId() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The tokenUrl of the spec authentication
 func (o BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) TokenUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BlueprintPropertiesStringPropsSpecAuthentication) *string {
 		if v == nil {
@@ -7510,10 +8267,14 @@ func (o BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) TokenUrl() pu
 }
 
 type BlueprintRelations struct {
-	Many     *bool   `pulumi:"many"`
-	Required *bool   `pulumi:"required"`
-	Target   string  `pulumi:"target"`
-	Title    *string `pulumi:"title"`
+	// The many of the relation
+	Many *bool `pulumi:"many"`
+	// The required of the relation
+	Required *bool `pulumi:"required"`
+	// The target of the relation
+	Target string `pulumi:"target"`
+	// The title of the relation
+	Title *string `pulumi:"title"`
 }
 
 // BlueprintRelationsInput is an input type that accepts BlueprintRelationsArgs and BlueprintRelationsOutput values.
@@ -7528,10 +8289,14 @@ type BlueprintRelationsInput interface {
 }
 
 type BlueprintRelationsArgs struct {
-	Many     pulumi.BoolPtrInput   `pulumi:"many"`
-	Required pulumi.BoolPtrInput   `pulumi:"required"`
-	Target   pulumi.StringInput    `pulumi:"target"`
-	Title    pulumi.StringPtrInput `pulumi:"title"`
+	// The many of the relation
+	Many pulumi.BoolPtrInput `pulumi:"many"`
+	// The required of the relation
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// The target of the relation
+	Target pulumi.StringInput `pulumi:"target"`
+	// The title of the relation
+	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
 func (BlueprintRelationsArgs) ElementType() reflect.Type {
@@ -7585,18 +8350,22 @@ func (o BlueprintRelationsOutput) ToBlueprintRelationsOutputWithContext(ctx cont
 	return o
 }
 
+// The many of the relation
 func (o BlueprintRelationsOutput) Many() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BlueprintRelations) *bool { return v.Many }).(pulumi.BoolPtrOutput)
 }
 
+// The required of the relation
 func (o BlueprintRelationsOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BlueprintRelations) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
+// The target of the relation
 func (o BlueprintRelationsOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v BlueprintRelations) string { return v.Target }).(pulumi.StringOutput)
 }
 
+// The title of the relation
 func (o BlueprintRelationsOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintRelations) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
@@ -7622,6 +8391,7 @@ func (o BlueprintRelationsMapOutput) MapIndex(k pulumi.StringInput) BlueprintRel
 }
 
 type BlueprintTeamInheritance struct {
+	// The path of the team inheritance
 	Path string `pulumi:"path"`
 }
 
@@ -7637,6 +8407,7 @@ type BlueprintTeamInheritanceInput interface {
 }
 
 type BlueprintTeamInheritanceArgs struct {
+	// The path of the team inheritance
 	Path pulumi.StringInput `pulumi:"path"`
 }
 
@@ -7717,6 +8488,7 @@ func (o BlueprintTeamInheritanceOutput) ToBlueprintTeamInheritancePtrOutputWithC
 	}).(BlueprintTeamInheritancePtrOutput)
 }
 
+// The path of the team inheritance
 func (o BlueprintTeamInheritanceOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v BlueprintTeamInheritance) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -7745,6 +8517,7 @@ func (o BlueprintTeamInheritancePtrOutput) Elem() BlueprintTeamInheritanceOutput
 	}).(BlueprintTeamInheritanceOutput)
 }
 
+// The path of the team inheritance
 func (o BlueprintTeamInheritancePtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BlueprintTeamInheritance) *string {
 		if v == nil {
@@ -7755,8 +8528,10 @@ func (o BlueprintTeamInheritancePtrOutput) Path() pulumi.StringPtrOutput {
 }
 
 type BlueprintWebhookChangelogDestination struct {
-	Agent *bool  `pulumi:"agent"`
-	Url   string `pulumi:"url"`
+	// The agent of the webhook changelog destination
+	Agent *bool `pulumi:"agent"`
+	// The url of the webhook changelog destination
+	Url string `pulumi:"url"`
 }
 
 // BlueprintWebhookChangelogDestinationInput is an input type that accepts BlueprintWebhookChangelogDestinationArgs and BlueprintWebhookChangelogDestinationOutput values.
@@ -7771,8 +8546,10 @@ type BlueprintWebhookChangelogDestinationInput interface {
 }
 
 type BlueprintWebhookChangelogDestinationArgs struct {
+	// The agent of the webhook changelog destination
 	Agent pulumi.BoolPtrInput `pulumi:"agent"`
-	Url   pulumi.StringInput  `pulumi:"url"`
+	// The url of the webhook changelog destination
+	Url pulumi.StringInput `pulumi:"url"`
 }
 
 func (BlueprintWebhookChangelogDestinationArgs) ElementType() reflect.Type {
@@ -7852,10 +8629,12 @@ func (o BlueprintWebhookChangelogDestinationOutput) ToBlueprintWebhookChangelogD
 	}).(BlueprintWebhookChangelogDestinationPtrOutput)
 }
 
+// The agent of the webhook changelog destination
 func (o BlueprintWebhookChangelogDestinationOutput) Agent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BlueprintWebhookChangelogDestination) *bool { return v.Agent }).(pulumi.BoolPtrOutput)
 }
 
+// The url of the webhook changelog destination
 func (o BlueprintWebhookChangelogDestinationOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v BlueprintWebhookChangelogDestination) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -7884,6 +8663,7 @@ func (o BlueprintWebhookChangelogDestinationPtrOutput) Elem() BlueprintWebhookCh
 	}).(BlueprintWebhookChangelogDestinationOutput)
 }
 
+// The agent of the webhook changelog destination
 func (o BlueprintWebhookChangelogDestinationPtrOutput) Agent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BlueprintWebhookChangelogDestination) *bool {
 		if v == nil {
@@ -7893,6 +8673,7 @@ func (o BlueprintWebhookChangelogDestinationPtrOutput) Agent() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The url of the webhook changelog destination
 func (o BlueprintWebhookChangelogDestinationPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BlueprintWebhookChangelogDestination) *string {
 		if v == nil {
@@ -7903,11 +8684,16 @@ func (o BlueprintWebhookChangelogDestinationPtrOutput) Url() pulumi.StringPtrOut
 }
 
 type EntityProperties struct {
-	ArrayProps   *EntityPropertiesArrayProps `pulumi:"arrayProps"`
-	BooleanProps map[string]bool             `pulumi:"booleanProps"`
-	NumberProps  map[string]float64          `pulumi:"numberProps"`
-	ObjectProps  map[string]string           `pulumi:"objectProps"`
-	StringProps  map[string]string           `pulumi:"stringProps"`
+	// The array properties of the entity
+	ArrayProps *EntityPropertiesArrayProps `pulumi:"arrayProps"`
+	// The bool properties of the entity
+	BooleanProps map[string]bool `pulumi:"booleanProps"`
+	// The number properties of the entity
+	NumberProps map[string]float64 `pulumi:"numberProps"`
+	// The object properties of the entity
+	ObjectProps map[string]string `pulumi:"objectProps"`
+	// The string properties of the entity
+	StringProps map[string]string `pulumi:"stringProps"`
 }
 
 // EntityPropertiesInput is an input type that accepts EntityPropertiesArgs and EntityPropertiesOutput values.
@@ -7922,11 +8708,16 @@ type EntityPropertiesInput interface {
 }
 
 type EntityPropertiesArgs struct {
-	ArrayProps   EntityPropertiesArrayPropsPtrInput `pulumi:"arrayProps"`
-	BooleanProps pulumi.BoolMapInput                `pulumi:"booleanProps"`
-	NumberProps  pulumi.Float64MapInput             `pulumi:"numberProps"`
-	ObjectProps  pulumi.StringMapInput              `pulumi:"objectProps"`
-	StringProps  pulumi.StringMapInput              `pulumi:"stringProps"`
+	// The array properties of the entity
+	ArrayProps EntityPropertiesArrayPropsPtrInput `pulumi:"arrayProps"`
+	// The bool properties of the entity
+	BooleanProps pulumi.BoolMapInput `pulumi:"booleanProps"`
+	// The number properties of the entity
+	NumberProps pulumi.Float64MapInput `pulumi:"numberProps"`
+	// The object properties of the entity
+	ObjectProps pulumi.StringMapInput `pulumi:"objectProps"`
+	// The string properties of the entity
+	StringProps pulumi.StringMapInput `pulumi:"stringProps"`
 }
 
 func (EntityPropertiesArgs) ElementType() reflect.Type {
@@ -8006,22 +8797,27 @@ func (o EntityPropertiesOutput) ToEntityPropertiesPtrOutputWithContext(ctx conte
 	}).(EntityPropertiesPtrOutput)
 }
 
+// The array properties of the entity
 func (o EntityPropertiesOutput) ArrayProps() EntityPropertiesArrayPropsPtrOutput {
 	return o.ApplyT(func(v EntityProperties) *EntityPropertiesArrayProps { return v.ArrayProps }).(EntityPropertiesArrayPropsPtrOutput)
 }
 
+// The bool properties of the entity
 func (o EntityPropertiesOutput) BooleanProps() pulumi.BoolMapOutput {
 	return o.ApplyT(func(v EntityProperties) map[string]bool { return v.BooleanProps }).(pulumi.BoolMapOutput)
 }
 
+// The number properties of the entity
 func (o EntityPropertiesOutput) NumberProps() pulumi.Float64MapOutput {
 	return o.ApplyT(func(v EntityProperties) map[string]float64 { return v.NumberProps }).(pulumi.Float64MapOutput)
 }
 
+// The object properties of the entity
 func (o EntityPropertiesOutput) ObjectProps() pulumi.StringMapOutput {
 	return o.ApplyT(func(v EntityProperties) map[string]string { return v.ObjectProps }).(pulumi.StringMapOutput)
 }
 
+// The string properties of the entity
 func (o EntityPropertiesOutput) StringProps() pulumi.StringMapOutput {
 	return o.ApplyT(func(v EntityProperties) map[string]string { return v.StringProps }).(pulumi.StringMapOutput)
 }
@@ -8050,6 +8846,7 @@ func (o EntityPropertiesPtrOutput) Elem() EntityPropertiesOutput {
 	}).(EntityPropertiesOutput)
 }
 
+// The array properties of the entity
 func (o EntityPropertiesPtrOutput) ArrayProps() EntityPropertiesArrayPropsPtrOutput {
 	return o.ApplyT(func(v *EntityProperties) *EntityPropertiesArrayProps {
 		if v == nil {
@@ -8059,6 +8856,7 @@ func (o EntityPropertiesPtrOutput) ArrayProps() EntityPropertiesArrayPropsPtrOut
 	}).(EntityPropertiesArrayPropsPtrOutput)
 }
 
+// The bool properties of the entity
 func (o EntityPropertiesPtrOutput) BooleanProps() pulumi.BoolMapOutput {
 	return o.ApplyT(func(v *EntityProperties) map[string]bool {
 		if v == nil {
@@ -8068,6 +8866,7 @@ func (o EntityPropertiesPtrOutput) BooleanProps() pulumi.BoolMapOutput {
 	}).(pulumi.BoolMapOutput)
 }
 
+// The number properties of the entity
 func (o EntityPropertiesPtrOutput) NumberProps() pulumi.Float64MapOutput {
 	return o.ApplyT(func(v *EntityProperties) map[string]float64 {
 		if v == nil {
@@ -8077,6 +8876,7 @@ func (o EntityPropertiesPtrOutput) NumberProps() pulumi.Float64MapOutput {
 	}).(pulumi.Float64MapOutput)
 }
 
+// The object properties of the entity
 func (o EntityPropertiesPtrOutput) ObjectProps() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EntityProperties) map[string]string {
 		if v == nil {
@@ -8086,6 +8886,7 @@ func (o EntityPropertiesPtrOutput) ObjectProps() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// The string properties of the entity
 func (o EntityPropertiesPtrOutput) StringProps() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EntityProperties) map[string]string {
 		if v == nil {
@@ -8274,8 +9075,10 @@ func (o EntityPropertiesArrayPropsPtrOutput) StringItems() pulumi.StringArrayMap
 }
 
 type EntityRelations struct {
-	ManyRelations   map[string][]string `pulumi:"manyRelations"`
-	SingleRelations map[string]string   `pulumi:"singleRelations"`
+	// The many relation of the entity
+	ManyRelations map[string][]string `pulumi:"manyRelations"`
+	// The single relation of the entity
+	SingleRelations map[string]string `pulumi:"singleRelations"`
 }
 
 // EntityRelationsInput is an input type that accepts EntityRelationsArgs and EntityRelationsOutput values.
@@ -8290,8 +9093,10 @@ type EntityRelationsInput interface {
 }
 
 type EntityRelationsArgs struct {
-	ManyRelations   pulumi.StringArrayMapInput `pulumi:"manyRelations"`
-	SingleRelations pulumi.StringMapInput      `pulumi:"singleRelations"`
+	// The many relation of the entity
+	ManyRelations pulumi.StringArrayMapInput `pulumi:"manyRelations"`
+	// The single relation of the entity
+	SingleRelations pulumi.StringMapInput `pulumi:"singleRelations"`
 }
 
 func (EntityRelationsArgs) ElementType() reflect.Type {
@@ -8371,10 +9176,12 @@ func (o EntityRelationsOutput) ToEntityRelationsPtrOutputWithContext(ctx context
 	}).(EntityRelationsPtrOutput)
 }
 
+// The many relation of the entity
 func (o EntityRelationsOutput) ManyRelations() pulumi.StringArrayMapOutput {
 	return o.ApplyT(func(v EntityRelations) map[string][]string { return v.ManyRelations }).(pulumi.StringArrayMapOutput)
 }
 
+// The single relation of the entity
 func (o EntityRelationsOutput) SingleRelations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v EntityRelations) map[string]string { return v.SingleRelations }).(pulumi.StringMapOutput)
 }
@@ -8403,6 +9210,7 @@ func (o EntityRelationsPtrOutput) Elem() EntityRelationsOutput {
 	}).(EntityRelationsOutput)
 }
 
+// The many relation of the entity
 func (o EntityRelationsPtrOutput) ManyRelations() pulumi.StringArrayMapOutput {
 	return o.ApplyT(func(v *EntityRelations) map[string][]string {
 		if v == nil {
@@ -8412,6 +9220,7 @@ func (o EntityRelationsPtrOutput) ManyRelations() pulumi.StringArrayMapOutput {
 	}).(pulumi.StringArrayMapOutput)
 }
 
+// The single relation of the entity
 func (o EntityRelationsPtrOutput) SingleRelations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EntityRelations) map[string]string {
 		if v == nil {
@@ -8422,10 +9231,14 @@ func (o EntityRelationsPtrOutput) SingleRelations() pulumi.StringMapOutput {
 }
 
 type ScorecardRule struct {
-	Identifier string             `pulumi:"identifier"`
-	Level      string             `pulumi:"level"`
-	Query      ScorecardRuleQuery `pulumi:"query"`
-	Title      string             `pulumi:"title"`
+	// The identifier of the rule
+	Identifier string `pulumi:"identifier"`
+	// The level of the rule
+	Level string `pulumi:"level"`
+	// The query of the rule
+	Query ScorecardRuleQuery `pulumi:"query"`
+	// The title of the rule
+	Title string `pulumi:"title"`
 }
 
 // ScorecardRuleInput is an input type that accepts ScorecardRuleArgs and ScorecardRuleOutput values.
@@ -8440,10 +9253,14 @@ type ScorecardRuleInput interface {
 }
 
 type ScorecardRuleArgs struct {
-	Identifier pulumi.StringInput      `pulumi:"identifier"`
-	Level      pulumi.StringInput      `pulumi:"level"`
-	Query      ScorecardRuleQueryInput `pulumi:"query"`
-	Title      pulumi.StringInput      `pulumi:"title"`
+	// The identifier of the rule
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// The level of the rule
+	Level pulumi.StringInput `pulumi:"level"`
+	// The query of the rule
+	Query ScorecardRuleQueryInput `pulumi:"query"`
+	// The title of the rule
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (ScorecardRuleArgs) ElementType() reflect.Type {
@@ -8497,18 +9314,22 @@ func (o ScorecardRuleOutput) ToScorecardRuleOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The identifier of the rule
 func (o ScorecardRuleOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v ScorecardRule) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
+// The level of the rule
 func (o ScorecardRuleOutput) Level() pulumi.StringOutput {
 	return o.ApplyT(func(v ScorecardRule) string { return v.Level }).(pulumi.StringOutput)
 }
 
+// The query of the rule
 func (o ScorecardRuleOutput) Query() ScorecardRuleQueryOutput {
 	return o.ApplyT(func(v ScorecardRule) ScorecardRuleQuery { return v.Query }).(ScorecardRuleQueryOutput)
 }
 
+// The title of the rule
 func (o ScorecardRuleOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ScorecardRule) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -8534,7 +9355,9 @@ func (o ScorecardRuleArrayOutput) Index(i pulumi.IntInput) ScorecardRuleOutput {
 }
 
 type ScorecardRuleQuery struct {
-	Combinator string   `pulumi:"combinator"`
+	// The combinator of the query
+	Combinator string `pulumi:"combinator"`
+	// The conditions of the query. Each condition object should be encoded to a string
 	Conditions []string `pulumi:"conditions"`
 }
 
@@ -8550,7 +9373,9 @@ type ScorecardRuleQueryInput interface {
 }
 
 type ScorecardRuleQueryArgs struct {
-	Combinator pulumi.StringInput      `pulumi:"combinator"`
+	// The combinator of the query
+	Combinator pulumi.StringInput `pulumi:"combinator"`
+	// The conditions of the query. Each condition object should be encoded to a string
 	Conditions pulumi.StringArrayInput `pulumi:"conditions"`
 }
 
@@ -8580,19 +9405,25 @@ func (o ScorecardRuleQueryOutput) ToScorecardRuleQueryOutputWithContext(ctx cont
 	return o
 }
 
+// The combinator of the query
 func (o ScorecardRuleQueryOutput) Combinator() pulumi.StringOutput {
 	return o.ApplyT(func(v ScorecardRuleQuery) string { return v.Combinator }).(pulumi.StringOutput)
 }
 
+// The conditions of the query. Each condition object should be encoded to a string
 func (o ScorecardRuleQueryOutput) Conditions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ScorecardRuleQuery) []string { return v.Conditions }).(pulumi.StringArrayOutput)
 }
 
 type WebhookMapping struct {
-	Blueprint    string               `pulumi:"blueprint"`
-	Entity       WebhookMappingEntity `pulumi:"entity"`
-	Filter       *string              `pulumi:"filter"`
-	ItemsToParse *string              `pulumi:"itemsToParse"`
+	// The blueprint of the mapping
+	Blueprint string `pulumi:"blueprint"`
+	// The entity of the mapping
+	Entity WebhookMappingEntity `pulumi:"entity"`
+	// The filter of the mapping
+	Filter *string `pulumi:"filter"`
+	// The items to parser of the mapping
+	ItemsToParse *string `pulumi:"itemsToParse"`
 }
 
 // WebhookMappingInput is an input type that accepts WebhookMappingArgs and WebhookMappingOutput values.
@@ -8607,10 +9438,14 @@ type WebhookMappingInput interface {
 }
 
 type WebhookMappingArgs struct {
-	Blueprint    pulumi.StringInput        `pulumi:"blueprint"`
-	Entity       WebhookMappingEntityInput `pulumi:"entity"`
-	Filter       pulumi.StringPtrInput     `pulumi:"filter"`
-	ItemsToParse pulumi.StringPtrInput     `pulumi:"itemsToParse"`
+	// The blueprint of the mapping
+	Blueprint pulumi.StringInput `pulumi:"blueprint"`
+	// The entity of the mapping
+	Entity WebhookMappingEntityInput `pulumi:"entity"`
+	// The filter of the mapping
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// The items to parser of the mapping
+	ItemsToParse pulumi.StringPtrInput `pulumi:"itemsToParse"`
 }
 
 func (WebhookMappingArgs) ElementType() reflect.Type {
@@ -8664,18 +9499,22 @@ func (o WebhookMappingOutput) ToWebhookMappingOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The blueprint of the mapping
 func (o WebhookMappingOutput) Blueprint() pulumi.StringOutput {
 	return o.ApplyT(func(v WebhookMapping) string { return v.Blueprint }).(pulumi.StringOutput)
 }
 
+// The entity of the mapping
 func (o WebhookMappingOutput) Entity() WebhookMappingEntityOutput {
 	return o.ApplyT(func(v WebhookMapping) WebhookMappingEntity { return v.Entity }).(WebhookMappingEntityOutput)
 }
 
+// The filter of the mapping
 func (o WebhookMappingOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebhookMapping) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
+// The items to parser of the mapping
 func (o WebhookMappingOutput) ItemsToParse() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebhookMapping) *string { return v.ItemsToParse }).(pulumi.StringPtrOutput)
 }
@@ -8701,12 +9540,18 @@ func (o WebhookMappingArrayOutput) Index(i pulumi.IntInput) WebhookMappingOutput
 }
 
 type WebhookMappingEntity struct {
-	Icon       *string           `pulumi:"icon"`
-	Identifier string            `pulumi:"identifier"`
+	// The icon of the entity
+	Icon *string `pulumi:"icon"`
+	// The identifier of the entity
+	Identifier string `pulumi:"identifier"`
+	// The properties of the entity
 	Properties map[string]string `pulumi:"properties"`
-	Relations  map[string]string `pulumi:"relations"`
-	Team       *string           `pulumi:"team"`
-	Title      *string           `pulumi:"title"`
+	// The relations of the entity
+	Relations map[string]string `pulumi:"relations"`
+	// The team of the entity
+	Team *string `pulumi:"team"`
+	// The title of the entity
+	Title *string `pulumi:"title"`
 }
 
 // WebhookMappingEntityInput is an input type that accepts WebhookMappingEntityArgs and WebhookMappingEntityOutput values.
@@ -8721,12 +9566,18 @@ type WebhookMappingEntityInput interface {
 }
 
 type WebhookMappingEntityArgs struct {
-	Icon       pulumi.StringPtrInput `pulumi:"icon"`
-	Identifier pulumi.StringInput    `pulumi:"identifier"`
+	// The icon of the entity
+	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// The identifier of the entity
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// The properties of the entity
 	Properties pulumi.StringMapInput `pulumi:"properties"`
-	Relations  pulumi.StringMapInput `pulumi:"relations"`
-	Team       pulumi.StringPtrInput `pulumi:"team"`
-	Title      pulumi.StringPtrInput `pulumi:"title"`
+	// The relations of the entity
+	Relations pulumi.StringMapInput `pulumi:"relations"`
+	// The team of the entity
+	Team pulumi.StringPtrInput `pulumi:"team"`
+	// The title of the entity
+	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
 func (WebhookMappingEntityArgs) ElementType() reflect.Type {
@@ -8755,36 +9606,47 @@ func (o WebhookMappingEntityOutput) ToWebhookMappingEntityOutputWithContext(ctx 
 	return o
 }
 
+// The icon of the entity
 func (o WebhookMappingEntityOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebhookMappingEntity) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
+// The identifier of the entity
 func (o WebhookMappingEntityOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v WebhookMappingEntity) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
+// The properties of the entity
 func (o WebhookMappingEntityOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WebhookMappingEntity) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
+// The relations of the entity
 func (o WebhookMappingEntityOutput) Relations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WebhookMappingEntity) map[string]string { return v.Relations }).(pulumi.StringMapOutput)
 }
 
+// The team of the entity
 func (o WebhookMappingEntityOutput) Team() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebhookMappingEntity) *string { return v.Team }).(pulumi.StringPtrOutput)
 }
 
+// The title of the entity
 func (o WebhookMappingEntityOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebhookMappingEntity) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
 type WebhookSecurity struct {
+	// The request identifier path of the webhook
 	RequestIdentifierPath *string `pulumi:"requestIdentifierPath"`
-	Secret                *string `pulumi:"secret"`
-	SignatureAlgorithm    *string `pulumi:"signatureAlgorithm"`
-	SignatureHeaderName   *string `pulumi:"signatureHeaderName"`
-	SignaturePrefix       *string `pulumi:"signaturePrefix"`
+	// The secret of the webhook
+	Secret *string `pulumi:"secret"`
+	// The signature algorithm of the webhook
+	SignatureAlgorithm *string `pulumi:"signatureAlgorithm"`
+	// The signature header name of the webhook
+	SignatureHeaderName *string `pulumi:"signatureHeaderName"`
+	// The signature prefix of the webhook
+	SignaturePrefix *string `pulumi:"signaturePrefix"`
 }
 
 // WebhookSecurityInput is an input type that accepts WebhookSecurityArgs and WebhookSecurityOutput values.
@@ -8799,11 +9661,16 @@ type WebhookSecurityInput interface {
 }
 
 type WebhookSecurityArgs struct {
+	// The request identifier path of the webhook
 	RequestIdentifierPath pulumi.StringPtrInput `pulumi:"requestIdentifierPath"`
-	Secret                pulumi.StringPtrInput `pulumi:"secret"`
-	SignatureAlgorithm    pulumi.StringPtrInput `pulumi:"signatureAlgorithm"`
-	SignatureHeaderName   pulumi.StringPtrInput `pulumi:"signatureHeaderName"`
-	SignaturePrefix       pulumi.StringPtrInput `pulumi:"signaturePrefix"`
+	// The secret of the webhook
+	Secret pulumi.StringPtrInput `pulumi:"secret"`
+	// The signature algorithm of the webhook
+	SignatureAlgorithm pulumi.StringPtrInput `pulumi:"signatureAlgorithm"`
+	// The signature header name of the webhook
+	SignatureHeaderName pulumi.StringPtrInput `pulumi:"signatureHeaderName"`
+	// The signature prefix of the webhook
+	SignaturePrefix pulumi.StringPtrInput `pulumi:"signaturePrefix"`
 }
 
 func (WebhookSecurityArgs) ElementType() reflect.Type {
@@ -8883,22 +9750,27 @@ func (o WebhookSecurityOutput) ToWebhookSecurityPtrOutputWithContext(ctx context
 	}).(WebhookSecurityPtrOutput)
 }
 
+// The request identifier path of the webhook
 func (o WebhookSecurityOutput) RequestIdentifierPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebhookSecurity) *string { return v.RequestIdentifierPath }).(pulumi.StringPtrOutput)
 }
 
+// The secret of the webhook
 func (o WebhookSecurityOutput) Secret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebhookSecurity) *string { return v.Secret }).(pulumi.StringPtrOutput)
 }
 
+// The signature algorithm of the webhook
 func (o WebhookSecurityOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebhookSecurity) *string { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
 }
 
+// The signature header name of the webhook
 func (o WebhookSecurityOutput) SignatureHeaderName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebhookSecurity) *string { return v.SignatureHeaderName }).(pulumi.StringPtrOutput)
 }
 
+// The signature prefix of the webhook
 func (o WebhookSecurityOutput) SignaturePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebhookSecurity) *string { return v.SignaturePrefix }).(pulumi.StringPtrOutput)
 }
@@ -8927,6 +9799,7 @@ func (o WebhookSecurityPtrOutput) Elem() WebhookSecurityOutput {
 	}).(WebhookSecurityOutput)
 }
 
+// The request identifier path of the webhook
 func (o WebhookSecurityPtrOutput) RequestIdentifierPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebhookSecurity) *string {
 		if v == nil {
@@ -8936,6 +9809,7 @@ func (o WebhookSecurityPtrOutput) RequestIdentifierPath() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// The secret of the webhook
 func (o WebhookSecurityPtrOutput) Secret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebhookSecurity) *string {
 		if v == nil {
@@ -8945,6 +9819,7 @@ func (o WebhookSecurityPtrOutput) Secret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The signature algorithm of the webhook
 func (o WebhookSecurityPtrOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebhookSecurity) *string {
 		if v == nil {
@@ -8954,6 +9829,7 @@ func (o WebhookSecurityPtrOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The signature header name of the webhook
 func (o WebhookSecurityPtrOutput) SignatureHeaderName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebhookSecurity) *string {
 		if v == nil {
@@ -8963,6 +9839,7 @@ func (o WebhookSecurityPtrOutput) SignatureHeaderName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The signature prefix of the webhook
 func (o WebhookSecurityPtrOutput) SignaturePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebhookSecurity) *string {
 		if v == nil {

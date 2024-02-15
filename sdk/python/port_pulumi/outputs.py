@@ -89,6 +89,10 @@ class ActionApprovalWebhookNotification(dict):
     def __init__(__self__, *,
                  url: str,
                  format: Optional[str] = None):
+        """
+        :param str url: The URL to invoke the webhook
+        :param str format: The format to invoke the webhook
+        """
         pulumi.set(__self__, "url", url)
         if format is not None:
             pulumi.set(__self__, "format", format)
@@ -96,11 +100,17 @@ class ActionApprovalWebhookNotification(dict):
     @property
     @pulumi.getter
     def url(self) -> str:
+        """
+        The URL to invoke the webhook
+        """
         return pulumi.get(self, "url")
 
     @property
     @pulumi.getter
     def format(self) -> Optional[str]:
+        """
+        The format to invoke the webhook
+        """
         return pulumi.get(self, "format")
 
 
@@ -109,17 +119,27 @@ class ActionAzureMethod(dict):
     def __init__(__self__, *,
                  org: str,
                  webhook: str):
+        """
+        :param str org: Required when selecting type AZURE. The Azure org that the workflow belongs to
+        :param str webhook: Required when selecting type AZURE. The Azure webhook that the workflow belongs to
+        """
         pulumi.set(__self__, "org", org)
         pulumi.set(__self__, "webhook", webhook)
 
     @property
     @pulumi.getter
     def org(self) -> str:
+        """
+        Required when selecting type AZURE. The Azure org that the workflow belongs to
+        """
         return pulumi.get(self, "org")
 
     @property
     @pulumi.getter
     def webhook(self) -> str:
+        """
+        Required when selecting type AZURE. The Azure webhook that the workflow belongs to
+        """
         return pulumi.get(self, "webhook")
 
 
@@ -153,6 +173,14 @@ class ActionGithubMethod(dict):
                  omit_payload: Optional[bool] = None,
                  omit_user_inputs: Optional[bool] = None,
                  report_workflow_status: Optional[bool] = None):
+        """
+        :param str org: Required when selecting type GITHUB. The GitHub org that the workflow belongs to
+        :param str repo: Required when selecting type GITHUB. The GitHub repo that the workflow belongs to
+        :param str workflow: The GitHub workflow that the action belongs to
+        :param bool omit_payload: Omit the payload when invoking the action
+        :param bool omit_user_inputs: Omit the user inputs when invoking the action
+        :param bool report_workflow_status: Report the workflow status when invoking the action
+        """
         pulumi.set(__self__, "org", org)
         pulumi.set(__self__, "repo", repo)
         pulumi.set(__self__, "workflow", workflow)
@@ -166,31 +194,49 @@ class ActionGithubMethod(dict):
     @property
     @pulumi.getter
     def org(self) -> str:
+        """
+        Required when selecting type GITHUB. The GitHub org that the workflow belongs to
+        """
         return pulumi.get(self, "org")
 
     @property
     @pulumi.getter
     def repo(self) -> str:
+        """
+        Required when selecting type GITHUB. The GitHub repo that the workflow belongs to
+        """
         return pulumi.get(self, "repo")
 
     @property
     @pulumi.getter
     def workflow(self) -> str:
+        """
+        The GitHub workflow that the action belongs to
+        """
         return pulumi.get(self, "workflow")
 
     @property
     @pulumi.getter(name="omitPayload")
     def omit_payload(self) -> Optional[bool]:
+        """
+        Omit the payload when invoking the action
+        """
         return pulumi.get(self, "omit_payload")
 
     @property
     @pulumi.getter(name="omitUserInputs")
     def omit_user_inputs(self) -> Optional[bool]:
+        """
+        Omit the user inputs when invoking the action
+        """
         return pulumi.get(self, "omit_user_inputs")
 
     @property
     @pulumi.getter(name="reportWorkflowStatus")
     def report_workflow_status(self) -> Optional[bool]:
+        """
+        Report the workflow status when invoking the action
+        """
         return pulumi.get(self, "report_workflow_status")
 
 
@@ -228,6 +274,14 @@ class ActionGitlabMethod(dict):
                  default_ref: Optional[str] = None,
                  omit_payload: Optional[bool] = None,
                  omit_user_inputs: Optional[bool] = None):
+        """
+        :param str group_name: Required when selecting type GITLAB. The GitLab group name that the workflow belongs to
+        :param str project_name: Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
+        :param bool agent: Use the agent to invoke the action
+        :param str default_ref: The default ref of the action
+        :param bool omit_payload: Omit the payload when invoking the action
+        :param bool omit_user_inputs: Omit the user inputs when invoking the action
+        """
         pulumi.set(__self__, "group_name", group_name)
         pulumi.set(__self__, "project_name", project_name)
         if agent is not None:
@@ -242,31 +296,49 @@ class ActionGitlabMethod(dict):
     @property
     @pulumi.getter(name="groupName")
     def group_name(self) -> str:
+        """
+        Required when selecting type GITLAB. The GitLab group name that the workflow belongs to
+        """
         return pulumi.get(self, "group_name")
 
     @property
     @pulumi.getter(name="projectName")
     def project_name(self) -> str:
+        """
+        Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
+        """
         return pulumi.get(self, "project_name")
 
     @property
     @pulumi.getter
     def agent(self) -> Optional[bool]:
+        """
+        Use the agent to invoke the action
+        """
         return pulumi.get(self, "agent")
 
     @property
     @pulumi.getter(name="defaultRef")
     def default_ref(self) -> Optional[str]:
+        """
+        The default ref of the action
+        """
         return pulumi.get(self, "default_ref")
 
     @property
     @pulumi.getter(name="omitPayload")
     def omit_payload(self) -> Optional[bool]:
+        """
+        Omit the payload when invoking the action
+        """
         return pulumi.get(self, "omit_payload")
 
     @property
     @pulumi.getter(name="omitUserInputs")
     def omit_user_inputs(self) -> Optional[bool]:
+        """
+        Omit the user inputs when invoking the action
+        """
         return pulumi.get(self, "omit_user_inputs")
 
 
@@ -279,21 +351,29 @@ class ActionKafkaMethod(dict):
 @pulumi.output_type
 class ActionPermissionsPermissions(dict):
     def __init__(__self__, *,
-                 approve: Optional['outputs.ActionPermissionsPermissionsApprove'] = None,
-                 execute: Optional['outputs.ActionPermissionsPermissionsExecute'] = None):
-        if approve is not None:
-            pulumi.set(__self__, "approve", approve)
-        if execute is not None:
-            pulumi.set(__self__, "execute", execute)
+                 approve: 'outputs.ActionPermissionsPermissionsApprove',
+                 execute: 'outputs.ActionPermissionsPermissionsExecute'):
+        """
+        :param 'ActionPermissionsPermissionsApproveArgs' approve: The permission to approve the action's runs
+        :param 'ActionPermissionsPermissionsExecuteArgs' execute: The permission to execute the action
+        """
+        pulumi.set(__self__, "approve", approve)
+        pulumi.set(__self__, "execute", execute)
 
     @property
     @pulumi.getter
-    def approve(self) -> Optional['outputs.ActionPermissionsPermissionsApprove']:
+    def approve(self) -> 'outputs.ActionPermissionsPermissionsApprove':
+        """
+        The permission to approve the action's runs
+        """
         return pulumi.get(self, "approve")
 
     @property
     @pulumi.getter
-    def execute(self) -> Optional['outputs.ActionPermissionsPermissionsExecute']:
+    def execute(self) -> 'outputs.ActionPermissionsPermissionsExecute':
+        """
+        The permission to execute the action
+        """
         return pulumi.get(self, "execute")
 
 
@@ -304,6 +384,12 @@ class ActionPermissionsPermissionsApprove(dict):
                  roles: Optional[Sequence[str]] = None,
                  teams: Optional[Sequence[str]] = None,
                  users: Optional[Sequence[str]] = None):
+        """
+        :param str policy: The policy to use for approval
+        :param Sequence[str] roles: The roles with approval permission
+        :param Sequence[str] teams: The teams with approval permission
+        :param Sequence[str] users: The users with approval permission
+        """
         if policy is not None:
             pulumi.set(__self__, "policy", policy)
         if roles is not None:
@@ -316,21 +402,33 @@ class ActionPermissionsPermissionsApprove(dict):
     @property
     @pulumi.getter
     def policy(self) -> Optional[str]:
+        """
+        The policy to use for approval
+        """
         return pulumi.get(self, "policy")
 
     @property
     @pulumi.getter
     def roles(self) -> Optional[Sequence[str]]:
+        """
+        The roles with approval permission
+        """
         return pulumi.get(self, "roles")
 
     @property
     @pulumi.getter
     def teams(self) -> Optional[Sequence[str]]:
+        """
+        The teams with approval permission
+        """
         return pulumi.get(self, "teams")
 
     @property
     @pulumi.getter
     def users(self) -> Optional[Sequence[str]]:
+        """
+        The users with approval permission
+        """
         return pulumi.get(self, "users")
 
 
@@ -359,6 +457,13 @@ class ActionPermissionsPermissionsExecute(dict):
                  roles: Optional[Sequence[str]] = None,
                  teams: Optional[Sequence[str]] = None,
                  users: Optional[Sequence[str]] = None):
+        """
+        :param bool owned_by_team: Give execution permission to the teams who own the entity
+        :param str policy: The policy to use for execution
+        :param Sequence[str] roles: The roles with execution permission
+        :param Sequence[str] teams: The teams with execution permission
+        :param Sequence[str] users: The users with execution permission
+        """
         if owned_by_team is not None:
             pulumi.set(__self__, "owned_by_team", owned_by_team)
         if policy is not None:
@@ -373,26 +478,41 @@ class ActionPermissionsPermissionsExecute(dict):
     @property
     @pulumi.getter(name="ownedByTeam")
     def owned_by_team(self) -> Optional[bool]:
+        """
+        Give execution permission to the teams who own the entity
+        """
         return pulumi.get(self, "owned_by_team")
 
     @property
     @pulumi.getter
     def policy(self) -> Optional[str]:
+        """
+        The policy to use for execution
+        """
         return pulumi.get(self, "policy")
 
     @property
     @pulumi.getter
     def roles(self) -> Optional[Sequence[str]]:
+        """
+        The roles with execution permission
+        """
         return pulumi.get(self, "roles")
 
     @property
     @pulumi.getter
     def teams(self) -> Optional[Sequence[str]]:
+        """
+        The teams with execution permission
+        """
         return pulumi.get(self, "teams")
 
     @property
     @pulumi.getter
     def users(self) -> Optional[Sequence[str]]:
+        """
+        The users with execution permission
+        """
         return pulumi.get(self, "users")
 
 
@@ -429,6 +549,13 @@ class ActionUserProperties(dict):
                  number_props: Optional[Mapping[str, 'outputs.ActionUserPropertiesNumberProps']] = None,
                  object_props: Optional[Mapping[str, 'outputs.ActionUserPropertiesObjectProps']] = None,
                  string_props: Optional[Mapping[str, 'outputs.ActionUserPropertiesStringProps']] = None):
+        """
+        :param Mapping[str, 'ActionUserPropertiesArrayPropsArgs'] array_props: The array property of the action
+        :param Mapping[str, 'ActionUserPropertiesBooleanPropsArgs'] boolean_props: The boolean property of the action
+        :param Mapping[str, 'ActionUserPropertiesNumberPropsArgs'] number_props: The number property of the action
+        :param Mapping[str, 'ActionUserPropertiesObjectPropsArgs'] object_props: The object property of the action
+        :param Mapping[str, 'ActionUserPropertiesStringPropsArgs'] string_props: The string property of the action
+        """
         if array_props is not None:
             pulumi.set(__self__, "array_props", array_props)
         if boolean_props is not None:
@@ -443,26 +570,41 @@ class ActionUserProperties(dict):
     @property
     @pulumi.getter(name="arrayProps")
     def array_props(self) -> Optional[Mapping[str, 'outputs.ActionUserPropertiesArrayProps']]:
+        """
+        The array property of the action
+        """
         return pulumi.get(self, "array_props")
 
     @property
     @pulumi.getter(name="booleanProps")
     def boolean_props(self) -> Optional[Mapping[str, 'outputs.ActionUserPropertiesBooleanProps']]:
+        """
+        The boolean property of the action
+        """
         return pulumi.get(self, "boolean_props")
 
     @property
     @pulumi.getter(name="numberProps")
     def number_props(self) -> Optional[Mapping[str, 'outputs.ActionUserPropertiesNumberProps']]:
+        """
+        The number property of the action
+        """
         return pulumi.get(self, "number_props")
 
     @property
     @pulumi.getter(name="objectProps")
     def object_props(self) -> Optional[Mapping[str, 'outputs.ActionUserPropertiesObjectProps']]:
+        """
+        The object property of the action
+        """
         return pulumi.get(self, "object_props")
 
     @property
     @pulumi.getter(name="stringProps")
     def string_props(self) -> Optional[Mapping[str, 'outputs.ActionUserPropertiesStringProps']]:
+        """
+        The string property of the action
+        """
         return pulumi.get(self, "string_props")
 
 
@@ -517,6 +659,23 @@ class ActionUserPropertiesArrayProps(dict):
                  title: Optional[str] = None,
                  visible: Optional[bool] = None,
                  visible_jq_query: Optional[str] = None):
+        """
+        :param 'ActionUserPropertiesArrayPropsBooleanItemsArgs' boolean_items: The items of the array property
+        :param 'ActionUserPropertiesArrayPropsDatasetArgs' dataset: The dataset of the property
+        :param str default_jq_query: The default jq query of the array property
+        :param Sequence[str] depends_ons: The properties that this property depends on
+        :param str description: The description of the property
+        :param str icon: The icon of the property
+        :param int max_items: The max items of the array property
+        :param int min_items: The min items of the array property
+        :param 'ActionUserPropertiesArrayPropsNumberItemsArgs' number_items: The items of the array property
+        :param 'ActionUserPropertiesArrayPropsObjectItemsArgs' object_items: The items of the array property
+        :param bool required: Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
+        :param 'ActionUserPropertiesArrayPropsStringItemsArgs' string_items: The items of the array property
+        :param str title: The title of the property
+        :param bool visible: The visibility of the array property
+        :param str visible_jq_query: The visibility condition jq query of the array property
+        """
         if boolean_items is not None:
             pulumi.set(__self__, "boolean_items", boolean_items)
         if dataset is not None:
@@ -551,76 +710,121 @@ class ActionUserPropertiesArrayProps(dict):
     @property
     @pulumi.getter(name="booleanItems")
     def boolean_items(self) -> Optional['outputs.ActionUserPropertiesArrayPropsBooleanItems']:
+        """
+        The items of the array property
+        """
         return pulumi.get(self, "boolean_items")
 
     @property
     @pulumi.getter
     def dataset(self) -> Optional['outputs.ActionUserPropertiesArrayPropsDataset']:
+        """
+        The dataset of the property
+        """
         return pulumi.get(self, "dataset")
 
     @property
     @pulumi.getter(name="defaultJqQuery")
     def default_jq_query(self) -> Optional[str]:
+        """
+        The default jq query of the array property
+        """
         return pulumi.get(self, "default_jq_query")
 
     @property
     @pulumi.getter(name="dependsOns")
     def depends_ons(self) -> Optional[Sequence[str]]:
+        """
+        The properties that this property depends on
+        """
         return pulumi.get(self, "depends_ons")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        The description of the property
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def icon(self) -> Optional[str]:
+        """
+        The icon of the property
+        """
         return pulumi.get(self, "icon")
 
     @property
     @pulumi.getter(name="maxItems")
     def max_items(self) -> Optional[int]:
+        """
+        The max items of the array property
+        """
         return pulumi.get(self, "max_items")
 
     @property
     @pulumi.getter(name="minItems")
     def min_items(self) -> Optional[int]:
+        """
+        The min items of the array property
+        """
         return pulumi.get(self, "min_items")
 
     @property
     @pulumi.getter(name="numberItems")
     def number_items(self) -> Optional['outputs.ActionUserPropertiesArrayPropsNumberItems']:
+        """
+        The items of the array property
+        """
         return pulumi.get(self, "number_items")
 
     @property
     @pulumi.getter(name="objectItems")
     def object_items(self) -> Optional['outputs.ActionUserPropertiesArrayPropsObjectItems']:
+        """
+        The items of the array property
+        """
         return pulumi.get(self, "object_items")
 
     @property
     @pulumi.getter
     def required(self) -> Optional[bool]:
+        """
+        Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
+        """
         return pulumi.get(self, "required")
 
     @property
     @pulumi.getter(name="stringItems")
     def string_items(self) -> Optional['outputs.ActionUserPropertiesArrayPropsStringItems']:
+        """
+        The items of the array property
+        """
         return pulumi.get(self, "string_items")
 
     @property
     @pulumi.getter
     def title(self) -> Optional[str]:
+        """
+        The title of the property
+        """
         return pulumi.get(self, "title")
 
     @property
     @pulumi.getter
     def visible(self) -> Optional[bool]:
+        """
+        The visibility of the array property
+        """
         return pulumi.get(self, "visible")
 
     @property
     @pulumi.getter(name="visibleJqQuery")
     def visible_jq_query(self) -> Optional[str]:
+        """
+        The visibility condition jq query of the array property
+        """
         return pulumi.get(self, "visible_jq_query")
 
 
@@ -628,12 +832,18 @@ class ActionUserPropertiesArrayProps(dict):
 class ActionUserPropertiesArrayPropsBooleanItems(dict):
     def __init__(__self__, *,
                  defaults: Optional[Sequence[bool]] = None):
+        """
+        :param Sequence[bool] defaults: The default of the items
+        """
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
 
     @property
     @pulumi.getter
     def defaults(self) -> Optional[Sequence[bool]]:
+        """
+        The default of the items
+        """
         return pulumi.get(self, "defaults")
 
 
@@ -642,17 +852,27 @@ class ActionUserPropertiesArrayPropsDataset(dict):
     def __init__(__self__, *,
                  combinator: str,
                  rules: Sequence['outputs.ActionUserPropertiesArrayPropsDatasetRule']):
+        """
+        :param str combinator: The combinator of the dataset
+        :param Sequence['ActionUserPropertiesArrayPropsDatasetRuleArgs'] rules: The rules of the dataset
+        """
         pulumi.set(__self__, "combinator", combinator)
         pulumi.set(__self__, "rules", rules)
 
     @property
     @pulumi.getter
     def combinator(self) -> str:
+        """
+        The combinator of the dataset
+        """
         return pulumi.get(self, "combinator")
 
     @property
     @pulumi.getter
     def rules(self) -> Sequence['outputs.ActionUserPropertiesArrayPropsDatasetRule']:
+        """
+        The rules of the dataset
+        """
         return pulumi.get(self, "rules")
 
 
@@ -663,6 +883,12 @@ class ActionUserPropertiesArrayPropsDatasetRule(dict):
                  value: 'outputs.ActionUserPropertiesArrayPropsDatasetRuleValue',
                  blueprint: Optional[str] = None,
                  property: Optional[str] = None):
+        """
+        :param str operator: The operator of the rule
+        :param 'ActionUserPropertiesArrayPropsDatasetRuleValueArgs' value: The value of the rule
+        :param str blueprint: The blueprint identifier of the rule
+        :param str property: The property identifier of the rule
+        """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "value", value)
         if blueprint is not None:
@@ -673,21 +899,33 @@ class ActionUserPropertiesArrayPropsDatasetRule(dict):
     @property
     @pulumi.getter
     def operator(self) -> str:
+        """
+        The operator of the rule
+        """
         return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
     def value(self) -> 'outputs.ActionUserPropertiesArrayPropsDatasetRuleValue':
+        """
+        The value of the rule
+        """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter
     def blueprint(self) -> Optional[str]:
+        """
+        The blueprint identifier of the rule
+        """
         return pulumi.get(self, "blueprint")
 
     @property
     @pulumi.getter
     def property(self) -> Optional[str]:
+        """
+        The property identifier of the rule
+        """
         return pulumi.get(self, "property")
 
 
@@ -743,6 +981,11 @@ class ActionUserPropertiesArrayPropsNumberItems(dict):
                  defaults: Optional[Sequence[float]] = None,
                  enum_jq_query: Optional[str] = None,
                  enums: Optional[Sequence[float]] = None):
+        """
+        :param Sequence[float] defaults: The default of the items
+        :param str enum_jq_query: The enum jq query of the number items
+        :param Sequence[float] enums: The enum of the items
+        """
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
         if enum_jq_query is not None:
@@ -753,16 +996,25 @@ class ActionUserPropertiesArrayPropsNumberItems(dict):
     @property
     @pulumi.getter
     def defaults(self) -> Optional[Sequence[float]]:
+        """
+        The default of the items
+        """
         return pulumi.get(self, "defaults")
 
     @property
     @pulumi.getter(name="enumJqQuery")
     def enum_jq_query(self) -> Optional[str]:
+        """
+        The enum jq query of the number items
+        """
         return pulumi.get(self, "enum_jq_query")
 
     @property
     @pulumi.getter
     def enums(self) -> Optional[Sequence[float]]:
+        """
+        The enum of the items
+        """
         return pulumi.get(self, "enums")
 
 
@@ -770,12 +1022,18 @@ class ActionUserPropertiesArrayPropsNumberItems(dict):
 class ActionUserPropertiesArrayPropsObjectItems(dict):
     def __init__(__self__, *,
                  defaults: Optional[Sequence[Mapping[str, str]]] = None):
+        """
+        :param Sequence[Mapping[str, str]] defaults: The default of the items
+        """
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
 
     @property
     @pulumi.getter
     def defaults(self) -> Optional[Sequence[Mapping[str, str]]]:
+        """
+        The default of the items
+        """
         return pulumi.get(self, "defaults")
 
 
@@ -804,6 +1062,13 @@ class ActionUserPropertiesArrayPropsStringItems(dict):
                  enum_jq_query: Optional[str] = None,
                  enums: Optional[Sequence[str]] = None,
                  format: Optional[str] = None):
+        """
+        :param str blueprint: The blueprint identifier the property relates to
+        :param Sequence[str] defaults: The default of the items
+        :param str enum_jq_query: The enum jq query of the string items
+        :param Sequence[str] enums: The enum of the items
+        :param str format: The format of the items
+        """
         if blueprint is not None:
             pulumi.set(__self__, "blueprint", blueprint)
         if defaults is not None:
@@ -818,26 +1083,41 @@ class ActionUserPropertiesArrayPropsStringItems(dict):
     @property
     @pulumi.getter
     def blueprint(self) -> Optional[str]:
+        """
+        The blueprint identifier the property relates to
+        """
         return pulumi.get(self, "blueprint")
 
     @property
     @pulumi.getter
     def defaults(self) -> Optional[Sequence[str]]:
+        """
+        The default of the items
+        """
         return pulumi.get(self, "defaults")
 
     @property
     @pulumi.getter(name="enumJqQuery")
     def enum_jq_query(self) -> Optional[str]:
+        """
+        The enum jq query of the string items
+        """
         return pulumi.get(self, "enum_jq_query")
 
     @property
     @pulumi.getter
     def enums(self) -> Optional[Sequence[str]]:
+        """
+        The enum of the items
+        """
         return pulumi.get(self, "enums")
 
     @property
     @pulumi.getter
     def format(self) -> Optional[str]:
+        """
+        The format of the items
+        """
         return pulumi.get(self, "format")
 
 
@@ -875,6 +1155,18 @@ class ActionUserPropertiesBooleanProps(dict):
                  title: Optional[str] = None,
                  visible: Optional[bool] = None,
                  visible_jq_query: Optional[str] = None):
+        """
+        :param 'ActionUserPropertiesBooleanPropsDatasetArgs' dataset: The dataset of the property
+        :param bool default: The default of the boolean property
+        :param str default_jq_query: The default jq query of the boolean property
+        :param Sequence[str] depends_ons: The properties that this property depends on
+        :param str description: The description of the property
+        :param str icon: The icon of the property
+        :param bool required: Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
+        :param str title: The title of the property
+        :param bool visible: The visibility of the boolean property
+        :param str visible_jq_query: The visibility condition jq query of the boolean property
+        """
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
         if default is not None:
@@ -899,51 +1191,81 @@ class ActionUserPropertiesBooleanProps(dict):
     @property
     @pulumi.getter
     def dataset(self) -> Optional['outputs.ActionUserPropertiesBooleanPropsDataset']:
+        """
+        The dataset of the property
+        """
         return pulumi.get(self, "dataset")
 
     @property
     @pulumi.getter
     def default(self) -> Optional[bool]:
+        """
+        The default of the boolean property
+        """
         return pulumi.get(self, "default")
 
     @property
     @pulumi.getter(name="defaultJqQuery")
     def default_jq_query(self) -> Optional[str]:
+        """
+        The default jq query of the boolean property
+        """
         return pulumi.get(self, "default_jq_query")
 
     @property
     @pulumi.getter(name="dependsOns")
     def depends_ons(self) -> Optional[Sequence[str]]:
+        """
+        The properties that this property depends on
+        """
         return pulumi.get(self, "depends_ons")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        The description of the property
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def icon(self) -> Optional[str]:
+        """
+        The icon of the property
+        """
         return pulumi.get(self, "icon")
 
     @property
     @pulumi.getter
     def required(self) -> Optional[bool]:
+        """
+        Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
+        """
         return pulumi.get(self, "required")
 
     @property
     @pulumi.getter
     def title(self) -> Optional[str]:
+        """
+        The title of the property
+        """
         return pulumi.get(self, "title")
 
     @property
     @pulumi.getter
     def visible(self) -> Optional[bool]:
+        """
+        The visibility of the boolean property
+        """
         return pulumi.get(self, "visible")
 
     @property
     @pulumi.getter(name="visibleJqQuery")
     def visible_jq_query(self) -> Optional[str]:
+        """
+        The visibility condition jq query of the boolean property
+        """
         return pulumi.get(self, "visible_jq_query")
 
 
@@ -952,17 +1274,27 @@ class ActionUserPropertiesBooleanPropsDataset(dict):
     def __init__(__self__, *,
                  combinator: str,
                  rules: Sequence['outputs.ActionUserPropertiesBooleanPropsDatasetRule']):
+        """
+        :param str combinator: The combinator of the dataset
+        :param Sequence['ActionUserPropertiesBooleanPropsDatasetRuleArgs'] rules: The rules of the dataset
+        """
         pulumi.set(__self__, "combinator", combinator)
         pulumi.set(__self__, "rules", rules)
 
     @property
     @pulumi.getter
     def combinator(self) -> str:
+        """
+        The combinator of the dataset
+        """
         return pulumi.get(self, "combinator")
 
     @property
     @pulumi.getter
     def rules(self) -> Sequence['outputs.ActionUserPropertiesBooleanPropsDatasetRule']:
+        """
+        The rules of the dataset
+        """
         return pulumi.get(self, "rules")
 
 
@@ -973,6 +1305,12 @@ class ActionUserPropertiesBooleanPropsDatasetRule(dict):
                  value: 'outputs.ActionUserPropertiesBooleanPropsDatasetRuleValue',
                  blueprint: Optional[str] = None,
                  property: Optional[str] = None):
+        """
+        :param str operator: The operator of the rule
+        :param 'ActionUserPropertiesBooleanPropsDatasetRuleValueArgs' value: The value of the rule
+        :param str blueprint: The blueprint identifier of the rule
+        :param str property: The property identifier of the rule
+        """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "value", value)
         if blueprint is not None:
@@ -983,21 +1321,33 @@ class ActionUserPropertiesBooleanPropsDatasetRule(dict):
     @property
     @pulumi.getter
     def operator(self) -> str:
+        """
+        The operator of the rule
+        """
         return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
     def value(self) -> 'outputs.ActionUserPropertiesBooleanPropsDatasetRuleValue':
+        """
+        The value of the rule
+        """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter
     def blueprint(self) -> Optional[str]:
+        """
+        The blueprint identifier of the rule
+        """
         return pulumi.get(self, "blueprint")
 
     @property
     @pulumi.getter
     def property(self) -> Optional[str]:
+        """
+        The property identifier of the rule
+        """
         return pulumi.get(self, "property")
 
 
@@ -1070,6 +1420,22 @@ class ActionUserPropertiesNumberProps(dict):
                  title: Optional[str] = None,
                  visible: Optional[bool] = None,
                  visible_jq_query: Optional[str] = None):
+        """
+        :param 'ActionUserPropertiesNumberPropsDatasetArgs' dataset: The dataset of the property
+        :param float default: The default of the number property
+        :param str default_jq_query: The default jq query of the number property
+        :param Sequence[str] depends_ons: The properties that this property depends on
+        :param str description: The description of the property
+        :param str enum_jq_query: The enum jq query of the string property
+        :param Sequence[float] enums: The enum of the number property
+        :param str icon: The icon of the property
+        :param float maximum: The min of the number property
+        :param float minimum: The max of the number property
+        :param bool required: Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
+        :param str title: The title of the property
+        :param bool visible: The visibility of the number property
+        :param str visible_jq_query: The visibility condition jq query of the number property
+        """
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
         if default is not None:
@@ -1102,71 +1468,113 @@ class ActionUserPropertiesNumberProps(dict):
     @property
     @pulumi.getter
     def dataset(self) -> Optional['outputs.ActionUserPropertiesNumberPropsDataset']:
+        """
+        The dataset of the property
+        """
         return pulumi.get(self, "dataset")
 
     @property
     @pulumi.getter
     def default(self) -> Optional[float]:
+        """
+        The default of the number property
+        """
         return pulumi.get(self, "default")
 
     @property
     @pulumi.getter(name="defaultJqQuery")
     def default_jq_query(self) -> Optional[str]:
+        """
+        The default jq query of the number property
+        """
         return pulumi.get(self, "default_jq_query")
 
     @property
     @pulumi.getter(name="dependsOns")
     def depends_ons(self) -> Optional[Sequence[str]]:
+        """
+        The properties that this property depends on
+        """
         return pulumi.get(self, "depends_ons")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        The description of the property
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="enumJqQuery")
     def enum_jq_query(self) -> Optional[str]:
+        """
+        The enum jq query of the string property
+        """
         return pulumi.get(self, "enum_jq_query")
 
     @property
     @pulumi.getter
     def enums(self) -> Optional[Sequence[float]]:
+        """
+        The enum of the number property
+        """
         return pulumi.get(self, "enums")
 
     @property
     @pulumi.getter
     def icon(self) -> Optional[str]:
+        """
+        The icon of the property
+        """
         return pulumi.get(self, "icon")
 
     @property
     @pulumi.getter
     def maximum(self) -> Optional[float]:
+        """
+        The min of the number property
+        """
         return pulumi.get(self, "maximum")
 
     @property
     @pulumi.getter
     def minimum(self) -> Optional[float]:
+        """
+        The max of the number property
+        """
         return pulumi.get(self, "minimum")
 
     @property
     @pulumi.getter
     def required(self) -> Optional[bool]:
+        """
+        Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
+        """
         return pulumi.get(self, "required")
 
     @property
     @pulumi.getter
     def title(self) -> Optional[str]:
+        """
+        The title of the property
+        """
         return pulumi.get(self, "title")
 
     @property
     @pulumi.getter
     def visible(self) -> Optional[bool]:
+        """
+        The visibility of the number property
+        """
         return pulumi.get(self, "visible")
 
     @property
     @pulumi.getter(name="visibleJqQuery")
     def visible_jq_query(self) -> Optional[str]:
+        """
+        The visibility condition jq query of the number property
+        """
         return pulumi.get(self, "visible_jq_query")
 
 
@@ -1175,17 +1583,27 @@ class ActionUserPropertiesNumberPropsDataset(dict):
     def __init__(__self__, *,
                  combinator: str,
                  rules: Sequence['outputs.ActionUserPropertiesNumberPropsDatasetRule']):
+        """
+        :param str combinator: The combinator of the dataset
+        :param Sequence['ActionUserPropertiesNumberPropsDatasetRuleArgs'] rules: The rules of the dataset
+        """
         pulumi.set(__self__, "combinator", combinator)
         pulumi.set(__self__, "rules", rules)
 
     @property
     @pulumi.getter
     def combinator(self) -> str:
+        """
+        The combinator of the dataset
+        """
         return pulumi.get(self, "combinator")
 
     @property
     @pulumi.getter
     def rules(self) -> Sequence['outputs.ActionUserPropertiesNumberPropsDatasetRule']:
+        """
+        The rules of the dataset
+        """
         return pulumi.get(self, "rules")
 
 
@@ -1196,6 +1614,12 @@ class ActionUserPropertiesNumberPropsDatasetRule(dict):
                  value: 'outputs.ActionUserPropertiesNumberPropsDatasetRuleValue',
                  blueprint: Optional[str] = None,
                  property: Optional[str] = None):
+        """
+        :param str operator: The operator of the rule
+        :param 'ActionUserPropertiesNumberPropsDatasetRuleValueArgs' value: The value of the rule
+        :param str blueprint: The blueprint identifier of the rule
+        :param str property: The property identifier of the rule
+        """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "value", value)
         if blueprint is not None:
@@ -1206,21 +1630,33 @@ class ActionUserPropertiesNumberPropsDatasetRule(dict):
     @property
     @pulumi.getter
     def operator(self) -> str:
+        """
+        The operator of the rule
+        """
         return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
     def value(self) -> 'outputs.ActionUserPropertiesNumberPropsDatasetRuleValue':
+        """
+        The value of the rule
+        """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter
     def blueprint(self) -> Optional[str]:
+        """
+        The blueprint identifier of the rule
+        """
         return pulumi.get(self, "blueprint")
 
     @property
     @pulumi.getter
     def property(self) -> Optional[str]:
+        """
+        The property identifier of the rule
+        """
         return pulumi.get(self, "property")
 
 
@@ -1288,6 +1724,19 @@ class ActionUserPropertiesObjectProps(dict):
                  title: Optional[str] = None,
                  visible: Optional[bool] = None,
                  visible_jq_query: Optional[str] = None):
+        """
+        :param 'ActionUserPropertiesObjectPropsDatasetArgs' dataset: The dataset of the property
+        :param str default: The default of the object property
+        :param str default_jq_query: The default jq query of the object property
+        :param Sequence[str] depends_ons: The properties that this property depends on
+        :param str description: The description of the property
+        :param str encryption: The algorithm to encrypt the property with
+        :param str icon: The icon of the property
+        :param bool required: Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
+        :param str title: The title of the property
+        :param bool visible: The visibility of the object property
+        :param str visible_jq_query: The visibility condition jq query of the object property
+        """
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
         if default is not None:
@@ -1314,56 +1763,89 @@ class ActionUserPropertiesObjectProps(dict):
     @property
     @pulumi.getter
     def dataset(self) -> Optional['outputs.ActionUserPropertiesObjectPropsDataset']:
+        """
+        The dataset of the property
+        """
         return pulumi.get(self, "dataset")
 
     @property
     @pulumi.getter
     def default(self) -> Optional[str]:
+        """
+        The default of the object property
+        """
         return pulumi.get(self, "default")
 
     @property
     @pulumi.getter(name="defaultJqQuery")
     def default_jq_query(self) -> Optional[str]:
+        """
+        The default jq query of the object property
+        """
         return pulumi.get(self, "default_jq_query")
 
     @property
     @pulumi.getter(name="dependsOns")
     def depends_ons(self) -> Optional[Sequence[str]]:
+        """
+        The properties that this property depends on
+        """
         return pulumi.get(self, "depends_ons")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        The description of the property
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def encryption(self) -> Optional[str]:
+        """
+        The algorithm to encrypt the property with
+        """
         return pulumi.get(self, "encryption")
 
     @property
     @pulumi.getter
     def icon(self) -> Optional[str]:
+        """
+        The icon of the property
+        """
         return pulumi.get(self, "icon")
 
     @property
     @pulumi.getter
     def required(self) -> Optional[bool]:
+        """
+        Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
+        """
         return pulumi.get(self, "required")
 
     @property
     @pulumi.getter
     def title(self) -> Optional[str]:
+        """
+        The title of the property
+        """
         return pulumi.get(self, "title")
 
     @property
     @pulumi.getter
     def visible(self) -> Optional[bool]:
+        """
+        The visibility of the object property
+        """
         return pulumi.get(self, "visible")
 
     @property
     @pulumi.getter(name="visibleJqQuery")
     def visible_jq_query(self) -> Optional[str]:
+        """
+        The visibility condition jq query of the object property
+        """
         return pulumi.get(self, "visible_jq_query")
 
 
@@ -1372,17 +1854,27 @@ class ActionUserPropertiesObjectPropsDataset(dict):
     def __init__(__self__, *,
                  combinator: str,
                  rules: Sequence['outputs.ActionUserPropertiesObjectPropsDatasetRule']):
+        """
+        :param str combinator: The combinator of the dataset
+        :param Sequence['ActionUserPropertiesObjectPropsDatasetRuleArgs'] rules: The rules of the dataset
+        """
         pulumi.set(__self__, "combinator", combinator)
         pulumi.set(__self__, "rules", rules)
 
     @property
     @pulumi.getter
     def combinator(self) -> str:
+        """
+        The combinator of the dataset
+        """
         return pulumi.get(self, "combinator")
 
     @property
     @pulumi.getter
     def rules(self) -> Sequence['outputs.ActionUserPropertiesObjectPropsDatasetRule']:
+        """
+        The rules of the dataset
+        """
         return pulumi.get(self, "rules")
 
 
@@ -1393,6 +1885,12 @@ class ActionUserPropertiesObjectPropsDatasetRule(dict):
                  value: 'outputs.ActionUserPropertiesObjectPropsDatasetRuleValue',
                  blueprint: Optional[str] = None,
                  property: Optional[str] = None):
+        """
+        :param str operator: The operator of the rule
+        :param 'ActionUserPropertiesObjectPropsDatasetRuleValueArgs' value: The value of the rule
+        :param str blueprint: The blueprint identifier of the rule
+        :param str property: The property identifier of the rule
+        """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "value", value)
         if blueprint is not None:
@@ -1403,21 +1901,33 @@ class ActionUserPropertiesObjectPropsDatasetRule(dict):
     @property
     @pulumi.getter
     def operator(self) -> str:
+        """
+        The operator of the rule
+        """
         return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
     def value(self) -> 'outputs.ActionUserPropertiesObjectPropsDatasetRuleValue':
+        """
+        The value of the rule
+        """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter
     def blueprint(self) -> Optional[str]:
+        """
+        The blueprint identifier of the rule
+        """
         return pulumi.get(self, "blueprint")
 
     @property
     @pulumi.getter
     def property(self) -> Optional[str]:
+        """
+        The property identifier of the rule
+        """
         return pulumi.get(self, "property")
 
 
@@ -1498,6 +2008,26 @@ class ActionUserPropertiesStringProps(dict):
                  title: Optional[str] = None,
                  visible: Optional[bool] = None,
                  visible_jq_query: Optional[str] = None):
+        """
+        :param str blueprint: The blueprint identifier the string property relates to
+        :param 'ActionUserPropertiesStringPropsDatasetArgs' dataset: The dataset of the property
+        :param str default: The default of the string property
+        :param str default_jq_query: The default jq query of the string property
+        :param Sequence[str] depends_ons: The properties that this property depends on
+        :param str description: The description of the property
+        :param str encryption: The algorithm to encrypt the property with
+        :param str enum_jq_query: The enum jq query of the string property
+        :param Sequence[str] enums: The enum of the string property
+        :param str format: The format of the string property
+        :param str icon: The icon of the property
+        :param int max_length: The max length of the string property
+        :param int min_length: The min length of the string property
+        :param str pattern: The pattern of the string property
+        :param bool required: Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
+        :param str title: The title of the property
+        :param bool visible: The visibility of the string property
+        :param str visible_jq_query: The visibility condition jq query of the string property
+        """
         if blueprint is not None:
             pulumi.set(__self__, "blueprint", blueprint)
         if dataset is not None:
@@ -1538,91 +2068,145 @@ class ActionUserPropertiesStringProps(dict):
     @property
     @pulumi.getter
     def blueprint(self) -> Optional[str]:
+        """
+        The blueprint identifier the string property relates to
+        """
         return pulumi.get(self, "blueprint")
 
     @property
     @pulumi.getter
     def dataset(self) -> Optional['outputs.ActionUserPropertiesStringPropsDataset']:
+        """
+        The dataset of the property
+        """
         return pulumi.get(self, "dataset")
 
     @property
     @pulumi.getter
     def default(self) -> Optional[str]:
+        """
+        The default of the string property
+        """
         return pulumi.get(self, "default")
 
     @property
     @pulumi.getter(name="defaultJqQuery")
     def default_jq_query(self) -> Optional[str]:
+        """
+        The default jq query of the string property
+        """
         return pulumi.get(self, "default_jq_query")
 
     @property
     @pulumi.getter(name="dependsOns")
     def depends_ons(self) -> Optional[Sequence[str]]:
+        """
+        The properties that this property depends on
+        """
         return pulumi.get(self, "depends_ons")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        The description of the property
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def encryption(self) -> Optional[str]:
+        """
+        The algorithm to encrypt the property with
+        """
         return pulumi.get(self, "encryption")
 
     @property
     @pulumi.getter(name="enumJqQuery")
     def enum_jq_query(self) -> Optional[str]:
+        """
+        The enum jq query of the string property
+        """
         return pulumi.get(self, "enum_jq_query")
 
     @property
     @pulumi.getter
     def enums(self) -> Optional[Sequence[str]]:
+        """
+        The enum of the string property
+        """
         return pulumi.get(self, "enums")
 
     @property
     @pulumi.getter
     def format(self) -> Optional[str]:
+        """
+        The format of the string property
+        """
         return pulumi.get(self, "format")
 
     @property
     @pulumi.getter
     def icon(self) -> Optional[str]:
+        """
+        The icon of the property
+        """
         return pulumi.get(self, "icon")
 
     @property
     @pulumi.getter(name="maxLength")
     def max_length(self) -> Optional[int]:
+        """
+        The max length of the string property
+        """
         return pulumi.get(self, "max_length")
 
     @property
     @pulumi.getter(name="minLength")
     def min_length(self) -> Optional[int]:
+        """
+        The min length of the string property
+        """
         return pulumi.get(self, "min_length")
 
     @property
     @pulumi.getter
     def pattern(self) -> Optional[str]:
+        """
+        The pattern of the string property
+        """
         return pulumi.get(self, "pattern")
 
     @property
     @pulumi.getter
     def required(self) -> Optional[bool]:
+        """
+        Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
+        """
         return pulumi.get(self, "required")
 
     @property
     @pulumi.getter
     def title(self) -> Optional[str]:
+        """
+        The title of the property
+        """
         return pulumi.get(self, "title")
 
     @property
     @pulumi.getter
     def visible(self) -> Optional[bool]:
+        """
+        The visibility of the string property
+        """
         return pulumi.get(self, "visible")
 
     @property
     @pulumi.getter(name="visibleJqQuery")
     def visible_jq_query(self) -> Optional[str]:
+        """
+        The visibility condition jq query of the string property
+        """
         return pulumi.get(self, "visible_jq_query")
 
 
@@ -1631,17 +2215,27 @@ class ActionUserPropertiesStringPropsDataset(dict):
     def __init__(__self__, *,
                  combinator: str,
                  rules: Sequence['outputs.ActionUserPropertiesStringPropsDatasetRule']):
+        """
+        :param str combinator: The combinator of the dataset
+        :param Sequence['ActionUserPropertiesStringPropsDatasetRuleArgs'] rules: The rules of the dataset
+        """
         pulumi.set(__self__, "combinator", combinator)
         pulumi.set(__self__, "rules", rules)
 
     @property
     @pulumi.getter
     def combinator(self) -> str:
+        """
+        The combinator of the dataset
+        """
         return pulumi.get(self, "combinator")
 
     @property
     @pulumi.getter
     def rules(self) -> Sequence['outputs.ActionUserPropertiesStringPropsDatasetRule']:
+        """
+        The rules of the dataset
+        """
         return pulumi.get(self, "rules")
 
 
@@ -1652,6 +2246,12 @@ class ActionUserPropertiesStringPropsDatasetRule(dict):
                  value: 'outputs.ActionUserPropertiesStringPropsDatasetRuleValue',
                  blueprint: Optional[str] = None,
                  property: Optional[str] = None):
+        """
+        :param str operator: The operator of the rule
+        :param 'ActionUserPropertiesStringPropsDatasetRuleValueArgs' value: The value of the rule
+        :param str blueprint: The blueprint identifier of the rule
+        :param str property: The property identifier of the rule
+        """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "value", value)
         if blueprint is not None:
@@ -1662,21 +2262,33 @@ class ActionUserPropertiesStringPropsDatasetRule(dict):
     @property
     @pulumi.getter
     def operator(self) -> str:
+        """
+        The operator of the rule
+        """
         return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
     def value(self) -> 'outputs.ActionUserPropertiesStringPropsDatasetRuleValue':
+        """
+        The value of the rule
+        """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter
     def blueprint(self) -> Optional[str]:
+        """
+        The blueprint identifier of the rule
+        """
         return pulumi.get(self, "blueprint")
 
     @property
     @pulumi.getter
     def property(self) -> Optional[str]:
+        """
+        The property identifier of the rule
+        """
         return pulumi.get(self, "property")
 
 
@@ -1716,6 +2328,12 @@ class ActionWebhookMethod(dict):
                  agent: Optional[bool] = None,
                  method: Optional[str] = None,
                  synchronized: Optional[bool] = None):
+        """
+        :param str url: Required when selecting type WEBHOOK. The URL to invoke the action
+        :param bool agent: Use the agent to invoke the action
+        :param str method: The HTTP method to invoke the action
+        :param bool synchronized: Synchronize the action
+        """
         pulumi.set(__self__, "url", url)
         if agent is not None:
             pulumi.set(__self__, "agent", agent)
@@ -1727,21 +2345,33 @@ class ActionWebhookMethod(dict):
     @property
     @pulumi.getter
     def url(self) -> str:
+        """
+        Required when selecting type WEBHOOK. The URL to invoke the action
+        """
         return pulumi.get(self, "url")
 
     @property
     @pulumi.getter
     def agent(self) -> Optional[bool]:
+        """
+        Use the agent to invoke the action
+        """
         return pulumi.get(self, "agent")
 
     @property
     @pulumi.getter
     def method(self) -> Optional[str]:
+        """
+        The HTTP method to invoke the action
+        """
         return pulumi.get(self, "method")
 
     @property
     @pulumi.getter
     def synchronized(self) -> Optional[bool]:
+        """
+        Synchronize the action
+        """
         return pulumi.get(self, "synchronized")
 
 
@@ -1771,6 +2401,14 @@ class AggregationPropertiesProperties(dict):
                  icon: Optional[str] = None,
                  query: Optional[str] = None,
                  title: Optional[str] = None):
+        """
+        :param 'AggregationPropertiesPropertiesMethodArgs' method: The aggregation method to perform on the target blueprint, one of count_entities, average_entities, average_by_property, aggregate_by_property
+        :param str target_blueprint_identifier: The identifier of the blueprint to perform the aggregation on
+        :param str description: The description of the aggregation property
+        :param str icon: The icon of the aggregation property
+        :param str query: Query to filter the target entities
+        :param str title: The title of the aggregation property
+        """
         pulumi.set(__self__, "method", method)
         pulumi.set(__self__, "target_blueprint_identifier", target_blueprint_identifier)
         if description is not None:
@@ -1785,31 +2423,49 @@ class AggregationPropertiesProperties(dict):
     @property
     @pulumi.getter
     def method(self) -> 'outputs.AggregationPropertiesPropertiesMethod':
+        """
+        The aggregation method to perform on the target blueprint, one of count_entities, average_entities, average_by_property, aggregate_by_property
+        """
         return pulumi.get(self, "method")
 
     @property
     @pulumi.getter(name="targetBlueprintIdentifier")
     def target_blueprint_identifier(self) -> str:
+        """
+        The identifier of the blueprint to perform the aggregation on
+        """
         return pulumi.get(self, "target_blueprint_identifier")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        The description of the aggregation property
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def icon(self) -> Optional[str]:
+        """
+        The icon of the aggregation property
+        """
         return pulumi.get(self, "icon")
 
     @property
     @pulumi.getter
     def query(self) -> Optional[str]:
+        """
+        Query to filter the target entities
+        """
         return pulumi.get(self, "query")
 
     @property
     @pulumi.getter
     def title(self) -> Optional[str]:
+        """
+        The title of the aggregation property
+        """
         return pulumi.get(self, "title")
 
 
@@ -1843,6 +2499,12 @@ class AggregationPropertiesPropertiesMethod(dict):
                  average_by_property: Optional['outputs.AggregationPropertiesPropertiesMethodAverageByProperty'] = None,
                  average_entities: Optional['outputs.AggregationPropertiesPropertiesMethodAverageEntities'] = None,
                  count_entities: Optional[bool] = None):
+        """
+        :param 'AggregationPropertiesPropertiesMethodAggregateByPropertyArgs' aggregate_by_property: Function to calculate the aggregate by property value of the target entities, such as sum, min, max, median
+        :param 'AggregationPropertiesPropertiesMethodAverageByPropertyArgs' average_by_property: Function to calculate the average by property value of the target entities
+        :param 'AggregationPropertiesPropertiesMethodAverageEntitiesArgs' average_entities: Function to average the entities of the target entities
+        :param bool count_entities: Function to count the entities of the target entities
+        """
         if aggregate_by_property is not None:
             pulumi.set(__self__, "aggregate_by_property", aggregate_by_property)
         if average_by_property is not None:
@@ -1855,21 +2517,33 @@ class AggregationPropertiesPropertiesMethod(dict):
     @property
     @pulumi.getter(name="aggregateByProperty")
     def aggregate_by_property(self) -> Optional['outputs.AggregationPropertiesPropertiesMethodAggregateByProperty']:
+        """
+        Function to calculate the aggregate by property value of the target entities, such as sum, min, max, median
+        """
         return pulumi.get(self, "aggregate_by_property")
 
     @property
     @pulumi.getter(name="averageByProperty")
     def average_by_property(self) -> Optional['outputs.AggregationPropertiesPropertiesMethodAverageByProperty']:
+        """
+        Function to calculate the average by property value of the target entities
+        """
         return pulumi.get(self, "average_by_property")
 
     @property
     @pulumi.getter(name="averageEntities")
     def average_entities(self) -> Optional['outputs.AggregationPropertiesPropertiesMethodAverageEntities']:
+        """
+        Function to average the entities of the target entities
+        """
         return pulumi.get(self, "average_entities")
 
     @property
     @pulumi.getter(name="countEntities")
     def count_entities(self) -> Optional[bool]:
+        """
+        Function to count the entities of the target entities
+        """
         return pulumi.get(self, "count_entities")
 
 
@@ -1878,17 +2552,27 @@ class AggregationPropertiesPropertiesMethodAggregateByProperty(dict):
     def __init__(__self__, *,
                  func: str,
                  property: str):
+        """
+        :param str func: The func of the aggregate by property
+        :param str property: The property of the aggregate by property
+        """
         pulumi.set(__self__, "func", func)
         pulumi.set(__self__, "property", property)
 
     @property
     @pulumi.getter
     def func(self) -> str:
+        """
+        The func of the aggregate by property
+        """
         return pulumi.get(self, "func")
 
     @property
     @pulumi.getter
     def property(self) -> str:
+        """
+        The property of the aggregate by property
+        """
         return pulumi.get(self, "property")
 
 
@@ -1917,6 +2601,11 @@ class AggregationPropertiesPropertiesMethodAverageByProperty(dict):
                  average_of: str,
                  measure_time_by: str,
                  property: str):
+        """
+        :param str average_of: The time periods to calculate the average by, e.g. hour, day, week, month
+        :param str measure_time_by: The property name on which to calculate the the time periods, e.g. $createdAt, $updated_at or any other date property
+        :param str property: The property name on which to calculate the average by
+        """
         pulumi.set(__self__, "average_of", average_of)
         pulumi.set(__self__, "measure_time_by", measure_time_by)
         pulumi.set(__self__, "property", property)
@@ -1924,16 +2613,25 @@ class AggregationPropertiesPropertiesMethodAverageByProperty(dict):
     @property
     @pulumi.getter(name="averageOf")
     def average_of(self) -> str:
+        """
+        The time periods to calculate the average by, e.g. hour, day, week, month
+        """
         return pulumi.get(self, "average_of")
 
     @property
     @pulumi.getter(name="measureTimeBy")
     def measure_time_by(self) -> str:
+        """
+        The property name on which to calculate the the time periods, e.g. $createdAt, $updated_at or any other date property
+        """
         return pulumi.get(self, "measure_time_by")
 
     @property
     @pulumi.getter
     def property(self) -> str:
+        """
+        The property name on which to calculate the average by
+        """
         return pulumi.get(self, "property")
 
 
@@ -1961,6 +2659,10 @@ class AggregationPropertiesPropertiesMethodAverageEntities(dict):
     def __init__(__self__, *,
                  average_of: Optional[str] = None,
                  measure_time_by: Optional[str] = None):
+        """
+        :param str average_of: The time periods to calculate the average of, e.g. hour, day, week, month
+        :param str measure_time_by: The property name on which to calculate the the time periods, e.g. $createdAt, $updated_at or any other date property
+        """
         if average_of is not None:
             pulumi.set(__self__, "average_of", average_of)
         if measure_time_by is not None:
@@ -1969,11 +2671,17 @@ class AggregationPropertiesPropertiesMethodAverageEntities(dict):
     @property
     @pulumi.getter(name="averageOf")
     def average_of(self) -> Optional[str]:
+        """
+        The time periods to calculate the average of, e.g. hour, day, week, month
+        """
         return pulumi.get(self, "average_of")
 
     @property
     @pulumi.getter(name="measureTimeBy")
     def measure_time_by(self) -> Optional[str]:
+        """
+        The property name on which to calculate the the time periods, e.g. $createdAt, $updated_at or any other date property
+        """
         return pulumi.get(self, "measure_time_by")
 
 
@@ -1988,6 +2696,16 @@ class BlueprintCalculationProperties(dict):
                  format: Optional[str] = None,
                  icon: Optional[str] = None,
                  title: Optional[str] = None):
+        """
+        :param str calculation: The calculation of the calculation property
+        :param str type: The type of the calculation property
+        :param bool colorized: The colorized of the calculation property
+        :param Mapping[str, str] colors: The colors of the calculation property
+        :param str description: The description of the calculation property
+        :param str format: The format of the calculation property
+        :param str icon: The icon of the calculation property
+        :param str title: The title of the calculation property
+        """
         pulumi.set(__self__, "calculation", calculation)
         pulumi.set(__self__, "type", type)
         if colorized is not None:
@@ -2006,41 +2724,65 @@ class BlueprintCalculationProperties(dict):
     @property
     @pulumi.getter
     def calculation(self) -> str:
+        """
+        The calculation of the calculation property
+        """
         return pulumi.get(self, "calculation")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The type of the calculation property
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def colorized(self) -> Optional[bool]:
+        """
+        The colorized of the calculation property
+        """
         return pulumi.get(self, "colorized")
 
     @property
     @pulumi.getter
     def colors(self) -> Optional[Mapping[str, str]]:
+        """
+        The colors of the calculation property
+        """
         return pulumi.get(self, "colors")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        The description of the calculation property
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def format(self) -> Optional[str]:
+        """
+        The format of the calculation property
+        """
         return pulumi.get(self, "format")
 
     @property
     @pulumi.getter
     def icon(self) -> Optional[str]:
+        """
+        The icon of the calculation property
+        """
         return pulumi.get(self, "icon")
 
     @property
     @pulumi.getter
     def title(self) -> Optional[str]:
+        """
+        The title of the calculation property
+        """
         return pulumi.get(self, "title")
 
 
@@ -2055,6 +2797,10 @@ class BlueprintMirrorProperties(dict):
     def __init__(__self__, *,
                  path: str,
                  title: Optional[str] = None):
+        """
+        :param str path: The path of the mirror property
+        :param str title: The title of the mirror property
+        """
         pulumi.set(__self__, "path", path)
         if title is not None:
             pulumi.set(__self__, "title", title)
@@ -2062,11 +2808,17 @@ class BlueprintMirrorProperties(dict):
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        The path of the mirror property
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
     def title(self) -> Optional[str]:
+        """
+        The title of the mirror property
+        """
         return pulumi.get(self, "title")
 
 
@@ -2103,6 +2855,13 @@ class BlueprintProperties(dict):
                  number_props: Optional[Mapping[str, 'outputs.BlueprintPropertiesNumberProps']] = None,
                  object_props: Optional[Mapping[str, 'outputs.BlueprintPropertiesObjectProps']] = None,
                  string_props: Optional[Mapping[str, 'outputs.BlueprintPropertiesStringProps']] = None):
+        """
+        :param Mapping[str, 'BlueprintPropertiesArrayPropsArgs'] array_props: The array property of the blueprint
+        :param Mapping[str, 'BlueprintPropertiesBooleanPropsArgs'] boolean_props: The boolean property of the blueprint
+        :param Mapping[str, 'BlueprintPropertiesNumberPropsArgs'] number_props: The number property of the blueprint
+        :param Mapping[str, 'BlueprintPropertiesObjectPropsArgs'] object_props: The object property of the blueprint
+        :param Mapping[str, 'BlueprintPropertiesStringPropsArgs'] string_props: The string property of the blueprint
+        """
         if array_props is not None:
             pulumi.set(__self__, "array_props", array_props)
         if boolean_props is not None:
@@ -2117,26 +2876,41 @@ class BlueprintProperties(dict):
     @property
     @pulumi.getter(name="arrayProps")
     def array_props(self) -> Optional[Mapping[str, 'outputs.BlueprintPropertiesArrayProps']]:
+        """
+        The array property of the blueprint
+        """
         return pulumi.get(self, "array_props")
 
     @property
     @pulumi.getter(name="booleanProps")
     def boolean_props(self) -> Optional[Mapping[str, 'outputs.BlueprintPropertiesBooleanProps']]:
+        """
+        The boolean property of the blueprint
+        """
         return pulumi.get(self, "boolean_props")
 
     @property
     @pulumi.getter(name="numberProps")
     def number_props(self) -> Optional[Mapping[str, 'outputs.BlueprintPropertiesNumberProps']]:
+        """
+        The number property of the blueprint
+        """
         return pulumi.get(self, "number_props")
 
     @property
     @pulumi.getter(name="objectProps")
     def object_props(self) -> Optional[Mapping[str, 'outputs.BlueprintPropertiesObjectProps']]:
+        """
+        The object property of the blueprint
+        """
         return pulumi.get(self, "object_props")
 
     @property
     @pulumi.getter(name="stringProps")
     def string_props(self) -> Optional[Mapping[str, 'outputs.BlueprintPropertiesStringProps']]:
+        """
+        The string property of the blueprint
+        """
         return pulumi.get(self, "string_props")
 
 
@@ -2180,6 +2954,18 @@ class BlueprintPropertiesArrayProps(dict):
                  required: Optional[bool] = None,
                  string_items: Optional['outputs.BlueprintPropertiesArrayPropsStringItems'] = None,
                  title: Optional[str] = None):
+        """
+        :param 'BlueprintPropertiesArrayPropsBooleanItemsArgs' boolean_items: The items of the array property
+        :param str description: The description of the property
+        :param str icon: The icon of the property
+        :param int max_items: The max items of the array property
+        :param int min_items: The min items of the array property
+        :param 'BlueprintPropertiesArrayPropsNumberItemsArgs' number_items: The items of the array property
+        :param 'BlueprintPropertiesArrayPropsObjectItemsArgs' object_items: The items of the array property
+        :param bool required: Whether the property is required
+        :param 'BlueprintPropertiesArrayPropsStringItemsArgs' string_items: The items of the array property
+        :param str title: The title of the property
+        """
         if boolean_items is not None:
             pulumi.set(__self__, "boolean_items", boolean_items)
         if description is not None:
@@ -2204,51 +2990,81 @@ class BlueprintPropertiesArrayProps(dict):
     @property
     @pulumi.getter(name="booleanItems")
     def boolean_items(self) -> Optional['outputs.BlueprintPropertiesArrayPropsBooleanItems']:
+        """
+        The items of the array property
+        """
         return pulumi.get(self, "boolean_items")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        The description of the property
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def icon(self) -> Optional[str]:
+        """
+        The icon of the property
+        """
         return pulumi.get(self, "icon")
 
     @property
     @pulumi.getter(name="maxItems")
     def max_items(self) -> Optional[int]:
+        """
+        The max items of the array property
+        """
         return pulumi.get(self, "max_items")
 
     @property
     @pulumi.getter(name="minItems")
     def min_items(self) -> Optional[int]:
+        """
+        The min items of the array property
+        """
         return pulumi.get(self, "min_items")
 
     @property
     @pulumi.getter(name="numberItems")
     def number_items(self) -> Optional['outputs.BlueprintPropertiesArrayPropsNumberItems']:
+        """
+        The items of the array property
+        """
         return pulumi.get(self, "number_items")
 
     @property
     @pulumi.getter(name="objectItems")
     def object_items(self) -> Optional['outputs.BlueprintPropertiesArrayPropsObjectItems']:
+        """
+        The items of the array property
+        """
         return pulumi.get(self, "object_items")
 
     @property
     @pulumi.getter
     def required(self) -> Optional[bool]:
+        """
+        Whether the property is required
+        """
         return pulumi.get(self, "required")
 
     @property
     @pulumi.getter(name="stringItems")
     def string_items(self) -> Optional['outputs.BlueprintPropertiesArrayPropsStringItems']:
+        """
+        The items of the array property
+        """
         return pulumi.get(self, "string_items")
 
     @property
     @pulumi.getter
     def title(self) -> Optional[str]:
+        """
+        The title of the property
+        """
         return pulumi.get(self, "title")
 
 
@@ -2256,12 +3072,18 @@ class BlueprintPropertiesArrayProps(dict):
 class BlueprintPropertiesArrayPropsBooleanItems(dict):
     def __init__(__self__, *,
                  defaults: Optional[Sequence[bool]] = None):
+        """
+        :param Sequence[bool] defaults: The default of the items
+        """
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
 
     @property
     @pulumi.getter
     def defaults(self) -> Optional[Sequence[bool]]:
+        """
+        The default of the items
+        """
         return pulumi.get(self, "defaults")
 
 
@@ -2269,12 +3091,18 @@ class BlueprintPropertiesArrayPropsBooleanItems(dict):
 class BlueprintPropertiesArrayPropsNumberItems(dict):
     def __init__(__self__, *,
                  defaults: Optional[Sequence[float]] = None):
+        """
+        :param Sequence[float] defaults: The default of the items
+        """
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
 
     @property
     @pulumi.getter
     def defaults(self) -> Optional[Sequence[float]]:
+        """
+        The default of the items
+        """
         return pulumi.get(self, "defaults")
 
 
@@ -2282,12 +3110,18 @@ class BlueprintPropertiesArrayPropsNumberItems(dict):
 class BlueprintPropertiesArrayPropsObjectItems(dict):
     def __init__(__self__, *,
                  defaults: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] defaults: The default of the items
+        """
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
 
     @property
     @pulumi.getter
     def defaults(self) -> Optional[Sequence[str]]:
+        """
+        The default of the items
+        """
         return pulumi.get(self, "defaults")
 
 
@@ -2296,6 +3130,10 @@ class BlueprintPropertiesArrayPropsStringItems(dict):
     def __init__(__self__, *,
                  defaults: Optional[Sequence[str]] = None,
                  format: Optional[str] = None):
+        """
+        :param Sequence[str] defaults: The default of the items
+        :param str format: The format of the items
+        """
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
         if format is not None:
@@ -2304,11 +3142,17 @@ class BlueprintPropertiesArrayPropsStringItems(dict):
     @property
     @pulumi.getter
     def defaults(self) -> Optional[Sequence[str]]:
+        """
+        The default of the items
+        """
         return pulumi.get(self, "defaults")
 
     @property
     @pulumi.getter
     def format(self) -> Optional[str]:
+        """
+        The format of the items
+        """
         return pulumi.get(self, "format")
 
 
@@ -2320,6 +3164,13 @@ class BlueprintPropertiesBooleanProps(dict):
                  icon: Optional[str] = None,
                  required: Optional[bool] = None,
                  title: Optional[str] = None):
+        """
+        :param bool default: The default of the boolean property
+        :param str description: The description of the property
+        :param str icon: The icon of the property
+        :param bool required: Whether the property is required
+        :param str title: The title of the property
+        """
         if default is not None:
             pulumi.set(__self__, "default", default)
         if description is not None:
@@ -2334,26 +3185,41 @@ class BlueprintPropertiesBooleanProps(dict):
     @property
     @pulumi.getter
     def default(self) -> Optional[bool]:
+        """
+        The default of the boolean property
+        """
         return pulumi.get(self, "default")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        The description of the property
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def icon(self) -> Optional[str]:
+        """
+        The icon of the property
+        """
         return pulumi.get(self, "icon")
 
     @property
     @pulumi.getter
     def required(self) -> Optional[bool]:
+        """
+        Whether the property is required
+        """
         return pulumi.get(self, "required")
 
     @property
     @pulumi.getter
     def title(self) -> Optional[str]:
+        """
+        The title of the property
+        """
         return pulumi.get(self, "title")
 
 
@@ -2386,6 +3252,17 @@ class BlueprintPropertiesNumberProps(dict):
                  minimum: Optional[float] = None,
                  required: Optional[bool] = None,
                  title: Optional[str] = None):
+        """
+        :param float default: The default of the number property
+        :param str description: The description of the property
+        :param Mapping[str, str] enum_colors: The enum colors of the number property
+        :param Sequence[float] enums: The enum of the number property
+        :param str icon: The icon of the property
+        :param float maximum: The min of the number property
+        :param float minimum: The max of the number property
+        :param bool required: Whether the property is required
+        :param str title: The title of the property
+        """
         if default is not None:
             pulumi.set(__self__, "default", default)
         if description is not None:
@@ -2408,46 +3285,73 @@ class BlueprintPropertiesNumberProps(dict):
     @property
     @pulumi.getter
     def default(self) -> Optional[float]:
+        """
+        The default of the number property
+        """
         return pulumi.get(self, "default")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        The description of the property
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="enumColors")
     def enum_colors(self) -> Optional[Mapping[str, str]]:
+        """
+        The enum colors of the number property
+        """
         return pulumi.get(self, "enum_colors")
 
     @property
     @pulumi.getter
     def enums(self) -> Optional[Sequence[float]]:
+        """
+        The enum of the number property
+        """
         return pulumi.get(self, "enums")
 
     @property
     @pulumi.getter
     def icon(self) -> Optional[str]:
+        """
+        The icon of the property
+        """
         return pulumi.get(self, "icon")
 
     @property
     @pulumi.getter
     def maximum(self) -> Optional[float]:
+        """
+        The min of the number property
+        """
         return pulumi.get(self, "maximum")
 
     @property
     @pulumi.getter
     def minimum(self) -> Optional[float]:
+        """
+        The max of the number property
+        """
         return pulumi.get(self, "minimum")
 
     @property
     @pulumi.getter
     def required(self) -> Optional[bool]:
+        """
+        Whether the property is required
+        """
         return pulumi.get(self, "required")
 
     @property
     @pulumi.getter
     def title(self) -> Optional[str]:
+        """
+        The title of the property
+        """
         return pulumi.get(self, "title")
 
 
@@ -2460,6 +3364,14 @@ class BlueprintPropertiesObjectProps(dict):
                  required: Optional[bool] = None,
                  spec: Optional[str] = None,
                  title: Optional[str] = None):
+        """
+        :param str default: The default of the object property
+        :param str description: The description of the property
+        :param str icon: The icon of the property
+        :param bool required: Whether the property is required
+        :param str spec: The spec of the object property
+        :param str title: The title of the property
+        """
         if default is not None:
             pulumi.set(__self__, "default", default)
         if description is not None:
@@ -2476,31 +3388,49 @@ class BlueprintPropertiesObjectProps(dict):
     @property
     @pulumi.getter
     def default(self) -> Optional[str]:
+        """
+        The default of the object property
+        """
         return pulumi.get(self, "default")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        The description of the property
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def icon(self) -> Optional[str]:
+        """
+        The icon of the property
+        """
         return pulumi.get(self, "icon")
 
     @property
     @pulumi.getter
     def required(self) -> Optional[bool]:
+        """
+        Whether the property is required
+        """
         return pulumi.get(self, "required")
 
     @property
     @pulumi.getter
     def spec(self) -> Optional[str]:
+        """
+        The spec of the object property
+        """
         return pulumi.get(self, "spec")
 
     @property
     @pulumi.getter
     def title(self) -> Optional[str]:
+        """
+        The title of the property
+        """
         return pulumi.get(self, "title")
 
 
@@ -2543,6 +3473,21 @@ class BlueprintPropertiesStringProps(dict):
                  spec: Optional[str] = None,
                  spec_authentication: Optional['outputs.BlueprintPropertiesStringPropsSpecAuthentication'] = None,
                  title: Optional[str] = None):
+        """
+        :param str default: The default of the string property
+        :param str description: The description of the property
+        :param Mapping[str, str] enum_colors: The enum colors of the string property
+        :param Sequence[str] enums: The enum of the string property
+        :param str format: The format of the string property
+        :param str icon: The icon of the property
+        :param int max_length: The max length of the string property
+        :param int min_length: The min length of the string property
+        :param str pattern: The pattern of the string property
+        :param bool required: Whether the property is required
+        :param str spec: The spec of the string property
+        :param 'BlueprintPropertiesStringPropsSpecAuthenticationArgs' spec_authentication: The spec authentication of the string property
+        :param str title: The title of the property
+        """
         if default is not None:
             pulumi.set(__self__, "default", default)
         if description is not None:
@@ -2573,66 +3518,105 @@ class BlueprintPropertiesStringProps(dict):
     @property
     @pulumi.getter
     def default(self) -> Optional[str]:
+        """
+        The default of the string property
+        """
         return pulumi.get(self, "default")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        The description of the property
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="enumColors")
     def enum_colors(self) -> Optional[Mapping[str, str]]:
+        """
+        The enum colors of the string property
+        """
         return pulumi.get(self, "enum_colors")
 
     @property
     @pulumi.getter
     def enums(self) -> Optional[Sequence[str]]:
+        """
+        The enum of the string property
+        """
         return pulumi.get(self, "enums")
 
     @property
     @pulumi.getter
     def format(self) -> Optional[str]:
+        """
+        The format of the string property
+        """
         return pulumi.get(self, "format")
 
     @property
     @pulumi.getter
     def icon(self) -> Optional[str]:
+        """
+        The icon of the property
+        """
         return pulumi.get(self, "icon")
 
     @property
     @pulumi.getter(name="maxLength")
     def max_length(self) -> Optional[int]:
+        """
+        The max length of the string property
+        """
         return pulumi.get(self, "max_length")
 
     @property
     @pulumi.getter(name="minLength")
     def min_length(self) -> Optional[int]:
+        """
+        The min length of the string property
+        """
         return pulumi.get(self, "min_length")
 
     @property
     @pulumi.getter
     def pattern(self) -> Optional[str]:
+        """
+        The pattern of the string property
+        """
         return pulumi.get(self, "pattern")
 
     @property
     @pulumi.getter
     def required(self) -> Optional[bool]:
+        """
+        Whether the property is required
+        """
         return pulumi.get(self, "required")
 
     @property
     @pulumi.getter
     def spec(self) -> Optional[str]:
+        """
+        The spec of the string property
+        """
         return pulumi.get(self, "spec")
 
     @property
     @pulumi.getter(name="specAuthentication")
     def spec_authentication(self) -> Optional['outputs.BlueprintPropertiesStringPropsSpecAuthentication']:
+        """
+        The spec authentication of the string property
+        """
         return pulumi.get(self, "spec_authentication")
 
     @property
     @pulumi.getter
     def title(self) -> Optional[str]:
+        """
+        The title of the property
+        """
         return pulumi.get(self, "title")
 
 
@@ -2663,6 +3647,11 @@ class BlueprintPropertiesStringPropsSpecAuthentication(dict):
                  authorization_url: str,
                  client_id: str,
                  token_url: str):
+        """
+        :param str authorization_url: The authorizationUrl of the spec authentication
+        :param str client_id: The clientId of the spec authentication
+        :param str token_url: The tokenUrl of the spec authentication
+        """
         pulumi.set(__self__, "authorization_url", authorization_url)
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "token_url", token_url)
@@ -2670,16 +3659,25 @@ class BlueprintPropertiesStringPropsSpecAuthentication(dict):
     @property
     @pulumi.getter(name="authorizationUrl")
     def authorization_url(self) -> str:
+        """
+        The authorizationUrl of the spec authentication
+        """
         return pulumi.get(self, "authorization_url")
 
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> str:
+        """
+        The clientId of the spec authentication
+        """
         return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter(name="tokenUrl")
     def token_url(self) -> str:
+        """
+        The tokenUrl of the spec authentication
+        """
         return pulumi.get(self, "token_url")
 
 
@@ -2690,6 +3688,12 @@ class BlueprintRelations(dict):
                  many: Optional[bool] = None,
                  required: Optional[bool] = None,
                  title: Optional[str] = None):
+        """
+        :param str target: The target of the relation
+        :param bool many: The many of the relation
+        :param bool required: The required of the relation
+        :param str title: The title of the relation
+        """
         pulumi.set(__self__, "target", target)
         if many is not None:
             pulumi.set(__self__, "many", many)
@@ -2701,21 +3705,33 @@ class BlueprintRelations(dict):
     @property
     @pulumi.getter
     def target(self) -> str:
+        """
+        The target of the relation
+        """
         return pulumi.get(self, "target")
 
     @property
     @pulumi.getter
     def many(self) -> Optional[bool]:
+        """
+        The many of the relation
+        """
         return pulumi.get(self, "many")
 
     @property
     @pulumi.getter
     def required(self) -> Optional[bool]:
+        """
+        The required of the relation
+        """
         return pulumi.get(self, "required")
 
     @property
     @pulumi.getter
     def title(self) -> Optional[str]:
+        """
+        The title of the relation
+        """
         return pulumi.get(self, "title")
 
 
@@ -2723,11 +3739,17 @@ class BlueprintRelations(dict):
 class BlueprintTeamInheritance(dict):
     def __init__(__self__, *,
                  path: str):
+        """
+        :param str path: The path of the team inheritance
+        """
         pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        The path of the team inheritance
+        """
         return pulumi.get(self, "path")
 
 
@@ -2736,6 +3758,10 @@ class BlueprintWebhookChangelogDestination(dict):
     def __init__(__self__, *,
                  url: str,
                  agent: Optional[bool] = None):
+        """
+        :param str url: The url of the webhook changelog destination
+        :param bool agent: The agent of the webhook changelog destination
+        """
         pulumi.set(__self__, "url", url)
         if agent is not None:
             pulumi.set(__self__, "agent", agent)
@@ -2743,11 +3769,17 @@ class BlueprintWebhookChangelogDestination(dict):
     @property
     @pulumi.getter
     def url(self) -> str:
+        """
+        The url of the webhook changelog destination
+        """
         return pulumi.get(self, "url")
 
     @property
     @pulumi.getter
     def agent(self) -> Optional[bool]:
+        """
+        The agent of the webhook changelog destination
+        """
         return pulumi.get(self, "agent")
 
 
@@ -2784,6 +3816,13 @@ class EntityProperties(dict):
                  number_props: Optional[Mapping[str, float]] = None,
                  object_props: Optional[Mapping[str, str]] = None,
                  string_props: Optional[Mapping[str, str]] = None):
+        """
+        :param 'EntityPropertiesArrayPropsArgs' array_props: The array properties of the entity
+        :param Mapping[str, bool] boolean_props: The bool properties of the entity
+        :param Mapping[str, float] number_props: The number properties of the entity
+        :param Mapping[str, str] object_props: The object properties of the entity
+        :param Mapping[str, str] string_props: The string properties of the entity
+        """
         if array_props is not None:
             pulumi.set(__self__, "array_props", array_props)
         if boolean_props is not None:
@@ -2798,26 +3837,41 @@ class EntityProperties(dict):
     @property
     @pulumi.getter(name="arrayProps")
     def array_props(self) -> Optional['outputs.EntityPropertiesArrayProps']:
+        """
+        The array properties of the entity
+        """
         return pulumi.get(self, "array_props")
 
     @property
     @pulumi.getter(name="booleanProps")
     def boolean_props(self) -> Optional[Mapping[str, bool]]:
+        """
+        The bool properties of the entity
+        """
         return pulumi.get(self, "boolean_props")
 
     @property
     @pulumi.getter(name="numberProps")
     def number_props(self) -> Optional[Mapping[str, float]]:
+        """
+        The number properties of the entity
+        """
         return pulumi.get(self, "number_props")
 
     @property
     @pulumi.getter(name="objectProps")
     def object_props(self) -> Optional[Mapping[str, str]]:
+        """
+        The object properties of the entity
+        """
         return pulumi.get(self, "object_props")
 
     @property
     @pulumi.getter(name="stringProps")
     def string_props(self) -> Optional[Mapping[str, str]]:
+        """
+        The string properties of the entity
+        """
         return pulumi.get(self, "string_props")
 
 
@@ -2905,6 +3959,10 @@ class EntityRelations(dict):
     def __init__(__self__, *,
                  many_relations: Optional[Mapping[str, Sequence[str]]] = None,
                  single_relations: Optional[Mapping[str, str]] = None):
+        """
+        :param Mapping[str, Sequence[str]] many_relations: The many relation of the entity
+        :param Mapping[str, str] single_relations: The single relation of the entity
+        """
         if many_relations is not None:
             pulumi.set(__self__, "many_relations", many_relations)
         if single_relations is not None:
@@ -2913,11 +3971,17 @@ class EntityRelations(dict):
     @property
     @pulumi.getter(name="manyRelations")
     def many_relations(self) -> Optional[Mapping[str, Sequence[str]]]:
+        """
+        The many relation of the entity
+        """
         return pulumi.get(self, "many_relations")
 
     @property
     @pulumi.getter(name="singleRelations")
     def single_relations(self) -> Optional[Mapping[str, str]]:
+        """
+        The single relation of the entity
+        """
         return pulumi.get(self, "single_relations")
 
 
@@ -2928,6 +3992,12 @@ class ScorecardRule(dict):
                  level: str,
                  query: 'outputs.ScorecardRuleQuery',
                  title: str):
+        """
+        :param str identifier: The identifier of the rule
+        :param str level: The level of the rule
+        :param 'ScorecardRuleQueryArgs' query: The query of the rule
+        :param str title: The title of the rule
+        """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "level", level)
         pulumi.set(__self__, "query", query)
@@ -2936,21 +4006,33 @@ class ScorecardRule(dict):
     @property
     @pulumi.getter
     def identifier(self) -> str:
+        """
+        The identifier of the rule
+        """
         return pulumi.get(self, "identifier")
 
     @property
     @pulumi.getter
     def level(self) -> str:
+        """
+        The level of the rule
+        """
         return pulumi.get(self, "level")
 
     @property
     @pulumi.getter
     def query(self) -> 'outputs.ScorecardRuleQuery':
+        """
+        The query of the rule
+        """
         return pulumi.get(self, "query")
 
     @property
     @pulumi.getter
     def title(self) -> str:
+        """
+        The title of the rule
+        """
         return pulumi.get(self, "title")
 
 
@@ -2959,17 +4041,27 @@ class ScorecardRuleQuery(dict):
     def __init__(__self__, *,
                  combinator: str,
                  conditions: Sequence[str]):
+        """
+        :param str combinator: The combinator of the query
+        :param Sequence[str] conditions: The conditions of the query. Each condition object should be encoded to a string
+        """
         pulumi.set(__self__, "combinator", combinator)
         pulumi.set(__self__, "conditions", conditions)
 
     @property
     @pulumi.getter
     def combinator(self) -> str:
+        """
+        The combinator of the query
+        """
         return pulumi.get(self, "combinator")
 
     @property
     @pulumi.getter
     def conditions(self) -> Sequence[str]:
+        """
+        The conditions of the query. Each condition object should be encoded to a string
+        """
         return pulumi.get(self, "conditions")
 
 
@@ -2997,6 +4089,12 @@ class WebhookMapping(dict):
                  entity: 'outputs.WebhookMappingEntity',
                  filter: Optional[str] = None,
                  items_to_parse: Optional[str] = None):
+        """
+        :param str blueprint: The blueprint of the mapping
+        :param 'WebhookMappingEntityArgs' entity: The entity of the mapping
+        :param str filter: The filter of the mapping
+        :param str items_to_parse: The items to parser of the mapping
+        """
         pulumi.set(__self__, "blueprint", blueprint)
         pulumi.set(__self__, "entity", entity)
         if filter is not None:
@@ -3007,21 +4105,33 @@ class WebhookMapping(dict):
     @property
     @pulumi.getter
     def blueprint(self) -> str:
+        """
+        The blueprint of the mapping
+        """
         return pulumi.get(self, "blueprint")
 
     @property
     @pulumi.getter
     def entity(self) -> 'outputs.WebhookMappingEntity':
+        """
+        The entity of the mapping
+        """
         return pulumi.get(self, "entity")
 
     @property
     @pulumi.getter
     def filter(self) -> Optional[str]:
+        """
+        The filter of the mapping
+        """
         return pulumi.get(self, "filter")
 
     @property
     @pulumi.getter(name="itemsToParse")
     def items_to_parse(self) -> Optional[str]:
+        """
+        The items to parser of the mapping
+        """
         return pulumi.get(self, "items_to_parse")
 
 
@@ -3034,6 +4144,14 @@ class WebhookMappingEntity(dict):
                  relations: Optional[Mapping[str, str]] = None,
                  team: Optional[str] = None,
                  title: Optional[str] = None):
+        """
+        :param str identifier: The identifier of the entity
+        :param str icon: The icon of the entity
+        :param Mapping[str, str] properties: The properties of the entity
+        :param Mapping[str, str] relations: The relations of the entity
+        :param str team: The team of the entity
+        :param str title: The title of the entity
+        """
         pulumi.set(__self__, "identifier", identifier)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
@@ -3049,31 +4167,49 @@ class WebhookMappingEntity(dict):
     @property
     @pulumi.getter
     def identifier(self) -> str:
+        """
+        The identifier of the entity
+        """
         return pulumi.get(self, "identifier")
 
     @property
     @pulumi.getter
     def icon(self) -> Optional[str]:
+        """
+        The icon of the entity
+        """
         return pulumi.get(self, "icon")
 
     @property
     @pulumi.getter
     def properties(self) -> Optional[Mapping[str, str]]:
+        """
+        The properties of the entity
+        """
         return pulumi.get(self, "properties")
 
     @property
     @pulumi.getter
     def relations(self) -> Optional[Mapping[str, str]]:
+        """
+        The relations of the entity
+        """
         return pulumi.get(self, "relations")
 
     @property
     @pulumi.getter
     def team(self) -> Optional[str]:
+        """
+        The team of the entity
+        """
         return pulumi.get(self, "team")
 
     @property
     @pulumi.getter
     def title(self) -> Optional[str]:
+        """
+        The title of the entity
+        """
         return pulumi.get(self, "title")
 
 
@@ -3108,6 +4244,13 @@ class WebhookSecurity(dict):
                  signature_algorithm: Optional[str] = None,
                  signature_header_name: Optional[str] = None,
                  signature_prefix: Optional[str] = None):
+        """
+        :param str request_identifier_path: The request identifier path of the webhook
+        :param str secret: The secret of the webhook
+        :param str signature_algorithm: The signature algorithm of the webhook
+        :param str signature_header_name: The signature header name of the webhook
+        :param str signature_prefix: The signature prefix of the webhook
+        """
         if request_identifier_path is not None:
             pulumi.set(__self__, "request_identifier_path", request_identifier_path)
         if secret is not None:
@@ -3122,26 +4265,41 @@ class WebhookSecurity(dict):
     @property
     @pulumi.getter(name="requestIdentifierPath")
     def request_identifier_path(self) -> Optional[str]:
+        """
+        The request identifier path of the webhook
+        """
         return pulumi.get(self, "request_identifier_path")
 
     @property
     @pulumi.getter
     def secret(self) -> Optional[str]:
+        """
+        The secret of the webhook
+        """
         return pulumi.get(self, "secret")
 
     @property
     @pulumi.getter(name="signatureAlgorithm")
     def signature_algorithm(self) -> Optional[str]:
+        """
+        The signature algorithm of the webhook
+        """
         return pulumi.get(self, "signature_algorithm")
 
     @property
     @pulumi.getter(name="signatureHeaderName")
     def signature_header_name(self) -> Optional[str]:
+        """
+        The signature header name of the webhook
+        """
         return pulumi.get(self, "signature_header_name")
 
     @property
     @pulumi.getter(name="signaturePrefix")
     def signature_prefix(self) -> Optional[str]:
+        """
+        The signature prefix of the webhook
+        """
         return pulumi.get(self, "signature_prefix")
 
 

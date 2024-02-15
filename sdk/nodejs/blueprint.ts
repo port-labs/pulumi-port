@@ -51,6 +51,10 @@ export class Blueprint extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
+     */
+    public readonly forceDeleteEntities!: pulumi.Output<boolean>;
+    /**
      * The icon of the blueprint
      */
     public readonly icon!: pulumi.Output<string | undefined>;
@@ -112,6 +116,7 @@ export class Blueprint extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["createdBy"] = state ? state.createdBy : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["forceDeleteEntities"] = state ? state.forceDeleteEntities : undefined;
             resourceInputs["icon"] = state ? state.icon : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["kafkaChangelogDestination"] = state ? state.kafkaChangelogDestination : undefined;
@@ -133,6 +138,7 @@ export class Blueprint extends pulumi.CustomResource {
             }
             resourceInputs["calculationProperties"] = args ? args.calculationProperties : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["forceDeleteEntities"] = args ? args.forceDeleteEntities : undefined;
             resourceInputs["icon"] = args ? args.icon : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["kafkaChangelogDestination"] = args ? args.kafkaChangelogDestination : undefined;
@@ -172,6 +178,10 @@ export interface BlueprintState {
      * The description of the blueprint
      */
     description?: pulumi.Input<string>;
+    /**
+     * If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
+     */
+    forceDeleteEntities?: pulumi.Input<boolean>;
     /**
      * The icon of the blueprint
      */
@@ -230,6 +240,10 @@ export interface BlueprintArgs {
      * The description of the blueprint
      */
     description?: pulumi.Input<string>;
+    /**
+     * If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
+     */
+    forceDeleteEntities?: pulumi.Input<boolean>;
     /**
      * The icon of the blueprint
      */
