@@ -23,6 +23,8 @@ type Blueprint struct {
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// The description of the blueprint
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
+	ForceDeleteEntities pulumi.BoolOutput `pulumi:"forceDeleteEntities"`
 	// The icon of the blueprint
 	Icon pulumi.StringPtrOutput `pulumi:"icon"`
 	// The identifier of the blueprint
@@ -91,6 +93,8 @@ type blueprintState struct {
 	CreatedBy *string `pulumi:"createdBy"`
 	// The description of the blueprint
 	Description *string `pulumi:"description"`
+	// If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
+	ForceDeleteEntities *bool `pulumi:"forceDeleteEntities"`
 	// The icon of the blueprint
 	Icon *string `pulumi:"icon"`
 	// The identifier of the blueprint
@@ -124,6 +128,8 @@ type BlueprintState struct {
 	CreatedBy pulumi.StringPtrInput
 	// The description of the blueprint
 	Description pulumi.StringPtrInput
+	// If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
+	ForceDeleteEntities pulumi.BoolPtrInput
 	// The icon of the blueprint
 	Icon pulumi.StringPtrInput
 	// The identifier of the blueprint
@@ -157,6 +163,8 @@ type blueprintArgs struct {
 	CalculationProperties map[string]BlueprintCalculationProperties `pulumi:"calculationProperties"`
 	// The description of the blueprint
 	Description *string `pulumi:"description"`
+	// If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
+	ForceDeleteEntities *bool `pulumi:"forceDeleteEntities"`
 	// The icon of the blueprint
 	Icon *string `pulumi:"icon"`
 	// The identifier of the blueprint
@@ -183,6 +191,8 @@ type BlueprintArgs struct {
 	CalculationProperties BlueprintCalculationPropertiesMapInput
 	// The description of the blueprint
 	Description pulumi.StringPtrInput
+	// If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
+	ForceDeleteEntities pulumi.BoolPtrInput
 	// The icon of the blueprint
 	Icon pulumi.StringPtrInput
 	// The identifier of the blueprint
@@ -308,6 +318,11 @@ func (o BlueprintOutput) CreatedBy() pulumi.StringOutput {
 // The description of the blueprint
 func (o BlueprintOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Blueprint) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
+func (o BlueprintOutput) ForceDeleteEntities() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Blueprint) pulumi.BoolOutput { return v.ForceDeleteEntities }).(pulumi.BoolOutput)
 }
 
 // The icon of the blueprint

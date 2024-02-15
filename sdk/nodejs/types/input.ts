@@ -9,30 +9,78 @@ export interface ActionApprovalEmailNotification {
 }
 
 export interface ActionApprovalWebhookNotification {
+    /**
+     * The format to invoke the webhook
+     */
     format?: pulumi.Input<string>;
+    /**
+     * The URL to invoke the webhook
+     */
     url: pulumi.Input<string>;
 }
 
 export interface ActionAzureMethod {
+    /**
+     * Required when selecting type AZURE. The Azure org that the workflow belongs to
+     */
     org: pulumi.Input<string>;
+    /**
+     * Required when selecting type AZURE. The Azure webhook that the workflow belongs to
+     */
     webhook: pulumi.Input<string>;
 }
 
 export interface ActionGithubMethod {
+    /**
+     * Omit the payload when invoking the action
+     */
     omitPayload?: pulumi.Input<boolean>;
+    /**
+     * Omit the user inputs when invoking the action
+     */
     omitUserInputs?: pulumi.Input<boolean>;
+    /**
+     * Required when selecting type GITHUB. The GitHub org that the workflow belongs to
+     */
     org: pulumi.Input<string>;
+    /**
+     * Required when selecting type GITHUB. The GitHub repo that the workflow belongs to
+     */
     repo: pulumi.Input<string>;
+    /**
+     * Report the workflow status when invoking the action
+     */
     reportWorkflowStatus?: pulumi.Input<boolean>;
+    /**
+     * The GitHub workflow that the action belongs to
+     */
     workflow: pulumi.Input<string>;
 }
 
 export interface ActionGitlabMethod {
+    /**
+     * Use the agent to invoke the action
+     */
     agent?: pulumi.Input<boolean>;
+    /**
+     * The default ref of the action
+     */
     defaultRef?: pulumi.Input<string>;
+    /**
+     * Required when selecting type GITLAB. The GitLab group name that the workflow belongs to
+     */
     groupName: pulumi.Input<string>;
+    /**
+     * Omit the payload when invoking the action
+     */
     omitPayload?: pulumi.Input<boolean>;
+    /**
+     * Omit the user inputs when invoking the action
+     */
     omitUserInputs?: pulumi.Input<boolean>;
+    /**
+     * Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
+     */
     projectName: pulumi.Input<string>;
 }
 
@@ -40,64 +88,178 @@ export interface ActionKafkaMethod {
 }
 
 export interface ActionPermissionsPermissions {
-    approve?: pulumi.Input<inputs.ActionPermissionsPermissionsApprove>;
-    execute?: pulumi.Input<inputs.ActionPermissionsPermissionsExecute>;
+    /**
+     * The permission to approve the action's runs
+     */
+    approve: pulumi.Input<inputs.ActionPermissionsPermissionsApprove>;
+    /**
+     * The permission to execute the action
+     */
+    execute: pulumi.Input<inputs.ActionPermissionsPermissionsExecute>;
 }
 
 export interface ActionPermissionsPermissionsApprove {
+    /**
+     * The policy to use for approval
+     */
     policy?: pulumi.Input<string>;
+    /**
+     * The roles with approval permission
+     */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The teams with approval permission
+     */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The users with approval permission
+     */
     users?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ActionPermissionsPermissionsExecute {
+    /**
+     * Give execution permission to the teams who own the entity
+     */
     ownedByTeam?: pulumi.Input<boolean>;
+    /**
+     * The policy to use for execution
+     */
     policy?: pulumi.Input<string>;
+    /**
+     * The roles with execution permission
+     */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The teams with execution permission
+     */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The users with execution permission
+     */
     users?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ActionUserProperties {
+    /**
+     * The array property of the action
+     */
     arrayProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionUserPropertiesArrayProps>}>;
+    /**
+     * The boolean property of the action
+     */
     booleanProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionUserPropertiesBooleanProps>}>;
+    /**
+     * The number property of the action
+     */
     numberProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionUserPropertiesNumberProps>}>;
+    /**
+     * The object property of the action
+     */
     objectProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionUserPropertiesObjectProps>}>;
+    /**
+     * The string property of the action
+     */
     stringProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionUserPropertiesStringProps>}>;
 }
 
 export interface ActionUserPropertiesArrayProps {
+    /**
+     * The items of the array property
+     */
     booleanItems?: pulumi.Input<inputs.ActionUserPropertiesArrayPropsBooleanItems>;
+    /**
+     * The dataset of the property
+     */
     dataset?: pulumi.Input<inputs.ActionUserPropertiesArrayPropsDataset>;
+    /**
+     * The default jq query of the array property
+     */
     defaultJqQuery?: pulumi.Input<string>;
+    /**
+     * The properties that this property depends on
+     */
     dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The description of the property
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The icon of the property
+     */
     icon?: pulumi.Input<string>;
+    /**
+     * The max items of the array property
+     */
     maxItems?: pulumi.Input<number>;
+    /**
+     * The min items of the array property
+     */
     minItems?: pulumi.Input<number>;
+    /**
+     * The items of the array property
+     */
     numberItems?: pulumi.Input<inputs.ActionUserPropertiesArrayPropsNumberItems>;
+    /**
+     * The items of the array property
+     */
     objectItems?: pulumi.Input<inputs.ActionUserPropertiesArrayPropsObjectItems>;
+    /**
+     * Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
+     */
     required?: pulumi.Input<boolean>;
+    /**
+     * The items of the array property
+     */
     stringItems?: pulumi.Input<inputs.ActionUserPropertiesArrayPropsStringItems>;
+    /**
+     * The title of the property
+     */
     title?: pulumi.Input<string>;
+    /**
+     * The visibility of the array property
+     */
     visible?: pulumi.Input<boolean>;
+    /**
+     * The visibility condition jq query of the array property
+     */
     visibleJqQuery?: pulumi.Input<string>;
 }
 
 export interface ActionUserPropertiesArrayPropsBooleanItems {
+    /**
+     * The default of the items
+     */
     defaults?: pulumi.Input<pulumi.Input<boolean>[]>;
 }
 
 export interface ActionUserPropertiesArrayPropsDataset {
+    /**
+     * The combinator of the dataset
+     */
     combinator: pulumi.Input<string>;
+    /**
+     * The rules of the dataset
+     */
     rules: pulumi.Input<pulumi.Input<inputs.ActionUserPropertiesArrayPropsDatasetRule>[]>;
 }
 
 export interface ActionUserPropertiesArrayPropsDatasetRule {
+    /**
+     * The blueprint identifier of the rule
+     */
     blueprint?: pulumi.Input<string>;
+    /**
+     * The operator of the rule
+     */
     operator: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule
+     */
     property?: pulumi.Input<string>;
+    /**
+     * The value of the rule
+     */
     value: pulumi.Input<inputs.ActionUserPropertiesArrayPropsDatasetRuleValue>;
 }
 
@@ -106,45 +268,120 @@ export interface ActionUserPropertiesArrayPropsDatasetRuleValue {
 }
 
 export interface ActionUserPropertiesArrayPropsNumberItems {
+    /**
+     * The default of the items
+     */
     defaults?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The enum jq query of the number items
+     */
     enumJqQuery?: pulumi.Input<string>;
+    /**
+     * The enum of the items
+     */
     enums?: pulumi.Input<pulumi.Input<number>[]>;
 }
 
 export interface ActionUserPropertiesArrayPropsObjectItems {
+    /**
+     * The default of the items
+     */
     defaults?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
 }
 
 export interface ActionUserPropertiesArrayPropsStringItems {
+    /**
+     * The blueprint identifier the property relates to
+     */
     blueprint?: pulumi.Input<string>;
+    /**
+     * The default of the items
+     */
     defaults?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The enum jq query of the string items
+     */
     enumJqQuery?: pulumi.Input<string>;
+    /**
+     * The enum of the items
+     */
     enums?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The format of the items
+     */
     format?: pulumi.Input<string>;
 }
 
 export interface ActionUserPropertiesBooleanProps {
+    /**
+     * The dataset of the property
+     */
     dataset?: pulumi.Input<inputs.ActionUserPropertiesBooleanPropsDataset>;
+    /**
+     * The default of the boolean property
+     */
     default?: pulumi.Input<boolean>;
+    /**
+     * The default jq query of the boolean property
+     */
     defaultJqQuery?: pulumi.Input<string>;
+    /**
+     * The properties that this property depends on
+     */
     dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The description of the property
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The icon of the property
+     */
     icon?: pulumi.Input<string>;
+    /**
+     * Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
+     */
     required?: pulumi.Input<boolean>;
+    /**
+     * The title of the property
+     */
     title?: pulumi.Input<string>;
+    /**
+     * The visibility of the boolean property
+     */
     visible?: pulumi.Input<boolean>;
+    /**
+     * The visibility condition jq query of the boolean property
+     */
     visibleJqQuery?: pulumi.Input<string>;
 }
 
 export interface ActionUserPropertiesBooleanPropsDataset {
+    /**
+     * The combinator of the dataset
+     */
     combinator: pulumi.Input<string>;
+    /**
+     * The rules of the dataset
+     */
     rules: pulumi.Input<pulumi.Input<inputs.ActionUserPropertiesBooleanPropsDatasetRule>[]>;
 }
 
 export interface ActionUserPropertiesBooleanPropsDatasetRule {
+    /**
+     * The blueprint identifier of the rule
+     */
     blueprint?: pulumi.Input<string>;
+    /**
+     * The operator of the rule
+     */
     operator: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule
+     */
     property?: pulumi.Input<string>;
+    /**
+     * The value of the rule
+     */
     value: pulumi.Input<inputs.ActionUserPropertiesBooleanPropsDatasetRuleValue>;
 }
 
@@ -153,31 +390,91 @@ export interface ActionUserPropertiesBooleanPropsDatasetRuleValue {
 }
 
 export interface ActionUserPropertiesNumberProps {
+    /**
+     * The dataset of the property
+     */
     dataset?: pulumi.Input<inputs.ActionUserPropertiesNumberPropsDataset>;
+    /**
+     * The default of the number property
+     */
     default?: pulumi.Input<number>;
+    /**
+     * The default jq query of the number property
+     */
     defaultJqQuery?: pulumi.Input<string>;
+    /**
+     * The properties that this property depends on
+     */
     dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The description of the property
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The enum jq query of the string property
+     */
     enumJqQuery?: pulumi.Input<string>;
+    /**
+     * The enum of the number property
+     */
     enums?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The icon of the property
+     */
     icon?: pulumi.Input<string>;
+    /**
+     * The min of the number property
+     */
     maximum?: pulumi.Input<number>;
+    /**
+     * The max of the number property
+     */
     minimum?: pulumi.Input<number>;
+    /**
+     * Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
+     */
     required?: pulumi.Input<boolean>;
+    /**
+     * The title of the property
+     */
     title?: pulumi.Input<string>;
+    /**
+     * The visibility of the number property
+     */
     visible?: pulumi.Input<boolean>;
+    /**
+     * The visibility condition jq query of the number property
+     */
     visibleJqQuery?: pulumi.Input<string>;
 }
 
 export interface ActionUserPropertiesNumberPropsDataset {
+    /**
+     * The combinator of the dataset
+     */
     combinator: pulumi.Input<string>;
+    /**
+     * The rules of the dataset
+     */
     rules: pulumi.Input<pulumi.Input<inputs.ActionUserPropertiesNumberPropsDatasetRule>[]>;
 }
 
 export interface ActionUserPropertiesNumberPropsDatasetRule {
+    /**
+     * The blueprint identifier of the rule
+     */
     blueprint?: pulumi.Input<string>;
+    /**
+     * The operator of the rule
+     */
     operator: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule
+     */
     property?: pulumi.Input<string>;
+    /**
+     * The value of the rule
+     */
     value: pulumi.Input<inputs.ActionUserPropertiesNumberPropsDatasetRuleValue>;
 }
 
@@ -186,28 +483,79 @@ export interface ActionUserPropertiesNumberPropsDatasetRuleValue {
 }
 
 export interface ActionUserPropertiesObjectProps {
+    /**
+     * The dataset of the property
+     */
     dataset?: pulumi.Input<inputs.ActionUserPropertiesObjectPropsDataset>;
+    /**
+     * The default of the object property
+     */
     default?: pulumi.Input<string>;
+    /**
+     * The default jq query of the object property
+     */
     defaultJqQuery?: pulumi.Input<string>;
+    /**
+     * The properties that this property depends on
+     */
     dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The description of the property
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The algorithm to encrypt the property with
+     */
     encryption?: pulumi.Input<string>;
+    /**
+     * The icon of the property
+     */
     icon?: pulumi.Input<string>;
+    /**
+     * Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
+     */
     required?: pulumi.Input<boolean>;
+    /**
+     * The title of the property
+     */
     title?: pulumi.Input<string>;
+    /**
+     * The visibility of the object property
+     */
     visible?: pulumi.Input<boolean>;
+    /**
+     * The visibility condition jq query of the object property
+     */
     visibleJqQuery?: pulumi.Input<string>;
 }
 
 export interface ActionUserPropertiesObjectPropsDataset {
+    /**
+     * The combinator of the dataset
+     */
     combinator: pulumi.Input<string>;
+    /**
+     * The rules of the dataset
+     */
     rules: pulumi.Input<pulumi.Input<inputs.ActionUserPropertiesObjectPropsDatasetRule>[]>;
 }
 
 export interface ActionUserPropertiesObjectPropsDatasetRule {
+    /**
+     * The blueprint identifier of the rule
+     */
     blueprint?: pulumi.Input<string>;
+    /**
+     * The operator of the rule
+     */
     operator: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule
+     */
     property?: pulumi.Input<string>;
+    /**
+     * The value of the rule
+     */
     value: pulumi.Input<inputs.ActionUserPropertiesObjectPropsDatasetRuleValue>;
 }
 
@@ -216,35 +564,107 @@ export interface ActionUserPropertiesObjectPropsDatasetRuleValue {
 }
 
 export interface ActionUserPropertiesStringProps {
+    /**
+     * The blueprint identifier the string property relates to
+     */
     blueprint?: pulumi.Input<string>;
+    /**
+     * The dataset of the property
+     */
     dataset?: pulumi.Input<inputs.ActionUserPropertiesStringPropsDataset>;
+    /**
+     * The default of the string property
+     */
     default?: pulumi.Input<string>;
+    /**
+     * The default jq query of the string property
+     */
     defaultJqQuery?: pulumi.Input<string>;
+    /**
+     * The properties that this property depends on
+     */
     dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The description of the property
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The algorithm to encrypt the property with
+     */
     encryption?: pulumi.Input<string>;
+    /**
+     * The enum jq query of the string property
+     */
     enumJqQuery?: pulumi.Input<string>;
+    /**
+     * The enum of the string property
+     */
     enums?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The format of the string property
+     */
     format?: pulumi.Input<string>;
+    /**
+     * The icon of the property
+     */
     icon?: pulumi.Input<string>;
+    /**
+     * The max length of the string property
+     */
     maxLength?: pulumi.Input<number>;
+    /**
+     * The min length of the string property
+     */
     minLength?: pulumi.Input<number>;
+    /**
+     * The pattern of the string property
+     */
     pattern?: pulumi.Input<string>;
+    /**
+     * Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
+     */
     required?: pulumi.Input<boolean>;
+    /**
+     * The title of the property
+     */
     title?: pulumi.Input<string>;
+    /**
+     * The visibility of the string property
+     */
     visible?: pulumi.Input<boolean>;
+    /**
+     * The visibility condition jq query of the string property
+     */
     visibleJqQuery?: pulumi.Input<string>;
 }
 
 export interface ActionUserPropertiesStringPropsDataset {
+    /**
+     * The combinator of the dataset
+     */
     combinator: pulumi.Input<string>;
+    /**
+     * The rules of the dataset
+     */
     rules: pulumi.Input<pulumi.Input<inputs.ActionUserPropertiesStringPropsDatasetRule>[]>;
 }
 
 export interface ActionUserPropertiesStringPropsDatasetRule {
+    /**
+     * The blueprint identifier of the rule
+     */
     blueprint?: pulumi.Input<string>;
+    /**
+     * The operator of the rule
+     */
     operator: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule
+     */
     property?: pulumi.Input<string>;
+    /**
+     * The value of the rule
+     */
     value: pulumi.Input<inputs.ActionUserPropertiesStringPropsDatasetRuleValue>;
 }
 
@@ -253,52 +673,139 @@ export interface ActionUserPropertiesStringPropsDatasetRuleValue {
 }
 
 export interface ActionWebhookMethod {
+    /**
+     * Use the agent to invoke the action
+     */
     agent?: pulumi.Input<boolean>;
+    /**
+     * The HTTP method to invoke the action
+     */
     method?: pulumi.Input<string>;
+    /**
+     * Synchronize the action
+     */
     synchronized?: pulumi.Input<boolean>;
+    /**
+     * Required when selecting type WEBHOOK. The URL to invoke the action
+     */
     url: pulumi.Input<string>;
 }
 
 export interface AggregationPropertiesProperties {
+    /**
+     * The description of the aggregation property
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The icon of the aggregation property
+     */
     icon?: pulumi.Input<string>;
+    /**
+     * The aggregation method to perform on the target blueprint, one of count_entities, average_entities, average_by_property, aggregate_by_property
+     */
     method: pulumi.Input<inputs.AggregationPropertiesPropertiesMethod>;
+    /**
+     * Query to filter the target entities
+     */
     query?: pulumi.Input<string>;
+    /**
+     * The identifier of the blueprint to perform the aggregation on
+     */
     targetBlueprintIdentifier: pulumi.Input<string>;
+    /**
+     * The title of the aggregation property
+     */
     title?: pulumi.Input<string>;
 }
 
 export interface AggregationPropertiesPropertiesMethod {
+    /**
+     * Function to calculate the aggregate by property value of the target entities, such as sum, min, max, median
+     */
     aggregateByProperty?: pulumi.Input<inputs.AggregationPropertiesPropertiesMethodAggregateByProperty>;
+    /**
+     * Function to calculate the average by property value of the target entities
+     */
     averageByProperty?: pulumi.Input<inputs.AggregationPropertiesPropertiesMethodAverageByProperty>;
+    /**
+     * Function to average the entities of the target entities
+     */
     averageEntities?: pulumi.Input<inputs.AggregationPropertiesPropertiesMethodAverageEntities>;
+    /**
+     * Function to count the entities of the target entities
+     */
     countEntities?: pulumi.Input<boolean>;
 }
 
 export interface AggregationPropertiesPropertiesMethodAggregateByProperty {
+    /**
+     * The func of the aggregate by property
+     */
     func: pulumi.Input<string>;
+    /**
+     * The property of the aggregate by property
+     */
     property: pulumi.Input<string>;
 }
 
 export interface AggregationPropertiesPropertiesMethodAverageByProperty {
+    /**
+     * The time periods to calculate the average by, e.g. hour, day, week, month
+     */
     averageOf: pulumi.Input<string>;
+    /**
+     * The property name on which to calculate the the time periods, e.g. $createdAt, $updated_at or any other date property
+     */
     measureTimeBy: pulumi.Input<string>;
+    /**
+     * The property name on which to calculate the average by
+     */
     property: pulumi.Input<string>;
 }
 
 export interface AggregationPropertiesPropertiesMethodAverageEntities {
+    /**
+     * The time periods to calculate the average of, e.g. hour, day, week, month
+     */
     averageOf?: pulumi.Input<string>;
+    /**
+     * The property name on which to calculate the the time periods, e.g. $createdAt, $updated_at or any other date property
+     */
     measureTimeBy?: pulumi.Input<string>;
 }
 
 export interface BlueprintCalculationProperties {
+    /**
+     * The calculation of the calculation property
+     */
     calculation: pulumi.Input<string>;
+    /**
+     * The colorized of the calculation property
+     */
     colorized?: pulumi.Input<boolean>;
+    /**
+     * The colors of the calculation property
+     */
     colors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The description of the calculation property
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The format of the calculation property
+     */
     format?: pulumi.Input<string>;
+    /**
+     * The icon of the calculation property
+     */
     icon?: pulumi.Input<string>;
+    /**
+     * The title of the calculation property
+     */
     title?: pulumi.Input<string>;
+    /**
+     * The type of the calculation property
+     */
     type: pulumi.Input<string>;
 }
 
@@ -306,120 +813,330 @@ export interface BlueprintKafkaChangelogDestination {
 }
 
 export interface BlueprintMirrorProperties {
+    /**
+     * The path of the mirror property
+     */
     path: pulumi.Input<string>;
+    /**
+     * The title of the mirror property
+     */
     title?: pulumi.Input<string>;
 }
 
 export interface BlueprintProperties {
+    /**
+     * The array property of the blueprint
+     */
     arrayProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintPropertiesArrayProps>}>;
+    /**
+     * The boolean property of the blueprint
+     */
     booleanProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintPropertiesBooleanProps>}>;
+    /**
+     * The number property of the blueprint
+     */
     numberProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintPropertiesNumberProps>}>;
+    /**
+     * The object property of the blueprint
+     */
     objectProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintPropertiesObjectProps>}>;
+    /**
+     * The string property of the blueprint
+     */
     stringProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintPropertiesStringProps>}>;
 }
 
 export interface BlueprintPropertiesArrayProps {
+    /**
+     * The items of the array property
+     */
     booleanItems?: pulumi.Input<inputs.BlueprintPropertiesArrayPropsBooleanItems>;
+    /**
+     * The description of the property
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The icon of the property
+     */
     icon?: pulumi.Input<string>;
+    /**
+     * The max items of the array property
+     */
     maxItems?: pulumi.Input<number>;
+    /**
+     * The min items of the array property
+     */
     minItems?: pulumi.Input<number>;
+    /**
+     * The items of the array property
+     */
     numberItems?: pulumi.Input<inputs.BlueprintPropertiesArrayPropsNumberItems>;
+    /**
+     * The items of the array property
+     */
     objectItems?: pulumi.Input<inputs.BlueprintPropertiesArrayPropsObjectItems>;
+    /**
+     * Whether the property is required
+     */
     required?: pulumi.Input<boolean>;
+    /**
+     * The items of the array property
+     */
     stringItems?: pulumi.Input<inputs.BlueprintPropertiesArrayPropsStringItems>;
+    /**
+     * The title of the property
+     */
     title?: pulumi.Input<string>;
 }
 
 export interface BlueprintPropertiesArrayPropsBooleanItems {
+    /**
+     * The default of the items
+     */
     defaults?: pulumi.Input<pulumi.Input<boolean>[]>;
 }
 
 export interface BlueprintPropertiesArrayPropsNumberItems {
+    /**
+     * The default of the items
+     */
     defaults?: pulumi.Input<pulumi.Input<number>[]>;
 }
 
 export interface BlueprintPropertiesArrayPropsObjectItems {
+    /**
+     * The default of the items
+     */
     defaults?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface BlueprintPropertiesArrayPropsStringItems {
+    /**
+     * The default of the items
+     */
     defaults?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The format of the items
+     */
     format?: pulumi.Input<string>;
 }
 
 export interface BlueprintPropertiesBooleanProps {
+    /**
+     * The default of the boolean property
+     */
     default?: pulumi.Input<boolean>;
+    /**
+     * The description of the property
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The icon of the property
+     */
     icon?: pulumi.Input<string>;
+    /**
+     * Whether the property is required
+     */
     required?: pulumi.Input<boolean>;
+    /**
+     * The title of the property
+     */
     title?: pulumi.Input<string>;
 }
 
 export interface BlueprintPropertiesNumberProps {
+    /**
+     * The default of the number property
+     */
     default?: pulumi.Input<number>;
+    /**
+     * The description of the property
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The enum colors of the number property
+     */
     enumColors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The enum of the number property
+     */
     enums?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The icon of the property
+     */
     icon?: pulumi.Input<string>;
+    /**
+     * The min of the number property
+     */
     maximum?: pulumi.Input<number>;
+    /**
+     * The max of the number property
+     */
     minimum?: pulumi.Input<number>;
+    /**
+     * Whether the property is required
+     */
     required?: pulumi.Input<boolean>;
+    /**
+     * The title of the property
+     */
     title?: pulumi.Input<string>;
 }
 
 export interface BlueprintPropertiesObjectProps {
+    /**
+     * The default of the object property
+     */
     default?: pulumi.Input<string>;
+    /**
+     * The description of the property
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The icon of the property
+     */
     icon?: pulumi.Input<string>;
+    /**
+     * Whether the property is required
+     */
     required?: pulumi.Input<boolean>;
+    /**
+     * The spec of the object property
+     */
     spec?: pulumi.Input<string>;
+    /**
+     * The title of the property
+     */
     title?: pulumi.Input<string>;
 }
 
 export interface BlueprintPropertiesStringProps {
+    /**
+     * The default of the string property
+     */
     default?: pulumi.Input<string>;
+    /**
+     * The description of the property
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The enum colors of the string property
+     */
     enumColors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The enum of the string property
+     */
     enums?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The format of the string property
+     */
     format?: pulumi.Input<string>;
+    /**
+     * The icon of the property
+     */
     icon?: pulumi.Input<string>;
+    /**
+     * The max length of the string property
+     */
     maxLength?: pulumi.Input<number>;
+    /**
+     * The min length of the string property
+     */
     minLength?: pulumi.Input<number>;
+    /**
+     * The pattern of the string property
+     */
     pattern?: pulumi.Input<string>;
+    /**
+     * Whether the property is required
+     */
     required?: pulumi.Input<boolean>;
+    /**
+     * The spec of the string property
+     */
     spec?: pulumi.Input<string>;
+    /**
+     * The spec authentication of the string property
+     */
     specAuthentication?: pulumi.Input<inputs.BlueprintPropertiesStringPropsSpecAuthentication>;
+    /**
+     * The title of the property
+     */
     title?: pulumi.Input<string>;
 }
 
 export interface BlueprintPropertiesStringPropsSpecAuthentication {
+    /**
+     * The authorizationUrl of the spec authentication
+     */
     authorizationUrl: pulumi.Input<string>;
+    /**
+     * The clientId of the spec authentication
+     */
     clientId: pulumi.Input<string>;
+    /**
+     * The tokenUrl of the spec authentication
+     */
     tokenUrl: pulumi.Input<string>;
 }
 
 export interface BlueprintRelations {
+    /**
+     * The many of the relation
+     */
     many?: pulumi.Input<boolean>;
+    /**
+     * The required of the relation
+     */
     required?: pulumi.Input<boolean>;
+    /**
+     * The target of the relation
+     */
     target: pulumi.Input<string>;
+    /**
+     * The title of the relation
+     */
     title?: pulumi.Input<string>;
 }
 
 export interface BlueprintTeamInheritance {
+    /**
+     * The path of the team inheritance
+     */
     path: pulumi.Input<string>;
 }
 
 export interface BlueprintWebhookChangelogDestination {
+    /**
+     * The agent of the webhook changelog destination
+     */
     agent?: pulumi.Input<boolean>;
+    /**
+     * The url of the webhook changelog destination
+     */
     url: pulumi.Input<string>;
 }
 
 export interface EntityProperties {
+    /**
+     * The array properties of the entity
+     */
     arrayProps?: pulumi.Input<inputs.EntityPropertiesArrayProps>;
+    /**
+     * The bool properties of the entity
+     */
     booleanProps?: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;
+    /**
+     * The number properties of the entity
+     */
     numberProps?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+    /**
+     * The object properties of the entity
+     */
     objectProps?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The string properties of the entity
+     */
     stringProps?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -431,42 +1148,111 @@ export interface EntityPropertiesArrayProps {
 }
 
 export interface EntityRelations {
+    /**
+     * The many relation of the entity
+     */
     manyRelations?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+    /**
+     * The single relation of the entity
+     */
     singleRelations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface ScorecardRule {
+    /**
+     * The identifier of the rule
+     */
     identifier: pulumi.Input<string>;
+    /**
+     * The level of the rule
+     */
     level: pulumi.Input<string>;
+    /**
+     * The query of the rule
+     */
     query: pulumi.Input<inputs.ScorecardRuleQuery>;
+    /**
+     * The title of the rule
+     */
     title: pulumi.Input<string>;
 }
 
 export interface ScorecardRuleQuery {
+    /**
+     * The combinator of the query
+     */
     combinator: pulumi.Input<string>;
+    /**
+     * The conditions of the query. Each condition object should be encoded to a string
+     */
     conditions: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface WebhookMapping {
+    /**
+     * The blueprint of the mapping
+     */
     blueprint: pulumi.Input<string>;
+    /**
+     * The entity of the mapping
+     */
     entity: pulumi.Input<inputs.WebhookMappingEntity>;
+    /**
+     * The filter of the mapping
+     */
     filter?: pulumi.Input<string>;
+    /**
+     * The items to parser of the mapping
+     */
     itemsToParse?: pulumi.Input<string>;
 }
 
 export interface WebhookMappingEntity {
+    /**
+     * The icon of the entity
+     */
     icon?: pulumi.Input<string>;
+    /**
+     * The identifier of the entity
+     */
     identifier: pulumi.Input<string>;
+    /**
+     * The properties of the entity
+     */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The relations of the entity
+     */
     relations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The team of the entity
+     */
     team?: pulumi.Input<string>;
+    /**
+     * The title of the entity
+     */
     title?: pulumi.Input<string>;
 }
 
 export interface WebhookSecurity {
+    /**
+     * The request identifier path of the webhook
+     */
     requestIdentifierPath?: pulumi.Input<string>;
+    /**
+     * The secret of the webhook
+     */
     secret?: pulumi.Input<string>;
+    /**
+     * The signature algorithm of the webhook
+     */
     signatureAlgorithm?: pulumi.Input<string>;
+    /**
+     * The signature header name of the webhook
+     */
     signatureHeaderName?: pulumi.Input<string>;
+    /**
+     * The signature prefix of the webhook
+     */
     signaturePrefix?: pulumi.Input<string>;
 }

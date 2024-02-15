@@ -20,6 +20,7 @@ class BlueprintArgs:
                  title: pulumi.Input[str],
                  calculation_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintCalculationPropertiesArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 force_delete_entities: Optional[pulumi.Input[bool]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  kafka_changelog_destination: Optional[pulumi.Input['BlueprintKafkaChangelogDestinationArgs']] = None,
                  mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintMirrorPropertiesArgs']]]] = None,
@@ -33,6 +34,7 @@ class BlueprintArgs:
         :param pulumi.Input[str] title: The display name of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintCalculationPropertiesArgs']]] calculation_properties: The calculation properties of the blueprint
         :param pulumi.Input[str] description: The description of the blueprint
+        :param pulumi.Input[bool] force_delete_entities: If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
         :param pulumi.Input[str] icon: The icon of the blueprint
         :param pulumi.Input['BlueprintKafkaChangelogDestinationArgs'] kafka_changelog_destination: The changelog destination of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintMirrorPropertiesArgs']]] mirror_properties: The mirror properties of the blueprint
@@ -47,6 +49,8 @@ class BlueprintArgs:
             pulumi.set(__self__, "calculation_properties", calculation_properties)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if force_delete_entities is not None:
+            pulumi.set(__self__, "force_delete_entities", force_delete_entities)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
         if kafka_changelog_destination is not None:
@@ -109,6 +113,18 @@ class BlueprintArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="forceDeleteEntities")
+    def force_delete_entities(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
+        """
+        return pulumi.get(self, "force_delete_entities")
+
+    @force_delete_entities.setter
+    def force_delete_entities(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete_entities", value)
 
     @property
     @pulumi.getter
@@ -202,6 +218,7 @@ class _BlueprintState:
                  created_at: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 force_delete_entities: Optional[pulumi.Input[bool]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  kafka_changelog_destination: Optional[pulumi.Input['BlueprintKafkaChangelogDestinationArgs']] = None,
@@ -219,6 +236,7 @@ class _BlueprintState:
         :param pulumi.Input[str] created_at: The creation date of the blueprint
         :param pulumi.Input[str] created_by: The creator of the blueprint
         :param pulumi.Input[str] description: The description of the blueprint
+        :param pulumi.Input[bool] force_delete_entities: If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
         :param pulumi.Input[str] icon: The icon of the blueprint
         :param pulumi.Input[str] identifier: The identifier of the blueprint
         :param pulumi.Input['BlueprintKafkaChangelogDestinationArgs'] kafka_changelog_destination: The changelog destination of the blueprint
@@ -239,6 +257,8 @@ class _BlueprintState:
             pulumi.set(__self__, "created_by", created_by)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if force_delete_entities is not None:
+            pulumi.set(__self__, "force_delete_entities", force_delete_entities)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
         if identifier is not None:
@@ -309,6 +329,18 @@ class _BlueprintState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="forceDeleteEntities")
+    def force_delete_entities(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
+        """
+        return pulumi.get(self, "force_delete_entities")
+
+    @force_delete_entities.setter
+    def force_delete_entities(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete_entities", value)
 
     @property
     @pulumi.getter
@@ -450,6 +482,7 @@ class Blueprint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  calculation_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintCalculationPropertiesArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 force_delete_entities: Optional[pulumi.Input[bool]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  kafka_changelog_destination: Optional[pulumi.Input[pulumi.InputType['BlueprintKafkaChangelogDestinationArgs']]] = None,
@@ -466,6 +499,7 @@ class Blueprint(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintCalculationPropertiesArgs']]]] calculation_properties: The calculation properties of the blueprint
         :param pulumi.Input[str] description: The description of the blueprint
+        :param pulumi.Input[bool] force_delete_entities: If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
         :param pulumi.Input[str] icon: The icon of the blueprint
         :param pulumi.Input[str] identifier: The identifier of the blueprint
         :param pulumi.Input[pulumi.InputType['BlueprintKafkaChangelogDestinationArgs']] kafka_changelog_destination: The changelog destination of the blueprint
@@ -501,6 +535,7 @@ class Blueprint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  calculation_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintCalculationPropertiesArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 force_delete_entities: Optional[pulumi.Input[bool]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  kafka_changelog_destination: Optional[pulumi.Input[pulumi.InputType['BlueprintKafkaChangelogDestinationArgs']]] = None,
@@ -521,6 +556,7 @@ class Blueprint(pulumi.CustomResource):
 
             __props__.__dict__["calculation_properties"] = calculation_properties
             __props__.__dict__["description"] = description
+            __props__.__dict__["force_delete_entities"] = force_delete_entities
             __props__.__dict__["icon"] = icon
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
@@ -552,6 +588,7 @@ class Blueprint(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[str]] = None,
             created_by: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            force_delete_entities: Optional[pulumi.Input[bool]] = None,
             icon: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             kafka_changelog_destination: Optional[pulumi.Input[pulumi.InputType['BlueprintKafkaChangelogDestinationArgs']]] = None,
@@ -574,6 +611,7 @@ class Blueprint(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: The creation date of the blueprint
         :param pulumi.Input[str] created_by: The creator of the blueprint
         :param pulumi.Input[str] description: The description of the blueprint
+        :param pulumi.Input[bool] force_delete_entities: If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
         :param pulumi.Input[str] icon: The icon of the blueprint
         :param pulumi.Input[str] identifier: The identifier of the blueprint
         :param pulumi.Input[pulumi.InputType['BlueprintKafkaChangelogDestinationArgs']] kafka_changelog_destination: The changelog destination of the blueprint
@@ -594,6 +632,7 @@ class Blueprint(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
         __props__.__dict__["description"] = description
+        __props__.__dict__["force_delete_entities"] = force_delete_entities
         __props__.__dict__["icon"] = icon
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["kafka_changelog_destination"] = kafka_changelog_destination
@@ -638,6 +677,14 @@ class Blueprint(pulumi.CustomResource):
         The description of the blueprint
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="forceDeleteEntities")
+    def force_delete_entities(self) -> pulumi.Output[bool]:
+        """
+        If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
+        """
+        return pulumi.get(self, "force_delete_entities")
 
     @property
     @pulumi.getter

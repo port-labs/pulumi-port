@@ -18,7 +18,7 @@ class ActionPermissionsArgs:
     def __init__(__self__, *,
                  action_identifier: pulumi.Input[str],
                  blueprint_identifier: pulumi.Input[str],
-                 permissions: Optional[pulumi.Input['ActionPermissionsPermissionsArgs']] = None):
+                 permissions: pulumi.Input['ActionPermissionsPermissionsArgs']):
         """
         The set of arguments for constructing a ActionPermissions resource.
         :param pulumi.Input[str] action_identifier: The ID of the action
@@ -27,8 +27,7 @@ class ActionPermissionsArgs:
         """
         pulumi.set(__self__, "action_identifier", action_identifier)
         pulumi.set(__self__, "blueprint_identifier", blueprint_identifier)
-        if permissions is not None:
-            pulumi.set(__self__, "permissions", permissions)
+        pulumi.set(__self__, "permissions", permissions)
 
     @property
     @pulumi.getter(name="actionIdentifier")
@@ -56,14 +55,14 @@ class ActionPermissionsArgs:
 
     @property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input['ActionPermissionsPermissionsArgs']]:
+    def permissions(self) -> pulumi.Input['ActionPermissionsPermissionsArgs']:
         """
         The permissions for the action
         """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input['ActionPermissionsPermissionsArgs']]):
+    def permissions(self, value: pulumi.Input['ActionPermissionsPermissionsArgs']):
         pulumi.set(self, "permissions", value)
 
 
@@ -181,6 +180,8 @@ class ActionPermissions(pulumi.CustomResource):
             if blueprint_identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'blueprint_identifier'")
             __props__.__dict__["blueprint_identifier"] = blueprint_identifier
+            if permissions is None and not opts.urn:
+                raise TypeError("Missing required property 'permissions'")
             __props__.__dict__["permissions"] = permissions
         super(ActionPermissions, __self__).__init__(
             'port:index/actionPermissions:ActionPermissions',
@@ -233,7 +234,7 @@ class ActionPermissions(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def permissions(self) -> pulumi.Output[Optional['outputs.ActionPermissionsPermissions']]:
+    def permissions(self) -> pulumi.Output['outputs.ActionPermissionsPermissions']:
         """
         The permissions for the action
         """
