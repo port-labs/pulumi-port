@@ -9230,6 +9230,181 @@ func (o EntityRelationsPtrOutput) SingleRelations() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type PagePermissionsRead struct {
+	// The roles with read permission
+	Roles []string `pulumi:"roles"`
+	// The teams with read permission
+	Teams []string `pulumi:"teams"`
+	// The users with read permission
+	Users []string `pulumi:"users"`
+}
+
+// PagePermissionsReadInput is an input type that accepts PagePermissionsReadArgs and PagePermissionsReadOutput values.
+// You can construct a concrete instance of `PagePermissionsReadInput` via:
+//
+//	PagePermissionsReadArgs{...}
+type PagePermissionsReadInput interface {
+	pulumi.Input
+
+	ToPagePermissionsReadOutput() PagePermissionsReadOutput
+	ToPagePermissionsReadOutputWithContext(context.Context) PagePermissionsReadOutput
+}
+
+type PagePermissionsReadArgs struct {
+	// The roles with read permission
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
+	// The teams with read permission
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
+	// The users with read permission
+	Users pulumi.StringArrayInput `pulumi:"users"`
+}
+
+func (PagePermissionsReadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagePermissionsRead)(nil)).Elem()
+}
+
+func (i PagePermissionsReadArgs) ToPagePermissionsReadOutput() PagePermissionsReadOutput {
+	return i.ToPagePermissionsReadOutputWithContext(context.Background())
+}
+
+func (i PagePermissionsReadArgs) ToPagePermissionsReadOutputWithContext(ctx context.Context) PagePermissionsReadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagePermissionsReadOutput)
+}
+
+func (i PagePermissionsReadArgs) ToPagePermissionsReadPtrOutput() PagePermissionsReadPtrOutput {
+	return i.ToPagePermissionsReadPtrOutputWithContext(context.Background())
+}
+
+func (i PagePermissionsReadArgs) ToPagePermissionsReadPtrOutputWithContext(ctx context.Context) PagePermissionsReadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagePermissionsReadOutput).ToPagePermissionsReadPtrOutputWithContext(ctx)
+}
+
+// PagePermissionsReadPtrInput is an input type that accepts PagePermissionsReadArgs, PagePermissionsReadPtr and PagePermissionsReadPtrOutput values.
+// You can construct a concrete instance of `PagePermissionsReadPtrInput` via:
+//
+//	        PagePermissionsReadArgs{...}
+//
+//	or:
+//
+//	        nil
+type PagePermissionsReadPtrInput interface {
+	pulumi.Input
+
+	ToPagePermissionsReadPtrOutput() PagePermissionsReadPtrOutput
+	ToPagePermissionsReadPtrOutputWithContext(context.Context) PagePermissionsReadPtrOutput
+}
+
+type pagePermissionsReadPtrType PagePermissionsReadArgs
+
+func PagePermissionsReadPtr(v *PagePermissionsReadArgs) PagePermissionsReadPtrInput {
+	return (*pagePermissionsReadPtrType)(v)
+}
+
+func (*pagePermissionsReadPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagePermissionsRead)(nil)).Elem()
+}
+
+func (i *pagePermissionsReadPtrType) ToPagePermissionsReadPtrOutput() PagePermissionsReadPtrOutput {
+	return i.ToPagePermissionsReadPtrOutputWithContext(context.Background())
+}
+
+func (i *pagePermissionsReadPtrType) ToPagePermissionsReadPtrOutputWithContext(ctx context.Context) PagePermissionsReadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PagePermissionsReadPtrOutput)
+}
+
+type PagePermissionsReadOutput struct{ *pulumi.OutputState }
+
+func (PagePermissionsReadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PagePermissionsRead)(nil)).Elem()
+}
+
+func (o PagePermissionsReadOutput) ToPagePermissionsReadOutput() PagePermissionsReadOutput {
+	return o
+}
+
+func (o PagePermissionsReadOutput) ToPagePermissionsReadOutputWithContext(ctx context.Context) PagePermissionsReadOutput {
+	return o
+}
+
+func (o PagePermissionsReadOutput) ToPagePermissionsReadPtrOutput() PagePermissionsReadPtrOutput {
+	return o.ToPagePermissionsReadPtrOutputWithContext(context.Background())
+}
+
+func (o PagePermissionsReadOutput) ToPagePermissionsReadPtrOutputWithContext(ctx context.Context) PagePermissionsReadPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PagePermissionsRead) *PagePermissionsRead {
+		return &v
+	}).(PagePermissionsReadPtrOutput)
+}
+
+// The roles with read permission
+func (o PagePermissionsReadOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PagePermissionsRead) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+// The teams with read permission
+func (o PagePermissionsReadOutput) Teams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PagePermissionsRead) []string { return v.Teams }).(pulumi.StringArrayOutput)
+}
+
+// The users with read permission
+func (o PagePermissionsReadOutput) Users() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PagePermissionsRead) []string { return v.Users }).(pulumi.StringArrayOutput)
+}
+
+type PagePermissionsReadPtrOutput struct{ *pulumi.OutputState }
+
+func (PagePermissionsReadPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PagePermissionsRead)(nil)).Elem()
+}
+
+func (o PagePermissionsReadPtrOutput) ToPagePermissionsReadPtrOutput() PagePermissionsReadPtrOutput {
+	return o
+}
+
+func (o PagePermissionsReadPtrOutput) ToPagePermissionsReadPtrOutputWithContext(ctx context.Context) PagePermissionsReadPtrOutput {
+	return o
+}
+
+func (o PagePermissionsReadPtrOutput) Elem() PagePermissionsReadOutput {
+	return o.ApplyT(func(v *PagePermissionsRead) PagePermissionsRead {
+		if v != nil {
+			return *v
+		}
+		var ret PagePermissionsRead
+		return ret
+	}).(PagePermissionsReadOutput)
+}
+
+// The roles with read permission
+func (o PagePermissionsReadPtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PagePermissionsRead) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
+	}).(pulumi.StringArrayOutput)
+}
+
+// The teams with read permission
+func (o PagePermissionsReadPtrOutput) Teams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PagePermissionsRead) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Teams
+	}).(pulumi.StringArrayOutput)
+}
+
+// The users with read permission
+func (o PagePermissionsReadPtrOutput) Users() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PagePermissionsRead) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Users
+	}).(pulumi.StringArrayOutput)
+}
+
 type ScorecardRule struct {
 	// The identifier of the rule
 	Identifier string `pulumi:"identifier"`
@@ -9964,6 +10139,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityPropertiesArrayPropsPtrInput)(nil)).Elem(), EntityPropertiesArrayPropsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityRelationsInput)(nil)).Elem(), EntityRelationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityRelationsPtrInput)(nil)).Elem(), EntityRelationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagePermissionsReadInput)(nil)).Elem(), PagePermissionsReadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PagePermissionsReadPtrInput)(nil)).Elem(), PagePermissionsReadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardRuleInput)(nil)).Elem(), ScorecardRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardRuleArrayInput)(nil)).Elem(), ScorecardRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardRuleQueryInput)(nil)).Elem(), ScorecardRuleQueryArgs{})
@@ -10086,6 +10263,8 @@ func init() {
 	pulumi.RegisterOutputType(EntityPropertiesArrayPropsPtrOutput{})
 	pulumi.RegisterOutputType(EntityRelationsOutput{})
 	pulumi.RegisterOutputType(EntityRelationsPtrOutput{})
+	pulumi.RegisterOutputType(PagePermissionsReadOutput{})
+	pulumi.RegisterOutputType(PagePermissionsReadPtrOutput{})
 	pulumi.RegisterOutputType(ScorecardRuleOutput{})
 	pulumi.RegisterOutputType(ScorecardRuleArrayOutput{})
 	pulumi.RegisterOutputType(ScorecardRuleQueryOutput{})

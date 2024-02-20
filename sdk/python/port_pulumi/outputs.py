@@ -71,6 +71,7 @@ __all__ = [
     'EntityProperties',
     'EntityPropertiesArrayProps',
     'EntityRelations',
+    'PagePermissionsRead',
     'ScorecardRule',
     'ScorecardRuleQuery',
     'WebhookMapping',
@@ -3983,6 +3984,49 @@ class EntityRelations(dict):
         The single relation of the entity
         """
         return pulumi.get(self, "single_relations")
+
+
+@pulumi.output_type
+class PagePermissionsRead(dict):
+    def __init__(__self__, *,
+                 roles: Optional[Sequence[str]] = None,
+                 teams: Optional[Sequence[str]] = None,
+                 users: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] roles: The roles with read permission
+        :param Sequence[str] teams: The teams with read permission
+        :param Sequence[str] users: The users with read permission
+        """
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[Sequence[str]]:
+        """
+        The roles with read permission
+        """
+        return pulumi.get(self, "roles")
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[Sequence[str]]:
+        """
+        The teams with read permission
+        """
+        return pulumi.get(self, "teams")
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[Sequence[str]]:
+        """
+        The users with read permission
+        """
+        return pulumi.get(self, "users")
 
 
 @pulumi.output_type

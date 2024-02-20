@@ -1158,6 +1158,21 @@ export interface EntityRelations {
     singleRelations?: {[key: string]: string};
 }
 
+export interface PagePermissionsRead {
+    /**
+     * The roles with read permission
+     */
+    roles?: string[];
+    /**
+     * The teams with read permission
+     */
+    teams?: string[];
+    /**
+     * The users with read permission
+     */
+    users?: string[];
+}
+
 export interface ScorecardRule {
     /**
      * The identifier of the rule

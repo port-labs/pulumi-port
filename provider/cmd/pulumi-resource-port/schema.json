@@ -1742,6 +1742,32 @@
             },
             "type": "object"
         },
+        "port:index/PagePermissionsRead:PagePermissionsRead": {
+            "properties": {
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The roles with read permission\n"
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The teams with read permission\n"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The users with read permission\n"
+                }
+            },
+            "type": "object"
+        },
         "port:index/ScorecardRule:ScorecardRule": {
             "properties": {
                 "identifier": {
@@ -2824,6 +2850,47 @@
                             "type": "string"
                         },
                         "description": "The widgets of the page\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "port:index/pagePermissions:PagePermissions": {
+            "properties": {
+                "pageIdentifier": {
+                    "type": "string"
+                },
+                "read": {
+                    "$ref": "#/types/port:index/PagePermissionsRead:PagePermissionsRead",
+                    "description": "The permission to read the page\n"
+                }
+            },
+            "required": [
+                "pageIdentifier",
+                "read"
+            ],
+            "inputProperties": {
+                "pageIdentifier": {
+                    "type": "string"
+                },
+                "read": {
+                    "$ref": "#/types/port:index/PagePermissionsRead:PagePermissionsRead",
+                    "description": "The permission to read the page\n"
+                }
+            },
+            "requiredInputs": [
+                "pageIdentifier",
+                "read"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PagePermissions resources.\n",
+                "properties": {
+                    "pageIdentifier": {
+                        "type": "string"
+                    },
+                    "read": {
+                        "$ref": "#/types/port:index/PagePermissionsRead:PagePermissionsRead",
+                        "description": "The permission to read the page\n"
                     }
                 },
                 "type": "object"

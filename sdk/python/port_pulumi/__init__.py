@@ -11,6 +11,7 @@ from .aggregation_properties import *
 from .blueprint import *
 from .entity import *
 from .page import *
+from .page_permissions import *
 from .provider import *
 from .scorecard import *
 from .team import *
@@ -74,6 +75,14 @@ _utilities.register(
   "fqn": "port_pulumi",
   "classes": {
    "port:index/page:Page": "Page"
+  }
+ },
+ {
+  "pkg": "port",
+  "mod": "index/pagePermissions",
+  "fqn": "port_pulumi",
+  "classes": {
+   "port:index/pagePermissions:PagePermissions": "PagePermissions"
   }
  },
  {
