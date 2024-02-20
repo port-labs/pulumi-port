@@ -70,6 +70,7 @@ __all__ = [
     'EntityPropertiesArgs',
     'EntityPropertiesArrayPropsArgs',
     'EntityRelationsArgs',
+    'PagePermissionsReadArgs',
     'ScorecardRuleArgs',
     'ScorecardRuleQueryArgs',
     'WebhookMappingArgs',
@@ -4392,6 +4393,61 @@ class EntityRelationsArgs:
     @single_relations.setter
     def single_relations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "single_relations", value)
+
+
+@pulumi.input_type
+class PagePermissionsReadArgs:
+    def __init__(__self__, *,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The roles with read permission
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The teams with read permission
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: The users with read permission
+        """
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The roles with read permission
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The teams with read permission
+        """
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The users with read permission
+        """
+        return pulumi.get(self, "users")
+
+    @users.setter
+    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "users", value)
 
 
 @pulumi.input_type

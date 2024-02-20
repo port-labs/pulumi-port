@@ -1158,6 +1158,21 @@ export interface EntityRelations {
     singleRelations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
+export interface PagePermissionsRead {
+    /**
+     * The roles with read permission
+     */
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The teams with read permission
+     */
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The users with read permission
+     */
+    users?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface ScorecardRule {
     /**
      * The identifier of the rule
