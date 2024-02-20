@@ -7,6 +7,7 @@
             "port:index/blueprint:Blueprint": "port_blueprint",
             "port:index/entity:Entity": "port_entity",
             "port:index/page:Page": "port_page",
+            "port:index/pagePermissions:PagePermissions": "port_page_permissions",
             "port:index/scorecard:Scorecard": "port_scorecard",
             "port:index/team:Team": "port_team",
             "port:index/webhook:Webhook": "port_webhook"
@@ -232,6 +233,9 @@
                 "createdBy": "created_by",
                 "updatedAt": "updated_at",
                 "updatedBy": "updated_by"
+            },
+            "port:index/pagePermissions:PagePermissions": {
+                "pageIdentifier": "page_identifier"
             },
             "port:index/scorecard:Scorecard": {
                 "createdAt": "created_at",
