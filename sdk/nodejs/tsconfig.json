@@ -21,6 +21,7 @@
         "config/vars.ts",
         "entity.ts",
         "index.ts",
+        "page.ts",
         "provider.ts",
         "scorecard.ts",
         "team.ts",

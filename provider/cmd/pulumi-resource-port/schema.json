@@ -2656,6 +2656,179 @@
                 "type": "object"
             }
         },
+        "port:index/page:Page": {
+            "properties": {
+                "after": {
+                    "type": "string",
+                    "description": "The identifier of the page/folder after which the page should be placed\n"
+                },
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint for which the page is created, relevant only for pages of type \"blueprint-entities\"\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The creation date of the page\n"
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "The creator of the page\n"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of the page\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The Identifier of the page\n"
+                },
+                "locked": {
+                    "type": "boolean",
+                    "description": "Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters\n"
+                },
+                "parent": {
+                    "type": "string",
+                    "description": "The identifier of the folder in which the page is in, default is the root of the sidebar\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the page\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the page, can be one of \"blueprint-entities\", \"dashboard\" or \"home\"\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The last update date of the page\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "The last updater of the page\n"
+                },
+                "widgets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The widgets of the page\n"
+                }
+            },
+            "required": [
+                "createdAt",
+                "createdBy",
+                "identifier",
+                "type",
+                "updatedAt",
+                "updatedBy"
+            ],
+            "inputProperties": {
+                "after": {
+                    "type": "string",
+                    "description": "The identifier of the page/folder after which the page should be placed\n"
+                },
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint for which the page is created, relevant only for pages of type \"blueprint-entities\"\n"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of the page\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The Identifier of the page\n"
+                },
+                "locked": {
+                    "type": "boolean",
+                    "description": "Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters\n"
+                },
+                "parent": {
+                    "type": "string",
+                    "description": "The identifier of the folder in which the page is in, default is the root of the sidebar\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the page\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the page, can be one of \"blueprint-entities\", \"dashboard\" or \"home\"\n"
+                },
+                "widgets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The widgets of the page\n"
+                }
+            },
+            "requiredInputs": [
+                "identifier",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Page resources.\n",
+                "properties": {
+                    "after": {
+                        "type": "string",
+                        "description": "The identifier of the page/folder after which the page should be placed\n"
+                    },
+                    "blueprint": {
+                        "type": "string",
+                        "description": "The blueprint for which the page is created, relevant only for pages of type \"blueprint-entities\"\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The creation date of the page\n"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "description": "The creator of the page\n"
+                    },
+                    "icon": {
+                        "type": "string",
+                        "description": "The icon of the page\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "The Identifier of the page\n"
+                    },
+                    "locked": {
+                        "type": "boolean",
+                        "description": "Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters\n"
+                    },
+                    "parent": {
+                        "type": "string",
+                        "description": "The identifier of the folder in which the page is in, default is the root of the sidebar\n"
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "The title of the page\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the page, can be one of \"blueprint-entities\", \"dashboard\" or \"home\"\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "The last update date of the page\n"
+                    },
+                    "updatedBy": {
+                        "type": "string",
+                        "description": "The last updater of the page\n"
+                    },
+                    "widgets": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The widgets of the page\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "port:index/scorecard:Scorecard": {
             "properties": {
                 "blueprint": {

@@ -6,6 +6,7 @@
             "port:index/aggregationProperties:AggregationProperties": "port_aggregation_properties",
             "port:index/blueprint:Blueprint": "port_blueprint",
             "port:index/entity:Entity": "port_entity",
+            "port:index/page:Page": "port_page",
             "port:index/scorecard:Scorecard": "port_scorecard",
             "port:index/team:Team": "port_team",
             "port:index/webhook:Webhook": "port_webhook"
@@ -223,6 +224,12 @@
                 "createdAt": "created_at",
                 "createdBy": "created_by",
                 "runId": "run_id",
+                "updatedAt": "updated_at",
+                "updatedBy": "updated_by"
+            },
+            "port:index/page:Page": {
+                "createdAt": "created_at",
+                "createdBy": "created_by",
                 "updatedAt": "updated_at",
                 "updatedBy": "updated_by"
             },
