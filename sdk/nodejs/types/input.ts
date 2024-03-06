@@ -169,10 +169,6 @@ export interface ActionUserPropertiesArrayProps {
      */
     booleanItems?: pulumi.Input<inputs.ActionUserPropertiesArrayPropsBooleanItems>;
     /**
-     * The dataset of the property
-     */
-    dataset?: pulumi.Input<inputs.ActionUserPropertiesArrayPropsDataset>;
-    /**
      * The default jq query of the array property
      */
     defaultJqQuery?: pulumi.Input<string>;
@@ -233,40 +229,6 @@ export interface ActionUserPropertiesArrayPropsBooleanItems {
     defaults?: pulumi.Input<pulumi.Input<boolean>[]>;
 }
 
-export interface ActionUserPropertiesArrayPropsDataset {
-    /**
-     * The combinator of the dataset
-     */
-    combinator: pulumi.Input<string>;
-    /**
-     * The rules of the dataset
-     */
-    rules: pulumi.Input<pulumi.Input<inputs.ActionUserPropertiesArrayPropsDatasetRule>[]>;
-}
-
-export interface ActionUserPropertiesArrayPropsDatasetRule {
-    /**
-     * The blueprint identifier of the rule
-     */
-    blueprint?: pulumi.Input<string>;
-    /**
-     * The operator of the rule
-     */
-    operator: pulumi.Input<string>;
-    /**
-     * The property identifier of the rule
-     */
-    property?: pulumi.Input<string>;
-    /**
-     * The value of the rule
-     */
-    value: pulumi.Input<inputs.ActionUserPropertiesArrayPropsDatasetRuleValue>;
-}
-
-export interface ActionUserPropertiesArrayPropsDatasetRuleValue {
-    jqQuery: pulumi.Input<string>;
-}
-
 export interface ActionUserPropertiesArrayPropsNumberItems {
     /**
      * The default of the items
@@ -295,6 +257,10 @@ export interface ActionUserPropertiesArrayPropsStringItems {
      */
     blueprint?: pulumi.Input<string>;
     /**
+     * The dataset of an the entity-format items
+     */
+    dataset?: pulumi.Input<string>;
+    /**
      * The default of the items
      */
     defaults?: pulumi.Input<pulumi.Input<string>[]>;
@@ -313,10 +279,6 @@ export interface ActionUserPropertiesArrayPropsStringItems {
 }
 
 export interface ActionUserPropertiesBooleanProps {
-    /**
-     * The dataset of the property
-     */
-    dataset?: pulumi.Input<inputs.ActionUserPropertiesBooleanPropsDataset>;
     /**
      * The default of the boolean property
      */
@@ -355,45 +317,7 @@ export interface ActionUserPropertiesBooleanProps {
     visibleJqQuery?: pulumi.Input<string>;
 }
 
-export interface ActionUserPropertiesBooleanPropsDataset {
-    /**
-     * The combinator of the dataset
-     */
-    combinator: pulumi.Input<string>;
-    /**
-     * The rules of the dataset
-     */
-    rules: pulumi.Input<pulumi.Input<inputs.ActionUserPropertiesBooleanPropsDatasetRule>[]>;
-}
-
-export interface ActionUserPropertiesBooleanPropsDatasetRule {
-    /**
-     * The blueprint identifier of the rule
-     */
-    blueprint?: pulumi.Input<string>;
-    /**
-     * The operator of the rule
-     */
-    operator: pulumi.Input<string>;
-    /**
-     * The property identifier of the rule
-     */
-    property?: pulumi.Input<string>;
-    /**
-     * The value of the rule
-     */
-    value: pulumi.Input<inputs.ActionUserPropertiesBooleanPropsDatasetRuleValue>;
-}
-
-export interface ActionUserPropertiesBooleanPropsDatasetRuleValue {
-    jqQuery: pulumi.Input<string>;
-}
-
 export interface ActionUserPropertiesNumberProps {
-    /**
-     * The dataset of the property
-     */
-    dataset?: pulumi.Input<inputs.ActionUserPropertiesNumberPropsDataset>;
     /**
      * The default of the number property
      */
@@ -448,45 +372,7 @@ export interface ActionUserPropertiesNumberProps {
     visibleJqQuery?: pulumi.Input<string>;
 }
 
-export interface ActionUserPropertiesNumberPropsDataset {
-    /**
-     * The combinator of the dataset
-     */
-    combinator: pulumi.Input<string>;
-    /**
-     * The rules of the dataset
-     */
-    rules: pulumi.Input<pulumi.Input<inputs.ActionUserPropertiesNumberPropsDatasetRule>[]>;
-}
-
-export interface ActionUserPropertiesNumberPropsDatasetRule {
-    /**
-     * The blueprint identifier of the rule
-     */
-    blueprint?: pulumi.Input<string>;
-    /**
-     * The operator of the rule
-     */
-    operator: pulumi.Input<string>;
-    /**
-     * The property identifier of the rule
-     */
-    property?: pulumi.Input<string>;
-    /**
-     * The value of the rule
-     */
-    value: pulumi.Input<inputs.ActionUserPropertiesNumberPropsDatasetRuleValue>;
-}
-
-export interface ActionUserPropertiesNumberPropsDatasetRuleValue {
-    jqQuery: pulumi.Input<string>;
-}
-
 export interface ActionUserPropertiesObjectProps {
-    /**
-     * The dataset of the property
-     */
-    dataset?: pulumi.Input<inputs.ActionUserPropertiesObjectPropsDataset>;
     /**
      * The default of the object property
      */
@@ -529,47 +415,13 @@ export interface ActionUserPropertiesObjectProps {
     visibleJqQuery?: pulumi.Input<string>;
 }
 
-export interface ActionUserPropertiesObjectPropsDataset {
-    /**
-     * The combinator of the dataset
-     */
-    combinator: pulumi.Input<string>;
-    /**
-     * The rules of the dataset
-     */
-    rules: pulumi.Input<pulumi.Input<inputs.ActionUserPropertiesObjectPropsDatasetRule>[]>;
-}
-
-export interface ActionUserPropertiesObjectPropsDatasetRule {
-    /**
-     * The blueprint identifier of the rule
-     */
-    blueprint?: pulumi.Input<string>;
-    /**
-     * The operator of the rule
-     */
-    operator: pulumi.Input<string>;
-    /**
-     * The property identifier of the rule
-     */
-    property?: pulumi.Input<string>;
-    /**
-     * The value of the rule
-     */
-    value: pulumi.Input<inputs.ActionUserPropertiesObjectPropsDatasetRuleValue>;
-}
-
-export interface ActionUserPropertiesObjectPropsDatasetRuleValue {
-    jqQuery: pulumi.Input<string>;
-}
-
 export interface ActionUserPropertiesStringProps {
     /**
      * The blueprint identifier the string property relates to
      */
     blueprint?: pulumi.Input<string>;
     /**
-     * The dataset of the property
+     * The dataset of an the entity-format property
      */
     dataset?: pulumi.Input<inputs.ActionUserPropertiesStringPropsDataset>;
     /**
