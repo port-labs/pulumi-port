@@ -169,10 +169,6 @@ export interface ActionUserPropertiesArrayProps {
      */
     booleanItems?: outputs.ActionUserPropertiesArrayPropsBooleanItems;
     /**
-     * The dataset of the property
-     */
-    dataset?: outputs.ActionUserPropertiesArrayPropsDataset;
-    /**
      * The default jq query of the array property
      */
     defaultJqQuery?: string;
@@ -233,40 +229,6 @@ export interface ActionUserPropertiesArrayPropsBooleanItems {
     defaults?: boolean[];
 }
 
-export interface ActionUserPropertiesArrayPropsDataset {
-    /**
-     * The combinator of the dataset
-     */
-    combinator: string;
-    /**
-     * The rules of the dataset
-     */
-    rules: outputs.ActionUserPropertiesArrayPropsDatasetRule[];
-}
-
-export interface ActionUserPropertiesArrayPropsDatasetRule {
-    /**
-     * The blueprint identifier of the rule
-     */
-    blueprint?: string;
-    /**
-     * The operator of the rule
-     */
-    operator: string;
-    /**
-     * The property identifier of the rule
-     */
-    property?: string;
-    /**
-     * The value of the rule
-     */
-    value: outputs.ActionUserPropertiesArrayPropsDatasetRuleValue;
-}
-
-export interface ActionUserPropertiesArrayPropsDatasetRuleValue {
-    jqQuery: string;
-}
-
 export interface ActionUserPropertiesArrayPropsNumberItems {
     /**
      * The default of the items
@@ -295,6 +257,10 @@ export interface ActionUserPropertiesArrayPropsStringItems {
      */
     blueprint?: string;
     /**
+     * The dataset of an the entity-format items
+     */
+    dataset?: string;
+    /**
      * The default of the items
      */
     defaults?: string[];
@@ -313,10 +279,6 @@ export interface ActionUserPropertiesArrayPropsStringItems {
 }
 
 export interface ActionUserPropertiesBooleanProps {
-    /**
-     * The dataset of the property
-     */
-    dataset?: outputs.ActionUserPropertiesBooleanPropsDataset;
     /**
      * The default of the boolean property
      */
@@ -355,45 +317,7 @@ export interface ActionUserPropertiesBooleanProps {
     visibleJqQuery?: string;
 }
 
-export interface ActionUserPropertiesBooleanPropsDataset {
-    /**
-     * The combinator of the dataset
-     */
-    combinator: string;
-    /**
-     * The rules of the dataset
-     */
-    rules: outputs.ActionUserPropertiesBooleanPropsDatasetRule[];
-}
-
-export interface ActionUserPropertiesBooleanPropsDatasetRule {
-    /**
-     * The blueprint identifier of the rule
-     */
-    blueprint?: string;
-    /**
-     * The operator of the rule
-     */
-    operator: string;
-    /**
-     * The property identifier of the rule
-     */
-    property?: string;
-    /**
-     * The value of the rule
-     */
-    value: outputs.ActionUserPropertiesBooleanPropsDatasetRuleValue;
-}
-
-export interface ActionUserPropertiesBooleanPropsDatasetRuleValue {
-    jqQuery: string;
-}
-
 export interface ActionUserPropertiesNumberProps {
-    /**
-     * The dataset of the property
-     */
-    dataset?: outputs.ActionUserPropertiesNumberPropsDataset;
     /**
      * The default of the number property
      */
@@ -448,45 +372,7 @@ export interface ActionUserPropertiesNumberProps {
     visibleJqQuery?: string;
 }
 
-export interface ActionUserPropertiesNumberPropsDataset {
-    /**
-     * The combinator of the dataset
-     */
-    combinator: string;
-    /**
-     * The rules of the dataset
-     */
-    rules: outputs.ActionUserPropertiesNumberPropsDatasetRule[];
-}
-
-export interface ActionUserPropertiesNumberPropsDatasetRule {
-    /**
-     * The blueprint identifier of the rule
-     */
-    blueprint?: string;
-    /**
-     * The operator of the rule
-     */
-    operator: string;
-    /**
-     * The property identifier of the rule
-     */
-    property?: string;
-    /**
-     * The value of the rule
-     */
-    value: outputs.ActionUserPropertiesNumberPropsDatasetRuleValue;
-}
-
-export interface ActionUserPropertiesNumberPropsDatasetRuleValue {
-    jqQuery: string;
-}
-
 export interface ActionUserPropertiesObjectProps {
-    /**
-     * The dataset of the property
-     */
-    dataset?: outputs.ActionUserPropertiesObjectPropsDataset;
     /**
      * The default of the object property
      */
@@ -529,47 +415,13 @@ export interface ActionUserPropertiesObjectProps {
     visibleJqQuery?: string;
 }
 
-export interface ActionUserPropertiesObjectPropsDataset {
-    /**
-     * The combinator of the dataset
-     */
-    combinator: string;
-    /**
-     * The rules of the dataset
-     */
-    rules: outputs.ActionUserPropertiesObjectPropsDatasetRule[];
-}
-
-export interface ActionUserPropertiesObjectPropsDatasetRule {
-    /**
-     * The blueprint identifier of the rule
-     */
-    blueprint?: string;
-    /**
-     * The operator of the rule
-     */
-    operator: string;
-    /**
-     * The property identifier of the rule
-     */
-    property?: string;
-    /**
-     * The value of the rule
-     */
-    value: outputs.ActionUserPropertiesObjectPropsDatasetRuleValue;
-}
-
-export interface ActionUserPropertiesObjectPropsDatasetRuleValue {
-    jqQuery: string;
-}
-
 export interface ActionUserPropertiesStringProps {
     /**
      * The blueprint identifier the string property relates to
      */
     blueprint?: string;
     /**
-     * The dataset of the property
+     * The dataset of an the entity-format property
      */
     dataset?: outputs.ActionUserPropertiesStringPropsDataset;
     /**

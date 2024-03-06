@@ -1804,8 +1804,6 @@ func (o ActionUserPropertiesPtrOutput) StringProps() ActionUserPropertiesStringP
 type ActionUserPropertiesArrayProps struct {
 	// The items of the array property
 	BooleanItems *ActionUserPropertiesArrayPropsBooleanItems `pulumi:"booleanItems"`
-	// The dataset of the property
-	Dataset *ActionUserPropertiesArrayPropsDataset `pulumi:"dataset"`
 	// The default jq query of the array property
 	DefaultJqQuery *string `pulumi:"defaultJqQuery"`
 	// The properties that this property depends on
@@ -1848,8 +1846,6 @@ type ActionUserPropertiesArrayPropsInput interface {
 type ActionUserPropertiesArrayPropsArgs struct {
 	// The items of the array property
 	BooleanItems ActionUserPropertiesArrayPropsBooleanItemsPtrInput `pulumi:"booleanItems"`
-	// The dataset of the property
-	Dataset ActionUserPropertiesArrayPropsDatasetPtrInput `pulumi:"dataset"`
 	// The default jq query of the array property
 	DefaultJqQuery pulumi.StringPtrInput `pulumi:"defaultJqQuery"`
 	// The properties that this property depends on
@@ -1934,11 +1930,6 @@ func (o ActionUserPropertiesArrayPropsOutput) BooleanItems() ActionUserPropertie
 	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *ActionUserPropertiesArrayPropsBooleanItems {
 		return v.BooleanItems
 	}).(ActionUserPropertiesArrayPropsBooleanItemsPtrOutput)
-}
-
-// The dataset of the property
-func (o ActionUserPropertiesArrayPropsOutput) Dataset() ActionUserPropertiesArrayPropsDatasetPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *ActionUserPropertiesArrayPropsDataset { return v.Dataset }).(ActionUserPropertiesArrayPropsDatasetPtrOutput)
 }
 
 // The default jq query of the array property
@@ -2167,339 +2158,6 @@ func (o ActionUserPropertiesArrayPropsBooleanItemsPtrOutput) Defaults() pulumi.B
 		}
 		return v.Defaults
 	}).(pulumi.BoolArrayOutput)
-}
-
-type ActionUserPropertiesArrayPropsDataset struct {
-	// The combinator of the dataset
-	Combinator string `pulumi:"combinator"`
-	// The rules of the dataset
-	Rules []ActionUserPropertiesArrayPropsDatasetRule `pulumi:"rules"`
-}
-
-// ActionUserPropertiesArrayPropsDatasetInput is an input type that accepts ActionUserPropertiesArrayPropsDatasetArgs and ActionUserPropertiesArrayPropsDatasetOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesArrayPropsDatasetInput` via:
-//
-//	ActionUserPropertiesArrayPropsDatasetArgs{...}
-type ActionUserPropertiesArrayPropsDatasetInput interface {
-	pulumi.Input
-
-	ToActionUserPropertiesArrayPropsDatasetOutput() ActionUserPropertiesArrayPropsDatasetOutput
-	ToActionUserPropertiesArrayPropsDatasetOutputWithContext(context.Context) ActionUserPropertiesArrayPropsDatasetOutput
-}
-
-type ActionUserPropertiesArrayPropsDatasetArgs struct {
-	// The combinator of the dataset
-	Combinator pulumi.StringInput `pulumi:"combinator"`
-	// The rules of the dataset
-	Rules ActionUserPropertiesArrayPropsDatasetRuleArrayInput `pulumi:"rules"`
-}
-
-func (ActionUserPropertiesArrayPropsDatasetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesArrayPropsDataset)(nil)).Elem()
-}
-
-func (i ActionUserPropertiesArrayPropsDatasetArgs) ToActionUserPropertiesArrayPropsDatasetOutput() ActionUserPropertiesArrayPropsDatasetOutput {
-	return i.ToActionUserPropertiesArrayPropsDatasetOutputWithContext(context.Background())
-}
-
-func (i ActionUserPropertiesArrayPropsDatasetArgs) ToActionUserPropertiesArrayPropsDatasetOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsDatasetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsDatasetOutput)
-}
-
-func (i ActionUserPropertiesArrayPropsDatasetArgs) ToActionUserPropertiesArrayPropsDatasetPtrOutput() ActionUserPropertiesArrayPropsDatasetPtrOutput {
-	return i.ToActionUserPropertiesArrayPropsDatasetPtrOutputWithContext(context.Background())
-}
-
-func (i ActionUserPropertiesArrayPropsDatasetArgs) ToActionUserPropertiesArrayPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsDatasetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsDatasetOutput).ToActionUserPropertiesArrayPropsDatasetPtrOutputWithContext(ctx)
-}
-
-// ActionUserPropertiesArrayPropsDatasetPtrInput is an input type that accepts ActionUserPropertiesArrayPropsDatasetArgs, ActionUserPropertiesArrayPropsDatasetPtr and ActionUserPropertiesArrayPropsDatasetPtrOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesArrayPropsDatasetPtrInput` via:
-//
-//	        ActionUserPropertiesArrayPropsDatasetArgs{...}
-//
-//	or:
-//
-//	        nil
-type ActionUserPropertiesArrayPropsDatasetPtrInput interface {
-	pulumi.Input
-
-	ToActionUserPropertiesArrayPropsDatasetPtrOutput() ActionUserPropertiesArrayPropsDatasetPtrOutput
-	ToActionUserPropertiesArrayPropsDatasetPtrOutputWithContext(context.Context) ActionUserPropertiesArrayPropsDatasetPtrOutput
-}
-
-type actionUserPropertiesArrayPropsDatasetPtrType ActionUserPropertiesArrayPropsDatasetArgs
-
-func ActionUserPropertiesArrayPropsDatasetPtr(v *ActionUserPropertiesArrayPropsDatasetArgs) ActionUserPropertiesArrayPropsDatasetPtrInput {
-	return (*actionUserPropertiesArrayPropsDatasetPtrType)(v)
-}
-
-func (*actionUserPropertiesArrayPropsDatasetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActionUserPropertiesArrayPropsDataset)(nil)).Elem()
-}
-
-func (i *actionUserPropertiesArrayPropsDatasetPtrType) ToActionUserPropertiesArrayPropsDatasetPtrOutput() ActionUserPropertiesArrayPropsDatasetPtrOutput {
-	return i.ToActionUserPropertiesArrayPropsDatasetPtrOutputWithContext(context.Background())
-}
-
-func (i *actionUserPropertiesArrayPropsDatasetPtrType) ToActionUserPropertiesArrayPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsDatasetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsDatasetPtrOutput)
-}
-
-type ActionUserPropertiesArrayPropsDatasetOutput struct{ *pulumi.OutputState }
-
-func (ActionUserPropertiesArrayPropsDatasetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesArrayPropsDataset)(nil)).Elem()
-}
-
-func (o ActionUserPropertiesArrayPropsDatasetOutput) ToActionUserPropertiesArrayPropsDatasetOutput() ActionUserPropertiesArrayPropsDatasetOutput {
-	return o
-}
-
-func (o ActionUserPropertiesArrayPropsDatasetOutput) ToActionUserPropertiesArrayPropsDatasetOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsDatasetOutput {
-	return o
-}
-
-func (o ActionUserPropertiesArrayPropsDatasetOutput) ToActionUserPropertiesArrayPropsDatasetPtrOutput() ActionUserPropertiesArrayPropsDatasetPtrOutput {
-	return o.ToActionUserPropertiesArrayPropsDatasetPtrOutputWithContext(context.Background())
-}
-
-func (o ActionUserPropertiesArrayPropsDatasetOutput) ToActionUserPropertiesArrayPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsDatasetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionUserPropertiesArrayPropsDataset) *ActionUserPropertiesArrayPropsDataset {
-		return &v
-	}).(ActionUserPropertiesArrayPropsDatasetPtrOutput)
-}
-
-// The combinator of the dataset
-func (o ActionUserPropertiesArrayPropsDatasetOutput) Combinator() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayPropsDataset) string { return v.Combinator }).(pulumi.StringOutput)
-}
-
-// The rules of the dataset
-func (o ActionUserPropertiesArrayPropsDatasetOutput) Rules() ActionUserPropertiesArrayPropsDatasetRuleArrayOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayPropsDataset) []ActionUserPropertiesArrayPropsDatasetRule {
-		return v.Rules
-	}).(ActionUserPropertiesArrayPropsDatasetRuleArrayOutput)
-}
-
-type ActionUserPropertiesArrayPropsDatasetPtrOutput struct{ *pulumi.OutputState }
-
-func (ActionUserPropertiesArrayPropsDatasetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActionUserPropertiesArrayPropsDataset)(nil)).Elem()
-}
-
-func (o ActionUserPropertiesArrayPropsDatasetPtrOutput) ToActionUserPropertiesArrayPropsDatasetPtrOutput() ActionUserPropertiesArrayPropsDatasetPtrOutput {
-	return o
-}
-
-func (o ActionUserPropertiesArrayPropsDatasetPtrOutput) ToActionUserPropertiesArrayPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsDatasetPtrOutput {
-	return o
-}
-
-func (o ActionUserPropertiesArrayPropsDatasetPtrOutput) Elem() ActionUserPropertiesArrayPropsDatasetOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsDataset) ActionUserPropertiesArrayPropsDataset {
-		if v != nil {
-			return *v
-		}
-		var ret ActionUserPropertiesArrayPropsDataset
-		return ret
-	}).(ActionUserPropertiesArrayPropsDatasetOutput)
-}
-
-// The combinator of the dataset
-func (o ActionUserPropertiesArrayPropsDatasetPtrOutput) Combinator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsDataset) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Combinator
-	}).(pulumi.StringPtrOutput)
-}
-
-// The rules of the dataset
-func (o ActionUserPropertiesArrayPropsDatasetPtrOutput) Rules() ActionUserPropertiesArrayPropsDatasetRuleArrayOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsDataset) []ActionUserPropertiesArrayPropsDatasetRule {
-		if v == nil {
-			return nil
-		}
-		return v.Rules
-	}).(ActionUserPropertiesArrayPropsDatasetRuleArrayOutput)
-}
-
-type ActionUserPropertiesArrayPropsDatasetRule struct {
-	// The blueprint identifier of the rule
-	Blueprint *string `pulumi:"blueprint"`
-	// The operator of the rule
-	Operator string `pulumi:"operator"`
-	// The property identifier of the rule
-	Property *string `pulumi:"property"`
-	// The value of the rule
-	Value ActionUserPropertiesArrayPropsDatasetRuleValue `pulumi:"value"`
-}
-
-// ActionUserPropertiesArrayPropsDatasetRuleInput is an input type that accepts ActionUserPropertiesArrayPropsDatasetRuleArgs and ActionUserPropertiesArrayPropsDatasetRuleOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesArrayPropsDatasetRuleInput` via:
-//
-//	ActionUserPropertiesArrayPropsDatasetRuleArgs{...}
-type ActionUserPropertiesArrayPropsDatasetRuleInput interface {
-	pulumi.Input
-
-	ToActionUserPropertiesArrayPropsDatasetRuleOutput() ActionUserPropertiesArrayPropsDatasetRuleOutput
-	ToActionUserPropertiesArrayPropsDatasetRuleOutputWithContext(context.Context) ActionUserPropertiesArrayPropsDatasetRuleOutput
-}
-
-type ActionUserPropertiesArrayPropsDatasetRuleArgs struct {
-	// The blueprint identifier of the rule
-	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
-	// The operator of the rule
-	Operator pulumi.StringInput `pulumi:"operator"`
-	// The property identifier of the rule
-	Property pulumi.StringPtrInput `pulumi:"property"`
-	// The value of the rule
-	Value ActionUserPropertiesArrayPropsDatasetRuleValueInput `pulumi:"value"`
-}
-
-func (ActionUserPropertiesArrayPropsDatasetRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesArrayPropsDatasetRule)(nil)).Elem()
-}
-
-func (i ActionUserPropertiesArrayPropsDatasetRuleArgs) ToActionUserPropertiesArrayPropsDatasetRuleOutput() ActionUserPropertiesArrayPropsDatasetRuleOutput {
-	return i.ToActionUserPropertiesArrayPropsDatasetRuleOutputWithContext(context.Background())
-}
-
-func (i ActionUserPropertiesArrayPropsDatasetRuleArgs) ToActionUserPropertiesArrayPropsDatasetRuleOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsDatasetRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsDatasetRuleOutput)
-}
-
-// ActionUserPropertiesArrayPropsDatasetRuleArrayInput is an input type that accepts ActionUserPropertiesArrayPropsDatasetRuleArray and ActionUserPropertiesArrayPropsDatasetRuleArrayOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesArrayPropsDatasetRuleArrayInput` via:
-//
-//	ActionUserPropertiesArrayPropsDatasetRuleArray{ ActionUserPropertiesArrayPropsDatasetRuleArgs{...} }
-type ActionUserPropertiesArrayPropsDatasetRuleArrayInput interface {
-	pulumi.Input
-
-	ToActionUserPropertiesArrayPropsDatasetRuleArrayOutput() ActionUserPropertiesArrayPropsDatasetRuleArrayOutput
-	ToActionUserPropertiesArrayPropsDatasetRuleArrayOutputWithContext(context.Context) ActionUserPropertiesArrayPropsDatasetRuleArrayOutput
-}
-
-type ActionUserPropertiesArrayPropsDatasetRuleArray []ActionUserPropertiesArrayPropsDatasetRuleInput
-
-func (ActionUserPropertiesArrayPropsDatasetRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ActionUserPropertiesArrayPropsDatasetRule)(nil)).Elem()
-}
-
-func (i ActionUserPropertiesArrayPropsDatasetRuleArray) ToActionUserPropertiesArrayPropsDatasetRuleArrayOutput() ActionUserPropertiesArrayPropsDatasetRuleArrayOutput {
-	return i.ToActionUserPropertiesArrayPropsDatasetRuleArrayOutputWithContext(context.Background())
-}
-
-func (i ActionUserPropertiesArrayPropsDatasetRuleArray) ToActionUserPropertiesArrayPropsDatasetRuleArrayOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsDatasetRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsDatasetRuleArrayOutput)
-}
-
-type ActionUserPropertiesArrayPropsDatasetRuleOutput struct{ *pulumi.OutputState }
-
-func (ActionUserPropertiesArrayPropsDatasetRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesArrayPropsDatasetRule)(nil)).Elem()
-}
-
-func (o ActionUserPropertiesArrayPropsDatasetRuleOutput) ToActionUserPropertiesArrayPropsDatasetRuleOutput() ActionUserPropertiesArrayPropsDatasetRuleOutput {
-	return o
-}
-
-func (o ActionUserPropertiesArrayPropsDatasetRuleOutput) ToActionUserPropertiesArrayPropsDatasetRuleOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsDatasetRuleOutput {
-	return o
-}
-
-// The blueprint identifier of the rule
-func (o ActionUserPropertiesArrayPropsDatasetRuleOutput) Blueprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayPropsDatasetRule) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
-}
-
-// The operator of the rule
-func (o ActionUserPropertiesArrayPropsDatasetRuleOutput) Operator() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayPropsDatasetRule) string { return v.Operator }).(pulumi.StringOutput)
-}
-
-// The property identifier of the rule
-func (o ActionUserPropertiesArrayPropsDatasetRuleOutput) Property() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayPropsDatasetRule) *string { return v.Property }).(pulumi.StringPtrOutput)
-}
-
-// The value of the rule
-func (o ActionUserPropertiesArrayPropsDatasetRuleOutput) Value() ActionUserPropertiesArrayPropsDatasetRuleValueOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayPropsDatasetRule) ActionUserPropertiesArrayPropsDatasetRuleValue {
-		return v.Value
-	}).(ActionUserPropertiesArrayPropsDatasetRuleValueOutput)
-}
-
-type ActionUserPropertiesArrayPropsDatasetRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (ActionUserPropertiesArrayPropsDatasetRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ActionUserPropertiesArrayPropsDatasetRule)(nil)).Elem()
-}
-
-func (o ActionUserPropertiesArrayPropsDatasetRuleArrayOutput) ToActionUserPropertiesArrayPropsDatasetRuleArrayOutput() ActionUserPropertiesArrayPropsDatasetRuleArrayOutput {
-	return o
-}
-
-func (o ActionUserPropertiesArrayPropsDatasetRuleArrayOutput) ToActionUserPropertiesArrayPropsDatasetRuleArrayOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsDatasetRuleArrayOutput {
-	return o
-}
-
-func (o ActionUserPropertiesArrayPropsDatasetRuleArrayOutput) Index(i pulumi.IntInput) ActionUserPropertiesArrayPropsDatasetRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionUserPropertiesArrayPropsDatasetRule {
-		return vs[0].([]ActionUserPropertiesArrayPropsDatasetRule)[vs[1].(int)]
-	}).(ActionUserPropertiesArrayPropsDatasetRuleOutput)
-}
-
-type ActionUserPropertiesArrayPropsDatasetRuleValue struct {
-	JqQuery string `pulumi:"jqQuery"`
-}
-
-// ActionUserPropertiesArrayPropsDatasetRuleValueInput is an input type that accepts ActionUserPropertiesArrayPropsDatasetRuleValueArgs and ActionUserPropertiesArrayPropsDatasetRuleValueOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesArrayPropsDatasetRuleValueInput` via:
-//
-//	ActionUserPropertiesArrayPropsDatasetRuleValueArgs{...}
-type ActionUserPropertiesArrayPropsDatasetRuleValueInput interface {
-	pulumi.Input
-
-	ToActionUserPropertiesArrayPropsDatasetRuleValueOutput() ActionUserPropertiesArrayPropsDatasetRuleValueOutput
-	ToActionUserPropertiesArrayPropsDatasetRuleValueOutputWithContext(context.Context) ActionUserPropertiesArrayPropsDatasetRuleValueOutput
-}
-
-type ActionUserPropertiesArrayPropsDatasetRuleValueArgs struct {
-	JqQuery pulumi.StringInput `pulumi:"jqQuery"`
-}
-
-func (ActionUserPropertiesArrayPropsDatasetRuleValueArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesArrayPropsDatasetRuleValue)(nil)).Elem()
-}
-
-func (i ActionUserPropertiesArrayPropsDatasetRuleValueArgs) ToActionUserPropertiesArrayPropsDatasetRuleValueOutput() ActionUserPropertiesArrayPropsDatasetRuleValueOutput {
-	return i.ToActionUserPropertiesArrayPropsDatasetRuleValueOutputWithContext(context.Background())
-}
-
-func (i ActionUserPropertiesArrayPropsDatasetRuleValueArgs) ToActionUserPropertiesArrayPropsDatasetRuleValueOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsDatasetRuleValueOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsDatasetRuleValueOutput)
-}
-
-type ActionUserPropertiesArrayPropsDatasetRuleValueOutput struct{ *pulumi.OutputState }
-
-func (ActionUserPropertiesArrayPropsDatasetRuleValueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesArrayPropsDatasetRuleValue)(nil)).Elem()
-}
-
-func (o ActionUserPropertiesArrayPropsDatasetRuleValueOutput) ToActionUserPropertiesArrayPropsDatasetRuleValueOutput() ActionUserPropertiesArrayPropsDatasetRuleValueOutput {
-	return o
-}
-
-func (o ActionUserPropertiesArrayPropsDatasetRuleValueOutput) ToActionUserPropertiesArrayPropsDatasetRuleValueOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsDatasetRuleValueOutput {
-	return o
-}
-
-func (o ActionUserPropertiesArrayPropsDatasetRuleValueOutput) JqQuery() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayPropsDatasetRuleValue) string { return v.JqQuery }).(pulumi.StringOutput)
 }
 
 type ActionUserPropertiesArrayPropsNumberItems struct {
@@ -2817,6 +2475,8 @@ func (o ActionUserPropertiesArrayPropsObjectItemsPtrOutput) Defaults() pulumi.St
 type ActionUserPropertiesArrayPropsStringItems struct {
 	// The blueprint identifier the property relates to
 	Blueprint *string `pulumi:"blueprint"`
+	// The dataset of an the entity-format items
+	Dataset *string `pulumi:"dataset"`
 	// The default of the items
 	Defaults []string `pulumi:"defaults"`
 	// The enum jq query of the string items
@@ -2841,6 +2501,8 @@ type ActionUserPropertiesArrayPropsStringItemsInput interface {
 type ActionUserPropertiesArrayPropsStringItemsArgs struct {
 	// The blueprint identifier the property relates to
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
+	// The dataset of an the entity-format items
+	Dataset pulumi.StringPtrInput `pulumi:"dataset"`
 	// The default of the items
 	Defaults pulumi.StringArrayInput `pulumi:"defaults"`
 	// The enum jq query of the string items
@@ -2933,6 +2595,11 @@ func (o ActionUserPropertiesArrayPropsStringItemsOutput) Blueprint() pulumi.Stri
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsStringItems) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
 }
 
+// The dataset of an the entity-format items
+func (o ActionUserPropertiesArrayPropsStringItemsOutput) Dataset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUserPropertiesArrayPropsStringItems) *string { return v.Dataset }).(pulumi.StringPtrOutput)
+}
+
 // The default of the items
 func (o ActionUserPropertiesArrayPropsStringItemsOutput) Defaults() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ActionUserPropertiesArrayPropsStringItems) []string { return v.Defaults }).(pulumi.StringArrayOutput)
@@ -2987,6 +2654,16 @@ func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Blueprint() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// The dataset of an the entity-format items
+func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Dataset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsStringItems) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dataset
+	}).(pulumi.StringPtrOutput)
+}
+
 // The default of the items
 func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Defaults() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsStringItems) []string {
@@ -3028,8 +2705,6 @@ func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Format() pulumi.Stri
 }
 
 type ActionUserPropertiesBooleanProps struct {
-	// The dataset of the property
-	Dataset *ActionUserPropertiesBooleanPropsDataset `pulumi:"dataset"`
 	// The default of the boolean property
 	Default *bool `pulumi:"default"`
 	// The default jq query of the boolean property
@@ -3062,8 +2737,6 @@ type ActionUserPropertiesBooleanPropsInput interface {
 }
 
 type ActionUserPropertiesBooleanPropsArgs struct {
-	// The dataset of the property
-	Dataset ActionUserPropertiesBooleanPropsDatasetPtrInput `pulumi:"dataset"`
 	// The default of the boolean property
 	Default pulumi.BoolPtrInput `pulumi:"default"`
 	// The default jq query of the boolean property
@@ -3135,11 +2808,6 @@ func (o ActionUserPropertiesBooleanPropsOutput) ToActionUserPropertiesBooleanPro
 	return o
 }
 
-// The dataset of the property
-func (o ActionUserPropertiesBooleanPropsOutput) Dataset() ActionUserPropertiesBooleanPropsDatasetPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *ActionUserPropertiesBooleanPropsDataset { return v.Dataset }).(ActionUserPropertiesBooleanPropsDatasetPtrOutput)
-}
-
 // The default of the boolean property
 func (o ActionUserPropertiesBooleanPropsOutput) Default() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *bool { return v.Default }).(pulumi.BoolPtrOutput)
@@ -3205,342 +2873,7 @@ func (o ActionUserPropertiesBooleanPropsMapOutput) MapIndex(k pulumi.StringInput
 	}).(ActionUserPropertiesBooleanPropsOutput)
 }
 
-type ActionUserPropertiesBooleanPropsDataset struct {
-	// The combinator of the dataset
-	Combinator string `pulumi:"combinator"`
-	// The rules of the dataset
-	Rules []ActionUserPropertiesBooleanPropsDatasetRule `pulumi:"rules"`
-}
-
-// ActionUserPropertiesBooleanPropsDatasetInput is an input type that accepts ActionUserPropertiesBooleanPropsDatasetArgs and ActionUserPropertiesBooleanPropsDatasetOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesBooleanPropsDatasetInput` via:
-//
-//	ActionUserPropertiesBooleanPropsDatasetArgs{...}
-type ActionUserPropertiesBooleanPropsDatasetInput interface {
-	pulumi.Input
-
-	ToActionUserPropertiesBooleanPropsDatasetOutput() ActionUserPropertiesBooleanPropsDatasetOutput
-	ToActionUserPropertiesBooleanPropsDatasetOutputWithContext(context.Context) ActionUserPropertiesBooleanPropsDatasetOutput
-}
-
-type ActionUserPropertiesBooleanPropsDatasetArgs struct {
-	// The combinator of the dataset
-	Combinator pulumi.StringInput `pulumi:"combinator"`
-	// The rules of the dataset
-	Rules ActionUserPropertiesBooleanPropsDatasetRuleArrayInput `pulumi:"rules"`
-}
-
-func (ActionUserPropertiesBooleanPropsDatasetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesBooleanPropsDataset)(nil)).Elem()
-}
-
-func (i ActionUserPropertiesBooleanPropsDatasetArgs) ToActionUserPropertiesBooleanPropsDatasetOutput() ActionUserPropertiesBooleanPropsDatasetOutput {
-	return i.ToActionUserPropertiesBooleanPropsDatasetOutputWithContext(context.Background())
-}
-
-func (i ActionUserPropertiesBooleanPropsDatasetArgs) ToActionUserPropertiesBooleanPropsDatasetOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsDatasetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesBooleanPropsDatasetOutput)
-}
-
-func (i ActionUserPropertiesBooleanPropsDatasetArgs) ToActionUserPropertiesBooleanPropsDatasetPtrOutput() ActionUserPropertiesBooleanPropsDatasetPtrOutput {
-	return i.ToActionUserPropertiesBooleanPropsDatasetPtrOutputWithContext(context.Background())
-}
-
-func (i ActionUserPropertiesBooleanPropsDatasetArgs) ToActionUserPropertiesBooleanPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsDatasetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesBooleanPropsDatasetOutput).ToActionUserPropertiesBooleanPropsDatasetPtrOutputWithContext(ctx)
-}
-
-// ActionUserPropertiesBooleanPropsDatasetPtrInput is an input type that accepts ActionUserPropertiesBooleanPropsDatasetArgs, ActionUserPropertiesBooleanPropsDatasetPtr and ActionUserPropertiesBooleanPropsDatasetPtrOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesBooleanPropsDatasetPtrInput` via:
-//
-//	        ActionUserPropertiesBooleanPropsDatasetArgs{...}
-//
-//	or:
-//
-//	        nil
-type ActionUserPropertiesBooleanPropsDatasetPtrInput interface {
-	pulumi.Input
-
-	ToActionUserPropertiesBooleanPropsDatasetPtrOutput() ActionUserPropertiesBooleanPropsDatasetPtrOutput
-	ToActionUserPropertiesBooleanPropsDatasetPtrOutputWithContext(context.Context) ActionUserPropertiesBooleanPropsDatasetPtrOutput
-}
-
-type actionUserPropertiesBooleanPropsDatasetPtrType ActionUserPropertiesBooleanPropsDatasetArgs
-
-func ActionUserPropertiesBooleanPropsDatasetPtr(v *ActionUserPropertiesBooleanPropsDatasetArgs) ActionUserPropertiesBooleanPropsDatasetPtrInput {
-	return (*actionUserPropertiesBooleanPropsDatasetPtrType)(v)
-}
-
-func (*actionUserPropertiesBooleanPropsDatasetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActionUserPropertiesBooleanPropsDataset)(nil)).Elem()
-}
-
-func (i *actionUserPropertiesBooleanPropsDatasetPtrType) ToActionUserPropertiesBooleanPropsDatasetPtrOutput() ActionUserPropertiesBooleanPropsDatasetPtrOutput {
-	return i.ToActionUserPropertiesBooleanPropsDatasetPtrOutputWithContext(context.Background())
-}
-
-func (i *actionUserPropertiesBooleanPropsDatasetPtrType) ToActionUserPropertiesBooleanPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsDatasetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesBooleanPropsDatasetPtrOutput)
-}
-
-type ActionUserPropertiesBooleanPropsDatasetOutput struct{ *pulumi.OutputState }
-
-func (ActionUserPropertiesBooleanPropsDatasetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesBooleanPropsDataset)(nil)).Elem()
-}
-
-func (o ActionUserPropertiesBooleanPropsDatasetOutput) ToActionUserPropertiesBooleanPropsDatasetOutput() ActionUserPropertiesBooleanPropsDatasetOutput {
-	return o
-}
-
-func (o ActionUserPropertiesBooleanPropsDatasetOutput) ToActionUserPropertiesBooleanPropsDatasetOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsDatasetOutput {
-	return o
-}
-
-func (o ActionUserPropertiesBooleanPropsDatasetOutput) ToActionUserPropertiesBooleanPropsDatasetPtrOutput() ActionUserPropertiesBooleanPropsDatasetPtrOutput {
-	return o.ToActionUserPropertiesBooleanPropsDatasetPtrOutputWithContext(context.Background())
-}
-
-func (o ActionUserPropertiesBooleanPropsDatasetOutput) ToActionUserPropertiesBooleanPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsDatasetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionUserPropertiesBooleanPropsDataset) *ActionUserPropertiesBooleanPropsDataset {
-		return &v
-	}).(ActionUserPropertiesBooleanPropsDatasetPtrOutput)
-}
-
-// The combinator of the dataset
-func (o ActionUserPropertiesBooleanPropsDatasetOutput) Combinator() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionUserPropertiesBooleanPropsDataset) string { return v.Combinator }).(pulumi.StringOutput)
-}
-
-// The rules of the dataset
-func (o ActionUserPropertiesBooleanPropsDatasetOutput) Rules() ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput {
-	return o.ApplyT(func(v ActionUserPropertiesBooleanPropsDataset) []ActionUserPropertiesBooleanPropsDatasetRule {
-		return v.Rules
-	}).(ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput)
-}
-
-type ActionUserPropertiesBooleanPropsDatasetPtrOutput struct{ *pulumi.OutputState }
-
-func (ActionUserPropertiesBooleanPropsDatasetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActionUserPropertiesBooleanPropsDataset)(nil)).Elem()
-}
-
-func (o ActionUserPropertiesBooleanPropsDatasetPtrOutput) ToActionUserPropertiesBooleanPropsDatasetPtrOutput() ActionUserPropertiesBooleanPropsDatasetPtrOutput {
-	return o
-}
-
-func (o ActionUserPropertiesBooleanPropsDatasetPtrOutput) ToActionUserPropertiesBooleanPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsDatasetPtrOutput {
-	return o
-}
-
-func (o ActionUserPropertiesBooleanPropsDatasetPtrOutput) Elem() ActionUserPropertiesBooleanPropsDatasetOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesBooleanPropsDataset) ActionUserPropertiesBooleanPropsDataset {
-		if v != nil {
-			return *v
-		}
-		var ret ActionUserPropertiesBooleanPropsDataset
-		return ret
-	}).(ActionUserPropertiesBooleanPropsDatasetOutput)
-}
-
-// The combinator of the dataset
-func (o ActionUserPropertiesBooleanPropsDatasetPtrOutput) Combinator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesBooleanPropsDataset) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Combinator
-	}).(pulumi.StringPtrOutput)
-}
-
-// The rules of the dataset
-func (o ActionUserPropertiesBooleanPropsDatasetPtrOutput) Rules() ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesBooleanPropsDataset) []ActionUserPropertiesBooleanPropsDatasetRule {
-		if v == nil {
-			return nil
-		}
-		return v.Rules
-	}).(ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput)
-}
-
-type ActionUserPropertiesBooleanPropsDatasetRule struct {
-	// The blueprint identifier of the rule
-	Blueprint *string `pulumi:"blueprint"`
-	// The operator of the rule
-	Operator string `pulumi:"operator"`
-	// The property identifier of the rule
-	Property *string `pulumi:"property"`
-	// The value of the rule
-	Value ActionUserPropertiesBooleanPropsDatasetRuleValue `pulumi:"value"`
-}
-
-// ActionUserPropertiesBooleanPropsDatasetRuleInput is an input type that accepts ActionUserPropertiesBooleanPropsDatasetRuleArgs and ActionUserPropertiesBooleanPropsDatasetRuleOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesBooleanPropsDatasetRuleInput` via:
-//
-//	ActionUserPropertiesBooleanPropsDatasetRuleArgs{...}
-type ActionUserPropertiesBooleanPropsDatasetRuleInput interface {
-	pulumi.Input
-
-	ToActionUserPropertiesBooleanPropsDatasetRuleOutput() ActionUserPropertiesBooleanPropsDatasetRuleOutput
-	ToActionUserPropertiesBooleanPropsDatasetRuleOutputWithContext(context.Context) ActionUserPropertiesBooleanPropsDatasetRuleOutput
-}
-
-type ActionUserPropertiesBooleanPropsDatasetRuleArgs struct {
-	// The blueprint identifier of the rule
-	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
-	// The operator of the rule
-	Operator pulumi.StringInput `pulumi:"operator"`
-	// The property identifier of the rule
-	Property pulumi.StringPtrInput `pulumi:"property"`
-	// The value of the rule
-	Value ActionUserPropertiesBooleanPropsDatasetRuleValueInput `pulumi:"value"`
-}
-
-func (ActionUserPropertiesBooleanPropsDatasetRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesBooleanPropsDatasetRule)(nil)).Elem()
-}
-
-func (i ActionUserPropertiesBooleanPropsDatasetRuleArgs) ToActionUserPropertiesBooleanPropsDatasetRuleOutput() ActionUserPropertiesBooleanPropsDatasetRuleOutput {
-	return i.ToActionUserPropertiesBooleanPropsDatasetRuleOutputWithContext(context.Background())
-}
-
-func (i ActionUserPropertiesBooleanPropsDatasetRuleArgs) ToActionUserPropertiesBooleanPropsDatasetRuleOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsDatasetRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesBooleanPropsDatasetRuleOutput)
-}
-
-// ActionUserPropertiesBooleanPropsDatasetRuleArrayInput is an input type that accepts ActionUserPropertiesBooleanPropsDatasetRuleArray and ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesBooleanPropsDatasetRuleArrayInput` via:
-//
-//	ActionUserPropertiesBooleanPropsDatasetRuleArray{ ActionUserPropertiesBooleanPropsDatasetRuleArgs{...} }
-type ActionUserPropertiesBooleanPropsDatasetRuleArrayInput interface {
-	pulumi.Input
-
-	ToActionUserPropertiesBooleanPropsDatasetRuleArrayOutput() ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput
-	ToActionUserPropertiesBooleanPropsDatasetRuleArrayOutputWithContext(context.Context) ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput
-}
-
-type ActionUserPropertiesBooleanPropsDatasetRuleArray []ActionUserPropertiesBooleanPropsDatasetRuleInput
-
-func (ActionUserPropertiesBooleanPropsDatasetRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ActionUserPropertiesBooleanPropsDatasetRule)(nil)).Elem()
-}
-
-func (i ActionUserPropertiesBooleanPropsDatasetRuleArray) ToActionUserPropertiesBooleanPropsDatasetRuleArrayOutput() ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput {
-	return i.ToActionUserPropertiesBooleanPropsDatasetRuleArrayOutputWithContext(context.Background())
-}
-
-func (i ActionUserPropertiesBooleanPropsDatasetRuleArray) ToActionUserPropertiesBooleanPropsDatasetRuleArrayOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput)
-}
-
-type ActionUserPropertiesBooleanPropsDatasetRuleOutput struct{ *pulumi.OutputState }
-
-func (ActionUserPropertiesBooleanPropsDatasetRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesBooleanPropsDatasetRule)(nil)).Elem()
-}
-
-func (o ActionUserPropertiesBooleanPropsDatasetRuleOutput) ToActionUserPropertiesBooleanPropsDatasetRuleOutput() ActionUserPropertiesBooleanPropsDatasetRuleOutput {
-	return o
-}
-
-func (o ActionUserPropertiesBooleanPropsDatasetRuleOutput) ToActionUserPropertiesBooleanPropsDatasetRuleOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsDatasetRuleOutput {
-	return o
-}
-
-// The blueprint identifier of the rule
-func (o ActionUserPropertiesBooleanPropsDatasetRuleOutput) Blueprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesBooleanPropsDatasetRule) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
-}
-
-// The operator of the rule
-func (o ActionUserPropertiesBooleanPropsDatasetRuleOutput) Operator() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionUserPropertiesBooleanPropsDatasetRule) string { return v.Operator }).(pulumi.StringOutput)
-}
-
-// The property identifier of the rule
-func (o ActionUserPropertiesBooleanPropsDatasetRuleOutput) Property() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesBooleanPropsDatasetRule) *string { return v.Property }).(pulumi.StringPtrOutput)
-}
-
-// The value of the rule
-func (o ActionUserPropertiesBooleanPropsDatasetRuleOutput) Value() ActionUserPropertiesBooleanPropsDatasetRuleValueOutput {
-	return o.ApplyT(func(v ActionUserPropertiesBooleanPropsDatasetRule) ActionUserPropertiesBooleanPropsDatasetRuleValue {
-		return v.Value
-	}).(ActionUserPropertiesBooleanPropsDatasetRuleValueOutput)
-}
-
-type ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ActionUserPropertiesBooleanPropsDatasetRule)(nil)).Elem()
-}
-
-func (o ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput) ToActionUserPropertiesBooleanPropsDatasetRuleArrayOutput() ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput {
-	return o
-}
-
-func (o ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput) ToActionUserPropertiesBooleanPropsDatasetRuleArrayOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput {
-	return o
-}
-
-func (o ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput) Index(i pulumi.IntInput) ActionUserPropertiesBooleanPropsDatasetRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionUserPropertiesBooleanPropsDatasetRule {
-		return vs[0].([]ActionUserPropertiesBooleanPropsDatasetRule)[vs[1].(int)]
-	}).(ActionUserPropertiesBooleanPropsDatasetRuleOutput)
-}
-
-type ActionUserPropertiesBooleanPropsDatasetRuleValue struct {
-	JqQuery string `pulumi:"jqQuery"`
-}
-
-// ActionUserPropertiesBooleanPropsDatasetRuleValueInput is an input type that accepts ActionUserPropertiesBooleanPropsDatasetRuleValueArgs and ActionUserPropertiesBooleanPropsDatasetRuleValueOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesBooleanPropsDatasetRuleValueInput` via:
-//
-//	ActionUserPropertiesBooleanPropsDatasetRuleValueArgs{...}
-type ActionUserPropertiesBooleanPropsDatasetRuleValueInput interface {
-	pulumi.Input
-
-	ToActionUserPropertiesBooleanPropsDatasetRuleValueOutput() ActionUserPropertiesBooleanPropsDatasetRuleValueOutput
-	ToActionUserPropertiesBooleanPropsDatasetRuleValueOutputWithContext(context.Context) ActionUserPropertiesBooleanPropsDatasetRuleValueOutput
-}
-
-type ActionUserPropertiesBooleanPropsDatasetRuleValueArgs struct {
-	JqQuery pulumi.StringInput `pulumi:"jqQuery"`
-}
-
-func (ActionUserPropertiesBooleanPropsDatasetRuleValueArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesBooleanPropsDatasetRuleValue)(nil)).Elem()
-}
-
-func (i ActionUserPropertiesBooleanPropsDatasetRuleValueArgs) ToActionUserPropertiesBooleanPropsDatasetRuleValueOutput() ActionUserPropertiesBooleanPropsDatasetRuleValueOutput {
-	return i.ToActionUserPropertiesBooleanPropsDatasetRuleValueOutputWithContext(context.Background())
-}
-
-func (i ActionUserPropertiesBooleanPropsDatasetRuleValueArgs) ToActionUserPropertiesBooleanPropsDatasetRuleValueOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsDatasetRuleValueOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesBooleanPropsDatasetRuleValueOutput)
-}
-
-type ActionUserPropertiesBooleanPropsDatasetRuleValueOutput struct{ *pulumi.OutputState }
-
-func (ActionUserPropertiesBooleanPropsDatasetRuleValueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesBooleanPropsDatasetRuleValue)(nil)).Elem()
-}
-
-func (o ActionUserPropertiesBooleanPropsDatasetRuleValueOutput) ToActionUserPropertiesBooleanPropsDatasetRuleValueOutput() ActionUserPropertiesBooleanPropsDatasetRuleValueOutput {
-	return o
-}
-
-func (o ActionUserPropertiesBooleanPropsDatasetRuleValueOutput) ToActionUserPropertiesBooleanPropsDatasetRuleValueOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsDatasetRuleValueOutput {
-	return o
-}
-
-func (o ActionUserPropertiesBooleanPropsDatasetRuleValueOutput) JqQuery() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionUserPropertiesBooleanPropsDatasetRuleValue) string { return v.JqQuery }).(pulumi.StringOutput)
-}
-
 type ActionUserPropertiesNumberProps struct {
-	// The dataset of the property
-	Dataset *ActionUserPropertiesNumberPropsDataset `pulumi:"dataset"`
 	// The default of the number property
 	Default *float64 `pulumi:"default"`
 	// The default jq query of the number property
@@ -3581,8 +2914,6 @@ type ActionUserPropertiesNumberPropsInput interface {
 }
 
 type ActionUserPropertiesNumberPropsArgs struct {
-	// The dataset of the property
-	Dataset ActionUserPropertiesNumberPropsDatasetPtrInput `pulumi:"dataset"`
 	// The default of the number property
 	Default pulumi.Float64PtrInput `pulumi:"default"`
 	// The default jq query of the number property
@@ -3660,11 +2991,6 @@ func (o ActionUserPropertiesNumberPropsOutput) ToActionUserPropertiesNumberProps
 
 func (o ActionUserPropertiesNumberPropsOutput) ToActionUserPropertiesNumberPropsOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsOutput {
 	return o
-}
-
-// The dataset of the property
-func (o ActionUserPropertiesNumberPropsOutput) Dataset() ActionUserPropertiesNumberPropsDatasetPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *ActionUserPropertiesNumberPropsDataset { return v.Dataset }).(ActionUserPropertiesNumberPropsDatasetPtrOutput)
 }
 
 // The default of the number property
@@ -3752,342 +3078,7 @@ func (o ActionUserPropertiesNumberPropsMapOutput) MapIndex(k pulumi.StringInput)
 	}).(ActionUserPropertiesNumberPropsOutput)
 }
 
-type ActionUserPropertiesNumberPropsDataset struct {
-	// The combinator of the dataset
-	Combinator string `pulumi:"combinator"`
-	// The rules of the dataset
-	Rules []ActionUserPropertiesNumberPropsDatasetRule `pulumi:"rules"`
-}
-
-// ActionUserPropertiesNumberPropsDatasetInput is an input type that accepts ActionUserPropertiesNumberPropsDatasetArgs and ActionUserPropertiesNumberPropsDatasetOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesNumberPropsDatasetInput` via:
-//
-//	ActionUserPropertiesNumberPropsDatasetArgs{...}
-type ActionUserPropertiesNumberPropsDatasetInput interface {
-	pulumi.Input
-
-	ToActionUserPropertiesNumberPropsDatasetOutput() ActionUserPropertiesNumberPropsDatasetOutput
-	ToActionUserPropertiesNumberPropsDatasetOutputWithContext(context.Context) ActionUserPropertiesNumberPropsDatasetOutput
-}
-
-type ActionUserPropertiesNumberPropsDatasetArgs struct {
-	// The combinator of the dataset
-	Combinator pulumi.StringInput `pulumi:"combinator"`
-	// The rules of the dataset
-	Rules ActionUserPropertiesNumberPropsDatasetRuleArrayInput `pulumi:"rules"`
-}
-
-func (ActionUserPropertiesNumberPropsDatasetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesNumberPropsDataset)(nil)).Elem()
-}
-
-func (i ActionUserPropertiesNumberPropsDatasetArgs) ToActionUserPropertiesNumberPropsDatasetOutput() ActionUserPropertiesNumberPropsDatasetOutput {
-	return i.ToActionUserPropertiesNumberPropsDatasetOutputWithContext(context.Background())
-}
-
-func (i ActionUserPropertiesNumberPropsDatasetArgs) ToActionUserPropertiesNumberPropsDatasetOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsDatasetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesNumberPropsDatasetOutput)
-}
-
-func (i ActionUserPropertiesNumberPropsDatasetArgs) ToActionUserPropertiesNumberPropsDatasetPtrOutput() ActionUserPropertiesNumberPropsDatasetPtrOutput {
-	return i.ToActionUserPropertiesNumberPropsDatasetPtrOutputWithContext(context.Background())
-}
-
-func (i ActionUserPropertiesNumberPropsDatasetArgs) ToActionUserPropertiesNumberPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsDatasetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesNumberPropsDatasetOutput).ToActionUserPropertiesNumberPropsDatasetPtrOutputWithContext(ctx)
-}
-
-// ActionUserPropertiesNumberPropsDatasetPtrInput is an input type that accepts ActionUserPropertiesNumberPropsDatasetArgs, ActionUserPropertiesNumberPropsDatasetPtr and ActionUserPropertiesNumberPropsDatasetPtrOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesNumberPropsDatasetPtrInput` via:
-//
-//	        ActionUserPropertiesNumberPropsDatasetArgs{...}
-//
-//	or:
-//
-//	        nil
-type ActionUserPropertiesNumberPropsDatasetPtrInput interface {
-	pulumi.Input
-
-	ToActionUserPropertiesNumberPropsDatasetPtrOutput() ActionUserPropertiesNumberPropsDatasetPtrOutput
-	ToActionUserPropertiesNumberPropsDatasetPtrOutputWithContext(context.Context) ActionUserPropertiesNumberPropsDatasetPtrOutput
-}
-
-type actionUserPropertiesNumberPropsDatasetPtrType ActionUserPropertiesNumberPropsDatasetArgs
-
-func ActionUserPropertiesNumberPropsDatasetPtr(v *ActionUserPropertiesNumberPropsDatasetArgs) ActionUserPropertiesNumberPropsDatasetPtrInput {
-	return (*actionUserPropertiesNumberPropsDatasetPtrType)(v)
-}
-
-func (*actionUserPropertiesNumberPropsDatasetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActionUserPropertiesNumberPropsDataset)(nil)).Elem()
-}
-
-func (i *actionUserPropertiesNumberPropsDatasetPtrType) ToActionUserPropertiesNumberPropsDatasetPtrOutput() ActionUserPropertiesNumberPropsDatasetPtrOutput {
-	return i.ToActionUserPropertiesNumberPropsDatasetPtrOutputWithContext(context.Background())
-}
-
-func (i *actionUserPropertiesNumberPropsDatasetPtrType) ToActionUserPropertiesNumberPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsDatasetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesNumberPropsDatasetPtrOutput)
-}
-
-type ActionUserPropertiesNumberPropsDatasetOutput struct{ *pulumi.OutputState }
-
-func (ActionUserPropertiesNumberPropsDatasetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesNumberPropsDataset)(nil)).Elem()
-}
-
-func (o ActionUserPropertiesNumberPropsDatasetOutput) ToActionUserPropertiesNumberPropsDatasetOutput() ActionUserPropertiesNumberPropsDatasetOutput {
-	return o
-}
-
-func (o ActionUserPropertiesNumberPropsDatasetOutput) ToActionUserPropertiesNumberPropsDatasetOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsDatasetOutput {
-	return o
-}
-
-func (o ActionUserPropertiesNumberPropsDatasetOutput) ToActionUserPropertiesNumberPropsDatasetPtrOutput() ActionUserPropertiesNumberPropsDatasetPtrOutput {
-	return o.ToActionUserPropertiesNumberPropsDatasetPtrOutputWithContext(context.Background())
-}
-
-func (o ActionUserPropertiesNumberPropsDatasetOutput) ToActionUserPropertiesNumberPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsDatasetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionUserPropertiesNumberPropsDataset) *ActionUserPropertiesNumberPropsDataset {
-		return &v
-	}).(ActionUserPropertiesNumberPropsDatasetPtrOutput)
-}
-
-// The combinator of the dataset
-func (o ActionUserPropertiesNumberPropsDatasetOutput) Combinator() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionUserPropertiesNumberPropsDataset) string { return v.Combinator }).(pulumi.StringOutput)
-}
-
-// The rules of the dataset
-func (o ActionUserPropertiesNumberPropsDatasetOutput) Rules() ActionUserPropertiesNumberPropsDatasetRuleArrayOutput {
-	return o.ApplyT(func(v ActionUserPropertiesNumberPropsDataset) []ActionUserPropertiesNumberPropsDatasetRule {
-		return v.Rules
-	}).(ActionUserPropertiesNumberPropsDatasetRuleArrayOutput)
-}
-
-type ActionUserPropertiesNumberPropsDatasetPtrOutput struct{ *pulumi.OutputState }
-
-func (ActionUserPropertiesNumberPropsDatasetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActionUserPropertiesNumberPropsDataset)(nil)).Elem()
-}
-
-func (o ActionUserPropertiesNumberPropsDatasetPtrOutput) ToActionUserPropertiesNumberPropsDatasetPtrOutput() ActionUserPropertiesNumberPropsDatasetPtrOutput {
-	return o
-}
-
-func (o ActionUserPropertiesNumberPropsDatasetPtrOutput) ToActionUserPropertiesNumberPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsDatasetPtrOutput {
-	return o
-}
-
-func (o ActionUserPropertiesNumberPropsDatasetPtrOutput) Elem() ActionUserPropertiesNumberPropsDatasetOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesNumberPropsDataset) ActionUserPropertiesNumberPropsDataset {
-		if v != nil {
-			return *v
-		}
-		var ret ActionUserPropertiesNumberPropsDataset
-		return ret
-	}).(ActionUserPropertiesNumberPropsDatasetOutput)
-}
-
-// The combinator of the dataset
-func (o ActionUserPropertiesNumberPropsDatasetPtrOutput) Combinator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesNumberPropsDataset) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Combinator
-	}).(pulumi.StringPtrOutput)
-}
-
-// The rules of the dataset
-func (o ActionUserPropertiesNumberPropsDatasetPtrOutput) Rules() ActionUserPropertiesNumberPropsDatasetRuleArrayOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesNumberPropsDataset) []ActionUserPropertiesNumberPropsDatasetRule {
-		if v == nil {
-			return nil
-		}
-		return v.Rules
-	}).(ActionUserPropertiesNumberPropsDatasetRuleArrayOutput)
-}
-
-type ActionUserPropertiesNumberPropsDatasetRule struct {
-	// The blueprint identifier of the rule
-	Blueprint *string `pulumi:"blueprint"`
-	// The operator of the rule
-	Operator string `pulumi:"operator"`
-	// The property identifier of the rule
-	Property *string `pulumi:"property"`
-	// The value of the rule
-	Value ActionUserPropertiesNumberPropsDatasetRuleValue `pulumi:"value"`
-}
-
-// ActionUserPropertiesNumberPropsDatasetRuleInput is an input type that accepts ActionUserPropertiesNumberPropsDatasetRuleArgs and ActionUserPropertiesNumberPropsDatasetRuleOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesNumberPropsDatasetRuleInput` via:
-//
-//	ActionUserPropertiesNumberPropsDatasetRuleArgs{...}
-type ActionUserPropertiesNumberPropsDatasetRuleInput interface {
-	pulumi.Input
-
-	ToActionUserPropertiesNumberPropsDatasetRuleOutput() ActionUserPropertiesNumberPropsDatasetRuleOutput
-	ToActionUserPropertiesNumberPropsDatasetRuleOutputWithContext(context.Context) ActionUserPropertiesNumberPropsDatasetRuleOutput
-}
-
-type ActionUserPropertiesNumberPropsDatasetRuleArgs struct {
-	// The blueprint identifier of the rule
-	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
-	// The operator of the rule
-	Operator pulumi.StringInput `pulumi:"operator"`
-	// The property identifier of the rule
-	Property pulumi.StringPtrInput `pulumi:"property"`
-	// The value of the rule
-	Value ActionUserPropertiesNumberPropsDatasetRuleValueInput `pulumi:"value"`
-}
-
-func (ActionUserPropertiesNumberPropsDatasetRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesNumberPropsDatasetRule)(nil)).Elem()
-}
-
-func (i ActionUserPropertiesNumberPropsDatasetRuleArgs) ToActionUserPropertiesNumberPropsDatasetRuleOutput() ActionUserPropertiesNumberPropsDatasetRuleOutput {
-	return i.ToActionUserPropertiesNumberPropsDatasetRuleOutputWithContext(context.Background())
-}
-
-func (i ActionUserPropertiesNumberPropsDatasetRuleArgs) ToActionUserPropertiesNumberPropsDatasetRuleOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsDatasetRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesNumberPropsDatasetRuleOutput)
-}
-
-// ActionUserPropertiesNumberPropsDatasetRuleArrayInput is an input type that accepts ActionUserPropertiesNumberPropsDatasetRuleArray and ActionUserPropertiesNumberPropsDatasetRuleArrayOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesNumberPropsDatasetRuleArrayInput` via:
-//
-//	ActionUserPropertiesNumberPropsDatasetRuleArray{ ActionUserPropertiesNumberPropsDatasetRuleArgs{...} }
-type ActionUserPropertiesNumberPropsDatasetRuleArrayInput interface {
-	pulumi.Input
-
-	ToActionUserPropertiesNumberPropsDatasetRuleArrayOutput() ActionUserPropertiesNumberPropsDatasetRuleArrayOutput
-	ToActionUserPropertiesNumberPropsDatasetRuleArrayOutputWithContext(context.Context) ActionUserPropertiesNumberPropsDatasetRuleArrayOutput
-}
-
-type ActionUserPropertiesNumberPropsDatasetRuleArray []ActionUserPropertiesNumberPropsDatasetRuleInput
-
-func (ActionUserPropertiesNumberPropsDatasetRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ActionUserPropertiesNumberPropsDatasetRule)(nil)).Elem()
-}
-
-func (i ActionUserPropertiesNumberPropsDatasetRuleArray) ToActionUserPropertiesNumberPropsDatasetRuleArrayOutput() ActionUserPropertiesNumberPropsDatasetRuleArrayOutput {
-	return i.ToActionUserPropertiesNumberPropsDatasetRuleArrayOutputWithContext(context.Background())
-}
-
-func (i ActionUserPropertiesNumberPropsDatasetRuleArray) ToActionUserPropertiesNumberPropsDatasetRuleArrayOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsDatasetRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesNumberPropsDatasetRuleArrayOutput)
-}
-
-type ActionUserPropertiesNumberPropsDatasetRuleOutput struct{ *pulumi.OutputState }
-
-func (ActionUserPropertiesNumberPropsDatasetRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesNumberPropsDatasetRule)(nil)).Elem()
-}
-
-func (o ActionUserPropertiesNumberPropsDatasetRuleOutput) ToActionUserPropertiesNumberPropsDatasetRuleOutput() ActionUserPropertiesNumberPropsDatasetRuleOutput {
-	return o
-}
-
-func (o ActionUserPropertiesNumberPropsDatasetRuleOutput) ToActionUserPropertiesNumberPropsDatasetRuleOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsDatasetRuleOutput {
-	return o
-}
-
-// The blueprint identifier of the rule
-func (o ActionUserPropertiesNumberPropsDatasetRuleOutput) Blueprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesNumberPropsDatasetRule) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
-}
-
-// The operator of the rule
-func (o ActionUserPropertiesNumberPropsDatasetRuleOutput) Operator() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionUserPropertiesNumberPropsDatasetRule) string { return v.Operator }).(pulumi.StringOutput)
-}
-
-// The property identifier of the rule
-func (o ActionUserPropertiesNumberPropsDatasetRuleOutput) Property() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesNumberPropsDatasetRule) *string { return v.Property }).(pulumi.StringPtrOutput)
-}
-
-// The value of the rule
-func (o ActionUserPropertiesNumberPropsDatasetRuleOutput) Value() ActionUserPropertiesNumberPropsDatasetRuleValueOutput {
-	return o.ApplyT(func(v ActionUserPropertiesNumberPropsDatasetRule) ActionUserPropertiesNumberPropsDatasetRuleValue {
-		return v.Value
-	}).(ActionUserPropertiesNumberPropsDatasetRuleValueOutput)
-}
-
-type ActionUserPropertiesNumberPropsDatasetRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (ActionUserPropertiesNumberPropsDatasetRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ActionUserPropertiesNumberPropsDatasetRule)(nil)).Elem()
-}
-
-func (o ActionUserPropertiesNumberPropsDatasetRuleArrayOutput) ToActionUserPropertiesNumberPropsDatasetRuleArrayOutput() ActionUserPropertiesNumberPropsDatasetRuleArrayOutput {
-	return o
-}
-
-func (o ActionUserPropertiesNumberPropsDatasetRuleArrayOutput) ToActionUserPropertiesNumberPropsDatasetRuleArrayOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsDatasetRuleArrayOutput {
-	return o
-}
-
-func (o ActionUserPropertiesNumberPropsDatasetRuleArrayOutput) Index(i pulumi.IntInput) ActionUserPropertiesNumberPropsDatasetRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionUserPropertiesNumberPropsDatasetRule {
-		return vs[0].([]ActionUserPropertiesNumberPropsDatasetRule)[vs[1].(int)]
-	}).(ActionUserPropertiesNumberPropsDatasetRuleOutput)
-}
-
-type ActionUserPropertiesNumberPropsDatasetRuleValue struct {
-	JqQuery string `pulumi:"jqQuery"`
-}
-
-// ActionUserPropertiesNumberPropsDatasetRuleValueInput is an input type that accepts ActionUserPropertiesNumberPropsDatasetRuleValueArgs and ActionUserPropertiesNumberPropsDatasetRuleValueOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesNumberPropsDatasetRuleValueInput` via:
-//
-//	ActionUserPropertiesNumberPropsDatasetRuleValueArgs{...}
-type ActionUserPropertiesNumberPropsDatasetRuleValueInput interface {
-	pulumi.Input
-
-	ToActionUserPropertiesNumberPropsDatasetRuleValueOutput() ActionUserPropertiesNumberPropsDatasetRuleValueOutput
-	ToActionUserPropertiesNumberPropsDatasetRuleValueOutputWithContext(context.Context) ActionUserPropertiesNumberPropsDatasetRuleValueOutput
-}
-
-type ActionUserPropertiesNumberPropsDatasetRuleValueArgs struct {
-	JqQuery pulumi.StringInput `pulumi:"jqQuery"`
-}
-
-func (ActionUserPropertiesNumberPropsDatasetRuleValueArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesNumberPropsDatasetRuleValue)(nil)).Elem()
-}
-
-func (i ActionUserPropertiesNumberPropsDatasetRuleValueArgs) ToActionUserPropertiesNumberPropsDatasetRuleValueOutput() ActionUserPropertiesNumberPropsDatasetRuleValueOutput {
-	return i.ToActionUserPropertiesNumberPropsDatasetRuleValueOutputWithContext(context.Background())
-}
-
-func (i ActionUserPropertiesNumberPropsDatasetRuleValueArgs) ToActionUserPropertiesNumberPropsDatasetRuleValueOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsDatasetRuleValueOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesNumberPropsDatasetRuleValueOutput)
-}
-
-type ActionUserPropertiesNumberPropsDatasetRuleValueOutput struct{ *pulumi.OutputState }
-
-func (ActionUserPropertiesNumberPropsDatasetRuleValueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesNumberPropsDatasetRuleValue)(nil)).Elem()
-}
-
-func (o ActionUserPropertiesNumberPropsDatasetRuleValueOutput) ToActionUserPropertiesNumberPropsDatasetRuleValueOutput() ActionUserPropertiesNumberPropsDatasetRuleValueOutput {
-	return o
-}
-
-func (o ActionUserPropertiesNumberPropsDatasetRuleValueOutput) ToActionUserPropertiesNumberPropsDatasetRuleValueOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsDatasetRuleValueOutput {
-	return o
-}
-
-func (o ActionUserPropertiesNumberPropsDatasetRuleValueOutput) JqQuery() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionUserPropertiesNumberPropsDatasetRuleValue) string { return v.JqQuery }).(pulumi.StringOutput)
-}
-
 type ActionUserPropertiesObjectProps struct {
-	// The dataset of the property
-	Dataset *ActionUserPropertiesObjectPropsDataset `pulumi:"dataset"`
 	// The default of the object property
 	Default *string `pulumi:"default"`
 	// The default jq query of the object property
@@ -4122,8 +3113,6 @@ type ActionUserPropertiesObjectPropsInput interface {
 }
 
 type ActionUserPropertiesObjectPropsArgs struct {
-	// The dataset of the property
-	Dataset ActionUserPropertiesObjectPropsDatasetPtrInput `pulumi:"dataset"`
 	// The default of the object property
 	Default pulumi.StringPtrInput `pulumi:"default"`
 	// The default jq query of the object property
@@ -4197,11 +3186,6 @@ func (o ActionUserPropertiesObjectPropsOutput) ToActionUserPropertiesObjectProps
 	return o
 }
 
-// The dataset of the property
-func (o ActionUserPropertiesObjectPropsOutput) Dataset() ActionUserPropertiesObjectPropsDatasetPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *ActionUserPropertiesObjectPropsDataset { return v.Dataset }).(ActionUserPropertiesObjectPropsDatasetPtrOutput)
-}
-
 // The default of the object property
 func (o ActionUserPropertiesObjectPropsOutput) Default() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.Default }).(pulumi.StringPtrOutput)
@@ -4272,343 +3256,10 @@ func (o ActionUserPropertiesObjectPropsMapOutput) MapIndex(k pulumi.StringInput)
 	}).(ActionUserPropertiesObjectPropsOutput)
 }
 
-type ActionUserPropertiesObjectPropsDataset struct {
-	// The combinator of the dataset
-	Combinator string `pulumi:"combinator"`
-	// The rules of the dataset
-	Rules []ActionUserPropertiesObjectPropsDatasetRule `pulumi:"rules"`
-}
-
-// ActionUserPropertiesObjectPropsDatasetInput is an input type that accepts ActionUserPropertiesObjectPropsDatasetArgs and ActionUserPropertiesObjectPropsDatasetOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesObjectPropsDatasetInput` via:
-//
-//	ActionUserPropertiesObjectPropsDatasetArgs{...}
-type ActionUserPropertiesObjectPropsDatasetInput interface {
-	pulumi.Input
-
-	ToActionUserPropertiesObjectPropsDatasetOutput() ActionUserPropertiesObjectPropsDatasetOutput
-	ToActionUserPropertiesObjectPropsDatasetOutputWithContext(context.Context) ActionUserPropertiesObjectPropsDatasetOutput
-}
-
-type ActionUserPropertiesObjectPropsDatasetArgs struct {
-	// The combinator of the dataset
-	Combinator pulumi.StringInput `pulumi:"combinator"`
-	// The rules of the dataset
-	Rules ActionUserPropertiesObjectPropsDatasetRuleArrayInput `pulumi:"rules"`
-}
-
-func (ActionUserPropertiesObjectPropsDatasetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesObjectPropsDataset)(nil)).Elem()
-}
-
-func (i ActionUserPropertiesObjectPropsDatasetArgs) ToActionUserPropertiesObjectPropsDatasetOutput() ActionUserPropertiesObjectPropsDatasetOutput {
-	return i.ToActionUserPropertiesObjectPropsDatasetOutputWithContext(context.Background())
-}
-
-func (i ActionUserPropertiesObjectPropsDatasetArgs) ToActionUserPropertiesObjectPropsDatasetOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsDatasetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesObjectPropsDatasetOutput)
-}
-
-func (i ActionUserPropertiesObjectPropsDatasetArgs) ToActionUserPropertiesObjectPropsDatasetPtrOutput() ActionUserPropertiesObjectPropsDatasetPtrOutput {
-	return i.ToActionUserPropertiesObjectPropsDatasetPtrOutputWithContext(context.Background())
-}
-
-func (i ActionUserPropertiesObjectPropsDatasetArgs) ToActionUserPropertiesObjectPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsDatasetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesObjectPropsDatasetOutput).ToActionUserPropertiesObjectPropsDatasetPtrOutputWithContext(ctx)
-}
-
-// ActionUserPropertiesObjectPropsDatasetPtrInput is an input type that accepts ActionUserPropertiesObjectPropsDatasetArgs, ActionUserPropertiesObjectPropsDatasetPtr and ActionUserPropertiesObjectPropsDatasetPtrOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesObjectPropsDatasetPtrInput` via:
-//
-//	        ActionUserPropertiesObjectPropsDatasetArgs{...}
-//
-//	or:
-//
-//	        nil
-type ActionUserPropertiesObjectPropsDatasetPtrInput interface {
-	pulumi.Input
-
-	ToActionUserPropertiesObjectPropsDatasetPtrOutput() ActionUserPropertiesObjectPropsDatasetPtrOutput
-	ToActionUserPropertiesObjectPropsDatasetPtrOutputWithContext(context.Context) ActionUserPropertiesObjectPropsDatasetPtrOutput
-}
-
-type actionUserPropertiesObjectPropsDatasetPtrType ActionUserPropertiesObjectPropsDatasetArgs
-
-func ActionUserPropertiesObjectPropsDatasetPtr(v *ActionUserPropertiesObjectPropsDatasetArgs) ActionUserPropertiesObjectPropsDatasetPtrInput {
-	return (*actionUserPropertiesObjectPropsDatasetPtrType)(v)
-}
-
-func (*actionUserPropertiesObjectPropsDatasetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActionUserPropertiesObjectPropsDataset)(nil)).Elem()
-}
-
-func (i *actionUserPropertiesObjectPropsDatasetPtrType) ToActionUserPropertiesObjectPropsDatasetPtrOutput() ActionUserPropertiesObjectPropsDatasetPtrOutput {
-	return i.ToActionUserPropertiesObjectPropsDatasetPtrOutputWithContext(context.Background())
-}
-
-func (i *actionUserPropertiesObjectPropsDatasetPtrType) ToActionUserPropertiesObjectPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsDatasetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesObjectPropsDatasetPtrOutput)
-}
-
-type ActionUserPropertiesObjectPropsDatasetOutput struct{ *pulumi.OutputState }
-
-func (ActionUserPropertiesObjectPropsDatasetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesObjectPropsDataset)(nil)).Elem()
-}
-
-func (o ActionUserPropertiesObjectPropsDatasetOutput) ToActionUserPropertiesObjectPropsDatasetOutput() ActionUserPropertiesObjectPropsDatasetOutput {
-	return o
-}
-
-func (o ActionUserPropertiesObjectPropsDatasetOutput) ToActionUserPropertiesObjectPropsDatasetOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsDatasetOutput {
-	return o
-}
-
-func (o ActionUserPropertiesObjectPropsDatasetOutput) ToActionUserPropertiesObjectPropsDatasetPtrOutput() ActionUserPropertiesObjectPropsDatasetPtrOutput {
-	return o.ToActionUserPropertiesObjectPropsDatasetPtrOutputWithContext(context.Background())
-}
-
-func (o ActionUserPropertiesObjectPropsDatasetOutput) ToActionUserPropertiesObjectPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsDatasetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionUserPropertiesObjectPropsDataset) *ActionUserPropertiesObjectPropsDataset {
-		return &v
-	}).(ActionUserPropertiesObjectPropsDatasetPtrOutput)
-}
-
-// The combinator of the dataset
-func (o ActionUserPropertiesObjectPropsDatasetOutput) Combinator() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionUserPropertiesObjectPropsDataset) string { return v.Combinator }).(pulumi.StringOutput)
-}
-
-// The rules of the dataset
-func (o ActionUserPropertiesObjectPropsDatasetOutput) Rules() ActionUserPropertiesObjectPropsDatasetRuleArrayOutput {
-	return o.ApplyT(func(v ActionUserPropertiesObjectPropsDataset) []ActionUserPropertiesObjectPropsDatasetRule {
-		return v.Rules
-	}).(ActionUserPropertiesObjectPropsDatasetRuleArrayOutput)
-}
-
-type ActionUserPropertiesObjectPropsDatasetPtrOutput struct{ *pulumi.OutputState }
-
-func (ActionUserPropertiesObjectPropsDatasetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActionUserPropertiesObjectPropsDataset)(nil)).Elem()
-}
-
-func (o ActionUserPropertiesObjectPropsDatasetPtrOutput) ToActionUserPropertiesObjectPropsDatasetPtrOutput() ActionUserPropertiesObjectPropsDatasetPtrOutput {
-	return o
-}
-
-func (o ActionUserPropertiesObjectPropsDatasetPtrOutput) ToActionUserPropertiesObjectPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsDatasetPtrOutput {
-	return o
-}
-
-func (o ActionUserPropertiesObjectPropsDatasetPtrOutput) Elem() ActionUserPropertiesObjectPropsDatasetOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesObjectPropsDataset) ActionUserPropertiesObjectPropsDataset {
-		if v != nil {
-			return *v
-		}
-		var ret ActionUserPropertiesObjectPropsDataset
-		return ret
-	}).(ActionUserPropertiesObjectPropsDatasetOutput)
-}
-
-// The combinator of the dataset
-func (o ActionUserPropertiesObjectPropsDatasetPtrOutput) Combinator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesObjectPropsDataset) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Combinator
-	}).(pulumi.StringPtrOutput)
-}
-
-// The rules of the dataset
-func (o ActionUserPropertiesObjectPropsDatasetPtrOutput) Rules() ActionUserPropertiesObjectPropsDatasetRuleArrayOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesObjectPropsDataset) []ActionUserPropertiesObjectPropsDatasetRule {
-		if v == nil {
-			return nil
-		}
-		return v.Rules
-	}).(ActionUserPropertiesObjectPropsDatasetRuleArrayOutput)
-}
-
-type ActionUserPropertiesObjectPropsDatasetRule struct {
-	// The blueprint identifier of the rule
-	Blueprint *string `pulumi:"blueprint"`
-	// The operator of the rule
-	Operator string `pulumi:"operator"`
-	// The property identifier of the rule
-	Property *string `pulumi:"property"`
-	// The value of the rule
-	Value ActionUserPropertiesObjectPropsDatasetRuleValue `pulumi:"value"`
-}
-
-// ActionUserPropertiesObjectPropsDatasetRuleInput is an input type that accepts ActionUserPropertiesObjectPropsDatasetRuleArgs and ActionUserPropertiesObjectPropsDatasetRuleOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesObjectPropsDatasetRuleInput` via:
-//
-//	ActionUserPropertiesObjectPropsDatasetRuleArgs{...}
-type ActionUserPropertiesObjectPropsDatasetRuleInput interface {
-	pulumi.Input
-
-	ToActionUserPropertiesObjectPropsDatasetRuleOutput() ActionUserPropertiesObjectPropsDatasetRuleOutput
-	ToActionUserPropertiesObjectPropsDatasetRuleOutputWithContext(context.Context) ActionUserPropertiesObjectPropsDatasetRuleOutput
-}
-
-type ActionUserPropertiesObjectPropsDatasetRuleArgs struct {
-	// The blueprint identifier of the rule
-	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
-	// The operator of the rule
-	Operator pulumi.StringInput `pulumi:"operator"`
-	// The property identifier of the rule
-	Property pulumi.StringPtrInput `pulumi:"property"`
-	// The value of the rule
-	Value ActionUserPropertiesObjectPropsDatasetRuleValueInput `pulumi:"value"`
-}
-
-func (ActionUserPropertiesObjectPropsDatasetRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesObjectPropsDatasetRule)(nil)).Elem()
-}
-
-func (i ActionUserPropertiesObjectPropsDatasetRuleArgs) ToActionUserPropertiesObjectPropsDatasetRuleOutput() ActionUserPropertiesObjectPropsDatasetRuleOutput {
-	return i.ToActionUserPropertiesObjectPropsDatasetRuleOutputWithContext(context.Background())
-}
-
-func (i ActionUserPropertiesObjectPropsDatasetRuleArgs) ToActionUserPropertiesObjectPropsDatasetRuleOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsDatasetRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesObjectPropsDatasetRuleOutput)
-}
-
-// ActionUserPropertiesObjectPropsDatasetRuleArrayInput is an input type that accepts ActionUserPropertiesObjectPropsDatasetRuleArray and ActionUserPropertiesObjectPropsDatasetRuleArrayOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesObjectPropsDatasetRuleArrayInput` via:
-//
-//	ActionUserPropertiesObjectPropsDatasetRuleArray{ ActionUserPropertiesObjectPropsDatasetRuleArgs{...} }
-type ActionUserPropertiesObjectPropsDatasetRuleArrayInput interface {
-	pulumi.Input
-
-	ToActionUserPropertiesObjectPropsDatasetRuleArrayOutput() ActionUserPropertiesObjectPropsDatasetRuleArrayOutput
-	ToActionUserPropertiesObjectPropsDatasetRuleArrayOutputWithContext(context.Context) ActionUserPropertiesObjectPropsDatasetRuleArrayOutput
-}
-
-type ActionUserPropertiesObjectPropsDatasetRuleArray []ActionUserPropertiesObjectPropsDatasetRuleInput
-
-func (ActionUserPropertiesObjectPropsDatasetRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ActionUserPropertiesObjectPropsDatasetRule)(nil)).Elem()
-}
-
-func (i ActionUserPropertiesObjectPropsDatasetRuleArray) ToActionUserPropertiesObjectPropsDatasetRuleArrayOutput() ActionUserPropertiesObjectPropsDatasetRuleArrayOutput {
-	return i.ToActionUserPropertiesObjectPropsDatasetRuleArrayOutputWithContext(context.Background())
-}
-
-func (i ActionUserPropertiesObjectPropsDatasetRuleArray) ToActionUserPropertiesObjectPropsDatasetRuleArrayOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsDatasetRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesObjectPropsDatasetRuleArrayOutput)
-}
-
-type ActionUserPropertiesObjectPropsDatasetRuleOutput struct{ *pulumi.OutputState }
-
-func (ActionUserPropertiesObjectPropsDatasetRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesObjectPropsDatasetRule)(nil)).Elem()
-}
-
-func (o ActionUserPropertiesObjectPropsDatasetRuleOutput) ToActionUserPropertiesObjectPropsDatasetRuleOutput() ActionUserPropertiesObjectPropsDatasetRuleOutput {
-	return o
-}
-
-func (o ActionUserPropertiesObjectPropsDatasetRuleOutput) ToActionUserPropertiesObjectPropsDatasetRuleOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsDatasetRuleOutput {
-	return o
-}
-
-// The blueprint identifier of the rule
-func (o ActionUserPropertiesObjectPropsDatasetRuleOutput) Blueprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesObjectPropsDatasetRule) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
-}
-
-// The operator of the rule
-func (o ActionUserPropertiesObjectPropsDatasetRuleOutput) Operator() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionUserPropertiesObjectPropsDatasetRule) string { return v.Operator }).(pulumi.StringOutput)
-}
-
-// The property identifier of the rule
-func (o ActionUserPropertiesObjectPropsDatasetRuleOutput) Property() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesObjectPropsDatasetRule) *string { return v.Property }).(pulumi.StringPtrOutput)
-}
-
-// The value of the rule
-func (o ActionUserPropertiesObjectPropsDatasetRuleOutput) Value() ActionUserPropertiesObjectPropsDatasetRuleValueOutput {
-	return o.ApplyT(func(v ActionUserPropertiesObjectPropsDatasetRule) ActionUserPropertiesObjectPropsDatasetRuleValue {
-		return v.Value
-	}).(ActionUserPropertiesObjectPropsDatasetRuleValueOutput)
-}
-
-type ActionUserPropertiesObjectPropsDatasetRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (ActionUserPropertiesObjectPropsDatasetRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ActionUserPropertiesObjectPropsDatasetRule)(nil)).Elem()
-}
-
-func (o ActionUserPropertiesObjectPropsDatasetRuleArrayOutput) ToActionUserPropertiesObjectPropsDatasetRuleArrayOutput() ActionUserPropertiesObjectPropsDatasetRuleArrayOutput {
-	return o
-}
-
-func (o ActionUserPropertiesObjectPropsDatasetRuleArrayOutput) ToActionUserPropertiesObjectPropsDatasetRuleArrayOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsDatasetRuleArrayOutput {
-	return o
-}
-
-func (o ActionUserPropertiesObjectPropsDatasetRuleArrayOutput) Index(i pulumi.IntInput) ActionUserPropertiesObjectPropsDatasetRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionUserPropertiesObjectPropsDatasetRule {
-		return vs[0].([]ActionUserPropertiesObjectPropsDatasetRule)[vs[1].(int)]
-	}).(ActionUserPropertiesObjectPropsDatasetRuleOutput)
-}
-
-type ActionUserPropertiesObjectPropsDatasetRuleValue struct {
-	JqQuery string `pulumi:"jqQuery"`
-}
-
-// ActionUserPropertiesObjectPropsDatasetRuleValueInput is an input type that accepts ActionUserPropertiesObjectPropsDatasetRuleValueArgs and ActionUserPropertiesObjectPropsDatasetRuleValueOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesObjectPropsDatasetRuleValueInput` via:
-//
-//	ActionUserPropertiesObjectPropsDatasetRuleValueArgs{...}
-type ActionUserPropertiesObjectPropsDatasetRuleValueInput interface {
-	pulumi.Input
-
-	ToActionUserPropertiesObjectPropsDatasetRuleValueOutput() ActionUserPropertiesObjectPropsDatasetRuleValueOutput
-	ToActionUserPropertiesObjectPropsDatasetRuleValueOutputWithContext(context.Context) ActionUserPropertiesObjectPropsDatasetRuleValueOutput
-}
-
-type ActionUserPropertiesObjectPropsDatasetRuleValueArgs struct {
-	JqQuery pulumi.StringInput `pulumi:"jqQuery"`
-}
-
-func (ActionUserPropertiesObjectPropsDatasetRuleValueArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesObjectPropsDatasetRuleValue)(nil)).Elem()
-}
-
-func (i ActionUserPropertiesObjectPropsDatasetRuleValueArgs) ToActionUserPropertiesObjectPropsDatasetRuleValueOutput() ActionUserPropertiesObjectPropsDatasetRuleValueOutput {
-	return i.ToActionUserPropertiesObjectPropsDatasetRuleValueOutputWithContext(context.Background())
-}
-
-func (i ActionUserPropertiesObjectPropsDatasetRuleValueArgs) ToActionUserPropertiesObjectPropsDatasetRuleValueOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsDatasetRuleValueOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesObjectPropsDatasetRuleValueOutput)
-}
-
-type ActionUserPropertiesObjectPropsDatasetRuleValueOutput struct{ *pulumi.OutputState }
-
-func (ActionUserPropertiesObjectPropsDatasetRuleValueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesObjectPropsDatasetRuleValue)(nil)).Elem()
-}
-
-func (o ActionUserPropertiesObjectPropsDatasetRuleValueOutput) ToActionUserPropertiesObjectPropsDatasetRuleValueOutput() ActionUserPropertiesObjectPropsDatasetRuleValueOutput {
-	return o
-}
-
-func (o ActionUserPropertiesObjectPropsDatasetRuleValueOutput) ToActionUserPropertiesObjectPropsDatasetRuleValueOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsDatasetRuleValueOutput {
-	return o
-}
-
-func (o ActionUserPropertiesObjectPropsDatasetRuleValueOutput) JqQuery() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionUserPropertiesObjectPropsDatasetRuleValue) string { return v.JqQuery }).(pulumi.StringOutput)
-}
-
 type ActionUserPropertiesStringProps struct {
 	// The blueprint identifier the string property relates to
 	Blueprint *string `pulumi:"blueprint"`
-	// The dataset of the property
+	// The dataset of an the entity-format property
 	Dataset *ActionUserPropertiesStringPropsDataset `pulumi:"dataset"`
 	// The default of the string property
 	Default *string `pulumi:"default"`
@@ -4658,7 +3309,7 @@ type ActionUserPropertiesStringPropsInput interface {
 type ActionUserPropertiesStringPropsArgs struct {
 	// The blueprint identifier the string property relates to
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
-	// The dataset of the property
+	// The dataset of an the entity-format property
 	Dataset ActionUserPropertiesStringPropsDatasetPtrInput `pulumi:"dataset"`
 	// The default of the string property
 	Default pulumi.StringPtrInput `pulumi:"default"`
@@ -4750,7 +3401,7 @@ func (o ActionUserPropertiesStringPropsOutput) Blueprint() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
 }
 
-// The dataset of the property
+// The dataset of an the entity-format property
 func (o ActionUserPropertiesStringPropsOutput) Dataset() ActionUserPropertiesStringPropsDatasetPtrOutput {
 	return o.ApplyT(func(v ActionUserPropertiesStringProps) *ActionUserPropertiesStringPropsDataset { return v.Dataset }).(ActionUserPropertiesStringPropsDatasetPtrOutput)
 }
@@ -10049,11 +8700,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsMapInput)(nil)).Elem(), ActionUserPropertiesArrayPropsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsBooleanItemsInput)(nil)).Elem(), ActionUserPropertiesArrayPropsBooleanItemsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsBooleanItemsPtrInput)(nil)).Elem(), ActionUserPropertiesArrayPropsBooleanItemsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsDatasetInput)(nil)).Elem(), ActionUserPropertiesArrayPropsDatasetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsDatasetPtrInput)(nil)).Elem(), ActionUserPropertiesArrayPropsDatasetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsDatasetRuleInput)(nil)).Elem(), ActionUserPropertiesArrayPropsDatasetRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsDatasetRuleArrayInput)(nil)).Elem(), ActionUserPropertiesArrayPropsDatasetRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsDatasetRuleValueInput)(nil)).Elem(), ActionUserPropertiesArrayPropsDatasetRuleValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsNumberItemsInput)(nil)).Elem(), ActionUserPropertiesArrayPropsNumberItemsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsNumberItemsPtrInput)(nil)).Elem(), ActionUserPropertiesArrayPropsNumberItemsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsObjectItemsInput)(nil)).Elem(), ActionUserPropertiesArrayPropsObjectItemsArgs{})
@@ -10062,25 +8708,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsStringItemsPtrInput)(nil)).Elem(), ActionUserPropertiesArrayPropsStringItemsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesBooleanPropsInput)(nil)).Elem(), ActionUserPropertiesBooleanPropsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesBooleanPropsMapInput)(nil)).Elem(), ActionUserPropertiesBooleanPropsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesBooleanPropsDatasetInput)(nil)).Elem(), ActionUserPropertiesBooleanPropsDatasetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesBooleanPropsDatasetPtrInput)(nil)).Elem(), ActionUserPropertiesBooleanPropsDatasetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesBooleanPropsDatasetRuleInput)(nil)).Elem(), ActionUserPropertiesBooleanPropsDatasetRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesBooleanPropsDatasetRuleArrayInput)(nil)).Elem(), ActionUserPropertiesBooleanPropsDatasetRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesBooleanPropsDatasetRuleValueInput)(nil)).Elem(), ActionUserPropertiesBooleanPropsDatasetRuleValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesNumberPropsInput)(nil)).Elem(), ActionUserPropertiesNumberPropsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesNumberPropsMapInput)(nil)).Elem(), ActionUserPropertiesNumberPropsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesNumberPropsDatasetInput)(nil)).Elem(), ActionUserPropertiesNumberPropsDatasetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesNumberPropsDatasetPtrInput)(nil)).Elem(), ActionUserPropertiesNumberPropsDatasetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesNumberPropsDatasetRuleInput)(nil)).Elem(), ActionUserPropertiesNumberPropsDatasetRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesNumberPropsDatasetRuleArrayInput)(nil)).Elem(), ActionUserPropertiesNumberPropsDatasetRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesNumberPropsDatasetRuleValueInput)(nil)).Elem(), ActionUserPropertiesNumberPropsDatasetRuleValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesObjectPropsInput)(nil)).Elem(), ActionUserPropertiesObjectPropsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesObjectPropsMapInput)(nil)).Elem(), ActionUserPropertiesObjectPropsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesObjectPropsDatasetInput)(nil)).Elem(), ActionUserPropertiesObjectPropsDatasetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesObjectPropsDatasetPtrInput)(nil)).Elem(), ActionUserPropertiesObjectPropsDatasetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesObjectPropsDatasetRuleInput)(nil)).Elem(), ActionUserPropertiesObjectPropsDatasetRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesObjectPropsDatasetRuleArrayInput)(nil)).Elem(), ActionUserPropertiesObjectPropsDatasetRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesObjectPropsDatasetRuleValueInput)(nil)).Elem(), ActionUserPropertiesObjectPropsDatasetRuleValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesStringPropsInput)(nil)).Elem(), ActionUserPropertiesStringPropsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesStringPropsMapInput)(nil)).Elem(), ActionUserPropertiesStringPropsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesStringPropsDatasetInput)(nil)).Elem(), ActionUserPropertiesStringPropsDatasetArgs{})
@@ -10173,11 +8804,6 @@ func init() {
 	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsMapOutput{})
 	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsBooleanItemsOutput{})
 	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsBooleanItemsPtrOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsDatasetOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsDatasetPtrOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsDatasetRuleOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsDatasetRuleArrayOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsDatasetRuleValueOutput{})
 	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsNumberItemsOutput{})
 	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsNumberItemsPtrOutput{})
 	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsObjectItemsOutput{})
@@ -10186,25 +8812,10 @@ func init() {
 	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsStringItemsPtrOutput{})
 	pulumi.RegisterOutputType(ActionUserPropertiesBooleanPropsOutput{})
 	pulumi.RegisterOutputType(ActionUserPropertiesBooleanPropsMapOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesBooleanPropsDatasetOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesBooleanPropsDatasetPtrOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesBooleanPropsDatasetRuleOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesBooleanPropsDatasetRuleArrayOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesBooleanPropsDatasetRuleValueOutput{})
 	pulumi.RegisterOutputType(ActionUserPropertiesNumberPropsOutput{})
 	pulumi.RegisterOutputType(ActionUserPropertiesNumberPropsMapOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesNumberPropsDatasetOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesNumberPropsDatasetPtrOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesNumberPropsDatasetRuleOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesNumberPropsDatasetRuleArrayOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesNumberPropsDatasetRuleValueOutput{})
 	pulumi.RegisterOutputType(ActionUserPropertiesObjectPropsOutput{})
 	pulumi.RegisterOutputType(ActionUserPropertiesObjectPropsMapOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesObjectPropsDatasetOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesObjectPropsDatasetPtrOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesObjectPropsDatasetRuleOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesObjectPropsDatasetRuleArrayOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesObjectPropsDatasetRuleValueOutput{})
 	pulumi.RegisterOutputType(ActionUserPropertiesStringPropsOutput{})
 	pulumi.RegisterOutputType(ActionUserPropertiesStringPropsMapOutput{})
 	pulumi.RegisterOutputType(ActionUserPropertiesStringPropsDatasetOutput{})

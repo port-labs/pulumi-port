@@ -349,10 +349,6 @@
                     "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsBooleanItems:ActionUserPropertiesArrayPropsBooleanItems",
                     "description": "The items of the array property\n"
                 },
-                "dataset": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsDataset:ActionUserPropertiesArrayPropsDataset",
-                    "description": "The dataset of the property\n"
-                },
                 "defaultJqQuery": {
                     "type": "string",
                     "description": "The default jq query of the array property\n"
@@ -423,62 +419,6 @@
             },
             "type": "object"
         },
-        "port:index/ActionUserPropertiesArrayPropsDataset:ActionUserPropertiesArrayPropsDataset": {
-            "properties": {
-                "combinator": {
-                    "type": "string",
-                    "description": "The combinator of the dataset\n"
-                },
-                "rules": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsDatasetRule:ActionUserPropertiesArrayPropsDatasetRule"
-                    },
-                    "description": "The rules of the dataset\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "combinator",
-                "rules"
-            ]
-        },
-        "port:index/ActionUserPropertiesArrayPropsDatasetRule:ActionUserPropertiesArrayPropsDatasetRule": {
-            "properties": {
-                "blueprint": {
-                    "type": "string",
-                    "description": "The blueprint identifier of the rule\n"
-                },
-                "operator": {
-                    "type": "string",
-                    "description": "The operator of the rule\n"
-                },
-                "property": {
-                    "type": "string",
-                    "description": "The property identifier of the rule\n"
-                },
-                "value": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsDatasetRuleValue:ActionUserPropertiesArrayPropsDatasetRuleValue",
-                    "description": "The value of the rule\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "operator",
-                "value"
-            ]
-        },
-        "port:index/ActionUserPropertiesArrayPropsDatasetRuleValue:ActionUserPropertiesArrayPropsDatasetRuleValue": {
-            "properties": {
-                "jqQuery": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "jqQuery"
-            ]
-        },
         "port:index/ActionUserPropertiesArrayPropsNumberItems:ActionUserPropertiesArrayPropsNumberItems": {
             "properties": {
                 "defaults": {
@@ -523,6 +463,10 @@
                     "type": "string",
                     "description": "The blueprint identifier the property relates to\n"
                 },
+                "dataset": {
+                    "type": "string",
+                    "description": "The dataset of an the entity-format items\n"
+                },
                 "defaults": {
                     "type": "array",
                     "items": {
@@ -550,10 +494,6 @@
         },
         "port:index/ActionUserPropertiesBooleanProps:ActionUserPropertiesBooleanProps": {
             "properties": {
-                "dataset": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesBooleanPropsDataset:ActionUserPropertiesBooleanPropsDataset",
-                    "description": "The dataset of the property\n"
-                },
                 "default": {
                     "type": "boolean",
                     "description": "The default of the boolean property\n"
@@ -596,68 +536,8 @@
             },
             "type": "object"
         },
-        "port:index/ActionUserPropertiesBooleanPropsDataset:ActionUserPropertiesBooleanPropsDataset": {
-            "properties": {
-                "combinator": {
-                    "type": "string",
-                    "description": "The combinator of the dataset\n"
-                },
-                "rules": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/port:index/ActionUserPropertiesBooleanPropsDatasetRule:ActionUserPropertiesBooleanPropsDatasetRule"
-                    },
-                    "description": "The rules of the dataset\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "combinator",
-                "rules"
-            ]
-        },
-        "port:index/ActionUserPropertiesBooleanPropsDatasetRule:ActionUserPropertiesBooleanPropsDatasetRule": {
-            "properties": {
-                "blueprint": {
-                    "type": "string",
-                    "description": "The blueprint identifier of the rule\n"
-                },
-                "operator": {
-                    "type": "string",
-                    "description": "The operator of the rule\n"
-                },
-                "property": {
-                    "type": "string",
-                    "description": "The property identifier of the rule\n"
-                },
-                "value": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesBooleanPropsDatasetRuleValue:ActionUserPropertiesBooleanPropsDatasetRuleValue",
-                    "description": "The value of the rule\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "operator",
-                "value"
-            ]
-        },
-        "port:index/ActionUserPropertiesBooleanPropsDatasetRuleValue:ActionUserPropertiesBooleanPropsDatasetRuleValue": {
-            "properties": {
-                "jqQuery": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "jqQuery"
-            ]
-        },
         "port:index/ActionUserPropertiesNumberProps:ActionUserPropertiesNumberProps": {
             "properties": {
-                "dataset": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesNumberPropsDataset:ActionUserPropertiesNumberPropsDataset",
-                    "description": "The dataset of the property\n"
-                },
                 "default": {
                     "type": "number",
                     "description": "The default of the number property\n"
@@ -719,68 +599,8 @@
             },
             "type": "object"
         },
-        "port:index/ActionUserPropertiesNumberPropsDataset:ActionUserPropertiesNumberPropsDataset": {
-            "properties": {
-                "combinator": {
-                    "type": "string",
-                    "description": "The combinator of the dataset\n"
-                },
-                "rules": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/port:index/ActionUserPropertiesNumberPropsDatasetRule:ActionUserPropertiesNumberPropsDatasetRule"
-                    },
-                    "description": "The rules of the dataset\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "combinator",
-                "rules"
-            ]
-        },
-        "port:index/ActionUserPropertiesNumberPropsDatasetRule:ActionUserPropertiesNumberPropsDatasetRule": {
-            "properties": {
-                "blueprint": {
-                    "type": "string",
-                    "description": "The blueprint identifier of the rule\n"
-                },
-                "operator": {
-                    "type": "string",
-                    "description": "The operator of the rule\n"
-                },
-                "property": {
-                    "type": "string",
-                    "description": "The property identifier of the rule\n"
-                },
-                "value": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesNumberPropsDatasetRuleValue:ActionUserPropertiesNumberPropsDatasetRuleValue",
-                    "description": "The value of the rule\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "operator",
-                "value"
-            ]
-        },
-        "port:index/ActionUserPropertiesNumberPropsDatasetRuleValue:ActionUserPropertiesNumberPropsDatasetRuleValue": {
-            "properties": {
-                "jqQuery": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "jqQuery"
-            ]
-        },
         "port:index/ActionUserPropertiesObjectProps:ActionUserPropertiesObjectProps": {
             "properties": {
-                "dataset": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesObjectPropsDataset:ActionUserPropertiesObjectPropsDataset",
-                    "description": "The dataset of the property\n"
-                },
                 "default": {
                     "type": "string",
                     "description": "The default of the object property\n"
@@ -827,62 +647,6 @@
             },
             "type": "object"
         },
-        "port:index/ActionUserPropertiesObjectPropsDataset:ActionUserPropertiesObjectPropsDataset": {
-            "properties": {
-                "combinator": {
-                    "type": "string",
-                    "description": "The combinator of the dataset\n"
-                },
-                "rules": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/port:index/ActionUserPropertiesObjectPropsDatasetRule:ActionUserPropertiesObjectPropsDatasetRule"
-                    },
-                    "description": "The rules of the dataset\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "combinator",
-                "rules"
-            ]
-        },
-        "port:index/ActionUserPropertiesObjectPropsDatasetRule:ActionUserPropertiesObjectPropsDatasetRule": {
-            "properties": {
-                "blueprint": {
-                    "type": "string",
-                    "description": "The blueprint identifier of the rule\n"
-                },
-                "operator": {
-                    "type": "string",
-                    "description": "The operator of the rule\n"
-                },
-                "property": {
-                    "type": "string",
-                    "description": "The property identifier of the rule\n"
-                },
-                "value": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesObjectPropsDatasetRuleValue:ActionUserPropertiesObjectPropsDatasetRuleValue",
-                    "description": "The value of the rule\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "operator",
-                "value"
-            ]
-        },
-        "port:index/ActionUserPropertiesObjectPropsDatasetRuleValue:ActionUserPropertiesObjectPropsDatasetRuleValue": {
-            "properties": {
-                "jqQuery": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "jqQuery"
-            ]
-        },
         "port:index/ActionUserPropertiesStringProps:ActionUserPropertiesStringProps": {
             "properties": {
                 "blueprint": {
@@ -891,7 +655,7 @@
                 },
                 "dataset": {
                     "$ref": "#/types/port:index/ActionUserPropertiesStringPropsDataset:ActionUserPropertiesStringPropsDataset",
-                    "description": "The dataset of the property\n"
+                    "description": "The dataset of an the entity-format property\n"
                 },
                 "default": {
                     "type": "string",
