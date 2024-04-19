@@ -1,6 +1,6 @@
 # Port Resource Provider
 
-![Port](./img/port.svg)
+<img src="img/port.svg" width="300px">
 
 The Port Resource Provider lets you manage [Port](https://www.getport.io) resources.
 
