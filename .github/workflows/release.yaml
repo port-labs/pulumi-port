@@ -122,7 +122,7 @@ jobs:
           - python
           - go
         nodeversion:
-          - 16.x
+          - 18.x
         pythonversion:
           - "3.9"
         goversion:
