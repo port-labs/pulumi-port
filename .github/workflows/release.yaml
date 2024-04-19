@@ -119,7 +119,7 @@ jobs:
       matrix:
         language:
           - nodejs
-          - python
+          #- python
           - go
         nodeversion:
           - 18.x
