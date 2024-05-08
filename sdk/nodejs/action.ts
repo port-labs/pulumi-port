@@ -43,23 +43,25 @@ export class Action extends pulumi.CustomResource {
      */
     public readonly approvalWebhookNotification!: pulumi.Output<outputs.ActionApprovalWebhookNotification | undefined>;
     /**
-     * The invocation method of the action
+     * Azure DevOps invocation method
      */
     public readonly azureMethod!: pulumi.Output<outputs.ActionAzureMethod | undefined>;
     /**
      * The blueprint identifier the action relates to
+     *
+     * @deprecated Action is not attached to blueprint anymore. This value is ignored
      */
-    public readonly blueprint!: pulumi.Output<string>;
+    public readonly blueprint!: pulumi.Output<string | undefined>;
     /**
      * Description
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The invocation method of the action
+     * GitHub invocation method
      */
     public readonly githubMethod!: pulumi.Output<outputs.ActionGithubMethod | undefined>;
     /**
-     * The invocation method of the action
+     * Gitlab invocation method
      */
     public readonly gitlabMethod!: pulumi.Output<outputs.ActionGitlabMethod | undefined>;
     /**
@@ -71,35 +73,27 @@ export class Action extends pulumi.CustomResource {
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
-     * The invocation method of the action
+     * Kafka invocation method
      */
     public readonly kafkaMethod!: pulumi.Output<outputs.ActionKafkaMethod | undefined>;
     /**
-     * Order properties
+     * Publish action
      */
-    public readonly orderProperties!: pulumi.Output<string[] | undefined>;
+    public readonly publish!: pulumi.Output<boolean>;
     /**
      * Require approval before invoking the action
      */
     public readonly requiredApproval!: pulumi.Output<boolean | undefined>;
     /**
-     * The required jq query of the property
+     * Self service trigger for the action
      */
-    public readonly requiredJqQuery!: pulumi.Output<string | undefined>;
+    public readonly selfServiceTrigger!: pulumi.Output<outputs.ActionSelfServiceTrigger | undefined>;
     /**
      * Title
      */
-    public readonly title!: pulumi.Output<string>;
+    public readonly title!: pulumi.Output<string | undefined>;
     /**
-     * The trigger type of the action
-     */
-    public readonly trigger!: pulumi.Output<string>;
-    /**
-     * User properties
-     */
-    public readonly userProperties!: pulumi.Output<outputs.ActionUserProperties | undefined>;
-    /**
-     * The invocation method of the action
+     * Webhook invocation method
      */
     public readonly webhookMethod!: pulumi.Output<outputs.ActionWebhookMethod | undefined>;
 
@@ -126,26 +120,15 @@ export class Action extends pulumi.CustomResource {
             resourceInputs["icon"] = state ? state.icon : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["kafkaMethod"] = state ? state.kafkaMethod : undefined;
-            resourceInputs["orderProperties"] = state ? state.orderProperties : undefined;
+            resourceInputs["publish"] = state ? state.publish : undefined;
             resourceInputs["requiredApproval"] = state ? state.requiredApproval : undefined;
-            resourceInputs["requiredJqQuery"] = state ? state.requiredJqQuery : undefined;
+            resourceInputs["selfServiceTrigger"] = state ? state.selfServiceTrigger : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
-            resourceInputs["trigger"] = state ? state.trigger : undefined;
-            resourceInputs["userProperties"] = state ? state.userProperties : undefined;
             resourceInputs["webhookMethod"] = state ? state.webhookMethod : undefined;
         } else {
             const args = argsOrState as ActionArgs | undefined;
-            if ((!args || args.blueprint === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'blueprint'");
-            }
             if ((!args || args.identifier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
-            }
-            if ((!args || args.title === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'title'");
-            }
-            if ((!args || args.trigger === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'trigger'");
             }
             resourceInputs["approvalEmailNotification"] = args ? args.approvalEmailNotification : undefined;
             resourceInputs["approvalWebhookNotification"] = args ? args.approvalWebhookNotification : undefined;
@@ -157,12 +140,10 @@ export class Action extends pulumi.CustomResource {
             resourceInputs["icon"] = args ? args.icon : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["kafkaMethod"] = args ? args.kafkaMethod : undefined;
-            resourceInputs["orderProperties"] = args ? args.orderProperties : undefined;
+            resourceInputs["publish"] = args ? args.publish : undefined;
             resourceInputs["requiredApproval"] = args ? args.requiredApproval : undefined;
-            resourceInputs["requiredJqQuery"] = args ? args.requiredJqQuery : undefined;
+            resourceInputs["selfServiceTrigger"] = args ? args.selfServiceTrigger : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
-            resourceInputs["trigger"] = args ? args.trigger : undefined;
-            resourceInputs["userProperties"] = args ? args.userProperties : undefined;
             resourceInputs["webhookMethod"] = args ? args.webhookMethod : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -183,11 +164,13 @@ export interface ActionState {
      */
     approvalWebhookNotification?: pulumi.Input<inputs.ActionApprovalWebhookNotification>;
     /**
-     * The invocation method of the action
+     * Azure DevOps invocation method
      */
     azureMethod?: pulumi.Input<inputs.ActionAzureMethod>;
     /**
      * The blueprint identifier the action relates to
+     *
+     * @deprecated Action is not attached to blueprint anymore. This value is ignored
      */
     blueprint?: pulumi.Input<string>;
     /**
@@ -195,11 +178,11 @@ export interface ActionState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The invocation method of the action
+     * GitHub invocation method
      */
     githubMethod?: pulumi.Input<inputs.ActionGithubMethod>;
     /**
-     * The invocation method of the action
+     * Gitlab invocation method
      */
     gitlabMethod?: pulumi.Input<inputs.ActionGitlabMethod>;
     /**
@@ -211,35 +194,27 @@ export interface ActionState {
      */
     identifier?: pulumi.Input<string>;
     /**
-     * The invocation method of the action
+     * Kafka invocation method
      */
     kafkaMethod?: pulumi.Input<inputs.ActionKafkaMethod>;
     /**
-     * Order properties
+     * Publish action
      */
-    orderProperties?: pulumi.Input<pulumi.Input<string>[]>;
+    publish?: pulumi.Input<boolean>;
     /**
      * Require approval before invoking the action
      */
     requiredApproval?: pulumi.Input<boolean>;
     /**
-     * The required jq query of the property
+     * Self service trigger for the action
      */
-    requiredJqQuery?: pulumi.Input<string>;
+    selfServiceTrigger?: pulumi.Input<inputs.ActionSelfServiceTrigger>;
     /**
      * Title
      */
     title?: pulumi.Input<string>;
     /**
-     * The trigger type of the action
-     */
-    trigger?: pulumi.Input<string>;
-    /**
-     * User properties
-     */
-    userProperties?: pulumi.Input<inputs.ActionUserProperties>;
-    /**
-     * The invocation method of the action
+     * Webhook invocation method
      */
     webhookMethod?: pulumi.Input<inputs.ActionWebhookMethod>;
 }
@@ -257,23 +232,25 @@ export interface ActionArgs {
      */
     approvalWebhookNotification?: pulumi.Input<inputs.ActionApprovalWebhookNotification>;
     /**
-     * The invocation method of the action
+     * Azure DevOps invocation method
      */
     azureMethod?: pulumi.Input<inputs.ActionAzureMethod>;
     /**
      * The blueprint identifier the action relates to
+     *
+     * @deprecated Action is not attached to blueprint anymore. This value is ignored
      */
-    blueprint: pulumi.Input<string>;
+    blueprint?: pulumi.Input<string>;
     /**
      * Description
      */
     description?: pulumi.Input<string>;
     /**
-     * The invocation method of the action
+     * GitHub invocation method
      */
     githubMethod?: pulumi.Input<inputs.ActionGithubMethod>;
     /**
-     * The invocation method of the action
+     * Gitlab invocation method
      */
     gitlabMethod?: pulumi.Input<inputs.ActionGitlabMethod>;
     /**
@@ -285,35 +262,27 @@ export interface ActionArgs {
      */
     identifier: pulumi.Input<string>;
     /**
-     * The invocation method of the action
+     * Kafka invocation method
      */
     kafkaMethod?: pulumi.Input<inputs.ActionKafkaMethod>;
     /**
-     * Order properties
+     * Publish action
      */
-    orderProperties?: pulumi.Input<pulumi.Input<string>[]>;
+    publish?: pulumi.Input<boolean>;
     /**
      * Require approval before invoking the action
      */
     requiredApproval?: pulumi.Input<boolean>;
     /**
-     * The required jq query of the property
+     * Self service trigger for the action
      */
-    requiredJqQuery?: pulumi.Input<string>;
+    selfServiceTrigger?: pulumi.Input<inputs.ActionSelfServiceTrigger>;
     /**
      * Title
      */
-    title: pulumi.Input<string>;
+    title?: pulumi.Input<string>;
     /**
-     * The trigger type of the action
-     */
-    trigger: pulumi.Input<string>;
-    /**
-     * User properties
-     */
-    userProperties?: pulumi.Input<inputs.ActionUserProperties>;
-    /**
-     * The invocation method of the action
+     * Webhook invocation method
      */
     webhookMethod?: pulumi.Input<inputs.ActionWebhookMethod>;
 }
