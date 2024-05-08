@@ -25,20 +25,16 @@ export interface ActionAzureMethod {
      */
     org: pulumi.Input<string>;
     /**
+     * The Azure Devops workflow payload (array or object encoded to a string)
+     */
+    payload?: pulumi.Input<string>;
+    /**
      * Required when selecting type AZURE. The Azure webhook that the workflow belongs to
      */
     webhook: pulumi.Input<string>;
 }
 
 export interface ActionGithubMethod {
-    /**
-     * Omit the payload when invoking the action
-     */
-    omitPayload?: pulumi.Input<boolean>;
-    /**
-     * Omit the user inputs when invoking the action
-     */
-    omitUserInputs?: pulumi.Input<boolean>;
     /**
      * Required when selecting type GITHUB. The GitHub org that the workflow belongs to
      */
@@ -50,18 +46,18 @@ export interface ActionGithubMethod {
     /**
      * Report the workflow status when invoking the action
      */
-    reportWorkflowStatus?: pulumi.Input<boolean>;
+    reportWorkflowStatus?: pulumi.Input<string>;
     /**
      * The GitHub workflow that the action belongs to
      */
     workflow: pulumi.Input<string>;
+    /**
+     * The GitHub workflow inputs (key-value object encoded to a string)
+     */
+    workflowInputs?: pulumi.Input<string>;
 }
 
 export interface ActionGitlabMethod {
-    /**
-     * Use the agent to invoke the action
-     */
-    agent?: pulumi.Input<boolean>;
     /**
      * The default ref of the action
      */
@@ -71,13 +67,9 @@ export interface ActionGitlabMethod {
      */
     groupName: pulumi.Input<string>;
     /**
-     * Omit the payload when invoking the action
+     * The Gitlab pipeline variables (key-value object encoded to a string)
      */
-    omitPayload?: pulumi.Input<boolean>;
-    /**
-     * Omit the user inputs when invoking the action
-     */
-    omitUserInputs?: pulumi.Input<boolean>;
+    pipelineVariables?: pulumi.Input<string>;
     /**
      * Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
      */
@@ -85,6 +77,10 @@ export interface ActionGitlabMethod {
 }
 
 export interface ActionKafkaMethod {
+    /**
+     * The Kafka message payload (array or object encoded to a string)
+     */
+    payload?: pulumi.Input<string>;
 }
 
 export interface ActionPermissionsPermissions {
@@ -140,34 +136,57 @@ export interface ActionPermissionsPermissionsExecute {
     users?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface ActionUserProperties {
+export interface ActionSelfServiceTrigger {
+    /**
+     * The ID of the blueprint
+     */
+    blueprintIdentifier?: pulumi.Input<string>;
+    /**
+     * The operation type of the action
+     */
+    operation: pulumi.Input<string>;
+    /**
+     * Order properties
+     */
+    orderProperties?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The required jq query of the property
+     */
+    requiredJqQuery?: pulumi.Input<string>;
+    /**
+     * User properties
+     */
+    userProperties?: pulumi.Input<inputs.ActionSelfServiceTriggerUserProperties>;
+}
+
+export interface ActionSelfServiceTriggerUserProperties {
     /**
      * The array property of the action
      */
-    arrayProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionUserPropertiesArrayProps>}>;
+    arrayProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesArrayProps>}>;
     /**
      * The boolean property of the action
      */
-    booleanProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionUserPropertiesBooleanProps>}>;
+    booleanProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesBooleanProps>}>;
     /**
      * The number property of the action
      */
-    numberProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionUserPropertiesNumberProps>}>;
+    numberProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesNumberProps>}>;
     /**
      * The object property of the action
      */
-    objectProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionUserPropertiesObjectProps>}>;
+    objectProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesObjectProps>}>;
     /**
      * The string property of the action
      */
-    stringProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionUserPropertiesStringProps>}>;
+    stringProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringProps>}>;
 }
 
-export interface ActionUserPropertiesArrayProps {
+export interface ActionSelfServiceTriggerUserPropertiesArrayProps {
     /**
      * The items of the array property
      */
-    booleanItems?: pulumi.Input<inputs.ActionUserPropertiesArrayPropsBooleanItems>;
+    booleanItems?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems>;
     /**
      * The default jq query of the array property
      */
@@ -195,11 +214,11 @@ export interface ActionUserPropertiesArrayProps {
     /**
      * The items of the array property
      */
-    numberItems?: pulumi.Input<inputs.ActionUserPropertiesArrayPropsNumberItems>;
+    numberItems?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems>;
     /**
      * The items of the array property
      */
-    objectItems?: pulumi.Input<inputs.ActionUserPropertiesArrayPropsObjectItems>;
+    objectItems?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems>;
     /**
      * Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
      */
@@ -207,7 +226,7 @@ export interface ActionUserPropertiesArrayProps {
     /**
      * The items of the array property
      */
-    stringItems?: pulumi.Input<inputs.ActionUserPropertiesArrayPropsStringItems>;
+    stringItems?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems>;
     /**
      * The title of the property
      */
@@ -222,14 +241,14 @@ export interface ActionUserPropertiesArrayProps {
     visibleJqQuery?: pulumi.Input<string>;
 }
 
-export interface ActionUserPropertiesArrayPropsBooleanItems {
+export interface ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems {
     /**
      * The default of the items
      */
     defaults?: pulumi.Input<pulumi.Input<boolean>[]>;
 }
 
-export interface ActionUserPropertiesArrayPropsNumberItems {
+export interface ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems {
     /**
      * The default of the items
      */
@@ -244,14 +263,14 @@ export interface ActionUserPropertiesArrayPropsNumberItems {
     enums?: pulumi.Input<pulumi.Input<number>[]>;
 }
 
-export interface ActionUserPropertiesArrayPropsObjectItems {
+export interface ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems {
     /**
      * The default of the items
      */
     defaults?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
 }
 
-export interface ActionUserPropertiesArrayPropsStringItems {
+export interface ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems {
     /**
      * The blueprint identifier the property relates to
      */
@@ -278,7 +297,7 @@ export interface ActionUserPropertiesArrayPropsStringItems {
     format?: pulumi.Input<string>;
 }
 
-export interface ActionUserPropertiesBooleanProps {
+export interface ActionSelfServiceTriggerUserPropertiesBooleanProps {
     /**
      * The default of the boolean property
      */
@@ -317,7 +336,7 @@ export interface ActionUserPropertiesBooleanProps {
     visibleJqQuery?: pulumi.Input<string>;
 }
 
-export interface ActionUserPropertiesNumberProps {
+export interface ActionSelfServiceTriggerUserPropertiesNumberProps {
     /**
      * The default of the number property
      */
@@ -372,7 +391,7 @@ export interface ActionUserPropertiesNumberProps {
     visibleJqQuery?: pulumi.Input<string>;
 }
 
-export interface ActionUserPropertiesObjectProps {
+export interface ActionSelfServiceTriggerUserPropertiesObjectProps {
     /**
      * The default of the object property
      */
@@ -415,7 +434,7 @@ export interface ActionUserPropertiesObjectProps {
     visibleJqQuery?: pulumi.Input<string>;
 }
 
-export interface ActionUserPropertiesStringProps {
+export interface ActionSelfServiceTriggerUserPropertiesStringProps {
     /**
      * The blueprint identifier the string property relates to
      */
@@ -423,7 +442,7 @@ export interface ActionUserPropertiesStringProps {
     /**
      * The dataset of an the entity-format property
      */
-    dataset?: pulumi.Input<inputs.ActionUserPropertiesStringPropsDataset>;
+    dataset?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDataset>;
     /**
      * The default of the string property
      */
@@ -490,7 +509,7 @@ export interface ActionUserPropertiesStringProps {
     visibleJqQuery?: pulumi.Input<string>;
 }
 
-export interface ActionUserPropertiesStringPropsDataset {
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDataset {
     /**
      * The combinator of the dataset
      */
@@ -498,10 +517,10 @@ export interface ActionUserPropertiesStringPropsDataset {
     /**
      * The rules of the dataset
      */
-    rules: pulumi.Input<pulumi.Input<inputs.ActionUserPropertiesStringPropsDatasetRule>[]>;
+    rules: pulumi.Input<pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule>[]>;
 }
 
-export interface ActionUserPropertiesStringPropsDatasetRule {
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule {
     /**
      * The blueprint identifier of the rule
      */
@@ -517,10 +536,10 @@ export interface ActionUserPropertiesStringPropsDatasetRule {
     /**
      * The value of the rule
      */
-    value: pulumi.Input<inputs.ActionUserPropertiesStringPropsDatasetRuleValue>;
+    value: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue>;
 }
 
-export interface ActionUserPropertiesStringPropsDatasetRuleValue {
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue {
     jqQuery: pulumi.Input<string>;
 }
 
@@ -528,7 +547,15 @@ export interface ActionWebhookMethod {
     /**
      * Use the agent to invoke the action
      */
-    agent?: pulumi.Input<boolean>;
+    agent?: pulumi.Input<string>;
+    /**
+     * The Webhook body (array or object encoded to a string)
+     */
+    body?: pulumi.Input<string>;
+    /**
+     * The HTTP method to invoke the action
+     */
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The HTTP method to invoke the action
      */
@@ -536,7 +563,7 @@ export interface ActionWebhookMethod {
     /**
      * Synchronize the action
      */
-    synchronized?: pulumi.Input<boolean>;
+    synchronized?: pulumi.Input<string>;
     /**
      * Required when selecting type WEBHOOK. The URL to invoke the action
      */

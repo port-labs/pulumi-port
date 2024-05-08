@@ -290,6 +290,8 @@ func (o ActionApprovalWebhookNotificationPtrOutput) Url() pulumi.StringPtrOutput
 type ActionAzureMethod struct {
 	// Required when selecting type AZURE. The Azure org that the workflow belongs to
 	Org string `pulumi:"org"`
+	// The Azure Devops workflow payload (array or object encoded to a string)
+	Payload *string `pulumi:"payload"`
 	// Required when selecting type AZURE. The Azure webhook that the workflow belongs to
 	Webhook string `pulumi:"webhook"`
 }
@@ -308,6 +310,8 @@ type ActionAzureMethodInput interface {
 type ActionAzureMethodArgs struct {
 	// Required when selecting type AZURE. The Azure org that the workflow belongs to
 	Org pulumi.StringInput `pulumi:"org"`
+	// The Azure Devops workflow payload (array or object encoded to a string)
+	Payload pulumi.StringPtrInput `pulumi:"payload"`
 	// Required when selecting type AZURE. The Azure webhook that the workflow belongs to
 	Webhook pulumi.StringInput `pulumi:"webhook"`
 }
@@ -394,6 +398,11 @@ func (o ActionAzureMethodOutput) Org() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionAzureMethod) string { return v.Org }).(pulumi.StringOutput)
 }
 
+// The Azure Devops workflow payload (array or object encoded to a string)
+func (o ActionAzureMethodOutput) Payload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionAzureMethod) *string { return v.Payload }).(pulumi.StringPtrOutput)
+}
+
 // Required when selecting type AZURE. The Azure webhook that the workflow belongs to
 func (o ActionAzureMethodOutput) Webhook() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionAzureMethod) string { return v.Webhook }).(pulumi.StringOutput)
@@ -433,6 +442,16 @@ func (o ActionAzureMethodPtrOutput) Org() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Azure Devops workflow payload (array or object encoded to a string)
+func (o ActionAzureMethodPtrOutput) Payload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionAzureMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Payload
+	}).(pulumi.StringPtrOutput)
+}
+
 // Required when selecting type AZURE. The Azure webhook that the workflow belongs to
 func (o ActionAzureMethodPtrOutput) Webhook() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionAzureMethod) *string {
@@ -444,18 +463,16 @@ func (o ActionAzureMethodPtrOutput) Webhook() pulumi.StringPtrOutput {
 }
 
 type ActionGithubMethod struct {
-	// Omit the payload when invoking the action
-	OmitPayload *bool `pulumi:"omitPayload"`
-	// Omit the user inputs when invoking the action
-	OmitUserInputs *bool `pulumi:"omitUserInputs"`
 	// Required when selecting type GITHUB. The GitHub org that the workflow belongs to
 	Org string `pulumi:"org"`
 	// Required when selecting type GITHUB. The GitHub repo that the workflow belongs to
 	Repo string `pulumi:"repo"`
 	// Report the workflow status when invoking the action
-	ReportWorkflowStatus *bool `pulumi:"reportWorkflowStatus"`
+	ReportWorkflowStatus *string `pulumi:"reportWorkflowStatus"`
 	// The GitHub workflow that the action belongs to
 	Workflow string `pulumi:"workflow"`
+	// The GitHub workflow inputs (key-value object encoded to a string)
+	WorkflowInputs *string `pulumi:"workflowInputs"`
 }
 
 // ActionGithubMethodInput is an input type that accepts ActionGithubMethodArgs and ActionGithubMethodOutput values.
@@ -470,18 +487,16 @@ type ActionGithubMethodInput interface {
 }
 
 type ActionGithubMethodArgs struct {
-	// Omit the payload when invoking the action
-	OmitPayload pulumi.BoolPtrInput `pulumi:"omitPayload"`
-	// Omit the user inputs when invoking the action
-	OmitUserInputs pulumi.BoolPtrInput `pulumi:"omitUserInputs"`
 	// Required when selecting type GITHUB. The GitHub org that the workflow belongs to
 	Org pulumi.StringInput `pulumi:"org"`
 	// Required when selecting type GITHUB. The GitHub repo that the workflow belongs to
 	Repo pulumi.StringInput `pulumi:"repo"`
 	// Report the workflow status when invoking the action
-	ReportWorkflowStatus pulumi.BoolPtrInput `pulumi:"reportWorkflowStatus"`
+	ReportWorkflowStatus pulumi.StringPtrInput `pulumi:"reportWorkflowStatus"`
 	// The GitHub workflow that the action belongs to
 	Workflow pulumi.StringInput `pulumi:"workflow"`
+	// The GitHub workflow inputs (key-value object encoded to a string)
+	WorkflowInputs pulumi.StringPtrInput `pulumi:"workflowInputs"`
 }
 
 func (ActionGithubMethodArgs) ElementType() reflect.Type {
@@ -561,16 +576,6 @@ func (o ActionGithubMethodOutput) ToActionGithubMethodPtrOutputWithContext(ctx c
 	}).(ActionGithubMethodPtrOutput)
 }
 
-// Omit the payload when invoking the action
-func (o ActionGithubMethodOutput) OmitPayload() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionGithubMethod) *bool { return v.OmitPayload }).(pulumi.BoolPtrOutput)
-}
-
-// Omit the user inputs when invoking the action
-func (o ActionGithubMethodOutput) OmitUserInputs() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionGithubMethod) *bool { return v.OmitUserInputs }).(pulumi.BoolPtrOutput)
-}
-
 // Required when selecting type GITHUB. The GitHub org that the workflow belongs to
 func (o ActionGithubMethodOutput) Org() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionGithubMethod) string { return v.Org }).(pulumi.StringOutput)
@@ -582,13 +587,18 @@ func (o ActionGithubMethodOutput) Repo() pulumi.StringOutput {
 }
 
 // Report the workflow status when invoking the action
-func (o ActionGithubMethodOutput) ReportWorkflowStatus() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionGithubMethod) *bool { return v.ReportWorkflowStatus }).(pulumi.BoolPtrOutput)
+func (o ActionGithubMethodOutput) ReportWorkflowStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionGithubMethod) *string { return v.ReportWorkflowStatus }).(pulumi.StringPtrOutput)
 }
 
 // The GitHub workflow that the action belongs to
 func (o ActionGithubMethodOutput) Workflow() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionGithubMethod) string { return v.Workflow }).(pulumi.StringOutput)
+}
+
+// The GitHub workflow inputs (key-value object encoded to a string)
+func (o ActionGithubMethodOutput) WorkflowInputs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionGithubMethod) *string { return v.WorkflowInputs }).(pulumi.StringPtrOutput)
 }
 
 type ActionGithubMethodPtrOutput struct{ *pulumi.OutputState }
@@ -615,26 +625,6 @@ func (o ActionGithubMethodPtrOutput) Elem() ActionGithubMethodOutput {
 	}).(ActionGithubMethodOutput)
 }
 
-// Omit the payload when invoking the action
-func (o ActionGithubMethodPtrOutput) OmitPayload() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ActionGithubMethod) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.OmitPayload
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Omit the user inputs when invoking the action
-func (o ActionGithubMethodPtrOutput) OmitUserInputs() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ActionGithubMethod) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.OmitUserInputs
-	}).(pulumi.BoolPtrOutput)
-}
-
 // Required when selecting type GITHUB. The GitHub org that the workflow belongs to
 func (o ActionGithubMethodPtrOutput) Org() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionGithubMethod) *string {
@@ -656,13 +646,13 @@ func (o ActionGithubMethodPtrOutput) Repo() pulumi.StringPtrOutput {
 }
 
 // Report the workflow status when invoking the action
-func (o ActionGithubMethodPtrOutput) ReportWorkflowStatus() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ActionGithubMethod) *bool {
+func (o ActionGithubMethodPtrOutput) ReportWorkflowStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionGithubMethod) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ReportWorkflowStatus
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 // The GitHub workflow that the action belongs to
@@ -675,17 +665,23 @@ func (o ActionGithubMethodPtrOutput) Workflow() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The GitHub workflow inputs (key-value object encoded to a string)
+func (o ActionGithubMethodPtrOutput) WorkflowInputs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionGithubMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkflowInputs
+	}).(pulumi.StringPtrOutput)
+}
+
 type ActionGitlabMethod struct {
-	// Use the agent to invoke the action
-	Agent *bool `pulumi:"agent"`
 	// The default ref of the action
 	DefaultRef *string `pulumi:"defaultRef"`
 	// Required when selecting type GITLAB. The GitLab group name that the workflow belongs to
 	GroupName string `pulumi:"groupName"`
-	// Omit the payload when invoking the action
-	OmitPayload *bool `pulumi:"omitPayload"`
-	// Omit the user inputs when invoking the action
-	OmitUserInputs *bool `pulumi:"omitUserInputs"`
+	// The Gitlab pipeline variables (key-value object encoded to a string)
+	PipelineVariables *string `pulumi:"pipelineVariables"`
 	// Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
 	ProjectName string `pulumi:"projectName"`
 }
@@ -702,16 +698,12 @@ type ActionGitlabMethodInput interface {
 }
 
 type ActionGitlabMethodArgs struct {
-	// Use the agent to invoke the action
-	Agent pulumi.BoolPtrInput `pulumi:"agent"`
 	// The default ref of the action
 	DefaultRef pulumi.StringPtrInput `pulumi:"defaultRef"`
 	// Required when selecting type GITLAB. The GitLab group name that the workflow belongs to
 	GroupName pulumi.StringInput `pulumi:"groupName"`
-	// Omit the payload when invoking the action
-	OmitPayload pulumi.BoolPtrInput `pulumi:"omitPayload"`
-	// Omit the user inputs when invoking the action
-	OmitUserInputs pulumi.BoolPtrInput `pulumi:"omitUserInputs"`
+	// The Gitlab pipeline variables (key-value object encoded to a string)
+	PipelineVariables pulumi.StringPtrInput `pulumi:"pipelineVariables"`
 	// Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
 }
@@ -793,11 +785,6 @@ func (o ActionGitlabMethodOutput) ToActionGitlabMethodPtrOutputWithContext(ctx c
 	}).(ActionGitlabMethodPtrOutput)
 }
 
-// Use the agent to invoke the action
-func (o ActionGitlabMethodOutput) Agent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionGitlabMethod) *bool { return v.Agent }).(pulumi.BoolPtrOutput)
-}
-
 // The default ref of the action
 func (o ActionGitlabMethodOutput) DefaultRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionGitlabMethod) *string { return v.DefaultRef }).(pulumi.StringPtrOutput)
@@ -808,14 +795,9 @@ func (o ActionGitlabMethodOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionGitlabMethod) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
-// Omit the payload when invoking the action
-func (o ActionGitlabMethodOutput) OmitPayload() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionGitlabMethod) *bool { return v.OmitPayload }).(pulumi.BoolPtrOutput)
-}
-
-// Omit the user inputs when invoking the action
-func (o ActionGitlabMethodOutput) OmitUserInputs() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionGitlabMethod) *bool { return v.OmitUserInputs }).(pulumi.BoolPtrOutput)
+// The Gitlab pipeline variables (key-value object encoded to a string)
+func (o ActionGitlabMethodOutput) PipelineVariables() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionGitlabMethod) *string { return v.PipelineVariables }).(pulumi.StringPtrOutput)
 }
 
 // Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
@@ -847,16 +829,6 @@ func (o ActionGitlabMethodPtrOutput) Elem() ActionGitlabMethodOutput {
 	}).(ActionGitlabMethodOutput)
 }
 
-// Use the agent to invoke the action
-func (o ActionGitlabMethodPtrOutput) Agent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ActionGitlabMethod) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Agent
-	}).(pulumi.BoolPtrOutput)
-}
-
 // The default ref of the action
 func (o ActionGitlabMethodPtrOutput) DefaultRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionGitlabMethod) *string {
@@ -877,24 +849,14 @@ func (o ActionGitlabMethodPtrOutput) GroupName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Omit the payload when invoking the action
-func (o ActionGitlabMethodPtrOutput) OmitPayload() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ActionGitlabMethod) *bool {
+// The Gitlab pipeline variables (key-value object encoded to a string)
+func (o ActionGitlabMethodPtrOutput) PipelineVariables() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionGitlabMethod) *string {
 		if v == nil {
 			return nil
 		}
-		return v.OmitPayload
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Omit the user inputs when invoking the action
-func (o ActionGitlabMethodPtrOutput) OmitUserInputs() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ActionGitlabMethod) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.OmitUserInputs
-	}).(pulumi.BoolPtrOutput)
+		return v.PipelineVariables
+	}).(pulumi.StringPtrOutput)
 }
 
 // Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
@@ -908,6 +870,8 @@ func (o ActionGitlabMethodPtrOutput) ProjectName() pulumi.StringPtrOutput {
 }
 
 type ActionKafkaMethod struct {
+	// The Kafka message payload (array or object encoded to a string)
+	Payload *string `pulumi:"payload"`
 }
 
 // ActionKafkaMethodInput is an input type that accepts ActionKafkaMethodArgs and ActionKafkaMethodOutput values.
@@ -922,6 +886,8 @@ type ActionKafkaMethodInput interface {
 }
 
 type ActionKafkaMethodArgs struct {
+	// The Kafka message payload (array or object encoded to a string)
+	Payload pulumi.StringPtrInput `pulumi:"payload"`
 }
 
 func (ActionKafkaMethodArgs) ElementType() reflect.Type {
@@ -1001,6 +967,11 @@ func (o ActionKafkaMethodOutput) ToActionKafkaMethodPtrOutputWithContext(ctx con
 	}).(ActionKafkaMethodPtrOutput)
 }
 
+// The Kafka message payload (array or object encoded to a string)
+func (o ActionKafkaMethodOutput) Payload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionKafkaMethod) *string { return v.Payload }).(pulumi.StringPtrOutput)
+}
+
 type ActionKafkaMethodPtrOutput struct{ *pulumi.OutputState }
 
 func (ActionKafkaMethodPtrOutput) ElementType() reflect.Type {
@@ -1023,6 +994,16 @@ func (o ActionKafkaMethodPtrOutput) Elem() ActionKafkaMethodOutput {
 		var ret ActionKafkaMethod
 		return ret
 	}).(ActionKafkaMethodOutput)
+}
+
+// The Kafka message payload (array or object encoded to a string)
+func (o ActionKafkaMethodPtrOutput) Payload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionKafkaMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Payload
+	}).(pulumi.StringPtrOutput)
 }
 
 type ActionPermissionsPermissions struct {
@@ -1588,222 +1569,445 @@ func (o ActionPermissionsPermissionsExecutePtrOutput) Users() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
-type ActionUserProperties struct {
-	// The array property of the action
-	ArrayProps map[string]ActionUserPropertiesArrayProps `pulumi:"arrayProps"`
-	// The boolean property of the action
-	BooleanProps map[string]ActionUserPropertiesBooleanProps `pulumi:"booleanProps"`
-	// The number property of the action
-	NumberProps map[string]ActionUserPropertiesNumberProps `pulumi:"numberProps"`
-	// The object property of the action
-	ObjectProps map[string]ActionUserPropertiesObjectProps `pulumi:"objectProps"`
-	// The string property of the action
-	StringProps map[string]ActionUserPropertiesStringProps `pulumi:"stringProps"`
+type ActionSelfServiceTrigger struct {
+	// The ID of the blueprint
+	BlueprintIdentifier *string `pulumi:"blueprintIdentifier"`
+	// The operation type of the action
+	Operation string `pulumi:"operation"`
+	// Order properties
+	OrderProperties []string `pulumi:"orderProperties"`
+	// The required jq query of the property
+	RequiredJqQuery *string `pulumi:"requiredJqQuery"`
+	// User properties
+	UserProperties *ActionSelfServiceTriggerUserProperties `pulumi:"userProperties"`
 }
 
-// ActionUserPropertiesInput is an input type that accepts ActionUserPropertiesArgs and ActionUserPropertiesOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesInput` via:
+// ActionSelfServiceTriggerInput is an input type that accepts ActionSelfServiceTriggerArgs and ActionSelfServiceTriggerOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerInput` via:
 //
-//	ActionUserPropertiesArgs{...}
-type ActionUserPropertiesInput interface {
+//	ActionSelfServiceTriggerArgs{...}
+type ActionSelfServiceTriggerInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesOutput() ActionUserPropertiesOutput
-	ToActionUserPropertiesOutputWithContext(context.Context) ActionUserPropertiesOutput
+	ToActionSelfServiceTriggerOutput() ActionSelfServiceTriggerOutput
+	ToActionSelfServiceTriggerOutputWithContext(context.Context) ActionSelfServiceTriggerOutput
 }
 
-type ActionUserPropertiesArgs struct {
-	// The array property of the action
-	ArrayProps ActionUserPropertiesArrayPropsMapInput `pulumi:"arrayProps"`
-	// The boolean property of the action
-	BooleanProps ActionUserPropertiesBooleanPropsMapInput `pulumi:"booleanProps"`
-	// The number property of the action
-	NumberProps ActionUserPropertiesNumberPropsMapInput `pulumi:"numberProps"`
-	// The object property of the action
-	ObjectProps ActionUserPropertiesObjectPropsMapInput `pulumi:"objectProps"`
-	// The string property of the action
-	StringProps ActionUserPropertiesStringPropsMapInput `pulumi:"stringProps"`
+type ActionSelfServiceTriggerArgs struct {
+	// The ID of the blueprint
+	BlueprintIdentifier pulumi.StringPtrInput `pulumi:"blueprintIdentifier"`
+	// The operation type of the action
+	Operation pulumi.StringInput `pulumi:"operation"`
+	// Order properties
+	OrderProperties pulumi.StringArrayInput `pulumi:"orderProperties"`
+	// The required jq query of the property
+	RequiredJqQuery pulumi.StringPtrInput `pulumi:"requiredJqQuery"`
+	// User properties
+	UserProperties ActionSelfServiceTriggerUserPropertiesPtrInput `pulumi:"userProperties"`
 }
 
-func (ActionUserPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserProperties)(nil)).Elem()
+func (ActionSelfServiceTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTrigger)(nil)).Elem()
 }
 
-func (i ActionUserPropertiesArgs) ToActionUserPropertiesOutput() ActionUserPropertiesOutput {
-	return i.ToActionUserPropertiesOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerArgs) ToActionSelfServiceTriggerOutput() ActionSelfServiceTriggerOutput {
+	return i.ToActionSelfServiceTriggerOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesArgs) ToActionUserPropertiesOutputWithContext(ctx context.Context) ActionUserPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesOutput)
+func (i ActionSelfServiceTriggerArgs) ToActionSelfServiceTriggerOutputWithContext(ctx context.Context) ActionSelfServiceTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerOutput)
 }
 
-func (i ActionUserPropertiesArgs) ToActionUserPropertiesPtrOutput() ActionUserPropertiesPtrOutput {
-	return i.ToActionUserPropertiesPtrOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerArgs) ToActionSelfServiceTriggerPtrOutput() ActionSelfServiceTriggerPtrOutput {
+	return i.ToActionSelfServiceTriggerPtrOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesArgs) ToActionUserPropertiesPtrOutputWithContext(ctx context.Context) ActionUserPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesOutput).ToActionUserPropertiesPtrOutputWithContext(ctx)
+func (i ActionSelfServiceTriggerArgs) ToActionSelfServiceTriggerPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerOutput).ToActionSelfServiceTriggerPtrOutputWithContext(ctx)
 }
 
-// ActionUserPropertiesPtrInput is an input type that accepts ActionUserPropertiesArgs, ActionUserPropertiesPtr and ActionUserPropertiesPtrOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesPtrInput` via:
+// ActionSelfServiceTriggerPtrInput is an input type that accepts ActionSelfServiceTriggerArgs, ActionSelfServiceTriggerPtr and ActionSelfServiceTriggerPtrOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerPtrInput` via:
 //
-//	        ActionUserPropertiesArgs{...}
+//	        ActionSelfServiceTriggerArgs{...}
 //
 //	or:
 //
 //	        nil
-type ActionUserPropertiesPtrInput interface {
+type ActionSelfServiceTriggerPtrInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesPtrOutput() ActionUserPropertiesPtrOutput
-	ToActionUserPropertiesPtrOutputWithContext(context.Context) ActionUserPropertiesPtrOutput
+	ToActionSelfServiceTriggerPtrOutput() ActionSelfServiceTriggerPtrOutput
+	ToActionSelfServiceTriggerPtrOutputWithContext(context.Context) ActionSelfServiceTriggerPtrOutput
 }
 
-type actionUserPropertiesPtrType ActionUserPropertiesArgs
+type actionSelfServiceTriggerPtrType ActionSelfServiceTriggerArgs
 
-func ActionUserPropertiesPtr(v *ActionUserPropertiesArgs) ActionUserPropertiesPtrInput {
-	return (*actionUserPropertiesPtrType)(v)
+func ActionSelfServiceTriggerPtr(v *ActionSelfServiceTriggerArgs) ActionSelfServiceTriggerPtrInput {
+	return (*actionSelfServiceTriggerPtrType)(v)
 }
 
-func (*actionUserPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActionUserProperties)(nil)).Elem()
+func (*actionSelfServiceTriggerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTrigger)(nil)).Elem()
 }
 
-func (i *actionUserPropertiesPtrType) ToActionUserPropertiesPtrOutput() ActionUserPropertiesPtrOutput {
-	return i.ToActionUserPropertiesPtrOutputWithContext(context.Background())
+func (i *actionSelfServiceTriggerPtrType) ToActionSelfServiceTriggerPtrOutput() ActionSelfServiceTriggerPtrOutput {
+	return i.ToActionSelfServiceTriggerPtrOutputWithContext(context.Background())
 }
 
-func (i *actionUserPropertiesPtrType) ToActionUserPropertiesPtrOutputWithContext(ctx context.Context) ActionUserPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesPtrOutput)
+func (i *actionSelfServiceTriggerPtrType) ToActionSelfServiceTriggerPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerPtrOutput)
 }
 
-type ActionUserPropertiesOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserProperties)(nil)).Elem()
+func (ActionSelfServiceTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTrigger)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesOutput) ToActionUserPropertiesOutput() ActionUserPropertiesOutput {
+func (o ActionSelfServiceTriggerOutput) ToActionSelfServiceTriggerOutput() ActionSelfServiceTriggerOutput {
 	return o
 }
 
-func (o ActionUserPropertiesOutput) ToActionUserPropertiesOutputWithContext(ctx context.Context) ActionUserPropertiesOutput {
+func (o ActionSelfServiceTriggerOutput) ToActionSelfServiceTriggerOutputWithContext(ctx context.Context) ActionSelfServiceTriggerOutput {
 	return o
 }
 
-func (o ActionUserPropertiesOutput) ToActionUserPropertiesPtrOutput() ActionUserPropertiesPtrOutput {
-	return o.ToActionUserPropertiesPtrOutputWithContext(context.Background())
+func (o ActionSelfServiceTriggerOutput) ToActionSelfServiceTriggerPtrOutput() ActionSelfServiceTriggerPtrOutput {
+	return o.ToActionSelfServiceTriggerPtrOutputWithContext(context.Background())
 }
 
-func (o ActionUserPropertiesOutput) ToActionUserPropertiesPtrOutputWithContext(ctx context.Context) ActionUserPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionUserProperties) *ActionUserProperties {
+func (o ActionSelfServiceTriggerOutput) ToActionSelfServiceTriggerPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionSelfServiceTrigger) *ActionSelfServiceTrigger {
 		return &v
-	}).(ActionUserPropertiesPtrOutput)
+	}).(ActionSelfServiceTriggerPtrOutput)
 }
 
-// The array property of the action
-func (o ActionUserPropertiesOutput) ArrayProps() ActionUserPropertiesArrayPropsMapOutput {
-	return o.ApplyT(func(v ActionUserProperties) map[string]ActionUserPropertiesArrayProps { return v.ArrayProps }).(ActionUserPropertiesArrayPropsMapOutput)
+// The ID of the blueprint
+func (o ActionSelfServiceTriggerOutput) BlueprintIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTrigger) *string { return v.BlueprintIdentifier }).(pulumi.StringPtrOutput)
 }
 
-// The boolean property of the action
-func (o ActionUserPropertiesOutput) BooleanProps() ActionUserPropertiesBooleanPropsMapOutput {
-	return o.ApplyT(func(v ActionUserProperties) map[string]ActionUserPropertiesBooleanProps { return v.BooleanProps }).(ActionUserPropertiesBooleanPropsMapOutput)
+// The operation type of the action
+func (o ActionSelfServiceTriggerOutput) Operation() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSelfServiceTrigger) string { return v.Operation }).(pulumi.StringOutput)
 }
 
-// The number property of the action
-func (o ActionUserPropertiesOutput) NumberProps() ActionUserPropertiesNumberPropsMapOutput {
-	return o.ApplyT(func(v ActionUserProperties) map[string]ActionUserPropertiesNumberProps { return v.NumberProps }).(ActionUserPropertiesNumberPropsMapOutput)
+// Order properties
+func (o ActionSelfServiceTriggerOutput) OrderProperties() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionSelfServiceTrigger) []string { return v.OrderProperties }).(pulumi.StringArrayOutput)
 }
 
-// The object property of the action
-func (o ActionUserPropertiesOutput) ObjectProps() ActionUserPropertiesObjectPropsMapOutput {
-	return o.ApplyT(func(v ActionUserProperties) map[string]ActionUserPropertiesObjectProps { return v.ObjectProps }).(ActionUserPropertiesObjectPropsMapOutput)
+// The required jq query of the property
+func (o ActionSelfServiceTriggerOutput) RequiredJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTrigger) *string { return v.RequiredJqQuery }).(pulumi.StringPtrOutput)
 }
 
-// The string property of the action
-func (o ActionUserPropertiesOutput) StringProps() ActionUserPropertiesStringPropsMapOutput {
-	return o.ApplyT(func(v ActionUserProperties) map[string]ActionUserPropertiesStringProps { return v.StringProps }).(ActionUserPropertiesStringPropsMapOutput)
+// User properties
+func (o ActionSelfServiceTriggerOutput) UserProperties() ActionSelfServiceTriggerUserPropertiesPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTrigger) *ActionSelfServiceTriggerUserProperties { return v.UserProperties }).(ActionSelfServiceTriggerUserPropertiesPtrOutput)
 }
 
-type ActionUserPropertiesPtrOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerPtrOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActionUserProperties)(nil)).Elem()
+func (ActionSelfServiceTriggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTrigger)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesPtrOutput) ToActionUserPropertiesPtrOutput() ActionUserPropertiesPtrOutput {
+func (o ActionSelfServiceTriggerPtrOutput) ToActionSelfServiceTriggerPtrOutput() ActionSelfServiceTriggerPtrOutput {
 	return o
 }
 
-func (o ActionUserPropertiesPtrOutput) ToActionUserPropertiesPtrOutputWithContext(ctx context.Context) ActionUserPropertiesPtrOutput {
+func (o ActionSelfServiceTriggerPtrOutput) ToActionSelfServiceTriggerPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerPtrOutput {
 	return o
 }
 
-func (o ActionUserPropertiesPtrOutput) Elem() ActionUserPropertiesOutput {
-	return o.ApplyT(func(v *ActionUserProperties) ActionUserProperties {
+func (o ActionSelfServiceTriggerPtrOutput) Elem() ActionSelfServiceTriggerOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTrigger) ActionSelfServiceTrigger {
 		if v != nil {
 			return *v
 		}
-		var ret ActionUserProperties
+		var ret ActionSelfServiceTrigger
 		return ret
-	}).(ActionUserPropertiesOutput)
+	}).(ActionSelfServiceTriggerOutput)
+}
+
+// The ID of the blueprint
+func (o ActionSelfServiceTriggerPtrOutput) BlueprintIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BlueprintIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
+// The operation type of the action
+func (o ActionSelfServiceTriggerPtrOutput) Operation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Operation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Order properties
+func (o ActionSelfServiceTriggerPtrOutput) OrderProperties() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTrigger) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OrderProperties
+	}).(pulumi.StringArrayOutput)
+}
+
+// The required jq query of the property
+func (o ActionSelfServiceTriggerPtrOutput) RequiredJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequiredJqQuery
+	}).(pulumi.StringPtrOutput)
+}
+
+// User properties
+func (o ActionSelfServiceTriggerPtrOutput) UserProperties() ActionSelfServiceTriggerUserPropertiesPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTrigger) *ActionSelfServiceTriggerUserProperties {
+		if v == nil {
+			return nil
+		}
+		return v.UserProperties
+	}).(ActionSelfServiceTriggerUserPropertiesPtrOutput)
+}
+
+type ActionSelfServiceTriggerUserProperties struct {
+	// The array property of the action
+	ArrayProps map[string]ActionSelfServiceTriggerUserPropertiesArrayProps `pulumi:"arrayProps"`
+	// The boolean property of the action
+	BooleanProps map[string]ActionSelfServiceTriggerUserPropertiesBooleanProps `pulumi:"booleanProps"`
+	// The number property of the action
+	NumberProps map[string]ActionSelfServiceTriggerUserPropertiesNumberProps `pulumi:"numberProps"`
+	// The object property of the action
+	ObjectProps map[string]ActionSelfServiceTriggerUserPropertiesObjectProps `pulumi:"objectProps"`
+	// The string property of the action
+	StringProps map[string]ActionSelfServiceTriggerUserPropertiesStringProps `pulumi:"stringProps"`
+}
+
+// ActionSelfServiceTriggerUserPropertiesInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesArgs and ActionSelfServiceTriggerUserPropertiesOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesInput` via:
+//
+//	ActionSelfServiceTriggerUserPropertiesArgs{...}
+type ActionSelfServiceTriggerUserPropertiesInput interface {
+	pulumi.Input
+
+	ToActionSelfServiceTriggerUserPropertiesOutput() ActionSelfServiceTriggerUserPropertiesOutput
+	ToActionSelfServiceTriggerUserPropertiesOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesOutput
+}
+
+type ActionSelfServiceTriggerUserPropertiesArgs struct {
+	// The array property of the action
+	ArrayProps ActionSelfServiceTriggerUserPropertiesArrayPropsMapInput `pulumi:"arrayProps"`
+	// The boolean property of the action
+	BooleanProps ActionSelfServiceTriggerUserPropertiesBooleanPropsMapInput `pulumi:"booleanProps"`
+	// The number property of the action
+	NumberProps ActionSelfServiceTriggerUserPropertiesNumberPropsMapInput `pulumi:"numberProps"`
+	// The object property of the action
+	ObjectProps ActionSelfServiceTriggerUserPropertiesObjectPropsMapInput `pulumi:"objectProps"`
+	// The string property of the action
+	StringProps ActionSelfServiceTriggerUserPropertiesStringPropsMapInput `pulumi:"stringProps"`
+}
+
+func (ActionSelfServiceTriggerUserPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserProperties)(nil)).Elem()
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesArgs) ToActionSelfServiceTriggerUserPropertiesOutput() ActionSelfServiceTriggerUserPropertiesOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesOutputWithContext(context.Background())
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesArgs) ToActionSelfServiceTriggerUserPropertiesOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesOutput)
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesArgs) ToActionSelfServiceTriggerUserPropertiesPtrOutput() ActionSelfServiceTriggerUserPropertiesPtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesArgs) ToActionSelfServiceTriggerUserPropertiesPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesOutput).ToActionSelfServiceTriggerUserPropertiesPtrOutputWithContext(ctx)
+}
+
+// ActionSelfServiceTriggerUserPropertiesPtrInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesArgs, ActionSelfServiceTriggerUserPropertiesPtr and ActionSelfServiceTriggerUserPropertiesPtrOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesPtrInput` via:
+//
+//	        ActionSelfServiceTriggerUserPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionSelfServiceTriggerUserPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToActionSelfServiceTriggerUserPropertiesPtrOutput() ActionSelfServiceTriggerUserPropertiesPtrOutput
+	ToActionSelfServiceTriggerUserPropertiesPtrOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesPtrOutput
+}
+
+type actionSelfServiceTriggerUserPropertiesPtrType ActionSelfServiceTriggerUserPropertiesArgs
+
+func ActionSelfServiceTriggerUserPropertiesPtr(v *ActionSelfServiceTriggerUserPropertiesArgs) ActionSelfServiceTriggerUserPropertiesPtrInput {
+	return (*actionSelfServiceTriggerUserPropertiesPtrType)(v)
+}
+
+func (*actionSelfServiceTriggerUserPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserProperties)(nil)).Elem()
+}
+
+func (i *actionSelfServiceTriggerUserPropertiesPtrType) ToActionSelfServiceTriggerUserPropertiesPtrOutput() ActionSelfServiceTriggerUserPropertiesPtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *actionSelfServiceTriggerUserPropertiesPtrType) ToActionSelfServiceTriggerUserPropertiesPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesPtrOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ActionSelfServiceTriggerUserPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserProperties)(nil)).Elem()
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesOutput) ToActionSelfServiceTriggerUserPropertiesOutput() ActionSelfServiceTriggerUserPropertiesOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesOutput) ToActionSelfServiceTriggerUserPropertiesOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesOutput) ToActionSelfServiceTriggerUserPropertiesPtrOutput() ActionSelfServiceTriggerUserPropertiesPtrOutput {
+	return o.ToActionSelfServiceTriggerUserPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesOutput) ToActionSelfServiceTriggerUserPropertiesPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionSelfServiceTriggerUserProperties) *ActionSelfServiceTriggerUserProperties {
+		return &v
+	}).(ActionSelfServiceTriggerUserPropertiesPtrOutput)
 }
 
 // The array property of the action
-func (o ActionUserPropertiesPtrOutput) ArrayProps() ActionUserPropertiesArrayPropsMapOutput {
-	return o.ApplyT(func(v *ActionUserProperties) map[string]ActionUserPropertiesArrayProps {
+func (o ActionSelfServiceTriggerUserPropertiesOutput) ArrayProps() ActionSelfServiceTriggerUserPropertiesArrayPropsMapOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserProperties) map[string]ActionSelfServiceTriggerUserPropertiesArrayProps {
+		return v.ArrayProps
+	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsMapOutput)
+}
+
+// The boolean property of the action
+func (o ActionSelfServiceTriggerUserPropertiesOutput) BooleanProps() ActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserProperties) map[string]ActionSelfServiceTriggerUserPropertiesBooleanProps {
+		return v.BooleanProps
+	}).(ActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutput)
+}
+
+// The number property of the action
+func (o ActionSelfServiceTriggerUserPropertiesOutput) NumberProps() ActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserProperties) map[string]ActionSelfServiceTriggerUserPropertiesNumberProps {
+		return v.NumberProps
+	}).(ActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput)
+}
+
+// The object property of the action
+func (o ActionSelfServiceTriggerUserPropertiesOutput) ObjectProps() ActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserProperties) map[string]ActionSelfServiceTriggerUserPropertiesObjectProps {
+		return v.ObjectProps
+	}).(ActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput)
+}
+
+// The string property of the action
+func (o ActionSelfServiceTriggerUserPropertiesOutput) StringProps() ActionSelfServiceTriggerUserPropertiesStringPropsMapOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserProperties) map[string]ActionSelfServiceTriggerUserPropertiesStringProps {
+		return v.StringProps
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsMapOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionSelfServiceTriggerUserPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserProperties)(nil)).Elem()
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesPtrOutput) ToActionSelfServiceTriggerUserPropertiesPtrOutput() ActionSelfServiceTriggerUserPropertiesPtrOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesPtrOutput) ToActionSelfServiceTriggerUserPropertiesPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesPtrOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesPtrOutput) Elem() ActionSelfServiceTriggerUserPropertiesOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserProperties) ActionSelfServiceTriggerUserProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ActionSelfServiceTriggerUserProperties
+		return ret
+	}).(ActionSelfServiceTriggerUserPropertiesOutput)
+}
+
+// The array property of the action
+func (o ActionSelfServiceTriggerUserPropertiesPtrOutput) ArrayProps() ActionSelfServiceTriggerUserPropertiesArrayPropsMapOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserProperties) map[string]ActionSelfServiceTriggerUserPropertiesArrayProps {
 		if v == nil {
 			return nil
 		}
 		return v.ArrayProps
-	}).(ActionUserPropertiesArrayPropsMapOutput)
+	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsMapOutput)
 }
 
 // The boolean property of the action
-func (o ActionUserPropertiesPtrOutput) BooleanProps() ActionUserPropertiesBooleanPropsMapOutput {
-	return o.ApplyT(func(v *ActionUserProperties) map[string]ActionUserPropertiesBooleanProps {
+func (o ActionSelfServiceTriggerUserPropertiesPtrOutput) BooleanProps() ActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserProperties) map[string]ActionSelfServiceTriggerUserPropertiesBooleanProps {
 		if v == nil {
 			return nil
 		}
 		return v.BooleanProps
-	}).(ActionUserPropertiesBooleanPropsMapOutput)
+	}).(ActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutput)
 }
 
 // The number property of the action
-func (o ActionUserPropertiesPtrOutput) NumberProps() ActionUserPropertiesNumberPropsMapOutput {
-	return o.ApplyT(func(v *ActionUserProperties) map[string]ActionUserPropertiesNumberProps {
+func (o ActionSelfServiceTriggerUserPropertiesPtrOutput) NumberProps() ActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserProperties) map[string]ActionSelfServiceTriggerUserPropertiesNumberProps {
 		if v == nil {
 			return nil
 		}
 		return v.NumberProps
-	}).(ActionUserPropertiesNumberPropsMapOutput)
+	}).(ActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput)
 }
 
 // The object property of the action
-func (o ActionUserPropertiesPtrOutput) ObjectProps() ActionUserPropertiesObjectPropsMapOutput {
-	return o.ApplyT(func(v *ActionUserProperties) map[string]ActionUserPropertiesObjectProps {
+func (o ActionSelfServiceTriggerUserPropertiesPtrOutput) ObjectProps() ActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserProperties) map[string]ActionSelfServiceTriggerUserPropertiesObjectProps {
 		if v == nil {
 			return nil
 		}
 		return v.ObjectProps
-	}).(ActionUserPropertiesObjectPropsMapOutput)
+	}).(ActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput)
 }
 
 // The string property of the action
-func (o ActionUserPropertiesPtrOutput) StringProps() ActionUserPropertiesStringPropsMapOutput {
-	return o.ApplyT(func(v *ActionUserProperties) map[string]ActionUserPropertiesStringProps {
+func (o ActionSelfServiceTriggerUserPropertiesPtrOutput) StringProps() ActionSelfServiceTriggerUserPropertiesStringPropsMapOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserProperties) map[string]ActionSelfServiceTriggerUserPropertiesStringProps {
 		if v == nil {
 			return nil
 		}
 		return v.StringProps
-	}).(ActionUserPropertiesStringPropsMapOutput)
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsMapOutput)
 }
 
-type ActionUserPropertiesArrayProps struct {
+type ActionSelfServiceTriggerUserPropertiesArrayProps struct {
 	// The items of the array property
-	BooleanItems *ActionUserPropertiesArrayPropsBooleanItems `pulumi:"booleanItems"`
+	BooleanItems *ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems `pulumi:"booleanItems"`
 	// The default jq query of the array property
 	DefaultJqQuery *string `pulumi:"defaultJqQuery"`
 	// The properties that this property depends on
@@ -1817,13 +2021,13 @@ type ActionUserPropertiesArrayProps struct {
 	// The min items of the array property
 	MinItems *int `pulumi:"minItems"`
 	// The items of the array property
-	NumberItems *ActionUserPropertiesArrayPropsNumberItems `pulumi:"numberItems"`
+	NumberItems *ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems `pulumi:"numberItems"`
 	// The items of the array property
-	ObjectItems *ActionUserPropertiesArrayPropsObjectItems `pulumi:"objectItems"`
+	ObjectItems *ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems `pulumi:"objectItems"`
 	// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
 	Required *bool `pulumi:"required"`
 	// The items of the array property
-	StringItems *ActionUserPropertiesArrayPropsStringItems `pulumi:"stringItems"`
+	StringItems *ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems `pulumi:"stringItems"`
 	// The title of the property
 	Title *string `pulumi:"title"`
 	// The visibility of the array property
@@ -1832,20 +2036,20 @@ type ActionUserPropertiesArrayProps struct {
 	VisibleJqQuery *string `pulumi:"visibleJqQuery"`
 }
 
-// ActionUserPropertiesArrayPropsInput is an input type that accepts ActionUserPropertiesArrayPropsArgs and ActionUserPropertiesArrayPropsOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesArrayPropsInput` via:
+// ActionSelfServiceTriggerUserPropertiesArrayPropsInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesArrayPropsArgs and ActionSelfServiceTriggerUserPropertiesArrayPropsOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesArrayPropsInput` via:
 //
-//	ActionUserPropertiesArrayPropsArgs{...}
-type ActionUserPropertiesArrayPropsInput interface {
+//	ActionSelfServiceTriggerUserPropertiesArrayPropsArgs{...}
+type ActionSelfServiceTriggerUserPropertiesArrayPropsInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesArrayPropsOutput() ActionUserPropertiesArrayPropsOutput
-	ToActionUserPropertiesArrayPropsOutputWithContext(context.Context) ActionUserPropertiesArrayPropsOutput
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsOutput
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsOutput
 }
 
-type ActionUserPropertiesArrayPropsArgs struct {
+type ActionSelfServiceTriggerUserPropertiesArrayPropsArgs struct {
 	// The items of the array property
-	BooleanItems ActionUserPropertiesArrayPropsBooleanItemsPtrInput `pulumi:"booleanItems"`
+	BooleanItems ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrInput `pulumi:"booleanItems"`
 	// The default jq query of the array property
 	DefaultJqQuery pulumi.StringPtrInput `pulumi:"defaultJqQuery"`
 	// The properties that this property depends on
@@ -1859,13 +2063,13 @@ type ActionUserPropertiesArrayPropsArgs struct {
 	// The min items of the array property
 	MinItems pulumi.IntPtrInput `pulumi:"minItems"`
 	// The items of the array property
-	NumberItems ActionUserPropertiesArrayPropsNumberItemsPtrInput `pulumi:"numberItems"`
+	NumberItems ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrInput `pulumi:"numberItems"`
 	// The items of the array property
-	ObjectItems ActionUserPropertiesArrayPropsObjectItemsPtrInput `pulumi:"objectItems"`
+	ObjectItems ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrInput `pulumi:"objectItems"`
 	// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
 	Required pulumi.BoolPtrInput `pulumi:"required"`
 	// The items of the array property
-	StringItems ActionUserPropertiesArrayPropsStringItemsPtrInput `pulumi:"stringItems"`
+	StringItems ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrInput `pulumi:"stringItems"`
 	// The title of the property
 	Title pulumi.StringPtrInput `pulumi:"title"`
 	// The visibility of the array property
@@ -1874,285 +2078,285 @@ type ActionUserPropertiesArrayPropsArgs struct {
 	VisibleJqQuery pulumi.StringPtrInput `pulumi:"visibleJqQuery"`
 }
 
-func (ActionUserPropertiesArrayPropsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesArrayProps)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesArrayPropsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayProps)(nil)).Elem()
 }
 
-func (i ActionUserPropertiesArrayPropsArgs) ToActionUserPropertiesArrayPropsOutput() ActionUserPropertiesArrayPropsOutput {
-	return i.ToActionUserPropertiesArrayPropsOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsArgs) ToActionSelfServiceTriggerUserPropertiesArrayPropsOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesArrayPropsOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesArrayPropsArgs) ToActionUserPropertiesArrayPropsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsOutput)
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsArgs) ToActionSelfServiceTriggerUserPropertiesArrayPropsOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesArrayPropsOutput)
 }
 
-// ActionUserPropertiesArrayPropsMapInput is an input type that accepts ActionUserPropertiesArrayPropsMap and ActionUserPropertiesArrayPropsMapOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesArrayPropsMapInput` via:
+// ActionSelfServiceTriggerUserPropertiesArrayPropsMapInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesArrayPropsMap and ActionSelfServiceTriggerUserPropertiesArrayPropsMapOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesArrayPropsMapInput` via:
 //
-//	ActionUserPropertiesArrayPropsMap{ "key": ActionUserPropertiesArrayPropsArgs{...} }
-type ActionUserPropertiesArrayPropsMapInput interface {
+//	ActionSelfServiceTriggerUserPropertiesArrayPropsMap{ "key": ActionSelfServiceTriggerUserPropertiesArrayPropsArgs{...} }
+type ActionSelfServiceTriggerUserPropertiesArrayPropsMapInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesArrayPropsMapOutput() ActionUserPropertiesArrayPropsMapOutput
-	ToActionUserPropertiesArrayPropsMapOutputWithContext(context.Context) ActionUserPropertiesArrayPropsMapOutput
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsMapOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsMapOutput
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsMapOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsMapOutput
 }
 
-type ActionUserPropertiesArrayPropsMap map[string]ActionUserPropertiesArrayPropsInput
+type ActionSelfServiceTriggerUserPropertiesArrayPropsMap map[string]ActionSelfServiceTriggerUserPropertiesArrayPropsInput
 
-func (ActionUserPropertiesArrayPropsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ActionUserPropertiesArrayProps)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesArrayPropsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActionSelfServiceTriggerUserPropertiesArrayProps)(nil)).Elem()
 }
 
-func (i ActionUserPropertiesArrayPropsMap) ToActionUserPropertiesArrayPropsMapOutput() ActionUserPropertiesArrayPropsMapOutput {
-	return i.ToActionUserPropertiesArrayPropsMapOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsMap) ToActionSelfServiceTriggerUserPropertiesArrayPropsMapOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsMapOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesArrayPropsMapOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesArrayPropsMap) ToActionUserPropertiesArrayPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsMapOutput)
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsMap) ToActionSelfServiceTriggerUserPropertiesArrayPropsMapOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesArrayPropsMapOutput)
 }
 
-type ActionUserPropertiesArrayPropsOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesArrayPropsOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesArrayPropsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesArrayProps)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayProps)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesArrayPropsOutput) ToActionUserPropertiesArrayPropsOutput() ActionUserPropertiesArrayPropsOutput {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsOutput {
 	return o
 }
 
-func (o ActionUserPropertiesArrayPropsOutput) ToActionUserPropertiesArrayPropsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsOutput {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsOutput {
 	return o
 }
 
 // The items of the array property
-func (o ActionUserPropertiesArrayPropsOutput) BooleanItems() ActionUserPropertiesArrayPropsBooleanItemsPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *ActionUserPropertiesArrayPropsBooleanItems {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) BooleanItems() ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems {
 		return v.BooleanItems
-	}).(ActionUserPropertiesArrayPropsBooleanItemsPtrOutput)
+	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput)
 }
 
 // The default jq query of the array property
-func (o ActionUserPropertiesArrayPropsOutput) DefaultJqQuery() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *string { return v.DefaultJqQuery }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) DefaultJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *string { return v.DefaultJqQuery }).(pulumi.StringPtrOutput)
 }
 
 // The properties that this property depends on
-func (o ActionUserPropertiesArrayPropsOutput) DependsOns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayProps) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) DependsOns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
 }
 
 // The description of the property
-func (o ActionUserPropertiesArrayPropsOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The icon of the property
-func (o ActionUserPropertiesArrayPropsOutput) Icon() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
 // The max items of the array property
-func (o ActionUserPropertiesArrayPropsOutput) MaxItems() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) MaxItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
 // The min items of the array property
-func (o ActionUserPropertiesArrayPropsOutput) MinItems() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *int { return v.MinItems }).(pulumi.IntPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) MinItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *int { return v.MinItems }).(pulumi.IntPtrOutput)
 }
 
 // The items of the array property
-func (o ActionUserPropertiesArrayPropsOutput) NumberItems() ActionUserPropertiesArrayPropsNumberItemsPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *ActionUserPropertiesArrayPropsNumberItems {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) NumberItems() ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems {
 		return v.NumberItems
-	}).(ActionUserPropertiesArrayPropsNumberItemsPtrOutput)
+	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput)
 }
 
 // The items of the array property
-func (o ActionUserPropertiesArrayPropsOutput) ObjectItems() ActionUserPropertiesArrayPropsObjectItemsPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *ActionUserPropertiesArrayPropsObjectItems {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) ObjectItems() ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems {
 		return v.ObjectItems
-	}).(ActionUserPropertiesArrayPropsObjectItemsPtrOutput)
+	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput)
 }
 
 // Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
-func (o ActionUserPropertiesArrayPropsOutput) Required() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
 // The items of the array property
-func (o ActionUserPropertiesArrayPropsOutput) StringItems() ActionUserPropertiesArrayPropsStringItemsPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *ActionUserPropertiesArrayPropsStringItems {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) StringItems() ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems {
 		return v.StringItems
-	}).(ActionUserPropertiesArrayPropsStringItemsPtrOutput)
+	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput)
 }
 
 // The title of the property
-func (o ActionUserPropertiesArrayPropsOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *string { return v.Title }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
 // The visibility of the array property
-func (o ActionUserPropertiesArrayPropsOutput) Visible() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) Visible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
 }
 
 // The visibility condition jq query of the array property
-func (o ActionUserPropertiesArrayPropsOutput) VisibleJqQuery() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayProps) *string { return v.VisibleJqQuery }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) VisibleJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *string { return v.VisibleJqQuery }).(pulumi.StringPtrOutput)
 }
 
-type ActionUserPropertiesArrayPropsMapOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesArrayPropsMapOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesArrayPropsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ActionUserPropertiesArrayProps)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesArrayPropsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActionSelfServiceTriggerUserPropertiesArrayProps)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesArrayPropsMapOutput) ToActionUserPropertiesArrayPropsMapOutput() ActionUserPropertiesArrayPropsMapOutput {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsMapOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsMapOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsMapOutput {
 	return o
 }
 
-func (o ActionUserPropertiesArrayPropsMapOutput) ToActionUserPropertiesArrayPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsMapOutput {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsMapOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsMapOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsMapOutput {
 	return o
 }
 
-func (o ActionUserPropertiesArrayPropsMapOutput) MapIndex(k pulumi.StringInput) ActionUserPropertiesArrayPropsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ActionUserPropertiesArrayProps {
-		return vs[0].(map[string]ActionUserPropertiesArrayProps)[vs[1].(string)]
-	}).(ActionUserPropertiesArrayPropsOutput)
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsMapOutput) MapIndex(k pulumi.StringInput) ActionSelfServiceTriggerUserPropertiesArrayPropsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ActionSelfServiceTriggerUserPropertiesArrayProps {
+		return vs[0].(map[string]ActionSelfServiceTriggerUserPropertiesArrayProps)[vs[1].(string)]
+	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsOutput)
 }
 
-type ActionUserPropertiesArrayPropsBooleanItems struct {
+type ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems struct {
 	// The default of the items
 	Defaults []bool `pulumi:"defaults"`
 }
 
-// ActionUserPropertiesArrayPropsBooleanItemsInput is an input type that accepts ActionUserPropertiesArrayPropsBooleanItemsArgs and ActionUserPropertiesArrayPropsBooleanItemsOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesArrayPropsBooleanItemsInput` via:
+// ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs and ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsInput` via:
 //
-//	ActionUserPropertiesArrayPropsBooleanItemsArgs{...}
-type ActionUserPropertiesArrayPropsBooleanItemsInput interface {
+//	ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs{...}
+type ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesArrayPropsBooleanItemsOutput() ActionUserPropertiesArrayPropsBooleanItemsOutput
-	ToActionUserPropertiesArrayPropsBooleanItemsOutputWithContext(context.Context) ActionUserPropertiesArrayPropsBooleanItemsOutput
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput
 }
 
-type ActionUserPropertiesArrayPropsBooleanItemsArgs struct {
+type ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs struct {
 	// The default of the items
 	Defaults pulumi.BoolArrayInput `pulumi:"defaults"`
 }
 
-func (ActionUserPropertiesArrayPropsBooleanItemsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesArrayPropsBooleanItems)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems)(nil)).Elem()
 }
 
-func (i ActionUserPropertiesArrayPropsBooleanItemsArgs) ToActionUserPropertiesArrayPropsBooleanItemsOutput() ActionUserPropertiesArrayPropsBooleanItemsOutput {
-	return i.ToActionUserPropertiesArrayPropsBooleanItemsOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs) ToActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesArrayPropsBooleanItemsArgs) ToActionUserPropertiesArrayPropsBooleanItemsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsBooleanItemsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsBooleanItemsOutput)
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs) ToActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput)
 }
 
-func (i ActionUserPropertiesArrayPropsBooleanItemsArgs) ToActionUserPropertiesArrayPropsBooleanItemsPtrOutput() ActionUserPropertiesArrayPropsBooleanItemsPtrOutput {
-	return i.ToActionUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs) ToActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesArrayPropsBooleanItemsArgs) ToActionUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsBooleanItemsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsBooleanItemsOutput).ToActionUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx)
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs) ToActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput).ToActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx)
 }
 
-// ActionUserPropertiesArrayPropsBooleanItemsPtrInput is an input type that accepts ActionUserPropertiesArrayPropsBooleanItemsArgs, ActionUserPropertiesArrayPropsBooleanItemsPtr and ActionUserPropertiesArrayPropsBooleanItemsPtrOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesArrayPropsBooleanItemsPtrInput` via:
+// ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs, ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtr and ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrInput` via:
 //
-//	        ActionUserPropertiesArrayPropsBooleanItemsArgs{...}
+//	        ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs{...}
 //
 //	or:
 //
 //	        nil
-type ActionUserPropertiesArrayPropsBooleanItemsPtrInput interface {
+type ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesArrayPropsBooleanItemsPtrOutput() ActionUserPropertiesArrayPropsBooleanItemsPtrOutput
-	ToActionUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(context.Context) ActionUserPropertiesArrayPropsBooleanItemsPtrOutput
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput
 }
 
-type actionUserPropertiesArrayPropsBooleanItemsPtrType ActionUserPropertiesArrayPropsBooleanItemsArgs
+type actionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrType ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs
 
-func ActionUserPropertiesArrayPropsBooleanItemsPtr(v *ActionUserPropertiesArrayPropsBooleanItemsArgs) ActionUserPropertiesArrayPropsBooleanItemsPtrInput {
-	return (*actionUserPropertiesArrayPropsBooleanItemsPtrType)(v)
+func ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtr(v *ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs) ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrInput {
+	return (*actionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrType)(v)
 }
 
-func (*actionUserPropertiesArrayPropsBooleanItemsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActionUserPropertiesArrayPropsBooleanItems)(nil)).Elem()
+func (*actionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems)(nil)).Elem()
 }
 
-func (i *actionUserPropertiesArrayPropsBooleanItemsPtrType) ToActionUserPropertiesArrayPropsBooleanItemsPtrOutput() ActionUserPropertiesArrayPropsBooleanItemsPtrOutput {
-	return i.ToActionUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(context.Background())
+func (i *actionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrType) ToActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(context.Background())
 }
 
-func (i *actionUserPropertiesArrayPropsBooleanItemsPtrType) ToActionUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsBooleanItemsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsBooleanItemsPtrOutput)
+func (i *actionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrType) ToActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput)
 }
 
-type ActionUserPropertiesArrayPropsBooleanItemsOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesArrayPropsBooleanItemsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesArrayPropsBooleanItems)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesArrayPropsBooleanItemsOutput) ToActionUserPropertiesArrayPropsBooleanItemsOutput() ActionUserPropertiesArrayPropsBooleanItemsOutput {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput {
 	return o
 }
 
-func (o ActionUserPropertiesArrayPropsBooleanItemsOutput) ToActionUserPropertiesArrayPropsBooleanItemsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsBooleanItemsOutput {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput {
 	return o
 }
 
-func (o ActionUserPropertiesArrayPropsBooleanItemsOutput) ToActionUserPropertiesArrayPropsBooleanItemsPtrOutput() ActionUserPropertiesArrayPropsBooleanItemsPtrOutput {
-	return o.ToActionUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(context.Background())
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput {
+	return o.ToActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(context.Background())
 }
 
-func (o ActionUserPropertiesArrayPropsBooleanItemsOutput) ToActionUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsBooleanItemsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionUserPropertiesArrayPropsBooleanItems) *ActionUserPropertiesArrayPropsBooleanItems {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems) *ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems {
 		return &v
-	}).(ActionUserPropertiesArrayPropsBooleanItemsPtrOutput)
+	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput)
 }
 
 // The default of the items
-func (o ActionUserPropertiesArrayPropsBooleanItemsOutput) Defaults() pulumi.BoolArrayOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayPropsBooleanItems) []bool { return v.Defaults }).(pulumi.BoolArrayOutput)
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput) Defaults() pulumi.BoolArrayOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems) []bool { return v.Defaults }).(pulumi.BoolArrayOutput)
 }
 
-type ActionUserPropertiesArrayPropsBooleanItemsPtrOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesArrayPropsBooleanItemsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActionUserPropertiesArrayPropsBooleanItems)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesArrayPropsBooleanItemsPtrOutput) ToActionUserPropertiesArrayPropsBooleanItemsPtrOutput() ActionUserPropertiesArrayPropsBooleanItemsPtrOutput {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput {
 	return o
 }
 
-func (o ActionUserPropertiesArrayPropsBooleanItemsPtrOutput) ToActionUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsBooleanItemsPtrOutput {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput {
 	return o
 }
 
-func (o ActionUserPropertiesArrayPropsBooleanItemsPtrOutput) Elem() ActionUserPropertiesArrayPropsBooleanItemsOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsBooleanItems) ActionUserPropertiesArrayPropsBooleanItems {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput) Elem() ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems) ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems {
 		if v != nil {
 			return *v
 		}
-		var ret ActionUserPropertiesArrayPropsBooleanItems
+		var ret ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems
 		return ret
-	}).(ActionUserPropertiesArrayPropsBooleanItemsOutput)
+	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput)
 }
 
 // The default of the items
-func (o ActionUserPropertiesArrayPropsBooleanItemsPtrOutput) Defaults() pulumi.BoolArrayOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsBooleanItems) []bool {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput) Defaults() pulumi.BoolArrayOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems) []bool {
 		if v == nil {
 			return nil
 		}
@@ -2160,7 +2364,7 @@ func (o ActionUserPropertiesArrayPropsBooleanItemsPtrOutput) Defaults() pulumi.B
 	}).(pulumi.BoolArrayOutput)
 }
 
-type ActionUserPropertiesArrayPropsNumberItems struct {
+type ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems struct {
 	// The default of the items
 	Defaults []float64 `pulumi:"defaults"`
 	// The enum jq query of the number items
@@ -2169,18 +2373,18 @@ type ActionUserPropertiesArrayPropsNumberItems struct {
 	Enums []float64 `pulumi:"enums"`
 }
 
-// ActionUserPropertiesArrayPropsNumberItemsInput is an input type that accepts ActionUserPropertiesArrayPropsNumberItemsArgs and ActionUserPropertiesArrayPropsNumberItemsOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesArrayPropsNumberItemsInput` via:
+// ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs and ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsInput` via:
 //
-//	ActionUserPropertiesArrayPropsNumberItemsArgs{...}
-type ActionUserPropertiesArrayPropsNumberItemsInput interface {
+//	ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs{...}
+type ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesArrayPropsNumberItemsOutput() ActionUserPropertiesArrayPropsNumberItemsOutput
-	ToActionUserPropertiesArrayPropsNumberItemsOutputWithContext(context.Context) ActionUserPropertiesArrayPropsNumberItemsOutput
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput
 }
 
-type ActionUserPropertiesArrayPropsNumberItemsArgs struct {
+type ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs struct {
 	// The default of the items
 	Defaults pulumi.Float64ArrayInput `pulumi:"defaults"`
 	// The enum jq query of the number items
@@ -2189,125 +2393,125 @@ type ActionUserPropertiesArrayPropsNumberItemsArgs struct {
 	Enums pulumi.Float64ArrayInput `pulumi:"enums"`
 }
 
-func (ActionUserPropertiesArrayPropsNumberItemsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesArrayPropsNumberItems)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems)(nil)).Elem()
 }
 
-func (i ActionUserPropertiesArrayPropsNumberItemsArgs) ToActionUserPropertiesArrayPropsNumberItemsOutput() ActionUserPropertiesArrayPropsNumberItemsOutput {
-	return i.ToActionUserPropertiesArrayPropsNumberItemsOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs) ToActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesArrayPropsNumberItemsArgs) ToActionUserPropertiesArrayPropsNumberItemsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsNumberItemsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsNumberItemsOutput)
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs) ToActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput)
 }
 
-func (i ActionUserPropertiesArrayPropsNumberItemsArgs) ToActionUserPropertiesArrayPropsNumberItemsPtrOutput() ActionUserPropertiesArrayPropsNumberItemsPtrOutput {
-	return i.ToActionUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs) ToActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesArrayPropsNumberItemsArgs) ToActionUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsNumberItemsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsNumberItemsOutput).ToActionUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx)
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs) ToActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput).ToActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx)
 }
 
-// ActionUserPropertiesArrayPropsNumberItemsPtrInput is an input type that accepts ActionUserPropertiesArrayPropsNumberItemsArgs, ActionUserPropertiesArrayPropsNumberItemsPtr and ActionUserPropertiesArrayPropsNumberItemsPtrOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesArrayPropsNumberItemsPtrInput` via:
+// ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs, ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtr and ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrInput` via:
 //
-//	        ActionUserPropertiesArrayPropsNumberItemsArgs{...}
+//	        ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs{...}
 //
 //	or:
 //
 //	        nil
-type ActionUserPropertiesArrayPropsNumberItemsPtrInput interface {
+type ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesArrayPropsNumberItemsPtrOutput() ActionUserPropertiesArrayPropsNumberItemsPtrOutput
-	ToActionUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(context.Context) ActionUserPropertiesArrayPropsNumberItemsPtrOutput
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput
 }
 
-type actionUserPropertiesArrayPropsNumberItemsPtrType ActionUserPropertiesArrayPropsNumberItemsArgs
+type actionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrType ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs
 
-func ActionUserPropertiesArrayPropsNumberItemsPtr(v *ActionUserPropertiesArrayPropsNumberItemsArgs) ActionUserPropertiesArrayPropsNumberItemsPtrInput {
-	return (*actionUserPropertiesArrayPropsNumberItemsPtrType)(v)
+func ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtr(v *ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs) ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrInput {
+	return (*actionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrType)(v)
 }
 
-func (*actionUserPropertiesArrayPropsNumberItemsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActionUserPropertiesArrayPropsNumberItems)(nil)).Elem()
+func (*actionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems)(nil)).Elem()
 }
 
-func (i *actionUserPropertiesArrayPropsNumberItemsPtrType) ToActionUserPropertiesArrayPropsNumberItemsPtrOutput() ActionUserPropertiesArrayPropsNumberItemsPtrOutput {
-	return i.ToActionUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(context.Background())
+func (i *actionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrType) ToActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(context.Background())
 }
 
-func (i *actionUserPropertiesArrayPropsNumberItemsPtrType) ToActionUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsNumberItemsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsNumberItemsPtrOutput)
+func (i *actionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrType) ToActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput)
 }
 
-type ActionUserPropertiesArrayPropsNumberItemsOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesArrayPropsNumberItemsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesArrayPropsNumberItems)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesArrayPropsNumberItemsOutput) ToActionUserPropertiesArrayPropsNumberItemsOutput() ActionUserPropertiesArrayPropsNumberItemsOutput {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput {
 	return o
 }
 
-func (o ActionUserPropertiesArrayPropsNumberItemsOutput) ToActionUserPropertiesArrayPropsNumberItemsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsNumberItemsOutput {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput {
 	return o
 }
 
-func (o ActionUserPropertiesArrayPropsNumberItemsOutput) ToActionUserPropertiesArrayPropsNumberItemsPtrOutput() ActionUserPropertiesArrayPropsNumberItemsPtrOutput {
-	return o.ToActionUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(context.Background())
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput {
+	return o.ToActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(context.Background())
 }
 
-func (o ActionUserPropertiesArrayPropsNumberItemsOutput) ToActionUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsNumberItemsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionUserPropertiesArrayPropsNumberItems) *ActionUserPropertiesArrayPropsNumberItems {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems) *ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems {
 		return &v
-	}).(ActionUserPropertiesArrayPropsNumberItemsPtrOutput)
+	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput)
 }
 
 // The default of the items
-func (o ActionUserPropertiesArrayPropsNumberItemsOutput) Defaults() pulumi.Float64ArrayOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayPropsNumberItems) []float64 { return v.Defaults }).(pulumi.Float64ArrayOutput)
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput) Defaults() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems) []float64 { return v.Defaults }).(pulumi.Float64ArrayOutput)
 }
 
 // The enum jq query of the number items
-func (o ActionUserPropertiesArrayPropsNumberItemsOutput) EnumJqQuery() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayPropsNumberItems) *string { return v.EnumJqQuery }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput) EnumJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems) *string { return v.EnumJqQuery }).(pulumi.StringPtrOutput)
 }
 
 // The enum of the items
-func (o ActionUserPropertiesArrayPropsNumberItemsOutput) Enums() pulumi.Float64ArrayOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayPropsNumberItems) []float64 { return v.Enums }).(pulumi.Float64ArrayOutput)
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput) Enums() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems) []float64 { return v.Enums }).(pulumi.Float64ArrayOutput)
 }
 
-type ActionUserPropertiesArrayPropsNumberItemsPtrOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesArrayPropsNumberItemsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActionUserPropertiesArrayPropsNumberItems)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) ToActionUserPropertiesArrayPropsNumberItemsPtrOutput() ActionUserPropertiesArrayPropsNumberItemsPtrOutput {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput {
 	return o
 }
 
-func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) ToActionUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsNumberItemsPtrOutput {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput {
 	return o
 }
 
-func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) Elem() ActionUserPropertiesArrayPropsNumberItemsOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsNumberItems) ActionUserPropertiesArrayPropsNumberItems {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput) Elem() ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems) ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems {
 		if v != nil {
 			return *v
 		}
-		var ret ActionUserPropertiesArrayPropsNumberItems
+		var ret ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems
 		return ret
-	}).(ActionUserPropertiesArrayPropsNumberItemsOutput)
+	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput)
 }
 
 // The default of the items
-func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) Defaults() pulumi.Float64ArrayOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsNumberItems) []float64 {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput) Defaults() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems) []float64 {
 		if v == nil {
 			return nil
 		}
@@ -2316,8 +2520,8 @@ func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) Defaults() pulumi.Fl
 }
 
 // The enum jq query of the number items
-func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) EnumJqQuery() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsNumberItems) *string {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput) EnumJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems) *string {
 		if v == nil {
 			return nil
 		}
@@ -2326,8 +2530,8 @@ func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) EnumJqQuery() pulumi
 }
 
 // The enum of the items
-func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) Enums() pulumi.Float64ArrayOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsNumberItems) []float64 {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput) Enums() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems) []float64 {
 		if v == nil {
 			return nil
 		}
@@ -2335,136 +2539,138 @@ func (o ActionUserPropertiesArrayPropsNumberItemsPtrOutput) Enums() pulumi.Float
 	}).(pulumi.Float64ArrayOutput)
 }
 
-type ActionUserPropertiesArrayPropsObjectItems struct {
+type ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems struct {
 	// The default of the items
 	Defaults []map[string]string `pulumi:"defaults"`
 }
 
-// ActionUserPropertiesArrayPropsObjectItemsInput is an input type that accepts ActionUserPropertiesArrayPropsObjectItemsArgs and ActionUserPropertiesArrayPropsObjectItemsOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesArrayPropsObjectItemsInput` via:
+// ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs and ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsInput` via:
 //
-//	ActionUserPropertiesArrayPropsObjectItemsArgs{...}
-type ActionUserPropertiesArrayPropsObjectItemsInput interface {
+//	ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs{...}
+type ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesArrayPropsObjectItemsOutput() ActionUserPropertiesArrayPropsObjectItemsOutput
-	ToActionUserPropertiesArrayPropsObjectItemsOutputWithContext(context.Context) ActionUserPropertiesArrayPropsObjectItemsOutput
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput
 }
 
-type ActionUserPropertiesArrayPropsObjectItemsArgs struct {
+type ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs struct {
 	// The default of the items
 	Defaults pulumi.StringMapArrayInput `pulumi:"defaults"`
 }
 
-func (ActionUserPropertiesArrayPropsObjectItemsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesArrayPropsObjectItems)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems)(nil)).Elem()
 }
 
-func (i ActionUserPropertiesArrayPropsObjectItemsArgs) ToActionUserPropertiesArrayPropsObjectItemsOutput() ActionUserPropertiesArrayPropsObjectItemsOutput {
-	return i.ToActionUserPropertiesArrayPropsObjectItemsOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs) ToActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesArrayPropsObjectItemsArgs) ToActionUserPropertiesArrayPropsObjectItemsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsObjectItemsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsObjectItemsOutput)
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs) ToActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput)
 }
 
-func (i ActionUserPropertiesArrayPropsObjectItemsArgs) ToActionUserPropertiesArrayPropsObjectItemsPtrOutput() ActionUserPropertiesArrayPropsObjectItemsPtrOutput {
-	return i.ToActionUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs) ToActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesArrayPropsObjectItemsArgs) ToActionUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsObjectItemsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsObjectItemsOutput).ToActionUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx)
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs) ToActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput).ToActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx)
 }
 
-// ActionUserPropertiesArrayPropsObjectItemsPtrInput is an input type that accepts ActionUserPropertiesArrayPropsObjectItemsArgs, ActionUserPropertiesArrayPropsObjectItemsPtr and ActionUserPropertiesArrayPropsObjectItemsPtrOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesArrayPropsObjectItemsPtrInput` via:
+// ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs, ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtr and ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrInput` via:
 //
-//	        ActionUserPropertiesArrayPropsObjectItemsArgs{...}
+//	        ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs{...}
 //
 //	or:
 //
 //	        nil
-type ActionUserPropertiesArrayPropsObjectItemsPtrInput interface {
+type ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesArrayPropsObjectItemsPtrOutput() ActionUserPropertiesArrayPropsObjectItemsPtrOutput
-	ToActionUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(context.Context) ActionUserPropertiesArrayPropsObjectItemsPtrOutput
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput
 }
 
-type actionUserPropertiesArrayPropsObjectItemsPtrType ActionUserPropertiesArrayPropsObjectItemsArgs
+type actionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrType ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs
 
-func ActionUserPropertiesArrayPropsObjectItemsPtr(v *ActionUserPropertiesArrayPropsObjectItemsArgs) ActionUserPropertiesArrayPropsObjectItemsPtrInput {
-	return (*actionUserPropertiesArrayPropsObjectItemsPtrType)(v)
+func ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtr(v *ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs) ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrInput {
+	return (*actionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrType)(v)
 }
 
-func (*actionUserPropertiesArrayPropsObjectItemsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActionUserPropertiesArrayPropsObjectItems)(nil)).Elem()
+func (*actionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems)(nil)).Elem()
 }
 
-func (i *actionUserPropertiesArrayPropsObjectItemsPtrType) ToActionUserPropertiesArrayPropsObjectItemsPtrOutput() ActionUserPropertiesArrayPropsObjectItemsPtrOutput {
-	return i.ToActionUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(context.Background())
+func (i *actionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrType) ToActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(context.Background())
 }
 
-func (i *actionUserPropertiesArrayPropsObjectItemsPtrType) ToActionUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsObjectItemsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsObjectItemsPtrOutput)
+func (i *actionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrType) ToActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput)
 }
 
-type ActionUserPropertiesArrayPropsObjectItemsOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesArrayPropsObjectItemsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesArrayPropsObjectItems)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesArrayPropsObjectItemsOutput) ToActionUserPropertiesArrayPropsObjectItemsOutput() ActionUserPropertiesArrayPropsObjectItemsOutput {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput {
 	return o
 }
 
-func (o ActionUserPropertiesArrayPropsObjectItemsOutput) ToActionUserPropertiesArrayPropsObjectItemsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsObjectItemsOutput {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput {
 	return o
 }
 
-func (o ActionUserPropertiesArrayPropsObjectItemsOutput) ToActionUserPropertiesArrayPropsObjectItemsPtrOutput() ActionUserPropertiesArrayPropsObjectItemsPtrOutput {
-	return o.ToActionUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(context.Background())
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput {
+	return o.ToActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(context.Background())
 }
 
-func (o ActionUserPropertiesArrayPropsObjectItemsOutput) ToActionUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsObjectItemsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionUserPropertiesArrayPropsObjectItems) *ActionUserPropertiesArrayPropsObjectItems {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems) *ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems {
 		return &v
-	}).(ActionUserPropertiesArrayPropsObjectItemsPtrOutput)
+	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput)
 }
 
 // The default of the items
-func (o ActionUserPropertiesArrayPropsObjectItemsOutput) Defaults() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayPropsObjectItems) []map[string]string { return v.Defaults }).(pulumi.StringMapArrayOutput)
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput) Defaults() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems) []map[string]string {
+		return v.Defaults
+	}).(pulumi.StringMapArrayOutput)
 }
 
-type ActionUserPropertiesArrayPropsObjectItemsPtrOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesArrayPropsObjectItemsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActionUserPropertiesArrayPropsObjectItems)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesArrayPropsObjectItemsPtrOutput) ToActionUserPropertiesArrayPropsObjectItemsPtrOutput() ActionUserPropertiesArrayPropsObjectItemsPtrOutput {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput {
 	return o
 }
 
-func (o ActionUserPropertiesArrayPropsObjectItemsPtrOutput) ToActionUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsObjectItemsPtrOutput {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput {
 	return o
 }
 
-func (o ActionUserPropertiesArrayPropsObjectItemsPtrOutput) Elem() ActionUserPropertiesArrayPropsObjectItemsOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsObjectItems) ActionUserPropertiesArrayPropsObjectItems {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput) Elem() ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems) ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems {
 		if v != nil {
 			return *v
 		}
-		var ret ActionUserPropertiesArrayPropsObjectItems
+		var ret ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems
 		return ret
-	}).(ActionUserPropertiesArrayPropsObjectItemsOutput)
+	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput)
 }
 
 // The default of the items
-func (o ActionUserPropertiesArrayPropsObjectItemsPtrOutput) Defaults() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsObjectItems) []map[string]string {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput) Defaults() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems) []map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -2472,7 +2678,7 @@ func (o ActionUserPropertiesArrayPropsObjectItemsPtrOutput) Defaults() pulumi.St
 	}).(pulumi.StringMapArrayOutput)
 }
 
-type ActionUserPropertiesArrayPropsStringItems struct {
+type ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems struct {
 	// The blueprint identifier the property relates to
 	Blueprint *string `pulumi:"blueprint"`
 	// The dataset of an the entity-format items
@@ -2487,18 +2693,18 @@ type ActionUserPropertiesArrayPropsStringItems struct {
 	Format *string `pulumi:"format"`
 }
 
-// ActionUserPropertiesArrayPropsStringItemsInput is an input type that accepts ActionUserPropertiesArrayPropsStringItemsArgs and ActionUserPropertiesArrayPropsStringItemsOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesArrayPropsStringItemsInput` via:
+// ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs and ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsInput` via:
 //
-//	ActionUserPropertiesArrayPropsStringItemsArgs{...}
-type ActionUserPropertiesArrayPropsStringItemsInput interface {
+//	ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs{...}
+type ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesArrayPropsStringItemsOutput() ActionUserPropertiesArrayPropsStringItemsOutput
-	ToActionUserPropertiesArrayPropsStringItemsOutputWithContext(context.Context) ActionUserPropertiesArrayPropsStringItemsOutput
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput
 }
 
-type ActionUserPropertiesArrayPropsStringItemsArgs struct {
+type ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs struct {
 	// The blueprint identifier the property relates to
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// The dataset of an the entity-format items
@@ -2513,140 +2719,140 @@ type ActionUserPropertiesArrayPropsStringItemsArgs struct {
 	Format pulumi.StringPtrInput `pulumi:"format"`
 }
 
-func (ActionUserPropertiesArrayPropsStringItemsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesArrayPropsStringItems)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems)(nil)).Elem()
 }
 
-func (i ActionUserPropertiesArrayPropsStringItemsArgs) ToActionUserPropertiesArrayPropsStringItemsOutput() ActionUserPropertiesArrayPropsStringItemsOutput {
-	return i.ToActionUserPropertiesArrayPropsStringItemsOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs) ToActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesArrayPropsStringItemsArgs) ToActionUserPropertiesArrayPropsStringItemsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsStringItemsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsStringItemsOutput)
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs) ToActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput)
 }
 
-func (i ActionUserPropertiesArrayPropsStringItemsArgs) ToActionUserPropertiesArrayPropsStringItemsPtrOutput() ActionUserPropertiesArrayPropsStringItemsPtrOutput {
-	return i.ToActionUserPropertiesArrayPropsStringItemsPtrOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs) ToActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesArrayPropsStringItemsArgs) ToActionUserPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsStringItemsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsStringItemsOutput).ToActionUserPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx)
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs) ToActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput).ToActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx)
 }
 
-// ActionUserPropertiesArrayPropsStringItemsPtrInput is an input type that accepts ActionUserPropertiesArrayPropsStringItemsArgs, ActionUserPropertiesArrayPropsStringItemsPtr and ActionUserPropertiesArrayPropsStringItemsPtrOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesArrayPropsStringItemsPtrInput` via:
+// ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs, ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtr and ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrInput` via:
 //
-//	        ActionUserPropertiesArrayPropsStringItemsArgs{...}
+//	        ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs{...}
 //
 //	or:
 //
 //	        nil
-type ActionUserPropertiesArrayPropsStringItemsPtrInput interface {
+type ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesArrayPropsStringItemsPtrOutput() ActionUserPropertiesArrayPropsStringItemsPtrOutput
-	ToActionUserPropertiesArrayPropsStringItemsPtrOutputWithContext(context.Context) ActionUserPropertiesArrayPropsStringItemsPtrOutput
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput
 }
 
-type actionUserPropertiesArrayPropsStringItemsPtrType ActionUserPropertiesArrayPropsStringItemsArgs
+type actionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrType ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs
 
-func ActionUserPropertiesArrayPropsStringItemsPtr(v *ActionUserPropertiesArrayPropsStringItemsArgs) ActionUserPropertiesArrayPropsStringItemsPtrInput {
-	return (*actionUserPropertiesArrayPropsStringItemsPtrType)(v)
+func ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtr(v *ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs) ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrInput {
+	return (*actionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrType)(v)
 }
 
-func (*actionUserPropertiesArrayPropsStringItemsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActionUserPropertiesArrayPropsStringItems)(nil)).Elem()
+func (*actionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems)(nil)).Elem()
 }
 
-func (i *actionUserPropertiesArrayPropsStringItemsPtrType) ToActionUserPropertiesArrayPropsStringItemsPtrOutput() ActionUserPropertiesArrayPropsStringItemsPtrOutput {
-	return i.ToActionUserPropertiesArrayPropsStringItemsPtrOutputWithContext(context.Background())
+func (i *actionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrType) ToActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutputWithContext(context.Background())
 }
 
-func (i *actionUserPropertiesArrayPropsStringItemsPtrType) ToActionUserPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsStringItemsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesArrayPropsStringItemsPtrOutput)
+func (i *actionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrType) ToActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput)
 }
 
-type ActionUserPropertiesArrayPropsStringItemsOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesArrayPropsStringItemsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesArrayPropsStringItems)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesArrayPropsStringItemsOutput) ToActionUserPropertiesArrayPropsStringItemsOutput() ActionUserPropertiesArrayPropsStringItemsOutput {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput {
 	return o
 }
 
-func (o ActionUserPropertiesArrayPropsStringItemsOutput) ToActionUserPropertiesArrayPropsStringItemsOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsStringItemsOutput {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput {
 	return o
 }
 
-func (o ActionUserPropertiesArrayPropsStringItemsOutput) ToActionUserPropertiesArrayPropsStringItemsPtrOutput() ActionUserPropertiesArrayPropsStringItemsPtrOutput {
-	return o.ToActionUserPropertiesArrayPropsStringItemsPtrOutputWithContext(context.Background())
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput {
+	return o.ToActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutputWithContext(context.Background())
 }
 
-func (o ActionUserPropertiesArrayPropsStringItemsOutput) ToActionUserPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsStringItemsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionUserPropertiesArrayPropsStringItems) *ActionUserPropertiesArrayPropsStringItems {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) *ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems {
 		return &v
-	}).(ActionUserPropertiesArrayPropsStringItemsPtrOutput)
+	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput)
 }
 
 // The blueprint identifier the property relates to
-func (o ActionUserPropertiesArrayPropsStringItemsOutput) Blueprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayPropsStringItems) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput) Blueprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
 }
 
 // The dataset of an the entity-format items
-func (o ActionUserPropertiesArrayPropsStringItemsOutput) Dataset() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayPropsStringItems) *string { return v.Dataset }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput) Dataset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) *string { return v.Dataset }).(pulumi.StringPtrOutput)
 }
 
 // The default of the items
-func (o ActionUserPropertiesArrayPropsStringItemsOutput) Defaults() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayPropsStringItems) []string { return v.Defaults }).(pulumi.StringArrayOutput)
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput) Defaults() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) []string { return v.Defaults }).(pulumi.StringArrayOutput)
 }
 
 // The enum jq query of the string items
-func (o ActionUserPropertiesArrayPropsStringItemsOutput) EnumJqQuery() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayPropsStringItems) *string { return v.EnumJqQuery }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput) EnumJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) *string { return v.EnumJqQuery }).(pulumi.StringPtrOutput)
 }
 
 // The enum of the items
-func (o ActionUserPropertiesArrayPropsStringItemsOutput) Enums() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayPropsStringItems) []string { return v.Enums }).(pulumi.StringArrayOutput)
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) []string { return v.Enums }).(pulumi.StringArrayOutput)
 }
 
 // The format of the items
-func (o ActionUserPropertiesArrayPropsStringItemsOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesArrayPropsStringItems) *string { return v.Format }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
-type ActionUserPropertiesArrayPropsStringItemsPtrOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesArrayPropsStringItemsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActionUserPropertiesArrayPropsStringItems)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) ToActionUserPropertiesArrayPropsStringItemsPtrOutput() ActionUserPropertiesArrayPropsStringItemsPtrOutput {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput {
 	return o
 }
 
-func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) ToActionUserPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx context.Context) ActionUserPropertiesArrayPropsStringItemsPtrOutput {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput {
 	return o
 }
 
-func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Elem() ActionUserPropertiesArrayPropsStringItemsOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsStringItems) ActionUserPropertiesArrayPropsStringItems {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput) Elem() ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems {
 		if v != nil {
 			return *v
 		}
-		var ret ActionUserPropertiesArrayPropsStringItems
+		var ret ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems
 		return ret
-	}).(ActionUserPropertiesArrayPropsStringItemsOutput)
+	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput)
 }
 
 // The blueprint identifier the property relates to
-func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Blueprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsStringItems) *string {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput) Blueprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) *string {
 		if v == nil {
 			return nil
 		}
@@ -2655,8 +2861,8 @@ func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Blueprint() pulumi.S
 }
 
 // The dataset of an the entity-format items
-func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Dataset() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsStringItems) *string {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput) Dataset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) *string {
 		if v == nil {
 			return nil
 		}
@@ -2665,8 +2871,8 @@ func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Dataset() pulumi.Str
 }
 
 // The default of the items
-func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Defaults() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsStringItems) []string {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput) Defaults() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) []string {
 		if v == nil {
 			return nil
 		}
@@ -2675,8 +2881,8 @@ func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Defaults() pulumi.St
 }
 
 // The enum jq query of the string items
-func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) EnumJqQuery() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsStringItems) *string {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput) EnumJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) *string {
 		if v == nil {
 			return nil
 		}
@@ -2685,8 +2891,8 @@ func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) EnumJqQuery() pulumi
 }
 
 // The enum of the items
-func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Enums() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsStringItems) []string {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) []string {
 		if v == nil {
 			return nil
 		}
@@ -2695,8 +2901,8 @@ func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Enums() pulumi.Strin
 }
 
 // The format of the items
-func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesArrayPropsStringItems) *string {
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) *string {
 		if v == nil {
 			return nil
 		}
@@ -2704,7 +2910,7 @@ func (o ActionUserPropertiesArrayPropsStringItemsPtrOutput) Format() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-type ActionUserPropertiesBooleanProps struct {
+type ActionSelfServiceTriggerUserPropertiesBooleanProps struct {
 	// The default of the boolean property
 	Default *bool `pulumi:"default"`
 	// The default jq query of the boolean property
@@ -2725,18 +2931,18 @@ type ActionUserPropertiesBooleanProps struct {
 	VisibleJqQuery *string `pulumi:"visibleJqQuery"`
 }
 
-// ActionUserPropertiesBooleanPropsInput is an input type that accepts ActionUserPropertiesBooleanPropsArgs and ActionUserPropertiesBooleanPropsOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesBooleanPropsInput` via:
+// ActionSelfServiceTriggerUserPropertiesBooleanPropsInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs and ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesBooleanPropsInput` via:
 //
-//	ActionUserPropertiesBooleanPropsArgs{...}
-type ActionUserPropertiesBooleanPropsInput interface {
+//	ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs{...}
+type ActionSelfServiceTriggerUserPropertiesBooleanPropsInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesBooleanPropsOutput() ActionUserPropertiesBooleanPropsOutput
-	ToActionUserPropertiesBooleanPropsOutputWithContext(context.Context) ActionUserPropertiesBooleanPropsOutput
+	ToActionSelfServiceTriggerUserPropertiesBooleanPropsOutput() ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput
+	ToActionSelfServiceTriggerUserPropertiesBooleanPropsOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput
 }
 
-type ActionUserPropertiesBooleanPropsArgs struct {
+type ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs struct {
 	// The default of the boolean property
 	Default pulumi.BoolPtrInput `pulumi:"default"`
 	// The default jq query of the boolean property
@@ -2757,123 +2963,123 @@ type ActionUserPropertiesBooleanPropsArgs struct {
 	VisibleJqQuery pulumi.StringPtrInput `pulumi:"visibleJqQuery"`
 }
 
-func (ActionUserPropertiesBooleanPropsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesBooleanProps)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesBooleanProps)(nil)).Elem()
 }
 
-func (i ActionUserPropertiesBooleanPropsArgs) ToActionUserPropertiesBooleanPropsOutput() ActionUserPropertiesBooleanPropsOutput {
-	return i.ToActionUserPropertiesBooleanPropsOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs) ToActionSelfServiceTriggerUserPropertiesBooleanPropsOutput() ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesBooleanPropsOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesBooleanPropsArgs) ToActionUserPropertiesBooleanPropsOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesBooleanPropsOutput)
+func (i ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs) ToActionSelfServiceTriggerUserPropertiesBooleanPropsOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput)
 }
 
-// ActionUserPropertiesBooleanPropsMapInput is an input type that accepts ActionUserPropertiesBooleanPropsMap and ActionUserPropertiesBooleanPropsMapOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesBooleanPropsMapInput` via:
+// ActionSelfServiceTriggerUserPropertiesBooleanPropsMapInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesBooleanPropsMap and ActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesBooleanPropsMapInput` via:
 //
-//	ActionUserPropertiesBooleanPropsMap{ "key": ActionUserPropertiesBooleanPropsArgs{...} }
-type ActionUserPropertiesBooleanPropsMapInput interface {
+//	ActionSelfServiceTriggerUserPropertiesBooleanPropsMap{ "key": ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs{...} }
+type ActionSelfServiceTriggerUserPropertiesBooleanPropsMapInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesBooleanPropsMapOutput() ActionUserPropertiesBooleanPropsMapOutput
-	ToActionUserPropertiesBooleanPropsMapOutputWithContext(context.Context) ActionUserPropertiesBooleanPropsMapOutput
+	ToActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutput() ActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutput
+	ToActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutput
 }
 
-type ActionUserPropertiesBooleanPropsMap map[string]ActionUserPropertiesBooleanPropsInput
+type ActionSelfServiceTriggerUserPropertiesBooleanPropsMap map[string]ActionSelfServiceTriggerUserPropertiesBooleanPropsInput
 
-func (ActionUserPropertiesBooleanPropsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ActionUserPropertiesBooleanProps)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesBooleanPropsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActionSelfServiceTriggerUserPropertiesBooleanProps)(nil)).Elem()
 }
 
-func (i ActionUserPropertiesBooleanPropsMap) ToActionUserPropertiesBooleanPropsMapOutput() ActionUserPropertiesBooleanPropsMapOutput {
-	return i.ToActionUserPropertiesBooleanPropsMapOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesBooleanPropsMap) ToActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutput() ActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesBooleanPropsMap) ToActionUserPropertiesBooleanPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesBooleanPropsMapOutput)
+func (i ActionSelfServiceTriggerUserPropertiesBooleanPropsMap) ToActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutput)
 }
 
-type ActionUserPropertiesBooleanPropsOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesBooleanPropsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesBooleanProps)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesBooleanProps)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesBooleanPropsOutput) ToActionUserPropertiesBooleanPropsOutput() ActionUserPropertiesBooleanPropsOutput {
+func (o ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput) ToActionSelfServiceTriggerUserPropertiesBooleanPropsOutput() ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput {
 	return o
 }
 
-func (o ActionUserPropertiesBooleanPropsOutput) ToActionUserPropertiesBooleanPropsOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsOutput {
+func (o ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput) ToActionSelfServiceTriggerUserPropertiesBooleanPropsOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput {
 	return o
 }
 
 // The default of the boolean property
-func (o ActionUserPropertiesBooleanPropsOutput) Default() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *bool { return v.Default }).(pulumi.BoolPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput) Default() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesBooleanProps) *bool { return v.Default }).(pulumi.BoolPtrOutput)
 }
 
 // The default jq query of the boolean property
-func (o ActionUserPropertiesBooleanPropsOutput) DefaultJqQuery() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *string { return v.DefaultJqQuery }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput) DefaultJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesBooleanProps) *string { return v.DefaultJqQuery }).(pulumi.StringPtrOutput)
 }
 
 // The properties that this property depends on
-func (o ActionUserPropertiesBooleanPropsOutput) DependsOns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
+func (o ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput) DependsOns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesBooleanProps) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
 }
 
 // The description of the property
-func (o ActionUserPropertiesBooleanPropsOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesBooleanProps) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The icon of the property
-func (o ActionUserPropertiesBooleanPropsOutput) Icon() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesBooleanProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
 // Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
-func (o ActionUserPropertiesBooleanPropsOutput) Required() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesBooleanProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
 // The title of the property
-func (o ActionUserPropertiesBooleanPropsOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *string { return v.Title }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesBooleanProps) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
 // The visibility of the boolean property
-func (o ActionUserPropertiesBooleanPropsOutput) Visible() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput) Visible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesBooleanProps) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
 }
 
 // The visibility condition jq query of the boolean property
-func (o ActionUserPropertiesBooleanPropsOutput) VisibleJqQuery() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesBooleanProps) *string { return v.VisibleJqQuery }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput) VisibleJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesBooleanProps) *string { return v.VisibleJqQuery }).(pulumi.StringPtrOutput)
 }
 
-type ActionUserPropertiesBooleanPropsMapOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesBooleanPropsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ActionUserPropertiesBooleanProps)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActionSelfServiceTriggerUserPropertiesBooleanProps)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesBooleanPropsMapOutput) ToActionUserPropertiesBooleanPropsMapOutput() ActionUserPropertiesBooleanPropsMapOutput {
+func (o ActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutput) ToActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutput() ActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutput {
 	return o
 }
 
-func (o ActionUserPropertiesBooleanPropsMapOutput) ToActionUserPropertiesBooleanPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesBooleanPropsMapOutput {
+func (o ActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutput) ToActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutput {
 	return o
 }
 
-func (o ActionUserPropertiesBooleanPropsMapOutput) MapIndex(k pulumi.StringInput) ActionUserPropertiesBooleanPropsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ActionUserPropertiesBooleanProps {
-		return vs[0].(map[string]ActionUserPropertiesBooleanProps)[vs[1].(string)]
-	}).(ActionUserPropertiesBooleanPropsOutput)
+func (o ActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutput) MapIndex(k pulumi.StringInput) ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ActionSelfServiceTriggerUserPropertiesBooleanProps {
+		return vs[0].(map[string]ActionSelfServiceTriggerUserPropertiesBooleanProps)[vs[1].(string)]
+	}).(ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput)
 }
 
-type ActionUserPropertiesNumberProps struct {
+type ActionSelfServiceTriggerUserPropertiesNumberProps struct {
 	// The default of the number property
 	Default *float64 `pulumi:"default"`
 	// The default jq query of the number property
@@ -2902,18 +3108,18 @@ type ActionUserPropertiesNumberProps struct {
 	VisibleJqQuery *string `pulumi:"visibleJqQuery"`
 }
 
-// ActionUserPropertiesNumberPropsInput is an input type that accepts ActionUserPropertiesNumberPropsArgs and ActionUserPropertiesNumberPropsOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesNumberPropsInput` via:
+// ActionSelfServiceTriggerUserPropertiesNumberPropsInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesNumberPropsArgs and ActionSelfServiceTriggerUserPropertiesNumberPropsOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesNumberPropsInput` via:
 //
-//	ActionUserPropertiesNumberPropsArgs{...}
-type ActionUserPropertiesNumberPropsInput interface {
+//	ActionSelfServiceTriggerUserPropertiesNumberPropsArgs{...}
+type ActionSelfServiceTriggerUserPropertiesNumberPropsInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesNumberPropsOutput() ActionUserPropertiesNumberPropsOutput
-	ToActionUserPropertiesNumberPropsOutputWithContext(context.Context) ActionUserPropertiesNumberPropsOutput
+	ToActionSelfServiceTriggerUserPropertiesNumberPropsOutput() ActionSelfServiceTriggerUserPropertiesNumberPropsOutput
+	ToActionSelfServiceTriggerUserPropertiesNumberPropsOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesNumberPropsOutput
 }
 
-type ActionUserPropertiesNumberPropsArgs struct {
+type ActionSelfServiceTriggerUserPropertiesNumberPropsArgs struct {
 	// The default of the number property
 	Default pulumi.Float64PtrInput `pulumi:"default"`
 	// The default jq query of the number property
@@ -2942,143 +3148,143 @@ type ActionUserPropertiesNumberPropsArgs struct {
 	VisibleJqQuery pulumi.StringPtrInput `pulumi:"visibleJqQuery"`
 }
 
-func (ActionUserPropertiesNumberPropsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesNumberProps)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesNumberPropsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesNumberProps)(nil)).Elem()
 }
 
-func (i ActionUserPropertiesNumberPropsArgs) ToActionUserPropertiesNumberPropsOutput() ActionUserPropertiesNumberPropsOutput {
-	return i.ToActionUserPropertiesNumberPropsOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesNumberPropsArgs) ToActionSelfServiceTriggerUserPropertiesNumberPropsOutput() ActionSelfServiceTriggerUserPropertiesNumberPropsOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesNumberPropsOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesNumberPropsArgs) ToActionUserPropertiesNumberPropsOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesNumberPropsOutput)
+func (i ActionSelfServiceTriggerUserPropertiesNumberPropsArgs) ToActionSelfServiceTriggerUserPropertiesNumberPropsOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesNumberPropsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesNumberPropsOutput)
 }
 
-// ActionUserPropertiesNumberPropsMapInput is an input type that accepts ActionUserPropertiesNumberPropsMap and ActionUserPropertiesNumberPropsMapOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesNumberPropsMapInput` via:
+// ActionSelfServiceTriggerUserPropertiesNumberPropsMapInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesNumberPropsMap and ActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesNumberPropsMapInput` via:
 //
-//	ActionUserPropertiesNumberPropsMap{ "key": ActionUserPropertiesNumberPropsArgs{...} }
-type ActionUserPropertiesNumberPropsMapInput interface {
+//	ActionSelfServiceTriggerUserPropertiesNumberPropsMap{ "key": ActionSelfServiceTriggerUserPropertiesNumberPropsArgs{...} }
+type ActionSelfServiceTriggerUserPropertiesNumberPropsMapInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesNumberPropsMapOutput() ActionUserPropertiesNumberPropsMapOutput
-	ToActionUserPropertiesNumberPropsMapOutputWithContext(context.Context) ActionUserPropertiesNumberPropsMapOutput
+	ToActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput() ActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput
+	ToActionSelfServiceTriggerUserPropertiesNumberPropsMapOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput
 }
 
-type ActionUserPropertiesNumberPropsMap map[string]ActionUserPropertiesNumberPropsInput
+type ActionSelfServiceTriggerUserPropertiesNumberPropsMap map[string]ActionSelfServiceTriggerUserPropertiesNumberPropsInput
 
-func (ActionUserPropertiesNumberPropsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ActionUserPropertiesNumberProps)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesNumberPropsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActionSelfServiceTriggerUserPropertiesNumberProps)(nil)).Elem()
 }
 
-func (i ActionUserPropertiesNumberPropsMap) ToActionUserPropertiesNumberPropsMapOutput() ActionUserPropertiesNumberPropsMapOutput {
-	return i.ToActionUserPropertiesNumberPropsMapOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesNumberPropsMap) ToActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput() ActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesNumberPropsMapOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesNumberPropsMap) ToActionUserPropertiesNumberPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesNumberPropsMapOutput)
+func (i ActionSelfServiceTriggerUserPropertiesNumberPropsMap) ToActionSelfServiceTriggerUserPropertiesNumberPropsMapOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput)
 }
 
-type ActionUserPropertiesNumberPropsOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesNumberPropsOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesNumberPropsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesNumberProps)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesNumberProps)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesNumberPropsOutput) ToActionUserPropertiesNumberPropsOutput() ActionUserPropertiesNumberPropsOutput {
+func (o ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) ToActionSelfServiceTriggerUserPropertiesNumberPropsOutput() ActionSelfServiceTriggerUserPropertiesNumberPropsOutput {
 	return o
 }
 
-func (o ActionUserPropertiesNumberPropsOutput) ToActionUserPropertiesNumberPropsOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsOutput {
+func (o ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) ToActionSelfServiceTriggerUserPropertiesNumberPropsOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesNumberPropsOutput {
 	return o
 }
 
 // The default of the number property
-func (o ActionUserPropertiesNumberPropsOutput) Default() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *float64 { return v.Default }).(pulumi.Float64PtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) Default() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesNumberProps) *float64 { return v.Default }).(pulumi.Float64PtrOutput)
 }
 
 // The default jq query of the number property
-func (o ActionUserPropertiesNumberPropsOutput) DefaultJqQuery() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *string { return v.DefaultJqQuery }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) DefaultJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesNumberProps) *string { return v.DefaultJqQuery }).(pulumi.StringPtrOutput)
 }
 
 // The properties that this property depends on
-func (o ActionUserPropertiesNumberPropsOutput) DependsOns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ActionUserPropertiesNumberProps) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
+func (o ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) DependsOns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesNumberProps) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
 }
 
 // The description of the property
-func (o ActionUserPropertiesNumberPropsOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesNumberProps) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The enum jq query of the string property
-func (o ActionUserPropertiesNumberPropsOutput) EnumJqQuery() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *string { return v.EnumJqQuery }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) EnumJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesNumberProps) *string { return v.EnumJqQuery }).(pulumi.StringPtrOutput)
 }
 
 // The enum of the number property
-func (o ActionUserPropertiesNumberPropsOutput) Enums() pulumi.Float64ArrayOutput {
-	return o.ApplyT(func(v ActionUserPropertiesNumberProps) []float64 { return v.Enums }).(pulumi.Float64ArrayOutput)
+func (o ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) Enums() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesNumberProps) []float64 { return v.Enums }).(pulumi.Float64ArrayOutput)
 }
 
 // The icon of the property
-func (o ActionUserPropertiesNumberPropsOutput) Icon() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesNumberProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
 // The min of the number property
-func (o ActionUserPropertiesNumberPropsOutput) Maximum() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *float64 { return v.Maximum }).(pulumi.Float64PtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) Maximum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesNumberProps) *float64 { return v.Maximum }).(pulumi.Float64PtrOutput)
 }
 
 // The max of the number property
-func (o ActionUserPropertiesNumberPropsOutput) Minimum() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *float64 { return v.Minimum }).(pulumi.Float64PtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) Minimum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesNumberProps) *float64 { return v.Minimum }).(pulumi.Float64PtrOutput)
 }
 
 // Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
-func (o ActionUserPropertiesNumberPropsOutput) Required() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesNumberProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
 // The title of the property
-func (o ActionUserPropertiesNumberPropsOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *string { return v.Title }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesNumberProps) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
 // The visibility of the number property
-func (o ActionUserPropertiesNumberPropsOutput) Visible() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) Visible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesNumberProps) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
 }
 
 // The visibility condition jq query of the number property
-func (o ActionUserPropertiesNumberPropsOutput) VisibleJqQuery() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesNumberProps) *string { return v.VisibleJqQuery }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) VisibleJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesNumberProps) *string { return v.VisibleJqQuery }).(pulumi.StringPtrOutput)
 }
 
-type ActionUserPropertiesNumberPropsMapOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesNumberPropsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ActionUserPropertiesNumberProps)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActionSelfServiceTriggerUserPropertiesNumberProps)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesNumberPropsMapOutput) ToActionUserPropertiesNumberPropsMapOutput() ActionUserPropertiesNumberPropsMapOutput {
+func (o ActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput) ToActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput() ActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput {
 	return o
 }
 
-func (o ActionUserPropertiesNumberPropsMapOutput) ToActionUserPropertiesNumberPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesNumberPropsMapOutput {
+func (o ActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput) ToActionSelfServiceTriggerUserPropertiesNumberPropsMapOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput {
 	return o
 }
 
-func (o ActionUserPropertiesNumberPropsMapOutput) MapIndex(k pulumi.StringInput) ActionUserPropertiesNumberPropsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ActionUserPropertiesNumberProps {
-		return vs[0].(map[string]ActionUserPropertiesNumberProps)[vs[1].(string)]
-	}).(ActionUserPropertiesNumberPropsOutput)
+func (o ActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput) MapIndex(k pulumi.StringInput) ActionSelfServiceTriggerUserPropertiesNumberPropsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ActionSelfServiceTriggerUserPropertiesNumberProps {
+		return vs[0].(map[string]ActionSelfServiceTriggerUserPropertiesNumberProps)[vs[1].(string)]
+	}).(ActionSelfServiceTriggerUserPropertiesNumberPropsOutput)
 }
 
-type ActionUserPropertiesObjectProps struct {
+type ActionSelfServiceTriggerUserPropertiesObjectProps struct {
 	// The default of the object property
 	Default *string `pulumi:"default"`
 	// The default jq query of the object property
@@ -3101,18 +3307,18 @@ type ActionUserPropertiesObjectProps struct {
 	VisibleJqQuery *string `pulumi:"visibleJqQuery"`
 }
 
-// ActionUserPropertiesObjectPropsInput is an input type that accepts ActionUserPropertiesObjectPropsArgs and ActionUserPropertiesObjectPropsOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesObjectPropsInput` via:
+// ActionSelfServiceTriggerUserPropertiesObjectPropsInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesObjectPropsArgs and ActionSelfServiceTriggerUserPropertiesObjectPropsOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesObjectPropsInput` via:
 //
-//	ActionUserPropertiesObjectPropsArgs{...}
-type ActionUserPropertiesObjectPropsInput interface {
+//	ActionSelfServiceTriggerUserPropertiesObjectPropsArgs{...}
+type ActionSelfServiceTriggerUserPropertiesObjectPropsInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesObjectPropsOutput() ActionUserPropertiesObjectPropsOutput
-	ToActionUserPropertiesObjectPropsOutputWithContext(context.Context) ActionUserPropertiesObjectPropsOutput
+	ToActionSelfServiceTriggerUserPropertiesObjectPropsOutput() ActionSelfServiceTriggerUserPropertiesObjectPropsOutput
+	ToActionSelfServiceTriggerUserPropertiesObjectPropsOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesObjectPropsOutput
 }
 
-type ActionUserPropertiesObjectPropsArgs struct {
+type ActionSelfServiceTriggerUserPropertiesObjectPropsArgs struct {
 	// The default of the object property
 	Default pulumi.StringPtrInput `pulumi:"default"`
 	// The default jq query of the object property
@@ -3135,132 +3341,132 @@ type ActionUserPropertiesObjectPropsArgs struct {
 	VisibleJqQuery pulumi.StringPtrInput `pulumi:"visibleJqQuery"`
 }
 
-func (ActionUserPropertiesObjectPropsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesObjectProps)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesObjectPropsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesObjectProps)(nil)).Elem()
 }
 
-func (i ActionUserPropertiesObjectPropsArgs) ToActionUserPropertiesObjectPropsOutput() ActionUserPropertiesObjectPropsOutput {
-	return i.ToActionUserPropertiesObjectPropsOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesObjectPropsArgs) ToActionSelfServiceTriggerUserPropertiesObjectPropsOutput() ActionSelfServiceTriggerUserPropertiesObjectPropsOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesObjectPropsOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesObjectPropsArgs) ToActionUserPropertiesObjectPropsOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesObjectPropsOutput)
+func (i ActionSelfServiceTriggerUserPropertiesObjectPropsArgs) ToActionSelfServiceTriggerUserPropertiesObjectPropsOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesObjectPropsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesObjectPropsOutput)
 }
 
-// ActionUserPropertiesObjectPropsMapInput is an input type that accepts ActionUserPropertiesObjectPropsMap and ActionUserPropertiesObjectPropsMapOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesObjectPropsMapInput` via:
+// ActionSelfServiceTriggerUserPropertiesObjectPropsMapInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesObjectPropsMap and ActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesObjectPropsMapInput` via:
 //
-//	ActionUserPropertiesObjectPropsMap{ "key": ActionUserPropertiesObjectPropsArgs{...} }
-type ActionUserPropertiesObjectPropsMapInput interface {
+//	ActionSelfServiceTriggerUserPropertiesObjectPropsMap{ "key": ActionSelfServiceTriggerUserPropertiesObjectPropsArgs{...} }
+type ActionSelfServiceTriggerUserPropertiesObjectPropsMapInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesObjectPropsMapOutput() ActionUserPropertiesObjectPropsMapOutput
-	ToActionUserPropertiesObjectPropsMapOutputWithContext(context.Context) ActionUserPropertiesObjectPropsMapOutput
+	ToActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput() ActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput
+	ToActionSelfServiceTriggerUserPropertiesObjectPropsMapOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput
 }
 
-type ActionUserPropertiesObjectPropsMap map[string]ActionUserPropertiesObjectPropsInput
+type ActionSelfServiceTriggerUserPropertiesObjectPropsMap map[string]ActionSelfServiceTriggerUserPropertiesObjectPropsInput
 
-func (ActionUserPropertiesObjectPropsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ActionUserPropertiesObjectProps)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesObjectPropsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActionSelfServiceTriggerUserPropertiesObjectProps)(nil)).Elem()
 }
 
-func (i ActionUserPropertiesObjectPropsMap) ToActionUserPropertiesObjectPropsMapOutput() ActionUserPropertiesObjectPropsMapOutput {
-	return i.ToActionUserPropertiesObjectPropsMapOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesObjectPropsMap) ToActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput() ActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesObjectPropsMapOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesObjectPropsMap) ToActionUserPropertiesObjectPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesObjectPropsMapOutput)
+func (i ActionSelfServiceTriggerUserPropertiesObjectPropsMap) ToActionSelfServiceTriggerUserPropertiesObjectPropsMapOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput)
 }
 
-type ActionUserPropertiesObjectPropsOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesObjectPropsOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesObjectPropsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesObjectProps)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesObjectProps)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesObjectPropsOutput) ToActionUserPropertiesObjectPropsOutput() ActionUserPropertiesObjectPropsOutput {
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) ToActionSelfServiceTriggerUserPropertiesObjectPropsOutput() ActionSelfServiceTriggerUserPropertiesObjectPropsOutput {
 	return o
 }
 
-func (o ActionUserPropertiesObjectPropsOutput) ToActionUserPropertiesObjectPropsOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsOutput {
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) ToActionSelfServiceTriggerUserPropertiesObjectPropsOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesObjectPropsOutput {
 	return o
 }
 
 // The default of the object property
-func (o ActionUserPropertiesObjectPropsOutput) Default() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.Default }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesObjectProps) *string { return v.Default }).(pulumi.StringPtrOutput)
 }
 
 // The default jq query of the object property
-func (o ActionUserPropertiesObjectPropsOutput) DefaultJqQuery() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.DefaultJqQuery }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) DefaultJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesObjectProps) *string { return v.DefaultJqQuery }).(pulumi.StringPtrOutput)
 }
 
 // The properties that this property depends on
-func (o ActionUserPropertiesObjectPropsOutput) DependsOns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ActionUserPropertiesObjectProps) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) DependsOns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesObjectProps) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
 }
 
 // The description of the property
-func (o ActionUserPropertiesObjectPropsOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesObjectProps) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The algorithm to encrypt the property with
-func (o ActionUserPropertiesObjectPropsOutput) Encryption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.Encryption }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) Encryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesObjectProps) *string { return v.Encryption }).(pulumi.StringPtrOutput)
 }
 
 // The icon of the property
-func (o ActionUserPropertiesObjectPropsOutput) Icon() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesObjectProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
 // Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
-func (o ActionUserPropertiesObjectPropsOutput) Required() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesObjectProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
 // The title of the property
-func (o ActionUserPropertiesObjectPropsOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.Title }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesObjectProps) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
 // The visibility of the object property
-func (o ActionUserPropertiesObjectPropsOutput) Visible() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) Visible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesObjectProps) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
 }
 
 // The visibility condition jq query of the object property
-func (o ActionUserPropertiesObjectPropsOutput) VisibleJqQuery() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesObjectProps) *string { return v.VisibleJqQuery }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) VisibleJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesObjectProps) *string { return v.VisibleJqQuery }).(pulumi.StringPtrOutput)
 }
 
-type ActionUserPropertiesObjectPropsMapOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesObjectPropsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ActionUserPropertiesObjectProps)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActionSelfServiceTriggerUserPropertiesObjectProps)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesObjectPropsMapOutput) ToActionUserPropertiesObjectPropsMapOutput() ActionUserPropertiesObjectPropsMapOutput {
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput) ToActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput() ActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput {
 	return o
 }
 
-func (o ActionUserPropertiesObjectPropsMapOutput) ToActionUserPropertiesObjectPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesObjectPropsMapOutput {
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput) ToActionSelfServiceTriggerUserPropertiesObjectPropsMapOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput {
 	return o
 }
 
-func (o ActionUserPropertiesObjectPropsMapOutput) MapIndex(k pulumi.StringInput) ActionUserPropertiesObjectPropsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ActionUserPropertiesObjectProps {
-		return vs[0].(map[string]ActionUserPropertiesObjectProps)[vs[1].(string)]
-	}).(ActionUserPropertiesObjectPropsOutput)
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput) MapIndex(k pulumi.StringInput) ActionSelfServiceTriggerUserPropertiesObjectPropsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ActionSelfServiceTriggerUserPropertiesObjectProps {
+		return vs[0].(map[string]ActionSelfServiceTriggerUserPropertiesObjectProps)[vs[1].(string)]
+	}).(ActionSelfServiceTriggerUserPropertiesObjectPropsOutput)
 }
 
-type ActionUserPropertiesStringProps struct {
+type ActionSelfServiceTriggerUserPropertiesStringProps struct {
 	// The blueprint identifier the string property relates to
 	Blueprint *string `pulumi:"blueprint"`
 	// The dataset of an the entity-format property
-	Dataset *ActionUserPropertiesStringPropsDataset `pulumi:"dataset"`
+	Dataset *ActionSelfServiceTriggerUserPropertiesStringPropsDataset `pulumi:"dataset"`
 	// The default of the string property
 	Default *string `pulumi:"default"`
 	// The default jq query of the string property
@@ -3295,22 +3501,22 @@ type ActionUserPropertiesStringProps struct {
 	VisibleJqQuery *string `pulumi:"visibleJqQuery"`
 }
 
-// ActionUserPropertiesStringPropsInput is an input type that accepts ActionUserPropertiesStringPropsArgs and ActionUserPropertiesStringPropsOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesStringPropsInput` via:
+// ActionSelfServiceTriggerUserPropertiesStringPropsInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesStringPropsArgs and ActionSelfServiceTriggerUserPropertiesStringPropsOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesStringPropsInput` via:
 //
-//	ActionUserPropertiesStringPropsArgs{...}
-type ActionUserPropertiesStringPropsInput interface {
+//	ActionSelfServiceTriggerUserPropertiesStringPropsArgs{...}
+type ActionSelfServiceTriggerUserPropertiesStringPropsInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesStringPropsOutput() ActionUserPropertiesStringPropsOutput
-	ToActionUserPropertiesStringPropsOutputWithContext(context.Context) ActionUserPropertiesStringPropsOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsOutput() ActionSelfServiceTriggerUserPropertiesStringPropsOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsOutput
 }
 
-type ActionUserPropertiesStringPropsArgs struct {
+type ActionSelfServiceTriggerUserPropertiesStringPropsArgs struct {
 	// The blueprint identifier the string property relates to
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// The dataset of an the entity-format property
-	Dataset ActionUserPropertiesStringPropsDatasetPtrInput `pulumi:"dataset"`
+	Dataset ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrInput `pulumi:"dataset"`
 	// The default of the string property
 	Default pulumi.StringPtrInput `pulumi:"default"`
 	// The default jq query of the string property
@@ -3345,308 +3551,310 @@ type ActionUserPropertiesStringPropsArgs struct {
 	VisibleJqQuery pulumi.StringPtrInput `pulumi:"visibleJqQuery"`
 }
 
-func (ActionUserPropertiesStringPropsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesStringProps)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesStringPropsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringProps)(nil)).Elem()
 }
 
-func (i ActionUserPropertiesStringPropsArgs) ToActionUserPropertiesStringPropsOutput() ActionUserPropertiesStringPropsOutput {
-	return i.ToActionUserPropertiesStringPropsOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsOutput() ActionSelfServiceTriggerUserPropertiesStringPropsOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesStringPropsArgs) ToActionUserPropertiesStringPropsOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesStringPropsOutput)
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsOutput)
 }
 
-// ActionUserPropertiesStringPropsMapInput is an input type that accepts ActionUserPropertiesStringPropsMap and ActionUserPropertiesStringPropsMapOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesStringPropsMapInput` via:
+// ActionSelfServiceTriggerUserPropertiesStringPropsMapInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesStringPropsMap and ActionSelfServiceTriggerUserPropertiesStringPropsMapOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesStringPropsMapInput` via:
 //
-//	ActionUserPropertiesStringPropsMap{ "key": ActionUserPropertiesStringPropsArgs{...} }
-type ActionUserPropertiesStringPropsMapInput interface {
+//	ActionSelfServiceTriggerUserPropertiesStringPropsMap{ "key": ActionSelfServiceTriggerUserPropertiesStringPropsArgs{...} }
+type ActionSelfServiceTriggerUserPropertiesStringPropsMapInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesStringPropsMapOutput() ActionUserPropertiesStringPropsMapOutput
-	ToActionUserPropertiesStringPropsMapOutputWithContext(context.Context) ActionUserPropertiesStringPropsMapOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsMapOutput() ActionSelfServiceTriggerUserPropertiesStringPropsMapOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsMapOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsMapOutput
 }
 
-type ActionUserPropertiesStringPropsMap map[string]ActionUserPropertiesStringPropsInput
+type ActionSelfServiceTriggerUserPropertiesStringPropsMap map[string]ActionSelfServiceTriggerUserPropertiesStringPropsInput
 
-func (ActionUserPropertiesStringPropsMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ActionUserPropertiesStringProps)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesStringPropsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActionSelfServiceTriggerUserPropertiesStringProps)(nil)).Elem()
 }
 
-func (i ActionUserPropertiesStringPropsMap) ToActionUserPropertiesStringPropsMapOutput() ActionUserPropertiesStringPropsMapOutput {
-	return i.ToActionUserPropertiesStringPropsMapOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsMap) ToActionSelfServiceTriggerUserPropertiesStringPropsMapOutput() ActionSelfServiceTriggerUserPropertiesStringPropsMapOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsMapOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesStringPropsMap) ToActionUserPropertiesStringPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesStringPropsMapOutput)
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsMap) ToActionSelfServiceTriggerUserPropertiesStringPropsMapOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsMapOutput)
 }
 
-type ActionUserPropertiesStringPropsOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesStringPropsOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesStringPropsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesStringProps)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesStringPropsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringProps)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesStringPropsOutput) ToActionUserPropertiesStringPropsOutput() ActionUserPropertiesStringPropsOutput {
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsOutput() ActionSelfServiceTriggerUserPropertiesStringPropsOutput {
 	return o
 }
 
-func (o ActionUserPropertiesStringPropsOutput) ToActionUserPropertiesStringPropsOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsOutput {
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsOutput {
 	return o
 }
 
 // The blueprint identifier the string property relates to
-func (o ActionUserPropertiesStringPropsOutput) Blueprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Blueprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
 }
 
 // The dataset of an the entity-format property
-func (o ActionUserPropertiesStringPropsOutput) Dataset() ActionUserPropertiesStringPropsDatasetPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringProps) *ActionUserPropertiesStringPropsDataset { return v.Dataset }).(ActionUserPropertiesStringPropsDatasetPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Dataset() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *ActionSelfServiceTriggerUserPropertiesStringPropsDataset {
+		return v.Dataset
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput)
 }
 
 // The default of the string property
-func (o ActionUserPropertiesStringPropsOutput) Default() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Default }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *string { return v.Default }).(pulumi.StringPtrOutput)
 }
 
 // The default jq query of the string property
-func (o ActionUserPropertiesStringPropsOutput) DefaultJqQuery() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.DefaultJqQuery }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) DefaultJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *string { return v.DefaultJqQuery }).(pulumi.StringPtrOutput)
 }
 
 // The properties that this property depends on
-func (o ActionUserPropertiesStringPropsOutput) DependsOns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringProps) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) DependsOns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
 }
 
 // The description of the property
-func (o ActionUserPropertiesStringPropsOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The algorithm to encrypt the property with
-func (o ActionUserPropertiesStringPropsOutput) Encryption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Encryption }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Encryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *string { return v.Encryption }).(pulumi.StringPtrOutput)
 }
 
 // The enum jq query of the string property
-func (o ActionUserPropertiesStringPropsOutput) EnumJqQuery() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.EnumJqQuery }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) EnumJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *string { return v.EnumJqQuery }).(pulumi.StringPtrOutput)
 }
 
 // The enum of the string property
-func (o ActionUserPropertiesStringPropsOutput) Enums() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringProps) []string { return v.Enums }).(pulumi.StringArrayOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) []string { return v.Enums }).(pulumi.StringArrayOutput)
 }
 
 // The format of the string property
-func (o ActionUserPropertiesStringPropsOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Format }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
 // The icon of the property
-func (o ActionUserPropertiesStringPropsOutput) Icon() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
 // The max length of the string property
-func (o ActionUserPropertiesStringPropsOutput) MaxLength() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringProps) *int { return v.MaxLength }).(pulumi.IntPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) MaxLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *int { return v.MaxLength }).(pulumi.IntPtrOutput)
 }
 
 // The min length of the string property
-func (o ActionUserPropertiesStringPropsOutput) MinLength() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringProps) *int { return v.MinLength }).(pulumi.IntPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) MinLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *int { return v.MinLength }).(pulumi.IntPtrOutput)
 }
 
 // The pattern of the string property
-func (o ActionUserPropertiesStringPropsOutput) Pattern() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Pattern }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *string { return v.Pattern }).(pulumi.StringPtrOutput)
 }
 
 // Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
-func (o ActionUserPropertiesStringPropsOutput) Required() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
 // The title of the property
-func (o ActionUserPropertiesStringPropsOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.Title }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
 // The visibility of the string property
-func (o ActionUserPropertiesStringPropsOutput) Visible() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringProps) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Visible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
 }
 
 // The visibility condition jq query of the string property
-func (o ActionUserPropertiesStringPropsOutput) VisibleJqQuery() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringProps) *string { return v.VisibleJqQuery }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) VisibleJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *string { return v.VisibleJqQuery }).(pulumi.StringPtrOutput)
 }
 
-type ActionUserPropertiesStringPropsMapOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesStringPropsMapOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesStringPropsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ActionUserPropertiesStringProps)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesStringPropsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActionSelfServiceTriggerUserPropertiesStringProps)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesStringPropsMapOutput) ToActionUserPropertiesStringPropsMapOutput() ActionUserPropertiesStringPropsMapOutput {
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsMapOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsMapOutput() ActionSelfServiceTriggerUserPropertiesStringPropsMapOutput {
 	return o
 }
 
-func (o ActionUserPropertiesStringPropsMapOutput) ToActionUserPropertiesStringPropsMapOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsMapOutput {
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsMapOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsMapOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsMapOutput {
 	return o
 }
 
-func (o ActionUserPropertiesStringPropsMapOutput) MapIndex(k pulumi.StringInput) ActionUserPropertiesStringPropsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ActionUserPropertiesStringProps {
-		return vs[0].(map[string]ActionUserPropertiesStringProps)[vs[1].(string)]
-	}).(ActionUserPropertiesStringPropsOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsMapOutput) MapIndex(k pulumi.StringInput) ActionSelfServiceTriggerUserPropertiesStringPropsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ActionSelfServiceTriggerUserPropertiesStringProps {
+		return vs[0].(map[string]ActionSelfServiceTriggerUserPropertiesStringProps)[vs[1].(string)]
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsOutput)
 }
 
-type ActionUserPropertiesStringPropsDataset struct {
+type ActionSelfServiceTriggerUserPropertiesStringPropsDataset struct {
 	// The combinator of the dataset
 	Combinator string `pulumi:"combinator"`
 	// The rules of the dataset
-	Rules []ActionUserPropertiesStringPropsDatasetRule `pulumi:"rules"`
+	Rules []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule `pulumi:"rules"`
 }
 
-// ActionUserPropertiesStringPropsDatasetInput is an input type that accepts ActionUserPropertiesStringPropsDatasetArgs and ActionUserPropertiesStringPropsDatasetOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesStringPropsDatasetInput` via:
+// ActionSelfServiceTriggerUserPropertiesStringPropsDatasetInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs and ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesStringPropsDatasetInput` via:
 //
-//	ActionUserPropertiesStringPropsDatasetArgs{...}
-type ActionUserPropertiesStringPropsDatasetInput interface {
+//	ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs{...}
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesStringPropsDatasetOutput() ActionUserPropertiesStringPropsDatasetOutput
-	ToActionUserPropertiesStringPropsDatasetOutputWithContext(context.Context) ActionUserPropertiesStringPropsDatasetOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput
 }
 
-type ActionUserPropertiesStringPropsDatasetArgs struct {
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs struct {
 	// The combinator of the dataset
 	Combinator pulumi.StringInput `pulumi:"combinator"`
 	// The rules of the dataset
-	Rules ActionUserPropertiesStringPropsDatasetRuleArrayInput `pulumi:"rules"`
+	Rules ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayInput `pulumi:"rules"`
 }
 
-func (ActionUserPropertiesStringPropsDatasetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesStringPropsDataset)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDataset)(nil)).Elem()
 }
 
-func (i ActionUserPropertiesStringPropsDatasetArgs) ToActionUserPropertiesStringPropsDatasetOutput() ActionUserPropertiesStringPropsDatasetOutput {
-	return i.ToActionUserPropertiesStringPropsDatasetOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesStringPropsDatasetArgs) ToActionUserPropertiesStringPropsDatasetOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsDatasetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesStringPropsDatasetOutput)
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput)
 }
 
-func (i ActionUserPropertiesStringPropsDatasetArgs) ToActionUserPropertiesStringPropsDatasetPtrOutput() ActionUserPropertiesStringPropsDatasetPtrOutput {
-	return i.ToActionUserPropertiesStringPropsDatasetPtrOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesStringPropsDatasetArgs) ToActionUserPropertiesStringPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsDatasetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesStringPropsDatasetOutput).ToActionUserPropertiesStringPropsDatasetPtrOutputWithContext(ctx)
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput).ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutputWithContext(ctx)
 }
 
-// ActionUserPropertiesStringPropsDatasetPtrInput is an input type that accepts ActionUserPropertiesStringPropsDatasetArgs, ActionUserPropertiesStringPropsDatasetPtr and ActionUserPropertiesStringPropsDatasetPtrOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesStringPropsDatasetPtrInput` via:
+// ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs, ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtr and ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrInput` via:
 //
-//	        ActionUserPropertiesStringPropsDatasetArgs{...}
+//	        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs{...}
 //
 //	or:
 //
 //	        nil
-type ActionUserPropertiesStringPropsDatasetPtrInput interface {
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesStringPropsDatasetPtrOutput() ActionUserPropertiesStringPropsDatasetPtrOutput
-	ToActionUserPropertiesStringPropsDatasetPtrOutputWithContext(context.Context) ActionUserPropertiesStringPropsDatasetPtrOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput
 }
 
-type actionUserPropertiesStringPropsDatasetPtrType ActionUserPropertiesStringPropsDatasetArgs
+type actionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrType ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs
 
-func ActionUserPropertiesStringPropsDatasetPtr(v *ActionUserPropertiesStringPropsDatasetArgs) ActionUserPropertiesStringPropsDatasetPtrInput {
-	return (*actionUserPropertiesStringPropsDatasetPtrType)(v)
+func ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtr(v *ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrInput {
+	return (*actionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrType)(v)
 }
 
-func (*actionUserPropertiesStringPropsDatasetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActionUserPropertiesStringPropsDataset)(nil)).Elem()
+func (*actionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserPropertiesStringPropsDataset)(nil)).Elem()
 }
 
-func (i *actionUserPropertiesStringPropsDatasetPtrType) ToActionUserPropertiesStringPropsDatasetPtrOutput() ActionUserPropertiesStringPropsDatasetPtrOutput {
-	return i.ToActionUserPropertiesStringPropsDatasetPtrOutputWithContext(context.Background())
+func (i *actionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrType) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutputWithContext(context.Background())
 }
 
-func (i *actionUserPropertiesStringPropsDatasetPtrType) ToActionUserPropertiesStringPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsDatasetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesStringPropsDatasetPtrOutput)
+func (i *actionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrType) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput)
 }
 
-type ActionUserPropertiesStringPropsDatasetOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesStringPropsDatasetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesStringPropsDataset)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDataset)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesStringPropsDatasetOutput) ToActionUserPropertiesStringPropsDatasetOutput() ActionUserPropertiesStringPropsDatasetOutput {
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput {
 	return o
 }
 
-func (o ActionUserPropertiesStringPropsDatasetOutput) ToActionUserPropertiesStringPropsDatasetOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsDatasetOutput {
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput {
 	return o
 }
 
-func (o ActionUserPropertiesStringPropsDatasetOutput) ToActionUserPropertiesStringPropsDatasetPtrOutput() ActionUserPropertiesStringPropsDatasetPtrOutput {
-	return o.ToActionUserPropertiesStringPropsDatasetPtrOutputWithContext(context.Background())
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput {
+	return o.ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutputWithContext(context.Background())
 }
 
-func (o ActionUserPropertiesStringPropsDatasetOutput) ToActionUserPropertiesStringPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsDatasetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionUserPropertiesStringPropsDataset) *ActionUserPropertiesStringPropsDataset {
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionSelfServiceTriggerUserPropertiesStringPropsDataset) *ActionSelfServiceTriggerUserPropertiesStringPropsDataset {
 		return &v
-	}).(ActionUserPropertiesStringPropsDatasetPtrOutput)
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput)
 }
 
 // The combinator of the dataset
-func (o ActionUserPropertiesStringPropsDatasetOutput) Combinator() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringPropsDataset) string { return v.Combinator }).(pulumi.StringOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput) Combinator() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDataset) string { return v.Combinator }).(pulumi.StringOutput)
 }
 
 // The rules of the dataset
-func (o ActionUserPropertiesStringPropsDatasetOutput) Rules() ActionUserPropertiesStringPropsDatasetRuleArrayOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringPropsDataset) []ActionUserPropertiesStringPropsDatasetRule {
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput) Rules() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDataset) []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule {
 		return v.Rules
-	}).(ActionUserPropertiesStringPropsDatasetRuleArrayOutput)
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput)
 }
 
-type ActionUserPropertiesStringPropsDatasetPtrOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesStringPropsDatasetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ActionUserPropertiesStringPropsDataset)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserPropertiesStringPropsDataset)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesStringPropsDatasetPtrOutput) ToActionUserPropertiesStringPropsDatasetPtrOutput() ActionUserPropertiesStringPropsDatasetPtrOutput {
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput {
 	return o
 }
 
-func (o ActionUserPropertiesStringPropsDatasetPtrOutput) ToActionUserPropertiesStringPropsDatasetPtrOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsDatasetPtrOutput {
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput {
 	return o
 }
 
-func (o ActionUserPropertiesStringPropsDatasetPtrOutput) Elem() ActionUserPropertiesStringPropsDatasetOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesStringPropsDataset) ActionUserPropertiesStringPropsDataset {
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput) Elem() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesStringPropsDataset) ActionSelfServiceTriggerUserPropertiesStringPropsDataset {
 		if v != nil {
 			return *v
 		}
-		var ret ActionUserPropertiesStringPropsDataset
+		var ret ActionSelfServiceTriggerUserPropertiesStringPropsDataset
 		return ret
-	}).(ActionUserPropertiesStringPropsDatasetOutput)
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput)
 }
 
 // The combinator of the dataset
-func (o ActionUserPropertiesStringPropsDatasetPtrOutput) Combinator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesStringPropsDataset) *string {
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput) Combinator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesStringPropsDataset) *string {
 		if v == nil {
 			return nil
 		}
@@ -3655,16 +3863,16 @@ func (o ActionUserPropertiesStringPropsDatasetPtrOutput) Combinator() pulumi.Str
 }
 
 // The rules of the dataset
-func (o ActionUserPropertiesStringPropsDatasetPtrOutput) Rules() ActionUserPropertiesStringPropsDatasetRuleArrayOutput {
-	return o.ApplyT(func(v *ActionUserPropertiesStringPropsDataset) []ActionUserPropertiesStringPropsDatasetRule {
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput) Rules() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesStringPropsDataset) []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule {
 		if v == nil {
 			return nil
 		}
 		return v.Rules
-	}).(ActionUserPropertiesStringPropsDatasetRuleArrayOutput)
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput)
 }
 
-type ActionUserPropertiesStringPropsDatasetRule struct {
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule struct {
 	// The blueprint identifier of the rule
 	Blueprint *string `pulumi:"blueprint"`
 	// The operator of the rule
@@ -3672,21 +3880,21 @@ type ActionUserPropertiesStringPropsDatasetRule struct {
 	// The property identifier of the rule
 	Property *string `pulumi:"property"`
 	// The value of the rule
-	Value ActionUserPropertiesStringPropsDatasetRuleValue `pulumi:"value"`
+	Value ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue `pulumi:"value"`
 }
 
-// ActionUserPropertiesStringPropsDatasetRuleInput is an input type that accepts ActionUserPropertiesStringPropsDatasetRuleArgs and ActionUserPropertiesStringPropsDatasetRuleOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesStringPropsDatasetRuleInput` via:
+// ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs and ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleInput` via:
 //
-//	ActionUserPropertiesStringPropsDatasetRuleArgs{...}
-type ActionUserPropertiesStringPropsDatasetRuleInput interface {
+//	ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs{...}
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesStringPropsDatasetRuleOutput() ActionUserPropertiesStringPropsDatasetRuleOutput
-	ToActionUserPropertiesStringPropsDatasetRuleOutputWithContext(context.Context) ActionUserPropertiesStringPropsDatasetRuleOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput
 }
 
-type ActionUserPropertiesStringPropsDatasetRuleArgs struct {
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs struct {
 	// The blueprint identifier of the rule
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// The operator of the rule
@@ -3694,158 +3902,162 @@ type ActionUserPropertiesStringPropsDatasetRuleArgs struct {
 	// The property identifier of the rule
 	Property pulumi.StringPtrInput `pulumi:"property"`
 	// The value of the rule
-	Value ActionUserPropertiesStringPropsDatasetRuleValueInput `pulumi:"value"`
+	Value ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueInput `pulumi:"value"`
 }
 
-func (ActionUserPropertiesStringPropsDatasetRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesStringPropsDatasetRule)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule)(nil)).Elem()
 }
 
-func (i ActionUserPropertiesStringPropsDatasetRuleArgs) ToActionUserPropertiesStringPropsDatasetRuleOutput() ActionUserPropertiesStringPropsDatasetRuleOutput {
-	return i.ToActionUserPropertiesStringPropsDatasetRuleOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesStringPropsDatasetRuleArgs) ToActionUserPropertiesStringPropsDatasetRuleOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsDatasetRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesStringPropsDatasetRuleOutput)
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput)
 }
 
-// ActionUserPropertiesStringPropsDatasetRuleArrayInput is an input type that accepts ActionUserPropertiesStringPropsDatasetRuleArray and ActionUserPropertiesStringPropsDatasetRuleArrayOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesStringPropsDatasetRuleArrayInput` via:
+// ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArray and ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayInput` via:
 //
-//	ActionUserPropertiesStringPropsDatasetRuleArray{ ActionUserPropertiesStringPropsDatasetRuleArgs{...} }
-type ActionUserPropertiesStringPropsDatasetRuleArrayInput interface {
+//	ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArray{ ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs{...} }
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesStringPropsDatasetRuleArrayOutput() ActionUserPropertiesStringPropsDatasetRuleArrayOutput
-	ToActionUserPropertiesStringPropsDatasetRuleArrayOutputWithContext(context.Context) ActionUserPropertiesStringPropsDatasetRuleArrayOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput
 }
 
-type ActionUserPropertiesStringPropsDatasetRuleArray []ActionUserPropertiesStringPropsDatasetRuleInput
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArray []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleInput
 
-func (ActionUserPropertiesStringPropsDatasetRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ActionUserPropertiesStringPropsDatasetRule)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule)(nil)).Elem()
 }
 
-func (i ActionUserPropertiesStringPropsDatasetRuleArray) ToActionUserPropertiesStringPropsDatasetRuleArrayOutput() ActionUserPropertiesStringPropsDatasetRuleArrayOutput {
-	return i.ToActionUserPropertiesStringPropsDatasetRuleArrayOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArray) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesStringPropsDatasetRuleArray) ToActionUserPropertiesStringPropsDatasetRuleArrayOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsDatasetRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesStringPropsDatasetRuleArrayOutput)
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArray) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput)
 }
 
-type ActionUserPropertiesStringPropsDatasetRuleOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesStringPropsDatasetRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesStringPropsDatasetRule)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesStringPropsDatasetRuleOutput) ToActionUserPropertiesStringPropsDatasetRuleOutput() ActionUserPropertiesStringPropsDatasetRuleOutput {
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput {
 	return o
 }
 
-func (o ActionUserPropertiesStringPropsDatasetRuleOutput) ToActionUserPropertiesStringPropsDatasetRuleOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsDatasetRuleOutput {
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput {
 	return o
 }
 
 // The blueprint identifier of the rule
-func (o ActionUserPropertiesStringPropsDatasetRuleOutput) Blueprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringPropsDatasetRule) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput) Blueprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
 }
 
 // The operator of the rule
-func (o ActionUserPropertiesStringPropsDatasetRuleOutput) Operator() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringPropsDatasetRule) string { return v.Operator }).(pulumi.StringOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule) string { return v.Operator }).(pulumi.StringOutput)
 }
 
 // The property identifier of the rule
-func (o ActionUserPropertiesStringPropsDatasetRuleOutput) Property() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringPropsDatasetRule) *string { return v.Property }).(pulumi.StringPtrOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput) Property() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule) *string { return v.Property }).(pulumi.StringPtrOutput)
 }
 
 // The value of the rule
-func (o ActionUserPropertiesStringPropsDatasetRuleOutput) Value() ActionUserPropertiesStringPropsDatasetRuleValueOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringPropsDatasetRule) ActionUserPropertiesStringPropsDatasetRuleValue {
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput) Value() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue {
 		return v.Value
-	}).(ActionUserPropertiesStringPropsDatasetRuleValueOutput)
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput)
 }
 
-type ActionUserPropertiesStringPropsDatasetRuleArrayOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesStringPropsDatasetRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ActionUserPropertiesStringPropsDatasetRule)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesStringPropsDatasetRuleArrayOutput) ToActionUserPropertiesStringPropsDatasetRuleArrayOutput() ActionUserPropertiesStringPropsDatasetRuleArrayOutput {
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput {
 	return o
 }
 
-func (o ActionUserPropertiesStringPropsDatasetRuleArrayOutput) ToActionUserPropertiesStringPropsDatasetRuleArrayOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsDatasetRuleArrayOutput {
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput {
 	return o
 }
 
-func (o ActionUserPropertiesStringPropsDatasetRuleArrayOutput) Index(i pulumi.IntInput) ActionUserPropertiesStringPropsDatasetRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionUserPropertiesStringPropsDatasetRule {
-		return vs[0].([]ActionUserPropertiesStringPropsDatasetRule)[vs[1].(int)]
-	}).(ActionUserPropertiesStringPropsDatasetRuleOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput) Index(i pulumi.IntInput) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule {
+		return vs[0].([]ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule)[vs[1].(int)]
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput)
 }
 
-type ActionUserPropertiesStringPropsDatasetRuleValue struct {
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue struct {
 	JqQuery string `pulumi:"jqQuery"`
 }
 
-// ActionUserPropertiesStringPropsDatasetRuleValueInput is an input type that accepts ActionUserPropertiesStringPropsDatasetRuleValueArgs and ActionUserPropertiesStringPropsDatasetRuleValueOutput values.
-// You can construct a concrete instance of `ActionUserPropertiesStringPropsDatasetRuleValueInput` via:
+// ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs and ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueInput` via:
 //
-//	ActionUserPropertiesStringPropsDatasetRuleValueArgs{...}
-type ActionUserPropertiesStringPropsDatasetRuleValueInput interface {
+//	ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs{...}
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueInput interface {
 	pulumi.Input
 
-	ToActionUserPropertiesStringPropsDatasetRuleValueOutput() ActionUserPropertiesStringPropsDatasetRuleValueOutput
-	ToActionUserPropertiesStringPropsDatasetRuleValueOutputWithContext(context.Context) ActionUserPropertiesStringPropsDatasetRuleValueOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput
 }
 
-type ActionUserPropertiesStringPropsDatasetRuleValueArgs struct {
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs struct {
 	JqQuery pulumi.StringInput `pulumi:"jqQuery"`
 }
 
-func (ActionUserPropertiesStringPropsDatasetRuleValueArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesStringPropsDatasetRuleValue)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue)(nil)).Elem()
 }
 
-func (i ActionUserPropertiesStringPropsDatasetRuleValueArgs) ToActionUserPropertiesStringPropsDatasetRuleValueOutput() ActionUserPropertiesStringPropsDatasetRuleValueOutput {
-	return i.ToActionUserPropertiesStringPropsDatasetRuleValueOutputWithContext(context.Background())
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutputWithContext(context.Background())
 }
 
-func (i ActionUserPropertiesStringPropsDatasetRuleValueArgs) ToActionUserPropertiesStringPropsDatasetRuleValueOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsDatasetRuleValueOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ActionUserPropertiesStringPropsDatasetRuleValueOutput)
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput)
 }
 
-type ActionUserPropertiesStringPropsDatasetRuleValueOutput struct{ *pulumi.OutputState }
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput struct{ *pulumi.OutputState }
 
-func (ActionUserPropertiesStringPropsDatasetRuleValueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ActionUserPropertiesStringPropsDatasetRuleValue)(nil)).Elem()
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue)(nil)).Elem()
 }
 
-func (o ActionUserPropertiesStringPropsDatasetRuleValueOutput) ToActionUserPropertiesStringPropsDatasetRuleValueOutput() ActionUserPropertiesStringPropsDatasetRuleValueOutput {
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput {
 	return o
 }
 
-func (o ActionUserPropertiesStringPropsDatasetRuleValueOutput) ToActionUserPropertiesStringPropsDatasetRuleValueOutputWithContext(ctx context.Context) ActionUserPropertiesStringPropsDatasetRuleValueOutput {
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput {
 	return o
 }
 
-func (o ActionUserPropertiesStringPropsDatasetRuleValueOutput) JqQuery() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionUserPropertiesStringPropsDatasetRuleValue) string { return v.JqQuery }).(pulumi.StringOutput)
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput) JqQuery() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue) string { return v.JqQuery }).(pulumi.StringOutput)
 }
 
 type ActionWebhookMethod struct {
 	// Use the agent to invoke the action
-	Agent *bool `pulumi:"agent"`
+	Agent *string `pulumi:"agent"`
+	// The Webhook body (array or object encoded to a string)
+	Body *string `pulumi:"body"`
+	// The HTTP method to invoke the action
+	Headers map[string]string `pulumi:"headers"`
 	// The HTTP method to invoke the action
 	Method *string `pulumi:"method"`
 	// Synchronize the action
-	Synchronized *bool `pulumi:"synchronized"`
+	Synchronized *string `pulumi:"synchronized"`
 	// Required when selecting type WEBHOOK. The URL to invoke the action
 	Url string `pulumi:"url"`
 }
@@ -3863,11 +4075,15 @@ type ActionWebhookMethodInput interface {
 
 type ActionWebhookMethodArgs struct {
 	// Use the agent to invoke the action
-	Agent pulumi.BoolPtrInput `pulumi:"agent"`
+	Agent pulumi.StringPtrInput `pulumi:"agent"`
+	// The Webhook body (array or object encoded to a string)
+	Body pulumi.StringPtrInput `pulumi:"body"`
+	// The HTTP method to invoke the action
+	Headers pulumi.StringMapInput `pulumi:"headers"`
 	// The HTTP method to invoke the action
 	Method pulumi.StringPtrInput `pulumi:"method"`
 	// Synchronize the action
-	Synchronized pulumi.BoolPtrInput `pulumi:"synchronized"`
+	Synchronized pulumi.StringPtrInput `pulumi:"synchronized"`
 	// Required when selecting type WEBHOOK. The URL to invoke the action
 	Url pulumi.StringInput `pulumi:"url"`
 }
@@ -3950,8 +4166,18 @@ func (o ActionWebhookMethodOutput) ToActionWebhookMethodPtrOutputWithContext(ctx
 }
 
 // Use the agent to invoke the action
-func (o ActionWebhookMethodOutput) Agent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionWebhookMethod) *bool { return v.Agent }).(pulumi.BoolPtrOutput)
+func (o ActionWebhookMethodOutput) Agent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionWebhookMethod) *string { return v.Agent }).(pulumi.StringPtrOutput)
+}
+
+// The Webhook body (array or object encoded to a string)
+func (o ActionWebhookMethodOutput) Body() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionWebhookMethod) *string { return v.Body }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP method to invoke the action
+func (o ActionWebhookMethodOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ActionWebhookMethod) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
 }
 
 // The HTTP method to invoke the action
@@ -3960,8 +4186,8 @@ func (o ActionWebhookMethodOutput) Method() pulumi.StringPtrOutput {
 }
 
 // Synchronize the action
-func (o ActionWebhookMethodOutput) Synchronized() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ActionWebhookMethod) *bool { return v.Synchronized }).(pulumi.BoolPtrOutput)
+func (o ActionWebhookMethodOutput) Synchronized() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionWebhookMethod) *string { return v.Synchronized }).(pulumi.StringPtrOutput)
 }
 
 // Required when selecting type WEBHOOK. The URL to invoke the action
@@ -3994,13 +4220,33 @@ func (o ActionWebhookMethodPtrOutput) Elem() ActionWebhookMethodOutput {
 }
 
 // Use the agent to invoke the action
-func (o ActionWebhookMethodPtrOutput) Agent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ActionWebhookMethod) *bool {
+func (o ActionWebhookMethodPtrOutput) Agent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionWebhookMethod) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Agent
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Webhook body (array or object encoded to a string)
+func (o ActionWebhookMethodPtrOutput) Body() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionWebhookMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Body
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HTTP method to invoke the action
+func (o ActionWebhookMethodPtrOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ActionWebhookMethod) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(pulumi.StringMapOutput)
 }
 
 // The HTTP method to invoke the action
@@ -4014,13 +4260,13 @@ func (o ActionWebhookMethodPtrOutput) Method() pulumi.StringPtrOutput {
 }
 
 // Synchronize the action
-func (o ActionWebhookMethodPtrOutput) Synchronized() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ActionWebhookMethod) *bool {
+func (o ActionWebhookMethodPtrOutput) Synchronized() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionWebhookMethod) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Synchronized
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 // Required when selecting type WEBHOOK. The URL to invoke the action
@@ -8694,31 +8940,33 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionPermissionsPermissionsApprovePtrInput)(nil)).Elem(), ActionPermissionsPermissionsApproveArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionPermissionsPermissionsExecuteInput)(nil)).Elem(), ActionPermissionsPermissionsExecuteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionPermissionsPermissionsExecutePtrInput)(nil)).Elem(), ActionPermissionsPermissionsExecuteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesInput)(nil)).Elem(), ActionUserPropertiesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesPtrInput)(nil)).Elem(), ActionUserPropertiesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsInput)(nil)).Elem(), ActionUserPropertiesArrayPropsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsMapInput)(nil)).Elem(), ActionUserPropertiesArrayPropsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsBooleanItemsInput)(nil)).Elem(), ActionUserPropertiesArrayPropsBooleanItemsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsBooleanItemsPtrInput)(nil)).Elem(), ActionUserPropertiesArrayPropsBooleanItemsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsNumberItemsInput)(nil)).Elem(), ActionUserPropertiesArrayPropsNumberItemsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsNumberItemsPtrInput)(nil)).Elem(), ActionUserPropertiesArrayPropsNumberItemsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsObjectItemsInput)(nil)).Elem(), ActionUserPropertiesArrayPropsObjectItemsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsObjectItemsPtrInput)(nil)).Elem(), ActionUserPropertiesArrayPropsObjectItemsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsStringItemsInput)(nil)).Elem(), ActionUserPropertiesArrayPropsStringItemsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesArrayPropsStringItemsPtrInput)(nil)).Elem(), ActionUserPropertiesArrayPropsStringItemsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesBooleanPropsInput)(nil)).Elem(), ActionUserPropertiesBooleanPropsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesBooleanPropsMapInput)(nil)).Elem(), ActionUserPropertiesBooleanPropsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesNumberPropsInput)(nil)).Elem(), ActionUserPropertiesNumberPropsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesNumberPropsMapInput)(nil)).Elem(), ActionUserPropertiesNumberPropsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesObjectPropsInput)(nil)).Elem(), ActionUserPropertiesObjectPropsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesObjectPropsMapInput)(nil)).Elem(), ActionUserPropertiesObjectPropsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesStringPropsInput)(nil)).Elem(), ActionUserPropertiesStringPropsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesStringPropsMapInput)(nil)).Elem(), ActionUserPropertiesStringPropsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesStringPropsDatasetInput)(nil)).Elem(), ActionUserPropertiesStringPropsDatasetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesStringPropsDatasetPtrInput)(nil)).Elem(), ActionUserPropertiesStringPropsDatasetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesStringPropsDatasetRuleInput)(nil)).Elem(), ActionUserPropertiesStringPropsDatasetRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesStringPropsDatasetRuleArrayInput)(nil)).Elem(), ActionUserPropertiesStringPropsDatasetRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ActionUserPropertiesStringPropsDatasetRuleValueInput)(nil)).Elem(), ActionUserPropertiesStringPropsDatasetRuleValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerInput)(nil)).Elem(), ActionSelfServiceTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerPtrInput)(nil)).Elem(), ActionSelfServiceTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesPtrInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArrayPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsMapInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArrayPropsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesBooleanPropsInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesBooleanPropsMapInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesBooleanPropsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesNumberPropsInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesNumberPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesNumberPropsMapInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesNumberPropsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesObjectPropsInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesObjectPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesObjectPropsMapInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesObjectPropsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsMapInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionWebhookMethodInput)(nil)).Elem(), ActionWebhookMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionWebhookMethodPtrInput)(nil)).Elem(), ActionWebhookMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregationPropertiesPropertiesInput)(nil)).Elem(), AggregationPropertiesPropertiesArgs{})
@@ -8798,31 +9046,33 @@ func init() {
 	pulumi.RegisterOutputType(ActionPermissionsPermissionsApprovePtrOutput{})
 	pulumi.RegisterOutputType(ActionPermissionsPermissionsExecuteOutput{})
 	pulumi.RegisterOutputType(ActionPermissionsPermissionsExecutePtrOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsMapOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsBooleanItemsOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsBooleanItemsPtrOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsNumberItemsOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsNumberItemsPtrOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsObjectItemsOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsObjectItemsPtrOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsStringItemsOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesArrayPropsStringItemsPtrOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesBooleanPropsOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesBooleanPropsMapOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesNumberPropsOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesNumberPropsMapOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesObjectPropsOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesObjectPropsMapOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesStringPropsOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesStringPropsMapOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesStringPropsDatasetOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesStringPropsDatasetPtrOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesStringPropsDatasetRuleOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesStringPropsDatasetRuleArrayOutput{})
-	pulumi.RegisterOutputType(ActionUserPropertiesStringPropsDatasetRuleValueOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerPtrOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesArrayPropsOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesArrayPropsMapOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesBooleanPropsMapOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesNumberPropsOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesObjectPropsOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsMapOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput{})
 	pulumi.RegisterOutputType(ActionWebhookMethodOutput{})
 	pulumi.RegisterOutputType(ActionWebhookMethodPtrOutput{})
 	pulumi.RegisterOutputType(AggregationPropertiesPropertiesOutput{})

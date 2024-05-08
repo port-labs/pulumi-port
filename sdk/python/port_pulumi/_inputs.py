@@ -19,19 +19,20 @@ __all__ = [
     'ActionPermissionsPermissionsArgs',
     'ActionPermissionsPermissionsApproveArgs',
     'ActionPermissionsPermissionsExecuteArgs',
-    'ActionUserPropertiesArgs',
-    'ActionUserPropertiesArrayPropsArgs',
-    'ActionUserPropertiesArrayPropsBooleanItemsArgs',
-    'ActionUserPropertiesArrayPropsNumberItemsArgs',
-    'ActionUserPropertiesArrayPropsObjectItemsArgs',
-    'ActionUserPropertiesArrayPropsStringItemsArgs',
-    'ActionUserPropertiesBooleanPropsArgs',
-    'ActionUserPropertiesNumberPropsArgs',
-    'ActionUserPropertiesObjectPropsArgs',
-    'ActionUserPropertiesStringPropsArgs',
-    'ActionUserPropertiesStringPropsDatasetArgs',
-    'ActionUserPropertiesStringPropsDatasetRuleArgs',
-    'ActionUserPropertiesStringPropsDatasetRuleValueArgs',
+    'ActionSelfServiceTriggerArgs',
+    'ActionSelfServiceTriggerUserPropertiesArgs',
+    'ActionSelfServiceTriggerUserPropertiesArrayPropsArgs',
+    'ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs',
+    'ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs',
+    'ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs',
+    'ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs',
+    'ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs',
+    'ActionSelfServiceTriggerUserPropertiesNumberPropsArgs',
+    'ActionSelfServiceTriggerUserPropertiesObjectPropsArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs',
     'ActionWebhookMethodArgs',
     'AggregationPropertiesPropertiesArgs',
     'AggregationPropertiesPropertiesMethodArgs',
@@ -114,13 +115,17 @@ class ActionApprovalWebhookNotificationArgs:
 class ActionAzureMethodArgs:
     def __init__(__self__, *,
                  org: pulumi.Input[str],
-                 webhook: pulumi.Input[str]):
+                 webhook: pulumi.Input[str],
+                 payload: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] org: Required when selecting type AZURE. The Azure org that the workflow belongs to
         :param pulumi.Input[str] webhook: Required when selecting type AZURE. The Azure webhook that the workflow belongs to
+        :param pulumi.Input[str] payload: The Azure Devops workflow payload (array or object encoded to a string)
         """
         pulumi.set(__self__, "org", org)
         pulumi.set(__self__, "webhook", webhook)
+        if payload is not None:
+            pulumi.set(__self__, "payload", payload)
 
     @property
     @pulumi.getter
@@ -146,6 +151,18 @@ class ActionAzureMethodArgs:
     def webhook(self, value: pulumi.Input[str]):
         pulumi.set(self, "webhook", value)
 
+    @property
+    @pulumi.getter
+    def payload(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Azure Devops workflow payload (array or object encoded to a string)
+        """
+        return pulumi.get(self, "payload")
+
+    @payload.setter
+    def payload(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payload", value)
+
 
 @pulumi.input_type
 class ActionGithubMethodArgs:
@@ -153,26 +170,22 @@ class ActionGithubMethodArgs:
                  org: pulumi.Input[str],
                  repo: pulumi.Input[str],
                  workflow: pulumi.Input[str],
-                 omit_payload: Optional[pulumi.Input[bool]] = None,
-                 omit_user_inputs: Optional[pulumi.Input[bool]] = None,
-                 report_workflow_status: Optional[pulumi.Input[bool]] = None):
+                 report_workflow_status: Optional[pulumi.Input[str]] = None,
+                 workflow_inputs: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] org: Required when selecting type GITHUB. The GitHub org that the workflow belongs to
         :param pulumi.Input[str] repo: Required when selecting type GITHUB. The GitHub repo that the workflow belongs to
         :param pulumi.Input[str] workflow: The GitHub workflow that the action belongs to
-        :param pulumi.Input[bool] omit_payload: Omit the payload when invoking the action
-        :param pulumi.Input[bool] omit_user_inputs: Omit the user inputs when invoking the action
-        :param pulumi.Input[bool] report_workflow_status: Report the workflow status when invoking the action
+        :param pulumi.Input[str] report_workflow_status: Report the workflow status when invoking the action
+        :param pulumi.Input[str] workflow_inputs: The GitHub workflow inputs (key-value object encoded to a string)
         """
         pulumi.set(__self__, "org", org)
         pulumi.set(__self__, "repo", repo)
         pulumi.set(__self__, "workflow", workflow)
-        if omit_payload is not None:
-            pulumi.set(__self__, "omit_payload", omit_payload)
-        if omit_user_inputs is not None:
-            pulumi.set(__self__, "omit_user_inputs", omit_user_inputs)
         if report_workflow_status is not None:
             pulumi.set(__self__, "report_workflow_status", report_workflow_status)
+        if workflow_inputs is not None:
+            pulumi.set(__self__, "workflow_inputs", workflow_inputs)
 
     @property
     @pulumi.getter
@@ -211,40 +224,28 @@ class ActionGithubMethodArgs:
         pulumi.set(self, "workflow", value)
 
     @property
-    @pulumi.getter(name="omitPayload")
-    def omit_payload(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Omit the payload when invoking the action
-        """
-        return pulumi.get(self, "omit_payload")
-
-    @omit_payload.setter
-    def omit_payload(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "omit_payload", value)
-
-    @property
-    @pulumi.getter(name="omitUserInputs")
-    def omit_user_inputs(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Omit the user inputs when invoking the action
-        """
-        return pulumi.get(self, "omit_user_inputs")
-
-    @omit_user_inputs.setter
-    def omit_user_inputs(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "omit_user_inputs", value)
-
-    @property
     @pulumi.getter(name="reportWorkflowStatus")
-    def report_workflow_status(self) -> Optional[pulumi.Input[bool]]:
+    def report_workflow_status(self) -> Optional[pulumi.Input[str]]:
         """
         Report the workflow status when invoking the action
         """
         return pulumi.get(self, "report_workflow_status")
 
     @report_workflow_status.setter
-    def report_workflow_status(self, value: Optional[pulumi.Input[bool]]):
+    def report_workflow_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "report_workflow_status", value)
+
+    @property
+    @pulumi.getter(name="workflowInputs")
+    def workflow_inputs(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GitHub workflow inputs (key-value object encoded to a string)
+        """
+        return pulumi.get(self, "workflow_inputs")
+
+    @workflow_inputs.setter
+    def workflow_inputs(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workflow_inputs", value)
 
 
 @pulumi.input_type
@@ -252,28 +253,20 @@ class ActionGitlabMethodArgs:
     def __init__(__self__, *,
                  group_name: pulumi.Input[str],
                  project_name: pulumi.Input[str],
-                 agent: Optional[pulumi.Input[bool]] = None,
                  default_ref: Optional[pulumi.Input[str]] = None,
-                 omit_payload: Optional[pulumi.Input[bool]] = None,
-                 omit_user_inputs: Optional[pulumi.Input[bool]] = None):
+                 pipeline_variables: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] group_name: Required when selecting type GITLAB. The GitLab group name that the workflow belongs to
         :param pulumi.Input[str] project_name: Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
-        :param pulumi.Input[bool] agent: Use the agent to invoke the action
         :param pulumi.Input[str] default_ref: The default ref of the action
-        :param pulumi.Input[bool] omit_payload: Omit the payload when invoking the action
-        :param pulumi.Input[bool] omit_user_inputs: Omit the user inputs when invoking the action
+        :param pulumi.Input[str] pipeline_variables: The Gitlab pipeline variables (key-value object encoded to a string)
         """
         pulumi.set(__self__, "group_name", group_name)
         pulumi.set(__self__, "project_name", project_name)
-        if agent is not None:
-            pulumi.set(__self__, "agent", agent)
         if default_ref is not None:
             pulumi.set(__self__, "default_ref", default_ref)
-        if omit_payload is not None:
-            pulumi.set(__self__, "omit_payload", omit_payload)
-        if omit_user_inputs is not None:
-            pulumi.set(__self__, "omit_user_inputs", omit_user_inputs)
+        if pipeline_variables is not None:
+            pulumi.set(__self__, "pipeline_variables", pipeline_variables)
 
     @property
     @pulumi.getter(name="groupName")
@@ -300,18 +293,6 @@ class ActionGitlabMethodArgs:
         pulumi.set(self, "project_name", value)
 
     @property
-    @pulumi.getter
-    def agent(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Use the agent to invoke the action
-        """
-        return pulumi.get(self, "agent")
-
-    @agent.setter
-    def agent(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "agent", value)
-
-    @property
     @pulumi.getter(name="defaultRef")
     def default_ref(self) -> Optional[pulumi.Input[str]]:
         """
@@ -324,34 +305,39 @@ class ActionGitlabMethodArgs:
         pulumi.set(self, "default_ref", value)
 
     @property
-    @pulumi.getter(name="omitPayload")
-    def omit_payload(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="pipelineVariables")
+    def pipeline_variables(self) -> Optional[pulumi.Input[str]]:
         """
-        Omit the payload when invoking the action
+        The Gitlab pipeline variables (key-value object encoded to a string)
         """
-        return pulumi.get(self, "omit_payload")
+        return pulumi.get(self, "pipeline_variables")
 
-    @omit_payload.setter
-    def omit_payload(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "omit_payload", value)
-
-    @property
-    @pulumi.getter(name="omitUserInputs")
-    def omit_user_inputs(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Omit the user inputs when invoking the action
-        """
-        return pulumi.get(self, "omit_user_inputs")
-
-    @omit_user_inputs.setter
-    def omit_user_inputs(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "omit_user_inputs", value)
+    @pipeline_variables.setter
+    def pipeline_variables(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pipeline_variables", value)
 
 
 @pulumi.input_type
 class ActionKafkaMethodArgs:
-    def __init__(__self__):
-        pass
+    def __init__(__self__, *,
+                 payload: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] payload: The Kafka message payload (array or object encoded to a string)
+        """
+        if payload is not None:
+            pulumi.set(__self__, "payload", payload)
+
+    @property
+    @pulumi.getter
+    def payload(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Kafka message payload (array or object encoded to a string)
+        """
+        return pulumi.get(self, "payload")
+
+    @payload.setter
+    def payload(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payload", value)
 
 
 @pulumi.input_type
@@ -550,19 +536,105 @@ class ActionPermissionsPermissionsExecuteArgs:
 
 
 @pulumi.input_type
-class ActionUserPropertiesArgs:
+class ActionSelfServiceTriggerArgs:
     def __init__(__self__, *,
-                 array_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesArrayPropsArgs']]]] = None,
-                 boolean_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesBooleanPropsArgs']]]] = None,
-                 number_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesNumberPropsArgs']]]] = None,
-                 object_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesObjectPropsArgs']]]] = None,
-                 string_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesStringPropsArgs']]]] = None):
+                 operation: pulumi.Input[str],
+                 blueprint_identifier: Optional[pulumi.Input[str]] = None,
+                 order_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 required_jq_query: Optional[pulumi.Input[str]] = None,
+                 user_properties: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArgs']] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesArrayPropsArgs']]] array_props: The array property of the action
-        :param pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesBooleanPropsArgs']]] boolean_props: The boolean property of the action
-        :param pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesNumberPropsArgs']]] number_props: The number property of the action
-        :param pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesObjectPropsArgs']]] object_props: The object property of the action
-        :param pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesStringPropsArgs']]] string_props: The string property of the action
+        :param pulumi.Input[str] operation: The operation type of the action
+        :param pulumi.Input[str] blueprint_identifier: The ID of the blueprint
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] order_properties: Order properties
+        :param pulumi.Input[str] required_jq_query: The required jq query of the property
+        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesArgs'] user_properties: User properties
+        """
+        pulumi.set(__self__, "operation", operation)
+        if blueprint_identifier is not None:
+            pulumi.set(__self__, "blueprint_identifier", blueprint_identifier)
+        if order_properties is not None:
+            pulumi.set(__self__, "order_properties", order_properties)
+        if required_jq_query is not None:
+            pulumi.set(__self__, "required_jq_query", required_jq_query)
+        if user_properties is not None:
+            pulumi.set(__self__, "user_properties", user_properties)
+
+    @property
+    @pulumi.getter
+    def operation(self) -> pulumi.Input[str]:
+        """
+        The operation type of the action
+        """
+        return pulumi.get(self, "operation")
+
+    @operation.setter
+    def operation(self, value: pulumi.Input[str]):
+        pulumi.set(self, "operation", value)
+
+    @property
+    @pulumi.getter(name="blueprintIdentifier")
+    def blueprint_identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the blueprint
+        """
+        return pulumi.get(self, "blueprint_identifier")
+
+    @blueprint_identifier.setter
+    def blueprint_identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint_identifier", value)
+
+    @property
+    @pulumi.getter(name="orderProperties")
+    def order_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Order properties
+        """
+        return pulumi.get(self, "order_properties")
+
+    @order_properties.setter
+    def order_properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "order_properties", value)
+
+    @property
+    @pulumi.getter(name="requiredJqQuery")
+    def required_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The required jq query of the property
+        """
+        return pulumi.get(self, "required_jq_query")
+
+    @required_jq_query.setter
+    def required_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "required_jq_query", value)
+
+    @property
+    @pulumi.getter(name="userProperties")
+    def user_properties(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArgs']]:
+        """
+        User properties
+        """
+        return pulumi.get(self, "user_properties")
+
+    @user_properties.setter
+    def user_properties(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArgs']]):
+        pulumi.set(self, "user_properties", value)
+
+
+@pulumi.input_type
+class ActionSelfServiceTriggerUserPropertiesArgs:
+    def __init__(__self__, *,
+                 array_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsArgs']]]] = None,
+                 boolean_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs']]]] = None,
+                 number_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesNumberPropsArgs']]]] = None,
+                 object_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesObjectPropsArgs']]]] = None,
+                 string_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsArgs']]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsArgs']]] array_props: The array property of the action
+        :param pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs']]] boolean_props: The boolean property of the action
+        :param pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesNumberPropsArgs']]] number_props: The number property of the action
+        :param pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesObjectPropsArgs']]] object_props: The object property of the action
+        :param pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsArgs']]] string_props: The string property of the action
         """
         if array_props is not None:
             pulumi.set(__self__, "array_props", array_props)
@@ -577,94 +649,94 @@ class ActionUserPropertiesArgs:
 
     @property
     @pulumi.getter(name="arrayProps")
-    def array_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesArrayPropsArgs']]]]:
+    def array_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsArgs']]]]:
         """
         The array property of the action
         """
         return pulumi.get(self, "array_props")
 
     @array_props.setter
-    def array_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesArrayPropsArgs']]]]):
+    def array_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsArgs']]]]):
         pulumi.set(self, "array_props", value)
 
     @property
     @pulumi.getter(name="booleanProps")
-    def boolean_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesBooleanPropsArgs']]]]:
+    def boolean_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs']]]]:
         """
         The boolean property of the action
         """
         return pulumi.get(self, "boolean_props")
 
     @boolean_props.setter
-    def boolean_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesBooleanPropsArgs']]]]):
+    def boolean_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs']]]]):
         pulumi.set(self, "boolean_props", value)
 
     @property
     @pulumi.getter(name="numberProps")
-    def number_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesNumberPropsArgs']]]]:
+    def number_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesNumberPropsArgs']]]]:
         """
         The number property of the action
         """
         return pulumi.get(self, "number_props")
 
     @number_props.setter
-    def number_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesNumberPropsArgs']]]]):
+    def number_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesNumberPropsArgs']]]]):
         pulumi.set(self, "number_props", value)
 
     @property
     @pulumi.getter(name="objectProps")
-    def object_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesObjectPropsArgs']]]]:
+    def object_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesObjectPropsArgs']]]]:
         """
         The object property of the action
         """
         return pulumi.get(self, "object_props")
 
     @object_props.setter
-    def object_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesObjectPropsArgs']]]]):
+    def object_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesObjectPropsArgs']]]]):
         pulumi.set(self, "object_props", value)
 
     @property
     @pulumi.getter(name="stringProps")
-    def string_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesStringPropsArgs']]]]:
+    def string_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsArgs']]]]:
         """
         The string property of the action
         """
         return pulumi.get(self, "string_props")
 
     @string_props.setter
-    def string_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesStringPropsArgs']]]]):
+    def string_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsArgs']]]]):
         pulumi.set(self, "string_props", value)
 
 
 @pulumi.input_type
-class ActionUserPropertiesArrayPropsArgs:
+class ActionSelfServiceTriggerUserPropertiesArrayPropsArgs:
     def __init__(__self__, *,
-                 boolean_items: Optional[pulumi.Input['ActionUserPropertiesArrayPropsBooleanItemsArgs']] = None,
+                 boolean_items: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs']] = None,
                  default_jq_query: Optional[pulumi.Input[str]] = None,
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  max_items: Optional[pulumi.Input[int]] = None,
                  min_items: Optional[pulumi.Input[int]] = None,
-                 number_items: Optional[pulumi.Input['ActionUserPropertiesArrayPropsNumberItemsArgs']] = None,
-                 object_items: Optional[pulumi.Input['ActionUserPropertiesArrayPropsObjectItemsArgs']] = None,
+                 number_items: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs']] = None,
+                 object_items: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs']] = None,
                  required: Optional[pulumi.Input[bool]] = None,
-                 string_items: Optional[pulumi.Input['ActionUserPropertiesArrayPropsStringItemsArgs']] = None,
+                 string_items: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs']] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  visible: Optional[pulumi.Input[bool]] = None,
                  visible_jq_query: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['ActionUserPropertiesArrayPropsBooleanItemsArgs'] boolean_items: The items of the array property
+        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs'] boolean_items: The items of the array property
         :param pulumi.Input[str] default_jq_query: The default jq query of the array property
         :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The properties that this property depends on
         :param pulumi.Input[str] description: The description of the property
         :param pulumi.Input[str] icon: The icon of the property
         :param pulumi.Input[int] max_items: The max items of the array property
         :param pulumi.Input[int] min_items: The min items of the array property
-        :param pulumi.Input['ActionUserPropertiesArrayPropsNumberItemsArgs'] number_items: The items of the array property
-        :param pulumi.Input['ActionUserPropertiesArrayPropsObjectItemsArgs'] object_items: The items of the array property
+        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs'] number_items: The items of the array property
+        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs'] object_items: The items of the array property
         :param pulumi.Input[bool] required: Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
-        :param pulumi.Input['ActionUserPropertiesArrayPropsStringItemsArgs'] string_items: The items of the array property
+        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs'] string_items: The items of the array property
         :param pulumi.Input[str] title: The title of the property
         :param pulumi.Input[bool] visible: The visibility of the array property
         :param pulumi.Input[str] visible_jq_query: The visibility condition jq query of the array property
@@ -700,14 +772,14 @@ class ActionUserPropertiesArrayPropsArgs:
 
     @property
     @pulumi.getter(name="booleanItems")
-    def boolean_items(self) -> Optional[pulumi.Input['ActionUserPropertiesArrayPropsBooleanItemsArgs']]:
+    def boolean_items(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs']]:
         """
         The items of the array property
         """
         return pulumi.get(self, "boolean_items")
 
     @boolean_items.setter
-    def boolean_items(self, value: Optional[pulumi.Input['ActionUserPropertiesArrayPropsBooleanItemsArgs']]):
+    def boolean_items(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs']]):
         pulumi.set(self, "boolean_items", value)
 
     @property
@@ -784,26 +856,26 @@ class ActionUserPropertiesArrayPropsArgs:
 
     @property
     @pulumi.getter(name="numberItems")
-    def number_items(self) -> Optional[pulumi.Input['ActionUserPropertiesArrayPropsNumberItemsArgs']]:
+    def number_items(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs']]:
         """
         The items of the array property
         """
         return pulumi.get(self, "number_items")
 
     @number_items.setter
-    def number_items(self, value: Optional[pulumi.Input['ActionUserPropertiesArrayPropsNumberItemsArgs']]):
+    def number_items(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs']]):
         pulumi.set(self, "number_items", value)
 
     @property
     @pulumi.getter(name="objectItems")
-    def object_items(self) -> Optional[pulumi.Input['ActionUserPropertiesArrayPropsObjectItemsArgs']]:
+    def object_items(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs']]:
         """
         The items of the array property
         """
         return pulumi.get(self, "object_items")
 
     @object_items.setter
-    def object_items(self, value: Optional[pulumi.Input['ActionUserPropertiesArrayPropsObjectItemsArgs']]):
+    def object_items(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs']]):
         pulumi.set(self, "object_items", value)
 
     @property
@@ -820,14 +892,14 @@ class ActionUserPropertiesArrayPropsArgs:
 
     @property
     @pulumi.getter(name="stringItems")
-    def string_items(self) -> Optional[pulumi.Input['ActionUserPropertiesArrayPropsStringItemsArgs']]:
+    def string_items(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs']]:
         """
         The items of the array property
         """
         return pulumi.get(self, "string_items")
 
     @string_items.setter
-    def string_items(self, value: Optional[pulumi.Input['ActionUserPropertiesArrayPropsStringItemsArgs']]):
+    def string_items(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs']]):
         pulumi.set(self, "string_items", value)
 
     @property
@@ -868,7 +940,7 @@ class ActionUserPropertiesArrayPropsArgs:
 
 
 @pulumi.input_type
-class ActionUserPropertiesArrayPropsBooleanItemsArgs:
+class ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs:
     def __init__(__self__, *,
                  defaults: Optional[pulumi.Input[Sequence[pulumi.Input[bool]]]] = None):
         """
@@ -891,7 +963,7 @@ class ActionUserPropertiesArrayPropsBooleanItemsArgs:
 
 
 @pulumi.input_type
-class ActionUserPropertiesArrayPropsNumberItemsArgs:
+class ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs:
     def __init__(__self__, *,
                  defaults: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]] = None,
                  enum_jq_query: Optional[pulumi.Input[str]] = None,
@@ -946,7 +1018,7 @@ class ActionUserPropertiesArrayPropsNumberItemsArgs:
 
 
 @pulumi.input_type
-class ActionUserPropertiesArrayPropsObjectItemsArgs:
+class ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs:
     def __init__(__self__, *,
                  defaults: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None):
         """
@@ -969,7 +1041,7 @@ class ActionUserPropertiesArrayPropsObjectItemsArgs:
 
 
 @pulumi.input_type
-class ActionUserPropertiesArrayPropsStringItemsArgs:
+class ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs:
     def __init__(__self__, *,
                  blueprint: Optional[pulumi.Input[str]] = None,
                  dataset: Optional[pulumi.Input[str]] = None,
@@ -1072,7 +1144,7 @@ class ActionUserPropertiesArrayPropsStringItemsArgs:
 
 
 @pulumi.input_type
-class ActionUserPropertiesBooleanPropsArgs:
+class ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs:
     def __init__(__self__, *,
                  default: Optional[pulumi.Input[bool]] = None,
                  default_jq_query: Optional[pulumi.Input[str]] = None,
@@ -1223,7 +1295,7 @@ class ActionUserPropertiesBooleanPropsArgs:
 
 
 @pulumi.input_type
-class ActionUserPropertiesNumberPropsArgs:
+class ActionSelfServiceTriggerUserPropertiesNumberPropsArgs:
     def __init__(__self__, *,
                  default: Optional[pulumi.Input[float]] = None,
                  default_jq_query: Optional[pulumi.Input[str]] = None,
@@ -1438,7 +1510,7 @@ class ActionUserPropertiesNumberPropsArgs:
 
 
 @pulumi.input_type
-class ActionUserPropertiesObjectPropsArgs:
+class ActionSelfServiceTriggerUserPropertiesObjectPropsArgs:
     def __init__(__self__, *,
                  default: Optional[pulumi.Input[str]] = None,
                  default_jq_query: Optional[pulumi.Input[str]] = None,
@@ -1605,10 +1677,10 @@ class ActionUserPropertiesObjectPropsArgs:
 
 
 @pulumi.input_type
-class ActionUserPropertiesStringPropsArgs:
+class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
     def __init__(__self__, *,
                  blueprint: Optional[pulumi.Input[str]] = None,
-                 dataset: Optional[pulumi.Input['ActionUserPropertiesStringPropsDatasetArgs']] = None,
+                 dataset: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs']] = None,
                  default: Optional[pulumi.Input[str]] = None,
                  default_jq_query: Optional[pulumi.Input[str]] = None,
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1627,7 +1699,7 @@ class ActionUserPropertiesStringPropsArgs:
                  visible_jq_query: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] blueprint: The blueprint identifier the string property relates to
-        :param pulumi.Input['ActionUserPropertiesStringPropsDatasetArgs'] dataset: The dataset of an the entity-format property
+        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs'] dataset: The dataset of an the entity-format property
         :param pulumi.Input[str] default: The default of the string property
         :param pulumi.Input[str] default_jq_query: The default jq query of the string property
         :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The properties that this property depends on
@@ -1696,14 +1768,14 @@ class ActionUserPropertiesStringPropsArgs:
 
     @property
     @pulumi.getter
-    def dataset(self) -> Optional[pulumi.Input['ActionUserPropertiesStringPropsDatasetArgs']]:
+    def dataset(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs']]:
         """
         The dataset of an the entity-format property
         """
         return pulumi.get(self, "dataset")
 
     @dataset.setter
-    def dataset(self, value: Optional[pulumi.Input['ActionUserPropertiesStringPropsDatasetArgs']]):
+    def dataset(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs']]):
         pulumi.set(self, "dataset", value)
 
     @property
@@ -1900,13 +1972,13 @@ class ActionUserPropertiesStringPropsArgs:
 
 
 @pulumi.input_type
-class ActionUserPropertiesStringPropsDatasetArgs:
+class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs:
     def __init__(__self__, *,
                  combinator: pulumi.Input[str],
-                 rules: pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleArgs']]]):
+                 rules: pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs']]]):
         """
         :param pulumi.Input[str] combinator: The combinator of the dataset
-        :param pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleArgs']]] rules: The rules of the dataset
+        :param pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs']]] rules: The rules of the dataset
         """
         pulumi.set(__self__, "combinator", combinator)
         pulumi.set(__self__, "rules", rules)
@@ -1925,27 +1997,27 @@ class ActionUserPropertiesStringPropsDatasetArgs:
 
     @property
     @pulumi.getter
-    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleArgs']]]:
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs']]]:
         """
         The rules of the dataset
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleArgs']]]):
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs']]]):
         pulumi.set(self, "rules", value)
 
 
 @pulumi.input_type
-class ActionUserPropertiesStringPropsDatasetRuleArgs:
+class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs:
     def __init__(__self__, *,
                  operator: pulumi.Input[str],
-                 value: pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleValueArgs'],
+                 value: pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs'],
                  blueprint: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] operator: The operator of the rule
-        :param pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleValueArgs'] value: The value of the rule
+        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs'] value: The value of the rule
         :param pulumi.Input[str] blueprint: The blueprint identifier of the rule
         :param pulumi.Input[str] property: The property identifier of the rule
         """
@@ -1970,14 +2042,14 @@ class ActionUserPropertiesStringPropsDatasetRuleArgs:
 
     @property
     @pulumi.getter
-    def value(self) -> pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleValueArgs']:
+    def value(self) -> pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs']:
         """
         The value of the rule
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleValueArgs']):
+    def value(self, value: pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs']):
         pulumi.set(self, "value", value)
 
     @property
@@ -2006,7 +2078,7 @@ class ActionUserPropertiesStringPropsDatasetRuleArgs:
 
 
 @pulumi.input_type
-class ActionUserPropertiesStringPropsDatasetRuleValueArgs:
+class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs:
     def __init__(__self__, *,
                  jq_query: pulumi.Input[str]):
         pulumi.set(__self__, "jq_query", jq_query)
@@ -2025,18 +2097,26 @@ class ActionUserPropertiesStringPropsDatasetRuleValueArgs:
 class ActionWebhookMethodArgs:
     def __init__(__self__, *,
                  url: pulumi.Input[str],
-                 agent: Optional[pulumi.Input[bool]] = None,
+                 agent: Optional[pulumi.Input[str]] = None,
+                 body: Optional[pulumi.Input[str]] = None,
+                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  method: Optional[pulumi.Input[str]] = None,
-                 synchronized: Optional[pulumi.Input[bool]] = None):
+                 synchronized: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] url: Required when selecting type WEBHOOK. The URL to invoke the action
-        :param pulumi.Input[bool] agent: Use the agent to invoke the action
+        :param pulumi.Input[str] agent: Use the agent to invoke the action
+        :param pulumi.Input[str] body: The Webhook body (array or object encoded to a string)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: The HTTP method to invoke the action
         :param pulumi.Input[str] method: The HTTP method to invoke the action
-        :param pulumi.Input[bool] synchronized: Synchronize the action
+        :param pulumi.Input[str] synchronized: Synchronize the action
         """
         pulumi.set(__self__, "url", url)
         if agent is not None:
             pulumi.set(__self__, "agent", agent)
+        if body is not None:
+            pulumi.set(__self__, "body", body)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
         if method is not None:
             pulumi.set(__self__, "method", method)
         if synchronized is not None:
@@ -2056,15 +2136,39 @@ class ActionWebhookMethodArgs:
 
     @property
     @pulumi.getter
-    def agent(self) -> Optional[pulumi.Input[bool]]:
+    def agent(self) -> Optional[pulumi.Input[str]]:
         """
         Use the agent to invoke the action
         """
         return pulumi.get(self, "agent")
 
     @agent.setter
-    def agent(self, value: Optional[pulumi.Input[bool]]):
+    def agent(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "agent", value)
+
+    @property
+    @pulumi.getter
+    def body(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Webhook body (array or object encoded to a string)
+        """
+        return pulumi.get(self, "body")
+
+    @body.setter
+    def body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "body", value)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The HTTP method to invoke the action
+        """
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "headers", value)
 
     @property
     @pulumi.getter
@@ -2080,14 +2184,14 @@ class ActionWebhookMethodArgs:
 
     @property
     @pulumi.getter
-    def synchronized(self) -> Optional[pulumi.Input[bool]]:
+    def synchronized(self) -> Optional[pulumi.Input[str]]:
         """
         Synchronize the action
         """
         return pulumi.get(self, "synchronized")
 
     @synchronized.setter
-    def synchronized(self, value: Optional[pulumi.Input[bool]]):
+    def synchronized(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "synchronized", value)
 
 
