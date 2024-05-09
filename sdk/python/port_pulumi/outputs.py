@@ -20,20 +20,19 @@ __all__ = [
     'ActionPermissionsPermissions',
     'ActionPermissionsPermissionsApprove',
     'ActionPermissionsPermissionsExecute',
-    'ActionSelfServiceTrigger',
-    'ActionSelfServiceTriggerUserProperties',
-    'ActionSelfServiceTriggerUserPropertiesArrayProps',
-    'ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems',
-    'ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems',
-    'ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems',
-    'ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems',
-    'ActionSelfServiceTriggerUserPropertiesBooleanProps',
-    'ActionSelfServiceTriggerUserPropertiesNumberProps',
-    'ActionSelfServiceTriggerUserPropertiesObjectProps',
-    'ActionSelfServiceTriggerUserPropertiesStringProps',
-    'ActionSelfServiceTriggerUserPropertiesStringPropsDataset',
-    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule',
-    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue',
+    'ActionUserProperties',
+    'ActionUserPropertiesArrayProps',
+    'ActionUserPropertiesArrayPropsBooleanItems',
+    'ActionUserPropertiesArrayPropsNumberItems',
+    'ActionUserPropertiesArrayPropsObjectItems',
+    'ActionUserPropertiesArrayPropsStringItems',
+    'ActionUserPropertiesBooleanProps',
+    'ActionUserPropertiesNumberProps',
+    'ActionUserPropertiesObjectProps',
+    'ActionUserPropertiesStringProps',
+    'ActionUserPropertiesStringPropsDataset',
+    'ActionUserPropertiesStringPropsDatasetRule',
+    'ActionUserPropertiesStringPropsDatasetRuleValue',
     'ActionWebhookMethod',
     'AggregationPropertiesProperties',
     'AggregationPropertiesPropertiesMethod',
@@ -43,6 +42,17 @@ __all__ = [
     'BlueprintCalculationProperties',
     'BlueprintKafkaChangelogDestination',
     'BlueprintMirrorProperties',
+    'BlueprintPermissionsEntities',
+    'BlueprintPermissionsEntitiesRegister',
+    'BlueprintPermissionsEntitiesUnregister',
+    'BlueprintPermissionsEntitiesUpdate',
+    'BlueprintPermissionsEntitiesUpdateMetadataProperties',
+    'BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon',
+    'BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier',
+    'BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam',
+    'BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle',
+    'BlueprintPermissionsEntitiesUpdateProperties',
+    'BlueprintPermissionsEntitiesUpdateRelations',
     'BlueprintProperties',
     'BlueprintPropertiesArrayProps',
     'BlueprintPropertiesArrayPropsBooleanItems',
@@ -108,17 +118,13 @@ class ActionApprovalWebhookNotification(dict):
 class ActionAzureMethod(dict):
     def __init__(__self__, *,
                  org: str,
-                 webhook: str,
-                 payload: Optional[str] = None):
+                 webhook: str):
         """
         :param str org: Required when selecting type AZURE. The Azure org that the workflow belongs to
         :param str webhook: Required when selecting type AZURE. The Azure webhook that the workflow belongs to
-        :param str payload: The Azure Devops workflow payload (array or object encoded to a string)
         """
         pulumi.set(__self__, "org", org)
         pulumi.set(__self__, "webhook", webhook)
-        if payload is not None:
-            pulumi.set(__self__, "payload", payload)
 
     @property
     @pulumi.getter
@@ -136,24 +142,18 @@ class ActionAzureMethod(dict):
         """
         return pulumi.get(self, "webhook")
 
-    @property
-    @pulumi.getter
-    def payload(self) -> Optional[str]:
-        """
-        The Azure Devops workflow payload (array or object encoded to a string)
-        """
-        return pulumi.get(self, "payload")
-
 
 @pulumi.output_type
 class ActionGithubMethod(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "reportWorkflowStatus":
+        if key == "omitPayload":
+            suggest = "omit_payload"
+        elif key == "omitUserInputs":
+            suggest = "omit_user_inputs"
+        elif key == "reportWorkflowStatus":
             suggest = "report_workflow_status"
-        elif key == "workflowInputs":
-            suggest = "workflow_inputs"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ActionGithubMethod. Access the value via the '{suggest}' property getter instead.")
@@ -170,22 +170,26 @@ class ActionGithubMethod(dict):
                  org: str,
                  repo: str,
                  workflow: str,
-                 report_workflow_status: Optional[str] = None,
-                 workflow_inputs: Optional[str] = None):
+                 omit_payload: Optional[bool] = None,
+                 omit_user_inputs: Optional[bool] = None,
+                 report_workflow_status: Optional[bool] = None):
         """
         :param str org: Required when selecting type GITHUB. The GitHub org that the workflow belongs to
         :param str repo: Required when selecting type GITHUB. The GitHub repo that the workflow belongs to
         :param str workflow: The GitHub workflow that the action belongs to
-        :param str report_workflow_status: Report the workflow status when invoking the action
-        :param str workflow_inputs: The GitHub workflow inputs (key-value object encoded to a string)
+        :param bool omit_payload: Omit the payload when invoking the action
+        :param bool omit_user_inputs: Omit the user inputs when invoking the action
+        :param bool report_workflow_status: Report the workflow status when invoking the action
         """
         pulumi.set(__self__, "org", org)
         pulumi.set(__self__, "repo", repo)
         pulumi.set(__self__, "workflow", workflow)
+        if omit_payload is not None:
+            pulumi.set(__self__, "omit_payload", omit_payload)
+        if omit_user_inputs is not None:
+            pulumi.set(__self__, "omit_user_inputs", omit_user_inputs)
         if report_workflow_status is not None:
             pulumi.set(__self__, "report_workflow_status", report_workflow_status)
-        if workflow_inputs is not None:
-            pulumi.set(__self__, "workflow_inputs", workflow_inputs)
 
     @property
     @pulumi.getter
@@ -212,20 +216,28 @@ class ActionGithubMethod(dict):
         return pulumi.get(self, "workflow")
 
     @property
+    @pulumi.getter(name="omitPayload")
+    def omit_payload(self) -> Optional[bool]:
+        """
+        Omit the payload when invoking the action
+        """
+        return pulumi.get(self, "omit_payload")
+
+    @property
+    @pulumi.getter(name="omitUserInputs")
+    def omit_user_inputs(self) -> Optional[bool]:
+        """
+        Omit the user inputs when invoking the action
+        """
+        return pulumi.get(self, "omit_user_inputs")
+
+    @property
     @pulumi.getter(name="reportWorkflowStatus")
-    def report_workflow_status(self) -> Optional[str]:
+    def report_workflow_status(self) -> Optional[bool]:
         """
         Report the workflow status when invoking the action
         """
         return pulumi.get(self, "report_workflow_status")
-
-    @property
-    @pulumi.getter(name="workflowInputs")
-    def workflow_inputs(self) -> Optional[str]:
-        """
-        The GitHub workflow inputs (key-value object encoded to a string)
-        """
-        return pulumi.get(self, "workflow_inputs")
 
 
 @pulumi.output_type
@@ -239,8 +251,10 @@ class ActionGitlabMethod(dict):
             suggest = "project_name"
         elif key == "defaultRef":
             suggest = "default_ref"
-        elif key == "pipelineVariables":
-            suggest = "pipeline_variables"
+        elif key == "omitPayload":
+            suggest = "omit_payload"
+        elif key == "omitUserInputs":
+            suggest = "omit_user_inputs"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ActionGitlabMethod. Access the value via the '{suggest}' property getter instead.")
@@ -256,20 +270,28 @@ class ActionGitlabMethod(dict):
     def __init__(__self__, *,
                  group_name: str,
                  project_name: str,
+                 agent: Optional[bool] = None,
                  default_ref: Optional[str] = None,
-                 pipeline_variables: Optional[str] = None):
+                 omit_payload: Optional[bool] = None,
+                 omit_user_inputs: Optional[bool] = None):
         """
         :param str group_name: Required when selecting type GITLAB. The GitLab group name that the workflow belongs to
         :param str project_name: Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
+        :param bool agent: Use the agent to invoke the action
         :param str default_ref: The default ref of the action
-        :param str pipeline_variables: The Gitlab pipeline variables (key-value object encoded to a string)
+        :param bool omit_payload: Omit the payload when invoking the action
+        :param bool omit_user_inputs: Omit the user inputs when invoking the action
         """
         pulumi.set(__self__, "group_name", group_name)
         pulumi.set(__self__, "project_name", project_name)
+        if agent is not None:
+            pulumi.set(__self__, "agent", agent)
         if default_ref is not None:
             pulumi.set(__self__, "default_ref", default_ref)
-        if pipeline_variables is not None:
-            pulumi.set(__self__, "pipeline_variables", pipeline_variables)
+        if omit_payload is not None:
+            pulumi.set(__self__, "omit_payload", omit_payload)
+        if omit_user_inputs is not None:
+            pulumi.set(__self__, "omit_user_inputs", omit_user_inputs)
 
     @property
     @pulumi.getter(name="groupName")
@@ -288,6 +310,14 @@ class ActionGitlabMethod(dict):
         return pulumi.get(self, "project_name")
 
     @property
+    @pulumi.getter
+    def agent(self) -> Optional[bool]:
+        """
+        Use the agent to invoke the action
+        """
+        return pulumi.get(self, "agent")
+
+    @property
     @pulumi.getter(name="defaultRef")
     def default_ref(self) -> Optional[str]:
         """
@@ -296,31 +326,26 @@ class ActionGitlabMethod(dict):
         return pulumi.get(self, "default_ref")
 
     @property
-    @pulumi.getter(name="pipelineVariables")
-    def pipeline_variables(self) -> Optional[str]:
+    @pulumi.getter(name="omitPayload")
+    def omit_payload(self) -> Optional[bool]:
         """
-        The Gitlab pipeline variables (key-value object encoded to a string)
+        Omit the payload when invoking the action
         """
-        return pulumi.get(self, "pipeline_variables")
+        return pulumi.get(self, "omit_payload")
+
+    @property
+    @pulumi.getter(name="omitUserInputs")
+    def omit_user_inputs(self) -> Optional[bool]:
+        """
+        Omit the user inputs when invoking the action
+        """
+        return pulumi.get(self, "omit_user_inputs")
 
 
 @pulumi.output_type
 class ActionKafkaMethod(dict):
-    def __init__(__self__, *,
-                 payload: Optional[str] = None):
-        """
-        :param str payload: The Kafka message payload (array or object encoded to a string)
-        """
-        if payload is not None:
-            pulumi.set(__self__, "payload", payload)
-
-    @property
-    @pulumi.getter
-    def payload(self) -> Optional[str]:
-        """
-        The Kafka message payload (array or object encoded to a string)
-        """
-        return pulumi.get(self, "payload")
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type
@@ -492,96 +517,7 @@ class ActionPermissionsPermissionsExecute(dict):
 
 
 @pulumi.output_type
-class ActionSelfServiceTrigger(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "blueprintIdentifier":
-            suggest = "blueprint_identifier"
-        elif key == "orderProperties":
-            suggest = "order_properties"
-        elif key == "requiredJqQuery":
-            suggest = "required_jq_query"
-        elif key == "userProperties":
-            suggest = "user_properties"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTrigger. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ActionSelfServiceTrigger.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ActionSelfServiceTrigger.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 operation: str,
-                 blueprint_identifier: Optional[str] = None,
-                 order_properties: Optional[Sequence[str]] = None,
-                 required_jq_query: Optional[str] = None,
-                 user_properties: Optional['outputs.ActionSelfServiceTriggerUserProperties'] = None):
-        """
-        :param str operation: The operation type of the action
-        :param str blueprint_identifier: The ID of the blueprint
-        :param Sequence[str] order_properties: Order properties
-        :param str required_jq_query: The required jq query of the property
-        :param 'ActionSelfServiceTriggerUserPropertiesArgs' user_properties: User properties
-        """
-        pulumi.set(__self__, "operation", operation)
-        if blueprint_identifier is not None:
-            pulumi.set(__self__, "blueprint_identifier", blueprint_identifier)
-        if order_properties is not None:
-            pulumi.set(__self__, "order_properties", order_properties)
-        if required_jq_query is not None:
-            pulumi.set(__self__, "required_jq_query", required_jq_query)
-        if user_properties is not None:
-            pulumi.set(__self__, "user_properties", user_properties)
-
-    @property
-    @pulumi.getter
-    def operation(self) -> str:
-        """
-        The operation type of the action
-        """
-        return pulumi.get(self, "operation")
-
-    @property
-    @pulumi.getter(name="blueprintIdentifier")
-    def blueprint_identifier(self) -> Optional[str]:
-        """
-        The ID of the blueprint
-        """
-        return pulumi.get(self, "blueprint_identifier")
-
-    @property
-    @pulumi.getter(name="orderProperties")
-    def order_properties(self) -> Optional[Sequence[str]]:
-        """
-        Order properties
-        """
-        return pulumi.get(self, "order_properties")
-
-    @property
-    @pulumi.getter(name="requiredJqQuery")
-    def required_jq_query(self) -> Optional[str]:
-        """
-        The required jq query of the property
-        """
-        return pulumi.get(self, "required_jq_query")
-
-    @property
-    @pulumi.getter(name="userProperties")
-    def user_properties(self) -> Optional['outputs.ActionSelfServiceTriggerUserProperties']:
-        """
-        User properties
-        """
-        return pulumi.get(self, "user_properties")
-
-
-@pulumi.output_type
-class ActionSelfServiceTriggerUserProperties(dict):
+class ActionUserProperties(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -597,28 +533,28 @@ class ActionSelfServiceTriggerUserProperties(dict):
             suggest = "string_props"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTriggerUserProperties. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ActionUserProperties. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        ActionSelfServiceTriggerUserProperties.__key_warning(key)
+        ActionUserProperties.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        ActionSelfServiceTriggerUserProperties.__key_warning(key)
+        ActionUserProperties.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 array_props: Optional[Mapping[str, 'outputs.ActionSelfServiceTriggerUserPropertiesArrayProps']] = None,
-                 boolean_props: Optional[Mapping[str, 'outputs.ActionSelfServiceTriggerUserPropertiesBooleanProps']] = None,
-                 number_props: Optional[Mapping[str, 'outputs.ActionSelfServiceTriggerUserPropertiesNumberProps']] = None,
-                 object_props: Optional[Mapping[str, 'outputs.ActionSelfServiceTriggerUserPropertiesObjectProps']] = None,
-                 string_props: Optional[Mapping[str, 'outputs.ActionSelfServiceTriggerUserPropertiesStringProps']] = None):
+                 array_props: Optional[Mapping[str, 'outputs.ActionUserPropertiesArrayProps']] = None,
+                 boolean_props: Optional[Mapping[str, 'outputs.ActionUserPropertiesBooleanProps']] = None,
+                 number_props: Optional[Mapping[str, 'outputs.ActionUserPropertiesNumberProps']] = None,
+                 object_props: Optional[Mapping[str, 'outputs.ActionUserPropertiesObjectProps']] = None,
+                 string_props: Optional[Mapping[str, 'outputs.ActionUserPropertiesStringProps']] = None):
         """
-        :param Mapping[str, 'ActionSelfServiceTriggerUserPropertiesArrayPropsArgs'] array_props: The array property of the action
-        :param Mapping[str, 'ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs'] boolean_props: The boolean property of the action
-        :param Mapping[str, 'ActionSelfServiceTriggerUserPropertiesNumberPropsArgs'] number_props: The number property of the action
-        :param Mapping[str, 'ActionSelfServiceTriggerUserPropertiesObjectPropsArgs'] object_props: The object property of the action
-        :param Mapping[str, 'ActionSelfServiceTriggerUserPropertiesStringPropsArgs'] string_props: The string property of the action
+        :param Mapping[str, 'ActionUserPropertiesArrayPropsArgs'] array_props: The array property of the action
+        :param Mapping[str, 'ActionUserPropertiesBooleanPropsArgs'] boolean_props: The boolean property of the action
+        :param Mapping[str, 'ActionUserPropertiesNumberPropsArgs'] number_props: The number property of the action
+        :param Mapping[str, 'ActionUserPropertiesObjectPropsArgs'] object_props: The object property of the action
+        :param Mapping[str, 'ActionUserPropertiesStringPropsArgs'] string_props: The string property of the action
         """
         if array_props is not None:
             pulumi.set(__self__, "array_props", array_props)
@@ -633,7 +569,7 @@ class ActionSelfServiceTriggerUserProperties(dict):
 
     @property
     @pulumi.getter(name="arrayProps")
-    def array_props(self) -> Optional[Mapping[str, 'outputs.ActionSelfServiceTriggerUserPropertiesArrayProps']]:
+    def array_props(self) -> Optional[Mapping[str, 'outputs.ActionUserPropertiesArrayProps']]:
         """
         The array property of the action
         """
@@ -641,7 +577,7 @@ class ActionSelfServiceTriggerUserProperties(dict):
 
     @property
     @pulumi.getter(name="booleanProps")
-    def boolean_props(self) -> Optional[Mapping[str, 'outputs.ActionSelfServiceTriggerUserPropertiesBooleanProps']]:
+    def boolean_props(self) -> Optional[Mapping[str, 'outputs.ActionUserPropertiesBooleanProps']]:
         """
         The boolean property of the action
         """
@@ -649,7 +585,7 @@ class ActionSelfServiceTriggerUserProperties(dict):
 
     @property
     @pulumi.getter(name="numberProps")
-    def number_props(self) -> Optional[Mapping[str, 'outputs.ActionSelfServiceTriggerUserPropertiesNumberProps']]:
+    def number_props(self) -> Optional[Mapping[str, 'outputs.ActionUserPropertiesNumberProps']]:
         """
         The number property of the action
         """
@@ -657,7 +593,7 @@ class ActionSelfServiceTriggerUserProperties(dict):
 
     @property
     @pulumi.getter(name="objectProps")
-    def object_props(self) -> Optional[Mapping[str, 'outputs.ActionSelfServiceTriggerUserPropertiesObjectProps']]:
+    def object_props(self) -> Optional[Mapping[str, 'outputs.ActionUserPropertiesObjectProps']]:
         """
         The object property of the action
         """
@@ -665,7 +601,7 @@ class ActionSelfServiceTriggerUserProperties(dict):
 
     @property
     @pulumi.getter(name="stringProps")
-    def string_props(self) -> Optional[Mapping[str, 'outputs.ActionSelfServiceTriggerUserPropertiesStringProps']]:
+    def string_props(self) -> Optional[Mapping[str, 'outputs.ActionUserPropertiesStringProps']]:
         """
         The string property of the action
         """
@@ -673,7 +609,7 @@ class ActionSelfServiceTriggerUserProperties(dict):
 
 
 @pulumi.output_type
-class ActionSelfServiceTriggerUserPropertiesArrayProps(dict):
+class ActionUserPropertiesArrayProps(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -697,43 +633,43 @@ class ActionSelfServiceTriggerUserPropertiesArrayProps(dict):
             suggest = "visible_jq_query"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTriggerUserPropertiesArrayProps. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ActionUserPropertiesArrayProps. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        ActionSelfServiceTriggerUserPropertiesArrayProps.__key_warning(key)
+        ActionUserPropertiesArrayProps.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        ActionSelfServiceTriggerUserPropertiesArrayProps.__key_warning(key)
+        ActionUserPropertiesArrayProps.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 boolean_items: Optional['outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems'] = None,
+                 boolean_items: Optional['outputs.ActionUserPropertiesArrayPropsBooleanItems'] = None,
                  default_jq_query: Optional[str] = None,
                  depends_ons: Optional[Sequence[str]] = None,
                  description: Optional[str] = None,
                  icon: Optional[str] = None,
                  max_items: Optional[int] = None,
                  min_items: Optional[int] = None,
-                 number_items: Optional['outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems'] = None,
-                 object_items: Optional['outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems'] = None,
+                 number_items: Optional['outputs.ActionUserPropertiesArrayPropsNumberItems'] = None,
+                 object_items: Optional['outputs.ActionUserPropertiesArrayPropsObjectItems'] = None,
                  required: Optional[bool] = None,
-                 string_items: Optional['outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems'] = None,
+                 string_items: Optional['outputs.ActionUserPropertiesArrayPropsStringItems'] = None,
                  title: Optional[str] = None,
                  visible: Optional[bool] = None,
                  visible_jq_query: Optional[str] = None):
         """
-        :param 'ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs' boolean_items: The items of the array property
+        :param 'ActionUserPropertiesArrayPropsBooleanItemsArgs' boolean_items: The items of the array property
         :param str default_jq_query: The default jq query of the array property
         :param Sequence[str] depends_ons: The properties that this property depends on
         :param str description: The description of the property
         :param str icon: The icon of the property
         :param int max_items: The max items of the array property
         :param int min_items: The min items of the array property
-        :param 'ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs' number_items: The items of the array property
-        :param 'ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs' object_items: The items of the array property
+        :param 'ActionUserPropertiesArrayPropsNumberItemsArgs' number_items: The items of the array property
+        :param 'ActionUserPropertiesArrayPropsObjectItemsArgs' object_items: The items of the array property
         :param bool required: Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
-        :param 'ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs' string_items: The items of the array property
+        :param 'ActionUserPropertiesArrayPropsStringItemsArgs' string_items: The items of the array property
         :param str title: The title of the property
         :param bool visible: The visibility of the array property
         :param str visible_jq_query: The visibility condition jq query of the array property
@@ -769,7 +705,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayProps(dict):
 
     @property
     @pulumi.getter(name="booleanItems")
-    def boolean_items(self) -> Optional['outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems']:
+    def boolean_items(self) -> Optional['outputs.ActionUserPropertiesArrayPropsBooleanItems']:
         """
         The items of the array property
         """
@@ -825,7 +761,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayProps(dict):
 
     @property
     @pulumi.getter(name="numberItems")
-    def number_items(self) -> Optional['outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems']:
+    def number_items(self) -> Optional['outputs.ActionUserPropertiesArrayPropsNumberItems']:
         """
         The items of the array property
         """
@@ -833,7 +769,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayProps(dict):
 
     @property
     @pulumi.getter(name="objectItems")
-    def object_items(self) -> Optional['outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems']:
+    def object_items(self) -> Optional['outputs.ActionUserPropertiesArrayPropsObjectItems']:
         """
         The items of the array property
         """
@@ -849,7 +785,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayProps(dict):
 
     @property
     @pulumi.getter(name="stringItems")
-    def string_items(self) -> Optional['outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems']:
+    def string_items(self) -> Optional['outputs.ActionUserPropertiesArrayPropsStringItems']:
         """
         The items of the array property
         """
@@ -881,7 +817,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayProps(dict):
 
 
 @pulumi.output_type
-class ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems(dict):
+class ActionUserPropertiesArrayPropsBooleanItems(dict):
     def __init__(__self__, *,
                  defaults: Optional[Sequence[bool]] = None):
         """
@@ -900,7 +836,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems(dict):
 
 
 @pulumi.output_type
-class ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems(dict):
+class ActionUserPropertiesArrayPropsNumberItems(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -908,14 +844,14 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems(dict):
             suggest = "enum_jq_query"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ActionUserPropertiesArrayPropsNumberItems. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems.__key_warning(key)
+        ActionUserPropertiesArrayPropsNumberItems.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems.__key_warning(key)
+        ActionUserPropertiesArrayPropsNumberItems.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -960,7 +896,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems(dict):
 
 
 @pulumi.output_type
-class ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems(dict):
+class ActionUserPropertiesArrayPropsObjectItems(dict):
     def __init__(__self__, *,
                  defaults: Optional[Sequence[Mapping[str, str]]] = None):
         """
@@ -979,7 +915,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems(dict):
 
 
 @pulumi.output_type
-class ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems(dict):
+class ActionUserPropertiesArrayPropsStringItems(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -987,14 +923,14 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems(dict):
             suggest = "enum_jq_query"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ActionUserPropertiesArrayPropsStringItems. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems.__key_warning(key)
+        ActionUserPropertiesArrayPropsStringItems.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems.__key_warning(key)
+        ActionUserPropertiesArrayPropsStringItems.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -1075,7 +1011,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems(dict):
 
 
 @pulumi.output_type
-class ActionSelfServiceTriggerUserPropertiesBooleanProps(dict):
+class ActionUserPropertiesBooleanProps(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1087,14 +1023,14 @@ class ActionSelfServiceTriggerUserPropertiesBooleanProps(dict):
             suggest = "visible_jq_query"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTriggerUserPropertiesBooleanProps. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ActionUserPropertiesBooleanProps. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        ActionSelfServiceTriggerUserPropertiesBooleanProps.__key_warning(key)
+        ActionUserPropertiesBooleanProps.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        ActionSelfServiceTriggerUserPropertiesBooleanProps.__key_warning(key)
+        ActionUserPropertiesBooleanProps.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -1211,7 +1147,7 @@ class ActionSelfServiceTriggerUserPropertiesBooleanProps(dict):
 
 
 @pulumi.output_type
-class ActionSelfServiceTriggerUserPropertiesNumberProps(dict):
+class ActionUserPropertiesNumberProps(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1225,14 +1161,14 @@ class ActionSelfServiceTriggerUserPropertiesNumberProps(dict):
             suggest = "visible_jq_query"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTriggerUserPropertiesNumberProps. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ActionUserPropertiesNumberProps. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        ActionSelfServiceTriggerUserPropertiesNumberProps.__key_warning(key)
+        ActionUserPropertiesNumberProps.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        ActionSelfServiceTriggerUserPropertiesNumberProps.__key_warning(key)
+        ActionUserPropertiesNumberProps.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -1397,7 +1333,7 @@ class ActionSelfServiceTriggerUserPropertiesNumberProps(dict):
 
 
 @pulumi.output_type
-class ActionSelfServiceTriggerUserPropertiesObjectProps(dict):
+class ActionUserPropertiesObjectProps(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1409,14 +1345,14 @@ class ActionSelfServiceTriggerUserPropertiesObjectProps(dict):
             suggest = "visible_jq_query"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTriggerUserPropertiesObjectProps. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ActionUserPropertiesObjectProps. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        ActionSelfServiceTriggerUserPropertiesObjectProps.__key_warning(key)
+        ActionUserPropertiesObjectProps.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        ActionSelfServiceTriggerUserPropertiesObjectProps.__key_warning(key)
+        ActionUserPropertiesObjectProps.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -1545,7 +1481,7 @@ class ActionSelfServiceTriggerUserPropertiesObjectProps(dict):
 
 
 @pulumi.output_type
-class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
+class ActionUserPropertiesStringProps(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1563,19 +1499,19 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
             suggest = "visible_jq_query"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTriggerUserPropertiesStringProps. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ActionUserPropertiesStringProps. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        ActionSelfServiceTriggerUserPropertiesStringProps.__key_warning(key)
+        ActionUserPropertiesStringProps.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        ActionSelfServiceTriggerUserPropertiesStringProps.__key_warning(key)
+        ActionUserPropertiesStringProps.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
-                 dataset: Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDataset'] = None,
+                 dataset: Optional['outputs.ActionUserPropertiesStringPropsDataset'] = None,
                  default: Optional[str] = None,
                  default_jq_query: Optional[str] = None,
                  depends_ons: Optional[Sequence[str]] = None,
@@ -1594,7 +1530,7 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
                  visible_jq_query: Optional[str] = None):
         """
         :param str blueprint: The blueprint identifier the string property relates to
-        :param 'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs' dataset: The dataset of an the entity-format property
+        :param 'ActionUserPropertiesStringPropsDatasetArgs' dataset: The dataset of an the entity-format property
         :param str default: The default of the string property
         :param str default_jq_query: The default jq query of the string property
         :param Sequence[str] depends_ons: The properties that this property depends on
@@ -1659,7 +1595,7 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
 
     @property
     @pulumi.getter
-    def dataset(self) -> Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDataset']:
+    def dataset(self) -> Optional['outputs.ActionUserPropertiesStringPropsDataset']:
         """
         The dataset of an the entity-format property
         """
@@ -1795,13 +1731,13 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
 
 
 @pulumi.output_type
-class ActionSelfServiceTriggerUserPropertiesStringPropsDataset(dict):
+class ActionUserPropertiesStringPropsDataset(dict):
     def __init__(__self__, *,
                  combinator: str,
-                 rules: Sequence['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule']):
+                 rules: Sequence['outputs.ActionUserPropertiesStringPropsDatasetRule']):
         """
         :param str combinator: The combinator of the dataset
-        :param Sequence['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs'] rules: The rules of the dataset
+        :param Sequence['ActionUserPropertiesStringPropsDatasetRuleArgs'] rules: The rules of the dataset
         """
         pulumi.set(__self__, "combinator", combinator)
         pulumi.set(__self__, "rules", rules)
@@ -1816,7 +1752,7 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDataset(dict):
 
     @property
     @pulumi.getter
-    def rules(self) -> Sequence['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule']:
+    def rules(self) -> Sequence['outputs.ActionUserPropertiesStringPropsDatasetRule']:
         """
         The rules of the dataset
         """
@@ -1824,15 +1760,15 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDataset(dict):
 
 
 @pulumi.output_type
-class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule(dict):
+class ActionUserPropertiesStringPropsDatasetRule(dict):
     def __init__(__self__, *,
                  operator: str,
-                 value: 'outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue',
+                 value: 'outputs.ActionUserPropertiesStringPropsDatasetRuleValue',
                  blueprint: Optional[str] = None,
                  property: Optional[str] = None):
         """
         :param str operator: The operator of the rule
-        :param 'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs' value: The value of the rule
+        :param 'ActionUserPropertiesStringPropsDatasetRuleValueArgs' value: The value of the rule
         :param str blueprint: The blueprint identifier of the rule
         :param str property: The property identifier of the rule
         """
@@ -1853,7 +1789,7 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule(dict):
 
     @property
     @pulumi.getter
-    def value(self) -> 'outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue':
+    def value(self) -> 'outputs.ActionUserPropertiesStringPropsDatasetRuleValue':
         """
         The value of the rule
         """
@@ -1877,7 +1813,7 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule(dict):
 
 
 @pulumi.output_type
-class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue(dict):
+class ActionUserPropertiesStringPropsDatasetRuleValue(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1885,14 +1821,14 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue(dict):
             suggest = "jq_query"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ActionUserPropertiesStringPropsDatasetRuleValue. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue.__key_warning(key)
+        ActionUserPropertiesStringPropsDatasetRuleValue.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue.__key_warning(key)
+        ActionUserPropertiesStringPropsDatasetRuleValue.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -1909,26 +1845,18 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue(dict):
 class ActionWebhookMethod(dict):
     def __init__(__self__, *,
                  url: str,
-                 agent: Optional[str] = None,
-                 body: Optional[str] = None,
-                 headers: Optional[Mapping[str, str]] = None,
+                 agent: Optional[bool] = None,
                  method: Optional[str] = None,
-                 synchronized: Optional[str] = None):
+                 synchronized: Optional[bool] = None):
         """
         :param str url: Required when selecting type WEBHOOK. The URL to invoke the action
-        :param str agent: Use the agent to invoke the action
-        :param str body: The Webhook body (array or object encoded to a string)
-        :param Mapping[str, str] headers: The HTTP method to invoke the action
+        :param bool agent: Use the agent to invoke the action
         :param str method: The HTTP method to invoke the action
-        :param str synchronized: Synchronize the action
+        :param bool synchronized: Synchronize the action
         """
         pulumi.set(__self__, "url", url)
         if agent is not None:
             pulumi.set(__self__, "agent", agent)
-        if body is not None:
-            pulumi.set(__self__, "body", body)
-        if headers is not None:
-            pulumi.set(__self__, "headers", headers)
         if method is not None:
             pulumi.set(__self__, "method", method)
         if synchronized is not None:
@@ -1944,27 +1872,11 @@ class ActionWebhookMethod(dict):
 
     @property
     @pulumi.getter
-    def agent(self) -> Optional[str]:
+    def agent(self) -> Optional[bool]:
         """
         Use the agent to invoke the action
         """
         return pulumi.get(self, "agent")
-
-    @property
-    @pulumi.getter
-    def body(self) -> Optional[str]:
-        """
-        The Webhook body (array or object encoded to a string)
-        """
-        return pulumi.get(self, "body")
-
-    @property
-    @pulumi.getter
-    def headers(self) -> Optional[Mapping[str, str]]:
-        """
-        The HTTP method to invoke the action
-        """
-        return pulumi.get(self, "headers")
 
     @property
     @pulumi.getter
@@ -1976,7 +1888,7 @@ class ActionWebhookMethod(dict):
 
     @property
     @pulumi.getter
-    def synchronized(self) -> Optional[str]:
+    def synchronized(self) -> Optional[bool]:
         """
         Synchronize the action
         """
@@ -2428,6 +2340,797 @@ class BlueprintMirrorProperties(dict):
         The title of the mirror property
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class BlueprintPermissionsEntities(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "updateMetadataProperties":
+            suggest = "update_metadata_properties"
+        elif key == "updateProperties":
+            suggest = "update_properties"
+        elif key == "updateRelations":
+            suggest = "update_relations"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BlueprintPermissionsEntities. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BlueprintPermissionsEntities.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BlueprintPermissionsEntities.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 register: 'outputs.BlueprintPermissionsEntitiesRegister',
+                 unregister: 'outputs.BlueprintPermissionsEntitiesUnregister',
+                 update: 'outputs.BlueprintPermissionsEntitiesUpdate',
+                 update_metadata_properties: 'outputs.BlueprintPermissionsEntitiesUpdateMetadataProperties',
+                 update_properties: Optional[Mapping[str, 'outputs.BlueprintPermissionsEntitiesUpdateProperties']] = None,
+                 update_relations: Optional[Mapping[str, 'outputs.BlueprintPermissionsEntitiesUpdateRelations']] = None):
+        """
+        :param 'BlueprintPermissionsEntitiesRegisterArgs' register: Manage permissions to register entities of the blueprint
+        :param 'BlueprintPermissionsEntitiesUnregisterArgs' unregister: Manage permissions to unregister entities of the blueprint
+        :param 'BlueprintPermissionsEntitiesUpdateArgs' update: Manage permissions to update entities of the blueprint
+        :param Mapping[str, 'BlueprintPermissionsEntitiesUpdatePropertiesArgs'] update_properties: Manage permissions to update the entity properties
+        :param Mapping[str, 'BlueprintPermissionsEntitiesUpdateRelationsArgs'] update_relations: Manage permissions to update the entity relations
+        """
+        pulumi.set(__self__, "register", register)
+        pulumi.set(__self__, "unregister", unregister)
+        pulumi.set(__self__, "update", update)
+        pulumi.set(__self__, "update_metadata_properties", update_metadata_properties)
+        if update_properties is not None:
+            pulumi.set(__self__, "update_properties", update_properties)
+        if update_relations is not None:
+            pulumi.set(__self__, "update_relations", update_relations)
+
+    @property
+    @pulumi.getter
+    def register(self) -> 'outputs.BlueprintPermissionsEntitiesRegister':
+        """
+        Manage permissions to register entities of the blueprint
+        """
+        return pulumi.get(self, "register")
+
+    @property
+    @pulumi.getter
+    def unregister(self) -> 'outputs.BlueprintPermissionsEntitiesUnregister':
+        """
+        Manage permissions to unregister entities of the blueprint
+        """
+        return pulumi.get(self, "unregister")
+
+    @property
+    @pulumi.getter
+    def update(self) -> 'outputs.BlueprintPermissionsEntitiesUpdate':
+        """
+        Manage permissions to update entities of the blueprint
+        """
+        return pulumi.get(self, "update")
+
+    @property
+    @pulumi.getter(name="updateMetadataProperties")
+    def update_metadata_properties(self) -> 'outputs.BlueprintPermissionsEntitiesUpdateMetadataProperties':
+        return pulumi.get(self, "update_metadata_properties")
+
+    @property
+    @pulumi.getter(name="updateProperties")
+    def update_properties(self) -> Optional[Mapping[str, 'outputs.BlueprintPermissionsEntitiesUpdateProperties']]:
+        """
+        Manage permissions to update the entity properties
+        """
+        return pulumi.get(self, "update_properties")
+
+    @property
+    @pulumi.getter(name="updateRelations")
+    def update_relations(self) -> Optional[Mapping[str, 'outputs.BlueprintPermissionsEntitiesUpdateRelations']]:
+        """
+        Manage permissions to update the entity relations
+        """
+        return pulumi.get(self, "update_relations")
+
+
+@pulumi.output_type
+class BlueprintPermissionsEntitiesRegister(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ownedByTeam":
+            suggest = "owned_by_team"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BlueprintPermissionsEntitiesRegister. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BlueprintPermissionsEntitiesRegister.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BlueprintPermissionsEntitiesRegister.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 owned_by_team: Optional[bool] = None,
+                 roles: Optional[Sequence[str]] = None,
+                 teams: Optional[Sequence[str]] = None,
+                 users: Optional[Sequence[str]] = None):
+        """
+        :param bool owned_by_team: Owned by team
+        :param Sequence[str] roles: Roles with register permissions
+        :param Sequence[str] teams: Teams with register permissions
+        :param Sequence[str] users: Users with register permissions
+        """
+        if owned_by_team is not None:
+            pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="ownedByTeam")
+    def owned_by_team(self) -> Optional[bool]:
+        """
+        Owned by team
+        """
+        return pulumi.get(self, "owned_by_team")
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[Sequence[str]]:
+        """
+        Roles with register permissions
+        """
+        return pulumi.get(self, "roles")
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[Sequence[str]]:
+        """
+        Teams with register permissions
+        """
+        return pulumi.get(self, "teams")
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[Sequence[str]]:
+        """
+        Users with register permissions
+        """
+        return pulumi.get(self, "users")
+
+
+@pulumi.output_type
+class BlueprintPermissionsEntitiesUnregister(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ownedByTeam":
+            suggest = "owned_by_team"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BlueprintPermissionsEntitiesUnregister. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BlueprintPermissionsEntitiesUnregister.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BlueprintPermissionsEntitiesUnregister.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 owned_by_team: Optional[bool] = None,
+                 roles: Optional[Sequence[str]] = None,
+                 teams: Optional[Sequence[str]] = None,
+                 users: Optional[Sequence[str]] = None):
+        """
+        :param bool owned_by_team: Owned by team
+        :param Sequence[str] roles: Roles with unregister permissions
+        :param Sequence[str] teams: Teams with unregister permissions
+        :param Sequence[str] users: Users with unregister permissions
+        """
+        if owned_by_team is not None:
+            pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="ownedByTeam")
+    def owned_by_team(self) -> Optional[bool]:
+        """
+        Owned by team
+        """
+        return pulumi.get(self, "owned_by_team")
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[Sequence[str]]:
+        """
+        Roles with unregister permissions
+        """
+        return pulumi.get(self, "roles")
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[Sequence[str]]:
+        """
+        Teams with unregister permissions
+        """
+        return pulumi.get(self, "teams")
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[Sequence[str]]:
+        """
+        Users with unregister permissions
+        """
+        return pulumi.get(self, "users")
+
+
+@pulumi.output_type
+class BlueprintPermissionsEntitiesUpdate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ownedByTeam":
+            suggest = "owned_by_team"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BlueprintPermissionsEntitiesUpdate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BlueprintPermissionsEntitiesUpdate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BlueprintPermissionsEntitiesUpdate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 owned_by_team: Optional[bool] = None,
+                 roles: Optional[Sequence[str]] = None,
+                 teams: Optional[Sequence[str]] = None,
+                 users: Optional[Sequence[str]] = None):
+        """
+        :param bool owned_by_team: Owned by team
+        :param Sequence[str] roles: Roles with update permissions
+        :param Sequence[str] teams: Teams with update permissions
+        :param Sequence[str] users: Users with update permissions
+        """
+        if owned_by_team is not None:
+            pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="ownedByTeam")
+    def owned_by_team(self) -> Optional[bool]:
+        """
+        Owned by team
+        """
+        return pulumi.get(self, "owned_by_team")
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[Sequence[str]]:
+        """
+        Roles with update permissions
+        """
+        return pulumi.get(self, "roles")
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[Sequence[str]]:
+        """
+        Teams with update permissions
+        """
+        return pulumi.get(self, "teams")
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[Sequence[str]]:
+        """
+        Users with update permissions
+        """
+        return pulumi.get(self, "users")
+
+
+@pulumi.output_type
+class BlueprintPermissionsEntitiesUpdateMetadataProperties(dict):
+    def __init__(__self__, *,
+                 icon: 'outputs.BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon',
+                 identifier: 'outputs.BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier',
+                 team: 'outputs.BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam',
+                 title: 'outputs.BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle'):
+        """
+        :param 'BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconArgs' icon: The entity's icon
+        :param 'BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierArgs' identifier: Unique Entity identifier, used for API calls, programmatic access and distinguishing between different entities
+        :param 'BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamArgs' team: The team this entity belongs to
+        :param 'BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleArgs' title: A human-readable name for the entity
+        """
+        pulumi.set(__self__, "icon", icon)
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "team", team)
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def icon(self) -> 'outputs.BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon':
+        """
+        The entity's icon
+        """
+        return pulumi.get(self, "icon")
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> 'outputs.BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier':
+        """
+        Unique Entity identifier, used for API calls, programmatic access and distinguishing between different entities
+        """
+        return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter
+    def team(self) -> 'outputs.BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam':
+        """
+        The team this entity belongs to
+        """
+        return pulumi.get(self, "team")
+
+    @property
+    @pulumi.getter
+    def title(self) -> 'outputs.BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle':
+        """
+        A human-readable name for the entity
+        """
+        return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ownedByTeam":
+            suggest = "owned_by_team"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 owned_by_team: Optional[bool] = None,
+                 roles: Optional[Sequence[str]] = None,
+                 teams: Optional[Sequence[str]] = None,
+                 users: Optional[Sequence[str]] = None):
+        """
+        :param bool owned_by_team: Owned by team
+        :param Sequence[str] roles: Roles with update $icon metadata permissions
+        :param Sequence[str] teams: Teams with update $icon metadata permissions
+        :param Sequence[str] users: Users with update $icon metadata permissions
+        """
+        if owned_by_team is not None:
+            pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="ownedByTeam")
+    def owned_by_team(self) -> Optional[bool]:
+        """
+        Owned by team
+        """
+        return pulumi.get(self, "owned_by_team")
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[Sequence[str]]:
+        """
+        Roles with update $icon metadata permissions
+        """
+        return pulumi.get(self, "roles")
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[Sequence[str]]:
+        """
+        Teams with update $icon metadata permissions
+        """
+        return pulumi.get(self, "teams")
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[Sequence[str]]:
+        """
+        Users with update $icon metadata permissions
+        """
+        return pulumi.get(self, "users")
+
+
+@pulumi.output_type
+class BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ownedByTeam":
+            suggest = "owned_by_team"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 owned_by_team: Optional[bool] = None,
+                 roles: Optional[Sequence[str]] = None,
+                 teams: Optional[Sequence[str]] = None,
+                 users: Optional[Sequence[str]] = None):
+        """
+        :param bool owned_by_team: Owned by team
+        :param Sequence[str] roles: Roles with update $identifier metadata permissions
+        :param Sequence[str] teams: Teams with update $identifier metadata permissions
+        :param Sequence[str] users: Users with update $identifier metadata permissions
+        """
+        if owned_by_team is not None:
+            pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="ownedByTeam")
+    def owned_by_team(self) -> Optional[bool]:
+        """
+        Owned by team
+        """
+        return pulumi.get(self, "owned_by_team")
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[Sequence[str]]:
+        """
+        Roles with update $identifier metadata permissions
+        """
+        return pulumi.get(self, "roles")
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[Sequence[str]]:
+        """
+        Teams with update $identifier metadata permissions
+        """
+        return pulumi.get(self, "teams")
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[Sequence[str]]:
+        """
+        Users with update $identifier metadata permissions
+        """
+        return pulumi.get(self, "users")
+
+
+@pulumi.output_type
+class BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ownedByTeam":
+            suggest = "owned_by_team"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 owned_by_team: Optional[bool] = None,
+                 roles: Optional[Sequence[str]] = None,
+                 teams: Optional[Sequence[str]] = None,
+                 users: Optional[Sequence[str]] = None):
+        """
+        :param bool owned_by_team: Owned by team
+        :param Sequence[str] roles: Roles with update $team metadata permissions
+        :param Sequence[str] teams: Teams with update $team metadata permissions
+        :param Sequence[str] users: Users with update $team metadata permissions
+        """
+        if owned_by_team is not None:
+            pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="ownedByTeam")
+    def owned_by_team(self) -> Optional[bool]:
+        """
+        Owned by team
+        """
+        return pulumi.get(self, "owned_by_team")
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[Sequence[str]]:
+        """
+        Roles with update $team metadata permissions
+        """
+        return pulumi.get(self, "roles")
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[Sequence[str]]:
+        """
+        Teams with update $team metadata permissions
+        """
+        return pulumi.get(self, "teams")
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[Sequence[str]]:
+        """
+        Users with update $team metadata permissions
+        """
+        return pulumi.get(self, "users")
+
+
+@pulumi.output_type
+class BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ownedByTeam":
+            suggest = "owned_by_team"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 owned_by_team: Optional[bool] = None,
+                 roles: Optional[Sequence[str]] = None,
+                 teams: Optional[Sequence[str]] = None,
+                 users: Optional[Sequence[str]] = None):
+        """
+        :param bool owned_by_team: Owned by team
+        :param Sequence[str] roles: Roles with update $title metadata permissions
+        :param Sequence[str] teams: Teams with update $title metadata permissions
+        :param Sequence[str] users: Users with update $title metadata permissions
+        """
+        if owned_by_team is not None:
+            pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="ownedByTeam")
+    def owned_by_team(self) -> Optional[bool]:
+        """
+        Owned by team
+        """
+        return pulumi.get(self, "owned_by_team")
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[Sequence[str]]:
+        """
+        Roles with update $title metadata permissions
+        """
+        return pulumi.get(self, "roles")
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[Sequence[str]]:
+        """
+        Teams with update $title metadata permissions
+        """
+        return pulumi.get(self, "teams")
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[Sequence[str]]:
+        """
+        Users with update $title metadata permissions
+        """
+        return pulumi.get(self, "users")
+
+
+@pulumi.output_type
+class BlueprintPermissionsEntitiesUpdateProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ownedByTeam":
+            suggest = "owned_by_team"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BlueprintPermissionsEntitiesUpdateProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BlueprintPermissionsEntitiesUpdateProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BlueprintPermissionsEntitiesUpdateProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 owned_by_team: Optional[bool] = None,
+                 roles: Optional[Sequence[str]] = None,
+                 teams: Optional[Sequence[str]] = None,
+                 users: Optional[Sequence[str]] = None):
+        """
+        :param bool owned_by_team: Owned by team
+        :param Sequence[str] roles: Roles with update specific property permissions
+        :param Sequence[str] teams: Teams with update specific property permissions
+        :param Sequence[str] users: Users with update specific property permissions
+        """
+        if owned_by_team is not None:
+            pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="ownedByTeam")
+    def owned_by_team(self) -> Optional[bool]:
+        """
+        Owned by team
+        """
+        return pulumi.get(self, "owned_by_team")
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[Sequence[str]]:
+        """
+        Roles with update specific property permissions
+        """
+        return pulumi.get(self, "roles")
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[Sequence[str]]:
+        """
+        Teams with update specific property permissions
+        """
+        return pulumi.get(self, "teams")
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[Sequence[str]]:
+        """
+        Users with update specific property permissions
+        """
+        return pulumi.get(self, "users")
+
+
+@pulumi.output_type
+class BlueprintPermissionsEntitiesUpdateRelations(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ownedByTeam":
+            suggest = "owned_by_team"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BlueprintPermissionsEntitiesUpdateRelations. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BlueprintPermissionsEntitiesUpdateRelations.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BlueprintPermissionsEntitiesUpdateRelations.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 owned_by_team: Optional[bool] = None,
+                 roles: Optional[Sequence[str]] = None,
+                 teams: Optional[Sequence[str]] = None,
+                 users: Optional[Sequence[str]] = None):
+        """
+        :param bool owned_by_team: Owned by team
+        :param Sequence[str] roles: Roles with update specific relation permissions
+        :param Sequence[str] teams: Teams with update specific relation permissions
+        :param Sequence[str] users: Users with update specific relation permissions
+        """
+        if owned_by_team is not None:
+            pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="ownedByTeam")
+    def owned_by_team(self) -> Optional[bool]:
+        """
+        Owned by team
+        """
+        return pulumi.get(self, "owned_by_team")
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[Sequence[str]]:
+        """
+        Roles with update specific relation permissions
+        """
+        return pulumi.get(self, "roles")
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[Sequence[str]]:
+        """
+        Teams with update specific relation permissions
+        """
+        return pulumi.get(self, "teams")
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[Sequence[str]]:
+        """
+        Users with update specific relation permissions
+        """
+        return pulumi.get(self, "users")
 
 
 @pulumi.output_type

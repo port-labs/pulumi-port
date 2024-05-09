@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AggregationProperties{}
 	case "port:index/blueprint:Blueprint":
 		r = &Blueprint{}
+	case "port:index/blueprintPermissions:BlueprintPermissions":
+		r = &BlueprintPermissions{}
 	case "port:index/entity:Entity":
 		r = &Entity{}
 	case "port:index/page:Page":
@@ -90,6 +92,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"port",
 		"index/blueprint",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"port",
+		"index/blueprintPermissions",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

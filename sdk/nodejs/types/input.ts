@@ -25,16 +25,20 @@ export interface ActionAzureMethod {
      */
     org: pulumi.Input<string>;
     /**
-     * The Azure Devops workflow payload (array or object encoded to a string)
-     */
-    payload?: pulumi.Input<string>;
-    /**
      * Required when selecting type AZURE. The Azure webhook that the workflow belongs to
      */
     webhook: pulumi.Input<string>;
 }
 
 export interface ActionGithubMethod {
+    /**
+     * Omit the payload when invoking the action
+     */
+    omitPayload?: pulumi.Input<boolean>;
+    /**
+     * Omit the user inputs when invoking the action
+     */
+    omitUserInputs?: pulumi.Input<boolean>;
     /**
      * Required when selecting type GITHUB. The GitHub org that the workflow belongs to
      */
@@ -46,18 +50,18 @@ export interface ActionGithubMethod {
     /**
      * Report the workflow status when invoking the action
      */
-    reportWorkflowStatus?: pulumi.Input<string>;
+    reportWorkflowStatus?: pulumi.Input<boolean>;
     /**
      * The GitHub workflow that the action belongs to
      */
     workflow: pulumi.Input<string>;
-    /**
-     * The GitHub workflow inputs (key-value object encoded to a string)
-     */
-    workflowInputs?: pulumi.Input<string>;
 }
 
 export interface ActionGitlabMethod {
+    /**
+     * Use the agent to invoke the action
+     */
+    agent?: pulumi.Input<boolean>;
     /**
      * The default ref of the action
      */
@@ -67,9 +71,13 @@ export interface ActionGitlabMethod {
      */
     groupName: pulumi.Input<string>;
     /**
-     * The Gitlab pipeline variables (key-value object encoded to a string)
+     * Omit the payload when invoking the action
      */
-    pipelineVariables?: pulumi.Input<string>;
+    omitPayload?: pulumi.Input<boolean>;
+    /**
+     * Omit the user inputs when invoking the action
+     */
+    omitUserInputs?: pulumi.Input<boolean>;
     /**
      * Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
      */
@@ -77,10 +85,6 @@ export interface ActionGitlabMethod {
 }
 
 export interface ActionKafkaMethod {
-    /**
-     * The Kafka message payload (array or object encoded to a string)
-     */
-    payload?: pulumi.Input<string>;
 }
 
 export interface ActionPermissionsPermissions {
@@ -136,57 +140,34 @@ export interface ActionPermissionsPermissionsExecute {
     users?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface ActionSelfServiceTrigger {
-    /**
-     * The ID of the blueprint
-     */
-    blueprintIdentifier?: pulumi.Input<string>;
-    /**
-     * The operation type of the action
-     */
-    operation: pulumi.Input<string>;
-    /**
-     * Order properties
-     */
-    orderProperties?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The required jq query of the property
-     */
-    requiredJqQuery?: pulumi.Input<string>;
-    /**
-     * User properties
-     */
-    userProperties?: pulumi.Input<inputs.ActionSelfServiceTriggerUserProperties>;
-}
-
-export interface ActionSelfServiceTriggerUserProperties {
+export interface ActionUserProperties {
     /**
      * The array property of the action
      */
-    arrayProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesArrayProps>}>;
+    arrayProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionUserPropertiesArrayProps>}>;
     /**
      * The boolean property of the action
      */
-    booleanProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesBooleanProps>}>;
+    booleanProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionUserPropertiesBooleanProps>}>;
     /**
      * The number property of the action
      */
-    numberProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesNumberProps>}>;
+    numberProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionUserPropertiesNumberProps>}>;
     /**
      * The object property of the action
      */
-    objectProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesObjectProps>}>;
+    objectProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionUserPropertiesObjectProps>}>;
     /**
      * The string property of the action
      */
-    stringProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringProps>}>;
+    stringProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionUserPropertiesStringProps>}>;
 }
 
-export interface ActionSelfServiceTriggerUserPropertiesArrayProps {
+export interface ActionUserPropertiesArrayProps {
     /**
      * The items of the array property
      */
-    booleanItems?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems>;
+    booleanItems?: pulumi.Input<inputs.ActionUserPropertiesArrayPropsBooleanItems>;
     /**
      * The default jq query of the array property
      */
@@ -214,11 +195,11 @@ export interface ActionSelfServiceTriggerUserPropertiesArrayProps {
     /**
      * The items of the array property
      */
-    numberItems?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems>;
+    numberItems?: pulumi.Input<inputs.ActionUserPropertiesArrayPropsNumberItems>;
     /**
      * The items of the array property
      */
-    objectItems?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems>;
+    objectItems?: pulumi.Input<inputs.ActionUserPropertiesArrayPropsObjectItems>;
     /**
      * Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
      */
@@ -226,7 +207,7 @@ export interface ActionSelfServiceTriggerUserPropertiesArrayProps {
     /**
      * The items of the array property
      */
-    stringItems?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems>;
+    stringItems?: pulumi.Input<inputs.ActionUserPropertiesArrayPropsStringItems>;
     /**
      * The title of the property
      */
@@ -241,14 +222,14 @@ export interface ActionSelfServiceTriggerUserPropertiesArrayProps {
     visibleJqQuery?: pulumi.Input<string>;
 }
 
-export interface ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems {
+export interface ActionUserPropertiesArrayPropsBooleanItems {
     /**
      * The default of the items
      */
     defaults?: pulumi.Input<pulumi.Input<boolean>[]>;
 }
 
-export interface ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems {
+export interface ActionUserPropertiesArrayPropsNumberItems {
     /**
      * The default of the items
      */
@@ -263,14 +244,14 @@ export interface ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems {
     enums?: pulumi.Input<pulumi.Input<number>[]>;
 }
 
-export interface ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems {
+export interface ActionUserPropertiesArrayPropsObjectItems {
     /**
      * The default of the items
      */
     defaults?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
 }
 
-export interface ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems {
+export interface ActionUserPropertiesArrayPropsStringItems {
     /**
      * The blueprint identifier the property relates to
      */
@@ -297,7 +278,7 @@ export interface ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems {
     format?: pulumi.Input<string>;
 }
 
-export interface ActionSelfServiceTriggerUserPropertiesBooleanProps {
+export interface ActionUserPropertiesBooleanProps {
     /**
      * The default of the boolean property
      */
@@ -336,7 +317,7 @@ export interface ActionSelfServiceTriggerUserPropertiesBooleanProps {
     visibleJqQuery?: pulumi.Input<string>;
 }
 
-export interface ActionSelfServiceTriggerUserPropertiesNumberProps {
+export interface ActionUserPropertiesNumberProps {
     /**
      * The default of the number property
      */
@@ -391,7 +372,7 @@ export interface ActionSelfServiceTriggerUserPropertiesNumberProps {
     visibleJqQuery?: pulumi.Input<string>;
 }
 
-export interface ActionSelfServiceTriggerUserPropertiesObjectProps {
+export interface ActionUserPropertiesObjectProps {
     /**
      * The default of the object property
      */
@@ -434,7 +415,7 @@ export interface ActionSelfServiceTriggerUserPropertiesObjectProps {
     visibleJqQuery?: pulumi.Input<string>;
 }
 
-export interface ActionSelfServiceTriggerUserPropertiesStringProps {
+export interface ActionUserPropertiesStringProps {
     /**
      * The blueprint identifier the string property relates to
      */
@@ -442,7 +423,7 @@ export interface ActionSelfServiceTriggerUserPropertiesStringProps {
     /**
      * The dataset of an the entity-format property
      */
-    dataset?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDataset>;
+    dataset?: pulumi.Input<inputs.ActionUserPropertiesStringPropsDataset>;
     /**
      * The default of the string property
      */
@@ -509,7 +490,7 @@ export interface ActionSelfServiceTriggerUserPropertiesStringProps {
     visibleJqQuery?: pulumi.Input<string>;
 }
 
-export interface ActionSelfServiceTriggerUserPropertiesStringPropsDataset {
+export interface ActionUserPropertiesStringPropsDataset {
     /**
      * The combinator of the dataset
      */
@@ -517,10 +498,10 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDataset {
     /**
      * The rules of the dataset
      */
-    rules: pulumi.Input<pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule>[]>;
+    rules: pulumi.Input<pulumi.Input<inputs.ActionUserPropertiesStringPropsDatasetRule>[]>;
 }
 
-export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule {
+export interface ActionUserPropertiesStringPropsDatasetRule {
     /**
      * The blueprint identifier of the rule
      */
@@ -536,10 +517,10 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule {
     /**
      * The value of the rule
      */
-    value: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue>;
+    value: pulumi.Input<inputs.ActionUserPropertiesStringPropsDatasetRuleValue>;
 }
 
-export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue {
+export interface ActionUserPropertiesStringPropsDatasetRuleValue {
     jqQuery: pulumi.Input<string>;
 }
 
@@ -547,15 +528,7 @@ export interface ActionWebhookMethod {
     /**
      * Use the agent to invoke the action
      */
-    agent?: pulumi.Input<string>;
-    /**
-     * The Webhook body (array or object encoded to a string)
-     */
-    body?: pulumi.Input<string>;
-    /**
-     * The HTTP method to invoke the action
-     */
-    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    agent?: pulumi.Input<boolean>;
     /**
      * The HTTP method to invoke the action
      */
@@ -563,7 +536,7 @@ export interface ActionWebhookMethod {
     /**
      * Synchronize the action
      */
-    synchronized?: pulumi.Input<string>;
+    synchronized?: pulumi.Input<boolean>;
     /**
      * Required when selecting type WEBHOOK. The URL to invoke the action
      */
@@ -700,6 +673,220 @@ export interface BlueprintMirrorProperties {
      * The title of the mirror property
      */
     title?: pulumi.Input<string>;
+}
+
+export interface BlueprintPermissionsEntities {
+    /**
+     * Manage permissions to register entities of the blueprint
+     */
+    register: pulumi.Input<inputs.BlueprintPermissionsEntitiesRegister>;
+    /**
+     * Manage permissions to unregister entities of the blueprint
+     */
+    unregister: pulumi.Input<inputs.BlueprintPermissionsEntitiesUnregister>;
+    /**
+     * Manage permissions to update entities of the blueprint
+     */
+    update: pulumi.Input<inputs.BlueprintPermissionsEntitiesUpdate>;
+    updateMetadataProperties: pulumi.Input<inputs.BlueprintPermissionsEntitiesUpdateMetadataProperties>;
+    /**
+     * Manage permissions to update the entity properties
+     */
+    updateProperties?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintPermissionsEntitiesUpdateProperties>}>;
+    /**
+     * Manage permissions to update the entity relations
+     */
+    updateRelations?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintPermissionsEntitiesUpdateRelations>}>;
+}
+
+export interface BlueprintPermissionsEntitiesRegister {
+    /**
+     * Owned by team
+     */
+    ownedByTeam?: pulumi.Input<boolean>;
+    /**
+     * Roles with register permissions
+     */
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Teams with register permissions
+     */
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Users with register permissions
+     */
+    users?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface BlueprintPermissionsEntitiesUnregister {
+    /**
+     * Owned by team
+     */
+    ownedByTeam?: pulumi.Input<boolean>;
+    /**
+     * Roles with unregister permissions
+     */
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Teams with unregister permissions
+     */
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Users with unregister permissions
+     */
+    users?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface BlueprintPermissionsEntitiesUpdate {
+    /**
+     * Owned by team
+     */
+    ownedByTeam?: pulumi.Input<boolean>;
+    /**
+     * Roles with update permissions
+     */
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Teams with update permissions
+     */
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Users with update permissions
+     */
+    users?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface BlueprintPermissionsEntitiesUpdateMetadataProperties {
+    /**
+     * The entity's icon
+     */
+    icon: pulumi.Input<inputs.BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon>;
+    /**
+     * Unique Entity identifier, used for API calls, programmatic access and distinguishing between different entities
+     */
+    identifier: pulumi.Input<inputs.BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier>;
+    /**
+     * The team this entity belongs to
+     */
+    team: pulumi.Input<inputs.BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam>;
+    /**
+     * A human-readable name for the entity
+     */
+    title: pulumi.Input<inputs.BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle>;
+}
+
+export interface BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon {
+    /**
+     * Owned by team
+     */
+    ownedByTeam?: pulumi.Input<boolean>;
+    /**
+     * Roles with update $icon metadata permissions
+     */
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Teams with update $icon metadata permissions
+     */
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Users with update $icon metadata permissions
+     */
+    users?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier {
+    /**
+     * Owned by team
+     */
+    ownedByTeam?: pulumi.Input<boolean>;
+    /**
+     * Roles with update $identifier metadata permissions
+     */
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Teams with update $identifier metadata permissions
+     */
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Users with update $identifier metadata permissions
+     */
+    users?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam {
+    /**
+     * Owned by team
+     */
+    ownedByTeam?: pulumi.Input<boolean>;
+    /**
+     * Roles with update $team metadata permissions
+     */
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Teams with update $team metadata permissions
+     */
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Users with update $team metadata permissions
+     */
+    users?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle {
+    /**
+     * Owned by team
+     */
+    ownedByTeam?: pulumi.Input<boolean>;
+    /**
+     * Roles with update $title metadata permissions
+     */
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Teams with update $title metadata permissions
+     */
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Users with update $title metadata permissions
+     */
+    users?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface BlueprintPermissionsEntitiesUpdateProperties {
+    /**
+     * Owned by team
+     */
+    ownedByTeam?: pulumi.Input<boolean>;
+    /**
+     * Roles with update specific property permissions
+     */
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Teams with update specific property permissions
+     */
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Users with update specific property permissions
+     */
+    users?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface BlueprintPermissionsEntitiesUpdateRelations {
+    /**
+     * Owned by team
+     */
+    ownedByTeam?: pulumi.Input<boolean>;
+    /**
+     * Roles with update specific relation permissions
+     */
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Teams with update specific relation permissions
+     */
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Users with update specific relation permissions
+     */
+    users?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface BlueprintProperties {

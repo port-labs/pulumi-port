@@ -40,10 +40,8 @@ export class ActionPermissions extends pulumi.CustomResource {
     public readonly actionIdentifier!: pulumi.Output<string>;
     /**
      * The ID of the blueprint
-     *
-     * @deprecated Action is not attached to blueprint anymore. This value is ignored
      */
-    public readonly blueprintIdentifier!: pulumi.Output<string | undefined>;
+    public readonly blueprintIdentifier!: pulumi.Output<string>;
     /**
      * The permissions for the action
      */
@@ -70,6 +68,9 @@ export class ActionPermissions extends pulumi.CustomResource {
             if ((!args || args.actionIdentifier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'actionIdentifier'");
             }
+            if ((!args || args.blueprintIdentifier === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'blueprintIdentifier'");
+            }
             if ((!args || args.permissions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'permissions'");
             }
@@ -92,8 +93,6 @@ export interface ActionPermissionsState {
     actionIdentifier?: pulumi.Input<string>;
     /**
      * The ID of the blueprint
-     *
-     * @deprecated Action is not attached to blueprint anymore. This value is ignored
      */
     blueprintIdentifier?: pulumi.Input<string>;
     /**
@@ -112,10 +111,8 @@ export interface ActionPermissionsArgs {
     actionIdentifier: pulumi.Input<string>;
     /**
      * The ID of the blueprint
-     *
-     * @deprecated Action is not attached to blueprint anymore. This value is ignored
      */
-    blueprintIdentifier?: pulumi.Input<string>;
+    blueprintIdentifier: pulumi.Input<string>;
     /**
      * The permissions for the action
      */

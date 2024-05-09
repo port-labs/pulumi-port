@@ -17,6 +17,7 @@
         "actionPermissions.ts",
         "aggregationProperties.ts",
         "blueprint.ts",
+        "blueprintPermissions.ts",
         "config/index.ts",
         "config/vars.ts",
         "entity.ts",

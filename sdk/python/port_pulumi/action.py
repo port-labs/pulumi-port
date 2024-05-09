@@ -16,51 +16,53 @@ __all__ = ['ActionArgs', 'Action']
 @pulumi.input_type
 class ActionArgs:
     def __init__(__self__, *,
+                 blueprint: pulumi.Input[str],
                  identifier: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 trigger: pulumi.Input[str],
                  approval_email_notification: Optional[pulumi.Input['ActionApprovalEmailNotificationArgs']] = None,
                  approval_webhook_notification: Optional[pulumi.Input['ActionApprovalWebhookNotificationArgs']] = None,
                  azure_method: Optional[pulumi.Input['ActionAzureMethodArgs']] = None,
-                 blueprint: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  github_method: Optional[pulumi.Input['ActionGithubMethodArgs']] = None,
                  gitlab_method: Optional[pulumi.Input['ActionGitlabMethodArgs']] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  kafka_method: Optional[pulumi.Input['ActionKafkaMethodArgs']] = None,
-                 publish: Optional[pulumi.Input[bool]] = None,
+                 order_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_approval: Optional[pulumi.Input[bool]] = None,
-                 self_service_trigger: Optional[pulumi.Input['ActionSelfServiceTriggerArgs']] = None,
-                 title: Optional[pulumi.Input[str]] = None,
+                 required_jq_query: Optional[pulumi.Input[str]] = None,
+                 user_properties: Optional[pulumi.Input['ActionUserPropertiesArgs']] = None,
                  webhook_method: Optional[pulumi.Input['ActionWebhookMethodArgs']] = None):
         """
         The set of arguments for constructing a Action resource.
+        :param pulumi.Input[str] blueprint: The blueprint identifier the action relates to
         :param pulumi.Input[str] identifier: Identifier
+        :param pulumi.Input[str] title: Title
+        :param pulumi.Input[str] trigger: The trigger type of the action
         :param pulumi.Input['ActionApprovalEmailNotificationArgs'] approval_email_notification: The email notification of the approval
         :param pulumi.Input['ActionApprovalWebhookNotificationArgs'] approval_webhook_notification: The webhook notification of the approval
-        :param pulumi.Input['ActionAzureMethodArgs'] azure_method: Azure DevOps invocation method
-        :param pulumi.Input[str] blueprint: The blueprint identifier the action relates to
+        :param pulumi.Input['ActionAzureMethodArgs'] azure_method: The invocation method of the action
         :param pulumi.Input[str] description: Description
-        :param pulumi.Input['ActionGithubMethodArgs'] github_method: GitHub invocation method
-        :param pulumi.Input['ActionGitlabMethodArgs'] gitlab_method: Gitlab invocation method
+        :param pulumi.Input['ActionGithubMethodArgs'] github_method: The invocation method of the action
+        :param pulumi.Input['ActionGitlabMethodArgs'] gitlab_method: The invocation method of the action
         :param pulumi.Input[str] icon: Icon
-        :param pulumi.Input['ActionKafkaMethodArgs'] kafka_method: Kafka invocation method
-        :param pulumi.Input[bool] publish: Publish action
+        :param pulumi.Input['ActionKafkaMethodArgs'] kafka_method: The invocation method of the action
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] order_properties: Order properties
         :param pulumi.Input[bool] required_approval: Require approval before invoking the action
-        :param pulumi.Input['ActionSelfServiceTriggerArgs'] self_service_trigger: Self service trigger for the action
-        :param pulumi.Input[str] title: Title
-        :param pulumi.Input['ActionWebhookMethodArgs'] webhook_method: Webhook invocation method
+        :param pulumi.Input[str] required_jq_query: The required jq query of the property
+        :param pulumi.Input['ActionUserPropertiesArgs'] user_properties: User properties
+        :param pulumi.Input['ActionWebhookMethodArgs'] webhook_method: The invocation method of the action
         """
+        pulumi.set(__self__, "blueprint", blueprint)
         pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "title", title)
+        pulumi.set(__self__, "trigger", trigger)
         if approval_email_notification is not None:
             pulumi.set(__self__, "approval_email_notification", approval_email_notification)
         if approval_webhook_notification is not None:
             pulumi.set(__self__, "approval_webhook_notification", approval_webhook_notification)
         if azure_method is not None:
             pulumi.set(__self__, "azure_method", azure_method)
-        if blueprint is not None:
-            warnings.warn("""Action is not attached to blueprint anymore. This value is ignored""", DeprecationWarning)
-            pulumi.log.warn("""blueprint is deprecated: Action is not attached to blueprint anymore. This value is ignored""")
-        if blueprint is not None:
-            pulumi.set(__self__, "blueprint", blueprint)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if github_method is not None:
@@ -71,16 +73,28 @@ class ActionArgs:
             pulumi.set(__self__, "icon", icon)
         if kafka_method is not None:
             pulumi.set(__self__, "kafka_method", kafka_method)
-        if publish is not None:
-            pulumi.set(__self__, "publish", publish)
+        if order_properties is not None:
+            pulumi.set(__self__, "order_properties", order_properties)
         if required_approval is not None:
             pulumi.set(__self__, "required_approval", required_approval)
-        if self_service_trigger is not None:
-            pulumi.set(__self__, "self_service_trigger", self_service_trigger)
-        if title is not None:
-            pulumi.set(__self__, "title", title)
+        if required_jq_query is not None:
+            pulumi.set(__self__, "required_jq_query", required_jq_query)
+        if user_properties is not None:
+            pulumi.set(__self__, "user_properties", user_properties)
         if webhook_method is not None:
             pulumi.set(__self__, "webhook_method", webhook_method)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> pulumi.Input[str]:
+        """
+        The blueprint identifier the action relates to
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: pulumi.Input[str]):
+        pulumi.set(self, "blueprint", value)
 
     @property
     @pulumi.getter
@@ -93,6 +107,30 @@ class ActionArgs:
     @identifier.setter
     def identifier(self, value: pulumi.Input[str]):
         pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        Title
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def trigger(self) -> pulumi.Input[str]:
+        """
+        The trigger type of the action
+        """
+        return pulumi.get(self, "trigger")
+
+    @trigger.setter
+    def trigger(self, value: pulumi.Input[str]):
+        pulumi.set(self, "trigger", value)
 
     @property
     @pulumi.getter(name="approvalEmailNotification")
@@ -122,28 +160,13 @@ class ActionArgs:
     @pulumi.getter(name="azureMethod")
     def azure_method(self) -> Optional[pulumi.Input['ActionAzureMethodArgs']]:
         """
-        Azure DevOps invocation method
+        The invocation method of the action
         """
         return pulumi.get(self, "azure_method")
 
     @azure_method.setter
     def azure_method(self, value: Optional[pulumi.Input['ActionAzureMethodArgs']]):
         pulumi.set(self, "azure_method", value)
-
-    @property
-    @pulumi.getter
-    def blueprint(self) -> Optional[pulumi.Input[str]]:
-        """
-        The blueprint identifier the action relates to
-        """
-        warnings.warn("""Action is not attached to blueprint anymore. This value is ignored""", DeprecationWarning)
-        pulumi.log.warn("""blueprint is deprecated: Action is not attached to blueprint anymore. This value is ignored""")
-
-        return pulumi.get(self, "blueprint")
-
-    @blueprint.setter
-    def blueprint(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "blueprint", value)
 
     @property
     @pulumi.getter
@@ -161,7 +184,7 @@ class ActionArgs:
     @pulumi.getter(name="githubMethod")
     def github_method(self) -> Optional[pulumi.Input['ActionGithubMethodArgs']]:
         """
-        GitHub invocation method
+        The invocation method of the action
         """
         return pulumi.get(self, "github_method")
 
@@ -173,7 +196,7 @@ class ActionArgs:
     @pulumi.getter(name="gitlabMethod")
     def gitlab_method(self) -> Optional[pulumi.Input['ActionGitlabMethodArgs']]:
         """
-        Gitlab invocation method
+        The invocation method of the action
         """
         return pulumi.get(self, "gitlab_method")
 
@@ -197,7 +220,7 @@ class ActionArgs:
     @pulumi.getter(name="kafkaMethod")
     def kafka_method(self) -> Optional[pulumi.Input['ActionKafkaMethodArgs']]:
         """
-        Kafka invocation method
+        The invocation method of the action
         """
         return pulumi.get(self, "kafka_method")
 
@@ -206,16 +229,16 @@ class ActionArgs:
         pulumi.set(self, "kafka_method", value)
 
     @property
-    @pulumi.getter
-    def publish(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="orderProperties")
+    def order_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Publish action
+        Order properties
         """
-        return pulumi.get(self, "publish")
+        return pulumi.get(self, "order_properties")
 
-    @publish.setter
-    def publish(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "publish", value)
+    @order_properties.setter
+    def order_properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "order_properties", value)
 
     @property
     @pulumi.getter(name="requiredApproval")
@@ -230,34 +253,34 @@ class ActionArgs:
         pulumi.set(self, "required_approval", value)
 
     @property
-    @pulumi.getter(name="selfServiceTrigger")
-    def self_service_trigger(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerArgs']]:
+    @pulumi.getter(name="requiredJqQuery")
+    def required_jq_query(self) -> Optional[pulumi.Input[str]]:
         """
-        Self service trigger for the action
+        The required jq query of the property
         """
-        return pulumi.get(self, "self_service_trigger")
+        return pulumi.get(self, "required_jq_query")
 
-    @self_service_trigger.setter
-    def self_service_trigger(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerArgs']]):
-        pulumi.set(self, "self_service_trigger", value)
+    @required_jq_query.setter
+    def required_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "required_jq_query", value)
 
     @property
-    @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="userProperties")
+    def user_properties(self) -> Optional[pulumi.Input['ActionUserPropertiesArgs']]:
         """
-        Title
+        User properties
         """
-        return pulumi.get(self, "title")
+        return pulumi.get(self, "user_properties")
 
-    @title.setter
-    def title(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "title", value)
+    @user_properties.setter
+    def user_properties(self, value: Optional[pulumi.Input['ActionUserPropertiesArgs']]):
+        pulumi.set(self, "user_properties", value)
 
     @property
     @pulumi.getter(name="webhookMethod")
     def webhook_method(self) -> Optional[pulumi.Input['ActionWebhookMethodArgs']]:
         """
-        Webhook invocation method
+        The invocation method of the action
         """
         return pulumi.get(self, "webhook_method")
 
@@ -279,28 +302,32 @@ class _ActionState:
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  kafka_method: Optional[pulumi.Input['ActionKafkaMethodArgs']] = None,
-                 publish: Optional[pulumi.Input[bool]] = None,
+                 order_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_approval: Optional[pulumi.Input[bool]] = None,
-                 self_service_trigger: Optional[pulumi.Input['ActionSelfServiceTriggerArgs']] = None,
+                 required_jq_query: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
+                 trigger: Optional[pulumi.Input[str]] = None,
+                 user_properties: Optional[pulumi.Input['ActionUserPropertiesArgs']] = None,
                  webhook_method: Optional[pulumi.Input['ActionWebhookMethodArgs']] = None):
         """
         Input properties used for looking up and filtering Action resources.
         :param pulumi.Input['ActionApprovalEmailNotificationArgs'] approval_email_notification: The email notification of the approval
         :param pulumi.Input['ActionApprovalWebhookNotificationArgs'] approval_webhook_notification: The webhook notification of the approval
-        :param pulumi.Input['ActionAzureMethodArgs'] azure_method: Azure DevOps invocation method
+        :param pulumi.Input['ActionAzureMethodArgs'] azure_method: The invocation method of the action
         :param pulumi.Input[str] blueprint: The blueprint identifier the action relates to
         :param pulumi.Input[str] description: Description
-        :param pulumi.Input['ActionGithubMethodArgs'] github_method: GitHub invocation method
-        :param pulumi.Input['ActionGitlabMethodArgs'] gitlab_method: Gitlab invocation method
+        :param pulumi.Input['ActionGithubMethodArgs'] github_method: The invocation method of the action
+        :param pulumi.Input['ActionGitlabMethodArgs'] gitlab_method: The invocation method of the action
         :param pulumi.Input[str] icon: Icon
         :param pulumi.Input[str] identifier: Identifier
-        :param pulumi.Input['ActionKafkaMethodArgs'] kafka_method: Kafka invocation method
-        :param pulumi.Input[bool] publish: Publish action
+        :param pulumi.Input['ActionKafkaMethodArgs'] kafka_method: The invocation method of the action
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] order_properties: Order properties
         :param pulumi.Input[bool] required_approval: Require approval before invoking the action
-        :param pulumi.Input['ActionSelfServiceTriggerArgs'] self_service_trigger: Self service trigger for the action
+        :param pulumi.Input[str] required_jq_query: The required jq query of the property
         :param pulumi.Input[str] title: Title
-        :param pulumi.Input['ActionWebhookMethodArgs'] webhook_method: Webhook invocation method
+        :param pulumi.Input[str] trigger: The trigger type of the action
+        :param pulumi.Input['ActionUserPropertiesArgs'] user_properties: User properties
+        :param pulumi.Input['ActionWebhookMethodArgs'] webhook_method: The invocation method of the action
         """
         if approval_email_notification is not None:
             pulumi.set(__self__, "approval_email_notification", approval_email_notification)
@@ -308,9 +335,6 @@ class _ActionState:
             pulumi.set(__self__, "approval_webhook_notification", approval_webhook_notification)
         if azure_method is not None:
             pulumi.set(__self__, "azure_method", azure_method)
-        if blueprint is not None:
-            warnings.warn("""Action is not attached to blueprint anymore. This value is ignored""", DeprecationWarning)
-            pulumi.log.warn("""blueprint is deprecated: Action is not attached to blueprint anymore. This value is ignored""")
         if blueprint is not None:
             pulumi.set(__self__, "blueprint", blueprint)
         if description is not None:
@@ -325,14 +349,18 @@ class _ActionState:
             pulumi.set(__self__, "identifier", identifier)
         if kafka_method is not None:
             pulumi.set(__self__, "kafka_method", kafka_method)
-        if publish is not None:
-            pulumi.set(__self__, "publish", publish)
+        if order_properties is not None:
+            pulumi.set(__self__, "order_properties", order_properties)
         if required_approval is not None:
             pulumi.set(__self__, "required_approval", required_approval)
-        if self_service_trigger is not None:
-            pulumi.set(__self__, "self_service_trigger", self_service_trigger)
+        if required_jq_query is not None:
+            pulumi.set(__self__, "required_jq_query", required_jq_query)
         if title is not None:
             pulumi.set(__self__, "title", title)
+        if trigger is not None:
+            pulumi.set(__self__, "trigger", trigger)
+        if user_properties is not None:
+            pulumi.set(__self__, "user_properties", user_properties)
         if webhook_method is not None:
             pulumi.set(__self__, "webhook_method", webhook_method)
 
@@ -364,7 +392,7 @@ class _ActionState:
     @pulumi.getter(name="azureMethod")
     def azure_method(self) -> Optional[pulumi.Input['ActionAzureMethodArgs']]:
         """
-        Azure DevOps invocation method
+        The invocation method of the action
         """
         return pulumi.get(self, "azure_method")
 
@@ -378,9 +406,6 @@ class _ActionState:
         """
         The blueprint identifier the action relates to
         """
-        warnings.warn("""Action is not attached to blueprint anymore. This value is ignored""", DeprecationWarning)
-        pulumi.log.warn("""blueprint is deprecated: Action is not attached to blueprint anymore. This value is ignored""")
-
         return pulumi.get(self, "blueprint")
 
     @blueprint.setter
@@ -403,7 +428,7 @@ class _ActionState:
     @pulumi.getter(name="githubMethod")
     def github_method(self) -> Optional[pulumi.Input['ActionGithubMethodArgs']]:
         """
-        GitHub invocation method
+        The invocation method of the action
         """
         return pulumi.get(self, "github_method")
 
@@ -415,7 +440,7 @@ class _ActionState:
     @pulumi.getter(name="gitlabMethod")
     def gitlab_method(self) -> Optional[pulumi.Input['ActionGitlabMethodArgs']]:
         """
-        Gitlab invocation method
+        The invocation method of the action
         """
         return pulumi.get(self, "gitlab_method")
 
@@ -451,7 +476,7 @@ class _ActionState:
     @pulumi.getter(name="kafkaMethod")
     def kafka_method(self) -> Optional[pulumi.Input['ActionKafkaMethodArgs']]:
         """
-        Kafka invocation method
+        The invocation method of the action
         """
         return pulumi.get(self, "kafka_method")
 
@@ -460,16 +485,16 @@ class _ActionState:
         pulumi.set(self, "kafka_method", value)
 
     @property
-    @pulumi.getter
-    def publish(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="orderProperties")
+    def order_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Publish action
+        Order properties
         """
-        return pulumi.get(self, "publish")
+        return pulumi.get(self, "order_properties")
 
-    @publish.setter
-    def publish(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "publish", value)
+    @order_properties.setter
+    def order_properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "order_properties", value)
 
     @property
     @pulumi.getter(name="requiredApproval")
@@ -484,16 +509,16 @@ class _ActionState:
         pulumi.set(self, "required_approval", value)
 
     @property
-    @pulumi.getter(name="selfServiceTrigger")
-    def self_service_trigger(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerArgs']]:
+    @pulumi.getter(name="requiredJqQuery")
+    def required_jq_query(self) -> Optional[pulumi.Input[str]]:
         """
-        Self service trigger for the action
+        The required jq query of the property
         """
-        return pulumi.get(self, "self_service_trigger")
+        return pulumi.get(self, "required_jq_query")
 
-    @self_service_trigger.setter
-    def self_service_trigger(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerArgs']]):
-        pulumi.set(self, "self_service_trigger", value)
+    @required_jq_query.setter
+    def required_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "required_jq_query", value)
 
     @property
     @pulumi.getter
@@ -508,10 +533,34 @@ class _ActionState:
         pulumi.set(self, "title", value)
 
     @property
+    @pulumi.getter
+    def trigger(self) -> Optional[pulumi.Input[str]]:
+        """
+        The trigger type of the action
+        """
+        return pulumi.get(self, "trigger")
+
+    @trigger.setter
+    def trigger(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "trigger", value)
+
+    @property
+    @pulumi.getter(name="userProperties")
+    def user_properties(self) -> Optional[pulumi.Input['ActionUserPropertiesArgs']]:
+        """
+        User properties
+        """
+        return pulumi.get(self, "user_properties")
+
+    @user_properties.setter
+    def user_properties(self, value: Optional[pulumi.Input['ActionUserPropertiesArgs']]):
+        pulumi.set(self, "user_properties", value)
+
+    @property
     @pulumi.getter(name="webhookMethod")
     def webhook_method(self) -> Optional[pulumi.Input['ActionWebhookMethodArgs']]:
         """
-        Webhook invocation method
+        The invocation method of the action
         """
         return pulumi.get(self, "webhook_method")
 
@@ -535,10 +584,12 @@ class Action(pulumi.CustomResource):
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  kafka_method: Optional[pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']]] = None,
-                 publish: Optional[pulumi.Input[bool]] = None,
+                 order_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_approval: Optional[pulumi.Input[bool]] = None,
-                 self_service_trigger: Optional[pulumi.Input[pulumi.InputType['ActionSelfServiceTriggerArgs']]] = None,
+                 required_jq_query: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
+                 trigger: Optional[pulumi.Input[str]] = None,
+                 user_properties: Optional[pulumi.Input[pulumi.InputType['ActionUserPropertiesArgs']]] = None,
                  webhook_method: Optional[pulumi.Input[pulumi.InputType['ActionWebhookMethodArgs']]] = None,
                  __props__=None):
         """
@@ -547,19 +598,21 @@ class Action(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ActionApprovalEmailNotificationArgs']] approval_email_notification: The email notification of the approval
         :param pulumi.Input[pulumi.InputType['ActionApprovalWebhookNotificationArgs']] approval_webhook_notification: The webhook notification of the approval
-        :param pulumi.Input[pulumi.InputType['ActionAzureMethodArgs']] azure_method: Azure DevOps invocation method
+        :param pulumi.Input[pulumi.InputType['ActionAzureMethodArgs']] azure_method: The invocation method of the action
         :param pulumi.Input[str] blueprint: The blueprint identifier the action relates to
         :param pulumi.Input[str] description: Description
-        :param pulumi.Input[pulumi.InputType['ActionGithubMethodArgs']] github_method: GitHub invocation method
-        :param pulumi.Input[pulumi.InputType['ActionGitlabMethodArgs']] gitlab_method: Gitlab invocation method
+        :param pulumi.Input[pulumi.InputType['ActionGithubMethodArgs']] github_method: The invocation method of the action
+        :param pulumi.Input[pulumi.InputType['ActionGitlabMethodArgs']] gitlab_method: The invocation method of the action
         :param pulumi.Input[str] icon: Icon
         :param pulumi.Input[str] identifier: Identifier
-        :param pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']] kafka_method: Kafka invocation method
-        :param pulumi.Input[bool] publish: Publish action
+        :param pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']] kafka_method: The invocation method of the action
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] order_properties: Order properties
         :param pulumi.Input[bool] required_approval: Require approval before invoking the action
-        :param pulumi.Input[pulumi.InputType['ActionSelfServiceTriggerArgs']] self_service_trigger: Self service trigger for the action
+        :param pulumi.Input[str] required_jq_query: The required jq query of the property
         :param pulumi.Input[str] title: Title
-        :param pulumi.Input[pulumi.InputType['ActionWebhookMethodArgs']] webhook_method: Webhook invocation method
+        :param pulumi.Input[str] trigger: The trigger type of the action
+        :param pulumi.Input[pulumi.InputType['ActionUserPropertiesArgs']] user_properties: User properties
+        :param pulumi.Input[pulumi.InputType['ActionWebhookMethodArgs']] webhook_method: The invocation method of the action
         """
         ...
     @overload
@@ -594,10 +647,12 @@ class Action(pulumi.CustomResource):
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  kafka_method: Optional[pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']]] = None,
-                 publish: Optional[pulumi.Input[bool]] = None,
+                 order_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_approval: Optional[pulumi.Input[bool]] = None,
-                 self_service_trigger: Optional[pulumi.Input[pulumi.InputType['ActionSelfServiceTriggerArgs']]] = None,
+                 required_jq_query: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
+                 trigger: Optional[pulumi.Input[str]] = None,
+                 user_properties: Optional[pulumi.Input[pulumi.InputType['ActionUserPropertiesArgs']]] = None,
                  webhook_method: Optional[pulumi.Input[pulumi.InputType['ActionWebhookMethodArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -611,6 +666,8 @@ class Action(pulumi.CustomResource):
             __props__.__dict__["approval_email_notification"] = approval_email_notification
             __props__.__dict__["approval_webhook_notification"] = approval_webhook_notification
             __props__.__dict__["azure_method"] = azure_method
+            if blueprint is None and not opts.urn:
+                raise TypeError("Missing required property 'blueprint'")
             __props__.__dict__["blueprint"] = blueprint
             __props__.__dict__["description"] = description
             __props__.__dict__["github_method"] = github_method
@@ -620,10 +677,16 @@ class Action(pulumi.CustomResource):
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["kafka_method"] = kafka_method
-            __props__.__dict__["publish"] = publish
+            __props__.__dict__["order_properties"] = order_properties
             __props__.__dict__["required_approval"] = required_approval
-            __props__.__dict__["self_service_trigger"] = self_service_trigger
+            __props__.__dict__["required_jq_query"] = required_jq_query
+            if title is None and not opts.urn:
+                raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
+            if trigger is None and not opts.urn:
+                raise TypeError("Missing required property 'trigger'")
+            __props__.__dict__["trigger"] = trigger
+            __props__.__dict__["user_properties"] = user_properties
             __props__.__dict__["webhook_method"] = webhook_method
         super(Action, __self__).__init__(
             'port:index/action:Action',
@@ -645,10 +708,12 @@ class Action(pulumi.CustomResource):
             icon: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             kafka_method: Optional[pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']]] = None,
-            publish: Optional[pulumi.Input[bool]] = None,
+            order_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             required_approval: Optional[pulumi.Input[bool]] = None,
-            self_service_trigger: Optional[pulumi.Input[pulumi.InputType['ActionSelfServiceTriggerArgs']]] = None,
+            required_jq_query: Optional[pulumi.Input[str]] = None,
             title: Optional[pulumi.Input[str]] = None,
+            trigger: Optional[pulumi.Input[str]] = None,
+            user_properties: Optional[pulumi.Input[pulumi.InputType['ActionUserPropertiesArgs']]] = None,
             webhook_method: Optional[pulumi.Input[pulumi.InputType['ActionWebhookMethodArgs']]] = None) -> 'Action':
         """
         Get an existing Action resource's state with the given name, id, and optional extra
@@ -659,19 +724,21 @@ class Action(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ActionApprovalEmailNotificationArgs']] approval_email_notification: The email notification of the approval
         :param pulumi.Input[pulumi.InputType['ActionApprovalWebhookNotificationArgs']] approval_webhook_notification: The webhook notification of the approval
-        :param pulumi.Input[pulumi.InputType['ActionAzureMethodArgs']] azure_method: Azure DevOps invocation method
+        :param pulumi.Input[pulumi.InputType['ActionAzureMethodArgs']] azure_method: The invocation method of the action
         :param pulumi.Input[str] blueprint: The blueprint identifier the action relates to
         :param pulumi.Input[str] description: Description
-        :param pulumi.Input[pulumi.InputType['ActionGithubMethodArgs']] github_method: GitHub invocation method
-        :param pulumi.Input[pulumi.InputType['ActionGitlabMethodArgs']] gitlab_method: Gitlab invocation method
+        :param pulumi.Input[pulumi.InputType['ActionGithubMethodArgs']] github_method: The invocation method of the action
+        :param pulumi.Input[pulumi.InputType['ActionGitlabMethodArgs']] gitlab_method: The invocation method of the action
         :param pulumi.Input[str] icon: Icon
         :param pulumi.Input[str] identifier: Identifier
-        :param pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']] kafka_method: Kafka invocation method
-        :param pulumi.Input[bool] publish: Publish action
+        :param pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']] kafka_method: The invocation method of the action
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] order_properties: Order properties
         :param pulumi.Input[bool] required_approval: Require approval before invoking the action
-        :param pulumi.Input[pulumi.InputType['ActionSelfServiceTriggerArgs']] self_service_trigger: Self service trigger for the action
+        :param pulumi.Input[str] required_jq_query: The required jq query of the property
         :param pulumi.Input[str] title: Title
-        :param pulumi.Input[pulumi.InputType['ActionWebhookMethodArgs']] webhook_method: Webhook invocation method
+        :param pulumi.Input[str] trigger: The trigger type of the action
+        :param pulumi.Input[pulumi.InputType['ActionUserPropertiesArgs']] user_properties: User properties
+        :param pulumi.Input[pulumi.InputType['ActionWebhookMethodArgs']] webhook_method: The invocation method of the action
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -687,10 +754,12 @@ class Action(pulumi.CustomResource):
         __props__.__dict__["icon"] = icon
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["kafka_method"] = kafka_method
-        __props__.__dict__["publish"] = publish
+        __props__.__dict__["order_properties"] = order_properties
         __props__.__dict__["required_approval"] = required_approval
-        __props__.__dict__["self_service_trigger"] = self_service_trigger
+        __props__.__dict__["required_jq_query"] = required_jq_query
         __props__.__dict__["title"] = title
+        __props__.__dict__["trigger"] = trigger
+        __props__.__dict__["user_properties"] = user_properties
         __props__.__dict__["webhook_method"] = webhook_method
         return Action(resource_name, opts=opts, __props__=__props__)
 
@@ -714,19 +783,16 @@ class Action(pulumi.CustomResource):
     @pulumi.getter(name="azureMethod")
     def azure_method(self) -> pulumi.Output[Optional['outputs.ActionAzureMethod']]:
         """
-        Azure DevOps invocation method
+        The invocation method of the action
         """
         return pulumi.get(self, "azure_method")
 
     @property
     @pulumi.getter
-    def blueprint(self) -> pulumi.Output[Optional[str]]:
+    def blueprint(self) -> pulumi.Output[str]:
         """
         The blueprint identifier the action relates to
         """
-        warnings.warn("""Action is not attached to blueprint anymore. This value is ignored""", DeprecationWarning)
-        pulumi.log.warn("""blueprint is deprecated: Action is not attached to blueprint anymore. This value is ignored""")
-
         return pulumi.get(self, "blueprint")
 
     @property
@@ -741,7 +807,7 @@ class Action(pulumi.CustomResource):
     @pulumi.getter(name="githubMethod")
     def github_method(self) -> pulumi.Output[Optional['outputs.ActionGithubMethod']]:
         """
-        GitHub invocation method
+        The invocation method of the action
         """
         return pulumi.get(self, "github_method")
 
@@ -749,7 +815,7 @@ class Action(pulumi.CustomResource):
     @pulumi.getter(name="gitlabMethod")
     def gitlab_method(self) -> pulumi.Output[Optional['outputs.ActionGitlabMethod']]:
         """
-        Gitlab invocation method
+        The invocation method of the action
         """
         return pulumi.get(self, "gitlab_method")
 
@@ -773,17 +839,17 @@ class Action(pulumi.CustomResource):
     @pulumi.getter(name="kafkaMethod")
     def kafka_method(self) -> pulumi.Output[Optional['outputs.ActionKafkaMethod']]:
         """
-        Kafka invocation method
+        The invocation method of the action
         """
         return pulumi.get(self, "kafka_method")
 
     @property
-    @pulumi.getter
-    def publish(self) -> pulumi.Output[bool]:
+    @pulumi.getter(name="orderProperties")
+    def order_properties(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Publish action
+        Order properties
         """
-        return pulumi.get(self, "publish")
+        return pulumi.get(self, "order_properties")
 
     @property
     @pulumi.getter(name="requiredApproval")
@@ -794,26 +860,42 @@ class Action(pulumi.CustomResource):
         return pulumi.get(self, "required_approval")
 
     @property
-    @pulumi.getter(name="selfServiceTrigger")
-    def self_service_trigger(self) -> pulumi.Output[Optional['outputs.ActionSelfServiceTrigger']]:
+    @pulumi.getter(name="requiredJqQuery")
+    def required_jq_query(self) -> pulumi.Output[Optional[str]]:
         """
-        Self service trigger for the action
+        The required jq query of the property
         """
-        return pulumi.get(self, "self_service_trigger")
+        return pulumi.get(self, "required_jq_query")
 
     @property
     @pulumi.getter
-    def title(self) -> pulumi.Output[Optional[str]]:
+    def title(self) -> pulumi.Output[str]:
         """
         Title
         """
         return pulumi.get(self, "title")
 
     @property
+    @pulumi.getter
+    def trigger(self) -> pulumi.Output[str]:
+        """
+        The trigger type of the action
+        """
+        return pulumi.get(self, "trigger")
+
+    @property
+    @pulumi.getter(name="userProperties")
+    def user_properties(self) -> pulumi.Output[Optional['outputs.ActionUserProperties']]:
+        """
+        User properties
+        """
+        return pulumi.get(self, "user_properties")
+
+    @property
     @pulumi.getter(name="webhookMethod")
     def webhook_method(self) -> pulumi.Output[Optional['outputs.ActionWebhookMethod']]:
         """
-        Webhook invocation method
+        The invocation method of the action
         """
         return pulumi.get(self, "webhook_method")
 
