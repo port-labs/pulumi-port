@@ -19,33 +19,35 @@ type Action struct {
 	ApprovalEmailNotification ActionApprovalEmailNotificationPtrOutput `pulumi:"approvalEmailNotification"`
 	// The webhook notification of the approval
 	ApprovalWebhookNotification ActionApprovalWebhookNotificationPtrOutput `pulumi:"approvalWebhookNotification"`
-	// Azure DevOps invocation method
+	// The invocation method of the action
 	AzureMethod ActionAzureMethodPtrOutput `pulumi:"azureMethod"`
 	// The blueprint identifier the action relates to
-	//
-	// Deprecated: Action is not attached to blueprint anymore. This value is ignored
-	Blueprint pulumi.StringPtrOutput `pulumi:"blueprint"`
+	Blueprint pulumi.StringOutput `pulumi:"blueprint"`
 	// Description
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// GitHub invocation method
+	// The invocation method of the action
 	GithubMethod ActionGithubMethodPtrOutput `pulumi:"githubMethod"`
-	// Gitlab invocation method
+	// The invocation method of the action
 	GitlabMethod ActionGitlabMethodPtrOutput `pulumi:"gitlabMethod"`
 	// Icon
 	Icon pulumi.StringPtrOutput `pulumi:"icon"`
 	// Identifier
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
-	// Kafka invocation method
+	// The invocation method of the action
 	KafkaMethod ActionKafkaMethodPtrOutput `pulumi:"kafkaMethod"`
-	// Publish action
-	Publish pulumi.BoolOutput `pulumi:"publish"`
+	// Order properties
+	OrderProperties pulumi.StringArrayOutput `pulumi:"orderProperties"`
 	// Require approval before invoking the action
 	RequiredApproval pulumi.BoolPtrOutput `pulumi:"requiredApproval"`
-	// Self service trigger for the action
-	SelfServiceTrigger ActionSelfServiceTriggerPtrOutput `pulumi:"selfServiceTrigger"`
+	// The required jq query of the property
+	RequiredJqQuery pulumi.StringPtrOutput `pulumi:"requiredJqQuery"`
 	// Title
-	Title pulumi.StringPtrOutput `pulumi:"title"`
-	// Webhook invocation method
+	Title pulumi.StringOutput `pulumi:"title"`
+	// The trigger type of the action
+	Trigger pulumi.StringOutput `pulumi:"trigger"`
+	// User properties
+	UserProperties ActionUserPropertiesPtrOutput `pulumi:"userProperties"`
+	// The invocation method of the action
 	WebhookMethod ActionWebhookMethodPtrOutput `pulumi:"webhookMethod"`
 }
 
@@ -56,8 +58,17 @@ func NewAction(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Blueprint == nil {
+		return nil, errors.New("invalid value for required argument 'Blueprint'")
+	}
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
+	}
+	if args.Title == nil {
+		return nil, errors.New("invalid value for required argument 'Title'")
+	}
+	if args.Trigger == nil {
+		return nil, errors.New("invalid value for required argument 'Trigger'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Action
@@ -86,33 +97,35 @@ type actionState struct {
 	ApprovalEmailNotification *ActionApprovalEmailNotification `pulumi:"approvalEmailNotification"`
 	// The webhook notification of the approval
 	ApprovalWebhookNotification *ActionApprovalWebhookNotification `pulumi:"approvalWebhookNotification"`
-	// Azure DevOps invocation method
+	// The invocation method of the action
 	AzureMethod *ActionAzureMethod `pulumi:"azureMethod"`
 	// The blueprint identifier the action relates to
-	//
-	// Deprecated: Action is not attached to blueprint anymore. This value is ignored
 	Blueprint *string `pulumi:"blueprint"`
 	// Description
 	Description *string `pulumi:"description"`
-	// GitHub invocation method
+	// The invocation method of the action
 	GithubMethod *ActionGithubMethod `pulumi:"githubMethod"`
-	// Gitlab invocation method
+	// The invocation method of the action
 	GitlabMethod *ActionGitlabMethod `pulumi:"gitlabMethod"`
 	// Icon
 	Icon *string `pulumi:"icon"`
 	// Identifier
 	Identifier *string `pulumi:"identifier"`
-	// Kafka invocation method
+	// The invocation method of the action
 	KafkaMethod *ActionKafkaMethod `pulumi:"kafkaMethod"`
-	// Publish action
-	Publish *bool `pulumi:"publish"`
+	// Order properties
+	OrderProperties []string `pulumi:"orderProperties"`
 	// Require approval before invoking the action
 	RequiredApproval *bool `pulumi:"requiredApproval"`
-	// Self service trigger for the action
-	SelfServiceTrigger *ActionSelfServiceTrigger `pulumi:"selfServiceTrigger"`
+	// The required jq query of the property
+	RequiredJqQuery *string `pulumi:"requiredJqQuery"`
 	// Title
 	Title *string `pulumi:"title"`
-	// Webhook invocation method
+	// The trigger type of the action
+	Trigger *string `pulumi:"trigger"`
+	// User properties
+	UserProperties *ActionUserProperties `pulumi:"userProperties"`
+	// The invocation method of the action
 	WebhookMethod *ActionWebhookMethod `pulumi:"webhookMethod"`
 }
 
@@ -121,33 +134,35 @@ type ActionState struct {
 	ApprovalEmailNotification ActionApprovalEmailNotificationPtrInput
 	// The webhook notification of the approval
 	ApprovalWebhookNotification ActionApprovalWebhookNotificationPtrInput
-	// Azure DevOps invocation method
+	// The invocation method of the action
 	AzureMethod ActionAzureMethodPtrInput
 	// The blueprint identifier the action relates to
-	//
-	// Deprecated: Action is not attached to blueprint anymore. This value is ignored
 	Blueprint pulumi.StringPtrInput
 	// Description
 	Description pulumi.StringPtrInput
-	// GitHub invocation method
+	// The invocation method of the action
 	GithubMethod ActionGithubMethodPtrInput
-	// Gitlab invocation method
+	// The invocation method of the action
 	GitlabMethod ActionGitlabMethodPtrInput
 	// Icon
 	Icon pulumi.StringPtrInput
 	// Identifier
 	Identifier pulumi.StringPtrInput
-	// Kafka invocation method
+	// The invocation method of the action
 	KafkaMethod ActionKafkaMethodPtrInput
-	// Publish action
-	Publish pulumi.BoolPtrInput
+	// Order properties
+	OrderProperties pulumi.StringArrayInput
 	// Require approval before invoking the action
 	RequiredApproval pulumi.BoolPtrInput
-	// Self service trigger for the action
-	SelfServiceTrigger ActionSelfServiceTriggerPtrInput
+	// The required jq query of the property
+	RequiredJqQuery pulumi.StringPtrInput
 	// Title
 	Title pulumi.StringPtrInput
-	// Webhook invocation method
+	// The trigger type of the action
+	Trigger pulumi.StringPtrInput
+	// User properties
+	UserProperties ActionUserPropertiesPtrInput
+	// The invocation method of the action
 	WebhookMethod ActionWebhookMethodPtrInput
 }
 
@@ -160,33 +175,35 @@ type actionArgs struct {
 	ApprovalEmailNotification *ActionApprovalEmailNotification `pulumi:"approvalEmailNotification"`
 	// The webhook notification of the approval
 	ApprovalWebhookNotification *ActionApprovalWebhookNotification `pulumi:"approvalWebhookNotification"`
-	// Azure DevOps invocation method
+	// The invocation method of the action
 	AzureMethod *ActionAzureMethod `pulumi:"azureMethod"`
 	// The blueprint identifier the action relates to
-	//
-	// Deprecated: Action is not attached to blueprint anymore. This value is ignored
-	Blueprint *string `pulumi:"blueprint"`
+	Blueprint string `pulumi:"blueprint"`
 	// Description
 	Description *string `pulumi:"description"`
-	// GitHub invocation method
+	// The invocation method of the action
 	GithubMethod *ActionGithubMethod `pulumi:"githubMethod"`
-	// Gitlab invocation method
+	// The invocation method of the action
 	GitlabMethod *ActionGitlabMethod `pulumi:"gitlabMethod"`
 	// Icon
 	Icon *string `pulumi:"icon"`
 	// Identifier
 	Identifier string `pulumi:"identifier"`
-	// Kafka invocation method
+	// The invocation method of the action
 	KafkaMethod *ActionKafkaMethod `pulumi:"kafkaMethod"`
-	// Publish action
-	Publish *bool `pulumi:"publish"`
+	// Order properties
+	OrderProperties []string `pulumi:"orderProperties"`
 	// Require approval before invoking the action
 	RequiredApproval *bool `pulumi:"requiredApproval"`
-	// Self service trigger for the action
-	SelfServiceTrigger *ActionSelfServiceTrigger `pulumi:"selfServiceTrigger"`
+	// The required jq query of the property
+	RequiredJqQuery *string `pulumi:"requiredJqQuery"`
 	// Title
-	Title *string `pulumi:"title"`
-	// Webhook invocation method
+	Title string `pulumi:"title"`
+	// The trigger type of the action
+	Trigger string `pulumi:"trigger"`
+	// User properties
+	UserProperties *ActionUserProperties `pulumi:"userProperties"`
+	// The invocation method of the action
 	WebhookMethod *ActionWebhookMethod `pulumi:"webhookMethod"`
 }
 
@@ -196,33 +213,35 @@ type ActionArgs struct {
 	ApprovalEmailNotification ActionApprovalEmailNotificationPtrInput
 	// The webhook notification of the approval
 	ApprovalWebhookNotification ActionApprovalWebhookNotificationPtrInput
-	// Azure DevOps invocation method
+	// The invocation method of the action
 	AzureMethod ActionAzureMethodPtrInput
 	// The blueprint identifier the action relates to
-	//
-	// Deprecated: Action is not attached to blueprint anymore. This value is ignored
-	Blueprint pulumi.StringPtrInput
+	Blueprint pulumi.StringInput
 	// Description
 	Description pulumi.StringPtrInput
-	// GitHub invocation method
+	// The invocation method of the action
 	GithubMethod ActionGithubMethodPtrInput
-	// Gitlab invocation method
+	// The invocation method of the action
 	GitlabMethod ActionGitlabMethodPtrInput
 	// Icon
 	Icon pulumi.StringPtrInput
 	// Identifier
 	Identifier pulumi.StringInput
-	// Kafka invocation method
+	// The invocation method of the action
 	KafkaMethod ActionKafkaMethodPtrInput
-	// Publish action
-	Publish pulumi.BoolPtrInput
+	// Order properties
+	OrderProperties pulumi.StringArrayInput
 	// Require approval before invoking the action
 	RequiredApproval pulumi.BoolPtrInput
-	// Self service trigger for the action
-	SelfServiceTrigger ActionSelfServiceTriggerPtrInput
+	// The required jq query of the property
+	RequiredJqQuery pulumi.StringPtrInput
 	// Title
-	Title pulumi.StringPtrInput
-	// Webhook invocation method
+	Title pulumi.StringInput
+	// The trigger type of the action
+	Trigger pulumi.StringInput
+	// User properties
+	UserProperties ActionUserPropertiesPtrInput
+	// The invocation method of the action
 	WebhookMethod ActionWebhookMethodPtrInput
 }
 
@@ -323,16 +342,14 @@ func (o ActionOutput) ApprovalWebhookNotification() ActionApprovalWebhookNotific
 	return o.ApplyT(func(v *Action) ActionApprovalWebhookNotificationPtrOutput { return v.ApprovalWebhookNotification }).(ActionApprovalWebhookNotificationPtrOutput)
 }
 
-// Azure DevOps invocation method
+// The invocation method of the action
 func (o ActionOutput) AzureMethod() ActionAzureMethodPtrOutput {
 	return o.ApplyT(func(v *Action) ActionAzureMethodPtrOutput { return v.AzureMethod }).(ActionAzureMethodPtrOutput)
 }
 
 // The blueprint identifier the action relates to
-//
-// Deprecated: Action is not attached to blueprint anymore. This value is ignored
-func (o ActionOutput) Blueprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Action) pulumi.StringPtrOutput { return v.Blueprint }).(pulumi.StringPtrOutput)
+func (o ActionOutput) Blueprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.Blueprint }).(pulumi.StringOutput)
 }
 
 // Description
@@ -340,12 +357,12 @@ func (o ActionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Action) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// GitHub invocation method
+// The invocation method of the action
 func (o ActionOutput) GithubMethod() ActionGithubMethodPtrOutput {
 	return o.ApplyT(func(v *Action) ActionGithubMethodPtrOutput { return v.GithubMethod }).(ActionGithubMethodPtrOutput)
 }
 
-// Gitlab invocation method
+// The invocation method of the action
 func (o ActionOutput) GitlabMethod() ActionGitlabMethodPtrOutput {
 	return o.ApplyT(func(v *Action) ActionGitlabMethodPtrOutput { return v.GitlabMethod }).(ActionGitlabMethodPtrOutput)
 }
@@ -360,14 +377,14 @@ func (o ActionOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// Kafka invocation method
+// The invocation method of the action
 func (o ActionOutput) KafkaMethod() ActionKafkaMethodPtrOutput {
 	return o.ApplyT(func(v *Action) ActionKafkaMethodPtrOutput { return v.KafkaMethod }).(ActionKafkaMethodPtrOutput)
 }
 
-// Publish action
-func (o ActionOutput) Publish() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Action) pulumi.BoolOutput { return v.Publish }).(pulumi.BoolOutput)
+// Order properties
+func (o ActionOutput) OrderProperties() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Action) pulumi.StringArrayOutput { return v.OrderProperties }).(pulumi.StringArrayOutput)
 }
 
 // Require approval before invoking the action
@@ -375,17 +392,27 @@ func (o ActionOutput) RequiredApproval() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Action) pulumi.BoolPtrOutput { return v.RequiredApproval }).(pulumi.BoolPtrOutput)
 }
 
-// Self service trigger for the action
-func (o ActionOutput) SelfServiceTrigger() ActionSelfServiceTriggerPtrOutput {
-	return o.ApplyT(func(v *Action) ActionSelfServiceTriggerPtrOutput { return v.SelfServiceTrigger }).(ActionSelfServiceTriggerPtrOutput)
+// The required jq query of the property
+func (o ActionOutput) RequiredJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Action) pulumi.StringPtrOutput { return v.RequiredJqQuery }).(pulumi.StringPtrOutput)
 }
 
 // Title
-func (o ActionOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Action) pulumi.StringPtrOutput { return v.Title }).(pulumi.StringPtrOutput)
+func (o ActionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
 }
 
-// Webhook invocation method
+// The trigger type of the action
+func (o ActionOutput) Trigger() pulumi.StringOutput {
+	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.Trigger }).(pulumi.StringOutput)
+}
+
+// User properties
+func (o ActionOutput) UserProperties() ActionUserPropertiesPtrOutput {
+	return o.ApplyT(func(v *Action) ActionUserPropertiesPtrOutput { return v.UserProperties }).(ActionUserPropertiesPtrOutput)
+}
+
+// The invocation method of the action
 func (o ActionOutput) WebhookMethod() ActionWebhookMethodPtrOutput {
 	return o.ApplyT(func(v *Action) ActionWebhookMethodPtrOutput { return v.WebhookMethod }).(ActionWebhookMethodPtrOutput)
 }

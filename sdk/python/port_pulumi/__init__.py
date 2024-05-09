@@ -9,6 +9,7 @@ from .action import *
 from .action_permissions import *
 from .aggregation_properties import *
 from .blueprint import *
+from .blueprint_permissions import *
 from .entity import *
 from .page import *
 from .page_permissions import *
@@ -59,6 +60,14 @@ _utilities.register(
   "fqn": "port_pulumi",
   "classes": {
    "port:index/blueprint:Blueprint": "Blueprint"
+  }
+ },
+ {
+  "pkg": "port",
+  "mod": "index/blueprintPermissions",
+  "fqn": "port_pulumi",
+  "classes": {
+   "port:index/blueprintPermissions:BlueprintPermissions": "BlueprintPermissions"
   }
  },
  {

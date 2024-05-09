@@ -19,20 +19,19 @@ __all__ = [
     'ActionPermissionsPermissionsArgs',
     'ActionPermissionsPermissionsApproveArgs',
     'ActionPermissionsPermissionsExecuteArgs',
-    'ActionSelfServiceTriggerArgs',
-    'ActionSelfServiceTriggerUserPropertiesArgs',
-    'ActionSelfServiceTriggerUserPropertiesArrayPropsArgs',
-    'ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs',
-    'ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs',
-    'ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs',
-    'ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs',
-    'ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs',
-    'ActionSelfServiceTriggerUserPropertiesNumberPropsArgs',
-    'ActionSelfServiceTriggerUserPropertiesObjectPropsArgs',
-    'ActionSelfServiceTriggerUserPropertiesStringPropsArgs',
-    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs',
-    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs',
-    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs',
+    'ActionUserPropertiesArgs',
+    'ActionUserPropertiesArrayPropsArgs',
+    'ActionUserPropertiesArrayPropsBooleanItemsArgs',
+    'ActionUserPropertiesArrayPropsNumberItemsArgs',
+    'ActionUserPropertiesArrayPropsObjectItemsArgs',
+    'ActionUserPropertiesArrayPropsStringItemsArgs',
+    'ActionUserPropertiesBooleanPropsArgs',
+    'ActionUserPropertiesNumberPropsArgs',
+    'ActionUserPropertiesObjectPropsArgs',
+    'ActionUserPropertiesStringPropsArgs',
+    'ActionUserPropertiesStringPropsDatasetArgs',
+    'ActionUserPropertiesStringPropsDatasetRuleArgs',
+    'ActionUserPropertiesStringPropsDatasetRuleValueArgs',
     'ActionWebhookMethodArgs',
     'AggregationPropertiesPropertiesArgs',
     'AggregationPropertiesPropertiesMethodArgs',
@@ -42,6 +41,17 @@ __all__ = [
     'BlueprintCalculationPropertiesArgs',
     'BlueprintKafkaChangelogDestinationArgs',
     'BlueprintMirrorPropertiesArgs',
+    'BlueprintPermissionsEntitiesArgs',
+    'BlueprintPermissionsEntitiesRegisterArgs',
+    'BlueprintPermissionsEntitiesUnregisterArgs',
+    'BlueprintPermissionsEntitiesUpdateArgs',
+    'BlueprintPermissionsEntitiesUpdateMetadataPropertiesArgs',
+    'BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconArgs',
+    'BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierArgs',
+    'BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamArgs',
+    'BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleArgs',
+    'BlueprintPermissionsEntitiesUpdatePropertiesArgs',
+    'BlueprintPermissionsEntitiesUpdateRelationsArgs',
     'BlueprintPropertiesArgs',
     'BlueprintPropertiesArrayPropsArgs',
     'BlueprintPropertiesArrayPropsBooleanItemsArgs',
@@ -115,17 +125,13 @@ class ActionApprovalWebhookNotificationArgs:
 class ActionAzureMethodArgs:
     def __init__(__self__, *,
                  org: pulumi.Input[str],
-                 webhook: pulumi.Input[str],
-                 payload: Optional[pulumi.Input[str]] = None):
+                 webhook: pulumi.Input[str]):
         """
         :param pulumi.Input[str] org: Required when selecting type AZURE. The Azure org that the workflow belongs to
         :param pulumi.Input[str] webhook: Required when selecting type AZURE. The Azure webhook that the workflow belongs to
-        :param pulumi.Input[str] payload: The Azure Devops workflow payload (array or object encoded to a string)
         """
         pulumi.set(__self__, "org", org)
         pulumi.set(__self__, "webhook", webhook)
-        if payload is not None:
-            pulumi.set(__self__, "payload", payload)
 
     @property
     @pulumi.getter
@@ -151,18 +157,6 @@ class ActionAzureMethodArgs:
     def webhook(self, value: pulumi.Input[str]):
         pulumi.set(self, "webhook", value)
 
-    @property
-    @pulumi.getter
-    def payload(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Azure Devops workflow payload (array or object encoded to a string)
-        """
-        return pulumi.get(self, "payload")
-
-    @payload.setter
-    def payload(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "payload", value)
-
 
 @pulumi.input_type
 class ActionGithubMethodArgs:
@@ -170,22 +164,26 @@ class ActionGithubMethodArgs:
                  org: pulumi.Input[str],
                  repo: pulumi.Input[str],
                  workflow: pulumi.Input[str],
-                 report_workflow_status: Optional[pulumi.Input[str]] = None,
-                 workflow_inputs: Optional[pulumi.Input[str]] = None):
+                 omit_payload: Optional[pulumi.Input[bool]] = None,
+                 omit_user_inputs: Optional[pulumi.Input[bool]] = None,
+                 report_workflow_status: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] org: Required when selecting type GITHUB. The GitHub org that the workflow belongs to
         :param pulumi.Input[str] repo: Required when selecting type GITHUB. The GitHub repo that the workflow belongs to
         :param pulumi.Input[str] workflow: The GitHub workflow that the action belongs to
-        :param pulumi.Input[str] report_workflow_status: Report the workflow status when invoking the action
-        :param pulumi.Input[str] workflow_inputs: The GitHub workflow inputs (key-value object encoded to a string)
+        :param pulumi.Input[bool] omit_payload: Omit the payload when invoking the action
+        :param pulumi.Input[bool] omit_user_inputs: Omit the user inputs when invoking the action
+        :param pulumi.Input[bool] report_workflow_status: Report the workflow status when invoking the action
         """
         pulumi.set(__self__, "org", org)
         pulumi.set(__self__, "repo", repo)
         pulumi.set(__self__, "workflow", workflow)
+        if omit_payload is not None:
+            pulumi.set(__self__, "omit_payload", omit_payload)
+        if omit_user_inputs is not None:
+            pulumi.set(__self__, "omit_user_inputs", omit_user_inputs)
         if report_workflow_status is not None:
             pulumi.set(__self__, "report_workflow_status", report_workflow_status)
-        if workflow_inputs is not None:
-            pulumi.set(__self__, "workflow_inputs", workflow_inputs)
 
     @property
     @pulumi.getter
@@ -224,28 +222,40 @@ class ActionGithubMethodArgs:
         pulumi.set(self, "workflow", value)
 
     @property
+    @pulumi.getter(name="omitPayload")
+    def omit_payload(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Omit the payload when invoking the action
+        """
+        return pulumi.get(self, "omit_payload")
+
+    @omit_payload.setter
+    def omit_payload(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "omit_payload", value)
+
+    @property
+    @pulumi.getter(name="omitUserInputs")
+    def omit_user_inputs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Omit the user inputs when invoking the action
+        """
+        return pulumi.get(self, "omit_user_inputs")
+
+    @omit_user_inputs.setter
+    def omit_user_inputs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "omit_user_inputs", value)
+
+    @property
     @pulumi.getter(name="reportWorkflowStatus")
-    def report_workflow_status(self) -> Optional[pulumi.Input[str]]:
+    def report_workflow_status(self) -> Optional[pulumi.Input[bool]]:
         """
         Report the workflow status when invoking the action
         """
         return pulumi.get(self, "report_workflow_status")
 
     @report_workflow_status.setter
-    def report_workflow_status(self, value: Optional[pulumi.Input[str]]):
+    def report_workflow_status(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "report_workflow_status", value)
-
-    @property
-    @pulumi.getter(name="workflowInputs")
-    def workflow_inputs(self) -> Optional[pulumi.Input[str]]:
-        """
-        The GitHub workflow inputs (key-value object encoded to a string)
-        """
-        return pulumi.get(self, "workflow_inputs")
-
-    @workflow_inputs.setter
-    def workflow_inputs(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "workflow_inputs", value)
 
 
 @pulumi.input_type
@@ -253,20 +263,28 @@ class ActionGitlabMethodArgs:
     def __init__(__self__, *,
                  group_name: pulumi.Input[str],
                  project_name: pulumi.Input[str],
+                 agent: Optional[pulumi.Input[bool]] = None,
                  default_ref: Optional[pulumi.Input[str]] = None,
-                 pipeline_variables: Optional[pulumi.Input[str]] = None):
+                 omit_payload: Optional[pulumi.Input[bool]] = None,
+                 omit_user_inputs: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] group_name: Required when selecting type GITLAB. The GitLab group name that the workflow belongs to
         :param pulumi.Input[str] project_name: Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
+        :param pulumi.Input[bool] agent: Use the agent to invoke the action
         :param pulumi.Input[str] default_ref: The default ref of the action
-        :param pulumi.Input[str] pipeline_variables: The Gitlab pipeline variables (key-value object encoded to a string)
+        :param pulumi.Input[bool] omit_payload: Omit the payload when invoking the action
+        :param pulumi.Input[bool] omit_user_inputs: Omit the user inputs when invoking the action
         """
         pulumi.set(__self__, "group_name", group_name)
         pulumi.set(__self__, "project_name", project_name)
+        if agent is not None:
+            pulumi.set(__self__, "agent", agent)
         if default_ref is not None:
             pulumi.set(__self__, "default_ref", default_ref)
-        if pipeline_variables is not None:
-            pulumi.set(__self__, "pipeline_variables", pipeline_variables)
+        if omit_payload is not None:
+            pulumi.set(__self__, "omit_payload", omit_payload)
+        if omit_user_inputs is not None:
+            pulumi.set(__self__, "omit_user_inputs", omit_user_inputs)
 
     @property
     @pulumi.getter(name="groupName")
@@ -293,6 +311,18 @@ class ActionGitlabMethodArgs:
         pulumi.set(self, "project_name", value)
 
     @property
+    @pulumi.getter
+    def agent(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use the agent to invoke the action
+        """
+        return pulumi.get(self, "agent")
+
+    @agent.setter
+    def agent(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "agent", value)
+
+    @property
     @pulumi.getter(name="defaultRef")
     def default_ref(self) -> Optional[pulumi.Input[str]]:
         """
@@ -305,39 +335,34 @@ class ActionGitlabMethodArgs:
         pulumi.set(self, "default_ref", value)
 
     @property
-    @pulumi.getter(name="pipelineVariables")
-    def pipeline_variables(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="omitPayload")
+    def omit_payload(self) -> Optional[pulumi.Input[bool]]:
         """
-        The Gitlab pipeline variables (key-value object encoded to a string)
+        Omit the payload when invoking the action
         """
-        return pulumi.get(self, "pipeline_variables")
+        return pulumi.get(self, "omit_payload")
 
-    @pipeline_variables.setter
-    def pipeline_variables(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "pipeline_variables", value)
+    @omit_payload.setter
+    def omit_payload(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "omit_payload", value)
+
+    @property
+    @pulumi.getter(name="omitUserInputs")
+    def omit_user_inputs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Omit the user inputs when invoking the action
+        """
+        return pulumi.get(self, "omit_user_inputs")
+
+    @omit_user_inputs.setter
+    def omit_user_inputs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "omit_user_inputs", value)
 
 
 @pulumi.input_type
 class ActionKafkaMethodArgs:
-    def __init__(__self__, *,
-                 payload: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] payload: The Kafka message payload (array or object encoded to a string)
-        """
-        if payload is not None:
-            pulumi.set(__self__, "payload", payload)
-
-    @property
-    @pulumi.getter
-    def payload(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Kafka message payload (array or object encoded to a string)
-        """
-        return pulumi.get(self, "payload")
-
-    @payload.setter
-    def payload(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "payload", value)
+    def __init__(__self__):
+        pass
 
 
 @pulumi.input_type
@@ -536,105 +561,19 @@ class ActionPermissionsPermissionsExecuteArgs:
 
 
 @pulumi.input_type
-class ActionSelfServiceTriggerArgs:
+class ActionUserPropertiesArgs:
     def __init__(__self__, *,
-                 operation: pulumi.Input[str],
-                 blueprint_identifier: Optional[pulumi.Input[str]] = None,
-                 order_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 required_jq_query: Optional[pulumi.Input[str]] = None,
-                 user_properties: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArgs']] = None):
+                 array_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesArrayPropsArgs']]]] = None,
+                 boolean_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesBooleanPropsArgs']]]] = None,
+                 number_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesNumberPropsArgs']]]] = None,
+                 object_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesObjectPropsArgs']]]] = None,
+                 string_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesStringPropsArgs']]]] = None):
         """
-        :param pulumi.Input[str] operation: The operation type of the action
-        :param pulumi.Input[str] blueprint_identifier: The ID of the blueprint
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] order_properties: Order properties
-        :param pulumi.Input[str] required_jq_query: The required jq query of the property
-        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesArgs'] user_properties: User properties
-        """
-        pulumi.set(__self__, "operation", operation)
-        if blueprint_identifier is not None:
-            pulumi.set(__self__, "blueprint_identifier", blueprint_identifier)
-        if order_properties is not None:
-            pulumi.set(__self__, "order_properties", order_properties)
-        if required_jq_query is not None:
-            pulumi.set(__self__, "required_jq_query", required_jq_query)
-        if user_properties is not None:
-            pulumi.set(__self__, "user_properties", user_properties)
-
-    @property
-    @pulumi.getter
-    def operation(self) -> pulumi.Input[str]:
-        """
-        The operation type of the action
-        """
-        return pulumi.get(self, "operation")
-
-    @operation.setter
-    def operation(self, value: pulumi.Input[str]):
-        pulumi.set(self, "operation", value)
-
-    @property
-    @pulumi.getter(name="blueprintIdentifier")
-    def blueprint_identifier(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the blueprint
-        """
-        return pulumi.get(self, "blueprint_identifier")
-
-    @blueprint_identifier.setter
-    def blueprint_identifier(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "blueprint_identifier", value)
-
-    @property
-    @pulumi.getter(name="orderProperties")
-    def order_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Order properties
-        """
-        return pulumi.get(self, "order_properties")
-
-    @order_properties.setter
-    def order_properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "order_properties", value)
-
-    @property
-    @pulumi.getter(name="requiredJqQuery")
-    def required_jq_query(self) -> Optional[pulumi.Input[str]]:
-        """
-        The required jq query of the property
-        """
-        return pulumi.get(self, "required_jq_query")
-
-    @required_jq_query.setter
-    def required_jq_query(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "required_jq_query", value)
-
-    @property
-    @pulumi.getter(name="userProperties")
-    def user_properties(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArgs']]:
-        """
-        User properties
-        """
-        return pulumi.get(self, "user_properties")
-
-    @user_properties.setter
-    def user_properties(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArgs']]):
-        pulumi.set(self, "user_properties", value)
-
-
-@pulumi.input_type
-class ActionSelfServiceTriggerUserPropertiesArgs:
-    def __init__(__self__, *,
-                 array_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsArgs']]]] = None,
-                 boolean_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs']]]] = None,
-                 number_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesNumberPropsArgs']]]] = None,
-                 object_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesObjectPropsArgs']]]] = None,
-                 string_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsArgs']]]] = None):
-        """
-        :param pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsArgs']]] array_props: The array property of the action
-        :param pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs']]] boolean_props: The boolean property of the action
-        :param pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesNumberPropsArgs']]] number_props: The number property of the action
-        :param pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesObjectPropsArgs']]] object_props: The object property of the action
-        :param pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsArgs']]] string_props: The string property of the action
+        :param pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesArrayPropsArgs']]] array_props: The array property of the action
+        :param pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesBooleanPropsArgs']]] boolean_props: The boolean property of the action
+        :param pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesNumberPropsArgs']]] number_props: The number property of the action
+        :param pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesObjectPropsArgs']]] object_props: The object property of the action
+        :param pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesStringPropsArgs']]] string_props: The string property of the action
         """
         if array_props is not None:
             pulumi.set(__self__, "array_props", array_props)
@@ -649,94 +588,94 @@ class ActionSelfServiceTriggerUserPropertiesArgs:
 
     @property
     @pulumi.getter(name="arrayProps")
-    def array_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsArgs']]]]:
+    def array_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesArrayPropsArgs']]]]:
         """
         The array property of the action
         """
         return pulumi.get(self, "array_props")
 
     @array_props.setter
-    def array_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsArgs']]]]):
+    def array_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesArrayPropsArgs']]]]):
         pulumi.set(self, "array_props", value)
 
     @property
     @pulumi.getter(name="booleanProps")
-    def boolean_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs']]]]:
+    def boolean_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesBooleanPropsArgs']]]]:
         """
         The boolean property of the action
         """
         return pulumi.get(self, "boolean_props")
 
     @boolean_props.setter
-    def boolean_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs']]]]):
+    def boolean_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesBooleanPropsArgs']]]]):
         pulumi.set(self, "boolean_props", value)
 
     @property
     @pulumi.getter(name="numberProps")
-    def number_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesNumberPropsArgs']]]]:
+    def number_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesNumberPropsArgs']]]]:
         """
         The number property of the action
         """
         return pulumi.get(self, "number_props")
 
     @number_props.setter
-    def number_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesNumberPropsArgs']]]]):
+    def number_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesNumberPropsArgs']]]]):
         pulumi.set(self, "number_props", value)
 
     @property
     @pulumi.getter(name="objectProps")
-    def object_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesObjectPropsArgs']]]]:
+    def object_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesObjectPropsArgs']]]]:
         """
         The object property of the action
         """
         return pulumi.get(self, "object_props")
 
     @object_props.setter
-    def object_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesObjectPropsArgs']]]]):
+    def object_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesObjectPropsArgs']]]]):
         pulumi.set(self, "object_props", value)
 
     @property
     @pulumi.getter(name="stringProps")
-    def string_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsArgs']]]]:
+    def string_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesStringPropsArgs']]]]:
         """
         The string property of the action
         """
         return pulumi.get(self, "string_props")
 
     @string_props.setter
-    def string_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsArgs']]]]):
+    def string_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionUserPropertiesStringPropsArgs']]]]):
         pulumi.set(self, "string_props", value)
 
 
 @pulumi.input_type
-class ActionSelfServiceTriggerUserPropertiesArrayPropsArgs:
+class ActionUserPropertiesArrayPropsArgs:
     def __init__(__self__, *,
-                 boolean_items: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs']] = None,
+                 boolean_items: Optional[pulumi.Input['ActionUserPropertiesArrayPropsBooleanItemsArgs']] = None,
                  default_jq_query: Optional[pulumi.Input[str]] = None,
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  max_items: Optional[pulumi.Input[int]] = None,
                  min_items: Optional[pulumi.Input[int]] = None,
-                 number_items: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs']] = None,
-                 object_items: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs']] = None,
+                 number_items: Optional[pulumi.Input['ActionUserPropertiesArrayPropsNumberItemsArgs']] = None,
+                 object_items: Optional[pulumi.Input['ActionUserPropertiesArrayPropsObjectItemsArgs']] = None,
                  required: Optional[pulumi.Input[bool]] = None,
-                 string_items: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs']] = None,
+                 string_items: Optional[pulumi.Input['ActionUserPropertiesArrayPropsStringItemsArgs']] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  visible: Optional[pulumi.Input[bool]] = None,
                  visible_jq_query: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs'] boolean_items: The items of the array property
+        :param pulumi.Input['ActionUserPropertiesArrayPropsBooleanItemsArgs'] boolean_items: The items of the array property
         :param pulumi.Input[str] default_jq_query: The default jq query of the array property
         :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The properties that this property depends on
         :param pulumi.Input[str] description: The description of the property
         :param pulumi.Input[str] icon: The icon of the property
         :param pulumi.Input[int] max_items: The max items of the array property
         :param pulumi.Input[int] min_items: The min items of the array property
-        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs'] number_items: The items of the array property
-        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs'] object_items: The items of the array property
+        :param pulumi.Input['ActionUserPropertiesArrayPropsNumberItemsArgs'] number_items: The items of the array property
+        :param pulumi.Input['ActionUserPropertiesArrayPropsObjectItemsArgs'] object_items: The items of the array property
         :param pulumi.Input[bool] required: Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
-        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs'] string_items: The items of the array property
+        :param pulumi.Input['ActionUserPropertiesArrayPropsStringItemsArgs'] string_items: The items of the array property
         :param pulumi.Input[str] title: The title of the property
         :param pulumi.Input[bool] visible: The visibility of the array property
         :param pulumi.Input[str] visible_jq_query: The visibility condition jq query of the array property
@@ -772,14 +711,14 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsArgs:
 
     @property
     @pulumi.getter(name="booleanItems")
-    def boolean_items(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs']]:
+    def boolean_items(self) -> Optional[pulumi.Input['ActionUserPropertiesArrayPropsBooleanItemsArgs']]:
         """
         The items of the array property
         """
         return pulumi.get(self, "boolean_items")
 
     @boolean_items.setter
-    def boolean_items(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs']]):
+    def boolean_items(self, value: Optional[pulumi.Input['ActionUserPropertiesArrayPropsBooleanItemsArgs']]):
         pulumi.set(self, "boolean_items", value)
 
     @property
@@ -856,26 +795,26 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsArgs:
 
     @property
     @pulumi.getter(name="numberItems")
-    def number_items(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs']]:
+    def number_items(self) -> Optional[pulumi.Input['ActionUserPropertiesArrayPropsNumberItemsArgs']]:
         """
         The items of the array property
         """
         return pulumi.get(self, "number_items")
 
     @number_items.setter
-    def number_items(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs']]):
+    def number_items(self, value: Optional[pulumi.Input['ActionUserPropertiesArrayPropsNumberItemsArgs']]):
         pulumi.set(self, "number_items", value)
 
     @property
     @pulumi.getter(name="objectItems")
-    def object_items(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs']]:
+    def object_items(self) -> Optional[pulumi.Input['ActionUserPropertiesArrayPropsObjectItemsArgs']]:
         """
         The items of the array property
         """
         return pulumi.get(self, "object_items")
 
     @object_items.setter
-    def object_items(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs']]):
+    def object_items(self, value: Optional[pulumi.Input['ActionUserPropertiesArrayPropsObjectItemsArgs']]):
         pulumi.set(self, "object_items", value)
 
     @property
@@ -892,14 +831,14 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsArgs:
 
     @property
     @pulumi.getter(name="stringItems")
-    def string_items(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs']]:
+    def string_items(self) -> Optional[pulumi.Input['ActionUserPropertiesArrayPropsStringItemsArgs']]:
         """
         The items of the array property
         """
         return pulumi.get(self, "string_items")
 
     @string_items.setter
-    def string_items(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs']]):
+    def string_items(self, value: Optional[pulumi.Input['ActionUserPropertiesArrayPropsStringItemsArgs']]):
         pulumi.set(self, "string_items", value)
 
     @property
@@ -940,7 +879,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsArgs:
 
 
 @pulumi.input_type
-class ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs:
+class ActionUserPropertiesArrayPropsBooleanItemsArgs:
     def __init__(__self__, *,
                  defaults: Optional[pulumi.Input[Sequence[pulumi.Input[bool]]]] = None):
         """
@@ -963,7 +902,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs:
 
 
 @pulumi.input_type
-class ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs:
+class ActionUserPropertiesArrayPropsNumberItemsArgs:
     def __init__(__self__, *,
                  defaults: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]] = None,
                  enum_jq_query: Optional[pulumi.Input[str]] = None,
@@ -1018,7 +957,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs:
 
 
 @pulumi.input_type
-class ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs:
+class ActionUserPropertiesArrayPropsObjectItemsArgs:
     def __init__(__self__, *,
                  defaults: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None):
         """
@@ -1041,7 +980,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs:
 
 
 @pulumi.input_type
-class ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs:
+class ActionUserPropertiesArrayPropsStringItemsArgs:
     def __init__(__self__, *,
                  blueprint: Optional[pulumi.Input[str]] = None,
                  dataset: Optional[pulumi.Input[str]] = None,
@@ -1144,7 +1083,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs:
 
 
 @pulumi.input_type
-class ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs:
+class ActionUserPropertiesBooleanPropsArgs:
     def __init__(__self__, *,
                  default: Optional[pulumi.Input[bool]] = None,
                  default_jq_query: Optional[pulumi.Input[str]] = None,
@@ -1295,7 +1234,7 @@ class ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs:
 
 
 @pulumi.input_type
-class ActionSelfServiceTriggerUserPropertiesNumberPropsArgs:
+class ActionUserPropertiesNumberPropsArgs:
     def __init__(__self__, *,
                  default: Optional[pulumi.Input[float]] = None,
                  default_jq_query: Optional[pulumi.Input[str]] = None,
@@ -1510,7 +1449,7 @@ class ActionSelfServiceTriggerUserPropertiesNumberPropsArgs:
 
 
 @pulumi.input_type
-class ActionSelfServiceTriggerUserPropertiesObjectPropsArgs:
+class ActionUserPropertiesObjectPropsArgs:
     def __init__(__self__, *,
                  default: Optional[pulumi.Input[str]] = None,
                  default_jq_query: Optional[pulumi.Input[str]] = None,
@@ -1677,10 +1616,10 @@ class ActionSelfServiceTriggerUserPropertiesObjectPropsArgs:
 
 
 @pulumi.input_type
-class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
+class ActionUserPropertiesStringPropsArgs:
     def __init__(__self__, *,
                  blueprint: Optional[pulumi.Input[str]] = None,
-                 dataset: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs']] = None,
+                 dataset: Optional[pulumi.Input['ActionUserPropertiesStringPropsDatasetArgs']] = None,
                  default: Optional[pulumi.Input[str]] = None,
                  default_jq_query: Optional[pulumi.Input[str]] = None,
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1699,7 +1638,7 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
                  visible_jq_query: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] blueprint: The blueprint identifier the string property relates to
-        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs'] dataset: The dataset of an the entity-format property
+        :param pulumi.Input['ActionUserPropertiesStringPropsDatasetArgs'] dataset: The dataset of an the entity-format property
         :param pulumi.Input[str] default: The default of the string property
         :param pulumi.Input[str] default_jq_query: The default jq query of the string property
         :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The properties that this property depends on
@@ -1768,14 +1707,14 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
 
     @property
     @pulumi.getter
-    def dataset(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs']]:
+    def dataset(self) -> Optional[pulumi.Input['ActionUserPropertiesStringPropsDatasetArgs']]:
         """
         The dataset of an the entity-format property
         """
         return pulumi.get(self, "dataset")
 
     @dataset.setter
-    def dataset(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs']]):
+    def dataset(self, value: Optional[pulumi.Input['ActionUserPropertiesStringPropsDatasetArgs']]):
         pulumi.set(self, "dataset", value)
 
     @property
@@ -1972,13 +1911,13 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
 
 
 @pulumi.input_type
-class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs:
+class ActionUserPropertiesStringPropsDatasetArgs:
     def __init__(__self__, *,
                  combinator: pulumi.Input[str],
-                 rules: pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs']]]):
+                 rules: pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleArgs']]]):
         """
         :param pulumi.Input[str] combinator: The combinator of the dataset
-        :param pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs']]] rules: The rules of the dataset
+        :param pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleArgs']]] rules: The rules of the dataset
         """
         pulumi.set(__self__, "combinator", combinator)
         pulumi.set(__self__, "rules", rules)
@@ -1997,27 +1936,27 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs:
 
     @property
     @pulumi.getter
-    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs']]]:
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleArgs']]]:
         """
         The rules of the dataset
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs']]]):
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleArgs']]]):
         pulumi.set(self, "rules", value)
 
 
 @pulumi.input_type
-class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs:
+class ActionUserPropertiesStringPropsDatasetRuleArgs:
     def __init__(__self__, *,
                  operator: pulumi.Input[str],
-                 value: pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs'],
+                 value: pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleValueArgs'],
                  blueprint: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] operator: The operator of the rule
-        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs'] value: The value of the rule
+        :param pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleValueArgs'] value: The value of the rule
         :param pulumi.Input[str] blueprint: The blueprint identifier of the rule
         :param pulumi.Input[str] property: The property identifier of the rule
         """
@@ -2042,14 +1981,14 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs:
 
     @property
     @pulumi.getter
-    def value(self) -> pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs']:
+    def value(self) -> pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleValueArgs']:
         """
         The value of the rule
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs']):
+    def value(self, value: pulumi.Input['ActionUserPropertiesStringPropsDatasetRuleValueArgs']):
         pulumi.set(self, "value", value)
 
     @property
@@ -2078,7 +2017,7 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs:
 
 
 @pulumi.input_type
-class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs:
+class ActionUserPropertiesStringPropsDatasetRuleValueArgs:
     def __init__(__self__, *,
                  jq_query: pulumi.Input[str]):
         pulumi.set(__self__, "jq_query", jq_query)
@@ -2097,26 +2036,18 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs:
 class ActionWebhookMethodArgs:
     def __init__(__self__, *,
                  url: pulumi.Input[str],
-                 agent: Optional[pulumi.Input[str]] = None,
-                 body: Optional[pulumi.Input[str]] = None,
-                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 agent: Optional[pulumi.Input[bool]] = None,
                  method: Optional[pulumi.Input[str]] = None,
-                 synchronized: Optional[pulumi.Input[str]] = None):
+                 synchronized: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] url: Required when selecting type WEBHOOK. The URL to invoke the action
-        :param pulumi.Input[str] agent: Use the agent to invoke the action
-        :param pulumi.Input[str] body: The Webhook body (array or object encoded to a string)
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: The HTTP method to invoke the action
+        :param pulumi.Input[bool] agent: Use the agent to invoke the action
         :param pulumi.Input[str] method: The HTTP method to invoke the action
-        :param pulumi.Input[str] synchronized: Synchronize the action
+        :param pulumi.Input[bool] synchronized: Synchronize the action
         """
         pulumi.set(__self__, "url", url)
         if agent is not None:
             pulumi.set(__self__, "agent", agent)
-        if body is not None:
-            pulumi.set(__self__, "body", body)
-        if headers is not None:
-            pulumi.set(__self__, "headers", headers)
         if method is not None:
             pulumi.set(__self__, "method", method)
         if synchronized is not None:
@@ -2136,39 +2067,15 @@ class ActionWebhookMethodArgs:
 
     @property
     @pulumi.getter
-    def agent(self) -> Optional[pulumi.Input[str]]:
+    def agent(self) -> Optional[pulumi.Input[bool]]:
         """
         Use the agent to invoke the action
         """
         return pulumi.get(self, "agent")
 
     @agent.setter
-    def agent(self, value: Optional[pulumi.Input[str]]):
+    def agent(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "agent", value)
-
-    @property
-    @pulumi.getter
-    def body(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Webhook body (array or object encoded to a string)
-        """
-        return pulumi.get(self, "body")
-
-    @body.setter
-    def body(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "body", value)
-
-    @property
-    @pulumi.getter
-    def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The HTTP method to invoke the action
-        """
-        return pulumi.get(self, "headers")
-
-    @headers.setter
-    def headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "headers", value)
 
     @property
     @pulumi.getter
@@ -2184,14 +2091,14 @@ class ActionWebhookMethodArgs:
 
     @property
     @pulumi.getter
-    def synchronized(self) -> Optional[pulumi.Input[str]]:
+    def synchronized(self) -> Optional[pulumi.Input[bool]]:
         """
         Synchronize the action
         """
         return pulumi.get(self, "synchronized")
 
     @synchronized.setter
-    def synchronized(self, value: Optional[pulumi.Input[str]]):
+    def synchronized(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "synchronized", value)
 
 
@@ -2670,6 +2577,807 @@ class BlueprintMirrorPropertiesArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class BlueprintPermissionsEntitiesArgs:
+    def __init__(__self__, *,
+                 register: pulumi.Input['BlueprintPermissionsEntitiesRegisterArgs'],
+                 unregister: pulumi.Input['BlueprintPermissionsEntitiesUnregisterArgs'],
+                 update: pulumi.Input['BlueprintPermissionsEntitiesUpdateArgs'],
+                 update_metadata_properties: pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesArgs'],
+                 update_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdatePropertiesArgs']]]] = None,
+                 update_relations: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdateRelationsArgs']]]] = None):
+        """
+        :param pulumi.Input['BlueprintPermissionsEntitiesRegisterArgs'] register: Manage permissions to register entities of the blueprint
+        :param pulumi.Input['BlueprintPermissionsEntitiesUnregisterArgs'] unregister: Manage permissions to unregister entities of the blueprint
+        :param pulumi.Input['BlueprintPermissionsEntitiesUpdateArgs'] update: Manage permissions to update entities of the blueprint
+        :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdatePropertiesArgs']]] update_properties: Manage permissions to update the entity properties
+        :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdateRelationsArgs']]] update_relations: Manage permissions to update the entity relations
+        """
+        pulumi.set(__self__, "register", register)
+        pulumi.set(__self__, "unregister", unregister)
+        pulumi.set(__self__, "update", update)
+        pulumi.set(__self__, "update_metadata_properties", update_metadata_properties)
+        if update_properties is not None:
+            pulumi.set(__self__, "update_properties", update_properties)
+        if update_relations is not None:
+            pulumi.set(__self__, "update_relations", update_relations)
+
+    @property
+    @pulumi.getter
+    def register(self) -> pulumi.Input['BlueprintPermissionsEntitiesRegisterArgs']:
+        """
+        Manage permissions to register entities of the blueprint
+        """
+        return pulumi.get(self, "register")
+
+    @register.setter
+    def register(self, value: pulumi.Input['BlueprintPermissionsEntitiesRegisterArgs']):
+        pulumi.set(self, "register", value)
+
+    @property
+    @pulumi.getter
+    def unregister(self) -> pulumi.Input['BlueprintPermissionsEntitiesUnregisterArgs']:
+        """
+        Manage permissions to unregister entities of the blueprint
+        """
+        return pulumi.get(self, "unregister")
+
+    @unregister.setter
+    def unregister(self, value: pulumi.Input['BlueprintPermissionsEntitiesUnregisterArgs']):
+        pulumi.set(self, "unregister", value)
+
+    @property
+    @pulumi.getter
+    def update(self) -> pulumi.Input['BlueprintPermissionsEntitiesUpdateArgs']:
+        """
+        Manage permissions to update entities of the blueprint
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: pulumi.Input['BlueprintPermissionsEntitiesUpdateArgs']):
+        pulumi.set(self, "update", value)
+
+    @property
+    @pulumi.getter(name="updateMetadataProperties")
+    def update_metadata_properties(self) -> pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesArgs']:
+        return pulumi.get(self, "update_metadata_properties")
+
+    @update_metadata_properties.setter
+    def update_metadata_properties(self, value: pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesArgs']):
+        pulumi.set(self, "update_metadata_properties", value)
+
+    @property
+    @pulumi.getter(name="updateProperties")
+    def update_properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdatePropertiesArgs']]]]:
+        """
+        Manage permissions to update the entity properties
+        """
+        return pulumi.get(self, "update_properties")
+
+    @update_properties.setter
+    def update_properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdatePropertiesArgs']]]]):
+        pulumi.set(self, "update_properties", value)
+
+    @property
+    @pulumi.getter(name="updateRelations")
+    def update_relations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdateRelationsArgs']]]]:
+        """
+        Manage permissions to update the entity relations
+        """
+        return pulumi.get(self, "update_relations")
+
+    @update_relations.setter
+    def update_relations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdateRelationsArgs']]]]):
+        pulumi.set(self, "update_relations", value)
+
+
+@pulumi.input_type
+class BlueprintPermissionsEntitiesRegisterArgs:
+    def __init__(__self__, *,
+                 owned_by_team: Optional[pulumi.Input[bool]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] owned_by_team: Owned by team
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles with register permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Teams with register permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Users with register permissions
+        """
+        if owned_by_team is not None:
+            pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="ownedByTeam")
+    def owned_by_team(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Owned by team
+        """
+        return pulumi.get(self, "owned_by_team")
+
+    @owned_by_team.setter
+    def owned_by_team(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "owned_by_team", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Roles with register permissions
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Teams with register permissions
+        """
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Users with register permissions
+        """
+        return pulumi.get(self, "users")
+
+    @users.setter
+    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "users", value)
+
+
+@pulumi.input_type
+class BlueprintPermissionsEntitiesUnregisterArgs:
+    def __init__(__self__, *,
+                 owned_by_team: Optional[pulumi.Input[bool]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] owned_by_team: Owned by team
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles with unregister permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Teams with unregister permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Users with unregister permissions
+        """
+        if owned_by_team is not None:
+            pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="ownedByTeam")
+    def owned_by_team(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Owned by team
+        """
+        return pulumi.get(self, "owned_by_team")
+
+    @owned_by_team.setter
+    def owned_by_team(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "owned_by_team", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Roles with unregister permissions
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Teams with unregister permissions
+        """
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Users with unregister permissions
+        """
+        return pulumi.get(self, "users")
+
+    @users.setter
+    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "users", value)
+
+
+@pulumi.input_type
+class BlueprintPermissionsEntitiesUpdateArgs:
+    def __init__(__self__, *,
+                 owned_by_team: Optional[pulumi.Input[bool]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] owned_by_team: Owned by team
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles with update permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Teams with update permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Users with update permissions
+        """
+        if owned_by_team is not None:
+            pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="ownedByTeam")
+    def owned_by_team(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Owned by team
+        """
+        return pulumi.get(self, "owned_by_team")
+
+    @owned_by_team.setter
+    def owned_by_team(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "owned_by_team", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Roles with update permissions
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Teams with update permissions
+        """
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Users with update permissions
+        """
+        return pulumi.get(self, "users")
+
+    @users.setter
+    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "users", value)
+
+
+@pulumi.input_type
+class BlueprintPermissionsEntitiesUpdateMetadataPropertiesArgs:
+    def __init__(__self__, *,
+                 icon: pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconArgs'],
+                 identifier: pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierArgs'],
+                 team: pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamArgs'],
+                 title: pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleArgs']):
+        """
+        :param pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconArgs'] icon: The entity's icon
+        :param pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierArgs'] identifier: Unique Entity identifier, used for API calls, programmatic access and distinguishing between different entities
+        :param pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamArgs'] team: The team this entity belongs to
+        :param pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleArgs'] title: A human-readable name for the entity
+        """
+        pulumi.set(__self__, "icon", icon)
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "team", team)
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def icon(self) -> pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconArgs']:
+        """
+        The entity's icon
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconArgs']):
+        pulumi.set(self, "icon", value)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierArgs']:
+        """
+        Unique Entity identifier, used for API calls, programmatic access and distinguishing between different entities
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierArgs']):
+        pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter
+    def team(self) -> pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamArgs']:
+        """
+        The team this entity belongs to
+        """
+        return pulumi.get(self, "team")
+
+    @team.setter
+    def team(self, value: pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamArgs']):
+        pulumi.set(self, "team", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleArgs']:
+        """
+        A human-readable name for the entity
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleArgs']):
+        pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconArgs:
+    def __init__(__self__, *,
+                 owned_by_team: Optional[pulumi.Input[bool]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] owned_by_team: Owned by team
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles with update $icon metadata permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Teams with update $icon metadata permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Users with update $icon metadata permissions
+        """
+        if owned_by_team is not None:
+            pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="ownedByTeam")
+    def owned_by_team(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Owned by team
+        """
+        return pulumi.get(self, "owned_by_team")
+
+    @owned_by_team.setter
+    def owned_by_team(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "owned_by_team", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Roles with update $icon metadata permissions
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Teams with update $icon metadata permissions
+        """
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Users with update $icon metadata permissions
+        """
+        return pulumi.get(self, "users")
+
+    @users.setter
+    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "users", value)
+
+
+@pulumi.input_type
+class BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierArgs:
+    def __init__(__self__, *,
+                 owned_by_team: Optional[pulumi.Input[bool]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] owned_by_team: Owned by team
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles with update $identifier metadata permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Teams with update $identifier metadata permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Users with update $identifier metadata permissions
+        """
+        if owned_by_team is not None:
+            pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="ownedByTeam")
+    def owned_by_team(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Owned by team
+        """
+        return pulumi.get(self, "owned_by_team")
+
+    @owned_by_team.setter
+    def owned_by_team(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "owned_by_team", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Roles with update $identifier metadata permissions
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Teams with update $identifier metadata permissions
+        """
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Users with update $identifier metadata permissions
+        """
+        return pulumi.get(self, "users")
+
+    @users.setter
+    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "users", value)
+
+
+@pulumi.input_type
+class BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamArgs:
+    def __init__(__self__, *,
+                 owned_by_team: Optional[pulumi.Input[bool]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] owned_by_team: Owned by team
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles with update $team metadata permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Teams with update $team metadata permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Users with update $team metadata permissions
+        """
+        if owned_by_team is not None:
+            pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="ownedByTeam")
+    def owned_by_team(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Owned by team
+        """
+        return pulumi.get(self, "owned_by_team")
+
+    @owned_by_team.setter
+    def owned_by_team(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "owned_by_team", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Roles with update $team metadata permissions
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Teams with update $team metadata permissions
+        """
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Users with update $team metadata permissions
+        """
+        return pulumi.get(self, "users")
+
+    @users.setter
+    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "users", value)
+
+
+@pulumi.input_type
+class BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleArgs:
+    def __init__(__self__, *,
+                 owned_by_team: Optional[pulumi.Input[bool]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] owned_by_team: Owned by team
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles with update $title metadata permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Teams with update $title metadata permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Users with update $title metadata permissions
+        """
+        if owned_by_team is not None:
+            pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="ownedByTeam")
+    def owned_by_team(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Owned by team
+        """
+        return pulumi.get(self, "owned_by_team")
+
+    @owned_by_team.setter
+    def owned_by_team(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "owned_by_team", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Roles with update $title metadata permissions
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Teams with update $title metadata permissions
+        """
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Users with update $title metadata permissions
+        """
+        return pulumi.get(self, "users")
+
+    @users.setter
+    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "users", value)
+
+
+@pulumi.input_type
+class BlueprintPermissionsEntitiesUpdatePropertiesArgs:
+    def __init__(__self__, *,
+                 owned_by_team: Optional[pulumi.Input[bool]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] owned_by_team: Owned by team
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles with update specific property permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Teams with update specific property permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Users with update specific property permissions
+        """
+        if owned_by_team is not None:
+            pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="ownedByTeam")
+    def owned_by_team(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Owned by team
+        """
+        return pulumi.get(self, "owned_by_team")
+
+    @owned_by_team.setter
+    def owned_by_team(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "owned_by_team", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Roles with update specific property permissions
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Teams with update specific property permissions
+        """
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Users with update specific property permissions
+        """
+        return pulumi.get(self, "users")
+
+    @users.setter
+    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "users", value)
+
+
+@pulumi.input_type
+class BlueprintPermissionsEntitiesUpdateRelationsArgs:
+    def __init__(__self__, *,
+                 owned_by_team: Optional[pulumi.Input[bool]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] owned_by_team: Owned by team
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles with update specific relation permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Teams with update specific relation permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Users with update specific relation permissions
+        """
+        if owned_by_team is not None:
+            pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="ownedByTeam")
+    def owned_by_team(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Owned by team
+        """
+        return pulumi.get(self, "owned_by_team")
+
+    @owned_by_team.setter
+    def owned_by_team(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "owned_by_team", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Roles with update specific relation permissions
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Teams with update specific relation permissions
+        """
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Users with update specific relation permissions
+        """
+        return pulumi.get(self, "users")
+
+    @users.setter
+    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "users", value)
 
 
 @pulumi.input_type
