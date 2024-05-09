@@ -100,10 +100,6 @@
                     "type": "string",
                     "description": "Required when selecting type AZURE. The Azure org that the workflow belongs to\n"
                 },
-                "payload": {
-                    "type": "string",
-                    "description": "The Azure Devops workflow payload (array or object encoded to a string)\n"
-                },
                 "webhook": {
                     "type": "string",
                     "description": "Required when selecting type AZURE. The Azure webhook that the workflow belongs to\n"
@@ -117,6 +113,14 @@
         },
         "port:index/ActionGithubMethod:ActionGithubMethod": {
             "properties": {
+                "omitPayload": {
+                    "type": "boolean",
+                    "description": "Omit the payload when invoking the action\n"
+                },
+                "omitUserInputs": {
+                    "type": "boolean",
+                    "description": "Omit the user inputs when invoking the action\n"
+                },
                 "org": {
                     "type": "string",
                     "description": "Required when selecting type GITHUB. The GitHub org that the workflow belongs to\n"
@@ -126,16 +130,12 @@
                     "description": "Required when selecting type GITHUB. The GitHub repo that the workflow belongs to\n"
                 },
                 "reportWorkflowStatus": {
-                    "type": "string",
+                    "type": "boolean",
                     "description": "Report the workflow status when invoking the action\n"
                 },
                 "workflow": {
                     "type": "string",
                     "description": "The GitHub workflow that the action belongs to\n"
-                },
-                "workflowInputs": {
-                    "type": "string",
-                    "description": "The GitHub workflow inputs (key-value object encoded to a string)\n"
                 }
             },
             "type": "object",
@@ -143,10 +143,25 @@
                 "org",
                 "repo",
                 "workflow"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "omitPayload",
+                        "omitUserInputs",
+                        "org",
+                        "repo",
+                        "workflow"
+                    ]
+                }
+            }
         },
         "port:index/ActionGitlabMethod:ActionGitlabMethod": {
             "properties": {
+                "agent": {
+                    "type": "boolean",
+                    "description": "Use the agent to invoke the action\n"
+                },
                 "defaultRef": {
                     "type": "string",
                     "description": "The default ref of the action\n"
@@ -155,9 +170,13 @@
                     "type": "string",
                     "description": "Required when selecting type GITLAB. The GitLab group name that the workflow belongs to\n"
                 },
-                "pipelineVariables": {
-                    "type": "string",
-                    "description": "The Gitlab pipeline variables (key-value object encoded to a string)\n"
+                "omitPayload": {
+                    "type": "boolean",
+                    "description": "Omit the payload when invoking the action\n"
+                },
+                "omitUserInputs": {
+                    "type": "boolean",
+                    "description": "Omit the user inputs when invoking the action\n"
                 },
                 "projectName": {
                     "type": "string",
@@ -168,15 +187,20 @@
             "required": [
                 "groupName",
                 "projectName"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "agent",
+                        "groupName",
+                        "omitPayload",
+                        "omitUserInputs",
+                        "projectName"
+                    ]
+                }
+            }
         },
         "port:index/ActionKafkaMethod:ActionKafkaMethod": {
-            "properties": {
-                "payload": {
-                    "type": "string",
-                    "description": "The Kafka message payload (array or object encoded to a string)\n"
-                }
-            },
             "type": "object"
         },
         "port:index/ActionPermissionsPermissions:ActionPermissionsPermissions": {
@@ -279,89 +303,50 @@
                 }
             }
         },
-        "port:index/ActionSelfServiceTrigger:ActionSelfServiceTrigger": {
-            "properties": {
-                "blueprintIdentifier": {
-                    "type": "string",
-                    "description": "The ID of the blueprint\n"
-                },
-                "operation": {
-                    "type": "string",
-                    "description": "The operation type of the action\n"
-                },
-                "orderProperties": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "Order properties\n"
-                },
-                "requiredJqQuery": {
-                    "type": "string",
-                    "description": "The required jq query of the property\n"
-                },
-                "userProperties": {
-                    "$ref": "#/types/port:index/ActionSelfServiceTriggerUserProperties:ActionSelfServiceTriggerUserProperties",
-                    "description": "User properties\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "operation"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "operation",
-                        "userProperties"
-                    ]
-                }
-            }
-        },
-        "port:index/ActionSelfServiceTriggerUserProperties:ActionSelfServiceTriggerUserProperties": {
+        "port:index/ActionUserProperties:ActionUserProperties": {
             "properties": {
                 "arrayProps": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesArrayProps:ActionSelfServiceTriggerUserPropertiesArrayProps"
+                        "$ref": "#/types/port:index/ActionUserPropertiesArrayProps:ActionUserPropertiesArrayProps"
                     },
                     "description": "The array property of the action\n"
                 },
                 "booleanProps": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesBooleanProps:ActionSelfServiceTriggerUserPropertiesBooleanProps"
+                        "$ref": "#/types/port:index/ActionUserPropertiesBooleanProps:ActionUserPropertiesBooleanProps"
                     },
                     "description": "The boolean property of the action\n"
                 },
                 "numberProps": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesNumberProps:ActionSelfServiceTriggerUserPropertiesNumberProps"
+                        "$ref": "#/types/port:index/ActionUserPropertiesNumberProps:ActionUserPropertiesNumberProps"
                     },
                     "description": "The number property of the action\n"
                 },
                 "objectProps": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesObjectProps:ActionSelfServiceTriggerUserPropertiesObjectProps"
+                        "$ref": "#/types/port:index/ActionUserPropertiesObjectProps:ActionUserPropertiesObjectProps"
                     },
                     "description": "The object property of the action\n"
                 },
                 "stringProps": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesStringProps:ActionSelfServiceTriggerUserPropertiesStringProps"
+                        "$ref": "#/types/port:index/ActionUserPropertiesStringProps:ActionUserPropertiesStringProps"
                     },
                     "description": "The string property of the action\n"
                 }
             },
             "type": "object"
         },
-        "port:index/ActionSelfServiceTriggerUserPropertiesArrayProps:ActionSelfServiceTriggerUserPropertiesArrayProps": {
+        "port:index/ActionUserPropertiesArrayProps:ActionUserPropertiesArrayProps": {
             "properties": {
                 "booleanItems": {
-                    "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems:ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems",
+                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsBooleanItems:ActionUserPropertiesArrayPropsBooleanItems",
                     "description": "The items of the array property\n"
                 },
                 "defaultJqQuery": {
@@ -392,11 +377,11 @@
                     "description": "The min items of the array property\n"
                 },
                 "numberItems": {
-                    "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems:ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems",
+                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsNumberItems:ActionUserPropertiesArrayPropsNumberItems",
                     "description": "The items of the array property\n"
                 },
                 "objectItems": {
-                    "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems:ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems",
+                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsObjectItems:ActionUserPropertiesArrayPropsObjectItems",
                     "description": "The items of the array property\n"
                 },
                 "required": {
@@ -404,7 +389,7 @@
                     "description": "Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value\n"
                 },
                 "stringItems": {
-                    "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems:ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems",
+                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsStringItems:ActionUserPropertiesArrayPropsStringItems",
                     "description": "The items of the array property\n"
                 },
                 "title": {
@@ -422,7 +407,7 @@
             },
             "type": "object"
         },
-        "port:index/ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems:ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems": {
+        "port:index/ActionUserPropertiesArrayPropsBooleanItems:ActionUserPropertiesArrayPropsBooleanItems": {
             "properties": {
                 "defaults": {
                     "type": "array",
@@ -434,7 +419,7 @@
             },
             "type": "object"
         },
-        "port:index/ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems:ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems": {
+        "port:index/ActionUserPropertiesArrayPropsNumberItems:ActionUserPropertiesArrayPropsNumberItems": {
             "properties": {
                 "defaults": {
                     "type": "array",
@@ -457,7 +442,7 @@
             },
             "type": "object"
         },
-        "port:index/ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems:ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems": {
+        "port:index/ActionUserPropertiesArrayPropsObjectItems:ActionUserPropertiesArrayPropsObjectItems": {
             "properties": {
                 "defaults": {
                     "type": "array",
@@ -472,7 +457,7 @@
             },
             "type": "object"
         },
-        "port:index/ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems:ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems": {
+        "port:index/ActionUserPropertiesArrayPropsStringItems:ActionUserPropertiesArrayPropsStringItems": {
             "properties": {
                 "blueprint": {
                     "type": "string",
@@ -507,7 +492,7 @@
             },
             "type": "object"
         },
-        "port:index/ActionSelfServiceTriggerUserPropertiesBooleanProps:ActionSelfServiceTriggerUserPropertiesBooleanProps": {
+        "port:index/ActionUserPropertiesBooleanProps:ActionUserPropertiesBooleanProps": {
             "properties": {
                 "default": {
                     "type": "boolean",
@@ -551,7 +536,7 @@
             },
             "type": "object"
         },
-        "port:index/ActionSelfServiceTriggerUserPropertiesNumberProps:ActionSelfServiceTriggerUserPropertiesNumberProps": {
+        "port:index/ActionUserPropertiesNumberProps:ActionUserPropertiesNumberProps": {
             "properties": {
                 "default": {
                     "type": "number",
@@ -614,7 +599,7 @@
             },
             "type": "object"
         },
-        "port:index/ActionSelfServiceTriggerUserPropertiesObjectProps:ActionSelfServiceTriggerUserPropertiesObjectProps": {
+        "port:index/ActionUserPropertiesObjectProps:ActionUserPropertiesObjectProps": {
             "properties": {
                 "default": {
                     "type": "string",
@@ -662,14 +647,14 @@
             },
             "type": "object"
         },
-        "port:index/ActionSelfServiceTriggerUserPropertiesStringProps:ActionSelfServiceTriggerUserPropertiesStringProps": {
+        "port:index/ActionUserPropertiesStringProps:ActionUserPropertiesStringProps": {
             "properties": {
                 "blueprint": {
                     "type": "string",
                     "description": "The blueprint identifier the string property relates to\n"
                 },
                 "dataset": {
-                    "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDataset:ActionSelfServiceTriggerUserPropertiesStringPropsDataset",
+                    "$ref": "#/types/port:index/ActionUserPropertiesStringPropsDataset:ActionUserPropertiesStringPropsDataset",
                     "description": "The dataset of an the entity-format property\n"
                 },
                 "default": {
@@ -745,7 +730,7 @@
             },
             "type": "object"
         },
-        "port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDataset:ActionSelfServiceTriggerUserPropertiesStringPropsDataset": {
+        "port:index/ActionUserPropertiesStringPropsDataset:ActionUserPropertiesStringPropsDataset": {
             "properties": {
                 "combinator": {
                     "type": "string",
@@ -754,7 +739,7 @@
                 "rules": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule:ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule"
+                        "$ref": "#/types/port:index/ActionUserPropertiesStringPropsDatasetRule:ActionUserPropertiesStringPropsDatasetRule"
                     },
                     "description": "The rules of the dataset\n"
                 }
@@ -765,7 +750,7 @@
                 "rules"
             ]
         },
-        "port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule:ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule": {
+        "port:index/ActionUserPropertiesStringPropsDatasetRule:ActionUserPropertiesStringPropsDatasetRule": {
             "properties": {
                 "blueprint": {
                     "type": "string",
@@ -780,7 +765,7 @@
                     "description": "The property identifier of the rule\n"
                 },
                 "value": {
-                    "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue:ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue",
+                    "$ref": "#/types/port:index/ActionUserPropertiesStringPropsDatasetRuleValue:ActionUserPropertiesStringPropsDatasetRuleValue",
                     "description": "The value of the rule\n"
                 }
             },
@@ -790,7 +775,7 @@
                 "value"
             ]
         },
-        "port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue:ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue": {
+        "port:index/ActionUserPropertiesStringPropsDatasetRuleValue:ActionUserPropertiesStringPropsDatasetRuleValue": {
             "properties": {
                 "jqQuery": {
                     "type": "string"
@@ -804,26 +789,15 @@
         "port:index/ActionWebhookMethod:ActionWebhookMethod": {
             "properties": {
                 "agent": {
-                    "type": "string",
+                    "type": "boolean",
                     "description": "Use the agent to invoke the action\n"
-                },
-                "body": {
-                    "type": "string",
-                    "description": "The Webhook body (array or object encoded to a string)\n"
-                },
-                "headers": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "The HTTP method to invoke the action\n"
                 },
                 "method": {
                     "type": "string",
                     "description": "The HTTP method to invoke the action\n"
                 },
                 "synchronized": {
-                    "type": "string",
+                    "type": "boolean",
                     "description": "Synchronize the action\n"
                 },
                 "url": {
@@ -1012,6 +986,406 @@
             "required": [
                 "path"
             ]
+        },
+        "port:index/BlueprintPermissionsEntities:BlueprintPermissionsEntities": {
+            "properties": {
+                "register": {
+                    "$ref": "#/types/port:index/BlueprintPermissionsEntitiesRegister:BlueprintPermissionsEntitiesRegister",
+                    "description": "Manage permissions to register entities of the blueprint\n"
+                },
+                "unregister": {
+                    "$ref": "#/types/port:index/BlueprintPermissionsEntitiesUnregister:BlueprintPermissionsEntitiesUnregister",
+                    "description": "Manage permissions to unregister entities of the blueprint\n"
+                },
+                "update": {
+                    "$ref": "#/types/port:index/BlueprintPermissionsEntitiesUpdate:BlueprintPermissionsEntitiesUpdate",
+                    "description": "Manage permissions to update entities of the blueprint\n"
+                },
+                "updateMetadataProperties": {
+                    "$ref": "#/types/port:index/BlueprintPermissionsEntitiesUpdateMetadataProperties:BlueprintPermissionsEntitiesUpdateMetadataProperties"
+                },
+                "updateProperties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/BlueprintPermissionsEntitiesUpdateProperties:BlueprintPermissionsEntitiesUpdateProperties"
+                    },
+                    "description": "Manage permissions to update the entity properties\n"
+                },
+                "updateRelations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/BlueprintPermissionsEntitiesUpdateRelations:BlueprintPermissionsEntitiesUpdateRelations"
+                    },
+                    "description": "Manage permissions to update the entity relations\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "register",
+                "unregister",
+                "update",
+                "updateMetadataProperties"
+            ]
+        },
+        "port:index/BlueprintPermissionsEntitiesRegister:BlueprintPermissionsEntitiesRegister": {
+            "properties": {
+                "ownedByTeam": {
+                    "type": "boolean",
+                    "description": "Owned by team\n"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Roles with register permissions\n"
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Teams with register permissions\n"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Users with register permissions\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "ownedByTeam"
+                    ]
+                }
+            }
+        },
+        "port:index/BlueprintPermissionsEntitiesUnregister:BlueprintPermissionsEntitiesUnregister": {
+            "properties": {
+                "ownedByTeam": {
+                    "type": "boolean",
+                    "description": "Owned by team\n"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Roles with unregister permissions\n"
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Teams with unregister permissions\n"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Users with unregister permissions\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "ownedByTeam"
+                    ]
+                }
+            }
+        },
+        "port:index/BlueprintPermissionsEntitiesUpdate:BlueprintPermissionsEntitiesUpdate": {
+            "properties": {
+                "ownedByTeam": {
+                    "type": "boolean",
+                    "description": "Owned by team\n"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Roles with update permissions\n"
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Teams with update permissions\n"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Users with update permissions\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "ownedByTeam"
+                    ]
+                }
+            }
+        },
+        "port:index/BlueprintPermissionsEntitiesUpdateMetadataProperties:BlueprintPermissionsEntitiesUpdateMetadataProperties": {
+            "properties": {
+                "icon": {
+                    "$ref": "#/types/port:index/BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon:BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon",
+                    "description": "The entity's icon\n"
+                },
+                "identifier": {
+                    "$ref": "#/types/port:index/BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier:BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier",
+                    "description": "Unique Entity identifier, used for API calls, programmatic access and distinguishing between different entities\n"
+                },
+                "team": {
+                    "$ref": "#/types/port:index/BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam:BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam",
+                    "description": "The team this entity belongs to\n"
+                },
+                "title": {
+                    "$ref": "#/types/port:index/BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle:BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle",
+                    "description": "A human-readable name for the entity\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "icon",
+                "identifier",
+                "team",
+                "title"
+            ]
+        },
+        "port:index/BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon:BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon": {
+            "properties": {
+                "ownedByTeam": {
+                    "type": "boolean",
+                    "description": "Owned by team\n"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Roles with update $icon metadata permissions\n"
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Teams with update $icon metadata permissions\n"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Users with update $icon metadata permissions\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "ownedByTeam"
+                    ]
+                }
+            }
+        },
+        "port:index/BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier:BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier": {
+            "properties": {
+                "ownedByTeam": {
+                    "type": "boolean",
+                    "description": "Owned by team\n"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Roles with update $identifier metadata permissions\n"
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Teams with update $identifier metadata permissions\n"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Users with update $identifier metadata permissions\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "ownedByTeam"
+                    ]
+                }
+            }
+        },
+        "port:index/BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam:BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam": {
+            "properties": {
+                "ownedByTeam": {
+                    "type": "boolean",
+                    "description": "Owned by team\n"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Roles with update $team metadata permissions\n"
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Teams with update $team metadata permissions\n"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Users with update $team metadata permissions\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "ownedByTeam"
+                    ]
+                }
+            }
+        },
+        "port:index/BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle:BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle": {
+            "properties": {
+                "ownedByTeam": {
+                    "type": "boolean",
+                    "description": "Owned by team\n"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Roles with update $title metadata permissions\n"
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Teams with update $title metadata permissions\n"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Users with update $title metadata permissions\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "ownedByTeam"
+                    ]
+                }
+            }
+        },
+        "port:index/BlueprintPermissionsEntitiesUpdateProperties:BlueprintPermissionsEntitiesUpdateProperties": {
+            "properties": {
+                "ownedByTeam": {
+                    "type": "boolean",
+                    "description": "Owned by team\n"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Roles with update specific property permissions\n"
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Teams with update specific property permissions\n"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Users with update specific property permissions\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "ownedByTeam"
+                    ]
+                }
+            }
+        },
+        "port:index/BlueprintPermissionsEntitiesUpdateRelations:BlueprintPermissionsEntitiesUpdateRelations": {
+            "properties": {
+                "ownedByTeam": {
+                    "type": "boolean",
+                    "description": "Owned by team\n"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Roles with update specific relation permissions\n"
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Teams with update specific relation permissions\n"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Users with update specific relation permissions\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "ownedByTeam"
+                    ]
+                }
+            }
         },
         "port:index/BlueprintProperties:BlueprintProperties": {
             "properties": {
@@ -1748,12 +2122,11 @@
                 },
                 "azureMethod": {
                     "$ref": "#/types/port:index/ActionAzureMethod:ActionAzureMethod",
-                    "description": "Azure DevOps invocation method\n"
+                    "description": "The invocation method of the action\n"
                 },
                 "blueprint": {
                     "type": "string",
-                    "description": "The blueprint identifier the action relates to\n",
-                    "deprecationMessage": "Action is not attached to blueprint anymore. This value is ignored"
+                    "description": "The blueprint identifier the action relates to\n"
                 },
                 "description": {
                     "type": "string",
@@ -1761,11 +2134,11 @@
                 },
                 "githubMethod": {
                     "$ref": "#/types/port:index/ActionGithubMethod:ActionGithubMethod",
-                    "description": "GitHub invocation method\n"
+                    "description": "The invocation method of the action\n"
                 },
                 "gitlabMethod": {
                     "$ref": "#/types/port:index/ActionGitlabMethod:ActionGitlabMethod",
-                    "description": "Gitlab invocation method\n"
+                    "description": "The invocation method of the action\n"
                 },
                 "icon": {
                     "type": "string",
@@ -1777,32 +2150,45 @@
                 },
                 "kafkaMethod": {
                     "$ref": "#/types/port:index/ActionKafkaMethod:ActionKafkaMethod",
-                    "description": "Kafka invocation method\n"
+                    "description": "The invocation method of the action\n"
                 },
-                "publish": {
-                    "type": "boolean",
-                    "description": "Publish action\n"
+                "orderProperties": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Order properties\n"
                 },
                 "requiredApproval": {
                     "type": "boolean",
                     "description": "Require approval before invoking the action\n"
                 },
-                "selfServiceTrigger": {
-                    "$ref": "#/types/port:index/ActionSelfServiceTrigger:ActionSelfServiceTrigger",
-                    "description": "Self service trigger for the action\n"
+                "requiredJqQuery": {
+                    "type": "string",
+                    "description": "The required jq query of the property\n"
                 },
                 "title": {
                     "type": "string",
                     "description": "Title\n"
                 },
+                "trigger": {
+                    "type": "string",
+                    "description": "The trigger type of the action\n"
+                },
+                "userProperties": {
+                    "$ref": "#/types/port:index/ActionUserProperties:ActionUserProperties",
+                    "description": "User properties\n"
+                },
                 "webhookMethod": {
                     "$ref": "#/types/port:index/ActionWebhookMethod:ActionWebhookMethod",
-                    "description": "Webhook invocation method\n"
+                    "description": "The invocation method of the action\n"
                 }
             },
             "required": [
+                "blueprint",
                 "identifier",
-                "publish"
+                "title",
+                "trigger"
             ],
             "inputProperties": {
                 "approvalEmailNotification": {
@@ -1815,12 +2201,11 @@
                 },
                 "azureMethod": {
                     "$ref": "#/types/port:index/ActionAzureMethod:ActionAzureMethod",
-                    "description": "Azure DevOps invocation method\n"
+                    "description": "The invocation method of the action\n"
                 },
                 "blueprint": {
                     "type": "string",
-                    "description": "The blueprint identifier the action relates to\n",
-                    "deprecationMessage": "Action is not attached to blueprint anymore. This value is ignored"
+                    "description": "The blueprint identifier the action relates to\n"
                 },
                 "description": {
                     "type": "string",
@@ -1828,11 +2213,11 @@
                 },
                 "githubMethod": {
                     "$ref": "#/types/port:index/ActionGithubMethod:ActionGithubMethod",
-                    "description": "GitHub invocation method\n"
+                    "description": "The invocation method of the action\n"
                 },
                 "gitlabMethod": {
                     "$ref": "#/types/port:index/ActionGitlabMethod:ActionGitlabMethod",
-                    "description": "Gitlab invocation method\n"
+                    "description": "The invocation method of the action\n"
                 },
                 "icon": {
                     "type": "string",
@@ -1844,31 +2229,45 @@
                 },
                 "kafkaMethod": {
                     "$ref": "#/types/port:index/ActionKafkaMethod:ActionKafkaMethod",
-                    "description": "Kafka invocation method\n"
+                    "description": "The invocation method of the action\n"
                 },
-                "publish": {
-                    "type": "boolean",
-                    "description": "Publish action\n"
+                "orderProperties": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Order properties\n"
                 },
                 "requiredApproval": {
                     "type": "boolean",
                     "description": "Require approval before invoking the action\n"
                 },
-                "selfServiceTrigger": {
-                    "$ref": "#/types/port:index/ActionSelfServiceTrigger:ActionSelfServiceTrigger",
-                    "description": "Self service trigger for the action\n"
+                "requiredJqQuery": {
+                    "type": "string",
+                    "description": "The required jq query of the property\n"
                 },
                 "title": {
                     "type": "string",
                     "description": "Title\n"
                 },
+                "trigger": {
+                    "type": "string",
+                    "description": "The trigger type of the action\n"
+                },
+                "userProperties": {
+                    "$ref": "#/types/port:index/ActionUserProperties:ActionUserProperties",
+                    "description": "User properties\n"
+                },
                 "webhookMethod": {
                     "$ref": "#/types/port:index/ActionWebhookMethod:ActionWebhookMethod",
-                    "description": "Webhook invocation method\n"
+                    "description": "The invocation method of the action\n"
                 }
             },
             "requiredInputs": [
-                "identifier"
+                "blueprint",
+                "identifier",
+                "title",
+                "trigger"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Action resources.\n",
@@ -1883,12 +2282,11 @@
                     },
                     "azureMethod": {
                         "$ref": "#/types/port:index/ActionAzureMethod:ActionAzureMethod",
-                        "description": "Azure DevOps invocation method\n"
+                        "description": "The invocation method of the action\n"
                     },
                     "blueprint": {
                         "type": "string",
-                        "description": "The blueprint identifier the action relates to\n",
-                        "deprecationMessage": "Action is not attached to blueprint anymore. This value is ignored"
+                        "description": "The blueprint identifier the action relates to\n"
                     },
                     "description": {
                         "type": "string",
@@ -1896,11 +2294,11 @@
                     },
                     "githubMethod": {
                         "$ref": "#/types/port:index/ActionGithubMethod:ActionGithubMethod",
-                        "description": "GitHub invocation method\n"
+                        "description": "The invocation method of the action\n"
                     },
                     "gitlabMethod": {
                         "$ref": "#/types/port:index/ActionGitlabMethod:ActionGitlabMethod",
-                        "description": "Gitlab invocation method\n"
+                        "description": "The invocation method of the action\n"
                     },
                     "icon": {
                         "type": "string",
@@ -1912,27 +2310,38 @@
                     },
                     "kafkaMethod": {
                         "$ref": "#/types/port:index/ActionKafkaMethod:ActionKafkaMethod",
-                        "description": "Kafka invocation method\n"
+                        "description": "The invocation method of the action\n"
                     },
-                    "publish": {
-                        "type": "boolean",
-                        "description": "Publish action\n"
+                    "orderProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Order properties\n"
                     },
                     "requiredApproval": {
                         "type": "boolean",
                         "description": "Require approval before invoking the action\n"
                     },
-                    "selfServiceTrigger": {
-                        "$ref": "#/types/port:index/ActionSelfServiceTrigger:ActionSelfServiceTrigger",
-                        "description": "Self service trigger for the action\n"
+                    "requiredJqQuery": {
+                        "type": "string",
+                        "description": "The required jq query of the property\n"
                     },
                     "title": {
                         "type": "string",
                         "description": "Title\n"
                     },
+                    "trigger": {
+                        "type": "string",
+                        "description": "The trigger type of the action\n"
+                    },
+                    "userProperties": {
+                        "$ref": "#/types/port:index/ActionUserProperties:ActionUserProperties",
+                        "description": "User properties\n"
+                    },
                     "webhookMethod": {
                         "$ref": "#/types/port:index/ActionWebhookMethod:ActionWebhookMethod",
-                        "description": "Webhook invocation method\n"
+                        "description": "The invocation method of the action\n"
                     }
                 },
                 "type": "object"
@@ -1946,8 +2355,7 @@
                 },
                 "blueprintIdentifier": {
                     "type": "string",
-                    "description": "The ID of the blueprint\n",
-                    "deprecationMessage": "Action is not attached to blueprint anymore. This value is ignored"
+                    "description": "The ID of the blueprint\n"
                 },
                 "permissions": {
                     "$ref": "#/types/port:index/ActionPermissionsPermissions:ActionPermissionsPermissions",
@@ -1956,6 +2364,7 @@
             },
             "required": [
                 "actionIdentifier",
+                "blueprintIdentifier",
                 "permissions"
             ],
             "inputProperties": {
@@ -1965,8 +2374,7 @@
                 },
                 "blueprintIdentifier": {
                     "type": "string",
-                    "description": "The ID of the blueprint\n",
-                    "deprecationMessage": "Action is not attached to blueprint anymore. This value is ignored"
+                    "description": "The ID of the blueprint\n"
                 },
                 "permissions": {
                     "$ref": "#/types/port:index/ActionPermissionsPermissions:ActionPermissionsPermissions",
@@ -1975,6 +2383,7 @@
             },
             "requiredInputs": [
                 "actionIdentifier",
+                "blueprintIdentifier",
                 "permissions"
             ],
             "stateInputs": {
@@ -1986,8 +2395,7 @@
                     },
                     "blueprintIdentifier": {
                         "type": "string",
-                        "description": "The ID of the blueprint\n",
-                        "deprecationMessage": "Action is not attached to blueprint anymore. This value is ignored"
+                        "description": "The ID of the blueprint\n"
                     },
                     "permissions": {
                         "$ref": "#/types/port:index/ActionPermissionsPermissions:ActionPermissionsPermissions",
@@ -2273,6 +2681,47 @@
                     "webhookChangelogDestination": {
                         "$ref": "#/types/port:index/BlueprintWebhookChangelogDestination:BlueprintWebhookChangelogDestination",
                         "description": "The webhook changelog destination of the blueprint\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "port:index/blueprintPermissions:BlueprintPermissions": {
+            "properties": {
+                "blueprintIdentifier": {
+                    "type": "string"
+                },
+                "entities": {
+                    "$ref": "#/types/port:index/BlueprintPermissionsEntities:BlueprintPermissionsEntities",
+                    "description": "Entities permissions to read the blueprint\n"
+                }
+            },
+            "required": [
+                "blueprintIdentifier",
+                "entities"
+            ],
+            "inputProperties": {
+                "blueprintIdentifier": {
+                    "type": "string"
+                },
+                "entities": {
+                    "$ref": "#/types/port:index/BlueprintPermissionsEntities:BlueprintPermissionsEntities",
+                    "description": "Entities permissions to read the blueprint\n"
+                }
+            },
+            "requiredInputs": [
+                "blueprintIdentifier",
+                "entities"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering BlueprintPermissions resources.\n",
+                "properties": {
+                    "blueprintIdentifier": {
+                        "type": "string"
+                    },
+                    "entities": {
+                        "$ref": "#/types/port:index/BlueprintPermissionsEntities:BlueprintPermissionsEntities",
+                        "description": "Entities permissions to read the blueprint\n"
                     }
                 },
                 "type": "object"
