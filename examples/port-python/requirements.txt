@@ -1,2 +1,2 @@
 pulumi==3.55.0
-port_pulumi==1.0.0
+port_pulumi==2.0.0
