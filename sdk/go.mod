@@ -1,4 +1,4 @@
-module github.com/port-labs/pulumi-port/sdk
+module github.com/port-labs/pulumi-port/sdk/v2
 
 go 1.20
 
