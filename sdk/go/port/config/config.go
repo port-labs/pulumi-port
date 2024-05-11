@@ -4,7 +4,7 @@
 package config
 
 import (
-	"github.com/port-labs/pulumi-port/sdk/go/port/internal"
+	"github.com/port-labs/pulumi-port/sdk/v2/go/port/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
