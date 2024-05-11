@@ -228,7 +228,103 @@ class Scorecard(pulumi.CustomResource):
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Scorecard resource with the given unique name, props, and options.
+        This resource allows you to manage a scorecard.
+
+        See the [Port documentation](https://docs.getport.io/promote-scorecards/) for more information about scorecards.
+
+        ## Example Usage
+
+        Create a parent blueprint with a child blueprint and an aggregation property to count the parent kids:
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_port as port
+
+        microservice = port.index.Port_blueprint("microservice",
+            title=microservice,
+            icon=Terraform,
+            identifier=microservice,
+            properties={
+                stringProps: {
+                    author: {
+                        title: Author,
+                    },
+                    url: {
+                        title: URL,
+                    },
+                },
+                booleanProps: {
+                    required: {
+                        type: boolean,
+                    },
+                },
+                numberProps: {
+                    sum: {
+                        type: number,
+                    },
+                },
+            })
+        readiness = port.index.Port_scorecard("readiness",
+            identifier=Readiness,
+            title=Readiness,
+            blueprint=microservice.identifier,
+            rules=[
+                {
+                    identifier: hasOwner,
+                    title: Has Owner,
+                    level: Gold,
+                    query: {
+                        combinator: and,
+                        conditions: [
+                            json.dumps({
+                                property: $team,
+                                operator: isNotEmpty,
+                            }),
+                            json.dumps({
+                                property: author,
+                                operator: =,
+                                value: myValue,
+                            }),
+                        ],
+                    },
+                },
+                {
+                    identifier: hasUrl,
+                    title: Has URL,
+                    level: Silver,
+                    query: {
+                        combinator: and,
+                        conditions: [json.dumps({
+                            property: url,
+                            operator: isNotEmpty,
+                        })],
+                    },
+                },
+                {
+                    identifier: checkSumIfRequired,
+                    title: Check Sum If Required,
+                    level: Bronze,
+                    query: {
+                        combinator: or,
+                        conditions: [
+                            json.dumps({
+                                property: required,
+                                operator: =,
+                                value: False,
+                            }),
+                            json.dumps({
+                                property: sum,
+                                operator: >,
+                                value: 2,
+                            }),
+                        ],
+                    },
+                },
+            ],
+            opts=pulumi.ResourceOptions(depends_on=[microservice]))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] blueprint: The blueprint of the scorecard
@@ -243,7 +339,103 @@ class Scorecard(pulumi.CustomResource):
                  args: ScorecardArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Scorecard resource with the given unique name, props, and options.
+        This resource allows you to manage a scorecard.
+
+        See the [Port documentation](https://docs.getport.io/promote-scorecards/) for more information about scorecards.
+
+        ## Example Usage
+
+        Create a parent blueprint with a child blueprint and an aggregation property to count the parent kids:
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_port as port
+
+        microservice = port.index.Port_blueprint("microservice",
+            title=microservice,
+            icon=Terraform,
+            identifier=microservice,
+            properties={
+                stringProps: {
+                    author: {
+                        title: Author,
+                    },
+                    url: {
+                        title: URL,
+                    },
+                },
+                booleanProps: {
+                    required: {
+                        type: boolean,
+                    },
+                },
+                numberProps: {
+                    sum: {
+                        type: number,
+                    },
+                },
+            })
+        readiness = port.index.Port_scorecard("readiness",
+            identifier=Readiness,
+            title=Readiness,
+            blueprint=microservice.identifier,
+            rules=[
+                {
+                    identifier: hasOwner,
+                    title: Has Owner,
+                    level: Gold,
+                    query: {
+                        combinator: and,
+                        conditions: [
+                            json.dumps({
+                                property: $team,
+                                operator: isNotEmpty,
+                            }),
+                            json.dumps({
+                                property: author,
+                                operator: =,
+                                value: myValue,
+                            }),
+                        ],
+                    },
+                },
+                {
+                    identifier: hasUrl,
+                    title: Has URL,
+                    level: Silver,
+                    query: {
+                        combinator: and,
+                        conditions: [json.dumps({
+                            property: url,
+                            operator: isNotEmpty,
+                        })],
+                    },
+                },
+                {
+                    identifier: checkSumIfRequired,
+                    title: Check Sum If Required,
+                    level: Bronze,
+                    query: {
+                        combinator: or,
+                        conditions: [
+                            json.dumps({
+                                property: required,
+                                operator: =,
+                                value: False,
+                            }),
+                            json.dumps({
+                                property: sum,
+                                operator: >,
+                                value: 2,
+                            }),
+                        ],
+                    },
+                },
+            ],
+            opts=pulumi.ResourceOptions(depends_on=[microservice]))
+        ```
+
         :param str resource_name: The name of the resource.
         :param ScorecardArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

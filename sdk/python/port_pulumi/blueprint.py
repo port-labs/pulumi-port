@@ -34,7 +34,6 @@ class BlueprintArgs:
         :param pulumi.Input[str] title: The display name of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintCalculationPropertiesArgs']]] calculation_properties: The calculation properties of the blueprint
         :param pulumi.Input[str] description: The description of the blueprint
-        :param pulumi.Input[bool] force_delete_entities: If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
         :param pulumi.Input[str] icon: The icon of the blueprint
         :param pulumi.Input['BlueprintKafkaChangelogDestinationArgs'] kafka_changelog_destination: The changelog destination of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintMirrorPropertiesArgs']]] mirror_properties: The mirror properties of the blueprint
@@ -117,9 +116,6 @@ class BlueprintArgs:
     @property
     @pulumi.getter(name="forceDeleteEntities")
     def force_delete_entities(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
-        """
         return pulumi.get(self, "force_delete_entities")
 
     @force_delete_entities.setter
@@ -236,7 +232,6 @@ class _BlueprintState:
         :param pulumi.Input[str] created_at: The creation date of the blueprint
         :param pulumi.Input[str] created_by: The creator of the blueprint
         :param pulumi.Input[str] description: The description of the blueprint
-        :param pulumi.Input[bool] force_delete_entities: If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
         :param pulumi.Input[str] icon: The icon of the blueprint
         :param pulumi.Input[str] identifier: The identifier of the blueprint
         :param pulumi.Input['BlueprintKafkaChangelogDestinationArgs'] kafka_changelog_destination: The changelog destination of the blueprint
@@ -333,9 +328,6 @@ class _BlueprintState:
     @property
     @pulumi.getter(name="forceDeleteEntities")
     def force_delete_entities(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
-        """
         return pulumi.get(self, "force_delete_entities")
 
     @force_delete_entities.setter
@@ -499,7 +491,6 @@ class Blueprint(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintCalculationPropertiesArgs']]]] calculation_properties: The calculation properties of the blueprint
         :param pulumi.Input[str] description: The description of the blueprint
-        :param pulumi.Input[bool] force_delete_entities: If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
         :param pulumi.Input[str] icon: The icon of the blueprint
         :param pulumi.Input[str] identifier: The identifier of the blueprint
         :param pulumi.Input[pulumi.InputType['BlueprintKafkaChangelogDestinationArgs']] kafka_changelog_destination: The changelog destination of the blueprint
@@ -611,7 +602,6 @@ class Blueprint(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: The creation date of the blueprint
         :param pulumi.Input[str] created_by: The creator of the blueprint
         :param pulumi.Input[str] description: The description of the blueprint
-        :param pulumi.Input[bool] force_delete_entities: If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
         :param pulumi.Input[str] icon: The icon of the blueprint
         :param pulumi.Input[str] identifier: The identifier of the blueprint
         :param pulumi.Input[pulumi.InputType['BlueprintKafkaChangelogDestinationArgs']] kafka_changelog_destination: The changelog destination of the blueprint
@@ -681,9 +671,6 @@ class Blueprint(pulumi.CustomResource):
     @property
     @pulumi.getter(name="forceDeleteEntities")
     def force_delete_entities(self) -> pulumi.Output[bool]:
-        """
-        If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
-        """
         return pulumi.get(self, "force_delete_entities")
 
     @property

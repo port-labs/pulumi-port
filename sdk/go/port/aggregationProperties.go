@@ -12,6 +12,416 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource allows you to manage aggregation properties of a blueprint.
+//
+// See the [Port documentation](https://docs.getport.io/build-your-software-catalog/define-your-data-model/setup-blueprint/properties/aggregation-properties/) for more information about aggregation properties.
+//
+// Supported Methods:
+//
+// - countEntities - Count the entities of the target blueprint
+// - averageEntities - Average the entities of the target blueprint by time periods
+// - averageByProperty - Calculate the average by property value of the target entities
+// - aggregateByProperty - Calculate the aggregate by property value of the target entities, such as sum, min, max, median
+//
+// ## Example Usage
+//
+// Create a parent blueprint with a child blueprint and an aggregation property to count the parent kids:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/port-labs/pulumi-port/sdk/go/port"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			parentBlueprint, err := port.NewPort_blueprint(ctx, "parentBlueprint", &port.Port_blueprintArgs{
+//				Title:       "Parent Blueprint",
+//				Icon:        "Terraform",
+//				Identifier:  "parent",
+//				Description: "",
+//				Properties: map[string]interface{}{
+//					"numberProps": map[string]interface{}{
+//						"age": map[string]interface{}{
+//							"title": "Age",
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			childBlueprint, err := port.NewPort_blueprint(ctx, "childBlueprint", &port.Port_blueprintArgs{
+//				Title:       "Child Blueprint",
+//				Icon:        "Terraform",
+//				Identifier:  "child",
+//				Description: "",
+//				Properties: map[string]interface{}{
+//					"numberProps": map[string]interface{}{
+//						"age": map[string]interface{}{
+//							"title": "Age",
+//						},
+//					},
+//				},
+//				Relations: map[string]interface{}{
+//					"parent": map[string]interface{}{
+//						"title":  "Parent",
+//						"target": parentBlueprint.Identifier,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = port.NewPort_aggregation_properties(ctx, "parentAggregationProperties", &port.Port_aggregation_propertiesArgs{
+//				BlueprintIdentifier: parentBlueprint.Identifier,
+//				Properties: map[string]interface{}{
+//					"count_kids": map[string]interface{}{
+//						"targetBlueprintIdentifier": childBlueprint.Identifier,
+//						"title":                     "Count Kids",
+//						"icon":                      "Terraform",
+//						"description":               "Count Kids",
+//						"method": map[string]interface{}{
+//							"countEntities": true,
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Create a parent blueprint with a child blueprint and an aggregation property to calculate the average avg of the parent kids age:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/port-labs/pulumi-port/sdk/go/port"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			parentBlueprint, err := port.NewPort_blueprint(ctx, "parentBlueprint", &port.Port_blueprintArgs{
+//				Title:       "Parent Blueprint",
+//				Icon:        "Terraform",
+//				Identifier:  "parent",
+//				Description: "",
+//				Properties: map[string]interface{}{
+//					"numberProps": map[string]interface{}{
+//						"age": map[string]interface{}{
+//							"title": "Age",
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			childBlueprint, err := port.NewPort_blueprint(ctx, "childBlueprint", &port.Port_blueprintArgs{
+//				Title:       "Child Blueprint",
+//				Icon:        "Terraform",
+//				Identifier:  "child",
+//				Description: "",
+//				Properties: map[string]interface{}{
+//					"numberProps": map[string]interface{}{
+//						"age": map[string]interface{}{
+//							"title": "Age",
+//						},
+//					},
+//				},
+//				Relations: map[string]interface{}{
+//					"parent": map[string]interface{}{
+//						"title":  "Parent",
+//						"target": parentBlueprint.Identifier,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = port.NewPort_aggregation_properties(ctx, "parentAggregationProperties", &port.Port_aggregation_propertiesArgs{
+//				BlueprintIdentifier: parentBlueprint.Identifier,
+//				Properties: map[string]interface{}{
+//					"averageKidsAge": map[string]interface{}{
+//						"targetBlueprintIdentifier": childBlueprint.Identifier,
+//						"title":                     "Average Kids Age",
+//						"icon":                      "Terraform",
+//						"description":               "Average Kids Age",
+//						"method": map[string]interface{}{
+//							"averageByProperty": map[string]interface{}{
+//								"averageOf":     "total",
+//								"measureTimeBy": "$createdAt",
+//								"property":      "age",
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Create a repository blueprint and a pull request blueprint and an aggregation property to calculate the average of pull requests created per day:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/port-labs/pulumi-port/sdk/go/port"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			repositoryBlueprint, err := port.NewPort_blueprint(ctx, "repositoryBlueprint", &port.Port_blueprintArgs{
+//				Title:       "Repository Blueprint",
+//				Icon:        "Terraform",
+//				Identifier:  "repository",
+//				Description: "",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pullRequestBlueprint, err := port.NewPort_blueprint(ctx, "pullRequestBlueprint", &port.Port_blueprintArgs{
+//				Title:       "Pull Request Blueprint",
+//				Icon:        "Terraform",
+//				Identifier:  "pull_request",
+//				Description: "",
+//				Properties: map[string]interface{}{
+//					"stringProps": map[string]interface{}{
+//						"status": map[string]interface{}{
+//							"title": "Status",
+//						},
+//					},
+//				},
+//				Relations: map[string]interface{}{
+//					"repository": map[string]interface{}{
+//						"title":  "Repository",
+//						"target": repositoryBlueprint.Identifier,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = port.NewPort_aggregation_properties(ctx, "repositoryAggregationProperties", &port.Port_aggregation_propertiesArgs{
+//				BlueprintIdentifier: repositoryBlueprint.Identifier,
+//				Properties: map[string]interface{}{
+//					"pull_requests_per_day": map[string]interface{}{
+//						"targetBlueprintIdentifier": pullRequestBlueprint.Identifier,
+//						"title":                     "Pull Requests Per Day",
+//						"icon":                      "Terraform",
+//						"description":               "Pull Requests Per Day",
+//						"method": map[string]interface{}{
+//							"averageEntities": map[string]interface{}{
+//								"averageOf":     "day",
+//								"measureTimeBy": "$createdAt",
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Create a repository blueprint and a pull request blueprint and an aggregation property to calculate the average of fix pull request per month:
+//
+// To do that we will add a query to the aggregation property to filter only pull requests with fixed title:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/port-labs/pulumi-port/sdk/go/port"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// repositoryBlueprint, err := port.NewPort_blueprint(ctx, "repositoryBlueprint", &port.Port_blueprintArgs{
+// Title: "Repository Blueprint",
+// Icon: "Terraform",
+// Identifier: "repository",
+// Description: "",
+// })
+// if err != nil {
+// return err
+// }
+// pullRequestBlueprint, err := port.NewPort_blueprint(ctx, "pullRequestBlueprint", &port.Port_blueprintArgs{
+// Title: "Pull Request Blueprint",
+// Icon: "Terraform",
+// Identifier: "pull_request",
+// Description: "",
+// Properties: map[string]interface{}{
+// "stringProps": map[string]interface{}{
+// "status": map[string]interface{}{
+// "title": "Status",
+// },
+// },
+// },
+// Relations: map[string]interface{}{
+// "repository": map[string]interface{}{
+// "title": "Repository",
+// "target": repositoryBlueprint.Identifier,
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// _, err = port.NewPort_aggregation_properties(ctx, "repositoryAggregationProperties", &port.Port_aggregation_propertiesArgs{
+// BlueprintIdentifier: repositoryBlueprint.Identifier,
+// Properties: tmpJSON0, err := json.Marshal(map[string]interface{}{
+// "combinator": "and",
+// "rules": []map[string]interface{}{
+// map[string]interface{}{
+// "property": "$title",
+// "operator": "ContainsAny",
+// "value": []string{
+// "fix",
+// "fixed",
+// "fixing",
+// "Fix",
+// },
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// json0 := string(tmpJSON0)
+// map[string]interface{}{
+// "fix_pull_requests_count": map[string]interface{}{
+// "targetBlueprintIdentifier": pullRequestBlueprint.Identifier,
+// "title": "Pull Requests Per Day",
+// "icon": "Terraform",
+// "description": "Pull Requests Per Day",
+// "method": map[string]interface{}{
+// "averageEntities": map[string]interface{}{
+// "averageOf": "month",
+// "measureTimeBy": "$createdAt",
+// },
+// },
+// "query": json0,
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+//
+// Create multiple aggregation properties in one resource:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/port-labs/pulumi-port/sdk/go/port"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			repositoryBlueprint, err := port.NewPort_blueprint(ctx, "repositoryBlueprint", &port.Port_blueprintArgs{
+//				Title:       "Repository Blueprint",
+//				Icon:        "Terraform",
+//				Identifier:  "repository",
+//				Description: "",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pullRequestBlueprint, err := port.NewPort_blueprint(ctx, "pullRequestBlueprint", &port.Port_blueprintArgs{
+//				Title:       "Pull Request Blueprint",
+//				Icon:        "Terraform",
+//				Identifier:  "pull_request",
+//				Description: "",
+//				Properties: map[string]interface{}{
+//					"stringProps": map[string]interface{}{
+//						"status": map[string]interface{}{
+//							"title": "Status",
+//						},
+//					},
+//				},
+//				Relations: map[string]interface{}{
+//					"repository": map[string]interface{}{
+//						"title":  "Repository",
+//						"target": repositoryBlueprint.Identifier,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = port.NewPort_aggregation_properties(ctx, "repositoryAggregationProperties", &port.Port_aggregation_propertiesArgs{
+//				BlueprintIdentifier: repositoryBlueprint.Identifier,
+//				Properties: map[string]interface{}{
+//					"pull_requests_per_day": map[string]interface{}{
+//						"targetBlueprintIdentifier": pullRequestBlueprint.Identifier,
+//						"title":                     "Pull Requests Per Day",
+//						"icon":                      "Terraform",
+//						"description":               "Pull Requests Per Day",
+//						"method": map[string]interface{}{
+//							"averageEntities": map[string]interface{}{
+//								"averageOf":     "day",
+//								"measureTimeBy": "$createdAt",
+//							},
+//						},
+//					},
+//					"overall_pull_requests_count": map[string]interface{}{
+//						"targetBlueprintIdentifier": pullRequestBlueprint.Identifier,
+//						"title":                     "Overall Pull Requests Count",
+//						"icon":                      "Terraform",
+//						"description":               "Overall Pull Requests Count",
+//						"method": map[string]interface{}{
+//							"countEntities": true,
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type AggregationProperties struct {
 	pulumi.CustomResourceState
 

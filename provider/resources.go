@@ -20,7 +20,7 @@ import (
 	"path/filepath"
 	"unicode"
 
-	"github.com/port-labs/pulumi-port/provider/pkg/version"
+	"github.com/port-labs/pulumi-port/provider/v2/pkg/version"
 	port "github.com/port-labs/terraform-provider-port-labs/provider"
 	portVersion "github.com/port-labs/terraform-provider-port-labs/version"
 	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
@@ -69,7 +69,7 @@ func Provider() tfbridge.ProviderInfo {
 	portVersion.ProviderVersion = "pulumi-provider-port-labs/" + version.Version
 	info := tfbridge.ProviderInfo{
 		P:                 pf.ShimProvider(port.New()),
-		Name:              "port",
+		Name:              "port-labs",
 		DisplayName:       "Port",
 		Publisher:         "port-labs",
 		LogoURL:           "",

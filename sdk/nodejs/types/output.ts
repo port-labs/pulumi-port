@@ -25,20 +25,16 @@ export interface ActionAzureMethod {
      */
     org: string;
     /**
+     * The Azure Devops workflow payload (array or object encoded to a string)
+     */
+    payload?: string;
+    /**
      * Required when selecting type AZURE. The Azure webhook that the workflow belongs to
      */
     webhook: string;
 }
 
 export interface ActionGithubMethod {
-    /**
-     * Omit the payload when invoking the action
-     */
-    omitPayload: boolean;
-    /**
-     * Omit the user inputs when invoking the action
-     */
-    omitUserInputs: boolean;
     /**
      * Required when selecting type GITHUB. The GitHub org that the workflow belongs to
      */
@@ -50,18 +46,18 @@ export interface ActionGithubMethod {
     /**
      * Report the workflow status when invoking the action
      */
-    reportWorkflowStatus?: boolean;
+    reportWorkflowStatus?: string;
     /**
      * The GitHub workflow that the action belongs to
      */
     workflow: string;
+    /**
+     * The GitHub workflow inputs (key-value object encoded to a string)
+     */
+    workflowInputs?: string;
 }
 
 export interface ActionGitlabMethod {
-    /**
-     * Use the agent to invoke the action
-     */
-    agent: boolean;
     /**
      * The default ref of the action
      */
@@ -71,13 +67,9 @@ export interface ActionGitlabMethod {
      */
     groupName: string;
     /**
-     * Omit the payload when invoking the action
+     * The Gitlab pipeline variables (key-value object encoded to a string)
      */
-    omitPayload: boolean;
-    /**
-     * Omit the user inputs when invoking the action
-     */
-    omitUserInputs: boolean;
+    pipelineVariables?: string;
     /**
      * Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
      */
@@ -85,6 +77,10 @@ export interface ActionGitlabMethod {
 }
 
 export interface ActionKafkaMethod {
+    /**
+     * The Kafka message payload (array or object encoded to a string)
+     */
+    payload?: string;
 }
 
 export interface ActionPermissionsPermissions {
@@ -140,34 +136,57 @@ export interface ActionPermissionsPermissionsExecute {
     users: string[];
 }
 
-export interface ActionUserProperties {
+export interface ActionSelfServiceTrigger {
+    /**
+     * The ID of the blueprint
+     */
+    blueprintIdentifier?: string;
+    /**
+     * The operation type of the action
+     */
+    operation: string;
+    /**
+     * Order properties
+     */
+    orderProperties?: string[];
+    /**
+     * The required jq query of the property
+     */
+    requiredJqQuery?: string;
+    /**
+     * User properties
+     */
+    userProperties: outputs.ActionSelfServiceTriggerUserProperties;
+}
+
+export interface ActionSelfServiceTriggerUserProperties {
     /**
      * The array property of the action
      */
-    arrayProps?: {[key: string]: outputs.ActionUserPropertiesArrayProps};
+    arrayProps?: {[key: string]: outputs.ActionSelfServiceTriggerUserPropertiesArrayProps};
     /**
      * The boolean property of the action
      */
-    booleanProps?: {[key: string]: outputs.ActionUserPropertiesBooleanProps};
+    booleanProps?: {[key: string]: outputs.ActionSelfServiceTriggerUserPropertiesBooleanProps};
     /**
      * The number property of the action
      */
-    numberProps?: {[key: string]: outputs.ActionUserPropertiesNumberProps};
+    numberProps?: {[key: string]: outputs.ActionSelfServiceTriggerUserPropertiesNumberProps};
     /**
      * The object property of the action
      */
-    objectProps?: {[key: string]: outputs.ActionUserPropertiesObjectProps};
+    objectProps?: {[key: string]: outputs.ActionSelfServiceTriggerUserPropertiesObjectProps};
     /**
      * The string property of the action
      */
-    stringProps?: {[key: string]: outputs.ActionUserPropertiesStringProps};
+    stringProps?: {[key: string]: outputs.ActionSelfServiceTriggerUserPropertiesStringProps};
 }
 
-export interface ActionUserPropertiesArrayProps {
+export interface ActionSelfServiceTriggerUserPropertiesArrayProps {
     /**
      * The items of the array property
      */
-    booleanItems?: outputs.ActionUserPropertiesArrayPropsBooleanItems;
+    booleanItems?: outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems;
     /**
      * The default jq query of the array property
      */
@@ -195,11 +214,11 @@ export interface ActionUserPropertiesArrayProps {
     /**
      * The items of the array property
      */
-    numberItems?: outputs.ActionUserPropertiesArrayPropsNumberItems;
+    numberItems?: outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems;
     /**
      * The items of the array property
      */
-    objectItems?: outputs.ActionUserPropertiesArrayPropsObjectItems;
+    objectItems?: outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems;
     /**
      * Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
      */
@@ -207,7 +226,7 @@ export interface ActionUserPropertiesArrayProps {
     /**
      * The items of the array property
      */
-    stringItems?: outputs.ActionUserPropertiesArrayPropsStringItems;
+    stringItems?: outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems;
     /**
      * The title of the property
      */
@@ -222,14 +241,14 @@ export interface ActionUserPropertiesArrayProps {
     visibleJqQuery?: string;
 }
 
-export interface ActionUserPropertiesArrayPropsBooleanItems {
+export interface ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems {
     /**
      * The default of the items
      */
     defaults?: boolean[];
 }
 
-export interface ActionUserPropertiesArrayPropsNumberItems {
+export interface ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems {
     /**
      * The default of the items
      */
@@ -244,16 +263,16 @@ export interface ActionUserPropertiesArrayPropsNumberItems {
     enums?: number[];
 }
 
-export interface ActionUserPropertiesArrayPropsObjectItems {
+export interface ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems {
     /**
      * The default of the items
      */
     defaults?: {[key: string]: string}[];
 }
 
-export interface ActionUserPropertiesArrayPropsStringItems {
+export interface ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems {
     /**
-     * The blueprint identifier the property relates to
+     * The blueprint identifier the action relates to
      */
     blueprint?: string;
     /**
@@ -278,7 +297,7 @@ export interface ActionUserPropertiesArrayPropsStringItems {
     format?: string;
 }
 
-export interface ActionUserPropertiesBooleanProps {
+export interface ActionSelfServiceTriggerUserPropertiesBooleanProps {
     /**
      * The default of the boolean property
      */
@@ -317,7 +336,7 @@ export interface ActionUserPropertiesBooleanProps {
     visibleJqQuery?: string;
 }
 
-export interface ActionUserPropertiesNumberProps {
+export interface ActionSelfServiceTriggerUserPropertiesNumberProps {
     /**
      * The default of the number property
      */
@@ -372,7 +391,7 @@ export interface ActionUserPropertiesNumberProps {
     visibleJqQuery?: string;
 }
 
-export interface ActionUserPropertiesObjectProps {
+export interface ActionSelfServiceTriggerUserPropertiesObjectProps {
     /**
      * The default of the object property
      */
@@ -415,7 +434,7 @@ export interface ActionUserPropertiesObjectProps {
     visibleJqQuery?: string;
 }
 
-export interface ActionUserPropertiesStringProps {
+export interface ActionSelfServiceTriggerUserPropertiesStringProps {
     /**
      * The blueprint identifier the string property relates to
      */
@@ -423,7 +442,7 @@ export interface ActionUserPropertiesStringProps {
     /**
      * The dataset of an the entity-format property
      */
-    dataset?: outputs.ActionUserPropertiesStringPropsDataset;
+    dataset?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDataset;
     /**
      * The default of the string property
      */
@@ -490,7 +509,7 @@ export interface ActionUserPropertiesStringProps {
     visibleJqQuery?: string;
 }
 
-export interface ActionUserPropertiesStringPropsDataset {
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDataset {
     /**
      * The combinator of the dataset
      */
@@ -498,12 +517,12 @@ export interface ActionUserPropertiesStringPropsDataset {
     /**
      * The rules of the dataset
      */
-    rules: outputs.ActionUserPropertiesStringPropsDatasetRule[];
+    rules: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule[];
 }
 
-export interface ActionUserPropertiesStringPropsDatasetRule {
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule {
     /**
-     * The blueprint identifier of the rule
+     * The blueprint identifier the action relates to
      */
     blueprint?: string;
     /**
@@ -517,10 +536,10 @@ export interface ActionUserPropertiesStringPropsDatasetRule {
     /**
      * The value of the rule
      */
-    value: outputs.ActionUserPropertiesStringPropsDatasetRuleValue;
+    value: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue;
 }
 
-export interface ActionUserPropertiesStringPropsDatasetRuleValue {
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue {
     jqQuery: string;
 }
 
@@ -528,7 +547,15 @@ export interface ActionWebhookMethod {
     /**
      * Use the agent to invoke the action
      */
-    agent?: boolean;
+    agent?: string;
+    /**
+     * The Webhook body (array or object encoded to a string)
+     */
+    body?: string;
+    /**
+     * The HTTP method to invoke the action
+     */
+    headers?: {[key: string]: string};
     /**
      * The HTTP method to invoke the action
      */
@@ -536,7 +563,7 @@ export interface ActionWebhookMethod {
     /**
      * Synchronize the action
      */
-    synchronized?: boolean;
+    synchronized?: string;
     /**
      * Required when selecting type WEBHOOK. The URL to invoke the action
      */
@@ -553,7 +580,7 @@ export interface AggregationPropertiesProperties {
      */
     icon?: string;
     /**
-     * The aggregation method to perform on the target blueprint, one of count_entities, average_entities, average_by_property, aggregate_by_property
+     * The aggregation method to perform on the target blueprint, one of count*entities, average*entities, average*by*property, aggregate*by*property
      */
     method: outputs.AggregationPropertiesPropertiesMethod;
     /**
@@ -677,24 +704,24 @@ export interface BlueprintMirrorProperties {
 
 export interface BlueprintPermissionsEntities {
     /**
-     * Manage permissions to register entities of the blueprint
+     * Enable permissions to register entities of the blueprint
      */
     register: outputs.BlueprintPermissionsEntitiesRegister;
     /**
-     * Manage permissions to unregister entities of the blueprint
+     * Enable permissions to unregister entities of the blueprint
      */
     unregister: outputs.BlueprintPermissionsEntitiesUnregister;
     /**
-     * Manage permissions to update entities of the blueprint
+     * Enable permissions to update entities of the blueprint
      */
     update: outputs.BlueprintPermissionsEntitiesUpdate;
     updateMetadataProperties: outputs.BlueprintPermissionsEntitiesUpdateMetadataProperties;
     /**
-     * Manage permissions to update the entity properties
+     * Enable permissions to update the entity properties
      */
     updateProperties?: {[key: string]: outputs.BlueprintPermissionsEntitiesUpdateProperties};
     /**
-     * Manage permissions to update the entity relations
+     * Enable permissions to update the entity relations
      */
     updateRelations?: {[key: string]: outputs.BlueprintPermissionsEntitiesUpdateRelations};
 }

@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Webhook resource
 type Webhook struct {
 	pulumi.CustomResourceState
 

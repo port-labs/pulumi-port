@@ -17,17 +17,21 @@ __all__ = ['ActionPermissionsArgs', 'ActionPermissions']
 class ActionPermissionsArgs:
     def __init__(__self__, *,
                  action_identifier: pulumi.Input[str],
-                 blueprint_identifier: pulumi.Input[str],
-                 permissions: pulumi.Input['ActionPermissionsPermissionsArgs']):
+                 permissions: pulumi.Input['ActionPermissionsPermissionsArgs'],
+                 blueprint_identifier: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ActionPermissions resource.
         :param pulumi.Input[str] action_identifier: The ID of the action
-        :param pulumi.Input[str] blueprint_identifier: The ID of the blueprint
         :param pulumi.Input['ActionPermissionsPermissionsArgs'] permissions: The permissions for the action
+        :param pulumi.Input[str] blueprint_identifier: The ID of the blueprint
         """
         pulumi.set(__self__, "action_identifier", action_identifier)
-        pulumi.set(__self__, "blueprint_identifier", blueprint_identifier)
         pulumi.set(__self__, "permissions", permissions)
+        if blueprint_identifier is not None:
+            warnings.warn("""Action is not attached to blueprint anymore. This value is ignored""", DeprecationWarning)
+            pulumi.log.warn("""blueprint_identifier is deprecated: Action is not attached to blueprint anymore. This value is ignored""")
+        if blueprint_identifier is not None:
+            pulumi.set(__self__, "blueprint_identifier", blueprint_identifier)
 
     @property
     @pulumi.getter(name="actionIdentifier")
@@ -42,18 +46,6 @@ class ActionPermissionsArgs:
         pulumi.set(self, "action_identifier", value)
 
     @property
-    @pulumi.getter(name="blueprintIdentifier")
-    def blueprint_identifier(self) -> pulumi.Input[str]:
-        """
-        The ID of the blueprint
-        """
-        return pulumi.get(self, "blueprint_identifier")
-
-    @blueprint_identifier.setter
-    def blueprint_identifier(self, value: pulumi.Input[str]):
-        pulumi.set(self, "blueprint_identifier", value)
-
-    @property
     @pulumi.getter
     def permissions(self) -> pulumi.Input['ActionPermissionsPermissionsArgs']:
         """
@@ -64,6 +56,21 @@ class ActionPermissionsArgs:
     @permissions.setter
     def permissions(self, value: pulumi.Input['ActionPermissionsPermissionsArgs']):
         pulumi.set(self, "permissions", value)
+
+    @property
+    @pulumi.getter(name="blueprintIdentifier")
+    def blueprint_identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the blueprint
+        """
+        warnings.warn("""Action is not attached to blueprint anymore. This value is ignored""", DeprecationWarning)
+        pulumi.log.warn("""blueprint_identifier is deprecated: Action is not attached to blueprint anymore. This value is ignored""")
+
+        return pulumi.get(self, "blueprint_identifier")
+
+    @blueprint_identifier.setter
+    def blueprint_identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint_identifier", value)
 
 
 @pulumi.input_type
@@ -80,6 +87,9 @@ class _ActionPermissionsState:
         """
         if action_identifier is not None:
             pulumi.set(__self__, "action_identifier", action_identifier)
+        if blueprint_identifier is not None:
+            warnings.warn("""Action is not attached to blueprint anymore. This value is ignored""", DeprecationWarning)
+            pulumi.log.warn("""blueprint_identifier is deprecated: Action is not attached to blueprint anymore. This value is ignored""")
         if blueprint_identifier is not None:
             pulumi.set(__self__, "blueprint_identifier", blueprint_identifier)
         if permissions is not None:
@@ -103,6 +113,9 @@ class _ActionPermissionsState:
         """
         The ID of the blueprint
         """
+        warnings.warn("""Action is not attached to blueprint anymore. This value is ignored""", DeprecationWarning)
+        pulumi.log.warn("""blueprint_identifier is deprecated: Action is not attached to blueprint anymore. This value is ignored""")
+
         return pulumi.get(self, "blueprint_identifier")
 
     @blueprint_identifier.setter
@@ -177,8 +190,6 @@ class ActionPermissions(pulumi.CustomResource):
             if action_identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'action_identifier'")
             __props__.__dict__["action_identifier"] = action_identifier
-            if blueprint_identifier is None and not opts.urn:
-                raise TypeError("Missing required property 'blueprint_identifier'")
             __props__.__dict__["blueprint_identifier"] = blueprint_identifier
             if permissions is None and not opts.urn:
                 raise TypeError("Missing required property 'permissions'")
@@ -226,10 +237,13 @@ class ActionPermissions(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="blueprintIdentifier")
-    def blueprint_identifier(self) -> pulumi.Output[str]:
+    def blueprint_identifier(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the blueprint
         """
+        warnings.warn("""Action is not attached to blueprint anymore. This value is ignored""", DeprecationWarning)
+        pulumi.log.warn("""blueprint_identifier is deprecated: Action is not attached to blueprint anymore. This value is ignored""")
+
         return pulumi.get(self, "blueprint_identifier")
 
     @property
