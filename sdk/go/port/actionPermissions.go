@@ -18,7 +18,9 @@ type ActionPermissions struct {
 	// The ID of the action
 	ActionIdentifier pulumi.StringOutput `pulumi:"actionIdentifier"`
 	// The ID of the blueprint
-	BlueprintIdentifier pulumi.StringOutput `pulumi:"blueprintIdentifier"`
+	//
+	// Deprecated: Action is not attached to blueprint anymore. This value is ignored
+	BlueprintIdentifier pulumi.StringPtrOutput `pulumi:"blueprintIdentifier"`
 	// The permissions for the action
 	Permissions ActionPermissionsPermissionsOutput `pulumi:"permissions"`
 }
@@ -32,9 +34,6 @@ func NewActionPermissions(ctx *pulumi.Context,
 
 	if args.ActionIdentifier == nil {
 		return nil, errors.New("invalid value for required argument 'ActionIdentifier'")
-	}
-	if args.BlueprintIdentifier == nil {
-		return nil, errors.New("invalid value for required argument 'BlueprintIdentifier'")
 	}
 	if args.Permissions == nil {
 		return nil, errors.New("invalid value for required argument 'Permissions'")
@@ -65,6 +64,8 @@ type actionPermissionsState struct {
 	// The ID of the action
 	ActionIdentifier *string `pulumi:"actionIdentifier"`
 	// The ID of the blueprint
+	//
+	// Deprecated: Action is not attached to blueprint anymore. This value is ignored
 	BlueprintIdentifier *string `pulumi:"blueprintIdentifier"`
 	// The permissions for the action
 	Permissions *ActionPermissionsPermissions `pulumi:"permissions"`
@@ -74,6 +75,8 @@ type ActionPermissionsState struct {
 	// The ID of the action
 	ActionIdentifier pulumi.StringPtrInput
 	// The ID of the blueprint
+	//
+	// Deprecated: Action is not attached to blueprint anymore. This value is ignored
 	BlueprintIdentifier pulumi.StringPtrInput
 	// The permissions for the action
 	Permissions ActionPermissionsPermissionsPtrInput
@@ -87,7 +90,9 @@ type actionPermissionsArgs struct {
 	// The ID of the action
 	ActionIdentifier string `pulumi:"actionIdentifier"`
 	// The ID of the blueprint
-	BlueprintIdentifier string `pulumi:"blueprintIdentifier"`
+	//
+	// Deprecated: Action is not attached to blueprint anymore. This value is ignored
+	BlueprintIdentifier *string `pulumi:"blueprintIdentifier"`
 	// The permissions for the action
 	Permissions ActionPermissionsPermissions `pulumi:"permissions"`
 }
@@ -97,7 +102,9 @@ type ActionPermissionsArgs struct {
 	// The ID of the action
 	ActionIdentifier pulumi.StringInput
 	// The ID of the blueprint
-	BlueprintIdentifier pulumi.StringInput
+	//
+	// Deprecated: Action is not attached to blueprint anymore. This value is ignored
+	BlueprintIdentifier pulumi.StringPtrInput
 	// The permissions for the action
 	Permissions ActionPermissionsPermissionsInput
 }
@@ -195,8 +202,10 @@ func (o ActionPermissionsOutput) ActionIdentifier() pulumi.StringOutput {
 }
 
 // The ID of the blueprint
-func (o ActionPermissionsOutput) BlueprintIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v *ActionPermissions) pulumi.StringOutput { return v.BlueprintIdentifier }).(pulumi.StringOutput)
+//
+// Deprecated: Action is not attached to blueprint anymore. This value is ignored
+func (o ActionPermissionsOutput) BlueprintIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionPermissions) pulumi.StringPtrOutput { return v.BlueprintIdentifier }).(pulumi.StringPtrOutput)
 }
 
 // The permissions for the action

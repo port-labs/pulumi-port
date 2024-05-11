@@ -6,6 +6,106 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * This resource allows you to manage a scorecard.
+ *
+ * See the [Port documentation](https://docs.getport.io/promote-scorecards/) for more information about scorecards.
+ *
+ * ## Example Usage
+ *
+ * Create a parent blueprint with a child blueprint and an aggregation property to count the parent kids:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as port from "@pulumi/port";
+ *
+ * const microservice = new port.index.Port_blueprint("microservice", {
+ *     title: "microservice",
+ *     icon: "Terraform",
+ *     identifier: "microservice",
+ *     properties: {
+ *         stringProps: {
+ *             author: {
+ *                 title: "Author",
+ *             },
+ *             url: {
+ *                 title: "URL",
+ *             },
+ *         },
+ *         booleanProps: {
+ *             required: {
+ *                 type: "boolean",
+ *             },
+ *         },
+ *         numberProps: {
+ *             sum: {
+ *                 type: "number",
+ *             },
+ *         },
+ *     },
+ * });
+ * const readiness = new port.index.Port_scorecard("readiness", {
+ *     identifier: "Readiness",
+ *     title: "Readiness",
+ *     blueprint: microservice.identifier,
+ *     rules: [
+ *         {
+ *             identifier: "hasOwner",
+ *             title: "Has Owner",
+ *             level: "Gold",
+ *             query: {
+ *                 combinator: "and",
+ *                 conditions: [
+ *                     JSON.stringify({
+ *                         property: "$team",
+ *                         operator: "isNotEmpty",
+ *                     }),
+ *                     JSON.stringify({
+ *                         property: "author",
+ *                         operator: "=",
+ *                         value: "myValue",
+ *                     }),
+ *                 ],
+ *             },
+ *         },
+ *         {
+ *             identifier: "hasUrl",
+ *             title: "Has URL",
+ *             level: "Silver",
+ *             query: {
+ *                 combinator: "and",
+ *                 conditions: [JSON.stringify({
+ *                     property: "url",
+ *                     operator: "isNotEmpty",
+ *                 })],
+ *             },
+ *         },
+ *         {
+ *             identifier: "checkSumIfRequired",
+ *             title: "Check Sum If Required",
+ *             level: "Bronze",
+ *             query: {
+ *                 combinator: "or",
+ *                 conditions: [
+ *                     JSON.stringify({
+ *                         property: "required",
+ *                         operator: "=",
+ *                         value: false,
+ *                     }),
+ *                     JSON.stringify({
+ *                         property: "sum",
+ *                         operator: ">",
+ *                         value: 2,
+ *                     }),
+ *                 ],
+ *             },
+ *         },
+ *     ],
+ * }, {
+ *     dependsOn: [microservice],
+ * });
+ * ```
+ */
 export class Scorecard extends pulumi.CustomResource {
     /**
      * Get an existing Scorecard resource's state with the given name, ID, and optional extra

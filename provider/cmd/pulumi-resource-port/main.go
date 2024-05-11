@@ -19,7 +19,7 @@ package main
 import (
 	"context"
 	_ "embed"
-	port "github.com/port-labs/pulumi-port/provider"
+	port "github.com/port-labs/pulumi-port/provider/v2"
 	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 )
 

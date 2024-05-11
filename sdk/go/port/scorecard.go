@@ -12,6 +12,149 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource allows you to manage a scorecard.
+//
+// See the [Port documentation](https://docs.getport.io/promote-scorecards/) for more information about scorecards.
+//
+// ## Example Usage
+//
+// Create a parent blueprint with a child blueprint and an aggregation property to count the parent kids:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/port-labs/pulumi-port/sdk/go/port"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// microservice, err := port.NewPort_blueprint(ctx, "microservice", &port.Port_blueprintArgs{
+// Title: "microservice",
+// Icon: "Terraform",
+// Identifier: "microservice",
+// Properties: map[string]interface{}{
+// "stringProps": map[string]interface{}{
+// "author": map[string]interface{}{
+// "title": "Author",
+// },
+// "url": map[string]interface{}{
+// "title": "URL",
+// },
+// },
+// "booleanProps": map[string]interface{}{
+// "required": map[string]interface{}{
+// "type": "boolean",
+// },
+// },
+// "numberProps": map[string]interface{}{
+// "sum": map[string]interface{}{
+// "type": "number",
+// },
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// _, err = port.NewPort_scorecard(ctx, "readiness", &port.Port_scorecardArgs{
+// Identifier: "Readiness",
+// Title: "Readiness",
+// Blueprint: microservice.Identifier,
+// Rules: tmpJSON0, err := json.Marshal(map[string]interface{}{
+// "property": "$team",
+// "operator": "isNotEmpty",
+// })
+// if err != nil {
+// return err
+// }
+// json0 := string(tmpJSON0)
+// tmpJSON1, err := json.Marshal(map[string]interface{}{
+// "property": "author",
+// "operator": "=",
+// "value": "myValue",
+// })
+// if err != nil {
+// return err
+// }
+// json1 := string(tmpJSON1)
+// tmpJSON2, err := json.Marshal(map[string]interface{}{
+// "property": "url",
+// "operator": "isNotEmpty",
+// })
+// if err != nil {
+// return err
+// }
+// json2 := string(tmpJSON2)
+// tmpJSON3, err := json.Marshal(map[string]interface{}{
+// "property": "required",
+// "operator": "=",
+// "value": false,
+// })
+// if err != nil {
+// return err
+// }
+// json3 := string(tmpJSON3)
+// tmpJSON4, err := json.Marshal(map[string]interface{}{
+// "property": "sum",
+// "operator": ">",
+// "value": 2,
+// })
+// if err != nil {
+// return err
+// }
+// json4 := string(tmpJSON4)
+// []interface{}{
+// map[string]interface{}{
+// "identifier": "hasOwner",
+// "title": "Has Owner",
+// "level": "Gold",
+// "query": map[string]interface{}{
+// "combinator": "and",
+// "conditions": []string{
+// json0,
+// json1,
+// },
+// },
+// },
+// map[string]interface{}{
+// "identifier": "hasUrl",
+// "title": "Has URL",
+// "level": "Silver",
+// "query": map[string]interface{}{
+// "combinator": "and",
+// "conditions": []string{
+// json2,
+// },
+// },
+// },
+// map[string]interface{}{
+// "identifier": "checkSumIfRequired",
+// "title": "Check Sum If Required",
+// "level": "Bronze",
+// "query": map[string]interface{}{
+// "combinator": "or",
+// "conditions": []string{
+// json3,
+// json4,
+// },
+// },
+// },
+// },
+// }, pulumi.DependsOn([]pulumi.Resource{
+// microservice,
+// }))
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
 type Scorecard struct {
 	pulumi.CustomResourceState
 

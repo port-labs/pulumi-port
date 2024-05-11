@@ -50,9 +50,6 @@ export class Blueprint extends pulumi.CustomResource {
      * The description of the blueprint
      */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
-     */
     public readonly forceDeleteEntities!: pulumi.Output<boolean>;
     /**
      * The icon of the blueprint
@@ -178,9 +175,6 @@ export interface BlueprintState {
      * The description of the blueprint
      */
     description?: pulumi.Input<string>;
-    /**
-     * If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
-     */
     forceDeleteEntities?: pulumi.Input<boolean>;
     /**
      * The icon of the blueprint
@@ -240,9 +234,6 @@ export interface BlueprintArgs {
      * The description of the blueprint
      */
     description?: pulumi.Input<string>;
-    /**
-     * If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform
-     */
     forceDeleteEntities?: pulumi.Input<boolean>;
     /**
      * The icon of the blueprint

@@ -6,6 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Webhook resource
+ */
 export class Webhook extends pulumi.CustomResource {
     /**
      * Get an existing Webhook resource's state with the given name, ID, and optional extra

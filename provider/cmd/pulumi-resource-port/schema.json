@@ -9,7 +9,7 @@
     ],
     "homepage": "https://www.pulumi.com",
     "license": "Apache-2.0",
-    "attribution": "This Pulumi package is based on the [`port` Terraform Provider](https://github.com/port-labs/terraform-provider-port).",
+    "attribution": "This Pulumi package is based on the [`port-labs` Terraform Provider](https://github.com/port-labs/terraform-provider-port-labs).",
     "repository": "https://github.com/port-labs/pulumi-port",
     "pluginDownloadURL": "github://api.github.com/port-labs/pulumi-port",
     "publisher": "port-labs",
@@ -32,7 +32,7 @@
         "nodejs": {
             "packageName": "@port-labs/port",
             "packageDescription": "A Pulumi package for creating and managing Port resources.",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/port-labs/terraform-provider-port)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-port` repo](https://github.com/port-labs/pulumi-port/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-port` repo](https://github.com/port-labs/terraform-provider-port/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/port-labs/terraform-provider-port-labs)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-port` repo](https://github.com/port-labs/pulumi-port/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-port-labs` repo](https://github.com/port-labs/terraform-provider-port-labs/issues).",
             "dependencies": {
                 "@pulumi/pulumi": "^3.0.0"
             },
@@ -48,7 +48,7 @@
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
             },
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/port-labs/terraform-provider-port)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-port` repo](https://github.com/port-labs/pulumi-port/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-port` repo](https://github.com/port-labs/terraform-provider-port/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/port-labs/terraform-provider-port-labs)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-port` repo](https://github.com/port-labs/pulumi-port/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-port-labs` repo](https://github.com/port-labs/terraform-provider-port-labs/issues).",
             "compatibility": "tfbridge20",
             "pyproject": {}
         }
@@ -100,6 +100,10 @@
                     "type": "string",
                     "description": "Required when selecting type AZURE. The Azure org that the workflow belongs to\n"
                 },
+                "payload": {
+                    "type": "string",
+                    "description": "The Azure Devops workflow payload (array or object encoded to a string)\n"
+                },
                 "webhook": {
                     "type": "string",
                     "description": "Required when selecting type AZURE. The Azure webhook that the workflow belongs to\n"
@@ -113,14 +117,6 @@
         },
         "port:index/ActionGithubMethod:ActionGithubMethod": {
             "properties": {
-                "omitPayload": {
-                    "type": "boolean",
-                    "description": "Omit the payload when invoking the action\n"
-                },
-                "omitUserInputs": {
-                    "type": "boolean",
-                    "description": "Omit the user inputs when invoking the action\n"
-                },
                 "org": {
                     "type": "string",
                     "description": "Required when selecting type GITHUB. The GitHub org that the workflow belongs to\n"
@@ -130,12 +126,16 @@
                     "description": "Required when selecting type GITHUB. The GitHub repo that the workflow belongs to\n"
                 },
                 "reportWorkflowStatus": {
-                    "type": "boolean",
+                    "type": "string",
                     "description": "Report the workflow status when invoking the action\n"
                 },
                 "workflow": {
                     "type": "string",
                     "description": "The GitHub workflow that the action belongs to\n"
+                },
+                "workflowInputs": {
+                    "type": "string",
+                    "description": "The GitHub workflow inputs (key-value object encoded to a string)\n"
                 }
             },
             "type": "object",
@@ -143,25 +143,10 @@
                 "org",
                 "repo",
                 "workflow"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "omitPayload",
-                        "omitUserInputs",
-                        "org",
-                        "repo",
-                        "workflow"
-                    ]
-                }
-            }
+            ]
         },
         "port:index/ActionGitlabMethod:ActionGitlabMethod": {
             "properties": {
-                "agent": {
-                    "type": "boolean",
-                    "description": "Use the agent to invoke the action\n"
-                },
                 "defaultRef": {
                     "type": "string",
                     "description": "The default ref of the action\n"
@@ -170,13 +155,9 @@
                     "type": "string",
                     "description": "Required when selecting type GITLAB. The GitLab group name that the workflow belongs to\n"
                 },
-                "omitPayload": {
-                    "type": "boolean",
-                    "description": "Omit the payload when invoking the action\n"
-                },
-                "omitUserInputs": {
-                    "type": "boolean",
-                    "description": "Omit the user inputs when invoking the action\n"
+                "pipelineVariables": {
+                    "type": "string",
+                    "description": "The Gitlab pipeline variables (key-value object encoded to a string)\n"
                 },
                 "projectName": {
                     "type": "string",
@@ -187,20 +168,15 @@
             "required": [
                 "groupName",
                 "projectName"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "agent",
-                        "groupName",
-                        "omitPayload",
-                        "omitUserInputs",
-                        "projectName"
-                    ]
-                }
-            }
+            ]
         },
         "port:index/ActionKafkaMethod:ActionKafkaMethod": {
+            "properties": {
+                "payload": {
+                    "type": "string",
+                    "description": "The Kafka message payload (array or object encoded to a string)\n"
+                }
+            },
             "type": "object"
         },
         "port:index/ActionPermissionsPermissions:ActionPermissionsPermissions": {
@@ -303,50 +279,89 @@
                 }
             }
         },
-        "port:index/ActionUserProperties:ActionUserProperties": {
+        "port:index/ActionSelfServiceTrigger:ActionSelfServiceTrigger": {
+            "properties": {
+                "blueprintIdentifier": {
+                    "type": "string",
+                    "description": "The ID of the blueprint\n"
+                },
+                "operation": {
+                    "type": "string",
+                    "description": "The operation type of the action\n"
+                },
+                "orderProperties": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Order properties\n"
+                },
+                "requiredJqQuery": {
+                    "type": "string",
+                    "description": "The required jq query of the property\n"
+                },
+                "userProperties": {
+                    "$ref": "#/types/port:index/ActionSelfServiceTriggerUserProperties:ActionSelfServiceTriggerUserProperties",
+                    "description": "User properties\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "operation"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "operation",
+                        "userProperties"
+                    ]
+                }
+            }
+        },
+        "port:index/ActionSelfServiceTriggerUserProperties:ActionSelfServiceTriggerUserProperties": {
             "properties": {
                 "arrayProps": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "#/types/port:index/ActionUserPropertiesArrayProps:ActionUserPropertiesArrayProps"
+                        "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesArrayProps:ActionSelfServiceTriggerUserPropertiesArrayProps"
                     },
                     "description": "The array property of the action\n"
                 },
                 "booleanProps": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "#/types/port:index/ActionUserPropertiesBooleanProps:ActionUserPropertiesBooleanProps"
+                        "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesBooleanProps:ActionSelfServiceTriggerUserPropertiesBooleanProps"
                     },
                     "description": "The boolean property of the action\n"
                 },
                 "numberProps": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "#/types/port:index/ActionUserPropertiesNumberProps:ActionUserPropertiesNumberProps"
+                        "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesNumberProps:ActionSelfServiceTriggerUserPropertiesNumberProps"
                     },
                     "description": "The number property of the action\n"
                 },
                 "objectProps": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "#/types/port:index/ActionUserPropertiesObjectProps:ActionUserPropertiesObjectProps"
+                        "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesObjectProps:ActionSelfServiceTriggerUserPropertiesObjectProps"
                     },
                     "description": "The object property of the action\n"
                 },
                 "stringProps": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "#/types/port:index/ActionUserPropertiesStringProps:ActionUserPropertiesStringProps"
+                        "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesStringProps:ActionSelfServiceTriggerUserPropertiesStringProps"
                     },
                     "description": "The string property of the action\n"
                 }
             },
             "type": "object"
         },
-        "port:index/ActionUserPropertiesArrayProps:ActionUserPropertiesArrayProps": {
+        "port:index/ActionSelfServiceTriggerUserPropertiesArrayProps:ActionSelfServiceTriggerUserPropertiesArrayProps": {
             "properties": {
                 "booleanItems": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsBooleanItems:ActionUserPropertiesArrayPropsBooleanItems",
+                    "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems:ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems",
                     "description": "The items of the array property\n"
                 },
                 "defaultJqQuery": {
@@ -377,11 +392,11 @@
                     "description": "The min items of the array property\n"
                 },
                 "numberItems": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsNumberItems:ActionUserPropertiesArrayPropsNumberItems",
+                    "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems:ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems",
                     "description": "The items of the array property\n"
                 },
                 "objectItems": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsObjectItems:ActionUserPropertiesArrayPropsObjectItems",
+                    "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems:ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems",
                     "description": "The items of the array property\n"
                 },
                 "required": {
@@ -389,7 +404,7 @@
                     "description": "Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value\n"
                 },
                 "stringItems": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesArrayPropsStringItems:ActionUserPropertiesArrayPropsStringItems",
+                    "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems:ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems",
                     "description": "The items of the array property\n"
                 },
                 "title": {
@@ -407,7 +422,7 @@
             },
             "type": "object"
         },
-        "port:index/ActionUserPropertiesArrayPropsBooleanItems:ActionUserPropertiesArrayPropsBooleanItems": {
+        "port:index/ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems:ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems": {
             "properties": {
                 "defaults": {
                     "type": "array",
@@ -419,7 +434,7 @@
             },
             "type": "object"
         },
-        "port:index/ActionUserPropertiesArrayPropsNumberItems:ActionUserPropertiesArrayPropsNumberItems": {
+        "port:index/ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems:ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems": {
             "properties": {
                 "defaults": {
                     "type": "array",
@@ -442,7 +457,7 @@
             },
             "type": "object"
         },
-        "port:index/ActionUserPropertiesArrayPropsObjectItems:ActionUserPropertiesArrayPropsObjectItems": {
+        "port:index/ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems:ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems": {
             "properties": {
                 "defaults": {
                     "type": "array",
@@ -457,11 +472,11 @@
             },
             "type": "object"
         },
-        "port:index/ActionUserPropertiesArrayPropsStringItems:ActionUserPropertiesArrayPropsStringItems": {
+        "port:index/ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems:ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems": {
             "properties": {
                 "blueprint": {
                     "type": "string",
-                    "description": "The blueprint identifier the property relates to\n"
+                    "description": "The blueprint identifier the action relates to\n"
                 },
                 "dataset": {
                     "type": "string",
@@ -492,7 +507,7 @@
             },
             "type": "object"
         },
-        "port:index/ActionUserPropertiesBooleanProps:ActionUserPropertiesBooleanProps": {
+        "port:index/ActionSelfServiceTriggerUserPropertiesBooleanProps:ActionSelfServiceTriggerUserPropertiesBooleanProps": {
             "properties": {
                 "default": {
                     "type": "boolean",
@@ -536,7 +551,7 @@
             },
             "type": "object"
         },
-        "port:index/ActionUserPropertiesNumberProps:ActionUserPropertiesNumberProps": {
+        "port:index/ActionSelfServiceTriggerUserPropertiesNumberProps:ActionSelfServiceTriggerUserPropertiesNumberProps": {
             "properties": {
                 "default": {
                     "type": "number",
@@ -599,7 +614,7 @@
             },
             "type": "object"
         },
-        "port:index/ActionUserPropertiesObjectProps:ActionUserPropertiesObjectProps": {
+        "port:index/ActionSelfServiceTriggerUserPropertiesObjectProps:ActionSelfServiceTriggerUserPropertiesObjectProps": {
             "properties": {
                 "default": {
                     "type": "string",
@@ -647,14 +662,14 @@
             },
             "type": "object"
         },
-        "port:index/ActionUserPropertiesStringProps:ActionUserPropertiesStringProps": {
+        "port:index/ActionSelfServiceTriggerUserPropertiesStringProps:ActionSelfServiceTriggerUserPropertiesStringProps": {
             "properties": {
                 "blueprint": {
                     "type": "string",
                     "description": "The blueprint identifier the string property relates to\n"
                 },
                 "dataset": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesStringPropsDataset:ActionUserPropertiesStringPropsDataset",
+                    "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDataset:ActionSelfServiceTriggerUserPropertiesStringPropsDataset",
                     "description": "The dataset of an the entity-format property\n"
                 },
                 "default": {
@@ -730,7 +745,7 @@
             },
             "type": "object"
         },
-        "port:index/ActionUserPropertiesStringPropsDataset:ActionUserPropertiesStringPropsDataset": {
+        "port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDataset:ActionSelfServiceTriggerUserPropertiesStringPropsDataset": {
             "properties": {
                 "combinator": {
                     "type": "string",
@@ -739,7 +754,7 @@
                 "rules": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/port:index/ActionUserPropertiesStringPropsDatasetRule:ActionUserPropertiesStringPropsDatasetRule"
+                        "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule:ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule"
                     },
                     "description": "The rules of the dataset\n"
                 }
@@ -750,11 +765,11 @@
                 "rules"
             ]
         },
-        "port:index/ActionUserPropertiesStringPropsDatasetRule:ActionUserPropertiesStringPropsDatasetRule": {
+        "port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule:ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule": {
             "properties": {
                 "blueprint": {
                     "type": "string",
-                    "description": "The blueprint identifier of the rule\n"
+                    "description": "The blueprint identifier the action relates to\n"
                 },
                 "operator": {
                     "type": "string",
@@ -765,7 +780,7 @@
                     "description": "The property identifier of the rule\n"
                 },
                 "value": {
-                    "$ref": "#/types/port:index/ActionUserPropertiesStringPropsDatasetRuleValue:ActionUserPropertiesStringPropsDatasetRuleValue",
+                    "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue:ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue",
                     "description": "The value of the rule\n"
                 }
             },
@@ -775,7 +790,7 @@
                 "value"
             ]
         },
-        "port:index/ActionUserPropertiesStringPropsDatasetRuleValue:ActionUserPropertiesStringPropsDatasetRuleValue": {
+        "port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue:ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue": {
             "properties": {
                 "jqQuery": {
                     "type": "string"
@@ -789,15 +804,26 @@
         "port:index/ActionWebhookMethod:ActionWebhookMethod": {
             "properties": {
                 "agent": {
-                    "type": "boolean",
+                    "type": "string",
                     "description": "Use the agent to invoke the action\n"
+                },
+                "body": {
+                    "type": "string",
+                    "description": "The Webhook body (array or object encoded to a string)\n"
+                },
+                "headers": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The HTTP method to invoke the action\n"
                 },
                 "method": {
                     "type": "string",
                     "description": "The HTTP method to invoke the action\n"
                 },
                 "synchronized": {
-                    "type": "boolean",
+                    "type": "string",
                     "description": "Synchronize the action\n"
                 },
                 "url": {
@@ -822,7 +848,7 @@
                 },
                 "method": {
                     "$ref": "#/types/port:index/AggregationPropertiesPropertiesMethod:AggregationPropertiesPropertiesMethod",
-                    "description": "The aggregation method to perform on the target blueprint, one of count_entities, average_entities, average_by_property, aggregate_by_property\n"
+                    "description": "The aggregation method to perform on the target blueprint, one of count*entities, average*entities, average*by*property, aggregate*by*property\n"
                 },
                 "query": {
                     "type": "string",
@@ -991,15 +1017,15 @@
             "properties": {
                 "register": {
                     "$ref": "#/types/port:index/BlueprintPermissionsEntitiesRegister:BlueprintPermissionsEntitiesRegister",
-                    "description": "Manage permissions to register entities of the blueprint\n"
+                    "description": "Enable permissions to register entities of the blueprint\n"
                 },
                 "unregister": {
                     "$ref": "#/types/port:index/BlueprintPermissionsEntitiesUnregister:BlueprintPermissionsEntitiesUnregister",
-                    "description": "Manage permissions to unregister entities of the blueprint\n"
+                    "description": "Enable permissions to unregister entities of the blueprint\n"
                 },
                 "update": {
                     "$ref": "#/types/port:index/BlueprintPermissionsEntitiesUpdate:BlueprintPermissionsEntitiesUpdate",
-                    "description": "Manage permissions to update entities of the blueprint\n"
+                    "description": "Enable permissions to update entities of the blueprint\n"
                 },
                 "updateMetadataProperties": {
                     "$ref": "#/types/port:index/BlueprintPermissionsEntitiesUpdateMetadataProperties:BlueprintPermissionsEntitiesUpdateMetadataProperties"
@@ -1009,14 +1035,14 @@
                     "additionalProperties": {
                         "$ref": "#/types/port:index/BlueprintPermissionsEntitiesUpdateProperties:BlueprintPermissionsEntitiesUpdateProperties"
                     },
-                    "description": "Manage permissions to update the entity properties\n"
+                    "description": "Enable permissions to update the entity properties\n"
                 },
                 "updateRelations": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/port:index/BlueprintPermissionsEntitiesUpdateRelations:BlueprintPermissionsEntitiesUpdateRelations"
                     },
-                    "description": "Manage permissions to update the entity relations\n"
+                    "description": "Enable permissions to update the entity relations\n"
                 }
             },
             "type": "object",
@@ -2069,7 +2095,7 @@
         }
     },
     "provider": {
-        "description": "The provider type for the port package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "description": "The provider type for the port-labs package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
         "properties": {
             "baseUrl": {
                 "type": "string"
@@ -2111,6 +2137,7 @@
     },
     "resources": {
         "port:index/action:Action": {
+            "description": "Docs for the Action resource can be found [here](https://docs.getport.io/create-self-service-experiences/).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as port from \"@pulumi/port\";\n\nconst createMicroservice = new port.index.Port_action(\"createMicroservice\", {\n    title: \"Create Microservice\",\n    identifier: \"create-microservice\",\n    icon: \"Terraform\",\n    selfServiceTrigger: {\n        operation: \"CREATE\",\n        blueprintIdentifier: port_blueprint.microservice.identifier,\n        userProperties: {\n            stringProps: {\n                myStringIdentifier: {\n                    title: \"My String Identifier\",\n                    required: true,\n                    format: \"entity\",\n                    blueprint: port_blueprint.parent.identifier,\n                    dataset: {\n                        combinator: \"and\",\n                        rules: [{\n                            property: \"$title\",\n                            operator: \"contains\",\n                            value: {\n                                jqQuery: \"\\\"specificValue\\\"\",\n                            },\n                        }],\n                    },\n                },\n            },\n            numberProps: {\n                myNumberIdentifier: {\n                    title: \"My Number Identifier\",\n                    required: true,\n                    maximum: 100,\n                    minimum: 0,\n                },\n            },\n            booleanProps: {\n                myBooleanIdentifier: {\n                    title: \"My Boolean Identifier\",\n                    required: true,\n                },\n            },\n            objectProps: {\n                myObjectIdentifier: {\n                    title: \"My Object Identifier\",\n                    required: true,\n                },\n            },\n            arrayProps: {\n                myArrayIdentifier: {\n                    title: \"My Array Identifier\",\n                    required: true,\n                    stringItems: {\n                        format: \"entity\",\n                        blueprint: port_blueprint.parent.identifier,\n                        dataset: JSON.stringify({\n                            combinator: \"and\",\n                            rules: [{\n                                property: \"$title\",\n                                operator: \"contains\",\n                                value: \"specificValue\",\n                            }],\n                        }),\n                    },\n                },\n            },\n        },\n    },\n    kafkaMethod: {\n        payload: JSON.stringify({\n            runId: \"{{.run.id}}\",\n        }),\n    },\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_port as port\n\ncreate_microservice = port.index.Port_action(\"createMicroservice\",\n    title=Create Microservice,\n    identifier=create-microservice,\n    icon=Terraform,\n    self_service_trigger={\n        operation: CREATE,\n        blueprintIdentifier: port_blueprint.microservice.identifier,\n        userProperties: {\n            stringProps: {\n                myStringIdentifier: {\n                    title: My String Identifier,\n                    required: True,\n                    format: entity,\n                    blueprint: port_blueprint.parent.identifier,\n                    dataset: {\n                        combinator: and,\n                        rules: [{\n                            property: $title,\n                            operator: contains,\n                            value: {\n                                jqQuery: \"specificValue\",\n                            },\n                        }],\n                    },\n                },\n            },\n            numberProps: {\n                myNumberIdentifier: {\n                    title: My Number Identifier,\n                    required: True,\n                    maximum: 100,\n                    minimum: 0,\n                },\n            },\n            booleanProps: {\n                myBooleanIdentifier: {\n                    title: My Boolean Identifier,\n                    required: True,\n                },\n            },\n            objectProps: {\n                myObjectIdentifier: {\n                    title: My Object Identifier,\n                    required: True,\n                },\n            },\n            arrayProps: {\n                myArrayIdentifier: {\n                    title: My Array Identifier,\n                    required: True,\n                    stringItems: {\n                        format: entity,\n                        blueprint: port_blueprint.parent.identifier,\n                        dataset: json.dumps({\n                            combinator: and,\n                            rules: [{\n                                property: $title,\n                                operator: contains,\n                                value: specificValue,\n                            }],\n                        }),\n                    },\n                },\n            },\n        },\n    },\n    kafka_method={\n        payload: json.dumps({\n            runId: {{.run.id}},\n        }),\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Port = Pulumi.Port;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var createMicroservice = new Port.Index.Port_action(\"createMicroservice\", new()\n    {\n        Title = \"Create Microservice\",\n        Identifier = \"create-microservice\",\n        Icon = \"Terraform\",\n        SelfServiceTrigger = \n        {\n            { \"operation\", \"CREATE\" },\n            { \"blueprintIdentifier\", port_blueprint.Microservice.Identifier },\n            { \"userProperties\", \n            {\n                { \"stringProps\", \n                {\n                    { \"myStringIdentifier\", \n                    {\n                        { \"title\", \"My String Identifier\" },\n                        { \"required\", true },\n                        { \"format\", \"entity\" },\n                        { \"blueprint\", port_blueprint.Parent.Identifier },\n                        { \"dataset\", \n                        {\n                            { \"combinator\", \"and\" },\n                            { \"rules\", new[]\n                            {\n                                \n                                {\n                                    { \"property\", \"$title\" },\n                                    { \"operator\", \"contains\" },\n                                    { \"value\", \n                                    {\n                                        { \"jqQuery\", \"\\\"specificValue\\\"\" },\n                                    } },\n                                },\n                            } },\n                        } },\n                    } },\n                } },\n                { \"numberProps\", \n                {\n                    { \"myNumberIdentifier\", \n                    {\n                        { \"title\", \"My Number Identifier\" },\n                        { \"required\", true },\n                        { \"maximum\", 100 },\n                        { \"minimum\", 0 },\n                    } },\n                } },\n                { \"booleanProps\", \n                {\n                    { \"myBooleanIdentifier\", \n                    {\n                        { \"title\", \"My Boolean Identifier\" },\n                        { \"required\", true },\n                    } },\n                } },\n                { \"objectProps\", \n                {\n                    { \"myObjectIdentifier\", \n                    {\n                        { \"title\", \"My Object Identifier\" },\n                        { \"required\", true },\n                    } },\n                } },\n                { \"arrayProps\", \n                {\n                    { \"myArrayIdentifier\", \n                    {\n                        { \"title\", \"My Array Identifier\" },\n                        { \"required\", true },\n                        { \"stringItems\", \n                        {\n                            { \"format\", \"entity\" },\n                            { \"blueprint\", port_blueprint.Parent.Identifier },\n                            { \"dataset\", JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n                            {\n                                [\"combinator\"] = \"and\",\n                                [\"rules\"] = new[]\n                                {\n                                    new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        [\"property\"] = \"$title\",\n                                        [\"operator\"] = \"contains\",\n                                        [\"value\"] = \"specificValue\",\n                                    },\n                                },\n                            }) },\n                        } },\n                    } },\n                } },\n            } },\n        },\n        KafkaMethod = \n        {\n            { \"payload\", JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                [\"runId\"] = \"{{.run.id}}\",\n            }) },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/port-labs/pulumi-port/sdk/go/port\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\nfunc main() {\npulumi.Run(func(ctx *pulumi.Context) error {\n_, err := port.NewPort_action(ctx, \"createMicroservice\", \u0026port.Port_actionArgs{\nTitle: \"Create Microservice\",\nIdentifier: \"create-microservice\",\nIcon: \"Terraform\",\nSelfServiceTrigger: tmpJSON0, err := json.Marshal(map[string]interface{}{\n\"combinator\": \"and\",\n\"rules\": []map[string]interface{}{\nmap[string]interface{}{\n\"property\": \"$title\",\n\"operator\": \"contains\",\n\"value\": \"specificValue\",\n},\n},\n})\nif err != nil {\nreturn err\n}\njson0 := string(tmpJSON0)\nmap[string]interface{}{\n\"operation\": \"CREATE\",\n\"blueprintIdentifier\": port_blueprint.Microservice.Identifier,\n\"userProperties\": map[string]interface{}{\n\"stringProps\": map[string]interface{}{\n\"myStringIdentifier\": map[string]interface{}{\n\"title\": \"My String Identifier\",\n\"required\": true,\n\"format\": \"entity\",\n\"blueprint\": port_blueprint.Parent.Identifier,\n\"dataset\": map[string]interface{}{\n\"combinator\": \"and\",\n\"rules\": []map[string]interface{}{\nmap[string]interface{}{\n\"property\": \"$title\",\n\"operator\": \"contains\",\n\"value\": map[string]interface{}{\n\"jqQuery\": \"\\\"specificValue\\\"\",\n},\n},\n},\n},\n},\n},\n\"numberProps\": map[string]interface{}{\n\"myNumberIdentifier\": map[string]interface{}{\n\"title\": \"My Number Identifier\",\n\"required\": true,\n\"maximum\": 100,\n\"minimum\": 0,\n},\n},\n\"booleanProps\": map[string]interface{}{\n\"myBooleanIdentifier\": map[string]interface{}{\n\"title\": \"My Boolean Identifier\",\n\"required\": true,\n},\n},\n\"objectProps\": map[string]interface{}{\n\"myObjectIdentifier\": map[string]interface{}{\n\"title\": \"My Object Identifier\",\n\"required\": true,\n},\n},\n\"arrayProps\": map[string]interface{}{\n\"myArrayIdentifier\": map[string]interface{}{\n\"title\": \"My Array Identifier\",\n\"required\": true,\n\"stringItems\": map[string]interface{}{\n\"format\": \"entity\",\n\"blueprint\": port_blueprint.Parent.Identifier,\n\"dataset\": json0,\n},\n},\n},\n},\n},\nKafkaMethod: tmpJSON1, err := json.Marshal(map[string]interface{}{\n\"runId\": \"{{.run.id}}\",\n})\nif err != nil {\nreturn err\n}\njson1 := string(tmpJSON1)\nmap[string]interface{}{\n\"payload\": json1,\n},\n})\nif err != nil {\nreturn err\n}\nreturn nil\n})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.port.port_action;\nimport com.pulumi.port.Port_actionArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var createMicroservice = new Port_action(\"createMicroservice\", Port_actionArgs.builder()        \n            .title(\"Create Microservice\")\n            .identifier(\"create-microservice\")\n            .icon(\"Terraform\")\n            .selfServiceTrigger(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .kafkaMethod(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  createMicroservice:\n    type: port:port_action\n    properties:\n      title: Create Microservice\n      identifier: create-microservice\n      icon: Terraform\n      selfServiceTrigger:\n        operation: CREATE\n        blueprintIdentifier: ${port_blueprint.microservice.identifier}\n        userProperties:\n          stringProps:\n            myStringIdentifier:\n              title: My String Identifier\n              required: true\n              format: entity\n              blueprint: ${port_blueprint.parent.identifier}\n              dataset:\n                combinator: and\n                rules:\n                  - property: $title\n                    operator: contains\n                    value:\n                      jqQuery: '\"specificValue\"'\n          numberProps:\n            myNumberIdentifier:\n              title: My Number Identifier\n              required: true\n              maximum: 100\n              minimum: 0\n          booleanProps:\n            myBooleanIdentifier:\n              title: My Boolean Identifier\n              required: true\n          objectProps:\n            myObjectIdentifier:\n              title: My Object Identifier\n              required: true\n          arrayProps:\n            myArrayIdentifier:\n              title: My Array Identifier\n              required: true\n              stringItems:\n                format: entity\n                blueprint: ${port_blueprint.parent.identifier}\n                dataset:\n                  fn::toJSON:\n                    combinator: and\n                    rules:\n                      - property: $title\n                        operator: contains\n                        value: specificValue\n      kafkaMethod:\n        payload:\n          fn::toJSON:\n            runId: '{{.run.id}}'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "approvalEmailNotification": {
                     "$ref": "#/types/port:index/ActionApprovalEmailNotification:ActionApprovalEmailNotification",
@@ -2122,11 +2149,12 @@
                 },
                 "azureMethod": {
                     "$ref": "#/types/port:index/ActionAzureMethod:ActionAzureMethod",
-                    "description": "The invocation method of the action\n"
+                    "description": "Azure DevOps invocation method\n"
                 },
                 "blueprint": {
                     "type": "string",
-                    "description": "The blueprint identifier the action relates to\n"
+                    "description": "The blueprint identifier the action relates to\n",
+                    "deprecationMessage": "Action is not attached to blueprint anymore. This value is ignored"
                 },
                 "description": {
                     "type": "string",
@@ -2134,11 +2162,11 @@
                 },
                 "githubMethod": {
                     "$ref": "#/types/port:index/ActionGithubMethod:ActionGithubMethod",
-                    "description": "The invocation method of the action\n"
+                    "description": "GitHub invocation method\n"
                 },
                 "gitlabMethod": {
                     "$ref": "#/types/port:index/ActionGitlabMethod:ActionGitlabMethod",
-                    "description": "The invocation method of the action\n"
+                    "description": "Gitlab invocation method\n"
                 },
                 "icon": {
                     "type": "string",
@@ -2150,45 +2178,32 @@
                 },
                 "kafkaMethod": {
                     "$ref": "#/types/port:index/ActionKafkaMethod:ActionKafkaMethod",
-                    "description": "The invocation method of the action\n"
+                    "description": "Kafka invocation method\n"
                 },
-                "orderProperties": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "Order properties\n"
+                "publish": {
+                    "type": "boolean",
+                    "description": "Publish action\n"
                 },
                 "requiredApproval": {
                     "type": "boolean",
                     "description": "Require approval before invoking the action\n"
                 },
-                "requiredJqQuery": {
-                    "type": "string",
-                    "description": "The required jq query of the property\n"
+                "selfServiceTrigger": {
+                    "$ref": "#/types/port:index/ActionSelfServiceTrigger:ActionSelfServiceTrigger",
+                    "description": "Self service trigger for the action\n"
                 },
                 "title": {
                     "type": "string",
                     "description": "Title\n"
                 },
-                "trigger": {
-                    "type": "string",
-                    "description": "The trigger type of the action\n"
-                },
-                "userProperties": {
-                    "$ref": "#/types/port:index/ActionUserProperties:ActionUserProperties",
-                    "description": "User properties\n"
-                },
                 "webhookMethod": {
                     "$ref": "#/types/port:index/ActionWebhookMethod:ActionWebhookMethod",
-                    "description": "The invocation method of the action\n"
+                    "description": "Webhook invocation method\n"
                 }
             },
             "required": [
-                "blueprint",
                 "identifier",
-                "title",
-                "trigger"
+                "publish"
             ],
             "inputProperties": {
                 "approvalEmailNotification": {
@@ -2201,11 +2216,12 @@
                 },
                 "azureMethod": {
                     "$ref": "#/types/port:index/ActionAzureMethod:ActionAzureMethod",
-                    "description": "The invocation method of the action\n"
+                    "description": "Azure DevOps invocation method\n"
                 },
                 "blueprint": {
                     "type": "string",
-                    "description": "The blueprint identifier the action relates to\n"
+                    "description": "The blueprint identifier the action relates to\n",
+                    "deprecationMessage": "Action is not attached to blueprint anymore. This value is ignored"
                 },
                 "description": {
                     "type": "string",
@@ -2213,11 +2229,11 @@
                 },
                 "githubMethod": {
                     "$ref": "#/types/port:index/ActionGithubMethod:ActionGithubMethod",
-                    "description": "The invocation method of the action\n"
+                    "description": "GitHub invocation method\n"
                 },
                 "gitlabMethod": {
                     "$ref": "#/types/port:index/ActionGitlabMethod:ActionGitlabMethod",
-                    "description": "The invocation method of the action\n"
+                    "description": "Gitlab invocation method\n"
                 },
                 "icon": {
                     "type": "string",
@@ -2229,45 +2245,31 @@
                 },
                 "kafkaMethod": {
                     "$ref": "#/types/port:index/ActionKafkaMethod:ActionKafkaMethod",
-                    "description": "The invocation method of the action\n"
+                    "description": "Kafka invocation method\n"
                 },
-                "orderProperties": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "Order properties\n"
+                "publish": {
+                    "type": "boolean",
+                    "description": "Publish action\n"
                 },
                 "requiredApproval": {
                     "type": "boolean",
                     "description": "Require approval before invoking the action\n"
                 },
-                "requiredJqQuery": {
-                    "type": "string",
-                    "description": "The required jq query of the property\n"
+                "selfServiceTrigger": {
+                    "$ref": "#/types/port:index/ActionSelfServiceTrigger:ActionSelfServiceTrigger",
+                    "description": "Self service trigger for the action\n"
                 },
                 "title": {
                     "type": "string",
                     "description": "Title\n"
                 },
-                "trigger": {
-                    "type": "string",
-                    "description": "The trigger type of the action\n"
-                },
-                "userProperties": {
-                    "$ref": "#/types/port:index/ActionUserProperties:ActionUserProperties",
-                    "description": "User properties\n"
-                },
                 "webhookMethod": {
                     "$ref": "#/types/port:index/ActionWebhookMethod:ActionWebhookMethod",
-                    "description": "The invocation method of the action\n"
+                    "description": "Webhook invocation method\n"
                 }
             },
             "requiredInputs": [
-                "blueprint",
-                "identifier",
-                "title",
-                "trigger"
+                "identifier"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Action resources.\n",
@@ -2282,11 +2284,12 @@
                     },
                     "azureMethod": {
                         "$ref": "#/types/port:index/ActionAzureMethod:ActionAzureMethod",
-                        "description": "The invocation method of the action\n"
+                        "description": "Azure DevOps invocation method\n"
                     },
                     "blueprint": {
                         "type": "string",
-                        "description": "The blueprint identifier the action relates to\n"
+                        "description": "The blueprint identifier the action relates to\n",
+                        "deprecationMessage": "Action is not attached to blueprint anymore. This value is ignored"
                     },
                     "description": {
                         "type": "string",
@@ -2294,11 +2297,11 @@
                     },
                     "githubMethod": {
                         "$ref": "#/types/port:index/ActionGithubMethod:ActionGithubMethod",
-                        "description": "The invocation method of the action\n"
+                        "description": "GitHub invocation method\n"
                     },
                     "gitlabMethod": {
                         "$ref": "#/types/port:index/ActionGitlabMethod:ActionGitlabMethod",
-                        "description": "The invocation method of the action\n"
+                        "description": "Gitlab invocation method\n"
                     },
                     "icon": {
                         "type": "string",
@@ -2310,38 +2313,27 @@
                     },
                     "kafkaMethod": {
                         "$ref": "#/types/port:index/ActionKafkaMethod:ActionKafkaMethod",
-                        "description": "The invocation method of the action\n"
+                        "description": "Kafka invocation method\n"
                     },
-                    "orderProperties": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "Order properties\n"
+                    "publish": {
+                        "type": "boolean",
+                        "description": "Publish action\n"
                     },
                     "requiredApproval": {
                         "type": "boolean",
                         "description": "Require approval before invoking the action\n"
                     },
-                    "requiredJqQuery": {
-                        "type": "string",
-                        "description": "The required jq query of the property\n"
+                    "selfServiceTrigger": {
+                        "$ref": "#/types/port:index/ActionSelfServiceTrigger:ActionSelfServiceTrigger",
+                        "description": "Self service trigger for the action\n"
                     },
                     "title": {
                         "type": "string",
                         "description": "Title\n"
                     },
-                    "trigger": {
-                        "type": "string",
-                        "description": "The trigger type of the action\n"
-                    },
-                    "userProperties": {
-                        "$ref": "#/types/port:index/ActionUserProperties:ActionUserProperties",
-                        "description": "User properties\n"
-                    },
                     "webhookMethod": {
                         "$ref": "#/types/port:index/ActionWebhookMethod:ActionWebhookMethod",
-                        "description": "The invocation method of the action\n"
+                        "description": "Webhook invocation method\n"
                     }
                 },
                 "type": "object"
@@ -2355,7 +2347,8 @@
                 },
                 "blueprintIdentifier": {
                     "type": "string",
-                    "description": "The ID of the blueprint\n"
+                    "description": "The ID of the blueprint\n",
+                    "deprecationMessage": "Action is not attached to blueprint anymore. This value is ignored"
                 },
                 "permissions": {
                     "$ref": "#/types/port:index/ActionPermissionsPermissions:ActionPermissionsPermissions",
@@ -2364,7 +2357,6 @@
             },
             "required": [
                 "actionIdentifier",
-                "blueprintIdentifier",
                 "permissions"
             ],
             "inputProperties": {
@@ -2374,7 +2366,8 @@
                 },
                 "blueprintIdentifier": {
                     "type": "string",
-                    "description": "The ID of the blueprint\n"
+                    "description": "The ID of the blueprint\n",
+                    "deprecationMessage": "Action is not attached to blueprint anymore. This value is ignored"
                 },
                 "permissions": {
                     "$ref": "#/types/port:index/ActionPermissionsPermissions:ActionPermissionsPermissions",
@@ -2383,7 +2376,6 @@
             },
             "requiredInputs": [
                 "actionIdentifier",
-                "blueprintIdentifier",
                 "permissions"
             ],
             "stateInputs": {
@@ -2395,7 +2387,8 @@
                     },
                     "blueprintIdentifier": {
                         "type": "string",
-                        "description": "The ID of the blueprint\n"
+                        "description": "The ID of the blueprint\n",
+                        "deprecationMessage": "Action is not attached to blueprint anymore. This value is ignored"
                     },
                     "permissions": {
                         "$ref": "#/types/port:index/ActionPermissionsPermissions:ActionPermissionsPermissions",
@@ -2406,6 +2399,7 @@
             }
         },
         "port:index/aggregationProperties:AggregationProperties": {
+            "description": "This resource allows you to manage aggregation properties of a blueprint.\n\nSee the [Port documentation](https://docs.getport.io/build-your-software-catalog/define-your-data-model/setup-blueprint/properties/aggregation-properties/) for more information about aggregation properties.\n\n\nSupported Methods:\n\n- count_entities - Count the entities of the target blueprint\n- average_entities - Average the entities of the target blueprint by time periods\n- average_by_property - Calculate the average by property value of the target entities\n- aggregate_by_property - Calculate the aggregate by property value of the target entities, such as sum, min, max, median\n\n## Example Usage\n\nCreate a parent blueprint with a child blueprint and an aggregation property to count the parent kids:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as port from \"@pulumi/port\";\n\nconst parentBlueprint = new port.index.Port_blueprint(\"parentBlueprint\", {\n    title: \"Parent Blueprint\",\n    icon: \"Terraform\",\n    identifier: \"parent\",\n    description: \"\",\n    properties: {\n        numberProps: {\n            age: {\n                title: \"Age\",\n            },\n        },\n    },\n});\nconst childBlueprint = new port.index.Port_blueprint(\"childBlueprint\", {\n    title: \"Child Blueprint\",\n    icon: \"Terraform\",\n    identifier: \"child\",\n    description: \"\",\n    properties: {\n        numberProps: {\n            age: {\n                title: \"Age\",\n            },\n        },\n    },\n    relations: {\n        parent: {\n            title: \"Parent\",\n            target: parentBlueprint.identifier,\n        },\n    },\n});\nconst parentAggregationProperties = new port.index.Port_aggregation_properties(\"parentAggregationProperties\", {\n    blueprintIdentifier: parentBlueprint.identifier,\n    properties: {\n        count_kids: {\n            targetBlueprintIdentifier: childBlueprint.identifier,\n            title: \"Count Kids\",\n            icon: \"Terraform\",\n            description: \"Count Kids\",\n            method: {\n                countEntities: true,\n            },\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_port as port\n\nparent_blueprint = port.index.Port_blueprint(\"parentBlueprint\",\n    title=Parent Blueprint,\n    icon=Terraform,\n    identifier=parent,\n    description=,\n    properties={\n        numberProps: {\n            age: {\n                title: Age,\n            },\n        },\n    })\nchild_blueprint = port.index.Port_blueprint(\"childBlueprint\",\n    title=Child Blueprint,\n    icon=Terraform,\n    identifier=child,\n    description=,\n    properties={\n        numberProps: {\n            age: {\n                title: Age,\n            },\n        },\n    },\n    relations={\n        parent: {\n            title: Parent,\n            target: parent_blueprint.identifier,\n        },\n    })\nparent_aggregation_properties = port.index.Port_aggregation_properties(\"parentAggregationProperties\",\n    blueprint_identifier=parent_blueprint.identifier,\n    properties={\n        count_kids: {\n            targetBlueprintIdentifier: child_blueprint.identifier,\n            title: Count Kids,\n            icon: Terraform,\n            description: Count Kids,\n            method: {\n                countEntities: True,\n            },\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Port = Pulumi.Port;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var parentBlueprint = new Port.Index.Port_blueprint(\"parentBlueprint\", new()\n    {\n        Title = \"Parent Blueprint\",\n        Icon = \"Terraform\",\n        Identifier = \"parent\",\n        Description = \"\",\n        Properties = \n        {\n            { \"numberProps\", \n            {\n                { \"age\", \n                {\n                    { \"title\", \"Age\" },\n                } },\n            } },\n        },\n    });\n\n    var childBlueprint = new Port.Index.Port_blueprint(\"childBlueprint\", new()\n    {\n        Title = \"Child Blueprint\",\n        Icon = \"Terraform\",\n        Identifier = \"child\",\n        Description = \"\",\n        Properties = \n        {\n            { \"numberProps\", \n            {\n                { \"age\", \n                {\n                    { \"title\", \"Age\" },\n                } },\n            } },\n        },\n        Relations = \n        {\n            { \"parent\", \n            {\n                { \"title\", \"Parent\" },\n                { \"target\", parentBlueprint.Identifier },\n            } },\n        },\n    });\n\n    var parentAggregationProperties = new Port.Index.Port_aggregation_properties(\"parentAggregationProperties\", new()\n    {\n        BlueprintIdentifier = parentBlueprint.Identifier,\n        Properties = \n        {\n            { \"count_kids\", \n            {\n                { \"targetBlueprintIdentifier\", childBlueprint.Identifier },\n                { \"title\", \"Count Kids\" },\n                { \"icon\", \"Terraform\" },\n                { \"description\", \"Count Kids\" },\n                { \"method\", \n                {\n                    { \"countEntities\", true },\n                } },\n            } },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/port-labs/pulumi-port/sdk/go/port\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tparentBlueprint, err := port.NewPort_blueprint(ctx, \"parentBlueprint\", \u0026port.Port_blueprintArgs{\n\t\t\tTitle:       \"Parent Blueprint\",\n\t\t\tIcon:        \"Terraform\",\n\t\t\tIdentifier:  \"parent\",\n\t\t\tDescription: \"\",\n\t\t\tProperties: map[string]interface{}{\n\t\t\t\t\"numberProps\": map[string]interface{}{\n\t\t\t\t\t\"age\": map[string]interface{}{\n\t\t\t\t\t\t\"title\": \"Age\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tchildBlueprint, err := port.NewPort_blueprint(ctx, \"childBlueprint\", \u0026port.Port_blueprintArgs{\n\t\t\tTitle:       \"Child Blueprint\",\n\t\t\tIcon:        \"Terraform\",\n\t\t\tIdentifier:  \"child\",\n\t\t\tDescription: \"\",\n\t\t\tProperties: map[string]interface{}{\n\t\t\t\t\"numberProps\": map[string]interface{}{\n\t\t\t\t\t\"age\": map[string]interface{}{\n\t\t\t\t\t\t\"title\": \"Age\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRelations: map[string]interface{}{\n\t\t\t\t\"parent\": map[string]interface{}{\n\t\t\t\t\t\"title\":  \"Parent\",\n\t\t\t\t\t\"target\": parentBlueprint.Identifier,\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = port.NewPort_aggregation_properties(ctx, \"parentAggregationProperties\", \u0026port.Port_aggregation_propertiesArgs{\n\t\t\tBlueprintIdentifier: parentBlueprint.Identifier,\n\t\t\tProperties: map[string]interface{}{\n\t\t\t\t\"count_kids\": map[string]interface{}{\n\t\t\t\t\t\"targetBlueprintIdentifier\": childBlueprint.Identifier,\n\t\t\t\t\t\"title\":                     \"Count Kids\",\n\t\t\t\t\t\"icon\":                      \"Terraform\",\n\t\t\t\t\t\"description\":               \"Count Kids\",\n\t\t\t\t\t\"method\": map[string]interface{}{\n\t\t\t\t\t\t\"countEntities\": true,\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.port.port_blueprint;\nimport com.pulumi.port.Port_blueprintArgs;\nimport com.pulumi.port.port_aggregation_properties;\nimport com.pulumi.port.Port_aggregation_propertiesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var parentBlueprint = new Port_blueprint(\"parentBlueprint\", Port_blueprintArgs.builder()        \n            .title(\"Parent Blueprint\")\n            .icon(\"Terraform\")\n            .identifier(\"parent\")\n            .description(\"\")\n            .properties(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n        var childBlueprint = new Port_blueprint(\"childBlueprint\", Port_blueprintArgs.builder()        \n            .title(\"Child Blueprint\")\n            .icon(\"Terraform\")\n            .identifier(\"child\")\n            .description(\"\")\n            .properties(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .relations(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n        var parentAggregationProperties = new Port_aggregation_properties(\"parentAggregationProperties\", Port_aggregation_propertiesArgs.builder()        \n            .blueprintIdentifier(parentBlueprint.identifier())\n            .properties(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  parentBlueprint:\n    type: port:port_blueprint\n    properties:\n      title: Parent Blueprint\n      icon: Terraform\n      identifier: parent\n      description:\n      properties:\n        numberProps:\n          age:\n            title: Age\n  childBlueprint:\n    type: port:port_blueprint\n    properties:\n      title: Child Blueprint\n      icon: Terraform\n      identifier: child\n      description:\n      properties:\n        numberProps:\n          age:\n            title: Age\n      relations:\n        parent:\n          title: Parent\n          target: ${parentBlueprint.identifier}\n  parentAggregationProperties:\n    type: port:port_aggregation_properties\n    properties:\n      blueprintIdentifier: ${parentBlueprint.identifier}\n      properties:\n        count_kids:\n          targetBlueprintIdentifier: ${childBlueprint.identifier}\n          title: Count Kids\n          icon: Terraform\n          description: Count Kids\n          method:\n            countEntities: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreate a parent blueprint with a child blueprint and an aggregation property to calculate the average avg of the parent kids age:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as port from \"@pulumi/port\";\n\nconst parentBlueprint = new port.index.Port_blueprint(\"parentBlueprint\", {\n    title: \"Parent Blueprint\",\n    icon: \"Terraform\",\n    identifier: \"parent\",\n    description: \"\",\n    properties: {\n        numberProps: {\n            age: {\n                title: \"Age\",\n            },\n        },\n    },\n});\nconst childBlueprint = new port.index.Port_blueprint(\"childBlueprint\", {\n    title: \"Child Blueprint\",\n    icon: \"Terraform\",\n    identifier: \"child\",\n    description: \"\",\n    properties: {\n        numberProps: {\n            age: {\n                title: \"Age\",\n            },\n        },\n    },\n    relations: {\n        parent: {\n            title: \"Parent\",\n            target: parentBlueprint.identifier,\n        },\n    },\n});\nconst parentAggregationProperties = new port.index.Port_aggregation_properties(\"parentAggregationProperties\", {\n    blueprintIdentifier: parentBlueprint.identifier,\n    properties: {\n        averageKidsAge: {\n            targetBlueprintIdentifier: childBlueprint.identifier,\n            title: \"Average Kids Age\",\n            icon: \"Terraform\",\n            description: \"Average Kids Age\",\n            method: {\n                averageByProperty: {\n                    averageOf: \"total\",\n                    measureTimeBy: \"$createdAt\",\n                    property: \"age\",\n                },\n            },\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_port as port\n\nparent_blueprint = port.index.Port_blueprint(\"parentBlueprint\",\n    title=Parent Blueprint,\n    icon=Terraform,\n    identifier=parent,\n    description=,\n    properties={\n        numberProps: {\n            age: {\n                title: Age,\n            },\n        },\n    })\nchild_blueprint = port.index.Port_blueprint(\"childBlueprint\",\n    title=Child Blueprint,\n    icon=Terraform,\n    identifier=child,\n    description=,\n    properties={\n        numberProps: {\n            age: {\n                title: Age,\n            },\n        },\n    },\n    relations={\n        parent: {\n            title: Parent,\n            target: parent_blueprint.identifier,\n        },\n    })\nparent_aggregation_properties = port.index.Port_aggregation_properties(\"parentAggregationProperties\",\n    blueprint_identifier=parent_blueprint.identifier,\n    properties={\n        averageKidsAge: {\n            targetBlueprintIdentifier: child_blueprint.identifier,\n            title: Average Kids Age,\n            icon: Terraform,\n            description: Average Kids Age,\n            method: {\n                averageByProperty: {\n                    averageOf: total,\n                    measureTimeBy: $createdAt,\n                    property: age,\n                },\n            },\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Port = Pulumi.Port;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var parentBlueprint = new Port.Index.Port_blueprint(\"parentBlueprint\", new()\n    {\n        Title = \"Parent Blueprint\",\n        Icon = \"Terraform\",\n        Identifier = \"parent\",\n        Description = \"\",\n        Properties = \n        {\n            { \"numberProps\", \n            {\n                { \"age\", \n                {\n                    { \"title\", \"Age\" },\n                } },\n            } },\n        },\n    });\n\n    var childBlueprint = new Port.Index.Port_blueprint(\"childBlueprint\", new()\n    {\n        Title = \"Child Blueprint\",\n        Icon = \"Terraform\",\n        Identifier = \"child\",\n        Description = \"\",\n        Properties = \n        {\n            { \"numberProps\", \n            {\n                { \"age\", \n                {\n                    { \"title\", \"Age\" },\n                } },\n            } },\n        },\n        Relations = \n        {\n            { \"parent\", \n            {\n                { \"title\", \"Parent\" },\n                { \"target\", parentBlueprint.Identifier },\n            } },\n        },\n    });\n\n    var parentAggregationProperties = new Port.Index.Port_aggregation_properties(\"parentAggregationProperties\", new()\n    {\n        BlueprintIdentifier = parentBlueprint.Identifier,\n        Properties = \n        {\n            { \"averageKidsAge\", \n            {\n                { \"targetBlueprintIdentifier\", childBlueprint.Identifier },\n                { \"title\", \"Average Kids Age\" },\n                { \"icon\", \"Terraform\" },\n                { \"description\", \"Average Kids Age\" },\n                { \"method\", \n                {\n                    { \"averageByProperty\", \n                    {\n                        { \"averageOf\", \"total\" },\n                        { \"measureTimeBy\", \"$createdAt\" },\n                        { \"property\", \"age\" },\n                    } },\n                } },\n            } },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/port-labs/pulumi-port/sdk/go/port\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tparentBlueprint, err := port.NewPort_blueprint(ctx, \"parentBlueprint\", \u0026port.Port_blueprintArgs{\n\t\t\tTitle:       \"Parent Blueprint\",\n\t\t\tIcon:        \"Terraform\",\n\t\t\tIdentifier:  \"parent\",\n\t\t\tDescription: \"\",\n\t\t\tProperties: map[string]interface{}{\n\t\t\t\t\"numberProps\": map[string]interface{}{\n\t\t\t\t\t\"age\": map[string]interface{}{\n\t\t\t\t\t\t\"title\": \"Age\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tchildBlueprint, err := port.NewPort_blueprint(ctx, \"childBlueprint\", \u0026port.Port_blueprintArgs{\n\t\t\tTitle:       \"Child Blueprint\",\n\t\t\tIcon:        \"Terraform\",\n\t\t\tIdentifier:  \"child\",\n\t\t\tDescription: \"\",\n\t\t\tProperties: map[string]interface{}{\n\t\t\t\t\"numberProps\": map[string]interface{}{\n\t\t\t\t\t\"age\": map[string]interface{}{\n\t\t\t\t\t\t\"title\": \"Age\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRelations: map[string]interface{}{\n\t\t\t\t\"parent\": map[string]interface{}{\n\t\t\t\t\t\"title\":  \"Parent\",\n\t\t\t\t\t\"target\": parentBlueprint.Identifier,\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = port.NewPort_aggregation_properties(ctx, \"parentAggregationProperties\", \u0026port.Port_aggregation_propertiesArgs{\n\t\t\tBlueprintIdentifier: parentBlueprint.Identifier,\n\t\t\tProperties: map[string]interface{}{\n\t\t\t\t\"averageKidsAge\": map[string]interface{}{\n\t\t\t\t\t\"targetBlueprintIdentifier\": childBlueprint.Identifier,\n\t\t\t\t\t\"title\":                     \"Average Kids Age\",\n\t\t\t\t\t\"icon\":                      \"Terraform\",\n\t\t\t\t\t\"description\":               \"Average Kids Age\",\n\t\t\t\t\t\"method\": map[string]interface{}{\n\t\t\t\t\t\t\"averageByProperty\": map[string]interface{}{\n\t\t\t\t\t\t\t\"averageOf\":     \"total\",\n\t\t\t\t\t\t\t\"measureTimeBy\": \"$createdAt\",\n\t\t\t\t\t\t\t\"property\":      \"age\",\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.port.port_blueprint;\nimport com.pulumi.port.Port_blueprintArgs;\nimport com.pulumi.port.port_aggregation_properties;\nimport com.pulumi.port.Port_aggregation_propertiesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var parentBlueprint = new Port_blueprint(\"parentBlueprint\", Port_blueprintArgs.builder()        \n            .title(\"Parent Blueprint\")\n            .icon(\"Terraform\")\n            .identifier(\"parent\")\n            .description(\"\")\n            .properties(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n        var childBlueprint = new Port_blueprint(\"childBlueprint\", Port_blueprintArgs.builder()        \n            .title(\"Child Blueprint\")\n            .icon(\"Terraform\")\n            .identifier(\"child\")\n            .description(\"\")\n            .properties(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .relations(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n        var parentAggregationProperties = new Port_aggregation_properties(\"parentAggregationProperties\", Port_aggregation_propertiesArgs.builder()        \n            .blueprintIdentifier(parentBlueprint.identifier())\n            .properties(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  parentBlueprint:\n    type: port:port_blueprint\n    properties:\n      title: Parent Blueprint\n      icon: Terraform\n      identifier: parent\n      description:\n      properties:\n        numberProps:\n          age:\n            title: Age\n  childBlueprint:\n    type: port:port_blueprint\n    properties:\n      title: Child Blueprint\n      icon: Terraform\n      identifier: child\n      description:\n      properties:\n        numberProps:\n          age:\n            title: Age\n      relations:\n        parent:\n          title: Parent\n          target: ${parentBlueprint.identifier}\n  parentAggregationProperties:\n    type: port:port_aggregation_properties\n    properties:\n      blueprintIdentifier: ${parentBlueprint.identifier}\n      properties:\n        averageKidsAge:\n          targetBlueprintIdentifier: ${childBlueprint.identifier}\n          title: Average Kids Age\n          icon: Terraform\n          description: Average Kids Age\n          method:\n            averageByProperty:\n              averageOf: total\n              measureTimeBy: $createdAt\n              property: age\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreate a repository blueprint and a pull request blueprint and an aggregation property to calculate the average of pull requests created per day:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as port from \"@pulumi/port\";\n\nconst repositoryBlueprint = new port.index.Port_blueprint(\"repositoryBlueprint\", {\n    title: \"Repository Blueprint\",\n    icon: \"Terraform\",\n    identifier: \"repository\",\n    description: \"\",\n});\nconst pullRequestBlueprint = new port.index.Port_blueprint(\"pullRequestBlueprint\", {\n    title: \"Pull Request Blueprint\",\n    icon: \"Terraform\",\n    identifier: \"pull_request\",\n    description: \"\",\n    properties: {\n        stringProps: {\n            status: {\n                title: \"Status\",\n            },\n        },\n    },\n    relations: {\n        repository: {\n            title: \"Repository\",\n            target: repositoryBlueprint.identifier,\n        },\n    },\n});\nconst repositoryAggregationProperties = new port.index.Port_aggregation_properties(\"repositoryAggregationProperties\", {\n    blueprintIdentifier: repositoryBlueprint.identifier,\n    properties: {\n        pull_requests_per_day: {\n            targetBlueprintIdentifier: pullRequestBlueprint.identifier,\n            title: \"Pull Requests Per Day\",\n            icon: \"Terraform\",\n            description: \"Pull Requests Per Day\",\n            method: {\n                averageEntities: {\n                    averageOf: \"day\",\n                    measureTimeBy: \"$createdAt\",\n                },\n            },\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_port as port\n\nrepository_blueprint = port.index.Port_blueprint(\"repositoryBlueprint\",\n    title=Repository Blueprint,\n    icon=Terraform,\n    identifier=repository,\n    description=)\npull_request_blueprint = port.index.Port_blueprint(\"pullRequestBlueprint\",\n    title=Pull Request Blueprint,\n    icon=Terraform,\n    identifier=pull_request,\n    description=,\n    properties={\n        stringProps: {\n            status: {\n                title: Status,\n            },\n        },\n    },\n    relations={\n        repository: {\n            title: Repository,\n            target: repository_blueprint.identifier,\n        },\n    })\nrepository_aggregation_properties = port.index.Port_aggregation_properties(\"repositoryAggregationProperties\",\n    blueprint_identifier=repository_blueprint.identifier,\n    properties={\n        pull_requests_per_day: {\n            targetBlueprintIdentifier: pull_request_blueprint.identifier,\n            title: Pull Requests Per Day,\n            icon: Terraform,\n            description: Pull Requests Per Day,\n            method: {\n                averageEntities: {\n                    averageOf: day,\n                    measureTimeBy: $createdAt,\n                },\n            },\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Port = Pulumi.Port;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var repositoryBlueprint = new Port.Index.Port_blueprint(\"repositoryBlueprint\", new()\n    {\n        Title = \"Repository Blueprint\",\n        Icon = \"Terraform\",\n        Identifier = \"repository\",\n        Description = \"\",\n    });\n\n    var pullRequestBlueprint = new Port.Index.Port_blueprint(\"pullRequestBlueprint\", new()\n    {\n        Title = \"Pull Request Blueprint\",\n        Icon = \"Terraform\",\n        Identifier = \"pull_request\",\n        Description = \"\",\n        Properties = \n        {\n            { \"stringProps\", \n            {\n                { \"status\", \n                {\n                    { \"title\", \"Status\" },\n                } },\n            } },\n        },\n        Relations = \n        {\n            { \"repository\", \n            {\n                { \"title\", \"Repository\" },\n                { \"target\", repositoryBlueprint.Identifier },\n            } },\n        },\n    });\n\n    var repositoryAggregationProperties = new Port.Index.Port_aggregation_properties(\"repositoryAggregationProperties\", new()\n    {\n        BlueprintIdentifier = repositoryBlueprint.Identifier,\n        Properties = \n        {\n            { \"pull_requests_per_day\", \n            {\n                { \"targetBlueprintIdentifier\", pullRequestBlueprint.Identifier },\n                { \"title\", \"Pull Requests Per Day\" },\n                { \"icon\", \"Terraform\" },\n                { \"description\", \"Pull Requests Per Day\" },\n                { \"method\", \n                {\n                    { \"averageEntities\", \n                    {\n                        { \"averageOf\", \"day\" },\n                        { \"measureTimeBy\", \"$createdAt\" },\n                    } },\n                } },\n            } },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/port-labs/pulumi-port/sdk/go/port\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\trepositoryBlueprint, err := port.NewPort_blueprint(ctx, \"repositoryBlueprint\", \u0026port.Port_blueprintArgs{\n\t\t\tTitle:       \"Repository Blueprint\",\n\t\t\tIcon:        \"Terraform\",\n\t\t\tIdentifier:  \"repository\",\n\t\t\tDescription: \"\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tpullRequestBlueprint, err := port.NewPort_blueprint(ctx, \"pullRequestBlueprint\", \u0026port.Port_blueprintArgs{\n\t\t\tTitle:       \"Pull Request Blueprint\",\n\t\t\tIcon:        \"Terraform\",\n\t\t\tIdentifier:  \"pull_request\",\n\t\t\tDescription: \"\",\n\t\t\tProperties: map[string]interface{}{\n\t\t\t\t\"stringProps\": map[string]interface{}{\n\t\t\t\t\t\"status\": map[string]interface{}{\n\t\t\t\t\t\t\"title\": \"Status\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRelations: map[string]interface{}{\n\t\t\t\t\"repository\": map[string]interface{}{\n\t\t\t\t\t\"title\":  \"Repository\",\n\t\t\t\t\t\"target\": repositoryBlueprint.Identifier,\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = port.NewPort_aggregation_properties(ctx, \"repositoryAggregationProperties\", \u0026port.Port_aggregation_propertiesArgs{\n\t\t\tBlueprintIdentifier: repositoryBlueprint.Identifier,\n\t\t\tProperties: map[string]interface{}{\n\t\t\t\t\"pull_requests_per_day\": map[string]interface{}{\n\t\t\t\t\t\"targetBlueprintIdentifier\": pullRequestBlueprint.Identifier,\n\t\t\t\t\t\"title\":                     \"Pull Requests Per Day\",\n\t\t\t\t\t\"icon\":                      \"Terraform\",\n\t\t\t\t\t\"description\":               \"Pull Requests Per Day\",\n\t\t\t\t\t\"method\": map[string]interface{}{\n\t\t\t\t\t\t\"averageEntities\": map[string]interface{}{\n\t\t\t\t\t\t\t\"averageOf\":     \"day\",\n\t\t\t\t\t\t\t\"measureTimeBy\": \"$createdAt\",\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.port.port_blueprint;\nimport com.pulumi.port.Port_blueprintArgs;\nimport com.pulumi.port.port_aggregation_properties;\nimport com.pulumi.port.Port_aggregation_propertiesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var repositoryBlueprint = new Port_blueprint(\"repositoryBlueprint\", Port_blueprintArgs.builder()        \n            .title(\"Repository Blueprint\")\n            .icon(\"Terraform\")\n            .identifier(\"repository\")\n            .description(\"\")\n            .build());\n\n        var pullRequestBlueprint = new Port_blueprint(\"pullRequestBlueprint\", Port_blueprintArgs.builder()        \n            .title(\"Pull Request Blueprint\")\n            .icon(\"Terraform\")\n            .identifier(\"pull_request\")\n            .description(\"\")\n            .properties(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .relations(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n        var repositoryAggregationProperties = new Port_aggregation_properties(\"repositoryAggregationProperties\", Port_aggregation_propertiesArgs.builder()        \n            .blueprintIdentifier(repositoryBlueprint.identifier())\n            .properties(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  repositoryBlueprint:\n    type: port:port_blueprint\n    properties:\n      title: Repository Blueprint\n      icon: Terraform\n      identifier: repository\n      description:\n  pullRequestBlueprint:\n    type: port:port_blueprint\n    properties:\n      title: Pull Request Blueprint\n      icon: Terraform\n      identifier: pull_request\n      description:\n      properties:\n        stringProps:\n          status:\n            title: Status\n      relations:\n        repository:\n          title: Repository\n          target: ${repositoryBlueprint.identifier}\n  repositoryAggregationProperties:\n    type: port:port_aggregation_properties\n    properties:\n      blueprintIdentifier: ${repositoryBlueprint.identifier}\n      properties:\n        pull_requests_per_day:\n          targetBlueprintIdentifier: ${pullRequestBlueprint.identifier}\n          title: Pull Requests Per Day\n          icon: Terraform\n          description: Pull Requests Per Day\n          method:\n            averageEntities:\n              averageOf: day\n              measureTimeBy: $createdAt\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreate a repository blueprint and a pull request blueprint and an aggregation property to calculate the average of fix pull request per month:\n\nTo do that we will add a query to the aggregation property to filter only pull requests with fixed title:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as port from \"@pulumi/port\";\n\nconst repositoryBlueprint = new port.index.Port_blueprint(\"repositoryBlueprint\", {\n    title: \"Repository Blueprint\",\n    icon: \"Terraform\",\n    identifier: \"repository\",\n    description: \"\",\n});\nconst pullRequestBlueprint = new port.index.Port_blueprint(\"pullRequestBlueprint\", {\n    title: \"Pull Request Blueprint\",\n    icon: \"Terraform\",\n    identifier: \"pull_request\",\n    description: \"\",\n    properties: {\n        stringProps: {\n            status: {\n                title: \"Status\",\n            },\n        },\n    },\n    relations: {\n        repository: {\n            title: \"Repository\",\n            target: repositoryBlueprint.identifier,\n        },\n    },\n});\nconst repositoryAggregationProperties = new port.index.Port_aggregation_properties(\"repositoryAggregationProperties\", {\n    blueprintIdentifier: repositoryBlueprint.identifier,\n    properties: {\n        fix_pull_requests_count: {\n            targetBlueprintIdentifier: pullRequestBlueprint.identifier,\n            title: \"Pull Requests Per Day\",\n            icon: \"Terraform\",\n            description: \"Pull Requests Per Day\",\n            method: {\n                averageEntities: {\n                    averageOf: \"month\",\n                    measureTimeBy: \"$createdAt\",\n                },\n            },\n            query: JSON.stringify({\n                combinator: \"and\",\n                rules: [{\n                    property: \"$title\",\n                    operator: \"ContainsAny\",\n                    value: [\n                        \"fix\",\n                        \"fixed\",\n                        \"fixing\",\n                        \"Fix\",\n                    ],\n                }],\n            }),\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_port as port\n\nrepository_blueprint = port.index.Port_blueprint(\"repositoryBlueprint\",\n    title=Repository Blueprint,\n    icon=Terraform,\n    identifier=repository,\n    description=)\npull_request_blueprint = port.index.Port_blueprint(\"pullRequestBlueprint\",\n    title=Pull Request Blueprint,\n    icon=Terraform,\n    identifier=pull_request,\n    description=,\n    properties={\n        stringProps: {\n            status: {\n                title: Status,\n            },\n        },\n    },\n    relations={\n        repository: {\n            title: Repository,\n            target: repository_blueprint.identifier,\n        },\n    })\nrepository_aggregation_properties = port.index.Port_aggregation_properties(\"repositoryAggregationProperties\",\n    blueprint_identifier=repository_blueprint.identifier,\n    properties={\n        fix_pull_requests_count: {\n            targetBlueprintIdentifier: pull_request_blueprint.identifier,\n            title: Pull Requests Per Day,\n            icon: Terraform,\n            description: Pull Requests Per Day,\n            method: {\n                averageEntities: {\n                    averageOf: month,\n                    measureTimeBy: $createdAt,\n                },\n            },\n            query: json.dumps({\n                combinator: and,\n                rules: [{\n                    property: $title,\n                    operator: ContainsAny,\n                    value: [\n                        fix,\n                        fixed,\n                        fixing,\n                        Fix,\n                    ],\n                }],\n            }),\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Port = Pulumi.Port;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var repositoryBlueprint = new Port.Index.Port_blueprint(\"repositoryBlueprint\", new()\n    {\n        Title = \"Repository Blueprint\",\n        Icon = \"Terraform\",\n        Identifier = \"repository\",\n        Description = \"\",\n    });\n\n    var pullRequestBlueprint = new Port.Index.Port_blueprint(\"pullRequestBlueprint\", new()\n    {\n        Title = \"Pull Request Blueprint\",\n        Icon = \"Terraform\",\n        Identifier = \"pull_request\",\n        Description = \"\",\n        Properties = \n        {\n            { \"stringProps\", \n            {\n                { \"status\", \n                {\n                    { \"title\", \"Status\" },\n                } },\n            } },\n        },\n        Relations = \n        {\n            { \"repository\", \n            {\n                { \"title\", \"Repository\" },\n                { \"target\", repositoryBlueprint.Identifier },\n            } },\n        },\n    });\n\n    var repositoryAggregationProperties = new Port.Index.Port_aggregation_properties(\"repositoryAggregationProperties\", new()\n    {\n        BlueprintIdentifier = repositoryBlueprint.Identifier,\n        Properties = \n        {\n            { \"fix_pull_requests_count\", \n            {\n                { \"targetBlueprintIdentifier\", pullRequestBlueprint.Identifier },\n                { \"title\", \"Pull Requests Per Day\" },\n                { \"icon\", \"Terraform\" },\n                { \"description\", \"Pull Requests Per Day\" },\n                { \"method\", \n                {\n                    { \"averageEntities\", \n                    {\n                        { \"averageOf\", \"month\" },\n                        { \"measureTimeBy\", \"$createdAt\" },\n                    } },\n                } },\n                { \"query\", JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"combinator\"] = \"and\",\n                    [\"rules\"] = new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            [\"property\"] = \"$title\",\n                            [\"operator\"] = \"ContainsAny\",\n                            [\"value\"] = new[]\n                            {\n                                \"fix\",\n                                \"fixed\",\n                                \"fixing\",\n                                \"Fix\",\n                            },\n                        },\n                    },\n                }) },\n            } },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/port-labs/pulumi-port/sdk/go/port\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\nfunc main() {\npulumi.Run(func(ctx *pulumi.Context) error {\nrepositoryBlueprint, err := port.NewPort_blueprint(ctx, \"repositoryBlueprint\", \u0026port.Port_blueprintArgs{\nTitle: \"Repository Blueprint\",\nIcon: \"Terraform\",\nIdentifier: \"repository\",\nDescription: \"\",\n})\nif err != nil {\nreturn err\n}\npullRequestBlueprint, err := port.NewPort_blueprint(ctx, \"pullRequestBlueprint\", \u0026port.Port_blueprintArgs{\nTitle: \"Pull Request Blueprint\",\nIcon: \"Terraform\",\nIdentifier: \"pull_request\",\nDescription: \"\",\nProperties: map[string]interface{}{\n\"stringProps\": map[string]interface{}{\n\"status\": map[string]interface{}{\n\"title\": \"Status\",\n},\n},\n},\nRelations: map[string]interface{}{\n\"repository\": map[string]interface{}{\n\"title\": \"Repository\",\n\"target\": repositoryBlueprint.Identifier,\n},\n},\n})\nif err != nil {\nreturn err\n}\n_, err = port.NewPort_aggregation_properties(ctx, \"repositoryAggregationProperties\", \u0026port.Port_aggregation_propertiesArgs{\nBlueprintIdentifier: repositoryBlueprint.Identifier,\nProperties: tmpJSON0, err := json.Marshal(map[string]interface{}{\n\"combinator\": \"and\",\n\"rules\": []map[string]interface{}{\nmap[string]interface{}{\n\"property\": \"$title\",\n\"operator\": \"ContainsAny\",\n\"value\": []string{\n\"fix\",\n\"fixed\",\n\"fixing\",\n\"Fix\",\n},\n},\n},\n})\nif err != nil {\nreturn err\n}\njson0 := string(tmpJSON0)\nmap[string]interface{}{\n\"fix_pull_requests_count\": map[string]interface{}{\n\"targetBlueprintIdentifier\": pullRequestBlueprint.Identifier,\n\"title\": \"Pull Requests Per Day\",\n\"icon\": \"Terraform\",\n\"description\": \"Pull Requests Per Day\",\n\"method\": map[string]interface{}{\n\"averageEntities\": map[string]interface{}{\n\"averageOf\": \"month\",\n\"measureTimeBy\": \"$createdAt\",\n},\n},\n\"query\": json0,\n},\n},\n})\nif err != nil {\nreturn err\n}\nreturn nil\n})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.port.port_blueprint;\nimport com.pulumi.port.Port_blueprintArgs;\nimport com.pulumi.port.port_aggregation_properties;\nimport com.pulumi.port.Port_aggregation_propertiesArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var repositoryBlueprint = new Port_blueprint(\"repositoryBlueprint\", Port_blueprintArgs.builder()        \n            .title(\"Repository Blueprint\")\n            .icon(\"Terraform\")\n            .identifier(\"repository\")\n            .description(\"\")\n            .build());\n\n        var pullRequestBlueprint = new Port_blueprint(\"pullRequestBlueprint\", Port_blueprintArgs.builder()        \n            .title(\"Pull Request Blueprint\")\n            .icon(\"Terraform\")\n            .identifier(\"pull_request\")\n            .description(\"\")\n            .properties(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .relations(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n        var repositoryAggregationProperties = new Port_aggregation_properties(\"repositoryAggregationProperties\", Port_aggregation_propertiesArgs.builder()        \n            .blueprintIdentifier(repositoryBlueprint.identifier())\n            .properties(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  repositoryBlueprint:\n    type: port:port_blueprint\n    properties:\n      title: Repository Blueprint\n      icon: Terraform\n      identifier: repository\n      description:\n  pullRequestBlueprint:\n    type: port:port_blueprint\n    properties:\n      title: Pull Request Blueprint\n      icon: Terraform\n      identifier: pull_request\n      description:\n      properties:\n        stringProps:\n          status:\n            title: Status\n      relations:\n        repository:\n          title: Repository\n          target: ${repositoryBlueprint.identifier}\n  repositoryAggregationProperties:\n    type: port:port_aggregation_properties\n    properties:\n      blueprintIdentifier: ${repositoryBlueprint.identifier}\n      properties:\n        fix_pull_requests_count:\n          targetBlueprintIdentifier: ${pullRequestBlueprint.identifier}\n          title: Pull Requests Per Day\n          icon: Terraform\n          description: Pull Requests Per Day\n          method:\n            averageEntities:\n              averageOf: month\n              measureTimeBy: $createdAt\n          query:\n            fn::toJSON:\n              combinator: and\n              rules:\n                - property: $title\n                  operator: ContainsAny\n                  value:\n                    - fix\n                    - fixed\n                    - fixing\n                    - Fix\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n\nCreate multiple aggregation properties in one resource:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as port from \"@pulumi/port\";\n\nconst repositoryBlueprint = new port.index.Port_blueprint(\"repositoryBlueprint\", {\n    title: \"Repository Blueprint\",\n    icon: \"Terraform\",\n    identifier: \"repository\",\n    description: \"\",\n});\nconst pullRequestBlueprint = new port.index.Port_blueprint(\"pullRequestBlueprint\", {\n    title: \"Pull Request Blueprint\",\n    icon: \"Terraform\",\n    identifier: \"pull_request\",\n    description: \"\",\n    properties: {\n        stringProps: {\n            status: {\n                title: \"Status\",\n            },\n        },\n    },\n    relations: {\n        repository: {\n            title: \"Repository\",\n            target: repositoryBlueprint.identifier,\n        },\n    },\n});\nconst repositoryAggregationProperties = new port.index.Port_aggregation_properties(\"repositoryAggregationProperties\", {\n    blueprintIdentifier: repositoryBlueprint.identifier,\n    properties: {\n        pull_requests_per_day: {\n            targetBlueprintIdentifier: pullRequestBlueprint.identifier,\n            title: \"Pull Requests Per Day\",\n            icon: \"Terraform\",\n            description: \"Pull Requests Per Day\",\n            method: {\n                averageEntities: {\n                    averageOf: \"day\",\n                    measureTimeBy: \"$createdAt\",\n                },\n            },\n        },\n        overall_pull_requests_count: {\n            targetBlueprintIdentifier: pullRequestBlueprint.identifier,\n            title: \"Overall Pull Requests Count\",\n            icon: \"Terraform\",\n            description: \"Overall Pull Requests Count\",\n            method: {\n                countEntities: true,\n            },\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_port as port\n\nrepository_blueprint = port.index.Port_blueprint(\"repositoryBlueprint\",\n    title=Repository Blueprint,\n    icon=Terraform,\n    identifier=repository,\n    description=)\npull_request_blueprint = port.index.Port_blueprint(\"pullRequestBlueprint\",\n    title=Pull Request Blueprint,\n    icon=Terraform,\n    identifier=pull_request,\n    description=,\n    properties={\n        stringProps: {\n            status: {\n                title: Status,\n            },\n        },\n    },\n    relations={\n        repository: {\n            title: Repository,\n            target: repository_blueprint.identifier,\n        },\n    })\nrepository_aggregation_properties = port.index.Port_aggregation_properties(\"repositoryAggregationProperties\",\n    blueprint_identifier=repository_blueprint.identifier,\n    properties={\n        pull_requests_per_day: {\n            targetBlueprintIdentifier: pull_request_blueprint.identifier,\n            title: Pull Requests Per Day,\n            icon: Terraform,\n            description: Pull Requests Per Day,\n            method: {\n                averageEntities: {\n                    averageOf: day,\n                    measureTimeBy: $createdAt,\n                },\n            },\n        },\n        overall_pull_requests_count: {\n            targetBlueprintIdentifier: pull_request_blueprint.identifier,\n            title: Overall Pull Requests Count,\n            icon: Terraform,\n            description: Overall Pull Requests Count,\n            method: {\n                countEntities: True,\n            },\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Port = Pulumi.Port;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var repositoryBlueprint = new Port.Index.Port_blueprint(\"repositoryBlueprint\", new()\n    {\n        Title = \"Repository Blueprint\",\n        Icon = \"Terraform\",\n        Identifier = \"repository\",\n        Description = \"\",\n    });\n\n    var pullRequestBlueprint = new Port.Index.Port_blueprint(\"pullRequestBlueprint\", new()\n    {\n        Title = \"Pull Request Blueprint\",\n        Icon = \"Terraform\",\n        Identifier = \"pull_request\",\n        Description = \"\",\n        Properties = \n        {\n            { \"stringProps\", \n            {\n                { \"status\", \n                {\n                    { \"title\", \"Status\" },\n                } },\n            } },\n        },\n        Relations = \n        {\n            { \"repository\", \n            {\n                { \"title\", \"Repository\" },\n                { \"target\", repositoryBlueprint.Identifier },\n            } },\n        },\n    });\n\n    var repositoryAggregationProperties = new Port.Index.Port_aggregation_properties(\"repositoryAggregationProperties\", new()\n    {\n        BlueprintIdentifier = repositoryBlueprint.Identifier,\n        Properties = \n        {\n            { \"pull_requests_per_day\", \n            {\n                { \"targetBlueprintIdentifier\", pullRequestBlueprint.Identifier },\n                { \"title\", \"Pull Requests Per Day\" },\n                { \"icon\", \"Terraform\" },\n                { \"description\", \"Pull Requests Per Day\" },\n                { \"method\", \n                {\n                    { \"averageEntities\", \n                    {\n                        { \"averageOf\", \"day\" },\n                        { \"measureTimeBy\", \"$createdAt\" },\n                    } },\n                } },\n            } },\n            { \"overall_pull_requests_count\", \n            {\n                { \"targetBlueprintIdentifier\", pullRequestBlueprint.Identifier },\n                { \"title\", \"Overall Pull Requests Count\" },\n                { \"icon\", \"Terraform\" },\n                { \"description\", \"Overall Pull Requests Count\" },\n                { \"method\", \n                {\n                    { \"countEntities\", true },\n                } },\n            } },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/port-labs/pulumi-port/sdk/go/port\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\trepositoryBlueprint, err := port.NewPort_blueprint(ctx, \"repositoryBlueprint\", \u0026port.Port_blueprintArgs{\n\t\t\tTitle:       \"Repository Blueprint\",\n\t\t\tIcon:        \"Terraform\",\n\t\t\tIdentifier:  \"repository\",\n\t\t\tDescription: \"\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tpullRequestBlueprint, err := port.NewPort_blueprint(ctx, \"pullRequestBlueprint\", \u0026port.Port_blueprintArgs{\n\t\t\tTitle:       \"Pull Request Blueprint\",\n\t\t\tIcon:        \"Terraform\",\n\t\t\tIdentifier:  \"pull_request\",\n\t\t\tDescription: \"\",\n\t\t\tProperties: map[string]interface{}{\n\t\t\t\t\"stringProps\": map[string]interface{}{\n\t\t\t\t\t\"status\": map[string]interface{}{\n\t\t\t\t\t\t\"title\": \"Status\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRelations: map[string]interface{}{\n\t\t\t\t\"repository\": map[string]interface{}{\n\t\t\t\t\t\"title\":  \"Repository\",\n\t\t\t\t\t\"target\": repositoryBlueprint.Identifier,\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = port.NewPort_aggregation_properties(ctx, \"repositoryAggregationProperties\", \u0026port.Port_aggregation_propertiesArgs{\n\t\t\tBlueprintIdentifier: repositoryBlueprint.Identifier,\n\t\t\tProperties: map[string]interface{}{\n\t\t\t\t\"pull_requests_per_day\": map[string]interface{}{\n\t\t\t\t\t\"targetBlueprintIdentifier\": pullRequestBlueprint.Identifier,\n\t\t\t\t\t\"title\":                     \"Pull Requests Per Day\",\n\t\t\t\t\t\"icon\":                      \"Terraform\",\n\t\t\t\t\t\"description\":               \"Pull Requests Per Day\",\n\t\t\t\t\t\"method\": map[string]interface{}{\n\t\t\t\t\t\t\"averageEntities\": map[string]interface{}{\n\t\t\t\t\t\t\t\"averageOf\":     \"day\",\n\t\t\t\t\t\t\t\"measureTimeBy\": \"$createdAt\",\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\"overall_pull_requests_count\": map[string]interface{}{\n\t\t\t\t\t\"targetBlueprintIdentifier\": pullRequestBlueprint.Identifier,\n\t\t\t\t\t\"title\":                     \"Overall Pull Requests Count\",\n\t\t\t\t\t\"icon\":                      \"Terraform\",\n\t\t\t\t\t\"description\":               \"Overall Pull Requests Count\",\n\t\t\t\t\t\"method\": map[string]interface{}{\n\t\t\t\t\t\t\"countEntities\": true,\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.port.port_blueprint;\nimport com.pulumi.port.Port_blueprintArgs;\nimport com.pulumi.port.port_aggregation_properties;\nimport com.pulumi.port.Port_aggregation_propertiesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var repositoryBlueprint = new Port_blueprint(\"repositoryBlueprint\", Port_blueprintArgs.builder()        \n            .title(\"Repository Blueprint\")\n            .icon(\"Terraform\")\n            .identifier(\"repository\")\n            .description(\"\")\n            .build());\n\n        var pullRequestBlueprint = new Port_blueprint(\"pullRequestBlueprint\", Port_blueprintArgs.builder()        \n            .title(\"Pull Request Blueprint\")\n            .icon(\"Terraform\")\n            .identifier(\"pull_request\")\n            .description(\"\")\n            .properties(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .relations(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n        var repositoryAggregationProperties = new Port_aggregation_properties(\"repositoryAggregationProperties\", Port_aggregation_propertiesArgs.builder()        \n            .blueprintIdentifier(repositoryBlueprint.identifier())\n            .properties(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  repositoryBlueprint:\n    type: port:port_blueprint\n    properties:\n      title: Repository Blueprint\n      icon: Terraform\n      identifier: repository\n      description:\n  pullRequestBlueprint:\n    type: port:port_blueprint\n    properties:\n      title: Pull Request Blueprint\n      icon: Terraform\n      identifier: pull_request\n      description:\n      properties:\n        stringProps:\n          status:\n            title: Status\n      relations:\n        repository:\n          title: Repository\n          target: ${repositoryBlueprint.identifier}\n  repositoryAggregationProperties:\n    type: port:port_aggregation_properties\n    properties:\n      blueprintIdentifier: ${repositoryBlueprint.identifier}\n      properties:\n        pull_requests_per_day:\n          targetBlueprintIdentifier: ${pullRequestBlueprint.identifier}\n          title: Pull Requests Per Day\n          icon: Terraform\n          description: Pull Requests Per Day\n          method:\n            averageEntities:\n              averageOf: day\n              measureTimeBy: $createdAt\n        overall_pull_requests_count:\n          targetBlueprintIdentifier: ${pullRequestBlueprint.identifier}\n          title: Overall Pull Requests Count\n          icon: Terraform\n          description: Overall Pull Requests Count\n          method:\n            countEntities: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "blueprintIdentifier": {
                     "type": "string",
@@ -2480,8 +2474,7 @@
                     "description": "The description of the blueprint\n"
                 },
                 "forceDeleteEntities": {
-                    "type": "boolean",
-                    "description": "If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform\n"
+                    "type": "boolean"
                 },
                 "icon": {
                     "type": "string",
@@ -2556,8 +2549,7 @@
                     "description": "The description of the blueprint\n"
                 },
                 "forceDeleteEntities": {
-                    "type": "boolean",
-                    "description": "If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform\n"
+                    "type": "boolean"
                 },
                 "icon": {
                     "type": "string",
@@ -2629,8 +2621,7 @@
                         "description": "The description of the blueprint\n"
                     },
                     "forceDeleteEntities": {
-                        "type": "boolean",
-                        "description": "If set to true, the blueprint will be deleted with all its entities, even if they are not managed by Terraform\n"
+                        "type": "boolean"
                     },
                     "icon": {
                         "type": "string",
@@ -2728,6 +2719,7 @@
             }
         },
         "port:index/entity:Entity": {
+            "description": "Entity resource\n",
             "properties": {
                 "blueprint": {
                     "type": "string",
@@ -3102,6 +3094,7 @@
             }
         },
         "port:index/scorecard:Scorecard": {
+            "description": "This resource allows you to manage a scorecard.\n\nSee the [Port documentation](https://docs.getport.io/promote-scorecards/) for more information about scorecards.\n\n## Example Usage\n\nCreate a parent blueprint with a child blueprint and an aggregation property to count the parent kids:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as port from \"@pulumi/port\";\n\nconst microservice = new port.index.Port_blueprint(\"microservice\", {\n    title: \"microservice\",\n    icon: \"Terraform\",\n    identifier: \"microservice\",\n    properties: {\n        stringProps: {\n            author: {\n                title: \"Author\",\n            },\n            url: {\n                title: \"URL\",\n            },\n        },\n        booleanProps: {\n            required: {\n                type: \"boolean\",\n            },\n        },\n        numberProps: {\n            sum: {\n                type: \"number\",\n            },\n        },\n    },\n});\nconst readiness = new port.index.Port_scorecard(\"readiness\", {\n    identifier: \"Readiness\",\n    title: \"Readiness\",\n    blueprint: microservice.identifier,\n    rules: [\n        {\n            identifier: \"hasOwner\",\n            title: \"Has Owner\",\n            level: \"Gold\",\n            query: {\n                combinator: \"and\",\n                conditions: [\n                    JSON.stringify({\n                        property: \"$team\",\n                        operator: \"isNotEmpty\",\n                    }),\n                    JSON.stringify({\n                        property: \"author\",\n                        operator: \"=\",\n                        value: \"myValue\",\n                    }),\n                ],\n            },\n        },\n        {\n            identifier: \"hasUrl\",\n            title: \"Has URL\",\n            level: \"Silver\",\n            query: {\n                combinator: \"and\",\n                conditions: [JSON.stringify({\n                    property: \"url\",\n                    operator: \"isNotEmpty\",\n                })],\n            },\n        },\n        {\n            identifier: \"checkSumIfRequired\",\n            title: \"Check Sum If Required\",\n            level: \"Bronze\",\n            query: {\n                combinator: \"or\",\n                conditions: [\n                    JSON.stringify({\n                        property: \"required\",\n                        operator: \"=\",\n                        value: false,\n                    }),\n                    JSON.stringify({\n                        property: \"sum\",\n                        operator: \"\u003e\",\n                        value: 2,\n                    }),\n                ],\n            },\n        },\n    ],\n}, {\n    dependsOn: [microservice],\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_port as port\n\nmicroservice = port.index.Port_blueprint(\"microservice\",\n    title=microservice,\n    icon=Terraform,\n    identifier=microservice,\n    properties={\n        stringProps: {\n            author: {\n                title: Author,\n            },\n            url: {\n                title: URL,\n            },\n        },\n        booleanProps: {\n            required: {\n                type: boolean,\n            },\n        },\n        numberProps: {\n            sum: {\n                type: number,\n            },\n        },\n    })\nreadiness = port.index.Port_scorecard(\"readiness\",\n    identifier=Readiness,\n    title=Readiness,\n    blueprint=microservice.identifier,\n    rules=[\n        {\n            identifier: hasOwner,\n            title: Has Owner,\n            level: Gold,\n            query: {\n                combinator: and,\n                conditions: [\n                    json.dumps({\n                        property: $team,\n                        operator: isNotEmpty,\n                    }),\n                    json.dumps({\n                        property: author,\n                        operator: =,\n                        value: myValue,\n                    }),\n                ],\n            },\n        },\n        {\n            identifier: hasUrl,\n            title: Has URL,\n            level: Silver,\n            query: {\n                combinator: and,\n                conditions: [json.dumps({\n                    property: url,\n                    operator: isNotEmpty,\n                })],\n            },\n        },\n        {\n            identifier: checkSumIfRequired,\n            title: Check Sum If Required,\n            level: Bronze,\n            query: {\n                combinator: or,\n                conditions: [\n                    json.dumps({\n                        property: required,\n                        operator: =,\n                        value: False,\n                    }),\n                    json.dumps({\n                        property: sum,\n                        operator: \u003e,\n                        value: 2,\n                    }),\n                ],\n            },\n        },\n    ],\n    opts=pulumi.ResourceOptions(depends_on=[microservice]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Port = Pulumi.Port;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var microservice = new Port.Index.Port_blueprint(\"microservice\", new()\n    {\n        Title = \"microservice\",\n        Icon = \"Terraform\",\n        Identifier = \"microservice\",\n        Properties = \n        {\n            { \"stringProps\", \n            {\n                { \"author\", \n                {\n                    { \"title\", \"Author\" },\n                } },\n                { \"url\", \n                {\n                    { \"title\", \"URL\" },\n                } },\n            } },\n            { \"booleanProps\", \n            {\n                { \"required\", \n                {\n                    { \"type\", \"boolean\" },\n                } },\n            } },\n            { \"numberProps\", \n            {\n                { \"sum\", \n                {\n                    { \"type\", \"number\" },\n                } },\n            } },\n        },\n    });\n\n    var readiness = new Port.Index.Port_scorecard(\"readiness\", new()\n    {\n        Identifier = \"Readiness\",\n        Title = \"Readiness\",\n        Blueprint = microservice.Identifier,\n        Rules = new[]\n        {\n            \n            {\n                { \"identifier\", \"hasOwner\" },\n                { \"title\", \"Has Owner\" },\n                { \"level\", \"Gold\" },\n                { \"query\", \n                {\n                    { \"combinator\", \"and\" },\n                    { \"conditions\", new[]\n                    {\n                        JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n                        {\n                            [\"property\"] = \"$team\",\n                            [\"operator\"] = \"isNotEmpty\",\n                        }),\n                        JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n                        {\n                            [\"property\"] = \"author\",\n                            [\"operator\"] = \"=\",\n                            [\"value\"] = \"myValue\",\n                        }),\n                    } },\n                } },\n            },\n            \n            {\n                { \"identifier\", \"hasUrl\" },\n                { \"title\", \"Has URL\" },\n                { \"level\", \"Silver\" },\n                { \"query\", \n                {\n                    { \"combinator\", \"and\" },\n                    { \"conditions\", new[]\n                    {\n                        JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n                        {\n                            [\"property\"] = \"url\",\n                            [\"operator\"] = \"isNotEmpty\",\n                        }),\n                    } },\n                } },\n            },\n            \n            {\n                { \"identifier\", \"checkSumIfRequired\" },\n                { \"title\", \"Check Sum If Required\" },\n                { \"level\", \"Bronze\" },\n                { \"query\", \n                {\n                    { \"combinator\", \"or\" },\n                    { \"conditions\", new[]\n                    {\n                        JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n                        {\n                            [\"property\"] = \"required\",\n                            [\"operator\"] = \"=\",\n                            [\"value\"] = false,\n                        }),\n                        JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n                        {\n                            [\"property\"] = \"sum\",\n                            [\"operator\"] = \"\u003e\",\n                            [\"value\"] = 2,\n                        }),\n                    } },\n                } },\n            },\n        },\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            microservice,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/port-labs/pulumi-port/sdk/go/port\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\nfunc main() {\npulumi.Run(func(ctx *pulumi.Context) error {\nmicroservice, err := port.NewPort_blueprint(ctx, \"microservice\", \u0026port.Port_blueprintArgs{\nTitle: \"microservice\",\nIcon: \"Terraform\",\nIdentifier: \"microservice\",\nProperties: map[string]interface{}{\n\"stringProps\": map[string]interface{}{\n\"author\": map[string]interface{}{\n\"title\": \"Author\",\n},\n\"url\": map[string]interface{}{\n\"title\": \"URL\",\n},\n},\n\"booleanProps\": map[string]interface{}{\n\"required\": map[string]interface{}{\n\"type\": \"boolean\",\n},\n},\n\"numberProps\": map[string]interface{}{\n\"sum\": map[string]interface{}{\n\"type\": \"number\",\n},\n},\n},\n})\nif err != nil {\nreturn err\n}\n_, err = port.NewPort_scorecard(ctx, \"readiness\", \u0026port.Port_scorecardArgs{\nIdentifier: \"Readiness\",\nTitle: \"Readiness\",\nBlueprint: microservice.Identifier,\nRules: tmpJSON0, err := json.Marshal(map[string]interface{}{\n\"property\": \"$team\",\n\"operator\": \"isNotEmpty\",\n})\nif err != nil {\nreturn err\n}\njson0 := string(tmpJSON0)\ntmpJSON1, err := json.Marshal(map[string]interface{}{\n\"property\": \"author\",\n\"operator\": \"=\",\n\"value\": \"myValue\",\n})\nif err != nil {\nreturn err\n}\njson1 := string(tmpJSON1)\ntmpJSON2, err := json.Marshal(map[string]interface{}{\n\"property\": \"url\",\n\"operator\": \"isNotEmpty\",\n})\nif err != nil {\nreturn err\n}\njson2 := string(tmpJSON2)\ntmpJSON3, err := json.Marshal(map[string]interface{}{\n\"property\": \"required\",\n\"operator\": \"=\",\n\"value\": false,\n})\nif err != nil {\nreturn err\n}\njson3 := string(tmpJSON3)\ntmpJSON4, err := json.Marshal(map[string]interface{}{\n\"property\": \"sum\",\n\"operator\": \"\u003e\",\n\"value\": 2,\n})\nif err != nil {\nreturn err\n}\njson4 := string(tmpJSON4)\n[]interface{}{\nmap[string]interface{}{\n\"identifier\": \"hasOwner\",\n\"title\": \"Has Owner\",\n\"level\": \"Gold\",\n\"query\": map[string]interface{}{\n\"combinator\": \"and\",\n\"conditions\": []string{\njson0,\njson1,\n},\n},\n},\nmap[string]interface{}{\n\"identifier\": \"hasUrl\",\n\"title\": \"Has URL\",\n\"level\": \"Silver\",\n\"query\": map[string]interface{}{\n\"combinator\": \"and\",\n\"conditions\": []string{\njson2,\n},\n},\n},\nmap[string]interface{}{\n\"identifier\": \"checkSumIfRequired\",\n\"title\": \"Check Sum If Required\",\n\"level\": \"Bronze\",\n\"query\": map[string]interface{}{\n\"combinator\": \"or\",\n\"conditions\": []string{\njson3,\njson4,\n},\n},\n},\n},\n}, pulumi.DependsOn([]pulumi.Resource{\nmicroservice,\n}))\nif err != nil {\nreturn err\n}\nreturn nil\n})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.port.port_blueprint;\nimport com.pulumi.port.Port_blueprintArgs;\nimport com.pulumi.port.port_scorecard;\nimport com.pulumi.port.Port_scorecardArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var microservice = new Port_blueprint(\"microservice\", Port_blueprintArgs.builder()        \n            .title(\"microservice\")\n            .icon(\"Terraform\")\n            .identifier(\"microservice\")\n            .properties(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n        var readiness = new Port_scorecard(\"readiness\", Port_scorecardArgs.builder()        \n            .identifier(\"Readiness\")\n            .title(\"Readiness\")\n            .blueprint(microservice.identifier())\n            .rules(            \n                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),\n                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),\n                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(microservice)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  microservice:\n    type: port:port_blueprint\n    properties:\n      title: microservice\n      icon: Terraform\n      identifier: microservice\n      properties:\n        stringProps:\n          author:\n            title: Author\n          url:\n            title: URL\n        booleanProps:\n          required:\n            type: boolean\n        numberProps:\n          sum:\n            type: number\n  readiness:\n    type: port:port_scorecard\n    properties:\n      identifier: Readiness\n      title: Readiness\n      blueprint: ${microservice.identifier}\n      rules:\n        - identifier: hasOwner\n          title: Has Owner\n          level: Gold\n          query:\n            combinator: and\n            conditions:\n              - fn::toJSON:\n                  property: $team\n                  operator: isNotEmpty\n              - fn::toJSON:\n                  property: author\n                  operator: =\n                  value: myValue\n        - identifier: hasUrl\n          title: Has URL\n          level: Silver\n          query:\n            combinator: and\n            conditions:\n              - fn::toJSON:\n                  property: url\n                  operator: isNotEmpty\n        - identifier: checkSumIfRequired\n          title: Check Sum If Required\n          level: Bronze\n          query:\n            combinator: or\n            conditions:\n              - fn::toJSON:\n                  property: required\n                  operator: =\n                  value: false\n              - fn::toJSON:\n                  property: sum\n                  operator: '\u003e'\n                  value: 2\n    options:\n      dependson:\n        - ${microservice}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "blueprint": {
                     "type": "string",
@@ -3219,6 +3212,7 @@
             }
         },
         "port:index/team:Team": {
+            "description": "Team resource\n",
             "properties": {
                 "createdAt": {
                     "type": "string",
@@ -3309,6 +3303,7 @@
             }
         },
         "port:index/webhook:Webhook": {
+            "description": "Webhook resource\n",
             "properties": {
                 "createdAt": {
                     "type": "string",

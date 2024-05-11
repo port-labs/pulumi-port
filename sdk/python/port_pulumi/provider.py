@@ -90,7 +90,7 @@ class Provider(pulumi.ProviderResource):
                  token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The provider type for the port package. By default, resources use package-wide configuration
+        The provider type for the port-labs package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
@@ -108,7 +108,7 @@ class Provider(pulumi.ProviderResource):
                  args: Optional[ProviderArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The provider type for the port package. By default, resources use package-wide configuration
+        The provider type for the port-labs package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.

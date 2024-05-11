@@ -363,7 +363,8 @@ class Entity(pulumi.CustomResource):
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Entity resource with the given unique name, props, and options.
+        Entity resource
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] blueprint: The blueprint identifier the entity relates to
@@ -382,7 +383,8 @@ class Entity(pulumi.CustomResource):
                  args: EntityArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Entity resource with the given unique name, props, and options.
+        Entity resource
+
         :param str resource_name: The name of the resource.
         :param EntityArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
