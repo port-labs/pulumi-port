@@ -2897,6 +2897,10 @@
                     "type": "string",
                     "description": "The creator of the page\n"
                 },
+                "description": {
+                    "type": "string",
+                    "description": "The page description\n"
+                },
                 "icon": {
                     "type": "string",
                     "description": "The icon of the page\n"
@@ -2954,6 +2958,10 @@
                     "type": "string",
                     "description": "The blueprint for which the page is created, relevant only for pages of type \"blueprint-entities\"\n"
                 },
+                "description": {
+                    "type": "string",
+                    "description": "The page description\n"
+                },
                 "icon": {
                     "type": "string",
                     "description": "The icon of the page\n"
@@ -3008,6 +3016,10 @@
                     "createdBy": {
                         "type": "string",
                         "description": "The creator of the page\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The page description\n"
                     },
                     "icon": {
                         "type": "string",
