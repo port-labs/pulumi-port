@@ -18,6 +18,7 @@ class PageArgs:
                  type: pulumi.Input[str],
                  after: Optional[pulumi.Input[str]] = None,
                  blueprint: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -29,6 +30,7 @@ class PageArgs:
         :param pulumi.Input[str] type: The type of the page, can be one of "blueprint-entities", "dashboard" or "home"
         :param pulumi.Input[str] after: The identifier of the page/folder after which the page should be placed
         :param pulumi.Input[str] blueprint: The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
+        :param pulumi.Input[str] description: The page description
         :param pulumi.Input[str] icon: The icon of the page
         :param pulumi.Input[bool] locked: Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
         :param pulumi.Input[str] parent: The identifier of the folder in which the page is in, default is the root of the sidebar
@@ -41,6 +43,8 @@ class PageArgs:
             pulumi.set(__self__, "after", after)
         if blueprint is not None:
             pulumi.set(__self__, "blueprint", blueprint)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
         if locked is not None:
@@ -99,6 +103,18 @@ class PageArgs:
     @blueprint.setter
     def blueprint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The page description
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter
@@ -168,6 +184,7 @@ class _PageState:
                  blueprint: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
@@ -183,6 +200,7 @@ class _PageState:
         :param pulumi.Input[str] blueprint: The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
         :param pulumi.Input[str] created_at: The creation date of the page
         :param pulumi.Input[str] created_by: The creator of the page
+        :param pulumi.Input[str] description: The page description
         :param pulumi.Input[str] icon: The icon of the page
         :param pulumi.Input[str] identifier: The Identifier of the page
         :param pulumi.Input[bool] locked: Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
@@ -201,6 +219,8 @@ class _PageState:
             pulumi.set(__self__, "created_at", created_at)
         if created_by is not None:
             pulumi.set(__self__, "created_by", created_by)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
         if identifier is not None:
@@ -267,6 +287,18 @@ class _PageState:
     @created_by.setter
     def created_by(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The page description
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter
@@ -384,6 +416,7 @@ class Page(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  after: Optional[pulumi.Input[str]] = None,
                  blueprint: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
@@ -398,6 +431,7 @@ class Page(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] after: The identifier of the page/folder after which the page should be placed
         :param pulumi.Input[str] blueprint: The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
+        :param pulumi.Input[str] description: The page description
         :param pulumi.Input[str] icon: The icon of the page
         :param pulumi.Input[str] identifier: The Identifier of the page
         :param pulumi.Input[bool] locked: Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
@@ -431,6 +465,7 @@ class Page(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  after: Optional[pulumi.Input[str]] = None,
                  blueprint: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
@@ -449,6 +484,7 @@ class Page(pulumi.CustomResource):
 
             __props__.__dict__["after"] = after
             __props__.__dict__["blueprint"] = blueprint
+            __props__.__dict__["description"] = description
             __props__.__dict__["icon"] = icon
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
@@ -478,6 +514,7 @@ class Page(pulumi.CustomResource):
             blueprint: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             created_by: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
             icon: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             locked: Optional[pulumi.Input[bool]] = None,
@@ -498,6 +535,7 @@ class Page(pulumi.CustomResource):
         :param pulumi.Input[str] blueprint: The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
         :param pulumi.Input[str] created_at: The creation date of the page
         :param pulumi.Input[str] created_by: The creator of the page
+        :param pulumi.Input[str] description: The page description
         :param pulumi.Input[str] icon: The icon of the page
         :param pulumi.Input[str] identifier: The Identifier of the page
         :param pulumi.Input[bool] locked: Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
@@ -516,6 +554,7 @@ class Page(pulumi.CustomResource):
         __props__.__dict__["blueprint"] = blueprint
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
+        __props__.__dict__["description"] = description
         __props__.__dict__["icon"] = icon
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["locked"] = locked
@@ -558,6 +597,14 @@ class Page(pulumi.CustomResource):
         The creator of the page
         """
         return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        The page description
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
