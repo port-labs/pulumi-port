@@ -23,6 +23,8 @@ type Page struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The creator of the page
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
+	// The page description
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The icon of the page
 	Icon pulumi.StringPtrOutput `pulumi:"icon"`
 	// The Identifier of the page
@@ -87,6 +89,8 @@ type pageState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// The creator of the page
 	CreatedBy *string `pulumi:"createdBy"`
+	// The page description
+	Description *string `pulumi:"description"`
 	// The icon of the page
 	Icon *string `pulumi:"icon"`
 	// The Identifier of the page
@@ -116,6 +120,8 @@ type PageState struct {
 	CreatedAt pulumi.StringPtrInput
 	// The creator of the page
 	CreatedBy pulumi.StringPtrInput
+	// The page description
+	Description pulumi.StringPtrInput
 	// The icon of the page
 	Icon pulumi.StringPtrInput
 	// The Identifier of the page
@@ -145,6 +151,8 @@ type pageArgs struct {
 	After *string `pulumi:"after"`
 	// The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
 	Blueprint *string `pulumi:"blueprint"`
+	// The page description
+	Description *string `pulumi:"description"`
 	// The icon of the page
 	Icon *string `pulumi:"icon"`
 	// The Identifier of the page
@@ -167,6 +175,8 @@ type PageArgs struct {
 	After pulumi.StringPtrInput
 	// The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
 	Blueprint pulumi.StringPtrInput
+	// The page description
+	Description pulumi.StringPtrInput
 	// The icon of the page
 	Icon pulumi.StringPtrInput
 	// The Identifier of the page
@@ -288,6 +298,11 @@ func (o PageOutput) CreatedAt() pulumi.StringOutput {
 // The creator of the page
 func (o PageOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Page) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The page description
+func (o PageOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Page) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The icon of the page

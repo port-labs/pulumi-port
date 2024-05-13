@@ -49,6 +49,10 @@ export class Page extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdBy!: pulumi.Output<string>;
     /**
+     * The page description
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
      * The icon of the page
      */
     public readonly icon!: pulumi.Output<string | undefined>;
@@ -102,6 +106,7 @@ export class Page extends pulumi.CustomResource {
             resourceInputs["blueprint"] = state ? state.blueprint : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["createdBy"] = state ? state.createdBy : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["icon"] = state ? state.icon : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["locked"] = state ? state.locked : undefined;
@@ -121,6 +126,7 @@ export class Page extends pulumi.CustomResource {
             }
             resourceInputs["after"] = args ? args.after : undefined;
             resourceInputs["blueprint"] = args ? args.blueprint : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["icon"] = args ? args.icon : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["locked"] = args ? args.locked : undefined;
@@ -158,6 +164,10 @@ export interface PageState {
      * The creator of the page
      */
     createdBy?: pulumi.Input<string>;
+    /**
+     * The page description
+     */
+    description?: pulumi.Input<string>;
     /**
      * The icon of the page
      */
@@ -208,6 +218,10 @@ export interface PageArgs {
      * The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
      */
     blueprint?: pulumi.Input<string>;
+    /**
+     * The page description
+     */
+    description?: pulumi.Input<string>;
     /**
      * The icon of the page
      */
