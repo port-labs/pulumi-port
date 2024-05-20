@@ -25,7 +25,7 @@ export interface ActionAzureMethod {
      */
     org: string;
     /**
-     * The Azure Devops workflow payload (array or object encoded to a string)
+     * The Azure Devops workflow payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
      */
     payload?: string;
     /**
@@ -52,7 +52,7 @@ export interface ActionGithubMethod {
      */
     workflow: string;
     /**
-     * The GitHub workflow inputs (key-value object encoded to a string)
+     * The GitHub workflow inputs to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
      */
     workflowInputs?: string;
 }
@@ -67,7 +67,7 @@ export interface ActionGitlabMethod {
      */
     groupName: string;
     /**
-     * The Gitlab pipeline variables (key-value object encoded to a string)
+     * The Gitlab pipeline variables should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
      */
     pipelineVariables?: string;
     /**
@@ -78,7 +78,7 @@ export interface ActionGitlabMethod {
 
 export interface ActionKafkaMethod {
     /**
-     * The Kafka message payload (array or object encoded to a string)
+     * The Kafka message payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
      */
     payload?: string;
 }
@@ -549,11 +549,11 @@ export interface ActionWebhookMethod {
      */
     agent?: string;
     /**
-     * The Webhook body (array or object encoded to a string)
+     * The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
      */
     body?: string;
     /**
-     * The HTTP method to invoke the action
+     * The HTTP headers for invoking the action. They should be encoded as a key-value object to a string using jsonencode. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
      */
     headers?: {[key: string]: string};
     /**
@@ -704,24 +704,24 @@ export interface BlueprintMirrorProperties {
 
 export interface BlueprintPermissionsEntities {
     /**
-     * Enable permissions to register entities of the blueprint
+     * Manage permissions to register entities of the blueprint
      */
     register: outputs.BlueprintPermissionsEntitiesRegister;
     /**
-     * Enable permissions to unregister entities of the blueprint
+     * Manage permissions to unregister entities of the blueprint
      */
     unregister: outputs.BlueprintPermissionsEntitiesUnregister;
     /**
-     * Enable permissions to update entities of the blueprint
+     * Manage permissions to update entities of the blueprint
      */
     update: outputs.BlueprintPermissionsEntitiesUpdate;
     updateMetadataProperties: outputs.BlueprintPermissionsEntitiesUpdateMetadataProperties;
     /**
-     * Enable permissions to update the entity properties
+     * Manage permissions to update the entity properties
      */
     updateProperties?: {[key: string]: outputs.BlueprintPermissionsEntitiesUpdateProperties};
     /**
-     * Enable permissions to update the entity relations
+     * Manage permissions to update the entity relations
      */
     updateRelations?: {[key: string]: outputs.BlueprintPermissionsEntitiesUpdateRelations};
 }
@@ -808,15 +808,15 @@ export interface BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon {
      */
     ownedByTeam: boolean;
     /**
-     * Roles with update $icon metadata permissions
+     * Roles with update `$icon` metadata permissions
      */
     roles?: string[];
     /**
-     * Teams with update $icon metadata permissions
+     * Teams with update `$icon` metadata permissions
      */
     teams?: string[];
     /**
-     * Users with update $icon metadata permissions
+     * Users with update `$icon` metadata permissions
      */
     users?: string[];
 }
@@ -827,15 +827,15 @@ export interface BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier 
      */
     ownedByTeam: boolean;
     /**
-     * Roles with update $identifier metadata permissions
+     * Roles with update `$identifier` metadata permissions
      */
     roles?: string[];
     /**
-     * Teams with update $identifier metadata permissions
+     * Teams with update `$identifier` metadata permissions
      */
     teams?: string[];
     /**
-     * Users with update $identifier metadata permissions
+     * Users with update `$identifier` metadata permissions
      */
     users?: string[];
 }
@@ -846,15 +846,15 @@ export interface BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam {
      */
     ownedByTeam: boolean;
     /**
-     * Roles with update $team metadata permissions
+     * Roles with update `$team` metadata permissions
      */
     roles?: string[];
     /**
-     * Teams with update $team metadata permissions
+     * Teams with update `$team` metadata permissions
      */
     teams?: string[];
     /**
-     * Users with update $team metadata permissions
+     * Users with update `$team` metadata permissions
      */
     users?: string[];
 }
@@ -865,15 +865,15 @@ export interface BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle {
      */
     ownedByTeam: boolean;
     /**
-     * Roles with update $title metadata permissions
+     * Roles with update `$title` metadata permissions
      */
     roles?: string[];
     /**
-     * Teams with update $title metadata permissions
+     * Teams with update `$title` metadata permissions
      */
     teams?: string[];
     /**
-     * Users with update $title metadata permissions
+     * Users with update `$title` metadata permissions
      */
     users?: string[];
 }

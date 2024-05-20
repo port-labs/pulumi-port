@@ -290,7 +290,7 @@ func (o ActionApprovalWebhookNotificationPtrOutput) Url() pulumi.StringPtrOutput
 type ActionAzureMethod struct {
 	// Required when selecting type AZURE. The Azure org that the workflow belongs to
 	Org string `pulumi:"org"`
-	// The Azure Devops workflow payload (array or object encoded to a string)
+	// The Azure Devops workflow payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 	Payload *string `pulumi:"payload"`
 	// Required when selecting type AZURE. The Azure webhook that the workflow belongs to
 	Webhook string `pulumi:"webhook"`
@@ -310,7 +310,7 @@ type ActionAzureMethodInput interface {
 type ActionAzureMethodArgs struct {
 	// Required when selecting type AZURE. The Azure org that the workflow belongs to
 	Org pulumi.StringInput `pulumi:"org"`
-	// The Azure Devops workflow payload (array or object encoded to a string)
+	// The Azure Devops workflow payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 	Payload pulumi.StringPtrInput `pulumi:"payload"`
 	// Required when selecting type AZURE. The Azure webhook that the workflow belongs to
 	Webhook pulumi.StringInput `pulumi:"webhook"`
@@ -398,7 +398,7 @@ func (o ActionAzureMethodOutput) Org() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionAzureMethod) string { return v.Org }).(pulumi.StringOutput)
 }
 
-// The Azure Devops workflow payload (array or object encoded to a string)
+// The Azure Devops workflow payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionAzureMethodOutput) Payload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionAzureMethod) *string { return v.Payload }).(pulumi.StringPtrOutput)
 }
@@ -442,7 +442,7 @@ func (o ActionAzureMethodPtrOutput) Org() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Azure Devops workflow payload (array or object encoded to a string)
+// The Azure Devops workflow payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionAzureMethodPtrOutput) Payload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionAzureMethod) *string {
 		if v == nil {
@@ -471,7 +471,7 @@ type ActionGithubMethod struct {
 	ReportWorkflowStatus *string `pulumi:"reportWorkflowStatus"`
 	// The GitHub workflow that the action belongs to
 	Workflow string `pulumi:"workflow"`
-	// The GitHub workflow inputs (key-value object encoded to a string)
+	// The GitHub workflow inputs to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 	WorkflowInputs *string `pulumi:"workflowInputs"`
 }
 
@@ -495,7 +495,7 @@ type ActionGithubMethodArgs struct {
 	ReportWorkflowStatus pulumi.StringPtrInput `pulumi:"reportWorkflowStatus"`
 	// The GitHub workflow that the action belongs to
 	Workflow pulumi.StringInput `pulumi:"workflow"`
-	// The GitHub workflow inputs (key-value object encoded to a string)
+	// The GitHub workflow inputs to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 	WorkflowInputs pulumi.StringPtrInput `pulumi:"workflowInputs"`
 }
 
@@ -596,7 +596,7 @@ func (o ActionGithubMethodOutput) Workflow() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionGithubMethod) string { return v.Workflow }).(pulumi.StringOutput)
 }
 
-// The GitHub workflow inputs (key-value object encoded to a string)
+// The GitHub workflow inputs to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionGithubMethodOutput) WorkflowInputs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionGithubMethod) *string { return v.WorkflowInputs }).(pulumi.StringPtrOutput)
 }
@@ -665,7 +665,7 @@ func (o ActionGithubMethodPtrOutput) Workflow() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The GitHub workflow inputs (key-value object encoded to a string)
+// The GitHub workflow inputs to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionGithubMethodPtrOutput) WorkflowInputs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionGithubMethod) *string {
 		if v == nil {
@@ -680,7 +680,7 @@ type ActionGitlabMethod struct {
 	DefaultRef *string `pulumi:"defaultRef"`
 	// Required when selecting type GITLAB. The GitLab group name that the workflow belongs to
 	GroupName string `pulumi:"groupName"`
-	// The Gitlab pipeline variables (key-value object encoded to a string)
+	// The Gitlab pipeline variables should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 	PipelineVariables *string `pulumi:"pipelineVariables"`
 	// Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
 	ProjectName string `pulumi:"projectName"`
@@ -702,7 +702,7 @@ type ActionGitlabMethodArgs struct {
 	DefaultRef pulumi.StringPtrInput `pulumi:"defaultRef"`
 	// Required when selecting type GITLAB. The GitLab group name that the workflow belongs to
 	GroupName pulumi.StringInput `pulumi:"groupName"`
-	// The Gitlab pipeline variables (key-value object encoded to a string)
+	// The Gitlab pipeline variables should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 	PipelineVariables pulumi.StringPtrInput `pulumi:"pipelineVariables"`
 	// Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
@@ -795,7 +795,7 @@ func (o ActionGitlabMethodOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionGitlabMethod) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
-// The Gitlab pipeline variables (key-value object encoded to a string)
+// The Gitlab pipeline variables should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionGitlabMethodOutput) PipelineVariables() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionGitlabMethod) *string { return v.PipelineVariables }).(pulumi.StringPtrOutput)
 }
@@ -849,7 +849,7 @@ func (o ActionGitlabMethodPtrOutput) GroupName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Gitlab pipeline variables (key-value object encoded to a string)
+// The Gitlab pipeline variables should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionGitlabMethodPtrOutput) PipelineVariables() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionGitlabMethod) *string {
 		if v == nil {
@@ -870,7 +870,7 @@ func (o ActionGitlabMethodPtrOutput) ProjectName() pulumi.StringPtrOutput {
 }
 
 type ActionKafkaMethod struct {
-	// The Kafka message payload (array or object encoded to a string)
+	// The Kafka message payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 	Payload *string `pulumi:"payload"`
 }
 
@@ -886,7 +886,7 @@ type ActionKafkaMethodInput interface {
 }
 
 type ActionKafkaMethodArgs struct {
-	// The Kafka message payload (array or object encoded to a string)
+	// The Kafka message payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 	Payload pulumi.StringPtrInput `pulumi:"payload"`
 }
 
@@ -967,7 +967,7 @@ func (o ActionKafkaMethodOutput) ToActionKafkaMethodPtrOutputWithContext(ctx con
 	}).(ActionKafkaMethodPtrOutput)
 }
 
-// The Kafka message payload (array or object encoded to a string)
+// The Kafka message payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionKafkaMethodOutput) Payload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionKafkaMethod) *string { return v.Payload }).(pulumi.StringPtrOutput)
 }
@@ -996,7 +996,7 @@ func (o ActionKafkaMethodPtrOutput) Elem() ActionKafkaMethodOutput {
 	}).(ActionKafkaMethodOutput)
 }
 
-// The Kafka message payload (array or object encoded to a string)
+// The Kafka message payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionKafkaMethodPtrOutput) Payload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionKafkaMethod) *string {
 		if v == nil {
@@ -4050,9 +4050,9 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput)
 type ActionWebhookMethod struct {
 	// Use the agent to invoke the action
 	Agent *string `pulumi:"agent"`
-	// The Webhook body (array or object encoded to a string)
+	// The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 	Body *string `pulumi:"body"`
-	// The HTTP method to invoke the action
+	// The HTTP headers for invoking the action. They should be encoded as a key-value object to a string using jsonencode. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 	Headers map[string]string `pulumi:"headers"`
 	// The HTTP method to invoke the action
 	Method *string `pulumi:"method"`
@@ -4076,9 +4076,9 @@ type ActionWebhookMethodInput interface {
 type ActionWebhookMethodArgs struct {
 	// Use the agent to invoke the action
 	Agent pulumi.StringPtrInput `pulumi:"agent"`
-	// The Webhook body (array or object encoded to a string)
+	// The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 	Body pulumi.StringPtrInput `pulumi:"body"`
-	// The HTTP method to invoke the action
+	// The HTTP headers for invoking the action. They should be encoded as a key-value object to a string using jsonencode. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 	Headers pulumi.StringMapInput `pulumi:"headers"`
 	// The HTTP method to invoke the action
 	Method pulumi.StringPtrInput `pulumi:"method"`
@@ -4170,12 +4170,12 @@ func (o ActionWebhookMethodOutput) Agent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionWebhookMethod) *string { return v.Agent }).(pulumi.StringPtrOutput)
 }
 
-// The Webhook body (array or object encoded to a string)
+// The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionWebhookMethodOutput) Body() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionWebhookMethod) *string { return v.Body }).(pulumi.StringPtrOutput)
 }
 
-// The HTTP method to invoke the action
+// The HTTP headers for invoking the action. They should be encoded as a key-value object to a string using jsonencode. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionWebhookMethodOutput) Headers() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ActionWebhookMethod) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
 }
@@ -4229,7 +4229,7 @@ func (o ActionWebhookMethodPtrOutput) Agent() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Webhook body (array or object encoded to a string)
+// The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionWebhookMethodPtrOutput) Body() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionWebhookMethod) *string {
 		if v == nil {
@@ -4239,7 +4239,7 @@ func (o ActionWebhookMethodPtrOutput) Body() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The HTTP method to invoke the action
+// The HTTP headers for invoking the action. They should be encoded as a key-value object to a string using jsonencode. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionWebhookMethodPtrOutput) Headers() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ActionWebhookMethod) map[string]string {
 		if v == nil {
@@ -5378,16 +5378,16 @@ func (o BlueprintMirrorPropertiesMapOutput) MapIndex(k pulumi.StringInput) Bluep
 }
 
 type BlueprintPermissionsEntities struct {
-	// Enable permissions to register entities of the blueprint
+	// Manage permissions to register entities of the blueprint
 	Register BlueprintPermissionsEntitiesRegister `pulumi:"register"`
-	// Enable permissions to unregister entities of the blueprint
+	// Manage permissions to unregister entities of the blueprint
 	Unregister BlueprintPermissionsEntitiesUnregister `pulumi:"unregister"`
-	// Enable permissions to update entities of the blueprint
+	// Manage permissions to update entities of the blueprint
 	Update                   BlueprintPermissionsEntitiesUpdate                   `pulumi:"update"`
 	UpdateMetadataProperties BlueprintPermissionsEntitiesUpdateMetadataProperties `pulumi:"updateMetadataProperties"`
-	// Enable permissions to update the entity properties
+	// Manage permissions to update the entity properties
 	UpdateProperties map[string]BlueprintPermissionsEntitiesUpdateProperties `pulumi:"updateProperties"`
-	// Enable permissions to update the entity relations
+	// Manage permissions to update the entity relations
 	UpdateRelations map[string]BlueprintPermissionsEntitiesUpdateRelations `pulumi:"updateRelations"`
 }
 
@@ -5403,16 +5403,16 @@ type BlueprintPermissionsEntitiesInput interface {
 }
 
 type BlueprintPermissionsEntitiesArgs struct {
-	// Enable permissions to register entities of the blueprint
+	// Manage permissions to register entities of the blueprint
 	Register BlueprintPermissionsEntitiesRegisterInput `pulumi:"register"`
-	// Enable permissions to unregister entities of the blueprint
+	// Manage permissions to unregister entities of the blueprint
 	Unregister BlueprintPermissionsEntitiesUnregisterInput `pulumi:"unregister"`
-	// Enable permissions to update entities of the blueprint
+	// Manage permissions to update entities of the blueprint
 	Update                   BlueprintPermissionsEntitiesUpdateInput                   `pulumi:"update"`
 	UpdateMetadataProperties BlueprintPermissionsEntitiesUpdateMetadataPropertiesInput `pulumi:"updateMetadataProperties"`
-	// Enable permissions to update the entity properties
+	// Manage permissions to update the entity properties
 	UpdateProperties BlueprintPermissionsEntitiesUpdatePropertiesMapInput `pulumi:"updateProperties"`
-	// Enable permissions to update the entity relations
+	// Manage permissions to update the entity relations
 	UpdateRelations BlueprintPermissionsEntitiesUpdateRelationsMapInput `pulumi:"updateRelations"`
 }
 
@@ -5493,17 +5493,17 @@ func (o BlueprintPermissionsEntitiesOutput) ToBlueprintPermissionsEntitiesPtrOut
 	}).(BlueprintPermissionsEntitiesPtrOutput)
 }
 
-// Enable permissions to register entities of the blueprint
+// Manage permissions to register entities of the blueprint
 func (o BlueprintPermissionsEntitiesOutput) Register() BlueprintPermissionsEntitiesRegisterOutput {
 	return o.ApplyT(func(v BlueprintPermissionsEntities) BlueprintPermissionsEntitiesRegister { return v.Register }).(BlueprintPermissionsEntitiesRegisterOutput)
 }
 
-// Enable permissions to unregister entities of the blueprint
+// Manage permissions to unregister entities of the blueprint
 func (o BlueprintPermissionsEntitiesOutput) Unregister() BlueprintPermissionsEntitiesUnregisterOutput {
 	return o.ApplyT(func(v BlueprintPermissionsEntities) BlueprintPermissionsEntitiesUnregister { return v.Unregister }).(BlueprintPermissionsEntitiesUnregisterOutput)
 }
 
-// Enable permissions to update entities of the blueprint
+// Manage permissions to update entities of the blueprint
 func (o BlueprintPermissionsEntitiesOutput) Update() BlueprintPermissionsEntitiesUpdateOutput {
 	return o.ApplyT(func(v BlueprintPermissionsEntities) BlueprintPermissionsEntitiesUpdate { return v.Update }).(BlueprintPermissionsEntitiesUpdateOutput)
 }
@@ -5514,14 +5514,14 @@ func (o BlueprintPermissionsEntitiesOutput) UpdateMetadataProperties() Blueprint
 	}).(BlueprintPermissionsEntitiesUpdateMetadataPropertiesOutput)
 }
 
-// Enable permissions to update the entity properties
+// Manage permissions to update the entity properties
 func (o BlueprintPermissionsEntitiesOutput) UpdateProperties() BlueprintPermissionsEntitiesUpdatePropertiesMapOutput {
 	return o.ApplyT(func(v BlueprintPermissionsEntities) map[string]BlueprintPermissionsEntitiesUpdateProperties {
 		return v.UpdateProperties
 	}).(BlueprintPermissionsEntitiesUpdatePropertiesMapOutput)
 }
 
-// Enable permissions to update the entity relations
+// Manage permissions to update the entity relations
 func (o BlueprintPermissionsEntitiesOutput) UpdateRelations() BlueprintPermissionsEntitiesUpdateRelationsMapOutput {
 	return o.ApplyT(func(v BlueprintPermissionsEntities) map[string]BlueprintPermissionsEntitiesUpdateRelations {
 		return v.UpdateRelations
@@ -5552,7 +5552,7 @@ func (o BlueprintPermissionsEntitiesPtrOutput) Elem() BlueprintPermissionsEntiti
 	}).(BlueprintPermissionsEntitiesOutput)
 }
 
-// Enable permissions to register entities of the blueprint
+// Manage permissions to register entities of the blueprint
 func (o BlueprintPermissionsEntitiesPtrOutput) Register() BlueprintPermissionsEntitiesRegisterPtrOutput {
 	return o.ApplyT(func(v *BlueprintPermissionsEntities) *BlueprintPermissionsEntitiesRegister {
 		if v == nil {
@@ -5562,7 +5562,7 @@ func (o BlueprintPermissionsEntitiesPtrOutput) Register() BlueprintPermissionsEn
 	}).(BlueprintPermissionsEntitiesRegisterPtrOutput)
 }
 
-// Enable permissions to unregister entities of the blueprint
+// Manage permissions to unregister entities of the blueprint
 func (o BlueprintPermissionsEntitiesPtrOutput) Unregister() BlueprintPermissionsEntitiesUnregisterPtrOutput {
 	return o.ApplyT(func(v *BlueprintPermissionsEntities) *BlueprintPermissionsEntitiesUnregister {
 		if v == nil {
@@ -5572,7 +5572,7 @@ func (o BlueprintPermissionsEntitiesPtrOutput) Unregister() BlueprintPermissions
 	}).(BlueprintPermissionsEntitiesUnregisterPtrOutput)
 }
 
-// Enable permissions to update entities of the blueprint
+// Manage permissions to update entities of the blueprint
 func (o BlueprintPermissionsEntitiesPtrOutput) Update() BlueprintPermissionsEntitiesUpdatePtrOutput {
 	return o.ApplyT(func(v *BlueprintPermissionsEntities) *BlueprintPermissionsEntitiesUpdate {
 		if v == nil {
@@ -5591,7 +5591,7 @@ func (o BlueprintPermissionsEntitiesPtrOutput) UpdateMetadataProperties() Bluepr
 	}).(BlueprintPermissionsEntitiesUpdateMetadataPropertiesPtrOutput)
 }
 
-// Enable permissions to update the entity properties
+// Manage permissions to update the entity properties
 func (o BlueprintPermissionsEntitiesPtrOutput) UpdateProperties() BlueprintPermissionsEntitiesUpdatePropertiesMapOutput {
 	return o.ApplyT(func(v *BlueprintPermissionsEntities) map[string]BlueprintPermissionsEntitiesUpdateProperties {
 		if v == nil {
@@ -5601,7 +5601,7 @@ func (o BlueprintPermissionsEntitiesPtrOutput) UpdateProperties() BlueprintPermi
 	}).(BlueprintPermissionsEntitiesUpdatePropertiesMapOutput)
 }
 
-// Enable permissions to update the entity relations
+// Manage permissions to update the entity relations
 func (o BlueprintPermissionsEntitiesPtrOutput) UpdateRelations() BlueprintPermissionsEntitiesUpdateRelationsMapOutput {
 	return o.ApplyT(func(v *BlueprintPermissionsEntities) map[string]BlueprintPermissionsEntitiesUpdateRelations {
 		if v == nil {
@@ -6398,11 +6398,11 @@ func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesPtrOutput) Title() B
 type BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon struct {
 	// Owned by team
 	OwnedByTeam *bool `pulumi:"ownedByTeam"`
-	// Roles with update $icon metadata permissions
+	// Roles with update `$icon` metadata permissions
 	Roles []string `pulumi:"roles"`
-	// Teams with update $icon metadata permissions
+	// Teams with update `$icon` metadata permissions
 	Teams []string `pulumi:"teams"`
-	// Users with update $icon metadata permissions
+	// Users with update `$icon` metadata permissions
 	Users []string `pulumi:"users"`
 }
 
@@ -6420,11 +6420,11 @@ type BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconInput interface {
 type BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconArgs struct {
 	// Owned by team
 	OwnedByTeam pulumi.BoolPtrInput `pulumi:"ownedByTeam"`
-	// Roles with update $icon metadata permissions
+	// Roles with update `$icon` metadata permissions
 	Roles pulumi.StringArrayInput `pulumi:"roles"`
-	// Teams with update $icon metadata permissions
+	// Teams with update `$icon` metadata permissions
 	Teams pulumi.StringArrayInput `pulumi:"teams"`
-	// Users with update $icon metadata permissions
+	// Users with update `$icon` metadata permissions
 	Users pulumi.StringArrayInput `pulumi:"users"`
 }
 
@@ -6510,17 +6510,17 @@ func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconOutput) OwnedByT
 	return o.ApplyT(func(v BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon) *bool { return v.OwnedByTeam }).(pulumi.BoolPtrOutput)
 }
 
-// Roles with update $icon metadata permissions
+// Roles with update `$icon` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
-// Teams with update $icon metadata permissions
+// Teams with update `$icon` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon) []string { return v.Teams }).(pulumi.StringArrayOutput)
 }
 
-// Users with update $icon metadata permissions
+// Users with update `$icon` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon) []string { return v.Users }).(pulumi.StringArrayOutput)
 }
@@ -6559,7 +6559,7 @@ func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconPtrOutput) Owned
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Roles with update $icon metadata permissions
+// Roles with update `$icon` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconPtrOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon) []string {
 		if v == nil {
@@ -6569,7 +6569,7 @@ func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconPtrOutput) Roles
 	}).(pulumi.StringArrayOutput)
 }
 
-// Teams with update $icon metadata permissions
+// Teams with update `$icon` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconPtrOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon) []string {
 		if v == nil {
@@ -6579,7 +6579,7 @@ func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconPtrOutput) Teams
 	}).(pulumi.StringArrayOutput)
 }
 
-// Users with update $icon metadata permissions
+// Users with update `$icon` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconPtrOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon) []string {
 		if v == nil {
@@ -6592,11 +6592,11 @@ func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconPtrOutput) Users
 type BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier struct {
 	// Owned by team
 	OwnedByTeam *bool `pulumi:"ownedByTeam"`
-	// Roles with update $identifier metadata permissions
+	// Roles with update `$identifier` metadata permissions
 	Roles []string `pulumi:"roles"`
-	// Teams with update $identifier metadata permissions
+	// Teams with update `$identifier` metadata permissions
 	Teams []string `pulumi:"teams"`
-	// Users with update $identifier metadata permissions
+	// Users with update `$identifier` metadata permissions
 	Users []string `pulumi:"users"`
 }
 
@@ -6614,11 +6614,11 @@ type BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierInput interfa
 type BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierArgs struct {
 	// Owned by team
 	OwnedByTeam pulumi.BoolPtrInput `pulumi:"ownedByTeam"`
-	// Roles with update $identifier metadata permissions
+	// Roles with update `$identifier` metadata permissions
 	Roles pulumi.StringArrayInput `pulumi:"roles"`
-	// Teams with update $identifier metadata permissions
+	// Teams with update `$identifier` metadata permissions
 	Teams pulumi.StringArrayInput `pulumi:"teams"`
-	// Users with update $identifier metadata permissions
+	// Users with update `$identifier` metadata permissions
 	Users pulumi.StringArrayInput `pulumi:"users"`
 }
 
@@ -6704,17 +6704,17 @@ func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierOutput) Ow
 	return o.ApplyT(func(v BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier) *bool { return v.OwnedByTeam }).(pulumi.BoolPtrOutput)
 }
 
-// Roles with update $identifier metadata permissions
+// Roles with update `$identifier` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
-// Teams with update $identifier metadata permissions
+// Teams with update `$identifier` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier) []string { return v.Teams }).(pulumi.StringArrayOutput)
 }
 
-// Users with update $identifier metadata permissions
+// Users with update `$identifier` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier) []string { return v.Users }).(pulumi.StringArrayOutput)
 }
@@ -6753,7 +6753,7 @@ func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierPtrOutput)
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Roles with update $identifier metadata permissions
+// Roles with update `$identifier` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierPtrOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier) []string {
 		if v == nil {
@@ -6763,7 +6763,7 @@ func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierPtrOutput)
 	}).(pulumi.StringArrayOutput)
 }
 
-// Teams with update $identifier metadata permissions
+// Teams with update `$identifier` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierPtrOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier) []string {
 		if v == nil {
@@ -6773,7 +6773,7 @@ func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierPtrOutput)
 	}).(pulumi.StringArrayOutput)
 }
 
-// Users with update $identifier metadata permissions
+// Users with update `$identifier` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierPtrOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier) []string {
 		if v == nil {
@@ -6786,11 +6786,11 @@ func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierPtrOutput)
 type BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam struct {
 	// Owned by team
 	OwnedByTeam *bool `pulumi:"ownedByTeam"`
-	// Roles with update $team metadata permissions
+	// Roles with update `$team` metadata permissions
 	Roles []string `pulumi:"roles"`
-	// Teams with update $team metadata permissions
+	// Teams with update `$team` metadata permissions
 	Teams []string `pulumi:"teams"`
-	// Users with update $team metadata permissions
+	// Users with update `$team` metadata permissions
 	Users []string `pulumi:"users"`
 }
 
@@ -6808,11 +6808,11 @@ type BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamInput interface {
 type BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamArgs struct {
 	// Owned by team
 	OwnedByTeam pulumi.BoolPtrInput `pulumi:"ownedByTeam"`
-	// Roles with update $team metadata permissions
+	// Roles with update `$team` metadata permissions
 	Roles pulumi.StringArrayInput `pulumi:"roles"`
-	// Teams with update $team metadata permissions
+	// Teams with update `$team` metadata permissions
 	Teams pulumi.StringArrayInput `pulumi:"teams"`
-	// Users with update $team metadata permissions
+	// Users with update `$team` metadata permissions
 	Users pulumi.StringArrayInput `pulumi:"users"`
 }
 
@@ -6898,17 +6898,17 @@ func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamOutput) OwnedByT
 	return o.ApplyT(func(v BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam) *bool { return v.OwnedByTeam }).(pulumi.BoolPtrOutput)
 }
 
-// Roles with update $team metadata permissions
+// Roles with update `$team` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
-// Teams with update $team metadata permissions
+// Teams with update `$team` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam) []string { return v.Teams }).(pulumi.StringArrayOutput)
 }
 
-// Users with update $team metadata permissions
+// Users with update `$team` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam) []string { return v.Users }).(pulumi.StringArrayOutput)
 }
@@ -6947,7 +6947,7 @@ func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamPtrOutput) Owned
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Roles with update $team metadata permissions
+// Roles with update `$team` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamPtrOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam) []string {
 		if v == nil {
@@ -6957,7 +6957,7 @@ func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamPtrOutput) Roles
 	}).(pulumi.StringArrayOutput)
 }
 
-// Teams with update $team metadata permissions
+// Teams with update `$team` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamPtrOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam) []string {
 		if v == nil {
@@ -6967,7 +6967,7 @@ func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamPtrOutput) Teams
 	}).(pulumi.StringArrayOutput)
 }
 
-// Users with update $team metadata permissions
+// Users with update `$team` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamPtrOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam) []string {
 		if v == nil {
@@ -6980,11 +6980,11 @@ func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamPtrOutput) Users
 type BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle struct {
 	// Owned by team
 	OwnedByTeam *bool `pulumi:"ownedByTeam"`
-	// Roles with update $title metadata permissions
+	// Roles with update `$title` metadata permissions
 	Roles []string `pulumi:"roles"`
-	// Teams with update $title metadata permissions
+	// Teams with update `$title` metadata permissions
 	Teams []string `pulumi:"teams"`
-	// Users with update $title metadata permissions
+	// Users with update `$title` metadata permissions
 	Users []string `pulumi:"users"`
 }
 
@@ -7002,11 +7002,11 @@ type BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleInput interface {
 type BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleArgs struct {
 	// Owned by team
 	OwnedByTeam pulumi.BoolPtrInput `pulumi:"ownedByTeam"`
-	// Roles with update $title metadata permissions
+	// Roles with update `$title` metadata permissions
 	Roles pulumi.StringArrayInput `pulumi:"roles"`
-	// Teams with update $title metadata permissions
+	// Teams with update `$title` metadata permissions
 	Teams pulumi.StringArrayInput `pulumi:"teams"`
-	// Users with update $title metadata permissions
+	// Users with update `$title` metadata permissions
 	Users pulumi.StringArrayInput `pulumi:"users"`
 }
 
@@ -7092,17 +7092,17 @@ func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleOutput) OwnedBy
 	return o.ApplyT(func(v BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle) *bool { return v.OwnedByTeam }).(pulumi.BoolPtrOutput)
 }
 
-// Roles with update $title metadata permissions
+// Roles with update `$title` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
-// Teams with update $title metadata permissions
+// Teams with update `$title` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle) []string { return v.Teams }).(pulumi.StringArrayOutput)
 }
 
-// Users with update $title metadata permissions
+// Users with update `$title` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle) []string { return v.Users }).(pulumi.StringArrayOutput)
 }
@@ -7141,7 +7141,7 @@ func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitlePtrOutput) Owne
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Roles with update $title metadata permissions
+// Roles with update `$title` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitlePtrOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle) []string {
 		if v == nil {
@@ -7151,7 +7151,7 @@ func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitlePtrOutput) Role
 	}).(pulumi.StringArrayOutput)
 }
 
-// Teams with update $title metadata permissions
+// Teams with update `$title` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitlePtrOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle) []string {
 		if v == nil {
@@ -7161,7 +7161,7 @@ func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitlePtrOutput) Team
 	}).(pulumi.StringArrayOutput)
 }
 
-// Users with update $title metadata permissions
+// Users with update `$title` metadata permissions
 func (o BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitlePtrOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle) []string {
 		if v == nil {

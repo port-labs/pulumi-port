@@ -25,7 +25,7 @@ export interface ActionAzureMethod {
      */
     org: pulumi.Input<string>;
     /**
-     * The Azure Devops workflow payload (array or object encoded to a string)
+     * The Azure Devops workflow payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
      */
     payload?: pulumi.Input<string>;
     /**
@@ -52,7 +52,7 @@ export interface ActionGithubMethod {
      */
     workflow: pulumi.Input<string>;
     /**
-     * The GitHub workflow inputs (key-value object encoded to a string)
+     * The GitHub workflow inputs to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
      */
     workflowInputs?: pulumi.Input<string>;
 }
@@ -67,7 +67,7 @@ export interface ActionGitlabMethod {
      */
     groupName: pulumi.Input<string>;
     /**
-     * The Gitlab pipeline variables (key-value object encoded to a string)
+     * The Gitlab pipeline variables should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
      */
     pipelineVariables?: pulumi.Input<string>;
     /**
@@ -78,7 +78,7 @@ export interface ActionGitlabMethod {
 
 export interface ActionKafkaMethod {
     /**
-     * The Kafka message payload (array or object encoded to a string)
+     * The Kafka message payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
      */
     payload?: pulumi.Input<string>;
 }
@@ -549,11 +549,11 @@ export interface ActionWebhookMethod {
      */
     agent?: pulumi.Input<string>;
     /**
-     * The Webhook body (array or object encoded to a string)
+     * The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
      */
     body?: pulumi.Input<string>;
     /**
-     * The HTTP method to invoke the action
+     * The HTTP headers for invoking the action. They should be encoded as a key-value object to a string using jsonencode. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
      */
     headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -704,24 +704,24 @@ export interface BlueprintMirrorProperties {
 
 export interface BlueprintPermissionsEntities {
     /**
-     * Enable permissions to register entities of the blueprint
+     * Manage permissions to register entities of the blueprint
      */
     register: pulumi.Input<inputs.BlueprintPermissionsEntitiesRegister>;
     /**
-     * Enable permissions to unregister entities of the blueprint
+     * Manage permissions to unregister entities of the blueprint
      */
     unregister: pulumi.Input<inputs.BlueprintPermissionsEntitiesUnregister>;
     /**
-     * Enable permissions to update entities of the blueprint
+     * Manage permissions to update entities of the blueprint
      */
     update: pulumi.Input<inputs.BlueprintPermissionsEntitiesUpdate>;
     updateMetadataProperties: pulumi.Input<inputs.BlueprintPermissionsEntitiesUpdateMetadataProperties>;
     /**
-     * Enable permissions to update the entity properties
+     * Manage permissions to update the entity properties
      */
     updateProperties?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintPermissionsEntitiesUpdateProperties>}>;
     /**
-     * Enable permissions to update the entity relations
+     * Manage permissions to update the entity relations
      */
     updateRelations?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintPermissionsEntitiesUpdateRelations>}>;
 }
@@ -808,15 +808,15 @@ export interface BlueprintPermissionsEntitiesUpdateMetadataPropertiesIcon {
      */
     ownedByTeam?: pulumi.Input<boolean>;
     /**
-     * Roles with update $icon metadata permissions
+     * Roles with update `$icon` metadata permissions
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Teams with update $icon metadata permissions
+     * Teams with update `$icon` metadata permissions
      */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Users with update $icon metadata permissions
+     * Users with update `$icon` metadata permissions
      */
     users?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -827,15 +827,15 @@ export interface BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifier 
      */
     ownedByTeam?: pulumi.Input<boolean>;
     /**
-     * Roles with update $identifier metadata permissions
+     * Roles with update `$identifier` metadata permissions
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Teams with update $identifier metadata permissions
+     * Teams with update `$identifier` metadata permissions
      */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Users with update $identifier metadata permissions
+     * Users with update `$identifier` metadata permissions
      */
     users?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -846,15 +846,15 @@ export interface BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeam {
      */
     ownedByTeam?: pulumi.Input<boolean>;
     /**
-     * Roles with update $team metadata permissions
+     * Roles with update `$team` metadata permissions
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Teams with update $team metadata permissions
+     * Teams with update `$team` metadata permissions
      */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Users with update $team metadata permissions
+     * Users with update `$team` metadata permissions
      */
     users?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -865,15 +865,15 @@ export interface BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitle {
      */
     ownedByTeam?: pulumi.Input<boolean>;
     /**
-     * Roles with update $title metadata permissions
+     * Roles with update `$title` metadata permissions
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Teams with update $title metadata permissions
+     * Teams with update `$title` metadata permissions
      */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Users with update $title metadata permissions
+     * Users with update `$title` metadata permissions
      */
     users?: pulumi.Input<pulumi.Input<string>[]>;
 }

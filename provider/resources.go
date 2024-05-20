@@ -21,8 +21,8 @@ import (
 	"unicode"
 
 	"github.com/port-labs/pulumi-port/provider/v2/pkg/version"
-	port "github.com/port-labs/terraform-provider-port-labs/provider"
-	portVersion "github.com/port-labs/terraform-provider-port-labs/version"
+	port "github.com/port-labs/terraform-provider-port-labs/v2/provider"
+	portVersion "github.com/port-labs/terraform-provider-port-labs/v2/version"
 	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
@@ -68,21 +68,22 @@ func portDataSource(mod string, res string) tokens.ModuleMember {
 func Provider() tfbridge.ProviderInfo {
 	portVersion.ProviderVersion = "pulumi-provider-port-labs/" + version.Version
 	info := tfbridge.ProviderInfo{
-		P:                 pf.ShimProvider(port.New()),
-		Name:              "port-labs",
-		DisplayName:       "Port",
-		Publisher:         "port-labs",
-		LogoURL:           "",
-		PluginDownloadURL: "github://api.github.com/port-labs/pulumi-port",
-		Version:           version.Version,
-		MetadataInfo:      tfbridge.NewProviderMetadata(metadata),
-		Description:       "A Pulumi package for creating and managing Port resources.",
-		Keywords:          []string{"pulumi", "port", "category/utility"},
-		License:           "Apache-2.0",
-		Homepage:          "https://www.pulumi.com",
-		Repository:        "https://github.com/port-labs/pulumi-port",
-		GitHubOrg:         "port-labs",
-		Config:            map[string]*tfbridge.SchemaInfo{
+		P:                       pf.ShimProvider(port.New()),
+		Name:                    "port-labs",
+		DisplayName:             "Port",
+		Publisher:               "port-labs",
+		TFProviderModuleVersion: "v2",
+		LogoURL:                 "",
+		PluginDownloadURL:       "github://api.github.com/port-labs/pulumi-port",
+		Version:                 version.Version,
+		MetadataInfo:            tfbridge.NewProviderMetadata(metadata),
+		Description:             "A Pulumi package for creating and managing Port resources.",
+		Keywords:                []string{"pulumi", "port", "category/utility"},
+		License:                 "Apache-2.0",
+		Homepage:                "https://www.pulumi.com",
+		Repository:              "https://github.com/port-labs/pulumi-port",
+		GitHubOrg:               "port-labs",
+		Config:                  map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
 			// "region": {
