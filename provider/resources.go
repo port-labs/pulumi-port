@@ -21,8 +21,8 @@ import (
 	"unicode"
 
 	"github.com/port-labs/pulumi-port/provider/v2/pkg/version"
-	port "github.com/port-labs/terraform-provider-port-labs/provider"
-	portVersion "github.com/port-labs/terraform-provider-port-labs/version"
+	port "github.com/port-labs/terraform-provider-port-labs/v2/provider"
+	portVersion "github.com/port-labs/terraform-provider-port-labs/v2/version"
 	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
