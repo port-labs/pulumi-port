@@ -131,7 +131,7 @@ class ActionAzureMethodArgs:
         """
         :param pulumi.Input[str] org: Required when selecting type AZURE. The Azure org that the workflow belongs to
         :param pulumi.Input[str] webhook: Required when selecting type AZURE. The Azure webhook that the workflow belongs to
-        :param pulumi.Input[str] payload: The Azure Devops workflow payload (array or object encoded to a string)
+        :param pulumi.Input[str] payload: The Azure Devops workflow payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         """
         pulumi.set(__self__, "org", org)
         pulumi.set(__self__, "webhook", webhook)
@@ -166,7 +166,7 @@ class ActionAzureMethodArgs:
     @pulumi.getter
     def payload(self) -> Optional[pulumi.Input[str]]:
         """
-        The Azure Devops workflow payload (array or object encoded to a string)
+        The Azure Devops workflow payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         """
         return pulumi.get(self, "payload")
 
@@ -188,7 +188,7 @@ class ActionGithubMethodArgs:
         :param pulumi.Input[str] repo: Required when selecting type GITHUB. The GitHub repo that the workflow belongs to
         :param pulumi.Input[str] workflow: The GitHub workflow that the action belongs to
         :param pulumi.Input[str] report_workflow_status: Report the workflow status when invoking the action
-        :param pulumi.Input[str] workflow_inputs: The GitHub workflow inputs (key-value object encoded to a string)
+        :param pulumi.Input[str] workflow_inputs: The GitHub workflow inputs to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         """
         pulumi.set(__self__, "org", org)
         pulumi.set(__self__, "repo", repo)
@@ -250,7 +250,7 @@ class ActionGithubMethodArgs:
     @pulumi.getter(name="workflowInputs")
     def workflow_inputs(self) -> Optional[pulumi.Input[str]]:
         """
-        The GitHub workflow inputs (key-value object encoded to a string)
+        The GitHub workflow inputs to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         """
         return pulumi.get(self, "workflow_inputs")
 
@@ -270,7 +270,7 @@ class ActionGitlabMethodArgs:
         :param pulumi.Input[str] group_name: Required when selecting type GITLAB. The GitLab group name that the workflow belongs to
         :param pulumi.Input[str] project_name: Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
         :param pulumi.Input[str] default_ref: The default ref of the action
-        :param pulumi.Input[str] pipeline_variables: The Gitlab pipeline variables (key-value object encoded to a string)
+        :param pulumi.Input[str] pipeline_variables: The Gitlab pipeline variables should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         """
         pulumi.set(__self__, "group_name", group_name)
         pulumi.set(__self__, "project_name", project_name)
@@ -319,7 +319,7 @@ class ActionGitlabMethodArgs:
     @pulumi.getter(name="pipelineVariables")
     def pipeline_variables(self) -> Optional[pulumi.Input[str]]:
         """
-        The Gitlab pipeline variables (key-value object encoded to a string)
+        The Gitlab pipeline variables should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         """
         return pulumi.get(self, "pipeline_variables")
 
@@ -333,7 +333,7 @@ class ActionKafkaMethodArgs:
     def __init__(__self__, *,
                  payload: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] payload: The Kafka message payload (array or object encoded to a string)
+        :param pulumi.Input[str] payload: The Kafka message payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         """
         if payload is not None:
             pulumi.set(__self__, "payload", payload)
@@ -342,7 +342,7 @@ class ActionKafkaMethodArgs:
     @pulumi.getter
     def payload(self) -> Optional[pulumi.Input[str]]:
         """
-        The Kafka message payload (array or object encoded to a string)
+        The Kafka message payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         """
         return pulumi.get(self, "payload")
 
@@ -2116,8 +2116,8 @@ class ActionWebhookMethodArgs:
         """
         :param pulumi.Input[str] url: Required when selecting type WEBHOOK. The URL to invoke the action
         :param pulumi.Input[str] agent: Use the agent to invoke the action
-        :param pulumi.Input[str] body: The Webhook body (array or object encoded to a string)
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: The HTTP method to invoke the action
+        :param pulumi.Input[str] body: The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: The HTTP headers for invoking the action. They should be encoded as a key-value object to a string using jsonencode. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         :param pulumi.Input[str] method: The HTTP method to invoke the action
         :param pulumi.Input[str] synchronized: Synchronize the action
         """
@@ -2161,7 +2161,7 @@ class ActionWebhookMethodArgs:
     @pulumi.getter
     def body(self) -> Optional[pulumi.Input[str]]:
         """
-        The Webhook body (array or object encoded to a string)
+        The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         """
         return pulumi.get(self, "body")
 
@@ -2173,7 +2173,7 @@ class ActionWebhookMethodArgs:
     @pulumi.getter
     def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The HTTP method to invoke the action
+        The HTTP headers for invoking the action. They should be encoded as a key-value object to a string using jsonencode. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         """
         return pulumi.get(self, "headers")
 
@@ -2693,11 +2693,11 @@ class BlueprintPermissionsEntitiesArgs:
                  update_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdatePropertiesArgs']]]] = None,
                  update_relations: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdateRelationsArgs']]]] = None):
         """
-        :param pulumi.Input['BlueprintPermissionsEntitiesRegisterArgs'] register: Enable permissions to register entities of the blueprint
-        :param pulumi.Input['BlueprintPermissionsEntitiesUnregisterArgs'] unregister: Enable permissions to unregister entities of the blueprint
-        :param pulumi.Input['BlueprintPermissionsEntitiesUpdateArgs'] update: Enable permissions to update entities of the blueprint
-        :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdatePropertiesArgs']]] update_properties: Enable permissions to update the entity properties
-        :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdateRelationsArgs']]] update_relations: Enable permissions to update the entity relations
+        :param pulumi.Input['BlueprintPermissionsEntitiesRegisterArgs'] register: Manage permissions to register entities of the blueprint
+        :param pulumi.Input['BlueprintPermissionsEntitiesUnregisterArgs'] unregister: Manage permissions to unregister entities of the blueprint
+        :param pulumi.Input['BlueprintPermissionsEntitiesUpdateArgs'] update: Manage permissions to update entities of the blueprint
+        :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdatePropertiesArgs']]] update_properties: Manage permissions to update the entity properties
+        :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdateRelationsArgs']]] update_relations: Manage permissions to update the entity relations
         """
         pulumi.set(__self__, "register", register)
         pulumi.set(__self__, "unregister", unregister)
@@ -2712,7 +2712,7 @@ class BlueprintPermissionsEntitiesArgs:
     @pulumi.getter
     def register(self) -> pulumi.Input['BlueprintPermissionsEntitiesRegisterArgs']:
         """
-        Enable permissions to register entities of the blueprint
+        Manage permissions to register entities of the blueprint
         """
         return pulumi.get(self, "register")
 
@@ -2724,7 +2724,7 @@ class BlueprintPermissionsEntitiesArgs:
     @pulumi.getter
     def unregister(self) -> pulumi.Input['BlueprintPermissionsEntitiesUnregisterArgs']:
         """
-        Enable permissions to unregister entities of the blueprint
+        Manage permissions to unregister entities of the blueprint
         """
         return pulumi.get(self, "unregister")
 
@@ -2736,7 +2736,7 @@ class BlueprintPermissionsEntitiesArgs:
     @pulumi.getter
     def update(self) -> pulumi.Input['BlueprintPermissionsEntitiesUpdateArgs']:
         """
-        Enable permissions to update entities of the blueprint
+        Manage permissions to update entities of the blueprint
         """
         return pulumi.get(self, "update")
 
@@ -2757,7 +2757,7 @@ class BlueprintPermissionsEntitiesArgs:
     @pulumi.getter(name="updateProperties")
     def update_properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdatePropertiesArgs']]]]:
         """
-        Enable permissions to update the entity properties
+        Manage permissions to update the entity properties
         """
         return pulumi.get(self, "update_properties")
 
@@ -2769,7 +2769,7 @@ class BlueprintPermissionsEntitiesArgs:
     @pulumi.getter(name="updateRelations")
     def update_relations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdateRelationsArgs']]]]:
         """
-        Enable permissions to update the entity relations
+        Manage permissions to update the entity relations
         """
         return pulumi.get(self, "update_relations")
 
@@ -3067,9 +3067,9 @@ class BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconArgs:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[bool] owned_by_team: Owned by team
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles with update $icon metadata permissions
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Teams with update $icon metadata permissions
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Users with update $icon metadata permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles with update `$icon` metadata permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Teams with update `$icon` metadata permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Users with update `$icon` metadata permissions
         """
         if owned_by_team is not None:
             pulumi.set(__self__, "owned_by_team", owned_by_team)
@@ -3096,7 +3096,7 @@ class BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconArgs:
     @pulumi.getter
     def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Roles with update $icon metadata permissions
+        Roles with update `$icon` metadata permissions
         """
         return pulumi.get(self, "roles")
 
@@ -3108,7 +3108,7 @@ class BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconArgs:
     @pulumi.getter
     def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Teams with update $icon metadata permissions
+        Teams with update `$icon` metadata permissions
         """
         return pulumi.get(self, "teams")
 
@@ -3120,7 +3120,7 @@ class BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconArgs:
     @pulumi.getter
     def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Users with update $icon metadata permissions
+        Users with update `$icon` metadata permissions
         """
         return pulumi.get(self, "users")
 
@@ -3138,9 +3138,9 @@ class BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierArgs:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[bool] owned_by_team: Owned by team
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles with update $identifier metadata permissions
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Teams with update $identifier metadata permissions
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Users with update $identifier metadata permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles with update `$identifier` metadata permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Teams with update `$identifier` metadata permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Users with update `$identifier` metadata permissions
         """
         if owned_by_team is not None:
             pulumi.set(__self__, "owned_by_team", owned_by_team)
@@ -3167,7 +3167,7 @@ class BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierArgs:
     @pulumi.getter
     def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Roles with update $identifier metadata permissions
+        Roles with update `$identifier` metadata permissions
         """
         return pulumi.get(self, "roles")
 
@@ -3179,7 +3179,7 @@ class BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierArgs:
     @pulumi.getter
     def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Teams with update $identifier metadata permissions
+        Teams with update `$identifier` metadata permissions
         """
         return pulumi.get(self, "teams")
 
@@ -3191,7 +3191,7 @@ class BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierArgs:
     @pulumi.getter
     def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Users with update $identifier metadata permissions
+        Users with update `$identifier` metadata permissions
         """
         return pulumi.get(self, "users")
 
@@ -3209,9 +3209,9 @@ class BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamArgs:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[bool] owned_by_team: Owned by team
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles with update $team metadata permissions
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Teams with update $team metadata permissions
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Users with update $team metadata permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles with update `$team` metadata permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Teams with update `$team` metadata permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Users with update `$team` metadata permissions
         """
         if owned_by_team is not None:
             pulumi.set(__self__, "owned_by_team", owned_by_team)
@@ -3238,7 +3238,7 @@ class BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamArgs:
     @pulumi.getter
     def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Roles with update $team metadata permissions
+        Roles with update `$team` metadata permissions
         """
         return pulumi.get(self, "roles")
 
@@ -3250,7 +3250,7 @@ class BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamArgs:
     @pulumi.getter
     def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Teams with update $team metadata permissions
+        Teams with update `$team` metadata permissions
         """
         return pulumi.get(self, "teams")
 
@@ -3262,7 +3262,7 @@ class BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamArgs:
     @pulumi.getter
     def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Users with update $team metadata permissions
+        Users with update `$team` metadata permissions
         """
         return pulumi.get(self, "users")
 
@@ -3280,9 +3280,9 @@ class BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleArgs:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[bool] owned_by_team: Owned by team
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles with update $title metadata permissions
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Teams with update $title metadata permissions
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Users with update $title metadata permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles with update `$title` metadata permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Teams with update `$title` metadata permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Users with update `$title` metadata permissions
         """
         if owned_by_team is not None:
             pulumi.set(__self__, "owned_by_team", owned_by_team)
@@ -3309,7 +3309,7 @@ class BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleArgs:
     @pulumi.getter
     def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Roles with update $title metadata permissions
+        Roles with update `$title` metadata permissions
         """
         return pulumi.get(self, "roles")
 
@@ -3321,7 +3321,7 @@ class BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleArgs:
     @pulumi.getter
     def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Teams with update $title metadata permissions
+        Teams with update `$title` metadata permissions
         """
         return pulumi.get(self, "teams")
 
@@ -3333,7 +3333,7 @@ class BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleArgs:
     @pulumi.getter
     def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Users with update $title metadata permissions
+        Users with update `$title` metadata permissions
         """
         return pulumi.get(self, "users")
 

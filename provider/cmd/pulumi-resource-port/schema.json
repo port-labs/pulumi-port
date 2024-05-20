@@ -102,7 +102,7 @@
                 },
                 "payload": {
                     "type": "string",
-                    "description": "The Azure Devops workflow payload (array or object encoded to a string)\n"
+                    "description": "The Azure Devops workflow payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).\n"
                 },
                 "webhook": {
                     "type": "string",
@@ -135,7 +135,7 @@
                 },
                 "workflowInputs": {
                     "type": "string",
-                    "description": "The GitHub workflow inputs (key-value object encoded to a string)\n"
+                    "description": "The GitHub workflow inputs to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).\n"
                 }
             },
             "type": "object",
@@ -157,7 +157,7 @@
                 },
                 "pipelineVariables": {
                     "type": "string",
-                    "description": "The Gitlab pipeline variables (key-value object encoded to a string)\n"
+                    "description": "The Gitlab pipeline variables should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).\n"
                 },
                 "projectName": {
                     "type": "string",
@@ -174,7 +174,7 @@
             "properties": {
                 "payload": {
                     "type": "string",
-                    "description": "The Kafka message payload (array or object encoded to a string)\n"
+                    "description": "The Kafka message payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).\n"
                 }
             },
             "type": "object"
@@ -809,14 +809,14 @@
                 },
                 "body": {
                     "type": "string",
-                    "description": "The Webhook body (array or object encoded to a string)\n"
+                    "description": "The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).\n"
                 },
                 "headers": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "The HTTP method to invoke the action\n"
+                    "description": "The HTTP headers for invoking the action. They should be encoded as a key-value object to a string using jsonencode. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).\n"
                 },
                 "method": {
                     "type": "string",
@@ -1017,15 +1017,15 @@
             "properties": {
                 "register": {
                     "$ref": "#/types/port:index/BlueprintPermissionsEntitiesRegister:BlueprintPermissionsEntitiesRegister",
-                    "description": "Enable permissions to register entities of the blueprint\n"
+                    "description": "Manage permissions to register entities of the blueprint\n"
                 },
                 "unregister": {
                     "$ref": "#/types/port:index/BlueprintPermissionsEntitiesUnregister:BlueprintPermissionsEntitiesUnregister",
-                    "description": "Enable permissions to unregister entities of the blueprint\n"
+                    "description": "Manage permissions to unregister entities of the blueprint\n"
                 },
                 "update": {
                     "$ref": "#/types/port:index/BlueprintPermissionsEntitiesUpdate:BlueprintPermissionsEntitiesUpdate",
-                    "description": "Enable permissions to update entities of the blueprint\n"
+                    "description": "Manage permissions to update entities of the blueprint\n"
                 },
                 "updateMetadataProperties": {
                     "$ref": "#/types/port:index/BlueprintPermissionsEntitiesUpdateMetadataProperties:BlueprintPermissionsEntitiesUpdateMetadataProperties"
@@ -1035,14 +1035,14 @@
                     "additionalProperties": {
                         "$ref": "#/types/port:index/BlueprintPermissionsEntitiesUpdateProperties:BlueprintPermissionsEntitiesUpdateProperties"
                     },
-                    "description": "Enable permissions to update the entity properties\n"
+                    "description": "Manage permissions to update the entity properties\n"
                 },
                 "updateRelations": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/port:index/BlueprintPermissionsEntitiesUpdateRelations:BlueprintPermissionsEntitiesUpdateRelations"
                     },
-                    "description": "Enable permissions to update the entity relations\n"
+                    "description": "Manage permissions to update the entity relations\n"
                 }
             },
             "type": "object",
@@ -1202,21 +1202,21 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Roles with update $icon metadata permissions\n"
+                    "description": "Roles with update `$icon` metadata permissions\n"
                 },
                 "teams": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Teams with update $icon metadata permissions\n"
+                    "description": "Teams with update `$icon` metadata permissions\n"
                 },
                 "users": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Users with update $icon metadata permissions\n"
+                    "description": "Users with update `$icon` metadata permissions\n"
                 }
             },
             "type": "object",
@@ -1239,21 +1239,21 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Roles with update $identifier metadata permissions\n"
+                    "description": "Roles with update `$identifier` metadata permissions\n"
                 },
                 "teams": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Teams with update $identifier metadata permissions\n"
+                    "description": "Teams with update `$identifier` metadata permissions\n"
                 },
                 "users": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Users with update $identifier metadata permissions\n"
+                    "description": "Users with update `$identifier` metadata permissions\n"
                 }
             },
             "type": "object",
@@ -1276,21 +1276,21 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Roles with update $team metadata permissions\n"
+                    "description": "Roles with update `$team` metadata permissions\n"
                 },
                 "teams": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Teams with update $team metadata permissions\n"
+                    "description": "Teams with update `$team` metadata permissions\n"
                 },
                 "users": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Users with update $team metadata permissions\n"
+                    "description": "Users with update `$team` metadata permissions\n"
                 }
             },
             "type": "object",
@@ -1313,21 +1313,21 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Roles with update $title metadata permissions\n"
+                    "description": "Roles with update `$title` metadata permissions\n"
                 },
                 "teams": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Teams with update $title metadata permissions\n"
+                    "description": "Teams with update `$title` metadata permissions\n"
                 },
                 "users": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Users with update $title metadata permissions\n"
+                    "description": "Users with update `$title` metadata permissions\n"
                 }
             },
             "type": "object",
