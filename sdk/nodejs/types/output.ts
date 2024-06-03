@@ -142,6 +142,10 @@ export interface ActionSelfServiceTrigger {
      */
     blueprintIdentifier?: string;
     /**
+     * The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
+     */
+    condition?: string;
+    /**
      * The operation type of the action
      */
     operation: string;
