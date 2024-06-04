@@ -70,6 +70,8 @@ __all__ = [
     'EntityPropertiesArgs',
     'EntityPropertiesArrayPropsArgs',
     'EntityRelationsArgs',
+    'IntegrationKafkaChangelogDestinationArgs',
+    'IntegrationWebhookChangelogDestinationArgs',
     'PagePermissionsReadArgs',
     'ScorecardRuleArgs',
     'ScorecardRuleQueryArgs',
@@ -4777,6 +4779,50 @@ class EntityRelationsArgs:
     @single_relations.setter
     def single_relations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "single_relations", value)
+
+
+@pulumi.input_type
+class IntegrationKafkaChangelogDestinationArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class IntegrationWebhookChangelogDestinationArgs:
+    def __init__(__self__, *,
+                 url: pulumi.Input[str],
+                 agent: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] url: The url of the webhook changelog destination
+        :param pulumi.Input[bool] agent: The agent of the webhook changelog destination
+        """
+        pulumi.set(__self__, "url", url)
+        if agent is not None:
+            pulumi.set(__self__, "agent", agent)
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[str]:
+        """
+        The url of the webhook changelog destination
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter
+    def agent(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The agent of the webhook changelog destination
+        """
+        return pulumi.get(self, "agent")
+
+    @agent.setter
+    def agent(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "agent", value)
 
 
 @pulumi.input_type

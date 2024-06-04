@@ -1255,6 +1255,20 @@ export interface EntityRelations {
     singleRelations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
+export interface IntegrationKafkaChangelogDestination {
+}
+
+export interface IntegrationWebhookChangelogDestination {
+    /**
+     * The agent of the webhook changelog destination
+     */
+    agent?: pulumi.Input<boolean>;
+    /**
+     * The url of the webhook changelog destination
+     */
+    url: pulumi.Input<string>;
+}
+
 export interface PagePermissionsRead {
     /**
      * The roles with read permission

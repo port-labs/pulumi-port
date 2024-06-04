@@ -22,6 +22,7 @@
         "config/vars.ts",
         "entity.ts",
         "index.ts",
+        "integration.ts",
         "page.ts",
         "pagePermissions.ts",
         "provider.ts",

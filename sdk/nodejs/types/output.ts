@@ -1255,6 +1255,20 @@ export interface EntityRelations {
     singleRelations?: {[key: string]: string};
 }
 
+export interface IntegrationKafkaChangelogDestination {
+}
+
+export interface IntegrationWebhookChangelogDestination {
+    /**
+     * The agent of the webhook changelog destination
+     */
+    agent?: boolean;
+    /**
+     * The url of the webhook changelog destination
+     */
+    url: string;
+}
+
 export interface PagePermissionsRead {
     /**
      * The roles with read permission
