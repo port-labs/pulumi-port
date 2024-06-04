@@ -142,6 +142,10 @@ export interface ActionSelfServiceTrigger {
      */
     blueprintIdentifier?: pulumi.Input<string>;
     /**
+     * The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
+     */
+    condition?: pulumi.Input<string>;
+    /**
      * The operation type of the action
      */
     operation: pulumi.Input<string>;

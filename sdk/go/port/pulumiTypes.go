@@ -1572,6 +1572,8 @@ func (o ActionPermissionsPermissionsExecutePtrOutput) Users() pulumi.StringArray
 type ActionSelfServiceTrigger struct {
 	// The ID of the blueprint
 	BlueprintIdentifier *string `pulumi:"blueprintIdentifier"`
+	// The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
+	Condition *string `pulumi:"condition"`
 	// The operation type of the action
 	Operation string `pulumi:"operation"`
 	// Order properties
@@ -1596,6 +1598,8 @@ type ActionSelfServiceTriggerInput interface {
 type ActionSelfServiceTriggerArgs struct {
 	// The ID of the blueprint
 	BlueprintIdentifier pulumi.StringPtrInput `pulumi:"blueprintIdentifier"`
+	// The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
+	Condition pulumi.StringPtrInput `pulumi:"condition"`
 	// The operation type of the action
 	Operation pulumi.StringInput `pulumi:"operation"`
 	// Order properties
@@ -1688,6 +1692,11 @@ func (o ActionSelfServiceTriggerOutput) BlueprintIdentifier() pulumi.StringPtrOu
 	return o.ApplyT(func(v ActionSelfServiceTrigger) *string { return v.BlueprintIdentifier }).(pulumi.StringPtrOutput)
 }
 
+// The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
+func (o ActionSelfServiceTriggerOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTrigger) *string { return v.Condition }).(pulumi.StringPtrOutput)
+}
+
 // The operation type of the action
 func (o ActionSelfServiceTriggerOutput) Operation() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionSelfServiceTrigger) string { return v.Operation }).(pulumi.StringOutput)
@@ -1739,6 +1748,16 @@ func (o ActionSelfServiceTriggerPtrOutput) BlueprintIdentifier() pulumi.StringPt
 			return nil
 		}
 		return v.BlueprintIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
+// The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
+func (o ActionSelfServiceTriggerPtrOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Condition
 	}).(pulumi.StringPtrOutput)
 }
 
