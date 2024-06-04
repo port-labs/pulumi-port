@@ -71,6 +71,8 @@ __all__ = [
     'EntityProperties',
     'EntityPropertiesArrayProps',
     'EntityRelations',
+    'IntegrationKafkaChangelogDestination',
+    'IntegrationWebhookChangelogDestination',
     'PagePermissionsRead',
     'ScorecardRule',
     'ScorecardRuleQuery',
@@ -4405,6 +4407,42 @@ class EntityRelations(dict):
         The single relation of the entity
         """
         return pulumi.get(self, "single_relations")
+
+
+@pulumi.output_type
+class IntegrationKafkaChangelogDestination(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class IntegrationWebhookChangelogDestination(dict):
+    def __init__(__self__, *,
+                 url: str,
+                 agent: Optional[bool] = None):
+        """
+        :param str url: The url of the webhook changelog destination
+        :param bool agent: The agent of the webhook changelog destination
+        """
+        pulumi.set(__self__, "url", url)
+        if agent is not None:
+            pulumi.set(__self__, "agent", agent)
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        The url of the webhook changelog destination
+        """
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter
+    def agent(self) -> Optional[bool]:
+        """
+        The agent of the webhook changelog destination
+        """
+        return pulumi.get(self, "agent")
 
 
 @pulumi.output_type

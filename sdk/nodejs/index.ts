@@ -35,6 +35,11 @@ export type Entity = import("./entity").Entity;
 export const Entity: typeof import("./entity").Entity = null as any;
 utilities.lazyLoad(exports, ["Entity"], () => require("./entity"));
 
+export { IntegrationArgs, IntegrationState } from "./integration";
+export type Integration = import("./integration").Integration;
+export const Integration: typeof import("./integration").Integration = null as any;
+utilities.lazyLoad(exports, ["Integration"], () => require("./integration"));
+
 export { PageArgs, PageState } from "./page";
 export type Page = import("./page").Page;
 export const Page: typeof import("./page").Page = null as any;
@@ -91,6 +96,8 @@ const _module = {
                 return new BlueprintPermissions(name, <any>undefined, { urn })
             case "port:index/entity:Entity":
                 return new Entity(name, <any>undefined, { urn })
+            case "port:index/integration:Integration":
+                return new Integration(name, <any>undefined, { urn })
             case "port:index/page:Page":
                 return new Page(name, <any>undefined, { urn })
             case "port:index/pagePermissions:PagePermissions":
@@ -112,6 +119,7 @@ pulumi.runtime.registerResourceModule("port", "index/aggregationProperties", _mo
 pulumi.runtime.registerResourceModule("port", "index/blueprint", _module)
 pulumi.runtime.registerResourceModule("port", "index/blueprintPermissions", _module)
 pulumi.runtime.registerResourceModule("port", "index/entity", _module)
+pulumi.runtime.registerResourceModule("port", "index/integration", _module)
 pulumi.runtime.registerResourceModule("port", "index/page", _module)
 pulumi.runtime.registerResourceModule("port", "index/pagePermissions", _module)
 pulumi.runtime.registerResourceModule("port", "index/scorecard", _module)
