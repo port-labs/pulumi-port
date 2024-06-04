@@ -11,6 +11,7 @@ from .aggregation_properties import *
 from .blueprint import *
 from .blueprint_permissions import *
 from .entity import *
+from .integration import *
 from .page import *
 from .page_permissions import *
 from .provider import *
@@ -76,6 +77,14 @@ _utilities.register(
   "fqn": "port_pulumi",
   "classes": {
    "port:index/entity:Entity": "Entity"
+  }
+ },
+ {
+  "pkg": "port",
+  "mod": "index/integration",
+  "fqn": "port_pulumi",
+  "classes": {
+   "port:index/integration:Integration": "Integration"
   }
  },
  {

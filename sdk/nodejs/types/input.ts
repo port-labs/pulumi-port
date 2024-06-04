@@ -142,6 +142,10 @@ export interface ActionSelfServiceTrigger {
      */
     blueprintIdentifier?: pulumi.Input<string>;
     /**
+     * The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
+     */
+    condition?: pulumi.Input<string>;
+    /**
      * The operation type of the action
      */
     operation: pulumi.Input<string>;
@@ -1249,6 +1253,20 @@ export interface EntityRelations {
      * The single relation of the entity
      */
     singleRelations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface IntegrationKafkaChangelogDestination {
+}
+
+export interface IntegrationWebhookChangelogDestination {
+    /**
+     * The agent of the webhook changelog destination
+     */
+    agent?: pulumi.Input<boolean>;
+    /**
+     * The url of the webhook changelog destination
+     */
+    url: pulumi.Input<string>;
 }
 
 export interface PagePermissionsRead {

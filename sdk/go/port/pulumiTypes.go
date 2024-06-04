@@ -1572,6 +1572,8 @@ func (o ActionPermissionsPermissionsExecutePtrOutput) Users() pulumi.StringArray
 type ActionSelfServiceTrigger struct {
 	// The ID of the blueprint
 	BlueprintIdentifier *string `pulumi:"blueprintIdentifier"`
+	// The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
+	Condition *string `pulumi:"condition"`
 	// The operation type of the action
 	Operation string `pulumi:"operation"`
 	// Order properties
@@ -1596,6 +1598,8 @@ type ActionSelfServiceTriggerInput interface {
 type ActionSelfServiceTriggerArgs struct {
 	// The ID of the blueprint
 	BlueprintIdentifier pulumi.StringPtrInput `pulumi:"blueprintIdentifier"`
+	// The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
+	Condition pulumi.StringPtrInput `pulumi:"condition"`
 	// The operation type of the action
 	Operation pulumi.StringInput `pulumi:"operation"`
 	// Order properties
@@ -1688,6 +1692,11 @@ func (o ActionSelfServiceTriggerOutput) BlueprintIdentifier() pulumi.StringPtrOu
 	return o.ApplyT(func(v ActionSelfServiceTrigger) *string { return v.BlueprintIdentifier }).(pulumi.StringPtrOutput)
 }
 
+// The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
+func (o ActionSelfServiceTriggerOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTrigger) *string { return v.Condition }).(pulumi.StringPtrOutput)
+}
+
 // The operation type of the action
 func (o ActionSelfServiceTriggerOutput) Operation() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionSelfServiceTrigger) string { return v.Operation }).(pulumi.StringOutput)
@@ -1739,6 +1748,16 @@ func (o ActionSelfServiceTriggerPtrOutput) BlueprintIdentifier() pulumi.StringPt
 			return nil
 		}
 		return v.BlueprintIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
+// The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
+func (o ActionSelfServiceTriggerPtrOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Condition
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10169,6 +10188,280 @@ func (o EntityRelationsPtrOutput) SingleRelations() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type IntegrationKafkaChangelogDestination struct {
+}
+
+// IntegrationKafkaChangelogDestinationInput is an input type that accepts IntegrationKafkaChangelogDestinationArgs and IntegrationKafkaChangelogDestinationOutput values.
+// You can construct a concrete instance of `IntegrationKafkaChangelogDestinationInput` via:
+//
+//	IntegrationKafkaChangelogDestinationArgs{...}
+type IntegrationKafkaChangelogDestinationInput interface {
+	pulumi.Input
+
+	ToIntegrationKafkaChangelogDestinationOutput() IntegrationKafkaChangelogDestinationOutput
+	ToIntegrationKafkaChangelogDestinationOutputWithContext(context.Context) IntegrationKafkaChangelogDestinationOutput
+}
+
+type IntegrationKafkaChangelogDestinationArgs struct {
+}
+
+func (IntegrationKafkaChangelogDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationKafkaChangelogDestination)(nil)).Elem()
+}
+
+func (i IntegrationKafkaChangelogDestinationArgs) ToIntegrationKafkaChangelogDestinationOutput() IntegrationKafkaChangelogDestinationOutput {
+	return i.ToIntegrationKafkaChangelogDestinationOutputWithContext(context.Background())
+}
+
+func (i IntegrationKafkaChangelogDestinationArgs) ToIntegrationKafkaChangelogDestinationOutputWithContext(ctx context.Context) IntegrationKafkaChangelogDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationKafkaChangelogDestinationOutput)
+}
+
+func (i IntegrationKafkaChangelogDestinationArgs) ToIntegrationKafkaChangelogDestinationPtrOutput() IntegrationKafkaChangelogDestinationPtrOutput {
+	return i.ToIntegrationKafkaChangelogDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i IntegrationKafkaChangelogDestinationArgs) ToIntegrationKafkaChangelogDestinationPtrOutputWithContext(ctx context.Context) IntegrationKafkaChangelogDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationKafkaChangelogDestinationOutput).ToIntegrationKafkaChangelogDestinationPtrOutputWithContext(ctx)
+}
+
+// IntegrationKafkaChangelogDestinationPtrInput is an input type that accepts IntegrationKafkaChangelogDestinationArgs, IntegrationKafkaChangelogDestinationPtr and IntegrationKafkaChangelogDestinationPtrOutput values.
+// You can construct a concrete instance of `IntegrationKafkaChangelogDestinationPtrInput` via:
+//
+//	        IntegrationKafkaChangelogDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type IntegrationKafkaChangelogDestinationPtrInput interface {
+	pulumi.Input
+
+	ToIntegrationKafkaChangelogDestinationPtrOutput() IntegrationKafkaChangelogDestinationPtrOutput
+	ToIntegrationKafkaChangelogDestinationPtrOutputWithContext(context.Context) IntegrationKafkaChangelogDestinationPtrOutput
+}
+
+type integrationKafkaChangelogDestinationPtrType IntegrationKafkaChangelogDestinationArgs
+
+func IntegrationKafkaChangelogDestinationPtr(v *IntegrationKafkaChangelogDestinationArgs) IntegrationKafkaChangelogDestinationPtrInput {
+	return (*integrationKafkaChangelogDestinationPtrType)(v)
+}
+
+func (*integrationKafkaChangelogDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationKafkaChangelogDestination)(nil)).Elem()
+}
+
+func (i *integrationKafkaChangelogDestinationPtrType) ToIntegrationKafkaChangelogDestinationPtrOutput() IntegrationKafkaChangelogDestinationPtrOutput {
+	return i.ToIntegrationKafkaChangelogDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *integrationKafkaChangelogDestinationPtrType) ToIntegrationKafkaChangelogDestinationPtrOutputWithContext(ctx context.Context) IntegrationKafkaChangelogDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationKafkaChangelogDestinationPtrOutput)
+}
+
+type IntegrationKafkaChangelogDestinationOutput struct{ *pulumi.OutputState }
+
+func (IntegrationKafkaChangelogDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationKafkaChangelogDestination)(nil)).Elem()
+}
+
+func (o IntegrationKafkaChangelogDestinationOutput) ToIntegrationKafkaChangelogDestinationOutput() IntegrationKafkaChangelogDestinationOutput {
+	return o
+}
+
+func (o IntegrationKafkaChangelogDestinationOutput) ToIntegrationKafkaChangelogDestinationOutputWithContext(ctx context.Context) IntegrationKafkaChangelogDestinationOutput {
+	return o
+}
+
+func (o IntegrationKafkaChangelogDestinationOutput) ToIntegrationKafkaChangelogDestinationPtrOutput() IntegrationKafkaChangelogDestinationPtrOutput {
+	return o.ToIntegrationKafkaChangelogDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o IntegrationKafkaChangelogDestinationOutput) ToIntegrationKafkaChangelogDestinationPtrOutputWithContext(ctx context.Context) IntegrationKafkaChangelogDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IntegrationKafkaChangelogDestination) *IntegrationKafkaChangelogDestination {
+		return &v
+	}).(IntegrationKafkaChangelogDestinationPtrOutput)
+}
+
+type IntegrationKafkaChangelogDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (IntegrationKafkaChangelogDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationKafkaChangelogDestination)(nil)).Elem()
+}
+
+func (o IntegrationKafkaChangelogDestinationPtrOutput) ToIntegrationKafkaChangelogDestinationPtrOutput() IntegrationKafkaChangelogDestinationPtrOutput {
+	return o
+}
+
+func (o IntegrationKafkaChangelogDestinationPtrOutput) ToIntegrationKafkaChangelogDestinationPtrOutputWithContext(ctx context.Context) IntegrationKafkaChangelogDestinationPtrOutput {
+	return o
+}
+
+func (o IntegrationKafkaChangelogDestinationPtrOutput) Elem() IntegrationKafkaChangelogDestinationOutput {
+	return o.ApplyT(func(v *IntegrationKafkaChangelogDestination) IntegrationKafkaChangelogDestination {
+		if v != nil {
+			return *v
+		}
+		var ret IntegrationKafkaChangelogDestination
+		return ret
+	}).(IntegrationKafkaChangelogDestinationOutput)
+}
+
+type IntegrationWebhookChangelogDestination struct {
+	// The agent of the webhook changelog destination
+	Agent *bool `pulumi:"agent"`
+	// The url of the webhook changelog destination
+	Url string `pulumi:"url"`
+}
+
+// IntegrationWebhookChangelogDestinationInput is an input type that accepts IntegrationWebhookChangelogDestinationArgs and IntegrationWebhookChangelogDestinationOutput values.
+// You can construct a concrete instance of `IntegrationWebhookChangelogDestinationInput` via:
+//
+//	IntegrationWebhookChangelogDestinationArgs{...}
+type IntegrationWebhookChangelogDestinationInput interface {
+	pulumi.Input
+
+	ToIntegrationWebhookChangelogDestinationOutput() IntegrationWebhookChangelogDestinationOutput
+	ToIntegrationWebhookChangelogDestinationOutputWithContext(context.Context) IntegrationWebhookChangelogDestinationOutput
+}
+
+type IntegrationWebhookChangelogDestinationArgs struct {
+	// The agent of the webhook changelog destination
+	Agent pulumi.BoolPtrInput `pulumi:"agent"`
+	// The url of the webhook changelog destination
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (IntegrationWebhookChangelogDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationWebhookChangelogDestination)(nil)).Elem()
+}
+
+func (i IntegrationWebhookChangelogDestinationArgs) ToIntegrationWebhookChangelogDestinationOutput() IntegrationWebhookChangelogDestinationOutput {
+	return i.ToIntegrationWebhookChangelogDestinationOutputWithContext(context.Background())
+}
+
+func (i IntegrationWebhookChangelogDestinationArgs) ToIntegrationWebhookChangelogDestinationOutputWithContext(ctx context.Context) IntegrationWebhookChangelogDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationWebhookChangelogDestinationOutput)
+}
+
+func (i IntegrationWebhookChangelogDestinationArgs) ToIntegrationWebhookChangelogDestinationPtrOutput() IntegrationWebhookChangelogDestinationPtrOutput {
+	return i.ToIntegrationWebhookChangelogDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i IntegrationWebhookChangelogDestinationArgs) ToIntegrationWebhookChangelogDestinationPtrOutputWithContext(ctx context.Context) IntegrationWebhookChangelogDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationWebhookChangelogDestinationOutput).ToIntegrationWebhookChangelogDestinationPtrOutputWithContext(ctx)
+}
+
+// IntegrationWebhookChangelogDestinationPtrInput is an input type that accepts IntegrationWebhookChangelogDestinationArgs, IntegrationWebhookChangelogDestinationPtr and IntegrationWebhookChangelogDestinationPtrOutput values.
+// You can construct a concrete instance of `IntegrationWebhookChangelogDestinationPtrInput` via:
+//
+//	        IntegrationWebhookChangelogDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type IntegrationWebhookChangelogDestinationPtrInput interface {
+	pulumi.Input
+
+	ToIntegrationWebhookChangelogDestinationPtrOutput() IntegrationWebhookChangelogDestinationPtrOutput
+	ToIntegrationWebhookChangelogDestinationPtrOutputWithContext(context.Context) IntegrationWebhookChangelogDestinationPtrOutput
+}
+
+type integrationWebhookChangelogDestinationPtrType IntegrationWebhookChangelogDestinationArgs
+
+func IntegrationWebhookChangelogDestinationPtr(v *IntegrationWebhookChangelogDestinationArgs) IntegrationWebhookChangelogDestinationPtrInput {
+	return (*integrationWebhookChangelogDestinationPtrType)(v)
+}
+
+func (*integrationWebhookChangelogDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationWebhookChangelogDestination)(nil)).Elem()
+}
+
+func (i *integrationWebhookChangelogDestinationPtrType) ToIntegrationWebhookChangelogDestinationPtrOutput() IntegrationWebhookChangelogDestinationPtrOutput {
+	return i.ToIntegrationWebhookChangelogDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *integrationWebhookChangelogDestinationPtrType) ToIntegrationWebhookChangelogDestinationPtrOutputWithContext(ctx context.Context) IntegrationWebhookChangelogDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationWebhookChangelogDestinationPtrOutput)
+}
+
+type IntegrationWebhookChangelogDestinationOutput struct{ *pulumi.OutputState }
+
+func (IntegrationWebhookChangelogDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationWebhookChangelogDestination)(nil)).Elem()
+}
+
+func (o IntegrationWebhookChangelogDestinationOutput) ToIntegrationWebhookChangelogDestinationOutput() IntegrationWebhookChangelogDestinationOutput {
+	return o
+}
+
+func (o IntegrationWebhookChangelogDestinationOutput) ToIntegrationWebhookChangelogDestinationOutputWithContext(ctx context.Context) IntegrationWebhookChangelogDestinationOutput {
+	return o
+}
+
+func (o IntegrationWebhookChangelogDestinationOutput) ToIntegrationWebhookChangelogDestinationPtrOutput() IntegrationWebhookChangelogDestinationPtrOutput {
+	return o.ToIntegrationWebhookChangelogDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o IntegrationWebhookChangelogDestinationOutput) ToIntegrationWebhookChangelogDestinationPtrOutputWithContext(ctx context.Context) IntegrationWebhookChangelogDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IntegrationWebhookChangelogDestination) *IntegrationWebhookChangelogDestination {
+		return &v
+	}).(IntegrationWebhookChangelogDestinationPtrOutput)
+}
+
+// The agent of the webhook changelog destination
+func (o IntegrationWebhookChangelogDestinationOutput) Agent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IntegrationWebhookChangelogDestination) *bool { return v.Agent }).(pulumi.BoolPtrOutput)
+}
+
+// The url of the webhook changelog destination
+func (o IntegrationWebhookChangelogDestinationOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v IntegrationWebhookChangelogDestination) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type IntegrationWebhookChangelogDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (IntegrationWebhookChangelogDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationWebhookChangelogDestination)(nil)).Elem()
+}
+
+func (o IntegrationWebhookChangelogDestinationPtrOutput) ToIntegrationWebhookChangelogDestinationPtrOutput() IntegrationWebhookChangelogDestinationPtrOutput {
+	return o
+}
+
+func (o IntegrationWebhookChangelogDestinationPtrOutput) ToIntegrationWebhookChangelogDestinationPtrOutputWithContext(ctx context.Context) IntegrationWebhookChangelogDestinationPtrOutput {
+	return o
+}
+
+func (o IntegrationWebhookChangelogDestinationPtrOutput) Elem() IntegrationWebhookChangelogDestinationOutput {
+	return o.ApplyT(func(v *IntegrationWebhookChangelogDestination) IntegrationWebhookChangelogDestination {
+		if v != nil {
+			return *v
+		}
+		var ret IntegrationWebhookChangelogDestination
+		return ret
+	}).(IntegrationWebhookChangelogDestinationOutput)
+}
+
+// The agent of the webhook changelog destination
+func (o IntegrationWebhookChangelogDestinationPtrOutput) Agent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IntegrationWebhookChangelogDestination) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Agent
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The url of the webhook changelog destination
+func (o IntegrationWebhookChangelogDestinationPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationWebhookChangelogDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
 type PagePermissionsRead struct {
 	// The roles with read permission
 	Roles []string `pulumi:"roles"`
@@ -11082,6 +11375,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityPropertiesArrayPropsPtrInput)(nil)).Elem(), EntityPropertiesArrayPropsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityRelationsInput)(nil)).Elem(), EntityRelationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityRelationsPtrInput)(nil)).Elem(), EntityRelationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationKafkaChangelogDestinationInput)(nil)).Elem(), IntegrationKafkaChangelogDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationKafkaChangelogDestinationPtrInput)(nil)).Elem(), IntegrationKafkaChangelogDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationWebhookChangelogDestinationInput)(nil)).Elem(), IntegrationWebhookChangelogDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationWebhookChangelogDestinationPtrInput)(nil)).Elem(), IntegrationWebhookChangelogDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagePermissionsReadInput)(nil)).Elem(), PagePermissionsReadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagePermissionsReadPtrInput)(nil)).Elem(), PagePermissionsReadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardRuleInput)(nil)).Elem(), ScorecardRuleArgs{})
@@ -11210,6 +11507,10 @@ func init() {
 	pulumi.RegisterOutputType(EntityPropertiesArrayPropsPtrOutput{})
 	pulumi.RegisterOutputType(EntityRelationsOutput{})
 	pulumi.RegisterOutputType(EntityRelationsPtrOutput{})
+	pulumi.RegisterOutputType(IntegrationKafkaChangelogDestinationOutput{})
+	pulumi.RegisterOutputType(IntegrationKafkaChangelogDestinationPtrOutput{})
+	pulumi.RegisterOutputType(IntegrationWebhookChangelogDestinationOutput{})
+	pulumi.RegisterOutputType(IntegrationWebhookChangelogDestinationPtrOutput{})
 	pulumi.RegisterOutputType(PagePermissionsReadOutput{})
 	pulumi.RegisterOutputType(PagePermissionsReadPtrOutput{})
 	pulumi.RegisterOutputType(ScorecardRuleOutput{})

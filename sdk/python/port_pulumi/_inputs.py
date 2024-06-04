@@ -70,6 +70,8 @@ __all__ = [
     'EntityPropertiesArgs',
     'EntityPropertiesArrayPropsArgs',
     'EntityRelationsArgs',
+    'IntegrationKafkaChangelogDestinationArgs',
+    'IntegrationWebhookChangelogDestinationArgs',
     'PagePermissionsReadArgs',
     'ScorecardRuleArgs',
     'ScorecardRuleQueryArgs',
@@ -551,12 +553,14 @@ class ActionSelfServiceTriggerArgs:
     def __init__(__self__, *,
                  operation: pulumi.Input[str],
                  blueprint_identifier: Optional[pulumi.Input[str]] = None,
+                 condition: Optional[pulumi.Input[str]] = None,
                  order_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_jq_query: Optional[pulumi.Input[str]] = None,
                  user_properties: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArgs']] = None):
         """
         :param pulumi.Input[str] operation: The operation type of the action
         :param pulumi.Input[str] blueprint_identifier: The ID of the blueprint
+        :param pulumi.Input[str] condition: The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] order_properties: Order properties
         :param pulumi.Input[str] required_jq_query: The required jq query of the property
         :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesArgs'] user_properties: User properties
@@ -564,6 +568,8 @@ class ActionSelfServiceTriggerArgs:
         pulumi.set(__self__, "operation", operation)
         if blueprint_identifier is not None:
             pulumi.set(__self__, "blueprint_identifier", blueprint_identifier)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
         if order_properties is not None:
             pulumi.set(__self__, "order_properties", order_properties)
         if required_jq_query is not None:
@@ -594,6 +600,18 @@ class ActionSelfServiceTriggerArgs:
     @blueprint_identifier.setter
     def blueprint_identifier(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "blueprint_identifier", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "condition", value)
 
     @property
     @pulumi.getter(name="orderProperties")
@@ -4761,6 +4779,50 @@ class EntityRelationsArgs:
     @single_relations.setter
     def single_relations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "single_relations", value)
+
+
+@pulumi.input_type
+class IntegrationKafkaChangelogDestinationArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class IntegrationWebhookChangelogDestinationArgs:
+    def __init__(__self__, *,
+                 url: pulumi.Input[str],
+                 agent: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] url: The url of the webhook changelog destination
+        :param pulumi.Input[bool] agent: The agent of the webhook changelog destination
+        """
+        pulumi.set(__self__, "url", url)
+        if agent is not None:
+            pulumi.set(__self__, "agent", agent)
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[str]:
+        """
+        The url of the webhook changelog destination
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter
+    def agent(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The agent of the webhook changelog destination
+        """
+        return pulumi.get(self, "agent")
+
+    @agent.setter
+    def agent(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "agent", value)
 
 
 @pulumi.input_type

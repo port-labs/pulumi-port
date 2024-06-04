@@ -71,6 +71,8 @@ __all__ = [
     'EntityProperties',
     'EntityPropertiesArrayProps',
     'EntityRelations',
+    'IntegrationKafkaChangelogDestination',
+    'IntegrationWebhookChangelogDestination',
     'PagePermissionsRead',
     'ScorecardRule',
     'ScorecardRuleQuery',
@@ -530,12 +532,14 @@ class ActionSelfServiceTrigger(dict):
     def __init__(__self__, *,
                  operation: str,
                  blueprint_identifier: Optional[str] = None,
+                 condition: Optional[str] = None,
                  order_properties: Optional[Sequence[str]] = None,
                  required_jq_query: Optional[str] = None,
                  user_properties: Optional['outputs.ActionSelfServiceTriggerUserProperties'] = None):
         """
         :param str operation: The operation type of the action
         :param str blueprint_identifier: The ID of the blueprint
+        :param str condition: The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
         :param Sequence[str] order_properties: Order properties
         :param str required_jq_query: The required jq query of the property
         :param 'ActionSelfServiceTriggerUserPropertiesArgs' user_properties: User properties
@@ -543,6 +547,8 @@ class ActionSelfServiceTrigger(dict):
         pulumi.set(__self__, "operation", operation)
         if blueprint_identifier is not None:
             pulumi.set(__self__, "blueprint_identifier", blueprint_identifier)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
         if order_properties is not None:
             pulumi.set(__self__, "order_properties", order_properties)
         if required_jq_query is not None:
@@ -565,6 +571,14 @@ class ActionSelfServiceTrigger(dict):
         The ID of the blueprint
         """
         return pulumi.get(self, "blueprint_identifier")
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[str]:
+        """
+        The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
+        """
+        return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter(name="orderProperties")
@@ -4393,6 +4407,42 @@ class EntityRelations(dict):
         The single relation of the entity
         """
         return pulumi.get(self, "single_relations")
+
+
+@pulumi.output_type
+class IntegrationKafkaChangelogDestination(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class IntegrationWebhookChangelogDestination(dict):
+    def __init__(__self__, *,
+                 url: str,
+                 agent: Optional[bool] = None):
+        """
+        :param str url: The url of the webhook changelog destination
+        :param bool agent: The agent of the webhook changelog destination
+        """
+        pulumi.set(__self__, "url", url)
+        if agent is not None:
+            pulumi.set(__self__, "agent", agent)
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        The url of the webhook changelog destination
+        """
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter
+    def agent(self) -> Optional[bool]:
+        """
+        The agent of the webhook changelog destination
+        """
+        return pulumi.get(self, "agent")
 
 
 @pulumi.output_type
