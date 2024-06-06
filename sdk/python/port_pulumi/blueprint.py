@@ -19,6 +19,7 @@ class BlueprintArgs:
                  identifier: pulumi.Input[str],
                  title: pulumi.Input[str],
                  calculation_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintCalculationPropertiesArgs']]]] = None,
+                 create_catalog_page: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  force_delete_entities: Optional[pulumi.Input[bool]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
@@ -33,6 +34,7 @@ class BlueprintArgs:
         :param pulumi.Input[str] identifier: The identifier of the blueprint
         :param pulumi.Input[str] title: The display name of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintCalculationPropertiesArgs']]] calculation_properties: The calculation properties of the blueprint
+        :param pulumi.Input[bool] create_catalog_page: This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
         :param pulumi.Input[str] description: The description of the blueprint
         :param pulumi.Input[str] icon: The icon of the blueprint
         :param pulumi.Input['BlueprintKafkaChangelogDestinationArgs'] kafka_changelog_destination: The changelog destination of the blueprint
@@ -46,6 +48,8 @@ class BlueprintArgs:
         pulumi.set(__self__, "title", title)
         if calculation_properties is not None:
             pulumi.set(__self__, "calculation_properties", calculation_properties)
+        if create_catalog_page is not None:
+            pulumi.set(__self__, "create_catalog_page", create_catalog_page)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if force_delete_entities is not None:
@@ -100,6 +104,18 @@ class BlueprintArgs:
     @calculation_properties.setter
     def calculation_properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintCalculationPropertiesArgs']]]]):
         pulumi.set(self, "calculation_properties", value)
+
+    @property
+    @pulumi.getter(name="createCatalogPage")
+    def create_catalog_page(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
+        """
+        return pulumi.get(self, "create_catalog_page")
+
+    @create_catalog_page.setter
+    def create_catalog_page(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_catalog_page", value)
 
     @property
     @pulumi.getter
@@ -211,6 +227,7 @@ class BlueprintArgs:
 class _BlueprintState:
     def __init__(__self__, *,
                  calculation_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintCalculationPropertiesArgs']]]] = None,
+                 create_catalog_page: Optional[pulumi.Input[bool]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -229,6 +246,7 @@ class _BlueprintState:
         """
         Input properties used for looking up and filtering Blueprint resources.
         :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintCalculationPropertiesArgs']]] calculation_properties: The calculation properties of the blueprint
+        :param pulumi.Input[bool] create_catalog_page: This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
         :param pulumi.Input[str] created_at: The creation date of the blueprint
         :param pulumi.Input[str] created_by: The creator of the blueprint
         :param pulumi.Input[str] description: The description of the blueprint
@@ -246,6 +264,8 @@ class _BlueprintState:
         """
         if calculation_properties is not None:
             pulumi.set(__self__, "calculation_properties", calculation_properties)
+        if create_catalog_page is not None:
+            pulumi.set(__self__, "create_catalog_page", create_catalog_page)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if created_by is not None:
@@ -288,6 +308,18 @@ class _BlueprintState:
     @calculation_properties.setter
     def calculation_properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintCalculationPropertiesArgs']]]]):
         pulumi.set(self, "calculation_properties", value)
+
+    @property
+    @pulumi.getter(name="createCatalogPage")
+    def create_catalog_page(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
+        """
+        return pulumi.get(self, "create_catalog_page")
+
+    @create_catalog_page.setter
+    def create_catalog_page(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_catalog_page", value)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -473,6 +505,7 @@ class Blueprint(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  calculation_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintCalculationPropertiesArgs']]]]] = None,
+                 create_catalog_page: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  force_delete_entities: Optional[pulumi.Input[bool]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
@@ -490,6 +523,7 @@ class Blueprint(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintCalculationPropertiesArgs']]]] calculation_properties: The calculation properties of the blueprint
+        :param pulumi.Input[bool] create_catalog_page: This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
         :param pulumi.Input[str] description: The description of the blueprint
         :param pulumi.Input[str] icon: The icon of the blueprint
         :param pulumi.Input[str] identifier: The identifier of the blueprint
@@ -525,6 +559,7 @@ class Blueprint(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  calculation_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintCalculationPropertiesArgs']]]]] = None,
+                 create_catalog_page: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  force_delete_entities: Optional[pulumi.Input[bool]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
@@ -546,6 +581,7 @@ class Blueprint(pulumi.CustomResource):
             __props__ = BlueprintArgs.__new__(BlueprintArgs)
 
             __props__.__dict__["calculation_properties"] = calculation_properties
+            __props__.__dict__["create_catalog_page"] = create_catalog_page
             __props__.__dict__["description"] = description
             __props__.__dict__["force_delete_entities"] = force_delete_entities
             __props__.__dict__["icon"] = icon
@@ -576,6 +612,7 @@ class Blueprint(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             calculation_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintCalculationPropertiesArgs']]]]] = None,
+            create_catalog_page: Optional[pulumi.Input[bool]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             created_by: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -599,6 +636,7 @@ class Blueprint(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintCalculationPropertiesArgs']]]] calculation_properties: The calculation properties of the blueprint
+        :param pulumi.Input[bool] create_catalog_page: This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
         :param pulumi.Input[str] created_at: The creation date of the blueprint
         :param pulumi.Input[str] created_by: The creator of the blueprint
         :param pulumi.Input[str] description: The description of the blueprint
@@ -619,6 +657,7 @@ class Blueprint(pulumi.CustomResource):
         __props__ = _BlueprintState.__new__(_BlueprintState)
 
         __props__.__dict__["calculation_properties"] = calculation_properties
+        __props__.__dict__["create_catalog_page"] = create_catalog_page
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
         __props__.__dict__["description"] = description
@@ -643,6 +682,14 @@ class Blueprint(pulumi.CustomResource):
         The calculation properties of the blueprint
         """
         return pulumi.get(self, "calculation_properties")
+
+    @property
+    @pulumi.getter(name="createCatalogPage")
+    def create_catalog_page(self) -> pulumi.Output[bool]:
+        """
+        This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
+        """
+        return pulumi.get(self, "create_catalog_page")
 
     @property
     @pulumi.getter(name="createdAt")
