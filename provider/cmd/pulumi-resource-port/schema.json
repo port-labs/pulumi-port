@@ -2484,6 +2484,10 @@
                     },
                     "description": "The calculation properties of the blueprint\n"
                 },
+                "createCatalogPage": {
+                    "type": "boolean",
+                    "description": "This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint\n"
+                },
                 "createdAt": {
                     "type": "string",
                     "description": "The creation date of the blueprint\n"
@@ -2551,6 +2555,7 @@
                 }
             },
             "required": [
+                "createCatalogPage",
                 "createdAt",
                 "createdBy",
                 "forceDeleteEntities",
@@ -2566,6 +2571,10 @@
                         "$ref": "#/types/port:index/BlueprintCalculationProperties:BlueprintCalculationProperties"
                     },
                     "description": "The calculation properties of the blueprint\n"
+                },
+                "createCatalogPage": {
+                    "type": "boolean",
+                    "description": "This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint\n"
                 },
                 "description": {
                     "type": "string",
@@ -2630,6 +2639,10 @@
                             "$ref": "#/types/port:index/BlueprintCalculationProperties:BlueprintCalculationProperties"
                         },
                         "description": "The calculation properties of the blueprint\n"
+                    },
+                    "createCatalogPage": {
+                        "type": "boolean",
+                        "description": "This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint\n"
                     },
                     "createdAt": {
                         "type": "string",
