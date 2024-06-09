@@ -35,6 +35,11 @@ export type Entity = import("./entity").Entity;
 export const Entity: typeof import("./entity").Entity = null as any;
 utilities.lazyLoad(exports, ["Entity"], () => require("./entity"));
 
+export { GetSearchArgs, GetSearchResult, GetSearchOutputArgs } from "./getSearch";
+export const getSearch: typeof import("./getSearch").getSearch = null as any;
+export const getSearchOutput: typeof import("./getSearch").getSearchOutput = null as any;
+utilities.lazyLoad(exports, ["getSearch","getSearchOutput"], () => require("./getSearch"));
+
 export { IntegrationArgs, IntegrationState } from "./integration";
 export type Integration = import("./integration").Integration;
 export const Integration: typeof import("./integration").Integration = null as any;

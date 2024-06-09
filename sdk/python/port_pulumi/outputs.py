@@ -79,6 +79,12 @@ __all__ = [
     'WebhookMapping',
     'WebhookMappingEntity',
     'WebhookSecurity',
+    'GetSearchEntityResult',
+    'GetSearchEntityPropertiesResult',
+    'GetSearchEntityPropertiesArrayPropsResult',
+    'GetSearchEntityRelationsResult',
+    'GetSearchEntityScorecardsResult',
+    'GetSearchEntityScorecardsRuleResult',
 ]
 
 @pulumi.output_type
@@ -4804,5 +4810,324 @@ class WebhookSecurity(dict):
         The signature prefix of the webhook
         """
         return pulumi.get(self, "signature_prefix")
+
+
+@pulumi.output_type
+class GetSearchEntityResult(dict):
+    def __init__(__self__, *,
+                 blueprint: str,
+                 created_at: str,
+                 created_by: str,
+                 icon: str,
+                 identifier: str,
+                 properties: 'outputs.GetSearchEntityPropertiesResult',
+                 relations: 'outputs.GetSearchEntityRelationsResult',
+                 run_id: str,
+                 scorecards: Mapping[str, 'outputs.GetSearchEntityScorecardsResult'],
+                 teams: Sequence[str],
+                 title: str,
+                 updated_at: str,
+                 updated_by: str):
+        """
+        :param str blueprint: The blueprint identifier the entity relates to
+        :param str created_at: The creation date of the entity
+        :param str created_by: The creator of the entity
+        :param str icon: The icon of the entity
+        :param str identifier: The identifier of the entity
+        :param 'GetSearchEntityPropertiesArgs' properties: The properties of the entity
+        :param 'GetSearchEntityRelationsArgs' relations: The relations of the entity
+        :param str run_id: The runID of the action run that created the entity
+        :param Mapping[str, 'GetSearchEntityScorecardsArgs'] scorecards: The scorecards of the entity
+        :param Sequence[str] teams: The teams the entity belongs to
+        :param str title: The title of the entity
+        :param str updated_at: The last update date of the entity
+        :param str updated_by: The last updater of the entity
+        """
+        pulumi.set(__self__, "blueprint", blueprint)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "icon", icon)
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "properties", properties)
+        pulumi.set(__self__, "relations", relations)
+        pulumi.set(__self__, "run_id", run_id)
+        pulumi.set(__self__, "scorecards", scorecards)
+        pulumi.set(__self__, "teams", teams)
+        pulumi.set(__self__, "title", title)
+        pulumi.set(__self__, "updated_at", updated_at)
+        pulumi.set(__self__, "updated_by", updated_by)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> str:
+        """
+        The blueprint identifier the entity relates to
+        """
+        return pulumi.get(self, "blueprint")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        The creation date of the entity
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        The creator of the entity
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter
+    def icon(self) -> str:
+        """
+        The icon of the entity
+        """
+        return pulumi.get(self, "icon")
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> str:
+        """
+        The identifier of the entity
+        """
+        return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> 'outputs.GetSearchEntityPropertiesResult':
+        """
+        The properties of the entity
+        """
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter
+    def relations(self) -> 'outputs.GetSearchEntityRelationsResult':
+        """
+        The relations of the entity
+        """
+        return pulumi.get(self, "relations")
+
+    @property
+    @pulumi.getter(name="runId")
+    def run_id(self) -> str:
+        """
+        The runID of the action run that created the entity
+        """
+        return pulumi.get(self, "run_id")
+
+    @property
+    @pulumi.getter
+    def scorecards(self) -> Mapping[str, 'outputs.GetSearchEntityScorecardsResult']:
+        """
+        The scorecards of the entity
+        """
+        return pulumi.get(self, "scorecards")
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Sequence[str]:
+        """
+        The teams the entity belongs to
+        """
+        return pulumi.get(self, "teams")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        The title of the entity
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> str:
+        """
+        The last update date of the entity
+        """
+        return pulumi.get(self, "updated_at")
+
+    @property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> str:
+        """
+        The last updater of the entity
+        """
+        return pulumi.get(self, "updated_by")
+
+
+@pulumi.output_type
+class GetSearchEntityPropertiesResult(dict):
+    def __init__(__self__, *,
+                 array_props: 'outputs.GetSearchEntityPropertiesArrayPropsResult',
+                 boolean_props: Mapping[str, bool],
+                 number_props: Mapping[str, float],
+                 object_props: Mapping[str, str],
+                 string_props: Mapping[str, str]):
+        """
+        :param 'GetSearchEntityPropertiesArrayPropsArgs' array_props: The array properties of the entity
+        :param Mapping[str, bool] boolean_props: The bool properties of the entity
+        :param Mapping[str, float] number_props: The number properties of the entity
+        :param Mapping[str, str] object_props: The object properties of the entity
+        :param Mapping[str, str] string_props: The string properties of the entity
+        """
+        pulumi.set(__self__, "array_props", array_props)
+        pulumi.set(__self__, "boolean_props", boolean_props)
+        pulumi.set(__self__, "number_props", number_props)
+        pulumi.set(__self__, "object_props", object_props)
+        pulumi.set(__self__, "string_props", string_props)
+
+    @property
+    @pulumi.getter(name="arrayProps")
+    def array_props(self) -> 'outputs.GetSearchEntityPropertiesArrayPropsResult':
+        """
+        The array properties of the entity
+        """
+        return pulumi.get(self, "array_props")
+
+    @property
+    @pulumi.getter(name="booleanProps")
+    def boolean_props(self) -> Mapping[str, bool]:
+        """
+        The bool properties of the entity
+        """
+        return pulumi.get(self, "boolean_props")
+
+    @property
+    @pulumi.getter(name="numberProps")
+    def number_props(self) -> Mapping[str, float]:
+        """
+        The number properties of the entity
+        """
+        return pulumi.get(self, "number_props")
+
+    @property
+    @pulumi.getter(name="objectProps")
+    def object_props(self) -> Mapping[str, str]:
+        """
+        The object properties of the entity
+        """
+        return pulumi.get(self, "object_props")
+
+    @property
+    @pulumi.getter(name="stringProps")
+    def string_props(self) -> Mapping[str, str]:
+        """
+        The string properties of the entity
+        """
+        return pulumi.get(self, "string_props")
+
+
+@pulumi.output_type
+class GetSearchEntityPropertiesArrayPropsResult(dict):
+    def __init__(__self__, *,
+                 boolean_items: Mapping[str, Sequence[bool]],
+                 number_items: Mapping[str, Sequence[float]],
+                 object_items: Mapping[str, Sequence[str]],
+                 string_items: Mapping[str, Sequence[str]]):
+        pulumi.set(__self__, "boolean_items", boolean_items)
+        pulumi.set(__self__, "number_items", number_items)
+        pulumi.set(__self__, "object_items", object_items)
+        pulumi.set(__self__, "string_items", string_items)
+
+    @property
+    @pulumi.getter(name="booleanItems")
+    def boolean_items(self) -> Mapping[str, Sequence[bool]]:
+        return pulumi.get(self, "boolean_items")
+
+    @property
+    @pulumi.getter(name="numberItems")
+    def number_items(self) -> Mapping[str, Sequence[float]]:
+        return pulumi.get(self, "number_items")
+
+    @property
+    @pulumi.getter(name="objectItems")
+    def object_items(self) -> Mapping[str, Sequence[str]]:
+        return pulumi.get(self, "object_items")
+
+    @property
+    @pulumi.getter(name="stringItems")
+    def string_items(self) -> Mapping[str, Sequence[str]]:
+        return pulumi.get(self, "string_items")
+
+
+@pulumi.output_type
+class GetSearchEntityRelationsResult(dict):
+    def __init__(__self__, *,
+                 many_relations: Mapping[str, Sequence[str]],
+                 single_relations: Mapping[str, str]):
+        """
+        :param Mapping[str, Sequence[str]] many_relations: The many relation of the entity
+        :param Mapping[str, str] single_relations: The single relation of the entity
+        """
+        pulumi.set(__self__, "many_relations", many_relations)
+        pulumi.set(__self__, "single_relations", single_relations)
+
+    @property
+    @pulumi.getter(name="manyRelations")
+    def many_relations(self) -> Mapping[str, Sequence[str]]:
+        """
+        The many relation of the entity
+        """
+        return pulumi.get(self, "many_relations")
+
+    @property
+    @pulumi.getter(name="singleRelations")
+    def single_relations(self) -> Mapping[str, str]:
+        """
+        The single relation of the entity
+        """
+        return pulumi.get(self, "single_relations")
+
+
+@pulumi.output_type
+class GetSearchEntityScorecardsResult(dict):
+    def __init__(__self__, *,
+                 level: str,
+                 rules: Sequence['outputs.GetSearchEntityScorecardsRuleResult']):
+        pulumi.set(__self__, "level", level)
+        pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def level(self) -> str:
+        return pulumi.get(self, "level")
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.GetSearchEntityScorecardsRuleResult']:
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class GetSearchEntityScorecardsRuleResult(dict):
+    def __init__(__self__, *,
+                 identifier: str,
+                 level: str,
+                 status: str):
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "level", level)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> str:
+        return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter
+    def level(self) -> str:
+        return pulumi.get(self, "level")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
 
 

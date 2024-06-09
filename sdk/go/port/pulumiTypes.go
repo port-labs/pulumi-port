@@ -11256,6 +11256,633 @@ func (o WebhookSecurityPtrOutput) SignaturePrefix() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetSearchEntity struct {
+	// The blueprint identifier the entity relates to
+	Blueprint string `pulumi:"blueprint"`
+	// The creation date of the entity
+	CreatedAt string `pulumi:"createdAt"`
+	// The creator of the entity
+	CreatedBy string `pulumi:"createdBy"`
+	// The icon of the entity
+	Icon string `pulumi:"icon"`
+	// The identifier of the entity
+	Identifier string `pulumi:"identifier"`
+	// The properties of the entity
+	Properties GetSearchEntityProperties `pulumi:"properties"`
+	// The relations of the entity
+	Relations GetSearchEntityRelations `pulumi:"relations"`
+	// The runID of the action run that created the entity
+	RunId string `pulumi:"runId"`
+	// The scorecards of the entity
+	Scorecards map[string]GetSearchEntityScorecards `pulumi:"scorecards"`
+	// The teams the entity belongs to
+	Teams []string `pulumi:"teams"`
+	// The title of the entity
+	Title string `pulumi:"title"`
+	// The last update date of the entity
+	UpdatedAt string `pulumi:"updatedAt"`
+	// The last updater of the entity
+	UpdatedBy string `pulumi:"updatedBy"`
+}
+
+// GetSearchEntityInput is an input type that accepts GetSearchEntityArgs and GetSearchEntityOutput values.
+// You can construct a concrete instance of `GetSearchEntityInput` via:
+//
+//	GetSearchEntityArgs{...}
+type GetSearchEntityInput interface {
+	pulumi.Input
+
+	ToGetSearchEntityOutput() GetSearchEntityOutput
+	ToGetSearchEntityOutputWithContext(context.Context) GetSearchEntityOutput
+}
+
+type GetSearchEntityArgs struct {
+	// The blueprint identifier the entity relates to
+	Blueprint pulumi.StringInput `pulumi:"blueprint"`
+	// The creation date of the entity
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The creator of the entity
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// The icon of the entity
+	Icon pulumi.StringInput `pulumi:"icon"`
+	// The identifier of the entity
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// The properties of the entity
+	Properties GetSearchEntityPropertiesInput `pulumi:"properties"`
+	// The relations of the entity
+	Relations GetSearchEntityRelationsInput `pulumi:"relations"`
+	// The runID of the action run that created the entity
+	RunId pulumi.StringInput `pulumi:"runId"`
+	// The scorecards of the entity
+	Scorecards GetSearchEntityScorecardsMapInput `pulumi:"scorecards"`
+	// The teams the entity belongs to
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
+	// The title of the entity
+	Title pulumi.StringInput `pulumi:"title"`
+	// The last update date of the entity
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// The last updater of the entity
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+}
+
+func (GetSearchEntityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSearchEntity)(nil)).Elem()
+}
+
+func (i GetSearchEntityArgs) ToGetSearchEntityOutput() GetSearchEntityOutput {
+	return i.ToGetSearchEntityOutputWithContext(context.Background())
+}
+
+func (i GetSearchEntityArgs) ToGetSearchEntityOutputWithContext(ctx context.Context) GetSearchEntityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSearchEntityOutput)
+}
+
+// GetSearchEntityArrayInput is an input type that accepts GetSearchEntityArray and GetSearchEntityArrayOutput values.
+// You can construct a concrete instance of `GetSearchEntityArrayInput` via:
+//
+//	GetSearchEntityArray{ GetSearchEntityArgs{...} }
+type GetSearchEntityArrayInput interface {
+	pulumi.Input
+
+	ToGetSearchEntityArrayOutput() GetSearchEntityArrayOutput
+	ToGetSearchEntityArrayOutputWithContext(context.Context) GetSearchEntityArrayOutput
+}
+
+type GetSearchEntityArray []GetSearchEntityInput
+
+func (GetSearchEntityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSearchEntity)(nil)).Elem()
+}
+
+func (i GetSearchEntityArray) ToGetSearchEntityArrayOutput() GetSearchEntityArrayOutput {
+	return i.ToGetSearchEntityArrayOutputWithContext(context.Background())
+}
+
+func (i GetSearchEntityArray) ToGetSearchEntityArrayOutputWithContext(ctx context.Context) GetSearchEntityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSearchEntityArrayOutput)
+}
+
+type GetSearchEntityOutput struct{ *pulumi.OutputState }
+
+func (GetSearchEntityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSearchEntity)(nil)).Elem()
+}
+
+func (o GetSearchEntityOutput) ToGetSearchEntityOutput() GetSearchEntityOutput {
+	return o
+}
+
+func (o GetSearchEntityOutput) ToGetSearchEntityOutputWithContext(ctx context.Context) GetSearchEntityOutput {
+	return o
+}
+
+// The blueprint identifier the entity relates to
+func (o GetSearchEntityOutput) Blueprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchEntity) string { return v.Blueprint }).(pulumi.StringOutput)
+}
+
+// The creation date of the entity
+func (o GetSearchEntityOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchEntity) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The creator of the entity
+func (o GetSearchEntityOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchEntity) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The icon of the entity
+func (o GetSearchEntityOutput) Icon() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchEntity) string { return v.Icon }).(pulumi.StringOutput)
+}
+
+// The identifier of the entity
+func (o GetSearchEntityOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchEntity) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// The properties of the entity
+func (o GetSearchEntityOutput) Properties() GetSearchEntityPropertiesOutput {
+	return o.ApplyT(func(v GetSearchEntity) GetSearchEntityProperties { return v.Properties }).(GetSearchEntityPropertiesOutput)
+}
+
+// The relations of the entity
+func (o GetSearchEntityOutput) Relations() GetSearchEntityRelationsOutput {
+	return o.ApplyT(func(v GetSearchEntity) GetSearchEntityRelations { return v.Relations }).(GetSearchEntityRelationsOutput)
+}
+
+// The runID of the action run that created the entity
+func (o GetSearchEntityOutput) RunId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchEntity) string { return v.RunId }).(pulumi.StringOutput)
+}
+
+// The scorecards of the entity
+func (o GetSearchEntityOutput) Scorecards() GetSearchEntityScorecardsMapOutput {
+	return o.ApplyT(func(v GetSearchEntity) map[string]GetSearchEntityScorecards { return v.Scorecards }).(GetSearchEntityScorecardsMapOutput)
+}
+
+// The teams the entity belongs to
+func (o GetSearchEntityOutput) Teams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSearchEntity) []string { return v.Teams }).(pulumi.StringArrayOutput)
+}
+
+// The title of the entity
+func (o GetSearchEntityOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchEntity) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// The last update date of the entity
+func (o GetSearchEntityOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchEntity) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// The last updater of the entity
+func (o GetSearchEntityOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchEntity) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+type GetSearchEntityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSearchEntityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSearchEntity)(nil)).Elem()
+}
+
+func (o GetSearchEntityArrayOutput) ToGetSearchEntityArrayOutput() GetSearchEntityArrayOutput {
+	return o
+}
+
+func (o GetSearchEntityArrayOutput) ToGetSearchEntityArrayOutputWithContext(ctx context.Context) GetSearchEntityArrayOutput {
+	return o
+}
+
+func (o GetSearchEntityArrayOutput) Index(i pulumi.IntInput) GetSearchEntityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSearchEntity {
+		return vs[0].([]GetSearchEntity)[vs[1].(int)]
+	}).(GetSearchEntityOutput)
+}
+
+type GetSearchEntityProperties struct {
+	// The array properties of the entity
+	ArrayProps GetSearchEntityPropertiesArrayProps `pulumi:"arrayProps"`
+	// The bool properties of the entity
+	BooleanProps map[string]bool `pulumi:"booleanProps"`
+	// The number properties of the entity
+	NumberProps map[string]float64 `pulumi:"numberProps"`
+	// The object properties of the entity
+	ObjectProps map[string]string `pulumi:"objectProps"`
+	// The string properties of the entity
+	StringProps map[string]string `pulumi:"stringProps"`
+}
+
+// GetSearchEntityPropertiesInput is an input type that accepts GetSearchEntityPropertiesArgs and GetSearchEntityPropertiesOutput values.
+// You can construct a concrete instance of `GetSearchEntityPropertiesInput` via:
+//
+//	GetSearchEntityPropertiesArgs{...}
+type GetSearchEntityPropertiesInput interface {
+	pulumi.Input
+
+	ToGetSearchEntityPropertiesOutput() GetSearchEntityPropertiesOutput
+	ToGetSearchEntityPropertiesOutputWithContext(context.Context) GetSearchEntityPropertiesOutput
+}
+
+type GetSearchEntityPropertiesArgs struct {
+	// The array properties of the entity
+	ArrayProps GetSearchEntityPropertiesArrayPropsInput `pulumi:"arrayProps"`
+	// The bool properties of the entity
+	BooleanProps pulumi.BoolMapInput `pulumi:"booleanProps"`
+	// The number properties of the entity
+	NumberProps pulumi.Float64MapInput `pulumi:"numberProps"`
+	// The object properties of the entity
+	ObjectProps pulumi.StringMapInput `pulumi:"objectProps"`
+	// The string properties of the entity
+	StringProps pulumi.StringMapInput `pulumi:"stringProps"`
+}
+
+func (GetSearchEntityPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSearchEntityProperties)(nil)).Elem()
+}
+
+func (i GetSearchEntityPropertiesArgs) ToGetSearchEntityPropertiesOutput() GetSearchEntityPropertiesOutput {
+	return i.ToGetSearchEntityPropertiesOutputWithContext(context.Background())
+}
+
+func (i GetSearchEntityPropertiesArgs) ToGetSearchEntityPropertiesOutputWithContext(ctx context.Context) GetSearchEntityPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSearchEntityPropertiesOutput)
+}
+
+type GetSearchEntityPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GetSearchEntityPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSearchEntityProperties)(nil)).Elem()
+}
+
+func (o GetSearchEntityPropertiesOutput) ToGetSearchEntityPropertiesOutput() GetSearchEntityPropertiesOutput {
+	return o
+}
+
+func (o GetSearchEntityPropertiesOutput) ToGetSearchEntityPropertiesOutputWithContext(ctx context.Context) GetSearchEntityPropertiesOutput {
+	return o
+}
+
+// The array properties of the entity
+func (o GetSearchEntityPropertiesOutput) ArrayProps() GetSearchEntityPropertiesArrayPropsOutput {
+	return o.ApplyT(func(v GetSearchEntityProperties) GetSearchEntityPropertiesArrayProps { return v.ArrayProps }).(GetSearchEntityPropertiesArrayPropsOutput)
+}
+
+// The bool properties of the entity
+func (o GetSearchEntityPropertiesOutput) BooleanProps() pulumi.BoolMapOutput {
+	return o.ApplyT(func(v GetSearchEntityProperties) map[string]bool { return v.BooleanProps }).(pulumi.BoolMapOutput)
+}
+
+// The number properties of the entity
+func (o GetSearchEntityPropertiesOutput) NumberProps() pulumi.Float64MapOutput {
+	return o.ApplyT(func(v GetSearchEntityProperties) map[string]float64 { return v.NumberProps }).(pulumi.Float64MapOutput)
+}
+
+// The object properties of the entity
+func (o GetSearchEntityPropertiesOutput) ObjectProps() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSearchEntityProperties) map[string]string { return v.ObjectProps }).(pulumi.StringMapOutput)
+}
+
+// The string properties of the entity
+func (o GetSearchEntityPropertiesOutput) StringProps() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSearchEntityProperties) map[string]string { return v.StringProps }).(pulumi.StringMapOutput)
+}
+
+type GetSearchEntityPropertiesArrayProps struct {
+	BooleanItems map[string][]bool    `pulumi:"booleanItems"`
+	NumberItems  map[string][]float64 `pulumi:"numberItems"`
+	ObjectItems  map[string][]string  `pulumi:"objectItems"`
+	StringItems  map[string][]string  `pulumi:"stringItems"`
+}
+
+// GetSearchEntityPropertiesArrayPropsInput is an input type that accepts GetSearchEntityPropertiesArrayPropsArgs and GetSearchEntityPropertiesArrayPropsOutput values.
+// You can construct a concrete instance of `GetSearchEntityPropertiesArrayPropsInput` via:
+//
+//	GetSearchEntityPropertiesArrayPropsArgs{...}
+type GetSearchEntityPropertiesArrayPropsInput interface {
+	pulumi.Input
+
+	ToGetSearchEntityPropertiesArrayPropsOutput() GetSearchEntityPropertiesArrayPropsOutput
+	ToGetSearchEntityPropertiesArrayPropsOutputWithContext(context.Context) GetSearchEntityPropertiesArrayPropsOutput
+}
+
+type GetSearchEntityPropertiesArrayPropsArgs struct {
+	BooleanItems pulumi.BoolArrayMapInput    `pulumi:"booleanItems"`
+	NumberItems  pulumi.Float64ArrayMapInput `pulumi:"numberItems"`
+	ObjectItems  pulumi.StringArrayMapInput  `pulumi:"objectItems"`
+	StringItems  pulumi.StringArrayMapInput  `pulumi:"stringItems"`
+}
+
+func (GetSearchEntityPropertiesArrayPropsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSearchEntityPropertiesArrayProps)(nil)).Elem()
+}
+
+func (i GetSearchEntityPropertiesArrayPropsArgs) ToGetSearchEntityPropertiesArrayPropsOutput() GetSearchEntityPropertiesArrayPropsOutput {
+	return i.ToGetSearchEntityPropertiesArrayPropsOutputWithContext(context.Background())
+}
+
+func (i GetSearchEntityPropertiesArrayPropsArgs) ToGetSearchEntityPropertiesArrayPropsOutputWithContext(ctx context.Context) GetSearchEntityPropertiesArrayPropsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSearchEntityPropertiesArrayPropsOutput)
+}
+
+type GetSearchEntityPropertiesArrayPropsOutput struct{ *pulumi.OutputState }
+
+func (GetSearchEntityPropertiesArrayPropsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSearchEntityPropertiesArrayProps)(nil)).Elem()
+}
+
+func (o GetSearchEntityPropertiesArrayPropsOutput) ToGetSearchEntityPropertiesArrayPropsOutput() GetSearchEntityPropertiesArrayPropsOutput {
+	return o
+}
+
+func (o GetSearchEntityPropertiesArrayPropsOutput) ToGetSearchEntityPropertiesArrayPropsOutputWithContext(ctx context.Context) GetSearchEntityPropertiesArrayPropsOutput {
+	return o
+}
+
+func (o GetSearchEntityPropertiesArrayPropsOutput) BooleanItems() pulumi.BoolArrayMapOutput {
+	return o.ApplyT(func(v GetSearchEntityPropertiesArrayProps) map[string][]bool { return v.BooleanItems }).(pulumi.BoolArrayMapOutput)
+}
+
+func (o GetSearchEntityPropertiesArrayPropsOutput) NumberItems() pulumi.Float64ArrayMapOutput {
+	return o.ApplyT(func(v GetSearchEntityPropertiesArrayProps) map[string][]float64 { return v.NumberItems }).(pulumi.Float64ArrayMapOutput)
+}
+
+func (o GetSearchEntityPropertiesArrayPropsOutput) ObjectItems() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v GetSearchEntityPropertiesArrayProps) map[string][]string { return v.ObjectItems }).(pulumi.StringArrayMapOutput)
+}
+
+func (o GetSearchEntityPropertiesArrayPropsOutput) StringItems() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v GetSearchEntityPropertiesArrayProps) map[string][]string { return v.StringItems }).(pulumi.StringArrayMapOutput)
+}
+
+type GetSearchEntityRelations struct {
+	// The many relation of the entity
+	ManyRelations map[string][]string `pulumi:"manyRelations"`
+	// The single relation of the entity
+	SingleRelations map[string]string `pulumi:"singleRelations"`
+}
+
+// GetSearchEntityRelationsInput is an input type that accepts GetSearchEntityRelationsArgs and GetSearchEntityRelationsOutput values.
+// You can construct a concrete instance of `GetSearchEntityRelationsInput` via:
+//
+//	GetSearchEntityRelationsArgs{...}
+type GetSearchEntityRelationsInput interface {
+	pulumi.Input
+
+	ToGetSearchEntityRelationsOutput() GetSearchEntityRelationsOutput
+	ToGetSearchEntityRelationsOutputWithContext(context.Context) GetSearchEntityRelationsOutput
+}
+
+type GetSearchEntityRelationsArgs struct {
+	// The many relation of the entity
+	ManyRelations pulumi.StringArrayMapInput `pulumi:"manyRelations"`
+	// The single relation of the entity
+	SingleRelations pulumi.StringMapInput `pulumi:"singleRelations"`
+}
+
+func (GetSearchEntityRelationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSearchEntityRelations)(nil)).Elem()
+}
+
+func (i GetSearchEntityRelationsArgs) ToGetSearchEntityRelationsOutput() GetSearchEntityRelationsOutput {
+	return i.ToGetSearchEntityRelationsOutputWithContext(context.Background())
+}
+
+func (i GetSearchEntityRelationsArgs) ToGetSearchEntityRelationsOutputWithContext(ctx context.Context) GetSearchEntityRelationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSearchEntityRelationsOutput)
+}
+
+type GetSearchEntityRelationsOutput struct{ *pulumi.OutputState }
+
+func (GetSearchEntityRelationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSearchEntityRelations)(nil)).Elem()
+}
+
+func (o GetSearchEntityRelationsOutput) ToGetSearchEntityRelationsOutput() GetSearchEntityRelationsOutput {
+	return o
+}
+
+func (o GetSearchEntityRelationsOutput) ToGetSearchEntityRelationsOutputWithContext(ctx context.Context) GetSearchEntityRelationsOutput {
+	return o
+}
+
+// The many relation of the entity
+func (o GetSearchEntityRelationsOutput) ManyRelations() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v GetSearchEntityRelations) map[string][]string { return v.ManyRelations }).(pulumi.StringArrayMapOutput)
+}
+
+// The single relation of the entity
+func (o GetSearchEntityRelationsOutput) SingleRelations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSearchEntityRelations) map[string]string { return v.SingleRelations }).(pulumi.StringMapOutput)
+}
+
+type GetSearchEntityScorecards struct {
+	Level string                          `pulumi:"level"`
+	Rules []GetSearchEntityScorecardsRule `pulumi:"rules"`
+}
+
+// GetSearchEntityScorecardsInput is an input type that accepts GetSearchEntityScorecardsArgs and GetSearchEntityScorecardsOutput values.
+// You can construct a concrete instance of `GetSearchEntityScorecardsInput` via:
+//
+//	GetSearchEntityScorecardsArgs{...}
+type GetSearchEntityScorecardsInput interface {
+	pulumi.Input
+
+	ToGetSearchEntityScorecardsOutput() GetSearchEntityScorecardsOutput
+	ToGetSearchEntityScorecardsOutputWithContext(context.Context) GetSearchEntityScorecardsOutput
+}
+
+type GetSearchEntityScorecardsArgs struct {
+	Level pulumi.StringInput                      `pulumi:"level"`
+	Rules GetSearchEntityScorecardsRuleArrayInput `pulumi:"rules"`
+}
+
+func (GetSearchEntityScorecardsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSearchEntityScorecards)(nil)).Elem()
+}
+
+func (i GetSearchEntityScorecardsArgs) ToGetSearchEntityScorecardsOutput() GetSearchEntityScorecardsOutput {
+	return i.ToGetSearchEntityScorecardsOutputWithContext(context.Background())
+}
+
+func (i GetSearchEntityScorecardsArgs) ToGetSearchEntityScorecardsOutputWithContext(ctx context.Context) GetSearchEntityScorecardsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSearchEntityScorecardsOutput)
+}
+
+// GetSearchEntityScorecardsMapInput is an input type that accepts GetSearchEntityScorecardsMap and GetSearchEntityScorecardsMapOutput values.
+// You can construct a concrete instance of `GetSearchEntityScorecardsMapInput` via:
+//
+//	GetSearchEntityScorecardsMap{ "key": GetSearchEntityScorecardsArgs{...} }
+type GetSearchEntityScorecardsMapInput interface {
+	pulumi.Input
+
+	ToGetSearchEntityScorecardsMapOutput() GetSearchEntityScorecardsMapOutput
+	ToGetSearchEntityScorecardsMapOutputWithContext(context.Context) GetSearchEntityScorecardsMapOutput
+}
+
+type GetSearchEntityScorecardsMap map[string]GetSearchEntityScorecardsInput
+
+func (GetSearchEntityScorecardsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetSearchEntityScorecards)(nil)).Elem()
+}
+
+func (i GetSearchEntityScorecardsMap) ToGetSearchEntityScorecardsMapOutput() GetSearchEntityScorecardsMapOutput {
+	return i.ToGetSearchEntityScorecardsMapOutputWithContext(context.Background())
+}
+
+func (i GetSearchEntityScorecardsMap) ToGetSearchEntityScorecardsMapOutputWithContext(ctx context.Context) GetSearchEntityScorecardsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSearchEntityScorecardsMapOutput)
+}
+
+type GetSearchEntityScorecardsOutput struct{ *pulumi.OutputState }
+
+func (GetSearchEntityScorecardsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSearchEntityScorecards)(nil)).Elem()
+}
+
+func (o GetSearchEntityScorecardsOutput) ToGetSearchEntityScorecardsOutput() GetSearchEntityScorecardsOutput {
+	return o
+}
+
+func (o GetSearchEntityScorecardsOutput) ToGetSearchEntityScorecardsOutputWithContext(ctx context.Context) GetSearchEntityScorecardsOutput {
+	return o
+}
+
+func (o GetSearchEntityScorecardsOutput) Level() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchEntityScorecards) string { return v.Level }).(pulumi.StringOutput)
+}
+
+func (o GetSearchEntityScorecardsOutput) Rules() GetSearchEntityScorecardsRuleArrayOutput {
+	return o.ApplyT(func(v GetSearchEntityScorecards) []GetSearchEntityScorecardsRule { return v.Rules }).(GetSearchEntityScorecardsRuleArrayOutput)
+}
+
+type GetSearchEntityScorecardsMapOutput struct{ *pulumi.OutputState }
+
+func (GetSearchEntityScorecardsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetSearchEntityScorecards)(nil)).Elem()
+}
+
+func (o GetSearchEntityScorecardsMapOutput) ToGetSearchEntityScorecardsMapOutput() GetSearchEntityScorecardsMapOutput {
+	return o
+}
+
+func (o GetSearchEntityScorecardsMapOutput) ToGetSearchEntityScorecardsMapOutputWithContext(ctx context.Context) GetSearchEntityScorecardsMapOutput {
+	return o
+}
+
+func (o GetSearchEntityScorecardsMapOutput) MapIndex(k pulumi.StringInput) GetSearchEntityScorecardsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetSearchEntityScorecards {
+		return vs[0].(map[string]GetSearchEntityScorecards)[vs[1].(string)]
+	}).(GetSearchEntityScorecardsOutput)
+}
+
+type GetSearchEntityScorecardsRule struct {
+	Identifier string `pulumi:"identifier"`
+	Level      string `pulumi:"level"`
+	Status     string `pulumi:"status"`
+}
+
+// GetSearchEntityScorecardsRuleInput is an input type that accepts GetSearchEntityScorecardsRuleArgs and GetSearchEntityScorecardsRuleOutput values.
+// You can construct a concrete instance of `GetSearchEntityScorecardsRuleInput` via:
+//
+//	GetSearchEntityScorecardsRuleArgs{...}
+type GetSearchEntityScorecardsRuleInput interface {
+	pulumi.Input
+
+	ToGetSearchEntityScorecardsRuleOutput() GetSearchEntityScorecardsRuleOutput
+	ToGetSearchEntityScorecardsRuleOutputWithContext(context.Context) GetSearchEntityScorecardsRuleOutput
+}
+
+type GetSearchEntityScorecardsRuleArgs struct {
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	Level      pulumi.StringInput `pulumi:"level"`
+	Status     pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetSearchEntityScorecardsRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSearchEntityScorecardsRule)(nil)).Elem()
+}
+
+func (i GetSearchEntityScorecardsRuleArgs) ToGetSearchEntityScorecardsRuleOutput() GetSearchEntityScorecardsRuleOutput {
+	return i.ToGetSearchEntityScorecardsRuleOutputWithContext(context.Background())
+}
+
+func (i GetSearchEntityScorecardsRuleArgs) ToGetSearchEntityScorecardsRuleOutputWithContext(ctx context.Context) GetSearchEntityScorecardsRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSearchEntityScorecardsRuleOutput)
+}
+
+// GetSearchEntityScorecardsRuleArrayInput is an input type that accepts GetSearchEntityScorecardsRuleArray and GetSearchEntityScorecardsRuleArrayOutput values.
+// You can construct a concrete instance of `GetSearchEntityScorecardsRuleArrayInput` via:
+//
+//	GetSearchEntityScorecardsRuleArray{ GetSearchEntityScorecardsRuleArgs{...} }
+type GetSearchEntityScorecardsRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetSearchEntityScorecardsRuleArrayOutput() GetSearchEntityScorecardsRuleArrayOutput
+	ToGetSearchEntityScorecardsRuleArrayOutputWithContext(context.Context) GetSearchEntityScorecardsRuleArrayOutput
+}
+
+type GetSearchEntityScorecardsRuleArray []GetSearchEntityScorecardsRuleInput
+
+func (GetSearchEntityScorecardsRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSearchEntityScorecardsRule)(nil)).Elem()
+}
+
+func (i GetSearchEntityScorecardsRuleArray) ToGetSearchEntityScorecardsRuleArrayOutput() GetSearchEntityScorecardsRuleArrayOutput {
+	return i.ToGetSearchEntityScorecardsRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetSearchEntityScorecardsRuleArray) ToGetSearchEntityScorecardsRuleArrayOutputWithContext(ctx context.Context) GetSearchEntityScorecardsRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSearchEntityScorecardsRuleArrayOutput)
+}
+
+type GetSearchEntityScorecardsRuleOutput struct{ *pulumi.OutputState }
+
+func (GetSearchEntityScorecardsRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSearchEntityScorecardsRule)(nil)).Elem()
+}
+
+func (o GetSearchEntityScorecardsRuleOutput) ToGetSearchEntityScorecardsRuleOutput() GetSearchEntityScorecardsRuleOutput {
+	return o
+}
+
+func (o GetSearchEntityScorecardsRuleOutput) ToGetSearchEntityScorecardsRuleOutputWithContext(ctx context.Context) GetSearchEntityScorecardsRuleOutput {
+	return o
+}
+
+func (o GetSearchEntityScorecardsRuleOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchEntityScorecardsRule) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+func (o GetSearchEntityScorecardsRuleOutput) Level() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchEntityScorecardsRule) string { return v.Level }).(pulumi.StringOutput)
+}
+
+func (o GetSearchEntityScorecardsRuleOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSearchEntityScorecardsRule) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetSearchEntityScorecardsRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSearchEntityScorecardsRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSearchEntityScorecardsRule)(nil)).Elem()
+}
+
+func (o GetSearchEntityScorecardsRuleArrayOutput) ToGetSearchEntityScorecardsRuleArrayOutput() GetSearchEntityScorecardsRuleArrayOutput {
+	return o
+}
+
+func (o GetSearchEntityScorecardsRuleArrayOutput) ToGetSearchEntityScorecardsRuleArrayOutputWithContext(ctx context.Context) GetSearchEntityScorecardsRuleArrayOutput {
+	return o
+}
+
+func (o GetSearchEntityScorecardsRuleArrayOutput) Index(i pulumi.IntInput) GetSearchEntityScorecardsRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSearchEntityScorecardsRule {
+		return vs[0].([]GetSearchEntityScorecardsRule)[vs[1].(int)]
+	}).(GetSearchEntityScorecardsRuleOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionApprovalEmailNotificationInput)(nil)).Elem(), ActionApprovalEmailNotificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionApprovalEmailNotificationPtrInput)(nil)).Elem(), ActionApprovalEmailNotificationArgs{})
@@ -11389,6 +12016,15 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookMappingEntityInput)(nil)).Elem(), WebhookMappingEntityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookSecurityInput)(nil)).Elem(), WebhookSecurityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookSecurityPtrInput)(nil)).Elem(), WebhookSecurityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSearchEntityInput)(nil)).Elem(), GetSearchEntityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSearchEntityArrayInput)(nil)).Elem(), GetSearchEntityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSearchEntityPropertiesInput)(nil)).Elem(), GetSearchEntityPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSearchEntityPropertiesArrayPropsInput)(nil)).Elem(), GetSearchEntityPropertiesArrayPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSearchEntityRelationsInput)(nil)).Elem(), GetSearchEntityRelationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSearchEntityScorecardsInput)(nil)).Elem(), GetSearchEntityScorecardsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSearchEntityScorecardsMapInput)(nil)).Elem(), GetSearchEntityScorecardsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSearchEntityScorecardsRuleInput)(nil)).Elem(), GetSearchEntityScorecardsRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSearchEntityScorecardsRuleArrayInput)(nil)).Elem(), GetSearchEntityScorecardsRuleArray{})
 	pulumi.RegisterOutputType(ActionApprovalEmailNotificationOutput{})
 	pulumi.RegisterOutputType(ActionApprovalEmailNotificationPtrOutput{})
 	pulumi.RegisterOutputType(ActionApprovalWebhookNotificationOutput{})
@@ -11521,4 +12157,13 @@ func init() {
 	pulumi.RegisterOutputType(WebhookMappingEntityOutput{})
 	pulumi.RegisterOutputType(WebhookSecurityOutput{})
 	pulumi.RegisterOutputType(WebhookSecurityPtrOutput{})
+	pulumi.RegisterOutputType(GetSearchEntityOutput{})
+	pulumi.RegisterOutputType(GetSearchEntityArrayOutput{})
+	pulumi.RegisterOutputType(GetSearchEntityPropertiesOutput{})
+	pulumi.RegisterOutputType(GetSearchEntityPropertiesArrayPropsOutput{})
+	pulumi.RegisterOutputType(GetSearchEntityRelationsOutput{})
+	pulumi.RegisterOutputType(GetSearchEntityScorecardsOutput{})
+	pulumi.RegisterOutputType(GetSearchEntityScorecardsMapOutput{})
+	pulumi.RegisterOutputType(GetSearchEntityScorecardsRuleOutput{})
+	pulumi.RegisterOutputType(GetSearchEntityScorecardsRuleArrayOutput{})
 }

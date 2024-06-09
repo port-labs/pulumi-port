@@ -39,6 +39,10 @@ export class Blueprint extends pulumi.CustomResource {
      */
     public readonly calculationProperties!: pulumi.Output<{[key: string]: outputs.BlueprintCalculationProperties} | undefined>;
     /**
+     * This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
+     */
+    public readonly createCatalogPage!: pulumi.Output<boolean>;
+    /**
      * The creation date of the blueprint
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
@@ -110,6 +114,7 @@ export class Blueprint extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as BlueprintState | undefined;
             resourceInputs["calculationProperties"] = state ? state.calculationProperties : undefined;
+            resourceInputs["createCatalogPage"] = state ? state.createCatalogPage : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["createdBy"] = state ? state.createdBy : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -134,6 +139,7 @@ export class Blueprint extends pulumi.CustomResource {
                 throw new Error("Missing required property 'title'");
             }
             resourceInputs["calculationProperties"] = args ? args.calculationProperties : undefined;
+            resourceInputs["createCatalogPage"] = args ? args.createCatalogPage : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["forceDeleteEntities"] = args ? args.forceDeleteEntities : undefined;
             resourceInputs["icon"] = args ? args.icon : undefined;
@@ -163,6 +169,10 @@ export interface BlueprintState {
      * The calculation properties of the blueprint
      */
     calculationProperties?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintCalculationProperties>}>;
+    /**
+     * This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
+     */
+    createCatalogPage?: pulumi.Input<boolean>;
     /**
      * The creation date of the blueprint
      */
@@ -230,6 +240,10 @@ export interface BlueprintArgs {
      * The calculation properties of the blueprint
      */
     calculationProperties?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintCalculationProperties>}>;
+    /**
+     * This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
+     */
+    createCatalogPage?: pulumi.Input<boolean>;
     /**
      * The description of the blueprint
      */

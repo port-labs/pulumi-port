@@ -1255,6 +1255,113 @@ export interface EntityRelations {
     singleRelations?: {[key: string]: string};
 }
 
+export interface GetSearchEntity {
+    /**
+     * The blueprint identifier the entity relates to
+     */
+    blueprint: string;
+    /**
+     * The creation date of the entity
+     */
+    createdAt: string;
+    /**
+     * The creator of the entity
+     */
+    createdBy: string;
+    /**
+     * The icon of the entity
+     */
+    icon: string;
+    /**
+     * The identifier of the entity
+     */
+    identifier: string;
+    /**
+     * The properties of the entity
+     */
+    properties: outputs.GetSearchEntityProperties;
+    /**
+     * The relations of the entity
+     */
+    relations: outputs.GetSearchEntityRelations;
+    /**
+     * The runID of the action run that created the entity
+     */
+    runId: string;
+    /**
+     * The scorecards of the entity
+     */
+    scorecards: {[key: string]: outputs.GetSearchEntityScorecards};
+    /**
+     * The teams the entity belongs to
+     */
+    teams: string[];
+    /**
+     * The title of the entity
+     */
+    title: string;
+    /**
+     * The last update date of the entity
+     */
+    updatedAt: string;
+    /**
+     * The last updater of the entity
+     */
+    updatedBy: string;
+}
+
+export interface GetSearchEntityProperties {
+    /**
+     * The array properties of the entity
+     */
+    arrayProps: outputs.GetSearchEntityPropertiesArrayProps;
+    /**
+     * The bool properties of the entity
+     */
+    booleanProps: {[key: string]: boolean};
+    /**
+     * The number properties of the entity
+     */
+    numberProps: {[key: string]: number};
+    /**
+     * The object properties of the entity
+     */
+    objectProps: {[key: string]: string};
+    /**
+     * The string properties of the entity
+     */
+    stringProps: {[key: string]: string};
+}
+
+export interface GetSearchEntityPropertiesArrayProps {
+    booleanItems: {[key: string]: boolean[]};
+    numberItems: {[key: string]: number[]};
+    objectItems: {[key: string]: string[]};
+    stringItems: {[key: string]: string[]};
+}
+
+export interface GetSearchEntityRelations {
+    /**
+     * The many relation of the entity
+     */
+    manyRelations: {[key: string]: string[]};
+    /**
+     * The single relation of the entity
+     */
+    singleRelations: {[key: string]: string};
+}
+
+export interface GetSearchEntityScorecards {
+    level: string;
+    rules: outputs.GetSearchEntityScorecardsRule[];
+}
+
+export interface GetSearchEntityScorecardsRule {
+    identifier: string;
+    level: string;
+    status: string;
+}
+
 export interface IntegrationKafkaChangelogDestination {
 }
 
