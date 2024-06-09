@@ -2115,6 +2115,268 @@
                 }
             },
             "type": "object"
+        },
+        "port:index/getSearchEntity:getSearchEntity": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier the entity relates to\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The creation date of the entity\n"
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "The creator of the entity\n"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of the entity\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the entity\n"
+                },
+                "properties": {
+                    "$ref": "#/types/port:index/getSearchEntityProperties:getSearchEntityProperties",
+                    "description": "The properties of the entity\n"
+                },
+                "relations": {
+                    "$ref": "#/types/port:index/getSearchEntityRelations:getSearchEntityRelations",
+                    "description": "The relations of the entity\n"
+                },
+                "runId": {
+                    "type": "string",
+                    "description": "The runID of the action run that created the entity\n"
+                },
+                "scorecards": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/getSearchEntityScorecards:getSearchEntityScorecards"
+                    },
+                    "description": "The scorecards of the entity\n"
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The teams the entity belongs to\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the entity\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The last update date of the entity\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "The last updater of the entity\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "blueprint",
+                "createdAt",
+                "createdBy",
+                "icon",
+                "identifier",
+                "properties",
+                "relations",
+                "runId",
+                "scorecards",
+                "teams",
+                "title",
+                "updatedAt",
+                "updatedBy"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "port:index/getSearchEntityProperties:getSearchEntityProperties": {
+            "properties": {
+                "arrayProps": {
+                    "$ref": "#/types/port:index/getSearchEntityPropertiesArrayProps:getSearchEntityPropertiesArrayProps",
+                    "description": "The array properties of the entity\n"
+                },
+                "booleanProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "boolean"
+                    },
+                    "description": "The bool properties of the entity\n"
+                },
+                "numberProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "number"
+                    },
+                    "description": "The number properties of the entity\n"
+                },
+                "objectProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The object properties of the entity\n"
+                },
+                "stringProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The string properties of the entity\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "arrayProps",
+                "booleanProps",
+                "numberProps",
+                "objectProps",
+                "stringProps"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "port:index/getSearchEntityPropertiesArrayProps:getSearchEntityPropertiesArrayProps": {
+            "properties": {
+                "booleanItems": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "numberItems": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "number"
+                        }
+                    }
+                },
+                "objectItems": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "stringItems": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "booleanItems",
+                "numberItems",
+                "objectItems",
+                "stringItems"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "port:index/getSearchEntityRelations:getSearchEntityRelations": {
+            "properties": {
+                "manyRelations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "description": "The many relation of the entity\n"
+                },
+                "singleRelations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The single relation of the entity\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "manyRelations",
+                "singleRelations"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "port:index/getSearchEntityScorecards:getSearchEntityScorecards": {
+            "properties": {
+                "level": {
+                    "type": "string"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/getSearchEntityScorecardsRule:getSearchEntityScorecardsRule"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "level",
+                "rules"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "port:index/getSearchEntityScorecardsRule:getSearchEntityScorecardsRule": {
+            "properties": {
+                "identifier": {
+                    "type": "string"
+                },
+                "level": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "identifier",
+                "level",
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         }
     },
     "provider": {
@@ -2484,6 +2746,10 @@
                     },
                     "description": "The calculation properties of the blueprint\n"
                 },
+                "createCatalogPage": {
+                    "type": "boolean",
+                    "description": "This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint\n"
+                },
                 "createdAt": {
                     "type": "string",
                     "description": "The creation date of the blueprint\n"
@@ -2551,6 +2817,7 @@
                 }
             },
             "required": [
+                "createCatalogPage",
                 "createdAt",
                 "createdBy",
                 "forceDeleteEntities",
@@ -2566,6 +2833,10 @@
                         "$ref": "#/types/port:index/BlueprintCalculationProperties:BlueprintCalculationProperties"
                     },
                     "description": "The calculation properties of the blueprint\n"
+                },
+                "createCatalogPage": {
+                    "type": "boolean",
+                    "description": "This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint\n"
                 },
                 "description": {
                     "type": "string",
@@ -2630,6 +2901,10 @@
                             "$ref": "#/types/port:index/BlueprintCalculationProperties:BlueprintCalculationProperties"
                         },
                         "description": "The calculation properties of the blueprint\n"
+                    },
+                    "createCatalogPage": {
+                        "type": "boolean",
+                        "description": "This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint\n"
                     },
                     "createdAt": {
                         "type": "string",
@@ -3590,6 +3865,102 @@
                     }
                 },
                 "type": "object"
+            }
+        }
+    },
+    "functions": {
+        "port:index/getSearch:getSearch": {
+            "description": "The search data source allows you to search for entities in Port.\n\nSee the [Port documentation](https://docs.getport.io/search-and-query/) for more information about the search capabilities in Port.\n\n## Example Usage\n\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getSearch.\n",
+                "properties": {
+                    "attachTitleToRelation": {
+                        "type": "boolean",
+                        "description": "Attach title to relation\n"
+                    },
+                    "excludeCalculatedProperties": {
+                        "type": "boolean",
+                        "description": "Exclude calculated properties\n"
+                    },
+                    "excludes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Properties to exclude from the results\n"
+                    },
+                    "includes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Properties to include in the results\n"
+                    },
+                    "query": {
+                        "type": "string",
+                        "description": "The search query\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "query"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getSearch.\n",
+                "properties": {
+                    "attachTitleToRelation": {
+                        "type": "boolean",
+                        "description": "Attach title to relation\n"
+                    },
+                    "entities": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/port:index/getSearchEntity:getSearchEntity"
+                        },
+                        "description": "A list of entities matching the search query\n"
+                    },
+                    "excludeCalculatedProperties": {
+                        "type": "boolean",
+                        "description": "Exclude calculated properties\n"
+                    },
+                    "excludes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Properties to exclude from the results\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of this resource.\n"
+                    },
+                    "includes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Properties to include in the results\n"
+                    },
+                    "matchingBlueprints": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The matching blueprints for the search query\n"
+                    },
+                    "query": {
+                        "type": "string",
+                        "description": "The search query\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "entities",
+                    "id",
+                    "matchingBlueprints",
+                    "query"
+                ]
             }
         }
     }

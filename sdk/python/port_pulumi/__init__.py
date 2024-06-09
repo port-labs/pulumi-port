@@ -11,6 +11,7 @@ from .aggregation_properties import *
 from .blueprint import *
 from .blueprint_permissions import *
 from .entity import *
+from .get_search import *
 from .integration import *
 from .page import *
 from .page_permissions import *
