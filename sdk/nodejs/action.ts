@@ -88,6 +88,32 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ *
+ * ### With Automation Trigger
+ *
+ * Port allows setting an automation trigger to an action, for executing an action based on event occurred to an entity in Port.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as port from "@pulumi/port";
+ *
+ * const deleteTemporaryMicroservice = new port.index.Port_action("deleteTemporaryMicroservice", {
+ *     title: "Delete Temporary Microservice",
+ *     identifier: "delete-temp-microservice",
+ *     icon: "Terraform",
+ *     automationTrigger: {
+ *         timerPropertyExpiredEvent: {
+ *             blueprintIdentifier: port_blueprint.microservice.identifier,
+ *             propertyIdentifier: "ttl",
+ *         },
+ *     },
+ *     kafkaMethod: {
+ *         payload: JSON.stringify({
+ *             runId: "{{.run.id}}",
+ *         }),
+ *     },
+ * });
+ * ```
  */
 export class Action extends pulumi.CustomResource {
     /**
@@ -125,6 +151,10 @@ export class Action extends pulumi.CustomResource {
      * The webhook notification of the approval
      */
     public readonly approvalWebhookNotification!: pulumi.Output<outputs.ActionApprovalWebhookNotification | undefined>;
+    /**
+     * Automation trigger for the action
+     */
+    public readonly automationTrigger!: pulumi.Output<outputs.ActionAutomationTrigger | undefined>;
     /**
      * Azure DevOps invocation method
      */
@@ -176,6 +206,10 @@ export class Action extends pulumi.CustomResource {
      */
     public readonly title!: pulumi.Output<string | undefined>;
     /**
+     * Upsert Entity invocation method
+     */
+    public readonly upsertEntityMethod!: pulumi.Output<outputs.ActionUpsertEntityMethod | undefined>;
+    /**
      * Webhook invocation method
      */
     public readonly webhookMethod!: pulumi.Output<outputs.ActionWebhookMethod | undefined>;
@@ -195,6 +229,7 @@ export class Action extends pulumi.CustomResource {
             const state = argsOrState as ActionState | undefined;
             resourceInputs["approvalEmailNotification"] = state ? state.approvalEmailNotification : undefined;
             resourceInputs["approvalWebhookNotification"] = state ? state.approvalWebhookNotification : undefined;
+            resourceInputs["automationTrigger"] = state ? state.automationTrigger : undefined;
             resourceInputs["azureMethod"] = state ? state.azureMethod : undefined;
             resourceInputs["blueprint"] = state ? state.blueprint : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -207,6 +242,7 @@ export class Action extends pulumi.CustomResource {
             resourceInputs["requiredApproval"] = state ? state.requiredApproval : undefined;
             resourceInputs["selfServiceTrigger"] = state ? state.selfServiceTrigger : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
+            resourceInputs["upsertEntityMethod"] = state ? state.upsertEntityMethod : undefined;
             resourceInputs["webhookMethod"] = state ? state.webhookMethod : undefined;
         } else {
             const args = argsOrState as ActionArgs | undefined;
@@ -215,6 +251,7 @@ export class Action extends pulumi.CustomResource {
             }
             resourceInputs["approvalEmailNotification"] = args ? args.approvalEmailNotification : undefined;
             resourceInputs["approvalWebhookNotification"] = args ? args.approvalWebhookNotification : undefined;
+            resourceInputs["automationTrigger"] = args ? args.automationTrigger : undefined;
             resourceInputs["azureMethod"] = args ? args.azureMethod : undefined;
             resourceInputs["blueprint"] = args ? args.blueprint : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -227,6 +264,7 @@ export class Action extends pulumi.CustomResource {
             resourceInputs["requiredApproval"] = args ? args.requiredApproval : undefined;
             resourceInputs["selfServiceTrigger"] = args ? args.selfServiceTrigger : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["upsertEntityMethod"] = args ? args.upsertEntityMethod : undefined;
             resourceInputs["webhookMethod"] = args ? args.webhookMethod : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -246,6 +284,10 @@ export interface ActionState {
      * The webhook notification of the approval
      */
     approvalWebhookNotification?: pulumi.Input<inputs.ActionApprovalWebhookNotification>;
+    /**
+     * Automation trigger for the action
+     */
+    automationTrigger?: pulumi.Input<inputs.ActionAutomationTrigger>;
     /**
      * Azure DevOps invocation method
      */
@@ -297,6 +339,10 @@ export interface ActionState {
      */
     title?: pulumi.Input<string>;
     /**
+     * Upsert Entity invocation method
+     */
+    upsertEntityMethod?: pulumi.Input<inputs.ActionUpsertEntityMethod>;
+    /**
      * Webhook invocation method
      */
     webhookMethod?: pulumi.Input<inputs.ActionWebhookMethod>;
@@ -314,6 +360,10 @@ export interface ActionArgs {
      * The webhook notification of the approval
      */
     approvalWebhookNotification?: pulumi.Input<inputs.ActionApprovalWebhookNotification>;
+    /**
+     * Automation trigger for the action
+     */
+    automationTrigger?: pulumi.Input<inputs.ActionAutomationTrigger>;
     /**
      * Azure DevOps invocation method
      */
@@ -364,6 +414,10 @@ export interface ActionArgs {
      * Title
      */
     title?: pulumi.Input<string>;
+    /**
+     * Upsert Entity invocation method
+     */
+    upsertEntityMethod?: pulumi.Input<inputs.ActionUpsertEntityMethod>;
     /**
      * Webhook invocation method
      */

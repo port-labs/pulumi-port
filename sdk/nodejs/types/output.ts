@@ -19,6 +19,83 @@ export interface ActionApprovalWebhookNotification {
     url: string;
 }
 
+export interface ActionAutomationTrigger {
+    /**
+     * Any entity change event trigger
+     */
+    anyEntityChangeEvent?: outputs.ActionAutomationTriggerAnyEntityChangeEvent;
+    /**
+     * Entity created event trigger
+     */
+    entityCreatedEvent?: outputs.ActionAutomationTriggerEntityCreatedEvent;
+    /**
+     * Entity deleted event trigger
+     */
+    entityDeletedEvent?: outputs.ActionAutomationTriggerEntityDeletedEvent;
+    /**
+     * Entity updated event trigger
+     */
+    entityUpdatedEvent?: outputs.ActionAutomationTriggerEntityUpdatedEvent;
+    /**
+     * JQ condition for automation trigger
+     */
+    jqCondition?: outputs.ActionAutomationTriggerJqCondition;
+    /**
+     * Timer property expired event trigger
+     */
+    timerPropertyExpiredEvent?: outputs.ActionAutomationTriggerTimerPropertyExpiredEvent;
+}
+
+export interface ActionAutomationTriggerAnyEntityChangeEvent {
+    /**
+     * The blueprint identifier of the changed entity
+     */
+    blueprintIdentifier: string;
+}
+
+export interface ActionAutomationTriggerEntityCreatedEvent {
+    /**
+     * The blueprint identifier of the created entity
+     */
+    blueprintIdentifier: string;
+}
+
+export interface ActionAutomationTriggerEntityDeletedEvent {
+    /**
+     * The blueprint identifier of the deleted entity
+     */
+    blueprintIdentifier: string;
+}
+
+export interface ActionAutomationTriggerEntityUpdatedEvent {
+    /**
+     * The blueprint identifier of the updated entity
+     */
+    blueprintIdentifier: string;
+}
+
+export interface ActionAutomationTriggerJqCondition {
+    /**
+     * The combinator of the condition
+     */
+    combinator: string;
+    /**
+     * The jq expressions of the condition
+     */
+    expressions: string[];
+}
+
+export interface ActionAutomationTriggerTimerPropertyExpiredEvent {
+    /**
+     * The blueprint identifier of the expired timer property
+     */
+    blueprintIdentifier: string;
+    /**
+     * The property identifier of the expired timer property
+     */
+    propertyIdentifier: string;
+}
+
 export interface ActionAzureMethod {
     /**
      * Required when selecting type AZURE. The Azure org that the workflow belongs to
@@ -545,6 +622,44 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule {
 
 export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue {
     jqQuery: string;
+}
+
+export interface ActionUpsertEntityMethod {
+    /**
+     * Required when selecting type Upsert Entity. The blueprint identifier of the entity for the upsert
+     */
+    blueprintIdentifier: string;
+    /**
+     * Upsert Entity invocation method
+     */
+    mapping?: outputs.ActionUpsertEntityMethodMapping;
+    /**
+     * The title of the entity
+     */
+    title?: string;
+}
+
+export interface ActionUpsertEntityMethodMapping {
+    /**
+     * Icon
+     */
+    icon?: string;
+    /**
+     * Identifier
+     */
+    identifier: string;
+    /**
+     * The properties of the entity (key-value object encoded to a string)
+     */
+    properties?: string;
+    /**
+     * The relations of the entity (key-value object encoded to a string)
+     */
+    relations?: string;
+    /**
+     * The teams the entity belongs to
+     */
+    teams?: string[];
 }
 
 export interface ActionWebhookMethod {

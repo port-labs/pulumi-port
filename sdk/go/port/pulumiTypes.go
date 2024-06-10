@@ -287,6 +287,1108 @@ func (o ActionApprovalWebhookNotificationPtrOutput) Url() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type ActionAutomationTrigger struct {
+	// Any entity change event trigger
+	AnyEntityChangeEvent *ActionAutomationTriggerAnyEntityChangeEvent `pulumi:"anyEntityChangeEvent"`
+	// Entity created event trigger
+	EntityCreatedEvent *ActionAutomationTriggerEntityCreatedEvent `pulumi:"entityCreatedEvent"`
+	// Entity deleted event trigger
+	EntityDeletedEvent *ActionAutomationTriggerEntityDeletedEvent `pulumi:"entityDeletedEvent"`
+	// Entity updated event trigger
+	EntityUpdatedEvent *ActionAutomationTriggerEntityUpdatedEvent `pulumi:"entityUpdatedEvent"`
+	// JQ condition for automation trigger
+	JqCondition *ActionAutomationTriggerJqCondition `pulumi:"jqCondition"`
+	// Timer property expired event trigger
+	TimerPropertyExpiredEvent *ActionAutomationTriggerTimerPropertyExpiredEvent `pulumi:"timerPropertyExpiredEvent"`
+}
+
+// ActionAutomationTriggerInput is an input type that accepts ActionAutomationTriggerArgs and ActionAutomationTriggerOutput values.
+// You can construct a concrete instance of `ActionAutomationTriggerInput` via:
+//
+//	ActionAutomationTriggerArgs{...}
+type ActionAutomationTriggerInput interface {
+	pulumi.Input
+
+	ToActionAutomationTriggerOutput() ActionAutomationTriggerOutput
+	ToActionAutomationTriggerOutputWithContext(context.Context) ActionAutomationTriggerOutput
+}
+
+type ActionAutomationTriggerArgs struct {
+	// Any entity change event trigger
+	AnyEntityChangeEvent ActionAutomationTriggerAnyEntityChangeEventPtrInput `pulumi:"anyEntityChangeEvent"`
+	// Entity created event trigger
+	EntityCreatedEvent ActionAutomationTriggerEntityCreatedEventPtrInput `pulumi:"entityCreatedEvent"`
+	// Entity deleted event trigger
+	EntityDeletedEvent ActionAutomationTriggerEntityDeletedEventPtrInput `pulumi:"entityDeletedEvent"`
+	// Entity updated event trigger
+	EntityUpdatedEvent ActionAutomationTriggerEntityUpdatedEventPtrInput `pulumi:"entityUpdatedEvent"`
+	// JQ condition for automation trigger
+	JqCondition ActionAutomationTriggerJqConditionPtrInput `pulumi:"jqCondition"`
+	// Timer property expired event trigger
+	TimerPropertyExpiredEvent ActionAutomationTriggerTimerPropertyExpiredEventPtrInput `pulumi:"timerPropertyExpiredEvent"`
+}
+
+func (ActionAutomationTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionAutomationTrigger)(nil)).Elem()
+}
+
+func (i ActionAutomationTriggerArgs) ToActionAutomationTriggerOutput() ActionAutomationTriggerOutput {
+	return i.ToActionAutomationTriggerOutputWithContext(context.Background())
+}
+
+func (i ActionAutomationTriggerArgs) ToActionAutomationTriggerOutputWithContext(ctx context.Context) ActionAutomationTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerOutput)
+}
+
+func (i ActionAutomationTriggerArgs) ToActionAutomationTriggerPtrOutput() ActionAutomationTriggerPtrOutput {
+	return i.ToActionAutomationTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i ActionAutomationTriggerArgs) ToActionAutomationTriggerPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerOutput).ToActionAutomationTriggerPtrOutputWithContext(ctx)
+}
+
+// ActionAutomationTriggerPtrInput is an input type that accepts ActionAutomationTriggerArgs, ActionAutomationTriggerPtr and ActionAutomationTriggerPtrOutput values.
+// You can construct a concrete instance of `ActionAutomationTriggerPtrInput` via:
+//
+//	        ActionAutomationTriggerArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionAutomationTriggerPtrInput interface {
+	pulumi.Input
+
+	ToActionAutomationTriggerPtrOutput() ActionAutomationTriggerPtrOutput
+	ToActionAutomationTriggerPtrOutputWithContext(context.Context) ActionAutomationTriggerPtrOutput
+}
+
+type actionAutomationTriggerPtrType ActionAutomationTriggerArgs
+
+func ActionAutomationTriggerPtr(v *ActionAutomationTriggerArgs) ActionAutomationTriggerPtrInput {
+	return (*actionAutomationTriggerPtrType)(v)
+}
+
+func (*actionAutomationTriggerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionAutomationTrigger)(nil)).Elem()
+}
+
+func (i *actionAutomationTriggerPtrType) ToActionAutomationTriggerPtrOutput() ActionAutomationTriggerPtrOutput {
+	return i.ToActionAutomationTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i *actionAutomationTriggerPtrType) ToActionAutomationTriggerPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerPtrOutput)
+}
+
+type ActionAutomationTriggerOutput struct{ *pulumi.OutputState }
+
+func (ActionAutomationTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionAutomationTrigger)(nil)).Elem()
+}
+
+func (o ActionAutomationTriggerOutput) ToActionAutomationTriggerOutput() ActionAutomationTriggerOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerOutput) ToActionAutomationTriggerOutputWithContext(ctx context.Context) ActionAutomationTriggerOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerOutput) ToActionAutomationTriggerPtrOutput() ActionAutomationTriggerPtrOutput {
+	return o.ToActionAutomationTriggerPtrOutputWithContext(context.Background())
+}
+
+func (o ActionAutomationTriggerOutput) ToActionAutomationTriggerPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionAutomationTrigger) *ActionAutomationTrigger {
+		return &v
+	}).(ActionAutomationTriggerPtrOutput)
+}
+
+// Any entity change event trigger
+func (o ActionAutomationTriggerOutput) AnyEntityChangeEvent() ActionAutomationTriggerAnyEntityChangeEventPtrOutput {
+	return o.ApplyT(func(v ActionAutomationTrigger) *ActionAutomationTriggerAnyEntityChangeEvent {
+		return v.AnyEntityChangeEvent
+	}).(ActionAutomationTriggerAnyEntityChangeEventPtrOutput)
+}
+
+// Entity created event trigger
+func (o ActionAutomationTriggerOutput) EntityCreatedEvent() ActionAutomationTriggerEntityCreatedEventPtrOutput {
+	return o.ApplyT(func(v ActionAutomationTrigger) *ActionAutomationTriggerEntityCreatedEvent {
+		return v.EntityCreatedEvent
+	}).(ActionAutomationTriggerEntityCreatedEventPtrOutput)
+}
+
+// Entity deleted event trigger
+func (o ActionAutomationTriggerOutput) EntityDeletedEvent() ActionAutomationTriggerEntityDeletedEventPtrOutput {
+	return o.ApplyT(func(v ActionAutomationTrigger) *ActionAutomationTriggerEntityDeletedEvent {
+		return v.EntityDeletedEvent
+	}).(ActionAutomationTriggerEntityDeletedEventPtrOutput)
+}
+
+// Entity updated event trigger
+func (o ActionAutomationTriggerOutput) EntityUpdatedEvent() ActionAutomationTriggerEntityUpdatedEventPtrOutput {
+	return o.ApplyT(func(v ActionAutomationTrigger) *ActionAutomationTriggerEntityUpdatedEvent {
+		return v.EntityUpdatedEvent
+	}).(ActionAutomationTriggerEntityUpdatedEventPtrOutput)
+}
+
+// JQ condition for automation trigger
+func (o ActionAutomationTriggerOutput) JqCondition() ActionAutomationTriggerJqConditionPtrOutput {
+	return o.ApplyT(func(v ActionAutomationTrigger) *ActionAutomationTriggerJqCondition { return v.JqCondition }).(ActionAutomationTriggerJqConditionPtrOutput)
+}
+
+// Timer property expired event trigger
+func (o ActionAutomationTriggerOutput) TimerPropertyExpiredEvent() ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput {
+	return o.ApplyT(func(v ActionAutomationTrigger) *ActionAutomationTriggerTimerPropertyExpiredEvent {
+		return v.TimerPropertyExpiredEvent
+	}).(ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput)
+}
+
+type ActionAutomationTriggerPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionAutomationTriggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionAutomationTrigger)(nil)).Elem()
+}
+
+func (o ActionAutomationTriggerPtrOutput) ToActionAutomationTriggerPtrOutput() ActionAutomationTriggerPtrOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerPtrOutput) ToActionAutomationTriggerPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerPtrOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerPtrOutput) Elem() ActionAutomationTriggerOutput {
+	return o.ApplyT(func(v *ActionAutomationTrigger) ActionAutomationTrigger {
+		if v != nil {
+			return *v
+		}
+		var ret ActionAutomationTrigger
+		return ret
+	}).(ActionAutomationTriggerOutput)
+}
+
+// Any entity change event trigger
+func (o ActionAutomationTriggerPtrOutput) AnyEntityChangeEvent() ActionAutomationTriggerAnyEntityChangeEventPtrOutput {
+	return o.ApplyT(func(v *ActionAutomationTrigger) *ActionAutomationTriggerAnyEntityChangeEvent {
+		if v == nil {
+			return nil
+		}
+		return v.AnyEntityChangeEvent
+	}).(ActionAutomationTriggerAnyEntityChangeEventPtrOutput)
+}
+
+// Entity created event trigger
+func (o ActionAutomationTriggerPtrOutput) EntityCreatedEvent() ActionAutomationTriggerEntityCreatedEventPtrOutput {
+	return o.ApplyT(func(v *ActionAutomationTrigger) *ActionAutomationTriggerEntityCreatedEvent {
+		if v == nil {
+			return nil
+		}
+		return v.EntityCreatedEvent
+	}).(ActionAutomationTriggerEntityCreatedEventPtrOutput)
+}
+
+// Entity deleted event trigger
+func (o ActionAutomationTriggerPtrOutput) EntityDeletedEvent() ActionAutomationTriggerEntityDeletedEventPtrOutput {
+	return o.ApplyT(func(v *ActionAutomationTrigger) *ActionAutomationTriggerEntityDeletedEvent {
+		if v == nil {
+			return nil
+		}
+		return v.EntityDeletedEvent
+	}).(ActionAutomationTriggerEntityDeletedEventPtrOutput)
+}
+
+// Entity updated event trigger
+func (o ActionAutomationTriggerPtrOutput) EntityUpdatedEvent() ActionAutomationTriggerEntityUpdatedEventPtrOutput {
+	return o.ApplyT(func(v *ActionAutomationTrigger) *ActionAutomationTriggerEntityUpdatedEvent {
+		if v == nil {
+			return nil
+		}
+		return v.EntityUpdatedEvent
+	}).(ActionAutomationTriggerEntityUpdatedEventPtrOutput)
+}
+
+// JQ condition for automation trigger
+func (o ActionAutomationTriggerPtrOutput) JqCondition() ActionAutomationTriggerJqConditionPtrOutput {
+	return o.ApplyT(func(v *ActionAutomationTrigger) *ActionAutomationTriggerJqCondition {
+		if v == nil {
+			return nil
+		}
+		return v.JqCondition
+	}).(ActionAutomationTriggerJqConditionPtrOutput)
+}
+
+// Timer property expired event trigger
+func (o ActionAutomationTriggerPtrOutput) TimerPropertyExpiredEvent() ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput {
+	return o.ApplyT(func(v *ActionAutomationTrigger) *ActionAutomationTriggerTimerPropertyExpiredEvent {
+		if v == nil {
+			return nil
+		}
+		return v.TimerPropertyExpiredEvent
+	}).(ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput)
+}
+
+type ActionAutomationTriggerAnyEntityChangeEvent struct {
+	// The blueprint identifier of the changed entity
+	BlueprintIdentifier string `pulumi:"blueprintIdentifier"`
+}
+
+// ActionAutomationTriggerAnyEntityChangeEventInput is an input type that accepts ActionAutomationTriggerAnyEntityChangeEventArgs and ActionAutomationTriggerAnyEntityChangeEventOutput values.
+// You can construct a concrete instance of `ActionAutomationTriggerAnyEntityChangeEventInput` via:
+//
+//	ActionAutomationTriggerAnyEntityChangeEventArgs{...}
+type ActionAutomationTriggerAnyEntityChangeEventInput interface {
+	pulumi.Input
+
+	ToActionAutomationTriggerAnyEntityChangeEventOutput() ActionAutomationTriggerAnyEntityChangeEventOutput
+	ToActionAutomationTriggerAnyEntityChangeEventOutputWithContext(context.Context) ActionAutomationTriggerAnyEntityChangeEventOutput
+}
+
+type ActionAutomationTriggerAnyEntityChangeEventArgs struct {
+	// The blueprint identifier of the changed entity
+	BlueprintIdentifier pulumi.StringInput `pulumi:"blueprintIdentifier"`
+}
+
+func (ActionAutomationTriggerAnyEntityChangeEventArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionAutomationTriggerAnyEntityChangeEvent)(nil)).Elem()
+}
+
+func (i ActionAutomationTriggerAnyEntityChangeEventArgs) ToActionAutomationTriggerAnyEntityChangeEventOutput() ActionAutomationTriggerAnyEntityChangeEventOutput {
+	return i.ToActionAutomationTriggerAnyEntityChangeEventOutputWithContext(context.Background())
+}
+
+func (i ActionAutomationTriggerAnyEntityChangeEventArgs) ToActionAutomationTriggerAnyEntityChangeEventOutputWithContext(ctx context.Context) ActionAutomationTriggerAnyEntityChangeEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerAnyEntityChangeEventOutput)
+}
+
+func (i ActionAutomationTriggerAnyEntityChangeEventArgs) ToActionAutomationTriggerAnyEntityChangeEventPtrOutput() ActionAutomationTriggerAnyEntityChangeEventPtrOutput {
+	return i.ToActionAutomationTriggerAnyEntityChangeEventPtrOutputWithContext(context.Background())
+}
+
+func (i ActionAutomationTriggerAnyEntityChangeEventArgs) ToActionAutomationTriggerAnyEntityChangeEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerAnyEntityChangeEventPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerAnyEntityChangeEventOutput).ToActionAutomationTriggerAnyEntityChangeEventPtrOutputWithContext(ctx)
+}
+
+// ActionAutomationTriggerAnyEntityChangeEventPtrInput is an input type that accepts ActionAutomationTriggerAnyEntityChangeEventArgs, ActionAutomationTriggerAnyEntityChangeEventPtr and ActionAutomationTriggerAnyEntityChangeEventPtrOutput values.
+// You can construct a concrete instance of `ActionAutomationTriggerAnyEntityChangeEventPtrInput` via:
+//
+//	        ActionAutomationTriggerAnyEntityChangeEventArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionAutomationTriggerAnyEntityChangeEventPtrInput interface {
+	pulumi.Input
+
+	ToActionAutomationTriggerAnyEntityChangeEventPtrOutput() ActionAutomationTriggerAnyEntityChangeEventPtrOutput
+	ToActionAutomationTriggerAnyEntityChangeEventPtrOutputWithContext(context.Context) ActionAutomationTriggerAnyEntityChangeEventPtrOutput
+}
+
+type actionAutomationTriggerAnyEntityChangeEventPtrType ActionAutomationTriggerAnyEntityChangeEventArgs
+
+func ActionAutomationTriggerAnyEntityChangeEventPtr(v *ActionAutomationTriggerAnyEntityChangeEventArgs) ActionAutomationTriggerAnyEntityChangeEventPtrInput {
+	return (*actionAutomationTriggerAnyEntityChangeEventPtrType)(v)
+}
+
+func (*actionAutomationTriggerAnyEntityChangeEventPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionAutomationTriggerAnyEntityChangeEvent)(nil)).Elem()
+}
+
+func (i *actionAutomationTriggerAnyEntityChangeEventPtrType) ToActionAutomationTriggerAnyEntityChangeEventPtrOutput() ActionAutomationTriggerAnyEntityChangeEventPtrOutput {
+	return i.ToActionAutomationTriggerAnyEntityChangeEventPtrOutputWithContext(context.Background())
+}
+
+func (i *actionAutomationTriggerAnyEntityChangeEventPtrType) ToActionAutomationTriggerAnyEntityChangeEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerAnyEntityChangeEventPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerAnyEntityChangeEventPtrOutput)
+}
+
+type ActionAutomationTriggerAnyEntityChangeEventOutput struct{ *pulumi.OutputState }
+
+func (ActionAutomationTriggerAnyEntityChangeEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionAutomationTriggerAnyEntityChangeEvent)(nil)).Elem()
+}
+
+func (o ActionAutomationTriggerAnyEntityChangeEventOutput) ToActionAutomationTriggerAnyEntityChangeEventOutput() ActionAutomationTriggerAnyEntityChangeEventOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerAnyEntityChangeEventOutput) ToActionAutomationTriggerAnyEntityChangeEventOutputWithContext(ctx context.Context) ActionAutomationTriggerAnyEntityChangeEventOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerAnyEntityChangeEventOutput) ToActionAutomationTriggerAnyEntityChangeEventPtrOutput() ActionAutomationTriggerAnyEntityChangeEventPtrOutput {
+	return o.ToActionAutomationTriggerAnyEntityChangeEventPtrOutputWithContext(context.Background())
+}
+
+func (o ActionAutomationTriggerAnyEntityChangeEventOutput) ToActionAutomationTriggerAnyEntityChangeEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerAnyEntityChangeEventPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionAutomationTriggerAnyEntityChangeEvent) *ActionAutomationTriggerAnyEntityChangeEvent {
+		return &v
+	}).(ActionAutomationTriggerAnyEntityChangeEventPtrOutput)
+}
+
+// The blueprint identifier of the changed entity
+func (o ActionAutomationTriggerAnyEntityChangeEventOutput) BlueprintIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionAutomationTriggerAnyEntityChangeEvent) string { return v.BlueprintIdentifier }).(pulumi.StringOutput)
+}
+
+type ActionAutomationTriggerAnyEntityChangeEventPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionAutomationTriggerAnyEntityChangeEventPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionAutomationTriggerAnyEntityChangeEvent)(nil)).Elem()
+}
+
+func (o ActionAutomationTriggerAnyEntityChangeEventPtrOutput) ToActionAutomationTriggerAnyEntityChangeEventPtrOutput() ActionAutomationTriggerAnyEntityChangeEventPtrOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerAnyEntityChangeEventPtrOutput) ToActionAutomationTriggerAnyEntityChangeEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerAnyEntityChangeEventPtrOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerAnyEntityChangeEventPtrOutput) Elem() ActionAutomationTriggerAnyEntityChangeEventOutput {
+	return o.ApplyT(func(v *ActionAutomationTriggerAnyEntityChangeEvent) ActionAutomationTriggerAnyEntityChangeEvent {
+		if v != nil {
+			return *v
+		}
+		var ret ActionAutomationTriggerAnyEntityChangeEvent
+		return ret
+	}).(ActionAutomationTriggerAnyEntityChangeEventOutput)
+}
+
+// The blueprint identifier of the changed entity
+func (o ActionAutomationTriggerAnyEntityChangeEventPtrOutput) BlueprintIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionAutomationTriggerAnyEntityChangeEvent) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BlueprintIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
+type ActionAutomationTriggerEntityCreatedEvent struct {
+	// The blueprint identifier of the created entity
+	BlueprintIdentifier string `pulumi:"blueprintIdentifier"`
+}
+
+// ActionAutomationTriggerEntityCreatedEventInput is an input type that accepts ActionAutomationTriggerEntityCreatedEventArgs and ActionAutomationTriggerEntityCreatedEventOutput values.
+// You can construct a concrete instance of `ActionAutomationTriggerEntityCreatedEventInput` via:
+//
+//	ActionAutomationTriggerEntityCreatedEventArgs{...}
+type ActionAutomationTriggerEntityCreatedEventInput interface {
+	pulumi.Input
+
+	ToActionAutomationTriggerEntityCreatedEventOutput() ActionAutomationTriggerEntityCreatedEventOutput
+	ToActionAutomationTriggerEntityCreatedEventOutputWithContext(context.Context) ActionAutomationTriggerEntityCreatedEventOutput
+}
+
+type ActionAutomationTriggerEntityCreatedEventArgs struct {
+	// The blueprint identifier of the created entity
+	BlueprintIdentifier pulumi.StringInput `pulumi:"blueprintIdentifier"`
+}
+
+func (ActionAutomationTriggerEntityCreatedEventArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionAutomationTriggerEntityCreatedEvent)(nil)).Elem()
+}
+
+func (i ActionAutomationTriggerEntityCreatedEventArgs) ToActionAutomationTriggerEntityCreatedEventOutput() ActionAutomationTriggerEntityCreatedEventOutput {
+	return i.ToActionAutomationTriggerEntityCreatedEventOutputWithContext(context.Background())
+}
+
+func (i ActionAutomationTriggerEntityCreatedEventArgs) ToActionAutomationTriggerEntityCreatedEventOutputWithContext(ctx context.Context) ActionAutomationTriggerEntityCreatedEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerEntityCreatedEventOutput)
+}
+
+func (i ActionAutomationTriggerEntityCreatedEventArgs) ToActionAutomationTriggerEntityCreatedEventPtrOutput() ActionAutomationTriggerEntityCreatedEventPtrOutput {
+	return i.ToActionAutomationTriggerEntityCreatedEventPtrOutputWithContext(context.Background())
+}
+
+func (i ActionAutomationTriggerEntityCreatedEventArgs) ToActionAutomationTriggerEntityCreatedEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerEntityCreatedEventPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerEntityCreatedEventOutput).ToActionAutomationTriggerEntityCreatedEventPtrOutputWithContext(ctx)
+}
+
+// ActionAutomationTriggerEntityCreatedEventPtrInput is an input type that accepts ActionAutomationTriggerEntityCreatedEventArgs, ActionAutomationTriggerEntityCreatedEventPtr and ActionAutomationTriggerEntityCreatedEventPtrOutput values.
+// You can construct a concrete instance of `ActionAutomationTriggerEntityCreatedEventPtrInput` via:
+//
+//	        ActionAutomationTriggerEntityCreatedEventArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionAutomationTriggerEntityCreatedEventPtrInput interface {
+	pulumi.Input
+
+	ToActionAutomationTriggerEntityCreatedEventPtrOutput() ActionAutomationTriggerEntityCreatedEventPtrOutput
+	ToActionAutomationTriggerEntityCreatedEventPtrOutputWithContext(context.Context) ActionAutomationTriggerEntityCreatedEventPtrOutput
+}
+
+type actionAutomationTriggerEntityCreatedEventPtrType ActionAutomationTriggerEntityCreatedEventArgs
+
+func ActionAutomationTriggerEntityCreatedEventPtr(v *ActionAutomationTriggerEntityCreatedEventArgs) ActionAutomationTriggerEntityCreatedEventPtrInput {
+	return (*actionAutomationTriggerEntityCreatedEventPtrType)(v)
+}
+
+func (*actionAutomationTriggerEntityCreatedEventPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionAutomationTriggerEntityCreatedEvent)(nil)).Elem()
+}
+
+func (i *actionAutomationTriggerEntityCreatedEventPtrType) ToActionAutomationTriggerEntityCreatedEventPtrOutput() ActionAutomationTriggerEntityCreatedEventPtrOutput {
+	return i.ToActionAutomationTriggerEntityCreatedEventPtrOutputWithContext(context.Background())
+}
+
+func (i *actionAutomationTriggerEntityCreatedEventPtrType) ToActionAutomationTriggerEntityCreatedEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerEntityCreatedEventPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerEntityCreatedEventPtrOutput)
+}
+
+type ActionAutomationTriggerEntityCreatedEventOutput struct{ *pulumi.OutputState }
+
+func (ActionAutomationTriggerEntityCreatedEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionAutomationTriggerEntityCreatedEvent)(nil)).Elem()
+}
+
+func (o ActionAutomationTriggerEntityCreatedEventOutput) ToActionAutomationTriggerEntityCreatedEventOutput() ActionAutomationTriggerEntityCreatedEventOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerEntityCreatedEventOutput) ToActionAutomationTriggerEntityCreatedEventOutputWithContext(ctx context.Context) ActionAutomationTriggerEntityCreatedEventOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerEntityCreatedEventOutput) ToActionAutomationTriggerEntityCreatedEventPtrOutput() ActionAutomationTriggerEntityCreatedEventPtrOutput {
+	return o.ToActionAutomationTriggerEntityCreatedEventPtrOutputWithContext(context.Background())
+}
+
+func (o ActionAutomationTriggerEntityCreatedEventOutput) ToActionAutomationTriggerEntityCreatedEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerEntityCreatedEventPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionAutomationTriggerEntityCreatedEvent) *ActionAutomationTriggerEntityCreatedEvent {
+		return &v
+	}).(ActionAutomationTriggerEntityCreatedEventPtrOutput)
+}
+
+// The blueprint identifier of the created entity
+func (o ActionAutomationTriggerEntityCreatedEventOutput) BlueprintIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionAutomationTriggerEntityCreatedEvent) string { return v.BlueprintIdentifier }).(pulumi.StringOutput)
+}
+
+type ActionAutomationTriggerEntityCreatedEventPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionAutomationTriggerEntityCreatedEventPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionAutomationTriggerEntityCreatedEvent)(nil)).Elem()
+}
+
+func (o ActionAutomationTriggerEntityCreatedEventPtrOutput) ToActionAutomationTriggerEntityCreatedEventPtrOutput() ActionAutomationTriggerEntityCreatedEventPtrOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerEntityCreatedEventPtrOutput) ToActionAutomationTriggerEntityCreatedEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerEntityCreatedEventPtrOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerEntityCreatedEventPtrOutput) Elem() ActionAutomationTriggerEntityCreatedEventOutput {
+	return o.ApplyT(func(v *ActionAutomationTriggerEntityCreatedEvent) ActionAutomationTriggerEntityCreatedEvent {
+		if v != nil {
+			return *v
+		}
+		var ret ActionAutomationTriggerEntityCreatedEvent
+		return ret
+	}).(ActionAutomationTriggerEntityCreatedEventOutput)
+}
+
+// The blueprint identifier of the created entity
+func (o ActionAutomationTriggerEntityCreatedEventPtrOutput) BlueprintIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionAutomationTriggerEntityCreatedEvent) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BlueprintIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
+type ActionAutomationTriggerEntityDeletedEvent struct {
+	// The blueprint identifier of the deleted entity
+	BlueprintIdentifier string `pulumi:"blueprintIdentifier"`
+}
+
+// ActionAutomationTriggerEntityDeletedEventInput is an input type that accepts ActionAutomationTriggerEntityDeletedEventArgs and ActionAutomationTriggerEntityDeletedEventOutput values.
+// You can construct a concrete instance of `ActionAutomationTriggerEntityDeletedEventInput` via:
+//
+//	ActionAutomationTriggerEntityDeletedEventArgs{...}
+type ActionAutomationTriggerEntityDeletedEventInput interface {
+	pulumi.Input
+
+	ToActionAutomationTriggerEntityDeletedEventOutput() ActionAutomationTriggerEntityDeletedEventOutput
+	ToActionAutomationTriggerEntityDeletedEventOutputWithContext(context.Context) ActionAutomationTriggerEntityDeletedEventOutput
+}
+
+type ActionAutomationTriggerEntityDeletedEventArgs struct {
+	// The blueprint identifier of the deleted entity
+	BlueprintIdentifier pulumi.StringInput `pulumi:"blueprintIdentifier"`
+}
+
+func (ActionAutomationTriggerEntityDeletedEventArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionAutomationTriggerEntityDeletedEvent)(nil)).Elem()
+}
+
+func (i ActionAutomationTriggerEntityDeletedEventArgs) ToActionAutomationTriggerEntityDeletedEventOutput() ActionAutomationTriggerEntityDeletedEventOutput {
+	return i.ToActionAutomationTriggerEntityDeletedEventOutputWithContext(context.Background())
+}
+
+func (i ActionAutomationTriggerEntityDeletedEventArgs) ToActionAutomationTriggerEntityDeletedEventOutputWithContext(ctx context.Context) ActionAutomationTriggerEntityDeletedEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerEntityDeletedEventOutput)
+}
+
+func (i ActionAutomationTriggerEntityDeletedEventArgs) ToActionAutomationTriggerEntityDeletedEventPtrOutput() ActionAutomationTriggerEntityDeletedEventPtrOutput {
+	return i.ToActionAutomationTriggerEntityDeletedEventPtrOutputWithContext(context.Background())
+}
+
+func (i ActionAutomationTriggerEntityDeletedEventArgs) ToActionAutomationTriggerEntityDeletedEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerEntityDeletedEventPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerEntityDeletedEventOutput).ToActionAutomationTriggerEntityDeletedEventPtrOutputWithContext(ctx)
+}
+
+// ActionAutomationTriggerEntityDeletedEventPtrInput is an input type that accepts ActionAutomationTriggerEntityDeletedEventArgs, ActionAutomationTriggerEntityDeletedEventPtr and ActionAutomationTriggerEntityDeletedEventPtrOutput values.
+// You can construct a concrete instance of `ActionAutomationTriggerEntityDeletedEventPtrInput` via:
+//
+//	        ActionAutomationTriggerEntityDeletedEventArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionAutomationTriggerEntityDeletedEventPtrInput interface {
+	pulumi.Input
+
+	ToActionAutomationTriggerEntityDeletedEventPtrOutput() ActionAutomationTriggerEntityDeletedEventPtrOutput
+	ToActionAutomationTriggerEntityDeletedEventPtrOutputWithContext(context.Context) ActionAutomationTriggerEntityDeletedEventPtrOutput
+}
+
+type actionAutomationTriggerEntityDeletedEventPtrType ActionAutomationTriggerEntityDeletedEventArgs
+
+func ActionAutomationTriggerEntityDeletedEventPtr(v *ActionAutomationTriggerEntityDeletedEventArgs) ActionAutomationTriggerEntityDeletedEventPtrInput {
+	return (*actionAutomationTriggerEntityDeletedEventPtrType)(v)
+}
+
+func (*actionAutomationTriggerEntityDeletedEventPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionAutomationTriggerEntityDeletedEvent)(nil)).Elem()
+}
+
+func (i *actionAutomationTriggerEntityDeletedEventPtrType) ToActionAutomationTriggerEntityDeletedEventPtrOutput() ActionAutomationTriggerEntityDeletedEventPtrOutput {
+	return i.ToActionAutomationTriggerEntityDeletedEventPtrOutputWithContext(context.Background())
+}
+
+func (i *actionAutomationTriggerEntityDeletedEventPtrType) ToActionAutomationTriggerEntityDeletedEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerEntityDeletedEventPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerEntityDeletedEventPtrOutput)
+}
+
+type ActionAutomationTriggerEntityDeletedEventOutput struct{ *pulumi.OutputState }
+
+func (ActionAutomationTriggerEntityDeletedEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionAutomationTriggerEntityDeletedEvent)(nil)).Elem()
+}
+
+func (o ActionAutomationTriggerEntityDeletedEventOutput) ToActionAutomationTriggerEntityDeletedEventOutput() ActionAutomationTriggerEntityDeletedEventOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerEntityDeletedEventOutput) ToActionAutomationTriggerEntityDeletedEventOutputWithContext(ctx context.Context) ActionAutomationTriggerEntityDeletedEventOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerEntityDeletedEventOutput) ToActionAutomationTriggerEntityDeletedEventPtrOutput() ActionAutomationTriggerEntityDeletedEventPtrOutput {
+	return o.ToActionAutomationTriggerEntityDeletedEventPtrOutputWithContext(context.Background())
+}
+
+func (o ActionAutomationTriggerEntityDeletedEventOutput) ToActionAutomationTriggerEntityDeletedEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerEntityDeletedEventPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionAutomationTriggerEntityDeletedEvent) *ActionAutomationTriggerEntityDeletedEvent {
+		return &v
+	}).(ActionAutomationTriggerEntityDeletedEventPtrOutput)
+}
+
+// The blueprint identifier of the deleted entity
+func (o ActionAutomationTriggerEntityDeletedEventOutput) BlueprintIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionAutomationTriggerEntityDeletedEvent) string { return v.BlueprintIdentifier }).(pulumi.StringOutput)
+}
+
+type ActionAutomationTriggerEntityDeletedEventPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionAutomationTriggerEntityDeletedEventPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionAutomationTriggerEntityDeletedEvent)(nil)).Elem()
+}
+
+func (o ActionAutomationTriggerEntityDeletedEventPtrOutput) ToActionAutomationTriggerEntityDeletedEventPtrOutput() ActionAutomationTriggerEntityDeletedEventPtrOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerEntityDeletedEventPtrOutput) ToActionAutomationTriggerEntityDeletedEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerEntityDeletedEventPtrOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerEntityDeletedEventPtrOutput) Elem() ActionAutomationTriggerEntityDeletedEventOutput {
+	return o.ApplyT(func(v *ActionAutomationTriggerEntityDeletedEvent) ActionAutomationTriggerEntityDeletedEvent {
+		if v != nil {
+			return *v
+		}
+		var ret ActionAutomationTriggerEntityDeletedEvent
+		return ret
+	}).(ActionAutomationTriggerEntityDeletedEventOutput)
+}
+
+// The blueprint identifier of the deleted entity
+func (o ActionAutomationTriggerEntityDeletedEventPtrOutput) BlueprintIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionAutomationTriggerEntityDeletedEvent) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BlueprintIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
+type ActionAutomationTriggerEntityUpdatedEvent struct {
+	// The blueprint identifier of the updated entity
+	BlueprintIdentifier string `pulumi:"blueprintIdentifier"`
+}
+
+// ActionAutomationTriggerEntityUpdatedEventInput is an input type that accepts ActionAutomationTriggerEntityUpdatedEventArgs and ActionAutomationTriggerEntityUpdatedEventOutput values.
+// You can construct a concrete instance of `ActionAutomationTriggerEntityUpdatedEventInput` via:
+//
+//	ActionAutomationTriggerEntityUpdatedEventArgs{...}
+type ActionAutomationTriggerEntityUpdatedEventInput interface {
+	pulumi.Input
+
+	ToActionAutomationTriggerEntityUpdatedEventOutput() ActionAutomationTriggerEntityUpdatedEventOutput
+	ToActionAutomationTriggerEntityUpdatedEventOutputWithContext(context.Context) ActionAutomationTriggerEntityUpdatedEventOutput
+}
+
+type ActionAutomationTriggerEntityUpdatedEventArgs struct {
+	// The blueprint identifier of the updated entity
+	BlueprintIdentifier pulumi.StringInput `pulumi:"blueprintIdentifier"`
+}
+
+func (ActionAutomationTriggerEntityUpdatedEventArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionAutomationTriggerEntityUpdatedEvent)(nil)).Elem()
+}
+
+func (i ActionAutomationTriggerEntityUpdatedEventArgs) ToActionAutomationTriggerEntityUpdatedEventOutput() ActionAutomationTriggerEntityUpdatedEventOutput {
+	return i.ToActionAutomationTriggerEntityUpdatedEventOutputWithContext(context.Background())
+}
+
+func (i ActionAutomationTriggerEntityUpdatedEventArgs) ToActionAutomationTriggerEntityUpdatedEventOutputWithContext(ctx context.Context) ActionAutomationTriggerEntityUpdatedEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerEntityUpdatedEventOutput)
+}
+
+func (i ActionAutomationTriggerEntityUpdatedEventArgs) ToActionAutomationTriggerEntityUpdatedEventPtrOutput() ActionAutomationTriggerEntityUpdatedEventPtrOutput {
+	return i.ToActionAutomationTriggerEntityUpdatedEventPtrOutputWithContext(context.Background())
+}
+
+func (i ActionAutomationTriggerEntityUpdatedEventArgs) ToActionAutomationTriggerEntityUpdatedEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerEntityUpdatedEventPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerEntityUpdatedEventOutput).ToActionAutomationTriggerEntityUpdatedEventPtrOutputWithContext(ctx)
+}
+
+// ActionAutomationTriggerEntityUpdatedEventPtrInput is an input type that accepts ActionAutomationTriggerEntityUpdatedEventArgs, ActionAutomationTriggerEntityUpdatedEventPtr and ActionAutomationTriggerEntityUpdatedEventPtrOutput values.
+// You can construct a concrete instance of `ActionAutomationTriggerEntityUpdatedEventPtrInput` via:
+//
+//	        ActionAutomationTriggerEntityUpdatedEventArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionAutomationTriggerEntityUpdatedEventPtrInput interface {
+	pulumi.Input
+
+	ToActionAutomationTriggerEntityUpdatedEventPtrOutput() ActionAutomationTriggerEntityUpdatedEventPtrOutput
+	ToActionAutomationTriggerEntityUpdatedEventPtrOutputWithContext(context.Context) ActionAutomationTriggerEntityUpdatedEventPtrOutput
+}
+
+type actionAutomationTriggerEntityUpdatedEventPtrType ActionAutomationTriggerEntityUpdatedEventArgs
+
+func ActionAutomationTriggerEntityUpdatedEventPtr(v *ActionAutomationTriggerEntityUpdatedEventArgs) ActionAutomationTriggerEntityUpdatedEventPtrInput {
+	return (*actionAutomationTriggerEntityUpdatedEventPtrType)(v)
+}
+
+func (*actionAutomationTriggerEntityUpdatedEventPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionAutomationTriggerEntityUpdatedEvent)(nil)).Elem()
+}
+
+func (i *actionAutomationTriggerEntityUpdatedEventPtrType) ToActionAutomationTriggerEntityUpdatedEventPtrOutput() ActionAutomationTriggerEntityUpdatedEventPtrOutput {
+	return i.ToActionAutomationTriggerEntityUpdatedEventPtrOutputWithContext(context.Background())
+}
+
+func (i *actionAutomationTriggerEntityUpdatedEventPtrType) ToActionAutomationTriggerEntityUpdatedEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerEntityUpdatedEventPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerEntityUpdatedEventPtrOutput)
+}
+
+type ActionAutomationTriggerEntityUpdatedEventOutput struct{ *pulumi.OutputState }
+
+func (ActionAutomationTriggerEntityUpdatedEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionAutomationTriggerEntityUpdatedEvent)(nil)).Elem()
+}
+
+func (o ActionAutomationTriggerEntityUpdatedEventOutput) ToActionAutomationTriggerEntityUpdatedEventOutput() ActionAutomationTriggerEntityUpdatedEventOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerEntityUpdatedEventOutput) ToActionAutomationTriggerEntityUpdatedEventOutputWithContext(ctx context.Context) ActionAutomationTriggerEntityUpdatedEventOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerEntityUpdatedEventOutput) ToActionAutomationTriggerEntityUpdatedEventPtrOutput() ActionAutomationTriggerEntityUpdatedEventPtrOutput {
+	return o.ToActionAutomationTriggerEntityUpdatedEventPtrOutputWithContext(context.Background())
+}
+
+func (o ActionAutomationTriggerEntityUpdatedEventOutput) ToActionAutomationTriggerEntityUpdatedEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerEntityUpdatedEventPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionAutomationTriggerEntityUpdatedEvent) *ActionAutomationTriggerEntityUpdatedEvent {
+		return &v
+	}).(ActionAutomationTriggerEntityUpdatedEventPtrOutput)
+}
+
+// The blueprint identifier of the updated entity
+func (o ActionAutomationTriggerEntityUpdatedEventOutput) BlueprintIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionAutomationTriggerEntityUpdatedEvent) string { return v.BlueprintIdentifier }).(pulumi.StringOutput)
+}
+
+type ActionAutomationTriggerEntityUpdatedEventPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionAutomationTriggerEntityUpdatedEventPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionAutomationTriggerEntityUpdatedEvent)(nil)).Elem()
+}
+
+func (o ActionAutomationTriggerEntityUpdatedEventPtrOutput) ToActionAutomationTriggerEntityUpdatedEventPtrOutput() ActionAutomationTriggerEntityUpdatedEventPtrOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerEntityUpdatedEventPtrOutput) ToActionAutomationTriggerEntityUpdatedEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerEntityUpdatedEventPtrOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerEntityUpdatedEventPtrOutput) Elem() ActionAutomationTriggerEntityUpdatedEventOutput {
+	return o.ApplyT(func(v *ActionAutomationTriggerEntityUpdatedEvent) ActionAutomationTriggerEntityUpdatedEvent {
+		if v != nil {
+			return *v
+		}
+		var ret ActionAutomationTriggerEntityUpdatedEvent
+		return ret
+	}).(ActionAutomationTriggerEntityUpdatedEventOutput)
+}
+
+// The blueprint identifier of the updated entity
+func (o ActionAutomationTriggerEntityUpdatedEventPtrOutput) BlueprintIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionAutomationTriggerEntityUpdatedEvent) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BlueprintIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
+type ActionAutomationTriggerJqCondition struct {
+	// The combinator of the condition
+	Combinator *string `pulumi:"combinator"`
+	// The jq expressions of the condition
+	Expressions []string `pulumi:"expressions"`
+}
+
+// ActionAutomationTriggerJqConditionInput is an input type that accepts ActionAutomationTriggerJqConditionArgs and ActionAutomationTriggerJqConditionOutput values.
+// You can construct a concrete instance of `ActionAutomationTriggerJqConditionInput` via:
+//
+//	ActionAutomationTriggerJqConditionArgs{...}
+type ActionAutomationTriggerJqConditionInput interface {
+	pulumi.Input
+
+	ToActionAutomationTriggerJqConditionOutput() ActionAutomationTriggerJqConditionOutput
+	ToActionAutomationTriggerJqConditionOutputWithContext(context.Context) ActionAutomationTriggerJqConditionOutput
+}
+
+type ActionAutomationTriggerJqConditionArgs struct {
+	// The combinator of the condition
+	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The jq expressions of the condition
+	Expressions pulumi.StringArrayInput `pulumi:"expressions"`
+}
+
+func (ActionAutomationTriggerJqConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionAutomationTriggerJqCondition)(nil)).Elem()
+}
+
+func (i ActionAutomationTriggerJqConditionArgs) ToActionAutomationTriggerJqConditionOutput() ActionAutomationTriggerJqConditionOutput {
+	return i.ToActionAutomationTriggerJqConditionOutputWithContext(context.Background())
+}
+
+func (i ActionAutomationTriggerJqConditionArgs) ToActionAutomationTriggerJqConditionOutputWithContext(ctx context.Context) ActionAutomationTriggerJqConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerJqConditionOutput)
+}
+
+func (i ActionAutomationTriggerJqConditionArgs) ToActionAutomationTriggerJqConditionPtrOutput() ActionAutomationTriggerJqConditionPtrOutput {
+	return i.ToActionAutomationTriggerJqConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ActionAutomationTriggerJqConditionArgs) ToActionAutomationTriggerJqConditionPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerJqConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerJqConditionOutput).ToActionAutomationTriggerJqConditionPtrOutputWithContext(ctx)
+}
+
+// ActionAutomationTriggerJqConditionPtrInput is an input type that accepts ActionAutomationTriggerJqConditionArgs, ActionAutomationTriggerJqConditionPtr and ActionAutomationTriggerJqConditionPtrOutput values.
+// You can construct a concrete instance of `ActionAutomationTriggerJqConditionPtrInput` via:
+//
+//	        ActionAutomationTriggerJqConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionAutomationTriggerJqConditionPtrInput interface {
+	pulumi.Input
+
+	ToActionAutomationTriggerJqConditionPtrOutput() ActionAutomationTriggerJqConditionPtrOutput
+	ToActionAutomationTriggerJqConditionPtrOutputWithContext(context.Context) ActionAutomationTriggerJqConditionPtrOutput
+}
+
+type actionAutomationTriggerJqConditionPtrType ActionAutomationTriggerJqConditionArgs
+
+func ActionAutomationTriggerJqConditionPtr(v *ActionAutomationTriggerJqConditionArgs) ActionAutomationTriggerJqConditionPtrInput {
+	return (*actionAutomationTriggerJqConditionPtrType)(v)
+}
+
+func (*actionAutomationTriggerJqConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionAutomationTriggerJqCondition)(nil)).Elem()
+}
+
+func (i *actionAutomationTriggerJqConditionPtrType) ToActionAutomationTriggerJqConditionPtrOutput() ActionAutomationTriggerJqConditionPtrOutput {
+	return i.ToActionAutomationTriggerJqConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *actionAutomationTriggerJqConditionPtrType) ToActionAutomationTriggerJqConditionPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerJqConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerJqConditionPtrOutput)
+}
+
+type ActionAutomationTriggerJqConditionOutput struct{ *pulumi.OutputState }
+
+func (ActionAutomationTriggerJqConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionAutomationTriggerJqCondition)(nil)).Elem()
+}
+
+func (o ActionAutomationTriggerJqConditionOutput) ToActionAutomationTriggerJqConditionOutput() ActionAutomationTriggerJqConditionOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerJqConditionOutput) ToActionAutomationTriggerJqConditionOutputWithContext(ctx context.Context) ActionAutomationTriggerJqConditionOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerJqConditionOutput) ToActionAutomationTriggerJqConditionPtrOutput() ActionAutomationTriggerJqConditionPtrOutput {
+	return o.ToActionAutomationTriggerJqConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ActionAutomationTriggerJqConditionOutput) ToActionAutomationTriggerJqConditionPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerJqConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionAutomationTriggerJqCondition) *ActionAutomationTriggerJqCondition {
+		return &v
+	}).(ActionAutomationTriggerJqConditionPtrOutput)
+}
+
+// The combinator of the condition
+func (o ActionAutomationTriggerJqConditionOutput) Combinator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionAutomationTriggerJqCondition) *string { return v.Combinator }).(pulumi.StringPtrOutput)
+}
+
+// The jq expressions of the condition
+func (o ActionAutomationTriggerJqConditionOutput) Expressions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionAutomationTriggerJqCondition) []string { return v.Expressions }).(pulumi.StringArrayOutput)
+}
+
+type ActionAutomationTriggerJqConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionAutomationTriggerJqConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionAutomationTriggerJqCondition)(nil)).Elem()
+}
+
+func (o ActionAutomationTriggerJqConditionPtrOutput) ToActionAutomationTriggerJqConditionPtrOutput() ActionAutomationTriggerJqConditionPtrOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerJqConditionPtrOutput) ToActionAutomationTriggerJqConditionPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerJqConditionPtrOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerJqConditionPtrOutput) Elem() ActionAutomationTriggerJqConditionOutput {
+	return o.ApplyT(func(v *ActionAutomationTriggerJqCondition) ActionAutomationTriggerJqCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ActionAutomationTriggerJqCondition
+		return ret
+	}).(ActionAutomationTriggerJqConditionOutput)
+}
+
+// The combinator of the condition
+func (o ActionAutomationTriggerJqConditionPtrOutput) Combinator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionAutomationTriggerJqCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Combinator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The jq expressions of the condition
+func (o ActionAutomationTriggerJqConditionPtrOutput) Expressions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ActionAutomationTriggerJqCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Expressions
+	}).(pulumi.StringArrayOutput)
+}
+
+type ActionAutomationTriggerTimerPropertyExpiredEvent struct {
+	// The blueprint identifier of the expired timer property
+	BlueprintIdentifier string `pulumi:"blueprintIdentifier"`
+	// The property identifier of the expired timer property
+	PropertyIdentifier string `pulumi:"propertyIdentifier"`
+}
+
+// ActionAutomationTriggerTimerPropertyExpiredEventInput is an input type that accepts ActionAutomationTriggerTimerPropertyExpiredEventArgs and ActionAutomationTriggerTimerPropertyExpiredEventOutput values.
+// You can construct a concrete instance of `ActionAutomationTriggerTimerPropertyExpiredEventInput` via:
+//
+//	ActionAutomationTriggerTimerPropertyExpiredEventArgs{...}
+type ActionAutomationTriggerTimerPropertyExpiredEventInput interface {
+	pulumi.Input
+
+	ToActionAutomationTriggerTimerPropertyExpiredEventOutput() ActionAutomationTriggerTimerPropertyExpiredEventOutput
+	ToActionAutomationTriggerTimerPropertyExpiredEventOutputWithContext(context.Context) ActionAutomationTriggerTimerPropertyExpiredEventOutput
+}
+
+type ActionAutomationTriggerTimerPropertyExpiredEventArgs struct {
+	// The blueprint identifier of the expired timer property
+	BlueprintIdentifier pulumi.StringInput `pulumi:"blueprintIdentifier"`
+	// The property identifier of the expired timer property
+	PropertyIdentifier pulumi.StringInput `pulumi:"propertyIdentifier"`
+}
+
+func (ActionAutomationTriggerTimerPropertyExpiredEventArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionAutomationTriggerTimerPropertyExpiredEvent)(nil)).Elem()
+}
+
+func (i ActionAutomationTriggerTimerPropertyExpiredEventArgs) ToActionAutomationTriggerTimerPropertyExpiredEventOutput() ActionAutomationTriggerTimerPropertyExpiredEventOutput {
+	return i.ToActionAutomationTriggerTimerPropertyExpiredEventOutputWithContext(context.Background())
+}
+
+func (i ActionAutomationTriggerTimerPropertyExpiredEventArgs) ToActionAutomationTriggerTimerPropertyExpiredEventOutputWithContext(ctx context.Context) ActionAutomationTriggerTimerPropertyExpiredEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerTimerPropertyExpiredEventOutput)
+}
+
+func (i ActionAutomationTriggerTimerPropertyExpiredEventArgs) ToActionAutomationTriggerTimerPropertyExpiredEventPtrOutput() ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput {
+	return i.ToActionAutomationTriggerTimerPropertyExpiredEventPtrOutputWithContext(context.Background())
+}
+
+func (i ActionAutomationTriggerTimerPropertyExpiredEventArgs) ToActionAutomationTriggerTimerPropertyExpiredEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerTimerPropertyExpiredEventOutput).ToActionAutomationTriggerTimerPropertyExpiredEventPtrOutputWithContext(ctx)
+}
+
+// ActionAutomationTriggerTimerPropertyExpiredEventPtrInput is an input type that accepts ActionAutomationTriggerTimerPropertyExpiredEventArgs, ActionAutomationTriggerTimerPropertyExpiredEventPtr and ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput values.
+// You can construct a concrete instance of `ActionAutomationTriggerTimerPropertyExpiredEventPtrInput` via:
+//
+//	        ActionAutomationTriggerTimerPropertyExpiredEventArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionAutomationTriggerTimerPropertyExpiredEventPtrInput interface {
+	pulumi.Input
+
+	ToActionAutomationTriggerTimerPropertyExpiredEventPtrOutput() ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput
+	ToActionAutomationTriggerTimerPropertyExpiredEventPtrOutputWithContext(context.Context) ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput
+}
+
+type actionAutomationTriggerTimerPropertyExpiredEventPtrType ActionAutomationTriggerTimerPropertyExpiredEventArgs
+
+func ActionAutomationTriggerTimerPropertyExpiredEventPtr(v *ActionAutomationTriggerTimerPropertyExpiredEventArgs) ActionAutomationTriggerTimerPropertyExpiredEventPtrInput {
+	return (*actionAutomationTriggerTimerPropertyExpiredEventPtrType)(v)
+}
+
+func (*actionAutomationTriggerTimerPropertyExpiredEventPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionAutomationTriggerTimerPropertyExpiredEvent)(nil)).Elem()
+}
+
+func (i *actionAutomationTriggerTimerPropertyExpiredEventPtrType) ToActionAutomationTriggerTimerPropertyExpiredEventPtrOutput() ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput {
+	return i.ToActionAutomationTriggerTimerPropertyExpiredEventPtrOutputWithContext(context.Background())
+}
+
+func (i *actionAutomationTriggerTimerPropertyExpiredEventPtrType) ToActionAutomationTriggerTimerPropertyExpiredEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput)
+}
+
+type ActionAutomationTriggerTimerPropertyExpiredEventOutput struct{ *pulumi.OutputState }
+
+func (ActionAutomationTriggerTimerPropertyExpiredEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionAutomationTriggerTimerPropertyExpiredEvent)(nil)).Elem()
+}
+
+func (o ActionAutomationTriggerTimerPropertyExpiredEventOutput) ToActionAutomationTriggerTimerPropertyExpiredEventOutput() ActionAutomationTriggerTimerPropertyExpiredEventOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerTimerPropertyExpiredEventOutput) ToActionAutomationTriggerTimerPropertyExpiredEventOutputWithContext(ctx context.Context) ActionAutomationTriggerTimerPropertyExpiredEventOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerTimerPropertyExpiredEventOutput) ToActionAutomationTriggerTimerPropertyExpiredEventPtrOutput() ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput {
+	return o.ToActionAutomationTriggerTimerPropertyExpiredEventPtrOutputWithContext(context.Background())
+}
+
+func (o ActionAutomationTriggerTimerPropertyExpiredEventOutput) ToActionAutomationTriggerTimerPropertyExpiredEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionAutomationTriggerTimerPropertyExpiredEvent) *ActionAutomationTriggerTimerPropertyExpiredEvent {
+		return &v
+	}).(ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput)
+}
+
+// The blueprint identifier of the expired timer property
+func (o ActionAutomationTriggerTimerPropertyExpiredEventOutput) BlueprintIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionAutomationTriggerTimerPropertyExpiredEvent) string { return v.BlueprintIdentifier }).(pulumi.StringOutput)
+}
+
+// The property identifier of the expired timer property
+func (o ActionAutomationTriggerTimerPropertyExpiredEventOutput) PropertyIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionAutomationTriggerTimerPropertyExpiredEvent) string { return v.PropertyIdentifier }).(pulumi.StringOutput)
+}
+
+type ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionAutomationTriggerTimerPropertyExpiredEvent)(nil)).Elem()
+}
+
+func (o ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput) ToActionAutomationTriggerTimerPropertyExpiredEventPtrOutput() ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput) ToActionAutomationTriggerTimerPropertyExpiredEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput) Elem() ActionAutomationTriggerTimerPropertyExpiredEventOutput {
+	return o.ApplyT(func(v *ActionAutomationTriggerTimerPropertyExpiredEvent) ActionAutomationTriggerTimerPropertyExpiredEvent {
+		if v != nil {
+			return *v
+		}
+		var ret ActionAutomationTriggerTimerPropertyExpiredEvent
+		return ret
+	}).(ActionAutomationTriggerTimerPropertyExpiredEventOutput)
+}
+
+// The blueprint identifier of the expired timer property
+func (o ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput) BlueprintIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionAutomationTriggerTimerPropertyExpiredEvent) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BlueprintIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property identifier of the expired timer property
+func (o ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput) PropertyIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionAutomationTriggerTimerPropertyExpiredEvent) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PropertyIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
 type ActionAzureMethod struct {
 	// Required when selecting type AZURE. The Azure org that the workflow belongs to
 	Org string `pulumi:"org"`
@@ -4064,6 +5166,394 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput)
 
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput) JqQuery() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue) string { return v.JqQuery }).(pulumi.StringOutput)
+}
+
+type ActionUpsertEntityMethod struct {
+	// Required when selecting type Upsert Entity. The blueprint identifier of the entity for the upsert
+	BlueprintIdentifier string `pulumi:"blueprintIdentifier"`
+	// Upsert Entity invocation method
+	Mapping *ActionUpsertEntityMethodMapping `pulumi:"mapping"`
+	// The title of the entity
+	Title *string `pulumi:"title"`
+}
+
+// ActionUpsertEntityMethodInput is an input type that accepts ActionUpsertEntityMethodArgs and ActionUpsertEntityMethodOutput values.
+// You can construct a concrete instance of `ActionUpsertEntityMethodInput` via:
+//
+//	ActionUpsertEntityMethodArgs{...}
+type ActionUpsertEntityMethodInput interface {
+	pulumi.Input
+
+	ToActionUpsertEntityMethodOutput() ActionUpsertEntityMethodOutput
+	ToActionUpsertEntityMethodOutputWithContext(context.Context) ActionUpsertEntityMethodOutput
+}
+
+type ActionUpsertEntityMethodArgs struct {
+	// Required when selecting type Upsert Entity. The blueprint identifier of the entity for the upsert
+	BlueprintIdentifier pulumi.StringInput `pulumi:"blueprintIdentifier"`
+	// Upsert Entity invocation method
+	Mapping ActionUpsertEntityMethodMappingPtrInput `pulumi:"mapping"`
+	// The title of the entity
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (ActionUpsertEntityMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUpsertEntityMethod)(nil)).Elem()
+}
+
+func (i ActionUpsertEntityMethodArgs) ToActionUpsertEntityMethodOutput() ActionUpsertEntityMethodOutput {
+	return i.ToActionUpsertEntityMethodOutputWithContext(context.Background())
+}
+
+func (i ActionUpsertEntityMethodArgs) ToActionUpsertEntityMethodOutputWithContext(ctx context.Context) ActionUpsertEntityMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUpsertEntityMethodOutput)
+}
+
+func (i ActionUpsertEntityMethodArgs) ToActionUpsertEntityMethodPtrOutput() ActionUpsertEntityMethodPtrOutput {
+	return i.ToActionUpsertEntityMethodPtrOutputWithContext(context.Background())
+}
+
+func (i ActionUpsertEntityMethodArgs) ToActionUpsertEntityMethodPtrOutputWithContext(ctx context.Context) ActionUpsertEntityMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUpsertEntityMethodOutput).ToActionUpsertEntityMethodPtrOutputWithContext(ctx)
+}
+
+// ActionUpsertEntityMethodPtrInput is an input type that accepts ActionUpsertEntityMethodArgs, ActionUpsertEntityMethodPtr and ActionUpsertEntityMethodPtrOutput values.
+// You can construct a concrete instance of `ActionUpsertEntityMethodPtrInput` via:
+//
+//	        ActionUpsertEntityMethodArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionUpsertEntityMethodPtrInput interface {
+	pulumi.Input
+
+	ToActionUpsertEntityMethodPtrOutput() ActionUpsertEntityMethodPtrOutput
+	ToActionUpsertEntityMethodPtrOutputWithContext(context.Context) ActionUpsertEntityMethodPtrOutput
+}
+
+type actionUpsertEntityMethodPtrType ActionUpsertEntityMethodArgs
+
+func ActionUpsertEntityMethodPtr(v *ActionUpsertEntityMethodArgs) ActionUpsertEntityMethodPtrInput {
+	return (*actionUpsertEntityMethodPtrType)(v)
+}
+
+func (*actionUpsertEntityMethodPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionUpsertEntityMethod)(nil)).Elem()
+}
+
+func (i *actionUpsertEntityMethodPtrType) ToActionUpsertEntityMethodPtrOutput() ActionUpsertEntityMethodPtrOutput {
+	return i.ToActionUpsertEntityMethodPtrOutputWithContext(context.Background())
+}
+
+func (i *actionUpsertEntityMethodPtrType) ToActionUpsertEntityMethodPtrOutputWithContext(ctx context.Context) ActionUpsertEntityMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUpsertEntityMethodPtrOutput)
+}
+
+type ActionUpsertEntityMethodOutput struct{ *pulumi.OutputState }
+
+func (ActionUpsertEntityMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUpsertEntityMethod)(nil)).Elem()
+}
+
+func (o ActionUpsertEntityMethodOutput) ToActionUpsertEntityMethodOutput() ActionUpsertEntityMethodOutput {
+	return o
+}
+
+func (o ActionUpsertEntityMethodOutput) ToActionUpsertEntityMethodOutputWithContext(ctx context.Context) ActionUpsertEntityMethodOutput {
+	return o
+}
+
+func (o ActionUpsertEntityMethodOutput) ToActionUpsertEntityMethodPtrOutput() ActionUpsertEntityMethodPtrOutput {
+	return o.ToActionUpsertEntityMethodPtrOutputWithContext(context.Background())
+}
+
+func (o ActionUpsertEntityMethodOutput) ToActionUpsertEntityMethodPtrOutputWithContext(ctx context.Context) ActionUpsertEntityMethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionUpsertEntityMethod) *ActionUpsertEntityMethod {
+		return &v
+	}).(ActionUpsertEntityMethodPtrOutput)
+}
+
+// Required when selecting type Upsert Entity. The blueprint identifier of the entity for the upsert
+func (o ActionUpsertEntityMethodOutput) BlueprintIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionUpsertEntityMethod) string { return v.BlueprintIdentifier }).(pulumi.StringOutput)
+}
+
+// Upsert Entity invocation method
+func (o ActionUpsertEntityMethodOutput) Mapping() ActionUpsertEntityMethodMappingPtrOutput {
+	return o.ApplyT(func(v ActionUpsertEntityMethod) *ActionUpsertEntityMethodMapping { return v.Mapping }).(ActionUpsertEntityMethodMappingPtrOutput)
+}
+
+// The title of the entity
+func (o ActionUpsertEntityMethodOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUpsertEntityMethod) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type ActionUpsertEntityMethodPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionUpsertEntityMethodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionUpsertEntityMethod)(nil)).Elem()
+}
+
+func (o ActionUpsertEntityMethodPtrOutput) ToActionUpsertEntityMethodPtrOutput() ActionUpsertEntityMethodPtrOutput {
+	return o
+}
+
+func (o ActionUpsertEntityMethodPtrOutput) ToActionUpsertEntityMethodPtrOutputWithContext(ctx context.Context) ActionUpsertEntityMethodPtrOutput {
+	return o
+}
+
+func (o ActionUpsertEntityMethodPtrOutput) Elem() ActionUpsertEntityMethodOutput {
+	return o.ApplyT(func(v *ActionUpsertEntityMethod) ActionUpsertEntityMethod {
+		if v != nil {
+			return *v
+		}
+		var ret ActionUpsertEntityMethod
+		return ret
+	}).(ActionUpsertEntityMethodOutput)
+}
+
+// Required when selecting type Upsert Entity. The blueprint identifier of the entity for the upsert
+func (o ActionUpsertEntityMethodPtrOutput) BlueprintIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionUpsertEntityMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BlueprintIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Upsert Entity invocation method
+func (o ActionUpsertEntityMethodPtrOutput) Mapping() ActionUpsertEntityMethodMappingPtrOutput {
+	return o.ApplyT(func(v *ActionUpsertEntityMethod) *ActionUpsertEntityMethodMapping {
+		if v == nil {
+			return nil
+		}
+		return v.Mapping
+	}).(ActionUpsertEntityMethodMappingPtrOutput)
+}
+
+// The title of the entity
+func (o ActionUpsertEntityMethodPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionUpsertEntityMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type ActionUpsertEntityMethodMapping struct {
+	// Icon
+	Icon *string `pulumi:"icon"`
+	// Identifier
+	Identifier string `pulumi:"identifier"`
+	// The properties of the entity (key-value object encoded to a string)
+	Properties *string `pulumi:"properties"`
+	// The relations of the entity (key-value object encoded to a string)
+	Relations *string `pulumi:"relations"`
+	// The teams the entity belongs to
+	Teams []string `pulumi:"teams"`
+}
+
+// ActionUpsertEntityMethodMappingInput is an input type that accepts ActionUpsertEntityMethodMappingArgs and ActionUpsertEntityMethodMappingOutput values.
+// You can construct a concrete instance of `ActionUpsertEntityMethodMappingInput` via:
+//
+//	ActionUpsertEntityMethodMappingArgs{...}
+type ActionUpsertEntityMethodMappingInput interface {
+	pulumi.Input
+
+	ToActionUpsertEntityMethodMappingOutput() ActionUpsertEntityMethodMappingOutput
+	ToActionUpsertEntityMethodMappingOutputWithContext(context.Context) ActionUpsertEntityMethodMappingOutput
+}
+
+type ActionUpsertEntityMethodMappingArgs struct {
+	// Icon
+	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// Identifier
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// The properties of the entity (key-value object encoded to a string)
+	Properties pulumi.StringPtrInput `pulumi:"properties"`
+	// The relations of the entity (key-value object encoded to a string)
+	Relations pulumi.StringPtrInput `pulumi:"relations"`
+	// The teams the entity belongs to
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
+}
+
+func (ActionUpsertEntityMethodMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUpsertEntityMethodMapping)(nil)).Elem()
+}
+
+func (i ActionUpsertEntityMethodMappingArgs) ToActionUpsertEntityMethodMappingOutput() ActionUpsertEntityMethodMappingOutput {
+	return i.ToActionUpsertEntityMethodMappingOutputWithContext(context.Background())
+}
+
+func (i ActionUpsertEntityMethodMappingArgs) ToActionUpsertEntityMethodMappingOutputWithContext(ctx context.Context) ActionUpsertEntityMethodMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUpsertEntityMethodMappingOutput)
+}
+
+func (i ActionUpsertEntityMethodMappingArgs) ToActionUpsertEntityMethodMappingPtrOutput() ActionUpsertEntityMethodMappingPtrOutput {
+	return i.ToActionUpsertEntityMethodMappingPtrOutputWithContext(context.Background())
+}
+
+func (i ActionUpsertEntityMethodMappingArgs) ToActionUpsertEntityMethodMappingPtrOutputWithContext(ctx context.Context) ActionUpsertEntityMethodMappingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUpsertEntityMethodMappingOutput).ToActionUpsertEntityMethodMappingPtrOutputWithContext(ctx)
+}
+
+// ActionUpsertEntityMethodMappingPtrInput is an input type that accepts ActionUpsertEntityMethodMappingArgs, ActionUpsertEntityMethodMappingPtr and ActionUpsertEntityMethodMappingPtrOutput values.
+// You can construct a concrete instance of `ActionUpsertEntityMethodMappingPtrInput` via:
+//
+//	        ActionUpsertEntityMethodMappingArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionUpsertEntityMethodMappingPtrInput interface {
+	pulumi.Input
+
+	ToActionUpsertEntityMethodMappingPtrOutput() ActionUpsertEntityMethodMappingPtrOutput
+	ToActionUpsertEntityMethodMappingPtrOutputWithContext(context.Context) ActionUpsertEntityMethodMappingPtrOutput
+}
+
+type actionUpsertEntityMethodMappingPtrType ActionUpsertEntityMethodMappingArgs
+
+func ActionUpsertEntityMethodMappingPtr(v *ActionUpsertEntityMethodMappingArgs) ActionUpsertEntityMethodMappingPtrInput {
+	return (*actionUpsertEntityMethodMappingPtrType)(v)
+}
+
+func (*actionUpsertEntityMethodMappingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionUpsertEntityMethodMapping)(nil)).Elem()
+}
+
+func (i *actionUpsertEntityMethodMappingPtrType) ToActionUpsertEntityMethodMappingPtrOutput() ActionUpsertEntityMethodMappingPtrOutput {
+	return i.ToActionUpsertEntityMethodMappingPtrOutputWithContext(context.Background())
+}
+
+func (i *actionUpsertEntityMethodMappingPtrType) ToActionUpsertEntityMethodMappingPtrOutputWithContext(ctx context.Context) ActionUpsertEntityMethodMappingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionUpsertEntityMethodMappingPtrOutput)
+}
+
+type ActionUpsertEntityMethodMappingOutput struct{ *pulumi.OutputState }
+
+func (ActionUpsertEntityMethodMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionUpsertEntityMethodMapping)(nil)).Elem()
+}
+
+func (o ActionUpsertEntityMethodMappingOutput) ToActionUpsertEntityMethodMappingOutput() ActionUpsertEntityMethodMappingOutput {
+	return o
+}
+
+func (o ActionUpsertEntityMethodMappingOutput) ToActionUpsertEntityMethodMappingOutputWithContext(ctx context.Context) ActionUpsertEntityMethodMappingOutput {
+	return o
+}
+
+func (o ActionUpsertEntityMethodMappingOutput) ToActionUpsertEntityMethodMappingPtrOutput() ActionUpsertEntityMethodMappingPtrOutput {
+	return o.ToActionUpsertEntityMethodMappingPtrOutputWithContext(context.Background())
+}
+
+func (o ActionUpsertEntityMethodMappingOutput) ToActionUpsertEntityMethodMappingPtrOutputWithContext(ctx context.Context) ActionUpsertEntityMethodMappingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionUpsertEntityMethodMapping) *ActionUpsertEntityMethodMapping {
+		return &v
+	}).(ActionUpsertEntityMethodMappingPtrOutput)
+}
+
+// Icon
+func (o ActionUpsertEntityMethodMappingOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUpsertEntityMethodMapping) *string { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
+// Identifier
+func (o ActionUpsertEntityMethodMappingOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionUpsertEntityMethodMapping) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// The properties of the entity (key-value object encoded to a string)
+func (o ActionUpsertEntityMethodMappingOutput) Properties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUpsertEntityMethodMapping) *string { return v.Properties }).(pulumi.StringPtrOutput)
+}
+
+// The relations of the entity (key-value object encoded to a string)
+func (o ActionUpsertEntityMethodMappingOutput) Relations() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUpsertEntityMethodMapping) *string { return v.Relations }).(pulumi.StringPtrOutput)
+}
+
+// The teams the entity belongs to
+func (o ActionUpsertEntityMethodMappingOutput) Teams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionUpsertEntityMethodMapping) []string { return v.Teams }).(pulumi.StringArrayOutput)
+}
+
+type ActionUpsertEntityMethodMappingPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionUpsertEntityMethodMappingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionUpsertEntityMethodMapping)(nil)).Elem()
+}
+
+func (o ActionUpsertEntityMethodMappingPtrOutput) ToActionUpsertEntityMethodMappingPtrOutput() ActionUpsertEntityMethodMappingPtrOutput {
+	return o
+}
+
+func (o ActionUpsertEntityMethodMappingPtrOutput) ToActionUpsertEntityMethodMappingPtrOutputWithContext(ctx context.Context) ActionUpsertEntityMethodMappingPtrOutput {
+	return o
+}
+
+func (o ActionUpsertEntityMethodMappingPtrOutput) Elem() ActionUpsertEntityMethodMappingOutput {
+	return o.ApplyT(func(v *ActionUpsertEntityMethodMapping) ActionUpsertEntityMethodMapping {
+		if v != nil {
+			return *v
+		}
+		var ret ActionUpsertEntityMethodMapping
+		return ret
+	}).(ActionUpsertEntityMethodMappingOutput)
+}
+
+// Icon
+func (o ActionUpsertEntityMethodMappingPtrOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionUpsertEntityMethodMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Icon
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifier
+func (o ActionUpsertEntityMethodMappingPtrOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionUpsertEntityMethodMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Identifier
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of the entity (key-value object encoded to a string)
+func (o ActionUpsertEntityMethodMappingPtrOutput) Properties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionUpsertEntityMethodMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringPtrOutput)
+}
+
+// The relations of the entity (key-value object encoded to a string)
+func (o ActionUpsertEntityMethodMappingPtrOutput) Relations() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionUpsertEntityMethodMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Relations
+	}).(pulumi.StringPtrOutput)
+}
+
+// The teams the entity belongs to
+func (o ActionUpsertEntityMethodMappingPtrOutput) Teams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ActionUpsertEntityMethodMapping) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Teams
+	}).(pulumi.StringArrayOutput)
 }
 
 type ActionWebhookMethod struct {
@@ -11888,6 +13378,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionApprovalEmailNotificationPtrInput)(nil)).Elem(), ActionApprovalEmailNotificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionApprovalWebhookNotificationInput)(nil)).Elem(), ActionApprovalWebhookNotificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionApprovalWebhookNotificationPtrInput)(nil)).Elem(), ActionApprovalWebhookNotificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerInput)(nil)).Elem(), ActionAutomationTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerPtrInput)(nil)).Elem(), ActionAutomationTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerAnyEntityChangeEventInput)(nil)).Elem(), ActionAutomationTriggerAnyEntityChangeEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerAnyEntityChangeEventPtrInput)(nil)).Elem(), ActionAutomationTriggerAnyEntityChangeEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerEntityCreatedEventInput)(nil)).Elem(), ActionAutomationTriggerEntityCreatedEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerEntityCreatedEventPtrInput)(nil)).Elem(), ActionAutomationTriggerEntityCreatedEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerEntityDeletedEventInput)(nil)).Elem(), ActionAutomationTriggerEntityDeletedEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerEntityDeletedEventPtrInput)(nil)).Elem(), ActionAutomationTriggerEntityDeletedEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerEntityUpdatedEventInput)(nil)).Elem(), ActionAutomationTriggerEntityUpdatedEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerEntityUpdatedEventPtrInput)(nil)).Elem(), ActionAutomationTriggerEntityUpdatedEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerJqConditionInput)(nil)).Elem(), ActionAutomationTriggerJqConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerJqConditionPtrInput)(nil)).Elem(), ActionAutomationTriggerJqConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerTimerPropertyExpiredEventInput)(nil)).Elem(), ActionAutomationTriggerTimerPropertyExpiredEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerTimerPropertyExpiredEventPtrInput)(nil)).Elem(), ActionAutomationTriggerTimerPropertyExpiredEventArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionAzureMethodInput)(nil)).Elem(), ActionAzureMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionAzureMethodPtrInput)(nil)).Elem(), ActionAzureMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionGithubMethodInput)(nil)).Elem(), ActionGithubMethodArgs{})
@@ -11929,6 +13433,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUpsertEntityMethodInput)(nil)).Elem(), ActionUpsertEntityMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUpsertEntityMethodPtrInput)(nil)).Elem(), ActionUpsertEntityMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUpsertEntityMethodMappingInput)(nil)).Elem(), ActionUpsertEntityMethodMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionUpsertEntityMethodMappingPtrInput)(nil)).Elem(), ActionUpsertEntityMethodMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionWebhookMethodInput)(nil)).Elem(), ActionWebhookMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionWebhookMethodPtrInput)(nil)).Elem(), ActionWebhookMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregationPropertiesPropertiesInput)(nil)).Elem(), AggregationPropertiesPropertiesArgs{})
@@ -12029,6 +13537,20 @@ func init() {
 	pulumi.RegisterOutputType(ActionApprovalEmailNotificationPtrOutput{})
 	pulumi.RegisterOutputType(ActionApprovalWebhookNotificationOutput{})
 	pulumi.RegisterOutputType(ActionApprovalWebhookNotificationPtrOutput{})
+	pulumi.RegisterOutputType(ActionAutomationTriggerOutput{})
+	pulumi.RegisterOutputType(ActionAutomationTriggerPtrOutput{})
+	pulumi.RegisterOutputType(ActionAutomationTriggerAnyEntityChangeEventOutput{})
+	pulumi.RegisterOutputType(ActionAutomationTriggerAnyEntityChangeEventPtrOutput{})
+	pulumi.RegisterOutputType(ActionAutomationTriggerEntityCreatedEventOutput{})
+	pulumi.RegisterOutputType(ActionAutomationTriggerEntityCreatedEventPtrOutput{})
+	pulumi.RegisterOutputType(ActionAutomationTriggerEntityDeletedEventOutput{})
+	pulumi.RegisterOutputType(ActionAutomationTriggerEntityDeletedEventPtrOutput{})
+	pulumi.RegisterOutputType(ActionAutomationTriggerEntityUpdatedEventOutput{})
+	pulumi.RegisterOutputType(ActionAutomationTriggerEntityUpdatedEventPtrOutput{})
+	pulumi.RegisterOutputType(ActionAutomationTriggerJqConditionOutput{})
+	pulumi.RegisterOutputType(ActionAutomationTriggerJqConditionPtrOutput{})
+	pulumi.RegisterOutputType(ActionAutomationTriggerTimerPropertyExpiredEventOutput{})
+	pulumi.RegisterOutputType(ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput{})
 	pulumi.RegisterOutputType(ActionAzureMethodOutput{})
 	pulumi.RegisterOutputType(ActionAzureMethodPtrOutput{})
 	pulumi.RegisterOutputType(ActionGithubMethodOutput{})
@@ -12070,6 +13592,10 @@ func init() {
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput{})
+	pulumi.RegisterOutputType(ActionUpsertEntityMethodOutput{})
+	pulumi.RegisterOutputType(ActionUpsertEntityMethodPtrOutput{})
+	pulumi.RegisterOutputType(ActionUpsertEntityMethodMappingOutput{})
+	pulumi.RegisterOutputType(ActionUpsertEntityMethodMappingPtrOutput{})
 	pulumi.RegisterOutputType(ActionWebhookMethodOutput{})
 	pulumi.RegisterOutputType(ActionWebhookMethodPtrOutput{})
 	pulumi.RegisterOutputType(AggregationPropertiesPropertiesOutput{})

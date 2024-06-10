@@ -122,6 +122,52 @@ import (
 // })
 // }
 // ```
+//
+// ### With Automation Trigger
+//
+// Port allows setting an automation trigger to an action, for executing an action based on event occurred to an entity in Port.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/port-labs/pulumi-port/sdk/v2/go/port"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := port.NewPort_action(ctx, "deleteTemporaryMicroservice", &port.Port_actionArgs{
+// Title: "Delete Temporary Microservice",
+// Identifier: "delete-temp-microservice",
+// Icon: "Terraform",
+// AutomationTrigger: map[string]interface{}{
+// "timerPropertyExpiredEvent": map[string]interface{}{
+// "blueprintIdentifier": port_blueprint.Microservice.Identifier,
+// "propertyIdentifier": "ttl",
+// },
+// },
+// KafkaMethod: tmpJSON0, err := json.Marshal(map[string]interface{}{
+// "runId": "{{.run.id}}",
+// })
+// if err != nil {
+// return err
+// }
+// json0 := string(tmpJSON0)
+// map[string]interface{}{
+// "payload": json0,
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
 type Action struct {
 	pulumi.CustomResourceState
 
@@ -129,6 +175,8 @@ type Action struct {
 	ApprovalEmailNotification ActionApprovalEmailNotificationPtrOutput `pulumi:"approvalEmailNotification"`
 	// The webhook notification of the approval
 	ApprovalWebhookNotification ActionApprovalWebhookNotificationPtrOutput `pulumi:"approvalWebhookNotification"`
+	// Automation trigger for the action
+	AutomationTrigger ActionAutomationTriggerPtrOutput `pulumi:"automationTrigger"`
 	// Azure DevOps invocation method
 	AzureMethod ActionAzureMethodPtrOutput `pulumi:"azureMethod"`
 	// The blueprint identifier the action relates to
@@ -155,6 +203,8 @@ type Action struct {
 	SelfServiceTrigger ActionSelfServiceTriggerPtrOutput `pulumi:"selfServiceTrigger"`
 	// Title
 	Title pulumi.StringPtrOutput `pulumi:"title"`
+	// Upsert Entity invocation method
+	UpsertEntityMethod ActionUpsertEntityMethodPtrOutput `pulumi:"upsertEntityMethod"`
 	// Webhook invocation method
 	WebhookMethod ActionWebhookMethodPtrOutput `pulumi:"webhookMethod"`
 }
@@ -196,6 +246,8 @@ type actionState struct {
 	ApprovalEmailNotification *ActionApprovalEmailNotification `pulumi:"approvalEmailNotification"`
 	// The webhook notification of the approval
 	ApprovalWebhookNotification *ActionApprovalWebhookNotification `pulumi:"approvalWebhookNotification"`
+	// Automation trigger for the action
+	AutomationTrigger *ActionAutomationTrigger `pulumi:"automationTrigger"`
 	// Azure DevOps invocation method
 	AzureMethod *ActionAzureMethod `pulumi:"azureMethod"`
 	// The blueprint identifier the action relates to
@@ -222,6 +274,8 @@ type actionState struct {
 	SelfServiceTrigger *ActionSelfServiceTrigger `pulumi:"selfServiceTrigger"`
 	// Title
 	Title *string `pulumi:"title"`
+	// Upsert Entity invocation method
+	UpsertEntityMethod *ActionUpsertEntityMethod `pulumi:"upsertEntityMethod"`
 	// Webhook invocation method
 	WebhookMethod *ActionWebhookMethod `pulumi:"webhookMethod"`
 }
@@ -231,6 +285,8 @@ type ActionState struct {
 	ApprovalEmailNotification ActionApprovalEmailNotificationPtrInput
 	// The webhook notification of the approval
 	ApprovalWebhookNotification ActionApprovalWebhookNotificationPtrInput
+	// Automation trigger for the action
+	AutomationTrigger ActionAutomationTriggerPtrInput
 	// Azure DevOps invocation method
 	AzureMethod ActionAzureMethodPtrInput
 	// The blueprint identifier the action relates to
@@ -257,6 +313,8 @@ type ActionState struct {
 	SelfServiceTrigger ActionSelfServiceTriggerPtrInput
 	// Title
 	Title pulumi.StringPtrInput
+	// Upsert Entity invocation method
+	UpsertEntityMethod ActionUpsertEntityMethodPtrInput
 	// Webhook invocation method
 	WebhookMethod ActionWebhookMethodPtrInput
 }
@@ -270,6 +328,8 @@ type actionArgs struct {
 	ApprovalEmailNotification *ActionApprovalEmailNotification `pulumi:"approvalEmailNotification"`
 	// The webhook notification of the approval
 	ApprovalWebhookNotification *ActionApprovalWebhookNotification `pulumi:"approvalWebhookNotification"`
+	// Automation trigger for the action
+	AutomationTrigger *ActionAutomationTrigger `pulumi:"automationTrigger"`
 	// Azure DevOps invocation method
 	AzureMethod *ActionAzureMethod `pulumi:"azureMethod"`
 	// The blueprint identifier the action relates to
@@ -296,6 +356,8 @@ type actionArgs struct {
 	SelfServiceTrigger *ActionSelfServiceTrigger `pulumi:"selfServiceTrigger"`
 	// Title
 	Title *string `pulumi:"title"`
+	// Upsert Entity invocation method
+	UpsertEntityMethod *ActionUpsertEntityMethod `pulumi:"upsertEntityMethod"`
 	// Webhook invocation method
 	WebhookMethod *ActionWebhookMethod `pulumi:"webhookMethod"`
 }
@@ -306,6 +368,8 @@ type ActionArgs struct {
 	ApprovalEmailNotification ActionApprovalEmailNotificationPtrInput
 	// The webhook notification of the approval
 	ApprovalWebhookNotification ActionApprovalWebhookNotificationPtrInput
+	// Automation trigger for the action
+	AutomationTrigger ActionAutomationTriggerPtrInput
 	// Azure DevOps invocation method
 	AzureMethod ActionAzureMethodPtrInput
 	// The blueprint identifier the action relates to
@@ -332,6 +396,8 @@ type ActionArgs struct {
 	SelfServiceTrigger ActionSelfServiceTriggerPtrInput
 	// Title
 	Title pulumi.StringPtrInput
+	// Upsert Entity invocation method
+	UpsertEntityMethod ActionUpsertEntityMethodPtrInput
 	// Webhook invocation method
 	WebhookMethod ActionWebhookMethodPtrInput
 }
@@ -433,6 +499,11 @@ func (o ActionOutput) ApprovalWebhookNotification() ActionApprovalWebhookNotific
 	return o.ApplyT(func(v *Action) ActionApprovalWebhookNotificationPtrOutput { return v.ApprovalWebhookNotification }).(ActionApprovalWebhookNotificationPtrOutput)
 }
 
+// Automation trigger for the action
+func (o ActionOutput) AutomationTrigger() ActionAutomationTriggerPtrOutput {
+	return o.ApplyT(func(v *Action) ActionAutomationTriggerPtrOutput { return v.AutomationTrigger }).(ActionAutomationTriggerPtrOutput)
+}
+
 // Azure DevOps invocation method
 func (o ActionOutput) AzureMethod() ActionAzureMethodPtrOutput {
 	return o.ApplyT(func(v *Action) ActionAzureMethodPtrOutput { return v.AzureMethod }).(ActionAzureMethodPtrOutput)
@@ -493,6 +564,11 @@ func (o ActionOutput) SelfServiceTrigger() ActionSelfServiceTriggerPtrOutput {
 // Title
 func (o ActionOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Action) pulumi.StringPtrOutput { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+// Upsert Entity invocation method
+func (o ActionOutput) UpsertEntityMethod() ActionUpsertEntityMethodPtrOutput {
+	return o.ApplyT(func(v *Action) ActionUpsertEntityMethodPtrOutput { return v.UpsertEntityMethod }).(ActionUpsertEntityMethodPtrOutput)
 }
 
 // Webhook invocation method

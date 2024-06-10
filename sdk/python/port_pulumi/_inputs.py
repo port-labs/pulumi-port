@@ -12,6 +12,13 @@ from . import _utilities
 __all__ = [
     'ActionApprovalEmailNotificationArgs',
     'ActionApprovalWebhookNotificationArgs',
+    'ActionAutomationTriggerArgs',
+    'ActionAutomationTriggerAnyEntityChangeEventArgs',
+    'ActionAutomationTriggerEntityCreatedEventArgs',
+    'ActionAutomationTriggerEntityDeletedEventArgs',
+    'ActionAutomationTriggerEntityUpdatedEventArgs',
+    'ActionAutomationTriggerJqConditionArgs',
+    'ActionAutomationTriggerTimerPropertyExpiredEventArgs',
     'ActionAzureMethodArgs',
     'ActionGithubMethodArgs',
     'ActionGitlabMethodArgs',
@@ -33,6 +40,8 @@ __all__ = [
     'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs',
     'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs',
     'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs',
+    'ActionUpsertEntityMethodArgs',
+    'ActionUpsertEntityMethodMappingArgs',
     'ActionWebhookMethodArgs',
     'AggregationPropertiesPropertiesArgs',
     'AggregationPropertiesPropertiesMethodArgs',
@@ -122,6 +131,272 @@ class ActionApprovalWebhookNotificationArgs:
     @format.setter
     def format(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "format", value)
+
+
+@pulumi.input_type
+class ActionAutomationTriggerArgs:
+    def __init__(__self__, *,
+                 any_entity_change_event: Optional[pulumi.Input['ActionAutomationTriggerAnyEntityChangeEventArgs']] = None,
+                 entity_created_event: Optional[pulumi.Input['ActionAutomationTriggerEntityCreatedEventArgs']] = None,
+                 entity_deleted_event: Optional[pulumi.Input['ActionAutomationTriggerEntityDeletedEventArgs']] = None,
+                 entity_updated_event: Optional[pulumi.Input['ActionAutomationTriggerEntityUpdatedEventArgs']] = None,
+                 jq_condition: Optional[pulumi.Input['ActionAutomationTriggerJqConditionArgs']] = None,
+                 timer_property_expired_event: Optional[pulumi.Input['ActionAutomationTriggerTimerPropertyExpiredEventArgs']] = None):
+        """
+        :param pulumi.Input['ActionAutomationTriggerAnyEntityChangeEventArgs'] any_entity_change_event: Any entity change event trigger
+        :param pulumi.Input['ActionAutomationTriggerEntityCreatedEventArgs'] entity_created_event: Entity created event trigger
+        :param pulumi.Input['ActionAutomationTriggerEntityDeletedEventArgs'] entity_deleted_event: Entity deleted event trigger
+        :param pulumi.Input['ActionAutomationTriggerEntityUpdatedEventArgs'] entity_updated_event: Entity updated event trigger
+        :param pulumi.Input['ActionAutomationTriggerJqConditionArgs'] jq_condition: JQ condition for automation trigger
+        :param pulumi.Input['ActionAutomationTriggerTimerPropertyExpiredEventArgs'] timer_property_expired_event: Timer property expired event trigger
+        """
+        if any_entity_change_event is not None:
+            pulumi.set(__self__, "any_entity_change_event", any_entity_change_event)
+        if entity_created_event is not None:
+            pulumi.set(__self__, "entity_created_event", entity_created_event)
+        if entity_deleted_event is not None:
+            pulumi.set(__self__, "entity_deleted_event", entity_deleted_event)
+        if entity_updated_event is not None:
+            pulumi.set(__self__, "entity_updated_event", entity_updated_event)
+        if jq_condition is not None:
+            pulumi.set(__self__, "jq_condition", jq_condition)
+        if timer_property_expired_event is not None:
+            pulumi.set(__self__, "timer_property_expired_event", timer_property_expired_event)
+
+    @property
+    @pulumi.getter(name="anyEntityChangeEvent")
+    def any_entity_change_event(self) -> Optional[pulumi.Input['ActionAutomationTriggerAnyEntityChangeEventArgs']]:
+        """
+        Any entity change event trigger
+        """
+        return pulumi.get(self, "any_entity_change_event")
+
+    @any_entity_change_event.setter
+    def any_entity_change_event(self, value: Optional[pulumi.Input['ActionAutomationTriggerAnyEntityChangeEventArgs']]):
+        pulumi.set(self, "any_entity_change_event", value)
+
+    @property
+    @pulumi.getter(name="entityCreatedEvent")
+    def entity_created_event(self) -> Optional[pulumi.Input['ActionAutomationTriggerEntityCreatedEventArgs']]:
+        """
+        Entity created event trigger
+        """
+        return pulumi.get(self, "entity_created_event")
+
+    @entity_created_event.setter
+    def entity_created_event(self, value: Optional[pulumi.Input['ActionAutomationTriggerEntityCreatedEventArgs']]):
+        pulumi.set(self, "entity_created_event", value)
+
+    @property
+    @pulumi.getter(name="entityDeletedEvent")
+    def entity_deleted_event(self) -> Optional[pulumi.Input['ActionAutomationTriggerEntityDeletedEventArgs']]:
+        """
+        Entity deleted event trigger
+        """
+        return pulumi.get(self, "entity_deleted_event")
+
+    @entity_deleted_event.setter
+    def entity_deleted_event(self, value: Optional[pulumi.Input['ActionAutomationTriggerEntityDeletedEventArgs']]):
+        pulumi.set(self, "entity_deleted_event", value)
+
+    @property
+    @pulumi.getter(name="entityUpdatedEvent")
+    def entity_updated_event(self) -> Optional[pulumi.Input['ActionAutomationTriggerEntityUpdatedEventArgs']]:
+        """
+        Entity updated event trigger
+        """
+        return pulumi.get(self, "entity_updated_event")
+
+    @entity_updated_event.setter
+    def entity_updated_event(self, value: Optional[pulumi.Input['ActionAutomationTriggerEntityUpdatedEventArgs']]):
+        pulumi.set(self, "entity_updated_event", value)
+
+    @property
+    @pulumi.getter(name="jqCondition")
+    def jq_condition(self) -> Optional[pulumi.Input['ActionAutomationTriggerJqConditionArgs']]:
+        """
+        JQ condition for automation trigger
+        """
+        return pulumi.get(self, "jq_condition")
+
+    @jq_condition.setter
+    def jq_condition(self, value: Optional[pulumi.Input['ActionAutomationTriggerJqConditionArgs']]):
+        pulumi.set(self, "jq_condition", value)
+
+    @property
+    @pulumi.getter(name="timerPropertyExpiredEvent")
+    def timer_property_expired_event(self) -> Optional[pulumi.Input['ActionAutomationTriggerTimerPropertyExpiredEventArgs']]:
+        """
+        Timer property expired event trigger
+        """
+        return pulumi.get(self, "timer_property_expired_event")
+
+    @timer_property_expired_event.setter
+    def timer_property_expired_event(self, value: Optional[pulumi.Input['ActionAutomationTriggerTimerPropertyExpiredEventArgs']]):
+        pulumi.set(self, "timer_property_expired_event", value)
+
+
+@pulumi.input_type
+class ActionAutomationTriggerAnyEntityChangeEventArgs:
+    def __init__(__self__, *,
+                 blueprint_identifier: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] blueprint_identifier: The blueprint identifier of the changed entity
+        """
+        pulumi.set(__self__, "blueprint_identifier", blueprint_identifier)
+
+    @property
+    @pulumi.getter(name="blueprintIdentifier")
+    def blueprint_identifier(self) -> pulumi.Input[str]:
+        """
+        The blueprint identifier of the changed entity
+        """
+        return pulumi.get(self, "blueprint_identifier")
+
+    @blueprint_identifier.setter
+    def blueprint_identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "blueprint_identifier", value)
+
+
+@pulumi.input_type
+class ActionAutomationTriggerEntityCreatedEventArgs:
+    def __init__(__self__, *,
+                 blueprint_identifier: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] blueprint_identifier: The blueprint identifier of the created entity
+        """
+        pulumi.set(__self__, "blueprint_identifier", blueprint_identifier)
+
+    @property
+    @pulumi.getter(name="blueprintIdentifier")
+    def blueprint_identifier(self) -> pulumi.Input[str]:
+        """
+        The blueprint identifier of the created entity
+        """
+        return pulumi.get(self, "blueprint_identifier")
+
+    @blueprint_identifier.setter
+    def blueprint_identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "blueprint_identifier", value)
+
+
+@pulumi.input_type
+class ActionAutomationTriggerEntityDeletedEventArgs:
+    def __init__(__self__, *,
+                 blueprint_identifier: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] blueprint_identifier: The blueprint identifier of the deleted entity
+        """
+        pulumi.set(__self__, "blueprint_identifier", blueprint_identifier)
+
+    @property
+    @pulumi.getter(name="blueprintIdentifier")
+    def blueprint_identifier(self) -> pulumi.Input[str]:
+        """
+        The blueprint identifier of the deleted entity
+        """
+        return pulumi.get(self, "blueprint_identifier")
+
+    @blueprint_identifier.setter
+    def blueprint_identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "blueprint_identifier", value)
+
+
+@pulumi.input_type
+class ActionAutomationTriggerEntityUpdatedEventArgs:
+    def __init__(__self__, *,
+                 blueprint_identifier: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] blueprint_identifier: The blueprint identifier of the updated entity
+        """
+        pulumi.set(__self__, "blueprint_identifier", blueprint_identifier)
+
+    @property
+    @pulumi.getter(name="blueprintIdentifier")
+    def blueprint_identifier(self) -> pulumi.Input[str]:
+        """
+        The blueprint identifier of the updated entity
+        """
+        return pulumi.get(self, "blueprint_identifier")
+
+    @blueprint_identifier.setter
+    def blueprint_identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "blueprint_identifier", value)
+
+
+@pulumi.input_type
+class ActionAutomationTriggerJqConditionArgs:
+    def __init__(__self__, *,
+                 expressions: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 combinator: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] expressions: The jq expressions of the condition
+        :param pulumi.Input[str] combinator: The combinator of the condition
+        """
+        pulumi.set(__self__, "expressions", expressions)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+
+    @property
+    @pulumi.getter
+    def expressions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The jq expressions of the condition
+        """
+        return pulumi.get(self, "expressions")
+
+    @expressions.setter
+    def expressions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "expressions", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The combinator of the condition
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+
+@pulumi.input_type
+class ActionAutomationTriggerTimerPropertyExpiredEventArgs:
+    def __init__(__self__, *,
+                 blueprint_identifier: pulumi.Input[str],
+                 property_identifier: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] blueprint_identifier: The blueprint identifier of the expired timer property
+        :param pulumi.Input[str] property_identifier: The property identifier of the expired timer property
+        """
+        pulumi.set(__self__, "blueprint_identifier", blueprint_identifier)
+        pulumi.set(__self__, "property_identifier", property_identifier)
+
+    @property
+    @pulumi.getter(name="blueprintIdentifier")
+    def blueprint_identifier(self) -> pulumi.Input[str]:
+        """
+        The blueprint identifier of the expired timer property
+        """
+        return pulumi.get(self, "blueprint_identifier")
+
+    @blueprint_identifier.setter
+    def blueprint_identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "blueprint_identifier", value)
+
+    @property
+    @pulumi.getter(name="propertyIdentifier")
+    def property_identifier(self) -> pulumi.Input[str]:
+        """
+        The property identifier of the expired timer property
+        """
+        return pulumi.get(self, "property_identifier")
+
+    @property_identifier.setter
+    def property_identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "property_identifier", value)
 
 
 @pulumi.input_type
@@ -2120,6 +2395,146 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs:
     @jq_query.setter
     def jq_query(self, value: pulumi.Input[str]):
         pulumi.set(self, "jq_query", value)
+
+
+@pulumi.input_type
+class ActionUpsertEntityMethodArgs:
+    def __init__(__self__, *,
+                 blueprint_identifier: pulumi.Input[str],
+                 mapping: Optional[pulumi.Input['ActionUpsertEntityMethodMappingArgs']] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint_identifier: Required when selecting type Upsert Entity. The blueprint identifier of the entity for the upsert
+        :param pulumi.Input['ActionUpsertEntityMethodMappingArgs'] mapping: Upsert Entity invocation method
+        :param pulumi.Input[str] title: The title of the entity
+        """
+        pulumi.set(__self__, "blueprint_identifier", blueprint_identifier)
+        if mapping is not None:
+            pulumi.set(__self__, "mapping", mapping)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="blueprintIdentifier")
+    def blueprint_identifier(self) -> pulumi.Input[str]:
+        """
+        Required when selecting type Upsert Entity. The blueprint identifier of the entity for the upsert
+        """
+        return pulumi.get(self, "blueprint_identifier")
+
+    @blueprint_identifier.setter
+    def blueprint_identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "blueprint_identifier", value)
+
+    @property
+    @pulumi.getter
+    def mapping(self) -> Optional[pulumi.Input['ActionUpsertEntityMethodMappingArgs']]:
+        """
+        Upsert Entity invocation method
+        """
+        return pulumi.get(self, "mapping")
+
+    @mapping.setter
+    def mapping(self, value: Optional[pulumi.Input['ActionUpsertEntityMethodMappingArgs']]):
+        pulumi.set(self, "mapping", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of the entity
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class ActionUpsertEntityMethodMappingArgs:
+    def __init__(__self__, *,
+                 identifier: pulumi.Input[str],
+                 icon: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[str]] = None,
+                 relations: Optional[pulumi.Input[str]] = None,
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] identifier: Identifier
+        :param pulumi.Input[str] icon: Icon
+        :param pulumi.Input[str] properties: The properties of the entity (key-value object encoded to a string)
+        :param pulumi.Input[str] relations: The relations of the entity (key-value object encoded to a string)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The teams the entity belongs to
+        """
+        pulumi.set(__self__, "identifier", identifier)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if relations is not None:
+            pulumi.set(__self__, "relations", relations)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[str]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[pulumi.Input[str]]:
+        """
+        Icon
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "icon", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[str]]:
+        """
+        The properties of the entity (key-value object encoded to a string)
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter
+    def relations(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relations of the entity (key-value object encoded to a string)
+        """
+        return pulumi.get(self, "relations")
+
+    @relations.setter
+    def relations(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relations", value)
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The teams the entity belongs to
+        """
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
 
 
 @pulumi.input_type
