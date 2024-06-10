@@ -19,6 +19,7 @@ class ActionArgs:
                  identifier: pulumi.Input[str],
                  approval_email_notification: Optional[pulumi.Input['ActionApprovalEmailNotificationArgs']] = None,
                  approval_webhook_notification: Optional[pulumi.Input['ActionApprovalWebhookNotificationArgs']] = None,
+                 automation_trigger: Optional[pulumi.Input['ActionAutomationTriggerArgs']] = None,
                  azure_method: Optional[pulumi.Input['ActionAzureMethodArgs']] = None,
                  blueprint: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -30,12 +31,14 @@ class ActionArgs:
                  required_approval: Optional[pulumi.Input[bool]] = None,
                  self_service_trigger: Optional[pulumi.Input['ActionSelfServiceTriggerArgs']] = None,
                  title: Optional[pulumi.Input[str]] = None,
+                 upsert_entity_method: Optional[pulumi.Input['ActionUpsertEntityMethodArgs']] = None,
                  webhook_method: Optional[pulumi.Input['ActionWebhookMethodArgs']] = None):
         """
         The set of arguments for constructing a Action resource.
         :param pulumi.Input[str] identifier: Identifier
         :param pulumi.Input['ActionApprovalEmailNotificationArgs'] approval_email_notification: The email notification of the approval
         :param pulumi.Input['ActionApprovalWebhookNotificationArgs'] approval_webhook_notification: The webhook notification of the approval
+        :param pulumi.Input['ActionAutomationTriggerArgs'] automation_trigger: Automation trigger for the action
         :param pulumi.Input['ActionAzureMethodArgs'] azure_method: Azure DevOps invocation method
         :param pulumi.Input[str] blueprint: The blueprint identifier the action relates to
         :param pulumi.Input[str] description: Description
@@ -47,6 +50,7 @@ class ActionArgs:
         :param pulumi.Input[bool] required_approval: Require approval before invoking the action
         :param pulumi.Input['ActionSelfServiceTriggerArgs'] self_service_trigger: Self service trigger for the action
         :param pulumi.Input[str] title: Title
+        :param pulumi.Input['ActionUpsertEntityMethodArgs'] upsert_entity_method: Upsert Entity invocation method
         :param pulumi.Input['ActionWebhookMethodArgs'] webhook_method: Webhook invocation method
         """
         pulumi.set(__self__, "identifier", identifier)
@@ -54,6 +58,8 @@ class ActionArgs:
             pulumi.set(__self__, "approval_email_notification", approval_email_notification)
         if approval_webhook_notification is not None:
             pulumi.set(__self__, "approval_webhook_notification", approval_webhook_notification)
+        if automation_trigger is not None:
+            pulumi.set(__self__, "automation_trigger", automation_trigger)
         if azure_method is not None:
             pulumi.set(__self__, "azure_method", azure_method)
         if blueprint is not None:
@@ -79,6 +85,8 @@ class ActionArgs:
             pulumi.set(__self__, "self_service_trigger", self_service_trigger)
         if title is not None:
             pulumi.set(__self__, "title", title)
+        if upsert_entity_method is not None:
+            pulumi.set(__self__, "upsert_entity_method", upsert_entity_method)
         if webhook_method is not None:
             pulumi.set(__self__, "webhook_method", webhook_method)
 
@@ -117,6 +125,18 @@ class ActionArgs:
     @approval_webhook_notification.setter
     def approval_webhook_notification(self, value: Optional[pulumi.Input['ActionApprovalWebhookNotificationArgs']]):
         pulumi.set(self, "approval_webhook_notification", value)
+
+    @property
+    @pulumi.getter(name="automationTrigger")
+    def automation_trigger(self) -> Optional[pulumi.Input['ActionAutomationTriggerArgs']]:
+        """
+        Automation trigger for the action
+        """
+        return pulumi.get(self, "automation_trigger")
+
+    @automation_trigger.setter
+    def automation_trigger(self, value: Optional[pulumi.Input['ActionAutomationTriggerArgs']]):
+        pulumi.set(self, "automation_trigger", value)
 
     @property
     @pulumi.getter(name="azureMethod")
@@ -254,6 +274,18 @@ class ActionArgs:
         pulumi.set(self, "title", value)
 
     @property
+    @pulumi.getter(name="upsertEntityMethod")
+    def upsert_entity_method(self) -> Optional[pulumi.Input['ActionUpsertEntityMethodArgs']]:
+        """
+        Upsert Entity invocation method
+        """
+        return pulumi.get(self, "upsert_entity_method")
+
+    @upsert_entity_method.setter
+    def upsert_entity_method(self, value: Optional[pulumi.Input['ActionUpsertEntityMethodArgs']]):
+        pulumi.set(self, "upsert_entity_method", value)
+
+    @property
     @pulumi.getter(name="webhookMethod")
     def webhook_method(self) -> Optional[pulumi.Input['ActionWebhookMethodArgs']]:
         """
@@ -271,6 +303,7 @@ class _ActionState:
     def __init__(__self__, *,
                  approval_email_notification: Optional[pulumi.Input['ActionApprovalEmailNotificationArgs']] = None,
                  approval_webhook_notification: Optional[pulumi.Input['ActionApprovalWebhookNotificationArgs']] = None,
+                 automation_trigger: Optional[pulumi.Input['ActionAutomationTriggerArgs']] = None,
                  azure_method: Optional[pulumi.Input['ActionAzureMethodArgs']] = None,
                  blueprint: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -283,11 +316,13 @@ class _ActionState:
                  required_approval: Optional[pulumi.Input[bool]] = None,
                  self_service_trigger: Optional[pulumi.Input['ActionSelfServiceTriggerArgs']] = None,
                  title: Optional[pulumi.Input[str]] = None,
+                 upsert_entity_method: Optional[pulumi.Input['ActionUpsertEntityMethodArgs']] = None,
                  webhook_method: Optional[pulumi.Input['ActionWebhookMethodArgs']] = None):
         """
         Input properties used for looking up and filtering Action resources.
         :param pulumi.Input['ActionApprovalEmailNotificationArgs'] approval_email_notification: The email notification of the approval
         :param pulumi.Input['ActionApprovalWebhookNotificationArgs'] approval_webhook_notification: The webhook notification of the approval
+        :param pulumi.Input['ActionAutomationTriggerArgs'] automation_trigger: Automation trigger for the action
         :param pulumi.Input['ActionAzureMethodArgs'] azure_method: Azure DevOps invocation method
         :param pulumi.Input[str] blueprint: The blueprint identifier the action relates to
         :param pulumi.Input[str] description: Description
@@ -300,12 +335,15 @@ class _ActionState:
         :param pulumi.Input[bool] required_approval: Require approval before invoking the action
         :param pulumi.Input['ActionSelfServiceTriggerArgs'] self_service_trigger: Self service trigger for the action
         :param pulumi.Input[str] title: Title
+        :param pulumi.Input['ActionUpsertEntityMethodArgs'] upsert_entity_method: Upsert Entity invocation method
         :param pulumi.Input['ActionWebhookMethodArgs'] webhook_method: Webhook invocation method
         """
         if approval_email_notification is not None:
             pulumi.set(__self__, "approval_email_notification", approval_email_notification)
         if approval_webhook_notification is not None:
             pulumi.set(__self__, "approval_webhook_notification", approval_webhook_notification)
+        if automation_trigger is not None:
+            pulumi.set(__self__, "automation_trigger", automation_trigger)
         if azure_method is not None:
             pulumi.set(__self__, "azure_method", azure_method)
         if blueprint is not None:
@@ -333,6 +371,8 @@ class _ActionState:
             pulumi.set(__self__, "self_service_trigger", self_service_trigger)
         if title is not None:
             pulumi.set(__self__, "title", title)
+        if upsert_entity_method is not None:
+            pulumi.set(__self__, "upsert_entity_method", upsert_entity_method)
         if webhook_method is not None:
             pulumi.set(__self__, "webhook_method", webhook_method)
 
@@ -359,6 +399,18 @@ class _ActionState:
     @approval_webhook_notification.setter
     def approval_webhook_notification(self, value: Optional[pulumi.Input['ActionApprovalWebhookNotificationArgs']]):
         pulumi.set(self, "approval_webhook_notification", value)
+
+    @property
+    @pulumi.getter(name="automationTrigger")
+    def automation_trigger(self) -> Optional[pulumi.Input['ActionAutomationTriggerArgs']]:
+        """
+        Automation trigger for the action
+        """
+        return pulumi.get(self, "automation_trigger")
+
+    @automation_trigger.setter
+    def automation_trigger(self, value: Optional[pulumi.Input['ActionAutomationTriggerArgs']]):
+        pulumi.set(self, "automation_trigger", value)
 
     @property
     @pulumi.getter(name="azureMethod")
@@ -508,6 +560,18 @@ class _ActionState:
         pulumi.set(self, "title", value)
 
     @property
+    @pulumi.getter(name="upsertEntityMethod")
+    def upsert_entity_method(self) -> Optional[pulumi.Input['ActionUpsertEntityMethodArgs']]:
+        """
+        Upsert Entity invocation method
+        """
+        return pulumi.get(self, "upsert_entity_method")
+
+    @upsert_entity_method.setter
+    def upsert_entity_method(self, value: Optional[pulumi.Input['ActionUpsertEntityMethodArgs']]):
+        pulumi.set(self, "upsert_entity_method", value)
+
+    @property
     @pulumi.getter(name="webhookMethod")
     def webhook_method(self) -> Optional[pulumi.Input['ActionWebhookMethodArgs']]:
         """
@@ -527,6 +591,7 @@ class Action(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  approval_email_notification: Optional[pulumi.Input[pulumi.InputType['ActionApprovalEmailNotificationArgs']]] = None,
                  approval_webhook_notification: Optional[pulumi.Input[pulumi.InputType['ActionApprovalWebhookNotificationArgs']]] = None,
+                 automation_trigger: Optional[pulumi.Input[pulumi.InputType['ActionAutomationTriggerArgs']]] = None,
                  azure_method: Optional[pulumi.Input[pulumi.InputType['ActionAzureMethodArgs']]] = None,
                  blueprint: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -539,6 +604,7 @@ class Action(pulumi.CustomResource):
                  required_approval: Optional[pulumi.Input[bool]] = None,
                  self_service_trigger: Optional[pulumi.Input[pulumi.InputType['ActionSelfServiceTriggerArgs']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
+                 upsert_entity_method: Optional[pulumi.Input[pulumi.InputType['ActionUpsertEntityMethodArgs']]] = None,
                  webhook_method: Optional[pulumi.Input[pulumi.InputType['ActionWebhookMethodArgs']]] = None,
                  __props__=None):
         """
@@ -624,10 +690,37 @@ class Action(pulumi.CustomResource):
             })
         ```
 
+        ### With Automation Trigger
+
+        Port allows setting an automation trigger to an action, for executing an action based on event occurred to an entity in Port.
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_port as port
+
+        delete_temporary_microservice = port.index.Port_action("deleteTemporaryMicroservice",
+            title=Delete Temporary Microservice,
+            identifier=delete-temp-microservice,
+            icon=Terraform,
+            automation_trigger={
+                timerPropertyExpiredEvent: {
+                    blueprintIdentifier: port_blueprint.microservice.identifier,
+                    propertyIdentifier: ttl,
+                },
+            },
+            kafka_method={
+                payload: json.dumps({
+                    runId: {{.run.id}},
+                }),
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ActionApprovalEmailNotificationArgs']] approval_email_notification: The email notification of the approval
         :param pulumi.Input[pulumi.InputType['ActionApprovalWebhookNotificationArgs']] approval_webhook_notification: The webhook notification of the approval
+        :param pulumi.Input[pulumi.InputType['ActionAutomationTriggerArgs']] automation_trigger: Automation trigger for the action
         :param pulumi.Input[pulumi.InputType['ActionAzureMethodArgs']] azure_method: Azure DevOps invocation method
         :param pulumi.Input[str] blueprint: The blueprint identifier the action relates to
         :param pulumi.Input[str] description: Description
@@ -640,6 +733,7 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[bool] required_approval: Require approval before invoking the action
         :param pulumi.Input[pulumi.InputType['ActionSelfServiceTriggerArgs']] self_service_trigger: Self service trigger for the action
         :param pulumi.Input[str] title: Title
+        :param pulumi.Input[pulumi.InputType['ActionUpsertEntityMethodArgs']] upsert_entity_method: Upsert Entity invocation method
         :param pulumi.Input[pulumi.InputType['ActionWebhookMethodArgs']] webhook_method: Webhook invocation method
         """
         ...
@@ -731,6 +825,32 @@ class Action(pulumi.CustomResource):
             })
         ```
 
+        ### With Automation Trigger
+
+        Port allows setting an automation trigger to an action, for executing an action based on event occurred to an entity in Port.
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_port as port
+
+        delete_temporary_microservice = port.index.Port_action("deleteTemporaryMicroservice",
+            title=Delete Temporary Microservice,
+            identifier=delete-temp-microservice,
+            icon=Terraform,
+            automation_trigger={
+                timerPropertyExpiredEvent: {
+                    blueprintIdentifier: port_blueprint.microservice.identifier,
+                    propertyIdentifier: ttl,
+                },
+            },
+            kafka_method={
+                payload: json.dumps({
+                    runId: {{.run.id}},
+                }),
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param ActionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -748,6 +868,7 @@ class Action(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  approval_email_notification: Optional[pulumi.Input[pulumi.InputType['ActionApprovalEmailNotificationArgs']]] = None,
                  approval_webhook_notification: Optional[pulumi.Input[pulumi.InputType['ActionApprovalWebhookNotificationArgs']]] = None,
+                 automation_trigger: Optional[pulumi.Input[pulumi.InputType['ActionAutomationTriggerArgs']]] = None,
                  azure_method: Optional[pulumi.Input[pulumi.InputType['ActionAzureMethodArgs']]] = None,
                  blueprint: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -760,6 +881,7 @@ class Action(pulumi.CustomResource):
                  required_approval: Optional[pulumi.Input[bool]] = None,
                  self_service_trigger: Optional[pulumi.Input[pulumi.InputType['ActionSelfServiceTriggerArgs']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
+                 upsert_entity_method: Optional[pulumi.Input[pulumi.InputType['ActionUpsertEntityMethodArgs']]] = None,
                  webhook_method: Optional[pulumi.Input[pulumi.InputType['ActionWebhookMethodArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -772,6 +894,7 @@ class Action(pulumi.CustomResource):
 
             __props__.__dict__["approval_email_notification"] = approval_email_notification
             __props__.__dict__["approval_webhook_notification"] = approval_webhook_notification
+            __props__.__dict__["automation_trigger"] = automation_trigger
             __props__.__dict__["azure_method"] = azure_method
             __props__.__dict__["blueprint"] = blueprint
             __props__.__dict__["description"] = description
@@ -786,6 +909,7 @@ class Action(pulumi.CustomResource):
             __props__.__dict__["required_approval"] = required_approval
             __props__.__dict__["self_service_trigger"] = self_service_trigger
             __props__.__dict__["title"] = title
+            __props__.__dict__["upsert_entity_method"] = upsert_entity_method
             __props__.__dict__["webhook_method"] = webhook_method
         super(Action, __self__).__init__(
             'port:index/action:Action',
@@ -799,6 +923,7 @@ class Action(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             approval_email_notification: Optional[pulumi.Input[pulumi.InputType['ActionApprovalEmailNotificationArgs']]] = None,
             approval_webhook_notification: Optional[pulumi.Input[pulumi.InputType['ActionApprovalWebhookNotificationArgs']]] = None,
+            automation_trigger: Optional[pulumi.Input[pulumi.InputType['ActionAutomationTriggerArgs']]] = None,
             azure_method: Optional[pulumi.Input[pulumi.InputType['ActionAzureMethodArgs']]] = None,
             blueprint: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -811,6 +936,7 @@ class Action(pulumi.CustomResource):
             required_approval: Optional[pulumi.Input[bool]] = None,
             self_service_trigger: Optional[pulumi.Input[pulumi.InputType['ActionSelfServiceTriggerArgs']]] = None,
             title: Optional[pulumi.Input[str]] = None,
+            upsert_entity_method: Optional[pulumi.Input[pulumi.InputType['ActionUpsertEntityMethodArgs']]] = None,
             webhook_method: Optional[pulumi.Input[pulumi.InputType['ActionWebhookMethodArgs']]] = None) -> 'Action':
         """
         Get an existing Action resource's state with the given name, id, and optional extra
@@ -821,6 +947,7 @@ class Action(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ActionApprovalEmailNotificationArgs']] approval_email_notification: The email notification of the approval
         :param pulumi.Input[pulumi.InputType['ActionApprovalWebhookNotificationArgs']] approval_webhook_notification: The webhook notification of the approval
+        :param pulumi.Input[pulumi.InputType['ActionAutomationTriggerArgs']] automation_trigger: Automation trigger for the action
         :param pulumi.Input[pulumi.InputType['ActionAzureMethodArgs']] azure_method: Azure DevOps invocation method
         :param pulumi.Input[str] blueprint: The blueprint identifier the action relates to
         :param pulumi.Input[str] description: Description
@@ -833,6 +960,7 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[bool] required_approval: Require approval before invoking the action
         :param pulumi.Input[pulumi.InputType['ActionSelfServiceTriggerArgs']] self_service_trigger: Self service trigger for the action
         :param pulumi.Input[str] title: Title
+        :param pulumi.Input[pulumi.InputType['ActionUpsertEntityMethodArgs']] upsert_entity_method: Upsert Entity invocation method
         :param pulumi.Input[pulumi.InputType['ActionWebhookMethodArgs']] webhook_method: Webhook invocation method
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -841,6 +969,7 @@ class Action(pulumi.CustomResource):
 
         __props__.__dict__["approval_email_notification"] = approval_email_notification
         __props__.__dict__["approval_webhook_notification"] = approval_webhook_notification
+        __props__.__dict__["automation_trigger"] = automation_trigger
         __props__.__dict__["azure_method"] = azure_method
         __props__.__dict__["blueprint"] = blueprint
         __props__.__dict__["description"] = description
@@ -853,6 +982,7 @@ class Action(pulumi.CustomResource):
         __props__.__dict__["required_approval"] = required_approval
         __props__.__dict__["self_service_trigger"] = self_service_trigger
         __props__.__dict__["title"] = title
+        __props__.__dict__["upsert_entity_method"] = upsert_entity_method
         __props__.__dict__["webhook_method"] = webhook_method
         return Action(resource_name, opts=opts, __props__=__props__)
 
@@ -871,6 +1001,14 @@ class Action(pulumi.CustomResource):
         The webhook notification of the approval
         """
         return pulumi.get(self, "approval_webhook_notification")
+
+    @property
+    @pulumi.getter(name="automationTrigger")
+    def automation_trigger(self) -> pulumi.Output[Optional['outputs.ActionAutomationTrigger']]:
+        """
+        Automation trigger for the action
+        """
+        return pulumi.get(self, "automation_trigger")
 
     @property
     @pulumi.getter(name="azureMethod")
@@ -970,6 +1108,14 @@ class Action(pulumi.CustomResource):
         Title
         """
         return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter(name="upsertEntityMethod")
+    def upsert_entity_method(self) -> pulumi.Output[Optional['outputs.ActionUpsertEntityMethod']]:
+        """
+        Upsert Entity invocation method
+        """
+        return pulumi.get(self, "upsert_entity_method")
 
     @property
     @pulumi.getter(name="webhookMethod")

@@ -19,6 +19,83 @@ export interface ActionApprovalWebhookNotification {
     url: pulumi.Input<string>;
 }
 
+export interface ActionAutomationTrigger {
+    /**
+     * Any entity change event trigger
+     */
+    anyEntityChangeEvent?: pulumi.Input<inputs.ActionAutomationTriggerAnyEntityChangeEvent>;
+    /**
+     * Entity created event trigger
+     */
+    entityCreatedEvent?: pulumi.Input<inputs.ActionAutomationTriggerEntityCreatedEvent>;
+    /**
+     * Entity deleted event trigger
+     */
+    entityDeletedEvent?: pulumi.Input<inputs.ActionAutomationTriggerEntityDeletedEvent>;
+    /**
+     * Entity updated event trigger
+     */
+    entityUpdatedEvent?: pulumi.Input<inputs.ActionAutomationTriggerEntityUpdatedEvent>;
+    /**
+     * JQ condition for automation trigger
+     */
+    jqCondition?: pulumi.Input<inputs.ActionAutomationTriggerJqCondition>;
+    /**
+     * Timer property expired event trigger
+     */
+    timerPropertyExpiredEvent?: pulumi.Input<inputs.ActionAutomationTriggerTimerPropertyExpiredEvent>;
+}
+
+export interface ActionAutomationTriggerAnyEntityChangeEvent {
+    /**
+     * The blueprint identifier of the changed entity
+     */
+    blueprintIdentifier: pulumi.Input<string>;
+}
+
+export interface ActionAutomationTriggerEntityCreatedEvent {
+    /**
+     * The blueprint identifier of the created entity
+     */
+    blueprintIdentifier: pulumi.Input<string>;
+}
+
+export interface ActionAutomationTriggerEntityDeletedEvent {
+    /**
+     * The blueprint identifier of the deleted entity
+     */
+    blueprintIdentifier: pulumi.Input<string>;
+}
+
+export interface ActionAutomationTriggerEntityUpdatedEvent {
+    /**
+     * The blueprint identifier of the updated entity
+     */
+    blueprintIdentifier: pulumi.Input<string>;
+}
+
+export interface ActionAutomationTriggerJqCondition {
+    /**
+     * The combinator of the condition
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The jq expressions of the condition
+     */
+    expressions: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ActionAutomationTriggerTimerPropertyExpiredEvent {
+    /**
+     * The blueprint identifier of the expired timer property
+     */
+    blueprintIdentifier: pulumi.Input<string>;
+    /**
+     * The property identifier of the expired timer property
+     */
+    propertyIdentifier: pulumi.Input<string>;
+}
+
 export interface ActionAzureMethod {
     /**
      * Required when selecting type AZURE. The Azure org that the workflow belongs to
@@ -545,6 +622,44 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule {
 
 export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue {
     jqQuery: pulumi.Input<string>;
+}
+
+export interface ActionUpsertEntityMethod {
+    /**
+     * Required when selecting type Upsert Entity. The blueprint identifier of the entity for the upsert
+     */
+    blueprintIdentifier: pulumi.Input<string>;
+    /**
+     * Upsert Entity invocation method
+     */
+    mapping?: pulumi.Input<inputs.ActionUpsertEntityMethodMapping>;
+    /**
+     * The title of the entity
+     */
+    title?: pulumi.Input<string>;
+}
+
+export interface ActionUpsertEntityMethodMapping {
+    /**
+     * Icon
+     */
+    icon?: pulumi.Input<string>;
+    /**
+     * Identifier
+     */
+    identifier: pulumi.Input<string>;
+    /**
+     * The properties of the entity (key-value object encoded to a string)
+     */
+    properties?: pulumi.Input<string>;
+    /**
+     * The relations of the entity (key-value object encoded to a string)
+     */
+    relations?: pulumi.Input<string>;
+    /**
+     * The teams the entity belongs to
+     */
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ActionWebhookMethod {
