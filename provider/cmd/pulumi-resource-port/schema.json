@@ -94,6 +94,127 @@
                 "url"
             ]
         },
+        "port:index/ActionAutomationTrigger:ActionAutomationTrigger": {
+            "properties": {
+                "anyEntityChangeEvent": {
+                    "$ref": "#/types/port:index/ActionAutomationTriggerAnyEntityChangeEvent:ActionAutomationTriggerAnyEntityChangeEvent",
+                    "description": "Any entity change event trigger\n"
+                },
+                "entityCreatedEvent": {
+                    "$ref": "#/types/port:index/ActionAutomationTriggerEntityCreatedEvent:ActionAutomationTriggerEntityCreatedEvent",
+                    "description": "Entity created event trigger\n"
+                },
+                "entityDeletedEvent": {
+                    "$ref": "#/types/port:index/ActionAutomationTriggerEntityDeletedEvent:ActionAutomationTriggerEntityDeletedEvent",
+                    "description": "Entity deleted event trigger\n"
+                },
+                "entityUpdatedEvent": {
+                    "$ref": "#/types/port:index/ActionAutomationTriggerEntityUpdatedEvent:ActionAutomationTriggerEntityUpdatedEvent",
+                    "description": "Entity updated event trigger\n"
+                },
+                "jqCondition": {
+                    "$ref": "#/types/port:index/ActionAutomationTriggerJqCondition:ActionAutomationTriggerJqCondition",
+                    "description": "JQ condition for automation trigger\n"
+                },
+                "timerPropertyExpiredEvent": {
+                    "$ref": "#/types/port:index/ActionAutomationTriggerTimerPropertyExpiredEvent:ActionAutomationTriggerTimerPropertyExpiredEvent",
+                    "description": "Timer property expired event trigger\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/ActionAutomationTriggerAnyEntityChangeEvent:ActionAutomationTriggerAnyEntityChangeEvent": {
+            "properties": {
+                "blueprintIdentifier": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the changed entity\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "blueprintIdentifier"
+            ]
+        },
+        "port:index/ActionAutomationTriggerEntityCreatedEvent:ActionAutomationTriggerEntityCreatedEvent": {
+            "properties": {
+                "blueprintIdentifier": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the created entity\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "blueprintIdentifier"
+            ]
+        },
+        "port:index/ActionAutomationTriggerEntityDeletedEvent:ActionAutomationTriggerEntityDeletedEvent": {
+            "properties": {
+                "blueprintIdentifier": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the deleted entity\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "blueprintIdentifier"
+            ]
+        },
+        "port:index/ActionAutomationTriggerEntityUpdatedEvent:ActionAutomationTriggerEntityUpdatedEvent": {
+            "properties": {
+                "blueprintIdentifier": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the updated entity\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "blueprintIdentifier"
+            ]
+        },
+        "port:index/ActionAutomationTriggerJqCondition:ActionAutomationTriggerJqCondition": {
+            "properties": {
+                "combinator": {
+                    "type": "string",
+                    "description": "The combinator of the condition\n"
+                },
+                "expressions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The jq expressions of the condition\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "expressions"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "combinator",
+                        "expressions"
+                    ]
+                }
+            }
+        },
+        "port:index/ActionAutomationTriggerTimerPropertyExpiredEvent:ActionAutomationTriggerTimerPropertyExpiredEvent": {
+            "properties": {
+                "blueprintIdentifier": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the expired timer property\n"
+                },
+                "propertyIdentifier": {
+                    "type": "string",
+                    "description": "The property identifier of the expired timer property\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "blueprintIdentifier",
+                "propertyIdentifier"
+            ]
+        },
         "port:index/ActionAzureMethod:ActionAzureMethod": {
             "properties": {
                 "org": {
@@ -803,6 +924,57 @@
             "type": "object",
             "required": [
                 "jqQuery"
+            ]
+        },
+        "port:index/ActionUpsertEntityMethod:ActionUpsertEntityMethod": {
+            "properties": {
+                "blueprintIdentifier": {
+                    "type": "string",
+                    "description": "Required when selecting type Upsert Entity. The blueprint identifier of the entity for the upsert\n"
+                },
+                "mapping": {
+                    "$ref": "#/types/port:index/ActionUpsertEntityMethodMapping:ActionUpsertEntityMethodMapping",
+                    "description": "Upsert Entity invocation method\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the entity\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "blueprintIdentifier"
+            ]
+        },
+        "port:index/ActionUpsertEntityMethodMapping:ActionUpsertEntityMethodMapping": {
+            "properties": {
+                "icon": {
+                    "type": "string",
+                    "description": "Icon\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Identifier\n"
+                },
+                "properties": {
+                    "type": "string",
+                    "description": "The properties of the entity (key-value object encoded to a string)\n"
+                },
+                "relations": {
+                    "type": "string",
+                    "description": "The relations of the entity (key-value object encoded to a string)\n"
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The teams the entity belongs to\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "identifier"
             ]
         },
         "port:index/ActionWebhookMethod:ActionWebhookMethod": {
@@ -2422,7 +2594,7 @@
     },
     "resources": {
         "port:index/action:Action": {
-            "description": "Docs for the Action resource can be found [here](https://docs.getport.io/create-self-service-experiences/).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as port from \"@pulumi/port\";\n\nconst createMicroservice = new port.index.Port_action(\"createMicroservice\", {\n    title: \"Create Microservice\",\n    identifier: \"create-microservice\",\n    icon: \"Terraform\",\n    selfServiceTrigger: {\n        operation: \"CREATE\",\n        blueprintIdentifier: port_blueprint.microservice.identifier,\n        userProperties: {\n            stringProps: {\n                myStringIdentifier: {\n                    title: \"My String Identifier\",\n                    required: true,\n                    format: \"entity\",\n                    blueprint: port_blueprint.parent.identifier,\n                    dataset: {\n                        combinator: \"and\",\n                        rules: [{\n                            property: \"$title\",\n                            operator: \"contains\",\n                            value: {\n                                jqQuery: \"\\\"specificValue\\\"\",\n                            },\n                        }],\n                    },\n                },\n            },\n            numberProps: {\n                myNumberIdentifier: {\n                    title: \"My Number Identifier\",\n                    required: true,\n                    maximum: 100,\n                    minimum: 0,\n                },\n            },\n            booleanProps: {\n                myBooleanIdentifier: {\n                    title: \"My Boolean Identifier\",\n                    required: true,\n                },\n            },\n            objectProps: {\n                myObjectIdentifier: {\n                    title: \"My Object Identifier\",\n                    required: true,\n                },\n            },\n            arrayProps: {\n                myArrayIdentifier: {\n                    title: \"My Array Identifier\",\n                    required: true,\n                    stringItems: {\n                        format: \"entity\",\n                        blueprint: port_blueprint.parent.identifier,\n                        dataset: JSON.stringify({\n                            combinator: \"and\",\n                            rules: [{\n                                property: \"$title\",\n                                operator: \"contains\",\n                                value: \"specificValue\",\n                            }],\n                        }),\n                    },\n                },\n            },\n        },\n    },\n    kafkaMethod: {\n        payload: JSON.stringify({\n            runId: \"{{.run.id}}\",\n        }),\n    },\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_port as port\n\ncreate_microservice = port.index.Port_action(\"createMicroservice\",\n    title=Create Microservice,\n    identifier=create-microservice,\n    icon=Terraform,\n    self_service_trigger={\n        operation: CREATE,\n        blueprintIdentifier: port_blueprint.microservice.identifier,\n        userProperties: {\n            stringProps: {\n                myStringIdentifier: {\n                    title: My String Identifier,\n                    required: True,\n                    format: entity,\n                    blueprint: port_blueprint.parent.identifier,\n                    dataset: {\n                        combinator: and,\n                        rules: [{\n                            property: $title,\n                            operator: contains,\n                            value: {\n                                jqQuery: \"specificValue\",\n                            },\n                        }],\n                    },\n                },\n            },\n            numberProps: {\n                myNumberIdentifier: {\n                    title: My Number Identifier,\n                    required: True,\n                    maximum: 100,\n                    minimum: 0,\n                },\n            },\n            booleanProps: {\n                myBooleanIdentifier: {\n                    title: My Boolean Identifier,\n                    required: True,\n                },\n            },\n            objectProps: {\n                myObjectIdentifier: {\n                    title: My Object Identifier,\n                    required: True,\n                },\n            },\n            arrayProps: {\n                myArrayIdentifier: {\n                    title: My Array Identifier,\n                    required: True,\n                    stringItems: {\n                        format: entity,\n                        blueprint: port_blueprint.parent.identifier,\n                        dataset: json.dumps({\n                            combinator: and,\n                            rules: [{\n                                property: $title,\n                                operator: contains,\n                                value: specificValue,\n                            }],\n                        }),\n                    },\n                },\n            },\n        },\n    },\n    kafka_method={\n        payload: json.dumps({\n            runId: {{.run.id}},\n        }),\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Port = Pulumi.Port;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var createMicroservice = new Port.Index.Port_action(\"createMicroservice\", new()\n    {\n        Title = \"Create Microservice\",\n        Identifier = \"create-microservice\",\n        Icon = \"Terraform\",\n        SelfServiceTrigger = \n        {\n            { \"operation\", \"CREATE\" },\n            { \"blueprintIdentifier\", port_blueprint.Microservice.Identifier },\n            { \"userProperties\", \n            {\n                { \"stringProps\", \n                {\n                    { \"myStringIdentifier\", \n                    {\n                        { \"title\", \"My String Identifier\" },\n                        { \"required\", true },\n                        { \"format\", \"entity\" },\n                        { \"blueprint\", port_blueprint.Parent.Identifier },\n                        { \"dataset\", \n                        {\n                            { \"combinator\", \"and\" },\n                            { \"rules\", new[]\n                            {\n                                \n                                {\n                                    { \"property\", \"$title\" },\n                                    { \"operator\", \"contains\" },\n                                    { \"value\", \n                                    {\n                                        { \"jqQuery\", \"\\\"specificValue\\\"\" },\n                                    } },\n                                },\n                            } },\n                        } },\n                    } },\n                } },\n                { \"numberProps\", \n                {\n                    { \"myNumberIdentifier\", \n                    {\n                        { \"title\", \"My Number Identifier\" },\n                        { \"required\", true },\n                        { \"maximum\", 100 },\n                        { \"minimum\", 0 },\n                    } },\n                } },\n                { \"booleanProps\", \n                {\n                    { \"myBooleanIdentifier\", \n                    {\n                        { \"title\", \"My Boolean Identifier\" },\n                        { \"required\", true },\n                    } },\n                } },\n                { \"objectProps\", \n                {\n                    { \"myObjectIdentifier\", \n                    {\n                        { \"title\", \"My Object Identifier\" },\n                        { \"required\", true },\n                    } },\n                } },\n                { \"arrayProps\", \n                {\n                    { \"myArrayIdentifier\", \n                    {\n                        { \"title\", \"My Array Identifier\" },\n                        { \"required\", true },\n                        { \"stringItems\", \n                        {\n                            { \"format\", \"entity\" },\n                            { \"blueprint\", port_blueprint.Parent.Identifier },\n                            { \"dataset\", JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n                            {\n                                [\"combinator\"] = \"and\",\n                                [\"rules\"] = new[]\n                                {\n                                    new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        [\"property\"] = \"$title\",\n                                        [\"operator\"] = \"contains\",\n                                        [\"value\"] = \"specificValue\",\n                                    },\n                                },\n                            }) },\n                        } },\n                    } },\n                } },\n            } },\n        },\n        KafkaMethod = \n        {\n            { \"payload\", JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                [\"runId\"] = \"{{.run.id}}\",\n            }) },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/port-labs/pulumi-port/sdk/v2/go/port\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\nfunc main() {\npulumi.Run(func(ctx *pulumi.Context) error {\n_, err := port.NewPort_action(ctx, \"createMicroservice\", \u0026port.Port_actionArgs{\nTitle: \"Create Microservice\",\nIdentifier: \"create-microservice\",\nIcon: \"Terraform\",\nSelfServiceTrigger: tmpJSON0, err := json.Marshal(map[string]interface{}{\n\"combinator\": \"and\",\n\"rules\": []map[string]interface{}{\nmap[string]interface{}{\n\"property\": \"$title\",\n\"operator\": \"contains\",\n\"value\": \"specificValue\",\n},\n},\n})\nif err != nil {\nreturn err\n}\njson0 := string(tmpJSON0)\nmap[string]interface{}{\n\"operation\": \"CREATE\",\n\"blueprintIdentifier\": port_blueprint.Microservice.Identifier,\n\"userProperties\": map[string]interface{}{\n\"stringProps\": map[string]interface{}{\n\"myStringIdentifier\": map[string]interface{}{\n\"title\": \"My String Identifier\",\n\"required\": true,\n\"format\": \"entity\",\n\"blueprint\": port_blueprint.Parent.Identifier,\n\"dataset\": map[string]interface{}{\n\"combinator\": \"and\",\n\"rules\": []map[string]interface{}{\nmap[string]interface{}{\n\"property\": \"$title\",\n\"operator\": \"contains\",\n\"value\": map[string]interface{}{\n\"jqQuery\": \"\\\"specificValue\\\"\",\n},\n},\n},\n},\n},\n},\n\"numberProps\": map[string]interface{}{\n\"myNumberIdentifier\": map[string]interface{}{\n\"title\": \"My Number Identifier\",\n\"required\": true,\n\"maximum\": 100,\n\"minimum\": 0,\n},\n},\n\"booleanProps\": map[string]interface{}{\n\"myBooleanIdentifier\": map[string]interface{}{\n\"title\": \"My Boolean Identifier\",\n\"required\": true,\n},\n},\n\"objectProps\": map[string]interface{}{\n\"myObjectIdentifier\": map[string]interface{}{\n\"title\": \"My Object Identifier\",\n\"required\": true,\n},\n},\n\"arrayProps\": map[string]interface{}{\n\"myArrayIdentifier\": map[string]interface{}{\n\"title\": \"My Array Identifier\",\n\"required\": true,\n\"stringItems\": map[string]interface{}{\n\"format\": \"entity\",\n\"blueprint\": port_blueprint.Parent.Identifier,\n\"dataset\": json0,\n},\n},\n},\n},\n},\nKafkaMethod: tmpJSON1, err := json.Marshal(map[string]interface{}{\n\"runId\": \"{{.run.id}}\",\n})\nif err != nil {\nreturn err\n}\njson1 := string(tmpJSON1)\nmap[string]interface{}{\n\"payload\": json1,\n},\n})\nif err != nil {\nreturn err\n}\nreturn nil\n})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.port.port_action;\nimport com.pulumi.port.Port_actionArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var createMicroservice = new Port_action(\"createMicroservice\", Port_actionArgs.builder()\n            .title(\"Create Microservice\")\n            .identifier(\"create-microservice\")\n            .icon(\"Terraform\")\n            .selfServiceTrigger(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .kafkaMethod(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  createMicroservice:\n    type: port:port_action\n    properties:\n      title: Create Microservice\n      identifier: create-microservice\n      icon: Terraform\n      selfServiceTrigger:\n        operation: CREATE\n        blueprintIdentifier: ${port_blueprint.microservice.identifier}\n        userProperties:\n          stringProps:\n            myStringIdentifier:\n              title: My String Identifier\n              required: true\n              format: entity\n              blueprint: ${port_blueprint.parent.identifier}\n              dataset:\n                combinator: and\n                rules:\n                  - property: $title\n                    operator: contains\n                    value:\n                      jqQuery: '\"specificValue\"'\n          numberProps:\n            myNumberIdentifier:\n              title: My Number Identifier\n              required: true\n              maximum: 100\n              minimum: 0\n          booleanProps:\n            myBooleanIdentifier:\n              title: My Boolean Identifier\n              required: true\n          objectProps:\n            myObjectIdentifier:\n              title: My Object Identifier\n              required: true\n          arrayProps:\n            myArrayIdentifier:\n              title: My Array Identifier\n              required: true\n              stringItems:\n                format: entity\n                blueprint: ${port_blueprint.parent.identifier}\n                dataset:\n                  fn::toJSON:\n                    combinator: and\n                    rules:\n                      - property: $title\n                        operator: contains\n                        value: specificValue\n      kafkaMethod:\n        payload:\n          fn::toJSON:\n            runId: '{{.run.id}}'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n\n",
+            "description": "Docs for the Action resource can be found [here](https://docs.getport.io/create-self-service-experiences/).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as port from \"@pulumi/port\";\n\nconst createMicroservice = new port.index.Port_action(\"createMicroservice\", {\n    title: \"Create Microservice\",\n    identifier: \"create-microservice\",\n    icon: \"Terraform\",\n    selfServiceTrigger: {\n        operation: \"CREATE\",\n        blueprintIdentifier: port_blueprint.microservice.identifier,\n        userProperties: {\n            stringProps: {\n                myStringIdentifier: {\n                    title: \"My String Identifier\",\n                    required: true,\n                    format: \"entity\",\n                    blueprint: port_blueprint.parent.identifier,\n                    dataset: {\n                        combinator: \"and\",\n                        rules: [{\n                            property: \"$title\",\n                            operator: \"contains\",\n                            value: {\n                                jqQuery: \"\\\"specificValue\\\"\",\n                            },\n                        }],\n                    },\n                },\n            },\n            numberProps: {\n                myNumberIdentifier: {\n                    title: \"My Number Identifier\",\n                    required: true,\n                    maximum: 100,\n                    minimum: 0,\n                },\n            },\n            booleanProps: {\n                myBooleanIdentifier: {\n                    title: \"My Boolean Identifier\",\n                    required: true,\n                },\n            },\n            objectProps: {\n                myObjectIdentifier: {\n                    title: \"My Object Identifier\",\n                    required: true,\n                },\n            },\n            arrayProps: {\n                myArrayIdentifier: {\n                    title: \"My Array Identifier\",\n                    required: true,\n                    stringItems: {\n                        format: \"entity\",\n                        blueprint: port_blueprint.parent.identifier,\n                        dataset: JSON.stringify({\n                            combinator: \"and\",\n                            rules: [{\n                                property: \"$title\",\n                                operator: \"contains\",\n                                value: \"specificValue\",\n                            }],\n                        }),\n                    },\n                },\n            },\n        },\n    },\n    kafkaMethod: {\n        payload: JSON.stringify({\n            runId: \"{{.run.id}}\",\n        }),\n    },\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_port as port\n\ncreate_microservice = port.index.Port_action(\"createMicroservice\",\n    title=Create Microservice,\n    identifier=create-microservice,\n    icon=Terraform,\n    self_service_trigger={\n        operation: CREATE,\n        blueprintIdentifier: port_blueprint.microservice.identifier,\n        userProperties: {\n            stringProps: {\n                myStringIdentifier: {\n                    title: My String Identifier,\n                    required: True,\n                    format: entity,\n                    blueprint: port_blueprint.parent.identifier,\n                    dataset: {\n                        combinator: and,\n                        rules: [{\n                            property: $title,\n                            operator: contains,\n                            value: {\n                                jqQuery: \"specificValue\",\n                            },\n                        }],\n                    },\n                },\n            },\n            numberProps: {\n                myNumberIdentifier: {\n                    title: My Number Identifier,\n                    required: True,\n                    maximum: 100,\n                    minimum: 0,\n                },\n            },\n            booleanProps: {\n                myBooleanIdentifier: {\n                    title: My Boolean Identifier,\n                    required: True,\n                },\n            },\n            objectProps: {\n                myObjectIdentifier: {\n                    title: My Object Identifier,\n                    required: True,\n                },\n            },\n            arrayProps: {\n                myArrayIdentifier: {\n                    title: My Array Identifier,\n                    required: True,\n                    stringItems: {\n                        format: entity,\n                        blueprint: port_blueprint.parent.identifier,\n                        dataset: json.dumps({\n                            combinator: and,\n                            rules: [{\n                                property: $title,\n                                operator: contains,\n                                value: specificValue,\n                            }],\n                        }),\n                    },\n                },\n            },\n        },\n    },\n    kafka_method={\n        payload: json.dumps({\n            runId: {{.run.id}},\n        }),\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Port = Pulumi.Port;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var createMicroservice = new Port.Index.Port_action(\"createMicroservice\", new()\n    {\n        Title = \"Create Microservice\",\n        Identifier = \"create-microservice\",\n        Icon = \"Terraform\",\n        SelfServiceTrigger = \n        {\n            { \"operation\", \"CREATE\" },\n            { \"blueprintIdentifier\", port_blueprint.Microservice.Identifier },\n            { \"userProperties\", \n            {\n                { \"stringProps\", \n                {\n                    { \"myStringIdentifier\", \n                    {\n                        { \"title\", \"My String Identifier\" },\n                        { \"required\", true },\n                        { \"format\", \"entity\" },\n                        { \"blueprint\", port_blueprint.Parent.Identifier },\n                        { \"dataset\", \n                        {\n                            { \"combinator\", \"and\" },\n                            { \"rules\", new[]\n                            {\n                                \n                                {\n                                    { \"property\", \"$title\" },\n                                    { \"operator\", \"contains\" },\n                                    { \"value\", \n                                    {\n                                        { \"jqQuery\", \"\\\"specificValue\\\"\" },\n                                    } },\n                                },\n                            } },\n                        } },\n                    } },\n                } },\n                { \"numberProps\", \n                {\n                    { \"myNumberIdentifier\", \n                    {\n                        { \"title\", \"My Number Identifier\" },\n                        { \"required\", true },\n                        { \"maximum\", 100 },\n                        { \"minimum\", 0 },\n                    } },\n                } },\n                { \"booleanProps\", \n                {\n                    { \"myBooleanIdentifier\", \n                    {\n                        { \"title\", \"My Boolean Identifier\" },\n                        { \"required\", true },\n                    } },\n                } },\n                { \"objectProps\", \n                {\n                    { \"myObjectIdentifier\", \n                    {\n                        { \"title\", \"My Object Identifier\" },\n                        { \"required\", true },\n                    } },\n                } },\n                { \"arrayProps\", \n                {\n                    { \"myArrayIdentifier\", \n                    {\n                        { \"title\", \"My Array Identifier\" },\n                        { \"required\", true },\n                        { \"stringItems\", \n                        {\n                            { \"format\", \"entity\" },\n                            { \"blueprint\", port_blueprint.Parent.Identifier },\n                            { \"dataset\", JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n                            {\n                                [\"combinator\"] = \"and\",\n                                [\"rules\"] = new[]\n                                {\n                                    new Dictionary\u003cstring, object?\u003e\n                                    {\n                                        [\"property\"] = \"$title\",\n                                        [\"operator\"] = \"contains\",\n                                        [\"value\"] = \"specificValue\",\n                                    },\n                                },\n                            }) },\n                        } },\n                    } },\n                } },\n            } },\n        },\n        KafkaMethod = \n        {\n            { \"payload\", JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                [\"runId\"] = \"{{.run.id}}\",\n            }) },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/port-labs/pulumi-port/sdk/v2/go/port\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\nfunc main() {\npulumi.Run(func(ctx *pulumi.Context) error {\n_, err := port.NewPort_action(ctx, \"createMicroservice\", \u0026port.Port_actionArgs{\nTitle: \"Create Microservice\",\nIdentifier: \"create-microservice\",\nIcon: \"Terraform\",\nSelfServiceTrigger: tmpJSON0, err := json.Marshal(map[string]interface{}{\n\"combinator\": \"and\",\n\"rules\": []map[string]interface{}{\nmap[string]interface{}{\n\"property\": \"$title\",\n\"operator\": \"contains\",\n\"value\": \"specificValue\",\n},\n},\n})\nif err != nil {\nreturn err\n}\njson0 := string(tmpJSON0)\nmap[string]interface{}{\n\"operation\": \"CREATE\",\n\"blueprintIdentifier\": port_blueprint.Microservice.Identifier,\n\"userProperties\": map[string]interface{}{\n\"stringProps\": map[string]interface{}{\n\"myStringIdentifier\": map[string]interface{}{\n\"title\": \"My String Identifier\",\n\"required\": true,\n\"format\": \"entity\",\n\"blueprint\": port_blueprint.Parent.Identifier,\n\"dataset\": map[string]interface{}{\n\"combinator\": \"and\",\n\"rules\": []map[string]interface{}{\nmap[string]interface{}{\n\"property\": \"$title\",\n\"operator\": \"contains\",\n\"value\": map[string]interface{}{\n\"jqQuery\": \"\\\"specificValue\\\"\",\n},\n},\n},\n},\n},\n},\n\"numberProps\": map[string]interface{}{\n\"myNumberIdentifier\": map[string]interface{}{\n\"title\": \"My Number Identifier\",\n\"required\": true,\n\"maximum\": 100,\n\"minimum\": 0,\n},\n},\n\"booleanProps\": map[string]interface{}{\n\"myBooleanIdentifier\": map[string]interface{}{\n\"title\": \"My Boolean Identifier\",\n\"required\": true,\n},\n},\n\"objectProps\": map[string]interface{}{\n\"myObjectIdentifier\": map[string]interface{}{\n\"title\": \"My Object Identifier\",\n\"required\": true,\n},\n},\n\"arrayProps\": map[string]interface{}{\n\"myArrayIdentifier\": map[string]interface{}{\n\"title\": \"My Array Identifier\",\n\"required\": true,\n\"stringItems\": map[string]interface{}{\n\"format\": \"entity\",\n\"blueprint\": port_blueprint.Parent.Identifier,\n\"dataset\": json0,\n},\n},\n},\n},\n},\nKafkaMethod: tmpJSON1, err := json.Marshal(map[string]interface{}{\n\"runId\": \"{{.run.id}}\",\n})\nif err != nil {\nreturn err\n}\njson1 := string(tmpJSON1)\nmap[string]interface{}{\n\"payload\": json1,\n},\n})\nif err != nil {\nreturn err\n}\nreturn nil\n})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.port.port_action;\nimport com.pulumi.port.Port_actionArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var createMicroservice = new Port_action(\"createMicroservice\", Port_actionArgs.builder()\n            .title(\"Create Microservice\")\n            .identifier(\"create-microservice\")\n            .icon(\"Terraform\")\n            .selfServiceTrigger(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .kafkaMethod(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  createMicroservice:\n    type: port:port_action\n    properties:\n      title: Create Microservice\n      identifier: create-microservice\n      icon: Terraform\n      selfServiceTrigger:\n        operation: CREATE\n        blueprintIdentifier: ${port_blueprint.microservice.identifier}\n        userProperties:\n          stringProps:\n            myStringIdentifier:\n              title: My String Identifier\n              required: true\n              format: entity\n              blueprint: ${port_blueprint.parent.identifier}\n              dataset:\n                combinator: and\n                rules:\n                  - property: $title\n                    operator: contains\n                    value:\n                      jqQuery: '\"specificValue\"'\n          numberProps:\n            myNumberIdentifier:\n              title: My Number Identifier\n              required: true\n              maximum: 100\n              minimum: 0\n          booleanProps:\n            myBooleanIdentifier:\n              title: My Boolean Identifier\n              required: true\n          objectProps:\n            myObjectIdentifier:\n              title: My Object Identifier\n              required: true\n          arrayProps:\n            myArrayIdentifier:\n              title: My Array Identifier\n              required: true\n              stringItems:\n                format: entity\n                blueprint: ${port_blueprint.parent.identifier}\n                dataset:\n                  fn::toJSON:\n                    combinator: and\n                    rules:\n                      - property: $title\n                        operator: contains\n                        value: specificValue\n      kafkaMethod:\n        payload:\n          fn::toJSON:\n            runId: '{{.run.id}}'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n\n### With Automation Trigger\n\nPort allows setting an automation trigger to an action, for executing an action based on event occurred to an entity in Port.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as port from \"@pulumi/port\";\n\nconst deleteTemporaryMicroservice = new port.index.Port_action(\"deleteTemporaryMicroservice\", {\n    title: \"Delete Temporary Microservice\",\n    identifier: \"delete-temp-microservice\",\n    icon: \"Terraform\",\n    automationTrigger: {\n        timerPropertyExpiredEvent: {\n            blueprintIdentifier: port_blueprint.microservice.identifier,\n            propertyIdentifier: \"ttl\",\n        },\n    },\n    kafkaMethod: {\n        payload: JSON.stringify({\n            runId: \"{{.run.id}}\",\n        }),\n    },\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_port as port\n\ndelete_temporary_microservice = port.index.Port_action(\"deleteTemporaryMicroservice\",\n    title=Delete Temporary Microservice,\n    identifier=delete-temp-microservice,\n    icon=Terraform,\n    automation_trigger={\n        timerPropertyExpiredEvent: {\n            blueprintIdentifier: port_blueprint.microservice.identifier,\n            propertyIdentifier: ttl,\n        },\n    },\n    kafka_method={\n        payload: json.dumps({\n            runId: {{.run.id}},\n        }),\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Port = Pulumi.Port;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var deleteTemporaryMicroservice = new Port.Index.Port_action(\"deleteTemporaryMicroservice\", new()\n    {\n        Title = \"Delete Temporary Microservice\",\n        Identifier = \"delete-temp-microservice\",\n        Icon = \"Terraform\",\n        AutomationTrigger = \n        {\n            { \"timerPropertyExpiredEvent\", \n            {\n                { \"blueprintIdentifier\", port_blueprint.Microservice.Identifier },\n                { \"propertyIdentifier\", \"ttl\" },\n            } },\n        },\n        KafkaMethod = \n        {\n            { \"payload\", JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                [\"runId\"] = \"{{.run.id}}\",\n            }) },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/port-labs/pulumi-port/sdk/v2/go/port\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\nfunc main() {\npulumi.Run(func(ctx *pulumi.Context) error {\n_, err := port.NewPort_action(ctx, \"deleteTemporaryMicroservice\", \u0026port.Port_actionArgs{\nTitle: \"Delete Temporary Microservice\",\nIdentifier: \"delete-temp-microservice\",\nIcon: \"Terraform\",\nAutomationTrigger: map[string]interface{}{\n\"timerPropertyExpiredEvent\": map[string]interface{}{\n\"blueprintIdentifier\": port_blueprint.Microservice.Identifier,\n\"propertyIdentifier\": \"ttl\",\n},\n},\nKafkaMethod: tmpJSON0, err := json.Marshal(map[string]interface{}{\n\"runId\": \"{{.run.id}}\",\n})\nif err != nil {\nreturn err\n}\njson0 := string(tmpJSON0)\nmap[string]interface{}{\n\"payload\": json0,\n},\n})\nif err != nil {\nreturn err\n}\nreturn nil\n})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.port.port_action;\nimport com.pulumi.port.Port_actionArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var deleteTemporaryMicroservice = new Port_action(\"deleteTemporaryMicroservice\", Port_actionArgs.builder()\n            .title(\"Delete Temporary Microservice\")\n            .identifier(\"delete-temp-microservice\")\n            .icon(\"Terraform\")\n            .automationTrigger(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .kafkaMethod(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  deleteTemporaryMicroservice:\n    type: port:port_action\n    properties:\n      title: Delete Temporary Microservice\n      identifier: delete-temp-microservice\n      icon: Terraform\n      automationTrigger:\n        timerPropertyExpiredEvent:\n          blueprintIdentifier: ${port_blueprint.microservice.identifier}\n          propertyIdentifier: ttl\n      kafkaMethod:\n        payload:\n          fn::toJSON:\n            runId: '{{.run.id}}'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n\n",
             "properties": {
                 "approvalEmailNotification": {
                     "$ref": "#/types/port:index/ActionApprovalEmailNotification:ActionApprovalEmailNotification",
@@ -2431,6 +2603,10 @@
                 "approvalWebhookNotification": {
                     "$ref": "#/types/port:index/ActionApprovalWebhookNotification:ActionApprovalWebhookNotification",
                     "description": "The webhook notification of the approval\n"
+                },
+                "automationTrigger": {
+                    "$ref": "#/types/port:index/ActionAutomationTrigger:ActionAutomationTrigger",
+                    "description": "Automation trigger for the action\n"
                 },
                 "azureMethod": {
                     "$ref": "#/types/port:index/ActionAzureMethod:ActionAzureMethod",
@@ -2480,6 +2656,10 @@
                 "title": {
                     "type": "string",
                     "description": "Title\n"
+                },
+                "upsertEntityMethod": {
+                    "$ref": "#/types/port:index/ActionUpsertEntityMethod:ActionUpsertEntityMethod",
+                    "description": "Upsert Entity invocation method\n"
                 },
                 "webhookMethod": {
                     "$ref": "#/types/port:index/ActionWebhookMethod:ActionWebhookMethod",
@@ -2499,6 +2679,10 @@
                     "$ref": "#/types/port:index/ActionApprovalWebhookNotification:ActionApprovalWebhookNotification",
                     "description": "The webhook notification of the approval\n"
                 },
+                "automationTrigger": {
+                    "$ref": "#/types/port:index/ActionAutomationTrigger:ActionAutomationTrigger",
+                    "description": "Automation trigger for the action\n"
+                },
                 "azureMethod": {
                     "$ref": "#/types/port:index/ActionAzureMethod:ActionAzureMethod",
                     "description": "Azure DevOps invocation method\n"
@@ -2548,6 +2732,10 @@
                     "type": "string",
                     "description": "Title\n"
                 },
+                "upsertEntityMethod": {
+                    "$ref": "#/types/port:index/ActionUpsertEntityMethod:ActionUpsertEntityMethod",
+                    "description": "Upsert Entity invocation method\n"
+                },
                 "webhookMethod": {
                     "$ref": "#/types/port:index/ActionWebhookMethod:ActionWebhookMethod",
                     "description": "Webhook invocation method\n"
@@ -2566,6 +2754,10 @@
                     "approvalWebhookNotification": {
                         "$ref": "#/types/port:index/ActionApprovalWebhookNotification:ActionApprovalWebhookNotification",
                         "description": "The webhook notification of the approval\n"
+                    },
+                    "automationTrigger": {
+                        "$ref": "#/types/port:index/ActionAutomationTrigger:ActionAutomationTrigger",
+                        "description": "Automation trigger for the action\n"
                     },
                     "azureMethod": {
                         "$ref": "#/types/port:index/ActionAzureMethod:ActionAzureMethod",
@@ -2615,6 +2807,10 @@
                     "title": {
                         "type": "string",
                         "description": "Title\n"
+                    },
+                    "upsertEntityMethod": {
+                        "$ref": "#/types/port:index/ActionUpsertEntityMethod:ActionUpsertEntityMethod",
+                        "description": "Upsert Entity invocation method\n"
                     },
                     "webhookMethod": {
                         "$ref": "#/types/port:index/ActionWebhookMethod:ActionWebhookMethod",
