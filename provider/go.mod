@@ -10,7 +10,7 @@ require (
 	github.com/port-labs/terraform-provider-port-labs/v2 v2.0.8
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.37.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.84.0
-	github.com/pulumi/pulumi/sdk/v3 v3.120.0
+	github.com/pulumi/pulumi/sdk/v3 v3.119.0
 )
 
 require github.com/go-jose/go-jose/v3 v3.0.3 // indirect
@@ -177,8 +177,8 @@ require (
 	github.com/pulumi/esc v0.9.1 // indirect
 	github.com/pulumi/pulumi-java/pkg v0.11.0 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.8 // indirect
-	github.com/pulumi/pulumi-yaml v1.7.0 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.118.0 // indirect
+	github.com/pulumi/pulumi-yaml v1.8.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.119.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/rogpeppe/go-internal v1.12.0 // indirect
