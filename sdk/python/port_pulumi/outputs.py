@@ -2337,8 +2337,8 @@ class ActionUpsertEntityMethodMapping(dict):
                  relations: Optional[str] = None,
                  teams: Optional[Sequence[str]] = None):
         """
-        :param str identifier: Identifier
-        :param str icon: Icon
+        :param str identifier: Required when selecting type Upsert Entity. The entity identifier for the upsert
+        :param str icon: The icon of the entity
         :param str properties: The properties of the entity (key-value object encoded to a string)
         :param str relations: The relations of the entity (key-value object encoded to a string)
         :param Sequence[str] teams: The teams the entity belongs to
@@ -2357,7 +2357,7 @@ class ActionUpsertEntityMethodMapping(dict):
     @pulumi.getter
     def identifier(self) -> str:
         """
-        Identifier
+        Required when selecting type Upsert Entity. The entity identifier for the upsert
         """
         return pulumi.get(self, "identifier")
 
@@ -2365,7 +2365,7 @@ class ActionUpsertEntityMethodMapping(dict):
     @pulumi.getter
     def icon(self) -> Optional[str]:
         """
-        Icon
+        The icon of the entity
         """
         return pulumi.get(self, "icon")
 

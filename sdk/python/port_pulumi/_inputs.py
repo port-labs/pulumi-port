@@ -2460,8 +2460,8 @@ class ActionUpsertEntityMethodMappingArgs:
                  relations: Optional[pulumi.Input[str]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] identifier: Identifier
-        :param pulumi.Input[str] icon: Icon
+        :param pulumi.Input[str] identifier: Required when selecting type Upsert Entity. The entity identifier for the upsert
+        :param pulumi.Input[str] icon: The icon of the entity
         :param pulumi.Input[str] properties: The properties of the entity (key-value object encoded to a string)
         :param pulumi.Input[str] relations: The relations of the entity (key-value object encoded to a string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The teams the entity belongs to
@@ -2480,7 +2480,7 @@ class ActionUpsertEntityMethodMappingArgs:
     @pulumi.getter
     def identifier(self) -> pulumi.Input[str]:
         """
-        Identifier
+        Required when selecting type Upsert Entity. The entity identifier for the upsert
         """
         return pulumi.get(self, "identifier")
 
@@ -2492,7 +2492,7 @@ class ActionUpsertEntityMethodMappingArgs:
     @pulumi.getter
     def icon(self) -> Optional[pulumi.Input[str]]:
         """
-        Icon
+        The icon of the entity
         """
         return pulumi.get(self, "icon")
 

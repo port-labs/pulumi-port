@@ -5344,9 +5344,9 @@ func (o ActionUpsertEntityMethodPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type ActionUpsertEntityMethodMapping struct {
-	// Icon
+	// The icon of the entity
 	Icon *string `pulumi:"icon"`
-	// Identifier
+	// Required when selecting type Upsert Entity. The entity identifier for the upsert
 	Identifier string `pulumi:"identifier"`
 	// The properties of the entity (key-value object encoded to a string)
 	Properties *string `pulumi:"properties"`
@@ -5368,9 +5368,9 @@ type ActionUpsertEntityMethodMappingInput interface {
 }
 
 type ActionUpsertEntityMethodMappingArgs struct {
-	// Icon
+	// The icon of the entity
 	Icon pulumi.StringPtrInput `pulumi:"icon"`
-	// Identifier
+	// Required when selecting type Upsert Entity. The entity identifier for the upsert
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// The properties of the entity (key-value object encoded to a string)
 	Properties pulumi.StringPtrInput `pulumi:"properties"`
@@ -5457,12 +5457,12 @@ func (o ActionUpsertEntityMethodMappingOutput) ToActionUpsertEntityMethodMapping
 	}).(ActionUpsertEntityMethodMappingPtrOutput)
 }
 
-// Icon
+// The icon of the entity
 func (o ActionUpsertEntityMethodMappingOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionUpsertEntityMethodMapping) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
-// Identifier
+// Required when selecting type Upsert Entity. The entity identifier for the upsert
 func (o ActionUpsertEntityMethodMappingOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionUpsertEntityMethodMapping) string { return v.Identifier }).(pulumi.StringOutput)
 }
@@ -5506,7 +5506,7 @@ func (o ActionUpsertEntityMethodMappingPtrOutput) Elem() ActionUpsertEntityMetho
 	}).(ActionUpsertEntityMethodMappingOutput)
 }
 
-// Icon
+// The icon of the entity
 func (o ActionUpsertEntityMethodMappingPtrOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionUpsertEntityMethodMapping) *string {
 		if v == nil {
@@ -5516,7 +5516,7 @@ func (o ActionUpsertEntityMethodMappingPtrOutput) Icon() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Identifier
+// Required when selecting type Upsert Entity. The entity identifier for the upsert
 func (o ActionUpsertEntityMethodMappingPtrOutput) Identifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionUpsertEntityMethodMapping) *string {
 		if v == nil {
