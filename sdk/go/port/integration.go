@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// **NOTE:** This resource manages existing integration and integration mappings, not for creating new integrations.
+//
 // Docs about integration and be found [here](https://docs.getport.io/integrations-index/).
 //
 // ```go

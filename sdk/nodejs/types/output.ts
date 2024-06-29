@@ -641,11 +641,11 @@ export interface ActionUpsertEntityMethod {
 
 export interface ActionUpsertEntityMethodMapping {
     /**
-     * Icon
+     * The icon of the entity
      */
     icon?: string;
     /**
-     * Identifier
+     * Required when selecting type Upsert Entity. The entity identifier for the upsert
      */
     identifier: string;
     /**

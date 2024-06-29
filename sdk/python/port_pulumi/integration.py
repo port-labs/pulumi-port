@@ -234,6 +234,8 @@ class Integration(pulumi.CustomResource):
                  webhook_changelog_destination: Optional[pulumi.Input[pulumi.InputType['IntegrationWebhookChangelogDestinationArgs']]] = None,
                  __props__=None):
         """
+        **NOTE:** This resource manages existing integration and integration mappings, not for creating new integrations.
+
         Docs about integration and be found [here](https://docs.getport.io/integrations-index/).
 
         ```python
@@ -283,6 +285,8 @@ class Integration(pulumi.CustomResource):
                  args: IntegrationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        **NOTE:** This resource manages existing integration and integration mappings, not for creating new integrations.
+
         Docs about integration and be found [here](https://docs.getport.io/integrations-index/).
 
         ```python
