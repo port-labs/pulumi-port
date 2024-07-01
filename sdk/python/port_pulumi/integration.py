@@ -236,7 +236,9 @@ class Integration(pulumi.CustomResource):
         """
         **NOTE:** This resource manages existing integration and integration mappings, not for creating new integrations.
 
-        Docs about integration and be found [here](https://docs.getport.io/integrations-index/).
+        Docs about integrations can be found [here](https://docs.getport.io/integrations-index/).
+
+        Docs about how to import existing integrations and manage their mappings can be found here.
 
         ```python
         import pulumi
@@ -287,7 +289,9 @@ class Integration(pulumi.CustomResource):
         """
         **NOTE:** This resource manages existing integration and integration mappings, not for creating new integrations.
 
-        Docs about integration and be found [here](https://docs.getport.io/integrations-index/).
+        Docs about integrations can be found [here](https://docs.getport.io/integrations-index/).
+
+        Docs about how to import existing integrations and manage their mappings can be found here.
 
         ```python
         import pulumi
