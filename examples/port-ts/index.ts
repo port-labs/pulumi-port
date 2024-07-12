@@ -1,25 +1,5 @@
-import * as port from "@port-labs/port";
+import * as actions from "./actions";
+import * as pages from "./pages";
+import * as blueprints from "./blueprints";
 
-export const blueprint = new port.Blueprint("microservice", {
-    identifier: "microservice",
-    title: "Microservice",
-    properties: {
-        stringProps: {
-            "language": {
-                default: "Go",
-            }
-        }
-    }
-});
-
-export const entity = new port.Entity("monolith", {
-    identifier: "monolith",
-    title: "monolith",
-    blueprint: blueprint.identifier,
-    properties: {
-        stringProps: {
-            "language": "Node",
-        }
-    }
-});
-
+export const resources = { blueprints, actions, pages };
