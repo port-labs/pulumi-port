@@ -82,6 +82,7 @@ __all__ = [
     'IntegrationKafkaChangelogDestinationArgs',
     'IntegrationWebhookChangelogDestinationArgs',
     'PagePermissionsReadArgs',
+    'ScorecardLevelArgs',
     'ScorecardRuleArgs',
     'ScorecardRuleQueryArgs',
     'WebhookMappingArgs',
@@ -5293,6 +5294,43 @@ class PagePermissionsReadArgs:
     @users.setter
     def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "users", value)
+
+
+@pulumi.input_type
+class ScorecardLevelArgs:
+    def __init__(__self__, *,
+                 color: pulumi.Input[str],
+                 title: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] color: The color of the level
+        :param pulumi.Input[str] title: The title of the level
+        """
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def color(self) -> pulumi.Input[str]:
+        """
+        The color of the level
+        """
+        return pulumi.get(self, "color")
+
+    @color.setter
+    def color(self, value: pulumi.Input[str]):
+        pulumi.set(self, "color", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        The title of the level
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
 
 
 @pulumi.input_type

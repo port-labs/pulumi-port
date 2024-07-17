@@ -1399,6 +1399,17 @@ export interface PagePermissionsRead {
     users?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface ScorecardLevel {
+    /**
+     * The color of the level
+     */
+    color: pulumi.Input<string>;
+    /**
+     * The title of the level
+     */
+    title: pulumi.Input<string>;
+}
+
 export interface ScorecardRule {
     /**
      * The identifier of the rule

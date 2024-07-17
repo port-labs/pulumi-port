@@ -1506,6 +1506,17 @@ export interface PagePermissionsRead {
     users?: string[];
 }
 
+export interface ScorecardLevel {
+    /**
+     * The color of the level
+     */
+    color: string;
+    /**
+     * The title of the level
+     */
+    title: string;
+}
+
 export interface ScorecardRule {
     /**
      * The identifier of the rule
