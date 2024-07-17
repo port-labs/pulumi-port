@@ -10,101 +10,6 @@ import * as utilities from "./utilities";
  * This resource allows you to manage a scorecard.
  *
  * See the [Port documentation](https://docs.getport.io/promote-scorecards/) for more information about scorecards.
- *
- * ## Example Usage
- *
- * Create a parent blueprint with a child blueprint and an aggregation property to count the parent kids:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as port from "@pulumi/port";
- *
- * const microservice = new port.index.Port_blueprint("microservice", {
- *     title: "microservice",
- *     icon: "Terraform",
- *     identifier: "microservice",
- *     properties: {
- *         stringProps: {
- *             author: {
- *                 title: "Author",
- *             },
- *             url: {
- *                 title: "URL",
- *             },
- *         },
- *         booleanProps: {
- *             required: {
- *                 type: "boolean",
- *             },
- *         },
- *         numberProps: {
- *             sum: {
- *                 type: "number",
- *             },
- *         },
- *     },
- * });
- * const readiness = new port.index.Port_scorecard("readiness", {
- *     identifier: "Readiness",
- *     title: "Readiness",
- *     blueprint: microservice.identifier,
- *     rules: [
- *         {
- *             identifier: "hasOwner",
- *             title: "Has Owner",
- *             level: "Gold",
- *             query: {
- *                 combinator: "and",
- *                 conditions: [
- *                     JSON.stringify({
- *                         property: "$team",
- *                         operator: "isNotEmpty",
- *                     }),
- *                     JSON.stringify({
- *                         property: "author",
- *                         operator: "=",
- *                         value: "myValue",
- *                     }),
- *                 ],
- *             },
- *         },
- *         {
- *             identifier: "hasUrl",
- *             title: "Has URL",
- *             level: "Silver",
- *             query: {
- *                 combinator: "and",
- *                 conditions: [JSON.stringify({
- *                     property: "url",
- *                     operator: "isNotEmpty",
- *                 })],
- *             },
- *         },
- *         {
- *             identifier: "checkSumIfRequired",
- *             title: "Check Sum If Required",
- *             level: "Bronze",
- *             query: {
- *                 combinator: "or",
- *                 conditions: [
- *                     JSON.stringify({
- *                         property: "required",
- *                         operator: "=",
- *                         value: false,
- *                     }),
- *                     JSON.stringify({
- *                         property: "sum",
- *                         operator: ">",
- *                         value: 2,
- *                     }),
- *                 ],
- *             },
- *         },
- *     ],
- * }, {
- *     dependsOn: [microservice],
- * });
- * ```
  */
 export class Scorecard extends pulumi.CustomResource {
     /**
@@ -151,6 +56,10 @@ export class Scorecard extends pulumi.CustomResource {
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
+     * The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
+     */
+    public readonly levels!: pulumi.Output<outputs.ScorecardLevel[] | undefined>;
+    /**
      * The rules of the scorecard
      */
     public readonly rules!: pulumi.Output<outputs.ScorecardRule[]>;
@@ -184,6 +93,7 @@ export class Scorecard extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["createdBy"] = state ? state.createdBy : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
+            resourceInputs["levels"] = state ? state.levels : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
@@ -204,6 +114,7 @@ export class Scorecard extends pulumi.CustomResource {
             }
             resourceInputs["blueprint"] = args ? args.blueprint : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
+            resourceInputs["levels"] = args ? args.levels : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
@@ -237,6 +148,10 @@ export interface ScorecardState {
      */
     identifier?: pulumi.Input<string>;
     /**
+     * The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
+     */
+    levels?: pulumi.Input<pulumi.Input<inputs.ScorecardLevel>[]>;
+    /**
      * The rules of the scorecard
      */
     rules?: pulumi.Input<pulumi.Input<inputs.ScorecardRule>[]>;
@@ -266,6 +181,10 @@ export interface ScorecardArgs {
      * The identifier of the scorecard
      */
     identifier: pulumi.Input<string>;
+    /**
+     * The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
+     */
+    levels?: pulumi.Input<pulumi.Input<inputs.ScorecardLevel>[]>;
     /**
      * The rules of the scorecard
      */

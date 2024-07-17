@@ -19,18 +19,22 @@ class ScorecardArgs:
                  blueprint: pulumi.Input[str],
                  identifier: pulumi.Input[str],
                  rules: pulumi.Input[Sequence[pulumi.Input['ScorecardRuleArgs']]],
-                 title: pulumi.Input[str]):
+                 title: pulumi.Input[str],
+                 levels: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardLevelArgs']]]] = None):
         """
         The set of arguments for constructing a Scorecard resource.
         :param pulumi.Input[str] blueprint: The blueprint of the scorecard
         :param pulumi.Input[str] identifier: The identifier of the scorecard
         :param pulumi.Input[Sequence[pulumi.Input['ScorecardRuleArgs']]] rules: The rules of the scorecard
         :param pulumi.Input[str] title: The title of the scorecard
+        :param pulumi.Input[Sequence[pulumi.Input['ScorecardLevelArgs']]] levels: The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
         """
         pulumi.set(__self__, "blueprint", blueprint)
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "rules", rules)
         pulumi.set(__self__, "title", title)
+        if levels is not None:
+            pulumi.set(__self__, "levels", levels)
 
     @property
     @pulumi.getter
@@ -80,6 +84,18 @@ class ScorecardArgs:
     def title(self, value: pulumi.Input[str]):
         pulumi.set(self, "title", value)
 
+    @property
+    @pulumi.getter
+    def levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardLevelArgs']]]]:
+        """
+        The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
+        """
+        return pulumi.get(self, "levels")
+
+    @levels.setter
+    def levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardLevelArgs']]]]):
+        pulumi.set(self, "levels", value)
+
 
 @pulumi.input_type
 class _ScorecardState:
@@ -88,6 +104,7 @@ class _ScorecardState:
                  created_at: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 levels: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardLevelArgs']]]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardRuleArgs']]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
@@ -98,6 +115,7 @@ class _ScorecardState:
         :param pulumi.Input[str] created_at: The creation date of the scorecard
         :param pulumi.Input[str] created_by: The creator of the scorecard
         :param pulumi.Input[str] identifier: The identifier of the scorecard
+        :param pulumi.Input[Sequence[pulumi.Input['ScorecardLevelArgs']]] levels: The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
         :param pulumi.Input[Sequence[pulumi.Input['ScorecardRuleArgs']]] rules: The rules of the scorecard
         :param pulumi.Input[str] title: The title of the scorecard
         :param pulumi.Input[str] updated_at: The last update date of the scorecard
@@ -111,6 +129,8 @@ class _ScorecardState:
             pulumi.set(__self__, "created_by", created_by)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
+        if levels is not None:
+            pulumi.set(__self__, "levels", levels)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if title is not None:
@@ -170,6 +190,18 @@ class _ScorecardState:
 
     @property
     @pulumi.getter
+    def levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardLevelArgs']]]]:
+        """
+        The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
+        """
+        return pulumi.get(self, "levels")
+
+    @levels.setter
+    def levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardLevelArgs']]]]):
+        pulumi.set(self, "levels", value)
+
+    @property
+    @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardRuleArgs']]]]:
         """
         The rules of the scorecard
@@ -224,6 +256,7 @@ class Scorecard(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blueprint: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScorecardLevelArgs']]]]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScorecardRuleArgs']]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -232,103 +265,11 @@ class Scorecard(pulumi.CustomResource):
 
         See the [Port documentation](https://docs.getport.io/promote-scorecards/) for more information about scorecards.
 
-        ## Example Usage
-
-        Create a parent blueprint with a child blueprint and an aggregation property to count the parent kids:
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_port as port
-
-        microservice = port.index.Port_blueprint("microservice",
-            title=microservice,
-            icon=Terraform,
-            identifier=microservice,
-            properties={
-                stringProps: {
-                    author: {
-                        title: Author,
-                    },
-                    url: {
-                        title: URL,
-                    },
-                },
-                booleanProps: {
-                    required: {
-                        type: boolean,
-                    },
-                },
-                numberProps: {
-                    sum: {
-                        type: number,
-                    },
-                },
-            })
-        readiness = port.index.Port_scorecard("readiness",
-            identifier=Readiness,
-            title=Readiness,
-            blueprint=microservice.identifier,
-            rules=[
-                {
-                    identifier: hasOwner,
-                    title: Has Owner,
-                    level: Gold,
-                    query: {
-                        combinator: and,
-                        conditions: [
-                            json.dumps({
-                                property: $team,
-                                operator: isNotEmpty,
-                            }),
-                            json.dumps({
-                                property: author,
-                                operator: =,
-                                value: myValue,
-                            }),
-                        ],
-                    },
-                },
-                {
-                    identifier: hasUrl,
-                    title: Has URL,
-                    level: Silver,
-                    query: {
-                        combinator: and,
-                        conditions: [json.dumps({
-                            property: url,
-                            operator: isNotEmpty,
-                        })],
-                    },
-                },
-                {
-                    identifier: checkSumIfRequired,
-                    title: Check Sum If Required,
-                    level: Bronze,
-                    query: {
-                        combinator: or,
-                        conditions: [
-                            json.dumps({
-                                property: required,
-                                operator: =,
-                                value: False,
-                            }),
-                            json.dumps({
-                                property: sum,
-                                operator: >,
-                                value: 2,
-                            }),
-                        ],
-                    },
-                },
-            ],
-            opts=pulumi.ResourceOptions(depends_on=[microservice]))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] blueprint: The blueprint of the scorecard
         :param pulumi.Input[str] identifier: The identifier of the scorecard
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScorecardLevelArgs']]]] levels: The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScorecardRuleArgs']]]] rules: The rules of the scorecard
         :param pulumi.Input[str] title: The title of the scorecard
         """
@@ -342,99 +283,6 @@ class Scorecard(pulumi.CustomResource):
         This resource allows you to manage a scorecard.
 
         See the [Port documentation](https://docs.getport.io/promote-scorecards/) for more information about scorecards.
-
-        ## Example Usage
-
-        Create a parent blueprint with a child blueprint and an aggregation property to count the parent kids:
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_port as port
-
-        microservice = port.index.Port_blueprint("microservice",
-            title=microservice,
-            icon=Terraform,
-            identifier=microservice,
-            properties={
-                stringProps: {
-                    author: {
-                        title: Author,
-                    },
-                    url: {
-                        title: URL,
-                    },
-                },
-                booleanProps: {
-                    required: {
-                        type: boolean,
-                    },
-                },
-                numberProps: {
-                    sum: {
-                        type: number,
-                    },
-                },
-            })
-        readiness = port.index.Port_scorecard("readiness",
-            identifier=Readiness,
-            title=Readiness,
-            blueprint=microservice.identifier,
-            rules=[
-                {
-                    identifier: hasOwner,
-                    title: Has Owner,
-                    level: Gold,
-                    query: {
-                        combinator: and,
-                        conditions: [
-                            json.dumps({
-                                property: $team,
-                                operator: isNotEmpty,
-                            }),
-                            json.dumps({
-                                property: author,
-                                operator: =,
-                                value: myValue,
-                            }),
-                        ],
-                    },
-                },
-                {
-                    identifier: hasUrl,
-                    title: Has URL,
-                    level: Silver,
-                    query: {
-                        combinator: and,
-                        conditions: [json.dumps({
-                            property: url,
-                            operator: isNotEmpty,
-                        })],
-                    },
-                },
-                {
-                    identifier: checkSumIfRequired,
-                    title: Check Sum If Required,
-                    level: Bronze,
-                    query: {
-                        combinator: or,
-                        conditions: [
-                            json.dumps({
-                                property: required,
-                                operator: =,
-                                value: False,
-                            }),
-                            json.dumps({
-                                property: sum,
-                                operator: >,
-                                value: 2,
-                            }),
-                        ],
-                    },
-                },
-            ],
-            opts=pulumi.ResourceOptions(depends_on=[microservice]))
-        ```
 
         :param str resource_name: The name of the resource.
         :param ScorecardArgs args: The arguments to use to populate this resource's properties.
@@ -453,6 +301,7 @@ class Scorecard(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blueprint: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScorecardLevelArgs']]]]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScorecardRuleArgs']]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -470,6 +319,7 @@ class Scorecard(pulumi.CustomResource):
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
+            __props__.__dict__["levels"] = levels
             if rules is None and not opts.urn:
                 raise TypeError("Missing required property 'rules'")
             __props__.__dict__["rules"] = rules
@@ -494,6 +344,7 @@ class Scorecard(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[str]] = None,
             created_by: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
+            levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScorecardLevelArgs']]]]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScorecardRuleArgs']]]]] = None,
             title: Optional[pulumi.Input[str]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
@@ -509,6 +360,7 @@ class Scorecard(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: The creation date of the scorecard
         :param pulumi.Input[str] created_by: The creator of the scorecard
         :param pulumi.Input[str] identifier: The identifier of the scorecard
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScorecardLevelArgs']]]] levels: The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScorecardRuleArgs']]]] rules: The rules of the scorecard
         :param pulumi.Input[str] title: The title of the scorecard
         :param pulumi.Input[str] updated_at: The last update date of the scorecard
@@ -522,6 +374,7 @@ class Scorecard(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
         __props__.__dict__["identifier"] = identifier
+        __props__.__dict__["levels"] = levels
         __props__.__dict__["rules"] = rules
         __props__.__dict__["title"] = title
         __props__.__dict__["updated_at"] = updated_at
@@ -559,6 +412,14 @@ class Scorecard(pulumi.CustomResource):
         The identifier of the scorecard
         """
         return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter
+    def levels(self) -> pulumi.Output[Optional[Sequence['outputs.ScorecardLevel']]]:
+        """
+        The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
+        """
+        return pulumi.get(self, "levels")
 
     @property
     @pulumi.getter

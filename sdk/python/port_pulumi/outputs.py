@@ -83,6 +83,7 @@ __all__ = [
     'IntegrationKafkaChangelogDestination',
     'IntegrationWebhookChangelogDestination',
     'PagePermissionsRead',
+    'ScorecardLevel',
     'ScorecardRule',
     'ScorecardRuleQuery',
     'WebhookMapping',
@@ -4950,6 +4951,35 @@ class PagePermissionsRead(dict):
         The users with read permission
         """
         return pulumi.get(self, "users")
+
+
+@pulumi.output_type
+class ScorecardLevel(dict):
+    def __init__(__self__, *,
+                 color: str,
+                 title: str):
+        """
+        :param str color: The color of the level
+        :param str title: The title of the level
+        """
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        """
+        The color of the level
+        """
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        The title of the level
+        """
+        return pulumi.get(self, "title")
 
 
 @pulumi.output_type

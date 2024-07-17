@@ -12127,6 +12127,112 @@ func (o PagePermissionsReadPtrOutput) Users() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+type ScorecardLevel struct {
+	// The color of the level
+	Color string `pulumi:"color"`
+	// The title of the level
+	Title string `pulumi:"title"`
+}
+
+// ScorecardLevelInput is an input type that accepts ScorecardLevelArgs and ScorecardLevelOutput values.
+// You can construct a concrete instance of `ScorecardLevelInput` via:
+//
+//	ScorecardLevelArgs{...}
+type ScorecardLevelInput interface {
+	pulumi.Input
+
+	ToScorecardLevelOutput() ScorecardLevelOutput
+	ToScorecardLevelOutputWithContext(context.Context) ScorecardLevelOutput
+}
+
+type ScorecardLevelArgs struct {
+	// The color of the level
+	Color pulumi.StringInput `pulumi:"color"`
+	// The title of the level
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ScorecardLevelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardLevel)(nil)).Elem()
+}
+
+func (i ScorecardLevelArgs) ToScorecardLevelOutput() ScorecardLevelOutput {
+	return i.ToScorecardLevelOutputWithContext(context.Background())
+}
+
+func (i ScorecardLevelArgs) ToScorecardLevelOutputWithContext(ctx context.Context) ScorecardLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardLevelOutput)
+}
+
+// ScorecardLevelArrayInput is an input type that accepts ScorecardLevelArray and ScorecardLevelArrayOutput values.
+// You can construct a concrete instance of `ScorecardLevelArrayInput` via:
+//
+//	ScorecardLevelArray{ ScorecardLevelArgs{...} }
+type ScorecardLevelArrayInput interface {
+	pulumi.Input
+
+	ToScorecardLevelArrayOutput() ScorecardLevelArrayOutput
+	ToScorecardLevelArrayOutputWithContext(context.Context) ScorecardLevelArrayOutput
+}
+
+type ScorecardLevelArray []ScorecardLevelInput
+
+func (ScorecardLevelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScorecardLevel)(nil)).Elem()
+}
+
+func (i ScorecardLevelArray) ToScorecardLevelArrayOutput() ScorecardLevelArrayOutput {
+	return i.ToScorecardLevelArrayOutputWithContext(context.Background())
+}
+
+func (i ScorecardLevelArray) ToScorecardLevelArrayOutputWithContext(ctx context.Context) ScorecardLevelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardLevelArrayOutput)
+}
+
+type ScorecardLevelOutput struct{ *pulumi.OutputState }
+
+func (ScorecardLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardLevel)(nil)).Elem()
+}
+
+func (o ScorecardLevelOutput) ToScorecardLevelOutput() ScorecardLevelOutput {
+	return o
+}
+
+func (o ScorecardLevelOutput) ToScorecardLevelOutputWithContext(ctx context.Context) ScorecardLevelOutput {
+	return o
+}
+
+// The color of the level
+func (o ScorecardLevelOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v ScorecardLevel) string { return v.Color }).(pulumi.StringOutput)
+}
+
+// The title of the level
+func (o ScorecardLevelOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ScorecardLevel) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ScorecardLevelArrayOutput struct{ *pulumi.OutputState }
+
+func (ScorecardLevelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScorecardLevel)(nil)).Elem()
+}
+
+func (o ScorecardLevelArrayOutput) ToScorecardLevelArrayOutput() ScorecardLevelArrayOutput {
+	return o
+}
+
+func (o ScorecardLevelArrayOutput) ToScorecardLevelArrayOutputWithContext(ctx context.Context) ScorecardLevelArrayOutput {
+	return o
+}
+
+func (o ScorecardLevelArrayOutput) Index(i pulumi.IntInput) ScorecardLevelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScorecardLevel {
+		return vs[0].([]ScorecardLevel)[vs[1].(int)]
+	}).(ScorecardLevelOutput)
+}
+
 type ScorecardRule struct {
 	// The identifier of the rule
 	Identifier string `pulumi:"identifier"`
@@ -13516,6 +13622,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationWebhookChangelogDestinationPtrInput)(nil)).Elem(), IntegrationWebhookChangelogDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagePermissionsReadInput)(nil)).Elem(), PagePermissionsReadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagePermissionsReadPtrInput)(nil)).Elem(), PagePermissionsReadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardLevelInput)(nil)).Elem(), ScorecardLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardLevelArrayInput)(nil)).Elem(), ScorecardLevelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardRuleInput)(nil)).Elem(), ScorecardRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardRuleArrayInput)(nil)).Elem(), ScorecardRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardRuleQueryInput)(nil)).Elem(), ScorecardRuleQueryArgs{})
@@ -13675,6 +13783,8 @@ func init() {
 	pulumi.RegisterOutputType(IntegrationWebhookChangelogDestinationPtrOutput{})
 	pulumi.RegisterOutputType(PagePermissionsReadOutput{})
 	pulumi.RegisterOutputType(PagePermissionsReadPtrOutput{})
+	pulumi.RegisterOutputType(ScorecardLevelOutput{})
+	pulumi.RegisterOutputType(ScorecardLevelArrayOutput{})
 	pulumi.RegisterOutputType(ScorecardRuleOutput{})
 	pulumi.RegisterOutputType(ScorecardRuleArrayOutput{})
 	pulumi.RegisterOutputType(ScorecardRuleQueryOutput{})
