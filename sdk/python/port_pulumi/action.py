@@ -152,13 +152,11 @@ class ActionArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Action is not attached to blueprint anymore. This value is ignored""")
     def blueprint(self) -> Optional[pulumi.Input[str]]:
         """
         The blueprint identifier the action relates to
         """
-        warnings.warn("""Action is not attached to blueprint anymore. This value is ignored""", DeprecationWarning)
-        pulumi.log.warn("""blueprint is deprecated: Action is not attached to blueprint anymore. This value is ignored""")
-
         return pulumi.get(self, "blueprint")
 
     @blueprint.setter
@@ -426,13 +424,11 @@ class _ActionState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Action is not attached to blueprint anymore. This value is ignored""")
     def blueprint(self) -> Optional[pulumi.Input[str]]:
         """
         The blueprint identifier the action relates to
         """
-        warnings.warn("""Action is not attached to blueprint anymore. This value is ignored""", DeprecationWarning)
-        pulumi.log.warn("""blueprint is deprecated: Action is not attached to blueprint anymore. This value is ignored""")
-
         return pulumi.get(self, "blueprint")
 
     @blueprint.setter
@@ -1020,13 +1016,11 @@ class Action(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Action is not attached to blueprint anymore. This value is ignored""")
     def blueprint(self) -> pulumi.Output[Optional[str]]:
         """
         The blueprint identifier the action relates to
         """
-        warnings.warn("""Action is not attached to blueprint anymore. This value is ignored""", DeprecationWarning)
-        pulumi.log.warn("""blueprint is deprecated: Action is not attached to blueprint anymore. This value is ignored""")
-
         return pulumi.get(self, "blueprint")
 
     @property
