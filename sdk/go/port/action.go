@@ -33,21 +33,7 @@ import (
 // Title: "Create Microservice",
 // Identifier: "create-microservice",
 // Icon: "Terraform",
-// SelfServiceTrigger: tmpJSON0, err := json.Marshal(map[string]interface{}{
-// "combinator": "and",
-// "rules": []map[string]interface{}{
-// map[string]interface{}{
-// "property": "$title",
-// "operator": "contains",
-// "value": "specificValue",
-// },
-// },
-// })
-// if err != nil {
-// return err
-// }
-// json0 := string(tmpJSON0)
-// map[string]interface{}{
+// SelfServiceTrigger: map[string]interface{}{
 // "operation": "CREATE",
 // "blueprintIdentifier": port_blueprint.Microservice.Identifier,
 // "userProperties": map[string]interface{}{
@@ -98,21 +84,14 @@ import (
 // "stringItems": map[string]interface{}{
 // "format": "entity",
 // "blueprint": port_blueprint.Parent.Identifier,
-// "dataset": json0,
+// "dataset": %!v(PANIC=Format method: fatal: An assertion has failed: unlowered function toJSON),
 // },
 // },
 // },
 // },
 // },
-// KafkaMethod: tmpJSON1, err := json.Marshal(map[string]interface{}{
-// "runId": "{{.run.id}}",
-// })
-// if err != nil {
-// return err
-// }
-// json1 := string(tmpJSON1)
-// map[string]interface{}{
-// "payload": json1,
+// KafkaMethod: map[string]interface{}{
+// "payload": %!v(PANIC=Format method: fatal: An assertion has failed: unlowered function toJSON),
 // },
 // })
 // if err != nil {
@@ -150,15 +129,8 @@ import (
 // "propertyIdentifier": "ttl",
 // },
 // },
-// KafkaMethod: tmpJSON0, err := json.Marshal(map[string]interface{}{
-// "runId": "{{.run.id}}",
-// })
-// if err != nil {
-// return err
-// }
-// json0 := string(tmpJSON0)
-// map[string]interface{}{
-// "payload": json0,
+// KafkaMethod: map[string]interface{}{
+// "payload": %!v(PANIC=Format method: fatal: An assertion has failed: unlowered function toJSON),
 // },
 // })
 // if err != nil {

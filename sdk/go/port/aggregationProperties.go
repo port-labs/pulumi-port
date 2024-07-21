@@ -300,26 +300,7 @@ import (
 // }
 // _, err = port.NewPort_aggregation_properties(ctx, "repositoryAggregationProperties", &port.Port_aggregation_propertiesArgs{
 // BlueprintIdentifier: repositoryBlueprint.Identifier,
-// Properties: tmpJSON0, err := json.Marshal(map[string]interface{}{
-// "combinator": "and",
-// "rules": []map[string]interface{}{
-// map[string]interface{}{
-// "property": "$title",
-// "operator": "ContainsAny",
-// "value": []string{
-// "fix",
-// "fixed",
-// "fixing",
-// "Fix",
-// },
-// },
-// },
-// })
-// if err != nil {
-// return err
-// }
-// json0 := string(tmpJSON0)
-// map[string]interface{}{
+// Properties: map[string]interface{}{
 // "fix_pull_requests_count": map[string]interface{}{
 // "targetBlueprintIdentifier": pullRequestBlueprint.Identifier,
 // "title": "Pull Requests Per Day",
@@ -331,7 +312,7 @@ import (
 // "measureTimeBy": "$createdAt",
 // },
 // },
-// "query": json0,
+// "query": %!v(PANIC=Format method: fatal: An assertion has failed: unlowered function toJSON),
 // },
 // },
 // })

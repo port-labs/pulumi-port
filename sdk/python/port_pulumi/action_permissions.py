@@ -59,13 +59,11 @@ class ActionPermissionsArgs:
 
     @property
     @pulumi.getter(name="blueprintIdentifier")
+    @_utilities.deprecated("""Action is not attached to blueprint anymore. This value is ignored""")
     def blueprint_identifier(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the blueprint
         """
-        warnings.warn("""Action is not attached to blueprint anymore. This value is ignored""", DeprecationWarning)
-        pulumi.log.warn("""blueprint_identifier is deprecated: Action is not attached to blueprint anymore. This value is ignored""")
-
         return pulumi.get(self, "blueprint_identifier")
 
     @blueprint_identifier.setter
@@ -109,13 +107,11 @@ class _ActionPermissionsState:
 
     @property
     @pulumi.getter(name="blueprintIdentifier")
+    @_utilities.deprecated("""Action is not attached to blueprint anymore. This value is ignored""")
     def blueprint_identifier(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the blueprint
         """
-        warnings.warn("""Action is not attached to blueprint anymore. This value is ignored""", DeprecationWarning)
-        pulumi.log.warn("""blueprint_identifier is deprecated: Action is not attached to blueprint anymore. This value is ignored""")
-
         return pulumi.get(self, "blueprint_identifier")
 
     @blueprint_identifier.setter
@@ -237,13 +233,11 @@ class ActionPermissions(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="blueprintIdentifier")
+    @_utilities.deprecated("""Action is not attached to blueprint anymore. This value is ignored""")
     def blueprint_identifier(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the blueprint
         """
-        warnings.warn("""Action is not attached to blueprint anymore. This value is ignored""", DeprecationWarning)
-        pulumi.log.warn("""blueprint_identifier is deprecated: Action is not attached to blueprint anymore. This value is ignored""")
-
         return pulumi.get(self, "blueprint_identifier")
 
     @property
