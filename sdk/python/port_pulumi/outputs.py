@@ -2332,21 +2332,22 @@ class ActionUpsertEntityMethod(dict):
 @pulumi.output_type
 class ActionUpsertEntityMethodMapping(dict):
     def __init__(__self__, *,
-                 identifier: str,
                  icon: Optional[str] = None,
+                 identifier: Optional[str] = None,
                  properties: Optional[str] = None,
                  relations: Optional[str] = None,
                  teams: Optional[Sequence[str]] = None):
         """
-        :param str identifier: Required when selecting type Upsert Entity. The entity identifier for the upsert
         :param str icon: The icon of the entity
+        :param str identifier: Required when selecting type Upsert Entity. The entity identifier for the upsert
         :param str properties: The properties of the entity (key-value object encoded to a string)
         :param str relations: The relations of the entity (key-value object encoded to a string)
         :param Sequence[str] teams: The teams the entity belongs to
         """
-        pulumi.set(__self__, "identifier", identifier)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
+        if identifier is not None:
+            pulumi.set(__self__, "identifier", identifier)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
         if relations is not None:
@@ -2356,19 +2357,19 @@ class ActionUpsertEntityMethodMapping(dict):
 
     @property
     @pulumi.getter
-    def identifier(self) -> str:
-        """
-        Required when selecting type Upsert Entity. The entity identifier for the upsert
-        """
-        return pulumi.get(self, "identifier")
-
-    @property
-    @pulumi.getter
     def icon(self) -> Optional[str]:
         """
         The icon of the entity
         """
         return pulumi.get(self, "icon")
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> Optional[str]:
+        """
+        Required when selecting type Upsert Entity. The entity identifier for the upsert
+        """
+        return pulumi.get(self, "identifier")
 
     @property
     @pulumi.getter

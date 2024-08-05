@@ -2455,39 +2455,28 @@ class ActionUpsertEntityMethodArgs:
 @pulumi.input_type
 class ActionUpsertEntityMethodMappingArgs:
     def __init__(__self__, *,
-                 identifier: pulumi.Input[str],
                  icon: Optional[pulumi.Input[str]] = None,
+                 identifier: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[str]] = None,
                  relations: Optional[pulumi.Input[str]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] identifier: Required when selecting type Upsert Entity. The entity identifier for the upsert
         :param pulumi.Input[str] icon: The icon of the entity
+        :param pulumi.Input[str] identifier: Required when selecting type Upsert Entity. The entity identifier for the upsert
         :param pulumi.Input[str] properties: The properties of the entity (key-value object encoded to a string)
         :param pulumi.Input[str] relations: The relations of the entity (key-value object encoded to a string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The teams the entity belongs to
         """
-        pulumi.set(__self__, "identifier", identifier)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
+        if identifier is not None:
+            pulumi.set(__self__, "identifier", identifier)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
         if relations is not None:
             pulumi.set(__self__, "relations", relations)
         if teams is not None:
             pulumi.set(__self__, "teams", teams)
-
-    @property
-    @pulumi.getter
-    def identifier(self) -> pulumi.Input[str]:
-        """
-        Required when selecting type Upsert Entity. The entity identifier for the upsert
-        """
-        return pulumi.get(self, "identifier")
-
-    @identifier.setter
-    def identifier(self, value: pulumi.Input[str]):
-        pulumi.set(self, "identifier", value)
 
     @property
     @pulumi.getter
@@ -2500,6 +2489,18 @@ class ActionUpsertEntityMethodMappingArgs:
     @icon.setter
     def icon(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "icon", value)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required when selecting type Upsert Entity. The entity identifier for the upsert
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identifier", value)
 
     @property
     @pulumi.getter

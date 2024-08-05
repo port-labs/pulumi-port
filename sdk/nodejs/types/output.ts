@@ -647,7 +647,7 @@ export interface ActionUpsertEntityMethodMapping {
     /**
      * Required when selecting type Upsert Entity. The entity identifier for the upsert
      */
-    identifier: string;
+    identifier?: string;
     /**
      * The properties of the entity (key-value object encoded to a string)
      */

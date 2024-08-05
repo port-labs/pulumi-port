@@ -972,10 +972,7 @@
                     "description": "The teams the entity belongs to\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "identifier"
-            ]
+            "type": "object"
         },
         "port:index/ActionWebhookMethod:ActionWebhookMethod": {
             "properties": {
