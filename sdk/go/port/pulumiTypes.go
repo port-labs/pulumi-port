@@ -5347,7 +5347,7 @@ type ActionUpsertEntityMethodMapping struct {
 	// The icon of the entity
 	Icon *string `pulumi:"icon"`
 	// Required when selecting type Upsert Entity. The entity identifier for the upsert
-	Identifier string `pulumi:"identifier"`
+	Identifier *string `pulumi:"identifier"`
 	// The properties of the entity (key-value object encoded to a string)
 	Properties *string `pulumi:"properties"`
 	// The relations of the entity (key-value object encoded to a string)
@@ -5371,7 +5371,7 @@ type ActionUpsertEntityMethodMappingArgs struct {
 	// The icon of the entity
 	Icon pulumi.StringPtrInput `pulumi:"icon"`
 	// Required when selecting type Upsert Entity. The entity identifier for the upsert
-	Identifier pulumi.StringInput `pulumi:"identifier"`
+	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
 	// The properties of the entity (key-value object encoded to a string)
 	Properties pulumi.StringPtrInput `pulumi:"properties"`
 	// The relations of the entity (key-value object encoded to a string)
@@ -5463,8 +5463,8 @@ func (o ActionUpsertEntityMethodMappingOutput) Icon() pulumi.StringPtrOutput {
 }
 
 // Required when selecting type Upsert Entity. The entity identifier for the upsert
-func (o ActionUpsertEntityMethodMappingOutput) Identifier() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionUpsertEntityMethodMapping) string { return v.Identifier }).(pulumi.StringOutput)
+func (o ActionUpsertEntityMethodMappingOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUpsertEntityMethodMapping) *string { return v.Identifier }).(pulumi.StringPtrOutput)
 }
 
 // The properties of the entity (key-value object encoded to a string)
@@ -5522,7 +5522,7 @@ func (o ActionUpsertEntityMethodMappingPtrOutput) Identifier() pulumi.StringPtrO
 		if v == nil {
 			return nil
 		}
-		return &v.Identifier
+		return v.Identifier
 	}).(pulumi.StringPtrOutput)
 }
 
