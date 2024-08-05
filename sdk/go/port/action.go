@@ -169,8 +169,8 @@ type Action struct {
 	KafkaMethod ActionKafkaMethodPtrOutput `pulumi:"kafkaMethod"`
 	// Publish action
 	Publish pulumi.BoolOutput `pulumi:"publish"`
-	// Require approval before invoking the action
-	RequiredApproval pulumi.BoolPtrOutput `pulumi:"requiredApproval"`
+	// Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
+	RequiredApproval pulumi.StringPtrOutput `pulumi:"requiredApproval"`
 	// Self service trigger for the action
 	SelfServiceTrigger ActionSelfServiceTriggerPtrOutput `pulumi:"selfServiceTrigger"`
 	// Title
@@ -240,8 +240,8 @@ type actionState struct {
 	KafkaMethod *ActionKafkaMethod `pulumi:"kafkaMethod"`
 	// Publish action
 	Publish *bool `pulumi:"publish"`
-	// Require approval before invoking the action
-	RequiredApproval *bool `pulumi:"requiredApproval"`
+	// Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
+	RequiredApproval *string `pulumi:"requiredApproval"`
 	// Self service trigger for the action
 	SelfServiceTrigger *ActionSelfServiceTrigger `pulumi:"selfServiceTrigger"`
 	// Title
@@ -279,8 +279,8 @@ type ActionState struct {
 	KafkaMethod ActionKafkaMethodPtrInput
 	// Publish action
 	Publish pulumi.BoolPtrInput
-	// Require approval before invoking the action
-	RequiredApproval pulumi.BoolPtrInput
+	// Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
+	RequiredApproval pulumi.StringPtrInput
 	// Self service trigger for the action
 	SelfServiceTrigger ActionSelfServiceTriggerPtrInput
 	// Title
@@ -322,8 +322,8 @@ type actionArgs struct {
 	KafkaMethod *ActionKafkaMethod `pulumi:"kafkaMethod"`
 	// Publish action
 	Publish *bool `pulumi:"publish"`
-	// Require approval before invoking the action
-	RequiredApproval *bool `pulumi:"requiredApproval"`
+	// Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
+	RequiredApproval *string `pulumi:"requiredApproval"`
 	// Self service trigger for the action
 	SelfServiceTrigger *ActionSelfServiceTrigger `pulumi:"selfServiceTrigger"`
 	// Title
@@ -362,8 +362,8 @@ type ActionArgs struct {
 	KafkaMethod ActionKafkaMethodPtrInput
 	// Publish action
 	Publish pulumi.BoolPtrInput
-	// Require approval before invoking the action
-	RequiredApproval pulumi.BoolPtrInput
+	// Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
+	RequiredApproval pulumi.StringPtrInput
 	// Self service trigger for the action
 	SelfServiceTrigger ActionSelfServiceTriggerPtrInput
 	// Title
@@ -523,9 +523,9 @@ func (o ActionOutput) Publish() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Action) pulumi.BoolOutput { return v.Publish }).(pulumi.BoolOutput)
 }
 
-// Require approval before invoking the action
-func (o ActionOutput) RequiredApproval() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Action) pulumi.BoolPtrOutput { return v.RequiredApproval }).(pulumi.BoolPtrOutput)
+// Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
+func (o ActionOutput) RequiredApproval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Action) pulumi.StringPtrOutput { return v.RequiredApproval }).(pulumi.StringPtrOutput)
 }
 
 // Self service trigger for the action

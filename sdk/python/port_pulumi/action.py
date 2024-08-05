@@ -28,7 +28,7 @@ class ActionArgs:
                  icon: Optional[pulumi.Input[str]] = None,
                  kafka_method: Optional[pulumi.Input['ActionKafkaMethodArgs']] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
-                 required_approval: Optional[pulumi.Input[bool]] = None,
+                 required_approval: Optional[pulumi.Input[str]] = None,
                  self_service_trigger: Optional[pulumi.Input['ActionSelfServiceTriggerArgs']] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  upsert_entity_method: Optional[pulumi.Input['ActionUpsertEntityMethodArgs']] = None,
@@ -47,7 +47,7 @@ class ActionArgs:
         :param pulumi.Input[str] icon: Icon
         :param pulumi.Input['ActionKafkaMethodArgs'] kafka_method: Kafka invocation method
         :param pulumi.Input[bool] publish: Publish action
-        :param pulumi.Input[bool] required_approval: Require approval before invoking the action
+        :param pulumi.Input[str] required_approval: Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
         :param pulumi.Input['ActionSelfServiceTriggerArgs'] self_service_trigger: Self service trigger for the action
         :param pulumi.Input[str] title: Title
         :param pulumi.Input['ActionUpsertEntityMethodArgs'] upsert_entity_method: Upsert Entity invocation method
@@ -237,14 +237,14 @@ class ActionArgs:
 
     @property
     @pulumi.getter(name="requiredApproval")
-    def required_approval(self) -> Optional[pulumi.Input[bool]]:
+    def required_approval(self) -> Optional[pulumi.Input[str]]:
         """
-        Require approval before invoking the action
+        Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
         """
         return pulumi.get(self, "required_approval")
 
     @required_approval.setter
-    def required_approval(self, value: Optional[pulumi.Input[bool]]):
+    def required_approval(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "required_approval", value)
 
     @property
@@ -311,7 +311,7 @@ class _ActionState:
                  identifier: Optional[pulumi.Input[str]] = None,
                  kafka_method: Optional[pulumi.Input['ActionKafkaMethodArgs']] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
-                 required_approval: Optional[pulumi.Input[bool]] = None,
+                 required_approval: Optional[pulumi.Input[str]] = None,
                  self_service_trigger: Optional[pulumi.Input['ActionSelfServiceTriggerArgs']] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  upsert_entity_method: Optional[pulumi.Input['ActionUpsertEntityMethodArgs']] = None,
@@ -330,7 +330,7 @@ class _ActionState:
         :param pulumi.Input[str] identifier: Identifier
         :param pulumi.Input['ActionKafkaMethodArgs'] kafka_method: Kafka invocation method
         :param pulumi.Input[bool] publish: Publish action
-        :param pulumi.Input[bool] required_approval: Require approval before invoking the action
+        :param pulumi.Input[str] required_approval: Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
         :param pulumi.Input['ActionSelfServiceTriggerArgs'] self_service_trigger: Self service trigger for the action
         :param pulumi.Input[str] title: Title
         :param pulumi.Input['ActionUpsertEntityMethodArgs'] upsert_entity_method: Upsert Entity invocation method
@@ -521,14 +521,14 @@ class _ActionState:
 
     @property
     @pulumi.getter(name="requiredApproval")
-    def required_approval(self) -> Optional[pulumi.Input[bool]]:
+    def required_approval(self) -> Optional[pulumi.Input[str]]:
         """
-        Require approval before invoking the action
+        Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
         """
         return pulumi.get(self, "required_approval")
 
     @required_approval.setter
-    def required_approval(self, value: Optional[pulumi.Input[bool]]):
+    def required_approval(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "required_approval", value)
 
     @property
@@ -597,7 +597,7 @@ class Action(pulumi.CustomResource):
                  identifier: Optional[pulumi.Input[str]] = None,
                  kafka_method: Optional[pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']]] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
-                 required_approval: Optional[pulumi.Input[bool]] = None,
+                 required_approval: Optional[pulumi.Input[str]] = None,
                  self_service_trigger: Optional[pulumi.Input[pulumi.InputType['ActionSelfServiceTriggerArgs']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  upsert_entity_method: Optional[pulumi.Input[pulumi.InputType['ActionUpsertEntityMethodArgs']]] = None,
@@ -726,7 +726,7 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: Identifier
         :param pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']] kafka_method: Kafka invocation method
         :param pulumi.Input[bool] publish: Publish action
-        :param pulumi.Input[bool] required_approval: Require approval before invoking the action
+        :param pulumi.Input[str] required_approval: Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
         :param pulumi.Input[pulumi.InputType['ActionSelfServiceTriggerArgs']] self_service_trigger: Self service trigger for the action
         :param pulumi.Input[str] title: Title
         :param pulumi.Input[pulumi.InputType['ActionUpsertEntityMethodArgs']] upsert_entity_method: Upsert Entity invocation method
@@ -874,7 +874,7 @@ class Action(pulumi.CustomResource):
                  identifier: Optional[pulumi.Input[str]] = None,
                  kafka_method: Optional[pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']]] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
-                 required_approval: Optional[pulumi.Input[bool]] = None,
+                 required_approval: Optional[pulumi.Input[str]] = None,
                  self_service_trigger: Optional[pulumi.Input[pulumi.InputType['ActionSelfServiceTriggerArgs']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  upsert_entity_method: Optional[pulumi.Input[pulumi.InputType['ActionUpsertEntityMethodArgs']]] = None,
@@ -929,7 +929,7 @@ class Action(pulumi.CustomResource):
             identifier: Optional[pulumi.Input[str]] = None,
             kafka_method: Optional[pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']]] = None,
             publish: Optional[pulumi.Input[bool]] = None,
-            required_approval: Optional[pulumi.Input[bool]] = None,
+            required_approval: Optional[pulumi.Input[str]] = None,
             self_service_trigger: Optional[pulumi.Input[pulumi.InputType['ActionSelfServiceTriggerArgs']]] = None,
             title: Optional[pulumi.Input[str]] = None,
             upsert_entity_method: Optional[pulumi.Input[pulumi.InputType['ActionUpsertEntityMethodArgs']]] = None,
@@ -953,7 +953,7 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: Identifier
         :param pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']] kafka_method: Kafka invocation method
         :param pulumi.Input[bool] publish: Publish action
-        :param pulumi.Input[bool] required_approval: Require approval before invoking the action
+        :param pulumi.Input[str] required_approval: Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
         :param pulumi.Input[pulumi.InputType['ActionSelfServiceTriggerArgs']] self_service_trigger: Self service trigger for the action
         :param pulumi.Input[str] title: Title
         :param pulumi.Input[pulumi.InputType['ActionUpsertEntityMethodArgs']] upsert_entity_method: Upsert Entity invocation method
@@ -1081,9 +1081,9 @@ class Action(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requiredApproval")
-    def required_approval(self) -> pulumi.Output[Optional[bool]]:
+    def required_approval(self) -> pulumi.Output[Optional[str]]:
         """
-        Require approval before invoking the action
+        Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
         """
         return pulumi.get(self, "required_approval")
 
