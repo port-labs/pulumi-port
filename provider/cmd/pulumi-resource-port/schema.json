@@ -2660,8 +2660,8 @@
                     "description": "Publish action\n"
                 },
                 "requiredApproval": {
-                    "type": "boolean",
-                    "description": "Require approval before invoking the action\n"
+                    "type": "string",
+                    "description": "Require approval before invoking the action. Can be one of \"true\", \"false\", \"ANY\" or \"ALL\"\n"
                 },
                 "selfServiceTrigger": {
                     "$ref": "#/types/port:index/ActionSelfServiceTrigger:ActionSelfServiceTrigger",
@@ -2735,8 +2735,8 @@
                     "description": "Publish action\n"
                 },
                 "requiredApproval": {
-                    "type": "boolean",
-                    "description": "Require approval before invoking the action\n"
+                    "type": "string",
+                    "description": "Require approval before invoking the action. Can be one of \"true\", \"false\", \"ANY\" or \"ALL\"\n"
                 },
                 "selfServiceTrigger": {
                     "$ref": "#/types/port:index/ActionSelfServiceTrigger:ActionSelfServiceTrigger",
@@ -2811,8 +2811,8 @@
                         "description": "Publish action\n"
                     },
                     "requiredApproval": {
-                        "type": "boolean",
-                        "description": "Require approval before invoking the action\n"
+                        "type": "string",
+                        "description": "Require approval before invoking the action. Can be one of \"true\", \"false\", \"ANY\" or \"ALL\"\n"
                     },
                     "selfServiceTrigger": {
                         "$ref": "#/types/port:index/ActionSelfServiceTrigger:ActionSelfServiceTrigger",
