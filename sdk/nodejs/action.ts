@@ -194,9 +194,9 @@ export class Action extends pulumi.CustomResource {
      */
     public readonly publish!: pulumi.Output<boolean>;
     /**
-     * Require approval before invoking the action
+     * Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
      */
-    public readonly requiredApproval!: pulumi.Output<boolean | undefined>;
+    public readonly requiredApproval!: pulumi.Output<string | undefined>;
     /**
      * Self service trigger for the action
      */
@@ -327,9 +327,9 @@ export interface ActionState {
      */
     publish?: pulumi.Input<boolean>;
     /**
-     * Require approval before invoking the action
+     * Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
      */
-    requiredApproval?: pulumi.Input<boolean>;
+    requiredApproval?: pulumi.Input<string>;
     /**
      * Self service trigger for the action
      */
@@ -403,9 +403,9 @@ export interface ActionArgs {
      */
     publish?: pulumi.Input<boolean>;
     /**
-     * Require approval before invoking the action
+     * Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
      */
-    requiredApproval?: pulumi.Input<boolean>;
+    requiredApproval?: pulumi.Input<string>;
     /**
      * Self service trigger for the action
      */
