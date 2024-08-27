@@ -19,6 +19,7 @@ __all__ = [
     'ActionAutomationTriggerEntityDeletedEvent',
     'ActionAutomationTriggerEntityUpdatedEvent',
     'ActionAutomationTriggerJqCondition',
+    'ActionAutomationTriggerRunUpdatedEvent',
     'ActionAutomationTriggerTimerPropertyExpiredEvent',
     'ActionAzureMethod',
     'ActionGithubMethod',
@@ -148,6 +149,8 @@ class ActionAutomationTrigger(dict):
             suggest = "entity_updated_event"
         elif key == "jqCondition":
             suggest = "jq_condition"
+        elif key == "runUpdatedEvent":
+            suggest = "run_updated_event"
         elif key == "timerPropertyExpiredEvent":
             suggest = "timer_property_expired_event"
 
@@ -168,6 +171,7 @@ class ActionAutomationTrigger(dict):
                  entity_deleted_event: Optional['outputs.ActionAutomationTriggerEntityDeletedEvent'] = None,
                  entity_updated_event: Optional['outputs.ActionAutomationTriggerEntityUpdatedEvent'] = None,
                  jq_condition: Optional['outputs.ActionAutomationTriggerJqCondition'] = None,
+                 run_updated_event: Optional['outputs.ActionAutomationTriggerRunUpdatedEvent'] = None,
                  timer_property_expired_event: Optional['outputs.ActionAutomationTriggerTimerPropertyExpiredEvent'] = None):
         """
         :param 'ActionAutomationTriggerAnyEntityChangeEventArgs' any_entity_change_event: Any entity change event trigger
@@ -175,6 +179,7 @@ class ActionAutomationTrigger(dict):
         :param 'ActionAutomationTriggerEntityDeletedEventArgs' entity_deleted_event: Entity deleted event trigger
         :param 'ActionAutomationTriggerEntityUpdatedEventArgs' entity_updated_event: Entity updated event trigger
         :param 'ActionAutomationTriggerJqConditionArgs' jq_condition: JQ condition for automation trigger
+        :param 'ActionAutomationTriggerRunUpdatedEventArgs' run_updated_event: Run updated event trigger
         :param 'ActionAutomationTriggerTimerPropertyExpiredEventArgs' timer_property_expired_event: Timer property expired event trigger
         """
         if any_entity_change_event is not None:
@@ -187,6 +192,8 @@ class ActionAutomationTrigger(dict):
             pulumi.set(__self__, "entity_updated_event", entity_updated_event)
         if jq_condition is not None:
             pulumi.set(__self__, "jq_condition", jq_condition)
+        if run_updated_event is not None:
+            pulumi.set(__self__, "run_updated_event", run_updated_event)
         if timer_property_expired_event is not None:
             pulumi.set(__self__, "timer_property_expired_event", timer_property_expired_event)
 
@@ -229,6 +236,14 @@ class ActionAutomationTrigger(dict):
         JQ condition for automation trigger
         """
         return pulumi.get(self, "jq_condition")
+
+    @property
+    @pulumi.getter(name="runUpdatedEvent")
+    def run_updated_event(self) -> Optional['outputs.ActionAutomationTriggerRunUpdatedEvent']:
+        """
+        Run updated event trigger
+        """
+        return pulumi.get(self, "run_updated_event")
 
     @property
     @pulumi.getter(name="timerPropertyExpiredEvent")
@@ -407,6 +422,41 @@ class ActionAutomationTriggerJqCondition(dict):
         The combinator of the condition
         """
         return pulumi.get(self, "combinator")
+
+
+@pulumi.output_type
+class ActionAutomationTriggerRunUpdatedEvent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionIdentifier":
+            suggest = "action_identifier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionAutomationTriggerRunUpdatedEvent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionAutomationTriggerRunUpdatedEvent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionAutomationTriggerRunUpdatedEvent.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action_identifier: str):
+        """
+        :param str action_identifier: The action identifier of the updated run
+        """
+        pulumi.set(__self__, "action_identifier", action_identifier)
+
+    @property
+    @pulumi.getter(name="actionIdentifier")
+    def action_identifier(self) -> str:
+        """
+        The action identifier of the updated run
+        """
+        return pulumi.get(self, "action_identifier")
 
 
 @pulumi.output_type
