@@ -116,6 +116,10 @@
                     "$ref": "#/types/port:index/ActionAutomationTriggerJqCondition:ActionAutomationTriggerJqCondition",
                     "description": "JQ condition for automation trigger\n"
                 },
+                "runUpdatedEvent": {
+                    "$ref": "#/types/port:index/ActionAutomationTriggerRunUpdatedEvent:ActionAutomationTriggerRunUpdatedEvent",
+                    "description": "Run updated event trigger\n"
+                },
                 "timerPropertyExpiredEvent": {
                     "$ref": "#/types/port:index/ActionAutomationTriggerTimerPropertyExpiredEvent:ActionAutomationTriggerTimerPropertyExpiredEvent",
                     "description": "Timer property expired event trigger\n"
@@ -197,6 +201,18 @@
                     ]
                 }
             }
+        },
+        "port:index/ActionAutomationTriggerRunUpdatedEvent:ActionAutomationTriggerRunUpdatedEvent": {
+            "properties": {
+                "actionIdentifier": {
+                    "type": "string",
+                    "description": "The action identifier of the updated run\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "actionIdentifier"
+            ]
         },
         "port:index/ActionAutomationTriggerTimerPropertyExpiredEvent:ActionAutomationTriggerTimerPropertyExpiredEvent": {
             "properties": {
