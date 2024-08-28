@@ -41,6 +41,10 @@ export interface ActionAutomationTrigger {
      */
     jqCondition?: outputs.ActionAutomationTriggerJqCondition;
     /**
+     * Run updated event trigger
+     */
+    runUpdatedEvent?: outputs.ActionAutomationTriggerRunUpdatedEvent;
+    /**
      * Timer property expired event trigger
      */
     timerPropertyExpiredEvent?: outputs.ActionAutomationTriggerTimerPropertyExpiredEvent;
@@ -83,6 +87,13 @@ export interface ActionAutomationTriggerJqCondition {
      * The jq expressions of the condition
      */
     expressions: string[];
+}
+
+export interface ActionAutomationTriggerRunUpdatedEvent {
+    /**
+     * The action identifier of the updated run
+     */
+    actionIdentifier: string;
 }
 
 export interface ActionAutomationTriggerTimerPropertyExpiredEvent {

@@ -41,6 +41,10 @@ export interface ActionAutomationTrigger {
      */
     jqCondition?: pulumi.Input<inputs.ActionAutomationTriggerJqCondition>;
     /**
+     * Run updated event trigger
+     */
+    runUpdatedEvent?: pulumi.Input<inputs.ActionAutomationTriggerRunUpdatedEvent>;
+    /**
      * Timer property expired event trigger
      */
     timerPropertyExpiredEvent?: pulumi.Input<inputs.ActionAutomationTriggerTimerPropertyExpiredEvent>;
@@ -83,6 +87,13 @@ export interface ActionAutomationTriggerJqCondition {
      * The jq expressions of the condition
      */
     expressions: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ActionAutomationTriggerRunUpdatedEvent {
+    /**
+     * The action identifier of the updated run
+     */
+    actionIdentifier: pulumi.Input<string>;
 }
 
 export interface ActionAutomationTriggerTimerPropertyExpiredEvent {
