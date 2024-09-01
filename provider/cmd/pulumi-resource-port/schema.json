@@ -1962,6 +1962,10 @@
         },
         "port:index/BlueprintRelations:BlueprintRelations": {
             "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the relation\n"
+                },
                 "many": {
                     "type": "boolean",
                     "description": "The many of the relation\n"
