@@ -4625,16 +4625,20 @@ class BlueprintPropertiesStringPropsSpecAuthentication(dict):
 class BlueprintRelations(dict):
     def __init__(__self__, *,
                  target: str,
+                 description: Optional[str] = None,
                  many: Optional[bool] = None,
                  required: Optional[bool] = None,
                  title: Optional[str] = None):
         """
         :param str target: The target of the relation
+        :param str description: The description of the relation
         :param bool many: The many of the relation
         :param bool required: The required of the relation
         :param str title: The title of the relation
         """
         pulumi.set(__self__, "target", target)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if many is not None:
             pulumi.set(__self__, "many", many)
         if required is not None:
@@ -4649,6 +4653,14 @@ class BlueprintRelations(dict):
         The target of the relation
         """
         return pulumi.get(self, "target")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the relation
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter

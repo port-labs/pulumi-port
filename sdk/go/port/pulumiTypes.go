@@ -10871,6 +10871,8 @@ func (o BlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) TokenUrl() pu
 }
 
 type BlueprintRelations struct {
+	// The description of the relation
+	Description *string `pulumi:"description"`
 	// The many of the relation
 	Many *bool `pulumi:"many"`
 	// The required of the relation
@@ -10893,6 +10895,8 @@ type BlueprintRelationsInput interface {
 }
 
 type BlueprintRelationsArgs struct {
+	// The description of the relation
+	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The many of the relation
 	Many pulumi.BoolPtrInput `pulumi:"many"`
 	// The required of the relation
@@ -10952,6 +10956,11 @@ func (o BlueprintRelationsOutput) ToBlueprintRelationsOutput() BlueprintRelation
 
 func (o BlueprintRelationsOutput) ToBlueprintRelationsOutputWithContext(ctx context.Context) BlueprintRelationsOutput {
 	return o
+}
+
+// The description of the relation
+func (o BlueprintRelationsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintRelations) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The many of the relation

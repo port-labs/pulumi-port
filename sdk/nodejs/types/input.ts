@@ -1305,6 +1305,10 @@ export interface BlueprintPropertiesStringPropsSpecAuthentication {
 
 export interface BlueprintRelations {
     /**
+     * The description of the relation
+     */
+    description?: pulumi.Input<string>;
+    /**
      * The many of the relation
      */
     many?: pulumi.Input<boolean>;
