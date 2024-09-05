@@ -54,7 +54,7 @@ type Integration struct {
 	// The changelog destination of the blueprint (just an empty `{}`)
 	KafkaChangelogDestination IntegrationKafkaChangelogDestinationPtrOutput `pulumi:"kafkaChangelogDestination"`
 	Title                     pulumi.StringPtrOutput                        `pulumi:"title"`
-	Version                   pulumi.StringPtrOutput                        `pulumi:"version"`
+	Version                   pulumi.StringOutput                           `pulumi:"version"`
 	// The webhook changelog destination of the integration
 	WebhookChangelogDestination IntegrationWebhookChangelogDestinationPtrOutput `pulumi:"webhookChangelogDestination"`
 }
@@ -257,8 +257,8 @@ func (o IntegrationOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.Title }).(pulumi.StringPtrOutput)
 }
 
-func (o IntegrationOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
+func (o IntegrationOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }
 
 // The webhook changelog destination of the integration

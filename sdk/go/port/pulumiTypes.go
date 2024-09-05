@@ -3283,7 +3283,7 @@ func (o ActionSelfServiceTriggerUserPropertiesPtrOutput) StringProps() ActionSel
 }
 
 type ActionSelfServiceTriggerUserPropertiesArrayProps struct {
-	// The items of the array property
+	// An array of boolean items within the property
 	BooleanItems *ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems `pulumi:"booleanItems"`
 	// The default jq query of the array property
 	DefaultJqQuery *string `pulumi:"defaultJqQuery"`
@@ -3297,13 +3297,13 @@ type ActionSelfServiceTriggerUserPropertiesArrayProps struct {
 	MaxItems *int `pulumi:"maxItems"`
 	// The min items of the array property
 	MinItems *int `pulumi:"minItems"`
-	// The items of the array property
+	// An array of number items within the property
 	NumberItems *ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems `pulumi:"numberItems"`
-	// The items of the array property
+	// An array of object items within the property
 	ObjectItems *ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems `pulumi:"objectItems"`
 	// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
 	Required *bool `pulumi:"required"`
-	// The items of the array property
+	// An array of string items within the property
 	StringItems *ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems `pulumi:"stringItems"`
 	// The title of the property
 	Title *string `pulumi:"title"`
@@ -3325,7 +3325,7 @@ type ActionSelfServiceTriggerUserPropertiesArrayPropsInput interface {
 }
 
 type ActionSelfServiceTriggerUserPropertiesArrayPropsArgs struct {
-	// The items of the array property
+	// An array of boolean items within the property
 	BooleanItems ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrInput `pulumi:"booleanItems"`
 	// The default jq query of the array property
 	DefaultJqQuery pulumi.StringPtrInput `pulumi:"defaultJqQuery"`
@@ -3339,13 +3339,13 @@ type ActionSelfServiceTriggerUserPropertiesArrayPropsArgs struct {
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// The min items of the array property
 	MinItems pulumi.IntPtrInput `pulumi:"minItems"`
-	// The items of the array property
+	// An array of number items within the property
 	NumberItems ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrInput `pulumi:"numberItems"`
-	// The items of the array property
+	// An array of object items within the property
 	ObjectItems ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrInput `pulumi:"objectItems"`
 	// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
 	Required pulumi.BoolPtrInput `pulumi:"required"`
-	// The items of the array property
+	// An array of string items within the property
 	StringItems ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrInput `pulumi:"stringItems"`
 	// The title of the property
 	Title pulumi.StringPtrInput `pulumi:"title"`
@@ -3406,7 +3406,7 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) ToActionSelfServ
 	return o
 }
 
-// The items of the array property
+// An array of boolean items within the property
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) BooleanItems() ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems {
 		return v.BooleanItems
@@ -3443,14 +3443,14 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) MinItems() pulum
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *int { return v.MinItems }).(pulumi.IntPtrOutput)
 }
 
-// The items of the array property
+// An array of number items within the property
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) NumberItems() ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems {
 		return v.NumberItems
 	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput)
 }
 
-// The items of the array property
+// An array of object items within the property
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) ObjectItems() ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems {
 		return v.ObjectItems
@@ -3462,7 +3462,7 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) Required() pulum
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
-// The items of the array property
+// An array of string items within the property
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) StringItems() ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems {
 		return v.StringItems
@@ -3505,7 +3505,7 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsMapOutput) MapIndex(k pu
 }
 
 type ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems struct {
-	// The default of the items
+	// The default values for the boolean items
 	Defaults []bool `pulumi:"defaults"`
 }
 
@@ -3521,7 +3521,7 @@ type ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsInput interface
 }
 
 type ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs struct {
-	// The default of the items
+	// The default values for the boolean items
 	Defaults pulumi.BoolArrayInput `pulumi:"defaults"`
 }
 
@@ -3602,7 +3602,7 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput) ToAc
 	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput)
 }
 
-// The default of the items
+// The default values for the boolean items
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput) Defaults() pulumi.BoolArrayOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems) []bool { return v.Defaults }).(pulumi.BoolArrayOutput)
 }
@@ -3631,7 +3631,7 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput) E
 	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsOutput)
 }
 
-// The default of the items
+// The default values for the boolean items
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput) Defaults() pulumi.BoolArrayOutput {
 	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems) []bool {
 		if v == nil {
@@ -3642,11 +3642,11 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsPtrOutput) D
 }
 
 type ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems struct {
-	// The default of the items
+	// The default values for the number items
 	Defaults []float64 `pulumi:"defaults"`
-	// The enum jq query of the number items
+	// The jq query for the enum number items
 	EnumJqQuery *string `pulumi:"enumJqQuery"`
-	// The enum of the items
+	// The enum of possible values for the number items
 	Enums []float64 `pulumi:"enums"`
 }
 
@@ -3662,11 +3662,11 @@ type ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsInput interface 
 }
 
 type ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs struct {
-	// The default of the items
+	// The default values for the number items
 	Defaults pulumi.Float64ArrayInput `pulumi:"defaults"`
-	// The enum jq query of the number items
+	// The jq query for the enum number items
 	EnumJqQuery pulumi.StringPtrInput `pulumi:"enumJqQuery"`
-	// The enum of the items
+	// The enum of possible values for the number items
 	Enums pulumi.Float64ArrayInput `pulumi:"enums"`
 }
 
@@ -3747,17 +3747,17 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput) ToAct
 	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput)
 }
 
-// The default of the items
+// The default values for the number items
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput) Defaults() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems) []float64 { return v.Defaults }).(pulumi.Float64ArrayOutput)
 }
 
-// The enum jq query of the number items
+// The jq query for the enum number items
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput) EnumJqQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems) *string { return v.EnumJqQuery }).(pulumi.StringPtrOutput)
 }
 
-// The enum of the items
+// The enum of possible values for the number items
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput) Enums() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems) []float64 { return v.Enums }).(pulumi.Float64ArrayOutput)
 }
@@ -3786,7 +3786,7 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput) El
 	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsOutput)
 }
 
-// The default of the items
+// The default values for the number items
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput) Defaults() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems) []float64 {
 		if v == nil {
@@ -3796,7 +3796,7 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput) De
 	}).(pulumi.Float64ArrayOutput)
 }
 
-// The enum jq query of the number items
+// The jq query for the enum number items
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput) EnumJqQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems) *string {
 		if v == nil {
@@ -3806,7 +3806,7 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput) En
 	}).(pulumi.StringPtrOutput)
 }
 
-// The enum of the items
+// The enum of possible values for the number items
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput) Enums() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems) []float64 {
 		if v == nil {
@@ -3817,7 +3817,7 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput) En
 }
 
 type ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems struct {
-	// The default of the items
+	// The default values for the object items
 	Defaults []map[string]string `pulumi:"defaults"`
 }
 
@@ -3833,7 +3833,7 @@ type ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsInput interface 
 }
 
 type ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs struct {
-	// The default of the items
+	// The default values for the object items
 	Defaults pulumi.StringMapArrayInput `pulumi:"defaults"`
 }
 
@@ -3914,7 +3914,7 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput) ToAct
 	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput)
 }
 
-// The default of the items
+// The default values for the object items
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput) Defaults() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems) []map[string]string {
 		return v.Defaults
@@ -3945,7 +3945,7 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput) El
 	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput)
 }
 
-// The default of the items
+// The default values for the object items
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput) Defaults() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems) []map[string]string {
 		if v == nil {
@@ -3958,15 +3958,15 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput) De
 type ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems struct {
 	// The blueprint identifier the action relates to
 	Blueprint *string `pulumi:"blueprint"`
-	// The dataset of an the entity-format items
+	// The dataset of the entity-format items
 	Dataset *string `pulumi:"dataset"`
-	// The default of the items
+	// The default value of the items
 	Defaults []string `pulumi:"defaults"`
-	// The enum jq query of the string items
+	// The jq query for the enum of string items
 	EnumJqQuery *string `pulumi:"enumJqQuery"`
-	// The enum of the items
+	// The enum of possible values for the string items
 	Enums []string `pulumi:"enums"`
-	// The format of the items
+	// The format of the string property, Accepted values include `date-time`, `url`, `email`, `ipv4`, `ipv6`, `yaml`, `entity`, `user`, `team`, `proto`, `markdown`
 	Format *string `pulumi:"format"`
 }
 
@@ -3984,15 +3984,15 @@ type ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsInput interface 
 type ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs struct {
 	// The blueprint identifier the action relates to
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
-	// The dataset of an the entity-format items
+	// The dataset of the entity-format items
 	Dataset pulumi.StringPtrInput `pulumi:"dataset"`
-	// The default of the items
+	// The default value of the items
 	Defaults pulumi.StringArrayInput `pulumi:"defaults"`
-	// The enum jq query of the string items
+	// The jq query for the enum of string items
 	EnumJqQuery pulumi.StringPtrInput `pulumi:"enumJqQuery"`
-	// The enum of the items
+	// The enum of possible values for the string items
 	Enums pulumi.StringArrayInput `pulumi:"enums"`
-	// The format of the items
+	// The format of the string property, Accepted values include `date-time`, `url`, `email`, `ipv4`, `ipv6`, `yaml`, `entity`, `user`, `team`, `proto`, `markdown`
 	Format pulumi.StringPtrInput `pulumi:"format"`
 }
 
@@ -4078,27 +4078,27 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput) Bluep
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
 }
 
-// The dataset of an the entity-format items
+// The dataset of the entity-format items
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput) Dataset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) *string { return v.Dataset }).(pulumi.StringPtrOutput)
 }
 
-// The default of the items
+// The default value of the items
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput) Defaults() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) []string { return v.Defaults }).(pulumi.StringArrayOutput)
 }
 
-// The enum jq query of the string items
+// The jq query for the enum of string items
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput) EnumJqQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) *string { return v.EnumJqQuery }).(pulumi.StringPtrOutput)
 }
 
-// The enum of the items
+// The enum of possible values for the string items
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput) Enums() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) []string { return v.Enums }).(pulumi.StringArrayOutput)
 }
 
-// The format of the items
+// The format of the string property, Accepted values include `date-time`, `url`, `email`, `ipv4`, `ipv6`, `yaml`, `entity`, `user`, `team`, `proto`, `markdown`
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
@@ -4137,7 +4137,7 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput) Bl
 	}).(pulumi.StringPtrOutput)
 }
 
-// The dataset of an the entity-format items
+// The dataset of the entity-format items
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput) Dataset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) *string {
 		if v == nil {
@@ -4147,7 +4147,7 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput) Da
 	}).(pulumi.StringPtrOutput)
 }
 
-// The default of the items
+// The default value of the items
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput) Defaults() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) []string {
 		if v == nil {
@@ -4157,7 +4157,7 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput) De
 	}).(pulumi.StringArrayOutput)
 }
 
-// The enum jq query of the string items
+// The jq query for the enum of string items
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput) EnumJqQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) *string {
 		if v == nil {
@@ -4167,7 +4167,7 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput) En
 	}).(pulumi.StringPtrOutput)
 }
 
-// The enum of the items
+// The enum of possible values for the string items
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput) Enums() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) []string {
 		if v == nil {
@@ -4177,7 +4177,7 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput) En
 	}).(pulumi.StringArrayOutput)
 }
 
-// The format of the items
+// The format of the string property, Accepted values include `date-time`, `url`, `email`, `ipv4`, `ipv6`, `yaml`, `entity`, `user`, `team`, `proto`, `markdown`
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) *string {
 		if v == nil {
@@ -4570,7 +4570,7 @@ type ActionSelfServiceTriggerUserPropertiesObjectProps struct {
 	DependsOns []string `pulumi:"dependsOns"`
 	// The description of the property
 	Description *string `pulumi:"description"`
-	// The algorithm to encrypt the property with
+	// The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
 	Encryption *string `pulumi:"encryption"`
 	// The icon of the property
 	Icon *string `pulumi:"icon"`
@@ -4604,7 +4604,7 @@ type ActionSelfServiceTriggerUserPropertiesObjectPropsArgs struct {
 	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
 	// The description of the property
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The algorithm to encrypt the property with
+	// The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
 	Encryption pulumi.StringPtrInput `pulumi:"encryption"`
 	// The icon of the property
 	Icon pulumi.StringPtrInput `pulumi:"icon"`
@@ -4689,7 +4689,7 @@ func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) Description() p
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesObjectProps) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The algorithm to encrypt the property with
+// The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
 func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) Encryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesObjectProps) *string { return v.Encryption }).(pulumi.StringPtrOutput)
 }
@@ -4752,13 +4752,13 @@ type ActionSelfServiceTriggerUserPropertiesStringProps struct {
 	DependsOns []string `pulumi:"dependsOns"`
 	// The description of the property
 	Description *string `pulumi:"description"`
-	// The algorithm to encrypt the property with
+	// The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
 	Encryption *string `pulumi:"encryption"`
 	// The enum jq query of the string property
 	EnumJqQuery *string `pulumi:"enumJqQuery"`
 	// The enum of the string property
 	Enums []string `pulumi:"enums"`
-	// The format of the string property
+	// The format of the string property, Accepted values include `date-time`, `url`, `email`, `ipv4`, `ipv6`, `yaml`, `entity`, `user`, `team`, `proto`, `markdown`
 	Format *string `pulumi:"format"`
 	// The icon of the property
 	Icon *string `pulumi:"icon"`
@@ -4802,13 +4802,13 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsArgs struct {
 	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
 	// The description of the property
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The algorithm to encrypt the property with
+	// The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
 	Encryption pulumi.StringPtrInput `pulumi:"encryption"`
 	// The enum jq query of the string property
 	EnumJqQuery pulumi.StringPtrInput `pulumi:"enumJqQuery"`
 	// The enum of the string property
 	Enums pulumi.StringArrayInput `pulumi:"enums"`
-	// The format of the string property
+	// The format of the string property, Accepted values include `date-time`, `url`, `email`, `ipv4`, `ipv6`, `yaml`, `entity`, `user`, `team`, `proto`, `markdown`
 	Format pulumi.StringPtrInput `pulumi:"format"`
 	// The icon of the property
 	Icon pulumi.StringPtrInput `pulumi:"icon"`
@@ -4911,7 +4911,7 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Description() p
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The algorithm to encrypt the property with
+// The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Encryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *string { return v.Encryption }).(pulumi.StringPtrOutput)
 }
@@ -4926,7 +4926,7 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Enums() pulumi.
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) []string { return v.Enums }).(pulumi.StringArrayOutput)
 }
 
-// The format of the string property
+// The format of the string property, Accepted values include `date-time`, `url`, `email`, `ipv4`, `ipv6`, `yaml`, `entity`, `user`, `team`, `proto`, `markdown`
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
@@ -5713,7 +5713,7 @@ func (o ActionUpsertEntityMethodMappingPtrOutput) Teams() pulumi.StringArrayOutp
 }
 
 type ActionWebhookMethod struct {
-	// Use the agent to invoke the action
+	// Specifies whether to use an agent to invoke the action. This can be a boolean value (`'true''` or `'false'`) or a JQ if dynamic evaluation is needed.
 	Agent *string `pulumi:"agent"`
 	// The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 	Body *string `pulumi:"body"`
@@ -5739,7 +5739,7 @@ type ActionWebhookMethodInput interface {
 }
 
 type ActionWebhookMethodArgs struct {
-	// Use the agent to invoke the action
+	// Specifies whether to use an agent to invoke the action. This can be a boolean value (`'true''` or `'false'`) or a JQ if dynamic evaluation is needed.
 	Agent pulumi.StringPtrInput `pulumi:"agent"`
 	// The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 	Body pulumi.StringPtrInput `pulumi:"body"`
@@ -5830,7 +5830,7 @@ func (o ActionWebhookMethodOutput) ToActionWebhookMethodPtrOutputWithContext(ctx
 	}).(ActionWebhookMethodPtrOutput)
 }
 
-// Use the agent to invoke the action
+// Specifies whether to use an agent to invoke the action. This can be a boolean value (`'true”` or `'false'`) or a JQ if dynamic evaluation is needed.
 func (o ActionWebhookMethodOutput) Agent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionWebhookMethod) *string { return v.Agent }).(pulumi.StringPtrOutput)
 }
@@ -5884,7 +5884,7 @@ func (o ActionWebhookMethodPtrOutput) Elem() ActionWebhookMethodOutput {
 	}).(ActionWebhookMethodOutput)
 }
 
-// Use the agent to invoke the action
+// Specifies whether to use an agent to invoke the action. This can be a boolean value (`'true”` or `'false'`) or a JQ if dynamic evaluation is needed.
 func (o ActionWebhookMethodPtrOutput) Agent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionWebhookMethod) *string {
 		if v == nil {

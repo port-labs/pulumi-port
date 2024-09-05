@@ -265,6 +265,206 @@ class Scorecard(pulumi.CustomResource):
 
         See the [Port documentation](https://docs.getport.io/promote-scorecards/) for more information about scorecards.
 
+        ## Example Usage
+
+        This will create a blueprint with a Scorecard measuring the readiness of a microservice.
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_port as port
+
+        microservice = port.index.Port_blueprint("microservice",
+            title=microservice,
+            icon=Terraform,
+            identifier=microservice,
+            properties={
+                stringProps: {
+                    author: {
+                        title: Author,
+                    },
+                    url: {
+                        title: URL,
+                    },
+                },
+                booleanProps: {
+                    required: {
+                        type: boolean,
+                    },
+                },
+                numberProps: {
+                    sum: {
+                        type: number,
+                    },
+                },
+            })
+        readiness = port.index.Port_scorecard("readiness",
+            identifier=Readiness,
+            title=Readiness,
+            blueprint=microservice.identifier,
+            rules=[
+                {
+                    identifier: hasOwner,
+                    title: Has Owner,
+                    level: Gold,
+                    query: {
+                        combinator: and,
+                        conditions: [
+                            json.dumps({
+                                property: $team,
+                                operator: isNotEmpty,
+                            }),
+                            json.dumps({
+                                property: author,
+                                operator: =,
+                                value: myValue,
+                            }),
+                        ],
+                    },
+                },
+                {
+                    identifier: hasUrl,
+                    title: Has URL,
+                    level: Silver,
+                    query: {
+                        combinator: and,
+                        conditions: [json.dumps({
+                            property: url,
+                            operator: isNotEmpty,
+                        })],
+                    },
+                },
+                {
+                    identifier: checkSumIfRequired,
+                    title: Check Sum If Required,
+                    level: Bronze,
+                    query: {
+                        combinator: or,
+                        conditions: [
+                            json.dumps({
+                                property: required,
+                                operator: =,
+                                value: False,
+                            }),
+                            json.dumps({
+                                property: sum,
+                                operator: >,
+                                value: 2,
+                            }),
+                        ],
+                    },
+                },
+            ],
+            opts = pulumi.ResourceOptions(depends_on=[microservice]))
+        ```
+
+        ### With Levels
+
+        This will override the default levels (Basic, Bronze, Silver, Gold) with the provided levels: Not Ready, Partially Ready, Ready.
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_port as port
+
+        microservice = port.index.Port_blueprint("microservice",
+            title=microservice,
+            icon=Terraform,
+            identifier=microservice,
+            properties={
+                stringProps: {
+                    author: {
+                        title: Author,
+                    },
+                    url: {
+                        title: URL,
+                    },
+                },
+                booleanProps: {
+                    required: {
+                        type: boolean,
+                    },
+                },
+                numberProps: {
+                    sum: {
+                        type: number,
+                    },
+                },
+            })
+        readiness = port.index.Port_scorecard("readiness",
+            identifier=Readiness,
+            title=Readiness,
+            blueprint=microservice.identifier,
+            levels=[
+                {
+                    color: red,
+                    title: No Ready,
+                },
+                {
+                    color: yellow,
+                    title: Partially Ready,
+                },
+                {
+                    color: green,
+                    title: Ready,
+                },
+            ],
+            rules=[
+                {
+                    identifier: hasOwner,
+                    title: Has Owner,
+                    level: Ready,
+                    query: {
+                        combinator: and,
+                        conditions: [
+                            json.dumps({
+                                property: $team,
+                                operator: isNotEmpty,
+                            }),
+                            json.dumps({
+                                property: author,
+                                operator: =,
+                                value: myValue,
+                            }),
+                        ],
+                    },
+                },
+                {
+                    identifier: hasUrl,
+                    title: Has URL,
+                    level: Partially Ready,
+                    query: {
+                        combinator: and,
+                        conditions: [json.dumps({
+                            property: url,
+                            operator: isNotEmpty,
+                        })],
+                    },
+                },
+                {
+                    identifier: checkSumIfRequired,
+                    title: Check Sum If Required,
+                    level: Partially Ready,
+                    query: {
+                        combinator: or,
+                        conditions: [
+                            json.dumps({
+                                property: required,
+                                operator: =,
+                                value: False,
+                            }),
+                            json.dumps({
+                                property: sum,
+                                operator: >,
+                                value: 2,
+                            }),
+                        ],
+                    },
+                },
+            ],
+            opts = pulumi.ResourceOptions(depends_on=[microservice]))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] blueprint: The blueprint of the scorecard
@@ -283,6 +483,206 @@ class Scorecard(pulumi.CustomResource):
         This resource allows you to manage a scorecard.
 
         See the [Port documentation](https://docs.getport.io/promote-scorecards/) for more information about scorecards.
+
+        ## Example Usage
+
+        This will create a blueprint with a Scorecard measuring the readiness of a microservice.
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_port as port
+
+        microservice = port.index.Port_blueprint("microservice",
+            title=microservice,
+            icon=Terraform,
+            identifier=microservice,
+            properties={
+                stringProps: {
+                    author: {
+                        title: Author,
+                    },
+                    url: {
+                        title: URL,
+                    },
+                },
+                booleanProps: {
+                    required: {
+                        type: boolean,
+                    },
+                },
+                numberProps: {
+                    sum: {
+                        type: number,
+                    },
+                },
+            })
+        readiness = port.index.Port_scorecard("readiness",
+            identifier=Readiness,
+            title=Readiness,
+            blueprint=microservice.identifier,
+            rules=[
+                {
+                    identifier: hasOwner,
+                    title: Has Owner,
+                    level: Gold,
+                    query: {
+                        combinator: and,
+                        conditions: [
+                            json.dumps({
+                                property: $team,
+                                operator: isNotEmpty,
+                            }),
+                            json.dumps({
+                                property: author,
+                                operator: =,
+                                value: myValue,
+                            }),
+                        ],
+                    },
+                },
+                {
+                    identifier: hasUrl,
+                    title: Has URL,
+                    level: Silver,
+                    query: {
+                        combinator: and,
+                        conditions: [json.dumps({
+                            property: url,
+                            operator: isNotEmpty,
+                        })],
+                    },
+                },
+                {
+                    identifier: checkSumIfRequired,
+                    title: Check Sum If Required,
+                    level: Bronze,
+                    query: {
+                        combinator: or,
+                        conditions: [
+                            json.dumps({
+                                property: required,
+                                operator: =,
+                                value: False,
+                            }),
+                            json.dumps({
+                                property: sum,
+                                operator: >,
+                                value: 2,
+                            }),
+                        ],
+                    },
+                },
+            ],
+            opts = pulumi.ResourceOptions(depends_on=[microservice]))
+        ```
+
+        ### With Levels
+
+        This will override the default levels (Basic, Bronze, Silver, Gold) with the provided levels: Not Ready, Partially Ready, Ready.
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_port as port
+
+        microservice = port.index.Port_blueprint("microservice",
+            title=microservice,
+            icon=Terraform,
+            identifier=microservice,
+            properties={
+                stringProps: {
+                    author: {
+                        title: Author,
+                    },
+                    url: {
+                        title: URL,
+                    },
+                },
+                booleanProps: {
+                    required: {
+                        type: boolean,
+                    },
+                },
+                numberProps: {
+                    sum: {
+                        type: number,
+                    },
+                },
+            })
+        readiness = port.index.Port_scorecard("readiness",
+            identifier=Readiness,
+            title=Readiness,
+            blueprint=microservice.identifier,
+            levels=[
+                {
+                    color: red,
+                    title: No Ready,
+                },
+                {
+                    color: yellow,
+                    title: Partially Ready,
+                },
+                {
+                    color: green,
+                    title: Ready,
+                },
+            ],
+            rules=[
+                {
+                    identifier: hasOwner,
+                    title: Has Owner,
+                    level: Ready,
+                    query: {
+                        combinator: and,
+                        conditions: [
+                            json.dumps({
+                                property: $team,
+                                operator: isNotEmpty,
+                            }),
+                            json.dumps({
+                                property: author,
+                                operator: =,
+                                value: myValue,
+                            }),
+                        ],
+                    },
+                },
+                {
+                    identifier: hasUrl,
+                    title: Has URL,
+                    level: Partially Ready,
+                    query: {
+                        combinator: and,
+                        conditions: [json.dumps({
+                            property: url,
+                            operator: isNotEmpty,
+                        })],
+                    },
+                },
+                {
+                    identifier: checkSumIfRequired,
+                    title: Check Sum If Required,
+                    level: Partially Ready,
+                    query: {
+                        combinator: or,
+                        conditions: [
+                            json.dumps({
+                                property: required,
+                                operator: =,
+                                value: False,
+                            }),
+                            json.dumps({
+                                property: sum,
+                                operator: >,
+                                value: 2,
+                            }),
+                        ],
+                    },
+                },
+            ],
+            opts = pulumi.ResourceOptions(depends_on=[microservice]))
+        ```
 
         :param str resource_name: The name of the resource.
         :param ScorecardArgs args: The arguments to use to populate this resource's properties.
