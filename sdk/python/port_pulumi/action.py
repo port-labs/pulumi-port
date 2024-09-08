@@ -637,6 +637,10 @@ class Action(pulumi.CustomResource):
                                     },
                                 }],
                             },
+                            sort: {
+                                property: $updatedAt,
+                                order: DESC,
+                            },
                         },
                     },
                     numberProps: {
@@ -674,6 +678,10 @@ class Action(pulumi.CustomResource):
                                         value: specificValue,
                                     }],
                                 }),
+                            },
+                            sort: {
+                                property: $updatedAt,
+                                order: DESC,
                             },
                         },
                     },
@@ -772,6 +780,10 @@ class Action(pulumi.CustomResource):
                                     },
                                 }],
                             },
+                            sort: {
+                                property: $updatedAt,
+                                order: DESC,
+                            },
                         },
                     },
                     numberProps: {
@@ -809,6 +821,10 @@ class Action(pulumi.CustomResource):
                                         value: specificValue,
                                     }],
                                 }),
+                            },
+                            sort: {
+                                property: $updatedAt,
+                                order: DESC,
                             },
                         },
                     },

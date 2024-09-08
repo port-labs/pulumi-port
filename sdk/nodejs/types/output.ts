@@ -316,6 +316,10 @@ export interface ActionSelfServiceTriggerUserPropertiesArrayProps {
      */
     required?: boolean;
     /**
+     * How to sort entities when in the self service action form in the UI
+     */
+    sort?: outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsSort;
+    /**
      * An array of string items within the property
      */
     stringItems?: outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems;
@@ -360,6 +364,17 @@ export interface ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems {
      * The default values for the object items
      */
     defaults?: {[key: string]: string}[];
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesArrayPropsSort {
+    /**
+     * The order to sort the entities in
+     */
+    order: string;
+    /**
+     * The property to sort the entities by
+     */
+    property: string;
 }
 
 export interface ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems {
@@ -588,6 +603,10 @@ export interface ActionSelfServiceTriggerUserPropertiesStringProps {
      */
     required?: boolean;
     /**
+     * How to sort entities when in the self service action form in the UI
+     */
+    sort?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsSort;
+    /**
      * The title of the property
      */
     title?: string;
@@ -633,6 +652,17 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule {
 
 export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue {
     jqQuery: string;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsSort {
+    /**
+     * The order to sort the entities in
+     */
+    order: string;
+    /**
+     * The property to sort the entities by
+     */
+    property: string;
 }
 
 export interface ActionUpsertEntityMethod {
