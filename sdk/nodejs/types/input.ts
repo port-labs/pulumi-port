@@ -276,7 +276,7 @@ export interface ActionSelfServiceTriggerUserProperties {
 
 export interface ActionSelfServiceTriggerUserPropertiesArrayProps {
     /**
-     * The items of the array property
+     * An array of boolean items within the property
      */
     booleanItems?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems>;
     /**
@@ -304,11 +304,11 @@ export interface ActionSelfServiceTriggerUserPropertiesArrayProps {
      */
     minItems?: pulumi.Input<number>;
     /**
-     * The items of the array property
+     * An array of number items within the property
      */
     numberItems?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems>;
     /**
-     * The items of the array property
+     * An array of object items within the property
      */
     objectItems?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems>;
     /**
@@ -316,7 +316,7 @@ export interface ActionSelfServiceTriggerUserPropertiesArrayProps {
      */
     required?: pulumi.Input<boolean>;
     /**
-     * The items of the array property
+     * An array of string items within the property
      */
     stringItems?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems>;
     /**
@@ -335,29 +335,29 @@ export interface ActionSelfServiceTriggerUserPropertiesArrayProps {
 
 export interface ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems {
     /**
-     * The default of the items
+     * The default values for the boolean items
      */
     defaults?: pulumi.Input<pulumi.Input<boolean>[]>;
 }
 
 export interface ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems {
     /**
-     * The default of the items
+     * The default values for the number items
      */
     defaults?: pulumi.Input<pulumi.Input<number>[]>;
     /**
-     * The enum jq query of the number items
+     * The jq query for the enum number items
      */
     enumJqQuery?: pulumi.Input<string>;
     /**
-     * The enum of the items
+     * The enum of possible values for the number items
      */
     enums?: pulumi.Input<pulumi.Input<number>[]>;
 }
 
 export interface ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems {
     /**
-     * The default of the items
+     * The default values for the object items
      */
     defaults?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
 }
@@ -368,23 +368,23 @@ export interface ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems {
      */
     blueprint?: pulumi.Input<string>;
     /**
-     * The dataset of an the entity-format items
+     * The dataset of the entity-format items
      */
     dataset?: pulumi.Input<string>;
     /**
-     * The default of the items
+     * The default value of the items
      */
     defaults?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The enum jq query of the string items
+     * The jq query for the enum of string items
      */
     enumJqQuery?: pulumi.Input<string>;
     /**
-     * The enum of the items
+     * The enum of possible values for the string items
      */
     enums?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The format of the items
+     * The format of the string property, Accepted values include `date-time`, `url`, `email`, `ipv4`, `ipv6`, `yaml`, `entity`, `user`, `team`, `proto`, `markdown`
      */
     format?: pulumi.Input<string>;
 }
@@ -501,7 +501,7 @@ export interface ActionSelfServiceTriggerUserPropertiesObjectProps {
      */
     description?: pulumi.Input<string>;
     /**
-     * The algorithm to encrypt the property with
+     * The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
      */
     encryption?: pulumi.Input<string>;
     /**
@@ -552,7 +552,7 @@ export interface ActionSelfServiceTriggerUserPropertiesStringProps {
      */
     description?: pulumi.Input<string>;
     /**
-     * The algorithm to encrypt the property with
+     * The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
      */
     encryption?: pulumi.Input<string>;
     /**
@@ -564,7 +564,7 @@ export interface ActionSelfServiceTriggerUserPropertiesStringProps {
      */
     enums?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The format of the string property
+     * The format of the string property, Accepted values include `date-time`, `url`, `email`, `ipv4`, `ipv6`, `yaml`, `entity`, `user`, `team`, `proto`, `markdown`
      */
     format?: pulumi.Input<string>;
     /**
@@ -675,7 +675,7 @@ export interface ActionUpsertEntityMethodMapping {
 
 export interface ActionWebhookMethod {
     /**
-     * Use the agent to invoke the action
+     * Specifies whether to use an agent to invoke the action. This can be a boolean value (`'true''` or `'false'`) or a JQ if dynamic evaluation is needed.
      */
     agent?: pulumi.Input<string>;
     /**

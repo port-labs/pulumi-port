@@ -86,7 +86,7 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly kafkaChangelogDestination!: pulumi.Output<outputs.IntegrationKafkaChangelogDestination | undefined>;
     public readonly title!: pulumi.Output<string | undefined>;
-    public readonly version!: pulumi.Output<string | undefined>;
+    public readonly version!: pulumi.Output<string>;
     /**
      * The webhook changelog destination of the integration
      */

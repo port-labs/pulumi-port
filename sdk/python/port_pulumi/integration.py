@@ -441,7 +441,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def version(self) -> pulumi.Output[Optional[str]]:
+    def version(self) -> pulumi.Output[str]:
         return pulumi.get(self, "version")
 
     @property

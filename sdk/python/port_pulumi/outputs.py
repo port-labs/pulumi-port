@@ -1138,17 +1138,17 @@ class ActionSelfServiceTriggerUserPropertiesArrayProps(dict):
                  visible: Optional[bool] = None,
                  visible_jq_query: Optional[str] = None):
         """
-        :param 'ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs' boolean_items: The items of the array property
+        :param 'ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs' boolean_items: An array of boolean items within the property
         :param str default_jq_query: The default jq query of the array property
         :param Sequence[str] depends_ons: The properties that this property depends on
         :param str description: The description of the property
         :param str icon: The icon of the property
         :param int max_items: The max items of the array property
         :param int min_items: The min items of the array property
-        :param 'ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs' number_items: The items of the array property
-        :param 'ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs' object_items: The items of the array property
+        :param 'ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs' number_items: An array of number items within the property
+        :param 'ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs' object_items: An array of object items within the property
         :param bool required: Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
-        :param 'ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs' string_items: The items of the array property
+        :param 'ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs' string_items: An array of string items within the property
         :param str title: The title of the property
         :param bool visible: The visibility of the array property
         :param str visible_jq_query: The visibility condition jq query of the array property
@@ -1186,7 +1186,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayProps(dict):
     @pulumi.getter(name="booleanItems")
     def boolean_items(self) -> Optional['outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems']:
         """
-        The items of the array property
+        An array of boolean items within the property
         """
         return pulumi.get(self, "boolean_items")
 
@@ -1242,7 +1242,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayProps(dict):
     @pulumi.getter(name="numberItems")
     def number_items(self) -> Optional['outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems']:
         """
-        The items of the array property
+        An array of number items within the property
         """
         return pulumi.get(self, "number_items")
 
@@ -1250,7 +1250,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayProps(dict):
     @pulumi.getter(name="objectItems")
     def object_items(self) -> Optional['outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems']:
         """
-        The items of the array property
+        An array of object items within the property
         """
         return pulumi.get(self, "object_items")
 
@@ -1266,7 +1266,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayProps(dict):
     @pulumi.getter(name="stringItems")
     def string_items(self) -> Optional['outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems']:
         """
-        The items of the array property
+        An array of string items within the property
         """
         return pulumi.get(self, "string_items")
 
@@ -1300,7 +1300,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems(dict):
     def __init__(__self__, *,
                  defaults: Optional[Sequence[bool]] = None):
         """
-        :param Sequence[bool] defaults: The default of the items
+        :param Sequence[bool] defaults: The default values for the boolean items
         """
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
@@ -1309,7 +1309,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems(dict):
     @pulumi.getter
     def defaults(self) -> Optional[Sequence[bool]]:
         """
-        The default of the items
+        The default values for the boolean items
         """
         return pulumi.get(self, "defaults")
 
@@ -1338,9 +1338,9 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems(dict):
                  enum_jq_query: Optional[str] = None,
                  enums: Optional[Sequence[float]] = None):
         """
-        :param Sequence[float] defaults: The default of the items
-        :param str enum_jq_query: The enum jq query of the number items
-        :param Sequence[float] enums: The enum of the items
+        :param Sequence[float] defaults: The default values for the number items
+        :param str enum_jq_query: The jq query for the enum number items
+        :param Sequence[float] enums: The enum of possible values for the number items
         """
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
@@ -1353,7 +1353,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems(dict):
     @pulumi.getter
     def defaults(self) -> Optional[Sequence[float]]:
         """
-        The default of the items
+        The default values for the number items
         """
         return pulumi.get(self, "defaults")
 
@@ -1361,7 +1361,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems(dict):
     @pulumi.getter(name="enumJqQuery")
     def enum_jq_query(self) -> Optional[str]:
         """
-        The enum jq query of the number items
+        The jq query for the enum number items
         """
         return pulumi.get(self, "enum_jq_query")
 
@@ -1369,7 +1369,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems(dict):
     @pulumi.getter
     def enums(self) -> Optional[Sequence[float]]:
         """
-        The enum of the items
+        The enum of possible values for the number items
         """
         return pulumi.get(self, "enums")
 
@@ -1379,7 +1379,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems(dict):
     def __init__(__self__, *,
                  defaults: Optional[Sequence[Mapping[str, str]]] = None):
         """
-        :param Sequence[Mapping[str, str]] defaults: The default of the items
+        :param Sequence[Mapping[str, str]] defaults: The default values for the object items
         """
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
@@ -1388,7 +1388,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems(dict):
     @pulumi.getter
     def defaults(self) -> Optional[Sequence[Mapping[str, str]]]:
         """
-        The default of the items
+        The default values for the object items
         """
         return pulumi.get(self, "defaults")
 
@@ -1421,11 +1421,11 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems(dict):
                  format: Optional[str] = None):
         """
         :param str blueprint: The blueprint identifier the action relates to
-        :param str dataset: The dataset of an the entity-format items
-        :param Sequence[str] defaults: The default of the items
-        :param str enum_jq_query: The enum jq query of the string items
-        :param Sequence[str] enums: The enum of the items
-        :param str format: The format of the items
+        :param str dataset: The dataset of the entity-format items
+        :param Sequence[str] defaults: The default value of the items
+        :param str enum_jq_query: The jq query for the enum of string items
+        :param Sequence[str] enums: The enum of possible values for the string items
+        :param str format: The format of the string property, Accepted values include `date-time`, `url`, `email`, `ipv4`, `ipv6`, `yaml`, `entity`, `user`, `team`, `proto`, `markdown`
         """
         if blueprint is not None:
             pulumi.set(__self__, "blueprint", blueprint)
@@ -1452,7 +1452,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems(dict):
     @pulumi.getter
     def dataset(self) -> Optional[str]:
         """
-        The dataset of an the entity-format items
+        The dataset of the entity-format items
         """
         return pulumi.get(self, "dataset")
 
@@ -1460,7 +1460,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems(dict):
     @pulumi.getter
     def defaults(self) -> Optional[Sequence[str]]:
         """
-        The default of the items
+        The default value of the items
         """
         return pulumi.get(self, "defaults")
 
@@ -1468,7 +1468,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems(dict):
     @pulumi.getter(name="enumJqQuery")
     def enum_jq_query(self) -> Optional[str]:
         """
-        The enum jq query of the string items
+        The jq query for the enum of string items
         """
         return pulumi.get(self, "enum_jq_query")
 
@@ -1476,7 +1476,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems(dict):
     @pulumi.getter
     def enums(self) -> Optional[Sequence[str]]:
         """
-        The enum of the items
+        The enum of possible values for the string items
         """
         return pulumi.get(self, "enums")
 
@@ -1484,7 +1484,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems(dict):
     @pulumi.getter
     def format(self) -> Optional[str]:
         """
-        The format of the items
+        The format of the string property, Accepted values include `date-time`, `url`, `email`, `ipv4`, `ipv6`, `yaml`, `entity`, `user`, `team`, `proto`, `markdown`
         """
         return pulumi.get(self, "format")
 
@@ -1850,7 +1850,7 @@ class ActionSelfServiceTriggerUserPropertiesObjectProps(dict):
         :param str default_jq_query: The default jq query of the object property
         :param Sequence[str] depends_ons: The properties that this property depends on
         :param str description: The description of the property
-        :param str encryption: The algorithm to encrypt the property with
+        :param str encryption: The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
         :param str icon: The icon of the property
         :param bool required: Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
         :param str title: The title of the property
@@ -1914,7 +1914,7 @@ class ActionSelfServiceTriggerUserPropertiesObjectProps(dict):
     @pulumi.getter
     def encryption(self) -> Optional[str]:
         """
-        The algorithm to encrypt the property with
+        The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
         """
         return pulumi.get(self, "encryption")
 
@@ -2014,10 +2014,10 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
         :param str default_jq_query: The default jq query of the string property
         :param Sequence[str] depends_ons: The properties that this property depends on
         :param str description: The description of the property
-        :param str encryption: The algorithm to encrypt the property with
+        :param str encryption: The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
         :param str enum_jq_query: The enum jq query of the string property
         :param Sequence[str] enums: The enum of the string property
-        :param str format: The format of the string property
+        :param str format: The format of the string property, Accepted values include `date-time`, `url`, `email`, `ipv4`, `ipv6`, `yaml`, `entity`, `user`, `team`, `proto`, `markdown`
         :param str icon: The icon of the property
         :param int max_length: The max length of the string property
         :param int min_length: The min length of the string property
@@ -2116,7 +2116,7 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
     @pulumi.getter
     def encryption(self) -> Optional[str]:
         """
-        The algorithm to encrypt the property with
+        The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
         """
         return pulumi.get(self, "encryption")
 
@@ -2140,7 +2140,7 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
     @pulumi.getter
     def format(self) -> Optional[str]:
         """
-        The format of the string property
+        The format of the string property, Accepted values include `date-time`, `url`, `email`, `ipv4`, `ipv6`, `yaml`, `entity`, `user`, `team`, `proto`, `markdown`
         """
         return pulumi.get(self, "format")
 
@@ -2457,7 +2457,7 @@ class ActionWebhookMethod(dict):
                  synchronized: Optional[str] = None):
         """
         :param str url: Required when selecting type WEBHOOK. The URL to invoke the action
-        :param str agent: Use the agent to invoke the action
+        :param str agent: Specifies whether to use an agent to invoke the action. This can be a boolean value (`'true''` or `'false'`) or a JQ if dynamic evaluation is needed.
         :param str body: The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         :param Mapping[str, str] headers: The HTTP headers for invoking the action. They should be encoded as a key-value object to a string using jsonencode. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         :param str method: The HTTP method to invoke the action
@@ -2487,7 +2487,7 @@ class ActionWebhookMethod(dict):
     @pulumi.getter
     def agent(self) -> Optional[str]:
         """
-        Use the agent to invoke the action
+        Specifies whether to use an agent to invoke the action. This can be a boolean value (`'true''` or `'false'`) or a JQ if dynamic evaluation is needed.
         """
         return pulumi.get(self, "agent")
 

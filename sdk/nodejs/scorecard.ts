@@ -10,6 +10,210 @@ import * as utilities from "./utilities";
  * This resource allows you to manage a scorecard.
  *
  * See the [Port documentation](https://docs.getport.io/promote-scorecards/) for more information about scorecards.
+ *
+ * ## Example Usage
+ *
+ * This will create a blueprint with a Scorecard measuring the readiness of a microservice.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as port from "@pulumi/port";
+ *
+ * const microservice = new port.index.Port_blueprint("microservice", {
+ *     title: "microservice",
+ *     icon: "Terraform",
+ *     identifier: "microservice",
+ *     properties: {
+ *         stringProps: {
+ *             author: {
+ *                 title: "Author",
+ *             },
+ *             url: {
+ *                 title: "URL",
+ *             },
+ *         },
+ *         booleanProps: {
+ *             required: {
+ *                 type: "boolean",
+ *             },
+ *         },
+ *         numberProps: {
+ *             sum: {
+ *                 type: "number",
+ *             },
+ *         },
+ *     },
+ * });
+ * const readiness = new port.index.Port_scorecard("readiness", {
+ *     identifier: "Readiness",
+ *     title: "Readiness",
+ *     blueprint: microservice.identifier,
+ *     rules: [
+ *         {
+ *             identifier: "hasOwner",
+ *             title: "Has Owner",
+ *             level: "Gold",
+ *             query: {
+ *                 combinator: "and",
+ *                 conditions: [
+ *                     JSON.stringify({
+ *                         property: "$team",
+ *                         operator: "isNotEmpty",
+ *                     }),
+ *                     JSON.stringify({
+ *                         property: "author",
+ *                         operator: "=",
+ *                         value: "myValue",
+ *                     }),
+ *                 ],
+ *             },
+ *         },
+ *         {
+ *             identifier: "hasUrl",
+ *             title: "Has URL",
+ *             level: "Silver",
+ *             query: {
+ *                 combinator: "and",
+ *                 conditions: [JSON.stringify({
+ *                     property: "url",
+ *                     operator: "isNotEmpty",
+ *                 })],
+ *             },
+ *         },
+ *         {
+ *             identifier: "checkSumIfRequired",
+ *             title: "Check Sum If Required",
+ *             level: "Bronze",
+ *             query: {
+ *                 combinator: "or",
+ *                 conditions: [
+ *                     JSON.stringify({
+ *                         property: "required",
+ *                         operator: "=",
+ *                         value: false,
+ *                     }),
+ *                     JSON.stringify({
+ *                         property: "sum",
+ *                         operator: ">",
+ *                         value: 2,
+ *                     }),
+ *                 ],
+ *             },
+ *         },
+ *     ],
+ * }, {
+ *     dependsOn: [microservice],
+ * });
+ * ```
+ *
+ * ### With Levels
+ *
+ * This will override the default levels (Basic, Bronze, Silver, Gold) with the provided levels: Not Ready, Partially Ready, Ready.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as port from "@pulumi/port";
+ *
+ * const microservice = new port.index.Port_blueprint("microservice", {
+ *     title: "microservice",
+ *     icon: "Terraform",
+ *     identifier: "microservice",
+ *     properties: {
+ *         stringProps: {
+ *             author: {
+ *                 title: "Author",
+ *             },
+ *             url: {
+ *                 title: "URL",
+ *             },
+ *         },
+ *         booleanProps: {
+ *             required: {
+ *                 type: "boolean",
+ *             },
+ *         },
+ *         numberProps: {
+ *             sum: {
+ *                 type: "number",
+ *             },
+ *         },
+ *     },
+ * });
+ * const readiness = new port.index.Port_scorecard("readiness", {
+ *     identifier: "Readiness",
+ *     title: "Readiness",
+ *     blueprint: microservice.identifier,
+ *     levels: [
+ *         {
+ *             color: "red",
+ *             title: "No Ready",
+ *         },
+ *         {
+ *             color: "yellow",
+ *             title: "Partially Ready",
+ *         },
+ *         {
+ *             color: "green",
+ *             title: "Ready",
+ *         },
+ *     ],
+ *     rules: [
+ *         {
+ *             identifier: "hasOwner",
+ *             title: "Has Owner",
+ *             level: "Ready",
+ *             query: {
+ *                 combinator: "and",
+ *                 conditions: [
+ *                     JSON.stringify({
+ *                         property: "$team",
+ *                         operator: "isNotEmpty",
+ *                     }),
+ *                     JSON.stringify({
+ *                         property: "author",
+ *                         operator: "=",
+ *                         value: "myValue",
+ *                     }),
+ *                 ],
+ *             },
+ *         },
+ *         {
+ *             identifier: "hasUrl",
+ *             title: "Has URL",
+ *             level: "Partially Ready",
+ *             query: {
+ *                 combinator: "and",
+ *                 conditions: [JSON.stringify({
+ *                     property: "url",
+ *                     operator: "isNotEmpty",
+ *                 })],
+ *             },
+ *         },
+ *         {
+ *             identifier: "checkSumIfRequired",
+ *             title: "Check Sum If Required",
+ *             level: "Partially Ready",
+ *             query: {
+ *                 combinator: "or",
+ *                 conditions: [
+ *                     JSON.stringify({
+ *                         property: "required",
+ *                         operator: "=",
+ *                         value: false,
+ *                     }),
+ *                     JSON.stringify({
+ *                         property: "sum",
+ *                         operator: ">",
+ *                         value: 2,
+ *                     }),
+ *                 ],
+ *             },
+ *         },
+ *     ],
+ * }, {
+ *     dependsOn: [microservice],
+ * });
+ * ```
  */
 export class Scorecard extends pulumi.CustomResource {
     /**
