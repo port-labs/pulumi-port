@@ -39,6 +39,10 @@ import * as utilities from "./utilities";
  *                             },
  *                         }],
  *                     },
+ *                     sort: {
+ *                         property: "$updatedAt",
+ *                         order: "DESC",
+ *                     },
  *                 },
  *             },
  *             numberProps: {
@@ -76,6 +80,10 @@ import * as utilities from "./utilities";
  *                                 value: "specificValue",
  *                             }],
  *                         }),
+ *                     },
+ *                     sort: {
+ *                         property: "$updatedAt",
+ *                         order: "DESC",
  *                     },
  *                 },
  *             },

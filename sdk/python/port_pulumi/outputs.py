@@ -34,6 +34,7 @@ __all__ = [
     'ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems',
     'ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems',
     'ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems',
+    'ActionSelfServiceTriggerUserPropertiesArrayPropsSort',
     'ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems',
     'ActionSelfServiceTriggerUserPropertiesBooleanProps',
     'ActionSelfServiceTriggerUserPropertiesNumberProps',
@@ -42,6 +43,7 @@ __all__ = [
     'ActionSelfServiceTriggerUserPropertiesStringPropsDataset',
     'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule',
     'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsSort',
     'ActionUpsertEntityMethod',
     'ActionUpsertEntityMethodMapping',
     'ActionWebhookMethod',
@@ -1133,6 +1135,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayProps(dict):
                  number_items: Optional['outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems'] = None,
                  object_items: Optional['outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems'] = None,
                  required: Optional[bool] = None,
+                 sort: Optional['outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsSort'] = None,
                  string_items: Optional['outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems'] = None,
                  title: Optional[str] = None,
                  visible: Optional[bool] = None,
@@ -1148,6 +1151,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayProps(dict):
         :param 'ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs' number_items: An array of number items within the property
         :param 'ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs' object_items: An array of object items within the property
         :param bool required: Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
+        :param 'ActionSelfServiceTriggerUserPropertiesArrayPropsSortArgs' sort: How to sort entities when in the self service action form in the UI
         :param 'ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs' string_items: An array of string items within the property
         :param str title: The title of the property
         :param bool visible: The visibility of the array property
@@ -1173,6 +1177,8 @@ class ActionSelfServiceTriggerUserPropertiesArrayProps(dict):
             pulumi.set(__self__, "object_items", object_items)
         if required is not None:
             pulumi.set(__self__, "required", required)
+        if sort is not None:
+            pulumi.set(__self__, "sort", sort)
         if string_items is not None:
             pulumi.set(__self__, "string_items", string_items)
         if title is not None:
@@ -1261,6 +1267,14 @@ class ActionSelfServiceTriggerUserPropertiesArrayProps(dict):
         Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
         """
         return pulumi.get(self, "required")
+
+    @property
+    @pulumi.getter
+    def sort(self) -> Optional['outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsSort']:
+        """
+        How to sort entities when in the self service action form in the UI
+        """
+        return pulumi.get(self, "sort")
 
     @property
     @pulumi.getter(name="stringItems")
@@ -1391,6 +1405,36 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems(dict):
         The default values for the object items
         """
         return pulumi.get(self, "defaults")
+
+
+@pulumi.output_type
+class ActionSelfServiceTriggerUserPropertiesArrayPropsSort(dict):
+    def __init__(__self__, *,
+                 property: str,
+                 order: Optional[str] = None):
+        """
+        :param str property: The property to sort the entities by
+        :param str order: The order to sort the entities in
+        """
+        pulumi.set(__self__, "property", property)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+
+    @property
+    @pulumi.getter
+    def order(self) -> Optional[str]:
+        """
+        The order to sort the entities in
+        """
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        The property to sort the entities by
+        """
+        return pulumi.get(self, "property")
 
 
 @pulumi.output_type
@@ -2004,6 +2048,7 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
                  min_length: Optional[int] = None,
                  pattern: Optional[str] = None,
                  required: Optional[bool] = None,
+                 sort: Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsSort'] = None,
                  title: Optional[str] = None,
                  visible: Optional[bool] = None,
                  visible_jq_query: Optional[str] = None):
@@ -2023,6 +2068,7 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
         :param int min_length: The min length of the string property
         :param str pattern: The pattern of the string property
         :param bool required: Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
+        :param 'ActionSelfServiceTriggerUserPropertiesStringPropsSortArgs' sort: How to sort entities when in the self service action form in the UI
         :param str title: The title of the property
         :param bool visible: The visibility of the string property
         :param str visible_jq_query: The visibility condition jq query of the string property
@@ -2057,6 +2103,8 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
             pulumi.set(__self__, "pattern", pattern)
         if required is not None:
             pulumi.set(__self__, "required", required)
+        if sort is not None:
+            pulumi.set(__self__, "sort", sort)
         if title is not None:
             pulumi.set(__self__, "title", title)
         if visible is not None:
@@ -2183,6 +2231,14 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
         Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
         """
         return pulumi.get(self, "required")
+
+    @property
+    @pulumi.getter
+    def sort(self) -> Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsSort']:
+        """
+        How to sort entities when in the self service action form in the UI
+        """
+        return pulumi.get(self, "sort")
 
     @property
     @pulumi.getter
@@ -2318,6 +2374,36 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue(dict):
     @pulumi.getter(name="jqQuery")
     def jq_query(self) -> str:
         return pulumi.get(self, "jq_query")
+
+
+@pulumi.output_type
+class ActionSelfServiceTriggerUserPropertiesStringPropsSort(dict):
+    def __init__(__self__, *,
+                 property: str,
+                 order: Optional[str] = None):
+        """
+        :param str property: The property to sort the entities by
+        :param str order: The order to sort the entities in
+        """
+        pulumi.set(__self__, "property", property)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+
+    @property
+    @pulumi.getter
+    def order(self) -> Optional[str]:
+        """
+        The order to sort the entities in
+        """
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        The property to sort the entities by
+        """
+        return pulumi.get(self, "property")
 
 
 @pulumi.output_type

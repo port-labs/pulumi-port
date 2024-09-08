@@ -3303,6 +3303,8 @@ type ActionSelfServiceTriggerUserPropertiesArrayProps struct {
 	ObjectItems *ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems `pulumi:"objectItems"`
 	// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
 	Required *bool `pulumi:"required"`
+	// How to sort entities when in the self service action form in the UI
+	Sort *ActionSelfServiceTriggerUserPropertiesArrayPropsSort `pulumi:"sort"`
 	// An array of string items within the property
 	StringItems *ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems `pulumi:"stringItems"`
 	// The title of the property
@@ -3345,6 +3347,8 @@ type ActionSelfServiceTriggerUserPropertiesArrayPropsArgs struct {
 	ObjectItems ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrInput `pulumi:"objectItems"`
 	// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
 	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// How to sort entities when in the self service action form in the UI
+	Sort ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrInput `pulumi:"sort"`
 	// An array of string items within the property
 	StringItems ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrInput `pulumi:"stringItems"`
 	// The title of the property
@@ -3460,6 +3464,13 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) ObjectItems() Ac
 // Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+// How to sort entities when in the self service action form in the UI
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) Sort() ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *ActionSelfServiceTriggerUserPropertiesArrayPropsSort {
+		return v.Sort
+	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput)
 }
 
 // An array of string items within the property
@@ -3953,6 +3964,162 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput) De
 		}
 		return v.Defaults
 	}).(pulumi.StringMapArrayOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesArrayPropsSort struct {
+	// The order to sort the entities in
+	Order *string `pulumi:"order"`
+	// The property to sort the entities by
+	Property string `pulumi:"property"`
+}
+
+// ActionSelfServiceTriggerUserPropertiesArrayPropsSortInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesArrayPropsSortArgs and ActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesArrayPropsSortInput` via:
+//
+//	ActionSelfServiceTriggerUserPropertiesArrayPropsSortArgs{...}
+type ActionSelfServiceTriggerUserPropertiesArrayPropsSortInput interface {
+	pulumi.Input
+
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsSortOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput
+}
+
+type ActionSelfServiceTriggerUserPropertiesArrayPropsSortArgs struct {
+	// The order to sort the entities in
+	Order pulumi.StringPtrInput `pulumi:"order"`
+	// The property to sort the entities by
+	Property pulumi.StringInput `pulumi:"property"`
+}
+
+func (ActionSelfServiceTriggerUserPropertiesArrayPropsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsSort)(nil)).Elem()
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsSortArgs) ToActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesArrayPropsSortOutputWithContext(context.Background())
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsSortArgs) ToActionSelfServiceTriggerUserPropertiesArrayPropsSortOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput)
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsSortArgs) ToActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutputWithContext(context.Background())
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesArrayPropsSortArgs) ToActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput).ToActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutputWithContext(ctx)
+}
+
+// ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesArrayPropsSortArgs, ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtr and ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrInput` via:
+//
+//	        ActionSelfServiceTriggerUserPropertiesArrayPropsSortArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrInput interface {
+	pulumi.Input
+
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput
+	ToActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput
+}
+
+type actionSelfServiceTriggerUserPropertiesArrayPropsSortPtrType ActionSelfServiceTriggerUserPropertiesArrayPropsSortArgs
+
+func ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtr(v *ActionSelfServiceTriggerUserPropertiesArrayPropsSortArgs) ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrInput {
+	return (*actionSelfServiceTriggerUserPropertiesArrayPropsSortPtrType)(v)
+}
+
+func (*actionSelfServiceTriggerUserPropertiesArrayPropsSortPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserPropertiesArrayPropsSort)(nil)).Elem()
+}
+
+func (i *actionSelfServiceTriggerUserPropertiesArrayPropsSortPtrType) ToActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutputWithContext(context.Background())
+}
+
+func (i *actionSelfServiceTriggerUserPropertiesArrayPropsSortPtrType) ToActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput struct{ *pulumi.OutputState }
+
+func (ActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsSort)(nil)).Elem()
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsSortOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput {
+	return o.ToActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutputWithContext(context.Background())
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionSelfServiceTriggerUserPropertiesArrayPropsSort) *ActionSelfServiceTriggerUserPropertiesArrayPropsSort {
+		return &v
+	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput)
+}
+
+// The order to sort the entities in
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput) Order() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsSort) *string { return v.Order }).(pulumi.StringPtrOutput)
+}
+
+// The property to sort the entities by
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsSort) string { return v.Property }).(pulumi.StringOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserPropertiesArrayPropsSort)(nil)).Elem()
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput() ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput) ToActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput) Elem() ActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsSort) ActionSelfServiceTriggerUserPropertiesArrayPropsSort {
+		if v != nil {
+			return *v
+		}
+		var ret ActionSelfServiceTriggerUserPropertiesArrayPropsSort
+		return ret
+	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput)
+}
+
+// The order to sort the entities in
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput) Order() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsSort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Order
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property to sort the entities by
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput) Property() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsSort) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Property
+	}).(pulumi.StringPtrOutput)
 }
 
 type ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems struct {
@@ -4770,6 +4937,8 @@ type ActionSelfServiceTriggerUserPropertiesStringProps struct {
 	Pattern *string `pulumi:"pattern"`
 	// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
 	Required *bool `pulumi:"required"`
+	// How to sort entities when in the self service action form in the UI
+	Sort *ActionSelfServiceTriggerUserPropertiesStringPropsSort `pulumi:"sort"`
 	// The title of the property
 	Title *string `pulumi:"title"`
 	// The visibility of the string property
@@ -4820,6 +4989,8 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsArgs struct {
 	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
 	// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
 	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// How to sort entities when in the self service action form in the UI
+	Sort ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrInput `pulumi:"sort"`
 	// The title of the property
 	Title pulumi.StringPtrInput `pulumi:"title"`
 	// The visibility of the string property
@@ -4954,6 +5125,13 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Pattern() pulum
 // Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+// How to sort entities when in the self service action form in the UI
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Sort() ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *ActionSelfServiceTriggerUserPropertiesStringPropsSort {
+		return v.Sort
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput)
 }
 
 // The title of the property
@@ -5322,6 +5500,162 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput)
 
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput) JqQuery() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue) string { return v.JqQuery }).(pulumi.StringOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsSort struct {
+	// The order to sort the entities in
+	Order *string `pulumi:"order"`
+	// The property to sort the entities by
+	Property string `pulumi:"property"`
+}
+
+// ActionSelfServiceTriggerUserPropertiesStringPropsSortInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesStringPropsSortArgs and ActionSelfServiceTriggerUserPropertiesStringPropsSortOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesStringPropsSortInput` via:
+//
+//	ActionSelfServiceTriggerUserPropertiesStringPropsSortArgs{...}
+type ActionSelfServiceTriggerUserPropertiesStringPropsSortInput interface {
+	pulumi.Input
+
+	ToActionSelfServiceTriggerUserPropertiesStringPropsSortOutput() ActionSelfServiceTriggerUserPropertiesStringPropsSortOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsSortOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsSortOutput
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsSortArgs struct {
+	// The order to sort the entities in
+	Order pulumi.StringPtrInput `pulumi:"order"`
+	// The property to sort the entities by
+	Property pulumi.StringInput `pulumi:"property"`
+}
+
+func (ActionSelfServiceTriggerUserPropertiesStringPropsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsSort)(nil)).Elem()
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsSortArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsSortOutput() ActionSelfServiceTriggerUserPropertiesStringPropsSortOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsSortOutputWithContext(context.Background())
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsSortArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsSortOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsSortOutput)
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsSortArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutputWithContext(context.Background())
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsSortArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsSortOutput).ToActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutputWithContext(ctx)
+}
+
+// ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesStringPropsSortArgs, ActionSelfServiceTriggerUserPropertiesStringPropsSortPtr and ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrInput` via:
+//
+//	        ActionSelfServiceTriggerUserPropertiesStringPropsSortArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrInput interface {
+	pulumi.Input
+
+	ToActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput
+}
+
+type actionSelfServiceTriggerUserPropertiesStringPropsSortPtrType ActionSelfServiceTriggerUserPropertiesStringPropsSortArgs
+
+func ActionSelfServiceTriggerUserPropertiesStringPropsSortPtr(v *ActionSelfServiceTriggerUserPropertiesStringPropsSortArgs) ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrInput {
+	return (*actionSelfServiceTriggerUserPropertiesStringPropsSortPtrType)(v)
+}
+
+func (*actionSelfServiceTriggerUserPropertiesStringPropsSortPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserPropertiesStringPropsSort)(nil)).Elem()
+}
+
+func (i *actionSelfServiceTriggerUserPropertiesStringPropsSortPtrType) ToActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutputWithContext(context.Background())
+}
+
+func (i *actionSelfServiceTriggerUserPropertiesStringPropsSortPtrType) ToActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsSortOutput struct{ *pulumi.OutputState }
+
+func (ActionSelfServiceTriggerUserPropertiesStringPropsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsSort)(nil)).Elem()
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsSortOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsSortOutput() ActionSelfServiceTriggerUserPropertiesStringPropsSortOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsSortOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsSortOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsSortOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsSortOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput {
+	return o.ToActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutputWithContext(context.Background())
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsSortOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionSelfServiceTriggerUserPropertiesStringPropsSort) *ActionSelfServiceTriggerUserPropertiesStringPropsSort {
+		return &v
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput)
+}
+
+// The order to sort the entities in
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsSortOutput) Order() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsSort) *string { return v.Order }).(pulumi.StringPtrOutput)
+}
+
+// The property to sort the entities by
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsSortOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsSort) string { return v.Property }).(pulumi.StringOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserPropertiesStringPropsSort)(nil)).Elem()
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput) Elem() ActionSelfServiceTriggerUserPropertiesStringPropsSortOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesStringPropsSort) ActionSelfServiceTriggerUserPropertiesStringPropsSort {
+		if v != nil {
+			return *v
+		}
+		var ret ActionSelfServiceTriggerUserPropertiesStringPropsSort
+		return ret
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsSortOutput)
+}
+
+// The order to sort the entities in
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput) Order() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesStringPropsSort) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Order
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property to sort the entities by
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput) Property() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesStringPropsSort) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Property
+	}).(pulumi.StringPtrOutput)
 }
 
 type ActionUpsertEntityMethod struct {
@@ -13691,6 +14025,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsSortInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArrayPropsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArrayPropsSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesBooleanPropsInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs{})
@@ -13706,6 +14042,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsSortInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUpsertEntityMethodInput)(nil)).Elem(), ActionUpsertEntityMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUpsertEntityMethodPtrInput)(nil)).Elem(), ActionUpsertEntityMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionUpsertEntityMethodMappingInput)(nil)).Elem(), ActionUpsertEntityMethodMappingArgs{})
@@ -13854,6 +14192,8 @@ func init() {
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsPtrOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesArrayPropsSortOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput{})
@@ -13869,6 +14209,8 @@ func init() {
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsSortOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsSortPtrOutput{})
 	pulumi.RegisterOutputType(ActionUpsertEntityMethodOutput{})
 	pulumi.RegisterOutputType(ActionUpsertEntityMethodPtrOutput{})
 	pulumi.RegisterOutputType(ActionUpsertEntityMethodMappingOutput{})

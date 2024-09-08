@@ -55,6 +55,10 @@ import (
 // },
 // },
 // },
+// "sort": map[string]interface{}{
+// "property": "$updatedAt",
+// "order": "DESC",
+// },
 // },
 // },
 // "numberProps": map[string]interface{}{
@@ -85,6 +89,10 @@ import (
 // "format": "entity",
 // "blueprint": port_blueprint.Parent.Identifier,
 // "dataset": %!v(PANIC=Format method: fatal: An assertion has failed: unlowered function toJSON),
+// },
+// "sort": map[string]interface{}{
+// "property": "$updatedAt",
+// "order": "DESC",
 // },
 // },
 // },

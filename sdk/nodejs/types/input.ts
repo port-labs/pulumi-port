@@ -316,6 +316,10 @@ export interface ActionSelfServiceTriggerUserPropertiesArrayProps {
      */
     required?: pulumi.Input<boolean>;
     /**
+     * How to sort entities when in the self service action form in the UI
+     */
+    sort?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesArrayPropsSort>;
+    /**
      * An array of string items within the property
      */
     stringItems?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems>;
@@ -360,6 +364,17 @@ export interface ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems {
      * The default values for the object items
      */
     defaults?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesArrayPropsSort {
+    /**
+     * The order to sort the entities in
+     */
+    order?: pulumi.Input<string>;
+    /**
+     * The property to sort the entities by
+     */
+    property: pulumi.Input<string>;
 }
 
 export interface ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems {
@@ -588,6 +603,10 @@ export interface ActionSelfServiceTriggerUserPropertiesStringProps {
      */
     required?: pulumi.Input<boolean>;
     /**
+     * How to sort entities when in the self service action form in the UI
+     */
+    sort?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsSort>;
+    /**
      * The title of the property
      */
     title?: pulumi.Input<string>;
@@ -633,6 +652,17 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule {
 
 export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue {
     jqQuery: pulumi.Input<string>;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsSort {
+    /**
+     * The order to sort the entities in
+     */
+    order?: pulumi.Input<string>;
+    /**
+     * The property to sort the entities by
+     */
+    property: pulumi.Input<string>;
 }
 
 export interface ActionUpsertEntityMethod {
