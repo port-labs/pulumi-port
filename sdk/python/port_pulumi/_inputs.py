@@ -14,10 +14,12 @@ __all__ = [
     'ActionApprovalWebhookNotificationArgs',
     'ActionAutomationTriggerArgs',
     'ActionAutomationTriggerAnyEntityChangeEventArgs',
+    'ActionAutomationTriggerAnyRunChangeEventArgs',
     'ActionAutomationTriggerEntityCreatedEventArgs',
     'ActionAutomationTriggerEntityDeletedEventArgs',
     'ActionAutomationTriggerEntityUpdatedEventArgs',
     'ActionAutomationTriggerJqConditionArgs',
+    'ActionAutomationTriggerRunCreatedEventArgs',
     'ActionAutomationTriggerRunUpdatedEventArgs',
     'ActionAutomationTriggerTimerPropertyExpiredEventArgs',
     'ActionAzureMethodArgs',
@@ -141,23 +143,29 @@ class ActionApprovalWebhookNotificationArgs:
 class ActionAutomationTriggerArgs:
     def __init__(__self__, *,
                  any_entity_change_event: Optional[pulumi.Input['ActionAutomationTriggerAnyEntityChangeEventArgs']] = None,
+                 any_run_change_event: Optional[pulumi.Input['ActionAutomationTriggerAnyRunChangeEventArgs']] = None,
                  entity_created_event: Optional[pulumi.Input['ActionAutomationTriggerEntityCreatedEventArgs']] = None,
                  entity_deleted_event: Optional[pulumi.Input['ActionAutomationTriggerEntityDeletedEventArgs']] = None,
                  entity_updated_event: Optional[pulumi.Input['ActionAutomationTriggerEntityUpdatedEventArgs']] = None,
                  jq_condition: Optional[pulumi.Input['ActionAutomationTriggerJqConditionArgs']] = None,
+                 run_created_event: Optional[pulumi.Input['ActionAutomationTriggerRunCreatedEventArgs']] = None,
                  run_updated_event: Optional[pulumi.Input['ActionAutomationTriggerRunUpdatedEventArgs']] = None,
                  timer_property_expired_event: Optional[pulumi.Input['ActionAutomationTriggerTimerPropertyExpiredEventArgs']] = None):
         """
         :param pulumi.Input['ActionAutomationTriggerAnyEntityChangeEventArgs'] any_entity_change_event: Any entity change event trigger
+        :param pulumi.Input['ActionAutomationTriggerAnyRunChangeEventArgs'] any_run_change_event: Any run change event trigger
         :param pulumi.Input['ActionAutomationTriggerEntityCreatedEventArgs'] entity_created_event: Entity created event trigger
         :param pulumi.Input['ActionAutomationTriggerEntityDeletedEventArgs'] entity_deleted_event: Entity deleted event trigger
         :param pulumi.Input['ActionAutomationTriggerEntityUpdatedEventArgs'] entity_updated_event: Entity updated event trigger
         :param pulumi.Input['ActionAutomationTriggerJqConditionArgs'] jq_condition: JQ condition for automation trigger
+        :param pulumi.Input['ActionAutomationTriggerRunCreatedEventArgs'] run_created_event: Run created event trigger
         :param pulumi.Input['ActionAutomationTriggerRunUpdatedEventArgs'] run_updated_event: Run updated event trigger
         :param pulumi.Input['ActionAutomationTriggerTimerPropertyExpiredEventArgs'] timer_property_expired_event: Timer property expired event trigger
         """
         if any_entity_change_event is not None:
             pulumi.set(__self__, "any_entity_change_event", any_entity_change_event)
+        if any_run_change_event is not None:
+            pulumi.set(__self__, "any_run_change_event", any_run_change_event)
         if entity_created_event is not None:
             pulumi.set(__self__, "entity_created_event", entity_created_event)
         if entity_deleted_event is not None:
@@ -166,6 +174,8 @@ class ActionAutomationTriggerArgs:
             pulumi.set(__self__, "entity_updated_event", entity_updated_event)
         if jq_condition is not None:
             pulumi.set(__self__, "jq_condition", jq_condition)
+        if run_created_event is not None:
+            pulumi.set(__self__, "run_created_event", run_created_event)
         if run_updated_event is not None:
             pulumi.set(__self__, "run_updated_event", run_updated_event)
         if timer_property_expired_event is not None:
@@ -182,6 +192,18 @@ class ActionAutomationTriggerArgs:
     @any_entity_change_event.setter
     def any_entity_change_event(self, value: Optional[pulumi.Input['ActionAutomationTriggerAnyEntityChangeEventArgs']]):
         pulumi.set(self, "any_entity_change_event", value)
+
+    @property
+    @pulumi.getter(name="anyRunChangeEvent")
+    def any_run_change_event(self) -> Optional[pulumi.Input['ActionAutomationTriggerAnyRunChangeEventArgs']]:
+        """
+        Any run change event trigger
+        """
+        return pulumi.get(self, "any_run_change_event")
+
+    @any_run_change_event.setter
+    def any_run_change_event(self, value: Optional[pulumi.Input['ActionAutomationTriggerAnyRunChangeEventArgs']]):
+        pulumi.set(self, "any_run_change_event", value)
 
     @property
     @pulumi.getter(name="entityCreatedEvent")
@@ -232,6 +254,18 @@ class ActionAutomationTriggerArgs:
         pulumi.set(self, "jq_condition", value)
 
     @property
+    @pulumi.getter(name="runCreatedEvent")
+    def run_created_event(self) -> Optional[pulumi.Input['ActionAutomationTriggerRunCreatedEventArgs']]:
+        """
+        Run created event trigger
+        """
+        return pulumi.get(self, "run_created_event")
+
+    @run_created_event.setter
+    def run_created_event(self, value: Optional[pulumi.Input['ActionAutomationTriggerRunCreatedEventArgs']]):
+        pulumi.set(self, "run_created_event", value)
+
+    @property
     @pulumi.getter(name="runUpdatedEvent")
     def run_updated_event(self) -> Optional[pulumi.Input['ActionAutomationTriggerRunUpdatedEventArgs']]:
         """
@@ -276,6 +310,28 @@ class ActionAutomationTriggerAnyEntityChangeEventArgs:
     @blueprint_identifier.setter
     def blueprint_identifier(self, value: pulumi.Input[str]):
         pulumi.set(self, "blueprint_identifier", value)
+
+
+@pulumi.input_type
+class ActionAutomationTriggerAnyRunChangeEventArgs:
+    def __init__(__self__, *,
+                 action_identifier: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] action_identifier: The action identifier of the changed run
+        """
+        pulumi.set(__self__, "action_identifier", action_identifier)
+
+    @property
+    @pulumi.getter(name="actionIdentifier")
+    def action_identifier(self) -> pulumi.Input[str]:
+        """
+        The action identifier of the changed run
+        """
+        return pulumi.get(self, "action_identifier")
+
+    @action_identifier.setter
+    def action_identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "action_identifier", value)
 
 
 @pulumi.input_type
@@ -380,6 +436,28 @@ class ActionAutomationTriggerJqConditionArgs:
     @combinator.setter
     def combinator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "combinator", value)
+
+
+@pulumi.input_type
+class ActionAutomationTriggerRunCreatedEventArgs:
+    def __init__(__self__, *,
+                 action_identifier: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] action_identifier: The action identifier of the created run
+        """
+        pulumi.set(__self__, "action_identifier", action_identifier)
+
+    @property
+    @pulumi.getter(name="actionIdentifier")
+    def action_identifier(self) -> pulumi.Input[str]:
+        """
+        The action identifier of the created run
+        """
+        return pulumi.get(self, "action_identifier")
+
+    @action_identifier.setter
+    def action_identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "action_identifier", value)
 
 
 @pulumi.input_type

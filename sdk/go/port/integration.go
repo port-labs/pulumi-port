@@ -34,7 +34,6 @@ import (
 // _, err := port.NewPort_integration(ctx, "myCustomIntegration", &port.Port_integrationArgs{
 // InstallationId: "my-custom-integration-id",
 // Title: "My Custom Integration",
-// Version: "1.33.7",
 // Config: %!v(PANIC=Format method: fatal: An assertion has failed: unlowered function toJSON),
 // })
 // if err != nil {

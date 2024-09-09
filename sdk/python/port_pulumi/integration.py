@@ -248,7 +248,6 @@ class Integration(pulumi.CustomResource):
         my_custom_integration = port.index.Port_integration("myCustomIntegration",
             installation_id=my-custom-integration-id,
             title=My Custom Integration,
-            version=1.33.7,
             config=json.dumps({
                 createMissingRelatedEntitiesboolean: True,
                 deleteDependentEntities: True,
@@ -301,7 +300,6 @@ class Integration(pulumi.CustomResource):
         my_custom_integration = port.index.Port_integration("myCustomIntegration",
             installation_id=my-custom-integration-id,
             title=My Custom Integration,
-            version=1.33.7,
             config=json.dumps({
                 createMissingRelatedEntitiesboolean: True,
                 deleteDependentEntities: True,
