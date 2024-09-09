@@ -25,6 +25,10 @@ export interface ActionAutomationTrigger {
      */
     anyEntityChangeEvent?: outputs.ActionAutomationTriggerAnyEntityChangeEvent;
     /**
+     * Any run change event trigger
+     */
+    anyRunChangeEvent?: outputs.ActionAutomationTriggerAnyRunChangeEvent;
+    /**
      * Entity created event trigger
      */
     entityCreatedEvent?: outputs.ActionAutomationTriggerEntityCreatedEvent;
@@ -41,6 +45,10 @@ export interface ActionAutomationTrigger {
      */
     jqCondition?: outputs.ActionAutomationTriggerJqCondition;
     /**
+     * Run created event trigger
+     */
+    runCreatedEvent?: outputs.ActionAutomationTriggerRunCreatedEvent;
+    /**
      * Run updated event trigger
      */
     runUpdatedEvent?: outputs.ActionAutomationTriggerRunUpdatedEvent;
@@ -55,6 +63,13 @@ export interface ActionAutomationTriggerAnyEntityChangeEvent {
      * The blueprint identifier of the changed entity
      */
     blueprintIdentifier: string;
+}
+
+export interface ActionAutomationTriggerAnyRunChangeEvent {
+    /**
+     * The action identifier of the changed run
+     */
+    actionIdentifier: string;
 }
 
 export interface ActionAutomationTriggerEntityCreatedEvent {
@@ -87,6 +102,13 @@ export interface ActionAutomationTriggerJqCondition {
      * The jq expressions of the condition
      */
     expressions: string[];
+}
+
+export interface ActionAutomationTriggerRunCreatedEvent {
+    /**
+     * The action identifier of the created run
+     */
+    actionIdentifier: string;
 }
 
 export interface ActionAutomationTriggerRunUpdatedEvent {

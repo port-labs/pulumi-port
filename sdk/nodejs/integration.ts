@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * const myCustomIntegration = new port.index.Port_integration("myCustomIntegration", {
  *     installationId: "my-custom-integration-id",
  *     title: "My Custom Integration",
- *     version: "1.33.7",
  *     config: JSON.stringify({
  *         createMissingRelatedEntitiesboolean: true,
  *         deleteDependentEntities: true,

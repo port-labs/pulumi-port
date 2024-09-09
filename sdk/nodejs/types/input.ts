@@ -25,6 +25,10 @@ export interface ActionAutomationTrigger {
      */
     anyEntityChangeEvent?: pulumi.Input<inputs.ActionAutomationTriggerAnyEntityChangeEvent>;
     /**
+     * Any run change event trigger
+     */
+    anyRunChangeEvent?: pulumi.Input<inputs.ActionAutomationTriggerAnyRunChangeEvent>;
+    /**
      * Entity created event trigger
      */
     entityCreatedEvent?: pulumi.Input<inputs.ActionAutomationTriggerEntityCreatedEvent>;
@@ -41,6 +45,10 @@ export interface ActionAutomationTrigger {
      */
     jqCondition?: pulumi.Input<inputs.ActionAutomationTriggerJqCondition>;
     /**
+     * Run created event trigger
+     */
+    runCreatedEvent?: pulumi.Input<inputs.ActionAutomationTriggerRunCreatedEvent>;
+    /**
      * Run updated event trigger
      */
     runUpdatedEvent?: pulumi.Input<inputs.ActionAutomationTriggerRunUpdatedEvent>;
@@ -55,6 +63,13 @@ export interface ActionAutomationTriggerAnyEntityChangeEvent {
      * The blueprint identifier of the changed entity
      */
     blueprintIdentifier: pulumi.Input<string>;
+}
+
+export interface ActionAutomationTriggerAnyRunChangeEvent {
+    /**
+     * The action identifier of the changed run
+     */
+    actionIdentifier: pulumi.Input<string>;
 }
 
 export interface ActionAutomationTriggerEntityCreatedEvent {
@@ -87,6 +102,13 @@ export interface ActionAutomationTriggerJqCondition {
      * The jq expressions of the condition
      */
     expressions: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ActionAutomationTriggerRunCreatedEvent {
+    /**
+     * The action identifier of the created run
+     */
+    actionIdentifier: pulumi.Input<string>;
 }
 
 export interface ActionAutomationTriggerRunUpdatedEvent {

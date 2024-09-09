@@ -290,6 +290,8 @@ func (o ActionApprovalWebhookNotificationPtrOutput) Url() pulumi.StringPtrOutput
 type ActionAutomationTrigger struct {
 	// Any entity change event trigger
 	AnyEntityChangeEvent *ActionAutomationTriggerAnyEntityChangeEvent `pulumi:"anyEntityChangeEvent"`
+	// Any run change event trigger
+	AnyRunChangeEvent *ActionAutomationTriggerAnyRunChangeEvent `pulumi:"anyRunChangeEvent"`
 	// Entity created event trigger
 	EntityCreatedEvent *ActionAutomationTriggerEntityCreatedEvent `pulumi:"entityCreatedEvent"`
 	// Entity deleted event trigger
@@ -298,6 +300,8 @@ type ActionAutomationTrigger struct {
 	EntityUpdatedEvent *ActionAutomationTriggerEntityUpdatedEvent `pulumi:"entityUpdatedEvent"`
 	// JQ condition for automation trigger
 	JqCondition *ActionAutomationTriggerJqCondition `pulumi:"jqCondition"`
+	// Run created event trigger
+	RunCreatedEvent *ActionAutomationTriggerRunCreatedEvent `pulumi:"runCreatedEvent"`
 	// Run updated event trigger
 	RunUpdatedEvent *ActionAutomationTriggerRunUpdatedEvent `pulumi:"runUpdatedEvent"`
 	// Timer property expired event trigger
@@ -318,6 +322,8 @@ type ActionAutomationTriggerInput interface {
 type ActionAutomationTriggerArgs struct {
 	// Any entity change event trigger
 	AnyEntityChangeEvent ActionAutomationTriggerAnyEntityChangeEventPtrInput `pulumi:"anyEntityChangeEvent"`
+	// Any run change event trigger
+	AnyRunChangeEvent ActionAutomationTriggerAnyRunChangeEventPtrInput `pulumi:"anyRunChangeEvent"`
 	// Entity created event trigger
 	EntityCreatedEvent ActionAutomationTriggerEntityCreatedEventPtrInput `pulumi:"entityCreatedEvent"`
 	// Entity deleted event trigger
@@ -326,6 +332,8 @@ type ActionAutomationTriggerArgs struct {
 	EntityUpdatedEvent ActionAutomationTriggerEntityUpdatedEventPtrInput `pulumi:"entityUpdatedEvent"`
 	// JQ condition for automation trigger
 	JqCondition ActionAutomationTriggerJqConditionPtrInput `pulumi:"jqCondition"`
+	// Run created event trigger
+	RunCreatedEvent ActionAutomationTriggerRunCreatedEventPtrInput `pulumi:"runCreatedEvent"`
 	// Run updated event trigger
 	RunUpdatedEvent ActionAutomationTriggerRunUpdatedEventPtrInput `pulumi:"runUpdatedEvent"`
 	// Timer property expired event trigger
@@ -416,6 +424,11 @@ func (o ActionAutomationTriggerOutput) AnyEntityChangeEvent() ActionAutomationTr
 	}).(ActionAutomationTriggerAnyEntityChangeEventPtrOutput)
 }
 
+// Any run change event trigger
+func (o ActionAutomationTriggerOutput) AnyRunChangeEvent() ActionAutomationTriggerAnyRunChangeEventPtrOutput {
+	return o.ApplyT(func(v ActionAutomationTrigger) *ActionAutomationTriggerAnyRunChangeEvent { return v.AnyRunChangeEvent }).(ActionAutomationTriggerAnyRunChangeEventPtrOutput)
+}
+
 // Entity created event trigger
 func (o ActionAutomationTriggerOutput) EntityCreatedEvent() ActionAutomationTriggerEntityCreatedEventPtrOutput {
 	return o.ApplyT(func(v ActionAutomationTrigger) *ActionAutomationTriggerEntityCreatedEvent {
@@ -440,6 +453,11 @@ func (o ActionAutomationTriggerOutput) EntityUpdatedEvent() ActionAutomationTrig
 // JQ condition for automation trigger
 func (o ActionAutomationTriggerOutput) JqCondition() ActionAutomationTriggerJqConditionPtrOutput {
 	return o.ApplyT(func(v ActionAutomationTrigger) *ActionAutomationTriggerJqCondition { return v.JqCondition }).(ActionAutomationTriggerJqConditionPtrOutput)
+}
+
+// Run created event trigger
+func (o ActionAutomationTriggerOutput) RunCreatedEvent() ActionAutomationTriggerRunCreatedEventPtrOutput {
+	return o.ApplyT(func(v ActionAutomationTrigger) *ActionAutomationTriggerRunCreatedEvent { return v.RunCreatedEvent }).(ActionAutomationTriggerRunCreatedEventPtrOutput)
 }
 
 // Run updated event trigger
@@ -488,6 +506,16 @@ func (o ActionAutomationTriggerPtrOutput) AnyEntityChangeEvent() ActionAutomatio
 	}).(ActionAutomationTriggerAnyEntityChangeEventPtrOutput)
 }
 
+// Any run change event trigger
+func (o ActionAutomationTriggerPtrOutput) AnyRunChangeEvent() ActionAutomationTriggerAnyRunChangeEventPtrOutput {
+	return o.ApplyT(func(v *ActionAutomationTrigger) *ActionAutomationTriggerAnyRunChangeEvent {
+		if v == nil {
+			return nil
+		}
+		return v.AnyRunChangeEvent
+	}).(ActionAutomationTriggerAnyRunChangeEventPtrOutput)
+}
+
 // Entity created event trigger
 func (o ActionAutomationTriggerPtrOutput) EntityCreatedEvent() ActionAutomationTriggerEntityCreatedEventPtrOutput {
 	return o.ApplyT(func(v *ActionAutomationTrigger) *ActionAutomationTriggerEntityCreatedEvent {
@@ -526,6 +554,16 @@ func (o ActionAutomationTriggerPtrOutput) JqCondition() ActionAutomationTriggerJ
 		}
 		return v.JqCondition
 	}).(ActionAutomationTriggerJqConditionPtrOutput)
+}
+
+// Run created event trigger
+func (o ActionAutomationTriggerPtrOutput) RunCreatedEvent() ActionAutomationTriggerRunCreatedEventPtrOutput {
+	return o.ApplyT(func(v *ActionAutomationTrigger) *ActionAutomationTriggerRunCreatedEvent {
+		if v == nil {
+			return nil
+		}
+		return v.RunCreatedEvent
+	}).(ActionAutomationTriggerRunCreatedEventPtrOutput)
 }
 
 // Run updated event trigger
@@ -682,6 +720,143 @@ func (o ActionAutomationTriggerAnyEntityChangeEventPtrOutput) BlueprintIdentifie
 			return nil
 		}
 		return &v.BlueprintIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
+type ActionAutomationTriggerAnyRunChangeEvent struct {
+	// The action identifier of the changed run
+	ActionIdentifier string `pulumi:"actionIdentifier"`
+}
+
+// ActionAutomationTriggerAnyRunChangeEventInput is an input type that accepts ActionAutomationTriggerAnyRunChangeEventArgs and ActionAutomationTriggerAnyRunChangeEventOutput values.
+// You can construct a concrete instance of `ActionAutomationTriggerAnyRunChangeEventInput` via:
+//
+//	ActionAutomationTriggerAnyRunChangeEventArgs{...}
+type ActionAutomationTriggerAnyRunChangeEventInput interface {
+	pulumi.Input
+
+	ToActionAutomationTriggerAnyRunChangeEventOutput() ActionAutomationTriggerAnyRunChangeEventOutput
+	ToActionAutomationTriggerAnyRunChangeEventOutputWithContext(context.Context) ActionAutomationTriggerAnyRunChangeEventOutput
+}
+
+type ActionAutomationTriggerAnyRunChangeEventArgs struct {
+	// The action identifier of the changed run
+	ActionIdentifier pulumi.StringInput `pulumi:"actionIdentifier"`
+}
+
+func (ActionAutomationTriggerAnyRunChangeEventArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionAutomationTriggerAnyRunChangeEvent)(nil)).Elem()
+}
+
+func (i ActionAutomationTriggerAnyRunChangeEventArgs) ToActionAutomationTriggerAnyRunChangeEventOutput() ActionAutomationTriggerAnyRunChangeEventOutput {
+	return i.ToActionAutomationTriggerAnyRunChangeEventOutputWithContext(context.Background())
+}
+
+func (i ActionAutomationTriggerAnyRunChangeEventArgs) ToActionAutomationTriggerAnyRunChangeEventOutputWithContext(ctx context.Context) ActionAutomationTriggerAnyRunChangeEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerAnyRunChangeEventOutput)
+}
+
+func (i ActionAutomationTriggerAnyRunChangeEventArgs) ToActionAutomationTriggerAnyRunChangeEventPtrOutput() ActionAutomationTriggerAnyRunChangeEventPtrOutput {
+	return i.ToActionAutomationTriggerAnyRunChangeEventPtrOutputWithContext(context.Background())
+}
+
+func (i ActionAutomationTriggerAnyRunChangeEventArgs) ToActionAutomationTriggerAnyRunChangeEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerAnyRunChangeEventPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerAnyRunChangeEventOutput).ToActionAutomationTriggerAnyRunChangeEventPtrOutputWithContext(ctx)
+}
+
+// ActionAutomationTriggerAnyRunChangeEventPtrInput is an input type that accepts ActionAutomationTriggerAnyRunChangeEventArgs, ActionAutomationTriggerAnyRunChangeEventPtr and ActionAutomationTriggerAnyRunChangeEventPtrOutput values.
+// You can construct a concrete instance of `ActionAutomationTriggerAnyRunChangeEventPtrInput` via:
+//
+//	        ActionAutomationTriggerAnyRunChangeEventArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionAutomationTriggerAnyRunChangeEventPtrInput interface {
+	pulumi.Input
+
+	ToActionAutomationTriggerAnyRunChangeEventPtrOutput() ActionAutomationTriggerAnyRunChangeEventPtrOutput
+	ToActionAutomationTriggerAnyRunChangeEventPtrOutputWithContext(context.Context) ActionAutomationTriggerAnyRunChangeEventPtrOutput
+}
+
+type actionAutomationTriggerAnyRunChangeEventPtrType ActionAutomationTriggerAnyRunChangeEventArgs
+
+func ActionAutomationTriggerAnyRunChangeEventPtr(v *ActionAutomationTriggerAnyRunChangeEventArgs) ActionAutomationTriggerAnyRunChangeEventPtrInput {
+	return (*actionAutomationTriggerAnyRunChangeEventPtrType)(v)
+}
+
+func (*actionAutomationTriggerAnyRunChangeEventPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionAutomationTriggerAnyRunChangeEvent)(nil)).Elem()
+}
+
+func (i *actionAutomationTriggerAnyRunChangeEventPtrType) ToActionAutomationTriggerAnyRunChangeEventPtrOutput() ActionAutomationTriggerAnyRunChangeEventPtrOutput {
+	return i.ToActionAutomationTriggerAnyRunChangeEventPtrOutputWithContext(context.Background())
+}
+
+func (i *actionAutomationTriggerAnyRunChangeEventPtrType) ToActionAutomationTriggerAnyRunChangeEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerAnyRunChangeEventPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerAnyRunChangeEventPtrOutput)
+}
+
+type ActionAutomationTriggerAnyRunChangeEventOutput struct{ *pulumi.OutputState }
+
+func (ActionAutomationTriggerAnyRunChangeEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionAutomationTriggerAnyRunChangeEvent)(nil)).Elem()
+}
+
+func (o ActionAutomationTriggerAnyRunChangeEventOutput) ToActionAutomationTriggerAnyRunChangeEventOutput() ActionAutomationTriggerAnyRunChangeEventOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerAnyRunChangeEventOutput) ToActionAutomationTriggerAnyRunChangeEventOutputWithContext(ctx context.Context) ActionAutomationTriggerAnyRunChangeEventOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerAnyRunChangeEventOutput) ToActionAutomationTriggerAnyRunChangeEventPtrOutput() ActionAutomationTriggerAnyRunChangeEventPtrOutput {
+	return o.ToActionAutomationTriggerAnyRunChangeEventPtrOutputWithContext(context.Background())
+}
+
+func (o ActionAutomationTriggerAnyRunChangeEventOutput) ToActionAutomationTriggerAnyRunChangeEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerAnyRunChangeEventPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionAutomationTriggerAnyRunChangeEvent) *ActionAutomationTriggerAnyRunChangeEvent {
+		return &v
+	}).(ActionAutomationTriggerAnyRunChangeEventPtrOutput)
+}
+
+// The action identifier of the changed run
+func (o ActionAutomationTriggerAnyRunChangeEventOutput) ActionIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionAutomationTriggerAnyRunChangeEvent) string { return v.ActionIdentifier }).(pulumi.StringOutput)
+}
+
+type ActionAutomationTriggerAnyRunChangeEventPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionAutomationTriggerAnyRunChangeEventPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionAutomationTriggerAnyRunChangeEvent)(nil)).Elem()
+}
+
+func (o ActionAutomationTriggerAnyRunChangeEventPtrOutput) ToActionAutomationTriggerAnyRunChangeEventPtrOutput() ActionAutomationTriggerAnyRunChangeEventPtrOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerAnyRunChangeEventPtrOutput) ToActionAutomationTriggerAnyRunChangeEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerAnyRunChangeEventPtrOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerAnyRunChangeEventPtrOutput) Elem() ActionAutomationTriggerAnyRunChangeEventOutput {
+	return o.ApplyT(func(v *ActionAutomationTriggerAnyRunChangeEvent) ActionAutomationTriggerAnyRunChangeEvent {
+		if v != nil {
+			return *v
+		}
+		var ret ActionAutomationTriggerAnyRunChangeEvent
+		return ret
+	}).(ActionAutomationTriggerAnyRunChangeEventOutput)
+}
+
+// The action identifier of the changed run
+func (o ActionAutomationTriggerAnyRunChangeEventPtrOutput) ActionIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionAutomationTriggerAnyRunChangeEvent) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ActionIdentifier
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1250,6 +1425,143 @@ func (o ActionAutomationTriggerJqConditionPtrOutput) Expressions() pulumi.String
 		}
 		return v.Expressions
 	}).(pulumi.StringArrayOutput)
+}
+
+type ActionAutomationTriggerRunCreatedEvent struct {
+	// The action identifier of the created run
+	ActionIdentifier string `pulumi:"actionIdentifier"`
+}
+
+// ActionAutomationTriggerRunCreatedEventInput is an input type that accepts ActionAutomationTriggerRunCreatedEventArgs and ActionAutomationTriggerRunCreatedEventOutput values.
+// You can construct a concrete instance of `ActionAutomationTriggerRunCreatedEventInput` via:
+//
+//	ActionAutomationTriggerRunCreatedEventArgs{...}
+type ActionAutomationTriggerRunCreatedEventInput interface {
+	pulumi.Input
+
+	ToActionAutomationTriggerRunCreatedEventOutput() ActionAutomationTriggerRunCreatedEventOutput
+	ToActionAutomationTriggerRunCreatedEventOutputWithContext(context.Context) ActionAutomationTriggerRunCreatedEventOutput
+}
+
+type ActionAutomationTriggerRunCreatedEventArgs struct {
+	// The action identifier of the created run
+	ActionIdentifier pulumi.StringInput `pulumi:"actionIdentifier"`
+}
+
+func (ActionAutomationTriggerRunCreatedEventArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionAutomationTriggerRunCreatedEvent)(nil)).Elem()
+}
+
+func (i ActionAutomationTriggerRunCreatedEventArgs) ToActionAutomationTriggerRunCreatedEventOutput() ActionAutomationTriggerRunCreatedEventOutput {
+	return i.ToActionAutomationTriggerRunCreatedEventOutputWithContext(context.Background())
+}
+
+func (i ActionAutomationTriggerRunCreatedEventArgs) ToActionAutomationTriggerRunCreatedEventOutputWithContext(ctx context.Context) ActionAutomationTriggerRunCreatedEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerRunCreatedEventOutput)
+}
+
+func (i ActionAutomationTriggerRunCreatedEventArgs) ToActionAutomationTriggerRunCreatedEventPtrOutput() ActionAutomationTriggerRunCreatedEventPtrOutput {
+	return i.ToActionAutomationTriggerRunCreatedEventPtrOutputWithContext(context.Background())
+}
+
+func (i ActionAutomationTriggerRunCreatedEventArgs) ToActionAutomationTriggerRunCreatedEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerRunCreatedEventPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerRunCreatedEventOutput).ToActionAutomationTriggerRunCreatedEventPtrOutputWithContext(ctx)
+}
+
+// ActionAutomationTriggerRunCreatedEventPtrInput is an input type that accepts ActionAutomationTriggerRunCreatedEventArgs, ActionAutomationTriggerRunCreatedEventPtr and ActionAutomationTriggerRunCreatedEventPtrOutput values.
+// You can construct a concrete instance of `ActionAutomationTriggerRunCreatedEventPtrInput` via:
+//
+//	        ActionAutomationTriggerRunCreatedEventArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionAutomationTriggerRunCreatedEventPtrInput interface {
+	pulumi.Input
+
+	ToActionAutomationTriggerRunCreatedEventPtrOutput() ActionAutomationTriggerRunCreatedEventPtrOutput
+	ToActionAutomationTriggerRunCreatedEventPtrOutputWithContext(context.Context) ActionAutomationTriggerRunCreatedEventPtrOutput
+}
+
+type actionAutomationTriggerRunCreatedEventPtrType ActionAutomationTriggerRunCreatedEventArgs
+
+func ActionAutomationTriggerRunCreatedEventPtr(v *ActionAutomationTriggerRunCreatedEventArgs) ActionAutomationTriggerRunCreatedEventPtrInput {
+	return (*actionAutomationTriggerRunCreatedEventPtrType)(v)
+}
+
+func (*actionAutomationTriggerRunCreatedEventPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionAutomationTriggerRunCreatedEvent)(nil)).Elem()
+}
+
+func (i *actionAutomationTriggerRunCreatedEventPtrType) ToActionAutomationTriggerRunCreatedEventPtrOutput() ActionAutomationTriggerRunCreatedEventPtrOutput {
+	return i.ToActionAutomationTriggerRunCreatedEventPtrOutputWithContext(context.Background())
+}
+
+func (i *actionAutomationTriggerRunCreatedEventPtrType) ToActionAutomationTriggerRunCreatedEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerRunCreatedEventPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionAutomationTriggerRunCreatedEventPtrOutput)
+}
+
+type ActionAutomationTriggerRunCreatedEventOutput struct{ *pulumi.OutputState }
+
+func (ActionAutomationTriggerRunCreatedEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionAutomationTriggerRunCreatedEvent)(nil)).Elem()
+}
+
+func (o ActionAutomationTriggerRunCreatedEventOutput) ToActionAutomationTriggerRunCreatedEventOutput() ActionAutomationTriggerRunCreatedEventOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerRunCreatedEventOutput) ToActionAutomationTriggerRunCreatedEventOutputWithContext(ctx context.Context) ActionAutomationTriggerRunCreatedEventOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerRunCreatedEventOutput) ToActionAutomationTriggerRunCreatedEventPtrOutput() ActionAutomationTriggerRunCreatedEventPtrOutput {
+	return o.ToActionAutomationTriggerRunCreatedEventPtrOutputWithContext(context.Background())
+}
+
+func (o ActionAutomationTriggerRunCreatedEventOutput) ToActionAutomationTriggerRunCreatedEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerRunCreatedEventPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionAutomationTriggerRunCreatedEvent) *ActionAutomationTriggerRunCreatedEvent {
+		return &v
+	}).(ActionAutomationTriggerRunCreatedEventPtrOutput)
+}
+
+// The action identifier of the created run
+func (o ActionAutomationTriggerRunCreatedEventOutput) ActionIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionAutomationTriggerRunCreatedEvent) string { return v.ActionIdentifier }).(pulumi.StringOutput)
+}
+
+type ActionAutomationTriggerRunCreatedEventPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionAutomationTriggerRunCreatedEventPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionAutomationTriggerRunCreatedEvent)(nil)).Elem()
+}
+
+func (o ActionAutomationTriggerRunCreatedEventPtrOutput) ToActionAutomationTriggerRunCreatedEventPtrOutput() ActionAutomationTriggerRunCreatedEventPtrOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerRunCreatedEventPtrOutput) ToActionAutomationTriggerRunCreatedEventPtrOutputWithContext(ctx context.Context) ActionAutomationTriggerRunCreatedEventPtrOutput {
+	return o
+}
+
+func (o ActionAutomationTriggerRunCreatedEventPtrOutput) Elem() ActionAutomationTriggerRunCreatedEventOutput {
+	return o.ApplyT(func(v *ActionAutomationTriggerRunCreatedEvent) ActionAutomationTriggerRunCreatedEvent {
+		if v != nil {
+			return *v
+		}
+		var ret ActionAutomationTriggerRunCreatedEvent
+		return ret
+	}).(ActionAutomationTriggerRunCreatedEventOutput)
+}
+
+// The action identifier of the created run
+func (o ActionAutomationTriggerRunCreatedEventPtrOutput) ActionIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionAutomationTriggerRunCreatedEvent) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ActionIdentifier
+	}).(pulumi.StringPtrOutput)
 }
 
 type ActionAutomationTriggerRunUpdatedEvent struct {
@@ -13987,6 +14299,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerPtrInput)(nil)).Elem(), ActionAutomationTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerAnyEntityChangeEventInput)(nil)).Elem(), ActionAutomationTriggerAnyEntityChangeEventArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerAnyEntityChangeEventPtrInput)(nil)).Elem(), ActionAutomationTriggerAnyEntityChangeEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerAnyRunChangeEventInput)(nil)).Elem(), ActionAutomationTriggerAnyRunChangeEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerAnyRunChangeEventPtrInput)(nil)).Elem(), ActionAutomationTriggerAnyRunChangeEventArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerEntityCreatedEventInput)(nil)).Elem(), ActionAutomationTriggerEntityCreatedEventArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerEntityCreatedEventPtrInput)(nil)).Elem(), ActionAutomationTriggerEntityCreatedEventArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerEntityDeletedEventInput)(nil)).Elem(), ActionAutomationTriggerEntityDeletedEventArgs{})
@@ -13995,6 +14309,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerEntityUpdatedEventPtrInput)(nil)).Elem(), ActionAutomationTriggerEntityUpdatedEventArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerJqConditionInput)(nil)).Elem(), ActionAutomationTriggerJqConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerJqConditionPtrInput)(nil)).Elem(), ActionAutomationTriggerJqConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerRunCreatedEventInput)(nil)).Elem(), ActionAutomationTriggerRunCreatedEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerRunCreatedEventPtrInput)(nil)).Elem(), ActionAutomationTriggerRunCreatedEventArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerRunUpdatedEventInput)(nil)).Elem(), ActionAutomationTriggerRunUpdatedEventArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerRunUpdatedEventPtrInput)(nil)).Elem(), ActionAutomationTriggerRunUpdatedEventArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionAutomationTriggerTimerPropertyExpiredEventInput)(nil)).Elem(), ActionAutomationTriggerTimerPropertyExpiredEventArgs{})
@@ -14154,6 +14470,8 @@ func init() {
 	pulumi.RegisterOutputType(ActionAutomationTriggerPtrOutput{})
 	pulumi.RegisterOutputType(ActionAutomationTriggerAnyEntityChangeEventOutput{})
 	pulumi.RegisterOutputType(ActionAutomationTriggerAnyEntityChangeEventPtrOutput{})
+	pulumi.RegisterOutputType(ActionAutomationTriggerAnyRunChangeEventOutput{})
+	pulumi.RegisterOutputType(ActionAutomationTriggerAnyRunChangeEventPtrOutput{})
 	pulumi.RegisterOutputType(ActionAutomationTriggerEntityCreatedEventOutput{})
 	pulumi.RegisterOutputType(ActionAutomationTriggerEntityCreatedEventPtrOutput{})
 	pulumi.RegisterOutputType(ActionAutomationTriggerEntityDeletedEventOutput{})
@@ -14162,6 +14480,8 @@ func init() {
 	pulumi.RegisterOutputType(ActionAutomationTriggerEntityUpdatedEventPtrOutput{})
 	pulumi.RegisterOutputType(ActionAutomationTriggerJqConditionOutput{})
 	pulumi.RegisterOutputType(ActionAutomationTriggerJqConditionPtrOutput{})
+	pulumi.RegisterOutputType(ActionAutomationTriggerRunCreatedEventOutput{})
+	pulumi.RegisterOutputType(ActionAutomationTriggerRunCreatedEventPtrOutput{})
 	pulumi.RegisterOutputType(ActionAutomationTriggerRunUpdatedEventOutput{})
 	pulumi.RegisterOutputType(ActionAutomationTriggerRunUpdatedEventPtrOutput{})
 	pulumi.RegisterOutputType(ActionAutomationTriggerTimerPropertyExpiredEventOutput{})
