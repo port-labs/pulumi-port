@@ -16,7 +16,7 @@ import (
 //
 // Docs about integrations can be found [here](https://docs.getport.io/integrations-index/).
 //
-// Docs about how to import existing integrations and manage their mappings can be found here.
+// Docs about how to import existing integrations and manage their mappings can be found [here](https://docs.getport.io/guides/all/import-and-manage-integration).
 //
 // ```go
 // package main

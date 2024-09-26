@@ -14,7 +14,6 @@ import * as utilities from "./utilities";
  * ## Example Usage
  */
 export function getSearch(args: GetSearchArgs, opts?: pulumi.InvokeOptions): Promise<GetSearchResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("port:index/getSearch:getSearch", {
         "attachTitleToRelation": args.attachTitleToRelation,
@@ -96,7 +95,14 @@ export interface GetSearchResult {
  * ## Example Usage
  */
 export function getSearchOutput(args: GetSearchOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSearchResult> {
-    return pulumi.output(args).apply((a: any) => getSearch(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("port:index/getSearch:getSearch", {
+        "attachTitleToRelation": args.attachTitleToRelation,
+        "excludeCalculatedProperties": args.excludeCalculatedProperties,
+        "excludes": args.excludes,
+        "includes": args.includes,
+        "query": args.query,
+    }, opts);
 }
 
 /**

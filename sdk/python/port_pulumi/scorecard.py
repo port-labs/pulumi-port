@@ -256,8 +256,8 @@ class Scorecard(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blueprint: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
-                 levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScorecardLevelArgs']]]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScorecardRuleArgs']]]]] = None,
+                 levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardLevelArgs', 'ScorecardLevelArgsDict']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardRuleArgs', 'ScorecardRuleArgsDict']]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -469,8 +469,8 @@ class Scorecard(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] blueprint: The blueprint of the scorecard
         :param pulumi.Input[str] identifier: The identifier of the scorecard
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScorecardLevelArgs']]]] levels: The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScorecardRuleArgs']]]] rules: The rules of the scorecard
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScorecardLevelArgs', 'ScorecardLevelArgsDict']]]] levels: The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScorecardRuleArgs', 'ScorecardRuleArgsDict']]]] rules: The rules of the scorecard
         :param pulumi.Input[str] title: The title of the scorecard
         """
         ...
@@ -701,8 +701,8 @@ class Scorecard(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blueprint: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
-                 levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScorecardLevelArgs']]]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScorecardRuleArgs']]]]] = None,
+                 levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardLevelArgs', 'ScorecardLevelArgsDict']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardRuleArgs', 'ScorecardRuleArgsDict']]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -744,8 +744,8 @@ class Scorecard(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[str]] = None,
             created_by: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
-            levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScorecardLevelArgs']]]]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScorecardRuleArgs']]]]] = None,
+            levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardLevelArgs', 'ScorecardLevelArgsDict']]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardRuleArgs', 'ScorecardRuleArgsDict']]]]] = None,
             title: Optional[pulumi.Input[str]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
             updated_by: Optional[pulumi.Input[str]] = None) -> 'Scorecard':
@@ -760,8 +760,8 @@ class Scorecard(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: The creation date of the scorecard
         :param pulumi.Input[str] created_by: The creator of the scorecard
         :param pulumi.Input[str] identifier: The identifier of the scorecard
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScorecardLevelArgs']]]] levels: The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScorecardRuleArgs']]]] rules: The rules of the scorecard
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScorecardLevelArgs', 'ScorecardLevelArgsDict']]]] levels: The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScorecardRuleArgs', 'ScorecardRuleArgsDict']]]] rules: The rules of the scorecard
         :param pulumi.Input[str] title: The title of the scorecard
         :param pulumi.Input[str] updated_at: The last update date of the scorecard
         :param pulumi.Input[str] updated_by: The last updater of the scorecard

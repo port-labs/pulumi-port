@@ -97,7 +97,7 @@ class AggregationProperties(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blueprint_identifier: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['AggregationPropertiesPropertiesArgs']]]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['AggregationPropertiesPropertiesArgs', 'AggregationPropertiesPropertiesArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource allows you to manage aggregation properties of a blueprint.
@@ -388,7 +388,7 @@ class AggregationProperties(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] blueprint_identifier: The identifier of the blueprint the aggregation property will be added to
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['AggregationPropertiesPropertiesArgs']]]] properties: The aggregation property of the blueprint
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['AggregationPropertiesPropertiesArgs', 'AggregationPropertiesPropertiesArgsDict']]]] properties: The aggregation property of the blueprint
         """
         ...
     @overload
@@ -698,7 +698,7 @@ class AggregationProperties(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blueprint_identifier: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['AggregationPropertiesPropertiesArgs']]]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['AggregationPropertiesPropertiesArgs', 'AggregationPropertiesPropertiesArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -725,7 +725,7 @@ class AggregationProperties(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             blueprint_identifier: Optional[pulumi.Input[str]] = None,
-            properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['AggregationPropertiesPropertiesArgs']]]]] = None) -> 'AggregationProperties':
+            properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['AggregationPropertiesPropertiesArgs', 'AggregationPropertiesPropertiesArgsDict']]]]] = None) -> 'AggregationProperties':
         """
         Get an existing AggregationProperties resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -734,7 +734,7 @@ class AggregationProperties(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] blueprint_identifier: The identifier of the blueprint the aggregation property will be added to
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['AggregationPropertiesPropertiesArgs']]]] properties: The aggregation property of the blueprint
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['AggregationPropertiesPropertiesArgs', 'AggregationPropertiesPropertiesArgsDict']]]] properties: The aggregation property of the blueprint
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
