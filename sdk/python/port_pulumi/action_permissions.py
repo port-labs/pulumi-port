@@ -138,7 +138,7 @@ class ActionPermissions(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action_identifier: Optional[pulumi.Input[str]] = None,
                  blueprint_identifier: Optional[pulumi.Input[str]] = None,
-                 permissions: Optional[pulumi.Input[pulumi.InputType['ActionPermissionsPermissionsArgs']]] = None,
+                 permissions: Optional[pulumi.Input[Union['ActionPermissionsPermissionsArgs', 'ActionPermissionsPermissionsArgsDict']]] = None,
                  __props__=None):
         """
         Create a ActionPermissions resource with the given unique name, props, and options.
@@ -146,7 +146,7 @@ class ActionPermissions(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action_identifier: The ID of the action
         :param pulumi.Input[str] blueprint_identifier: The ID of the blueprint
-        :param pulumi.Input[pulumi.InputType['ActionPermissionsPermissionsArgs']] permissions: The permissions for the action
+        :param pulumi.Input[Union['ActionPermissionsPermissionsArgs', 'ActionPermissionsPermissionsArgsDict']] permissions: The permissions for the action
         """
         ...
     @overload
@@ -173,7 +173,7 @@ class ActionPermissions(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action_identifier: Optional[pulumi.Input[str]] = None,
                  blueprint_identifier: Optional[pulumi.Input[str]] = None,
-                 permissions: Optional[pulumi.Input[pulumi.InputType['ActionPermissionsPermissionsArgs']]] = None,
+                 permissions: Optional[pulumi.Input[Union['ActionPermissionsPermissionsArgs', 'ActionPermissionsPermissionsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -202,7 +202,7 @@ class ActionPermissions(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             action_identifier: Optional[pulumi.Input[str]] = None,
             blueprint_identifier: Optional[pulumi.Input[str]] = None,
-            permissions: Optional[pulumi.Input[pulumi.InputType['ActionPermissionsPermissionsArgs']]] = None) -> 'ActionPermissions':
+            permissions: Optional[pulumi.Input[Union['ActionPermissionsPermissionsArgs', 'ActionPermissionsPermissionsArgsDict']]] = None) -> 'ActionPermissions':
         """
         Get an existing ActionPermissions resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -212,7 +212,7 @@ class ActionPermissions(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action_identifier: The ID of the action
         :param pulumi.Input[str] blueprint_identifier: The ID of the blueprint
-        :param pulumi.Input[pulumi.InputType['ActionPermissionsPermissionsArgs']] permissions: The permissions for the action
+        :param pulumi.Input[Union['ActionPermissionsPermissionsArgs', 'ActionPermissionsPermissionsArgsDict']] permissions: The permissions for the action
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

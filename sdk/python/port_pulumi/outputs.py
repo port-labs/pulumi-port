@@ -618,7 +618,7 @@ class ActionAzureMethod(dict):
         """
         :param str org: Required when selecting type AZURE. The Azure org that the workflow belongs to
         :param str webhook: Required when selecting type AZURE. The Azure webhook that the workflow belongs to
-        :param str payload: The Azure Devops workflow payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+        :param str payload: The Azure Devops workflow [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         """
         pulumi.set(__self__, "org", org)
         pulumi.set(__self__, "webhook", webhook)
@@ -645,7 +645,7 @@ class ActionAzureMethod(dict):
     @pulumi.getter
     def payload(self) -> Optional[str]:
         """
-        The Azure Devops workflow payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+        The Azure Devops workflow [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         """
         return pulumi.get(self, "payload")
 
@@ -682,7 +682,7 @@ class ActionGithubMethod(dict):
         :param str repo: Required when selecting type GITHUB. The GitHub repo that the workflow belongs to
         :param str workflow: The GitHub workflow that the action belongs to
         :param str report_workflow_status: Report the workflow status when invoking the action
-        :param str workflow_inputs: The GitHub workflow inputs to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+        :param str workflow_inputs: The GitHub [workflow inputs](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         """
         pulumi.set(__self__, "org", org)
         pulumi.set(__self__, "repo", repo)
@@ -728,7 +728,7 @@ class ActionGithubMethod(dict):
     @pulumi.getter(name="workflowInputs")
     def workflow_inputs(self) -> Optional[str]:
         """
-        The GitHub workflow inputs to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+        The GitHub [workflow inputs](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         """
         return pulumi.get(self, "workflow_inputs")
 
@@ -814,7 +814,7 @@ class ActionKafkaMethod(dict):
     def __init__(__self__, *,
                  payload: Optional[str] = None):
         """
-        :param str payload: The Kafka message payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+        :param str payload: The Kafka message [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         """
         if payload is not None:
             pulumi.set(__self__, "payload", payload)
@@ -823,7 +823,7 @@ class ActionKafkaMethod(dict):
     @pulumi.getter
     def payload(self) -> Optional[str]:
         """
-        The Kafka message payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+        The Kafka message [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         """
         return pulumi.get(self, "payload")
 

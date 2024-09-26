@@ -356,8 +356,8 @@ class Entity(pulumi.CustomResource):
                  blueprint: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[pulumi.InputType['EntityPropertiesArgs']]] = None,
-                 relations: Optional[pulumi.Input[pulumi.InputType['EntityRelationsArgs']]] = None,
+                 properties: Optional[pulumi.Input[Union['EntityPropertiesArgs', 'EntityPropertiesArgsDict']]] = None,
+                 relations: Optional[pulumi.Input[Union['EntityRelationsArgs', 'EntityRelationsArgsDict']]] = None,
                  run_id: Optional[pulumi.Input[str]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -370,8 +370,8 @@ class Entity(pulumi.CustomResource):
         :param pulumi.Input[str] blueprint: The blueprint identifier the entity relates to
         :param pulumi.Input[str] icon: The icon of the entity
         :param pulumi.Input[str] identifier: The identifier of the entity
-        :param pulumi.Input[pulumi.InputType['EntityPropertiesArgs']] properties: The properties of the entity
-        :param pulumi.Input[pulumi.InputType['EntityRelationsArgs']] relations: The relations of the entity
+        :param pulumi.Input[Union['EntityPropertiesArgs', 'EntityPropertiesArgsDict']] properties: The properties of the entity
+        :param pulumi.Input[Union['EntityRelationsArgs', 'EntityRelationsArgsDict']] relations: The relations of the entity
         :param pulumi.Input[str] run_id: The runID of the action run that created the entity
         :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The teams the entity belongs to
         :param pulumi.Input[str] title: The title of the entity
@@ -403,8 +403,8 @@ class Entity(pulumi.CustomResource):
                  blueprint: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[pulumi.InputType['EntityPropertiesArgs']]] = None,
-                 relations: Optional[pulumi.Input[pulumi.InputType['EntityRelationsArgs']]] = None,
+                 properties: Optional[pulumi.Input[Union['EntityPropertiesArgs', 'EntityPropertiesArgsDict']]] = None,
+                 relations: Optional[pulumi.Input[Union['EntityRelationsArgs', 'EntityRelationsArgsDict']]] = None,
                  run_id: Optional[pulumi.Input[str]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -446,8 +446,8 @@ class Entity(pulumi.CustomResource):
             created_by: Optional[pulumi.Input[str]] = None,
             icon: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
-            properties: Optional[pulumi.Input[pulumi.InputType['EntityPropertiesArgs']]] = None,
-            relations: Optional[pulumi.Input[pulumi.InputType['EntityRelationsArgs']]] = None,
+            properties: Optional[pulumi.Input[Union['EntityPropertiesArgs', 'EntityPropertiesArgsDict']]] = None,
+            relations: Optional[pulumi.Input[Union['EntityRelationsArgs', 'EntityRelationsArgsDict']]] = None,
             run_id: Optional[pulumi.Input[str]] = None,
             teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             title: Optional[pulumi.Input[str]] = None,
@@ -465,8 +465,8 @@ class Entity(pulumi.CustomResource):
         :param pulumi.Input[str] created_by: The creator of the entity
         :param pulumi.Input[str] icon: The icon of the entity
         :param pulumi.Input[str] identifier: The identifier of the entity
-        :param pulumi.Input[pulumi.InputType['EntityPropertiesArgs']] properties: The properties of the entity
-        :param pulumi.Input[pulumi.InputType['EntityRelationsArgs']] relations: The relations of the entity
+        :param pulumi.Input[Union['EntityPropertiesArgs', 'EntityPropertiesArgsDict']] properties: The properties of the entity
+        :param pulumi.Input[Union['EntityRelationsArgs', 'EntityRelationsArgsDict']] relations: The relations of the entity
         :param pulumi.Input[str] run_id: The runID of the action run that created the entity
         :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The teams the entity belongs to
         :param pulumi.Input[str] title: The title of the entity

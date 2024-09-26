@@ -358,8 +358,8 @@ class Webhook(pulumi.CustomResource):
                  enabled: Optional[pulumi.Input[bool]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
-                 mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WebhookMappingArgs']]]]] = None,
-                 security: Optional[pulumi.Input[pulumi.InputType['WebhookSecurityArgs']]] = None,
+                 mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WebhookMappingArgs', 'WebhookMappingArgsDict']]]]] = None,
+                 security: Optional[pulumi.Input[Union['WebhookSecurityArgs', 'WebhookSecurityArgsDict']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -371,8 +371,8 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Whether the webhook is enabled
         :param pulumi.Input[str] icon: The icon of the webhook
         :param pulumi.Input[str] identifier: The identifier of the webhook
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WebhookMappingArgs']]]] mappings: The mappings of the webhook
-        :param pulumi.Input[pulumi.InputType['WebhookSecurityArgs']] security: The security of the webhook
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WebhookMappingArgs', 'WebhookMappingArgsDict']]]] mappings: The mappings of the webhook
+        :param pulumi.Input[Union['WebhookSecurityArgs', 'WebhookSecurityArgsDict']] security: The security of the webhook
         :param pulumi.Input[str] title: The title of the webhook
         """
         ...
@@ -403,8 +403,8 @@ class Webhook(pulumi.CustomResource):
                  enabled: Optional[pulumi.Input[bool]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
-                 mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WebhookMappingArgs']]]]] = None,
-                 security: Optional[pulumi.Input[pulumi.InputType['WebhookSecurityArgs']]] = None,
+                 mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WebhookMappingArgs', 'WebhookMappingArgsDict']]]]] = None,
+                 security: Optional[pulumi.Input[Union['WebhookSecurityArgs', 'WebhookSecurityArgsDict']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -444,8 +444,8 @@ class Webhook(pulumi.CustomResource):
             enabled: Optional[pulumi.Input[bool]] = None,
             icon: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
-            mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WebhookMappingArgs']]]]] = None,
-            security: Optional[pulumi.Input[pulumi.InputType['WebhookSecurityArgs']]] = None,
+            mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WebhookMappingArgs', 'WebhookMappingArgsDict']]]]] = None,
+            security: Optional[pulumi.Input[Union['WebhookSecurityArgs', 'WebhookSecurityArgsDict']]] = None,
             title: Optional[pulumi.Input[str]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
             updated_by: Optional[pulumi.Input[str]] = None,
@@ -464,8 +464,8 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Whether the webhook is enabled
         :param pulumi.Input[str] icon: The icon of the webhook
         :param pulumi.Input[str] identifier: The identifier of the webhook
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WebhookMappingArgs']]]] mappings: The mappings of the webhook
-        :param pulumi.Input[pulumi.InputType['WebhookSecurityArgs']] security: The security of the webhook
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WebhookMappingArgs', 'WebhookMappingArgsDict']]]] mappings: The mappings of the webhook
+        :param pulumi.Input[Union['WebhookSecurityArgs', 'WebhookSecurityArgsDict']] security: The security of the webhook
         :param pulumi.Input[str] title: The title of the webhook
         :param pulumi.Input[str] updated_at: The last update date of the webhook
         :param pulumi.Input[str] updated_by: The last updater of the webhook

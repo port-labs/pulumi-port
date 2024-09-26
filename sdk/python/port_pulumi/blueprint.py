@@ -504,36 +504,36 @@ class Blueprint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 calculation_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintCalculationPropertiesArgs']]]]] = None,
+                 calculation_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintCalculationPropertiesArgs', 'BlueprintCalculationPropertiesArgsDict']]]]] = None,
                  create_catalog_page: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  force_delete_entities: Optional[pulumi.Input[bool]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
-                 kafka_changelog_destination: Optional[pulumi.Input[pulumi.InputType['BlueprintKafkaChangelogDestinationArgs']]] = None,
-                 mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintMirrorPropertiesArgs']]]]] = None,
-                 properties: Optional[pulumi.Input[pulumi.InputType['BlueprintPropertiesArgs']]] = None,
-                 relations: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintRelationsArgs']]]]] = None,
-                 team_inheritance: Optional[pulumi.Input[pulumi.InputType['BlueprintTeamInheritanceArgs']]] = None,
+                 kafka_changelog_destination: Optional[pulumi.Input[Union['BlueprintKafkaChangelogDestinationArgs', 'BlueprintKafkaChangelogDestinationArgsDict']]] = None,
+                 mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintMirrorPropertiesArgs', 'BlueprintMirrorPropertiesArgsDict']]]]] = None,
+                 properties: Optional[pulumi.Input[Union['BlueprintPropertiesArgs', 'BlueprintPropertiesArgsDict']]] = None,
+                 relations: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintRelationsArgs', 'BlueprintRelationsArgsDict']]]]] = None,
+                 team_inheritance: Optional[pulumi.Input[Union['BlueprintTeamInheritanceArgs', 'BlueprintTeamInheritanceArgsDict']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
-                 webhook_changelog_destination: Optional[pulumi.Input[pulumi.InputType['BlueprintWebhookChangelogDestinationArgs']]] = None,
+                 webhook_changelog_destination: Optional[pulumi.Input[Union['BlueprintWebhookChangelogDestinationArgs', 'BlueprintWebhookChangelogDestinationArgsDict']]] = None,
                  __props__=None):
         """
         Create a Blueprint resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintCalculationPropertiesArgs']]]] calculation_properties: The calculation properties of the blueprint
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintCalculationPropertiesArgs', 'BlueprintCalculationPropertiesArgsDict']]]] calculation_properties: The calculation properties of the blueprint
         :param pulumi.Input[bool] create_catalog_page: This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
         :param pulumi.Input[str] description: The description of the blueprint
         :param pulumi.Input[str] icon: The icon of the blueprint
         :param pulumi.Input[str] identifier: The identifier of the blueprint
-        :param pulumi.Input[pulumi.InputType['BlueprintKafkaChangelogDestinationArgs']] kafka_changelog_destination: The changelog destination of the blueprint
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintMirrorPropertiesArgs']]]] mirror_properties: The mirror properties of the blueprint
-        :param pulumi.Input[pulumi.InputType['BlueprintPropertiesArgs']] properties: The properties of the blueprint
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintRelationsArgs']]]] relations: The relations of the blueprint
-        :param pulumi.Input[pulumi.InputType['BlueprintTeamInheritanceArgs']] team_inheritance: The team inheritance of the blueprint
+        :param pulumi.Input[Union['BlueprintKafkaChangelogDestinationArgs', 'BlueprintKafkaChangelogDestinationArgsDict']] kafka_changelog_destination: The changelog destination of the blueprint
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintMirrorPropertiesArgs', 'BlueprintMirrorPropertiesArgsDict']]]] mirror_properties: The mirror properties of the blueprint
+        :param pulumi.Input[Union['BlueprintPropertiesArgs', 'BlueprintPropertiesArgsDict']] properties: The properties of the blueprint
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintRelationsArgs', 'BlueprintRelationsArgsDict']]]] relations: The relations of the blueprint
+        :param pulumi.Input[Union['BlueprintTeamInheritanceArgs', 'BlueprintTeamInheritanceArgsDict']] team_inheritance: The team inheritance of the blueprint
         :param pulumi.Input[str] title: The display name of the blueprint
-        :param pulumi.Input[pulumi.InputType['BlueprintWebhookChangelogDestinationArgs']] webhook_changelog_destination: The webhook changelog destination of the blueprint
+        :param pulumi.Input[Union['BlueprintWebhookChangelogDestinationArgs', 'BlueprintWebhookChangelogDestinationArgsDict']] webhook_changelog_destination: The webhook changelog destination of the blueprint
         """
         ...
     @overload
@@ -558,19 +558,19 @@ class Blueprint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 calculation_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintCalculationPropertiesArgs']]]]] = None,
+                 calculation_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintCalculationPropertiesArgs', 'BlueprintCalculationPropertiesArgsDict']]]]] = None,
                  create_catalog_page: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  force_delete_entities: Optional[pulumi.Input[bool]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
-                 kafka_changelog_destination: Optional[pulumi.Input[pulumi.InputType['BlueprintKafkaChangelogDestinationArgs']]] = None,
-                 mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintMirrorPropertiesArgs']]]]] = None,
-                 properties: Optional[pulumi.Input[pulumi.InputType['BlueprintPropertiesArgs']]] = None,
-                 relations: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintRelationsArgs']]]]] = None,
-                 team_inheritance: Optional[pulumi.Input[pulumi.InputType['BlueprintTeamInheritanceArgs']]] = None,
+                 kafka_changelog_destination: Optional[pulumi.Input[Union['BlueprintKafkaChangelogDestinationArgs', 'BlueprintKafkaChangelogDestinationArgsDict']]] = None,
+                 mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintMirrorPropertiesArgs', 'BlueprintMirrorPropertiesArgsDict']]]]] = None,
+                 properties: Optional[pulumi.Input[Union['BlueprintPropertiesArgs', 'BlueprintPropertiesArgsDict']]] = None,
+                 relations: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintRelationsArgs', 'BlueprintRelationsArgsDict']]]]] = None,
+                 team_inheritance: Optional[pulumi.Input[Union['BlueprintTeamInheritanceArgs', 'BlueprintTeamInheritanceArgsDict']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
-                 webhook_changelog_destination: Optional[pulumi.Input[pulumi.InputType['BlueprintWebhookChangelogDestinationArgs']]] = None,
+                 webhook_changelog_destination: Optional[pulumi.Input[Union['BlueprintWebhookChangelogDestinationArgs', 'BlueprintWebhookChangelogDestinationArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -611,7 +611,7 @@ class Blueprint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            calculation_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintCalculationPropertiesArgs']]]]] = None,
+            calculation_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintCalculationPropertiesArgs', 'BlueprintCalculationPropertiesArgsDict']]]]] = None,
             create_catalog_page: Optional[pulumi.Input[bool]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             created_by: Optional[pulumi.Input[str]] = None,
@@ -619,15 +619,15 @@ class Blueprint(pulumi.CustomResource):
             force_delete_entities: Optional[pulumi.Input[bool]] = None,
             icon: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
-            kafka_changelog_destination: Optional[pulumi.Input[pulumi.InputType['BlueprintKafkaChangelogDestinationArgs']]] = None,
-            mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintMirrorPropertiesArgs']]]]] = None,
-            properties: Optional[pulumi.Input[pulumi.InputType['BlueprintPropertiesArgs']]] = None,
-            relations: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintRelationsArgs']]]]] = None,
-            team_inheritance: Optional[pulumi.Input[pulumi.InputType['BlueprintTeamInheritanceArgs']]] = None,
+            kafka_changelog_destination: Optional[pulumi.Input[Union['BlueprintKafkaChangelogDestinationArgs', 'BlueprintKafkaChangelogDestinationArgsDict']]] = None,
+            mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintMirrorPropertiesArgs', 'BlueprintMirrorPropertiesArgsDict']]]]] = None,
+            properties: Optional[pulumi.Input[Union['BlueprintPropertiesArgs', 'BlueprintPropertiesArgsDict']]] = None,
+            relations: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintRelationsArgs', 'BlueprintRelationsArgsDict']]]]] = None,
+            team_inheritance: Optional[pulumi.Input[Union['BlueprintTeamInheritanceArgs', 'BlueprintTeamInheritanceArgsDict']]] = None,
             title: Optional[pulumi.Input[str]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
             updated_by: Optional[pulumi.Input[str]] = None,
-            webhook_changelog_destination: Optional[pulumi.Input[pulumi.InputType['BlueprintWebhookChangelogDestinationArgs']]] = None) -> 'Blueprint':
+            webhook_changelog_destination: Optional[pulumi.Input[Union['BlueprintWebhookChangelogDestinationArgs', 'BlueprintWebhookChangelogDestinationArgsDict']]] = None) -> 'Blueprint':
         """
         Get an existing Blueprint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -635,22 +635,22 @@ class Blueprint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintCalculationPropertiesArgs']]]] calculation_properties: The calculation properties of the blueprint
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintCalculationPropertiesArgs', 'BlueprintCalculationPropertiesArgsDict']]]] calculation_properties: The calculation properties of the blueprint
         :param pulumi.Input[bool] create_catalog_page: This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
         :param pulumi.Input[str] created_at: The creation date of the blueprint
         :param pulumi.Input[str] created_by: The creator of the blueprint
         :param pulumi.Input[str] description: The description of the blueprint
         :param pulumi.Input[str] icon: The icon of the blueprint
         :param pulumi.Input[str] identifier: The identifier of the blueprint
-        :param pulumi.Input[pulumi.InputType['BlueprintKafkaChangelogDestinationArgs']] kafka_changelog_destination: The changelog destination of the blueprint
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintMirrorPropertiesArgs']]]] mirror_properties: The mirror properties of the blueprint
-        :param pulumi.Input[pulumi.InputType['BlueprintPropertiesArgs']] properties: The properties of the blueprint
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BlueprintRelationsArgs']]]] relations: The relations of the blueprint
-        :param pulumi.Input[pulumi.InputType['BlueprintTeamInheritanceArgs']] team_inheritance: The team inheritance of the blueprint
+        :param pulumi.Input[Union['BlueprintKafkaChangelogDestinationArgs', 'BlueprintKafkaChangelogDestinationArgsDict']] kafka_changelog_destination: The changelog destination of the blueprint
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintMirrorPropertiesArgs', 'BlueprintMirrorPropertiesArgsDict']]]] mirror_properties: The mirror properties of the blueprint
+        :param pulumi.Input[Union['BlueprintPropertiesArgs', 'BlueprintPropertiesArgsDict']] properties: The properties of the blueprint
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintRelationsArgs', 'BlueprintRelationsArgsDict']]]] relations: The relations of the blueprint
+        :param pulumi.Input[Union['BlueprintTeamInheritanceArgs', 'BlueprintTeamInheritanceArgsDict']] team_inheritance: The team inheritance of the blueprint
         :param pulumi.Input[str] title: The display name of the blueprint
         :param pulumi.Input[str] updated_at: The last update date of the blueprint
         :param pulumi.Input[str] updated_by: The last updater of the blueprint
-        :param pulumi.Input[pulumi.InputType['BlueprintWebhookChangelogDestinationArgs']] webhook_changelog_destination: The webhook changelog destination of the blueprint
+        :param pulumi.Input[Union['BlueprintWebhookChangelogDestinationArgs', 'BlueprintWebhookChangelogDestinationArgsDict']] webhook_changelog_destination: The webhook changelog destination of the blueprint
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

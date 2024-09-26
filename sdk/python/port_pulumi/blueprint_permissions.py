@@ -89,13 +89,13 @@ class BlueprintPermissions(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blueprint_identifier: Optional[pulumi.Input[str]] = None,
-                 entities: Optional[pulumi.Input[pulumi.InputType['BlueprintPermissionsEntitiesArgs']]] = None,
+                 entities: Optional[pulumi.Input[Union['BlueprintPermissionsEntitiesArgs', 'BlueprintPermissionsEntitiesArgsDict']]] = None,
                  __props__=None):
         """
         Create a BlueprintPermissions resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BlueprintPermissionsEntitiesArgs']] entities: Entities permissions to read the blueprint
+        :param pulumi.Input[Union['BlueprintPermissionsEntitiesArgs', 'BlueprintPermissionsEntitiesArgsDict']] entities: Entities permissions to read the blueprint
         """
         ...
     @overload
@@ -121,7 +121,7 @@ class BlueprintPermissions(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blueprint_identifier: Optional[pulumi.Input[str]] = None,
-                 entities: Optional[pulumi.Input[pulumi.InputType['BlueprintPermissionsEntitiesArgs']]] = None,
+                 entities: Optional[pulumi.Input[Union['BlueprintPermissionsEntitiesArgs', 'BlueprintPermissionsEntitiesArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -148,7 +148,7 @@ class BlueprintPermissions(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             blueprint_identifier: Optional[pulumi.Input[str]] = None,
-            entities: Optional[pulumi.Input[pulumi.InputType['BlueprintPermissionsEntitiesArgs']]] = None) -> 'BlueprintPermissions':
+            entities: Optional[pulumi.Input[Union['BlueprintPermissionsEntitiesArgs', 'BlueprintPermissionsEntitiesArgsDict']]] = None) -> 'BlueprintPermissions':
         """
         Get an existing BlueprintPermissions resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -156,7 +156,7 @@ class BlueprintPermissions(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BlueprintPermissionsEntitiesArgs']] entities: Entities permissions to read the blueprint
+        :param pulumi.Input[Union['BlueprintPermissionsEntitiesArgs', 'BlueprintPermissionsEntitiesArgsDict']] entities: Entities permissions to read the blueprint
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

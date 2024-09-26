@@ -89,13 +89,13 @@ class PagePermissions(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  page_identifier: Optional[pulumi.Input[str]] = None,
-                 read: Optional[pulumi.Input[pulumi.InputType['PagePermissionsReadArgs']]] = None,
+                 read: Optional[pulumi.Input[Union['PagePermissionsReadArgs', 'PagePermissionsReadArgsDict']]] = None,
                  __props__=None):
         """
         Create a PagePermissions resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['PagePermissionsReadArgs']] read: The permission to read the page
+        :param pulumi.Input[Union['PagePermissionsReadArgs', 'PagePermissionsReadArgsDict']] read: The permission to read the page
         """
         ...
     @overload
@@ -121,7 +121,7 @@ class PagePermissions(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  page_identifier: Optional[pulumi.Input[str]] = None,
-                 read: Optional[pulumi.Input[pulumi.InputType['PagePermissionsReadArgs']]] = None,
+                 read: Optional[pulumi.Input[Union['PagePermissionsReadArgs', 'PagePermissionsReadArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -148,7 +148,7 @@ class PagePermissions(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             page_identifier: Optional[pulumi.Input[str]] = None,
-            read: Optional[pulumi.Input[pulumi.InputType['PagePermissionsReadArgs']]] = None) -> 'PagePermissions':
+            read: Optional[pulumi.Input[Union['PagePermissionsReadArgs', 'PagePermissionsReadArgsDict']]] = None) -> 'PagePermissions':
         """
         Get an existing PagePermissions resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -156,7 +156,7 @@ class PagePermissions(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['PagePermissionsReadArgs']] read: The permission to read the page
+        :param pulumi.Input[Union['PagePermissionsReadArgs', 'PagePermissionsReadArgsDict']] read: The permission to read the page
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -585,23 +585,23 @@ class Action(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_email_notification: Optional[pulumi.Input[pulumi.InputType['ActionApprovalEmailNotificationArgs']]] = None,
-                 approval_webhook_notification: Optional[pulumi.Input[pulumi.InputType['ActionApprovalWebhookNotificationArgs']]] = None,
-                 automation_trigger: Optional[pulumi.Input[pulumi.InputType['ActionAutomationTriggerArgs']]] = None,
-                 azure_method: Optional[pulumi.Input[pulumi.InputType['ActionAzureMethodArgs']]] = None,
+                 approval_email_notification: Optional[pulumi.Input[Union['ActionApprovalEmailNotificationArgs', 'ActionApprovalEmailNotificationArgsDict']]] = None,
+                 approval_webhook_notification: Optional[pulumi.Input[Union['ActionApprovalWebhookNotificationArgs', 'ActionApprovalWebhookNotificationArgsDict']]] = None,
+                 automation_trigger: Optional[pulumi.Input[Union['ActionAutomationTriggerArgs', 'ActionAutomationTriggerArgsDict']]] = None,
+                 azure_method: Optional[pulumi.Input[Union['ActionAzureMethodArgs', 'ActionAzureMethodArgsDict']]] = None,
                  blueprint: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 github_method: Optional[pulumi.Input[pulumi.InputType['ActionGithubMethodArgs']]] = None,
-                 gitlab_method: Optional[pulumi.Input[pulumi.InputType['ActionGitlabMethodArgs']]] = None,
+                 github_method: Optional[pulumi.Input[Union['ActionGithubMethodArgs', 'ActionGithubMethodArgsDict']]] = None,
+                 gitlab_method: Optional[pulumi.Input[Union['ActionGitlabMethodArgs', 'ActionGitlabMethodArgsDict']]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
-                 kafka_method: Optional[pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']]] = None,
+                 kafka_method: Optional[pulumi.Input[Union['ActionKafkaMethodArgs', 'ActionKafkaMethodArgsDict']]] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
                  required_approval: Optional[pulumi.Input[str]] = None,
-                 self_service_trigger: Optional[pulumi.Input[pulumi.InputType['ActionSelfServiceTriggerArgs']]] = None,
+                 self_service_trigger: Optional[pulumi.Input[Union['ActionSelfServiceTriggerArgs', 'ActionSelfServiceTriggerArgsDict']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
-                 upsert_entity_method: Optional[pulumi.Input[pulumi.InputType['ActionUpsertEntityMethodArgs']]] = None,
-                 webhook_method: Optional[pulumi.Input[pulumi.InputType['ActionWebhookMethodArgs']]] = None,
+                 upsert_entity_method: Optional[pulumi.Input[Union['ActionUpsertEntityMethodArgs', 'ActionUpsertEntityMethodArgsDict']]] = None,
+                 webhook_method: Optional[pulumi.Input[Union['ActionWebhookMethodArgs', 'ActionWebhookMethodArgsDict']]] = None,
                  __props__=None):
         """
         Docs for the Action resource can be found [here](https://docs.getport.io/create-self-service-experiences/).
@@ -722,23 +722,23 @@ class Action(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ActionApprovalEmailNotificationArgs']] approval_email_notification: The email notification of the approval
-        :param pulumi.Input[pulumi.InputType['ActionApprovalWebhookNotificationArgs']] approval_webhook_notification: The webhook notification of the approval
-        :param pulumi.Input[pulumi.InputType['ActionAutomationTriggerArgs']] automation_trigger: Automation trigger for the action
-        :param pulumi.Input[pulumi.InputType['ActionAzureMethodArgs']] azure_method: Azure DevOps invocation method
+        :param pulumi.Input[Union['ActionApprovalEmailNotificationArgs', 'ActionApprovalEmailNotificationArgsDict']] approval_email_notification: The email notification of the approval
+        :param pulumi.Input[Union['ActionApprovalWebhookNotificationArgs', 'ActionApprovalWebhookNotificationArgsDict']] approval_webhook_notification: The webhook notification of the approval
+        :param pulumi.Input[Union['ActionAutomationTriggerArgs', 'ActionAutomationTriggerArgsDict']] automation_trigger: Automation trigger for the action
+        :param pulumi.Input[Union['ActionAzureMethodArgs', 'ActionAzureMethodArgsDict']] azure_method: Azure DevOps invocation method
         :param pulumi.Input[str] blueprint: The blueprint identifier the action relates to
         :param pulumi.Input[str] description: Description
-        :param pulumi.Input[pulumi.InputType['ActionGithubMethodArgs']] github_method: GitHub invocation method
-        :param pulumi.Input[pulumi.InputType['ActionGitlabMethodArgs']] gitlab_method: Gitlab invocation method
+        :param pulumi.Input[Union['ActionGithubMethodArgs', 'ActionGithubMethodArgsDict']] github_method: GitHub invocation method
+        :param pulumi.Input[Union['ActionGitlabMethodArgs', 'ActionGitlabMethodArgsDict']] gitlab_method: Gitlab invocation method
         :param pulumi.Input[str] icon: Icon
         :param pulumi.Input[str] identifier: Identifier
-        :param pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']] kafka_method: Kafka invocation method
+        :param pulumi.Input[Union['ActionKafkaMethodArgs', 'ActionKafkaMethodArgsDict']] kafka_method: Kafka invocation method
         :param pulumi.Input[bool] publish: Publish action
         :param pulumi.Input[str] required_approval: Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
-        :param pulumi.Input[pulumi.InputType['ActionSelfServiceTriggerArgs']] self_service_trigger: Self service trigger for the action
+        :param pulumi.Input[Union['ActionSelfServiceTriggerArgs', 'ActionSelfServiceTriggerArgsDict']] self_service_trigger: Self service trigger for the action
         :param pulumi.Input[str] title: Title
-        :param pulumi.Input[pulumi.InputType['ActionUpsertEntityMethodArgs']] upsert_entity_method: Upsert Entity invocation method
-        :param pulumi.Input[pulumi.InputType['ActionWebhookMethodArgs']] webhook_method: Webhook invocation method
+        :param pulumi.Input[Union['ActionUpsertEntityMethodArgs', 'ActionUpsertEntityMethodArgsDict']] upsert_entity_method: Upsert Entity invocation method
+        :param pulumi.Input[Union['ActionWebhookMethodArgs', 'ActionWebhookMethodArgsDict']] webhook_method: Webhook invocation method
         """
         ...
     @overload
@@ -878,23 +878,23 @@ class Action(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_email_notification: Optional[pulumi.Input[pulumi.InputType['ActionApprovalEmailNotificationArgs']]] = None,
-                 approval_webhook_notification: Optional[pulumi.Input[pulumi.InputType['ActionApprovalWebhookNotificationArgs']]] = None,
-                 automation_trigger: Optional[pulumi.Input[pulumi.InputType['ActionAutomationTriggerArgs']]] = None,
-                 azure_method: Optional[pulumi.Input[pulumi.InputType['ActionAzureMethodArgs']]] = None,
+                 approval_email_notification: Optional[pulumi.Input[Union['ActionApprovalEmailNotificationArgs', 'ActionApprovalEmailNotificationArgsDict']]] = None,
+                 approval_webhook_notification: Optional[pulumi.Input[Union['ActionApprovalWebhookNotificationArgs', 'ActionApprovalWebhookNotificationArgsDict']]] = None,
+                 automation_trigger: Optional[pulumi.Input[Union['ActionAutomationTriggerArgs', 'ActionAutomationTriggerArgsDict']]] = None,
+                 azure_method: Optional[pulumi.Input[Union['ActionAzureMethodArgs', 'ActionAzureMethodArgsDict']]] = None,
                  blueprint: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 github_method: Optional[pulumi.Input[pulumi.InputType['ActionGithubMethodArgs']]] = None,
-                 gitlab_method: Optional[pulumi.Input[pulumi.InputType['ActionGitlabMethodArgs']]] = None,
+                 github_method: Optional[pulumi.Input[Union['ActionGithubMethodArgs', 'ActionGithubMethodArgsDict']]] = None,
+                 gitlab_method: Optional[pulumi.Input[Union['ActionGitlabMethodArgs', 'ActionGitlabMethodArgsDict']]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
-                 kafka_method: Optional[pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']]] = None,
+                 kafka_method: Optional[pulumi.Input[Union['ActionKafkaMethodArgs', 'ActionKafkaMethodArgsDict']]] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
                  required_approval: Optional[pulumi.Input[str]] = None,
-                 self_service_trigger: Optional[pulumi.Input[pulumi.InputType['ActionSelfServiceTriggerArgs']]] = None,
+                 self_service_trigger: Optional[pulumi.Input[Union['ActionSelfServiceTriggerArgs', 'ActionSelfServiceTriggerArgsDict']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
-                 upsert_entity_method: Optional[pulumi.Input[pulumi.InputType['ActionUpsertEntityMethodArgs']]] = None,
-                 webhook_method: Optional[pulumi.Input[pulumi.InputType['ActionWebhookMethodArgs']]] = None,
+                 upsert_entity_method: Optional[pulumi.Input[Union['ActionUpsertEntityMethodArgs', 'ActionUpsertEntityMethodArgsDict']]] = None,
+                 webhook_method: Optional[pulumi.Input[Union['ActionWebhookMethodArgs', 'ActionWebhookMethodArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -933,23 +933,23 @@ class Action(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            approval_email_notification: Optional[pulumi.Input[pulumi.InputType['ActionApprovalEmailNotificationArgs']]] = None,
-            approval_webhook_notification: Optional[pulumi.Input[pulumi.InputType['ActionApprovalWebhookNotificationArgs']]] = None,
-            automation_trigger: Optional[pulumi.Input[pulumi.InputType['ActionAutomationTriggerArgs']]] = None,
-            azure_method: Optional[pulumi.Input[pulumi.InputType['ActionAzureMethodArgs']]] = None,
+            approval_email_notification: Optional[pulumi.Input[Union['ActionApprovalEmailNotificationArgs', 'ActionApprovalEmailNotificationArgsDict']]] = None,
+            approval_webhook_notification: Optional[pulumi.Input[Union['ActionApprovalWebhookNotificationArgs', 'ActionApprovalWebhookNotificationArgsDict']]] = None,
+            automation_trigger: Optional[pulumi.Input[Union['ActionAutomationTriggerArgs', 'ActionAutomationTriggerArgsDict']]] = None,
+            azure_method: Optional[pulumi.Input[Union['ActionAzureMethodArgs', 'ActionAzureMethodArgsDict']]] = None,
             blueprint: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            github_method: Optional[pulumi.Input[pulumi.InputType['ActionGithubMethodArgs']]] = None,
-            gitlab_method: Optional[pulumi.Input[pulumi.InputType['ActionGitlabMethodArgs']]] = None,
+            github_method: Optional[pulumi.Input[Union['ActionGithubMethodArgs', 'ActionGithubMethodArgsDict']]] = None,
+            gitlab_method: Optional[pulumi.Input[Union['ActionGitlabMethodArgs', 'ActionGitlabMethodArgsDict']]] = None,
             icon: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
-            kafka_method: Optional[pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']]] = None,
+            kafka_method: Optional[pulumi.Input[Union['ActionKafkaMethodArgs', 'ActionKafkaMethodArgsDict']]] = None,
             publish: Optional[pulumi.Input[bool]] = None,
             required_approval: Optional[pulumi.Input[str]] = None,
-            self_service_trigger: Optional[pulumi.Input[pulumi.InputType['ActionSelfServiceTriggerArgs']]] = None,
+            self_service_trigger: Optional[pulumi.Input[Union['ActionSelfServiceTriggerArgs', 'ActionSelfServiceTriggerArgsDict']]] = None,
             title: Optional[pulumi.Input[str]] = None,
-            upsert_entity_method: Optional[pulumi.Input[pulumi.InputType['ActionUpsertEntityMethodArgs']]] = None,
-            webhook_method: Optional[pulumi.Input[pulumi.InputType['ActionWebhookMethodArgs']]] = None) -> 'Action':
+            upsert_entity_method: Optional[pulumi.Input[Union['ActionUpsertEntityMethodArgs', 'ActionUpsertEntityMethodArgsDict']]] = None,
+            webhook_method: Optional[pulumi.Input[Union['ActionWebhookMethodArgs', 'ActionWebhookMethodArgsDict']]] = None) -> 'Action':
         """
         Get an existing Action resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -957,23 +957,23 @@ class Action(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ActionApprovalEmailNotificationArgs']] approval_email_notification: The email notification of the approval
-        :param pulumi.Input[pulumi.InputType['ActionApprovalWebhookNotificationArgs']] approval_webhook_notification: The webhook notification of the approval
-        :param pulumi.Input[pulumi.InputType['ActionAutomationTriggerArgs']] automation_trigger: Automation trigger for the action
-        :param pulumi.Input[pulumi.InputType['ActionAzureMethodArgs']] azure_method: Azure DevOps invocation method
+        :param pulumi.Input[Union['ActionApprovalEmailNotificationArgs', 'ActionApprovalEmailNotificationArgsDict']] approval_email_notification: The email notification of the approval
+        :param pulumi.Input[Union['ActionApprovalWebhookNotificationArgs', 'ActionApprovalWebhookNotificationArgsDict']] approval_webhook_notification: The webhook notification of the approval
+        :param pulumi.Input[Union['ActionAutomationTriggerArgs', 'ActionAutomationTriggerArgsDict']] automation_trigger: Automation trigger for the action
+        :param pulumi.Input[Union['ActionAzureMethodArgs', 'ActionAzureMethodArgsDict']] azure_method: Azure DevOps invocation method
         :param pulumi.Input[str] blueprint: The blueprint identifier the action relates to
         :param pulumi.Input[str] description: Description
-        :param pulumi.Input[pulumi.InputType['ActionGithubMethodArgs']] github_method: GitHub invocation method
-        :param pulumi.Input[pulumi.InputType['ActionGitlabMethodArgs']] gitlab_method: Gitlab invocation method
+        :param pulumi.Input[Union['ActionGithubMethodArgs', 'ActionGithubMethodArgsDict']] github_method: GitHub invocation method
+        :param pulumi.Input[Union['ActionGitlabMethodArgs', 'ActionGitlabMethodArgsDict']] gitlab_method: Gitlab invocation method
         :param pulumi.Input[str] icon: Icon
         :param pulumi.Input[str] identifier: Identifier
-        :param pulumi.Input[pulumi.InputType['ActionKafkaMethodArgs']] kafka_method: Kafka invocation method
+        :param pulumi.Input[Union['ActionKafkaMethodArgs', 'ActionKafkaMethodArgsDict']] kafka_method: Kafka invocation method
         :param pulumi.Input[bool] publish: Publish action
         :param pulumi.Input[str] required_approval: Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
-        :param pulumi.Input[pulumi.InputType['ActionSelfServiceTriggerArgs']] self_service_trigger: Self service trigger for the action
+        :param pulumi.Input[Union['ActionSelfServiceTriggerArgs', 'ActionSelfServiceTriggerArgsDict']] self_service_trigger: Self service trigger for the action
         :param pulumi.Input[str] title: Title
-        :param pulumi.Input[pulumi.InputType['ActionUpsertEntityMethodArgs']] upsert_entity_method: Upsert Entity invocation method
-        :param pulumi.Input[pulumi.InputType['ActionWebhookMethodArgs']] webhook_method: Webhook invocation method
+        :param pulumi.Input[Union['ActionUpsertEntityMethodArgs', 'ActionUpsertEntityMethodArgsDict']] upsert_entity_method: Upsert Entity invocation method
+        :param pulumi.Input[Union['ActionWebhookMethodArgs', 'ActionWebhookMethodArgsDict']] webhook_method: Webhook invocation method
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

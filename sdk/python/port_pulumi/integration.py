@@ -228,17 +228,17 @@ class Integration(pulumi.CustomResource):
                  config: Optional[pulumi.Input[str]] = None,
                  installation_app_type: Optional[pulumi.Input[str]] = None,
                  installation_id: Optional[pulumi.Input[str]] = None,
-                 kafka_changelog_destination: Optional[pulumi.Input[pulumi.InputType['IntegrationKafkaChangelogDestinationArgs']]] = None,
+                 kafka_changelog_destination: Optional[pulumi.Input[Union['IntegrationKafkaChangelogDestinationArgs', 'IntegrationKafkaChangelogDestinationArgsDict']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
-                 webhook_changelog_destination: Optional[pulumi.Input[pulumi.InputType['IntegrationWebhookChangelogDestinationArgs']]] = None,
+                 webhook_changelog_destination: Optional[pulumi.Input[Union['IntegrationWebhookChangelogDestinationArgs', 'IntegrationWebhookChangelogDestinationArgsDict']]] = None,
                  __props__=None):
         """
         **NOTE:** This resource manages existing integration and integration mappings, not for creating new integrations.
 
         Docs about integrations can be found [here](https://docs.getport.io/integrations-index/).
 
-        Docs about how to import existing integrations and manage their mappings can be found here.
+        Docs about how to import existing integrations and manage their mappings can be found [here](https://docs.getport.io/guides/all/import-and-manage-integration).
 
         ```python
         import pulumi
@@ -276,8 +276,8 @@ class Integration(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config: Integration Config Raw JSON string (use `jsonencode`)
-        :param pulumi.Input[pulumi.InputType['IntegrationKafkaChangelogDestinationArgs']] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
-        :param pulumi.Input[pulumi.InputType['IntegrationWebhookChangelogDestinationArgs']] webhook_changelog_destination: The webhook changelog destination of the integration
+        :param pulumi.Input[Union['IntegrationKafkaChangelogDestinationArgs', 'IntegrationKafkaChangelogDestinationArgsDict']] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
+        :param pulumi.Input[Union['IntegrationWebhookChangelogDestinationArgs', 'IntegrationWebhookChangelogDestinationArgsDict']] webhook_changelog_destination: The webhook changelog destination of the integration
         """
         ...
     @overload
@@ -290,7 +290,7 @@ class Integration(pulumi.CustomResource):
 
         Docs about integrations can be found [here](https://docs.getport.io/integrations-index/).
 
-        Docs about how to import existing integrations and manage their mappings can be found here.
+        Docs about how to import existing integrations and manage their mappings can be found [here](https://docs.getport.io/guides/all/import-and-manage-integration).
 
         ```python
         import pulumi
@@ -343,10 +343,10 @@ class Integration(pulumi.CustomResource):
                  config: Optional[pulumi.Input[str]] = None,
                  installation_app_type: Optional[pulumi.Input[str]] = None,
                  installation_id: Optional[pulumi.Input[str]] = None,
-                 kafka_changelog_destination: Optional[pulumi.Input[pulumi.InputType['IntegrationKafkaChangelogDestinationArgs']]] = None,
+                 kafka_changelog_destination: Optional[pulumi.Input[Union['IntegrationKafkaChangelogDestinationArgs', 'IntegrationKafkaChangelogDestinationArgsDict']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
-                 webhook_changelog_destination: Optional[pulumi.Input[pulumi.InputType['IntegrationWebhookChangelogDestinationArgs']]] = None,
+                 webhook_changelog_destination: Optional[pulumi.Input[Union['IntegrationWebhookChangelogDestinationArgs', 'IntegrationWebhookChangelogDestinationArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -378,10 +378,10 @@ class Integration(pulumi.CustomResource):
             config: Optional[pulumi.Input[str]] = None,
             installation_app_type: Optional[pulumi.Input[str]] = None,
             installation_id: Optional[pulumi.Input[str]] = None,
-            kafka_changelog_destination: Optional[pulumi.Input[pulumi.InputType['IntegrationKafkaChangelogDestinationArgs']]] = None,
+            kafka_changelog_destination: Optional[pulumi.Input[Union['IntegrationKafkaChangelogDestinationArgs', 'IntegrationKafkaChangelogDestinationArgsDict']]] = None,
             title: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None,
-            webhook_changelog_destination: Optional[pulumi.Input[pulumi.InputType['IntegrationWebhookChangelogDestinationArgs']]] = None) -> 'Integration':
+            webhook_changelog_destination: Optional[pulumi.Input[Union['IntegrationWebhookChangelogDestinationArgs', 'IntegrationWebhookChangelogDestinationArgsDict']]] = None) -> 'Integration':
         """
         Get an existing Integration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -390,8 +390,8 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config: Integration Config Raw JSON string (use `jsonencode`)
-        :param pulumi.Input[pulumi.InputType['IntegrationKafkaChangelogDestinationArgs']] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
-        :param pulumi.Input[pulumi.InputType['IntegrationWebhookChangelogDestinationArgs']] webhook_changelog_destination: The webhook changelog destination of the integration
+        :param pulumi.Input[Union['IntegrationKafkaChangelogDestinationArgs', 'IntegrationKafkaChangelogDestinationArgsDict']] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
+        :param pulumi.Input[Union['IntegrationWebhookChangelogDestinationArgs', 'IntegrationWebhookChangelogDestinationArgsDict']] webhook_changelog_destination: The webhook changelog destination of the integration
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -1860,7 +1860,7 @@ func (o ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput) PropertyIdent
 type ActionAzureMethod struct {
 	// Required when selecting type AZURE. The Azure org that the workflow belongs to
 	Org string `pulumi:"org"`
-	// The Azure Devops workflow payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+	// The Azure Devops workflow [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 	Payload *string `pulumi:"payload"`
 	// Required when selecting type AZURE. The Azure webhook that the workflow belongs to
 	Webhook string `pulumi:"webhook"`
@@ -1880,7 +1880,7 @@ type ActionAzureMethodInput interface {
 type ActionAzureMethodArgs struct {
 	// Required when selecting type AZURE. The Azure org that the workflow belongs to
 	Org pulumi.StringInput `pulumi:"org"`
-	// The Azure Devops workflow payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+	// The Azure Devops workflow [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 	Payload pulumi.StringPtrInput `pulumi:"payload"`
 	// Required when selecting type AZURE. The Azure webhook that the workflow belongs to
 	Webhook pulumi.StringInput `pulumi:"webhook"`
@@ -1968,7 +1968,7 @@ func (o ActionAzureMethodOutput) Org() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionAzureMethod) string { return v.Org }).(pulumi.StringOutput)
 }
 
-// The Azure Devops workflow payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+// The Azure Devops workflow [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionAzureMethodOutput) Payload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionAzureMethod) *string { return v.Payload }).(pulumi.StringPtrOutput)
 }
@@ -2012,7 +2012,7 @@ func (o ActionAzureMethodPtrOutput) Org() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Azure Devops workflow payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+// The Azure Devops workflow [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionAzureMethodPtrOutput) Payload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionAzureMethod) *string {
 		if v == nil {
@@ -2041,7 +2041,7 @@ type ActionGithubMethod struct {
 	ReportWorkflowStatus *string `pulumi:"reportWorkflowStatus"`
 	// The GitHub workflow that the action belongs to
 	Workflow string `pulumi:"workflow"`
-	// The GitHub workflow inputs to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+	// The GitHub [workflow inputs](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 	WorkflowInputs *string `pulumi:"workflowInputs"`
 }
 
@@ -2065,7 +2065,7 @@ type ActionGithubMethodArgs struct {
 	ReportWorkflowStatus pulumi.StringPtrInput `pulumi:"reportWorkflowStatus"`
 	// The GitHub workflow that the action belongs to
 	Workflow pulumi.StringInput `pulumi:"workflow"`
-	// The GitHub workflow inputs to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+	// The GitHub [workflow inputs](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 	WorkflowInputs pulumi.StringPtrInput `pulumi:"workflowInputs"`
 }
 
@@ -2166,7 +2166,7 @@ func (o ActionGithubMethodOutput) Workflow() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionGithubMethod) string { return v.Workflow }).(pulumi.StringOutput)
 }
 
-// The GitHub workflow inputs to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+// The GitHub [workflow inputs](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionGithubMethodOutput) WorkflowInputs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionGithubMethod) *string { return v.WorkflowInputs }).(pulumi.StringPtrOutput)
 }
@@ -2235,7 +2235,7 @@ func (o ActionGithubMethodPtrOutput) Workflow() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The GitHub workflow inputs to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+// The GitHub [workflow inputs](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionGithubMethodPtrOutput) WorkflowInputs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionGithubMethod) *string {
 		if v == nil {
@@ -2440,7 +2440,7 @@ func (o ActionGitlabMethodPtrOutput) ProjectName() pulumi.StringPtrOutput {
 }
 
 type ActionKafkaMethod struct {
-	// The Kafka message payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+	// The Kafka message [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 	Payload *string `pulumi:"payload"`
 }
 
@@ -2456,7 +2456,7 @@ type ActionKafkaMethodInput interface {
 }
 
 type ActionKafkaMethodArgs struct {
-	// The Kafka message payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+	// The Kafka message [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 	Payload pulumi.StringPtrInput `pulumi:"payload"`
 }
 
@@ -2537,7 +2537,7 @@ func (o ActionKafkaMethodOutput) ToActionKafkaMethodPtrOutputWithContext(ctx con
 	}).(ActionKafkaMethodPtrOutput)
 }
 
-// The Kafka message payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+// The Kafka message [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionKafkaMethodOutput) Payload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionKafkaMethod) *string { return v.Payload }).(pulumi.StringPtrOutput)
 }
@@ -2566,7 +2566,7 @@ func (o ActionKafkaMethodPtrOutput) Elem() ActionKafkaMethodOutput {
 	}).(ActionKafkaMethodOutput)
 }
 
-// The Kafka message payload to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+// The Kafka message [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionKafkaMethodPtrOutput) Payload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionKafkaMethod) *string {
 		if v == nil {
