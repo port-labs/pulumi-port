@@ -473,6 +473,13 @@
                     "type": "string",
                     "description": "The required jq query of the property\n"
                 },
+                "steps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/ActionSelfServiceTriggerStep:ActionSelfServiceTriggerStep"
+                    },
+                    "description": "The steps of the action\n"
+                },
                 "userProperties": {
                     "$ref": "#/types/port:index/ActionSelfServiceTriggerUserProperties:ActionSelfServiceTriggerUserProperties",
                     "description": "User properties\n"
@@ -490,6 +497,26 @@
                     ]
                 }
             }
+        },
+        "port:index/ActionSelfServiceTriggerStep:ActionSelfServiceTriggerStep": {
+            "properties": {
+                "orders": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The order of the properties in this step\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The step's title\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "orders",
+                "title"
+            ]
         },
         "port:index/ActionSelfServiceTriggerUserProperties:ActionSelfServiceTriggerUserProperties": {
             "properties": {
@@ -2773,7 +2800,7 @@
                 },
                 "selfServiceTrigger": {
                     "$ref": "#/types/port:index/ActionSelfServiceTrigger:ActionSelfServiceTrigger",
-                    "description": "Self service trigger for the action\n"
+                    "description": "Self service trigger for the action. Note: you can define only one of `order_properties` and `steps`\n"
                 },
                 "title": {
                     "type": "string",
@@ -2848,7 +2875,7 @@
                 },
                 "selfServiceTrigger": {
                     "$ref": "#/types/port:index/ActionSelfServiceTrigger:ActionSelfServiceTrigger",
-                    "description": "Self service trigger for the action\n"
+                    "description": "Self service trigger for the action. Note: you can define only one of `order_properties` and `steps`\n"
                 },
                 "title": {
                     "type": "string",
@@ -2924,7 +2951,7 @@
                     },
                     "selfServiceTrigger": {
                         "$ref": "#/types/port:index/ActionSelfServiceTrigger:ActionSelfServiceTrigger",
-                        "description": "Self service trigger for the action\n"
+                        "description": "Self service trigger for the action. Note: you can define only one of `order_properties` and `steps`\n"
                     },
                     "title": {
                         "type": "string",
