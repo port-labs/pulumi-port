@@ -48,7 +48,7 @@ class ActionArgs:
         :param pulumi.Input['ActionKafkaMethodArgs'] kafka_method: Kafka invocation method
         :param pulumi.Input[bool] publish: Publish action
         :param pulumi.Input[str] required_approval: Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
-        :param pulumi.Input['ActionSelfServiceTriggerArgs'] self_service_trigger: Self service trigger for the action
+        :param pulumi.Input['ActionSelfServiceTriggerArgs'] self_service_trigger: Self service trigger for the action. Note: you can define only one of `order_properties` and `steps`
         :param pulumi.Input[str] title: Title
         :param pulumi.Input['ActionUpsertEntityMethodArgs'] upsert_entity_method: Upsert Entity invocation method
         :param pulumi.Input['ActionWebhookMethodArgs'] webhook_method: Webhook invocation method
@@ -251,7 +251,7 @@ class ActionArgs:
     @pulumi.getter(name="selfServiceTrigger")
     def self_service_trigger(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerArgs']]:
         """
-        Self service trigger for the action
+        Self service trigger for the action. Note: you can define only one of `order_properties` and `steps`
         """
         return pulumi.get(self, "self_service_trigger")
 
@@ -331,7 +331,7 @@ class _ActionState:
         :param pulumi.Input['ActionKafkaMethodArgs'] kafka_method: Kafka invocation method
         :param pulumi.Input[bool] publish: Publish action
         :param pulumi.Input[str] required_approval: Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
-        :param pulumi.Input['ActionSelfServiceTriggerArgs'] self_service_trigger: Self service trigger for the action
+        :param pulumi.Input['ActionSelfServiceTriggerArgs'] self_service_trigger: Self service trigger for the action. Note: you can define only one of `order_properties` and `steps`
         :param pulumi.Input[str] title: Title
         :param pulumi.Input['ActionUpsertEntityMethodArgs'] upsert_entity_method: Upsert Entity invocation method
         :param pulumi.Input['ActionWebhookMethodArgs'] webhook_method: Webhook invocation method
@@ -535,7 +535,7 @@ class _ActionState:
     @pulumi.getter(name="selfServiceTrigger")
     def self_service_trigger(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerArgs']]:
         """
-        Self service trigger for the action
+        Self service trigger for the action. Note: you can define only one of `order_properties` and `steps`
         """
         return pulumi.get(self, "self_service_trigger")
 
@@ -735,7 +735,7 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[Union['ActionKafkaMethodArgs', 'ActionKafkaMethodArgsDict']] kafka_method: Kafka invocation method
         :param pulumi.Input[bool] publish: Publish action
         :param pulumi.Input[str] required_approval: Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
-        :param pulumi.Input[Union['ActionSelfServiceTriggerArgs', 'ActionSelfServiceTriggerArgsDict']] self_service_trigger: Self service trigger for the action
+        :param pulumi.Input[Union['ActionSelfServiceTriggerArgs', 'ActionSelfServiceTriggerArgsDict']] self_service_trigger: Self service trigger for the action. Note: you can define only one of `order_properties` and `steps`
         :param pulumi.Input[str] title: Title
         :param pulumi.Input[Union['ActionUpsertEntityMethodArgs', 'ActionUpsertEntityMethodArgsDict']] upsert_entity_method: Upsert Entity invocation method
         :param pulumi.Input[Union['ActionWebhookMethodArgs', 'ActionWebhookMethodArgsDict']] webhook_method: Webhook invocation method
@@ -970,7 +970,7 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[Union['ActionKafkaMethodArgs', 'ActionKafkaMethodArgsDict']] kafka_method: Kafka invocation method
         :param pulumi.Input[bool] publish: Publish action
         :param pulumi.Input[str] required_approval: Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
-        :param pulumi.Input[Union['ActionSelfServiceTriggerArgs', 'ActionSelfServiceTriggerArgsDict']] self_service_trigger: Self service trigger for the action
+        :param pulumi.Input[Union['ActionSelfServiceTriggerArgs', 'ActionSelfServiceTriggerArgsDict']] self_service_trigger: Self service trigger for the action. Note: you can define only one of `order_properties` and `steps`
         :param pulumi.Input[str] title: Title
         :param pulumi.Input[Union['ActionUpsertEntityMethodArgs', 'ActionUpsertEntityMethodArgsDict']] upsert_entity_method: Upsert Entity invocation method
         :param pulumi.Input[Union['ActionWebhookMethodArgs', 'ActionWebhookMethodArgsDict']] webhook_method: Webhook invocation method
@@ -1107,7 +1107,7 @@ class Action(pulumi.CustomResource):
     @pulumi.getter(name="selfServiceTrigger")
     def self_service_trigger(self) -> pulumi.Output[Optional['outputs.ActionSelfServiceTrigger']]:
         """
-        Self service trigger for the action
+        Self service trigger for the action. Note: you can define only one of `order_properties` and `steps`
         """
         return pulumi.get(self, "self_service_trigger")
 

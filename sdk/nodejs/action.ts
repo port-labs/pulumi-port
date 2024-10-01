@@ -206,7 +206,7 @@ export class Action extends pulumi.CustomResource {
      */
     public readonly requiredApproval!: pulumi.Output<string | undefined>;
     /**
-     * Self service trigger for the action
+     * Self service trigger for the action. Note: you can define only one of `orderProperties` and `steps`
      */
     public readonly selfServiceTrigger!: pulumi.Output<outputs.ActionSelfServiceTrigger | undefined>;
     /**
@@ -339,7 +339,7 @@ export interface ActionState {
      */
     requiredApproval?: pulumi.Input<string>;
     /**
-     * Self service trigger for the action
+     * Self service trigger for the action. Note: you can define only one of `orderProperties` and `steps`
      */
     selfServiceTrigger?: pulumi.Input<inputs.ActionSelfServiceTrigger>;
     /**
@@ -415,7 +415,7 @@ export interface ActionArgs {
      */
     requiredApproval?: pulumi.Input<string>;
     /**
-     * Self service trigger for the action
+     * Self service trigger for the action. Note: you can define only one of `orderProperties` and `steps`
      */
     selfServiceTrigger?: pulumi.Input<inputs.ActionSelfServiceTrigger>;
     /**

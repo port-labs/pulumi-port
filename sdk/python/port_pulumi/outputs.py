@@ -31,6 +31,7 @@ __all__ = [
     'ActionPermissionsPermissionsApprove',
     'ActionPermissionsPermissionsExecute',
     'ActionSelfServiceTrigger',
+    'ActionSelfServiceTriggerStep',
     'ActionSelfServiceTriggerUserProperties',
     'ActionSelfServiceTriggerUserPropertiesArrayProps',
     'ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems',
@@ -1027,6 +1028,7 @@ class ActionSelfServiceTrigger(dict):
                  condition: Optional[str] = None,
                  order_properties: Optional[Sequence[str]] = None,
                  required_jq_query: Optional[str] = None,
+                 steps: Optional[Sequence['outputs.ActionSelfServiceTriggerStep']] = None,
                  user_properties: Optional['outputs.ActionSelfServiceTriggerUserProperties'] = None):
         """
         :param str operation: The operation type of the action
@@ -1034,6 +1036,7 @@ class ActionSelfServiceTrigger(dict):
         :param str condition: The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
         :param Sequence[str] order_properties: Order properties
         :param str required_jq_query: The required jq query of the property
+        :param Sequence['ActionSelfServiceTriggerStepArgs'] steps: The steps of the action
         :param 'ActionSelfServiceTriggerUserPropertiesArgs' user_properties: User properties
         """
         pulumi.set(__self__, "operation", operation)
@@ -1045,6 +1048,8 @@ class ActionSelfServiceTrigger(dict):
             pulumi.set(__self__, "order_properties", order_properties)
         if required_jq_query is not None:
             pulumi.set(__self__, "required_jq_query", required_jq_query)
+        if steps is not None:
+            pulumi.set(__self__, "steps", steps)
         if user_properties is not None:
             pulumi.set(__self__, "user_properties", user_properties)
 
@@ -1089,12 +1094,49 @@ class ActionSelfServiceTrigger(dict):
         return pulumi.get(self, "required_jq_query")
 
     @property
+    @pulumi.getter
+    def steps(self) -> Optional[Sequence['outputs.ActionSelfServiceTriggerStep']]:
+        """
+        The steps of the action
+        """
+        return pulumi.get(self, "steps")
+
+    @property
     @pulumi.getter(name="userProperties")
     def user_properties(self) -> Optional['outputs.ActionSelfServiceTriggerUserProperties']:
         """
         User properties
         """
         return pulumi.get(self, "user_properties")
+
+
+@pulumi.output_type
+class ActionSelfServiceTriggerStep(dict):
+    def __init__(__self__, *,
+                 orders: Sequence[str],
+                 title: str):
+        """
+        :param Sequence[str] orders: The order of the properties in this step
+        :param str title: The step's title
+        """
+        pulumi.set(__self__, "orders", orders)
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def orders(self) -> Sequence[str]:
+        """
+        The order of the properties in this step
+        """
+        return pulumi.get(self, "orders")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        The step's title
+        """
+        return pulumi.get(self, "title")
 
 
 @pulumi.output_type
