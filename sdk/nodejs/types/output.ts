@@ -268,9 +268,24 @@ export interface ActionSelfServiceTrigger {
      */
     requiredJqQuery?: string;
     /**
+     * The steps of the action
+     */
+    steps?: outputs.ActionSelfServiceTriggerStep[];
+    /**
      * User properties
      */
     userProperties: outputs.ActionSelfServiceTriggerUserProperties;
+}
+
+export interface ActionSelfServiceTriggerStep {
+    /**
+     * The order of the properties in this step
+     */
+    orders: string[];
+    /**
+     * The step's title
+     */
+    title: string;
 }
 
 export interface ActionSelfServiceTriggerUserProperties {

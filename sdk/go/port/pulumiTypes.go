@@ -3150,6 +3150,8 @@ type ActionSelfServiceTrigger struct {
 	OrderProperties []string `pulumi:"orderProperties"`
 	// The required jq query of the property
 	RequiredJqQuery *string `pulumi:"requiredJqQuery"`
+	// The steps of the action
+	Steps []ActionSelfServiceTriggerStep `pulumi:"steps"`
 	// User properties
 	UserProperties *ActionSelfServiceTriggerUserProperties `pulumi:"userProperties"`
 }
@@ -3176,6 +3178,8 @@ type ActionSelfServiceTriggerArgs struct {
 	OrderProperties pulumi.StringArrayInput `pulumi:"orderProperties"`
 	// The required jq query of the property
 	RequiredJqQuery pulumi.StringPtrInput `pulumi:"requiredJqQuery"`
+	// The steps of the action
+	Steps ActionSelfServiceTriggerStepArrayInput `pulumi:"steps"`
 	// User properties
 	UserProperties ActionSelfServiceTriggerUserPropertiesPtrInput `pulumi:"userProperties"`
 }
@@ -3282,6 +3286,11 @@ func (o ActionSelfServiceTriggerOutput) RequiredJqQuery() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ActionSelfServiceTrigger) *string { return v.RequiredJqQuery }).(pulumi.StringPtrOutput)
 }
 
+// The steps of the action
+func (o ActionSelfServiceTriggerOutput) Steps() ActionSelfServiceTriggerStepArrayOutput {
+	return o.ApplyT(func(v ActionSelfServiceTrigger) []ActionSelfServiceTriggerStep { return v.Steps }).(ActionSelfServiceTriggerStepArrayOutput)
+}
+
 // User properties
 func (o ActionSelfServiceTriggerOutput) UserProperties() ActionSelfServiceTriggerUserPropertiesPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTrigger) *ActionSelfServiceTriggerUserProperties { return v.UserProperties }).(ActionSelfServiceTriggerUserPropertiesPtrOutput)
@@ -3361,6 +3370,16 @@ func (o ActionSelfServiceTriggerPtrOutput) RequiredJqQuery() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// The steps of the action
+func (o ActionSelfServiceTriggerPtrOutput) Steps() ActionSelfServiceTriggerStepArrayOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTrigger) []ActionSelfServiceTriggerStep {
+		if v == nil {
+			return nil
+		}
+		return v.Steps
+	}).(ActionSelfServiceTriggerStepArrayOutput)
+}
+
 // User properties
 func (o ActionSelfServiceTriggerPtrOutput) UserProperties() ActionSelfServiceTriggerUserPropertiesPtrOutput {
 	return o.ApplyT(func(v *ActionSelfServiceTrigger) *ActionSelfServiceTriggerUserProperties {
@@ -3369,6 +3388,112 @@ func (o ActionSelfServiceTriggerPtrOutput) UserProperties() ActionSelfServiceTri
 		}
 		return v.UserProperties
 	}).(ActionSelfServiceTriggerUserPropertiesPtrOutput)
+}
+
+type ActionSelfServiceTriggerStep struct {
+	// The order of the properties in this step
+	Orders []string `pulumi:"orders"`
+	// The step's title
+	Title string `pulumi:"title"`
+}
+
+// ActionSelfServiceTriggerStepInput is an input type that accepts ActionSelfServiceTriggerStepArgs and ActionSelfServiceTriggerStepOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerStepInput` via:
+//
+//	ActionSelfServiceTriggerStepArgs{...}
+type ActionSelfServiceTriggerStepInput interface {
+	pulumi.Input
+
+	ToActionSelfServiceTriggerStepOutput() ActionSelfServiceTriggerStepOutput
+	ToActionSelfServiceTriggerStepOutputWithContext(context.Context) ActionSelfServiceTriggerStepOutput
+}
+
+type ActionSelfServiceTriggerStepArgs struct {
+	// The order of the properties in this step
+	Orders pulumi.StringArrayInput `pulumi:"orders"`
+	// The step's title
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ActionSelfServiceTriggerStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerStep)(nil)).Elem()
+}
+
+func (i ActionSelfServiceTriggerStepArgs) ToActionSelfServiceTriggerStepOutput() ActionSelfServiceTriggerStepOutput {
+	return i.ToActionSelfServiceTriggerStepOutputWithContext(context.Background())
+}
+
+func (i ActionSelfServiceTriggerStepArgs) ToActionSelfServiceTriggerStepOutputWithContext(ctx context.Context) ActionSelfServiceTriggerStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerStepOutput)
+}
+
+// ActionSelfServiceTriggerStepArrayInput is an input type that accepts ActionSelfServiceTriggerStepArray and ActionSelfServiceTriggerStepArrayOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerStepArrayInput` via:
+//
+//	ActionSelfServiceTriggerStepArray{ ActionSelfServiceTriggerStepArgs{...} }
+type ActionSelfServiceTriggerStepArrayInput interface {
+	pulumi.Input
+
+	ToActionSelfServiceTriggerStepArrayOutput() ActionSelfServiceTriggerStepArrayOutput
+	ToActionSelfServiceTriggerStepArrayOutputWithContext(context.Context) ActionSelfServiceTriggerStepArrayOutput
+}
+
+type ActionSelfServiceTriggerStepArray []ActionSelfServiceTriggerStepInput
+
+func (ActionSelfServiceTriggerStepArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionSelfServiceTriggerStep)(nil)).Elem()
+}
+
+func (i ActionSelfServiceTriggerStepArray) ToActionSelfServiceTriggerStepArrayOutput() ActionSelfServiceTriggerStepArrayOutput {
+	return i.ToActionSelfServiceTriggerStepArrayOutputWithContext(context.Background())
+}
+
+func (i ActionSelfServiceTriggerStepArray) ToActionSelfServiceTriggerStepArrayOutputWithContext(ctx context.Context) ActionSelfServiceTriggerStepArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerStepArrayOutput)
+}
+
+type ActionSelfServiceTriggerStepOutput struct{ *pulumi.OutputState }
+
+func (ActionSelfServiceTriggerStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerStep)(nil)).Elem()
+}
+
+func (o ActionSelfServiceTriggerStepOutput) ToActionSelfServiceTriggerStepOutput() ActionSelfServiceTriggerStepOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerStepOutput) ToActionSelfServiceTriggerStepOutputWithContext(ctx context.Context) ActionSelfServiceTriggerStepOutput {
+	return o
+}
+
+// The order of the properties in this step
+func (o ActionSelfServiceTriggerStepOutput) Orders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerStep) []string { return v.Orders }).(pulumi.StringArrayOutput)
+}
+
+// The step's title
+func (o ActionSelfServiceTriggerStepOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerStep) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ActionSelfServiceTriggerStepArrayOutput struct{ *pulumi.OutputState }
+
+func (ActionSelfServiceTriggerStepArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionSelfServiceTriggerStep)(nil)).Elem()
+}
+
+func (o ActionSelfServiceTriggerStepArrayOutput) ToActionSelfServiceTriggerStepArrayOutput() ActionSelfServiceTriggerStepArrayOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerStepArrayOutput) ToActionSelfServiceTriggerStepArrayOutputWithContext(ctx context.Context) ActionSelfServiceTriggerStepArrayOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerStepArrayOutput) Index(i pulumi.IntInput) ActionSelfServiceTriggerStepOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionSelfServiceTriggerStep {
+		return vs[0].([]ActionSelfServiceTriggerStep)[vs[1].(int)]
+	}).(ActionSelfServiceTriggerStepOutput)
 }
 
 type ActionSelfServiceTriggerUserProperties struct {
@@ -14331,6 +14456,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionPermissionsPermissionsExecutePtrInput)(nil)).Elem(), ActionPermissionsPermissionsExecuteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerInput)(nil)).Elem(), ActionSelfServiceTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerPtrInput)(nil)).Elem(), ActionSelfServiceTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerStepInput)(nil)).Elem(), ActionSelfServiceTriggerStepArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerStepArrayInput)(nil)).Elem(), ActionSelfServiceTriggerStepArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesPtrInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArrayPropsArgs{})
@@ -14502,6 +14629,8 @@ func init() {
 	pulumi.RegisterOutputType(ActionPermissionsPermissionsExecutePtrOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerPtrOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerStepOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerStepArrayOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesArrayPropsOutput{})

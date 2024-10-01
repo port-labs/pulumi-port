@@ -30,6 +30,7 @@ __all__ = [
     'ActionPermissionsPermissionsApproveArgs',
     'ActionPermissionsPermissionsExecuteArgs',
     'ActionSelfServiceTriggerArgs',
+    'ActionSelfServiceTriggerStepArgs',
     'ActionSelfServiceTriggerUserPropertiesArgs',
     'ActionSelfServiceTriggerUserPropertiesArrayPropsArgs',
     'ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs',
@@ -951,6 +952,7 @@ class ActionSelfServiceTriggerArgs:
                  condition: Optional[pulumi.Input[str]] = None,
                  order_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_jq_query: Optional[pulumi.Input[str]] = None,
+                 steps: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerStepArgs']]]] = None,
                  user_properties: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArgs']] = None):
         """
         :param pulumi.Input[str] operation: The operation type of the action
@@ -958,6 +960,7 @@ class ActionSelfServiceTriggerArgs:
         :param pulumi.Input[str] condition: The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] order_properties: Order properties
         :param pulumi.Input[str] required_jq_query: The required jq query of the property
+        :param pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerStepArgs']]] steps: The steps of the action
         :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesArgs'] user_properties: User properties
         """
         pulumi.set(__self__, "operation", operation)
@@ -969,6 +972,8 @@ class ActionSelfServiceTriggerArgs:
             pulumi.set(__self__, "order_properties", order_properties)
         if required_jq_query is not None:
             pulumi.set(__self__, "required_jq_query", required_jq_query)
+        if steps is not None:
+            pulumi.set(__self__, "steps", steps)
         if user_properties is not None:
             pulumi.set(__self__, "user_properties", user_properties)
 
@@ -1033,6 +1038,18 @@ class ActionSelfServiceTriggerArgs:
         pulumi.set(self, "required_jq_query", value)
 
     @property
+    @pulumi.getter
+    def steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerStepArgs']]]]:
+        """
+        The steps of the action
+        """
+        return pulumi.get(self, "steps")
+
+    @steps.setter
+    def steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerStepArgs']]]]):
+        pulumi.set(self, "steps", value)
+
+    @property
     @pulumi.getter(name="userProperties")
     def user_properties(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArgs']]:
         """
@@ -1043,6 +1060,43 @@ class ActionSelfServiceTriggerArgs:
     @user_properties.setter
     def user_properties(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArgs']]):
         pulumi.set(self, "user_properties", value)
+
+
+@pulumi.input_type
+class ActionSelfServiceTriggerStepArgs:
+    def __init__(__self__, *,
+                 orders: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 title: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] orders: The order of the properties in this step
+        :param pulumi.Input[str] title: The step's title
+        """
+        pulumi.set(__self__, "orders", orders)
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def orders(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The order of the properties in this step
+        """
+        return pulumi.get(self, "orders")
+
+    @orders.setter
+    def orders(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "orders", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        The step's title
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
 
 
 @pulumi.input_type

@@ -268,9 +268,24 @@ export interface ActionSelfServiceTrigger {
      */
     requiredJqQuery?: pulumi.Input<string>;
     /**
+     * The steps of the action
+     */
+    steps?: pulumi.Input<pulumi.Input<inputs.ActionSelfServiceTriggerStep>[]>;
+    /**
      * User properties
      */
     userProperties?: pulumi.Input<inputs.ActionSelfServiceTriggerUserProperties>;
+}
+
+export interface ActionSelfServiceTriggerStep {
+    /**
+     * The order of the properties in this step
+     */
+    orders: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The step's title
+     */
+    title: pulumi.Input<string>;
 }
 
 export interface ActionSelfServiceTriggerUserProperties {

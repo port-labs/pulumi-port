@@ -179,7 +179,7 @@ type Action struct {
 	Publish pulumi.BoolOutput `pulumi:"publish"`
 	// Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
 	RequiredApproval pulumi.StringPtrOutput `pulumi:"requiredApproval"`
-	// Self service trigger for the action
+	// Self service trigger for the action. Note: you can define only one of `orderProperties` and `steps`
 	SelfServiceTrigger ActionSelfServiceTriggerPtrOutput `pulumi:"selfServiceTrigger"`
 	// Title
 	Title pulumi.StringPtrOutput `pulumi:"title"`
@@ -250,7 +250,7 @@ type actionState struct {
 	Publish *bool `pulumi:"publish"`
 	// Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
 	RequiredApproval *string `pulumi:"requiredApproval"`
-	// Self service trigger for the action
+	// Self service trigger for the action. Note: you can define only one of `orderProperties` and `steps`
 	SelfServiceTrigger *ActionSelfServiceTrigger `pulumi:"selfServiceTrigger"`
 	// Title
 	Title *string `pulumi:"title"`
@@ -289,7 +289,7 @@ type ActionState struct {
 	Publish pulumi.BoolPtrInput
 	// Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
 	RequiredApproval pulumi.StringPtrInput
-	// Self service trigger for the action
+	// Self service trigger for the action. Note: you can define only one of `orderProperties` and `steps`
 	SelfServiceTrigger ActionSelfServiceTriggerPtrInput
 	// Title
 	Title pulumi.StringPtrInput
@@ -332,7 +332,7 @@ type actionArgs struct {
 	Publish *bool `pulumi:"publish"`
 	// Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
 	RequiredApproval *string `pulumi:"requiredApproval"`
-	// Self service trigger for the action
+	// Self service trigger for the action. Note: you can define only one of `orderProperties` and `steps`
 	SelfServiceTrigger *ActionSelfServiceTrigger `pulumi:"selfServiceTrigger"`
 	// Title
 	Title *string `pulumi:"title"`
@@ -372,7 +372,7 @@ type ActionArgs struct {
 	Publish pulumi.BoolPtrInput
 	// Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
 	RequiredApproval pulumi.StringPtrInput
-	// Self service trigger for the action
+	// Self service trigger for the action. Note: you can define only one of `orderProperties` and `steps`
 	SelfServiceTrigger ActionSelfServiceTriggerPtrInput
 	// Title
 	Title pulumi.StringPtrInput
@@ -536,7 +536,7 @@ func (o ActionOutput) RequiredApproval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Action) pulumi.StringPtrOutput { return v.RequiredApproval }).(pulumi.StringPtrOutput)
 }
 
-// Self service trigger for the action
+// Self service trigger for the action. Note: you can define only one of `orderProperties` and `steps`
 func (o ActionOutput) SelfServiceTrigger() ActionSelfServiceTriggerPtrOutput {
 	return o.ApplyT(func(v *Action) ActionSelfServiceTriggerPtrOutput { return v.SelfServiceTrigger }).(ActionSelfServiceTriggerPtrOutput)
 }
