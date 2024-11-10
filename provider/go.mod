@@ -7,7 +7,7 @@ toolchain go1.22.7
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240520223432-0c0bf0d65f10
 
 require (
-	github.com/port-labs/terraform-provider-port-labs/v2 v2.0.23
+	github.com/port-labs/terraform-provider-port-labs/v2 v2.0.24
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.44.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.91.1
 	github.com/pulumi/pulumi/sdk/v3 v3.133.0
