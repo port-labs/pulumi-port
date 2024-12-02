@@ -4,103 +4,213 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
     'ActionApprovalEmailNotificationArgs',
+    'ActionApprovalEmailNotificationArgsDict',
     'ActionApprovalWebhookNotificationArgs',
+    'ActionApprovalWebhookNotificationArgsDict',
     'ActionAutomationTriggerArgs',
+    'ActionAutomationTriggerArgsDict',
     'ActionAutomationTriggerAnyEntityChangeEventArgs',
+    'ActionAutomationTriggerAnyEntityChangeEventArgsDict',
     'ActionAutomationTriggerAnyRunChangeEventArgs',
+    'ActionAutomationTriggerAnyRunChangeEventArgsDict',
     'ActionAutomationTriggerEntityCreatedEventArgs',
+    'ActionAutomationTriggerEntityCreatedEventArgsDict',
     'ActionAutomationTriggerEntityDeletedEventArgs',
+    'ActionAutomationTriggerEntityDeletedEventArgsDict',
     'ActionAutomationTriggerEntityUpdatedEventArgs',
+    'ActionAutomationTriggerEntityUpdatedEventArgsDict',
     'ActionAutomationTriggerJqConditionArgs',
+    'ActionAutomationTriggerJqConditionArgsDict',
     'ActionAutomationTriggerRunCreatedEventArgs',
+    'ActionAutomationTriggerRunCreatedEventArgsDict',
     'ActionAutomationTriggerRunUpdatedEventArgs',
+    'ActionAutomationTriggerRunUpdatedEventArgsDict',
     'ActionAutomationTriggerTimerPropertyExpiredEventArgs',
+    'ActionAutomationTriggerTimerPropertyExpiredEventArgsDict',
     'ActionAzureMethodArgs',
+    'ActionAzureMethodArgsDict',
     'ActionGithubMethodArgs',
+    'ActionGithubMethodArgsDict',
     'ActionGitlabMethodArgs',
+    'ActionGitlabMethodArgsDict',
     'ActionKafkaMethodArgs',
+    'ActionKafkaMethodArgsDict',
     'ActionPermissionsPermissionsArgs',
+    'ActionPermissionsPermissionsArgsDict',
     'ActionPermissionsPermissionsApproveArgs',
+    'ActionPermissionsPermissionsApproveArgsDict',
     'ActionPermissionsPermissionsExecuteArgs',
+    'ActionPermissionsPermissionsExecuteArgsDict',
     'ActionSelfServiceTriggerArgs',
+    'ActionSelfServiceTriggerArgsDict',
     'ActionSelfServiceTriggerStepArgs',
+    'ActionSelfServiceTriggerStepArgsDict',
     'ActionSelfServiceTriggerUserPropertiesArgs',
+    'ActionSelfServiceTriggerUserPropertiesArgsDict',
     'ActionSelfServiceTriggerUserPropertiesArrayPropsArgs',
+    'ActionSelfServiceTriggerUserPropertiesArrayPropsArgsDict',
     'ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs',
+    'ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgsDict',
     'ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs',
+    'ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgsDict',
     'ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs',
+    'ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgsDict',
     'ActionSelfServiceTriggerUserPropertiesArrayPropsSortArgs',
+    'ActionSelfServiceTriggerUserPropertiesArrayPropsSortArgsDict',
     'ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs',
+    'ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgsDict',
     'ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs',
+    'ActionSelfServiceTriggerUserPropertiesBooleanPropsArgsDict',
     'ActionSelfServiceTriggerUserPropertiesNumberPropsArgs',
+    'ActionSelfServiceTriggerUserPropertiesNumberPropsArgsDict',
     'ActionSelfServiceTriggerUserPropertiesObjectPropsArgs',
+    'ActionSelfServiceTriggerUserPropertiesObjectPropsArgsDict',
     'ActionSelfServiceTriggerUserPropertiesStringPropsArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsArgsDict',
     'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgsDict',
     'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgsDict',
     'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgsDict',
     'ActionSelfServiceTriggerUserPropertiesStringPropsSortArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsSortArgsDict',
     'ActionUpsertEntityMethodArgs',
+    'ActionUpsertEntityMethodArgsDict',
     'ActionUpsertEntityMethodMappingArgs',
+    'ActionUpsertEntityMethodMappingArgsDict',
     'ActionWebhookMethodArgs',
+    'ActionWebhookMethodArgsDict',
     'AggregationPropertiesPropertiesArgs',
+    'AggregationPropertiesPropertiesArgsDict',
     'AggregationPropertiesPropertiesMethodArgs',
+    'AggregationPropertiesPropertiesMethodArgsDict',
     'AggregationPropertiesPropertiesMethodAggregateByPropertyArgs',
+    'AggregationPropertiesPropertiesMethodAggregateByPropertyArgsDict',
     'AggregationPropertiesPropertiesMethodAverageByPropertyArgs',
+    'AggregationPropertiesPropertiesMethodAverageByPropertyArgsDict',
     'AggregationPropertiesPropertiesMethodAverageEntitiesArgs',
+    'AggregationPropertiesPropertiesMethodAverageEntitiesArgsDict',
     'BlueprintCalculationPropertiesArgs',
+    'BlueprintCalculationPropertiesArgsDict',
     'BlueprintKafkaChangelogDestinationArgs',
+    'BlueprintKafkaChangelogDestinationArgsDict',
     'BlueprintMirrorPropertiesArgs',
+    'BlueprintMirrorPropertiesArgsDict',
     'BlueprintPermissionsEntitiesArgs',
+    'BlueprintPermissionsEntitiesArgsDict',
     'BlueprintPermissionsEntitiesRegisterArgs',
+    'BlueprintPermissionsEntitiesRegisterArgsDict',
     'BlueprintPermissionsEntitiesUnregisterArgs',
+    'BlueprintPermissionsEntitiesUnregisterArgsDict',
     'BlueprintPermissionsEntitiesUpdateArgs',
+    'BlueprintPermissionsEntitiesUpdateArgsDict',
     'BlueprintPermissionsEntitiesUpdateMetadataPropertiesArgs',
+    'BlueprintPermissionsEntitiesUpdateMetadataPropertiesArgsDict',
     'BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconArgs',
+    'BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconArgsDict',
     'BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierArgs',
+    'BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierArgsDict',
     'BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamArgs',
+    'BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamArgsDict',
     'BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleArgs',
+    'BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleArgsDict',
     'BlueprintPermissionsEntitiesUpdatePropertiesArgs',
+    'BlueprintPermissionsEntitiesUpdatePropertiesArgsDict',
     'BlueprintPermissionsEntitiesUpdateRelationsArgs',
+    'BlueprintPermissionsEntitiesUpdateRelationsArgsDict',
     'BlueprintPropertiesArgs',
+    'BlueprintPropertiesArgsDict',
     'BlueprintPropertiesArrayPropsArgs',
+    'BlueprintPropertiesArrayPropsArgsDict',
     'BlueprintPropertiesArrayPropsBooleanItemsArgs',
+    'BlueprintPropertiesArrayPropsBooleanItemsArgsDict',
     'BlueprintPropertiesArrayPropsNumberItemsArgs',
+    'BlueprintPropertiesArrayPropsNumberItemsArgsDict',
     'BlueprintPropertiesArrayPropsObjectItemsArgs',
+    'BlueprintPropertiesArrayPropsObjectItemsArgsDict',
     'BlueprintPropertiesArrayPropsStringItemsArgs',
+    'BlueprintPropertiesArrayPropsStringItemsArgsDict',
     'BlueprintPropertiesBooleanPropsArgs',
+    'BlueprintPropertiesBooleanPropsArgsDict',
     'BlueprintPropertiesNumberPropsArgs',
+    'BlueprintPropertiesNumberPropsArgsDict',
     'BlueprintPropertiesObjectPropsArgs',
+    'BlueprintPropertiesObjectPropsArgsDict',
     'BlueprintPropertiesStringPropsArgs',
+    'BlueprintPropertiesStringPropsArgsDict',
     'BlueprintPropertiesStringPropsSpecAuthenticationArgs',
+    'BlueprintPropertiesStringPropsSpecAuthenticationArgsDict',
     'BlueprintRelationsArgs',
+    'BlueprintRelationsArgsDict',
     'BlueprintTeamInheritanceArgs',
+    'BlueprintTeamInheritanceArgsDict',
     'BlueprintWebhookChangelogDestinationArgs',
+    'BlueprintWebhookChangelogDestinationArgsDict',
     'EntityPropertiesArgs',
+    'EntityPropertiesArgsDict',
     'EntityPropertiesArrayPropsArgs',
+    'EntityPropertiesArrayPropsArgsDict',
     'EntityRelationsArgs',
+    'EntityRelationsArgsDict',
     'IntegrationKafkaChangelogDestinationArgs',
+    'IntegrationKafkaChangelogDestinationArgsDict',
     'IntegrationWebhookChangelogDestinationArgs',
+    'IntegrationWebhookChangelogDestinationArgsDict',
     'PagePermissionsReadArgs',
+    'PagePermissionsReadArgsDict',
     'ScorecardLevelArgs',
+    'ScorecardLevelArgsDict',
     'ScorecardRuleArgs',
+    'ScorecardRuleArgsDict',
     'ScorecardRuleQueryArgs',
+    'ScorecardRuleQueryArgsDict',
     'WebhookMappingArgs',
+    'WebhookMappingArgsDict',
     'WebhookMappingEntityArgs',
+    'WebhookMappingEntityArgsDict',
     'WebhookSecurityArgs',
+    'WebhookSecurityArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ActionApprovalEmailNotificationArgsDict(TypedDict):
+        pass
+elif False:
+    ActionApprovalEmailNotificationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionApprovalEmailNotificationArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class ActionApprovalWebhookNotificationArgsDict(TypedDict):
+        url: pulumi.Input[str]
+        """
+        The URL to invoke the webhook
+        """
+        format: NotRequired[pulumi.Input[str]]
+        """
+        The format to invoke the webhook
+        """
+elif False:
+    ActionApprovalWebhookNotificationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionApprovalWebhookNotificationArgs:
@@ -139,6 +249,47 @@ class ActionApprovalWebhookNotificationArgs:
     def format(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "format", value)
 
+
+if not MYPY:
+    class ActionAutomationTriggerArgsDict(TypedDict):
+        any_entity_change_event: NotRequired[pulumi.Input['ActionAutomationTriggerAnyEntityChangeEventArgsDict']]
+        """
+        Any entity change event trigger
+        """
+        any_run_change_event: NotRequired[pulumi.Input['ActionAutomationTriggerAnyRunChangeEventArgsDict']]
+        """
+        Any run change event trigger
+        """
+        entity_created_event: NotRequired[pulumi.Input['ActionAutomationTriggerEntityCreatedEventArgsDict']]
+        """
+        Entity created event trigger
+        """
+        entity_deleted_event: NotRequired[pulumi.Input['ActionAutomationTriggerEntityDeletedEventArgsDict']]
+        """
+        Entity deleted event trigger
+        """
+        entity_updated_event: NotRequired[pulumi.Input['ActionAutomationTriggerEntityUpdatedEventArgsDict']]
+        """
+        Entity updated event trigger
+        """
+        jq_condition: NotRequired[pulumi.Input['ActionAutomationTriggerJqConditionArgsDict']]
+        """
+        JQ condition for automation trigger
+        """
+        run_created_event: NotRequired[pulumi.Input['ActionAutomationTriggerRunCreatedEventArgsDict']]
+        """
+        Run created event trigger
+        """
+        run_updated_event: NotRequired[pulumi.Input['ActionAutomationTriggerRunUpdatedEventArgsDict']]
+        """
+        Run updated event trigger
+        """
+        timer_property_expired_event: NotRequired[pulumi.Input['ActionAutomationTriggerTimerPropertyExpiredEventArgsDict']]
+        """
+        Timer property expired event trigger
+        """
+elif False:
+    ActionAutomationTriggerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionAutomationTriggerArgs:
@@ -291,6 +442,15 @@ class ActionAutomationTriggerArgs:
         pulumi.set(self, "timer_property_expired_event", value)
 
 
+if not MYPY:
+    class ActionAutomationTriggerAnyEntityChangeEventArgsDict(TypedDict):
+        blueprint_identifier: pulumi.Input[str]
+        """
+        The blueprint identifier of the changed entity
+        """
+elif False:
+    ActionAutomationTriggerAnyEntityChangeEventArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ActionAutomationTriggerAnyEntityChangeEventArgs:
     def __init__(__self__, *,
@@ -312,6 +472,15 @@ class ActionAutomationTriggerAnyEntityChangeEventArgs:
     def blueprint_identifier(self, value: pulumi.Input[str]):
         pulumi.set(self, "blueprint_identifier", value)
 
+
+if not MYPY:
+    class ActionAutomationTriggerAnyRunChangeEventArgsDict(TypedDict):
+        action_identifier: pulumi.Input[str]
+        """
+        The action identifier of the changed run
+        """
+elif False:
+    ActionAutomationTriggerAnyRunChangeEventArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionAutomationTriggerAnyRunChangeEventArgs:
@@ -335,6 +504,15 @@ class ActionAutomationTriggerAnyRunChangeEventArgs:
         pulumi.set(self, "action_identifier", value)
 
 
+if not MYPY:
+    class ActionAutomationTriggerEntityCreatedEventArgsDict(TypedDict):
+        blueprint_identifier: pulumi.Input[str]
+        """
+        The blueprint identifier of the created entity
+        """
+elif False:
+    ActionAutomationTriggerEntityCreatedEventArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ActionAutomationTriggerEntityCreatedEventArgs:
     def __init__(__self__, *,
@@ -356,6 +534,15 @@ class ActionAutomationTriggerEntityCreatedEventArgs:
     def blueprint_identifier(self, value: pulumi.Input[str]):
         pulumi.set(self, "blueprint_identifier", value)
 
+
+if not MYPY:
+    class ActionAutomationTriggerEntityDeletedEventArgsDict(TypedDict):
+        blueprint_identifier: pulumi.Input[str]
+        """
+        The blueprint identifier of the deleted entity
+        """
+elif False:
+    ActionAutomationTriggerEntityDeletedEventArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionAutomationTriggerEntityDeletedEventArgs:
@@ -379,6 +566,15 @@ class ActionAutomationTriggerEntityDeletedEventArgs:
         pulumi.set(self, "blueprint_identifier", value)
 
 
+if not MYPY:
+    class ActionAutomationTriggerEntityUpdatedEventArgsDict(TypedDict):
+        blueprint_identifier: pulumi.Input[str]
+        """
+        The blueprint identifier of the updated entity
+        """
+elif False:
+    ActionAutomationTriggerEntityUpdatedEventArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ActionAutomationTriggerEntityUpdatedEventArgs:
     def __init__(__self__, *,
@@ -400,6 +596,19 @@ class ActionAutomationTriggerEntityUpdatedEventArgs:
     def blueprint_identifier(self, value: pulumi.Input[str]):
         pulumi.set(self, "blueprint_identifier", value)
 
+
+if not MYPY:
+    class ActionAutomationTriggerJqConditionArgsDict(TypedDict):
+        expressions: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The jq expressions of the condition
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        The combinator of the condition
+        """
+elif False:
+    ActionAutomationTriggerJqConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionAutomationTriggerJqConditionArgs:
@@ -439,6 +648,15 @@ class ActionAutomationTriggerJqConditionArgs:
         pulumi.set(self, "combinator", value)
 
 
+if not MYPY:
+    class ActionAutomationTriggerRunCreatedEventArgsDict(TypedDict):
+        action_identifier: pulumi.Input[str]
+        """
+        The action identifier of the created run
+        """
+elif False:
+    ActionAutomationTriggerRunCreatedEventArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ActionAutomationTriggerRunCreatedEventArgs:
     def __init__(__self__, *,
@@ -461,6 +679,15 @@ class ActionAutomationTriggerRunCreatedEventArgs:
         pulumi.set(self, "action_identifier", value)
 
 
+if not MYPY:
+    class ActionAutomationTriggerRunUpdatedEventArgsDict(TypedDict):
+        action_identifier: pulumi.Input[str]
+        """
+        The action identifier of the updated run
+        """
+elif False:
+    ActionAutomationTriggerRunUpdatedEventArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ActionAutomationTriggerRunUpdatedEventArgs:
     def __init__(__self__, *,
@@ -482,6 +709,19 @@ class ActionAutomationTriggerRunUpdatedEventArgs:
     def action_identifier(self, value: pulumi.Input[str]):
         pulumi.set(self, "action_identifier", value)
 
+
+if not MYPY:
+    class ActionAutomationTriggerTimerPropertyExpiredEventArgsDict(TypedDict):
+        blueprint_identifier: pulumi.Input[str]
+        """
+        The blueprint identifier of the expired timer property
+        """
+        property_identifier: pulumi.Input[str]
+        """
+        The property identifier of the expired timer property
+        """
+elif False:
+    ActionAutomationTriggerTimerPropertyExpiredEventArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionAutomationTriggerTimerPropertyExpiredEventArgs:
@@ -519,6 +759,23 @@ class ActionAutomationTriggerTimerPropertyExpiredEventArgs:
     def property_identifier(self, value: pulumi.Input[str]):
         pulumi.set(self, "property_identifier", value)
 
+
+if not MYPY:
+    class ActionAzureMethodArgsDict(TypedDict):
+        org: pulumi.Input[str]
+        """
+        Required when selecting type AZURE. The Azure org that the workflow belongs to
+        """
+        webhook: pulumi.Input[str]
+        """
+        Required when selecting type AZURE. The Azure webhook that the workflow belongs to
+        """
+        payload: NotRequired[pulumi.Input[str]]
+        """
+        The Azure Devops workflow [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+        """
+elif False:
+    ActionAzureMethodArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionAzureMethodArgs:
@@ -572,6 +829,31 @@ class ActionAzureMethodArgs:
     def payload(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "payload", value)
 
+
+if not MYPY:
+    class ActionGithubMethodArgsDict(TypedDict):
+        org: pulumi.Input[str]
+        """
+        Required when selecting type GITHUB. The GitHub org that the workflow belongs to
+        """
+        repo: pulumi.Input[str]
+        """
+        Required when selecting type GITHUB. The GitHub repo that the workflow belongs to
+        """
+        workflow: pulumi.Input[str]
+        """
+        The GitHub workflow that the action belongs to
+        """
+        report_workflow_status: NotRequired[pulumi.Input[str]]
+        """
+        Report the workflow status when invoking the action
+        """
+        workflow_inputs: NotRequired[pulumi.Input[str]]
+        """
+        The GitHub [workflow inputs](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+        """
+elif False:
+    ActionGithubMethodArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionGithubMethodArgs:
@@ -657,6 +939,27 @@ class ActionGithubMethodArgs:
         pulumi.set(self, "workflow_inputs", value)
 
 
+if not MYPY:
+    class ActionGitlabMethodArgsDict(TypedDict):
+        group_name: pulumi.Input[str]
+        """
+        Required when selecting type GITLAB. The GitLab group name that the workflow belongs to
+        """
+        project_name: pulumi.Input[str]
+        """
+        Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
+        """
+        default_ref: NotRequired[pulumi.Input[str]]
+        """
+        The default ref of the action
+        """
+        pipeline_variables: NotRequired[pulumi.Input[str]]
+        """
+        The Gitlab pipeline variables should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+        """
+elif False:
+    ActionGitlabMethodArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ActionGitlabMethodArgs:
     def __init__(__self__, *,
@@ -726,6 +1029,15 @@ class ActionGitlabMethodArgs:
         pulumi.set(self, "pipeline_variables", value)
 
 
+if not MYPY:
+    class ActionKafkaMethodArgsDict(TypedDict):
+        payload: NotRequired[pulumi.Input[str]]
+        """
+        The Kafka message [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+        """
+elif False:
+    ActionKafkaMethodArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ActionKafkaMethodArgs:
     def __init__(__self__, *,
@@ -748,6 +1060,19 @@ class ActionKafkaMethodArgs:
     def payload(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "payload", value)
 
+
+if not MYPY:
+    class ActionPermissionsPermissionsArgsDict(TypedDict):
+        approve: pulumi.Input['ActionPermissionsPermissionsApproveArgsDict']
+        """
+        The permission to approve the action's runs
+        """
+        execute: pulumi.Input['ActionPermissionsPermissionsExecuteArgsDict']
+        """
+        The permission to execute the action
+        """
+elif False:
+    ActionPermissionsPermissionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionPermissionsPermissionsArgs:
@@ -785,6 +1110,27 @@ class ActionPermissionsPermissionsArgs:
     def execute(self, value: pulumi.Input['ActionPermissionsPermissionsExecuteArgs']):
         pulumi.set(self, "execute", value)
 
+
+if not MYPY:
+    class ActionPermissionsPermissionsApproveArgsDict(TypedDict):
+        policy: NotRequired[pulumi.Input[str]]
+        """
+        The policy to use for approval
+        """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The roles with approval permission
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The teams with approval permission
+        """
+        users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The users with approval permission
+        """
+elif False:
+    ActionPermissionsPermissionsApproveArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionPermissionsPermissionsApproveArgs:
@@ -856,6 +1202,31 @@ class ActionPermissionsPermissionsApproveArgs:
     def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "users", value)
 
+
+if not MYPY:
+    class ActionPermissionsPermissionsExecuteArgsDict(TypedDict):
+        owned_by_team: NotRequired[pulumi.Input[bool]]
+        """
+        Give execution permission to the teams who own the entity
+        """
+        policy: NotRequired[pulumi.Input[str]]
+        """
+        The policy to use for execution
+        """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The roles with execution permission
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The teams with execution permission
+        """
+        users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The users with execution permission
+        """
+elif False:
+    ActionPermissionsPermissionsExecuteArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionPermissionsPermissionsExecuteArgs:
@@ -943,6 +1314,39 @@ class ActionPermissionsPermissionsExecuteArgs:
     def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "users", value)
 
+
+if not MYPY:
+    class ActionSelfServiceTriggerArgsDict(TypedDict):
+        operation: pulumi.Input[str]
+        """
+        The operation type of the action
+        """
+        blueprint_identifier: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the blueprint
+        """
+        condition: NotRequired[pulumi.Input[str]]
+        """
+        The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
+        """
+        order_properties: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Order properties
+        """
+        required_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The required jq query of the property
+        """
+        steps: NotRequired[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerStepArgsDict']]]]
+        """
+        The steps of the action
+        """
+        user_properties: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArgsDict']]
+        """
+        User properties
+        """
+elif False:
+    ActionSelfServiceTriggerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionSelfServiceTriggerArgs:
@@ -1062,6 +1466,19 @@ class ActionSelfServiceTriggerArgs:
         pulumi.set(self, "user_properties", value)
 
 
+if not MYPY:
+    class ActionSelfServiceTriggerStepArgsDict(TypedDict):
+        orders: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The order of the properties in this step
+        """
+        title: pulumi.Input[str]
+        """
+        The step's title
+        """
+elif False:
+    ActionSelfServiceTriggerStepArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ActionSelfServiceTriggerStepArgs:
     def __init__(__self__, *,
@@ -1098,6 +1515,31 @@ class ActionSelfServiceTriggerStepArgs:
     def title(self, value: pulumi.Input[str]):
         pulumi.set(self, "title", value)
 
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesArgsDict(TypedDict):
+        array_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsArgsDict']]]]
+        """
+        The array property of the action
+        """
+        boolean_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesBooleanPropsArgsDict']]]]
+        """
+        The boolean property of the action
+        """
+        number_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesNumberPropsArgsDict']]]]
+        """
+        The number property of the action
+        """
+        object_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesObjectPropsArgsDict']]]]
+        """
+        The object property of the action
+        """
+        string_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsArgsDict']]]]
+        """
+        The string property of the action
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionSelfServiceTriggerUserPropertiesArgs:
@@ -1185,6 +1627,71 @@ class ActionSelfServiceTriggerUserPropertiesArgs:
     def string_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsArgs']]]]):
         pulumi.set(self, "string_props", value)
 
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesArrayPropsArgsDict(TypedDict):
+        boolean_items: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgsDict']]
+        """
+        An array of boolean items within the property
+        """
+        default_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The default jq query of the array property
+        """
+        depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The properties that this property depends on
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the property
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the property
+        """
+        max_items: NotRequired[pulumi.Input[int]]
+        """
+        The max items of the array property
+        """
+        min_items: NotRequired[pulumi.Input[int]]
+        """
+        The min items of the array property
+        """
+        number_items: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgsDict']]
+        """
+        An array of number items within the property
+        """
+        object_items: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgsDict']]
+        """
+        An array of object items within the property
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
+        """
+        sort: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsSortArgsDict']]
+        """
+        How to sort entities when in the self service action form in the UI
+        """
+        string_items: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgsDict']]
+        """
+        An array of string items within the property
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the property
+        """
+        visible: NotRequired[pulumi.Input[bool]]
+        """
+        The visibility of the array property
+        """
+        visible_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The visibility condition jq query of the array property
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesArrayPropsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionSelfServiceTriggerUserPropertiesArrayPropsArgs:
@@ -1433,6 +1940,15 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsArgs:
         pulumi.set(self, "visible_jq_query", value)
 
 
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgsDict(TypedDict):
+        defaults: NotRequired[pulumi.Input[Sequence[pulumi.Input[bool]]]]
+        """
+        The default values for the boolean items
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs:
     def __init__(__self__, *,
@@ -1455,6 +1971,23 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItemsArgs:
     def defaults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[bool]]]]):
         pulumi.set(self, "defaults", value)
 
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgsDict(TypedDict):
+        defaults: NotRequired[pulumi.Input[Sequence[pulumi.Input[float]]]]
+        """
+        The default values for the number items
+        """
+        enum_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The jq query for the enum number items
+        """
+        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[float]]]]
+        """
+        The enum of possible values for the number items
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs:
@@ -1511,6 +2044,15 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs:
         pulumi.set(self, "enums", value)
 
 
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgsDict(TypedDict):
+        defaults: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]
+        """
+        The default values for the object items
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs:
     def __init__(__self__, *,
@@ -1533,6 +2075,19 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs:
     def defaults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
         pulumi.set(self, "defaults", value)
 
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesArrayPropsSortArgsDict(TypedDict):
+        property: pulumi.Input[str]
+        """
+        The property to sort the entities by
+        """
+        order: NotRequired[pulumi.Input[str]]
+        """
+        The order to sort the entities in
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesArrayPropsSortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionSelfServiceTriggerUserPropertiesArrayPropsSortArgs:
@@ -1571,6 +2126,35 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsSortArgs:
     def property(self, value: pulumi.Input[str]):
         pulumi.set(self, "property", value)
 
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier the action relates to
+        """
+        dataset: NotRequired[pulumi.Input[str]]
+        """
+        The dataset of the entity-format items
+        """
+        defaults: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The default value of the items
+        """
+        enum_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The jq query for the enum of string items
+        """
+        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The enum of possible values for the string items
+        """
+        format: NotRequired[pulumi.Input[str]]
+        """
+        The format of the string property, Accepted values include `date-time`, `url`, `email`, `ipv4`, `ipv6`, `yaml`, `entity`, `user`, `team`, `proto`, `markdown`
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs:
@@ -1674,6 +2258,47 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs:
     def format(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "format", value)
 
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesBooleanPropsArgsDict(TypedDict):
+        default: NotRequired[pulumi.Input[bool]]
+        """
+        The default of the boolean property
+        """
+        default_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The default jq query of the boolean property
+        """
+        depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The properties that this property depends on
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the property
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the property
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the property
+        """
+        visible: NotRequired[pulumi.Input[bool]]
+        """
+        The visibility of the boolean property
+        """
+        visible_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The visibility condition jq query of the boolean property
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesBooleanPropsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs:
@@ -1825,6 +2450,63 @@ class ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs:
     def visible_jq_query(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "visible_jq_query", value)
 
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesNumberPropsArgsDict(TypedDict):
+        default: NotRequired[pulumi.Input[float]]
+        """
+        The default of the number property
+        """
+        default_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The default jq query of the number property
+        """
+        depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The properties that this property depends on
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the property
+        """
+        enum_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The enum jq query of the string property
+        """
+        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[float]]]]
+        """
+        The enum of the number property
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the property
+        """
+        maximum: NotRequired[pulumi.Input[float]]
+        """
+        The min of the number property
+        """
+        minimum: NotRequired[pulumi.Input[float]]
+        """
+        The max of the number property
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the property
+        """
+        visible: NotRequired[pulumi.Input[bool]]
+        """
+        The visibility of the number property
+        """
+        visible_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The visibility condition jq query of the number property
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesNumberPropsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionSelfServiceTriggerUserPropertiesNumberPropsArgs:
@@ -2041,6 +2723,51 @@ class ActionSelfServiceTriggerUserPropertiesNumberPropsArgs:
         pulumi.set(self, "visible_jq_query", value)
 
 
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesObjectPropsArgsDict(TypedDict):
+        default: NotRequired[pulumi.Input[str]]
+        """
+        The default of the object property
+        """
+        default_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The default jq query of the object property
+        """
+        depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The properties that this property depends on
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the property
+        """
+        encryption: NotRequired[pulumi.Input[str]]
+        """
+        The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the property
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the property
+        """
+        visible: NotRequired[pulumi.Input[bool]]
+        """
+        The visibility of the object property
+        """
+        visible_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The visibility condition jq query of the object property
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesObjectPropsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ActionSelfServiceTriggerUserPropertiesObjectPropsArgs:
     def __init__(__self__, *,
@@ -2207,6 +2934,87 @@ class ActionSelfServiceTriggerUserPropertiesObjectPropsArgs:
     def visible_jq_query(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "visible_jq_query", value)
 
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesStringPropsArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier the string property relates to
+        """
+        dataset: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgsDict']]
+        """
+        The dataset of an the entity-format property
+        """
+        default: NotRequired[pulumi.Input[str]]
+        """
+        The default of the string property
+        """
+        default_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The default jq query of the string property
+        """
+        depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The properties that this property depends on
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the property
+        """
+        encryption: NotRequired[pulumi.Input[str]]
+        """
+        The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
+        """
+        enum_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The enum jq query of the string property
+        """
+        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The enum of the string property
+        """
+        format: NotRequired[pulumi.Input[str]]
+        """
+        The format of the string property, Accepted values include `date-time`, `url`, `email`, `ipv4`, `ipv6`, `yaml`, `entity`, `user`, `team`, `proto`, `markdown`
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the property
+        """
+        max_length: NotRequired[pulumi.Input[int]]
+        """
+        The max length of the string property
+        """
+        min_length: NotRequired[pulumi.Input[int]]
+        """
+        The min length of the string property
+        """
+        pattern: NotRequired[pulumi.Input[str]]
+        """
+        The pattern of the string property
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
+        """
+        sort: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsSortArgsDict']]
+        """
+        How to sort entities when in the self service action form in the UI
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the property
+        """
+        visible: NotRequired[pulumi.Input[bool]]
+        """
+        The visibility of the string property
+        """
+        visible_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The visibility condition jq query of the string property
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesStringPropsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
@@ -2519,6 +3327,19 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
         pulumi.set(self, "visible_jq_query", value)
 
 
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgsDict(TypedDict):
+        combinator: pulumi.Input[str]
+        """
+        The combinator of the dataset
+        """
+        rules: pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgsDict']]]
+        """
+        The rules of the dataset
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs:
     def __init__(__self__, *,
@@ -2555,6 +3376,27 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs:
     def rules(self, value: pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs']]]):
         pulumi.set(self, "rules", value)
 
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgsDict(TypedDict):
+        operator: pulumi.Input[str]
+        """
+        The operator of the rule
+        """
+        value: pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgsDict']
+        """
+        The value of the rule
+        """
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier the action relates to
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs:
@@ -2625,6 +3467,12 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs:
         pulumi.set(self, "property", value)
 
 
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs:
     def __init__(__self__, *,
@@ -2640,6 +3488,19 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs:
     def jq_query(self, value: pulumi.Input[str]):
         pulumi.set(self, "jq_query", value)
 
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesStringPropsSortArgsDict(TypedDict):
+        property: pulumi.Input[str]
+        """
+        The property to sort the entities by
+        """
+        order: NotRequired[pulumi.Input[str]]
+        """
+        The order to sort the entities in
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesStringPropsSortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionSelfServiceTriggerUserPropertiesStringPropsSortArgs:
@@ -2678,6 +3539,23 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsSortArgs:
     def property(self, value: pulumi.Input[str]):
         pulumi.set(self, "property", value)
 
+
+if not MYPY:
+    class ActionUpsertEntityMethodArgsDict(TypedDict):
+        blueprint_identifier: pulumi.Input[str]
+        """
+        Required when selecting type Upsert Entity. The blueprint identifier of the entity for the upsert
+        """
+        mapping: NotRequired[pulumi.Input['ActionUpsertEntityMethodMappingArgsDict']]
+        """
+        Upsert Entity invocation method
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the entity
+        """
+elif False:
+    ActionUpsertEntityMethodArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionUpsertEntityMethodArgs:
@@ -2732,6 +3610,31 @@ class ActionUpsertEntityMethodArgs:
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
 
+
+if not MYPY:
+    class ActionUpsertEntityMethodMappingArgsDict(TypedDict):
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the entity
+        """
+        identifier: NotRequired[pulumi.Input[str]]
+        """
+        Required when selecting type Upsert Entity. The entity identifier for the upsert
+        """
+        properties: NotRequired[pulumi.Input[str]]
+        """
+        The properties of the entity (key-value object encoded to a string)
+        """
+        relations: NotRequired[pulumi.Input[str]]
+        """
+        The relations of the entity (key-value object encoded to a string)
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The teams the entity belongs to
+        """
+elif False:
+    ActionUpsertEntityMethodMappingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionUpsertEntityMethodMappingArgs:
@@ -2819,6 +3722,35 @@ class ActionUpsertEntityMethodMappingArgs:
     def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "teams", value)
 
+
+if not MYPY:
+    class ActionWebhookMethodArgsDict(TypedDict):
+        url: pulumi.Input[str]
+        """
+        Required when selecting type WEBHOOK. The URL to invoke the action
+        """
+        agent: NotRequired[pulumi.Input[str]]
+        """
+        Specifies whether to use an agent to invoke the action. This can be a boolean value (`'true''` or `'false'`) or a JQ if dynamic evaluation is needed.
+        """
+        body: NotRequired[pulumi.Input[str]]
+        """
+        The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+        """
+        headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The HTTP headers for invoking the action. They should be encoded as a key-value object to a string using jsonencode. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+        """
+        method: NotRequired[pulumi.Input[str]]
+        """
+        The HTTP method to invoke the action
+        """
+        synchronized: NotRequired[pulumi.Input[str]]
+        """
+        Synchronize the action
+        """
+elif False:
+    ActionWebhookMethodArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ActionWebhookMethodArgs:
@@ -2922,6 +3854,35 @@ class ActionWebhookMethodArgs:
         pulumi.set(self, "synchronized", value)
 
 
+if not MYPY:
+    class AggregationPropertiesPropertiesArgsDict(TypedDict):
+        method: pulumi.Input['AggregationPropertiesPropertiesMethodArgsDict']
+        """
+        The aggregation method to perform on the target blueprint, one of count*entities, average*entities, average*by*property, aggregate*by*property
+        """
+        target_blueprint_identifier: pulumi.Input[str]
+        """
+        The identifier of the blueprint to perform the aggregation on
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the aggregation property
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the aggregation property
+        """
+        query: NotRequired[pulumi.Input[str]]
+        """
+        Query to filter the target entities
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the aggregation property
+        """
+elif False:
+    AggregationPropertiesPropertiesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AggregationPropertiesPropertiesArgs:
     def __init__(__self__, *,
@@ -3023,6 +3984,27 @@ class AggregationPropertiesPropertiesArgs:
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class AggregationPropertiesPropertiesMethodArgsDict(TypedDict):
+        aggregate_by_property: NotRequired[pulumi.Input['AggregationPropertiesPropertiesMethodAggregateByPropertyArgsDict']]
+        """
+        Function to calculate the aggregate by property value of the target entities, such as sum, min, max, median
+        """
+        average_by_property: NotRequired[pulumi.Input['AggregationPropertiesPropertiesMethodAverageByPropertyArgsDict']]
+        """
+        Function to calculate the average by property value of the target entities
+        """
+        average_entities: NotRequired[pulumi.Input['AggregationPropertiesPropertiesMethodAverageEntitiesArgsDict']]
+        """
+        Function to average the entities of the target entities
+        """
+        count_entities: NotRequired[pulumi.Input[bool]]
+        """
+        Function to count the entities of the target entities
+        """
+elif False:
+    AggregationPropertiesPropertiesMethodArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AggregationPropertiesPropertiesMethodArgs:
     def __init__(__self__, *,
@@ -3094,6 +4076,19 @@ class AggregationPropertiesPropertiesMethodArgs:
         pulumi.set(self, "count_entities", value)
 
 
+if not MYPY:
+    class AggregationPropertiesPropertiesMethodAggregateByPropertyArgsDict(TypedDict):
+        func: pulumi.Input[str]
+        """
+        The func of the aggregate by property
+        """
+        property: pulumi.Input[str]
+        """
+        The property of the aggregate by property
+        """
+elif False:
+    AggregationPropertiesPropertiesMethodAggregateByPropertyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AggregationPropertiesPropertiesMethodAggregateByPropertyArgs:
     def __init__(__self__, *,
@@ -3130,6 +4125,23 @@ class AggregationPropertiesPropertiesMethodAggregateByPropertyArgs:
     def property(self, value: pulumi.Input[str]):
         pulumi.set(self, "property", value)
 
+
+if not MYPY:
+    class AggregationPropertiesPropertiesMethodAverageByPropertyArgsDict(TypedDict):
+        average_of: pulumi.Input[str]
+        """
+        The time periods to calculate the average by, e.g. hour, day, week, month
+        """
+        measure_time_by: pulumi.Input[str]
+        """
+        The property name on which to calculate the the time periods, e.g. $createdAt, $updated_at or any other date property
+        """
+        property: pulumi.Input[str]
+        """
+        The property name on which to calculate the average by
+        """
+elif False:
+    AggregationPropertiesPropertiesMethodAverageByPropertyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AggregationPropertiesPropertiesMethodAverageByPropertyArgs:
@@ -3183,6 +4195,19 @@ class AggregationPropertiesPropertiesMethodAverageByPropertyArgs:
         pulumi.set(self, "property", value)
 
 
+if not MYPY:
+    class AggregationPropertiesPropertiesMethodAverageEntitiesArgsDict(TypedDict):
+        average_of: NotRequired[pulumi.Input[str]]
+        """
+        The time periods to calculate the average of, e.g. hour, day, week, month
+        """
+        measure_time_by: NotRequired[pulumi.Input[str]]
+        """
+        The property name on which to calculate the the time periods, e.g. $createdAt, $updated_at or any other date property
+        """
+elif False:
+    AggregationPropertiesPropertiesMethodAverageEntitiesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AggregationPropertiesPropertiesMethodAverageEntitiesArgs:
     def __init__(__self__, *,
@@ -3221,6 +4246,43 @@ class AggregationPropertiesPropertiesMethodAverageEntitiesArgs:
     def measure_time_by(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "measure_time_by", value)
 
+
+if not MYPY:
+    class BlueprintCalculationPropertiesArgsDict(TypedDict):
+        calculation: pulumi.Input[str]
+        """
+        The calculation of the calculation property
+        """
+        type: pulumi.Input[str]
+        """
+        The type of the calculation property
+        """
+        colorized: NotRequired[pulumi.Input[bool]]
+        """
+        The colorized of the calculation property
+        """
+        colors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The colors of the calculation property
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the calculation property
+        """
+        format: NotRequired[pulumi.Input[str]]
+        """
+        The format of the calculation property
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the calculation property
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the calculation property
+        """
+elif False:
+    BlueprintCalculationPropertiesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BlueprintCalculationPropertiesArgs:
@@ -3355,11 +4417,30 @@ class BlueprintCalculationPropertiesArgs:
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class BlueprintKafkaChangelogDestinationArgsDict(TypedDict):
+        pass
+elif False:
+    BlueprintKafkaChangelogDestinationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BlueprintKafkaChangelogDestinationArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class BlueprintMirrorPropertiesArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        The path of the mirror property
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the mirror property
+        """
+elif False:
+    BlueprintMirrorPropertiesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BlueprintMirrorPropertiesArgs:
@@ -3398,6 +4479,32 @@ class BlueprintMirrorPropertiesArgs:
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
 
+
+if not MYPY:
+    class BlueprintPermissionsEntitiesArgsDict(TypedDict):
+        register: pulumi.Input['BlueprintPermissionsEntitiesRegisterArgsDict']
+        """
+        Manage permissions to register entities of the blueprint
+        """
+        unregister: pulumi.Input['BlueprintPermissionsEntitiesUnregisterArgsDict']
+        """
+        Manage permissions to unregister entities of the blueprint
+        """
+        update: pulumi.Input['BlueprintPermissionsEntitiesUpdateArgsDict']
+        """
+        Manage permissions to update entities of the blueprint
+        """
+        update_metadata_properties: pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesArgsDict']
+        update_properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdatePropertiesArgsDict']]]]
+        """
+        Manage permissions to update the entity properties
+        """
+        update_relations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdateRelationsArgsDict']]]]
+        """
+        Manage permissions to update the entity relations
+        """
+elif False:
+    BlueprintPermissionsEntitiesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BlueprintPermissionsEntitiesArgs:
@@ -3494,6 +4601,27 @@ class BlueprintPermissionsEntitiesArgs:
         pulumi.set(self, "update_relations", value)
 
 
+if not MYPY:
+    class BlueprintPermissionsEntitiesRegisterArgsDict(TypedDict):
+        owned_by_team: NotRequired[pulumi.Input[bool]]
+        """
+        Owned by team
+        """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Roles with register permissions
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Teams with register permissions
+        """
+        users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Users with register permissions
+        """
+elif False:
+    BlueprintPermissionsEntitiesRegisterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BlueprintPermissionsEntitiesRegisterArgs:
     def __init__(__self__, *,
@@ -3564,6 +4692,27 @@ class BlueprintPermissionsEntitiesRegisterArgs:
     def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "users", value)
 
+
+if not MYPY:
+    class BlueprintPermissionsEntitiesUnregisterArgsDict(TypedDict):
+        owned_by_team: NotRequired[pulumi.Input[bool]]
+        """
+        Owned by team
+        """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Roles with unregister permissions
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Teams with unregister permissions
+        """
+        users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Users with unregister permissions
+        """
+elif False:
+    BlueprintPermissionsEntitiesUnregisterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BlueprintPermissionsEntitiesUnregisterArgs:
@@ -3636,6 +4785,27 @@ class BlueprintPermissionsEntitiesUnregisterArgs:
         pulumi.set(self, "users", value)
 
 
+if not MYPY:
+    class BlueprintPermissionsEntitiesUpdateArgsDict(TypedDict):
+        owned_by_team: NotRequired[pulumi.Input[bool]]
+        """
+        Owned by team
+        """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Roles with update permissions
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Teams with update permissions
+        """
+        users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Users with update permissions
+        """
+elif False:
+    BlueprintPermissionsEntitiesUpdateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BlueprintPermissionsEntitiesUpdateArgs:
     def __init__(__self__, *,
@@ -3707,6 +4877,27 @@ class BlueprintPermissionsEntitiesUpdateArgs:
         pulumi.set(self, "users", value)
 
 
+if not MYPY:
+    class BlueprintPermissionsEntitiesUpdateMetadataPropertiesArgsDict(TypedDict):
+        icon: pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconArgsDict']
+        """
+        The entity's icon
+        """
+        identifier: pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierArgsDict']
+        """
+        Unique Entity identifier, used for API calls, programmatic access and distinguishing between different entities
+        """
+        team: pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamArgsDict']
+        """
+        The team this entity belongs to
+        """
+        title: pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleArgsDict']
+        """
+        A human-readable name for the entity
+        """
+elif False:
+    BlueprintPermissionsEntitiesUpdateMetadataPropertiesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BlueprintPermissionsEntitiesUpdateMetadataPropertiesArgs:
     def __init__(__self__, *,
@@ -3773,6 +4964,27 @@ class BlueprintPermissionsEntitiesUpdateMetadataPropertiesArgs:
     def title(self, value: pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleArgs']):
         pulumi.set(self, "title", value)
 
+
+if not MYPY:
+    class BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconArgsDict(TypedDict):
+        owned_by_team: NotRequired[pulumi.Input[bool]]
+        """
+        Owned by team
+        """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Roles with update `$icon` metadata permissions
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Teams with update `$icon` metadata permissions
+        """
+        users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Users with update `$icon` metadata permissions
+        """
+elif False:
+    BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconArgs:
@@ -3845,6 +5057,27 @@ class BlueprintPermissionsEntitiesUpdateMetadataPropertiesIconArgs:
         pulumi.set(self, "users", value)
 
 
+if not MYPY:
+    class BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierArgsDict(TypedDict):
+        owned_by_team: NotRequired[pulumi.Input[bool]]
+        """
+        Owned by team
+        """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Roles with update `$identifier` metadata permissions
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Teams with update `$identifier` metadata permissions
+        """
+        users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Users with update `$identifier` metadata permissions
+        """
+elif False:
+    BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierArgs:
     def __init__(__self__, *,
@@ -3915,6 +5148,27 @@ class BlueprintPermissionsEntitiesUpdateMetadataPropertiesIdentifierArgs:
     def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "users", value)
 
+
+if not MYPY:
+    class BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamArgsDict(TypedDict):
+        owned_by_team: NotRequired[pulumi.Input[bool]]
+        """
+        Owned by team
+        """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Roles with update `$team` metadata permissions
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Teams with update `$team` metadata permissions
+        """
+        users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Users with update `$team` metadata permissions
+        """
+elif False:
+    BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamArgs:
@@ -3987,6 +5241,27 @@ class BlueprintPermissionsEntitiesUpdateMetadataPropertiesTeamArgs:
         pulumi.set(self, "users", value)
 
 
+if not MYPY:
+    class BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleArgsDict(TypedDict):
+        owned_by_team: NotRequired[pulumi.Input[bool]]
+        """
+        Owned by team
+        """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Roles with update `$title` metadata permissions
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Teams with update `$title` metadata permissions
+        """
+        users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Users with update `$title` metadata permissions
+        """
+elif False:
+    BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleArgs:
     def __init__(__self__, *,
@@ -4057,6 +5332,27 @@ class BlueprintPermissionsEntitiesUpdateMetadataPropertiesTitleArgs:
     def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "users", value)
 
+
+if not MYPY:
+    class BlueprintPermissionsEntitiesUpdatePropertiesArgsDict(TypedDict):
+        owned_by_team: NotRequired[pulumi.Input[bool]]
+        """
+        Owned by team
+        """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Roles with update specific property permissions
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Teams with update specific property permissions
+        """
+        users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Users with update specific property permissions
+        """
+elif False:
+    BlueprintPermissionsEntitiesUpdatePropertiesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BlueprintPermissionsEntitiesUpdatePropertiesArgs:
@@ -4129,6 +5425,27 @@ class BlueprintPermissionsEntitiesUpdatePropertiesArgs:
         pulumi.set(self, "users", value)
 
 
+if not MYPY:
+    class BlueprintPermissionsEntitiesUpdateRelationsArgsDict(TypedDict):
+        owned_by_team: NotRequired[pulumi.Input[bool]]
+        """
+        Owned by team
+        """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Roles with update specific relation permissions
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Teams with update specific relation permissions
+        """
+        users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Users with update specific relation permissions
+        """
+elif False:
+    BlueprintPermissionsEntitiesUpdateRelationsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BlueprintPermissionsEntitiesUpdateRelationsArgs:
     def __init__(__self__, *,
@@ -4199,6 +5516,31 @@ class BlueprintPermissionsEntitiesUpdateRelationsArgs:
     def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "users", value)
 
+
+if not MYPY:
+    class BlueprintPropertiesArgsDict(TypedDict):
+        array_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPropertiesArrayPropsArgsDict']]]]
+        """
+        The array property of the blueprint
+        """
+        boolean_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPropertiesBooleanPropsArgsDict']]]]
+        """
+        The boolean property of the blueprint
+        """
+        number_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPropertiesNumberPropsArgsDict']]]]
+        """
+        The number property of the blueprint
+        """
+        object_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPropertiesObjectPropsArgsDict']]]]
+        """
+        The object property of the blueprint
+        """
+        string_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPropertiesStringPropsArgsDict']]]]
+        """
+        The string property of the blueprint
+        """
+elif False:
+    BlueprintPropertiesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BlueprintPropertiesArgs:
@@ -4286,6 +5628,51 @@ class BlueprintPropertiesArgs:
     def string_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPropertiesStringPropsArgs']]]]):
         pulumi.set(self, "string_props", value)
 
+
+if not MYPY:
+    class BlueprintPropertiesArrayPropsArgsDict(TypedDict):
+        boolean_items: NotRequired[pulumi.Input['BlueprintPropertiesArrayPropsBooleanItemsArgsDict']]
+        """
+        The items of the array property
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the property
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the property
+        """
+        max_items: NotRequired[pulumi.Input[int]]
+        """
+        The max items of the array property
+        """
+        min_items: NotRequired[pulumi.Input[int]]
+        """
+        The min items of the array property
+        """
+        number_items: NotRequired[pulumi.Input['BlueprintPropertiesArrayPropsNumberItemsArgsDict']]
+        """
+        The items of the array property
+        """
+        object_items: NotRequired[pulumi.Input['BlueprintPropertiesArrayPropsObjectItemsArgsDict']]
+        """
+        The items of the array property
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the property is required
+        """
+        string_items: NotRequired[pulumi.Input['BlueprintPropertiesArrayPropsStringItemsArgsDict']]
+        """
+        The items of the array property
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the property
+        """
+elif False:
+    BlueprintPropertiesArrayPropsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BlueprintPropertiesArrayPropsArgs:
@@ -4454,6 +5841,15 @@ class BlueprintPropertiesArrayPropsArgs:
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class BlueprintPropertiesArrayPropsBooleanItemsArgsDict(TypedDict):
+        defaults: NotRequired[pulumi.Input[Sequence[pulumi.Input[bool]]]]
+        """
+        The default of the items
+        """
+elif False:
+    BlueprintPropertiesArrayPropsBooleanItemsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BlueprintPropertiesArrayPropsBooleanItemsArgs:
     def __init__(__self__, *,
@@ -4476,6 +5872,15 @@ class BlueprintPropertiesArrayPropsBooleanItemsArgs:
     def defaults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[bool]]]]):
         pulumi.set(self, "defaults", value)
 
+
+if not MYPY:
+    class BlueprintPropertiesArrayPropsNumberItemsArgsDict(TypedDict):
+        defaults: NotRequired[pulumi.Input[Sequence[pulumi.Input[float]]]]
+        """
+        The default of the items
+        """
+elif False:
+    BlueprintPropertiesArrayPropsNumberItemsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BlueprintPropertiesArrayPropsNumberItemsArgs:
@@ -4500,6 +5905,15 @@ class BlueprintPropertiesArrayPropsNumberItemsArgs:
         pulumi.set(self, "defaults", value)
 
 
+if not MYPY:
+    class BlueprintPropertiesArrayPropsObjectItemsArgsDict(TypedDict):
+        defaults: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The default of the items
+        """
+elif False:
+    BlueprintPropertiesArrayPropsObjectItemsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BlueprintPropertiesArrayPropsObjectItemsArgs:
     def __init__(__self__, *,
@@ -4522,6 +5936,19 @@ class BlueprintPropertiesArrayPropsObjectItemsArgs:
     def defaults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "defaults", value)
 
+
+if not MYPY:
+    class BlueprintPropertiesArrayPropsStringItemsArgsDict(TypedDict):
+        defaults: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The default of the items
+        """
+        format: NotRequired[pulumi.Input[str]]
+        """
+        The format of the items
+        """
+elif False:
+    BlueprintPropertiesArrayPropsStringItemsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BlueprintPropertiesArrayPropsStringItemsArgs:
@@ -4561,6 +5988,31 @@ class BlueprintPropertiesArrayPropsStringItemsArgs:
     def format(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "format", value)
 
+
+if not MYPY:
+    class BlueprintPropertiesBooleanPropsArgsDict(TypedDict):
+        default: NotRequired[pulumi.Input[bool]]
+        """
+        The default of the boolean property
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the property
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the property
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the property is required
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the property
+        """
+elif False:
+    BlueprintPropertiesBooleanPropsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BlueprintPropertiesBooleanPropsArgs:
@@ -4648,6 +6100,47 @@ class BlueprintPropertiesBooleanPropsArgs:
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
 
+
+if not MYPY:
+    class BlueprintPropertiesNumberPropsArgsDict(TypedDict):
+        default: NotRequired[pulumi.Input[float]]
+        """
+        The default of the number property
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the property
+        """
+        enum_colors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The enum colors of the number property
+        """
+        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[float]]]]
+        """
+        The enum of the number property
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the property
+        """
+        maximum: NotRequired[pulumi.Input[float]]
+        """
+        The min of the number property
+        """
+        minimum: NotRequired[pulumi.Input[float]]
+        """
+        The max of the number property
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the property is required
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the property
+        """
+elif False:
+    BlueprintPropertiesNumberPropsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BlueprintPropertiesNumberPropsArgs:
@@ -4800,6 +6293,35 @@ class BlueprintPropertiesNumberPropsArgs:
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class BlueprintPropertiesObjectPropsArgsDict(TypedDict):
+        default: NotRequired[pulumi.Input[str]]
+        """
+        The default of the object property
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the property
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the property
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the property is required
+        """
+        spec: NotRequired[pulumi.Input[str]]
+        """
+        The spec of the object property
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the property
+        """
+elif False:
+    BlueprintPropertiesObjectPropsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BlueprintPropertiesObjectPropsArgs:
     def __init__(__self__, *,
@@ -4902,6 +6424,63 @@ class BlueprintPropertiesObjectPropsArgs:
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
 
+
+if not MYPY:
+    class BlueprintPropertiesStringPropsArgsDict(TypedDict):
+        default: NotRequired[pulumi.Input[str]]
+        """
+        The default of the string property
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the property
+        """
+        enum_colors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The enum colors of the string property
+        """
+        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The enum of the string property
+        """
+        format: NotRequired[pulumi.Input[str]]
+        """
+        The format of the string property
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the property
+        """
+        max_length: NotRequired[pulumi.Input[int]]
+        """
+        The max length of the string property
+        """
+        min_length: NotRequired[pulumi.Input[int]]
+        """
+        The min length of the string property
+        """
+        pattern: NotRequired[pulumi.Input[str]]
+        """
+        The pattern of the string property
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the property is required
+        """
+        spec: NotRequired[pulumi.Input[str]]
+        """
+        The spec of the string property
+        """
+        spec_authentication: NotRequired[pulumi.Input['BlueprintPropertiesStringPropsSpecAuthenticationArgsDict']]
+        """
+        The spec authentication of the string property
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the property
+        """
+elif False:
+    BlueprintPropertiesStringPropsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BlueprintPropertiesStringPropsArgs:
@@ -5118,6 +6697,23 @@ class BlueprintPropertiesStringPropsArgs:
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class BlueprintPropertiesStringPropsSpecAuthenticationArgsDict(TypedDict):
+        authorization_url: pulumi.Input[str]
+        """
+        The authorizationUrl of the spec authentication
+        """
+        client_id: pulumi.Input[str]
+        """
+        The clientId of the spec authentication
+        """
+        token_url: pulumi.Input[str]
+        """
+        The tokenUrl of the spec authentication
+        """
+elif False:
+    BlueprintPropertiesStringPropsSpecAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BlueprintPropertiesStringPropsSpecAuthenticationArgs:
     def __init__(__self__, *,
@@ -5169,6 +6765,31 @@ class BlueprintPropertiesStringPropsSpecAuthenticationArgs:
     def token_url(self, value: pulumi.Input[str]):
         pulumi.set(self, "token_url", value)
 
+
+if not MYPY:
+    class BlueprintRelationsArgsDict(TypedDict):
+        target: pulumi.Input[str]
+        """
+        The target of the relation
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the relation
+        """
+        many: NotRequired[pulumi.Input[bool]]
+        """
+        The many of the relation
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        The required of the relation
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the relation
+        """
+elif False:
+    BlueprintRelationsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BlueprintRelationsArgs:
@@ -5256,6 +6877,15 @@ class BlueprintRelationsArgs:
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class BlueprintTeamInheritanceArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        The path of the team inheritance
+        """
+elif False:
+    BlueprintTeamInheritanceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BlueprintTeamInheritanceArgs:
     def __init__(__self__, *,
@@ -5277,6 +6907,19 @@ class BlueprintTeamInheritanceArgs:
     def path(self, value: pulumi.Input[str]):
         pulumi.set(self, "path", value)
 
+
+if not MYPY:
+    class BlueprintWebhookChangelogDestinationArgsDict(TypedDict):
+        url: pulumi.Input[str]
+        """
+        The url of the webhook changelog destination
+        """
+        agent: NotRequired[pulumi.Input[bool]]
+        """
+        The agent of the webhook changelog destination
+        """
+elif False:
+    BlueprintWebhookChangelogDestinationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BlueprintWebhookChangelogDestinationArgs:
@@ -5315,6 +6958,31 @@ class BlueprintWebhookChangelogDestinationArgs:
     def agent(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "agent", value)
 
+
+if not MYPY:
+    class EntityPropertiesArgsDict(TypedDict):
+        array_props: NotRequired[pulumi.Input['EntityPropertiesArrayPropsArgsDict']]
+        """
+        The array properties of the entity
+        """
+        boolean_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[bool]]]]
+        """
+        The bool properties of the entity
+        """
+        number_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[float]]]]
+        """
+        The number properties of the entity
+        """
+        object_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The object properties of the entity
+        """
+        string_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The string properties of the entity
+        """
+elif False:
+    EntityPropertiesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EntityPropertiesArgs:
@@ -5403,6 +7071,15 @@ class EntityPropertiesArgs:
         pulumi.set(self, "string_props", value)
 
 
+if not MYPY:
+    class EntityPropertiesArrayPropsArgsDict(TypedDict):
+        boolean_items: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[bool]]]]]]
+        number_items: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[float]]]]]]
+        object_items: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[str]]]]]]
+        string_items: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[str]]]]]]
+elif False:
+    EntityPropertiesArrayPropsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EntityPropertiesArrayPropsArgs:
     def __init__(__self__, *,
@@ -5456,6 +7133,19 @@ class EntityPropertiesArrayPropsArgs:
         pulumi.set(self, "string_items", value)
 
 
+if not MYPY:
+    class EntityRelationsArgsDict(TypedDict):
+        many_relations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[str]]]]]]
+        """
+        The many relation of the entity
+        """
+        single_relations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The single relation of the entity
+        """
+elif False:
+    EntityRelationsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EntityRelationsArgs:
     def __init__(__self__, *,
@@ -5495,11 +7185,30 @@ class EntityRelationsArgs:
         pulumi.set(self, "single_relations", value)
 
 
+if not MYPY:
+    class IntegrationKafkaChangelogDestinationArgsDict(TypedDict):
+        pass
+elif False:
+    IntegrationKafkaChangelogDestinationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class IntegrationKafkaChangelogDestinationArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class IntegrationWebhookChangelogDestinationArgsDict(TypedDict):
+        url: pulumi.Input[str]
+        """
+        The url of the webhook changelog destination
+        """
+        agent: NotRequired[pulumi.Input[bool]]
+        """
+        The agent of the webhook changelog destination
+        """
+elif False:
+    IntegrationWebhookChangelogDestinationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class IntegrationWebhookChangelogDestinationArgs:
@@ -5538,6 +7247,23 @@ class IntegrationWebhookChangelogDestinationArgs:
     def agent(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "agent", value)
 
+
+if not MYPY:
+    class PagePermissionsReadArgsDict(TypedDict):
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The roles with read permission
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The teams with read permission
+        """
+        users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The users with read permission
+        """
+elif False:
+    PagePermissionsReadArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PagePermissionsReadArgs:
@@ -5594,6 +7320,19 @@ class PagePermissionsReadArgs:
         pulumi.set(self, "users", value)
 
 
+if not MYPY:
+    class ScorecardLevelArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        """
+        The color of the level
+        """
+        title: pulumi.Input[str]
+        """
+        The title of the level
+        """
+elif False:
+    ScorecardLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ScorecardLevelArgs:
     def __init__(__self__, *,
@@ -5630,6 +7369,27 @@ class ScorecardLevelArgs:
     def title(self, value: pulumi.Input[str]):
         pulumi.set(self, "title", value)
 
+
+if not MYPY:
+    class ScorecardRuleArgsDict(TypedDict):
+        identifier: pulumi.Input[str]
+        """
+        The identifier of the rule
+        """
+        level: pulumi.Input[str]
+        """
+        The level of the rule
+        """
+        query: pulumi.Input['ScorecardRuleQueryArgsDict']
+        """
+        The query of the rule
+        """
+        title: pulumi.Input[str]
+        """
+        The title of the rule
+        """
+elif False:
+    ScorecardRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ScorecardRuleArgs:
@@ -5698,6 +7458,19 @@ class ScorecardRuleArgs:
         pulumi.set(self, "title", value)
 
 
+if not MYPY:
+    class ScorecardRuleQueryArgsDict(TypedDict):
+        combinator: pulumi.Input[str]
+        """
+        The combinator of the query
+        """
+        conditions: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The conditions of the query. Each condition object should be encoded to a string
+        """
+elif False:
+    ScorecardRuleQueryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ScorecardRuleQueryArgs:
     def __init__(__self__, *,
@@ -5734,6 +7507,27 @@ class ScorecardRuleQueryArgs:
     def conditions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "conditions", value)
 
+
+if not MYPY:
+    class WebhookMappingArgsDict(TypedDict):
+        blueprint: pulumi.Input[str]
+        """
+        The blueprint of the mapping
+        """
+        entity: pulumi.Input['WebhookMappingEntityArgsDict']
+        """
+        The entity of the mapping
+        """
+        filter: NotRequired[pulumi.Input[str]]
+        """
+        The filter of the mapping
+        """
+        items_to_parse: NotRequired[pulumi.Input[str]]
+        """
+        The items to parser of the mapping
+        """
+elif False:
+    WebhookMappingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WebhookMappingArgs:
@@ -5803,6 +7597,35 @@ class WebhookMappingArgs:
     def items_to_parse(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "items_to_parse", value)
 
+
+if not MYPY:
+    class WebhookMappingEntityArgsDict(TypedDict):
+        identifier: pulumi.Input[str]
+        """
+        The identifier of the entity
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the entity
+        """
+        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The properties of the entity
+        """
+        relations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The relations of the entity
+        """
+        team: NotRequired[pulumi.Input[str]]
+        """
+        The team of the entity
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the entity
+        """
+elif False:
+    WebhookMappingEntityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WebhookMappingEntityArgs:
@@ -5905,6 +7728,31 @@ class WebhookMappingEntityArgs:
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
 
+
+if not MYPY:
+    class WebhookSecurityArgsDict(TypedDict):
+        request_identifier_path: NotRequired[pulumi.Input[str]]
+        """
+        The request identifier path of the webhook
+        """
+        secret: NotRequired[pulumi.Input[str]]
+        """
+        The secret of the webhook
+        """
+        signature_algorithm: NotRequired[pulumi.Input[str]]
+        """
+        The signature algorithm of the webhook
+        """
+        signature_header_name: NotRequired[pulumi.Input[str]]
+        """
+        The signature header name of the webhook
+        """
+        signature_prefix: NotRequired[pulumi.Input[str]]
+        """
+        The signature prefix of the webhook
+        """
+elif False:
+    WebhookSecurityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WebhookSecurityArgs:
