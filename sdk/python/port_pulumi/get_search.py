@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -167,9 +172,6 @@ def get_search(attach_title_to_relation: Optional[bool] = None,
         includes=pulumi.get(__ret__, 'includes'),
         matching_blueprints=pulumi.get(__ret__, 'matching_blueprints'),
         query=pulumi.get(__ret__, 'query'))
-
-
-@_utilities.lift_output_func(get_search)
 def get_search_output(attach_title_to_relation: Optional[pulumi.Input[Optional[bool]]] = None,
                       exclude_calculated_properties: Optional[pulumi.Input[Optional[bool]]] = None,
                       excludes: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -190,4 +192,20 @@ def get_search_output(attach_title_to_relation: Optional[pulumi.Input[Optional[b
     :param Sequence[str] includes: Properties to include in the results
     :param str query: The search query
     """
-    ...
+    __args__ = dict()
+    __args__['attachTitleToRelation'] = attach_title_to_relation
+    __args__['excludeCalculatedProperties'] = exclude_calculated_properties
+    __args__['excludes'] = excludes
+    __args__['includes'] = includes
+    __args__['query'] = query
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('port:index/getSearch:getSearch', __args__, opts=opts, typ=GetSearchResult)
+    return __ret__.apply(lambda __response__: GetSearchResult(
+        attach_title_to_relation=pulumi.get(__response__, 'attach_title_to_relation'),
+        entities=pulumi.get(__response__, 'entities'),
+        exclude_calculated_properties=pulumi.get(__response__, 'exclude_calculated_properties'),
+        excludes=pulumi.get(__response__, 'excludes'),
+        id=pulumi.get(__response__, 'id'),
+        includes=pulumi.get(__response__, 'includes'),
+        matching_blueprints=pulumi.get(__response__, 'matching_blueprints'),
+        query=pulumi.get(__response__, 'query')))
