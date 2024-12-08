@@ -274,7 +274,7 @@ export interface ActionSelfServiceTrigger {
     /**
      * User properties
      */
-    userProperties: outputs.ActionSelfServiceTriggerUserProperties;
+    userProperties?: outputs.ActionSelfServiceTriggerUserProperties;
 }
 
 export interface ActionSelfServiceTriggerStep {
