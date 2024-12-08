@@ -488,15 +488,7 @@
             "type": "object",
             "required": [
                 "operation"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "operation",
-                        "userProperties"
-                    ]
-                }
-            }
+            ]
         },
         "port:index/ActionSelfServiceTriggerStep:ActionSelfServiceTriggerStep": {
             "properties": {
