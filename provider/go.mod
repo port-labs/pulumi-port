@@ -10,7 +10,7 @@ require (
 	github.com/port-labs/terraform-provider-port-labs/v2 v2.1.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.49.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.96.0
-	github.com/pulumi/pulumi/sdk/v3 v3.140.0
+	github.com/pulumi/pulumi/sdk/v3 v3.142.0
 )
 
 require (
