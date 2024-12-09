@@ -1,5 +1,9 @@
 import * as port from "@port-labs/port";
 
+export const integration = new port.Integration("microservice", {
+
+}
+
 export const blueprint = new port.Blueprint("microservice", {
     identifier: "microservice",
     title: "Microservice",
