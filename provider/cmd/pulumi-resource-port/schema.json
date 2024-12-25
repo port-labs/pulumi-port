@@ -1093,6 +1093,10 @@
                         "type": "string"
                     },
                     "description": "The teams the entity belongs to\n"
+                },
+                "teamsJq": {
+                    "type": "string",
+                    "description": "Jq that returns the teams the entity belongs to\n"
                 }
             },
             "type": "object"
