@@ -6281,6 +6281,8 @@ type ActionUpsertEntityMethodMapping struct {
 	Relations *string `pulumi:"relations"`
 	// The teams the entity belongs to
 	Teams []string `pulumi:"teams"`
+	// Jq that returns the teams the entity belongs to
+	TeamsJq *string `pulumi:"teamsJq"`
 }
 
 // ActionUpsertEntityMethodMappingInput is an input type that accepts ActionUpsertEntityMethodMappingArgs and ActionUpsertEntityMethodMappingOutput values.
@@ -6305,6 +6307,8 @@ type ActionUpsertEntityMethodMappingArgs struct {
 	Relations pulumi.StringPtrInput `pulumi:"relations"`
 	// The teams the entity belongs to
 	Teams pulumi.StringArrayInput `pulumi:"teams"`
+	// Jq that returns the teams the entity belongs to
+	TeamsJq pulumi.StringPtrInput `pulumi:"teamsJq"`
 }
 
 func (ActionUpsertEntityMethodMappingArgs) ElementType() reflect.Type {
@@ -6409,6 +6413,11 @@ func (o ActionUpsertEntityMethodMappingOutput) Teams() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v ActionUpsertEntityMethodMapping) []string { return v.Teams }).(pulumi.StringArrayOutput)
 }
 
+// Jq that returns the teams the entity belongs to
+func (o ActionUpsertEntityMethodMappingOutput) TeamsJq() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUpsertEntityMethodMapping) *string { return v.TeamsJq }).(pulumi.StringPtrOutput)
+}
+
 type ActionUpsertEntityMethodMappingPtrOutput struct{ *pulumi.OutputState }
 
 func (ActionUpsertEntityMethodMappingPtrOutput) ElementType() reflect.Type {
@@ -6481,6 +6490,16 @@ func (o ActionUpsertEntityMethodMappingPtrOutput) Teams() pulumi.StringArrayOutp
 		}
 		return v.Teams
 	}).(pulumi.StringArrayOutput)
+}
+
+// Jq that returns the teams the entity belongs to
+func (o ActionUpsertEntityMethodMappingPtrOutput) TeamsJq() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionUpsertEntityMethodMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TeamsJq
+	}).(pulumi.StringPtrOutput)
 }
 
 type ActionWebhookMethod struct {

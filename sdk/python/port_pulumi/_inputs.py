@@ -3633,6 +3633,10 @@ if not MYPY:
         """
         The teams the entity belongs to
         """
+        teams_jq: NotRequired[pulumi.Input[str]]
+        """
+        Jq that returns the teams the entity belongs to
+        """
 elif False:
     ActionUpsertEntityMethodMappingArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3643,13 +3647,15 @@ class ActionUpsertEntityMethodMappingArgs:
                  identifier: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[str]] = None,
                  relations: Optional[pulumi.Input[str]] = None,
-                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 teams_jq: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] icon: The icon of the entity
         :param pulumi.Input[str] identifier: Required when selecting type Upsert Entity. The entity identifier for the upsert
         :param pulumi.Input[str] properties: The properties of the entity (key-value object encoded to a string)
         :param pulumi.Input[str] relations: The relations of the entity (key-value object encoded to a string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The teams the entity belongs to
+        :param pulumi.Input[str] teams_jq: Jq that returns the teams the entity belongs to
         """
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
@@ -3661,6 +3667,8 @@ class ActionUpsertEntityMethodMappingArgs:
             pulumi.set(__self__, "relations", relations)
         if teams is not None:
             pulumi.set(__self__, "teams", teams)
+        if teams_jq is not None:
+            pulumi.set(__self__, "teams_jq", teams_jq)
 
     @property
     @pulumi.getter
@@ -3721,6 +3729,18 @@ class ActionUpsertEntityMethodMappingArgs:
     @teams.setter
     def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "teams", value)
+
+    @property
+    @pulumi.getter(name="teamsJq")
+    def teams_jq(self) -> Optional[pulumi.Input[str]]:
+        """
+        Jq that returns the teams the entity belongs to
+        """
+        return pulumi.get(self, "teams_jq")
+
+    @teams_jq.setter
+    def teams_jq(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "teams_jq", value)
 
 
 if not MYPY:

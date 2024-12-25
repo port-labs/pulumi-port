@@ -738,6 +738,10 @@ export interface ActionUpsertEntityMethodMapping {
      * The teams the entity belongs to
      */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Jq that returns the teams the entity belongs to
+     */
+    teamsJq?: pulumi.Input<string>;
 }
 
 export interface ActionWebhookMethod {

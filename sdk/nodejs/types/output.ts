@@ -738,6 +738,10 @@ export interface ActionUpsertEntityMethodMapping {
      * The teams the entity belongs to
      */
     teams?: string[];
+    /**
+     * Jq that returns the teams the entity belongs to
+     */
+    teamsJq?: string;
 }
 
 export interface ActionWebhookMethod {
