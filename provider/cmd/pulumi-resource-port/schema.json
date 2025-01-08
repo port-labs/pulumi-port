@@ -1093,6 +1093,10 @@
                         "type": "string"
                     },
                     "description": "The teams the entity belongs to\n"
+                },
+                "teamsJq": {
+                    "type": "string",
+                    "description": "Jq that returns the teams the entity belongs to\n"
                 }
             },
             "type": "object"
@@ -1307,6 +1311,22 @@
             "type": "object",
             "required": [
                 "path"
+            ]
+        },
+        "port:index/BlueprintOwnership:BlueprintOwnership": {
+            "properties": {
+                "path": {
+                    "type": "string",
+                    "description": "Path for the Inherited ownership type. Required when type is 'Inherited'. Must be a valid relation identifiers path.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Ownership type: either 'Inherited' or 'Direct'.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
             ]
         },
         "port:index/BlueprintPermissionsEntities:BlueprintPermissionsEntities": {
@@ -3121,6 +3141,10 @@
                     },
                     "description": "The mirror properties of the blueprint\n"
                 },
+                "ownership": {
+                    "$ref": "#/types/port:index/BlueprintOwnership:BlueprintOwnership",
+                    "description": "Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and\nmust be a valid relation identifiers path.\n"
+                },
                 "properties": {
                     "$ref": "#/types/port:index/BlueprintProperties:BlueprintProperties",
                     "description": "The properties of the blueprint\n"
@@ -3201,6 +3225,10 @@
                     },
                     "description": "The mirror properties of the blueprint\n"
                 },
+                "ownership": {
+                    "$ref": "#/types/port:index/BlueprintOwnership:BlueprintOwnership",
+                    "description": "Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and\nmust be a valid relation identifiers path.\n"
+                },
                 "properties": {
                     "$ref": "#/types/port:index/BlueprintProperties:BlueprintProperties",
                     "description": "The properties of the blueprint\n"
@@ -3276,6 +3304,10 @@
                             "$ref": "#/types/port:index/BlueprintMirrorProperties:BlueprintMirrorProperties"
                         },
                         "description": "The mirror properties of the blueprint\n"
+                    },
+                    "ownership": {
+                        "$ref": "#/types/port:index/BlueprintOwnership:BlueprintOwnership",
+                        "description": "Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and\nmust be a valid relation identifiers path.\n"
                     },
                     "properties": {
                         "$ref": "#/types/port:index/BlueprintProperties:BlueprintProperties",

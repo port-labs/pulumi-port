@@ -72,6 +72,11 @@ export class Blueprint extends pulumi.CustomResource {
      */
     public readonly mirrorProperties!: pulumi.Output<{[key: string]: outputs.BlueprintMirrorProperties} | undefined>;
     /**
+     * Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+     * must be a valid relation identifiers path.
+     */
+    public readonly ownership!: pulumi.Output<outputs.BlueprintOwnership | undefined>;
+    /**
      * The properties of the blueprint
      */
     public readonly properties!: pulumi.Output<outputs.BlueprintProperties | undefined>;
@@ -123,6 +128,7 @@ export class Blueprint extends pulumi.CustomResource {
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["kafkaChangelogDestination"] = state ? state.kafkaChangelogDestination : undefined;
             resourceInputs["mirrorProperties"] = state ? state.mirrorProperties : undefined;
+            resourceInputs["ownership"] = state ? state.ownership : undefined;
             resourceInputs["properties"] = state ? state.properties : undefined;
             resourceInputs["relations"] = state ? state.relations : undefined;
             resourceInputs["teamInheritance"] = state ? state.teamInheritance : undefined;
@@ -146,6 +152,7 @@ export class Blueprint extends pulumi.CustomResource {
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["kafkaChangelogDestination"] = args ? args.kafkaChangelogDestination : undefined;
             resourceInputs["mirrorProperties"] = args ? args.mirrorProperties : undefined;
+            resourceInputs["ownership"] = args ? args.ownership : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["relations"] = args ? args.relations : undefined;
             resourceInputs["teamInheritance"] = args ? args.teamInheritance : undefined;
@@ -202,6 +209,11 @@ export interface BlueprintState {
      * The mirror properties of the blueprint
      */
     mirrorProperties?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintMirrorProperties>}>;
+    /**
+     * Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+     * must be a valid relation identifiers path.
+     */
+    ownership?: pulumi.Input<inputs.BlueprintOwnership>;
     /**
      * The properties of the blueprint
      */
@@ -265,6 +277,11 @@ export interface BlueprintArgs {
      * The mirror properties of the blueprint
      */
     mirrorProperties?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintMirrorProperties>}>;
+    /**
+     * Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+     * must be a valid relation identifiers path.
+     */
+    ownership?: pulumi.Input<inputs.BlueprintOwnership>;
     /**
      * The properties of the blueprint
      */

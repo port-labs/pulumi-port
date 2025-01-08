@@ -738,6 +738,10 @@ export interface ActionUpsertEntityMethodMapping {
      * The teams the entity belongs to
      */
     teams?: string[];
+    /**
+     * Jq that returns the teams the entity belongs to
+     */
+    teamsJq?: string;
 }
 
 export interface ActionWebhookMethod {
@@ -897,6 +901,17 @@ export interface BlueprintMirrorProperties {
      * The title of the mirror property
      */
     title?: string;
+}
+
+export interface BlueprintOwnership {
+    /**
+     * Path for the Inherited ownership type. Required when type is 'Inherited'. Must be a valid relation identifiers path.
+     */
+    path?: string;
+    /**
+     * Ownership type: either 'Inherited' or 'Direct'.
+     */
+    type: string;
 }
 
 export interface BlueprintPermissionsEntities {

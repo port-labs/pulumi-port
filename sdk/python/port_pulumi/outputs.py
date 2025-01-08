@@ -63,6 +63,7 @@ __all__ = [
     'BlueprintCalculationProperties',
     'BlueprintKafkaChangelogDestination',
     'BlueprintMirrorProperties',
+    'BlueprintOwnership',
     'BlueprintPermissionsEntities',
     'BlueprintPermissionsEntitiesRegister',
     'BlueprintPermissionsEntitiesUnregister',
@@ -2614,18 +2615,37 @@ class ActionUpsertEntityMethod(dict):
 
 @pulumi.output_type
 class ActionUpsertEntityMethodMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "teamsJq":
+            suggest = "teams_jq"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionUpsertEntityMethodMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionUpsertEntityMethodMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionUpsertEntityMethodMapping.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  icon: Optional[str] = None,
                  identifier: Optional[str] = None,
                  properties: Optional[str] = None,
                  relations: Optional[str] = None,
-                 teams: Optional[Sequence[str]] = None):
+                 teams: Optional[Sequence[str]] = None,
+                 teams_jq: Optional[str] = None):
         """
         :param str icon: The icon of the entity
         :param str identifier: Required when selecting type Upsert Entity. The entity identifier for the upsert
         :param str properties: The properties of the entity (key-value object encoded to a string)
         :param str relations: The relations of the entity (key-value object encoded to a string)
         :param Sequence[str] teams: The teams the entity belongs to
+        :param str teams_jq: Jq that returns the teams the entity belongs to
         """
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
@@ -2637,6 +2657,8 @@ class ActionUpsertEntityMethodMapping(dict):
             pulumi.set(__self__, "relations", relations)
         if teams is not None:
             pulumi.set(__self__, "teams", teams)
+        if teams_jq is not None:
+            pulumi.set(__self__, "teams_jq", teams_jq)
 
     @property
     @pulumi.getter
@@ -2677,6 +2699,14 @@ class ActionUpsertEntityMethodMapping(dict):
         The teams the entity belongs to
         """
         return pulumi.get(self, "teams")
+
+    @property
+    @pulumi.getter(name="teamsJq")
+    def teams_jq(self) -> Optional[str]:
+        """
+        Jq that returns the teams the entity belongs to
+        """
+        return pulumi.get(self, "teams_jq")
 
 
 @pulumi.output_type
@@ -3202,6 +3232,36 @@ class BlueprintMirrorProperties(dict):
         The title of the mirror property
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class BlueprintOwnership(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 path: Optional[str] = None):
+        """
+        :param str type: Ownership type: either 'Inherited' or 'Direct'.
+        :param str path: Path for the Inherited ownership type. Required when type is 'Inherited'. Must be a valid relation identifiers path.
+        """
+        pulumi.set(__self__, "type", type)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Ownership type: either 'Inherited' or 'Direct'.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        Path for the Inherited ownership type. Required when type is 'Inherited'. Must be a valid relation identifiers path.
+        """
+        return pulumi.get(self, "path")
 
 
 @pulumi.output_type

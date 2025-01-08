@@ -738,6 +738,10 @@ export interface ActionUpsertEntityMethodMapping {
      * The teams the entity belongs to
      */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Jq that returns the teams the entity belongs to
+     */
+    teamsJq?: pulumi.Input<string>;
 }
 
 export interface ActionWebhookMethod {
@@ -897,6 +901,17 @@ export interface BlueprintMirrorProperties {
      * The title of the mirror property
      */
     title?: pulumi.Input<string>;
+}
+
+export interface BlueprintOwnership {
+    /**
+     * Path for the Inherited ownership type. Required when type is 'Inherited'. Must be a valid relation identifiers path.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Ownership type: either 'Inherited' or 'Direct'.
+     */
+    type: pulumi.Input<string>;
 }
 
 export interface BlueprintPermissionsEntities {
