@@ -34,6 +34,9 @@ type Blueprint struct {
 	KafkaChangelogDestination BlueprintKafkaChangelogDestinationPtrOutput `pulumi:"kafkaChangelogDestination"`
 	// The mirror properties of the blueprint
 	MirrorProperties BlueprintMirrorPropertiesMapOutput `pulumi:"mirrorProperties"`
+	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+	// must be a valid relation identifiers path.
+	Ownership BlueprintOwnershipPtrOutput `pulumi:"ownership"`
 	// The properties of the blueprint
 	Properties BlueprintPropertiesPtrOutput `pulumi:"properties"`
 	// The relations of the blueprint
@@ -105,6 +108,9 @@ type blueprintState struct {
 	KafkaChangelogDestination *BlueprintKafkaChangelogDestination `pulumi:"kafkaChangelogDestination"`
 	// The mirror properties of the blueprint
 	MirrorProperties map[string]BlueprintMirrorProperties `pulumi:"mirrorProperties"`
+	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+	// must be a valid relation identifiers path.
+	Ownership *BlueprintOwnership `pulumi:"ownership"`
 	// The properties of the blueprint
 	Properties *BlueprintProperties `pulumi:"properties"`
 	// The relations of the blueprint
@@ -141,6 +147,9 @@ type BlueprintState struct {
 	KafkaChangelogDestination BlueprintKafkaChangelogDestinationPtrInput
 	// The mirror properties of the blueprint
 	MirrorProperties BlueprintMirrorPropertiesMapInput
+	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+	// must be a valid relation identifiers path.
+	Ownership BlueprintOwnershipPtrInput
 	// The properties of the blueprint
 	Properties BlueprintPropertiesPtrInput
 	// The relations of the blueprint
@@ -177,6 +186,9 @@ type blueprintArgs struct {
 	KafkaChangelogDestination *BlueprintKafkaChangelogDestination `pulumi:"kafkaChangelogDestination"`
 	// The mirror properties of the blueprint
 	MirrorProperties map[string]BlueprintMirrorProperties `pulumi:"mirrorProperties"`
+	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+	// must be a valid relation identifiers path.
+	Ownership *BlueprintOwnership `pulumi:"ownership"`
 	// The properties of the blueprint
 	Properties *BlueprintProperties `pulumi:"properties"`
 	// The relations of the blueprint
@@ -206,6 +218,9 @@ type BlueprintArgs struct {
 	KafkaChangelogDestination BlueprintKafkaChangelogDestinationPtrInput
 	// The mirror properties of the blueprint
 	MirrorProperties BlueprintMirrorPropertiesMapInput
+	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+	// must be a valid relation identifiers path.
+	Ownership BlueprintOwnershipPtrInput
 	// The properties of the blueprint
 	Properties BlueprintPropertiesPtrInput
 	// The relations of the blueprint
@@ -352,6 +367,12 @@ func (o BlueprintOutput) KafkaChangelogDestination() BlueprintKafkaChangelogDest
 // The mirror properties of the blueprint
 func (o BlueprintOutput) MirrorProperties() BlueprintMirrorPropertiesMapOutput {
 	return o.ApplyT(func(v *Blueprint) BlueprintMirrorPropertiesMapOutput { return v.MirrorProperties }).(BlueprintMirrorPropertiesMapOutput)
+}
+
+// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+// must be a valid relation identifiers path.
+func (o BlueprintOutput) Ownership() BlueprintOwnershipPtrOutput {
+	return o.ApplyT(func(v *Blueprint) BlueprintOwnershipPtrOutput { return v.Ownership }).(BlueprintOwnershipPtrOutput)
 }
 
 // The properties of the blueprint

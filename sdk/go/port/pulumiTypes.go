@@ -6281,6 +6281,8 @@ type ActionUpsertEntityMethodMapping struct {
 	Relations *string `pulumi:"relations"`
 	// The teams the entity belongs to
 	Teams []string `pulumi:"teams"`
+	// Jq that returns the teams the entity belongs to
+	TeamsJq *string `pulumi:"teamsJq"`
 }
 
 // ActionUpsertEntityMethodMappingInput is an input type that accepts ActionUpsertEntityMethodMappingArgs and ActionUpsertEntityMethodMappingOutput values.
@@ -6305,6 +6307,8 @@ type ActionUpsertEntityMethodMappingArgs struct {
 	Relations pulumi.StringPtrInput `pulumi:"relations"`
 	// The teams the entity belongs to
 	Teams pulumi.StringArrayInput `pulumi:"teams"`
+	// Jq that returns the teams the entity belongs to
+	TeamsJq pulumi.StringPtrInput `pulumi:"teamsJq"`
 }
 
 func (ActionUpsertEntityMethodMappingArgs) ElementType() reflect.Type {
@@ -6409,6 +6413,11 @@ func (o ActionUpsertEntityMethodMappingOutput) Teams() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v ActionUpsertEntityMethodMapping) []string { return v.Teams }).(pulumi.StringArrayOutput)
 }
 
+// Jq that returns the teams the entity belongs to
+func (o ActionUpsertEntityMethodMappingOutput) TeamsJq() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionUpsertEntityMethodMapping) *string { return v.TeamsJq }).(pulumi.StringPtrOutput)
+}
+
 type ActionUpsertEntityMethodMappingPtrOutput struct{ *pulumi.OutputState }
 
 func (ActionUpsertEntityMethodMappingPtrOutput) ElementType() reflect.Type {
@@ -6481,6 +6490,16 @@ func (o ActionUpsertEntityMethodMappingPtrOutput) Teams() pulumi.StringArrayOutp
 		}
 		return v.Teams
 	}).(pulumi.StringArrayOutput)
+}
+
+// Jq that returns the teams the entity belongs to
+func (o ActionUpsertEntityMethodMappingPtrOutput) TeamsJq() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionUpsertEntityMethodMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TeamsJq
+	}).(pulumi.StringPtrOutput)
 }
 
 type ActionWebhookMethod struct {
@@ -7811,6 +7830,162 @@ func (o BlueprintMirrorPropertiesMapOutput) MapIndex(k pulumi.StringInput) Bluep
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BlueprintMirrorProperties {
 		return vs[0].(map[string]BlueprintMirrorProperties)[vs[1].(string)]
 	}).(BlueprintMirrorPropertiesOutput)
+}
+
+type BlueprintOwnership struct {
+	// Path for the Inherited ownership type. Required when type is 'Inherited'. Must be a valid relation identifiers path.
+	Path *string `pulumi:"path"`
+	// Ownership type: either 'Inherited' or 'Direct'.
+	Type string `pulumi:"type"`
+}
+
+// BlueprintOwnershipInput is an input type that accepts BlueprintOwnershipArgs and BlueprintOwnershipOutput values.
+// You can construct a concrete instance of `BlueprintOwnershipInput` via:
+//
+//	BlueprintOwnershipArgs{...}
+type BlueprintOwnershipInput interface {
+	pulumi.Input
+
+	ToBlueprintOwnershipOutput() BlueprintOwnershipOutput
+	ToBlueprintOwnershipOutputWithContext(context.Context) BlueprintOwnershipOutput
+}
+
+type BlueprintOwnershipArgs struct {
+	// Path for the Inherited ownership type. Required when type is 'Inherited'. Must be a valid relation identifiers path.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Ownership type: either 'Inherited' or 'Direct'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (BlueprintOwnershipArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintOwnership)(nil)).Elem()
+}
+
+func (i BlueprintOwnershipArgs) ToBlueprintOwnershipOutput() BlueprintOwnershipOutput {
+	return i.ToBlueprintOwnershipOutputWithContext(context.Background())
+}
+
+func (i BlueprintOwnershipArgs) ToBlueprintOwnershipOutputWithContext(ctx context.Context) BlueprintOwnershipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintOwnershipOutput)
+}
+
+func (i BlueprintOwnershipArgs) ToBlueprintOwnershipPtrOutput() BlueprintOwnershipPtrOutput {
+	return i.ToBlueprintOwnershipPtrOutputWithContext(context.Background())
+}
+
+func (i BlueprintOwnershipArgs) ToBlueprintOwnershipPtrOutputWithContext(ctx context.Context) BlueprintOwnershipPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintOwnershipOutput).ToBlueprintOwnershipPtrOutputWithContext(ctx)
+}
+
+// BlueprintOwnershipPtrInput is an input type that accepts BlueprintOwnershipArgs, BlueprintOwnershipPtr and BlueprintOwnershipPtrOutput values.
+// You can construct a concrete instance of `BlueprintOwnershipPtrInput` via:
+//
+//	        BlueprintOwnershipArgs{...}
+//
+//	or:
+//
+//	        nil
+type BlueprintOwnershipPtrInput interface {
+	pulumi.Input
+
+	ToBlueprintOwnershipPtrOutput() BlueprintOwnershipPtrOutput
+	ToBlueprintOwnershipPtrOutputWithContext(context.Context) BlueprintOwnershipPtrOutput
+}
+
+type blueprintOwnershipPtrType BlueprintOwnershipArgs
+
+func BlueprintOwnershipPtr(v *BlueprintOwnershipArgs) BlueprintOwnershipPtrInput {
+	return (*blueprintOwnershipPtrType)(v)
+}
+
+func (*blueprintOwnershipPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintOwnership)(nil)).Elem()
+}
+
+func (i *blueprintOwnershipPtrType) ToBlueprintOwnershipPtrOutput() BlueprintOwnershipPtrOutput {
+	return i.ToBlueprintOwnershipPtrOutputWithContext(context.Background())
+}
+
+func (i *blueprintOwnershipPtrType) ToBlueprintOwnershipPtrOutputWithContext(ctx context.Context) BlueprintOwnershipPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintOwnershipPtrOutput)
+}
+
+type BlueprintOwnershipOutput struct{ *pulumi.OutputState }
+
+func (BlueprintOwnershipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintOwnership)(nil)).Elem()
+}
+
+func (o BlueprintOwnershipOutput) ToBlueprintOwnershipOutput() BlueprintOwnershipOutput {
+	return o
+}
+
+func (o BlueprintOwnershipOutput) ToBlueprintOwnershipOutputWithContext(ctx context.Context) BlueprintOwnershipOutput {
+	return o
+}
+
+func (o BlueprintOwnershipOutput) ToBlueprintOwnershipPtrOutput() BlueprintOwnershipPtrOutput {
+	return o.ToBlueprintOwnershipPtrOutputWithContext(context.Background())
+}
+
+func (o BlueprintOwnershipOutput) ToBlueprintOwnershipPtrOutputWithContext(ctx context.Context) BlueprintOwnershipPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlueprintOwnership) *BlueprintOwnership {
+		return &v
+	}).(BlueprintOwnershipPtrOutput)
+}
+
+// Path for the Inherited ownership type. Required when type is 'Inherited'. Must be a valid relation identifiers path.
+func (o BlueprintOwnershipOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintOwnership) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Ownership type: either 'Inherited' or 'Direct'.
+func (o BlueprintOwnershipOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v BlueprintOwnership) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type BlueprintOwnershipPtrOutput struct{ *pulumi.OutputState }
+
+func (BlueprintOwnershipPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintOwnership)(nil)).Elem()
+}
+
+func (o BlueprintOwnershipPtrOutput) ToBlueprintOwnershipPtrOutput() BlueprintOwnershipPtrOutput {
+	return o
+}
+
+func (o BlueprintOwnershipPtrOutput) ToBlueprintOwnershipPtrOutputWithContext(ctx context.Context) BlueprintOwnershipPtrOutput {
+	return o
+}
+
+func (o BlueprintOwnershipPtrOutput) Elem() BlueprintOwnershipOutput {
+	return o.ApplyT(func(v *BlueprintOwnership) BlueprintOwnership {
+		if v != nil {
+			return *v
+		}
+		var ret BlueprintOwnership
+		return ret
+	}).(BlueprintOwnershipOutput)
+}
+
+// Path for the Inherited ownership type. Required when type is 'Inherited'. Must be a valid relation identifiers path.
+func (o BlueprintOwnershipPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlueprintOwnership) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Ownership type: either 'Inherited' or 'Direct'.
+func (o BlueprintOwnershipPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlueprintOwnership) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type BlueprintPermissionsEntities struct {
@@ -14508,6 +14683,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintKafkaChangelogDestinationPtrInput)(nil)).Elem(), BlueprintKafkaChangelogDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintMirrorPropertiesInput)(nil)).Elem(), BlueprintMirrorPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintMirrorPropertiesMapInput)(nil)).Elem(), BlueprintMirrorPropertiesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintOwnershipInput)(nil)).Elem(), BlueprintOwnershipArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintOwnershipPtrInput)(nil)).Elem(), BlueprintOwnershipArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPermissionsEntitiesInput)(nil)).Elem(), BlueprintPermissionsEntitiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPermissionsEntitiesPtrInput)(nil)).Elem(), BlueprintPermissionsEntitiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintPermissionsEntitiesRegisterInput)(nil)).Elem(), BlueprintPermissionsEntitiesRegisterArgs{})
@@ -14681,6 +14858,8 @@ func init() {
 	pulumi.RegisterOutputType(BlueprintKafkaChangelogDestinationPtrOutput{})
 	pulumi.RegisterOutputType(BlueprintMirrorPropertiesOutput{})
 	pulumi.RegisterOutputType(BlueprintMirrorPropertiesMapOutput{})
+	pulumi.RegisterOutputType(BlueprintOwnershipOutput{})
+	pulumi.RegisterOutputType(BlueprintOwnershipPtrOutput{})
 	pulumi.RegisterOutputType(BlueprintPermissionsEntitiesOutput{})
 	pulumi.RegisterOutputType(BlueprintPermissionsEntitiesPtrOutput{})
 	pulumi.RegisterOutputType(BlueprintPermissionsEntitiesRegisterOutput{})

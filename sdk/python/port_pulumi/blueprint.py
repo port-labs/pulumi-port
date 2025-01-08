@@ -30,6 +30,7 @@ class BlueprintArgs:
                  icon: Optional[pulumi.Input[str]] = None,
                  kafka_changelog_destination: Optional[pulumi.Input['BlueprintKafkaChangelogDestinationArgs']] = None,
                  mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintMirrorPropertiesArgs']]]] = None,
+                 ownership: Optional[pulumi.Input['BlueprintOwnershipArgs']] = None,
                  properties: Optional[pulumi.Input['BlueprintPropertiesArgs']] = None,
                  relations: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintRelationsArgs']]]] = None,
                  team_inheritance: Optional[pulumi.Input['BlueprintTeamInheritanceArgs']] = None,
@@ -44,6 +45,8 @@ class BlueprintArgs:
         :param pulumi.Input[str] icon: The icon of the blueprint
         :param pulumi.Input['BlueprintKafkaChangelogDestinationArgs'] kafka_changelog_destination: The changelog destination of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintMirrorPropertiesArgs']]] mirror_properties: The mirror properties of the blueprint
+        :param pulumi.Input['BlueprintOwnershipArgs'] ownership: Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+               must be a valid relation identifiers path.
         :param pulumi.Input['BlueprintPropertiesArgs'] properties: The properties of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintRelationsArgs']]] relations: The relations of the blueprint
         :param pulumi.Input['BlueprintTeamInheritanceArgs'] team_inheritance: The team inheritance of the blueprint
@@ -65,6 +68,8 @@ class BlueprintArgs:
             pulumi.set(__self__, "kafka_changelog_destination", kafka_changelog_destination)
         if mirror_properties is not None:
             pulumi.set(__self__, "mirror_properties", mirror_properties)
+        if ownership is not None:
+            pulumi.set(__self__, "ownership", ownership)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
         if relations is not None:
@@ -181,6 +186,19 @@ class BlueprintArgs:
 
     @property
     @pulumi.getter
+    def ownership(self) -> Optional[pulumi.Input['BlueprintOwnershipArgs']]:
+        """
+        Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+        must be a valid relation identifiers path.
+        """
+        return pulumi.get(self, "ownership")
+
+    @ownership.setter
+    def ownership(self, value: Optional[pulumi.Input['BlueprintOwnershipArgs']]):
+        pulumi.set(self, "ownership", value)
+
+    @property
+    @pulumi.getter
     def properties(self) -> Optional[pulumi.Input['BlueprintPropertiesArgs']]:
         """
         The properties of the blueprint
@@ -241,6 +259,7 @@ class _BlueprintState:
                  identifier: Optional[pulumi.Input[str]] = None,
                  kafka_changelog_destination: Optional[pulumi.Input['BlueprintKafkaChangelogDestinationArgs']] = None,
                  mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintMirrorPropertiesArgs']]]] = None,
+                 ownership: Optional[pulumi.Input['BlueprintOwnershipArgs']] = None,
                  properties: Optional[pulumi.Input['BlueprintPropertiesArgs']] = None,
                  relations: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintRelationsArgs']]]] = None,
                  team_inheritance: Optional[pulumi.Input['BlueprintTeamInheritanceArgs']] = None,
@@ -259,6 +278,8 @@ class _BlueprintState:
         :param pulumi.Input[str] identifier: The identifier of the blueprint
         :param pulumi.Input['BlueprintKafkaChangelogDestinationArgs'] kafka_changelog_destination: The changelog destination of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintMirrorPropertiesArgs']]] mirror_properties: The mirror properties of the blueprint
+        :param pulumi.Input['BlueprintOwnershipArgs'] ownership: Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+               must be a valid relation identifiers path.
         :param pulumi.Input['BlueprintPropertiesArgs'] properties: The properties of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintRelationsArgs']]] relations: The relations of the blueprint
         :param pulumi.Input['BlueprintTeamInheritanceArgs'] team_inheritance: The team inheritance of the blueprint
@@ -287,6 +308,8 @@ class _BlueprintState:
             pulumi.set(__self__, "kafka_changelog_destination", kafka_changelog_destination)
         if mirror_properties is not None:
             pulumi.set(__self__, "mirror_properties", mirror_properties)
+        if ownership is not None:
+            pulumi.set(__self__, "ownership", ownership)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
         if relations is not None:
@@ -421,6 +444,19 @@ class _BlueprintState:
 
     @property
     @pulumi.getter
+    def ownership(self) -> Optional[pulumi.Input['BlueprintOwnershipArgs']]:
+        """
+        Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+        must be a valid relation identifiers path.
+        """
+        return pulumi.get(self, "ownership")
+
+    @ownership.setter
+    def ownership(self, value: Optional[pulumi.Input['BlueprintOwnershipArgs']]):
+        pulumi.set(self, "ownership", value)
+
+    @property
+    @pulumi.getter
     def properties(self) -> Optional[pulumi.Input['BlueprintPropertiesArgs']]:
         """
         The properties of the blueprint
@@ -517,6 +553,7 @@ class Blueprint(pulumi.CustomResource):
                  identifier: Optional[pulumi.Input[str]] = None,
                  kafka_changelog_destination: Optional[pulumi.Input[Union['BlueprintKafkaChangelogDestinationArgs', 'BlueprintKafkaChangelogDestinationArgsDict']]] = None,
                  mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintMirrorPropertiesArgs', 'BlueprintMirrorPropertiesArgsDict']]]]] = None,
+                 ownership: Optional[pulumi.Input[Union['BlueprintOwnershipArgs', 'BlueprintOwnershipArgsDict']]] = None,
                  properties: Optional[pulumi.Input[Union['BlueprintPropertiesArgs', 'BlueprintPropertiesArgsDict']]] = None,
                  relations: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintRelationsArgs', 'BlueprintRelationsArgsDict']]]]] = None,
                  team_inheritance: Optional[pulumi.Input[Union['BlueprintTeamInheritanceArgs', 'BlueprintTeamInheritanceArgsDict']]] = None,
@@ -534,6 +571,8 @@ class Blueprint(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: The identifier of the blueprint
         :param pulumi.Input[Union['BlueprintKafkaChangelogDestinationArgs', 'BlueprintKafkaChangelogDestinationArgsDict']] kafka_changelog_destination: The changelog destination of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintMirrorPropertiesArgs', 'BlueprintMirrorPropertiesArgsDict']]]] mirror_properties: The mirror properties of the blueprint
+        :param pulumi.Input[Union['BlueprintOwnershipArgs', 'BlueprintOwnershipArgsDict']] ownership: Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+               must be a valid relation identifiers path.
         :param pulumi.Input[Union['BlueprintPropertiesArgs', 'BlueprintPropertiesArgsDict']] properties: The properties of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintRelationsArgs', 'BlueprintRelationsArgsDict']]]] relations: The relations of the blueprint
         :param pulumi.Input[Union['BlueprintTeamInheritanceArgs', 'BlueprintTeamInheritanceArgsDict']] team_inheritance: The team inheritance of the blueprint
@@ -571,6 +610,7 @@ class Blueprint(pulumi.CustomResource):
                  identifier: Optional[pulumi.Input[str]] = None,
                  kafka_changelog_destination: Optional[pulumi.Input[Union['BlueprintKafkaChangelogDestinationArgs', 'BlueprintKafkaChangelogDestinationArgsDict']]] = None,
                  mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintMirrorPropertiesArgs', 'BlueprintMirrorPropertiesArgsDict']]]]] = None,
+                 ownership: Optional[pulumi.Input[Union['BlueprintOwnershipArgs', 'BlueprintOwnershipArgsDict']]] = None,
                  properties: Optional[pulumi.Input[Union['BlueprintPropertiesArgs', 'BlueprintPropertiesArgsDict']]] = None,
                  relations: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintRelationsArgs', 'BlueprintRelationsArgsDict']]]]] = None,
                  team_inheritance: Optional[pulumi.Input[Union['BlueprintTeamInheritanceArgs', 'BlueprintTeamInheritanceArgsDict']]] = None,
@@ -595,6 +635,7 @@ class Blueprint(pulumi.CustomResource):
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["kafka_changelog_destination"] = kafka_changelog_destination
             __props__.__dict__["mirror_properties"] = mirror_properties
+            __props__.__dict__["ownership"] = ownership
             __props__.__dict__["properties"] = properties
             __props__.__dict__["relations"] = relations
             __props__.__dict__["team_inheritance"] = team_inheritance
@@ -626,6 +667,7 @@ class Blueprint(pulumi.CustomResource):
             identifier: Optional[pulumi.Input[str]] = None,
             kafka_changelog_destination: Optional[pulumi.Input[Union['BlueprintKafkaChangelogDestinationArgs', 'BlueprintKafkaChangelogDestinationArgsDict']]] = None,
             mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintMirrorPropertiesArgs', 'BlueprintMirrorPropertiesArgsDict']]]]] = None,
+            ownership: Optional[pulumi.Input[Union['BlueprintOwnershipArgs', 'BlueprintOwnershipArgsDict']]] = None,
             properties: Optional[pulumi.Input[Union['BlueprintPropertiesArgs', 'BlueprintPropertiesArgsDict']]] = None,
             relations: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintRelationsArgs', 'BlueprintRelationsArgsDict']]]]] = None,
             team_inheritance: Optional[pulumi.Input[Union['BlueprintTeamInheritanceArgs', 'BlueprintTeamInheritanceArgsDict']]] = None,
@@ -649,6 +691,8 @@ class Blueprint(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: The identifier of the blueprint
         :param pulumi.Input[Union['BlueprintKafkaChangelogDestinationArgs', 'BlueprintKafkaChangelogDestinationArgsDict']] kafka_changelog_destination: The changelog destination of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintMirrorPropertiesArgs', 'BlueprintMirrorPropertiesArgsDict']]]] mirror_properties: The mirror properties of the blueprint
+        :param pulumi.Input[Union['BlueprintOwnershipArgs', 'BlueprintOwnershipArgsDict']] ownership: Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+               must be a valid relation identifiers path.
         :param pulumi.Input[Union['BlueprintPropertiesArgs', 'BlueprintPropertiesArgsDict']] properties: The properties of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintRelationsArgs', 'BlueprintRelationsArgsDict']]]] relations: The relations of the blueprint
         :param pulumi.Input[Union['BlueprintTeamInheritanceArgs', 'BlueprintTeamInheritanceArgsDict']] team_inheritance: The team inheritance of the blueprint
@@ -671,6 +715,7 @@ class Blueprint(pulumi.CustomResource):
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["kafka_changelog_destination"] = kafka_changelog_destination
         __props__.__dict__["mirror_properties"] = mirror_properties
+        __props__.__dict__["ownership"] = ownership
         __props__.__dict__["properties"] = properties
         __props__.__dict__["relations"] = relations
         __props__.__dict__["team_inheritance"] = team_inheritance
@@ -756,6 +801,15 @@ class Blueprint(pulumi.CustomResource):
         The mirror properties of the blueprint
         """
         return pulumi.get(self, "mirror_properties")
+
+    @property
+    @pulumi.getter
+    def ownership(self) -> pulumi.Output[Optional['outputs.BlueprintOwnership']]:
+        """
+        Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+        must be a valid relation identifiers path.
+        """
+        return pulumi.get(self, "ownership")
 
     @property
     @pulumi.getter
