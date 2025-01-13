@@ -6020,6 +6020,10 @@ if not MYPY:
         """
         The format of the items
         """
+        pattern: NotRequired[pulumi.Input[str]]
+        """
+        The pattern of the string array items
+        """
 elif False:
     BlueprintPropertiesArrayPropsStringItemsArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -6027,15 +6031,19 @@ elif False:
 class BlueprintPropertiesArrayPropsStringItemsArgs:
     def __init__(__self__, *,
                  defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 format: Optional[pulumi.Input[str]] = None):
+                 format: Optional[pulumi.Input[str]] = None,
+                 pattern: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] defaults: The default of the items
         :param pulumi.Input[str] format: The format of the items
+        :param pulumi.Input[str] pattern: The pattern of the string array items
         """
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
         if format is not None:
             pulumi.set(__self__, "format", format)
+        if pattern is not None:
+            pulumi.set(__self__, "pattern", pattern)
 
     @property
     @pulumi.getter
@@ -6060,6 +6068,18 @@ class BlueprintPropertiesArrayPropsStringItemsArgs:
     @format.setter
     def format(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
+    def pattern(self) -> Optional[pulumi.Input[str]]:
+        """
+        The pattern of the string array items
+        """
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pattern", value)
 
 
 if not MYPY:

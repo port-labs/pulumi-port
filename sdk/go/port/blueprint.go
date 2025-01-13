@@ -34,8 +34,7 @@ type Blueprint struct {
 	KafkaChangelogDestination BlueprintKafkaChangelogDestinationPtrOutput `pulumi:"kafkaChangelogDestination"`
 	// The mirror properties of the blueprint
 	MirrorProperties BlueprintMirrorPropertiesMapOutput `pulumi:"mirrorProperties"`
-	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
-	// must be a valid relation identifiers path.
+	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.
 	Ownership BlueprintOwnershipPtrOutput `pulumi:"ownership"`
 	// The properties of the blueprint
 	Properties BlueprintPropertiesPtrOutput `pulumi:"properties"`
@@ -108,8 +107,7 @@ type blueprintState struct {
 	KafkaChangelogDestination *BlueprintKafkaChangelogDestination `pulumi:"kafkaChangelogDestination"`
 	// The mirror properties of the blueprint
 	MirrorProperties map[string]BlueprintMirrorProperties `pulumi:"mirrorProperties"`
-	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
-	// must be a valid relation identifiers path.
+	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.
 	Ownership *BlueprintOwnership `pulumi:"ownership"`
 	// The properties of the blueprint
 	Properties *BlueprintProperties `pulumi:"properties"`
@@ -147,8 +145,7 @@ type BlueprintState struct {
 	KafkaChangelogDestination BlueprintKafkaChangelogDestinationPtrInput
 	// The mirror properties of the blueprint
 	MirrorProperties BlueprintMirrorPropertiesMapInput
-	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
-	// must be a valid relation identifiers path.
+	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.
 	Ownership BlueprintOwnershipPtrInput
 	// The properties of the blueprint
 	Properties BlueprintPropertiesPtrInput
@@ -186,8 +183,7 @@ type blueprintArgs struct {
 	KafkaChangelogDestination *BlueprintKafkaChangelogDestination `pulumi:"kafkaChangelogDestination"`
 	// The mirror properties of the blueprint
 	MirrorProperties map[string]BlueprintMirrorProperties `pulumi:"mirrorProperties"`
-	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
-	// must be a valid relation identifiers path.
+	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.
 	Ownership *BlueprintOwnership `pulumi:"ownership"`
 	// The properties of the blueprint
 	Properties *BlueprintProperties `pulumi:"properties"`
@@ -218,8 +214,7 @@ type BlueprintArgs struct {
 	KafkaChangelogDestination BlueprintKafkaChangelogDestinationPtrInput
 	// The mirror properties of the blueprint
 	MirrorProperties BlueprintMirrorPropertiesMapInput
-	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
-	// must be a valid relation identifiers path.
+	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.
 	Ownership BlueprintOwnershipPtrInput
 	// The properties of the blueprint
 	Properties BlueprintPropertiesPtrInput
@@ -369,8 +364,7 @@ func (o BlueprintOutput) MirrorProperties() BlueprintMirrorPropertiesMapOutput {
 	return o.ApplyT(func(v *Blueprint) BlueprintMirrorPropertiesMapOutput { return v.MirrorProperties }).(BlueprintMirrorPropertiesMapOutput)
 }
 
-// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
-// must be a valid relation identifiers path.
+// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.
 func (o BlueprintOutput) Ownership() BlueprintOwnershipPtrOutput {
 	return o.ApplyT(func(v *Blueprint) BlueprintOwnershipPtrOutput { return v.Ownership }).(BlueprintOwnershipPtrOutput)
 }
