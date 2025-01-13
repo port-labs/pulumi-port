@@ -1224,6 +1224,10 @@ export interface BlueprintPropertiesArrayPropsStringItems {
      * The format of the items
      */
     format?: string;
+    /**
+     * The pattern of the string array items
+     */
+    pattern?: string;
 }
 
 export interface BlueprintPropertiesBooleanProps {

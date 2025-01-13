@@ -72,8 +72,7 @@ export class Blueprint extends pulumi.CustomResource {
      */
     public readonly mirrorProperties!: pulumi.Output<{[key: string]: outputs.BlueprintMirrorProperties} | undefined>;
     /**
-     * Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
-     * must be a valid relation identifiers path.
+     * Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.
      */
     public readonly ownership!: pulumi.Output<outputs.BlueprintOwnership | undefined>;
     /**
@@ -210,8 +209,7 @@ export interface BlueprintState {
      */
     mirrorProperties?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintMirrorProperties>}>;
     /**
-     * Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
-     * must be a valid relation identifiers path.
+     * Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.
      */
     ownership?: pulumi.Input<inputs.BlueprintOwnership>;
     /**
@@ -278,8 +276,7 @@ export interface BlueprintArgs {
      */
     mirrorProperties?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintMirrorProperties>}>;
     /**
-     * Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
-     * must be a valid relation identifiers path.
+     * Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.
      */
     ownership?: pulumi.Input<inputs.BlueprintOwnership>;
     /**
