@@ -1224,6 +1224,10 @@ export interface BlueprintPropertiesArrayPropsStringItems {
      * The format of the items
      */
     format?: string;
+    /**
+     * The pattern of the string array items
+     */
+    pattern?: string;
 }
 
 export interface BlueprintPropertiesBooleanProps {
@@ -1615,6 +1619,10 @@ export interface ScorecardLevel {
 }
 
 export interface ScorecardRule {
+    /**
+     * The description of the rule
+     */
+    description?: string;
     /**
      * The identifier of the rule
      */
