@@ -10839,6 +10839,8 @@ type BlueprintPropertiesArrayPropsStringItems struct {
 	Defaults []string `pulumi:"defaults"`
 	// The format of the items
 	Format *string `pulumi:"format"`
+	// The pattern of the string array items
+	Pattern *string `pulumi:"pattern"`
 }
 
 // BlueprintPropertiesArrayPropsStringItemsInput is an input type that accepts BlueprintPropertiesArrayPropsStringItemsArgs and BlueprintPropertiesArrayPropsStringItemsOutput values.
@@ -10857,6 +10859,8 @@ type BlueprintPropertiesArrayPropsStringItemsArgs struct {
 	Defaults pulumi.StringArrayInput `pulumi:"defaults"`
 	// The format of the items
 	Format pulumi.StringPtrInput `pulumi:"format"`
+	// The pattern of the string array items
+	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
 }
 
 func (BlueprintPropertiesArrayPropsStringItemsArgs) ElementType() reflect.Type {
@@ -10946,6 +10950,11 @@ func (o BlueprintPropertiesArrayPropsStringItemsOutput) Format() pulumi.StringPt
 	return o.ApplyT(func(v BlueprintPropertiesArrayPropsStringItems) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
+// The pattern of the string array items
+func (o BlueprintPropertiesArrayPropsStringItemsOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesArrayPropsStringItems) *string { return v.Pattern }).(pulumi.StringPtrOutput)
+}
+
 type BlueprintPropertiesArrayPropsStringItemsPtrOutput struct{ *pulumi.OutputState }
 
 func (BlueprintPropertiesArrayPropsStringItemsPtrOutput) ElementType() reflect.Type {
@@ -10987,6 +10996,16 @@ func (o BlueprintPropertiesArrayPropsStringItemsPtrOutput) Format() pulumi.Strin
 			return nil
 		}
 		return v.Format
+	}).(pulumi.StringPtrOutput)
+}
+
+// The pattern of the string array items
+func (o BlueprintPropertiesArrayPropsStringItemsPtrOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlueprintPropertiesArrayPropsStringItems) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pattern
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13345,6 +13364,8 @@ func (o ScorecardLevelArrayOutput) Index(i pulumi.IntInput) ScorecardLevelOutput
 }
 
 type ScorecardRule struct {
+	// The description of the rule
+	Description *string `pulumi:"description"`
 	// The identifier of the rule
 	Identifier string `pulumi:"identifier"`
 	// The level of the rule
@@ -13367,6 +13388,8 @@ type ScorecardRuleInput interface {
 }
 
 type ScorecardRuleArgs struct {
+	// The description of the rule
+	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The identifier of the rule
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// The level of the rule
@@ -13426,6 +13449,11 @@ func (o ScorecardRuleOutput) ToScorecardRuleOutput() ScorecardRuleOutput {
 
 func (o ScorecardRuleOutput) ToScorecardRuleOutputWithContext(ctx context.Context) ScorecardRuleOutput {
 	return o
+}
+
+// The description of the rule
+func (o ScorecardRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScorecardRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The identifier of the rule

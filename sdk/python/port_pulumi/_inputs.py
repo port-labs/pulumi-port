@@ -6020,6 +6020,10 @@ if not MYPY:
         """
         The format of the items
         """
+        pattern: NotRequired[pulumi.Input[str]]
+        """
+        The pattern of the string array items
+        """
 elif False:
     BlueprintPropertiesArrayPropsStringItemsArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -6027,15 +6031,19 @@ elif False:
 class BlueprintPropertiesArrayPropsStringItemsArgs:
     def __init__(__self__, *,
                  defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 format: Optional[pulumi.Input[str]] = None):
+                 format: Optional[pulumi.Input[str]] = None,
+                 pattern: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] defaults: The default of the items
         :param pulumi.Input[str] format: The format of the items
+        :param pulumi.Input[str] pattern: The pattern of the string array items
         """
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
         if format is not None:
             pulumi.set(__self__, "format", format)
+        if pattern is not None:
+            pulumi.set(__self__, "pattern", pattern)
 
     @property
     @pulumi.getter
@@ -6060,6 +6068,18 @@ class BlueprintPropertiesArrayPropsStringItemsArgs:
     @format.setter
     def format(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
+    def pattern(self) -> Optional[pulumi.Input[str]]:
+        """
+        The pattern of the string array items
+        """
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pattern", value)
 
 
 if not MYPY:
@@ -7461,6 +7481,10 @@ if not MYPY:
         """
         The title of the rule
         """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the rule
+        """
 elif False:
     ScorecardRuleArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -7470,17 +7494,21 @@ class ScorecardRuleArgs:
                  identifier: pulumi.Input[str],
                  level: pulumi.Input[str],
                  query: pulumi.Input['ScorecardRuleQueryArgs'],
-                 title: pulumi.Input[str]):
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] identifier: The identifier of the rule
         :param pulumi.Input[str] level: The level of the rule
         :param pulumi.Input['ScorecardRuleQueryArgs'] query: The query of the rule
         :param pulumi.Input[str] title: The title of the rule
+        :param pulumi.Input[str] description: The description of the rule
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "level", level)
         pulumi.set(__self__, "query", query)
         pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -7529,6 +7557,18 @@ class ScorecardRuleArgs:
     @title.setter
     def title(self, value: pulumi.Input[str]):
         pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the rule
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
 
 if not MYPY:

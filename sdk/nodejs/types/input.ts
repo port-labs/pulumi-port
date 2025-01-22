@@ -1224,6 +1224,10 @@ export interface BlueprintPropertiesArrayPropsStringItems {
      * The format of the items
      */
     format?: pulumi.Input<string>;
+    /**
+     * The pattern of the string array items
+     */
+    pattern?: pulumi.Input<string>;
 }
 
 export interface BlueprintPropertiesBooleanProps {
@@ -1508,6 +1512,10 @@ export interface ScorecardLevel {
 }
 
 export interface ScorecardRule {
+    /**
+     * The description of the rule
+     */
+    description?: pulumi.Input<string>;
     /**
      * The identifier of the rule
      */
