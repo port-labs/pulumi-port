@@ -1869,6 +1869,10 @@
                 "format": {
                     "type": "string",
                     "description": "The format of the items\n"
+                },
+                "pattern": {
+                    "type": "string",
+                    "description": "The pattern of the string array items\n"
                 }
             },
             "type": "object"
@@ -2316,6 +2320,10 @@
         },
         "port:index/ScorecardRule:ScorecardRule": {
             "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the rule\n"
+                },
                 "identifier": {
                     "type": "string",
                     "description": "The identifier of the rule\n"
@@ -3143,7 +3151,7 @@
                 },
                 "ownership": {
                     "$ref": "#/types/port:index/BlueprintOwnership:BlueprintOwnership",
-                    "description": "Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and\nmust be a valid relation identifiers path.\n"
+                    "description": "Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.\n"
                 },
                 "properties": {
                     "$ref": "#/types/port:index/BlueprintProperties:BlueprintProperties",
@@ -3227,7 +3235,7 @@
                 },
                 "ownership": {
                     "$ref": "#/types/port:index/BlueprintOwnership:BlueprintOwnership",
-                    "description": "Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and\nmust be a valid relation identifiers path.\n"
+                    "description": "Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.\n"
                 },
                 "properties": {
                     "$ref": "#/types/port:index/BlueprintProperties:BlueprintProperties",
@@ -3307,7 +3315,7 @@
                     },
                     "ownership": {
                         "$ref": "#/types/port:index/BlueprintOwnership:BlueprintOwnership",
-                        "description": "Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and\nmust be a valid relation identifiers path.\n"
+                        "description": "Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.\n"
                     },
                     "properties": {
                         "$ref": "#/types/port:index/BlueprintProperties:BlueprintProperties",
