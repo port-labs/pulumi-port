@@ -95,6 +95,7 @@ __all__ = [
     'IntegrationKafkaChangelogDestination',
     'IntegrationWebhookChangelogDestination',
     'PagePermissionsRead',
+    'ScorecardFilter',
     'ScorecardLevel',
     'ScorecardRule',
     'ScorecardRuleQuery',
@@ -4362,15 +4363,19 @@ class BlueprintPropertiesArrayPropsObjectItems(dict):
 class BlueprintPropertiesArrayPropsStringItems(dict):
     def __init__(__self__, *,
                  defaults: Optional[Sequence[str]] = None,
-                 format: Optional[str] = None):
+                 format: Optional[str] = None,
+                 pattern: Optional[str] = None):
         """
         :param Sequence[str] defaults: The default of the items
         :param str format: The format of the items
+        :param str pattern: The pattern of the string array items
         """
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
         if format is not None:
             pulumi.set(__self__, "format", format)
+        if pattern is not None:
+            pulumi.set(__self__, "pattern", pattern)
 
     @property
     @pulumi.getter
@@ -4387,6 +4392,14 @@ class BlueprintPropertiesArrayPropsStringItems(dict):
         The format of the items
         """
         return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter
+    def pattern(self) -> Optional[str]:
+        """
+        The pattern of the string array items
+        """
+        return pulumi.get(self, "pattern")
 
 
 @pulumi.output_type
@@ -5310,6 +5323,35 @@ class PagePermissionsRead(dict):
 
 
 @pulumi.output_type
+class ScorecardFilter(dict):
+    def __init__(__self__, *,
+                 combinator: str,
+                 conditions: Sequence[str]):
+        """
+        :param str combinator: The combinator of the filter
+        :param Sequence[str] conditions: The conditions of the filter. Each condition object should be encoded to a string
+        """
+        pulumi.set(__self__, "combinator", combinator)
+        pulumi.set(__self__, "conditions", conditions)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> str:
+        """
+        The combinator of the filter
+        """
+        return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Sequence[str]:
+        """
+        The conditions of the filter. Each condition object should be encoded to a string
+        """
+        return pulumi.get(self, "conditions")
+
+
+@pulumi.output_type
 class ScorecardLevel(dict):
     def __init__(__self__, *,
                  color: str,
@@ -5344,17 +5386,21 @@ class ScorecardRule(dict):
                  identifier: str,
                  level: str,
                  query: 'outputs.ScorecardRuleQuery',
-                 title: str):
+                 title: str,
+                 description: Optional[str] = None):
         """
         :param str identifier: The identifier of the rule
         :param str level: The level of the rule
         :param 'ScorecardRuleQueryArgs' query: The query of the rule
         :param str title: The title of the rule
+        :param str description: The description of the rule
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "level", level)
         pulumi.set(__self__, "query", query)
         pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -5387,6 +5433,14 @@ class ScorecardRule(dict):
         The title of the rule
         """
         return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the rule
+        """
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

@@ -25,6 +25,7 @@ class ScorecardArgs:
                  identifier: pulumi.Input[str],
                  rules: pulumi.Input[Sequence[pulumi.Input['ScorecardRuleArgs']]],
                  title: pulumi.Input[str],
+                 filter: Optional[pulumi.Input['ScorecardFilterArgs']] = None,
                  levels: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardLevelArgs']]]] = None):
         """
         The set of arguments for constructing a Scorecard resource.
@@ -32,12 +33,15 @@ class ScorecardArgs:
         :param pulumi.Input[str] identifier: The identifier of the scorecard
         :param pulumi.Input[Sequence[pulumi.Input['ScorecardRuleArgs']]] rules: The rules of the scorecard
         :param pulumi.Input[str] title: The title of the scorecard
+        :param pulumi.Input['ScorecardFilterArgs'] filter: The filter to apply on the entities before calculating the scorecard
         :param pulumi.Input[Sequence[pulumi.Input['ScorecardLevelArgs']]] levels: The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
         """
         pulumi.set(__self__, "blueprint", blueprint)
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "rules", rules)
         pulumi.set(__self__, "title", title)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
         if levels is not None:
             pulumi.set(__self__, "levels", levels)
 
@@ -91,6 +95,18 @@ class ScorecardArgs:
 
     @property
     @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input['ScorecardFilterArgs']]:
+        """
+        The filter to apply on the entities before calculating the scorecard
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input['ScorecardFilterArgs']]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter
     def levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardLevelArgs']]]]:
         """
         The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
@@ -108,6 +124,7 @@ class _ScorecardState:
                  blueprint: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
+                 filter: Optional[pulumi.Input['ScorecardFilterArgs']] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  levels: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardLevelArgs']]]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardRuleArgs']]]] = None,
@@ -119,6 +136,7 @@ class _ScorecardState:
         :param pulumi.Input[str] blueprint: The blueprint of the scorecard
         :param pulumi.Input[str] created_at: The creation date of the scorecard
         :param pulumi.Input[str] created_by: The creator of the scorecard
+        :param pulumi.Input['ScorecardFilterArgs'] filter: The filter to apply on the entities before calculating the scorecard
         :param pulumi.Input[str] identifier: The identifier of the scorecard
         :param pulumi.Input[Sequence[pulumi.Input['ScorecardLevelArgs']]] levels: The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
         :param pulumi.Input[Sequence[pulumi.Input['ScorecardRuleArgs']]] rules: The rules of the scorecard
@@ -132,6 +150,8 @@ class _ScorecardState:
             pulumi.set(__self__, "created_at", created_at)
         if created_by is not None:
             pulumi.set(__self__, "created_by", created_by)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if levels is not None:
@@ -180,6 +200,18 @@ class _ScorecardState:
     @created_by.setter
     def created_by(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input['ScorecardFilterArgs']]:
+        """
+        The filter to apply on the entities before calculating the scorecard
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input['ScorecardFilterArgs']]):
+        pulumi.set(self, "filter", value)
 
     @property
     @pulumi.getter
@@ -260,6 +292,7 @@ class Scorecard(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blueprint: Optional[pulumi.Input[str]] = None,
+                 filter: Optional[pulumi.Input[Union['ScorecardFilterArgs', 'ScorecardFilterArgsDict']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardLevelArgs', 'ScorecardLevelArgsDict']]]]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardRuleArgs', 'ScorecardRuleArgsDict']]]]] = None,
@@ -363,7 +396,7 @@ class Scorecard(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[microservice]))
         ```
 
-        ### With Levels
+        ### With Levels And Filter
 
         This will override the default levels (Basic, Bronze, Silver, Gold) with the provided levels: Not Ready, Partially Ready, Ready.
 
@@ -400,6 +433,21 @@ class Scorecard(pulumi.CustomResource):
             identifier=Readiness,
             title=Readiness,
             blueprint=microservice.identifier,
+            filter={
+                combinator: and,
+                conditions: [
+                    json.dumps({
+                        property: required,
+                        operator: =,
+                        value: True,
+                    }),
+                    json.dumps({
+                        property: sum,
+                        operator: >,
+                        value: 5,
+                    }),
+                ],
+            },
             levels=[
                 {
                     color: red,
@@ -473,6 +521,7 @@ class Scorecard(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] blueprint: The blueprint of the scorecard
+        :param pulumi.Input[Union['ScorecardFilterArgs', 'ScorecardFilterArgsDict']] filter: The filter to apply on the entities before calculating the scorecard
         :param pulumi.Input[str] identifier: The identifier of the scorecard
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScorecardLevelArgs', 'ScorecardLevelArgsDict']]]] levels: The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScorecardRuleArgs', 'ScorecardRuleArgsDict']]]] rules: The rules of the scorecard
@@ -582,7 +631,7 @@ class Scorecard(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[microservice]))
         ```
 
-        ### With Levels
+        ### With Levels And Filter
 
         This will override the default levels (Basic, Bronze, Silver, Gold) with the provided levels: Not Ready, Partially Ready, Ready.
 
@@ -619,6 +668,21 @@ class Scorecard(pulumi.CustomResource):
             identifier=Readiness,
             title=Readiness,
             blueprint=microservice.identifier,
+            filter={
+                combinator: and,
+                conditions: [
+                    json.dumps({
+                        property: required,
+                        operator: =,
+                        value: True,
+                    }),
+                    json.dumps({
+                        property: sum,
+                        operator: >,
+                        value: 5,
+                    }),
+                ],
+            },
             levels=[
                 {
                     color: red,
@@ -705,6 +769,7 @@ class Scorecard(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blueprint: Optional[pulumi.Input[str]] = None,
+                 filter: Optional[pulumi.Input[Union['ScorecardFilterArgs', 'ScorecardFilterArgsDict']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardLevelArgs', 'ScorecardLevelArgsDict']]]]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardRuleArgs', 'ScorecardRuleArgsDict']]]]] = None,
@@ -721,6 +786,7 @@ class Scorecard(pulumi.CustomResource):
             if blueprint is None and not opts.urn:
                 raise TypeError("Missing required property 'blueprint'")
             __props__.__dict__["blueprint"] = blueprint
+            __props__.__dict__["filter"] = filter
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
@@ -748,6 +814,7 @@ class Scorecard(pulumi.CustomResource):
             blueprint: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             created_by: Optional[pulumi.Input[str]] = None,
+            filter: Optional[pulumi.Input[Union['ScorecardFilterArgs', 'ScorecardFilterArgsDict']]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardLevelArgs', 'ScorecardLevelArgsDict']]]]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardRuleArgs', 'ScorecardRuleArgsDict']]]]] = None,
@@ -764,6 +831,7 @@ class Scorecard(pulumi.CustomResource):
         :param pulumi.Input[str] blueprint: The blueprint of the scorecard
         :param pulumi.Input[str] created_at: The creation date of the scorecard
         :param pulumi.Input[str] created_by: The creator of the scorecard
+        :param pulumi.Input[Union['ScorecardFilterArgs', 'ScorecardFilterArgsDict']] filter: The filter to apply on the entities before calculating the scorecard
         :param pulumi.Input[str] identifier: The identifier of the scorecard
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScorecardLevelArgs', 'ScorecardLevelArgsDict']]]] levels: The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScorecardRuleArgs', 'ScorecardRuleArgsDict']]]] rules: The rules of the scorecard
@@ -778,6 +846,7 @@ class Scorecard(pulumi.CustomResource):
         __props__.__dict__["blueprint"] = blueprint
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
+        __props__.__dict__["filter"] = filter
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["levels"] = levels
         __props__.__dict__["rules"] = rules
@@ -809,6 +878,14 @@ class Scorecard(pulumi.CustomResource):
         The creator of the scorecard
         """
         return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Output[Optional['outputs.ScorecardFilter']]:
+        """
+        The filter to apply on the entities before calculating the scorecard
+        """
+        return pulumi.get(self, "filter")
 
     @property
     @pulumi.getter

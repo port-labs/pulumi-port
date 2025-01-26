@@ -10839,6 +10839,8 @@ type BlueprintPropertiesArrayPropsStringItems struct {
 	Defaults []string `pulumi:"defaults"`
 	// The format of the items
 	Format *string `pulumi:"format"`
+	// The pattern of the string array items
+	Pattern *string `pulumi:"pattern"`
 }
 
 // BlueprintPropertiesArrayPropsStringItemsInput is an input type that accepts BlueprintPropertiesArrayPropsStringItemsArgs and BlueprintPropertiesArrayPropsStringItemsOutput values.
@@ -10857,6 +10859,8 @@ type BlueprintPropertiesArrayPropsStringItemsArgs struct {
 	Defaults pulumi.StringArrayInput `pulumi:"defaults"`
 	// The format of the items
 	Format pulumi.StringPtrInput `pulumi:"format"`
+	// The pattern of the string array items
+	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
 }
 
 func (BlueprintPropertiesArrayPropsStringItemsArgs) ElementType() reflect.Type {
@@ -10946,6 +10950,11 @@ func (o BlueprintPropertiesArrayPropsStringItemsOutput) Format() pulumi.StringPt
 	return o.ApplyT(func(v BlueprintPropertiesArrayPropsStringItems) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
+// The pattern of the string array items
+func (o BlueprintPropertiesArrayPropsStringItemsOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesArrayPropsStringItems) *string { return v.Pattern }).(pulumi.StringPtrOutput)
+}
+
 type BlueprintPropertiesArrayPropsStringItemsPtrOutput struct{ *pulumi.OutputState }
 
 func (BlueprintPropertiesArrayPropsStringItemsPtrOutput) ElementType() reflect.Type {
@@ -10987,6 +10996,16 @@ func (o BlueprintPropertiesArrayPropsStringItemsPtrOutput) Format() pulumi.Strin
 			return nil
 		}
 		return v.Format
+	}).(pulumi.StringPtrOutput)
+}
+
+// The pattern of the string array items
+func (o BlueprintPropertiesArrayPropsStringItemsPtrOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlueprintPropertiesArrayPropsStringItems) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pattern
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13238,6 +13257,162 @@ func (o PagePermissionsReadPtrOutput) Users() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+type ScorecardFilter struct {
+	// The combinator of the filter
+	Combinator string `pulumi:"combinator"`
+	// The conditions of the filter. Each condition object should be encoded to a string
+	Conditions []string `pulumi:"conditions"`
+}
+
+// ScorecardFilterInput is an input type that accepts ScorecardFilterArgs and ScorecardFilterOutput values.
+// You can construct a concrete instance of `ScorecardFilterInput` via:
+//
+//	ScorecardFilterArgs{...}
+type ScorecardFilterInput interface {
+	pulumi.Input
+
+	ToScorecardFilterOutput() ScorecardFilterOutput
+	ToScorecardFilterOutputWithContext(context.Context) ScorecardFilterOutput
+}
+
+type ScorecardFilterArgs struct {
+	// The combinator of the filter
+	Combinator pulumi.StringInput `pulumi:"combinator"`
+	// The conditions of the filter. Each condition object should be encoded to a string
+	Conditions pulumi.StringArrayInput `pulumi:"conditions"`
+}
+
+func (ScorecardFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardFilter)(nil)).Elem()
+}
+
+func (i ScorecardFilterArgs) ToScorecardFilterOutput() ScorecardFilterOutput {
+	return i.ToScorecardFilterOutputWithContext(context.Background())
+}
+
+func (i ScorecardFilterArgs) ToScorecardFilterOutputWithContext(ctx context.Context) ScorecardFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardFilterOutput)
+}
+
+func (i ScorecardFilterArgs) ToScorecardFilterPtrOutput() ScorecardFilterPtrOutput {
+	return i.ToScorecardFilterPtrOutputWithContext(context.Background())
+}
+
+func (i ScorecardFilterArgs) ToScorecardFilterPtrOutputWithContext(ctx context.Context) ScorecardFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardFilterOutput).ToScorecardFilterPtrOutputWithContext(ctx)
+}
+
+// ScorecardFilterPtrInput is an input type that accepts ScorecardFilterArgs, ScorecardFilterPtr and ScorecardFilterPtrOutput values.
+// You can construct a concrete instance of `ScorecardFilterPtrInput` via:
+//
+//	        ScorecardFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScorecardFilterPtrInput interface {
+	pulumi.Input
+
+	ToScorecardFilterPtrOutput() ScorecardFilterPtrOutput
+	ToScorecardFilterPtrOutputWithContext(context.Context) ScorecardFilterPtrOutput
+}
+
+type scorecardFilterPtrType ScorecardFilterArgs
+
+func ScorecardFilterPtr(v *ScorecardFilterArgs) ScorecardFilterPtrInput {
+	return (*scorecardFilterPtrType)(v)
+}
+
+func (*scorecardFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScorecardFilter)(nil)).Elem()
+}
+
+func (i *scorecardFilterPtrType) ToScorecardFilterPtrOutput() ScorecardFilterPtrOutput {
+	return i.ToScorecardFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *scorecardFilterPtrType) ToScorecardFilterPtrOutputWithContext(ctx context.Context) ScorecardFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardFilterPtrOutput)
+}
+
+type ScorecardFilterOutput struct{ *pulumi.OutputState }
+
+func (ScorecardFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardFilter)(nil)).Elem()
+}
+
+func (o ScorecardFilterOutput) ToScorecardFilterOutput() ScorecardFilterOutput {
+	return o
+}
+
+func (o ScorecardFilterOutput) ToScorecardFilterOutputWithContext(ctx context.Context) ScorecardFilterOutput {
+	return o
+}
+
+func (o ScorecardFilterOutput) ToScorecardFilterPtrOutput() ScorecardFilterPtrOutput {
+	return o.ToScorecardFilterPtrOutputWithContext(context.Background())
+}
+
+func (o ScorecardFilterOutput) ToScorecardFilterPtrOutputWithContext(ctx context.Context) ScorecardFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScorecardFilter) *ScorecardFilter {
+		return &v
+	}).(ScorecardFilterPtrOutput)
+}
+
+// The combinator of the filter
+func (o ScorecardFilterOutput) Combinator() pulumi.StringOutput {
+	return o.ApplyT(func(v ScorecardFilter) string { return v.Combinator }).(pulumi.StringOutput)
+}
+
+// The conditions of the filter. Each condition object should be encoded to a string
+func (o ScorecardFilterOutput) Conditions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ScorecardFilter) []string { return v.Conditions }).(pulumi.StringArrayOutput)
+}
+
+type ScorecardFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (ScorecardFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScorecardFilter)(nil)).Elem()
+}
+
+func (o ScorecardFilterPtrOutput) ToScorecardFilterPtrOutput() ScorecardFilterPtrOutput {
+	return o
+}
+
+func (o ScorecardFilterPtrOutput) ToScorecardFilterPtrOutputWithContext(ctx context.Context) ScorecardFilterPtrOutput {
+	return o
+}
+
+func (o ScorecardFilterPtrOutput) Elem() ScorecardFilterOutput {
+	return o.ApplyT(func(v *ScorecardFilter) ScorecardFilter {
+		if v != nil {
+			return *v
+		}
+		var ret ScorecardFilter
+		return ret
+	}).(ScorecardFilterOutput)
+}
+
+// The combinator of the filter
+func (o ScorecardFilterPtrOutput) Combinator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScorecardFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Combinator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The conditions of the filter. Each condition object should be encoded to a string
+func (o ScorecardFilterPtrOutput) Conditions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ScorecardFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(pulumi.StringArrayOutput)
+}
+
 type ScorecardLevel struct {
 	// The color of the level
 	Color string `pulumi:"color"`
@@ -13345,6 +13520,8 @@ func (o ScorecardLevelArrayOutput) Index(i pulumi.IntInput) ScorecardLevelOutput
 }
 
 type ScorecardRule struct {
+	// The description of the rule
+	Description *string `pulumi:"description"`
 	// The identifier of the rule
 	Identifier string `pulumi:"identifier"`
 	// The level of the rule
@@ -13367,6 +13544,8 @@ type ScorecardRuleInput interface {
 }
 
 type ScorecardRuleArgs struct {
+	// The description of the rule
+	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The identifier of the rule
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// The level of the rule
@@ -13426,6 +13605,11 @@ func (o ScorecardRuleOutput) ToScorecardRuleOutput() ScorecardRuleOutput {
 
 func (o ScorecardRuleOutput) ToScorecardRuleOutputWithContext(ctx context.Context) ScorecardRuleOutput {
 	return o
+}
+
+// The description of the rule
+func (o ScorecardRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScorecardRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The identifier of the rule
@@ -14747,6 +14931,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationWebhookChangelogDestinationPtrInput)(nil)).Elem(), IntegrationWebhookChangelogDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagePermissionsReadInput)(nil)).Elem(), PagePermissionsReadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagePermissionsReadPtrInput)(nil)).Elem(), PagePermissionsReadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardFilterInput)(nil)).Elem(), ScorecardFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardFilterPtrInput)(nil)).Elem(), ScorecardFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardLevelInput)(nil)).Elem(), ScorecardLevelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardLevelArrayInput)(nil)).Elem(), ScorecardLevelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardRuleInput)(nil)).Elem(), ScorecardRuleArgs{})
@@ -14922,6 +15108,8 @@ func init() {
 	pulumi.RegisterOutputType(IntegrationWebhookChangelogDestinationPtrOutput{})
 	pulumi.RegisterOutputType(PagePermissionsReadOutput{})
 	pulumi.RegisterOutputType(PagePermissionsReadPtrOutput{})
+	pulumi.RegisterOutputType(ScorecardFilterOutput{})
+	pulumi.RegisterOutputType(ScorecardFilterPtrOutput{})
 	pulumi.RegisterOutputType(ScorecardLevelOutput{})
 	pulumi.RegisterOutputType(ScorecardLevelArrayOutput{})
 	pulumi.RegisterOutputType(ScorecardRuleOutput{})
