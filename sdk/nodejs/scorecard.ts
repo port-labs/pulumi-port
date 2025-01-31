@@ -106,7 +106,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * ### With Levels
+ * ### With Levels And Filter
  *
  * This will override the default levels (Basic, Bronze, Silver, Gold) with the provided levels: Not Ready, Partially Ready, Ready.
  *
@@ -143,6 +143,21 @@ import * as utilities from "./utilities";
  *     identifier: "Readiness",
  *     title: "Readiness",
  *     blueprint: microservice.identifier,
+ *     filter: {
+ *         combinator: "and",
+ *         conditions: [
+ *             JSON.stringify({
+ *                 property: "required",
+ *                 operator: "=",
+ *                 value: true,
+ *             }),
+ *             JSON.stringify({
+ *                 property: "sum",
+ *                 operator: ">",
+ *                 value: 5,
+ *             }),
+ *         ],
+ *     },
  *     levels: [
  *         {
  *             color: "red",
@@ -256,6 +271,10 @@ export class Scorecard extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdBy!: pulumi.Output<string>;
     /**
+     * The filter to apply on the entities before calculating the scorecard
+     */
+    public readonly filter!: pulumi.Output<outputs.ScorecardFilter | undefined>;
+    /**
      * The identifier of the scorecard
      */
     public readonly identifier!: pulumi.Output<string>;
@@ -296,6 +315,7 @@ export class Scorecard extends pulumi.CustomResource {
             resourceInputs["blueprint"] = state ? state.blueprint : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["createdBy"] = state ? state.createdBy : undefined;
+            resourceInputs["filter"] = state ? state.filter : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["levels"] = state ? state.levels : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
@@ -317,6 +337,7 @@ export class Scorecard extends pulumi.CustomResource {
                 throw new Error("Missing required property 'title'");
             }
             resourceInputs["blueprint"] = args ? args.blueprint : undefined;
+            resourceInputs["filter"] = args ? args.filter : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["levels"] = args ? args.levels : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
@@ -347,6 +368,10 @@ export interface ScorecardState {
      * The creator of the scorecard
      */
     createdBy?: pulumi.Input<string>;
+    /**
+     * The filter to apply on the entities before calculating the scorecard
+     */
+    filter?: pulumi.Input<inputs.ScorecardFilter>;
     /**
      * The identifier of the scorecard
      */
@@ -381,6 +406,10 @@ export interface ScorecardArgs {
      * The blueprint of the scorecard
      */
     blueprint: pulumi.Input<string>;
+    /**
+     * The filter to apply on the entities before calculating the scorecard
+     */
+    filter?: pulumi.Input<inputs.ScorecardFilter>;
     /**
      * The identifier of the scorecard
      */

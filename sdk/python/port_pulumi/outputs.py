@@ -95,6 +95,7 @@ __all__ = [
     'IntegrationKafkaChangelogDestination',
     'IntegrationWebhookChangelogDestination',
     'PagePermissionsRead',
+    'ScorecardFilter',
     'ScorecardLevel',
     'ScorecardRule',
     'ScorecardRuleQuery',
@@ -5322,6 +5323,35 @@ class PagePermissionsRead(dict):
 
 
 @pulumi.output_type
+class ScorecardFilter(dict):
+    def __init__(__self__, *,
+                 combinator: str,
+                 conditions: Sequence[str]):
+        """
+        :param str combinator: The combinator of the filter
+        :param Sequence[str] conditions: The conditions of the filter. Each condition object should be encoded to a string
+        """
+        pulumi.set(__self__, "combinator", combinator)
+        pulumi.set(__self__, "conditions", conditions)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> str:
+        """
+        The combinator of the filter
+        """
+        return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Sequence[str]:
+        """
+        The conditions of the filter. Each condition object should be encoded to a string
+        """
+        return pulumi.get(self, "conditions")
+
+
+@pulumi.output_type
 class ScorecardLevel(dict):
     def __init__(__self__, *,
                  color: str,
@@ -5356,17 +5386,21 @@ class ScorecardRule(dict):
                  identifier: str,
                  level: str,
                  query: 'outputs.ScorecardRuleQuery',
-                 title: str):
+                 title: str,
+                 description: Optional[str] = None):
         """
         :param str identifier: The identifier of the rule
         :param str level: The level of the rule
         :param 'ScorecardRuleQueryArgs' query: The query of the rule
         :param str title: The title of the rule
+        :param str description: The description of the rule
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "level", level)
         pulumi.set(__self__, "query", query)
         pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -5399,6 +5433,14 @@ class ScorecardRule(dict):
         The title of the rule
         """
         return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the rule
+        """
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

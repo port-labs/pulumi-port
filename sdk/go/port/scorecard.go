@@ -113,7 +113,7 @@ import (
 // }
 // ```
 //
-// ### With Levels
+// ### With Levels And Filter
 //
 // This will override the default levels (Basic, Bronze, Silver, Gold) with the provided levels: Not Ready, Partially Ready, Ready.
 //
@@ -162,6 +162,13 @@ import (
 // Identifier: "Readiness",
 // Title: "Readiness",
 // Blueprint: microservice.Identifier,
+// Filter: map[string]interface{}{
+// "combinator": "and",
+// "conditions": []string{
+// %!v(PANIC=Format method: fatal: An assertion has failed: unlowered function toJSON),
+// %!v(PANIC=Format method: fatal: An assertion has failed: unlowered function toJSON),
+// },
+// },
 // Levels: []map[string]interface{}{
 // map[string]interface{}{
 // "color": "red",
@@ -232,6 +239,8 @@ type Scorecard struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The creator of the scorecard
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
+	// The filter to apply on the entities before calculating the scorecard
+	Filter ScorecardFilterPtrOutput `pulumi:"filter"`
 	// The identifier of the scorecard
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
@@ -294,6 +303,8 @@ type scorecardState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// The creator of the scorecard
 	CreatedBy *string `pulumi:"createdBy"`
+	// The filter to apply on the entities before calculating the scorecard
+	Filter *ScorecardFilter `pulumi:"filter"`
 	// The identifier of the scorecard
 	Identifier *string `pulumi:"identifier"`
 	// The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
@@ -315,6 +326,8 @@ type ScorecardState struct {
 	CreatedAt pulumi.StringPtrInput
 	// The creator of the scorecard
 	CreatedBy pulumi.StringPtrInput
+	// The filter to apply on the entities before calculating the scorecard
+	Filter ScorecardFilterPtrInput
 	// The identifier of the scorecard
 	Identifier pulumi.StringPtrInput
 	// The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
@@ -336,6 +349,8 @@ func (ScorecardState) ElementType() reflect.Type {
 type scorecardArgs struct {
 	// The blueprint of the scorecard
 	Blueprint string `pulumi:"blueprint"`
+	// The filter to apply on the entities before calculating the scorecard
+	Filter *ScorecardFilter `pulumi:"filter"`
 	// The identifier of the scorecard
 	Identifier string `pulumi:"identifier"`
 	// The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
@@ -350,6 +365,8 @@ type scorecardArgs struct {
 type ScorecardArgs struct {
 	// The blueprint of the scorecard
 	Blueprint pulumi.StringInput
+	// The filter to apply on the entities before calculating the scorecard
+	Filter ScorecardFilterPtrInput
 	// The identifier of the scorecard
 	Identifier pulumi.StringInput
 	// The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
@@ -460,6 +477,11 @@ func (o ScorecardOutput) CreatedAt() pulumi.StringOutput {
 // The creator of the scorecard
 func (o ScorecardOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Scorecard) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The filter to apply on the entities before calculating the scorecard
+func (o ScorecardOutput) Filter() ScorecardFilterPtrOutput {
+	return o.ApplyT(func(v *Scorecard) ScorecardFilterPtrOutput { return v.Filter }).(ScorecardFilterPtrOutput)
 }
 
 // The identifier of the scorecard

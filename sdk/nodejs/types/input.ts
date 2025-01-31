@@ -1500,6 +1500,17 @@ export interface PagePermissionsRead {
     users?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface ScorecardFilter {
+    /**
+     * The combinator of the filter
+     */
+    combinator: pulumi.Input<string>;
+    /**
+     * The conditions of the filter. Each condition object should be encoded to a string
+     */
+    conditions: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface ScorecardLevel {
     /**
      * The color of the level
@@ -1512,6 +1523,10 @@ export interface ScorecardLevel {
 }
 
 export interface ScorecardRule {
+    /**
+     * The description of the rule
+     */
+    description?: pulumi.Input<string>;
     /**
      * The identifier of the rule
      */
