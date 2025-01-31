@@ -1607,6 +1607,17 @@ export interface PagePermissionsRead {
     users?: string[];
 }
 
+export interface ScorecardFilter {
+    /**
+     * The combinator of the filter
+     */
+    combinator: string;
+    /**
+     * The conditions of the filter. Each condition object should be encoded to a string
+     */
+    conditions: string[];
+}
+
 export interface ScorecardLevel {
     /**
      * The color of the level
@@ -1619,6 +1630,10 @@ export interface ScorecardLevel {
 }
 
 export interface ScorecardRule {
+    /**
+     * The description of the rule
+     */
+    description?: string;
     /**
      * The identifier of the rule
      */
