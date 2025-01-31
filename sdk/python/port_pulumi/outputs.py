@@ -4362,15 +4362,19 @@ class BlueprintPropertiesArrayPropsObjectItems(dict):
 class BlueprintPropertiesArrayPropsStringItems(dict):
     def __init__(__self__, *,
                  defaults: Optional[Sequence[str]] = None,
-                 format: Optional[str] = None):
+                 format: Optional[str] = None,
+                 pattern: Optional[str] = None):
         """
         :param Sequence[str] defaults: The default of the items
         :param str format: The format of the items
+        :param str pattern: The pattern of the string array items
         """
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
         if format is not None:
             pulumi.set(__self__, "format", format)
+        if pattern is not None:
+            pulumi.set(__self__, "pattern", pattern)
 
     @property
     @pulumi.getter
@@ -4387,6 +4391,14 @@ class BlueprintPropertiesArrayPropsStringItems(dict):
         The format of the items
         """
         return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter
+    def pattern(self) -> Optional[str]:
+        """
+        The pattern of the string array items
+        """
+        return pulumi.get(self, "pattern")
 
 
 @pulumi.output_type
