@@ -435,18 +435,11 @@ class Scorecard(pulumi.CustomResource):
             blueprint=microservice.identifier,
             filter={
                 combinator: and,
-                conditions: [
-                    json.dumps({
-                        property: required,
-                        operator: =,
-                        value: True,
-                    }),
-                    json.dumps({
-                        property: sum,
-                        operator: >,
-                        value: 5,
-                    }),
-                ],
+                conditions: [json.dumps({
+                    property: sum,
+                    operator: >,
+                    value: 0,
+                })],
             },
             levels=[
                 {
@@ -670,18 +663,11 @@ class Scorecard(pulumi.CustomResource):
             blueprint=microservice.identifier,
             filter={
                 combinator: and,
-                conditions: [
-                    json.dumps({
-                        property: required,
-                        operator: =,
-                        value: True,
-                    }),
-                    json.dumps({
-                        property: sum,
-                        operator: >,
-                        value: 5,
-                    }),
-                ],
+                conditions: [json.dumps({
+                    property: sum,
+                    operator: >,
+                    value: 0,
+                })],
             },
             levels=[
                 {

@@ -909,6 +909,10 @@ export interface BlueprintOwnership {
      */
     path?: string;
     /**
+     * Optional title for the owning teams property.
+     */
+    title?: string;
+    /**
      * Ownership type: either 'Inherited' or 'Direct'.
      */
     type: string;
@@ -1661,6 +1665,336 @@ export interface ScorecardRuleQuery {
      * The conditions of the query. Each condition object should be encoded to a string
      */
     conditions: string[];
+}
+
+export interface SystemBlueprintCalculationProperties {
+    /**
+     * The calculation of the calculation property
+     */
+    calculation: string;
+    /**
+     * The colorized of the calculation property
+     */
+    colorized?: boolean;
+    /**
+     * The colors of the calculation property
+     */
+    colors?: {[key: string]: string};
+    /**
+     * The description of the calculation property
+     */
+    description?: string;
+    /**
+     * The format of the calculation property
+     */
+    format?: string;
+    /**
+     * The icon of the calculation property
+     */
+    icon?: string;
+    /**
+     * The title of the calculation property
+     */
+    title?: string;
+    /**
+     * The type of the calculation property
+     */
+    type: string;
+}
+
+export interface SystemBlueprintMirrorProperties {
+    /**
+     * The path of the mirror property
+     */
+    path: string;
+    /**
+     * The title of the mirror property
+     */
+    title?: string;
+}
+
+export interface SystemBlueprintProperties {
+    /**
+     * The array property of the blueprint
+     */
+    arrayProps?: {[key: string]: outputs.SystemBlueprintPropertiesArrayProps};
+    /**
+     * The boolean property of the blueprint
+     */
+    booleanProps?: {[key: string]: outputs.SystemBlueprintPropertiesBooleanProps};
+    /**
+     * The number property of the blueprint
+     */
+    numberProps?: {[key: string]: outputs.SystemBlueprintPropertiesNumberProps};
+    /**
+     * The object property of the blueprint
+     */
+    objectProps?: {[key: string]: outputs.SystemBlueprintPropertiesObjectProps};
+    /**
+     * The string property of the blueprint
+     */
+    stringProps?: {[key: string]: outputs.SystemBlueprintPropertiesStringProps};
+}
+
+export interface SystemBlueprintPropertiesArrayProps {
+    /**
+     * The items of the array property
+     */
+    booleanItems?: outputs.SystemBlueprintPropertiesArrayPropsBooleanItems;
+    /**
+     * The description of the property
+     */
+    description?: string;
+    /**
+     * The icon of the property
+     */
+    icon?: string;
+    /**
+     * The max items of the array property
+     */
+    maxItems?: number;
+    /**
+     * The min items of the array property
+     */
+    minItems?: number;
+    /**
+     * The items of the array property
+     */
+    numberItems?: outputs.SystemBlueprintPropertiesArrayPropsNumberItems;
+    /**
+     * The items of the array property
+     */
+    objectItems?: outputs.SystemBlueprintPropertiesArrayPropsObjectItems;
+    /**
+     * Whether the property is required
+     */
+    required: boolean;
+    /**
+     * The items of the array property
+     */
+    stringItems?: outputs.SystemBlueprintPropertiesArrayPropsStringItems;
+    /**
+     * The title of the property
+     */
+    title?: string;
+}
+
+export interface SystemBlueprintPropertiesArrayPropsBooleanItems {
+    /**
+     * The default of the items
+     */
+    defaults?: boolean[];
+}
+
+export interface SystemBlueprintPropertiesArrayPropsNumberItems {
+    /**
+     * The default of the items
+     */
+    defaults?: number[];
+}
+
+export interface SystemBlueprintPropertiesArrayPropsObjectItems {
+    /**
+     * The default of the items
+     */
+    defaults?: string[];
+}
+
+export interface SystemBlueprintPropertiesArrayPropsStringItems {
+    /**
+     * The default of the items
+     */
+    defaults?: string[];
+    /**
+     * The format of the items
+     */
+    format?: string;
+    /**
+     * The pattern of the string array items
+     */
+    pattern?: string;
+}
+
+export interface SystemBlueprintPropertiesBooleanProps {
+    /**
+     * The default of the boolean property
+     */
+    default?: boolean;
+    /**
+     * The description of the property
+     */
+    description?: string;
+    /**
+     * The icon of the property
+     */
+    icon?: string;
+    /**
+     * Whether the property is required
+     */
+    required: boolean;
+    /**
+     * The title of the property
+     */
+    title?: string;
+}
+
+export interface SystemBlueprintPropertiesNumberProps {
+    /**
+     * The default of the number property
+     */
+    default?: number;
+    /**
+     * The description of the property
+     */
+    description?: string;
+    /**
+     * The enum colors of the number property
+     */
+    enumColors?: {[key: string]: string};
+    /**
+     * The enum of the number property
+     */
+    enums?: number[];
+    /**
+     * The icon of the property
+     */
+    icon?: string;
+    /**
+     * The min of the number property
+     */
+    maximum?: number;
+    /**
+     * The max of the number property
+     */
+    minimum?: number;
+    /**
+     * Whether the property is required
+     */
+    required: boolean;
+    /**
+     * The title of the property
+     */
+    title?: string;
+}
+
+export interface SystemBlueprintPropertiesObjectProps {
+    /**
+     * The default of the object property
+     */
+    default?: string;
+    /**
+     * The description of the property
+     */
+    description?: string;
+    /**
+     * The icon of the property
+     */
+    icon?: string;
+    /**
+     * Whether the property is required
+     */
+    required: boolean;
+    /**
+     * The spec of the object property
+     */
+    spec?: string;
+    /**
+     * The title of the property
+     */
+    title?: string;
+}
+
+export interface SystemBlueprintPropertiesStringProps {
+    /**
+     * The default of the string property
+     */
+    default?: string;
+    /**
+     * The description of the property
+     */
+    description?: string;
+    /**
+     * The enum colors of the string property
+     */
+    enumColors?: {[key: string]: string};
+    /**
+     * The enum of the string property
+     */
+    enums?: string[];
+    /**
+     * The format of the string property
+     */
+    format?: string;
+    /**
+     * The icon of the property
+     */
+    icon?: string;
+    /**
+     * The max length of the string property
+     */
+    maxLength?: number;
+    /**
+     * The min length of the string property
+     */
+    minLength?: number;
+    /**
+     * The pattern of the string property
+     */
+    pattern?: string;
+    /**
+     * Whether the property is required
+     */
+    required: boolean;
+    /**
+     * The spec of the string property
+     */
+    spec?: string;
+    /**
+     * The spec authentication of the string property
+     */
+    specAuthentication?: outputs.SystemBlueprintPropertiesStringPropsSpecAuthentication;
+    /**
+     * The title of the property
+     */
+    title?: string;
+}
+
+export interface SystemBlueprintPropertiesStringPropsSpecAuthentication {
+    /**
+     * The authorizationUrl of the spec authentication
+     */
+    authorizationUrl: string;
+    /**
+     * The clientId of the spec authentication
+     */
+    clientId: string;
+    /**
+     * The tokenUrl of the spec authentication
+     */
+    tokenUrl: string;
+}
+
+export interface SystemBlueprintRelations {
+    /**
+     * The description of the relation
+     */
+    description?: string;
+    /**
+     * The many of the relation
+     */
+    many: boolean;
+    /**
+     * The required of the relation
+     */
+    required: boolean;
+    /**
+     * The target of the relation
+     */
+    target: string;
+    /**
+     * The title of the relation
+     */
+    title?: string;
 }
 
 export interface WebhookMapping {

@@ -7835,6 +7835,8 @@ func (o BlueprintMirrorPropertiesMapOutput) MapIndex(k pulumi.StringInput) Bluep
 type BlueprintOwnership struct {
 	// Path for the Inherited ownership type. Required when type is 'Inherited'. Must be a valid relation identifiers path.
 	Path *string `pulumi:"path"`
+	// Optional title for the owning teams property.
+	Title *string `pulumi:"title"`
 	// Ownership type: either 'Inherited' or 'Direct'.
 	Type string `pulumi:"type"`
 }
@@ -7853,6 +7855,8 @@ type BlueprintOwnershipInput interface {
 type BlueprintOwnershipArgs struct {
 	// Path for the Inherited ownership type. Required when type is 'Inherited'. Must be a valid relation identifiers path.
 	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Optional title for the owning teams property.
+	Title pulumi.StringPtrInput `pulumi:"title"`
 	// Ownership type: either 'Inherited' or 'Direct'.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -7939,6 +7943,11 @@ func (o BlueprintOwnershipOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintOwnership) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
+// Optional title for the owning teams property.
+func (o BlueprintOwnershipOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintOwnership) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
 // Ownership type: either 'Inherited' or 'Direct'.
 func (o BlueprintOwnershipOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v BlueprintOwnership) string { return v.Type }).(pulumi.StringOutput)
@@ -7975,6 +7984,16 @@ func (o BlueprintOwnershipPtrOutput) Path() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional title for the owning teams property.
+func (o BlueprintOwnershipPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlueprintOwnership) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13713,6 +13732,2224 @@ func (o ScorecardRuleQueryOutput) Conditions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ScorecardRuleQuery) []string { return v.Conditions }).(pulumi.StringArrayOutput)
 }
 
+type SystemBlueprintCalculationProperties struct {
+	// The calculation of the calculation property
+	Calculation string `pulumi:"calculation"`
+	// The colorized of the calculation property
+	Colorized *bool `pulumi:"colorized"`
+	// The colors of the calculation property
+	Colors map[string]string `pulumi:"colors"`
+	// The description of the calculation property
+	Description *string `pulumi:"description"`
+	// The format of the calculation property
+	Format *string `pulumi:"format"`
+	// The icon of the calculation property
+	Icon *string `pulumi:"icon"`
+	// The title of the calculation property
+	Title *string `pulumi:"title"`
+	// The type of the calculation property
+	Type string `pulumi:"type"`
+}
+
+// SystemBlueprintCalculationPropertiesInput is an input type that accepts SystemBlueprintCalculationPropertiesArgs and SystemBlueprintCalculationPropertiesOutput values.
+// You can construct a concrete instance of `SystemBlueprintCalculationPropertiesInput` via:
+//
+//	SystemBlueprintCalculationPropertiesArgs{...}
+type SystemBlueprintCalculationPropertiesInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintCalculationPropertiesOutput() SystemBlueprintCalculationPropertiesOutput
+	ToSystemBlueprintCalculationPropertiesOutputWithContext(context.Context) SystemBlueprintCalculationPropertiesOutput
+}
+
+type SystemBlueprintCalculationPropertiesArgs struct {
+	// The calculation of the calculation property
+	Calculation pulumi.StringInput `pulumi:"calculation"`
+	// The colorized of the calculation property
+	Colorized pulumi.BoolPtrInput `pulumi:"colorized"`
+	// The colors of the calculation property
+	Colors pulumi.StringMapInput `pulumi:"colors"`
+	// The description of the calculation property
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The format of the calculation property
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	// The icon of the calculation property
+	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// The title of the calculation property
+	Title pulumi.StringPtrInput `pulumi:"title"`
+	// The type of the calculation property
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SystemBlueprintCalculationPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintCalculationProperties)(nil)).Elem()
+}
+
+func (i SystemBlueprintCalculationPropertiesArgs) ToSystemBlueprintCalculationPropertiesOutput() SystemBlueprintCalculationPropertiesOutput {
+	return i.ToSystemBlueprintCalculationPropertiesOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintCalculationPropertiesArgs) ToSystemBlueprintCalculationPropertiesOutputWithContext(ctx context.Context) SystemBlueprintCalculationPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintCalculationPropertiesOutput)
+}
+
+// SystemBlueprintCalculationPropertiesMapInput is an input type that accepts SystemBlueprintCalculationPropertiesMap and SystemBlueprintCalculationPropertiesMapOutput values.
+// You can construct a concrete instance of `SystemBlueprintCalculationPropertiesMapInput` via:
+//
+//	SystemBlueprintCalculationPropertiesMap{ "key": SystemBlueprintCalculationPropertiesArgs{...} }
+type SystemBlueprintCalculationPropertiesMapInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintCalculationPropertiesMapOutput() SystemBlueprintCalculationPropertiesMapOutput
+	ToSystemBlueprintCalculationPropertiesMapOutputWithContext(context.Context) SystemBlueprintCalculationPropertiesMapOutput
+}
+
+type SystemBlueprintCalculationPropertiesMap map[string]SystemBlueprintCalculationPropertiesInput
+
+func (SystemBlueprintCalculationPropertiesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SystemBlueprintCalculationProperties)(nil)).Elem()
+}
+
+func (i SystemBlueprintCalculationPropertiesMap) ToSystemBlueprintCalculationPropertiesMapOutput() SystemBlueprintCalculationPropertiesMapOutput {
+	return i.ToSystemBlueprintCalculationPropertiesMapOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintCalculationPropertiesMap) ToSystemBlueprintCalculationPropertiesMapOutputWithContext(ctx context.Context) SystemBlueprintCalculationPropertiesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintCalculationPropertiesMapOutput)
+}
+
+type SystemBlueprintCalculationPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintCalculationPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintCalculationProperties)(nil)).Elem()
+}
+
+func (o SystemBlueprintCalculationPropertiesOutput) ToSystemBlueprintCalculationPropertiesOutput() SystemBlueprintCalculationPropertiesOutput {
+	return o
+}
+
+func (o SystemBlueprintCalculationPropertiesOutput) ToSystemBlueprintCalculationPropertiesOutputWithContext(ctx context.Context) SystemBlueprintCalculationPropertiesOutput {
+	return o
+}
+
+// The calculation of the calculation property
+func (o SystemBlueprintCalculationPropertiesOutput) Calculation() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemBlueprintCalculationProperties) string { return v.Calculation }).(pulumi.StringOutput)
+}
+
+// The colorized of the calculation property
+func (o SystemBlueprintCalculationPropertiesOutput) Colorized() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintCalculationProperties) *bool { return v.Colorized }).(pulumi.BoolPtrOutput)
+}
+
+// The colors of the calculation property
+func (o SystemBlueprintCalculationPropertiesOutput) Colors() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SystemBlueprintCalculationProperties) map[string]string { return v.Colors }).(pulumi.StringMapOutput)
+}
+
+// The description of the calculation property
+func (o SystemBlueprintCalculationPropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintCalculationProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The format of the calculation property
+func (o SystemBlueprintCalculationPropertiesOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintCalculationProperties) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+// The icon of the calculation property
+func (o SystemBlueprintCalculationPropertiesOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintCalculationProperties) *string { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
+// The title of the calculation property
+func (o SystemBlueprintCalculationPropertiesOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintCalculationProperties) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+// The type of the calculation property
+func (o SystemBlueprintCalculationPropertiesOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemBlueprintCalculationProperties) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SystemBlueprintCalculationPropertiesMapOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintCalculationPropertiesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SystemBlueprintCalculationProperties)(nil)).Elem()
+}
+
+func (o SystemBlueprintCalculationPropertiesMapOutput) ToSystemBlueprintCalculationPropertiesMapOutput() SystemBlueprintCalculationPropertiesMapOutput {
+	return o
+}
+
+func (o SystemBlueprintCalculationPropertiesMapOutput) ToSystemBlueprintCalculationPropertiesMapOutputWithContext(ctx context.Context) SystemBlueprintCalculationPropertiesMapOutput {
+	return o
+}
+
+func (o SystemBlueprintCalculationPropertiesMapOutput) MapIndex(k pulumi.StringInput) SystemBlueprintCalculationPropertiesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SystemBlueprintCalculationProperties {
+		return vs[0].(map[string]SystemBlueprintCalculationProperties)[vs[1].(string)]
+	}).(SystemBlueprintCalculationPropertiesOutput)
+}
+
+type SystemBlueprintMirrorProperties struct {
+	// The path of the mirror property
+	Path string `pulumi:"path"`
+	// The title of the mirror property
+	Title *string `pulumi:"title"`
+}
+
+// SystemBlueprintMirrorPropertiesInput is an input type that accepts SystemBlueprintMirrorPropertiesArgs and SystemBlueprintMirrorPropertiesOutput values.
+// You can construct a concrete instance of `SystemBlueprintMirrorPropertiesInput` via:
+//
+//	SystemBlueprintMirrorPropertiesArgs{...}
+type SystemBlueprintMirrorPropertiesInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintMirrorPropertiesOutput() SystemBlueprintMirrorPropertiesOutput
+	ToSystemBlueprintMirrorPropertiesOutputWithContext(context.Context) SystemBlueprintMirrorPropertiesOutput
+}
+
+type SystemBlueprintMirrorPropertiesArgs struct {
+	// The path of the mirror property
+	Path pulumi.StringInput `pulumi:"path"`
+	// The title of the mirror property
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (SystemBlueprintMirrorPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintMirrorProperties)(nil)).Elem()
+}
+
+func (i SystemBlueprintMirrorPropertiesArgs) ToSystemBlueprintMirrorPropertiesOutput() SystemBlueprintMirrorPropertiesOutput {
+	return i.ToSystemBlueprintMirrorPropertiesOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintMirrorPropertiesArgs) ToSystemBlueprintMirrorPropertiesOutputWithContext(ctx context.Context) SystemBlueprintMirrorPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintMirrorPropertiesOutput)
+}
+
+// SystemBlueprintMirrorPropertiesMapInput is an input type that accepts SystemBlueprintMirrorPropertiesMap and SystemBlueprintMirrorPropertiesMapOutput values.
+// You can construct a concrete instance of `SystemBlueprintMirrorPropertiesMapInput` via:
+//
+//	SystemBlueprintMirrorPropertiesMap{ "key": SystemBlueprintMirrorPropertiesArgs{...} }
+type SystemBlueprintMirrorPropertiesMapInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintMirrorPropertiesMapOutput() SystemBlueprintMirrorPropertiesMapOutput
+	ToSystemBlueprintMirrorPropertiesMapOutputWithContext(context.Context) SystemBlueprintMirrorPropertiesMapOutput
+}
+
+type SystemBlueprintMirrorPropertiesMap map[string]SystemBlueprintMirrorPropertiesInput
+
+func (SystemBlueprintMirrorPropertiesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SystemBlueprintMirrorProperties)(nil)).Elem()
+}
+
+func (i SystemBlueprintMirrorPropertiesMap) ToSystemBlueprintMirrorPropertiesMapOutput() SystemBlueprintMirrorPropertiesMapOutput {
+	return i.ToSystemBlueprintMirrorPropertiesMapOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintMirrorPropertiesMap) ToSystemBlueprintMirrorPropertiesMapOutputWithContext(ctx context.Context) SystemBlueprintMirrorPropertiesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintMirrorPropertiesMapOutput)
+}
+
+type SystemBlueprintMirrorPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintMirrorPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintMirrorProperties)(nil)).Elem()
+}
+
+func (o SystemBlueprintMirrorPropertiesOutput) ToSystemBlueprintMirrorPropertiesOutput() SystemBlueprintMirrorPropertiesOutput {
+	return o
+}
+
+func (o SystemBlueprintMirrorPropertiesOutput) ToSystemBlueprintMirrorPropertiesOutputWithContext(ctx context.Context) SystemBlueprintMirrorPropertiesOutput {
+	return o
+}
+
+// The path of the mirror property
+func (o SystemBlueprintMirrorPropertiesOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemBlueprintMirrorProperties) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The title of the mirror property
+func (o SystemBlueprintMirrorPropertiesOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintMirrorProperties) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type SystemBlueprintMirrorPropertiesMapOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintMirrorPropertiesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SystemBlueprintMirrorProperties)(nil)).Elem()
+}
+
+func (o SystemBlueprintMirrorPropertiesMapOutput) ToSystemBlueprintMirrorPropertiesMapOutput() SystemBlueprintMirrorPropertiesMapOutput {
+	return o
+}
+
+func (o SystemBlueprintMirrorPropertiesMapOutput) ToSystemBlueprintMirrorPropertiesMapOutputWithContext(ctx context.Context) SystemBlueprintMirrorPropertiesMapOutput {
+	return o
+}
+
+func (o SystemBlueprintMirrorPropertiesMapOutput) MapIndex(k pulumi.StringInput) SystemBlueprintMirrorPropertiesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SystemBlueprintMirrorProperties {
+		return vs[0].(map[string]SystemBlueprintMirrorProperties)[vs[1].(string)]
+	}).(SystemBlueprintMirrorPropertiesOutput)
+}
+
+type SystemBlueprintProperties struct {
+	// The array property of the blueprint
+	ArrayProps map[string]SystemBlueprintPropertiesArrayProps `pulumi:"arrayProps"`
+	// The boolean property of the blueprint
+	BooleanProps map[string]SystemBlueprintPropertiesBooleanProps `pulumi:"booleanProps"`
+	// The number property of the blueprint
+	NumberProps map[string]SystemBlueprintPropertiesNumberProps `pulumi:"numberProps"`
+	// The object property of the blueprint
+	ObjectProps map[string]SystemBlueprintPropertiesObjectProps `pulumi:"objectProps"`
+	// The string property of the blueprint
+	StringProps map[string]SystemBlueprintPropertiesStringProps `pulumi:"stringProps"`
+}
+
+// SystemBlueprintPropertiesInput is an input type that accepts SystemBlueprintPropertiesArgs and SystemBlueprintPropertiesOutput values.
+// You can construct a concrete instance of `SystemBlueprintPropertiesInput` via:
+//
+//	SystemBlueprintPropertiesArgs{...}
+type SystemBlueprintPropertiesInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintPropertiesOutput() SystemBlueprintPropertiesOutput
+	ToSystemBlueprintPropertiesOutputWithContext(context.Context) SystemBlueprintPropertiesOutput
+}
+
+type SystemBlueprintPropertiesArgs struct {
+	// The array property of the blueprint
+	ArrayProps SystemBlueprintPropertiesArrayPropsMapInput `pulumi:"arrayProps"`
+	// The boolean property of the blueprint
+	BooleanProps SystemBlueprintPropertiesBooleanPropsMapInput `pulumi:"booleanProps"`
+	// The number property of the blueprint
+	NumberProps SystemBlueprintPropertiesNumberPropsMapInput `pulumi:"numberProps"`
+	// The object property of the blueprint
+	ObjectProps SystemBlueprintPropertiesObjectPropsMapInput `pulumi:"objectProps"`
+	// The string property of the blueprint
+	StringProps SystemBlueprintPropertiesStringPropsMapInput `pulumi:"stringProps"`
+}
+
+func (SystemBlueprintPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintProperties)(nil)).Elem()
+}
+
+func (i SystemBlueprintPropertiesArgs) ToSystemBlueprintPropertiesOutput() SystemBlueprintPropertiesOutput {
+	return i.ToSystemBlueprintPropertiesOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintPropertiesArgs) ToSystemBlueprintPropertiesOutputWithContext(ctx context.Context) SystemBlueprintPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesOutput)
+}
+
+func (i SystemBlueprintPropertiesArgs) ToSystemBlueprintPropertiesPtrOutput() SystemBlueprintPropertiesPtrOutput {
+	return i.ToSystemBlueprintPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintPropertiesArgs) ToSystemBlueprintPropertiesPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesOutput).ToSystemBlueprintPropertiesPtrOutputWithContext(ctx)
+}
+
+// SystemBlueprintPropertiesPtrInput is an input type that accepts SystemBlueprintPropertiesArgs, SystemBlueprintPropertiesPtr and SystemBlueprintPropertiesPtrOutput values.
+// You can construct a concrete instance of `SystemBlueprintPropertiesPtrInput` via:
+//
+//	        SystemBlueprintPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SystemBlueprintPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintPropertiesPtrOutput() SystemBlueprintPropertiesPtrOutput
+	ToSystemBlueprintPropertiesPtrOutputWithContext(context.Context) SystemBlueprintPropertiesPtrOutput
+}
+
+type systemBlueprintPropertiesPtrType SystemBlueprintPropertiesArgs
+
+func SystemBlueprintPropertiesPtr(v *SystemBlueprintPropertiesArgs) SystemBlueprintPropertiesPtrInput {
+	return (*systemBlueprintPropertiesPtrType)(v)
+}
+
+func (*systemBlueprintPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemBlueprintProperties)(nil)).Elem()
+}
+
+func (i *systemBlueprintPropertiesPtrType) ToSystemBlueprintPropertiesPtrOutput() SystemBlueprintPropertiesPtrOutput {
+	return i.ToSystemBlueprintPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *systemBlueprintPropertiesPtrType) ToSystemBlueprintPropertiesPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesPtrOutput)
+}
+
+type SystemBlueprintPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintProperties)(nil)).Elem()
+}
+
+func (o SystemBlueprintPropertiesOutput) ToSystemBlueprintPropertiesOutput() SystemBlueprintPropertiesOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesOutput) ToSystemBlueprintPropertiesOutputWithContext(ctx context.Context) SystemBlueprintPropertiesOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesOutput) ToSystemBlueprintPropertiesPtrOutput() SystemBlueprintPropertiesPtrOutput {
+	return o.ToSystemBlueprintPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SystemBlueprintPropertiesOutput) ToSystemBlueprintPropertiesPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemBlueprintProperties) *SystemBlueprintProperties {
+		return &v
+	}).(SystemBlueprintPropertiesPtrOutput)
+}
+
+// The array property of the blueprint
+func (o SystemBlueprintPropertiesOutput) ArrayProps() SystemBlueprintPropertiesArrayPropsMapOutput {
+	return o.ApplyT(func(v SystemBlueprintProperties) map[string]SystemBlueprintPropertiesArrayProps { return v.ArrayProps }).(SystemBlueprintPropertiesArrayPropsMapOutput)
+}
+
+// The boolean property of the blueprint
+func (o SystemBlueprintPropertiesOutput) BooleanProps() SystemBlueprintPropertiesBooleanPropsMapOutput {
+	return o.ApplyT(func(v SystemBlueprintProperties) map[string]SystemBlueprintPropertiesBooleanProps {
+		return v.BooleanProps
+	}).(SystemBlueprintPropertiesBooleanPropsMapOutput)
+}
+
+// The number property of the blueprint
+func (o SystemBlueprintPropertiesOutput) NumberProps() SystemBlueprintPropertiesNumberPropsMapOutput {
+	return o.ApplyT(func(v SystemBlueprintProperties) map[string]SystemBlueprintPropertiesNumberProps {
+		return v.NumberProps
+	}).(SystemBlueprintPropertiesNumberPropsMapOutput)
+}
+
+// The object property of the blueprint
+func (o SystemBlueprintPropertiesOutput) ObjectProps() SystemBlueprintPropertiesObjectPropsMapOutput {
+	return o.ApplyT(func(v SystemBlueprintProperties) map[string]SystemBlueprintPropertiesObjectProps {
+		return v.ObjectProps
+	}).(SystemBlueprintPropertiesObjectPropsMapOutput)
+}
+
+// The string property of the blueprint
+func (o SystemBlueprintPropertiesOutput) StringProps() SystemBlueprintPropertiesStringPropsMapOutput {
+	return o.ApplyT(func(v SystemBlueprintProperties) map[string]SystemBlueprintPropertiesStringProps {
+		return v.StringProps
+	}).(SystemBlueprintPropertiesStringPropsMapOutput)
+}
+
+type SystemBlueprintPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemBlueprintProperties)(nil)).Elem()
+}
+
+func (o SystemBlueprintPropertiesPtrOutput) ToSystemBlueprintPropertiesPtrOutput() SystemBlueprintPropertiesPtrOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesPtrOutput) ToSystemBlueprintPropertiesPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesPtrOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesPtrOutput) Elem() SystemBlueprintPropertiesOutput {
+	return o.ApplyT(func(v *SystemBlueprintProperties) SystemBlueprintProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SystemBlueprintProperties
+		return ret
+	}).(SystemBlueprintPropertiesOutput)
+}
+
+// The array property of the blueprint
+func (o SystemBlueprintPropertiesPtrOutput) ArrayProps() SystemBlueprintPropertiesArrayPropsMapOutput {
+	return o.ApplyT(func(v *SystemBlueprintProperties) map[string]SystemBlueprintPropertiesArrayProps {
+		if v == nil {
+			return nil
+		}
+		return v.ArrayProps
+	}).(SystemBlueprintPropertiesArrayPropsMapOutput)
+}
+
+// The boolean property of the blueprint
+func (o SystemBlueprintPropertiesPtrOutput) BooleanProps() SystemBlueprintPropertiesBooleanPropsMapOutput {
+	return o.ApplyT(func(v *SystemBlueprintProperties) map[string]SystemBlueprintPropertiesBooleanProps {
+		if v == nil {
+			return nil
+		}
+		return v.BooleanProps
+	}).(SystemBlueprintPropertiesBooleanPropsMapOutput)
+}
+
+// The number property of the blueprint
+func (o SystemBlueprintPropertiesPtrOutput) NumberProps() SystemBlueprintPropertiesNumberPropsMapOutput {
+	return o.ApplyT(func(v *SystemBlueprintProperties) map[string]SystemBlueprintPropertiesNumberProps {
+		if v == nil {
+			return nil
+		}
+		return v.NumberProps
+	}).(SystemBlueprintPropertiesNumberPropsMapOutput)
+}
+
+// The object property of the blueprint
+func (o SystemBlueprintPropertiesPtrOutput) ObjectProps() SystemBlueprintPropertiesObjectPropsMapOutput {
+	return o.ApplyT(func(v *SystemBlueprintProperties) map[string]SystemBlueprintPropertiesObjectProps {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectProps
+	}).(SystemBlueprintPropertiesObjectPropsMapOutput)
+}
+
+// The string property of the blueprint
+func (o SystemBlueprintPropertiesPtrOutput) StringProps() SystemBlueprintPropertiesStringPropsMapOutput {
+	return o.ApplyT(func(v *SystemBlueprintProperties) map[string]SystemBlueprintPropertiesStringProps {
+		if v == nil {
+			return nil
+		}
+		return v.StringProps
+	}).(SystemBlueprintPropertiesStringPropsMapOutput)
+}
+
+type SystemBlueprintPropertiesArrayProps struct {
+	// The items of the array property
+	BooleanItems *SystemBlueprintPropertiesArrayPropsBooleanItems `pulumi:"booleanItems"`
+	// The description of the property
+	Description *string `pulumi:"description"`
+	// The icon of the property
+	Icon *string `pulumi:"icon"`
+	// The max items of the array property
+	MaxItems *int `pulumi:"maxItems"`
+	// The min items of the array property
+	MinItems *int `pulumi:"minItems"`
+	// The items of the array property
+	NumberItems *SystemBlueprintPropertiesArrayPropsNumberItems `pulumi:"numberItems"`
+	// The items of the array property
+	ObjectItems *SystemBlueprintPropertiesArrayPropsObjectItems `pulumi:"objectItems"`
+	// Whether the property is required
+	Required *bool `pulumi:"required"`
+	// The items of the array property
+	StringItems *SystemBlueprintPropertiesArrayPropsStringItems `pulumi:"stringItems"`
+	// The title of the property
+	Title *string `pulumi:"title"`
+}
+
+// SystemBlueprintPropertiesArrayPropsInput is an input type that accepts SystemBlueprintPropertiesArrayPropsArgs and SystemBlueprintPropertiesArrayPropsOutput values.
+// You can construct a concrete instance of `SystemBlueprintPropertiesArrayPropsInput` via:
+//
+//	SystemBlueprintPropertiesArrayPropsArgs{...}
+type SystemBlueprintPropertiesArrayPropsInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintPropertiesArrayPropsOutput() SystemBlueprintPropertiesArrayPropsOutput
+	ToSystemBlueprintPropertiesArrayPropsOutputWithContext(context.Context) SystemBlueprintPropertiesArrayPropsOutput
+}
+
+type SystemBlueprintPropertiesArrayPropsArgs struct {
+	// The items of the array property
+	BooleanItems SystemBlueprintPropertiesArrayPropsBooleanItemsPtrInput `pulumi:"booleanItems"`
+	// The description of the property
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The icon of the property
+	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// The max items of the array property
+	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	// The min items of the array property
+	MinItems pulumi.IntPtrInput `pulumi:"minItems"`
+	// The items of the array property
+	NumberItems SystemBlueprintPropertiesArrayPropsNumberItemsPtrInput `pulumi:"numberItems"`
+	// The items of the array property
+	ObjectItems SystemBlueprintPropertiesArrayPropsObjectItemsPtrInput `pulumi:"objectItems"`
+	// Whether the property is required
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// The items of the array property
+	StringItems SystemBlueprintPropertiesArrayPropsStringItemsPtrInput `pulumi:"stringItems"`
+	// The title of the property
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (SystemBlueprintPropertiesArrayPropsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintPropertiesArrayProps)(nil)).Elem()
+}
+
+func (i SystemBlueprintPropertiesArrayPropsArgs) ToSystemBlueprintPropertiesArrayPropsOutput() SystemBlueprintPropertiesArrayPropsOutput {
+	return i.ToSystemBlueprintPropertiesArrayPropsOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintPropertiesArrayPropsArgs) ToSystemBlueprintPropertiesArrayPropsOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesArrayPropsOutput)
+}
+
+// SystemBlueprintPropertiesArrayPropsMapInput is an input type that accepts SystemBlueprintPropertiesArrayPropsMap and SystemBlueprintPropertiesArrayPropsMapOutput values.
+// You can construct a concrete instance of `SystemBlueprintPropertiesArrayPropsMapInput` via:
+//
+//	SystemBlueprintPropertiesArrayPropsMap{ "key": SystemBlueprintPropertiesArrayPropsArgs{...} }
+type SystemBlueprintPropertiesArrayPropsMapInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintPropertiesArrayPropsMapOutput() SystemBlueprintPropertiesArrayPropsMapOutput
+	ToSystemBlueprintPropertiesArrayPropsMapOutputWithContext(context.Context) SystemBlueprintPropertiesArrayPropsMapOutput
+}
+
+type SystemBlueprintPropertiesArrayPropsMap map[string]SystemBlueprintPropertiesArrayPropsInput
+
+func (SystemBlueprintPropertiesArrayPropsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SystemBlueprintPropertiesArrayProps)(nil)).Elem()
+}
+
+func (i SystemBlueprintPropertiesArrayPropsMap) ToSystemBlueprintPropertiesArrayPropsMapOutput() SystemBlueprintPropertiesArrayPropsMapOutput {
+	return i.ToSystemBlueprintPropertiesArrayPropsMapOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintPropertiesArrayPropsMap) ToSystemBlueprintPropertiesArrayPropsMapOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesArrayPropsMapOutput)
+}
+
+type SystemBlueprintPropertiesArrayPropsOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintPropertiesArrayPropsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintPropertiesArrayProps)(nil)).Elem()
+}
+
+func (o SystemBlueprintPropertiesArrayPropsOutput) ToSystemBlueprintPropertiesArrayPropsOutput() SystemBlueprintPropertiesArrayPropsOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesArrayPropsOutput) ToSystemBlueprintPropertiesArrayPropsOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsOutput {
+	return o
+}
+
+// The items of the array property
+func (o SystemBlueprintPropertiesArrayPropsOutput) BooleanItems() SystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesArrayProps) *SystemBlueprintPropertiesArrayPropsBooleanItems {
+		return v.BooleanItems
+	}).(SystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput)
+}
+
+// The description of the property
+func (o SystemBlueprintPropertiesArrayPropsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesArrayProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The icon of the property
+func (o SystemBlueprintPropertiesArrayPropsOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesArrayProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
+// The max items of the array property
+func (o SystemBlueprintPropertiesArrayPropsOutput) MaxItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesArrayProps) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
+}
+
+// The min items of the array property
+func (o SystemBlueprintPropertiesArrayPropsOutput) MinItems() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesArrayProps) *int { return v.MinItems }).(pulumi.IntPtrOutput)
+}
+
+// The items of the array property
+func (o SystemBlueprintPropertiesArrayPropsOutput) NumberItems() SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesArrayProps) *SystemBlueprintPropertiesArrayPropsNumberItems {
+		return v.NumberItems
+	}).(SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput)
+}
+
+// The items of the array property
+func (o SystemBlueprintPropertiesArrayPropsOutput) ObjectItems() SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesArrayProps) *SystemBlueprintPropertiesArrayPropsObjectItems {
+		return v.ObjectItems
+	}).(SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput)
+}
+
+// Whether the property is required
+func (o SystemBlueprintPropertiesArrayPropsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesArrayProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+// The items of the array property
+func (o SystemBlueprintPropertiesArrayPropsOutput) StringItems() SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesArrayProps) *SystemBlueprintPropertiesArrayPropsStringItems {
+		return v.StringItems
+	}).(SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput)
+}
+
+// The title of the property
+func (o SystemBlueprintPropertiesArrayPropsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesArrayProps) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type SystemBlueprintPropertiesArrayPropsMapOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintPropertiesArrayPropsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SystemBlueprintPropertiesArrayProps)(nil)).Elem()
+}
+
+func (o SystemBlueprintPropertiesArrayPropsMapOutput) ToSystemBlueprintPropertiesArrayPropsMapOutput() SystemBlueprintPropertiesArrayPropsMapOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesArrayPropsMapOutput) ToSystemBlueprintPropertiesArrayPropsMapOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsMapOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesArrayPropsMapOutput) MapIndex(k pulumi.StringInput) SystemBlueprintPropertiesArrayPropsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SystemBlueprintPropertiesArrayProps {
+		return vs[0].(map[string]SystemBlueprintPropertiesArrayProps)[vs[1].(string)]
+	}).(SystemBlueprintPropertiesArrayPropsOutput)
+}
+
+type SystemBlueprintPropertiesArrayPropsBooleanItems struct {
+	// The default of the items
+	Defaults []bool `pulumi:"defaults"`
+}
+
+// SystemBlueprintPropertiesArrayPropsBooleanItemsInput is an input type that accepts SystemBlueprintPropertiesArrayPropsBooleanItemsArgs and SystemBlueprintPropertiesArrayPropsBooleanItemsOutput values.
+// You can construct a concrete instance of `SystemBlueprintPropertiesArrayPropsBooleanItemsInput` via:
+//
+//	SystemBlueprintPropertiesArrayPropsBooleanItemsArgs{...}
+type SystemBlueprintPropertiesArrayPropsBooleanItemsInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintPropertiesArrayPropsBooleanItemsOutput() SystemBlueprintPropertiesArrayPropsBooleanItemsOutput
+	ToSystemBlueprintPropertiesArrayPropsBooleanItemsOutputWithContext(context.Context) SystemBlueprintPropertiesArrayPropsBooleanItemsOutput
+}
+
+type SystemBlueprintPropertiesArrayPropsBooleanItemsArgs struct {
+	// The default of the items
+	Defaults pulumi.BoolArrayInput `pulumi:"defaults"`
+}
+
+func (SystemBlueprintPropertiesArrayPropsBooleanItemsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintPropertiesArrayPropsBooleanItems)(nil)).Elem()
+}
+
+func (i SystemBlueprintPropertiesArrayPropsBooleanItemsArgs) ToSystemBlueprintPropertiesArrayPropsBooleanItemsOutput() SystemBlueprintPropertiesArrayPropsBooleanItemsOutput {
+	return i.ToSystemBlueprintPropertiesArrayPropsBooleanItemsOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintPropertiesArrayPropsBooleanItemsArgs) ToSystemBlueprintPropertiesArrayPropsBooleanItemsOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsBooleanItemsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesArrayPropsBooleanItemsOutput)
+}
+
+func (i SystemBlueprintPropertiesArrayPropsBooleanItemsArgs) ToSystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput() SystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput {
+	return i.ToSystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintPropertiesArrayPropsBooleanItemsArgs) ToSystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesArrayPropsBooleanItemsOutput).ToSystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx)
+}
+
+// SystemBlueprintPropertiesArrayPropsBooleanItemsPtrInput is an input type that accepts SystemBlueprintPropertiesArrayPropsBooleanItemsArgs, SystemBlueprintPropertiesArrayPropsBooleanItemsPtr and SystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput values.
+// You can construct a concrete instance of `SystemBlueprintPropertiesArrayPropsBooleanItemsPtrInput` via:
+//
+//	        SystemBlueprintPropertiesArrayPropsBooleanItemsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SystemBlueprintPropertiesArrayPropsBooleanItemsPtrInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput() SystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput
+	ToSystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutputWithContext(context.Context) SystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput
+}
+
+type systemBlueprintPropertiesArrayPropsBooleanItemsPtrType SystemBlueprintPropertiesArrayPropsBooleanItemsArgs
+
+func SystemBlueprintPropertiesArrayPropsBooleanItemsPtr(v *SystemBlueprintPropertiesArrayPropsBooleanItemsArgs) SystemBlueprintPropertiesArrayPropsBooleanItemsPtrInput {
+	return (*systemBlueprintPropertiesArrayPropsBooleanItemsPtrType)(v)
+}
+
+func (*systemBlueprintPropertiesArrayPropsBooleanItemsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemBlueprintPropertiesArrayPropsBooleanItems)(nil)).Elem()
+}
+
+func (i *systemBlueprintPropertiesArrayPropsBooleanItemsPtrType) ToSystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput() SystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput {
+	return i.ToSystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutputWithContext(context.Background())
+}
+
+func (i *systemBlueprintPropertiesArrayPropsBooleanItemsPtrType) ToSystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput)
+}
+
+type SystemBlueprintPropertiesArrayPropsBooleanItemsOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintPropertiesArrayPropsBooleanItemsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintPropertiesArrayPropsBooleanItems)(nil)).Elem()
+}
+
+func (o SystemBlueprintPropertiesArrayPropsBooleanItemsOutput) ToSystemBlueprintPropertiesArrayPropsBooleanItemsOutput() SystemBlueprintPropertiesArrayPropsBooleanItemsOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesArrayPropsBooleanItemsOutput) ToSystemBlueprintPropertiesArrayPropsBooleanItemsOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsBooleanItemsOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesArrayPropsBooleanItemsOutput) ToSystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput() SystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput {
+	return o.ToSystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutputWithContext(context.Background())
+}
+
+func (o SystemBlueprintPropertiesArrayPropsBooleanItemsOutput) ToSystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemBlueprintPropertiesArrayPropsBooleanItems) *SystemBlueprintPropertiesArrayPropsBooleanItems {
+		return &v
+	}).(SystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput)
+}
+
+// The default of the items
+func (o SystemBlueprintPropertiesArrayPropsBooleanItemsOutput) Defaults() pulumi.BoolArrayOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesArrayPropsBooleanItems) []bool { return v.Defaults }).(pulumi.BoolArrayOutput)
+}
+
+type SystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemBlueprintPropertiesArrayPropsBooleanItems)(nil)).Elem()
+}
+
+func (o SystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput) ToSystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput() SystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput) ToSystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput) Elem() SystemBlueprintPropertiesArrayPropsBooleanItemsOutput {
+	return o.ApplyT(func(v *SystemBlueprintPropertiesArrayPropsBooleanItems) SystemBlueprintPropertiesArrayPropsBooleanItems {
+		if v != nil {
+			return *v
+		}
+		var ret SystemBlueprintPropertiesArrayPropsBooleanItems
+		return ret
+	}).(SystemBlueprintPropertiesArrayPropsBooleanItemsOutput)
+}
+
+// The default of the items
+func (o SystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput) Defaults() pulumi.BoolArrayOutput {
+	return o.ApplyT(func(v *SystemBlueprintPropertiesArrayPropsBooleanItems) []bool {
+		if v == nil {
+			return nil
+		}
+		return v.Defaults
+	}).(pulumi.BoolArrayOutput)
+}
+
+type SystemBlueprintPropertiesArrayPropsNumberItems struct {
+	// The default of the items
+	Defaults []float64 `pulumi:"defaults"`
+}
+
+// SystemBlueprintPropertiesArrayPropsNumberItemsInput is an input type that accepts SystemBlueprintPropertiesArrayPropsNumberItemsArgs and SystemBlueprintPropertiesArrayPropsNumberItemsOutput values.
+// You can construct a concrete instance of `SystemBlueprintPropertiesArrayPropsNumberItemsInput` via:
+//
+//	SystemBlueprintPropertiesArrayPropsNumberItemsArgs{...}
+type SystemBlueprintPropertiesArrayPropsNumberItemsInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintPropertiesArrayPropsNumberItemsOutput() SystemBlueprintPropertiesArrayPropsNumberItemsOutput
+	ToSystemBlueprintPropertiesArrayPropsNumberItemsOutputWithContext(context.Context) SystemBlueprintPropertiesArrayPropsNumberItemsOutput
+}
+
+type SystemBlueprintPropertiesArrayPropsNumberItemsArgs struct {
+	// The default of the items
+	Defaults pulumi.Float64ArrayInput `pulumi:"defaults"`
+}
+
+func (SystemBlueprintPropertiesArrayPropsNumberItemsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintPropertiesArrayPropsNumberItems)(nil)).Elem()
+}
+
+func (i SystemBlueprintPropertiesArrayPropsNumberItemsArgs) ToSystemBlueprintPropertiesArrayPropsNumberItemsOutput() SystemBlueprintPropertiesArrayPropsNumberItemsOutput {
+	return i.ToSystemBlueprintPropertiesArrayPropsNumberItemsOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintPropertiesArrayPropsNumberItemsArgs) ToSystemBlueprintPropertiesArrayPropsNumberItemsOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsNumberItemsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesArrayPropsNumberItemsOutput)
+}
+
+func (i SystemBlueprintPropertiesArrayPropsNumberItemsArgs) ToSystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput() SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput {
+	return i.ToSystemBlueprintPropertiesArrayPropsNumberItemsPtrOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintPropertiesArrayPropsNumberItemsArgs) ToSystemBlueprintPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesArrayPropsNumberItemsOutput).ToSystemBlueprintPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx)
+}
+
+// SystemBlueprintPropertiesArrayPropsNumberItemsPtrInput is an input type that accepts SystemBlueprintPropertiesArrayPropsNumberItemsArgs, SystemBlueprintPropertiesArrayPropsNumberItemsPtr and SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput values.
+// You can construct a concrete instance of `SystemBlueprintPropertiesArrayPropsNumberItemsPtrInput` via:
+//
+//	        SystemBlueprintPropertiesArrayPropsNumberItemsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SystemBlueprintPropertiesArrayPropsNumberItemsPtrInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput() SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput
+	ToSystemBlueprintPropertiesArrayPropsNumberItemsPtrOutputWithContext(context.Context) SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput
+}
+
+type systemBlueprintPropertiesArrayPropsNumberItemsPtrType SystemBlueprintPropertiesArrayPropsNumberItemsArgs
+
+func SystemBlueprintPropertiesArrayPropsNumberItemsPtr(v *SystemBlueprintPropertiesArrayPropsNumberItemsArgs) SystemBlueprintPropertiesArrayPropsNumberItemsPtrInput {
+	return (*systemBlueprintPropertiesArrayPropsNumberItemsPtrType)(v)
+}
+
+func (*systemBlueprintPropertiesArrayPropsNumberItemsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemBlueprintPropertiesArrayPropsNumberItems)(nil)).Elem()
+}
+
+func (i *systemBlueprintPropertiesArrayPropsNumberItemsPtrType) ToSystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput() SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput {
+	return i.ToSystemBlueprintPropertiesArrayPropsNumberItemsPtrOutputWithContext(context.Background())
+}
+
+func (i *systemBlueprintPropertiesArrayPropsNumberItemsPtrType) ToSystemBlueprintPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput)
+}
+
+type SystemBlueprintPropertiesArrayPropsNumberItemsOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintPropertiesArrayPropsNumberItemsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintPropertiesArrayPropsNumberItems)(nil)).Elem()
+}
+
+func (o SystemBlueprintPropertiesArrayPropsNumberItemsOutput) ToSystemBlueprintPropertiesArrayPropsNumberItemsOutput() SystemBlueprintPropertiesArrayPropsNumberItemsOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesArrayPropsNumberItemsOutput) ToSystemBlueprintPropertiesArrayPropsNumberItemsOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsNumberItemsOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesArrayPropsNumberItemsOutput) ToSystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput() SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput {
+	return o.ToSystemBlueprintPropertiesArrayPropsNumberItemsPtrOutputWithContext(context.Background())
+}
+
+func (o SystemBlueprintPropertiesArrayPropsNumberItemsOutput) ToSystemBlueprintPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemBlueprintPropertiesArrayPropsNumberItems) *SystemBlueprintPropertiesArrayPropsNumberItems {
+		return &v
+	}).(SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput)
+}
+
+// The default of the items
+func (o SystemBlueprintPropertiesArrayPropsNumberItemsOutput) Defaults() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesArrayPropsNumberItems) []float64 { return v.Defaults }).(pulumi.Float64ArrayOutput)
+}
+
+type SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemBlueprintPropertiesArrayPropsNumberItems)(nil)).Elem()
+}
+
+func (o SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput) ToSystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput() SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput) ToSystemBlueprintPropertiesArrayPropsNumberItemsPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput) Elem() SystemBlueprintPropertiesArrayPropsNumberItemsOutput {
+	return o.ApplyT(func(v *SystemBlueprintPropertiesArrayPropsNumberItems) SystemBlueprintPropertiesArrayPropsNumberItems {
+		if v != nil {
+			return *v
+		}
+		var ret SystemBlueprintPropertiesArrayPropsNumberItems
+		return ret
+	}).(SystemBlueprintPropertiesArrayPropsNumberItemsOutput)
+}
+
+// The default of the items
+func (o SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput) Defaults() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v *SystemBlueprintPropertiesArrayPropsNumberItems) []float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Defaults
+	}).(pulumi.Float64ArrayOutput)
+}
+
+type SystemBlueprintPropertiesArrayPropsObjectItems struct {
+	// The default of the items
+	Defaults []string `pulumi:"defaults"`
+}
+
+// SystemBlueprintPropertiesArrayPropsObjectItemsInput is an input type that accepts SystemBlueprintPropertiesArrayPropsObjectItemsArgs and SystemBlueprintPropertiesArrayPropsObjectItemsOutput values.
+// You can construct a concrete instance of `SystemBlueprintPropertiesArrayPropsObjectItemsInput` via:
+//
+//	SystemBlueprintPropertiesArrayPropsObjectItemsArgs{...}
+type SystemBlueprintPropertiesArrayPropsObjectItemsInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintPropertiesArrayPropsObjectItemsOutput() SystemBlueprintPropertiesArrayPropsObjectItemsOutput
+	ToSystemBlueprintPropertiesArrayPropsObjectItemsOutputWithContext(context.Context) SystemBlueprintPropertiesArrayPropsObjectItemsOutput
+}
+
+type SystemBlueprintPropertiesArrayPropsObjectItemsArgs struct {
+	// The default of the items
+	Defaults pulumi.StringArrayInput `pulumi:"defaults"`
+}
+
+func (SystemBlueprintPropertiesArrayPropsObjectItemsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintPropertiesArrayPropsObjectItems)(nil)).Elem()
+}
+
+func (i SystemBlueprintPropertiesArrayPropsObjectItemsArgs) ToSystemBlueprintPropertiesArrayPropsObjectItemsOutput() SystemBlueprintPropertiesArrayPropsObjectItemsOutput {
+	return i.ToSystemBlueprintPropertiesArrayPropsObjectItemsOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintPropertiesArrayPropsObjectItemsArgs) ToSystemBlueprintPropertiesArrayPropsObjectItemsOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsObjectItemsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesArrayPropsObjectItemsOutput)
+}
+
+func (i SystemBlueprintPropertiesArrayPropsObjectItemsArgs) ToSystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput() SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput {
+	return i.ToSystemBlueprintPropertiesArrayPropsObjectItemsPtrOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintPropertiesArrayPropsObjectItemsArgs) ToSystemBlueprintPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesArrayPropsObjectItemsOutput).ToSystemBlueprintPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx)
+}
+
+// SystemBlueprintPropertiesArrayPropsObjectItemsPtrInput is an input type that accepts SystemBlueprintPropertiesArrayPropsObjectItemsArgs, SystemBlueprintPropertiesArrayPropsObjectItemsPtr and SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput values.
+// You can construct a concrete instance of `SystemBlueprintPropertiesArrayPropsObjectItemsPtrInput` via:
+//
+//	        SystemBlueprintPropertiesArrayPropsObjectItemsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SystemBlueprintPropertiesArrayPropsObjectItemsPtrInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput() SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput
+	ToSystemBlueprintPropertiesArrayPropsObjectItemsPtrOutputWithContext(context.Context) SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput
+}
+
+type systemBlueprintPropertiesArrayPropsObjectItemsPtrType SystemBlueprintPropertiesArrayPropsObjectItemsArgs
+
+func SystemBlueprintPropertiesArrayPropsObjectItemsPtr(v *SystemBlueprintPropertiesArrayPropsObjectItemsArgs) SystemBlueprintPropertiesArrayPropsObjectItemsPtrInput {
+	return (*systemBlueprintPropertiesArrayPropsObjectItemsPtrType)(v)
+}
+
+func (*systemBlueprintPropertiesArrayPropsObjectItemsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemBlueprintPropertiesArrayPropsObjectItems)(nil)).Elem()
+}
+
+func (i *systemBlueprintPropertiesArrayPropsObjectItemsPtrType) ToSystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput() SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput {
+	return i.ToSystemBlueprintPropertiesArrayPropsObjectItemsPtrOutputWithContext(context.Background())
+}
+
+func (i *systemBlueprintPropertiesArrayPropsObjectItemsPtrType) ToSystemBlueprintPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput)
+}
+
+type SystemBlueprintPropertiesArrayPropsObjectItemsOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintPropertiesArrayPropsObjectItemsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintPropertiesArrayPropsObjectItems)(nil)).Elem()
+}
+
+func (o SystemBlueprintPropertiesArrayPropsObjectItemsOutput) ToSystemBlueprintPropertiesArrayPropsObjectItemsOutput() SystemBlueprintPropertiesArrayPropsObjectItemsOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesArrayPropsObjectItemsOutput) ToSystemBlueprintPropertiesArrayPropsObjectItemsOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsObjectItemsOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesArrayPropsObjectItemsOutput) ToSystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput() SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput {
+	return o.ToSystemBlueprintPropertiesArrayPropsObjectItemsPtrOutputWithContext(context.Background())
+}
+
+func (o SystemBlueprintPropertiesArrayPropsObjectItemsOutput) ToSystemBlueprintPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemBlueprintPropertiesArrayPropsObjectItems) *SystemBlueprintPropertiesArrayPropsObjectItems {
+		return &v
+	}).(SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput)
+}
+
+// The default of the items
+func (o SystemBlueprintPropertiesArrayPropsObjectItemsOutput) Defaults() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesArrayPropsObjectItems) []string { return v.Defaults }).(pulumi.StringArrayOutput)
+}
+
+type SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemBlueprintPropertiesArrayPropsObjectItems)(nil)).Elem()
+}
+
+func (o SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput) ToSystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput() SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput) ToSystemBlueprintPropertiesArrayPropsObjectItemsPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput) Elem() SystemBlueprintPropertiesArrayPropsObjectItemsOutput {
+	return o.ApplyT(func(v *SystemBlueprintPropertiesArrayPropsObjectItems) SystemBlueprintPropertiesArrayPropsObjectItems {
+		if v != nil {
+			return *v
+		}
+		var ret SystemBlueprintPropertiesArrayPropsObjectItems
+		return ret
+	}).(SystemBlueprintPropertiesArrayPropsObjectItemsOutput)
+}
+
+// The default of the items
+func (o SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput) Defaults() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SystemBlueprintPropertiesArrayPropsObjectItems) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Defaults
+	}).(pulumi.StringArrayOutput)
+}
+
+type SystemBlueprintPropertiesArrayPropsStringItems struct {
+	// The default of the items
+	Defaults []string `pulumi:"defaults"`
+	// The format of the items
+	Format *string `pulumi:"format"`
+	// The pattern of the string array items
+	Pattern *string `pulumi:"pattern"`
+}
+
+// SystemBlueprintPropertiesArrayPropsStringItemsInput is an input type that accepts SystemBlueprintPropertiesArrayPropsStringItemsArgs and SystemBlueprintPropertiesArrayPropsStringItemsOutput values.
+// You can construct a concrete instance of `SystemBlueprintPropertiesArrayPropsStringItemsInput` via:
+//
+//	SystemBlueprintPropertiesArrayPropsStringItemsArgs{...}
+type SystemBlueprintPropertiesArrayPropsStringItemsInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintPropertiesArrayPropsStringItemsOutput() SystemBlueprintPropertiesArrayPropsStringItemsOutput
+	ToSystemBlueprintPropertiesArrayPropsStringItemsOutputWithContext(context.Context) SystemBlueprintPropertiesArrayPropsStringItemsOutput
+}
+
+type SystemBlueprintPropertiesArrayPropsStringItemsArgs struct {
+	// The default of the items
+	Defaults pulumi.StringArrayInput `pulumi:"defaults"`
+	// The format of the items
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	// The pattern of the string array items
+	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
+}
+
+func (SystemBlueprintPropertiesArrayPropsStringItemsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintPropertiesArrayPropsStringItems)(nil)).Elem()
+}
+
+func (i SystemBlueprintPropertiesArrayPropsStringItemsArgs) ToSystemBlueprintPropertiesArrayPropsStringItemsOutput() SystemBlueprintPropertiesArrayPropsStringItemsOutput {
+	return i.ToSystemBlueprintPropertiesArrayPropsStringItemsOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintPropertiesArrayPropsStringItemsArgs) ToSystemBlueprintPropertiesArrayPropsStringItemsOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsStringItemsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesArrayPropsStringItemsOutput)
+}
+
+func (i SystemBlueprintPropertiesArrayPropsStringItemsArgs) ToSystemBlueprintPropertiesArrayPropsStringItemsPtrOutput() SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput {
+	return i.ToSystemBlueprintPropertiesArrayPropsStringItemsPtrOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintPropertiesArrayPropsStringItemsArgs) ToSystemBlueprintPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesArrayPropsStringItemsOutput).ToSystemBlueprintPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx)
+}
+
+// SystemBlueprintPropertiesArrayPropsStringItemsPtrInput is an input type that accepts SystemBlueprintPropertiesArrayPropsStringItemsArgs, SystemBlueprintPropertiesArrayPropsStringItemsPtr and SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput values.
+// You can construct a concrete instance of `SystemBlueprintPropertiesArrayPropsStringItemsPtrInput` via:
+//
+//	        SystemBlueprintPropertiesArrayPropsStringItemsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SystemBlueprintPropertiesArrayPropsStringItemsPtrInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintPropertiesArrayPropsStringItemsPtrOutput() SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput
+	ToSystemBlueprintPropertiesArrayPropsStringItemsPtrOutputWithContext(context.Context) SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput
+}
+
+type systemBlueprintPropertiesArrayPropsStringItemsPtrType SystemBlueprintPropertiesArrayPropsStringItemsArgs
+
+func SystemBlueprintPropertiesArrayPropsStringItemsPtr(v *SystemBlueprintPropertiesArrayPropsStringItemsArgs) SystemBlueprintPropertiesArrayPropsStringItemsPtrInput {
+	return (*systemBlueprintPropertiesArrayPropsStringItemsPtrType)(v)
+}
+
+func (*systemBlueprintPropertiesArrayPropsStringItemsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemBlueprintPropertiesArrayPropsStringItems)(nil)).Elem()
+}
+
+func (i *systemBlueprintPropertiesArrayPropsStringItemsPtrType) ToSystemBlueprintPropertiesArrayPropsStringItemsPtrOutput() SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput {
+	return i.ToSystemBlueprintPropertiesArrayPropsStringItemsPtrOutputWithContext(context.Background())
+}
+
+func (i *systemBlueprintPropertiesArrayPropsStringItemsPtrType) ToSystemBlueprintPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput)
+}
+
+type SystemBlueprintPropertiesArrayPropsStringItemsOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintPropertiesArrayPropsStringItemsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintPropertiesArrayPropsStringItems)(nil)).Elem()
+}
+
+func (o SystemBlueprintPropertiesArrayPropsStringItemsOutput) ToSystemBlueprintPropertiesArrayPropsStringItemsOutput() SystemBlueprintPropertiesArrayPropsStringItemsOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesArrayPropsStringItemsOutput) ToSystemBlueprintPropertiesArrayPropsStringItemsOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsStringItemsOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesArrayPropsStringItemsOutput) ToSystemBlueprintPropertiesArrayPropsStringItemsPtrOutput() SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput {
+	return o.ToSystemBlueprintPropertiesArrayPropsStringItemsPtrOutputWithContext(context.Background())
+}
+
+func (o SystemBlueprintPropertiesArrayPropsStringItemsOutput) ToSystemBlueprintPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemBlueprintPropertiesArrayPropsStringItems) *SystemBlueprintPropertiesArrayPropsStringItems {
+		return &v
+	}).(SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput)
+}
+
+// The default of the items
+func (o SystemBlueprintPropertiesArrayPropsStringItemsOutput) Defaults() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesArrayPropsStringItems) []string { return v.Defaults }).(pulumi.StringArrayOutput)
+}
+
+// The format of the items
+func (o SystemBlueprintPropertiesArrayPropsStringItemsOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesArrayPropsStringItems) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+// The pattern of the string array items
+func (o SystemBlueprintPropertiesArrayPropsStringItemsOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesArrayPropsStringItems) *string { return v.Pattern }).(pulumi.StringPtrOutput)
+}
+
+type SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemBlueprintPropertiesArrayPropsStringItems)(nil)).Elem()
+}
+
+func (o SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput) ToSystemBlueprintPropertiesArrayPropsStringItemsPtrOutput() SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput) ToSystemBlueprintPropertiesArrayPropsStringItemsPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput) Elem() SystemBlueprintPropertiesArrayPropsStringItemsOutput {
+	return o.ApplyT(func(v *SystemBlueprintPropertiesArrayPropsStringItems) SystemBlueprintPropertiesArrayPropsStringItems {
+		if v != nil {
+			return *v
+		}
+		var ret SystemBlueprintPropertiesArrayPropsStringItems
+		return ret
+	}).(SystemBlueprintPropertiesArrayPropsStringItemsOutput)
+}
+
+// The default of the items
+func (o SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput) Defaults() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SystemBlueprintPropertiesArrayPropsStringItems) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Defaults
+	}).(pulumi.StringArrayOutput)
+}
+
+// The format of the items
+func (o SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemBlueprintPropertiesArrayPropsStringItems) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Format
+	}).(pulumi.StringPtrOutput)
+}
+
+// The pattern of the string array items
+func (o SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemBlueprintPropertiesArrayPropsStringItems) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pattern
+	}).(pulumi.StringPtrOutput)
+}
+
+type SystemBlueprintPropertiesBooleanProps struct {
+	// The default of the boolean property
+	Default *bool `pulumi:"default"`
+	// The description of the property
+	Description *string `pulumi:"description"`
+	// The icon of the property
+	Icon *string `pulumi:"icon"`
+	// Whether the property is required
+	Required *bool `pulumi:"required"`
+	// The title of the property
+	Title *string `pulumi:"title"`
+}
+
+// SystemBlueprintPropertiesBooleanPropsInput is an input type that accepts SystemBlueprintPropertiesBooleanPropsArgs and SystemBlueprintPropertiesBooleanPropsOutput values.
+// You can construct a concrete instance of `SystemBlueprintPropertiesBooleanPropsInput` via:
+//
+//	SystemBlueprintPropertiesBooleanPropsArgs{...}
+type SystemBlueprintPropertiesBooleanPropsInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintPropertiesBooleanPropsOutput() SystemBlueprintPropertiesBooleanPropsOutput
+	ToSystemBlueprintPropertiesBooleanPropsOutputWithContext(context.Context) SystemBlueprintPropertiesBooleanPropsOutput
+}
+
+type SystemBlueprintPropertiesBooleanPropsArgs struct {
+	// The default of the boolean property
+	Default pulumi.BoolPtrInput `pulumi:"default"`
+	// The description of the property
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The icon of the property
+	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// Whether the property is required
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// The title of the property
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (SystemBlueprintPropertiesBooleanPropsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintPropertiesBooleanProps)(nil)).Elem()
+}
+
+func (i SystemBlueprintPropertiesBooleanPropsArgs) ToSystemBlueprintPropertiesBooleanPropsOutput() SystemBlueprintPropertiesBooleanPropsOutput {
+	return i.ToSystemBlueprintPropertiesBooleanPropsOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintPropertiesBooleanPropsArgs) ToSystemBlueprintPropertiesBooleanPropsOutputWithContext(ctx context.Context) SystemBlueprintPropertiesBooleanPropsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesBooleanPropsOutput)
+}
+
+// SystemBlueprintPropertiesBooleanPropsMapInput is an input type that accepts SystemBlueprintPropertiesBooleanPropsMap and SystemBlueprintPropertiesBooleanPropsMapOutput values.
+// You can construct a concrete instance of `SystemBlueprintPropertiesBooleanPropsMapInput` via:
+//
+//	SystemBlueprintPropertiesBooleanPropsMap{ "key": SystemBlueprintPropertiesBooleanPropsArgs{...} }
+type SystemBlueprintPropertiesBooleanPropsMapInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintPropertiesBooleanPropsMapOutput() SystemBlueprintPropertiesBooleanPropsMapOutput
+	ToSystemBlueprintPropertiesBooleanPropsMapOutputWithContext(context.Context) SystemBlueprintPropertiesBooleanPropsMapOutput
+}
+
+type SystemBlueprintPropertiesBooleanPropsMap map[string]SystemBlueprintPropertiesBooleanPropsInput
+
+func (SystemBlueprintPropertiesBooleanPropsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SystemBlueprintPropertiesBooleanProps)(nil)).Elem()
+}
+
+func (i SystemBlueprintPropertiesBooleanPropsMap) ToSystemBlueprintPropertiesBooleanPropsMapOutput() SystemBlueprintPropertiesBooleanPropsMapOutput {
+	return i.ToSystemBlueprintPropertiesBooleanPropsMapOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintPropertiesBooleanPropsMap) ToSystemBlueprintPropertiesBooleanPropsMapOutputWithContext(ctx context.Context) SystemBlueprintPropertiesBooleanPropsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesBooleanPropsMapOutput)
+}
+
+type SystemBlueprintPropertiesBooleanPropsOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintPropertiesBooleanPropsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintPropertiesBooleanProps)(nil)).Elem()
+}
+
+func (o SystemBlueprintPropertiesBooleanPropsOutput) ToSystemBlueprintPropertiesBooleanPropsOutput() SystemBlueprintPropertiesBooleanPropsOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesBooleanPropsOutput) ToSystemBlueprintPropertiesBooleanPropsOutputWithContext(ctx context.Context) SystemBlueprintPropertiesBooleanPropsOutput {
+	return o
+}
+
+// The default of the boolean property
+func (o SystemBlueprintPropertiesBooleanPropsOutput) Default() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesBooleanProps) *bool { return v.Default }).(pulumi.BoolPtrOutput)
+}
+
+// The description of the property
+func (o SystemBlueprintPropertiesBooleanPropsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesBooleanProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The icon of the property
+func (o SystemBlueprintPropertiesBooleanPropsOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesBooleanProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
+// Whether the property is required
+func (o SystemBlueprintPropertiesBooleanPropsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesBooleanProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+// The title of the property
+func (o SystemBlueprintPropertiesBooleanPropsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesBooleanProps) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type SystemBlueprintPropertiesBooleanPropsMapOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintPropertiesBooleanPropsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SystemBlueprintPropertiesBooleanProps)(nil)).Elem()
+}
+
+func (o SystemBlueprintPropertiesBooleanPropsMapOutput) ToSystemBlueprintPropertiesBooleanPropsMapOutput() SystemBlueprintPropertiesBooleanPropsMapOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesBooleanPropsMapOutput) ToSystemBlueprintPropertiesBooleanPropsMapOutputWithContext(ctx context.Context) SystemBlueprintPropertiesBooleanPropsMapOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesBooleanPropsMapOutput) MapIndex(k pulumi.StringInput) SystemBlueprintPropertiesBooleanPropsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SystemBlueprintPropertiesBooleanProps {
+		return vs[0].(map[string]SystemBlueprintPropertiesBooleanProps)[vs[1].(string)]
+	}).(SystemBlueprintPropertiesBooleanPropsOutput)
+}
+
+type SystemBlueprintPropertiesNumberProps struct {
+	// The default of the number property
+	Default *float64 `pulumi:"default"`
+	// The description of the property
+	Description *string `pulumi:"description"`
+	// The enum colors of the number property
+	EnumColors map[string]string `pulumi:"enumColors"`
+	// The enum of the number property
+	Enums []float64 `pulumi:"enums"`
+	// The icon of the property
+	Icon *string `pulumi:"icon"`
+	// The min of the number property
+	Maximum *float64 `pulumi:"maximum"`
+	// The max of the number property
+	Minimum *float64 `pulumi:"minimum"`
+	// Whether the property is required
+	Required *bool `pulumi:"required"`
+	// The title of the property
+	Title *string `pulumi:"title"`
+}
+
+// SystemBlueprintPropertiesNumberPropsInput is an input type that accepts SystemBlueprintPropertiesNumberPropsArgs and SystemBlueprintPropertiesNumberPropsOutput values.
+// You can construct a concrete instance of `SystemBlueprintPropertiesNumberPropsInput` via:
+//
+//	SystemBlueprintPropertiesNumberPropsArgs{...}
+type SystemBlueprintPropertiesNumberPropsInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintPropertiesNumberPropsOutput() SystemBlueprintPropertiesNumberPropsOutput
+	ToSystemBlueprintPropertiesNumberPropsOutputWithContext(context.Context) SystemBlueprintPropertiesNumberPropsOutput
+}
+
+type SystemBlueprintPropertiesNumberPropsArgs struct {
+	// The default of the number property
+	Default pulumi.Float64PtrInput `pulumi:"default"`
+	// The description of the property
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The enum colors of the number property
+	EnumColors pulumi.StringMapInput `pulumi:"enumColors"`
+	// The enum of the number property
+	Enums pulumi.Float64ArrayInput `pulumi:"enums"`
+	// The icon of the property
+	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// The min of the number property
+	Maximum pulumi.Float64PtrInput `pulumi:"maximum"`
+	// The max of the number property
+	Minimum pulumi.Float64PtrInput `pulumi:"minimum"`
+	// Whether the property is required
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// The title of the property
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (SystemBlueprintPropertiesNumberPropsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintPropertiesNumberProps)(nil)).Elem()
+}
+
+func (i SystemBlueprintPropertiesNumberPropsArgs) ToSystemBlueprintPropertiesNumberPropsOutput() SystemBlueprintPropertiesNumberPropsOutput {
+	return i.ToSystemBlueprintPropertiesNumberPropsOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintPropertiesNumberPropsArgs) ToSystemBlueprintPropertiesNumberPropsOutputWithContext(ctx context.Context) SystemBlueprintPropertiesNumberPropsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesNumberPropsOutput)
+}
+
+// SystemBlueprintPropertiesNumberPropsMapInput is an input type that accepts SystemBlueprintPropertiesNumberPropsMap and SystemBlueprintPropertiesNumberPropsMapOutput values.
+// You can construct a concrete instance of `SystemBlueprintPropertiesNumberPropsMapInput` via:
+//
+//	SystemBlueprintPropertiesNumberPropsMap{ "key": SystemBlueprintPropertiesNumberPropsArgs{...} }
+type SystemBlueprintPropertiesNumberPropsMapInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintPropertiesNumberPropsMapOutput() SystemBlueprintPropertiesNumberPropsMapOutput
+	ToSystemBlueprintPropertiesNumberPropsMapOutputWithContext(context.Context) SystemBlueprintPropertiesNumberPropsMapOutput
+}
+
+type SystemBlueprintPropertiesNumberPropsMap map[string]SystemBlueprintPropertiesNumberPropsInput
+
+func (SystemBlueprintPropertiesNumberPropsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SystemBlueprintPropertiesNumberProps)(nil)).Elem()
+}
+
+func (i SystemBlueprintPropertiesNumberPropsMap) ToSystemBlueprintPropertiesNumberPropsMapOutput() SystemBlueprintPropertiesNumberPropsMapOutput {
+	return i.ToSystemBlueprintPropertiesNumberPropsMapOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintPropertiesNumberPropsMap) ToSystemBlueprintPropertiesNumberPropsMapOutputWithContext(ctx context.Context) SystemBlueprintPropertiesNumberPropsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesNumberPropsMapOutput)
+}
+
+type SystemBlueprintPropertiesNumberPropsOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintPropertiesNumberPropsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintPropertiesNumberProps)(nil)).Elem()
+}
+
+func (o SystemBlueprintPropertiesNumberPropsOutput) ToSystemBlueprintPropertiesNumberPropsOutput() SystemBlueprintPropertiesNumberPropsOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesNumberPropsOutput) ToSystemBlueprintPropertiesNumberPropsOutputWithContext(ctx context.Context) SystemBlueprintPropertiesNumberPropsOutput {
+	return o
+}
+
+// The default of the number property
+func (o SystemBlueprintPropertiesNumberPropsOutput) Default() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesNumberProps) *float64 { return v.Default }).(pulumi.Float64PtrOutput)
+}
+
+// The description of the property
+func (o SystemBlueprintPropertiesNumberPropsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesNumberProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The enum colors of the number property
+func (o SystemBlueprintPropertiesNumberPropsOutput) EnumColors() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesNumberProps) map[string]string { return v.EnumColors }).(pulumi.StringMapOutput)
+}
+
+// The enum of the number property
+func (o SystemBlueprintPropertiesNumberPropsOutput) Enums() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesNumberProps) []float64 { return v.Enums }).(pulumi.Float64ArrayOutput)
+}
+
+// The icon of the property
+func (o SystemBlueprintPropertiesNumberPropsOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesNumberProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
+// The min of the number property
+func (o SystemBlueprintPropertiesNumberPropsOutput) Maximum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesNumberProps) *float64 { return v.Maximum }).(pulumi.Float64PtrOutput)
+}
+
+// The max of the number property
+func (o SystemBlueprintPropertiesNumberPropsOutput) Minimum() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesNumberProps) *float64 { return v.Minimum }).(pulumi.Float64PtrOutput)
+}
+
+// Whether the property is required
+func (o SystemBlueprintPropertiesNumberPropsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesNumberProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+// The title of the property
+func (o SystemBlueprintPropertiesNumberPropsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesNumberProps) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type SystemBlueprintPropertiesNumberPropsMapOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintPropertiesNumberPropsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SystemBlueprintPropertiesNumberProps)(nil)).Elem()
+}
+
+func (o SystemBlueprintPropertiesNumberPropsMapOutput) ToSystemBlueprintPropertiesNumberPropsMapOutput() SystemBlueprintPropertiesNumberPropsMapOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesNumberPropsMapOutput) ToSystemBlueprintPropertiesNumberPropsMapOutputWithContext(ctx context.Context) SystemBlueprintPropertiesNumberPropsMapOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesNumberPropsMapOutput) MapIndex(k pulumi.StringInput) SystemBlueprintPropertiesNumberPropsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SystemBlueprintPropertiesNumberProps {
+		return vs[0].(map[string]SystemBlueprintPropertiesNumberProps)[vs[1].(string)]
+	}).(SystemBlueprintPropertiesNumberPropsOutput)
+}
+
+type SystemBlueprintPropertiesObjectProps struct {
+	// The default of the object property
+	Default *string `pulumi:"default"`
+	// The description of the property
+	Description *string `pulumi:"description"`
+	// The icon of the property
+	Icon *string `pulumi:"icon"`
+	// Whether the property is required
+	Required *bool `pulumi:"required"`
+	// The spec of the object property
+	Spec *string `pulumi:"spec"`
+	// The title of the property
+	Title *string `pulumi:"title"`
+}
+
+// SystemBlueprintPropertiesObjectPropsInput is an input type that accepts SystemBlueprintPropertiesObjectPropsArgs and SystemBlueprintPropertiesObjectPropsOutput values.
+// You can construct a concrete instance of `SystemBlueprintPropertiesObjectPropsInput` via:
+//
+//	SystemBlueprintPropertiesObjectPropsArgs{...}
+type SystemBlueprintPropertiesObjectPropsInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintPropertiesObjectPropsOutput() SystemBlueprintPropertiesObjectPropsOutput
+	ToSystemBlueprintPropertiesObjectPropsOutputWithContext(context.Context) SystemBlueprintPropertiesObjectPropsOutput
+}
+
+type SystemBlueprintPropertiesObjectPropsArgs struct {
+	// The default of the object property
+	Default pulumi.StringPtrInput `pulumi:"default"`
+	// The description of the property
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The icon of the property
+	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// Whether the property is required
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// The spec of the object property
+	Spec pulumi.StringPtrInput `pulumi:"spec"`
+	// The title of the property
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (SystemBlueprintPropertiesObjectPropsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintPropertiesObjectProps)(nil)).Elem()
+}
+
+func (i SystemBlueprintPropertiesObjectPropsArgs) ToSystemBlueprintPropertiesObjectPropsOutput() SystemBlueprintPropertiesObjectPropsOutput {
+	return i.ToSystemBlueprintPropertiesObjectPropsOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintPropertiesObjectPropsArgs) ToSystemBlueprintPropertiesObjectPropsOutputWithContext(ctx context.Context) SystemBlueprintPropertiesObjectPropsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesObjectPropsOutput)
+}
+
+// SystemBlueprintPropertiesObjectPropsMapInput is an input type that accepts SystemBlueprintPropertiesObjectPropsMap and SystemBlueprintPropertiesObjectPropsMapOutput values.
+// You can construct a concrete instance of `SystemBlueprintPropertiesObjectPropsMapInput` via:
+//
+//	SystemBlueprintPropertiesObjectPropsMap{ "key": SystemBlueprintPropertiesObjectPropsArgs{...} }
+type SystemBlueprintPropertiesObjectPropsMapInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintPropertiesObjectPropsMapOutput() SystemBlueprintPropertiesObjectPropsMapOutput
+	ToSystemBlueprintPropertiesObjectPropsMapOutputWithContext(context.Context) SystemBlueprintPropertiesObjectPropsMapOutput
+}
+
+type SystemBlueprintPropertiesObjectPropsMap map[string]SystemBlueprintPropertiesObjectPropsInput
+
+func (SystemBlueprintPropertiesObjectPropsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SystemBlueprintPropertiesObjectProps)(nil)).Elem()
+}
+
+func (i SystemBlueprintPropertiesObjectPropsMap) ToSystemBlueprintPropertiesObjectPropsMapOutput() SystemBlueprintPropertiesObjectPropsMapOutput {
+	return i.ToSystemBlueprintPropertiesObjectPropsMapOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintPropertiesObjectPropsMap) ToSystemBlueprintPropertiesObjectPropsMapOutputWithContext(ctx context.Context) SystemBlueprintPropertiesObjectPropsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesObjectPropsMapOutput)
+}
+
+type SystemBlueprintPropertiesObjectPropsOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintPropertiesObjectPropsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintPropertiesObjectProps)(nil)).Elem()
+}
+
+func (o SystemBlueprintPropertiesObjectPropsOutput) ToSystemBlueprintPropertiesObjectPropsOutput() SystemBlueprintPropertiesObjectPropsOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesObjectPropsOutput) ToSystemBlueprintPropertiesObjectPropsOutputWithContext(ctx context.Context) SystemBlueprintPropertiesObjectPropsOutput {
+	return o
+}
+
+// The default of the object property
+func (o SystemBlueprintPropertiesObjectPropsOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesObjectProps) *string { return v.Default }).(pulumi.StringPtrOutput)
+}
+
+// The description of the property
+func (o SystemBlueprintPropertiesObjectPropsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesObjectProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The icon of the property
+func (o SystemBlueprintPropertiesObjectPropsOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesObjectProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
+// Whether the property is required
+func (o SystemBlueprintPropertiesObjectPropsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesObjectProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+// The spec of the object property
+func (o SystemBlueprintPropertiesObjectPropsOutput) Spec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesObjectProps) *string { return v.Spec }).(pulumi.StringPtrOutput)
+}
+
+// The title of the property
+func (o SystemBlueprintPropertiesObjectPropsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesObjectProps) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type SystemBlueprintPropertiesObjectPropsMapOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintPropertiesObjectPropsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SystemBlueprintPropertiesObjectProps)(nil)).Elem()
+}
+
+func (o SystemBlueprintPropertiesObjectPropsMapOutput) ToSystemBlueprintPropertiesObjectPropsMapOutput() SystemBlueprintPropertiesObjectPropsMapOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesObjectPropsMapOutput) ToSystemBlueprintPropertiesObjectPropsMapOutputWithContext(ctx context.Context) SystemBlueprintPropertiesObjectPropsMapOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesObjectPropsMapOutput) MapIndex(k pulumi.StringInput) SystemBlueprintPropertiesObjectPropsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SystemBlueprintPropertiesObjectProps {
+		return vs[0].(map[string]SystemBlueprintPropertiesObjectProps)[vs[1].(string)]
+	}).(SystemBlueprintPropertiesObjectPropsOutput)
+}
+
+type SystemBlueprintPropertiesStringProps struct {
+	// The default of the string property
+	Default *string `pulumi:"default"`
+	// The description of the property
+	Description *string `pulumi:"description"`
+	// The enum colors of the string property
+	EnumColors map[string]string `pulumi:"enumColors"`
+	// The enum of the string property
+	Enums []string `pulumi:"enums"`
+	// The format of the string property
+	Format *string `pulumi:"format"`
+	// The icon of the property
+	Icon *string `pulumi:"icon"`
+	// The max length of the string property
+	MaxLength *int `pulumi:"maxLength"`
+	// The min length of the string property
+	MinLength *int `pulumi:"minLength"`
+	// The pattern of the string property
+	Pattern *string `pulumi:"pattern"`
+	// Whether the property is required
+	Required *bool `pulumi:"required"`
+	// The spec of the string property
+	Spec *string `pulumi:"spec"`
+	// The spec authentication of the string property
+	SpecAuthentication *SystemBlueprintPropertiesStringPropsSpecAuthentication `pulumi:"specAuthentication"`
+	// The title of the property
+	Title *string `pulumi:"title"`
+}
+
+// SystemBlueprintPropertiesStringPropsInput is an input type that accepts SystemBlueprintPropertiesStringPropsArgs and SystemBlueprintPropertiesStringPropsOutput values.
+// You can construct a concrete instance of `SystemBlueprintPropertiesStringPropsInput` via:
+//
+//	SystemBlueprintPropertiesStringPropsArgs{...}
+type SystemBlueprintPropertiesStringPropsInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintPropertiesStringPropsOutput() SystemBlueprintPropertiesStringPropsOutput
+	ToSystemBlueprintPropertiesStringPropsOutputWithContext(context.Context) SystemBlueprintPropertiesStringPropsOutput
+}
+
+type SystemBlueprintPropertiesStringPropsArgs struct {
+	// The default of the string property
+	Default pulumi.StringPtrInput `pulumi:"default"`
+	// The description of the property
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The enum colors of the string property
+	EnumColors pulumi.StringMapInput `pulumi:"enumColors"`
+	// The enum of the string property
+	Enums pulumi.StringArrayInput `pulumi:"enums"`
+	// The format of the string property
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	// The icon of the property
+	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// The max length of the string property
+	MaxLength pulumi.IntPtrInput `pulumi:"maxLength"`
+	// The min length of the string property
+	MinLength pulumi.IntPtrInput `pulumi:"minLength"`
+	// The pattern of the string property
+	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
+	// Whether the property is required
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// The spec of the string property
+	Spec pulumi.StringPtrInput `pulumi:"spec"`
+	// The spec authentication of the string property
+	SpecAuthentication SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrInput `pulumi:"specAuthentication"`
+	// The title of the property
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (SystemBlueprintPropertiesStringPropsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintPropertiesStringProps)(nil)).Elem()
+}
+
+func (i SystemBlueprintPropertiesStringPropsArgs) ToSystemBlueprintPropertiesStringPropsOutput() SystemBlueprintPropertiesStringPropsOutput {
+	return i.ToSystemBlueprintPropertiesStringPropsOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintPropertiesStringPropsArgs) ToSystemBlueprintPropertiesStringPropsOutputWithContext(ctx context.Context) SystemBlueprintPropertiesStringPropsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesStringPropsOutput)
+}
+
+// SystemBlueprintPropertiesStringPropsMapInput is an input type that accepts SystemBlueprintPropertiesStringPropsMap and SystemBlueprintPropertiesStringPropsMapOutput values.
+// You can construct a concrete instance of `SystemBlueprintPropertiesStringPropsMapInput` via:
+//
+//	SystemBlueprintPropertiesStringPropsMap{ "key": SystemBlueprintPropertiesStringPropsArgs{...} }
+type SystemBlueprintPropertiesStringPropsMapInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintPropertiesStringPropsMapOutput() SystemBlueprintPropertiesStringPropsMapOutput
+	ToSystemBlueprintPropertiesStringPropsMapOutputWithContext(context.Context) SystemBlueprintPropertiesStringPropsMapOutput
+}
+
+type SystemBlueprintPropertiesStringPropsMap map[string]SystemBlueprintPropertiesStringPropsInput
+
+func (SystemBlueprintPropertiesStringPropsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SystemBlueprintPropertiesStringProps)(nil)).Elem()
+}
+
+func (i SystemBlueprintPropertiesStringPropsMap) ToSystemBlueprintPropertiesStringPropsMapOutput() SystemBlueprintPropertiesStringPropsMapOutput {
+	return i.ToSystemBlueprintPropertiesStringPropsMapOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintPropertiesStringPropsMap) ToSystemBlueprintPropertiesStringPropsMapOutputWithContext(ctx context.Context) SystemBlueprintPropertiesStringPropsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesStringPropsMapOutput)
+}
+
+type SystemBlueprintPropertiesStringPropsOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintPropertiesStringPropsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintPropertiesStringProps)(nil)).Elem()
+}
+
+func (o SystemBlueprintPropertiesStringPropsOutput) ToSystemBlueprintPropertiesStringPropsOutput() SystemBlueprintPropertiesStringPropsOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesStringPropsOutput) ToSystemBlueprintPropertiesStringPropsOutputWithContext(ctx context.Context) SystemBlueprintPropertiesStringPropsOutput {
+	return o
+}
+
+// The default of the string property
+func (o SystemBlueprintPropertiesStringPropsOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesStringProps) *string { return v.Default }).(pulumi.StringPtrOutput)
+}
+
+// The description of the property
+func (o SystemBlueprintPropertiesStringPropsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesStringProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The enum colors of the string property
+func (o SystemBlueprintPropertiesStringPropsOutput) EnumColors() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesStringProps) map[string]string { return v.EnumColors }).(pulumi.StringMapOutput)
+}
+
+// The enum of the string property
+func (o SystemBlueprintPropertiesStringPropsOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesStringProps) []string { return v.Enums }).(pulumi.StringArrayOutput)
+}
+
+// The format of the string property
+func (o SystemBlueprintPropertiesStringPropsOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesStringProps) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+// The icon of the property
+func (o SystemBlueprintPropertiesStringPropsOutput) Icon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesStringProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
+// The max length of the string property
+func (o SystemBlueprintPropertiesStringPropsOutput) MaxLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesStringProps) *int { return v.MaxLength }).(pulumi.IntPtrOutput)
+}
+
+// The min length of the string property
+func (o SystemBlueprintPropertiesStringPropsOutput) MinLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesStringProps) *int { return v.MinLength }).(pulumi.IntPtrOutput)
+}
+
+// The pattern of the string property
+func (o SystemBlueprintPropertiesStringPropsOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesStringProps) *string { return v.Pattern }).(pulumi.StringPtrOutput)
+}
+
+// Whether the property is required
+func (o SystemBlueprintPropertiesStringPropsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesStringProps) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+// The spec of the string property
+func (o SystemBlueprintPropertiesStringPropsOutput) Spec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesStringProps) *string { return v.Spec }).(pulumi.StringPtrOutput)
+}
+
+// The spec authentication of the string property
+func (o SystemBlueprintPropertiesStringPropsOutput) SpecAuthentication() SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesStringProps) *SystemBlueprintPropertiesStringPropsSpecAuthentication {
+		return v.SpecAuthentication
+	}).(SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput)
+}
+
+// The title of the property
+func (o SystemBlueprintPropertiesStringPropsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesStringProps) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type SystemBlueprintPropertiesStringPropsMapOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintPropertiesStringPropsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SystemBlueprintPropertiesStringProps)(nil)).Elem()
+}
+
+func (o SystemBlueprintPropertiesStringPropsMapOutput) ToSystemBlueprintPropertiesStringPropsMapOutput() SystemBlueprintPropertiesStringPropsMapOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesStringPropsMapOutput) ToSystemBlueprintPropertiesStringPropsMapOutputWithContext(ctx context.Context) SystemBlueprintPropertiesStringPropsMapOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesStringPropsMapOutput) MapIndex(k pulumi.StringInput) SystemBlueprintPropertiesStringPropsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SystemBlueprintPropertiesStringProps {
+		return vs[0].(map[string]SystemBlueprintPropertiesStringProps)[vs[1].(string)]
+	}).(SystemBlueprintPropertiesStringPropsOutput)
+}
+
+type SystemBlueprintPropertiesStringPropsSpecAuthentication struct {
+	// The authorizationUrl of the spec authentication
+	AuthorizationUrl string `pulumi:"authorizationUrl"`
+	// The clientId of the spec authentication
+	ClientId string `pulumi:"clientId"`
+	// The tokenUrl of the spec authentication
+	TokenUrl string `pulumi:"tokenUrl"`
+}
+
+// SystemBlueprintPropertiesStringPropsSpecAuthenticationInput is an input type that accepts SystemBlueprintPropertiesStringPropsSpecAuthenticationArgs and SystemBlueprintPropertiesStringPropsSpecAuthenticationOutput values.
+// You can construct a concrete instance of `SystemBlueprintPropertiesStringPropsSpecAuthenticationInput` via:
+//
+//	SystemBlueprintPropertiesStringPropsSpecAuthenticationArgs{...}
+type SystemBlueprintPropertiesStringPropsSpecAuthenticationInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintPropertiesStringPropsSpecAuthenticationOutput() SystemBlueprintPropertiesStringPropsSpecAuthenticationOutput
+	ToSystemBlueprintPropertiesStringPropsSpecAuthenticationOutputWithContext(context.Context) SystemBlueprintPropertiesStringPropsSpecAuthenticationOutput
+}
+
+type SystemBlueprintPropertiesStringPropsSpecAuthenticationArgs struct {
+	// The authorizationUrl of the spec authentication
+	AuthorizationUrl pulumi.StringInput `pulumi:"authorizationUrl"`
+	// The clientId of the spec authentication
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The tokenUrl of the spec authentication
+	TokenUrl pulumi.StringInput `pulumi:"tokenUrl"`
+}
+
+func (SystemBlueprintPropertiesStringPropsSpecAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintPropertiesStringPropsSpecAuthentication)(nil)).Elem()
+}
+
+func (i SystemBlueprintPropertiesStringPropsSpecAuthenticationArgs) ToSystemBlueprintPropertiesStringPropsSpecAuthenticationOutput() SystemBlueprintPropertiesStringPropsSpecAuthenticationOutput {
+	return i.ToSystemBlueprintPropertiesStringPropsSpecAuthenticationOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintPropertiesStringPropsSpecAuthenticationArgs) ToSystemBlueprintPropertiesStringPropsSpecAuthenticationOutputWithContext(ctx context.Context) SystemBlueprintPropertiesStringPropsSpecAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesStringPropsSpecAuthenticationOutput)
+}
+
+func (i SystemBlueprintPropertiesStringPropsSpecAuthenticationArgs) ToSystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput() SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput {
+	return i.ToSystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintPropertiesStringPropsSpecAuthenticationArgs) ToSystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesStringPropsSpecAuthenticationOutput).ToSystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutputWithContext(ctx)
+}
+
+// SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrInput is an input type that accepts SystemBlueprintPropertiesStringPropsSpecAuthenticationArgs, SystemBlueprintPropertiesStringPropsSpecAuthenticationPtr and SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput values.
+// You can construct a concrete instance of `SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrInput` via:
+//
+//	        SystemBlueprintPropertiesStringPropsSpecAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput() SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput
+	ToSystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutputWithContext(context.Context) SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput
+}
+
+type systemBlueprintPropertiesStringPropsSpecAuthenticationPtrType SystemBlueprintPropertiesStringPropsSpecAuthenticationArgs
+
+func SystemBlueprintPropertiesStringPropsSpecAuthenticationPtr(v *SystemBlueprintPropertiesStringPropsSpecAuthenticationArgs) SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrInput {
+	return (*systemBlueprintPropertiesStringPropsSpecAuthenticationPtrType)(v)
+}
+
+func (*systemBlueprintPropertiesStringPropsSpecAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemBlueprintPropertiesStringPropsSpecAuthentication)(nil)).Elem()
+}
+
+func (i *systemBlueprintPropertiesStringPropsSpecAuthenticationPtrType) ToSystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput() SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput {
+	return i.ToSystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *systemBlueprintPropertiesStringPropsSpecAuthenticationPtrType) ToSystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput)
+}
+
+type SystemBlueprintPropertiesStringPropsSpecAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintPropertiesStringPropsSpecAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintPropertiesStringPropsSpecAuthentication)(nil)).Elem()
+}
+
+func (o SystemBlueprintPropertiesStringPropsSpecAuthenticationOutput) ToSystemBlueprintPropertiesStringPropsSpecAuthenticationOutput() SystemBlueprintPropertiesStringPropsSpecAuthenticationOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesStringPropsSpecAuthenticationOutput) ToSystemBlueprintPropertiesStringPropsSpecAuthenticationOutputWithContext(ctx context.Context) SystemBlueprintPropertiesStringPropsSpecAuthenticationOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesStringPropsSpecAuthenticationOutput) ToSystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput() SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput {
+	return o.ToSystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o SystemBlueprintPropertiesStringPropsSpecAuthenticationOutput) ToSystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemBlueprintPropertiesStringPropsSpecAuthentication) *SystemBlueprintPropertiesStringPropsSpecAuthentication {
+		return &v
+	}).(SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput)
+}
+
+// The authorizationUrl of the spec authentication
+func (o SystemBlueprintPropertiesStringPropsSpecAuthenticationOutput) AuthorizationUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesStringPropsSpecAuthentication) string { return v.AuthorizationUrl }).(pulumi.StringOutput)
+}
+
+// The clientId of the spec authentication
+func (o SystemBlueprintPropertiesStringPropsSpecAuthenticationOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesStringPropsSpecAuthentication) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The tokenUrl of the spec authentication
+func (o SystemBlueprintPropertiesStringPropsSpecAuthenticationOutput) TokenUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesStringPropsSpecAuthentication) string { return v.TokenUrl }).(pulumi.StringOutput)
+}
+
+type SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemBlueprintPropertiesStringPropsSpecAuthentication)(nil)).Elem()
+}
+
+func (o SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) ToSystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput() SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) ToSystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutputWithContext(ctx context.Context) SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput {
+	return o
+}
+
+func (o SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) Elem() SystemBlueprintPropertiesStringPropsSpecAuthenticationOutput {
+	return o.ApplyT(func(v *SystemBlueprintPropertiesStringPropsSpecAuthentication) SystemBlueprintPropertiesStringPropsSpecAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret SystemBlueprintPropertiesStringPropsSpecAuthentication
+		return ret
+	}).(SystemBlueprintPropertiesStringPropsSpecAuthenticationOutput)
+}
+
+// The authorizationUrl of the spec authentication
+func (o SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) AuthorizationUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemBlueprintPropertiesStringPropsSpecAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthorizationUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The clientId of the spec authentication
+func (o SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemBlueprintPropertiesStringPropsSpecAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tokenUrl of the spec authentication
+func (o SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput) TokenUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemBlueprintPropertiesStringPropsSpecAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type SystemBlueprintRelations struct {
+	// The description of the relation
+	Description *string `pulumi:"description"`
+	// The many of the relation
+	Many *bool `pulumi:"many"`
+	// The required of the relation
+	Required *bool `pulumi:"required"`
+	// The target of the relation
+	Target string `pulumi:"target"`
+	// The title of the relation
+	Title *string `pulumi:"title"`
+}
+
+// SystemBlueprintRelationsInput is an input type that accepts SystemBlueprintRelationsArgs and SystemBlueprintRelationsOutput values.
+// You can construct a concrete instance of `SystemBlueprintRelationsInput` via:
+//
+//	SystemBlueprintRelationsArgs{...}
+type SystemBlueprintRelationsInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintRelationsOutput() SystemBlueprintRelationsOutput
+	ToSystemBlueprintRelationsOutputWithContext(context.Context) SystemBlueprintRelationsOutput
+}
+
+type SystemBlueprintRelationsArgs struct {
+	// The description of the relation
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The many of the relation
+	Many pulumi.BoolPtrInput `pulumi:"many"`
+	// The required of the relation
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// The target of the relation
+	Target pulumi.StringInput `pulumi:"target"`
+	// The title of the relation
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (SystemBlueprintRelationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintRelations)(nil)).Elem()
+}
+
+func (i SystemBlueprintRelationsArgs) ToSystemBlueprintRelationsOutput() SystemBlueprintRelationsOutput {
+	return i.ToSystemBlueprintRelationsOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintRelationsArgs) ToSystemBlueprintRelationsOutputWithContext(ctx context.Context) SystemBlueprintRelationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintRelationsOutput)
+}
+
+// SystemBlueprintRelationsMapInput is an input type that accepts SystemBlueprintRelationsMap and SystemBlueprintRelationsMapOutput values.
+// You can construct a concrete instance of `SystemBlueprintRelationsMapInput` via:
+//
+//	SystemBlueprintRelationsMap{ "key": SystemBlueprintRelationsArgs{...} }
+type SystemBlueprintRelationsMapInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintRelationsMapOutput() SystemBlueprintRelationsMapOutput
+	ToSystemBlueprintRelationsMapOutputWithContext(context.Context) SystemBlueprintRelationsMapOutput
+}
+
+type SystemBlueprintRelationsMap map[string]SystemBlueprintRelationsInput
+
+func (SystemBlueprintRelationsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SystemBlueprintRelations)(nil)).Elem()
+}
+
+func (i SystemBlueprintRelationsMap) ToSystemBlueprintRelationsMapOutput() SystemBlueprintRelationsMapOutput {
+	return i.ToSystemBlueprintRelationsMapOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintRelationsMap) ToSystemBlueprintRelationsMapOutputWithContext(ctx context.Context) SystemBlueprintRelationsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintRelationsMapOutput)
+}
+
+type SystemBlueprintRelationsOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintRelationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintRelations)(nil)).Elem()
+}
+
+func (o SystemBlueprintRelationsOutput) ToSystemBlueprintRelationsOutput() SystemBlueprintRelationsOutput {
+	return o
+}
+
+func (o SystemBlueprintRelationsOutput) ToSystemBlueprintRelationsOutputWithContext(ctx context.Context) SystemBlueprintRelationsOutput {
+	return o
+}
+
+// The description of the relation
+func (o SystemBlueprintRelationsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintRelations) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The many of the relation
+func (o SystemBlueprintRelationsOutput) Many() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintRelations) *bool { return v.Many }).(pulumi.BoolPtrOutput)
+}
+
+// The required of the relation
+func (o SystemBlueprintRelationsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintRelations) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+// The target of the relation
+func (o SystemBlueprintRelationsOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemBlueprintRelations) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// The title of the relation
+func (o SystemBlueprintRelationsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintRelations) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type SystemBlueprintRelationsMapOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintRelationsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SystemBlueprintRelations)(nil)).Elem()
+}
+
+func (o SystemBlueprintRelationsMapOutput) ToSystemBlueprintRelationsMapOutput() SystemBlueprintRelationsMapOutput {
+	return o
+}
+
+func (o SystemBlueprintRelationsMapOutput) ToSystemBlueprintRelationsMapOutputWithContext(ctx context.Context) SystemBlueprintRelationsMapOutput {
+	return o
+}
+
+func (o SystemBlueprintRelationsMapOutput) MapIndex(k pulumi.StringInput) SystemBlueprintRelationsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SystemBlueprintRelations {
+		return vs[0].(map[string]SystemBlueprintRelations)[vs[1].(string)]
+	}).(SystemBlueprintRelationsOutput)
+}
+
 type WebhookMapping struct {
 	// The blueprint of the mapping
 	Blueprint string `pulumi:"blueprint"`
@@ -14938,6 +17175,34 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardRuleInput)(nil)).Elem(), ScorecardRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardRuleArrayInput)(nil)).Elem(), ScorecardRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardRuleQueryInput)(nil)).Elem(), ScorecardRuleQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintCalculationPropertiesInput)(nil)).Elem(), SystemBlueprintCalculationPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintCalculationPropertiesMapInput)(nil)).Elem(), SystemBlueprintCalculationPropertiesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintMirrorPropertiesInput)(nil)).Elem(), SystemBlueprintMirrorPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintMirrorPropertiesMapInput)(nil)).Elem(), SystemBlueprintMirrorPropertiesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesInput)(nil)).Elem(), SystemBlueprintPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesPtrInput)(nil)).Elem(), SystemBlueprintPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesArrayPropsInput)(nil)).Elem(), SystemBlueprintPropertiesArrayPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesArrayPropsMapInput)(nil)).Elem(), SystemBlueprintPropertiesArrayPropsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesArrayPropsBooleanItemsInput)(nil)).Elem(), SystemBlueprintPropertiesArrayPropsBooleanItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesArrayPropsBooleanItemsPtrInput)(nil)).Elem(), SystemBlueprintPropertiesArrayPropsBooleanItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesArrayPropsNumberItemsInput)(nil)).Elem(), SystemBlueprintPropertiesArrayPropsNumberItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesArrayPropsNumberItemsPtrInput)(nil)).Elem(), SystemBlueprintPropertiesArrayPropsNumberItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesArrayPropsObjectItemsInput)(nil)).Elem(), SystemBlueprintPropertiesArrayPropsObjectItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesArrayPropsObjectItemsPtrInput)(nil)).Elem(), SystemBlueprintPropertiesArrayPropsObjectItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesArrayPropsStringItemsInput)(nil)).Elem(), SystemBlueprintPropertiesArrayPropsStringItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesArrayPropsStringItemsPtrInput)(nil)).Elem(), SystemBlueprintPropertiesArrayPropsStringItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesBooleanPropsInput)(nil)).Elem(), SystemBlueprintPropertiesBooleanPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesBooleanPropsMapInput)(nil)).Elem(), SystemBlueprintPropertiesBooleanPropsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesNumberPropsInput)(nil)).Elem(), SystemBlueprintPropertiesNumberPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesNumberPropsMapInput)(nil)).Elem(), SystemBlueprintPropertiesNumberPropsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesObjectPropsInput)(nil)).Elem(), SystemBlueprintPropertiesObjectPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesObjectPropsMapInput)(nil)).Elem(), SystemBlueprintPropertiesObjectPropsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesStringPropsInput)(nil)).Elem(), SystemBlueprintPropertiesStringPropsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesStringPropsMapInput)(nil)).Elem(), SystemBlueprintPropertiesStringPropsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesStringPropsSpecAuthenticationInput)(nil)).Elem(), SystemBlueprintPropertiesStringPropsSpecAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrInput)(nil)).Elem(), SystemBlueprintPropertiesStringPropsSpecAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintRelationsInput)(nil)).Elem(), SystemBlueprintRelationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintRelationsMapInput)(nil)).Elem(), SystemBlueprintRelationsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookMappingInput)(nil)).Elem(), WebhookMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookMappingArrayInput)(nil)).Elem(), WebhookMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookMappingEntityInput)(nil)).Elem(), WebhookMappingEntityArgs{})
@@ -15115,6 +17380,34 @@ func init() {
 	pulumi.RegisterOutputType(ScorecardRuleOutput{})
 	pulumi.RegisterOutputType(ScorecardRuleArrayOutput{})
 	pulumi.RegisterOutputType(ScorecardRuleQueryOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintCalculationPropertiesOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintCalculationPropertiesMapOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintMirrorPropertiesOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintMirrorPropertiesMapOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintPropertiesOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintPropertiesArrayPropsOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintPropertiesArrayPropsMapOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintPropertiesArrayPropsBooleanItemsOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintPropertiesArrayPropsBooleanItemsPtrOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintPropertiesArrayPropsNumberItemsOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintPropertiesArrayPropsObjectItemsOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintPropertiesArrayPropsStringItemsOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintPropertiesBooleanPropsOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintPropertiesBooleanPropsMapOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintPropertiesNumberPropsOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintPropertiesNumberPropsMapOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintPropertiesObjectPropsOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintPropertiesObjectPropsMapOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintPropertiesStringPropsOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintPropertiesStringPropsMapOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintPropertiesStringPropsSpecAuthenticationOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintPropertiesStringPropsSpecAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintRelationsOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintRelationsMapOutput{})
 	pulumi.RegisterOutputType(WebhookMappingOutput{})
 	pulumi.RegisterOutputType(WebhookMappingArrayOutput{})
 	pulumi.RegisterOutputType(WebhookMappingEntityOutput{})

@@ -145,18 +145,11 @@ import * as utilities from "./utilities";
  *     blueprint: microservice.identifier,
  *     filter: {
  *         combinator: "and",
- *         conditions: [
- *             JSON.stringify({
- *                 property: "required",
- *                 operator: "=",
- *                 value: true,
- *             }),
- *             JSON.stringify({
- *                 property: "sum",
- *                 operator: ">",
- *                 value: 5,
- *             }),
- *         ],
+ *         conditions: [JSON.stringify({
+ *             property: "sum",
+ *             operator: ">",
+ *             value: 0,
+ *         })],
  *     },
  *     levels: [
  *         {
