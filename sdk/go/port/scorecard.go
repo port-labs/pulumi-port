@@ -166,7 +166,6 @@ import (
 // "combinator": "and",
 // "conditions": []string{
 // %!v(PANIC=Format method: fatal: An assertion has failed: unlowered function toJSON),
-// %!v(PANIC=Format method: fatal: An assertion has failed: unlowered function toJSON),
 // },
 // },
 // Levels: []map[string]interface{}{

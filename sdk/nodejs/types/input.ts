@@ -909,6 +909,10 @@ export interface BlueprintOwnership {
      */
     path?: pulumi.Input<string>;
     /**
+     * Optional title for the owning teams property.
+     */
+    title?: pulumi.Input<string>;
+    /**
      * Ownership type: either 'Inherited' or 'Direct'.
      */
     type: pulumi.Input<string>;
@@ -1554,6 +1558,336 @@ export interface ScorecardRuleQuery {
      * The conditions of the query. Each condition object should be encoded to a string
      */
     conditions: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface SystemBlueprintCalculationProperties {
+    /**
+     * The calculation of the calculation property
+     */
+    calculation: pulumi.Input<string>;
+    /**
+     * The colorized of the calculation property
+     */
+    colorized?: pulumi.Input<boolean>;
+    /**
+     * The colors of the calculation property
+     */
+    colors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The description of the calculation property
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The format of the calculation property
+     */
+    format?: pulumi.Input<string>;
+    /**
+     * The icon of the calculation property
+     */
+    icon?: pulumi.Input<string>;
+    /**
+     * The title of the calculation property
+     */
+    title?: pulumi.Input<string>;
+    /**
+     * The type of the calculation property
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface SystemBlueprintMirrorProperties {
+    /**
+     * The path of the mirror property
+     */
+    path: pulumi.Input<string>;
+    /**
+     * The title of the mirror property
+     */
+    title?: pulumi.Input<string>;
+}
+
+export interface SystemBlueprintProperties {
+    /**
+     * The array property of the blueprint
+     */
+    arrayProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.SystemBlueprintPropertiesArrayProps>}>;
+    /**
+     * The boolean property of the blueprint
+     */
+    booleanProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.SystemBlueprintPropertiesBooleanProps>}>;
+    /**
+     * The number property of the blueprint
+     */
+    numberProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.SystemBlueprintPropertiesNumberProps>}>;
+    /**
+     * The object property of the blueprint
+     */
+    objectProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.SystemBlueprintPropertiesObjectProps>}>;
+    /**
+     * The string property of the blueprint
+     */
+    stringProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.SystemBlueprintPropertiesStringProps>}>;
+}
+
+export interface SystemBlueprintPropertiesArrayProps {
+    /**
+     * The items of the array property
+     */
+    booleanItems?: pulumi.Input<inputs.SystemBlueprintPropertiesArrayPropsBooleanItems>;
+    /**
+     * The description of the property
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The icon of the property
+     */
+    icon?: pulumi.Input<string>;
+    /**
+     * The max items of the array property
+     */
+    maxItems?: pulumi.Input<number>;
+    /**
+     * The min items of the array property
+     */
+    minItems?: pulumi.Input<number>;
+    /**
+     * The items of the array property
+     */
+    numberItems?: pulumi.Input<inputs.SystemBlueprintPropertiesArrayPropsNumberItems>;
+    /**
+     * The items of the array property
+     */
+    objectItems?: pulumi.Input<inputs.SystemBlueprintPropertiesArrayPropsObjectItems>;
+    /**
+     * Whether the property is required
+     */
+    required?: pulumi.Input<boolean>;
+    /**
+     * The items of the array property
+     */
+    stringItems?: pulumi.Input<inputs.SystemBlueprintPropertiesArrayPropsStringItems>;
+    /**
+     * The title of the property
+     */
+    title?: pulumi.Input<string>;
+}
+
+export interface SystemBlueprintPropertiesArrayPropsBooleanItems {
+    /**
+     * The default of the items
+     */
+    defaults?: pulumi.Input<pulumi.Input<boolean>[]>;
+}
+
+export interface SystemBlueprintPropertiesArrayPropsNumberItems {
+    /**
+     * The default of the items
+     */
+    defaults?: pulumi.Input<pulumi.Input<number>[]>;
+}
+
+export interface SystemBlueprintPropertiesArrayPropsObjectItems {
+    /**
+     * The default of the items
+     */
+    defaults?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface SystemBlueprintPropertiesArrayPropsStringItems {
+    /**
+     * The default of the items
+     */
+    defaults?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The format of the items
+     */
+    format?: pulumi.Input<string>;
+    /**
+     * The pattern of the string array items
+     */
+    pattern?: pulumi.Input<string>;
+}
+
+export interface SystemBlueprintPropertiesBooleanProps {
+    /**
+     * The default of the boolean property
+     */
+    default?: pulumi.Input<boolean>;
+    /**
+     * The description of the property
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The icon of the property
+     */
+    icon?: pulumi.Input<string>;
+    /**
+     * Whether the property is required
+     */
+    required?: pulumi.Input<boolean>;
+    /**
+     * The title of the property
+     */
+    title?: pulumi.Input<string>;
+}
+
+export interface SystemBlueprintPropertiesNumberProps {
+    /**
+     * The default of the number property
+     */
+    default?: pulumi.Input<number>;
+    /**
+     * The description of the property
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The enum colors of the number property
+     */
+    enumColors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The enum of the number property
+     */
+    enums?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The icon of the property
+     */
+    icon?: pulumi.Input<string>;
+    /**
+     * The min of the number property
+     */
+    maximum?: pulumi.Input<number>;
+    /**
+     * The max of the number property
+     */
+    minimum?: pulumi.Input<number>;
+    /**
+     * Whether the property is required
+     */
+    required?: pulumi.Input<boolean>;
+    /**
+     * The title of the property
+     */
+    title?: pulumi.Input<string>;
+}
+
+export interface SystemBlueprintPropertiesObjectProps {
+    /**
+     * The default of the object property
+     */
+    default?: pulumi.Input<string>;
+    /**
+     * The description of the property
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The icon of the property
+     */
+    icon?: pulumi.Input<string>;
+    /**
+     * Whether the property is required
+     */
+    required?: pulumi.Input<boolean>;
+    /**
+     * The spec of the object property
+     */
+    spec?: pulumi.Input<string>;
+    /**
+     * The title of the property
+     */
+    title?: pulumi.Input<string>;
+}
+
+export interface SystemBlueprintPropertiesStringProps {
+    /**
+     * The default of the string property
+     */
+    default?: pulumi.Input<string>;
+    /**
+     * The description of the property
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The enum colors of the string property
+     */
+    enumColors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The enum of the string property
+     */
+    enums?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The format of the string property
+     */
+    format?: pulumi.Input<string>;
+    /**
+     * The icon of the property
+     */
+    icon?: pulumi.Input<string>;
+    /**
+     * The max length of the string property
+     */
+    maxLength?: pulumi.Input<number>;
+    /**
+     * The min length of the string property
+     */
+    minLength?: pulumi.Input<number>;
+    /**
+     * The pattern of the string property
+     */
+    pattern?: pulumi.Input<string>;
+    /**
+     * Whether the property is required
+     */
+    required?: pulumi.Input<boolean>;
+    /**
+     * The spec of the string property
+     */
+    spec?: pulumi.Input<string>;
+    /**
+     * The spec authentication of the string property
+     */
+    specAuthentication?: pulumi.Input<inputs.SystemBlueprintPropertiesStringPropsSpecAuthentication>;
+    /**
+     * The title of the property
+     */
+    title?: pulumi.Input<string>;
+}
+
+export interface SystemBlueprintPropertiesStringPropsSpecAuthentication {
+    /**
+     * The authorizationUrl of the spec authentication
+     */
+    authorizationUrl: pulumi.Input<string>;
+    /**
+     * The clientId of the spec authentication
+     */
+    clientId: pulumi.Input<string>;
+    /**
+     * The tokenUrl of the spec authentication
+     */
+    tokenUrl: pulumi.Input<string>;
+}
+
+export interface SystemBlueprintRelations {
+    /**
+     * The description of the relation
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The many of the relation
+     */
+    many?: pulumi.Input<boolean>;
+    /**
+     * The required of the relation
+     */
+    required?: pulumi.Input<boolean>;
+    /**
+     * The target of the relation
+     */
+    target: pulumi.Input<string>;
+    /**
+     * The title of the relation
+     */
+    title?: pulumi.Input<string>;
 }
 
 export interface WebhookMapping {

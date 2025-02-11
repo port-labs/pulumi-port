@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PagePermissions{}
 	case "port:index/scorecard:Scorecard":
 		r = &Scorecard{}
+	case "port:index/systemBlueprint:SystemBlueprint":
+		r = &SystemBlueprint{}
 	case "port:index/team:Team":
 		r = &Team{}
 	case "port:index/webhook:Webhook":
@@ -124,6 +126,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"port",
 		"index/scorecard",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"port",
+		"index/systemBlueprint",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
