@@ -99,6 +99,20 @@ __all__ = [
     'ScorecardLevel',
     'ScorecardRule',
     'ScorecardRuleQuery',
+    'SystemBlueprintCalculationProperties',
+    'SystemBlueprintMirrorProperties',
+    'SystemBlueprintProperties',
+    'SystemBlueprintPropertiesArrayProps',
+    'SystemBlueprintPropertiesArrayPropsBooleanItems',
+    'SystemBlueprintPropertiesArrayPropsNumberItems',
+    'SystemBlueprintPropertiesArrayPropsObjectItems',
+    'SystemBlueprintPropertiesArrayPropsStringItems',
+    'SystemBlueprintPropertiesBooleanProps',
+    'SystemBlueprintPropertiesNumberProps',
+    'SystemBlueprintPropertiesObjectProps',
+    'SystemBlueprintPropertiesStringProps',
+    'SystemBlueprintPropertiesStringPropsSpecAuthentication',
+    'SystemBlueprintRelations',
     'WebhookMapping',
     'WebhookMappingEntity',
     'WebhookSecurity',
@@ -3239,14 +3253,18 @@ class BlueprintMirrorProperties(dict):
 class BlueprintOwnership(dict):
     def __init__(__self__, *,
                  type: str,
-                 path: Optional[str] = None):
+                 path: Optional[str] = None,
+                 title: Optional[str] = None):
         """
         :param str type: Ownership type: either 'Inherited' or 'Direct'.
         :param str path: Path for the Inherited ownership type. Required when type is 'Inherited'. Must be a valid relation identifiers path.
+        :param str title: Optional title for the owning teams property.
         """
         pulumi.set(__self__, "type", type)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter
@@ -3263,6 +3281,14 @@ class BlueprintOwnership(dict):
         Path for the Inherited ownership type. Required when type is 'Inherited'. Must be a valid relation identifiers path.
         """
         return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        Optional title for the owning teams property.
+        """
+        return pulumi.get(self, "title")
 
 
 @pulumi.output_type
@@ -5470,6 +5496,1074 @@ class ScorecardRuleQuery(dict):
         The conditions of the query. Each condition object should be encoded to a string
         """
         return pulumi.get(self, "conditions")
+
+
+@pulumi.output_type
+class SystemBlueprintCalculationProperties(dict):
+    def __init__(__self__, *,
+                 calculation: str,
+                 type: str,
+                 colorized: Optional[bool] = None,
+                 colors: Optional[Mapping[str, str]] = None,
+                 description: Optional[str] = None,
+                 format: Optional[str] = None,
+                 icon: Optional[str] = None,
+                 title: Optional[str] = None):
+        """
+        :param str calculation: The calculation of the calculation property
+        :param str type: The type of the calculation property
+        :param bool colorized: The colorized of the calculation property
+        :param Mapping[str, str] colors: The colors of the calculation property
+        :param str description: The description of the calculation property
+        :param str format: The format of the calculation property
+        :param str icon: The icon of the calculation property
+        :param str title: The title of the calculation property
+        """
+        pulumi.set(__self__, "calculation", calculation)
+        pulumi.set(__self__, "type", type)
+        if colorized is not None:
+            pulumi.set(__self__, "colorized", colorized)
+        if colors is not None:
+            pulumi.set(__self__, "colors", colors)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def calculation(self) -> str:
+        """
+        The calculation of the calculation property
+        """
+        return pulumi.get(self, "calculation")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the calculation property
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def colorized(self) -> Optional[bool]:
+        """
+        The colorized of the calculation property
+        """
+        return pulumi.get(self, "colorized")
+
+    @property
+    @pulumi.getter
+    def colors(self) -> Optional[Mapping[str, str]]:
+        """
+        The colors of the calculation property
+        """
+        return pulumi.get(self, "colors")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the calculation property
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[str]:
+        """
+        The format of the calculation property
+        """
+        return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[str]:
+        """
+        The icon of the calculation property
+        """
+        return pulumi.get(self, "icon")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        The title of the calculation property
+        """
+        return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class SystemBlueprintMirrorProperties(dict):
+    def __init__(__self__, *,
+                 path: str,
+                 title: Optional[str] = None):
+        """
+        :param str path: The path of the mirror property
+        :param str title: The title of the mirror property
+        """
+        pulumi.set(__self__, "path", path)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The path of the mirror property
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        The title of the mirror property
+        """
+        return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class SystemBlueprintProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "arrayProps":
+            suggest = "array_props"
+        elif key == "booleanProps":
+            suggest = "boolean_props"
+        elif key == "numberProps":
+            suggest = "number_props"
+        elif key == "objectProps":
+            suggest = "object_props"
+        elif key == "stringProps":
+            suggest = "string_props"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SystemBlueprintProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SystemBlueprintProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SystemBlueprintProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 array_props: Optional[Mapping[str, 'outputs.SystemBlueprintPropertiesArrayProps']] = None,
+                 boolean_props: Optional[Mapping[str, 'outputs.SystemBlueprintPropertiesBooleanProps']] = None,
+                 number_props: Optional[Mapping[str, 'outputs.SystemBlueprintPropertiesNumberProps']] = None,
+                 object_props: Optional[Mapping[str, 'outputs.SystemBlueprintPropertiesObjectProps']] = None,
+                 string_props: Optional[Mapping[str, 'outputs.SystemBlueprintPropertiesStringProps']] = None):
+        """
+        :param Mapping[str, 'SystemBlueprintPropertiesArrayPropsArgs'] array_props: The array property of the blueprint
+        :param Mapping[str, 'SystemBlueprintPropertiesBooleanPropsArgs'] boolean_props: The boolean property of the blueprint
+        :param Mapping[str, 'SystemBlueprintPropertiesNumberPropsArgs'] number_props: The number property of the blueprint
+        :param Mapping[str, 'SystemBlueprintPropertiesObjectPropsArgs'] object_props: The object property of the blueprint
+        :param Mapping[str, 'SystemBlueprintPropertiesStringPropsArgs'] string_props: The string property of the blueprint
+        """
+        if array_props is not None:
+            pulumi.set(__self__, "array_props", array_props)
+        if boolean_props is not None:
+            pulumi.set(__self__, "boolean_props", boolean_props)
+        if number_props is not None:
+            pulumi.set(__self__, "number_props", number_props)
+        if object_props is not None:
+            pulumi.set(__self__, "object_props", object_props)
+        if string_props is not None:
+            pulumi.set(__self__, "string_props", string_props)
+
+    @property
+    @pulumi.getter(name="arrayProps")
+    def array_props(self) -> Optional[Mapping[str, 'outputs.SystemBlueprintPropertiesArrayProps']]:
+        """
+        The array property of the blueprint
+        """
+        return pulumi.get(self, "array_props")
+
+    @property
+    @pulumi.getter(name="booleanProps")
+    def boolean_props(self) -> Optional[Mapping[str, 'outputs.SystemBlueprintPropertiesBooleanProps']]:
+        """
+        The boolean property of the blueprint
+        """
+        return pulumi.get(self, "boolean_props")
+
+    @property
+    @pulumi.getter(name="numberProps")
+    def number_props(self) -> Optional[Mapping[str, 'outputs.SystemBlueprintPropertiesNumberProps']]:
+        """
+        The number property of the blueprint
+        """
+        return pulumi.get(self, "number_props")
+
+    @property
+    @pulumi.getter(name="objectProps")
+    def object_props(self) -> Optional[Mapping[str, 'outputs.SystemBlueprintPropertiesObjectProps']]:
+        """
+        The object property of the blueprint
+        """
+        return pulumi.get(self, "object_props")
+
+    @property
+    @pulumi.getter(name="stringProps")
+    def string_props(self) -> Optional[Mapping[str, 'outputs.SystemBlueprintPropertiesStringProps']]:
+        """
+        The string property of the blueprint
+        """
+        return pulumi.get(self, "string_props")
+
+
+@pulumi.output_type
+class SystemBlueprintPropertiesArrayProps(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "booleanItems":
+            suggest = "boolean_items"
+        elif key == "maxItems":
+            suggest = "max_items"
+        elif key == "minItems":
+            suggest = "min_items"
+        elif key == "numberItems":
+            suggest = "number_items"
+        elif key == "objectItems":
+            suggest = "object_items"
+        elif key == "stringItems":
+            suggest = "string_items"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SystemBlueprintPropertiesArrayProps. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SystemBlueprintPropertiesArrayProps.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SystemBlueprintPropertiesArrayProps.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 boolean_items: Optional['outputs.SystemBlueprintPropertiesArrayPropsBooleanItems'] = None,
+                 description: Optional[str] = None,
+                 icon: Optional[str] = None,
+                 max_items: Optional[int] = None,
+                 min_items: Optional[int] = None,
+                 number_items: Optional['outputs.SystemBlueprintPropertiesArrayPropsNumberItems'] = None,
+                 object_items: Optional['outputs.SystemBlueprintPropertiesArrayPropsObjectItems'] = None,
+                 required: Optional[bool] = None,
+                 string_items: Optional['outputs.SystemBlueprintPropertiesArrayPropsStringItems'] = None,
+                 title: Optional[str] = None):
+        """
+        :param 'SystemBlueprintPropertiesArrayPropsBooleanItemsArgs' boolean_items: The items of the array property
+        :param str description: The description of the property
+        :param str icon: The icon of the property
+        :param int max_items: The max items of the array property
+        :param int min_items: The min items of the array property
+        :param 'SystemBlueprintPropertiesArrayPropsNumberItemsArgs' number_items: The items of the array property
+        :param 'SystemBlueprintPropertiesArrayPropsObjectItemsArgs' object_items: The items of the array property
+        :param bool required: Whether the property is required
+        :param 'SystemBlueprintPropertiesArrayPropsStringItemsArgs' string_items: The items of the array property
+        :param str title: The title of the property
+        """
+        if boolean_items is not None:
+            pulumi.set(__self__, "boolean_items", boolean_items)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if max_items is not None:
+            pulumi.set(__self__, "max_items", max_items)
+        if min_items is not None:
+            pulumi.set(__self__, "min_items", min_items)
+        if number_items is not None:
+            pulumi.set(__self__, "number_items", number_items)
+        if object_items is not None:
+            pulumi.set(__self__, "object_items", object_items)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if string_items is not None:
+            pulumi.set(__self__, "string_items", string_items)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="booleanItems")
+    def boolean_items(self) -> Optional['outputs.SystemBlueprintPropertiesArrayPropsBooleanItems']:
+        """
+        The items of the array property
+        """
+        return pulumi.get(self, "boolean_items")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the property
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[str]:
+        """
+        The icon of the property
+        """
+        return pulumi.get(self, "icon")
+
+    @property
+    @pulumi.getter(name="maxItems")
+    def max_items(self) -> Optional[int]:
+        """
+        The max items of the array property
+        """
+        return pulumi.get(self, "max_items")
+
+    @property
+    @pulumi.getter(name="minItems")
+    def min_items(self) -> Optional[int]:
+        """
+        The min items of the array property
+        """
+        return pulumi.get(self, "min_items")
+
+    @property
+    @pulumi.getter(name="numberItems")
+    def number_items(self) -> Optional['outputs.SystemBlueprintPropertiesArrayPropsNumberItems']:
+        """
+        The items of the array property
+        """
+        return pulumi.get(self, "number_items")
+
+    @property
+    @pulumi.getter(name="objectItems")
+    def object_items(self) -> Optional['outputs.SystemBlueprintPropertiesArrayPropsObjectItems']:
+        """
+        The items of the array property
+        """
+        return pulumi.get(self, "object_items")
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[bool]:
+        """
+        Whether the property is required
+        """
+        return pulumi.get(self, "required")
+
+    @property
+    @pulumi.getter(name="stringItems")
+    def string_items(self) -> Optional['outputs.SystemBlueprintPropertiesArrayPropsStringItems']:
+        """
+        The items of the array property
+        """
+        return pulumi.get(self, "string_items")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        The title of the property
+        """
+        return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class SystemBlueprintPropertiesArrayPropsBooleanItems(dict):
+    def __init__(__self__, *,
+                 defaults: Optional[Sequence[bool]] = None):
+        """
+        :param Sequence[bool] defaults: The default of the items
+        """
+        if defaults is not None:
+            pulumi.set(__self__, "defaults", defaults)
+
+    @property
+    @pulumi.getter
+    def defaults(self) -> Optional[Sequence[bool]]:
+        """
+        The default of the items
+        """
+        return pulumi.get(self, "defaults")
+
+
+@pulumi.output_type
+class SystemBlueprintPropertiesArrayPropsNumberItems(dict):
+    def __init__(__self__, *,
+                 defaults: Optional[Sequence[float]] = None):
+        """
+        :param Sequence[float] defaults: The default of the items
+        """
+        if defaults is not None:
+            pulumi.set(__self__, "defaults", defaults)
+
+    @property
+    @pulumi.getter
+    def defaults(self) -> Optional[Sequence[float]]:
+        """
+        The default of the items
+        """
+        return pulumi.get(self, "defaults")
+
+
+@pulumi.output_type
+class SystemBlueprintPropertiesArrayPropsObjectItems(dict):
+    def __init__(__self__, *,
+                 defaults: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] defaults: The default of the items
+        """
+        if defaults is not None:
+            pulumi.set(__self__, "defaults", defaults)
+
+    @property
+    @pulumi.getter
+    def defaults(self) -> Optional[Sequence[str]]:
+        """
+        The default of the items
+        """
+        return pulumi.get(self, "defaults")
+
+
+@pulumi.output_type
+class SystemBlueprintPropertiesArrayPropsStringItems(dict):
+    def __init__(__self__, *,
+                 defaults: Optional[Sequence[str]] = None,
+                 format: Optional[str] = None,
+                 pattern: Optional[str] = None):
+        """
+        :param Sequence[str] defaults: The default of the items
+        :param str format: The format of the items
+        :param str pattern: The pattern of the string array items
+        """
+        if defaults is not None:
+            pulumi.set(__self__, "defaults", defaults)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+        if pattern is not None:
+            pulumi.set(__self__, "pattern", pattern)
+
+    @property
+    @pulumi.getter
+    def defaults(self) -> Optional[Sequence[str]]:
+        """
+        The default of the items
+        """
+        return pulumi.get(self, "defaults")
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[str]:
+        """
+        The format of the items
+        """
+        return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter
+    def pattern(self) -> Optional[str]:
+        """
+        The pattern of the string array items
+        """
+        return pulumi.get(self, "pattern")
+
+
+@pulumi.output_type
+class SystemBlueprintPropertiesBooleanProps(dict):
+    def __init__(__self__, *,
+                 default: Optional[bool] = None,
+                 description: Optional[str] = None,
+                 icon: Optional[str] = None,
+                 required: Optional[bool] = None,
+                 title: Optional[str] = None):
+        """
+        :param bool default: The default of the boolean property
+        :param str description: The description of the property
+        :param str icon: The icon of the property
+        :param bool required: Whether the property is required
+        :param str title: The title of the property
+        """
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[bool]:
+        """
+        The default of the boolean property
+        """
+        return pulumi.get(self, "default")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the property
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[str]:
+        """
+        The icon of the property
+        """
+        return pulumi.get(self, "icon")
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[bool]:
+        """
+        Whether the property is required
+        """
+        return pulumi.get(self, "required")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        The title of the property
+        """
+        return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class SystemBlueprintPropertiesNumberProps(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enumColors":
+            suggest = "enum_colors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SystemBlueprintPropertiesNumberProps. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SystemBlueprintPropertiesNumberProps.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SystemBlueprintPropertiesNumberProps.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default: Optional[float] = None,
+                 description: Optional[str] = None,
+                 enum_colors: Optional[Mapping[str, str]] = None,
+                 enums: Optional[Sequence[float]] = None,
+                 icon: Optional[str] = None,
+                 maximum: Optional[float] = None,
+                 minimum: Optional[float] = None,
+                 required: Optional[bool] = None,
+                 title: Optional[str] = None):
+        """
+        :param float default: The default of the number property
+        :param str description: The description of the property
+        :param Mapping[str, str] enum_colors: The enum colors of the number property
+        :param Sequence[float] enums: The enum of the number property
+        :param str icon: The icon of the property
+        :param float maximum: The min of the number property
+        :param float minimum: The max of the number property
+        :param bool required: Whether the property is required
+        :param str title: The title of the property
+        """
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enum_colors is not None:
+            pulumi.set(__self__, "enum_colors", enum_colors)
+        if enums is not None:
+            pulumi.set(__self__, "enums", enums)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if maximum is not None:
+            pulumi.set(__self__, "maximum", maximum)
+        if minimum is not None:
+            pulumi.set(__self__, "minimum", minimum)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[float]:
+        """
+        The default of the number property
+        """
+        return pulumi.get(self, "default")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the property
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enumColors")
+    def enum_colors(self) -> Optional[Mapping[str, str]]:
+        """
+        The enum colors of the number property
+        """
+        return pulumi.get(self, "enum_colors")
+
+    @property
+    @pulumi.getter
+    def enums(self) -> Optional[Sequence[float]]:
+        """
+        The enum of the number property
+        """
+        return pulumi.get(self, "enums")
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[str]:
+        """
+        The icon of the property
+        """
+        return pulumi.get(self, "icon")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> Optional[float]:
+        """
+        The min of the number property
+        """
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> Optional[float]:
+        """
+        The max of the number property
+        """
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[bool]:
+        """
+        Whether the property is required
+        """
+        return pulumi.get(self, "required")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        The title of the property
+        """
+        return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class SystemBlueprintPropertiesObjectProps(dict):
+    def __init__(__self__, *,
+                 default: Optional[str] = None,
+                 description: Optional[str] = None,
+                 icon: Optional[str] = None,
+                 required: Optional[bool] = None,
+                 spec: Optional[str] = None,
+                 title: Optional[str] = None):
+        """
+        :param str default: The default of the object property
+        :param str description: The description of the property
+        :param str icon: The icon of the property
+        :param bool required: Whether the property is required
+        :param str spec: The spec of the object property
+        :param str title: The title of the property
+        """
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[str]:
+        """
+        The default of the object property
+        """
+        return pulumi.get(self, "default")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the property
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[str]:
+        """
+        The icon of the property
+        """
+        return pulumi.get(self, "icon")
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[bool]:
+        """
+        Whether the property is required
+        """
+        return pulumi.get(self, "required")
+
+    @property
+    @pulumi.getter
+    def spec(self) -> Optional[str]:
+        """
+        The spec of the object property
+        """
+        return pulumi.get(self, "spec")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        The title of the property
+        """
+        return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class SystemBlueprintPropertiesStringProps(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enumColors":
+            suggest = "enum_colors"
+        elif key == "maxLength":
+            suggest = "max_length"
+        elif key == "minLength":
+            suggest = "min_length"
+        elif key == "specAuthentication":
+            suggest = "spec_authentication"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SystemBlueprintPropertiesStringProps. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SystemBlueprintPropertiesStringProps.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SystemBlueprintPropertiesStringProps.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default: Optional[str] = None,
+                 description: Optional[str] = None,
+                 enum_colors: Optional[Mapping[str, str]] = None,
+                 enums: Optional[Sequence[str]] = None,
+                 format: Optional[str] = None,
+                 icon: Optional[str] = None,
+                 max_length: Optional[int] = None,
+                 min_length: Optional[int] = None,
+                 pattern: Optional[str] = None,
+                 required: Optional[bool] = None,
+                 spec: Optional[str] = None,
+                 spec_authentication: Optional['outputs.SystemBlueprintPropertiesStringPropsSpecAuthentication'] = None,
+                 title: Optional[str] = None):
+        """
+        :param str default: The default of the string property
+        :param str description: The description of the property
+        :param Mapping[str, str] enum_colors: The enum colors of the string property
+        :param Sequence[str] enums: The enum of the string property
+        :param str format: The format of the string property
+        :param str icon: The icon of the property
+        :param int max_length: The max length of the string property
+        :param int min_length: The min length of the string property
+        :param str pattern: The pattern of the string property
+        :param bool required: Whether the property is required
+        :param str spec: The spec of the string property
+        :param 'SystemBlueprintPropertiesStringPropsSpecAuthenticationArgs' spec_authentication: The spec authentication of the string property
+        :param str title: The title of the property
+        """
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enum_colors is not None:
+            pulumi.set(__self__, "enum_colors", enum_colors)
+        if enums is not None:
+            pulumi.set(__self__, "enums", enums)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if max_length is not None:
+            pulumi.set(__self__, "max_length", max_length)
+        if min_length is not None:
+            pulumi.set(__self__, "min_length", min_length)
+        if pattern is not None:
+            pulumi.set(__self__, "pattern", pattern)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+        if spec_authentication is not None:
+            pulumi.set(__self__, "spec_authentication", spec_authentication)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[str]:
+        """
+        The default of the string property
+        """
+        return pulumi.get(self, "default")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the property
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enumColors")
+    def enum_colors(self) -> Optional[Mapping[str, str]]:
+        """
+        The enum colors of the string property
+        """
+        return pulumi.get(self, "enum_colors")
+
+    @property
+    @pulumi.getter
+    def enums(self) -> Optional[Sequence[str]]:
+        """
+        The enum of the string property
+        """
+        return pulumi.get(self, "enums")
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[str]:
+        """
+        The format of the string property
+        """
+        return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[str]:
+        """
+        The icon of the property
+        """
+        return pulumi.get(self, "icon")
+
+    @property
+    @pulumi.getter(name="maxLength")
+    def max_length(self) -> Optional[int]:
+        """
+        The max length of the string property
+        """
+        return pulumi.get(self, "max_length")
+
+    @property
+    @pulumi.getter(name="minLength")
+    def min_length(self) -> Optional[int]:
+        """
+        The min length of the string property
+        """
+        return pulumi.get(self, "min_length")
+
+    @property
+    @pulumi.getter
+    def pattern(self) -> Optional[str]:
+        """
+        The pattern of the string property
+        """
+        return pulumi.get(self, "pattern")
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[bool]:
+        """
+        Whether the property is required
+        """
+        return pulumi.get(self, "required")
+
+    @property
+    @pulumi.getter
+    def spec(self) -> Optional[str]:
+        """
+        The spec of the string property
+        """
+        return pulumi.get(self, "spec")
+
+    @property
+    @pulumi.getter(name="specAuthentication")
+    def spec_authentication(self) -> Optional['outputs.SystemBlueprintPropertiesStringPropsSpecAuthentication']:
+        """
+        The spec authentication of the string property
+        """
+        return pulumi.get(self, "spec_authentication")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        The title of the property
+        """
+        return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class SystemBlueprintPropertiesStringPropsSpecAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizationUrl":
+            suggest = "authorization_url"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "tokenUrl":
+            suggest = "token_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SystemBlueprintPropertiesStringPropsSpecAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SystemBlueprintPropertiesStringPropsSpecAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SystemBlueprintPropertiesStringPropsSpecAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authorization_url: str,
+                 client_id: str,
+                 token_url: str):
+        """
+        :param str authorization_url: The authorizationUrl of the spec authentication
+        :param str client_id: The clientId of the spec authentication
+        :param str token_url: The tokenUrl of the spec authentication
+        """
+        pulumi.set(__self__, "authorization_url", authorization_url)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "token_url", token_url)
+
+    @property
+    @pulumi.getter(name="authorizationUrl")
+    def authorization_url(self) -> str:
+        """
+        The authorizationUrl of the spec authentication
+        """
+        return pulumi.get(self, "authorization_url")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        """
+        The clientId of the spec authentication
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="tokenUrl")
+    def token_url(self) -> str:
+        """
+        The tokenUrl of the spec authentication
+        """
+        return pulumi.get(self, "token_url")
+
+
+@pulumi.output_type
+class SystemBlueprintRelations(dict):
+    def __init__(__self__, *,
+                 target: str,
+                 description: Optional[str] = None,
+                 many: Optional[bool] = None,
+                 required: Optional[bool] = None,
+                 title: Optional[str] = None):
+        """
+        :param str target: The target of the relation
+        :param str description: The description of the relation
+        :param bool many: The many of the relation
+        :param bool required: The required of the relation
+        :param str title: The title of the relation
+        """
+        pulumi.set(__self__, "target", target)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if many is not None:
+            pulumi.set(__self__, "many", many)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def target(self) -> str:
+        """
+        The target of the relation
+        """
+        return pulumi.get(self, "target")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the relation
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def many(self) -> Optional[bool]:
+        """
+        The many of the relation
+        """
+        return pulumi.get(self, "many")
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[bool]:
+        """
+        The required of the relation
+        """
+        return pulumi.get(self, "required")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        The title of the relation
+        """
+        return pulumi.get(self, "title")
 
 
 @pulumi.output_type

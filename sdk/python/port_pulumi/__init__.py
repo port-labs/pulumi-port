@@ -17,6 +17,7 @@ from .page import *
 from .page_permissions import *
 from .provider import *
 from .scorecard import *
+from .system_blueprint import *
 from .team import *
 from .webhook import *
 from ._inputs import *
@@ -110,6 +111,14 @@ _utilities.register(
   "fqn": "port_pulumi",
   "classes": {
    "port:index/scorecard:Scorecard": "Scorecard"
+  }
+ },
+ {
+  "pkg": "port",
+  "mod": "index/systemBlueprint",
+  "fqn": "port_pulumi",
+  "classes": {
+   "port:index/systemBlueprint:SystemBlueprint": "SystemBlueprint"
   }
  },
  {
