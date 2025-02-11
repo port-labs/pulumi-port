@@ -94,7 +94,7 @@ export interface GetSearchResult {
  *
  * ## Example Usage
  */
-export function getSearchOutput(args: GetSearchOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSearchResult> {
+export function getSearchOutput(args: GetSearchOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSearchResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("port:index/getSearch:getSearch", {
         "attachTitleToRelation": args.attachTitleToRelation,
