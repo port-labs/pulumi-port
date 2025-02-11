@@ -177,7 +177,7 @@ def get_search_output(attach_title_to_relation: Optional[pulumi.Input[Optional[b
                       excludes: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       includes: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       query: Optional[pulumi.Input[str]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSearchResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSearchResult]:
     """
     The search data source allows you to search for entities in Port.
 
@@ -198,7 +198,7 @@ def get_search_output(attach_title_to_relation: Optional[pulumi.Input[Optional[b
     __args__['excludes'] = excludes
     __args__['includes'] = includes
     __args__['query'] = query
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('port:index/getSearch:getSearch', __args__, opts=opts, typ=GetSearchResult)
     return __ret__.apply(lambda __response__: GetSearchResult(
         attach_title_to_relation=pulumi.get(__response__, 'attach_title_to_relation'),
