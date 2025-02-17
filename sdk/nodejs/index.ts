@@ -35,6 +35,11 @@ export type Entity = import("./entity").Entity;
 export const Entity: typeof import("./entity").Entity = null as any;
 utilities.lazyLoad(exports, ["Entity"], () => require("./entity"));
 
+export { FolderArgs, FolderState } from "./folder";
+export type Folder = import("./folder").Folder;
+export const Folder: typeof import("./folder").Folder = null as any;
+utilities.lazyLoad(exports, ["Folder"], () => require("./folder"));
+
 export { GetSearchArgs, GetSearchResult, GetSearchOutputArgs } from "./getSearch";
 export const getSearch: typeof import("./getSearch").getSearch = null as any;
 export const getSearchOutput: typeof import("./getSearch").getSearchOutput = null as any;
@@ -106,6 +111,8 @@ const _module = {
                 return new BlueprintPermissions(name, <any>undefined, { urn })
             case "port:index/entity:Entity":
                 return new Entity(name, <any>undefined, { urn })
+            case "port:index/folder:Folder":
+                return new Folder(name, <any>undefined, { urn })
             case "port:index/integration:Integration":
                 return new Integration(name, <any>undefined, { urn })
             case "port:index/page:Page":
@@ -131,6 +138,7 @@ pulumi.runtime.registerResourceModule("port", "index/aggregationProperties", _mo
 pulumi.runtime.registerResourceModule("port", "index/blueprint", _module)
 pulumi.runtime.registerResourceModule("port", "index/blueprintPermissions", _module)
 pulumi.runtime.registerResourceModule("port", "index/entity", _module)
+pulumi.runtime.registerResourceModule("port", "index/folder", _module)
 pulumi.runtime.registerResourceModule("port", "index/integration", _module)
 pulumi.runtime.registerResourceModule("port", "index/page", _module)
 pulumi.runtime.registerResourceModule("port", "index/pagePermissions", _module)

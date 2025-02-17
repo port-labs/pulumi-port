@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BlueprintPermissions{}
 	case "port:index/entity:Entity":
 		r = &Entity{}
+	case "port:index/folder:Folder":
+		r = &Folder{}
 	case "port:index/integration:Integration":
 		r = &Integration{}
 	case "port:index/page:Page":
@@ -106,6 +108,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"port",
 		"index/entity",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"port",
+		"index/folder",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

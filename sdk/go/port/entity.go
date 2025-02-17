@@ -18,6 +18,8 @@ type Entity struct {
 
 	// The blueprint identifier the entity relates to
 	Blueprint pulumi.StringOutput `pulumi:"blueprint"`
+	// Whether to create missing related entities
+	CreateMissingRelatedEntities pulumi.BoolOutput `pulumi:"createMissingRelatedEntities"`
 	// The creation date of the entity
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The creator of the entity
@@ -77,6 +79,8 @@ func GetEntity(ctx *pulumi.Context,
 type entityState struct {
 	// The blueprint identifier the entity relates to
 	Blueprint *string `pulumi:"blueprint"`
+	// Whether to create missing related entities
+	CreateMissingRelatedEntities *bool `pulumi:"createMissingRelatedEntities"`
 	// The creation date of the entity
 	CreatedAt *string `pulumi:"createdAt"`
 	// The creator of the entity
@@ -104,6 +108,8 @@ type entityState struct {
 type EntityState struct {
 	// The blueprint identifier the entity relates to
 	Blueprint pulumi.StringPtrInput
+	// Whether to create missing related entities
+	CreateMissingRelatedEntities pulumi.BoolPtrInput
 	// The creation date of the entity
 	CreatedAt pulumi.StringPtrInput
 	// The creator of the entity
@@ -135,6 +141,8 @@ func (EntityState) ElementType() reflect.Type {
 type entityArgs struct {
 	// The blueprint identifier the entity relates to
 	Blueprint string `pulumi:"blueprint"`
+	// Whether to create missing related entities
+	CreateMissingRelatedEntities *bool `pulumi:"createMissingRelatedEntities"`
 	// The icon of the entity
 	Icon *string `pulumi:"icon"`
 	// The identifier of the entity
@@ -155,6 +163,8 @@ type entityArgs struct {
 type EntityArgs struct {
 	// The blueprint identifier the entity relates to
 	Blueprint pulumi.StringInput
+	// Whether to create missing related entities
+	CreateMissingRelatedEntities pulumi.BoolPtrInput
 	// The icon of the entity
 	Icon pulumi.StringPtrInput
 	// The identifier of the entity
@@ -261,6 +271,11 @@ func (o EntityOutput) ToEntityOutputWithContext(ctx context.Context) EntityOutpu
 // The blueprint identifier the entity relates to
 func (o EntityOutput) Blueprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.Blueprint }).(pulumi.StringOutput)
+}
+
+// Whether to create missing related entities
+func (o EntityOutput) CreateMissingRelatedEntities() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Entity) pulumi.BoolOutput { return v.CreateMissingRelatedEntities }).(pulumi.BoolOutput)
 }
 
 // The creation date of the entity

@@ -22,6 +22,7 @@ __all__ = ['EntityArgs', 'Entity']
 class EntityArgs:
     def __init__(__self__, *,
                  blueprint: pulumi.Input[str],
+                 create_missing_related_entities: Optional[pulumi.Input[bool]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input['EntityPropertiesArgs']] = None,
@@ -32,6 +33,7 @@ class EntityArgs:
         """
         The set of arguments for constructing a Entity resource.
         :param pulumi.Input[str] blueprint: The blueprint identifier the entity relates to
+        :param pulumi.Input[bool] create_missing_related_entities: Whether to create missing related entities
         :param pulumi.Input[str] icon: The icon of the entity
         :param pulumi.Input[str] identifier: The identifier of the entity
         :param pulumi.Input['EntityPropertiesArgs'] properties: The properties of the entity
@@ -41,6 +43,8 @@ class EntityArgs:
         :param pulumi.Input[str] title: The title of the entity
         """
         pulumi.set(__self__, "blueprint", blueprint)
+        if create_missing_related_entities is not None:
+            pulumi.set(__self__, "create_missing_related_entities", create_missing_related_entities)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
         if identifier is not None:
@@ -67,6 +71,18 @@ class EntityArgs:
     @blueprint.setter
     def blueprint(self, value: pulumi.Input[str]):
         pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter(name="createMissingRelatedEntities")
+    def create_missing_related_entities(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to create missing related entities
+        """
+        return pulumi.get(self, "create_missing_related_entities")
+
+    @create_missing_related_entities.setter
+    def create_missing_related_entities(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_missing_related_entities", value)
 
     @property
     @pulumi.getter
@@ -157,6 +173,7 @@ class EntityArgs:
 class _EntityState:
     def __init__(__self__, *,
                  blueprint: Optional[pulumi.Input[str]] = None,
+                 create_missing_related_entities: Optional[pulumi.Input[bool]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
@@ -171,6 +188,7 @@ class _EntityState:
         """
         Input properties used for looking up and filtering Entity resources.
         :param pulumi.Input[str] blueprint: The blueprint identifier the entity relates to
+        :param pulumi.Input[bool] create_missing_related_entities: Whether to create missing related entities
         :param pulumi.Input[str] created_at: The creation date of the entity
         :param pulumi.Input[str] created_by: The creator of the entity
         :param pulumi.Input[str] icon: The icon of the entity
@@ -185,6 +203,8 @@ class _EntityState:
         """
         if blueprint is not None:
             pulumi.set(__self__, "blueprint", blueprint)
+        if create_missing_related_entities is not None:
+            pulumi.set(__self__, "create_missing_related_entities", create_missing_related_entities)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if created_by is not None:
@@ -219,6 +239,18 @@ class _EntityState:
     @blueprint.setter
     def blueprint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter(name="createMissingRelatedEntities")
+    def create_missing_related_entities(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to create missing related entities
+        """
+        return pulumi.get(self, "create_missing_related_entities")
+
+    @create_missing_related_entities.setter
+    def create_missing_related_entities(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_missing_related_entities", value)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -359,6 +391,7 @@ class Entity(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blueprint: Optional[pulumi.Input[str]] = None,
+                 create_missing_related_entities: Optional[pulumi.Input[bool]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Union['EntityPropertiesArgs', 'EntityPropertiesArgsDict']]] = None,
@@ -373,6 +406,7 @@ class Entity(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] blueprint: The blueprint identifier the entity relates to
+        :param pulumi.Input[bool] create_missing_related_entities: Whether to create missing related entities
         :param pulumi.Input[str] icon: The icon of the entity
         :param pulumi.Input[str] identifier: The identifier of the entity
         :param pulumi.Input[Union['EntityPropertiesArgs', 'EntityPropertiesArgsDict']] properties: The properties of the entity
@@ -406,6 +440,7 @@ class Entity(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blueprint: Optional[pulumi.Input[str]] = None,
+                 create_missing_related_entities: Optional[pulumi.Input[bool]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Union['EntityPropertiesArgs', 'EntityPropertiesArgsDict']]] = None,
@@ -425,6 +460,7 @@ class Entity(pulumi.CustomResource):
             if blueprint is None and not opts.urn:
                 raise TypeError("Missing required property 'blueprint'")
             __props__.__dict__["blueprint"] = blueprint
+            __props__.__dict__["create_missing_related_entities"] = create_missing_related_entities
             __props__.__dict__["icon"] = icon
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["properties"] = properties
@@ -447,6 +483,7 @@ class Entity(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             blueprint: Optional[pulumi.Input[str]] = None,
+            create_missing_related_entities: Optional[pulumi.Input[bool]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             created_by: Optional[pulumi.Input[str]] = None,
             icon: Optional[pulumi.Input[str]] = None,
@@ -466,6 +503,7 @@ class Entity(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] blueprint: The blueprint identifier the entity relates to
+        :param pulumi.Input[bool] create_missing_related_entities: Whether to create missing related entities
         :param pulumi.Input[str] created_at: The creation date of the entity
         :param pulumi.Input[str] created_by: The creator of the entity
         :param pulumi.Input[str] icon: The icon of the entity
@@ -483,6 +521,7 @@ class Entity(pulumi.CustomResource):
         __props__ = _EntityState.__new__(_EntityState)
 
         __props__.__dict__["blueprint"] = blueprint
+        __props__.__dict__["create_missing_related_entities"] = create_missing_related_entities
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
         __props__.__dict__["icon"] = icon
@@ -503,6 +542,14 @@ class Entity(pulumi.CustomResource):
         The blueprint identifier the entity relates to
         """
         return pulumi.get(self, "blueprint")
+
+    @property
+    @pulumi.getter(name="createMissingRelatedEntities")
+    def create_missing_related_entities(self) -> pulumi.Output[bool]:
+        """
+        Whether to create missing related entities
+        """
+        return pulumi.get(self, "create_missing_related_entities")
 
     @property
     @pulumi.getter(name="createdAt")

@@ -3883,6 +3883,10 @@
                     "type": "string",
                     "description": "The blueprint identifier the entity relates to\n"
                 },
+                "createMissingRelatedEntities": {
+                    "type": "boolean",
+                    "description": "Whether to create missing related entities\n"
+                },
                 "createdAt": {
                     "type": "string",
                     "description": "The creation date of the entity\n"
@@ -3933,6 +3937,7 @@
             },
             "required": [
                 "blueprint",
+                "createMissingRelatedEntities",
                 "createdAt",
                 "createdBy",
                 "identifier",
@@ -3943,6 +3948,10 @@
                 "blueprint": {
                     "type": "string",
                     "description": "The blueprint identifier the entity relates to\n"
+                },
+                "createMissingRelatedEntities": {
+                    "type": "boolean",
+                    "description": "Whether to create missing related entities\n"
                 },
                 "icon": {
                     "type": "string",
@@ -3985,6 +3994,10 @@
                     "blueprint": {
                         "type": "string",
                         "description": "The blueprint identifier the entity relates to\n"
+                    },
+                    "createMissingRelatedEntities": {
+                        "type": "boolean",
+                        "description": "Whether to create missing related entities\n"
                     },
                     "createdAt": {
                         "type": "string",
@@ -4032,6 +4045,73 @@
                     "updatedBy": {
                         "type": "string",
                         "description": "The last updater of the entity\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "port:index/folder:Folder": {
+            "description": "A full list of the available folder types and their identifiers can be found [here](https://docs.getport.io/customize-pages-dashboards-and-plugins/folder/catalog-folder).\n\n\u003e **WARNING**\nThe folder resource is currently in beta and is subject to change in future versions.\nUse it by setting the Environment Variable `PORT_BETA_FEATURES_ENABLED=true`.\nIf this Environment Variable isn't specified, you won't be able to use the resource.\n\n## Example Usage\n\n### Basic Folder\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as port from \"@pulumi/port\";\n\nconst exampleFolder = new port.index.Port_folder(\"exampleFolder\", {\n    identifier: \"example_folder\",\n    title: \"Example Folder\",\n});\n```\n```python\nimport pulumi\nimport pulumi_port as port\n\nexample_folder = port.index.Port_folder(\"exampleFolder\",\n    identifier=example_folder,\n    title=Example Folder)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Port = Pulumi.Port;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleFolder = new Port.Index.Port_folder(\"exampleFolder\", new()\n    {\n        Identifier = \"example_folder\",\n        Title = \"Example Folder\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/port-labs/pulumi-port/sdk/v2/go/port\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := port.NewPort_folder(ctx, \"exampleFolder\", \u0026port.Port_folderArgs{\n\t\t\tIdentifier: \"example_folder\",\n\t\t\tTitle:      \"Example Folder\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.port.port_folder;\nimport com.pulumi.port.Port_folderArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleFolder = new Port_folder(\"exampleFolder\", Port_folderArgs.builder()\n            .identifier(\"example_folder\")\n            .title(\"Example Folder\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleFolder:\n    type: port:port_folder\n    properties:\n      identifier: example_folder\n      title: Example Folder\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Folder with Parent\n\nCreate a folder inside another folder.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as port from \"@pulumi/port\";\n\nconst childFolder = new port.index.Port_folder(\"childFolder\", {\n    identifier: \"child_folder\",\n    parent: port_folder.example_folder.identifier,\n    title: \"Child Folder\",\n});\n```\n```python\nimport pulumi\nimport pulumi_port as port\n\nchild_folder = port.index.Port_folder(\"childFolder\",\n    identifier=child_folder,\n    parent=port_folder.example_folder.identifier,\n    title=Child Folder)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Port = Pulumi.Port;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var childFolder = new Port.Index.Port_folder(\"childFolder\", new()\n    {\n        Identifier = \"child_folder\",\n        Parent = port_folder.Example_folder.Identifier,\n        Title = \"Child Folder\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/port-labs/pulumi-port/sdk/v2/go/port\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := port.NewPort_folder(ctx, \"childFolder\", \u0026port.Port_folderArgs{\n\t\t\tIdentifier: \"child_folder\",\n\t\t\tParent:     port_folder.Example_folder.Identifier,\n\t\t\tTitle:      \"Child Folder\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.port.port_folder;\nimport com.pulumi.port.Port_folderArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var childFolder = new Port_folder(\"childFolder\", Port_folderArgs.builder()\n            .identifier(\"child_folder\")\n            .parent(port_folder.example_folder().identifier())\n            .title(\"Child Folder\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  childFolder:\n    type: port:port_folder\n    properties:\n      identifier: child_folder\n      parent: ${port_folder.example_folder.identifier}\n      title: Child Folder\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Folder with After\n\nCreate a folder after another folder.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as port from \"@pulumi/port\";\n\nconst anotherFolder = new port.index.Port_folder(\"anotherFolder\", {\n    identifier: \"another_folder\",\n    after: port_folder.example_folder.identifier,\n    title: \"Another Folder\",\n});\n```\n```python\nimport pulumi\nimport pulumi_port as port\n\nanother_folder = port.index.Port_folder(\"anotherFolder\",\n    identifier=another_folder,\n    after=port_folder.example_folder.identifier,\n    title=Another Folder)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Port = Pulumi.Port;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var anotherFolder = new Port.Index.Port_folder(\"anotherFolder\", new()\n    {\n        Identifier = \"another_folder\",\n        After = port_folder.Example_folder.Identifier,\n        Title = \"Another Folder\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/port-labs/pulumi-port/sdk/v2/go/port\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := port.NewPort_folder(ctx, \"anotherFolder\", \u0026port.Port_folderArgs{\n\t\t\tIdentifier: \"another_folder\",\n\t\t\tAfter:      port_folder.Example_folder.Identifier,\n\t\t\tTitle:      \"Another Folder\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.port.port_folder;\nimport com.pulumi.port.Port_folderArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var anotherFolder = new Port_folder(\"anotherFolder\", Port_folderArgs.builder()\n            .identifier(\"another_folder\")\n            .after(port_folder.example_folder().identifier())\n            .title(\"Another Folder\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  anotherFolder:\n    type: port:port_folder\n    properties:\n      identifier: another_folder\n      after: ${port_folder.example_folder.identifier}\n      title: Another Folder\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "after": {
+                    "type": "string",
+                    "description": "The identifier of the folder after which the folder should be placed\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the folder\n"
+                },
+                "parent": {
+                    "type": "string",
+                    "description": "The identifier of the parent folder\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the folder\n"
+                }
+            },
+            "required": [
+                "identifier"
+            ],
+            "inputProperties": {
+                "after": {
+                    "type": "string",
+                    "description": "The identifier of the folder after which the folder should be placed\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the folder\n"
+                },
+                "parent": {
+                    "type": "string",
+                    "description": "The identifier of the parent folder\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the folder\n"
+                }
+            },
+            "requiredInputs": [
+                "identifier"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Folder resources.\n",
+                "properties": {
+                    "after": {
+                        "type": "string",
+                        "description": "The identifier of the folder after which the folder should be placed\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "The identifier of the folder\n"
+                    },
+                    "parent": {
+                        "type": "string",
+                        "description": "The identifier of the parent folder\n"
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "The title of the folder\n"
                     }
                 },
                 "type": "object"
