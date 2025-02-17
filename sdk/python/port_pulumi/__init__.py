@@ -11,6 +11,7 @@ from .aggregation_properties import *
 from .blueprint import *
 from .blueprint_permissions import *
 from .entity import *
+from .folder import *
 from .get_search import *
 from .integration import *
 from .page import *
@@ -79,6 +80,14 @@ _utilities.register(
   "fqn": "port_pulumi",
   "classes": {
    "port:index/entity:Entity": "Entity"
+  }
+ },
+ {
+  "pkg": "port",
+  "mod": "index/folder",
+  "fqn": "port_pulumi",
+  "classes": {
+   "port:index/folder:Folder": "Folder"
   }
  },
  {

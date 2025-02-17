@@ -42,6 +42,10 @@ export class Entity extends pulumi.CustomResource {
      */
     public readonly blueprint!: pulumi.Output<string>;
     /**
+     * Whether to create missing related entities
+     */
+    public readonly createMissingRelatedEntities!: pulumi.Output<boolean>;
+    /**
      * The creation date of the entity
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
@@ -100,6 +104,7 @@ export class Entity extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EntityState | undefined;
             resourceInputs["blueprint"] = state ? state.blueprint : undefined;
+            resourceInputs["createMissingRelatedEntities"] = state ? state.createMissingRelatedEntities : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["createdBy"] = state ? state.createdBy : undefined;
             resourceInputs["icon"] = state ? state.icon : undefined;
@@ -117,6 +122,7 @@ export class Entity extends pulumi.CustomResource {
                 throw new Error("Missing required property 'blueprint'");
             }
             resourceInputs["blueprint"] = args ? args.blueprint : undefined;
+            resourceInputs["createMissingRelatedEntities"] = args ? args.createMissingRelatedEntities : undefined;
             resourceInputs["icon"] = args ? args.icon : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
@@ -142,6 +148,10 @@ export interface EntityState {
      * The blueprint identifier the entity relates to
      */
     blueprint?: pulumi.Input<string>;
+    /**
+     * Whether to create missing related entities
+     */
+    createMissingRelatedEntities?: pulumi.Input<boolean>;
     /**
      * The creation date of the entity
      */
@@ -196,6 +206,10 @@ export interface EntityArgs {
      * The blueprint identifier the entity relates to
      */
     blueprint: pulumi.Input<string>;
+    /**
+     * Whether to create missing related entities
+     */
+    createMissingRelatedEntities?: pulumi.Input<boolean>;
     /**
      * The icon of the entity
      */
