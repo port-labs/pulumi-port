@@ -115,6 +115,7 @@ __all__ = [
     'SystemBlueprintRelations',
     'WebhookMapping',
     'WebhookMappingEntity',
+    'WebhookMappingOperation',
     'WebhookSecurity',
     'GetSearchEntityResult',
     'GetSearchEntityPropertiesResult',
@@ -6589,12 +6590,14 @@ class WebhookMapping(dict):
                  blueprint: str,
                  entity: 'outputs.WebhookMappingEntity',
                  filter: Optional[str] = None,
-                 items_to_parse: Optional[str] = None):
+                 items_to_parse: Optional[str] = None,
+                 operation: Optional['outputs.WebhookMappingOperation'] = None):
         """
         :param str blueprint: The blueprint of the mapping
         :param 'WebhookMappingEntityArgs' entity: The entity of the mapping
         :param str filter: The filter of the mapping
         :param str items_to_parse: The items to parser of the mapping
+        :param 'WebhookMappingOperationArgs' operation: The operation of the mapping
         """
         pulumi.set(__self__, "blueprint", blueprint)
         pulumi.set(__self__, "entity", entity)
@@ -6602,6 +6605,8 @@ class WebhookMapping(dict):
             pulumi.set(__self__, "filter", filter)
         if items_to_parse is not None:
             pulumi.set(__self__, "items_to_parse", items_to_parse)
+        if operation is not None:
+            pulumi.set(__self__, "operation", operation)
 
     @property
     @pulumi.getter
@@ -6634,6 +6639,14 @@ class WebhookMapping(dict):
         The items to parser of the mapping
         """
         return pulumi.get(self, "items_to_parse")
+
+    @property
+    @pulumi.getter
+    def operation(self) -> Optional['outputs.WebhookMappingOperation']:
+        """
+        The operation of the mapping
+        """
+        return pulumi.get(self, "operation")
 
 
 @pulumi.output_type
@@ -6712,6 +6725,53 @@ class WebhookMappingEntity(dict):
         The title of the entity
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class WebhookMappingOperation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deleteDependents":
+            suggest = "delete_dependents"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WebhookMappingOperation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WebhookMappingOperation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WebhookMappingOperation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: str,
+                 delete_dependents: Optional[bool] = None):
+        """
+        :param str type: The type of the operation
+        :param bool delete_dependents: Whether to delete dependents entities, only relevant for delete operations
+        """
+        pulumi.set(__self__, "type", type)
+        if delete_dependents is not None:
+            pulumi.set(__self__, "delete_dependents", delete_dependents)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the operation
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="deleteDependents")
+    def delete_dependents(self) -> Optional[bool]:
+        """
+        Whether to delete dependents entities, only relevant for delete operations
+        """
+        return pulumi.get(self, "delete_dependents")
 
 
 @pulumi.output_type

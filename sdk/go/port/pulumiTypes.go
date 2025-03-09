@@ -15959,6 +15959,8 @@ type WebhookMapping struct {
 	Filter *string `pulumi:"filter"`
 	// The items to parser of the mapping
 	ItemsToParse *string `pulumi:"itemsToParse"`
+	// The operation of the mapping
+	Operation *WebhookMappingOperation `pulumi:"operation"`
 }
 
 // WebhookMappingInput is an input type that accepts WebhookMappingArgs and WebhookMappingOutput values.
@@ -15981,6 +15983,8 @@ type WebhookMappingArgs struct {
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 	// The items to parser of the mapping
 	ItemsToParse pulumi.StringPtrInput `pulumi:"itemsToParse"`
+	// The operation of the mapping
+	Operation WebhookMappingOperationPtrInput `pulumi:"operation"`
 }
 
 func (WebhookMappingArgs) ElementType() reflect.Type {
@@ -16052,6 +16056,11 @@ func (o WebhookMappingOutput) Filter() pulumi.StringPtrOutput {
 // The items to parser of the mapping
 func (o WebhookMappingOutput) ItemsToParse() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebhookMapping) *string { return v.ItemsToParse }).(pulumi.StringPtrOutput)
+}
+
+// The operation of the mapping
+func (o WebhookMappingOutput) Operation() WebhookMappingOperationPtrOutput {
+	return o.ApplyT(func(v WebhookMapping) *WebhookMappingOperation { return v.Operation }).(WebhookMappingOperationPtrOutput)
 }
 
 type WebhookMappingArrayOutput struct{ *pulumi.OutputState }
@@ -16169,6 +16178,162 @@ func (o WebhookMappingEntityOutput) Team() pulumi.StringPtrOutput {
 // The title of the entity
 func (o WebhookMappingEntityOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebhookMappingEntity) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type WebhookMappingOperation struct {
+	// Whether to delete dependents entities, only relevant for delete operations
+	DeleteDependents *bool `pulumi:"deleteDependents"`
+	// The type of the operation
+	Type string `pulumi:"type"`
+}
+
+// WebhookMappingOperationInput is an input type that accepts WebhookMappingOperationArgs and WebhookMappingOperationOutput values.
+// You can construct a concrete instance of `WebhookMappingOperationInput` via:
+//
+//	WebhookMappingOperationArgs{...}
+type WebhookMappingOperationInput interface {
+	pulumi.Input
+
+	ToWebhookMappingOperationOutput() WebhookMappingOperationOutput
+	ToWebhookMappingOperationOutputWithContext(context.Context) WebhookMappingOperationOutput
+}
+
+type WebhookMappingOperationArgs struct {
+	// Whether to delete dependents entities, only relevant for delete operations
+	DeleteDependents pulumi.BoolPtrInput `pulumi:"deleteDependents"`
+	// The type of the operation
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (WebhookMappingOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookMappingOperation)(nil)).Elem()
+}
+
+func (i WebhookMappingOperationArgs) ToWebhookMappingOperationOutput() WebhookMappingOperationOutput {
+	return i.ToWebhookMappingOperationOutputWithContext(context.Background())
+}
+
+func (i WebhookMappingOperationArgs) ToWebhookMappingOperationOutputWithContext(ctx context.Context) WebhookMappingOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookMappingOperationOutput)
+}
+
+func (i WebhookMappingOperationArgs) ToWebhookMappingOperationPtrOutput() WebhookMappingOperationPtrOutput {
+	return i.ToWebhookMappingOperationPtrOutputWithContext(context.Background())
+}
+
+func (i WebhookMappingOperationArgs) ToWebhookMappingOperationPtrOutputWithContext(ctx context.Context) WebhookMappingOperationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookMappingOperationOutput).ToWebhookMappingOperationPtrOutputWithContext(ctx)
+}
+
+// WebhookMappingOperationPtrInput is an input type that accepts WebhookMappingOperationArgs, WebhookMappingOperationPtr and WebhookMappingOperationPtrOutput values.
+// You can construct a concrete instance of `WebhookMappingOperationPtrInput` via:
+//
+//	        WebhookMappingOperationArgs{...}
+//
+//	or:
+//
+//	        nil
+type WebhookMappingOperationPtrInput interface {
+	pulumi.Input
+
+	ToWebhookMappingOperationPtrOutput() WebhookMappingOperationPtrOutput
+	ToWebhookMappingOperationPtrOutputWithContext(context.Context) WebhookMappingOperationPtrOutput
+}
+
+type webhookMappingOperationPtrType WebhookMappingOperationArgs
+
+func WebhookMappingOperationPtr(v *WebhookMappingOperationArgs) WebhookMappingOperationPtrInput {
+	return (*webhookMappingOperationPtrType)(v)
+}
+
+func (*webhookMappingOperationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebhookMappingOperation)(nil)).Elem()
+}
+
+func (i *webhookMappingOperationPtrType) ToWebhookMappingOperationPtrOutput() WebhookMappingOperationPtrOutput {
+	return i.ToWebhookMappingOperationPtrOutputWithContext(context.Background())
+}
+
+func (i *webhookMappingOperationPtrType) ToWebhookMappingOperationPtrOutputWithContext(ctx context.Context) WebhookMappingOperationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookMappingOperationPtrOutput)
+}
+
+type WebhookMappingOperationOutput struct{ *pulumi.OutputState }
+
+func (WebhookMappingOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookMappingOperation)(nil)).Elem()
+}
+
+func (o WebhookMappingOperationOutput) ToWebhookMappingOperationOutput() WebhookMappingOperationOutput {
+	return o
+}
+
+func (o WebhookMappingOperationOutput) ToWebhookMappingOperationOutputWithContext(ctx context.Context) WebhookMappingOperationOutput {
+	return o
+}
+
+func (o WebhookMappingOperationOutput) ToWebhookMappingOperationPtrOutput() WebhookMappingOperationPtrOutput {
+	return o.ToWebhookMappingOperationPtrOutputWithContext(context.Background())
+}
+
+func (o WebhookMappingOperationOutput) ToWebhookMappingOperationPtrOutputWithContext(ctx context.Context) WebhookMappingOperationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebhookMappingOperation) *WebhookMappingOperation {
+		return &v
+	}).(WebhookMappingOperationPtrOutput)
+}
+
+// Whether to delete dependents entities, only relevant for delete operations
+func (o WebhookMappingOperationOutput) DeleteDependents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WebhookMappingOperation) *bool { return v.DeleteDependents }).(pulumi.BoolPtrOutput)
+}
+
+// The type of the operation
+func (o WebhookMappingOperationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WebhookMappingOperation) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type WebhookMappingOperationPtrOutput struct{ *pulumi.OutputState }
+
+func (WebhookMappingOperationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebhookMappingOperation)(nil)).Elem()
+}
+
+func (o WebhookMappingOperationPtrOutput) ToWebhookMappingOperationPtrOutput() WebhookMappingOperationPtrOutput {
+	return o
+}
+
+func (o WebhookMappingOperationPtrOutput) ToWebhookMappingOperationPtrOutputWithContext(ctx context.Context) WebhookMappingOperationPtrOutput {
+	return o
+}
+
+func (o WebhookMappingOperationPtrOutput) Elem() WebhookMappingOperationOutput {
+	return o.ApplyT(func(v *WebhookMappingOperation) WebhookMappingOperation {
+		if v != nil {
+			return *v
+		}
+		var ret WebhookMappingOperation
+		return ret
+	}).(WebhookMappingOperationOutput)
+}
+
+// Whether to delete dependents entities, only relevant for delete operations
+func (o WebhookMappingOperationPtrOutput) DeleteDependents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WebhookMappingOperation) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteDependents
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The type of the operation
+func (o WebhookMappingOperationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebhookMappingOperation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type WebhookSecurity struct {
@@ -17206,6 +17371,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookMappingInput)(nil)).Elem(), WebhookMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookMappingArrayInput)(nil)).Elem(), WebhookMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookMappingEntityInput)(nil)).Elem(), WebhookMappingEntityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebhookMappingOperationInput)(nil)).Elem(), WebhookMappingOperationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebhookMappingOperationPtrInput)(nil)).Elem(), WebhookMappingOperationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookSecurityInput)(nil)).Elem(), WebhookSecurityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookSecurityPtrInput)(nil)).Elem(), WebhookSecurityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSearchEntityInput)(nil)).Elem(), GetSearchEntityArgs{})
@@ -17411,6 +17578,8 @@ func init() {
 	pulumi.RegisterOutputType(WebhookMappingOutput{})
 	pulumi.RegisterOutputType(WebhookMappingArrayOutput{})
 	pulumi.RegisterOutputType(WebhookMappingEntityOutput{})
+	pulumi.RegisterOutputType(WebhookMappingOperationOutput{})
+	pulumi.RegisterOutputType(WebhookMappingOperationPtrOutput{})
 	pulumi.RegisterOutputType(WebhookSecurityOutput{})
 	pulumi.RegisterOutputType(WebhookSecurityPtrOutput{})
 	pulumi.RegisterOutputType(GetSearchEntityOutput{})
