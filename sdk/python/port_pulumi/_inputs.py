@@ -213,6 +213,8 @@ __all__ = [
     'WebhookMappingArgsDict',
     'WebhookMappingEntityArgs',
     'WebhookMappingEntityArgsDict',
+    'WebhookMappingOperationArgs',
+    'WebhookMappingOperationArgsDict',
     'WebhookSecurityArgs',
     'WebhookSecurityArgsDict',
 ]
@@ -9340,6 +9342,10 @@ if not MYPY:
         """
         The items to parser of the mapping
         """
+        operation: NotRequired[pulumi.Input['WebhookMappingOperationArgsDict']]
+        """
+        The operation of the mapping
+        """
 elif False:
     WebhookMappingArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -9349,12 +9355,14 @@ class WebhookMappingArgs:
                  blueprint: pulumi.Input[str],
                  entity: pulumi.Input['WebhookMappingEntityArgs'],
                  filter: Optional[pulumi.Input[str]] = None,
-                 items_to_parse: Optional[pulumi.Input[str]] = None):
+                 items_to_parse: Optional[pulumi.Input[str]] = None,
+                 operation: Optional[pulumi.Input['WebhookMappingOperationArgs']] = None):
         """
         :param pulumi.Input[str] blueprint: The blueprint of the mapping
         :param pulumi.Input['WebhookMappingEntityArgs'] entity: The entity of the mapping
         :param pulumi.Input[str] filter: The filter of the mapping
         :param pulumi.Input[str] items_to_parse: The items to parser of the mapping
+        :param pulumi.Input['WebhookMappingOperationArgs'] operation: The operation of the mapping
         """
         pulumi.set(__self__, "blueprint", blueprint)
         pulumi.set(__self__, "entity", entity)
@@ -9362,6 +9370,8 @@ class WebhookMappingArgs:
             pulumi.set(__self__, "filter", filter)
         if items_to_parse is not None:
             pulumi.set(__self__, "items_to_parse", items_to_parse)
+        if operation is not None:
+            pulumi.set(__self__, "operation", operation)
 
     @property
     @pulumi.getter
@@ -9410,6 +9420,18 @@ class WebhookMappingArgs:
     @items_to_parse.setter
     def items_to_parse(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "items_to_parse", value)
+
+    @property
+    @pulumi.getter
+    def operation(self) -> Optional[pulumi.Input['WebhookMappingOperationArgs']]:
+        """
+        The operation of the mapping
+        """
+        return pulumi.get(self, "operation")
+
+    @operation.setter
+    def operation(self, value: Optional[pulumi.Input['WebhookMappingOperationArgs']]):
+        pulumi.set(self, "operation", value)
 
 
 if not MYPY:
@@ -9541,6 +9563,57 @@ class WebhookMappingEntityArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+if not MYPY:
+    class WebhookMappingOperationArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        The type of the operation
+        """
+        delete_dependents: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to delete dependents entities, only relevant for delete operations
+        """
+elif False:
+    WebhookMappingOperationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WebhookMappingOperationArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 delete_dependents: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] type: The type of the operation
+        :param pulumi.Input[bool] delete_dependents: Whether to delete dependents entities, only relevant for delete operations
+        """
+        pulumi.set(__self__, "type", type)
+        if delete_dependents is not None:
+            pulumi.set(__self__, "delete_dependents", delete_dependents)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of the operation
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="deleteDependents")
+    def delete_dependents(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to delete dependents entities, only relevant for delete operations
+        """
+        return pulumi.get(self, "delete_dependents")
+
+    @delete_dependents.setter
+    def delete_dependents(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_dependents", value)
 
 
 if not MYPY:

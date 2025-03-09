@@ -2014,6 +2014,10 @@ export interface WebhookMapping {
      * The items to parser of the mapping
      */
     itemsToParse?: string;
+    /**
+     * The operation of the mapping
+     */
+    operation?: outputs.WebhookMappingOperation;
 }
 
 export interface WebhookMappingEntity {
@@ -2041,6 +2045,17 @@ export interface WebhookMappingEntity {
      * The title of the entity
      */
     title?: string;
+}
+
+export interface WebhookMappingOperation {
+    /**
+     * Whether to delete dependents entities, only relevant for delete operations
+     */
+    deleteDependents?: boolean;
+    /**
+     * The type of the operation
+     */
+    type: string;
 }
 
 export interface WebhookSecurity {

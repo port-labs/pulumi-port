@@ -1907,6 +1907,10 @@ export interface WebhookMapping {
      * The items to parser of the mapping
      */
     itemsToParse?: pulumi.Input<string>;
+    /**
+     * The operation of the mapping
+     */
+    operation?: pulumi.Input<inputs.WebhookMappingOperation>;
 }
 
 export interface WebhookMappingEntity {
@@ -1934,6 +1938,17 @@ export interface WebhookMappingEntity {
      * The title of the entity
      */
     title?: pulumi.Input<string>;
+}
+
+export interface WebhookMappingOperation {
+    /**
+     * Whether to delete dependents entities, only relevant for delete operations
+     */
+    deleteDependents?: pulumi.Input<boolean>;
+    /**
+     * The type of the operation
+     */
+    type: pulumi.Input<string>;
 }
 
 export interface WebhookSecurity {
