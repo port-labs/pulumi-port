@@ -1842,6 +1842,8 @@ class ActionSelfServiceTriggerUserPropertiesNumberProps(dict):
             suggest = "default_jq_query"
         elif key == "dependsOns":
             suggest = "depends_ons"
+        elif key == "enumColors":
+            suggest = "enum_colors"
         elif key == "enumJqQuery":
             suggest = "enum_jq_query"
         elif key == "visibleJqQuery":
@@ -1863,6 +1865,7 @@ class ActionSelfServiceTriggerUserPropertiesNumberProps(dict):
                  default_jq_query: Optional[str] = None,
                  depends_ons: Optional[Sequence[str]] = None,
                  description: Optional[str] = None,
+                 enum_colors: Optional[Mapping[str, str]] = None,
                  enum_jq_query: Optional[str] = None,
                  enums: Optional[Sequence[float]] = None,
                  icon: Optional[str] = None,
@@ -1877,6 +1880,7 @@ class ActionSelfServiceTriggerUserPropertiesNumberProps(dict):
         :param str default_jq_query: The default jq query of the number property
         :param Sequence[str] depends_ons: The properties that this property depends on
         :param str description: The description of the property
+        :param Mapping[str, str] enum_colors: The enum colors of the number property
         :param str enum_jq_query: The enum jq query of the string property
         :param Sequence[float] enums: The enum of the number property
         :param str icon: The icon of the property
@@ -1895,6 +1899,8 @@ class ActionSelfServiceTriggerUserPropertiesNumberProps(dict):
             pulumi.set(__self__, "depends_ons", depends_ons)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enum_colors is not None:
+            pulumi.set(__self__, "enum_colors", enum_colors)
         if enum_jq_query is not None:
             pulumi.set(__self__, "enum_jq_query", enum_jq_query)
         if enums is not None:
@@ -1945,6 +1951,14 @@ class ActionSelfServiceTriggerUserPropertiesNumberProps(dict):
         The description of the property
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enumColors")
+    def enum_colors(self) -> Optional[Mapping[str, str]]:
+        """
+        The enum colors of the number property
+        """
+        return pulumi.get(self, "enum_colors")
 
     @property
     @pulumi.getter(name="enumJqQuery")
@@ -2176,6 +2190,8 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
             suggest = "default_jq_query"
         elif key == "dependsOns":
             suggest = "depends_ons"
+        elif key == "enumColors":
+            suggest = "enum_colors"
         elif key == "enumJqQuery":
             suggest = "enum_jq_query"
         elif key == "maxLength":
@@ -2204,6 +2220,7 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
                  depends_ons: Optional[Sequence[str]] = None,
                  description: Optional[str] = None,
                  encryption: Optional[str] = None,
+                 enum_colors: Optional[Mapping[str, str]] = None,
                  enum_jq_query: Optional[str] = None,
                  enums: Optional[Sequence[str]] = None,
                  format: Optional[str] = None,
@@ -2224,6 +2241,7 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
         :param Sequence[str] depends_ons: The properties that this property depends on
         :param str description: The description of the property
         :param str encryption: The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
+        :param Mapping[str, str] enum_colors: The enum colors of the string property
         :param str enum_jq_query: The enum jq query of the string property
         :param Sequence[str] enums: The enum of the string property
         :param str format: The format of the string property, Accepted values include `date-time`, `url`, `email`, `ipv4`, `ipv6`, `yaml`, `entity`, `user`, `team`, `proto`, `markdown`
@@ -2251,6 +2269,8 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
             pulumi.set(__self__, "description", description)
         if encryption is not None:
             pulumi.set(__self__, "encryption", encryption)
+        if enum_colors is not None:
+            pulumi.set(__self__, "enum_colors", enum_colors)
         if enum_jq_query is not None:
             pulumi.set(__self__, "enum_jq_query", enum_jq_query)
         if enums is not None:
@@ -2331,6 +2351,14 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
         The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
         """
         return pulumi.get(self, "encryption")
+
+    @property
+    @pulumi.getter(name="enumColors")
+    def enum_colors(self) -> Optional[Mapping[str, str]]:
+        """
+        The enum colors of the string property
+        """
+        return pulumi.get(self, "enum_colors")
 
     @property
     @pulumi.getter(name="enumJqQuery")

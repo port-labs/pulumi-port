@@ -4969,6 +4969,8 @@ type ActionSelfServiceTriggerUserPropertiesNumberProps struct {
 	DependsOns []string `pulumi:"dependsOns"`
 	// The description of the property
 	Description *string `pulumi:"description"`
+	// The enum colors of the number property
+	EnumColors map[string]string `pulumi:"enumColors"`
 	// The enum jq query of the string property
 	EnumJqQuery *string `pulumi:"enumJqQuery"`
 	// The enum of the number property
@@ -5009,6 +5011,8 @@ type ActionSelfServiceTriggerUserPropertiesNumberPropsArgs struct {
 	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
 	// The description of the property
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The enum colors of the number property
+	EnumColors pulumi.StringMapInput `pulumi:"enumColors"`
 	// The enum jq query of the string property
 	EnumJqQuery pulumi.StringPtrInput `pulumi:"enumJqQuery"`
 	// The enum of the number property
@@ -5098,6 +5102,11 @@ func (o ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) DependsOns() pu
 // The description of the property
 func (o ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesNumberProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The enum colors of the number property
+func (o ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) EnumColors() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesNumberProps) map[string]string { return v.EnumColors }).(pulumi.StringMapOutput)
 }
 
 // The enum jq query of the string property
@@ -5358,6 +5367,8 @@ type ActionSelfServiceTriggerUserPropertiesStringProps struct {
 	Description *string `pulumi:"description"`
 	// The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
 	Encryption *string `pulumi:"encryption"`
+	// The enum colors of the string property
+	EnumColors map[string]string `pulumi:"enumColors"`
 	// The enum jq query of the string property
 	EnumJqQuery *string `pulumi:"enumJqQuery"`
 	// The enum of the string property
@@ -5410,6 +5421,8 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
 	Encryption pulumi.StringPtrInput `pulumi:"encryption"`
+	// The enum colors of the string property
+	EnumColors pulumi.StringMapInput `pulumi:"enumColors"`
 	// The enum jq query of the string property
 	EnumJqQuery pulumi.StringPtrInput `pulumi:"enumJqQuery"`
 	// The enum of the string property
@@ -5522,6 +5535,11 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Description() p
 // The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Encryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *string { return v.Encryption }).(pulumi.StringPtrOutput)
+}
+
+// The enum colors of the string property
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) EnumColors() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) map[string]string { return v.EnumColors }).(pulumi.StringMapOutput)
 }
 
 // The enum jq query of the string property
