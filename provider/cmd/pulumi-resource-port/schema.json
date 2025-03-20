@@ -792,6 +792,13 @@
                     "type": "string",
                     "description": "The description of the property\n"
                 },
+                "enumColors": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The enum colors of the number property\n"
+                },
                 "enumJqQuery": {
                     "type": "string",
                     "description": "The enum jq query of the string property\n"
@@ -914,6 +921,13 @@
                 "encryption": {
                     "type": "string",
                     "description": "The algorithm to encrypt the property with. Accepted value: `aes256-gcm`\n"
+                },
+                "enumColors": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The enum colors of the string property\n"
                 },
                 "enumJqQuery": {
                     "type": "string",

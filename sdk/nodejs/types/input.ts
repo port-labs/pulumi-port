@@ -498,6 +498,10 @@ export interface ActionSelfServiceTriggerUserPropertiesNumberProps {
      */
     description?: pulumi.Input<string>;
     /**
+     * The enum colors of the number property
+     */
+    enumColors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The enum jq query of the string property
      */
     enumJqQuery?: pulumi.Input<string>;
@@ -607,6 +611,10 @@ export interface ActionSelfServiceTriggerUserPropertiesStringProps {
      * The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
      */
     encryption?: pulumi.Input<string>;
+    /**
+     * The enum colors of the string property
+     */
+    enumColors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The enum jq query of the string property
      */

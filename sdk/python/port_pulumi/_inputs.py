@@ -2503,6 +2503,10 @@ if not MYPY:
         """
         The description of the property
         """
+        enum_colors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The enum colors of the number property
+        """
         enum_jq_query: NotRequired[pulumi.Input[str]]
         """
         The enum jq query of the string property
@@ -2549,6 +2553,7 @@ class ActionSelfServiceTriggerUserPropertiesNumberPropsArgs:
                  default_jq_query: Optional[pulumi.Input[str]] = None,
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enum_colors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enum_jq_query: Optional[pulumi.Input[str]] = None,
                  enums: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
@@ -2563,6 +2568,7 @@ class ActionSelfServiceTriggerUserPropertiesNumberPropsArgs:
         :param pulumi.Input[str] default_jq_query: The default jq query of the number property
         :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The properties that this property depends on
         :param pulumi.Input[str] description: The description of the property
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] enum_colors: The enum colors of the number property
         :param pulumi.Input[str] enum_jq_query: The enum jq query of the string property
         :param pulumi.Input[Sequence[pulumi.Input[float]]] enums: The enum of the number property
         :param pulumi.Input[str] icon: The icon of the property
@@ -2581,6 +2587,8 @@ class ActionSelfServiceTriggerUserPropertiesNumberPropsArgs:
             pulumi.set(__self__, "depends_ons", depends_ons)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enum_colors is not None:
+            pulumi.set(__self__, "enum_colors", enum_colors)
         if enum_jq_query is not None:
             pulumi.set(__self__, "enum_jq_query", enum_jq_query)
         if enums is not None:
@@ -2647,6 +2655,18 @@ class ActionSelfServiceTriggerUserPropertiesNumberPropsArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enumColors")
+    def enum_colors(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The enum colors of the number property
+        """
+        return pulumi.get(self, "enum_colors")
+
+    @enum_colors.setter
+    def enum_colors(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "enum_colors", value)
 
     @property
     @pulumi.getter(name="enumJqQuery")
@@ -2999,6 +3019,10 @@ if not MYPY:
         """
         The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
         """
+        enum_colors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The enum colors of the string property
+        """
         enum_jq_query: NotRequired[pulumi.Input[str]]
         """
         The enum jq query of the string property
@@ -3060,6 +3084,7 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encryption: Optional[pulumi.Input[str]] = None,
+                 enum_colors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enum_jq_query: Optional[pulumi.Input[str]] = None,
                  enums: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  format: Optional[pulumi.Input[str]] = None,
@@ -3080,6 +3105,7 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The properties that this property depends on
         :param pulumi.Input[str] description: The description of the property
         :param pulumi.Input[str] encryption: The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] enum_colors: The enum colors of the string property
         :param pulumi.Input[str] enum_jq_query: The enum jq query of the string property
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enums: The enum of the string property
         :param pulumi.Input[str] format: The format of the string property, Accepted values include `date-time`, `url`, `email`, `ipv4`, `ipv6`, `yaml`, `entity`, `user`, `team`, `proto`, `markdown`
@@ -3107,6 +3133,8 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
             pulumi.set(__self__, "description", description)
         if encryption is not None:
             pulumi.set(__self__, "encryption", encryption)
+        if enum_colors is not None:
+            pulumi.set(__self__, "enum_colors", enum_colors)
         if enum_jq_query is not None:
             pulumi.set(__self__, "enum_jq_query", enum_jq_query)
         if enums is not None:
@@ -3215,6 +3243,18 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
     @encryption.setter
     def encryption(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "encryption", value)
+
+    @property
+    @pulumi.getter(name="enumColors")
+    def enum_colors(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The enum colors of the string property
+        """
+        return pulumi.get(self, "enum_colors")
+
+    @enum_colors.setter
+    def enum_colors(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "enum_colors", value)
 
     @property
     @pulumi.getter(name="enumJqQuery")

@@ -498,6 +498,10 @@ export interface ActionSelfServiceTriggerUserPropertiesNumberProps {
      */
     description?: string;
     /**
+     * The enum colors of the number property
+     */
+    enumColors?: {[key: string]: string};
+    /**
      * The enum jq query of the string property
      */
     enumJqQuery?: string;
@@ -607,6 +611,10 @@ export interface ActionSelfServiceTriggerUserPropertiesStringProps {
      * The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
      */
     encryption?: string;
+    /**
+     * The enum colors of the string property
+     */
+    enumColors?: {[key: string]: string};
     /**
      * The enum jq query of the string property
      */
