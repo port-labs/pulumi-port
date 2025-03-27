@@ -20,6 +20,8 @@ type Team struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The description of the team
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The machine-readable identifier of the _team entity
+	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// The name of the team
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provider of the team
@@ -67,6 +69,8 @@ type teamState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// The description of the team
 	Description *string `pulumi:"description"`
+	// The machine-readable identifier of the _team entity
+	Identifier *string `pulumi:"identifier"`
 	// The name of the team
 	Name *string `pulumi:"name"`
 	// The provider of the team
@@ -82,6 +86,8 @@ type TeamState struct {
 	CreatedAt pulumi.StringPtrInput
 	// The description of the team
 	Description pulumi.StringPtrInput
+	// The machine-readable identifier of the _team entity
+	Identifier pulumi.StringPtrInput
 	// The name of the team
 	Name pulumi.StringPtrInput
 	// The provider of the team
@@ -210,6 +216,11 @@ func (o TeamOutput) CreatedAt() pulumi.StringOutput {
 // The description of the team
 func (o TeamOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Team) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The machine-readable identifier of the _team entity
+func (o TeamOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v *Team) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // The name of the team

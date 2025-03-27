@@ -74,6 +74,9 @@ class BlueprintArgs:
         if relations is not None:
             pulumi.set(__self__, "relations", relations)
         if team_inheritance is not None:
+            warnings.warn("""After the Users and Teams migration, `team_inheritance` will be ignored in favor of `ownership`""", DeprecationWarning)
+            pulumi.log.warn("""team_inheritance is deprecated: After the Users and Teams migration, `team_inheritance` will be ignored in favor of `ownership`""")
+        if team_inheritance is not None:
             pulumi.set(__self__, "team_inheritance", team_inheritance)
         if webhook_changelog_destination is not None:
             pulumi.set(__self__, "webhook_changelog_destination", webhook_changelog_destination)
@@ -221,6 +224,7 @@ class BlueprintArgs:
 
     @property
     @pulumi.getter(name="teamInheritance")
+    @_utilities.deprecated("""After the Users and Teams migration, `team_inheritance` will be ignored in favor of `ownership`""")
     def team_inheritance(self) -> Optional[pulumi.Input['BlueprintTeamInheritanceArgs']]:
         """
         The team inheritance of the blueprint
@@ -311,6 +315,9 @@ class _BlueprintState:
             pulumi.set(__self__, "properties", properties)
         if relations is not None:
             pulumi.set(__self__, "relations", relations)
+        if team_inheritance is not None:
+            warnings.warn("""After the Users and Teams migration, `team_inheritance` will be ignored in favor of `ownership`""", DeprecationWarning)
+            pulumi.log.warn("""team_inheritance is deprecated: After the Users and Teams migration, `team_inheritance` will be ignored in favor of `ownership`""")
         if team_inheritance is not None:
             pulumi.set(__self__, "team_inheritance", team_inheritance)
         if title is not None:
@@ -477,6 +484,7 @@ class _BlueprintState:
 
     @property
     @pulumi.getter(name="teamInheritance")
+    @_utilities.deprecated("""After the Users and Teams migration, `team_inheritance` will be ignored in favor of `ownership`""")
     def team_inheritance(self) -> Optional[pulumi.Input['BlueprintTeamInheritanceArgs']]:
         """
         The team inheritance of the blueprint
@@ -822,6 +830,7 @@ class Blueprint(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="teamInheritance")
+    @_utilities.deprecated("""After the Users and Teams migration, `team_inheritance` will be ignored in favor of `ownership`""")
     def team_inheritance(self) -> pulumi.Output[Optional['outputs.BlueprintTeamInheritance']]:
         """
         The team inheritance of the blueprint

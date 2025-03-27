@@ -44,6 +44,10 @@ export class Team extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * The machine-readable identifier of the _team entity
+     */
+    public /*out*/ readonly identifier!: pulumi.Output<string>;
+    /**
      * The name of the team
      */
     public readonly name!: pulumi.Output<string>;
@@ -75,6 +79,7 @@ export class Team extends pulumi.CustomResource {
             const state = argsOrState as TeamState | undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["providerName"] = state ? state.providerName : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
@@ -88,6 +93,7 @@ export class Team extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["users"] = args ? args.users : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["identifier"] = undefined /*out*/;
             resourceInputs["providerName"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
@@ -108,6 +114,10 @@ export interface TeamState {
      * The description of the team
      */
     description?: pulumi.Input<string>;
+    /**
+     * The machine-readable identifier of the _team entity
+     */
+    identifier?: pulumi.Input<string>;
     /**
      * The name of the team
      */

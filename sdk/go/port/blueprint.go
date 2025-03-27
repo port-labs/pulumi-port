@@ -41,6 +41,8 @@ type Blueprint struct {
 	// The relations of the blueprint
 	Relations BlueprintRelationsMapOutput `pulumi:"relations"`
 	// The team inheritance of the blueprint
+	//
+	// Deprecated: After the Users and Teams migration, `teamInheritance` will be ignored in favor of `ownership`
 	TeamInheritance BlueprintTeamInheritancePtrOutput `pulumi:"teamInheritance"`
 	// The display name of the blueprint
 	Title pulumi.StringOutput `pulumi:"title"`
@@ -114,6 +116,8 @@ type blueprintState struct {
 	// The relations of the blueprint
 	Relations map[string]BlueprintRelations `pulumi:"relations"`
 	// The team inheritance of the blueprint
+	//
+	// Deprecated: After the Users and Teams migration, `teamInheritance` will be ignored in favor of `ownership`
 	TeamInheritance *BlueprintTeamInheritance `pulumi:"teamInheritance"`
 	// The display name of the blueprint
 	Title *string `pulumi:"title"`
@@ -152,6 +156,8 @@ type BlueprintState struct {
 	// The relations of the blueprint
 	Relations BlueprintRelationsMapInput
 	// The team inheritance of the blueprint
+	//
+	// Deprecated: After the Users and Teams migration, `teamInheritance` will be ignored in favor of `ownership`
 	TeamInheritance BlueprintTeamInheritancePtrInput
 	// The display name of the blueprint
 	Title pulumi.StringPtrInput
@@ -190,6 +196,8 @@ type blueprintArgs struct {
 	// The relations of the blueprint
 	Relations map[string]BlueprintRelations `pulumi:"relations"`
 	// The team inheritance of the blueprint
+	//
+	// Deprecated: After the Users and Teams migration, `teamInheritance` will be ignored in favor of `ownership`
 	TeamInheritance *BlueprintTeamInheritance `pulumi:"teamInheritance"`
 	// The display name of the blueprint
 	Title string `pulumi:"title"`
@@ -221,6 +229,8 @@ type BlueprintArgs struct {
 	// The relations of the blueprint
 	Relations BlueprintRelationsMapInput
 	// The team inheritance of the blueprint
+	//
+	// Deprecated: After the Users and Teams migration, `teamInheritance` will be ignored in favor of `ownership`
 	TeamInheritance BlueprintTeamInheritancePtrInput
 	// The display name of the blueprint
 	Title pulumi.StringInput
@@ -380,6 +390,8 @@ func (o BlueprintOutput) Relations() BlueprintRelationsMapOutput {
 }
 
 // The team inheritance of the blueprint
+//
+// Deprecated: After the Users and Teams migration, `teamInheritance` will be ignored in favor of `ownership`
 func (o BlueprintOutput) TeamInheritance() BlueprintTeamInheritancePtrOutput {
 	return o.ApplyT(func(v *Blueprint) BlueprintTeamInheritancePtrOutput { return v.TeamInheritance }).(BlueprintTeamInheritancePtrOutput)
 }

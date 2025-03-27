@@ -85,6 +85,8 @@ export class Blueprint extends pulumi.CustomResource {
     public readonly relations!: pulumi.Output<{[key: string]: outputs.BlueprintRelations} | undefined>;
     /**
      * The team inheritance of the blueprint
+     *
+     * @deprecated After the Users and Teams migration, `teamInheritance` will be ignored in favor of `ownership`
      */
     public readonly teamInheritance!: pulumi.Output<outputs.BlueprintTeamInheritance | undefined>;
     /**
@@ -222,6 +224,8 @@ export interface BlueprintState {
     relations?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintRelations>}>;
     /**
      * The team inheritance of the blueprint
+     *
+     * @deprecated After the Users and Teams migration, `teamInheritance` will be ignored in favor of `ownership`
      */
     teamInheritance?: pulumi.Input<inputs.BlueprintTeamInheritance>;
     /**
@@ -289,6 +293,8 @@ export interface BlueprintArgs {
     relations?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintRelations>}>;
     /**
      * The team inheritance of the blueprint
+     *
+     * @deprecated After the Users and Teams migration, `teamInheritance` will be ignored in favor of `ownership`
      */
     teamInheritance?: pulumi.Input<inputs.BlueprintTeamInheritance>;
     /**

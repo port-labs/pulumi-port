@@ -22,17 +22,18 @@ __all__ = ['EntityArgs', 'Entity']
 class EntityArgs:
     def __init__(__self__, *,
                  blueprint: pulumi.Input[str],
+                 title: pulumi.Input[str],
                  create_missing_related_entities: Optional[pulumi.Input[bool]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input['EntityPropertiesArgs']] = None,
                  relations: Optional[pulumi.Input['EntityRelationsArgs']] = None,
                  run_id: Optional[pulumi.Input[str]] = None,
-                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 title: Optional[pulumi.Input[str]] = None):
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Entity resource.
         :param pulumi.Input[str] blueprint: The blueprint identifier the entity relates to
+        :param pulumi.Input[str] title: The title of the entity
         :param pulumi.Input[bool] create_missing_related_entities: Whether to create missing related entities
         :param pulumi.Input[str] icon: The icon of the entity
         :param pulumi.Input[str] identifier: The identifier of the entity
@@ -40,9 +41,9 @@ class EntityArgs:
         :param pulumi.Input['EntityRelationsArgs'] relations: The relations of the entity
         :param pulumi.Input[str] run_id: The runID of the action run that created the entity
         :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The teams the entity belongs to
-        :param pulumi.Input[str] title: The title of the entity
         """
         pulumi.set(__self__, "blueprint", blueprint)
+        pulumi.set(__self__, "title", title)
         if create_missing_related_entities is not None:
             pulumi.set(__self__, "create_missing_related_entities", create_missing_related_entities)
         if icon is not None:
@@ -57,8 +58,6 @@ class EntityArgs:
             pulumi.set(__self__, "run_id", run_id)
         if teams is not None:
             pulumi.set(__self__, "teams", teams)
-        if title is not None:
-            pulumi.set(__self__, "title", title)
 
     @property
     @pulumi.getter
@@ -71,6 +70,18 @@ class EntityArgs:
     @blueprint.setter
     def blueprint(self, value: pulumi.Input[str]):
         pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        The title of the entity
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
 
     @property
     @pulumi.getter(name="createMissingRelatedEntities")
@@ -155,18 +166,6 @@ class EntityArgs:
     @teams.setter
     def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "teams", value)
-
-    @property
-    @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[str]]:
-        """
-        The title of the entity
-        """
-        return pulumi.get(self, "title")
-
-    @title.setter
-    def title(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "title", value)
 
 
 @pulumi.input_type
@@ -467,6 +466,8 @@ class Entity(pulumi.CustomResource):
             __props__.__dict__["relations"] = relations
             __props__.__dict__["run_id"] = run_id
             __props__.__dict__["teams"] = teams
+            if title is None and not opts.urn:
+                raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
             __props__.__dict__["created_at"] = None
             __props__.__dict__["created_by"] = None
@@ -617,7 +618,7 @@ class Entity(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def title(self) -> pulumi.Output[Optional[str]]:
+    def title(self) -> pulumi.Output[str]:
         """
         The title of the entity
         """
