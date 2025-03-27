@@ -7,13 +7,14 @@ toolchain go1.22.7
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20250124205414-92ccb3765401
 
 require (
-	github.com/port-labs/terraform-provider-port-labs/v2 v2.4.3
+	github.com/port-labs/terraform-provider-port-labs/v2 v2.5.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.49.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.102.0
 	github.com/pulumi/pulumi/sdk/v3 v3.147.0
 )
 
 require (
+	github.com/avast/retry-go/v4 v4.6.1 // indirect
 	github.com/olekukonko/tablewriter v0.0.5 // indirect
 	github.com/opentofu/registry-address v0.0.0-20230922120653-901b9ae4061a // indirect
 	github.com/pulumi/inflector v0.1.1 // indirect
