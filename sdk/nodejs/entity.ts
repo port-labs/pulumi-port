@@ -80,7 +80,7 @@ export class Entity extends pulumi.CustomResource {
     /**
      * The title of the entity
      */
-    public readonly title!: pulumi.Output<string | undefined>;
+    public readonly title!: pulumi.Output<string>;
     /**
      * The last update date of the entity
      */
@@ -120,6 +120,9 @@ export class Entity extends pulumi.CustomResource {
             const args = argsOrState as EntityArgs | undefined;
             if ((!args || args.blueprint === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'blueprint'");
+            }
+            if ((!args || args.title === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'title'");
             }
             resourceInputs["blueprint"] = args ? args.blueprint : undefined;
             resourceInputs["createMissingRelatedEntities"] = args ? args.createMissingRelatedEntities : undefined;
@@ -237,5 +240,5 @@ export interface EntityArgs {
     /**
      * The title of the entity
      */
-    title?: pulumi.Input<string>;
+    title: pulumi.Input<string>;
 }

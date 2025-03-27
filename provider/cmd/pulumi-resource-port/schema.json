@@ -3683,7 +3683,8 @@
                 },
                 "teamInheritance": {
                     "$ref": "#/types/port:index/BlueprintTeamInheritance:BlueprintTeamInheritance",
-                    "description": "The team inheritance of the blueprint\n"
+                    "description": "The team inheritance of the blueprint\n",
+                    "deprecationMessage": "After the Users and Teams migration, `team_inheritance` will be ignored in favor of `ownership`"
                 },
                 "title": {
                     "type": "string",
@@ -3767,7 +3768,8 @@
                 },
                 "teamInheritance": {
                     "$ref": "#/types/port:index/BlueprintTeamInheritance:BlueprintTeamInheritance",
-                    "description": "The team inheritance of the blueprint\n"
+                    "description": "The team inheritance of the blueprint\n",
+                    "deprecationMessage": "After the Users and Teams migration, `team_inheritance` will be ignored in favor of `ownership`"
                 },
                 "title": {
                     "type": "string",
@@ -3847,7 +3849,8 @@
                     },
                     "teamInheritance": {
                         "$ref": "#/types/port:index/BlueprintTeamInheritance:BlueprintTeamInheritance",
-                        "description": "The team inheritance of the blueprint\n"
+                        "description": "The team inheritance of the blueprint\n",
+                        "deprecationMessage": "After the Users and Teams migration, `team_inheritance` will be ignored in favor of `ownership`"
                     },
                     "title": {
                         "type": "string",
@@ -3975,6 +3978,7 @@
                 "createdAt",
                 "createdBy",
                 "identifier",
+                "title",
                 "updatedAt",
                 "updatedBy"
             ],
@@ -4020,7 +4024,8 @@
                 }
             },
             "requiredInputs": [
-                "blueprint"
+                "blueprint",
+                "title"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Entity resources.\n",
@@ -4737,6 +4742,10 @@
                     "type": "string",
                     "description": "The description of the team\n"
                 },
+                "identifier": {
+                    "type": "string",
+                    "description": "The machine-readable identifier of the _team entity\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the team\n"
@@ -4759,6 +4768,7 @@
             },
             "required": [
                 "createdAt",
+                "identifier",
                 "name",
                 "providerName",
                 "updatedAt"
@@ -4793,6 +4803,10 @@
                     "description": {
                         "type": "string",
                         "description": "The description of the team\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "The machine-readable identifier of the _team entity\n"
                     },
                     "name": {
                         "type": "string",

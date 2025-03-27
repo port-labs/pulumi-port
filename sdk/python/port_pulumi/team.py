@@ -76,6 +76,7 @@ class _TeamState:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  provider_name: Optional[pulumi.Input[str]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
@@ -84,6 +85,7 @@ class _TeamState:
         Input properties used for looking up and filtering Team resources.
         :param pulumi.Input[str] created_at: The creation date of the team
         :param pulumi.Input[str] description: The description of the team
+        :param pulumi.Input[str] identifier: The machine-readable identifier of the _team entity
         :param pulumi.Input[str] name: The name of the team
         :param pulumi.Input[str] provider_name: The provider of the team
         :param pulumi.Input[str] updated_at: The last update date of the team
@@ -93,6 +95,8 @@ class _TeamState:
             pulumi.set(__self__, "created_at", created_at)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if identifier is not None:
+            pulumi.set(__self__, "identifier", identifier)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if provider_name is not None:
@@ -125,6 +129,18 @@ class _TeamState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The machine-readable identifier of the _team entity
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identifier", value)
 
     @property
     @pulumi.getter
@@ -235,6 +251,7 @@ class Team(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["users"] = users
             __props__.__dict__["created_at"] = None
+            __props__.__dict__["identifier"] = None
             __props__.__dict__["provider_name"] = None
             __props__.__dict__["updated_at"] = None
         super(Team, __self__).__init__(
@@ -249,6 +266,7 @@ class Team(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             provider_name: Optional[pulumi.Input[str]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
@@ -262,6 +280,7 @@ class Team(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_at: The creation date of the team
         :param pulumi.Input[str] description: The description of the team
+        :param pulumi.Input[str] identifier: The machine-readable identifier of the _team entity
         :param pulumi.Input[str] name: The name of the team
         :param pulumi.Input[str] provider_name: The provider of the team
         :param pulumi.Input[str] updated_at: The last update date of the team
@@ -273,6 +292,7 @@ class Team(pulumi.CustomResource):
 
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["description"] = description
+        __props__.__dict__["identifier"] = identifier
         __props__.__dict__["name"] = name
         __props__.__dict__["provider_name"] = provider_name
         __props__.__dict__["updated_at"] = updated_at
@@ -294,6 +314,14 @@ class Team(pulumi.CustomResource):
         The description of the team
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Output[str]:
+        """
+        The machine-readable identifier of the _team entity
+        """
+        return pulumi.get(self, "identifier")
 
     @property
     @pulumi.getter

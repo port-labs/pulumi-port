@@ -37,7 +37,7 @@ type Entity struct {
 	// The teams the entity belongs to
 	Teams pulumi.StringArrayOutput `pulumi:"teams"`
 	// The title of the entity
-	Title pulumi.StringPtrOutput `pulumi:"title"`
+	Title pulumi.StringOutput `pulumi:"title"`
 	// The last update date of the entity
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// The last updater of the entity
@@ -53,6 +53,9 @@ func NewEntity(ctx *pulumi.Context,
 
 	if args.Blueprint == nil {
 		return nil, errors.New("invalid value for required argument 'Blueprint'")
+	}
+	if args.Title == nil {
+		return nil, errors.New("invalid value for required argument 'Title'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Entity
@@ -156,7 +159,7 @@ type entityArgs struct {
 	// The teams the entity belongs to
 	Teams []string `pulumi:"teams"`
 	// The title of the entity
-	Title *string `pulumi:"title"`
+	Title string `pulumi:"title"`
 }
 
 // The set of arguments for constructing a Entity resource.
@@ -178,7 +181,7 @@ type EntityArgs struct {
 	// The teams the entity belongs to
 	Teams pulumi.StringArrayInput
 	// The title of the entity
-	Title pulumi.StringPtrInput
+	Title pulumi.StringInput
 }
 
 func (EntityArgs) ElementType() reflect.Type {
@@ -319,8 +322,8 @@ func (o EntityOutput) Teams() pulumi.StringArrayOutput {
 }
 
 // The title of the entity
-func (o EntityOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Entity) pulumi.StringPtrOutput { return v.Title }).(pulumi.StringPtrOutput)
+func (o EntityOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
 }
 
 // The last update date of the entity
