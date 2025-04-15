@@ -21,11 +21,13 @@ class ProviderArgs:
     def __init__(__self__, *,
                  base_url: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
+                 json_escape_html: Optional[pulumi.Input[bool]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] client_id: Client ID for Port-labs
+        :param pulumi.Input[bool] json_escape_html: When set to `false` disables the default HTML escaping of json.Marshal when reading data from Port. Defaults to `true`
         :param pulumi.Input[str] secret: Client Secret for Port-labs
         :param pulumi.Input[str] token: Token for Port-labs
         """
@@ -33,6 +35,8 @@ class ProviderArgs:
             pulumi.set(__self__, "base_url", base_url)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
+        if json_escape_html is not None:
+            pulumi.set(__self__, "json_escape_html", json_escape_html)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
         if token is not None:
@@ -58,6 +62,18 @@ class ProviderArgs:
     @client_id.setter
     def client_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="jsonEscapeHtml")
+    def json_escape_html(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to `false` disables the default HTML escaping of json.Marshal when reading data from Port. Defaults to `true`
+        """
+        return pulumi.get(self, "json_escape_html")
+
+    @json_escape_html.setter
+    def json_escape_html(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "json_escape_html", value)
 
     @property
     @pulumi.getter
@@ -91,6 +107,7 @@ class Provider(pulumi.ProviderResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  base_url: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
+                 json_escape_html: Optional[pulumi.Input[bool]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -103,6 +120,7 @@ class Provider(pulumi.ProviderResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] client_id: Client ID for Port-labs
+        :param pulumi.Input[bool] json_escape_html: When set to `false` disables the default HTML escaping of json.Marshal when reading data from Port. Defaults to `true`
         :param pulumi.Input[str] secret: Client Secret for Port-labs
         :param pulumi.Input[str] token: Token for Port-labs
         """
@@ -135,6 +153,7 @@ class Provider(pulumi.ProviderResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  base_url: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
+                 json_escape_html: Optional[pulumi.Input[bool]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -148,6 +167,7 @@ class Provider(pulumi.ProviderResource):
 
             __props__.__dict__["base_url"] = base_url
             __props__.__dict__["client_id"] = client_id
+            __props__.__dict__["json_escape_html"] = pulumi.Output.from_input(json_escape_html).apply(pulumi.runtime.to_json) if json_escape_html is not None else None
             __props__.__dict__["secret"] = None if secret is None else pulumi.Output.secret(secret)
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret", "token"])
