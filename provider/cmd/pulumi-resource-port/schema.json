@@ -62,6 +62,10 @@
                 "type": "string",
                 "description": "Client ID for Port-labs\n"
             },
+            "jsonEscapeHtml": {
+                "type": "boolean",
+                "description": "When set to `false` disables the default HTML escaping of json.Marshal when reading data from Port. Defaults to `true`\n"
+            },
             "secret": {
                 "type": "string",
                 "description": "Client Secret for Port-labs\n",
@@ -3247,6 +3251,10 @@
                 "type": "string",
                 "description": "Client ID for Port-labs\n"
             },
+            "jsonEscapeHtml": {
+                "type": "boolean",
+                "description": "When set to `false` disables the default HTML escaping of json.Marshal when reading data from Port. Defaults to `true`\n"
+            },
             "secret": {
                 "type": "string",
                 "description": "Client Secret for Port-labs\n",
@@ -3265,6 +3273,10 @@
             "clientId": {
                 "type": "string",
                 "description": "Client ID for Port-labs\n"
+            },
+            "jsonEscapeHtml": {
+                "type": "boolean",
+                "description": "When set to `false` disables the default HTML escaping of json.Marshal when reading data from Port. Defaults to `true`\n"
             },
             "secret": {
                 "type": "string",
