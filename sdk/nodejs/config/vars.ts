@@ -27,6 +27,17 @@ Object.defineProperty(exports, "clientId", {
 });
 
 /**
+ * When set to `false` disables the default HTML escaping of json.Marshal when reading data from Port. Defaults to `true`
+ */
+export declare const jsonEscapeHtml: boolean | undefined;
+Object.defineProperty(exports, "jsonEscapeHtml", {
+    get() {
+        return __config.getObject<boolean>("jsonEscapeHtml");
+    },
+    enumerable: true,
+});
+
+/**
  * Client Secret for Port-labs
  */
 export declare const secret: string | undefined;

@@ -58,6 +58,8 @@ type providerArgs struct {
 	BaseUrl *string `pulumi:"baseUrl"`
 	// Client ID for Port-labs
 	ClientId *string `pulumi:"clientId"`
+	// When set to `false` disables the default HTML escaping of json.Marshal when reading data from Port. Defaults to `true`
+	JsonEscapeHtml *bool `pulumi:"jsonEscapeHtml"`
 	// Client Secret for Port-labs
 	Secret *string `pulumi:"secret"`
 	// Token for Port-labs
@@ -69,6 +71,8 @@ type ProviderArgs struct {
 	BaseUrl pulumi.StringPtrInput
 	// Client ID for Port-labs
 	ClientId pulumi.StringPtrInput
+	// When set to `false` disables the default HTML escaping of json.Marshal when reading data from Port. Defaults to `true`
+	JsonEscapeHtml pulumi.BoolPtrInput
 	// Client Secret for Port-labs
 	Secret pulumi.StringPtrInput
 	// Token for Port-labs

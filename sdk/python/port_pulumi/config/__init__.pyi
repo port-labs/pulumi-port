@@ -21,6 +21,11 @@ clientId: Optional[str]
 Client ID for Port-labs
 """
 
+jsonEscapeHtml: Optional[bool]
+"""
+When set to `false` disables the default HTML escaping of json.Marshal when reading data from Port. Defaults to `true`
+"""
+
 secret: Optional[str]
 """
 Client Secret for Port-labs

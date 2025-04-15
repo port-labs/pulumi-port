@@ -20,6 +20,11 @@ func GetClientId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "port:clientId")
 }
 
+// When set to `false` disables the default HTML escaping of json.Marshal when reading data from Port. Defaults to `true`
+func GetJsonEscapeHtml(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "port:jsonEscapeHtml")
+}
+
 // Client Secret for Port-labs
 func GetSecret(ctx *pulumi.Context) string {
 	return config.Get(ctx, "port:secret")

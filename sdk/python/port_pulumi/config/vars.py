@@ -32,6 +32,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('clientId')
 
     @property
+    def json_escape_html(self) -> Optional[bool]:
+        """
+        When set to `false` disables the default HTML escaping of json.Marshal when reading data from Port. Defaults to `true`
+        """
+        return __config__.get_bool('jsonEscapeHtml')
+
+    @property
     def secret(self) -> Optional[str]:
         """
         Client Secret for Port-labs

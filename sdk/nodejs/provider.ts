@@ -52,6 +52,7 @@ export class Provider extends pulumi.ProviderResource {
         {
             resourceInputs["baseUrl"] = args ? args.baseUrl : undefined;
             resourceInputs["clientId"] = args ? args.clientId : undefined;
+            resourceInputs["jsonEscapeHtml"] = pulumi.output(args ? args.jsonEscapeHtml : undefined).apply(JSON.stringify);
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
         }
@@ -71,6 +72,10 @@ export interface ProviderArgs {
      * Client ID for Port-labs
      */
     clientId?: pulumi.Input<string>;
+    /**
+     * When set to `false` disables the default HTML escaping of json.Marshal when reading data from Port. Defaults to `true`
+     */
+    jsonEscapeHtml?: pulumi.Input<boolean>;
     /**
      * Client Secret for Port-labs
      */
