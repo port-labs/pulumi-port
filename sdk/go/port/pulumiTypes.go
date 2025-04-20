@@ -5383,6 +5383,8 @@ type ActionSelfServiceTriggerUserPropertiesStringProps struct {
 	MinLength *int `pulumi:"minLength"`
 	// The pattern of the string property
 	Pattern *string `pulumi:"pattern"`
+	// The pattern jq query of the string property. This field accepts a JQ expression to dynamically generate either a regex pattern (as a string) or a list of allowed values (as an array). Cannot be used with `pattern`. Empty values are not allowed. Examples: `"if .env == \"prod\" then \"^[a-z]+$\" else \"^[a-zA-Z]+$\" end"` for dynamic regex patterns, or `"[\"value1\", \"value2\"]"` for a fixed list of allowed values.
+	PatternJqQuery *string `pulumi:"patternJqQuery"`
 	// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
 	Required *bool `pulumi:"required"`
 	// How to sort entities when in the self service action form in the UI
@@ -5437,6 +5439,8 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsArgs struct {
 	MinLength pulumi.IntPtrInput `pulumi:"minLength"`
 	// The pattern of the string property
 	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
+	// The pattern jq query of the string property. This field accepts a JQ expression to dynamically generate either a regex pattern (as a string) or a list of allowed values (as an array). Cannot be used with `pattern`. Empty values are not allowed. Examples: `"if .env == \"prod\" then \"^[a-z]+$\" else \"^[a-zA-Z]+$\" end"` for dynamic regex patterns, or `"[\"value1\", \"value2\"]"` for a fixed list of allowed values.
+	PatternJqQuery pulumi.StringPtrInput `pulumi:"patternJqQuery"`
 	// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
 	Required pulumi.BoolPtrInput `pulumi:"required"`
 	// How to sort entities when in the self service action form in the UI
@@ -5575,6 +5579,11 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) MinLength() pul
 // The pattern of the string property
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Pattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *string { return v.Pattern }).(pulumi.StringPtrOutput)
+}
+
+// The pattern jq query of the string property. This field accepts a JQ expression to dynamically generate either a regex pattern (as a string) or a list of allowed values (as an array). Cannot be used with `pattern`. Empty values are not allowed. Examples: `"if .env == \"prod\" then \"^[a-z]+$\" else \"^[a-zA-Z]+$\" end"` for dynamic regex patterns, or `"[\"value1\", \"value2\"]"` for a fixed list of allowed values.
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) PatternJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *string { return v.PatternJqQuery }).(pulumi.StringPtrOutput)
 }
 
 // Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
