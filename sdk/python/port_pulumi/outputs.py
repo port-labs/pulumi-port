@@ -2198,6 +2198,8 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
             suggest = "max_length"
         elif key == "minLength":
             suggest = "min_length"
+        elif key == "patternJqQuery":
+            suggest = "pattern_jq_query"
         elif key == "visibleJqQuery":
             suggest = "visible_jq_query"
 
@@ -2228,6 +2230,7 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
                  max_length: Optional[int] = None,
                  min_length: Optional[int] = None,
                  pattern: Optional[str] = None,
+                 pattern_jq_query: Optional[str] = None,
                  required: Optional[bool] = None,
                  sort: Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsSort'] = None,
                  title: Optional[str] = None,
@@ -2249,6 +2252,7 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
         :param int max_length: The max length of the string property
         :param int min_length: The min length of the string property
         :param str pattern: The pattern of the string property
+        :param str pattern_jq_query: The pattern jq query of the string property. This field accepts a JQ expression to dynamically generate either a regex pattern (as a string) or a list of allowed values (as an array). Cannot be used with `pattern`. Empty values are not allowed. Examples: `"if .env == \\"prod\\" then \\"^[a-z]+$\\" else \\"^[a-zA-Z]+$\\" end"` for dynamic regex patterns, or `"[\\"value1\\", \\"value2\\"]"` for a fixed list of allowed values.
         :param bool required: Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
         :param 'ActionSelfServiceTriggerUserPropertiesStringPropsSortArgs' sort: How to sort entities when in the self service action form in the UI
         :param str title: The title of the property
@@ -2285,6 +2289,8 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
             pulumi.set(__self__, "min_length", min_length)
         if pattern is not None:
             pulumi.set(__self__, "pattern", pattern)
+        if pattern_jq_query is not None:
+            pulumi.set(__self__, "pattern_jq_query", pattern_jq_query)
         if required is not None:
             pulumi.set(__self__, "required", required)
         if sort is not None:
@@ -2415,6 +2421,14 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
         The pattern of the string property
         """
         return pulumi.get(self, "pattern")
+
+    @property
+    @pulumi.getter(name="patternJqQuery")
+    def pattern_jq_query(self) -> Optional[str]:
+        """
+        The pattern jq query of the string property. This field accepts a JQ expression to dynamically generate either a regex pattern (as a string) or a list of allowed values (as an array). Cannot be used with `pattern`. Empty values are not allowed. Examples: `"if .env == \\"prod\\" then \\"^[a-z]+$\\" else \\"^[a-zA-Z]+$\\" end"` for dynamic regex patterns, or `"[\\"value1\\", \\"value2\\"]"` for a fixed list of allowed values.
+        """
+        return pulumi.get(self, "pattern_jq_query")
 
     @property
     @pulumi.getter
