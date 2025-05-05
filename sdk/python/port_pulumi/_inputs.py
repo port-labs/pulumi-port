@@ -3051,6 +3051,10 @@ if not MYPY:
         """
         The pattern of the string property
         """
+        pattern_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The pattern jq query of the string property. This field accepts a JQ expression to dynamically generate either a regex pattern (as a string) or a list of allowed values (as an array). Cannot be used with `pattern`. Empty values are not allowed. Examples: `"if .env == \\"prod\\" then \\"^[a-z]+$\\" else \\"^[a-zA-Z]+$\\" end"` for dynamic regex patterns, or `"[\\"value1\\", \\"value2\\"]"` for a fixed list of allowed values.
+        """
         required: NotRequired[pulumi.Input[bool]]
         """
         Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
@@ -3092,6 +3096,7 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
                  max_length: Optional[pulumi.Input[int]] = None,
                  min_length: Optional[pulumi.Input[int]] = None,
                  pattern: Optional[pulumi.Input[str]] = None,
+                 pattern_jq_query: Optional[pulumi.Input[str]] = None,
                  required: Optional[pulumi.Input[bool]] = None,
                  sort: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsSortArgs']] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -3113,6 +3118,7 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
         :param pulumi.Input[int] max_length: The max length of the string property
         :param pulumi.Input[int] min_length: The min length of the string property
         :param pulumi.Input[str] pattern: The pattern of the string property
+        :param pulumi.Input[str] pattern_jq_query: The pattern jq query of the string property. This field accepts a JQ expression to dynamically generate either a regex pattern (as a string) or a list of allowed values (as an array). Cannot be used with `pattern`. Empty values are not allowed. Examples: `"if .env == \\"prod\\" then \\"^[a-z]+$\\" else \\"^[a-zA-Z]+$\\" end"` for dynamic regex patterns, or `"[\\"value1\\", \\"value2\\"]"` for a fixed list of allowed values.
         :param pulumi.Input[bool] required: Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
         :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsSortArgs'] sort: How to sort entities when in the self service action form in the UI
         :param pulumi.Input[str] title: The title of the property
@@ -3149,6 +3155,8 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
             pulumi.set(__self__, "min_length", min_length)
         if pattern is not None:
             pulumi.set(__self__, "pattern", pattern)
+        if pattern_jq_query is not None:
+            pulumi.set(__self__, "pattern_jq_query", pattern_jq_query)
         if required is not None:
             pulumi.set(__self__, "required", required)
         if sort is not None:
@@ -3339,6 +3347,18 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
     @pattern.setter
     def pattern(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pattern", value)
+
+    @property
+    @pulumi.getter(name="patternJqQuery")
+    def pattern_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The pattern jq query of the string property. This field accepts a JQ expression to dynamically generate either a regex pattern (as a string) or a list of allowed values (as an array). Cannot be used with `pattern`. Empty values are not allowed. Examples: `"if .env == \\"prod\\" then \\"^[a-z]+$\\" else \\"^[a-zA-Z]+$\\" end"` for dynamic regex patterns, or `"[\\"value1\\", \\"value2\\"]"` for a fixed list of allowed values.
+        """
+        return pulumi.get(self, "pattern_jq_query")
+
+    @pattern_jq_query.setter
+    def pattern_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pattern_jq_query", value)
 
     @property
     @pulumi.getter
