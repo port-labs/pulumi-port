@@ -1508,7 +1508,7 @@ if not MYPY:
         """
         title: pulumi.Input[str]
         """
-        The step's title
+        The step's title (max 25 characters)
         """
 elif False:
     ActionSelfServiceTriggerStepArgsDict: TypeAlias = Mapping[str, Any]
@@ -1520,7 +1520,7 @@ class ActionSelfServiceTriggerStepArgs:
                  title: pulumi.Input[str]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] orders: The order of the properties in this step
-        :param pulumi.Input[str] title: The step's title
+        :param pulumi.Input[str] title: The step's title (max 25 characters)
         """
         pulumi.set(__self__, "orders", orders)
         pulumi.set(__self__, "title", title)
@@ -1541,7 +1541,7 @@ class ActionSelfServiceTriggerStepArgs:
     @pulumi.getter
     def title(self) -> pulumi.Input[str]:
         """
-        The step's title
+        The step's title (max 25 characters)
         """
         return pulumi.get(self, "title")
 

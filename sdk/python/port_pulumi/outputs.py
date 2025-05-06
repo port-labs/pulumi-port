@@ -1139,7 +1139,7 @@ class ActionSelfServiceTriggerStep(dict):
                  title: str):
         """
         :param Sequence[str] orders: The order of the properties in this step
-        :param str title: The step's title
+        :param str title: The step's title (max 25 characters)
         """
         pulumi.set(__self__, "orders", orders)
         pulumi.set(__self__, "title", title)
@@ -1156,7 +1156,7 @@ class ActionSelfServiceTriggerStep(dict):
     @pulumi.getter
     def title(self) -> str:
         """
-        The step's title
+        The step's title (max 25 characters)
         """
         return pulumi.get(self, "title")
 
