@@ -505,7 +505,7 @@
                 },
                 "title": {
                     "type": "string",
-                    "description": "The step's title\n"
+                    "description": "The step's title (max 25 characters)\n"
                 }
             },
             "type": "object",
