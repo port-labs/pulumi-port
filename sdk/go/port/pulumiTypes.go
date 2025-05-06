@@ -3393,7 +3393,7 @@ func (o ActionSelfServiceTriggerPtrOutput) UserProperties() ActionSelfServiceTri
 type ActionSelfServiceTriggerStep struct {
 	// The order of the properties in this step
 	Orders []string `pulumi:"orders"`
-	// The step's title
+	// The step's title (max 25 characters)
 	Title string `pulumi:"title"`
 }
 
@@ -3411,7 +3411,7 @@ type ActionSelfServiceTriggerStepInput interface {
 type ActionSelfServiceTriggerStepArgs struct {
 	// The order of the properties in this step
 	Orders pulumi.StringArrayInput `pulumi:"orders"`
-	// The step's title
+	// The step's title (max 25 characters)
 	Title pulumi.StringInput `pulumi:"title"`
 }
 
@@ -3471,7 +3471,7 @@ func (o ActionSelfServiceTriggerStepOutput) Orders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerStep) []string { return v.Orders }).(pulumi.StringArrayOutput)
 }
 
-// The step's title
+// The step's title (max 25 characters)
 func (o ActionSelfServiceTriggerStepOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerStep) string { return v.Title }).(pulumi.StringOutput)
 }

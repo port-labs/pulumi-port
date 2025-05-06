@@ -283,7 +283,7 @@ export interface ActionSelfServiceTriggerStep {
      */
     orders: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The step's title
+     * The step's title (max 25 characters)
      */
     title: pulumi.Input<string>;
 }
