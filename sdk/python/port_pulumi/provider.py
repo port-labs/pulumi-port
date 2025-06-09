@@ -20,12 +20,15 @@ __all__ = ['ProviderArgs', 'Provider']
 class ProviderArgs:
     def __init__(__self__, *,
                  base_url: Optional[pulumi.Input[str]] = None,
+                 blueprint_property_type_change_protection: Optional[pulumi.Input[bool]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  json_escape_html: Optional[pulumi.Input[bool]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
+        :param pulumi.Input[bool] blueprint_property_type_change_protection: Protects you from accidentally changing the property type of blueprints which will delete the property before recreating
+               it with the new type. Defaults to `true`
         :param pulumi.Input[str] client_id: Client ID for Port-labs
         :param pulumi.Input[bool] json_escape_html: When set to `false` disables the default HTML escaping of json.Marshal when reading data from Port. Defaults to `true`
         :param pulumi.Input[str] secret: Client Secret for Port-labs
@@ -33,6 +36,8 @@ class ProviderArgs:
         """
         if base_url is not None:
             pulumi.set(__self__, "base_url", base_url)
+        if blueprint_property_type_change_protection is not None:
+            pulumi.set(__self__, "blueprint_property_type_change_protection", blueprint_property_type_change_protection)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
         if json_escape_html is not None:
@@ -50,6 +55,19 @@ class ProviderArgs:
     @base_url.setter
     def base_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "base_url", value)
+
+    @property
+    @pulumi.getter(name="blueprintPropertyTypeChangeProtection")
+    def blueprint_property_type_change_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Protects you from accidentally changing the property type of blueprints which will delete the property before recreating
+        it with the new type. Defaults to `true`
+        """
+        return pulumi.get(self, "blueprint_property_type_change_protection")
+
+    @blueprint_property_type_change_protection.setter
+    def blueprint_property_type_change_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "blueprint_property_type_change_protection", value)
 
     @property
     @pulumi.getter(name="clientId")
@@ -106,6 +124,7 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  base_url: Optional[pulumi.Input[str]] = None,
+                 blueprint_property_type_change_protection: Optional[pulumi.Input[bool]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  json_escape_html: Optional[pulumi.Input[bool]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
@@ -119,6 +138,8 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] blueprint_property_type_change_protection: Protects you from accidentally changing the property type of blueprints which will delete the property before recreating
+               it with the new type. Defaults to `true`
         :param pulumi.Input[str] client_id: Client ID for Port-labs
         :param pulumi.Input[bool] json_escape_html: When set to `false` disables the default HTML escaping of json.Marshal when reading data from Port. Defaults to `true`
         :param pulumi.Input[str] secret: Client Secret for Port-labs
@@ -152,6 +173,7 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  base_url: Optional[pulumi.Input[str]] = None,
+                 blueprint_property_type_change_protection: Optional[pulumi.Input[bool]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  json_escape_html: Optional[pulumi.Input[bool]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
@@ -166,6 +188,7 @@ class Provider(pulumi.ProviderResource):
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
             __props__.__dict__["base_url"] = base_url
+            __props__.__dict__["blueprint_property_type_change_protection"] = pulumi.Output.from_input(blueprint_property_type_change_protection).apply(pulumi.runtime.to_json) if blueprint_property_type_change_protection is not None else None
             __props__.__dict__["client_id"] = client_id
             __props__.__dict__["json_escape_html"] = pulumi.Output.from_input(json_escape_html).apply(pulumi.runtime.to_json) if json_escape_html is not None else None
             __props__.__dict__["secret"] = None if secret is None else pulumi.Output.secret(secret)

@@ -58,6 +58,10 @@
             "baseUrl": {
                 "type": "string"
             },
+            "blueprintPropertyTypeChangeProtection": {
+                "type": "boolean",
+                "description": "Protects you from accidentally changing the property type of blueprints which will delete the property before recreating\nit with the new type. Defaults to `true`\n"
+            },
             "clientId": {
                 "type": "string",
                 "description": "Client ID for Port-labs\n"
@@ -1032,8 +1036,7 @@
             },
             "type": "object",
             "required": [
-                "operator",
-                "value"
+                "operator"
             ]
         },
         "port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue:ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue": {
@@ -3251,6 +3254,10 @@
             "baseUrl": {
                 "type": "string"
             },
+            "blueprintPropertyTypeChangeProtection": {
+                "type": "boolean",
+                "description": "Protects you from accidentally changing the property type of blueprints which will delete the property before recreating\nit with the new type. Defaults to `true`\n"
+            },
             "clientId": {
                 "type": "string",
                 "description": "Client ID for Port-labs\n"
@@ -3273,6 +3280,10 @@
         "inputProperties": {
             "baseUrl": {
                 "type": "string"
+            },
+            "blueprintPropertyTypeChangeProtection": {
+                "type": "boolean",
+                "description": "Protects you from accidentally changing the property type of blueprints which will delete the property before recreating\nit with the new type. Defaults to `true`\n"
             },
             "clientId": {
                 "type": "string",

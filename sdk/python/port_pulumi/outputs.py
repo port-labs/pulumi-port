@@ -2504,21 +2504,22 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDataset(dict):
 class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule(dict):
     def __init__(__self__, *,
                  operator: str,
-                 value: 'outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue',
                  blueprint: Optional[str] = None,
-                 property: Optional[str] = None):
+                 property: Optional[str] = None,
+                 value: Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue'] = None):
         """
         :param str operator: The operator of the rule
-        :param 'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs' value: The value of the rule
         :param str blueprint: The blueprint identifier the action relates to
         :param str property: The property identifier of the rule
+        :param 'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs' value: The value of the rule
         """
         pulumi.set(__self__, "operator", operator)
-        pulumi.set(__self__, "value", value)
         if blueprint is not None:
             pulumi.set(__self__, "blueprint", blueprint)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -2530,19 +2531,19 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule(dict):
 
     @property
     @pulumi.getter
-    def value(self) -> 'outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue':
-        """
-        The value of the rule
-        """
-        return pulumi.get(self, "value")
-
-    @property
-    @pulumi.getter
     def blueprint(self) -> Optional[str]:
         """
         The blueprint identifier the action relates to
         """
         return pulumi.get(self, "blueprint")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue']:
+        """
+        The value of the rule
+        """
+        return pulumi.get(self, "value")
 
     @property
     @pulumi.getter

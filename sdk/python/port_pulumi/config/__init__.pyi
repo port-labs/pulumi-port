@@ -16,6 +16,12 @@ from .. import _utilities
 
 baseUrl: Optional[str]
 
+blueprintPropertyTypeChangeProtection: Optional[bool]
+"""
+Protects you from accidentally changing the property type of blueprints which will delete the property before recreating
+it with the new type. Defaults to `true`
+"""
+
 clientId: Optional[str]
 """
 Client ID for Port-labs

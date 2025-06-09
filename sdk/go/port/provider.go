@@ -56,6 +56,9 @@ func NewProvider(ctx *pulumi.Context,
 
 type providerArgs struct {
 	BaseUrl *string `pulumi:"baseUrl"`
+	// Protects you from accidentally changing the property type of blueprints which will delete the property before recreating
+	// it with the new type. Defaults to `true`
+	BlueprintPropertyTypeChangeProtection *bool `pulumi:"blueprintPropertyTypeChangeProtection"`
 	// Client ID for Port-labs
 	ClientId *string `pulumi:"clientId"`
 	// When set to `false` disables the default HTML escaping of json.Marshal when reading data from Port. Defaults to `true`
@@ -69,6 +72,9 @@ type providerArgs struct {
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
 	BaseUrl pulumi.StringPtrInput
+	// Protects you from accidentally changing the property type of blueprints which will delete the property before recreating
+	// it with the new type. Defaults to `true`
+	BlueprintPropertyTypeChangeProtection pulumi.BoolPtrInput
 	// Client ID for Port-labs
 	ClientId pulumi.StringPtrInput
 	// When set to `false` disables the default HTML escaping of json.Marshal when reading data from Port. Defaults to `true`

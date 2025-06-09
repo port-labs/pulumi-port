@@ -696,7 +696,7 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule {
     /**
      * The value of the rule
      */
-    value: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue;
+    value?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue;
 }
 
 export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue {

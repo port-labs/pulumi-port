@@ -51,6 +51,7 @@ export class Provider extends pulumi.ProviderResource {
         opts = opts || {};
         {
             resourceInputs["baseUrl"] = args ? args.baseUrl : undefined;
+            resourceInputs["blueprintPropertyTypeChangeProtection"] = pulumi.output(args ? args.blueprintPropertyTypeChangeProtection : undefined).apply(JSON.stringify);
             resourceInputs["clientId"] = args ? args.clientId : undefined;
             resourceInputs["jsonEscapeHtml"] = pulumi.output(args ? args.jsonEscapeHtml : undefined).apply(JSON.stringify);
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
@@ -68,6 +69,11 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     baseUrl?: pulumi.Input<string>;
+    /**
+     * Protects you from accidentally changing the property type of blueprints which will delete the property before recreating
+     * it with the new type. Defaults to `true`
+     */
+    blueprintPropertyTypeChangeProtection?: pulumi.Input<boolean>;
     /**
      * Client ID for Port-labs
      */
