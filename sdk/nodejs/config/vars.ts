@@ -16,6 +16,18 @@ Object.defineProperty(exports, "baseUrl", {
 });
 
 /**
+ * Protects you from accidentally changing the property type of blueprints which will delete the property before recreating
+ * it with the new type. Defaults to `true`
+ */
+export declare const blueprintPropertyTypeChangeProtection: boolean | undefined;
+Object.defineProperty(exports, "blueprintPropertyTypeChangeProtection", {
+    get() {
+        return __config.getObject<boolean>("blueprintPropertyTypeChangeProtection");
+    },
+    enumerable: true,
+});
+
+/**
  * Client ID for Port-labs
  */
 export declare const clientId: string | undefined;

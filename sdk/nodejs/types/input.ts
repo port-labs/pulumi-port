@@ -696,7 +696,7 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule {
     /**
      * The value of the rule
      */
-    value: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue>;
+    value?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue>;
 }
 
 export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue {

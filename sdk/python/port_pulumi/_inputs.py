@@ -3477,10 +3477,6 @@ if not MYPY:
         """
         The operator of the rule
         """
-        value: pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgsDict']
-        """
-        The value of the rule
-        """
         blueprint: NotRequired[pulumi.Input[str]]
         """
         The blueprint identifier the action relates to
@@ -3489,6 +3485,10 @@ if not MYPY:
         """
         The property identifier of the rule
         """
+        value: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgsDict']]
+        """
+        The value of the rule
+        """
 elif False:
     ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3496,21 +3496,22 @@ elif False:
 class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs:
     def __init__(__self__, *,
                  operator: pulumi.Input[str],
-                 value: pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs'],
                  blueprint: Optional[pulumi.Input[str]] = None,
-                 property: Optional[pulumi.Input[str]] = None):
+                 property: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs']] = None):
         """
         :param pulumi.Input[str] operator: The operator of the rule
-        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs'] value: The value of the rule
         :param pulumi.Input[str] blueprint: The blueprint identifier the action relates to
         :param pulumi.Input[str] property: The property identifier of the rule
+        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs'] value: The value of the rule
         """
         pulumi.set(__self__, "operator", operator)
-        pulumi.set(__self__, "value", value)
         if blueprint is not None:
             pulumi.set(__self__, "blueprint", blueprint)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -3526,18 +3527,6 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs:
 
     @property
     @pulumi.getter
-    def value(self) -> pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs']:
-        """
-        The value of the rule
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs']):
-        pulumi.set(self, "value", value)
-
-    @property
-    @pulumi.getter
     def blueprint(self) -> Optional[pulumi.Input[str]]:
         """
         The blueprint identifier the action relates to
@@ -3547,6 +3536,18 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs:
     @blueprint.setter
     def blueprint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs']]:
+        """
+        The value of the rule
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs']]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter

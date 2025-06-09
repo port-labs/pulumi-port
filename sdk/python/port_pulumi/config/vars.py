@@ -25,6 +25,14 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('baseUrl')
 
     @property
+    def blueprint_property_type_change_protection(self) -> Optional[bool]:
+        """
+        Protects you from accidentally changing the property type of blueprints which will delete the property before recreating
+        it with the new type. Defaults to `true`
+        """
+        return __config__.get_bool('blueprintPropertyTypeChangeProtection')
+
+    @property
     def client_id(self) -> Optional[str]:
         """
         Client ID for Port-labs

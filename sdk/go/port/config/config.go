@@ -15,6 +15,12 @@ func GetBaseUrl(ctx *pulumi.Context) string {
 	return config.Get(ctx, "port:baseUrl")
 }
 
+// Protects you from accidentally changing the property type of blueprints which will delete the property before recreating
+// it with the new type. Defaults to `true`
+func GetBlueprintPropertyTypeChangeProtection(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "port:blueprintPropertyTypeChangeProtection")
+}
+
 // Client ID for Port-labs
 func GetClientId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "port:clientId")
