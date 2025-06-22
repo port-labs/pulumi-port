@@ -272,6 +272,10 @@ export interface ActionSelfServiceTrigger {
      */
     steps?: outputs.ActionSelfServiceTriggerStep[];
     /**
+     * action titles
+     */
+    titles?: {[key: string]: outputs.ActionSelfServiceTriggerTitles};
+    /**
      * User properties
      */
     userProperties?: outputs.ActionSelfServiceTriggerUserProperties;
@@ -286,6 +290,25 @@ export interface ActionSelfServiceTriggerStep {
      * The step's title (max 25 characters)
      */
     title: string;
+}
+
+export interface ActionSelfServiceTriggerTitles {
+    /**
+     * The description of the action title
+     */
+    description?: string;
+    /**
+     * The title of the action title
+     */
+    title: string;
+    /**
+     * The visibility of the string property
+     */
+    visible?: boolean;
+    /**
+     * The visibility condition jq query of the string property
+     */
+    visibleJqQuery?: string;
 }
 
 export interface ActionSelfServiceTriggerUserProperties {

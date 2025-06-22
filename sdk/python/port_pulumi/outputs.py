@@ -37,6 +37,7 @@ __all__ = [
     'ActionPermissionsPermissionsExecute',
     'ActionSelfServiceTrigger',
     'ActionSelfServiceTriggerStep',
+    'ActionSelfServiceTriggerTitles',
     'ActionSelfServiceTriggerUserProperties',
     'ActionSelfServiceTriggerUserPropertiesArrayProps',
     'ActionSelfServiceTriggerUserPropertiesArrayPropsBooleanItems',
@@ -1051,6 +1052,7 @@ class ActionSelfServiceTrigger(dict):
                  order_properties: Optional[Sequence[str]] = None,
                  required_jq_query: Optional[str] = None,
                  steps: Optional[Sequence['outputs.ActionSelfServiceTriggerStep']] = None,
+                 titles: Optional[Mapping[str, 'outputs.ActionSelfServiceTriggerTitles']] = None,
                  user_properties: Optional['outputs.ActionSelfServiceTriggerUserProperties'] = None):
         """
         :param str operation: The operation type of the action
@@ -1059,6 +1061,7 @@ class ActionSelfServiceTrigger(dict):
         :param Sequence[str] order_properties: Order properties
         :param str required_jq_query: The required jq query of the property
         :param Sequence['ActionSelfServiceTriggerStepArgs'] steps: The steps of the action
+        :param Mapping[str, 'ActionSelfServiceTriggerTitlesArgs'] titles: action titles
         :param 'ActionSelfServiceTriggerUserPropertiesArgs' user_properties: User properties
         """
         pulumi.set(__self__, "operation", operation)
@@ -1072,6 +1075,8 @@ class ActionSelfServiceTrigger(dict):
             pulumi.set(__self__, "required_jq_query", required_jq_query)
         if steps is not None:
             pulumi.set(__self__, "steps", steps)
+        if titles is not None:
+            pulumi.set(__self__, "titles", titles)
         if user_properties is not None:
             pulumi.set(__self__, "user_properties", user_properties)
 
@@ -1124,6 +1129,14 @@ class ActionSelfServiceTrigger(dict):
         return pulumi.get(self, "steps")
 
     @property
+    @pulumi.getter
+    def titles(self) -> Optional[Mapping[str, 'outputs.ActionSelfServiceTriggerTitles']]:
+        """
+        action titles
+        """
+        return pulumi.get(self, "titles")
+
+    @property
     @pulumi.getter(name="userProperties")
     def user_properties(self) -> Optional['outputs.ActionSelfServiceTriggerUserProperties']:
         """
@@ -1159,6 +1172,77 @@ class ActionSelfServiceTriggerStep(dict):
         The step's title (max 25 characters)
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class ActionSelfServiceTriggerTitles(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "visibleJqQuery":
+            suggest = "visible_jq_query"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTriggerTitles. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionSelfServiceTriggerTitles.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionSelfServiceTriggerTitles.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 title: str,
+                 description: Optional[str] = None,
+                 visible: Optional[bool] = None,
+                 visible_jq_query: Optional[str] = None):
+        """
+        :param str title: The title of the action title
+        :param str description: The description of the action title
+        :param bool visible: The visibility of the string property
+        :param str visible_jq_query: The visibility condition jq query of the string property
+        """
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        The title of the action title
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the action title
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[bool]:
+        """
+        The visibility of the string property
+        """
+        return pulumi.get(self, "visible")
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[str]:
+        """
+        The visibility condition jq query of the string property
+        """
+        return pulumi.get(self, "visible_jq_query")
 
 
 @pulumi.output_type
