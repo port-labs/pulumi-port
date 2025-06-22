@@ -3152,6 +3152,8 @@ type ActionSelfServiceTrigger struct {
 	RequiredJqQuery *string `pulumi:"requiredJqQuery"`
 	// The steps of the action
 	Steps []ActionSelfServiceTriggerStep `pulumi:"steps"`
+	// action titles
+	Titles map[string]ActionSelfServiceTriggerTitles `pulumi:"titles"`
 	// User properties
 	UserProperties *ActionSelfServiceTriggerUserProperties `pulumi:"userProperties"`
 }
@@ -3180,6 +3182,8 @@ type ActionSelfServiceTriggerArgs struct {
 	RequiredJqQuery pulumi.StringPtrInput `pulumi:"requiredJqQuery"`
 	// The steps of the action
 	Steps ActionSelfServiceTriggerStepArrayInput `pulumi:"steps"`
+	// action titles
+	Titles ActionSelfServiceTriggerTitlesMapInput `pulumi:"titles"`
 	// User properties
 	UserProperties ActionSelfServiceTriggerUserPropertiesPtrInput `pulumi:"userProperties"`
 }
@@ -3291,6 +3295,11 @@ func (o ActionSelfServiceTriggerOutput) Steps() ActionSelfServiceTriggerStepArra
 	return o.ApplyT(func(v ActionSelfServiceTrigger) []ActionSelfServiceTriggerStep { return v.Steps }).(ActionSelfServiceTriggerStepArrayOutput)
 }
 
+// action titles
+func (o ActionSelfServiceTriggerOutput) Titles() ActionSelfServiceTriggerTitlesMapOutput {
+	return o.ApplyT(func(v ActionSelfServiceTrigger) map[string]ActionSelfServiceTriggerTitles { return v.Titles }).(ActionSelfServiceTriggerTitlesMapOutput)
+}
+
 // User properties
 func (o ActionSelfServiceTriggerOutput) UserProperties() ActionSelfServiceTriggerUserPropertiesPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTrigger) *ActionSelfServiceTriggerUserProperties { return v.UserProperties }).(ActionSelfServiceTriggerUserPropertiesPtrOutput)
@@ -3378,6 +3387,16 @@ func (o ActionSelfServiceTriggerPtrOutput) Steps() ActionSelfServiceTriggerStepA
 		}
 		return v.Steps
 	}).(ActionSelfServiceTriggerStepArrayOutput)
+}
+
+// action titles
+func (o ActionSelfServiceTriggerPtrOutput) Titles() ActionSelfServiceTriggerTitlesMapOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTrigger) map[string]ActionSelfServiceTriggerTitles {
+		if v == nil {
+			return nil
+		}
+		return v.Titles
+	}).(ActionSelfServiceTriggerTitlesMapOutput)
 }
 
 // User properties
@@ -3494,6 +3513,130 @@ func (o ActionSelfServiceTriggerStepArrayOutput) Index(i pulumi.IntInput) Action
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionSelfServiceTriggerStep {
 		return vs[0].([]ActionSelfServiceTriggerStep)[vs[1].(int)]
 	}).(ActionSelfServiceTriggerStepOutput)
+}
+
+type ActionSelfServiceTriggerTitles struct {
+	// The description of the action title
+	Description *string `pulumi:"description"`
+	// The title of the action title
+	Title string `pulumi:"title"`
+	// The visibility of the string property
+	Visible *bool `pulumi:"visible"`
+	// The visibility condition jq query of the string property
+	VisibleJqQuery *string `pulumi:"visibleJqQuery"`
+}
+
+// ActionSelfServiceTriggerTitlesInput is an input type that accepts ActionSelfServiceTriggerTitlesArgs and ActionSelfServiceTriggerTitlesOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerTitlesInput` via:
+//
+//	ActionSelfServiceTriggerTitlesArgs{...}
+type ActionSelfServiceTriggerTitlesInput interface {
+	pulumi.Input
+
+	ToActionSelfServiceTriggerTitlesOutput() ActionSelfServiceTriggerTitlesOutput
+	ToActionSelfServiceTriggerTitlesOutputWithContext(context.Context) ActionSelfServiceTriggerTitlesOutput
+}
+
+type ActionSelfServiceTriggerTitlesArgs struct {
+	// The description of the action title
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The title of the action title
+	Title pulumi.StringInput `pulumi:"title"`
+	// The visibility of the string property
+	Visible pulumi.BoolPtrInput `pulumi:"visible"`
+	// The visibility condition jq query of the string property
+	VisibleJqQuery pulumi.StringPtrInput `pulumi:"visibleJqQuery"`
+}
+
+func (ActionSelfServiceTriggerTitlesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerTitles)(nil)).Elem()
+}
+
+func (i ActionSelfServiceTriggerTitlesArgs) ToActionSelfServiceTriggerTitlesOutput() ActionSelfServiceTriggerTitlesOutput {
+	return i.ToActionSelfServiceTriggerTitlesOutputWithContext(context.Background())
+}
+
+func (i ActionSelfServiceTriggerTitlesArgs) ToActionSelfServiceTriggerTitlesOutputWithContext(ctx context.Context) ActionSelfServiceTriggerTitlesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerTitlesOutput)
+}
+
+// ActionSelfServiceTriggerTitlesMapInput is an input type that accepts ActionSelfServiceTriggerTitlesMap and ActionSelfServiceTriggerTitlesMapOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerTitlesMapInput` via:
+//
+//	ActionSelfServiceTriggerTitlesMap{ "key": ActionSelfServiceTriggerTitlesArgs{...} }
+type ActionSelfServiceTriggerTitlesMapInput interface {
+	pulumi.Input
+
+	ToActionSelfServiceTriggerTitlesMapOutput() ActionSelfServiceTriggerTitlesMapOutput
+	ToActionSelfServiceTriggerTitlesMapOutputWithContext(context.Context) ActionSelfServiceTriggerTitlesMapOutput
+}
+
+type ActionSelfServiceTriggerTitlesMap map[string]ActionSelfServiceTriggerTitlesInput
+
+func (ActionSelfServiceTriggerTitlesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActionSelfServiceTriggerTitles)(nil)).Elem()
+}
+
+func (i ActionSelfServiceTriggerTitlesMap) ToActionSelfServiceTriggerTitlesMapOutput() ActionSelfServiceTriggerTitlesMapOutput {
+	return i.ToActionSelfServiceTriggerTitlesMapOutputWithContext(context.Background())
+}
+
+func (i ActionSelfServiceTriggerTitlesMap) ToActionSelfServiceTriggerTitlesMapOutputWithContext(ctx context.Context) ActionSelfServiceTriggerTitlesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerTitlesMapOutput)
+}
+
+type ActionSelfServiceTriggerTitlesOutput struct{ *pulumi.OutputState }
+
+func (ActionSelfServiceTriggerTitlesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerTitles)(nil)).Elem()
+}
+
+func (o ActionSelfServiceTriggerTitlesOutput) ToActionSelfServiceTriggerTitlesOutput() ActionSelfServiceTriggerTitlesOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerTitlesOutput) ToActionSelfServiceTriggerTitlesOutputWithContext(ctx context.Context) ActionSelfServiceTriggerTitlesOutput {
+	return o
+}
+
+// The description of the action title
+func (o ActionSelfServiceTriggerTitlesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerTitles) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The title of the action title
+func (o ActionSelfServiceTriggerTitlesOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerTitles) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// The visibility of the string property
+func (o ActionSelfServiceTriggerTitlesOutput) Visible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerTitles) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
+}
+
+// The visibility condition jq query of the string property
+func (o ActionSelfServiceTriggerTitlesOutput) VisibleJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerTitles) *string { return v.VisibleJqQuery }).(pulumi.StringPtrOutput)
+}
+
+type ActionSelfServiceTriggerTitlesMapOutput struct{ *pulumi.OutputState }
+
+func (ActionSelfServiceTriggerTitlesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ActionSelfServiceTriggerTitles)(nil)).Elem()
+}
+
+func (o ActionSelfServiceTriggerTitlesMapOutput) ToActionSelfServiceTriggerTitlesMapOutput() ActionSelfServiceTriggerTitlesMapOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerTitlesMapOutput) ToActionSelfServiceTriggerTitlesMapOutputWithContext(ctx context.Context) ActionSelfServiceTriggerTitlesMapOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerTitlesMapOutput) MapIndex(k pulumi.StringInput) ActionSelfServiceTriggerTitlesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ActionSelfServiceTriggerTitles {
+		return vs[0].(map[string]ActionSelfServiceTriggerTitles)[vs[1].(string)]
+	}).(ActionSelfServiceTriggerTitlesOutput)
 }
 
 type ActionSelfServiceTriggerUserProperties struct {
@@ -17330,6 +17473,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerPtrInput)(nil)).Elem(), ActionSelfServiceTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerStepInput)(nil)).Elem(), ActionSelfServiceTriggerStepArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerStepArrayInput)(nil)).Elem(), ActionSelfServiceTriggerStepArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerTitlesInput)(nil)).Elem(), ActionSelfServiceTriggerTitlesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerTitlesMapInput)(nil)).Elem(), ActionSelfServiceTriggerTitlesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesPtrInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesArrayPropsInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesArrayPropsArgs{})
@@ -17538,6 +17683,8 @@ func init() {
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerPtrOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerStepOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerStepArrayOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerTitlesOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerTitlesMapOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesArrayPropsOutput{})

@@ -272,6 +272,10 @@ export interface ActionSelfServiceTrigger {
      */
     steps?: pulumi.Input<pulumi.Input<inputs.ActionSelfServiceTriggerStep>[]>;
     /**
+     * action titles
+     */
+    titles?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ActionSelfServiceTriggerTitles>}>;
+    /**
      * User properties
      */
     userProperties?: pulumi.Input<inputs.ActionSelfServiceTriggerUserProperties>;
@@ -286,6 +290,25 @@ export interface ActionSelfServiceTriggerStep {
      * The step's title (max 25 characters)
      */
     title: pulumi.Input<string>;
+}
+
+export interface ActionSelfServiceTriggerTitles {
+    /**
+     * The description of the action title
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The title of the action title
+     */
+    title: pulumi.Input<string>;
+    /**
+     * The visibility of the string property
+     */
+    visible?: pulumi.Input<boolean>;
+    /**
+     * The visibility condition jq query of the string property
+     */
+    visibleJqQuery?: pulumi.Input<string>;
 }
 
 export interface ActionSelfServiceTriggerUserProperties {

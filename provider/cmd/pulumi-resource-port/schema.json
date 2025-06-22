@@ -488,6 +488,13 @@
                     },
                     "description": "The steps of the action\n"
                 },
+                "titles": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/ActionSelfServiceTriggerTitles:ActionSelfServiceTriggerTitles"
+                    },
+                    "description": "action titles\n"
+                },
                 "userProperties": {
                     "$ref": "#/types/port:index/ActionSelfServiceTriggerUserProperties:ActionSelfServiceTriggerUserProperties",
                     "description": "User properties\n"
@@ -515,6 +522,30 @@
             "type": "object",
             "required": [
                 "orders",
+                "title"
+            ]
+        },
+        "port:index/ActionSelfServiceTriggerTitles:ActionSelfServiceTriggerTitles": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the action title\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the action title\n"
+                },
+                "visible": {
+                    "type": "boolean",
+                    "description": "The visibility of the string property\n"
+                },
+                "visibleJqQuery": {
+                    "type": "string",
+                    "description": "The visibility condition jq query of the string property\n"
+                }
+            },
+            "type": "object",
+            "required": [
                 "title"
             ]
         },
