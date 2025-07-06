@@ -6789,7 +6789,7 @@ class WebhookMappingEntity(dict):
         :param str identifier: The identifier of the entity
         :param str icon: The icon of the entity
         :param Mapping[str, str] properties: The properties of the entity
-        :param Mapping[str, str] relations: The relations of the entity
+        :param Mapping[str, str] relations: The relations of the entity. Relations can be defined as either simple JQ expressions (strings) or search query objects. When using objects, the rules array must be encoded with jsonencode().
         :param str team: The team of the entity
         :param str title: The title of the entity
         """
@@ -6833,7 +6833,7 @@ class WebhookMappingEntity(dict):
     @pulumi.getter
     def relations(self) -> Optional[Mapping[str, str]]:
         """
-        The relations of the entity
+        The relations of the entity. Relations can be defined as either simple JQ expressions (strings) or search query objects. When using objects, the rules array must be encoded with jsonencode().
         """
         return pulumi.get(self, "relations")
 

@@ -368,7 +368,102 @@ class Webhook(pulumi.CustomResource):
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Webhook resource
+        Webhook resource can be used to create webhooks integrations in Port.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_port as port
+
+        author = port.index.Port_blueprint("author",
+            title=Author,
+            icon=User,
+            identifier=author,
+            properties={
+                stringProps: {
+                    name: {
+                        type: string,
+                        title: Name,
+                    },
+                },
+            })
+        team = port.index.Port_blueprint("team",
+            title=Team,
+            icon=Team,
+            identifier=team,
+            properties={
+                stringProps: {
+                    name: {
+                        type: string,
+                        title: Team Name,
+                    },
+                },
+            })
+        microservice = port.index.Port_blueprint("microservice",
+            title=TF test microservice,
+            icon=Terraform,
+            identifier=microservice,
+            properties={
+                stringProps: {
+                    url: {
+                        type: string,
+                        title: URL,
+                    },
+                },
+            },
+            relations={
+                author: {
+                    title: Author,
+                    target: author.identifier,
+                },
+                team: {
+                    title: Team,
+                    target: team.identifier,
+                },
+            })
+        create_pr = port.index.Port_webhook("createPr",
+            identifier=pr_webhook,
+            title=Webhook with mixed relations,
+            icon=Terraform,
+            enabled=True,
+            mappings=[{
+                blueprint: microservice.identifier,
+                operation: {
+                    type: create,
+                },
+                filter: .headers."x-github-event" == "pull_request",
+                entity: {
+                    identifier: .body.pull_request.id | tostring,
+                    title: .body.pull_request.title,
+                    properties: {
+                        url: .body.pull_request.html_url,
+                    },
+                    relations: {
+                        author: json.dumps({
+                            combinator: 'and',
+                            rules: [{
+                                property: '$identifier',
+                                operator: '=',
+                                value: .body.pull_request.user.login | tostring,
+                            }],
+                        }),
+                        team: .body.repository.owner.login | tostring,
+                    },
+                },
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[
+                    microservice,
+                    author,
+                    team,
+                ]))
+        ```
+
+        ## Notes
+
+        - When using object format for relations, `combinator`, `property` and `operator` fields should be enclosed in single quotes, while `value` should not have quotes as it's a JQ expression. The single quotes are required because these fields contain literal string values that must be passed as-is to the Port API, whereas `value` contains a JQ expression that should be evaluated dynamically.
+        - For all available operators, see the [Port comparison operators documentation](https://docs.port.io/search-and-query/comparison-operators).
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -387,7 +482,102 @@ class Webhook(pulumi.CustomResource):
                  args: Optional[WebhookArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Webhook resource
+        Webhook resource can be used to create webhooks integrations in Port.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_port as port
+
+        author = port.index.Port_blueprint("author",
+            title=Author,
+            icon=User,
+            identifier=author,
+            properties={
+                stringProps: {
+                    name: {
+                        type: string,
+                        title: Name,
+                    },
+                },
+            })
+        team = port.index.Port_blueprint("team",
+            title=Team,
+            icon=Team,
+            identifier=team,
+            properties={
+                stringProps: {
+                    name: {
+                        type: string,
+                        title: Team Name,
+                    },
+                },
+            })
+        microservice = port.index.Port_blueprint("microservice",
+            title=TF test microservice,
+            icon=Terraform,
+            identifier=microservice,
+            properties={
+                stringProps: {
+                    url: {
+                        type: string,
+                        title: URL,
+                    },
+                },
+            },
+            relations={
+                author: {
+                    title: Author,
+                    target: author.identifier,
+                },
+                team: {
+                    title: Team,
+                    target: team.identifier,
+                },
+            })
+        create_pr = port.index.Port_webhook("createPr",
+            identifier=pr_webhook,
+            title=Webhook with mixed relations,
+            icon=Terraform,
+            enabled=True,
+            mappings=[{
+                blueprint: microservice.identifier,
+                operation: {
+                    type: create,
+                },
+                filter: .headers."x-github-event" == "pull_request",
+                entity: {
+                    identifier: .body.pull_request.id | tostring,
+                    title: .body.pull_request.title,
+                    properties: {
+                        url: .body.pull_request.html_url,
+                    },
+                    relations: {
+                        author: json.dumps({
+                            combinator: 'and',
+                            rules: [{
+                                property: '$identifier',
+                                operator: '=',
+                                value: .body.pull_request.user.login | tostring,
+                            }],
+                        }),
+                        team: .body.repository.owner.login | tostring,
+                    },
+                },
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[
+                    microservice,
+                    author,
+                    team,
+                ]))
+        ```
+
+        ## Notes
+
+        - When using object format for relations, `combinator`, `property` and `operator` fields should be enclosed in single quotes, while `value` should not have quotes as it's a JQ expression. The single quotes are required because these fields contain literal string values that must be passed as-is to the Port API, whereas `value` contains a JQ expression that should be evaluated dynamically.
+        - For all available operators, see the [Port comparison operators documentation](https://docs.port.io/search-and-query/comparison-operators).
 
         :param str resource_name: The name of the resource.
         :param WebhookArgs args: The arguments to use to populate this resource's properties.
