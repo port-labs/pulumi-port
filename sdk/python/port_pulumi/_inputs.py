@@ -9624,7 +9624,7 @@ if not MYPY:
         """
         relations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
-        The relations of the entity
+        The relations of the entity. Relations can be defined as either simple JQ expressions (strings) or search query objects. When using objects, the rules array must be encoded with jsonencode().
         """
         team: NotRequired[pulumi.Input[str]]
         """
@@ -9650,7 +9650,7 @@ class WebhookMappingEntityArgs:
         :param pulumi.Input[str] identifier: The identifier of the entity
         :param pulumi.Input[str] icon: The icon of the entity
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: The properties of the entity
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] relations: The relations of the entity
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] relations: The relations of the entity. Relations can be defined as either simple JQ expressions (strings) or search query objects. When using objects, the rules array must be encoded with jsonencode().
         :param pulumi.Input[str] team: The team of the entity
         :param pulumi.Input[str] title: The title of the entity
         """
@@ -9706,7 +9706,7 @@ class WebhookMappingEntityArgs:
     @pulumi.getter
     def relations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The relations of the entity
+        The relations of the entity. Relations can be defined as either simple JQ expressions (strings) or search query objects. When using objects, the rules array must be encoded with jsonencode().
         """
         return pulumi.get(self, "relations")
 

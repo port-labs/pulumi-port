@@ -1962,7 +1962,7 @@ export interface WebhookMappingEntity {
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The relations of the entity
+     * The relations of the entity. Relations can be defined as either simple JQ expressions (strings) or search query objects. When using objects, the rules array must be encoded with jsonencode().
      */
     relations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

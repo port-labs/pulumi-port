@@ -7,7 +7,106 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Webhook resource
+ * Webhook resource can be used to create webhooks integrations in Port.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as port from "@pulumi/port";
+ *
+ * const author = new port.index.Port_blueprint("author", {
+ *     title: "Author",
+ *     icon: "User",
+ *     identifier: "author",
+ *     properties: {
+ *         stringProps: {
+ *             name: {
+ *                 type: "string",
+ *                 title: "Name",
+ *             },
+ *         },
+ *     },
+ * });
+ * const team = new port.index.Port_blueprint("team", {
+ *     title: "Team",
+ *     icon: "Team",
+ *     identifier: "team",
+ *     properties: {
+ *         stringProps: {
+ *             name: {
+ *                 type: "string",
+ *                 title: "Team Name",
+ *             },
+ *         },
+ *     },
+ * });
+ * const microservice = new port.index.Port_blueprint("microservice", {
+ *     title: "TF test microservice",
+ *     icon: "Terraform",
+ *     identifier: "microservice",
+ *     properties: {
+ *         stringProps: {
+ *             url: {
+ *                 type: "string",
+ *                 title: "URL",
+ *             },
+ *         },
+ *     },
+ *     relations: {
+ *         author: {
+ *             title: "Author",
+ *             target: author.identifier,
+ *         },
+ *         team: {
+ *             title: "Team",
+ *             target: team.identifier,
+ *         },
+ *     },
+ * });
+ * const createPr = new port.index.Port_webhook("createPr", {
+ *     identifier: "pr_webhook",
+ *     title: "Webhook with mixed relations",
+ *     icon: "Terraform",
+ *     enabled: true,
+ *     mappings: [{
+ *         blueprint: microservice.identifier,
+ *         operation: {
+ *             type: "create",
+ *         },
+ *         filter: ".headers.\"x-github-event\" == \"pull_request\"",
+ *         entity: {
+ *             identifier: ".body.pull_request.id | tostring",
+ *             title: ".body.pull_request.title",
+ *             properties: {
+ *                 url: ".body.pull_request.html_url",
+ *             },
+ *             relations: {
+ *                 author: JSON.stringify({
+ *                     combinator: "'and'",
+ *                     rules: [{
+ *                         property: "'$identifier'",
+ *                         operator: "'='",
+ *                         value: ".body.pull_request.user.login | tostring",
+ *                     }],
+ *                 }),
+ *                 team: ".body.repository.owner.login | tostring",
+ *             },
+ *         },
+ *     }],
+ * }, {
+ *     dependsOn: [
+ *         microservice,
+ *         author,
+ *         team,
+ *     ],
+ * });
+ * ```
+ *
+ * ## Notes
+ *
+ * - When using object format for relations, `combinator`, `property` and `operator` fields should be enclosed in single quotes, while `value` should not have quotes as it's a JQ expression. The single quotes are required because these fields contain literal string values that must be passed as-is to the Port API, whereas `value` contains a JQ expression that should be evaluated dynamically.
+ * - For all available operators, see the [Port comparison operators documentation](https://docs.port.io/search-and-query/comparison-operators).
  */
 export class Webhook extends pulumi.CustomResource {
     /**

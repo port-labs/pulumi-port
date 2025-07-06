@@ -16344,7 +16344,7 @@ type WebhookMappingEntity struct {
 	Identifier string `pulumi:"identifier"`
 	// The properties of the entity
 	Properties map[string]string `pulumi:"properties"`
-	// The relations of the entity
+	// The relations of the entity. Relations can be defined as either simple JQ expressions (strings) or search query objects. When using objects, the rules array must be encoded with jsonencode().
 	Relations map[string]string `pulumi:"relations"`
 	// The team of the entity
 	Team *string `pulumi:"team"`
@@ -16370,7 +16370,7 @@ type WebhookMappingEntityArgs struct {
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// The properties of the entity
 	Properties pulumi.StringMapInput `pulumi:"properties"`
-	// The relations of the entity
+	// The relations of the entity. Relations can be defined as either simple JQ expressions (strings) or search query objects. When using objects, the rules array must be encoded with jsonencode().
 	Relations pulumi.StringMapInput `pulumi:"relations"`
 	// The team of the entity
 	Team pulumi.StringPtrInput `pulumi:"team"`
@@ -16419,7 +16419,7 @@ func (o WebhookMappingEntityOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WebhookMappingEntity) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
-// The relations of the entity
+// The relations of the entity. Relations can be defined as either simple JQ expressions (strings) or search query objects. When using objects, the rules array must be encoded with jsonencode().
 func (o WebhookMappingEntityOutput) Relations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WebhookMappingEntity) map[string]string { return v.Relations }).(pulumi.StringMapOutput)
 }
