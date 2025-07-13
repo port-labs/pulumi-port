@@ -6242,6 +6242,14 @@ if not MYPY:
         """
         The default of the items
         """
+        enum_colors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The enum colors of the string array items
+        """
+        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The enum of the string array items
+        """
         format: NotRequired[pulumi.Input[str]]
         """
         The format of the items
@@ -6257,15 +6265,23 @@ elif False:
 class BlueprintPropertiesArrayPropsStringItemsArgs:
     def __init__(__self__, *,
                  defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 enum_colors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 enums: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  pattern: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] defaults: The default of the items
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] enum_colors: The enum colors of the string array items
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enums: The enum of the string array items
         :param pulumi.Input[str] format: The format of the items
         :param pulumi.Input[str] pattern: The pattern of the string array items
         """
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
+        if enum_colors is not None:
+            pulumi.set(__self__, "enum_colors", enum_colors)
+        if enums is not None:
+            pulumi.set(__self__, "enums", enums)
         if format is not None:
             pulumi.set(__self__, "format", format)
         if pattern is not None:
@@ -6282,6 +6298,30 @@ class BlueprintPropertiesArrayPropsStringItemsArgs:
     @defaults.setter
     def defaults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "defaults", value)
+
+    @property
+    @pulumi.getter(name="enumColors")
+    def enum_colors(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The enum colors of the string array items
+        """
+        return pulumi.get(self, "enum_colors")
+
+    @enum_colors.setter
+    def enum_colors(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "enum_colors", value)
+
+    @property
+    @pulumi.getter
+    def enums(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The enum of the string array items
+        """
+        return pulumi.get(self, "enums")
+
+    @enums.setter
+    def enums(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "enums", value)
 
     @property
     @pulumi.getter
@@ -8544,6 +8584,14 @@ if not MYPY:
         """
         The default of the items
         """
+        enum_colors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The enum colors of the string array items
+        """
+        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The enum of the string array items
+        """
         format: NotRequired[pulumi.Input[str]]
         """
         The format of the items
@@ -8559,15 +8607,23 @@ elif False:
 class SystemBlueprintPropertiesArrayPropsStringItemsArgs:
     def __init__(__self__, *,
                  defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 enum_colors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 enums: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  pattern: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] defaults: The default of the items
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] enum_colors: The enum colors of the string array items
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enums: The enum of the string array items
         :param pulumi.Input[str] format: The format of the items
         :param pulumi.Input[str] pattern: The pattern of the string array items
         """
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
+        if enum_colors is not None:
+            pulumi.set(__self__, "enum_colors", enum_colors)
+        if enums is not None:
+            pulumi.set(__self__, "enums", enums)
         if format is not None:
             pulumi.set(__self__, "format", format)
         if pattern is not None:
@@ -8584,6 +8640,30 @@ class SystemBlueprintPropertiesArrayPropsStringItemsArgs:
     @defaults.setter
     def defaults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "defaults", value)
+
+    @property
+    @pulumi.getter(name="enumColors")
+    def enum_colors(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The enum colors of the string array items
+        """
+        return pulumi.get(self, "enum_colors")
+
+    @enum_colors.setter
+    def enum_colors(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "enum_colors", value)
+
+    @property
+    @pulumi.getter
+    def enums(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The enum of the string array items
+        """
+        return pulumi.get(self, "enums")
+
+    @enums.setter
+    def enums(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "enums", value)
 
     @property
     @pulumi.getter

@@ -1260,6 +1260,14 @@ export interface BlueprintPropertiesArrayPropsStringItems {
      */
     defaults?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The enum colors of the string array items
+     */
+    enumColors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The enum of the string array items
+     */
+    enums?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The format of the items
      */
     format?: pulumi.Input<string>;
@@ -1733,6 +1741,14 @@ export interface SystemBlueprintPropertiesArrayPropsStringItems {
      * The default of the items
      */
     defaults?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The enum colors of the string array items
+     */
+    enumColors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The enum of the string array items
+     */
+    enums?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The format of the items
      */
