@@ -4515,17 +4515,42 @@ class BlueprintPropertiesArrayPropsObjectItems(dict):
 
 @pulumi.output_type
 class BlueprintPropertiesArrayPropsStringItems(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enumColors":
+            suggest = "enum_colors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BlueprintPropertiesArrayPropsStringItems. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BlueprintPropertiesArrayPropsStringItems.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BlueprintPropertiesArrayPropsStringItems.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  defaults: Optional[Sequence[str]] = None,
+                 enum_colors: Optional[Mapping[str, str]] = None,
+                 enums: Optional[Sequence[str]] = None,
                  format: Optional[str] = None,
                  pattern: Optional[str] = None):
         """
         :param Sequence[str] defaults: The default of the items
+        :param Mapping[str, str] enum_colors: The enum colors of the string array items
+        :param Sequence[str] enums: The enum of the string array items
         :param str format: The format of the items
         :param str pattern: The pattern of the string array items
         """
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
+        if enum_colors is not None:
+            pulumi.set(__self__, "enum_colors", enum_colors)
+        if enums is not None:
+            pulumi.set(__self__, "enums", enums)
         if format is not None:
             pulumi.set(__self__, "format", format)
         if pattern is not None:
@@ -4538,6 +4563,22 @@ class BlueprintPropertiesArrayPropsStringItems(dict):
         The default of the items
         """
         return pulumi.get(self, "defaults")
+
+    @property
+    @pulumi.getter(name="enumColors")
+    def enum_colors(self) -> Optional[Mapping[str, str]]:
+        """
+        The enum colors of the string array items
+        """
+        return pulumi.get(self, "enum_colors")
+
+    @property
+    @pulumi.getter
+    def enums(self) -> Optional[Sequence[str]]:
+        """
+        The enum of the string array items
+        """
+        return pulumi.get(self, "enums")
 
     @property
     @pulumi.getter
@@ -6062,17 +6103,42 @@ class SystemBlueprintPropertiesArrayPropsObjectItems(dict):
 
 @pulumi.output_type
 class SystemBlueprintPropertiesArrayPropsStringItems(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enumColors":
+            suggest = "enum_colors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SystemBlueprintPropertiesArrayPropsStringItems. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SystemBlueprintPropertiesArrayPropsStringItems.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SystemBlueprintPropertiesArrayPropsStringItems.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  defaults: Optional[Sequence[str]] = None,
+                 enum_colors: Optional[Mapping[str, str]] = None,
+                 enums: Optional[Sequence[str]] = None,
                  format: Optional[str] = None,
                  pattern: Optional[str] = None):
         """
         :param Sequence[str] defaults: The default of the items
+        :param Mapping[str, str] enum_colors: The enum colors of the string array items
+        :param Sequence[str] enums: The enum of the string array items
         :param str format: The format of the items
         :param str pattern: The pattern of the string array items
         """
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
+        if enum_colors is not None:
+            pulumi.set(__self__, "enum_colors", enum_colors)
+        if enums is not None:
+            pulumi.set(__self__, "enums", enums)
         if format is not None:
             pulumi.set(__self__, "format", format)
         if pattern is not None:
@@ -6085,6 +6151,22 @@ class SystemBlueprintPropertiesArrayPropsStringItems(dict):
         The default of the items
         """
         return pulumi.get(self, "defaults")
+
+    @property
+    @pulumi.getter(name="enumColors")
+    def enum_colors(self) -> Optional[Mapping[str, str]]:
+        """
+        The enum colors of the string array items
+        """
+        return pulumi.get(self, "enum_colors")
+
+    @property
+    @pulumi.getter
+    def enums(self) -> Optional[Sequence[str]]:
+        """
+        The enum of the string array items
+        """
+        return pulumi.get(self, "enums")
 
     @property
     @pulumi.getter

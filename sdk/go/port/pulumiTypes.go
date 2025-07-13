@@ -11110,6 +11110,10 @@ func (o BlueprintPropertiesArrayPropsObjectItemsPtrOutput) Defaults() pulumi.Str
 type BlueprintPropertiesArrayPropsStringItems struct {
 	// The default of the items
 	Defaults []string `pulumi:"defaults"`
+	// The enum colors of the string array items
+	EnumColors map[string]string `pulumi:"enumColors"`
+	// The enum of the string array items
+	Enums []string `pulumi:"enums"`
 	// The format of the items
 	Format *string `pulumi:"format"`
 	// The pattern of the string array items
@@ -11130,6 +11134,10 @@ type BlueprintPropertiesArrayPropsStringItemsInput interface {
 type BlueprintPropertiesArrayPropsStringItemsArgs struct {
 	// The default of the items
 	Defaults pulumi.StringArrayInput `pulumi:"defaults"`
+	// The enum colors of the string array items
+	EnumColors pulumi.StringMapInput `pulumi:"enumColors"`
+	// The enum of the string array items
+	Enums pulumi.StringArrayInput `pulumi:"enums"`
 	// The format of the items
 	Format pulumi.StringPtrInput `pulumi:"format"`
 	// The pattern of the string array items
@@ -11218,6 +11226,16 @@ func (o BlueprintPropertiesArrayPropsStringItemsOutput) Defaults() pulumi.String
 	return o.ApplyT(func(v BlueprintPropertiesArrayPropsStringItems) []string { return v.Defaults }).(pulumi.StringArrayOutput)
 }
 
+// The enum colors of the string array items
+func (o BlueprintPropertiesArrayPropsStringItemsOutput) EnumColors() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BlueprintPropertiesArrayPropsStringItems) map[string]string { return v.EnumColors }).(pulumi.StringMapOutput)
+}
+
+// The enum of the string array items
+func (o BlueprintPropertiesArrayPropsStringItemsOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BlueprintPropertiesArrayPropsStringItems) []string { return v.Enums }).(pulumi.StringArrayOutput)
+}
+
 // The format of the items
 func (o BlueprintPropertiesArrayPropsStringItemsOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesArrayPropsStringItems) *string { return v.Format }).(pulumi.StringPtrOutput)
@@ -11259,6 +11277,26 @@ func (o BlueprintPropertiesArrayPropsStringItemsPtrOutput) Defaults() pulumi.Str
 			return nil
 		}
 		return v.Defaults
+	}).(pulumi.StringArrayOutput)
+}
+
+// The enum colors of the string array items
+func (o BlueprintPropertiesArrayPropsStringItemsPtrOutput) EnumColors() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BlueprintPropertiesArrayPropsStringItems) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.EnumColors
+	}).(pulumi.StringMapOutput)
+}
+
+// The enum of the string array items
+func (o BlueprintPropertiesArrayPropsStringItemsPtrOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BlueprintPropertiesArrayPropsStringItems) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Enums
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -15073,6 +15111,10 @@ func (o SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput) Defaults() pulu
 type SystemBlueprintPropertiesArrayPropsStringItems struct {
 	// The default of the items
 	Defaults []string `pulumi:"defaults"`
+	// The enum colors of the string array items
+	EnumColors map[string]string `pulumi:"enumColors"`
+	// The enum of the string array items
+	Enums []string `pulumi:"enums"`
 	// The format of the items
 	Format *string `pulumi:"format"`
 	// The pattern of the string array items
@@ -15093,6 +15135,10 @@ type SystemBlueprintPropertiesArrayPropsStringItemsInput interface {
 type SystemBlueprintPropertiesArrayPropsStringItemsArgs struct {
 	// The default of the items
 	Defaults pulumi.StringArrayInput `pulumi:"defaults"`
+	// The enum colors of the string array items
+	EnumColors pulumi.StringMapInput `pulumi:"enumColors"`
+	// The enum of the string array items
+	Enums pulumi.StringArrayInput `pulumi:"enums"`
 	// The format of the items
 	Format pulumi.StringPtrInput `pulumi:"format"`
 	// The pattern of the string array items
@@ -15181,6 +15227,16 @@ func (o SystemBlueprintPropertiesArrayPropsStringItemsOutput) Defaults() pulumi.
 	return o.ApplyT(func(v SystemBlueprintPropertiesArrayPropsStringItems) []string { return v.Defaults }).(pulumi.StringArrayOutput)
 }
 
+// The enum colors of the string array items
+func (o SystemBlueprintPropertiesArrayPropsStringItemsOutput) EnumColors() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesArrayPropsStringItems) map[string]string { return v.EnumColors }).(pulumi.StringMapOutput)
+}
+
+// The enum of the string array items
+func (o SystemBlueprintPropertiesArrayPropsStringItemsOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesArrayPropsStringItems) []string { return v.Enums }).(pulumi.StringArrayOutput)
+}
+
 // The format of the items
 func (o SystemBlueprintPropertiesArrayPropsStringItemsOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemBlueprintPropertiesArrayPropsStringItems) *string { return v.Format }).(pulumi.StringPtrOutput)
@@ -15222,6 +15278,26 @@ func (o SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput) Defaults() pulu
 			return nil
 		}
 		return v.Defaults
+	}).(pulumi.StringArrayOutput)
+}
+
+// The enum colors of the string array items
+func (o SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput) EnumColors() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SystemBlueprintPropertiesArrayPropsStringItems) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.EnumColors
+	}).(pulumi.StringMapOutput)
+}
+
+// The enum of the string array items
+func (o SystemBlueprintPropertiesArrayPropsStringItemsPtrOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SystemBlueprintPropertiesArrayPropsStringItems) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Enums
 	}).(pulumi.StringArrayOutput)
 }
 

@@ -1260,6 +1260,14 @@ export interface BlueprintPropertiesArrayPropsStringItems {
      */
     defaults?: string[];
     /**
+     * The enum colors of the string array items
+     */
+    enumColors?: {[key: string]: string};
+    /**
+     * The enum of the string array items
+     */
+    enums?: string[];
+    /**
      * The format of the items
      */
     format?: string;
@@ -1840,6 +1848,14 @@ export interface SystemBlueprintPropertiesArrayPropsStringItems {
      * The default of the items
      */
     defaults?: string[];
+    /**
+     * The enum colors of the string array items
+     */
+    enumColors?: {[key: string]: string};
+    /**
+     * The enum of the string array items
+     */
+    enums?: string[];
     /**
      * The format of the items
      */
