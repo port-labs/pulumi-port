@@ -1926,6 +1926,20 @@
                     },
                     "description": "The default of the items\n"
                 },
+                "enumColors": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The enum colors of the string array items\n"
+                },
+                "enums": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The enum of the string array items\n"
+                },
                 "format": {
                     "type": "string",
                     "description": "The format of the items\n"
@@ -2645,6 +2659,20 @@
                         "type": "string"
                     },
                     "description": "The default of the items\n"
+                },
+                "enumColors": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The enum colors of the string array items\n"
+                },
+                "enums": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The enum of the string array items\n"
                 },
                 "format": {
                     "type": "string",
