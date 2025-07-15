@@ -610,6 +610,14 @@
                     "type": "string",
                     "description": "The description of the property\n"
                 },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "The disabled state of the array property\n"
+                },
+                "disabledJqQuery": {
+                    "type": "string",
+                    "description": "The disabled state jq query of the array property\n"
+                },
                 "icon": {
                     "type": "string",
                     "description": "The icon of the property\n"
@@ -787,6 +795,14 @@
                     "type": "string",
                     "description": "The description of the property\n"
                 },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "The disabled state of the boolean property\n"
+                },
+                "disabledJqQuery": {
+                    "type": "string",
+                    "description": "The disabled state jq query of the boolean property\n"
+                },
                 "icon": {
                     "type": "string",
                     "description": "The icon of the property\n"
@@ -830,6 +846,14 @@
                 "description": {
                     "type": "string",
                     "description": "The description of the property\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "The disabled state of the number property\n"
+                },
+                "disabledJqQuery": {
+                    "type": "string",
+                    "description": "The disabled state jq query of the number property\n"
                 },
                 "enumColors": {
                     "type": "object",
@@ -901,6 +925,14 @@
                     "type": "string",
                     "description": "The description of the property\n"
                 },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "The disabled state of the object property\n"
+                },
+                "disabledJqQuery": {
+                    "type": "string",
+                    "description": "The disabled state jq query of the object property\n"
+                },
                 "encryption": {
                     "type": "string",
                     "description": "The algorithm to encrypt the property with. Accepted value: `aes256-gcm`\n"
@@ -956,6 +988,14 @@
                 "description": {
                     "type": "string",
                     "description": "The description of the property\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "The disabled state of the string property\n"
+                },
+                "disabledJqQuery": {
+                    "type": "string",
+                    "description": "The disabled state jq query of the string property\n"
                 },
                 "encryption": {
                     "type": "string",
