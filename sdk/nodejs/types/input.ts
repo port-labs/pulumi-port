@@ -352,6 +352,14 @@ export interface ActionSelfServiceTriggerUserPropertiesArrayProps {
      */
     description?: pulumi.Input<string>;
     /**
+     * The disabled state of the array property
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * The disabled state jq query of the array property
+     */
+    disabledJqQuery?: pulumi.Input<string>;
+    /**
      * The icon of the property
      */
     icon?: pulumi.Input<string>;
@@ -482,6 +490,14 @@ export interface ActionSelfServiceTriggerUserPropertiesBooleanProps {
      */
     description?: pulumi.Input<string>;
     /**
+     * The disabled state of the boolean property
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * The disabled state jq query of the boolean property
+     */
+    disabledJqQuery?: pulumi.Input<string>;
+    /**
      * The icon of the property
      */
     icon?: pulumi.Input<string>;
@@ -520,6 +536,14 @@ export interface ActionSelfServiceTriggerUserPropertiesNumberProps {
      * The description of the property
      */
     description?: pulumi.Input<string>;
+    /**
+     * The disabled state of the number property
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * The disabled state jq query of the number property
+     */
+    disabledJqQuery?: pulumi.Input<string>;
     /**
      * The enum colors of the number property
      */
@@ -580,6 +604,14 @@ export interface ActionSelfServiceTriggerUserPropertiesObjectProps {
      */
     description?: pulumi.Input<string>;
     /**
+     * The disabled state of the object property
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * The disabled state jq query of the object property
+     */
+    disabledJqQuery?: pulumi.Input<string>;
+    /**
      * The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
      */
     encryption?: pulumi.Input<string>;
@@ -630,6 +662,14 @@ export interface ActionSelfServiceTriggerUserPropertiesStringProps {
      * The description of the property
      */
     description?: pulumi.Input<string>;
+    /**
+     * The disabled state of the string property
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * The disabled state jq query of the string property
+     */
+    disabledJqQuery?: pulumi.Input<string>;
     /**
      * The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
      */

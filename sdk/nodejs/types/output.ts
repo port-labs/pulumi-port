@@ -352,6 +352,14 @@ export interface ActionSelfServiceTriggerUserPropertiesArrayProps {
      */
     description?: string;
     /**
+     * The disabled state of the array property
+     */
+    disabled?: boolean;
+    /**
+     * The disabled state jq query of the array property
+     */
+    disabledJqQuery?: string;
+    /**
      * The icon of the property
      */
     icon?: string;
@@ -482,6 +490,14 @@ export interface ActionSelfServiceTriggerUserPropertiesBooleanProps {
      */
     description?: string;
     /**
+     * The disabled state of the boolean property
+     */
+    disabled?: boolean;
+    /**
+     * The disabled state jq query of the boolean property
+     */
+    disabledJqQuery?: string;
+    /**
      * The icon of the property
      */
     icon?: string;
@@ -520,6 +536,14 @@ export interface ActionSelfServiceTriggerUserPropertiesNumberProps {
      * The description of the property
      */
     description?: string;
+    /**
+     * The disabled state of the number property
+     */
+    disabled?: boolean;
+    /**
+     * The disabled state jq query of the number property
+     */
+    disabledJqQuery?: string;
     /**
      * The enum colors of the number property
      */
@@ -580,6 +604,14 @@ export interface ActionSelfServiceTriggerUserPropertiesObjectProps {
      */
     description?: string;
     /**
+     * The disabled state of the object property
+     */
+    disabled?: boolean;
+    /**
+     * The disabled state jq query of the object property
+     */
+    disabledJqQuery?: string;
+    /**
      * The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
      */
     encryption?: string;
@@ -630,6 +662,14 @@ export interface ActionSelfServiceTriggerUserPropertiesStringProps {
      * The description of the property
      */
     description?: string;
+    /**
+     * The disabled state of the string property
+     */
+    disabled?: boolean;
+    /**
+     * The disabled state jq query of the string property
+     */
+    disabledJqQuery?: string;
     /**
      * The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
      */

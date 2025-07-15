@@ -1793,6 +1793,14 @@ if not MYPY:
         """
         The description of the property
         """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        The disabled state of the array property
+        """
+        disabled_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The disabled state jq query of the array property
+        """
         icon: NotRequired[pulumi.Input[str]]
         """
         The icon of the property
@@ -1847,6 +1855,8 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsArgs:
                  default_jq_query: Optional[pulumi.Input[str]] = None,
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 disabled_jq_query: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  max_items: Optional[pulumi.Input[int]] = None,
                  min_items: Optional[pulumi.Input[int]] = None,
@@ -1863,6 +1873,8 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsArgs:
         :param pulumi.Input[str] default_jq_query: The default jq query of the array property
         :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The properties that this property depends on
         :param pulumi.Input[str] description: The description of the property
+        :param pulumi.Input[bool] disabled: The disabled state of the array property
+        :param pulumi.Input[str] disabled_jq_query: The disabled state jq query of the array property
         :param pulumi.Input[str] icon: The icon of the property
         :param pulumi.Input[int] max_items: The max items of the array property
         :param pulumi.Input[int] min_items: The min items of the array property
@@ -1883,6 +1895,10 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsArgs:
             pulumi.set(__self__, "depends_ons", depends_ons)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if disabled_jq_query is not None:
+            pulumi.set(__self__, "disabled_jq_query", disabled_jq_query)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
         if max_items is not None:
@@ -1953,6 +1969,30 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The disabled state of the array property
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="disabledJqQuery")
+    def disabled_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disabled state jq query of the array property
+        """
+        return pulumi.get(self, "disabled_jq_query")
+
+    @disabled_jq_query.setter
+    def disabled_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disabled_jq_query", value)
 
     @property
     @pulumi.getter
@@ -2424,6 +2464,14 @@ if not MYPY:
         """
         The description of the property
         """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        The disabled state of the boolean property
+        """
+        disabled_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The disabled state jq query of the boolean property
+        """
         icon: NotRequired[pulumi.Input[str]]
         """
         The icon of the property
@@ -2454,6 +2502,8 @@ class ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs:
                  default_jq_query: Optional[pulumi.Input[str]] = None,
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 disabled_jq_query: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  required: Optional[pulumi.Input[bool]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -2464,6 +2514,8 @@ class ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs:
         :param pulumi.Input[str] default_jq_query: The default jq query of the boolean property
         :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The properties that this property depends on
         :param pulumi.Input[str] description: The description of the property
+        :param pulumi.Input[bool] disabled: The disabled state of the boolean property
+        :param pulumi.Input[str] disabled_jq_query: The disabled state jq query of the boolean property
         :param pulumi.Input[str] icon: The icon of the property
         :param pulumi.Input[bool] required: Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
         :param pulumi.Input[str] title: The title of the property
@@ -2478,6 +2530,10 @@ class ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs:
             pulumi.set(__self__, "depends_ons", depends_ons)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if disabled_jq_query is not None:
+            pulumi.set(__self__, "disabled_jq_query", disabled_jq_query)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
         if required is not None:
@@ -2536,6 +2592,30 @@ class ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The disabled state of the boolean property
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="disabledJqQuery")
+    def disabled_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disabled state jq query of the boolean property
+        """
+        return pulumi.get(self, "disabled_jq_query")
+
+    @disabled_jq_query.setter
+    def disabled_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disabled_jq_query", value)
 
     @property
     @pulumi.getter
@@ -2616,6 +2696,14 @@ if not MYPY:
         """
         The description of the property
         """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        The disabled state of the number property
+        """
+        disabled_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The disabled state jq query of the number property
+        """
         enum_colors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         The enum colors of the number property
@@ -2666,6 +2754,8 @@ class ActionSelfServiceTriggerUserPropertiesNumberPropsArgs:
                  default_jq_query: Optional[pulumi.Input[str]] = None,
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 disabled_jq_query: Optional[pulumi.Input[str]] = None,
                  enum_colors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enum_jq_query: Optional[pulumi.Input[str]] = None,
                  enums: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]] = None,
@@ -2681,6 +2771,8 @@ class ActionSelfServiceTriggerUserPropertiesNumberPropsArgs:
         :param pulumi.Input[str] default_jq_query: The default jq query of the number property
         :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The properties that this property depends on
         :param pulumi.Input[str] description: The description of the property
+        :param pulumi.Input[bool] disabled: The disabled state of the number property
+        :param pulumi.Input[str] disabled_jq_query: The disabled state jq query of the number property
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] enum_colors: The enum colors of the number property
         :param pulumi.Input[str] enum_jq_query: The enum jq query of the string property
         :param pulumi.Input[Sequence[pulumi.Input[float]]] enums: The enum of the number property
@@ -2700,6 +2792,10 @@ class ActionSelfServiceTriggerUserPropertiesNumberPropsArgs:
             pulumi.set(__self__, "depends_ons", depends_ons)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if disabled_jq_query is not None:
+            pulumi.set(__self__, "disabled_jq_query", disabled_jq_query)
         if enum_colors is not None:
             pulumi.set(__self__, "enum_colors", enum_colors)
         if enum_jq_query is not None:
@@ -2768,6 +2864,30 @@ class ActionSelfServiceTriggerUserPropertiesNumberPropsArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The disabled state of the number property
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="disabledJqQuery")
+    def disabled_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disabled state jq query of the number property
+        """
+        return pulumi.get(self, "disabled_jq_query")
+
+    @disabled_jq_query.setter
+    def disabled_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disabled_jq_query", value)
 
     @property
     @pulumi.getter(name="enumColors")
@@ -2908,6 +3028,14 @@ if not MYPY:
         """
         The description of the property
         """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        The disabled state of the object property
+        """
+        disabled_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The disabled state jq query of the object property
+        """
         encryption: NotRequired[pulumi.Input[str]]
         """
         The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
@@ -2942,6 +3070,8 @@ class ActionSelfServiceTriggerUserPropertiesObjectPropsArgs:
                  default_jq_query: Optional[pulumi.Input[str]] = None,
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 disabled_jq_query: Optional[pulumi.Input[str]] = None,
                  encryption: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  required: Optional[pulumi.Input[bool]] = None,
@@ -2953,6 +3083,8 @@ class ActionSelfServiceTriggerUserPropertiesObjectPropsArgs:
         :param pulumi.Input[str] default_jq_query: The default jq query of the object property
         :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The properties that this property depends on
         :param pulumi.Input[str] description: The description of the property
+        :param pulumi.Input[bool] disabled: The disabled state of the object property
+        :param pulumi.Input[str] disabled_jq_query: The disabled state jq query of the object property
         :param pulumi.Input[str] encryption: The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
         :param pulumi.Input[str] icon: The icon of the property
         :param pulumi.Input[bool] required: Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
@@ -2968,6 +3100,10 @@ class ActionSelfServiceTriggerUserPropertiesObjectPropsArgs:
             pulumi.set(__self__, "depends_ons", depends_ons)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if disabled_jq_query is not None:
+            pulumi.set(__self__, "disabled_jq_query", disabled_jq_query)
         if encryption is not None:
             pulumi.set(__self__, "encryption", encryption)
         if icon is not None:
@@ -3028,6 +3164,30 @@ class ActionSelfServiceTriggerUserPropertiesObjectPropsArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The disabled state of the object property
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="disabledJqQuery")
+    def disabled_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disabled state jq query of the object property
+        """
+        return pulumi.get(self, "disabled_jq_query")
+
+    @disabled_jq_query.setter
+    def disabled_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disabled_jq_query", value)
 
     @property
     @pulumi.getter
@@ -3128,6 +3288,14 @@ if not MYPY:
         """
         The description of the property
         """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        The disabled state of the string property
+        """
+        disabled_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The disabled state jq query of the string property
+        """
         encryption: NotRequired[pulumi.Input[str]]
         """
         The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
@@ -3200,6 +3368,8 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
                  default_jq_query: Optional[pulumi.Input[str]] = None,
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 disabled_jq_query: Optional[pulumi.Input[str]] = None,
                  encryption: Optional[pulumi.Input[str]] = None,
                  enum_colors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enum_jq_query: Optional[pulumi.Input[str]] = None,
@@ -3222,6 +3392,8 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
         :param pulumi.Input[str] default_jq_query: The default jq query of the string property
         :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The properties that this property depends on
         :param pulumi.Input[str] description: The description of the property
+        :param pulumi.Input[bool] disabled: The disabled state of the string property
+        :param pulumi.Input[str] disabled_jq_query: The disabled state jq query of the string property
         :param pulumi.Input[str] encryption: The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] enum_colors: The enum colors of the string property
         :param pulumi.Input[str] enum_jq_query: The enum jq query of the string property
@@ -3250,6 +3422,10 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
             pulumi.set(__self__, "depends_ons", depends_ons)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if disabled_jq_query is not None:
+            pulumi.set(__self__, "disabled_jq_query", disabled_jq_query)
         if encryption is not None:
             pulumi.set(__self__, "encryption", encryption)
         if enum_colors is not None:
@@ -3352,6 +3528,30 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The disabled state of the string property
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="disabledJqQuery")
+    def disabled_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disabled state jq query of the string property
+        """
+        return pulumi.get(self, "disabled_jq_query")
+
+    @disabled_jq_query.setter
+    def disabled_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disabled_jq_query", value)
 
     @property
     @pulumi.getter

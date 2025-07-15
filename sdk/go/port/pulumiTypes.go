@@ -3871,6 +3871,10 @@ type ActionSelfServiceTriggerUserPropertiesArrayProps struct {
 	DependsOns []string `pulumi:"dependsOns"`
 	// The description of the property
 	Description *string `pulumi:"description"`
+	// The disabled state of the array property
+	Disabled *bool `pulumi:"disabled"`
+	// The disabled state jq query of the array property
+	DisabledJqQuery *string `pulumi:"disabledJqQuery"`
 	// The icon of the property
 	Icon *string `pulumi:"icon"`
 	// The max items of the array property
@@ -3915,6 +3919,10 @@ type ActionSelfServiceTriggerUserPropertiesArrayPropsArgs struct {
 	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
 	// The description of the property
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The disabled state of the array property
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The disabled state jq query of the array property
+	DisabledJqQuery pulumi.StringPtrInput `pulumi:"disabledJqQuery"`
 	// The icon of the property
 	Icon pulumi.StringPtrInput `pulumi:"icon"`
 	// The max items of the array property
@@ -4010,6 +4018,16 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) DependsOns() pul
 // The description of the property
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The disabled state of the array property
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The disabled state jq query of the array property
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) DisabledJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *string { return v.DisabledJqQuery }).(pulumi.StringPtrOutput)
 }
 
 // The icon of the property
@@ -4943,6 +4961,10 @@ type ActionSelfServiceTriggerUserPropertiesBooleanProps struct {
 	DependsOns []string `pulumi:"dependsOns"`
 	// The description of the property
 	Description *string `pulumi:"description"`
+	// The disabled state of the boolean property
+	Disabled *bool `pulumi:"disabled"`
+	// The disabled state jq query of the boolean property
+	DisabledJqQuery *string `pulumi:"disabledJqQuery"`
 	// The icon of the property
 	Icon *string `pulumi:"icon"`
 	// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
@@ -4975,6 +4997,10 @@ type ActionSelfServiceTriggerUserPropertiesBooleanPropsArgs struct {
 	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
 	// The description of the property
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The disabled state of the boolean property
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The disabled state jq query of the boolean property
+	DisabledJqQuery pulumi.StringPtrInput `pulumi:"disabledJqQuery"`
 	// The icon of the property
 	Icon pulumi.StringPtrInput `pulumi:"icon"`
 	// Whether the property is required, by default not required, this property can't be set at the same time if `requiredJqQuery` is set, and only supports true as value
@@ -5058,6 +5084,16 @@ func (o ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput) Description() 
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesBooleanProps) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The disabled state of the boolean property
+func (o ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesBooleanProps) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The disabled state jq query of the boolean property
+func (o ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput) DisabledJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesBooleanProps) *string { return v.DisabledJqQuery }).(pulumi.StringPtrOutput)
+}
+
 // The icon of the property
 func (o ActionSelfServiceTriggerUserPropertiesBooleanPropsOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesBooleanProps) *string { return v.Icon }).(pulumi.StringPtrOutput)
@@ -5112,6 +5148,10 @@ type ActionSelfServiceTriggerUserPropertiesNumberProps struct {
 	DependsOns []string `pulumi:"dependsOns"`
 	// The description of the property
 	Description *string `pulumi:"description"`
+	// The disabled state of the number property
+	Disabled *bool `pulumi:"disabled"`
+	// The disabled state jq query of the number property
+	DisabledJqQuery *string `pulumi:"disabledJqQuery"`
 	// The enum colors of the number property
 	EnumColors map[string]string `pulumi:"enumColors"`
 	// The enum jq query of the string property
@@ -5154,6 +5194,10 @@ type ActionSelfServiceTriggerUserPropertiesNumberPropsArgs struct {
 	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
 	// The description of the property
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The disabled state of the number property
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The disabled state jq query of the number property
+	DisabledJqQuery pulumi.StringPtrInput `pulumi:"disabledJqQuery"`
 	// The enum colors of the number property
 	EnumColors pulumi.StringMapInput `pulumi:"enumColors"`
 	// The enum jq query of the string property
@@ -5247,6 +5291,16 @@ func (o ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) Description() p
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesNumberProps) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The disabled state of the number property
+func (o ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesNumberProps) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The disabled state jq query of the number property
+func (o ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) DisabledJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesNumberProps) *string { return v.DisabledJqQuery }).(pulumi.StringPtrOutput)
+}
+
 // The enum colors of the number property
 func (o ActionSelfServiceTriggerUserPropertiesNumberPropsOutput) EnumColors() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesNumberProps) map[string]string { return v.EnumColors }).(pulumi.StringMapOutput)
@@ -5326,6 +5380,10 @@ type ActionSelfServiceTriggerUserPropertiesObjectProps struct {
 	DependsOns []string `pulumi:"dependsOns"`
 	// The description of the property
 	Description *string `pulumi:"description"`
+	// The disabled state of the object property
+	Disabled *bool `pulumi:"disabled"`
+	// The disabled state jq query of the object property
+	DisabledJqQuery *string `pulumi:"disabledJqQuery"`
 	// The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
 	Encryption *string `pulumi:"encryption"`
 	// The icon of the property
@@ -5360,6 +5418,10 @@ type ActionSelfServiceTriggerUserPropertiesObjectPropsArgs struct {
 	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
 	// The description of the property
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The disabled state of the object property
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The disabled state jq query of the object property
+	DisabledJqQuery pulumi.StringPtrInput `pulumi:"disabledJqQuery"`
 	// The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
 	Encryption pulumi.StringPtrInput `pulumi:"encryption"`
 	// The icon of the property
@@ -5445,6 +5507,16 @@ func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) Description() p
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesObjectProps) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The disabled state of the object property
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesObjectProps) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The disabled state jq query of the object property
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) DisabledJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesObjectProps) *string { return v.DisabledJqQuery }).(pulumi.StringPtrOutput)
+}
+
 // The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
 func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) Encryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesObjectProps) *string { return v.Encryption }).(pulumi.StringPtrOutput)
@@ -5508,6 +5580,10 @@ type ActionSelfServiceTriggerUserPropertiesStringProps struct {
 	DependsOns []string `pulumi:"dependsOns"`
 	// The description of the property
 	Description *string `pulumi:"description"`
+	// The disabled state of the string property
+	Disabled *bool `pulumi:"disabled"`
+	// The disabled state jq query of the string property
+	DisabledJqQuery *string `pulumi:"disabledJqQuery"`
 	// The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
 	Encryption *string `pulumi:"encryption"`
 	// The enum colors of the string property
@@ -5564,6 +5640,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsArgs struct {
 	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
 	// The description of the property
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The disabled state of the string property
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The disabled state jq query of the string property
+	DisabledJqQuery pulumi.StringPtrInput `pulumi:"disabledJqQuery"`
 	// The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
 	Encryption pulumi.StringPtrInput `pulumi:"encryption"`
 	// The enum colors of the string property
@@ -5677,6 +5757,16 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) DependsOns() pu
 // The description of the property
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The disabled state of the string property
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The disabled state jq query of the string property
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) DisabledJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *string { return v.DisabledJqQuery }).(pulumi.StringPtrOutput)
 }
 
 // The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
