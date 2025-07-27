@@ -1246,6 +1246,13 @@
                     "$ref": "#/types/port:index/AggregationPropertiesPropertiesMethod:AggregationPropertiesPropertiesMethod",
                     "description": "The aggregation method to perform on the target blueprint, one of count*entities, average*entities, average*by*property, aggregate*by*property\n"
                 },
+                "pathFilters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/AggregationPropertiesPropertiesPathFilter:AggregationPropertiesPropertiesPathFilter"
+                    },
+                    "description": "Path filter to filter entities based on relation path\n"
+                },
                 "query": {
                     "type": "string",
                     "description": "Query to filter the target entities\n"
@@ -1345,6 +1352,25 @@
                     ]
                 }
             }
+        },
+        "port:index/AggregationPropertiesPropertiesPathFilter:AggregationPropertiesPropertiesPathFilter": {
+            "properties": {
+                "fromBlueprint": {
+                    "type": "string",
+                    "description": "The blueprint to start the path from. Should be the target blueprint or undefined to start from the source blueprint\n"
+                },
+                "paths": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The path array of relations to filter by\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "paths"
+            ]
         },
         "port:index/BlueprintCalculationProperties:BlueprintCalculationProperties": {
             "properties": {

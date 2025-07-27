@@ -105,6 +105,8 @@ __all__ = [
     'AggregationPropertiesPropertiesMethodAverageByPropertyArgsDict',
     'AggregationPropertiesPropertiesMethodAverageEntitiesArgs',
     'AggregationPropertiesPropertiesMethodAverageEntitiesArgsDict',
+    'AggregationPropertiesPropertiesPathFilterArgs',
+    'AggregationPropertiesPropertiesPathFilterArgsDict',
     'BlueprintCalculationPropertiesArgs',
     'BlueprintCalculationPropertiesArgsDict',
     'BlueprintKafkaChangelogDestinationArgs',
@@ -4300,6 +4302,10 @@ if not MYPY:
         """
         The icon of the aggregation property
         """
+        path_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['AggregationPropertiesPropertiesPathFilterArgsDict']]]]
+        """
+        Path filter to filter entities based on relation path
+        """
         query: NotRequired[pulumi.Input[str]]
         """
         Query to filter the target entities
@@ -4318,6 +4324,7 @@ class AggregationPropertiesPropertiesArgs:
                  target_blueprint_identifier: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
+                 path_filters: Optional[pulumi.Input[Sequence[pulumi.Input['AggregationPropertiesPropertiesPathFilterArgs']]]] = None,
                  query: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None):
         """
@@ -4325,6 +4332,7 @@ class AggregationPropertiesPropertiesArgs:
         :param pulumi.Input[str] target_blueprint_identifier: The identifier of the blueprint to perform the aggregation on
         :param pulumi.Input[str] description: The description of the aggregation property
         :param pulumi.Input[str] icon: The icon of the aggregation property
+        :param pulumi.Input[Sequence[pulumi.Input['AggregationPropertiesPropertiesPathFilterArgs']]] path_filters: Path filter to filter entities based on relation path
         :param pulumi.Input[str] query: Query to filter the target entities
         :param pulumi.Input[str] title: The title of the aggregation property
         """
@@ -4334,6 +4342,8 @@ class AggregationPropertiesPropertiesArgs:
             pulumi.set(__self__, "description", description)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
+        if path_filters is not None:
+            pulumi.set(__self__, "path_filters", path_filters)
         if query is not None:
             pulumi.set(__self__, "query", query)
         if title is not None:
@@ -4386,6 +4396,18 @@ class AggregationPropertiesPropertiesArgs:
     @icon.setter
     def icon(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "icon", value)
+
+    @property
+    @pulumi.getter(name="pathFilters")
+    def path_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AggregationPropertiesPropertiesPathFilterArgs']]]]:
+        """
+        Path filter to filter entities based on relation path
+        """
+        return pulumi.get(self, "path_filters")
+
+    @path_filters.setter
+    def path_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AggregationPropertiesPropertiesPathFilterArgs']]]]):
+        pulumi.set(self, "path_filters", value)
 
     @property
     @pulumi.getter
@@ -4673,6 +4695,57 @@ class AggregationPropertiesPropertiesMethodAverageEntitiesArgs:
     @measure_time_by.setter
     def measure_time_by(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "measure_time_by", value)
+
+
+if not MYPY:
+    class AggregationPropertiesPropertiesPathFilterArgsDict(TypedDict):
+        paths: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The path array of relations to filter by
+        """
+        from_blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint to start the path from. Should be the target blueprint or undefined to start from the source blueprint
+        """
+elif False:
+    AggregationPropertiesPropertiesPathFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AggregationPropertiesPropertiesPathFilterArgs:
+    def __init__(__self__, *,
+                 paths: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 from_blueprint: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: The path array of relations to filter by
+        :param pulumi.Input[str] from_blueprint: The blueprint to start the path from. Should be the target blueprint or undefined to start from the source blueprint
+        """
+        pulumi.set(__self__, "paths", paths)
+        if from_blueprint is not None:
+            pulumi.set(__self__, "from_blueprint", from_blueprint)
+
+    @property
+    @pulumi.getter
+    def paths(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The path array of relations to filter by
+        """
+        return pulumi.get(self, "paths")
+
+    @paths.setter
+    def paths(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "paths", value)
+
+    @property
+    @pulumi.getter(name="fromBlueprint")
+    def from_blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint to start the path from. Should be the target blueprint or undefined to start from the source blueprint
+        """
+        return pulumi.get(self, "from_blueprint")
+
+    @from_blueprint.setter
+    def from_blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "from_blueprint", value)
 
 
 if not MYPY:

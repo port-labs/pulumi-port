@@ -7085,6 +7085,8 @@ type AggregationPropertiesProperties struct {
 	Icon *string `pulumi:"icon"`
 	// The aggregation method to perform on the target blueprint, one of count*entities, average*entities, average*by*property, aggregate*by*property
 	Method AggregationPropertiesPropertiesMethod `pulumi:"method"`
+	// Path filter to filter entities based on relation path
+	PathFilters []AggregationPropertiesPropertiesPathFilter `pulumi:"pathFilters"`
 	// Query to filter the target entities
 	Query *string `pulumi:"query"`
 	// The identifier of the blueprint to perform the aggregation on
@@ -7111,6 +7113,8 @@ type AggregationPropertiesPropertiesArgs struct {
 	Icon pulumi.StringPtrInput `pulumi:"icon"`
 	// The aggregation method to perform on the target blueprint, one of count*entities, average*entities, average*by*property, aggregate*by*property
 	Method AggregationPropertiesPropertiesMethodInput `pulumi:"method"`
+	// Path filter to filter entities based on relation path
+	PathFilters AggregationPropertiesPropertiesPathFilterArrayInput `pulumi:"pathFilters"`
 	// Query to filter the target entities
 	Query pulumi.StringPtrInput `pulumi:"query"`
 	// The identifier of the blueprint to perform the aggregation on
@@ -7183,6 +7187,13 @@ func (o AggregationPropertiesPropertiesOutput) Icon() pulumi.StringPtrOutput {
 // The aggregation method to perform on the target blueprint, one of count*entities, average*entities, average*by*property, aggregate*by*property
 func (o AggregationPropertiesPropertiesOutput) Method() AggregationPropertiesPropertiesMethodOutput {
 	return o.ApplyT(func(v AggregationPropertiesProperties) AggregationPropertiesPropertiesMethod { return v.Method }).(AggregationPropertiesPropertiesMethodOutput)
+}
+
+// Path filter to filter entities based on relation path
+func (o AggregationPropertiesPropertiesOutput) PathFilters() AggregationPropertiesPropertiesPathFilterArrayOutput {
+	return o.ApplyT(func(v AggregationPropertiesProperties) []AggregationPropertiesPropertiesPathFilter {
+		return v.PathFilters
+	}).(AggregationPropertiesPropertiesPathFilterArrayOutput)
 }
 
 // Query to filter the target entities
@@ -7790,6 +7801,112 @@ func (o AggregationPropertiesPropertiesMethodAverageEntitiesPtrOutput) MeasureTi
 		}
 		return v.MeasureTimeBy
 	}).(pulumi.StringPtrOutput)
+}
+
+type AggregationPropertiesPropertiesPathFilter struct {
+	// The blueprint to start the path from. Should be the target blueprint or undefined to start from the source blueprint
+	FromBlueprint *string `pulumi:"fromBlueprint"`
+	// The path array of relations to filter by
+	Paths []string `pulumi:"paths"`
+}
+
+// AggregationPropertiesPropertiesPathFilterInput is an input type that accepts AggregationPropertiesPropertiesPathFilterArgs and AggregationPropertiesPropertiesPathFilterOutput values.
+// You can construct a concrete instance of `AggregationPropertiesPropertiesPathFilterInput` via:
+//
+//	AggregationPropertiesPropertiesPathFilterArgs{...}
+type AggregationPropertiesPropertiesPathFilterInput interface {
+	pulumi.Input
+
+	ToAggregationPropertiesPropertiesPathFilterOutput() AggregationPropertiesPropertiesPathFilterOutput
+	ToAggregationPropertiesPropertiesPathFilterOutputWithContext(context.Context) AggregationPropertiesPropertiesPathFilterOutput
+}
+
+type AggregationPropertiesPropertiesPathFilterArgs struct {
+	// The blueprint to start the path from. Should be the target blueprint or undefined to start from the source blueprint
+	FromBlueprint pulumi.StringPtrInput `pulumi:"fromBlueprint"`
+	// The path array of relations to filter by
+	Paths pulumi.StringArrayInput `pulumi:"paths"`
+}
+
+func (AggregationPropertiesPropertiesPathFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationPropertiesPropertiesPathFilter)(nil)).Elem()
+}
+
+func (i AggregationPropertiesPropertiesPathFilterArgs) ToAggregationPropertiesPropertiesPathFilterOutput() AggregationPropertiesPropertiesPathFilterOutput {
+	return i.ToAggregationPropertiesPropertiesPathFilterOutputWithContext(context.Background())
+}
+
+func (i AggregationPropertiesPropertiesPathFilterArgs) ToAggregationPropertiesPropertiesPathFilterOutputWithContext(ctx context.Context) AggregationPropertiesPropertiesPathFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregationPropertiesPropertiesPathFilterOutput)
+}
+
+// AggregationPropertiesPropertiesPathFilterArrayInput is an input type that accepts AggregationPropertiesPropertiesPathFilterArray and AggregationPropertiesPropertiesPathFilterArrayOutput values.
+// You can construct a concrete instance of `AggregationPropertiesPropertiesPathFilterArrayInput` via:
+//
+//	AggregationPropertiesPropertiesPathFilterArray{ AggregationPropertiesPropertiesPathFilterArgs{...} }
+type AggregationPropertiesPropertiesPathFilterArrayInput interface {
+	pulumi.Input
+
+	ToAggregationPropertiesPropertiesPathFilterArrayOutput() AggregationPropertiesPropertiesPathFilterArrayOutput
+	ToAggregationPropertiesPropertiesPathFilterArrayOutputWithContext(context.Context) AggregationPropertiesPropertiesPathFilterArrayOutput
+}
+
+type AggregationPropertiesPropertiesPathFilterArray []AggregationPropertiesPropertiesPathFilterInput
+
+func (AggregationPropertiesPropertiesPathFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AggregationPropertiesPropertiesPathFilter)(nil)).Elem()
+}
+
+func (i AggregationPropertiesPropertiesPathFilterArray) ToAggregationPropertiesPropertiesPathFilterArrayOutput() AggregationPropertiesPropertiesPathFilterArrayOutput {
+	return i.ToAggregationPropertiesPropertiesPathFilterArrayOutputWithContext(context.Background())
+}
+
+func (i AggregationPropertiesPropertiesPathFilterArray) ToAggregationPropertiesPropertiesPathFilterArrayOutputWithContext(ctx context.Context) AggregationPropertiesPropertiesPathFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregationPropertiesPropertiesPathFilterArrayOutput)
+}
+
+type AggregationPropertiesPropertiesPathFilterOutput struct{ *pulumi.OutputState }
+
+func (AggregationPropertiesPropertiesPathFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationPropertiesPropertiesPathFilter)(nil)).Elem()
+}
+
+func (o AggregationPropertiesPropertiesPathFilterOutput) ToAggregationPropertiesPropertiesPathFilterOutput() AggregationPropertiesPropertiesPathFilterOutput {
+	return o
+}
+
+func (o AggregationPropertiesPropertiesPathFilterOutput) ToAggregationPropertiesPropertiesPathFilterOutputWithContext(ctx context.Context) AggregationPropertiesPropertiesPathFilterOutput {
+	return o
+}
+
+// The blueprint to start the path from. Should be the target blueprint or undefined to start from the source blueprint
+func (o AggregationPropertiesPropertiesPathFilterOutput) FromBlueprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AggregationPropertiesPropertiesPathFilter) *string { return v.FromBlueprint }).(pulumi.StringPtrOutput)
+}
+
+// The path array of relations to filter by
+func (o AggregationPropertiesPropertiesPathFilterOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AggregationPropertiesPropertiesPathFilter) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+type AggregationPropertiesPropertiesPathFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (AggregationPropertiesPropertiesPathFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AggregationPropertiesPropertiesPathFilter)(nil)).Elem()
+}
+
+func (o AggregationPropertiesPropertiesPathFilterArrayOutput) ToAggregationPropertiesPropertiesPathFilterArrayOutput() AggregationPropertiesPropertiesPathFilterArrayOutput {
+	return o
+}
+
+func (o AggregationPropertiesPropertiesPathFilterArrayOutput) ToAggregationPropertiesPropertiesPathFilterArrayOutputWithContext(ctx context.Context) AggregationPropertiesPropertiesPathFilterArrayOutput {
+	return o
+}
+
+func (o AggregationPropertiesPropertiesPathFilterArrayOutput) Index(i pulumi.IntInput) AggregationPropertiesPropertiesPathFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AggregationPropertiesPropertiesPathFilter {
+		return vs[0].([]AggregationPropertiesPropertiesPathFilter)[vs[1].(int)]
+	}).(AggregationPropertiesPropertiesPathFilterOutput)
 }
 
 type BlueprintCalculationProperties struct {
@@ -17686,6 +17803,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregationPropertiesPropertiesMethodAverageByPropertyPtrInput)(nil)).Elem(), AggregationPropertiesPropertiesMethodAverageByPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregationPropertiesPropertiesMethodAverageEntitiesInput)(nil)).Elem(), AggregationPropertiesPropertiesMethodAverageEntitiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregationPropertiesPropertiesMethodAverageEntitiesPtrInput)(nil)).Elem(), AggregationPropertiesPropertiesMethodAverageEntitiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregationPropertiesPropertiesPathFilterInput)(nil)).Elem(), AggregationPropertiesPropertiesPathFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregationPropertiesPropertiesPathFilterArrayInput)(nil)).Elem(), AggregationPropertiesPropertiesPathFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintCalculationPropertiesInput)(nil)).Elem(), BlueprintCalculationPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintCalculationPropertiesMapInput)(nil)).Elem(), BlueprintCalculationPropertiesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintKafkaChangelogDestinationInput)(nil)).Elem(), BlueprintKafkaChangelogDestinationArgs{})
@@ -17896,6 +18015,8 @@ func init() {
 	pulumi.RegisterOutputType(AggregationPropertiesPropertiesMethodAverageByPropertyPtrOutput{})
 	pulumi.RegisterOutputType(AggregationPropertiesPropertiesMethodAverageEntitiesOutput{})
 	pulumi.RegisterOutputType(AggregationPropertiesPropertiesMethodAverageEntitiesPtrOutput{})
+	pulumi.RegisterOutputType(AggregationPropertiesPropertiesPathFilterOutput{})
+	pulumi.RegisterOutputType(AggregationPropertiesPropertiesPathFilterArrayOutput{})
 	pulumi.RegisterOutputType(BlueprintCalculationPropertiesOutput{})
 	pulumi.RegisterOutputType(BlueprintCalculationPropertiesMapOutput{})
 	pulumi.RegisterOutputType(BlueprintKafkaChangelogDestinationOutput{})
