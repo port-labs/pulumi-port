@@ -860,6 +860,10 @@ export interface AggregationPropertiesProperties {
      */
     method: outputs.AggregationPropertiesPropertiesMethod;
     /**
+     * Path filter to filter entities based on relation path
+     */
+    pathFilters?: outputs.AggregationPropertiesPropertiesPathFilter[];
+    /**
      * Query to filter the target entities
      */
     query?: string;
@@ -927,6 +931,17 @@ export interface AggregationPropertiesPropertiesMethodAverageEntities {
      * The property name on which to calculate the the time periods, e.g. $createdAt, $updated_at or any other date property
      */
     measureTimeBy: string;
+}
+
+export interface AggregationPropertiesPropertiesPathFilter {
+    /**
+     * The blueprint to start the path from. Should be the target blueprint or undefined to start from the source blueprint
+     */
+    fromBlueprint?: string;
+    /**
+     * The path array of relations to filter by
+     */
+    paths: string[];
 }
 
 export interface BlueprintCalculationProperties {

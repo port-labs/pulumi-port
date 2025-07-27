@@ -61,6 +61,7 @@ __all__ = [
     'AggregationPropertiesPropertiesMethodAggregateByProperty',
     'AggregationPropertiesPropertiesMethodAverageByProperty',
     'AggregationPropertiesPropertiesMethodAverageEntities',
+    'AggregationPropertiesPropertiesPathFilter',
     'BlueprintCalculationProperties',
     'BlueprintKafkaChangelogDestination',
     'BlueprintMirrorProperties',
@@ -3067,6 +3068,8 @@ class AggregationPropertiesProperties(dict):
         suggest = None
         if key == "targetBlueprintIdentifier":
             suggest = "target_blueprint_identifier"
+        elif key == "pathFilters":
+            suggest = "path_filters"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AggregationPropertiesProperties. Access the value via the '{suggest}' property getter instead.")
@@ -3084,6 +3087,7 @@ class AggregationPropertiesProperties(dict):
                  target_blueprint_identifier: str,
                  description: Optional[str] = None,
                  icon: Optional[str] = None,
+                 path_filters: Optional[Sequence['outputs.AggregationPropertiesPropertiesPathFilter']] = None,
                  query: Optional[str] = None,
                  title: Optional[str] = None):
         """
@@ -3091,6 +3095,7 @@ class AggregationPropertiesProperties(dict):
         :param str target_blueprint_identifier: The identifier of the blueprint to perform the aggregation on
         :param str description: The description of the aggregation property
         :param str icon: The icon of the aggregation property
+        :param Sequence['AggregationPropertiesPropertiesPathFilterArgs'] path_filters: Path filter to filter entities based on relation path
         :param str query: Query to filter the target entities
         :param str title: The title of the aggregation property
         """
@@ -3100,6 +3105,8 @@ class AggregationPropertiesProperties(dict):
             pulumi.set(__self__, "description", description)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
+        if path_filters is not None:
+            pulumi.set(__self__, "path_filters", path_filters)
         if query is not None:
             pulumi.set(__self__, "query", query)
         if title is not None:
@@ -3136,6 +3143,14 @@ class AggregationPropertiesProperties(dict):
         The icon of the aggregation property
         """
         return pulumi.get(self, "icon")
+
+    @property
+    @pulumi.getter(name="pathFilters")
+    def path_filters(self) -> Optional[Sequence['outputs.AggregationPropertiesPropertiesPathFilter']]:
+        """
+        Path filter to filter entities based on relation path
+        """
+        return pulumi.get(self, "path_filters")
 
     @property
     @pulumi.getter
@@ -3368,6 +3383,53 @@ class AggregationPropertiesPropertiesMethodAverageEntities(dict):
         The property name on which to calculate the the time periods, e.g. $createdAt, $updated_at or any other date property
         """
         return pulumi.get(self, "measure_time_by")
+
+
+@pulumi.output_type
+class AggregationPropertiesPropertiesPathFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fromBlueprint":
+            suggest = "from_blueprint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AggregationPropertiesPropertiesPathFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AggregationPropertiesPropertiesPathFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AggregationPropertiesPropertiesPathFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 paths: Sequence[str],
+                 from_blueprint: Optional[str] = None):
+        """
+        :param Sequence[str] paths: The path array of relations to filter by
+        :param str from_blueprint: The blueprint to start the path from. Should be the target blueprint or undefined to start from the source blueprint
+        """
+        pulumi.set(__self__, "paths", paths)
+        if from_blueprint is not None:
+            pulumi.set(__self__, "from_blueprint", from_blueprint)
+
+    @property
+    @pulumi.getter
+    def paths(self) -> Sequence[str]:
+        """
+        The path array of relations to filter by
+        """
+        return pulumi.get(self, "paths")
+
+    @property
+    @pulumi.getter(name="fromBlueprint")
+    def from_blueprint(self) -> Optional[str]:
+        """
+        The blueprint to start the path from. Should be the target blueprint or undefined to start from the source blueprint
+        """
+        return pulumi.get(self, "from_blueprint")
 
 
 @pulumi.output_type
