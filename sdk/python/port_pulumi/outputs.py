@@ -7060,7 +7060,7 @@ class WebhookMappingEntity(dict):
                  team: Optional[str] = None,
                  title: Optional[str] = None):
         """
-        :param str identifier: The identifier of the entity
+        :param str identifier: The identifier of the entity. Can be either a simple JQ expression (string) or a search query object encoded with jsonencode(). When using search query objects, the structure must include 'combinator' and 'rules' fields, and each rule must have 'property', 'operator', and 'value' fields.
         :param str icon: The icon of the entity
         :param Mapping[str, str] properties: The properties of the entity
         :param Mapping[str, str] relations: The relations of the entity. Relations can be defined as either simple JQ expressions (strings) or search query objects. When using objects, the rules array must be encoded with jsonencode().
@@ -7083,7 +7083,7 @@ class WebhookMappingEntity(dict):
     @pulumi.getter
     def identifier(self) -> str:
         """
-        The identifier of the entity
+        The identifier of the entity. Can be either a simple JQ expression (string) or a search query object encoded with jsonencode(). When using search query objects, the structure must include 'combinator' and 'rules' fields, and each rule must have 'property', 'operator', and 'value' fields.
         """
         return pulumi.get(self, "identifier")
 
