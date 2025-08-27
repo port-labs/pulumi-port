@@ -458,11 +458,40 @@ class Webhook(pulumi.CustomResource):
                     author,
                     team,
                 ]))
+        # Example with complex identifier using search query
+        complex_identifier = port.index.Port_webhook("complexIdentifier",
+            identifier=complex_identifier_webhook,
+            title=Webhook with complex identifier,
+            icon=Terraform,
+            enabled=True,
+            mappings=[{
+                blueprint: microservice.identifier,
+                operation: {
+                    type: create,
+                },
+                filter: .headers."x-github-event" == "push",
+                entity: {
+                    identifier: json.dumps({
+                        combinator: 'and',
+                        rules: [{
+                            property: 'arn',
+                            operator: '=',
+                            value: .body.resources[0],
+                        }],
+                    }),
+                    title: .body.repository.name,
+                    properties: {
+                        url: .body.repository.html_url,
+                    },
+                },
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[microservice]))
         ```
 
         ## Notes
 
         - When using object format for relations, `combinator`, `property` and `operator` fields should be enclosed in single quotes, while `value` should not have quotes as it's a JQ expression. The single quotes are required because these fields contain literal string values that must be passed as-is to the Port API, whereas `value` contains a JQ expression that should be evaluated dynamically.
+        - The `identifier` field supports both simple JQ expressions (strings) and complex search query objects. When using search query objects, the structure must include `combinator` and `rules` fields, and each rule must have `property`, `operator`, and `value` fields.
         - For all available operators, see the [Port comparison operators documentation](https://docs.port.io/search-and-query/comparison-operators).
 
         :param str resource_name: The name of the resource.
@@ -572,11 +601,40 @@ class Webhook(pulumi.CustomResource):
                     author,
                     team,
                 ]))
+        # Example with complex identifier using search query
+        complex_identifier = port.index.Port_webhook("complexIdentifier",
+            identifier=complex_identifier_webhook,
+            title=Webhook with complex identifier,
+            icon=Terraform,
+            enabled=True,
+            mappings=[{
+                blueprint: microservice.identifier,
+                operation: {
+                    type: create,
+                },
+                filter: .headers."x-github-event" == "push",
+                entity: {
+                    identifier: json.dumps({
+                        combinator: 'and',
+                        rules: [{
+                            property: 'arn',
+                            operator: '=',
+                            value: .body.resources[0],
+                        }],
+                    }),
+                    title: .body.repository.name,
+                    properties: {
+                        url: .body.repository.html_url,
+                    },
+                },
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[microservice]))
         ```
 
         ## Notes
 
         - When using object format for relations, `combinator`, `property` and `operator` fields should be enclosed in single quotes, while `value` should not have quotes as it's a JQ expression. The single quotes are required because these fields contain literal string values that must be passed as-is to the Port API, whereas `value` contains a JQ expression that should be evaluated dynamically.
+        - The `identifier` field supports both simple JQ expressions (strings) and complex search query objects. When using search query objects, the structure must include `combinator` and `rules` fields, and each rule must have `property`, `operator`, and `value` fields.
         - For all available operators, see the [Port comparison operators documentation](https://docs.port.io/search-and-query/comparison-operators).
 
         :param str resource_name: The name of the resource.

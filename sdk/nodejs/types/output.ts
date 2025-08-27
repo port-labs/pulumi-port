@@ -2132,7 +2132,7 @@ export interface WebhookMappingEntity {
      */
     icon?: string;
     /**
-     * The identifier of the entity
+     * The identifier of the entity. Can be either a simple JQ expression (string) or a search query object encoded with jsonencode(). When using search query objects, the structure must include 'combinator' and 'rules' fields, and each rule must have 'property', 'operator', and 'value' fields.
      */
     identifier: string;
     /**

@@ -16623,7 +16623,7 @@ func (o WebhookMappingArrayOutput) Index(i pulumi.IntInput) WebhookMappingOutput
 type WebhookMappingEntity struct {
 	// The icon of the entity
 	Icon *string `pulumi:"icon"`
-	// The identifier of the entity
+	// The identifier of the entity. Can be either a simple JQ expression (string) or a search query object encoded with jsonencode(). When using search query objects, the structure must include 'combinator' and 'rules' fields, and each rule must have 'property', 'operator', and 'value' fields.
 	Identifier string `pulumi:"identifier"`
 	// The properties of the entity
 	Properties map[string]string `pulumi:"properties"`
@@ -16649,7 +16649,7 @@ type WebhookMappingEntityInput interface {
 type WebhookMappingEntityArgs struct {
 	// The icon of the entity
 	Icon pulumi.StringPtrInput `pulumi:"icon"`
-	// The identifier of the entity
+	// The identifier of the entity. Can be either a simple JQ expression (string) or a search query object encoded with jsonencode(). When using search query objects, the structure must include 'combinator' and 'rules' fields, and each rule must have 'property', 'operator', and 'value' fields.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// The properties of the entity
 	Properties pulumi.StringMapInput `pulumi:"properties"`
@@ -16692,7 +16692,7 @@ func (o WebhookMappingEntityOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebhookMappingEntity) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
-// The identifier of the entity
+// The identifier of the entity. Can be either a simple JQ expression (string) or a search query object encoded with jsonencode(). When using search query objects, the structure must include 'combinator' and 'rules' fields, and each rule must have 'property', 'operator', and 'value' fields.
 func (o WebhookMappingEntityOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v WebhookMappingEntity) string { return v.Identifier }).(pulumi.StringOutput)
 }
