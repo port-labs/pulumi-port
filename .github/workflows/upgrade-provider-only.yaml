@@ -5,6 +5,12 @@ jobs:
     name: upgrade-provider
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Set up mise
+      uses: jdx/mise-action@v2
+      with:
+        version: 'latest'
     - name: Call upgrade provider action
       uses: pulumi/pulumi-upgrade-provider-action@f399a75a5350242c291cc720eece1c72cb6ea712 # v0.0.12
       with:
