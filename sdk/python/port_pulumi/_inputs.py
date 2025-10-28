@@ -109,6 +109,8 @@ __all__ = [
     'AggregationPropertiesPropertiesPathFilterArgsDict',
     'BlueprintCalculationPropertiesArgs',
     'BlueprintCalculationPropertiesArgsDict',
+    'BlueprintCalculationPropertiesSpecAuthenticationArgs',
+    'BlueprintCalculationPropertiesSpecAuthenticationArgsDict',
     'BlueprintKafkaChangelogDestinationArgs',
     'BlueprintKafkaChangelogDestinationArgsDict',
     'BlueprintMirrorPropertiesArgs',
@@ -187,6 +189,8 @@ __all__ = [
     'ScorecardRuleQueryArgsDict',
     'SystemBlueprintCalculationPropertiesArgs',
     'SystemBlueprintCalculationPropertiesArgsDict',
+    'SystemBlueprintCalculationPropertiesSpecAuthenticationArgs',
+    'SystemBlueprintCalculationPropertiesSpecAuthenticationArgsDict',
     'SystemBlueprintMirrorPropertiesArgs',
     'SystemBlueprintMirrorPropertiesArgsDict',
     'SystemBlueprintPropertiesArgs',
@@ -1534,6 +1538,14 @@ if not MYPY:
         """
         The step's title (max 25 characters)
         """
+        visible: NotRequired[pulumi.Input[bool]]
+        """
+        The visibility of the step
+        """
+        visible_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The visibility condition jq query of the step
+        """
 elif False:
     ActionSelfServiceTriggerStepArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1541,13 +1553,21 @@ elif False:
 class ActionSelfServiceTriggerStepArgs:
     def __init__(__self__, *,
                  orders: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 title: pulumi.Input[str]):
+                 title: pulumi.Input[str],
+                 visible: Optional[pulumi.Input[bool]] = None,
+                 visible_jq_query: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] orders: The order of the properties in this step
         :param pulumi.Input[str] title: The step's title (max 25 characters)
+        :param pulumi.Input[bool] visible: The visibility of the step
+        :param pulumi.Input[str] visible_jq_query: The visibility condition jq query of the step
         """
         pulumi.set(__self__, "orders", orders)
         pulumi.set(__self__, "title", title)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
 
     @property
     @pulumi.getter
@@ -1572,6 +1592,30 @@ class ActionSelfServiceTriggerStepArgs:
     @title.setter
     def title(self, value: pulumi.Input[str]):
         pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The visibility of the step
+        """
+        return pulumi.get(self, "visible")
+
+    @visible.setter
+    def visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "visible", value)
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility condition jq query of the step
+        """
+        return pulumi.get(self, "visible_jq_query")
+
+    @visible_jq_query.setter
+    def visible_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visible_jq_query", value)
 
 
 if not MYPY:
@@ -4778,6 +4822,14 @@ if not MYPY:
         """
         The icon of the calculation property
         """
+        spec: NotRequired[pulumi.Input[str]]
+        """
+        The spec of the calculation property
+        """
+        spec_authentication: NotRequired[pulumi.Input['BlueprintCalculationPropertiesSpecAuthenticationArgsDict']]
+        """
+        The spec authentication of the calculation property
+        """
         title: NotRequired[pulumi.Input[str]]
         """
         The title of the calculation property
@@ -4795,6 +4847,8 @@ class BlueprintCalculationPropertiesArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
+                 spec: Optional[pulumi.Input[str]] = None,
+                 spec_authentication: Optional[pulumi.Input['BlueprintCalculationPropertiesSpecAuthenticationArgs']] = None,
                  title: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] calculation: The calculation of the calculation property
@@ -4804,6 +4858,8 @@ class BlueprintCalculationPropertiesArgs:
         :param pulumi.Input[str] description: The description of the calculation property
         :param pulumi.Input[str] format: The format of the calculation property
         :param pulumi.Input[str] icon: The icon of the calculation property
+        :param pulumi.Input[str] spec: The spec of the calculation property
+        :param pulumi.Input['BlueprintCalculationPropertiesSpecAuthenticationArgs'] spec_authentication: The spec authentication of the calculation property
         :param pulumi.Input[str] title: The title of the calculation property
         """
         pulumi.set(__self__, "calculation", calculation)
@@ -4818,6 +4874,10 @@ class BlueprintCalculationPropertiesArgs:
             pulumi.set(__self__, "format", format)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+        if spec_authentication is not None:
+            pulumi.set(__self__, "spec_authentication", spec_authentication)
         if title is not None:
             pulumi.set(__self__, "title", title)
 
@@ -4907,6 +4967,30 @@ class BlueprintCalculationPropertiesArgs:
 
     @property
     @pulumi.getter
+    def spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The spec of the calculation property
+        """
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spec", value)
+
+    @property
+    @pulumi.getter(name="specAuthentication")
+    def spec_authentication(self) -> Optional[pulumi.Input['BlueprintCalculationPropertiesSpecAuthenticationArgs']]:
+        """
+        The spec authentication of the calculation property
+        """
+        return pulumi.get(self, "spec_authentication")
+
+    @spec_authentication.setter
+    def spec_authentication(self, value: Optional[pulumi.Input['BlueprintCalculationPropertiesSpecAuthenticationArgs']]):
+        pulumi.set(self, "spec_authentication", value)
+
+    @property
+    @pulumi.getter
     def title(self) -> Optional[pulumi.Input[str]]:
         """
         The title of the calculation property
@@ -4916,6 +5000,75 @@ class BlueprintCalculationPropertiesArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+if not MYPY:
+    class BlueprintCalculationPropertiesSpecAuthenticationArgsDict(TypedDict):
+        authorization_url: pulumi.Input[str]
+        """
+        The authorizationUrl of the spec authentication
+        """
+        client_id: pulumi.Input[str]
+        """
+        The clientId of the spec authentication
+        """
+        token_url: pulumi.Input[str]
+        """
+        The tokenUrl of the spec authentication
+        """
+elif False:
+    BlueprintCalculationPropertiesSpecAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BlueprintCalculationPropertiesSpecAuthenticationArgs:
+    def __init__(__self__, *,
+                 authorization_url: pulumi.Input[str],
+                 client_id: pulumi.Input[str],
+                 token_url: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] authorization_url: The authorizationUrl of the spec authentication
+        :param pulumi.Input[str] client_id: The clientId of the spec authentication
+        :param pulumi.Input[str] token_url: The tokenUrl of the spec authentication
+        """
+        pulumi.set(__self__, "authorization_url", authorization_url)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "token_url", token_url)
+
+    @property
+    @pulumi.getter(name="authorizationUrl")
+    def authorization_url(self) -> pulumi.Input[str]:
+        """
+        The authorizationUrl of the spec authentication
+        """
+        return pulumi.get(self, "authorization_url")
+
+    @authorization_url.setter
+    def authorization_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "authorization_url", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[str]:
+        """
+        The clientId of the spec authentication
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="tokenUrl")
+    def token_url(self) -> pulumi.Input[str]:
+        """
+        The tokenUrl of the spec authentication
+        """
+        return pulumi.get(self, "token_url")
+
+    @token_url.setter
+    def token_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token_url", value)
 
 
 if not MYPY:
@@ -8240,6 +8393,14 @@ if not MYPY:
         """
         The icon of the calculation property
         """
+        spec: NotRequired[pulumi.Input[str]]
+        """
+        The spec of the calculation property
+        """
+        spec_authentication: NotRequired[pulumi.Input['SystemBlueprintCalculationPropertiesSpecAuthenticationArgsDict']]
+        """
+        The spec authentication of the calculation property
+        """
         title: NotRequired[pulumi.Input[str]]
         """
         The title of the calculation property
@@ -8257,6 +8418,8 @@ class SystemBlueprintCalculationPropertiesArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
+                 spec: Optional[pulumi.Input[str]] = None,
+                 spec_authentication: Optional[pulumi.Input['SystemBlueprintCalculationPropertiesSpecAuthenticationArgs']] = None,
                  title: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] calculation: The calculation of the calculation property
@@ -8266,6 +8429,8 @@ class SystemBlueprintCalculationPropertiesArgs:
         :param pulumi.Input[str] description: The description of the calculation property
         :param pulumi.Input[str] format: The format of the calculation property
         :param pulumi.Input[str] icon: The icon of the calculation property
+        :param pulumi.Input[str] spec: The spec of the calculation property
+        :param pulumi.Input['SystemBlueprintCalculationPropertiesSpecAuthenticationArgs'] spec_authentication: The spec authentication of the calculation property
         :param pulumi.Input[str] title: The title of the calculation property
         """
         pulumi.set(__self__, "calculation", calculation)
@@ -8280,6 +8445,10 @@ class SystemBlueprintCalculationPropertiesArgs:
             pulumi.set(__self__, "format", format)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+        if spec_authentication is not None:
+            pulumi.set(__self__, "spec_authentication", spec_authentication)
         if title is not None:
             pulumi.set(__self__, "title", title)
 
@@ -8369,6 +8538,30 @@ class SystemBlueprintCalculationPropertiesArgs:
 
     @property
     @pulumi.getter
+    def spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The spec of the calculation property
+        """
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spec", value)
+
+    @property
+    @pulumi.getter(name="specAuthentication")
+    def spec_authentication(self) -> Optional[pulumi.Input['SystemBlueprintCalculationPropertiesSpecAuthenticationArgs']]:
+        """
+        The spec authentication of the calculation property
+        """
+        return pulumi.get(self, "spec_authentication")
+
+    @spec_authentication.setter
+    def spec_authentication(self, value: Optional[pulumi.Input['SystemBlueprintCalculationPropertiesSpecAuthenticationArgs']]):
+        pulumi.set(self, "spec_authentication", value)
+
+    @property
+    @pulumi.getter
     def title(self) -> Optional[pulumi.Input[str]]:
         """
         The title of the calculation property
@@ -8378,6 +8571,75 @@ class SystemBlueprintCalculationPropertiesArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+if not MYPY:
+    class SystemBlueprintCalculationPropertiesSpecAuthenticationArgsDict(TypedDict):
+        authorization_url: pulumi.Input[str]
+        """
+        The authorizationUrl of the spec authentication
+        """
+        client_id: pulumi.Input[str]
+        """
+        The clientId of the spec authentication
+        """
+        token_url: pulumi.Input[str]
+        """
+        The tokenUrl of the spec authentication
+        """
+elif False:
+    SystemBlueprintCalculationPropertiesSpecAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SystemBlueprintCalculationPropertiesSpecAuthenticationArgs:
+    def __init__(__self__, *,
+                 authorization_url: pulumi.Input[str],
+                 client_id: pulumi.Input[str],
+                 token_url: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] authorization_url: The authorizationUrl of the spec authentication
+        :param pulumi.Input[str] client_id: The clientId of the spec authentication
+        :param pulumi.Input[str] token_url: The tokenUrl of the spec authentication
+        """
+        pulumi.set(__self__, "authorization_url", authorization_url)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "token_url", token_url)
+
+    @property
+    @pulumi.getter(name="authorizationUrl")
+    def authorization_url(self) -> pulumi.Input[str]:
+        """
+        The authorizationUrl of the spec authentication
+        """
+        return pulumi.get(self, "authorization_url")
+
+    @authorization_url.setter
+    def authorization_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "authorization_url", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[str]:
+        """
+        The clientId of the spec authentication
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="tokenUrl")
+    def token_url(self) -> pulumi.Input[str]:
+        """
+        The tokenUrl of the spec authentication
+        """
+        return pulumi.get(self, "token_url")
+
+    @token_url.setter
+    def token_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token_url", value)
 
 
 if not MYPY:

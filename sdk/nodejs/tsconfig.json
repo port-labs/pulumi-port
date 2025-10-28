@@ -25,6 +25,7 @@
         "getSearch.ts",
         "index.ts",
         "integration.ts",
+        "organizationSecret.ts",
         "page.ts",
         "pagePermissions.ts",
         "provider.ts",

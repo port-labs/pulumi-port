@@ -290,6 +290,14 @@ export interface ActionSelfServiceTriggerStep {
      * The step's title (max 25 characters)
      */
     title: string;
+    /**
+     * The visibility of the step
+     */
+    visible?: boolean;
+    /**
+     * The visibility condition jq query of the step
+     */
+    visibleJqQuery?: string;
 }
 
 export interface ActionSelfServiceTriggerTitles {
@@ -970,6 +978,14 @@ export interface BlueprintCalculationProperties {
      */
     icon?: string;
     /**
+     * The spec of the calculation property
+     */
+    spec?: string;
+    /**
+     * The spec authentication of the calculation property
+     */
+    specAuthentication?: outputs.BlueprintCalculationPropertiesSpecAuthentication;
+    /**
      * The title of the calculation property
      */
     title?: string;
@@ -977,6 +993,21 @@ export interface BlueprintCalculationProperties {
      * The type of the calculation property
      */
     type: string;
+}
+
+export interface BlueprintCalculationPropertiesSpecAuthentication {
+    /**
+     * The authorizationUrl of the spec authentication
+     */
+    authorizationUrl: string;
+    /**
+     * The clientId of the spec authentication
+     */
+    clientId: string;
+    /**
+     * The tokenUrl of the spec authentication
+     */
+    tokenUrl: string;
 }
 
 export interface BlueprintKafkaChangelogDestination {
@@ -1791,6 +1822,14 @@ export interface SystemBlueprintCalculationProperties {
      */
     icon?: string;
     /**
+     * The spec of the calculation property
+     */
+    spec?: string;
+    /**
+     * The spec authentication of the calculation property
+     */
+    specAuthentication?: outputs.SystemBlueprintCalculationPropertiesSpecAuthentication;
+    /**
      * The title of the calculation property
      */
     title?: string;
@@ -1798,6 +1837,21 @@ export interface SystemBlueprintCalculationProperties {
      * The type of the calculation property
      */
     type: string;
+}
+
+export interface SystemBlueprintCalculationPropertiesSpecAuthentication {
+    /**
+     * The authorizationUrl of the spec authentication
+     */
+    authorizationUrl: string;
+    /**
+     * The clientId of the spec authentication
+     */
+    clientId: string;
+    /**
+     * The tokenUrl of the spec authentication
+     */
+    tokenUrl: string;
 }
 
 export interface SystemBlueprintMirrorProperties {
