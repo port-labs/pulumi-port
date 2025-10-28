@@ -3414,6 +3414,10 @@ type ActionSelfServiceTriggerStep struct {
 	Orders []string `pulumi:"orders"`
 	// The step's title (max 25 characters)
 	Title string `pulumi:"title"`
+	// The visibility of the step
+	Visible *bool `pulumi:"visible"`
+	// The visibility condition jq query of the step
+	VisibleJqQuery *string `pulumi:"visibleJqQuery"`
 }
 
 // ActionSelfServiceTriggerStepInput is an input type that accepts ActionSelfServiceTriggerStepArgs and ActionSelfServiceTriggerStepOutput values.
@@ -3432,6 +3436,10 @@ type ActionSelfServiceTriggerStepArgs struct {
 	Orders pulumi.StringArrayInput `pulumi:"orders"`
 	// The step's title (max 25 characters)
 	Title pulumi.StringInput `pulumi:"title"`
+	// The visibility of the step
+	Visible pulumi.BoolPtrInput `pulumi:"visible"`
+	// The visibility condition jq query of the step
+	VisibleJqQuery pulumi.StringPtrInput `pulumi:"visibleJqQuery"`
 }
 
 func (ActionSelfServiceTriggerStepArgs) ElementType() reflect.Type {
@@ -3493,6 +3501,16 @@ func (o ActionSelfServiceTriggerStepOutput) Orders() pulumi.StringArrayOutput {
 // The step's title (max 25 characters)
 func (o ActionSelfServiceTriggerStepOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerStep) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// The visibility of the step
+func (o ActionSelfServiceTriggerStepOutput) Visible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerStep) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
+}
+
+// The visibility condition jq query of the step
+func (o ActionSelfServiceTriggerStepOutput) VisibleJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerStep) *string { return v.VisibleJqQuery }).(pulumi.StringPtrOutput)
 }
 
 type ActionSelfServiceTriggerStepArrayOutput struct{ *pulumi.OutputState }
@@ -7922,6 +7940,10 @@ type BlueprintCalculationProperties struct {
 	Format *string `pulumi:"format"`
 	// The icon of the calculation property
 	Icon *string `pulumi:"icon"`
+	// The spec of the calculation property
+	Spec *string `pulumi:"spec"`
+	// The spec authentication of the calculation property
+	SpecAuthentication *BlueprintCalculationPropertiesSpecAuthentication `pulumi:"specAuthentication"`
 	// The title of the calculation property
 	Title *string `pulumi:"title"`
 	// The type of the calculation property
@@ -7952,6 +7974,10 @@ type BlueprintCalculationPropertiesArgs struct {
 	Format pulumi.StringPtrInput `pulumi:"format"`
 	// The icon of the calculation property
 	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// The spec of the calculation property
+	Spec pulumi.StringPtrInput `pulumi:"spec"`
+	// The spec authentication of the calculation property
+	SpecAuthentication BlueprintCalculationPropertiesSpecAuthenticationPtrInput `pulumi:"specAuthentication"`
 	// The title of the calculation property
 	Title pulumi.StringPtrInput `pulumi:"title"`
 	// The type of the calculation property
@@ -8039,6 +8065,18 @@ func (o BlueprintCalculationPropertiesOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintCalculationProperties) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
+// The spec of the calculation property
+func (o BlueprintCalculationPropertiesOutput) Spec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintCalculationProperties) *string { return v.Spec }).(pulumi.StringPtrOutput)
+}
+
+// The spec authentication of the calculation property
+func (o BlueprintCalculationPropertiesOutput) SpecAuthentication() BlueprintCalculationPropertiesSpecAuthenticationPtrOutput {
+	return o.ApplyT(func(v BlueprintCalculationProperties) *BlueprintCalculationPropertiesSpecAuthentication {
+		return v.SpecAuthentication
+	}).(BlueprintCalculationPropertiesSpecAuthenticationPtrOutput)
+}
+
 // The title of the calculation property
 func (o BlueprintCalculationPropertiesOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintCalculationProperties) *string { return v.Title }).(pulumi.StringPtrOutput)
@@ -8067,6 +8105,181 @@ func (o BlueprintCalculationPropertiesMapOutput) MapIndex(k pulumi.StringInput) 
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BlueprintCalculationProperties {
 		return vs[0].(map[string]BlueprintCalculationProperties)[vs[1].(string)]
 	}).(BlueprintCalculationPropertiesOutput)
+}
+
+type BlueprintCalculationPropertiesSpecAuthentication struct {
+	// The authorizationUrl of the spec authentication
+	AuthorizationUrl string `pulumi:"authorizationUrl"`
+	// The clientId of the spec authentication
+	ClientId string `pulumi:"clientId"`
+	// The tokenUrl of the spec authentication
+	TokenUrl string `pulumi:"tokenUrl"`
+}
+
+// BlueprintCalculationPropertiesSpecAuthenticationInput is an input type that accepts BlueprintCalculationPropertiesSpecAuthenticationArgs and BlueprintCalculationPropertiesSpecAuthenticationOutput values.
+// You can construct a concrete instance of `BlueprintCalculationPropertiesSpecAuthenticationInput` via:
+//
+//	BlueprintCalculationPropertiesSpecAuthenticationArgs{...}
+type BlueprintCalculationPropertiesSpecAuthenticationInput interface {
+	pulumi.Input
+
+	ToBlueprintCalculationPropertiesSpecAuthenticationOutput() BlueprintCalculationPropertiesSpecAuthenticationOutput
+	ToBlueprintCalculationPropertiesSpecAuthenticationOutputWithContext(context.Context) BlueprintCalculationPropertiesSpecAuthenticationOutput
+}
+
+type BlueprintCalculationPropertiesSpecAuthenticationArgs struct {
+	// The authorizationUrl of the spec authentication
+	AuthorizationUrl pulumi.StringInput `pulumi:"authorizationUrl"`
+	// The clientId of the spec authentication
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The tokenUrl of the spec authentication
+	TokenUrl pulumi.StringInput `pulumi:"tokenUrl"`
+}
+
+func (BlueprintCalculationPropertiesSpecAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintCalculationPropertiesSpecAuthentication)(nil)).Elem()
+}
+
+func (i BlueprintCalculationPropertiesSpecAuthenticationArgs) ToBlueprintCalculationPropertiesSpecAuthenticationOutput() BlueprintCalculationPropertiesSpecAuthenticationOutput {
+	return i.ToBlueprintCalculationPropertiesSpecAuthenticationOutputWithContext(context.Background())
+}
+
+func (i BlueprintCalculationPropertiesSpecAuthenticationArgs) ToBlueprintCalculationPropertiesSpecAuthenticationOutputWithContext(ctx context.Context) BlueprintCalculationPropertiesSpecAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintCalculationPropertiesSpecAuthenticationOutput)
+}
+
+func (i BlueprintCalculationPropertiesSpecAuthenticationArgs) ToBlueprintCalculationPropertiesSpecAuthenticationPtrOutput() BlueprintCalculationPropertiesSpecAuthenticationPtrOutput {
+	return i.ToBlueprintCalculationPropertiesSpecAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i BlueprintCalculationPropertiesSpecAuthenticationArgs) ToBlueprintCalculationPropertiesSpecAuthenticationPtrOutputWithContext(ctx context.Context) BlueprintCalculationPropertiesSpecAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintCalculationPropertiesSpecAuthenticationOutput).ToBlueprintCalculationPropertiesSpecAuthenticationPtrOutputWithContext(ctx)
+}
+
+// BlueprintCalculationPropertiesSpecAuthenticationPtrInput is an input type that accepts BlueprintCalculationPropertiesSpecAuthenticationArgs, BlueprintCalculationPropertiesSpecAuthenticationPtr and BlueprintCalculationPropertiesSpecAuthenticationPtrOutput values.
+// You can construct a concrete instance of `BlueprintCalculationPropertiesSpecAuthenticationPtrInput` via:
+//
+//	        BlueprintCalculationPropertiesSpecAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type BlueprintCalculationPropertiesSpecAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToBlueprintCalculationPropertiesSpecAuthenticationPtrOutput() BlueprintCalculationPropertiesSpecAuthenticationPtrOutput
+	ToBlueprintCalculationPropertiesSpecAuthenticationPtrOutputWithContext(context.Context) BlueprintCalculationPropertiesSpecAuthenticationPtrOutput
+}
+
+type blueprintCalculationPropertiesSpecAuthenticationPtrType BlueprintCalculationPropertiesSpecAuthenticationArgs
+
+func BlueprintCalculationPropertiesSpecAuthenticationPtr(v *BlueprintCalculationPropertiesSpecAuthenticationArgs) BlueprintCalculationPropertiesSpecAuthenticationPtrInput {
+	return (*blueprintCalculationPropertiesSpecAuthenticationPtrType)(v)
+}
+
+func (*blueprintCalculationPropertiesSpecAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintCalculationPropertiesSpecAuthentication)(nil)).Elem()
+}
+
+func (i *blueprintCalculationPropertiesSpecAuthenticationPtrType) ToBlueprintCalculationPropertiesSpecAuthenticationPtrOutput() BlueprintCalculationPropertiesSpecAuthenticationPtrOutput {
+	return i.ToBlueprintCalculationPropertiesSpecAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *blueprintCalculationPropertiesSpecAuthenticationPtrType) ToBlueprintCalculationPropertiesSpecAuthenticationPtrOutputWithContext(ctx context.Context) BlueprintCalculationPropertiesSpecAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintCalculationPropertiesSpecAuthenticationPtrOutput)
+}
+
+type BlueprintCalculationPropertiesSpecAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (BlueprintCalculationPropertiesSpecAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintCalculationPropertiesSpecAuthentication)(nil)).Elem()
+}
+
+func (o BlueprintCalculationPropertiesSpecAuthenticationOutput) ToBlueprintCalculationPropertiesSpecAuthenticationOutput() BlueprintCalculationPropertiesSpecAuthenticationOutput {
+	return o
+}
+
+func (o BlueprintCalculationPropertiesSpecAuthenticationOutput) ToBlueprintCalculationPropertiesSpecAuthenticationOutputWithContext(ctx context.Context) BlueprintCalculationPropertiesSpecAuthenticationOutput {
+	return o
+}
+
+func (o BlueprintCalculationPropertiesSpecAuthenticationOutput) ToBlueprintCalculationPropertiesSpecAuthenticationPtrOutput() BlueprintCalculationPropertiesSpecAuthenticationPtrOutput {
+	return o.ToBlueprintCalculationPropertiesSpecAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o BlueprintCalculationPropertiesSpecAuthenticationOutput) ToBlueprintCalculationPropertiesSpecAuthenticationPtrOutputWithContext(ctx context.Context) BlueprintCalculationPropertiesSpecAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlueprintCalculationPropertiesSpecAuthentication) *BlueprintCalculationPropertiesSpecAuthentication {
+		return &v
+	}).(BlueprintCalculationPropertiesSpecAuthenticationPtrOutput)
+}
+
+// The authorizationUrl of the spec authentication
+func (o BlueprintCalculationPropertiesSpecAuthenticationOutput) AuthorizationUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v BlueprintCalculationPropertiesSpecAuthentication) string { return v.AuthorizationUrl }).(pulumi.StringOutput)
+}
+
+// The clientId of the spec authentication
+func (o BlueprintCalculationPropertiesSpecAuthenticationOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v BlueprintCalculationPropertiesSpecAuthentication) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The tokenUrl of the spec authentication
+func (o BlueprintCalculationPropertiesSpecAuthenticationOutput) TokenUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v BlueprintCalculationPropertiesSpecAuthentication) string { return v.TokenUrl }).(pulumi.StringOutput)
+}
+
+type BlueprintCalculationPropertiesSpecAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (BlueprintCalculationPropertiesSpecAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintCalculationPropertiesSpecAuthentication)(nil)).Elem()
+}
+
+func (o BlueprintCalculationPropertiesSpecAuthenticationPtrOutput) ToBlueprintCalculationPropertiesSpecAuthenticationPtrOutput() BlueprintCalculationPropertiesSpecAuthenticationPtrOutput {
+	return o
+}
+
+func (o BlueprintCalculationPropertiesSpecAuthenticationPtrOutput) ToBlueprintCalculationPropertiesSpecAuthenticationPtrOutputWithContext(ctx context.Context) BlueprintCalculationPropertiesSpecAuthenticationPtrOutput {
+	return o
+}
+
+func (o BlueprintCalculationPropertiesSpecAuthenticationPtrOutput) Elem() BlueprintCalculationPropertiesSpecAuthenticationOutput {
+	return o.ApplyT(func(v *BlueprintCalculationPropertiesSpecAuthentication) BlueprintCalculationPropertiesSpecAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret BlueprintCalculationPropertiesSpecAuthentication
+		return ret
+	}).(BlueprintCalculationPropertiesSpecAuthenticationOutput)
+}
+
+// The authorizationUrl of the spec authentication
+func (o BlueprintCalculationPropertiesSpecAuthenticationPtrOutput) AuthorizationUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlueprintCalculationPropertiesSpecAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthorizationUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The clientId of the spec authentication
+func (o BlueprintCalculationPropertiesSpecAuthenticationPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlueprintCalculationPropertiesSpecAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tokenUrl of the spec authentication
+func (o BlueprintCalculationPropertiesSpecAuthenticationPtrOutput) TokenUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlueprintCalculationPropertiesSpecAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type BlueprintKafkaChangelogDestination struct {
@@ -14244,6 +14457,10 @@ type SystemBlueprintCalculationProperties struct {
 	Format *string `pulumi:"format"`
 	// The icon of the calculation property
 	Icon *string `pulumi:"icon"`
+	// The spec of the calculation property
+	Spec *string `pulumi:"spec"`
+	// The spec authentication of the calculation property
+	SpecAuthentication *SystemBlueprintCalculationPropertiesSpecAuthentication `pulumi:"specAuthentication"`
 	// The title of the calculation property
 	Title *string `pulumi:"title"`
 	// The type of the calculation property
@@ -14274,6 +14491,10 @@ type SystemBlueprintCalculationPropertiesArgs struct {
 	Format pulumi.StringPtrInput `pulumi:"format"`
 	// The icon of the calculation property
 	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// The spec of the calculation property
+	Spec pulumi.StringPtrInput `pulumi:"spec"`
+	// The spec authentication of the calculation property
+	SpecAuthentication SystemBlueprintCalculationPropertiesSpecAuthenticationPtrInput `pulumi:"specAuthentication"`
 	// The title of the calculation property
 	Title pulumi.StringPtrInput `pulumi:"title"`
 	// The type of the calculation property
@@ -14361,6 +14582,18 @@ func (o SystemBlueprintCalculationPropertiesOutput) Icon() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v SystemBlueprintCalculationProperties) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
+// The spec of the calculation property
+func (o SystemBlueprintCalculationPropertiesOutput) Spec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintCalculationProperties) *string { return v.Spec }).(pulumi.StringPtrOutput)
+}
+
+// The spec authentication of the calculation property
+func (o SystemBlueprintCalculationPropertiesOutput) SpecAuthentication() SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintCalculationProperties) *SystemBlueprintCalculationPropertiesSpecAuthentication {
+		return v.SpecAuthentication
+	}).(SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput)
+}
+
 // The title of the calculation property
 func (o SystemBlueprintCalculationPropertiesOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemBlueprintCalculationProperties) *string { return v.Title }).(pulumi.StringPtrOutput)
@@ -14389,6 +14622,181 @@ func (o SystemBlueprintCalculationPropertiesMapOutput) MapIndex(k pulumi.StringI
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SystemBlueprintCalculationProperties {
 		return vs[0].(map[string]SystemBlueprintCalculationProperties)[vs[1].(string)]
 	}).(SystemBlueprintCalculationPropertiesOutput)
+}
+
+type SystemBlueprintCalculationPropertiesSpecAuthentication struct {
+	// The authorizationUrl of the spec authentication
+	AuthorizationUrl string `pulumi:"authorizationUrl"`
+	// The clientId of the spec authentication
+	ClientId string `pulumi:"clientId"`
+	// The tokenUrl of the spec authentication
+	TokenUrl string `pulumi:"tokenUrl"`
+}
+
+// SystemBlueprintCalculationPropertiesSpecAuthenticationInput is an input type that accepts SystemBlueprintCalculationPropertiesSpecAuthenticationArgs and SystemBlueprintCalculationPropertiesSpecAuthenticationOutput values.
+// You can construct a concrete instance of `SystemBlueprintCalculationPropertiesSpecAuthenticationInput` via:
+//
+//	SystemBlueprintCalculationPropertiesSpecAuthenticationArgs{...}
+type SystemBlueprintCalculationPropertiesSpecAuthenticationInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintCalculationPropertiesSpecAuthenticationOutput() SystemBlueprintCalculationPropertiesSpecAuthenticationOutput
+	ToSystemBlueprintCalculationPropertiesSpecAuthenticationOutputWithContext(context.Context) SystemBlueprintCalculationPropertiesSpecAuthenticationOutput
+}
+
+type SystemBlueprintCalculationPropertiesSpecAuthenticationArgs struct {
+	// The authorizationUrl of the spec authentication
+	AuthorizationUrl pulumi.StringInput `pulumi:"authorizationUrl"`
+	// The clientId of the spec authentication
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The tokenUrl of the spec authentication
+	TokenUrl pulumi.StringInput `pulumi:"tokenUrl"`
+}
+
+func (SystemBlueprintCalculationPropertiesSpecAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintCalculationPropertiesSpecAuthentication)(nil)).Elem()
+}
+
+func (i SystemBlueprintCalculationPropertiesSpecAuthenticationArgs) ToSystemBlueprintCalculationPropertiesSpecAuthenticationOutput() SystemBlueprintCalculationPropertiesSpecAuthenticationOutput {
+	return i.ToSystemBlueprintCalculationPropertiesSpecAuthenticationOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintCalculationPropertiesSpecAuthenticationArgs) ToSystemBlueprintCalculationPropertiesSpecAuthenticationOutputWithContext(ctx context.Context) SystemBlueprintCalculationPropertiesSpecAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintCalculationPropertiesSpecAuthenticationOutput)
+}
+
+func (i SystemBlueprintCalculationPropertiesSpecAuthenticationArgs) ToSystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput() SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput {
+	return i.ToSystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintCalculationPropertiesSpecAuthenticationArgs) ToSystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutputWithContext(ctx context.Context) SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintCalculationPropertiesSpecAuthenticationOutput).ToSystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutputWithContext(ctx)
+}
+
+// SystemBlueprintCalculationPropertiesSpecAuthenticationPtrInput is an input type that accepts SystemBlueprintCalculationPropertiesSpecAuthenticationArgs, SystemBlueprintCalculationPropertiesSpecAuthenticationPtr and SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput values.
+// You can construct a concrete instance of `SystemBlueprintCalculationPropertiesSpecAuthenticationPtrInput` via:
+//
+//	        SystemBlueprintCalculationPropertiesSpecAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type SystemBlueprintCalculationPropertiesSpecAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput() SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput
+	ToSystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutputWithContext(context.Context) SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput
+}
+
+type systemBlueprintCalculationPropertiesSpecAuthenticationPtrType SystemBlueprintCalculationPropertiesSpecAuthenticationArgs
+
+func SystemBlueprintCalculationPropertiesSpecAuthenticationPtr(v *SystemBlueprintCalculationPropertiesSpecAuthenticationArgs) SystemBlueprintCalculationPropertiesSpecAuthenticationPtrInput {
+	return (*systemBlueprintCalculationPropertiesSpecAuthenticationPtrType)(v)
+}
+
+func (*systemBlueprintCalculationPropertiesSpecAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemBlueprintCalculationPropertiesSpecAuthentication)(nil)).Elem()
+}
+
+func (i *systemBlueprintCalculationPropertiesSpecAuthenticationPtrType) ToSystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput() SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput {
+	return i.ToSystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *systemBlueprintCalculationPropertiesSpecAuthenticationPtrType) ToSystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutputWithContext(ctx context.Context) SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput)
+}
+
+type SystemBlueprintCalculationPropertiesSpecAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintCalculationPropertiesSpecAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintCalculationPropertiesSpecAuthentication)(nil)).Elem()
+}
+
+func (o SystemBlueprintCalculationPropertiesSpecAuthenticationOutput) ToSystemBlueprintCalculationPropertiesSpecAuthenticationOutput() SystemBlueprintCalculationPropertiesSpecAuthenticationOutput {
+	return o
+}
+
+func (o SystemBlueprintCalculationPropertiesSpecAuthenticationOutput) ToSystemBlueprintCalculationPropertiesSpecAuthenticationOutputWithContext(ctx context.Context) SystemBlueprintCalculationPropertiesSpecAuthenticationOutput {
+	return o
+}
+
+func (o SystemBlueprintCalculationPropertiesSpecAuthenticationOutput) ToSystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput() SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput {
+	return o.ToSystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o SystemBlueprintCalculationPropertiesSpecAuthenticationOutput) ToSystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutputWithContext(ctx context.Context) SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemBlueprintCalculationPropertiesSpecAuthentication) *SystemBlueprintCalculationPropertiesSpecAuthentication {
+		return &v
+	}).(SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput)
+}
+
+// The authorizationUrl of the spec authentication
+func (o SystemBlueprintCalculationPropertiesSpecAuthenticationOutput) AuthorizationUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemBlueprintCalculationPropertiesSpecAuthentication) string { return v.AuthorizationUrl }).(pulumi.StringOutput)
+}
+
+// The clientId of the spec authentication
+func (o SystemBlueprintCalculationPropertiesSpecAuthenticationOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemBlueprintCalculationPropertiesSpecAuthentication) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The tokenUrl of the spec authentication
+func (o SystemBlueprintCalculationPropertiesSpecAuthenticationOutput) TokenUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemBlueprintCalculationPropertiesSpecAuthentication) string { return v.TokenUrl }).(pulumi.StringOutput)
+}
+
+type SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemBlueprintCalculationPropertiesSpecAuthentication)(nil)).Elem()
+}
+
+func (o SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput) ToSystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput() SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput {
+	return o
+}
+
+func (o SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput) ToSystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutputWithContext(ctx context.Context) SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput {
+	return o
+}
+
+func (o SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput) Elem() SystemBlueprintCalculationPropertiesSpecAuthenticationOutput {
+	return o.ApplyT(func(v *SystemBlueprintCalculationPropertiesSpecAuthentication) SystemBlueprintCalculationPropertiesSpecAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret SystemBlueprintCalculationPropertiesSpecAuthentication
+		return ret
+	}).(SystemBlueprintCalculationPropertiesSpecAuthenticationOutput)
+}
+
+// The authorizationUrl of the spec authentication
+func (o SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput) AuthorizationUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemBlueprintCalculationPropertiesSpecAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthorizationUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The clientId of the spec authentication
+func (o SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemBlueprintCalculationPropertiesSpecAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tokenUrl of the spec authentication
+func (o SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput) TokenUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemBlueprintCalculationPropertiesSpecAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type SystemBlueprintMirrorProperties struct {
@@ -17807,6 +18215,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregationPropertiesPropertiesPathFilterArrayInput)(nil)).Elem(), AggregationPropertiesPropertiesPathFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintCalculationPropertiesInput)(nil)).Elem(), BlueprintCalculationPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintCalculationPropertiesMapInput)(nil)).Elem(), BlueprintCalculationPropertiesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintCalculationPropertiesSpecAuthenticationInput)(nil)).Elem(), BlueprintCalculationPropertiesSpecAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintCalculationPropertiesSpecAuthenticationPtrInput)(nil)).Elem(), BlueprintCalculationPropertiesSpecAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintKafkaChangelogDestinationInput)(nil)).Elem(), BlueprintKafkaChangelogDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintKafkaChangelogDestinationPtrInput)(nil)).Elem(), BlueprintKafkaChangelogDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintMirrorPropertiesInput)(nil)).Elem(), BlueprintMirrorPropertiesArgs{})
@@ -17884,6 +18294,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardRuleQueryInput)(nil)).Elem(), ScorecardRuleQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintCalculationPropertiesInput)(nil)).Elem(), SystemBlueprintCalculationPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintCalculationPropertiesMapInput)(nil)).Elem(), SystemBlueprintCalculationPropertiesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintCalculationPropertiesSpecAuthenticationInput)(nil)).Elem(), SystemBlueprintCalculationPropertiesSpecAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintCalculationPropertiesSpecAuthenticationPtrInput)(nil)).Elem(), SystemBlueprintCalculationPropertiesSpecAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintMirrorPropertiesInput)(nil)).Elem(), SystemBlueprintMirrorPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintMirrorPropertiesMapInput)(nil)).Elem(), SystemBlueprintMirrorPropertiesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintPropertiesInput)(nil)).Elem(), SystemBlueprintPropertiesArgs{})
@@ -18019,6 +18431,8 @@ func init() {
 	pulumi.RegisterOutputType(AggregationPropertiesPropertiesPathFilterArrayOutput{})
 	pulumi.RegisterOutputType(BlueprintCalculationPropertiesOutput{})
 	pulumi.RegisterOutputType(BlueprintCalculationPropertiesMapOutput{})
+	pulumi.RegisterOutputType(BlueprintCalculationPropertiesSpecAuthenticationOutput{})
+	pulumi.RegisterOutputType(BlueprintCalculationPropertiesSpecAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(BlueprintKafkaChangelogDestinationOutput{})
 	pulumi.RegisterOutputType(BlueprintKafkaChangelogDestinationPtrOutput{})
 	pulumi.RegisterOutputType(BlueprintMirrorPropertiesOutput{})
@@ -18096,6 +18510,8 @@ func init() {
 	pulumi.RegisterOutputType(ScorecardRuleQueryOutput{})
 	pulumi.RegisterOutputType(SystemBlueprintCalculationPropertiesOutput{})
 	pulumi.RegisterOutputType(SystemBlueprintCalculationPropertiesMapOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintCalculationPropertiesSpecAuthenticationOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(SystemBlueprintMirrorPropertiesOutput{})
 	pulumi.RegisterOutputType(SystemBlueprintMirrorPropertiesMapOutput{})
 	pulumi.RegisterOutputType(SystemBlueprintPropertiesOutput{})

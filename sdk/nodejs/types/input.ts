@@ -290,6 +290,14 @@ export interface ActionSelfServiceTriggerStep {
      * The step's title (max 25 characters)
      */
     title: pulumi.Input<string>;
+    /**
+     * The visibility of the step
+     */
+    visible?: pulumi.Input<boolean>;
+    /**
+     * The visibility condition jq query of the step
+     */
+    visibleJqQuery?: pulumi.Input<string>;
 }
 
 export interface ActionSelfServiceTriggerTitles {
@@ -970,6 +978,14 @@ export interface BlueprintCalculationProperties {
      */
     icon?: pulumi.Input<string>;
     /**
+     * The spec of the calculation property
+     */
+    spec?: pulumi.Input<string>;
+    /**
+     * The spec authentication of the calculation property
+     */
+    specAuthentication?: pulumi.Input<inputs.BlueprintCalculationPropertiesSpecAuthentication>;
+    /**
      * The title of the calculation property
      */
     title?: pulumi.Input<string>;
@@ -977,6 +993,21 @@ export interface BlueprintCalculationProperties {
      * The type of the calculation property
      */
     type: pulumi.Input<string>;
+}
+
+export interface BlueprintCalculationPropertiesSpecAuthentication {
+    /**
+     * The authorizationUrl of the spec authentication
+     */
+    authorizationUrl: pulumi.Input<string>;
+    /**
+     * The clientId of the spec authentication
+     */
+    clientId: pulumi.Input<string>;
+    /**
+     * The tokenUrl of the spec authentication
+     */
+    tokenUrl: pulumi.Input<string>;
 }
 
 export interface BlueprintKafkaChangelogDestination {
@@ -1684,6 +1715,14 @@ export interface SystemBlueprintCalculationProperties {
      */
     icon?: pulumi.Input<string>;
     /**
+     * The spec of the calculation property
+     */
+    spec?: pulumi.Input<string>;
+    /**
+     * The spec authentication of the calculation property
+     */
+    specAuthentication?: pulumi.Input<inputs.SystemBlueprintCalculationPropertiesSpecAuthentication>;
+    /**
      * The title of the calculation property
      */
     title?: pulumi.Input<string>;
@@ -1691,6 +1730,21 @@ export interface SystemBlueprintCalculationProperties {
      * The type of the calculation property
      */
     type: pulumi.Input<string>;
+}
+
+export interface SystemBlueprintCalculationPropertiesSpecAuthentication {
+    /**
+     * The authorizationUrl of the spec authentication
+     */
+    authorizationUrl: pulumi.Input<string>;
+    /**
+     * The clientId of the spec authentication
+     */
+    clientId: pulumi.Input<string>;
+    /**
+     * The tokenUrl of the spec authentication
+     */
+    tokenUrl: pulumi.Input<string>;
 }
 
 export interface SystemBlueprintMirrorProperties {

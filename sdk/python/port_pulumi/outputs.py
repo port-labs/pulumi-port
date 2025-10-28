@@ -63,6 +63,7 @@ __all__ = [
     'AggregationPropertiesPropertiesMethodAverageEntities',
     'AggregationPropertiesPropertiesPathFilter',
     'BlueprintCalculationProperties',
+    'BlueprintCalculationPropertiesSpecAuthentication',
     'BlueprintKafkaChangelogDestination',
     'BlueprintMirrorProperties',
     'BlueprintOwnership',
@@ -102,6 +103,7 @@ __all__ = [
     'ScorecardRule',
     'ScorecardRuleQuery',
     'SystemBlueprintCalculationProperties',
+    'SystemBlueprintCalculationPropertiesSpecAuthentication',
     'SystemBlueprintMirrorProperties',
     'SystemBlueprintProperties',
     'SystemBlueprintPropertiesArrayProps',
@@ -1148,15 +1150,40 @@ class ActionSelfServiceTrigger(dict):
 
 @pulumi.output_type
 class ActionSelfServiceTriggerStep(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "visibleJqQuery":
+            suggest = "visible_jq_query"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTriggerStep. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionSelfServiceTriggerStep.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionSelfServiceTriggerStep.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  orders: Sequence[str],
-                 title: str):
+                 title: str,
+                 visible: Optional[bool] = None,
+                 visible_jq_query: Optional[str] = None):
         """
         :param Sequence[str] orders: The order of the properties in this step
         :param str title: The step's title (max 25 characters)
+        :param bool visible: The visibility of the step
+        :param str visible_jq_query: The visibility condition jq query of the step
         """
         pulumi.set(__self__, "orders", orders)
         pulumi.set(__self__, "title", title)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
 
     @property
     @pulumi.getter
@@ -1173,6 +1200,22 @@ class ActionSelfServiceTriggerStep(dict):
         The step's title (max 25 characters)
         """
         return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[bool]:
+        """
+        The visibility of the step
+        """
+        return pulumi.get(self, "visible")
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[str]:
+        """
+        The visibility condition jq query of the step
+        """
+        return pulumi.get(self, "visible_jq_query")
 
 
 @pulumi.output_type
@@ -3434,6 +3477,23 @@ class AggregationPropertiesPropertiesPathFilter(dict):
 
 @pulumi.output_type
 class BlueprintCalculationProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "specAuthentication":
+            suggest = "spec_authentication"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BlueprintCalculationProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BlueprintCalculationProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BlueprintCalculationProperties.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  calculation: str,
                  type: str,
@@ -3442,6 +3502,8 @@ class BlueprintCalculationProperties(dict):
                  description: Optional[str] = None,
                  format: Optional[str] = None,
                  icon: Optional[str] = None,
+                 spec: Optional[str] = None,
+                 spec_authentication: Optional['outputs.BlueprintCalculationPropertiesSpecAuthentication'] = None,
                  title: Optional[str] = None):
         """
         :param str calculation: The calculation of the calculation property
@@ -3451,6 +3513,8 @@ class BlueprintCalculationProperties(dict):
         :param str description: The description of the calculation property
         :param str format: The format of the calculation property
         :param str icon: The icon of the calculation property
+        :param str spec: The spec of the calculation property
+        :param 'BlueprintCalculationPropertiesSpecAuthenticationArgs' spec_authentication: The spec authentication of the calculation property
         :param str title: The title of the calculation property
         """
         pulumi.set(__self__, "calculation", calculation)
@@ -3465,6 +3529,10 @@ class BlueprintCalculationProperties(dict):
             pulumi.set(__self__, "format", format)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+        if spec_authentication is not None:
+            pulumi.set(__self__, "spec_authentication", spec_authentication)
         if title is not None:
             pulumi.set(__self__, "title", title)
 
@@ -3526,11 +3594,88 @@ class BlueprintCalculationProperties(dict):
 
     @property
     @pulumi.getter
+    def spec(self) -> Optional[str]:
+        """
+        The spec of the calculation property
+        """
+        return pulumi.get(self, "spec")
+
+    @property
+    @pulumi.getter(name="specAuthentication")
+    def spec_authentication(self) -> Optional['outputs.BlueprintCalculationPropertiesSpecAuthentication']:
+        """
+        The spec authentication of the calculation property
+        """
+        return pulumi.get(self, "spec_authentication")
+
+    @property
+    @pulumi.getter
     def title(self) -> Optional[str]:
         """
         The title of the calculation property
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class BlueprintCalculationPropertiesSpecAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizationUrl":
+            suggest = "authorization_url"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "tokenUrl":
+            suggest = "token_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BlueprintCalculationPropertiesSpecAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BlueprintCalculationPropertiesSpecAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BlueprintCalculationPropertiesSpecAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authorization_url: str,
+                 client_id: str,
+                 token_url: str):
+        """
+        :param str authorization_url: The authorizationUrl of the spec authentication
+        :param str client_id: The clientId of the spec authentication
+        :param str token_url: The tokenUrl of the spec authentication
+        """
+        pulumi.set(__self__, "authorization_url", authorization_url)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "token_url", token_url)
+
+    @property
+    @pulumi.getter(name="authorizationUrl")
+    def authorization_url(self) -> str:
+        """
+        The authorizationUrl of the spec authentication
+        """
+        return pulumi.get(self, "authorization_url")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        """
+        The clientId of the spec authentication
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="tokenUrl")
+    def token_url(self) -> str:
+        """
+        The tokenUrl of the spec authentication
+        """
+        return pulumi.get(self, "token_url")
 
 
 @pulumi.output_type
@@ -5861,6 +6006,23 @@ class ScorecardRuleQuery(dict):
 
 @pulumi.output_type
 class SystemBlueprintCalculationProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "specAuthentication":
+            suggest = "spec_authentication"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SystemBlueprintCalculationProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SystemBlueprintCalculationProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SystemBlueprintCalculationProperties.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  calculation: str,
                  type: str,
@@ -5869,6 +6031,8 @@ class SystemBlueprintCalculationProperties(dict):
                  description: Optional[str] = None,
                  format: Optional[str] = None,
                  icon: Optional[str] = None,
+                 spec: Optional[str] = None,
+                 spec_authentication: Optional['outputs.SystemBlueprintCalculationPropertiesSpecAuthentication'] = None,
                  title: Optional[str] = None):
         """
         :param str calculation: The calculation of the calculation property
@@ -5878,6 +6042,8 @@ class SystemBlueprintCalculationProperties(dict):
         :param str description: The description of the calculation property
         :param str format: The format of the calculation property
         :param str icon: The icon of the calculation property
+        :param str spec: The spec of the calculation property
+        :param 'SystemBlueprintCalculationPropertiesSpecAuthenticationArgs' spec_authentication: The spec authentication of the calculation property
         :param str title: The title of the calculation property
         """
         pulumi.set(__self__, "calculation", calculation)
@@ -5892,6 +6058,10 @@ class SystemBlueprintCalculationProperties(dict):
             pulumi.set(__self__, "format", format)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+        if spec_authentication is not None:
+            pulumi.set(__self__, "spec_authentication", spec_authentication)
         if title is not None:
             pulumi.set(__self__, "title", title)
 
@@ -5953,11 +6123,88 @@ class SystemBlueprintCalculationProperties(dict):
 
     @property
     @pulumi.getter
+    def spec(self) -> Optional[str]:
+        """
+        The spec of the calculation property
+        """
+        return pulumi.get(self, "spec")
+
+    @property
+    @pulumi.getter(name="specAuthentication")
+    def spec_authentication(self) -> Optional['outputs.SystemBlueprintCalculationPropertiesSpecAuthentication']:
+        """
+        The spec authentication of the calculation property
+        """
+        return pulumi.get(self, "spec_authentication")
+
+    @property
+    @pulumi.getter
     def title(self) -> Optional[str]:
         """
         The title of the calculation property
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class SystemBlueprintCalculationPropertiesSpecAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizationUrl":
+            suggest = "authorization_url"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "tokenUrl":
+            suggest = "token_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SystemBlueprintCalculationPropertiesSpecAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SystemBlueprintCalculationPropertiesSpecAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SystemBlueprintCalculationPropertiesSpecAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authorization_url: str,
+                 client_id: str,
+                 token_url: str):
+        """
+        :param str authorization_url: The authorizationUrl of the spec authentication
+        :param str client_id: The clientId of the spec authentication
+        :param str token_url: The tokenUrl of the spec authentication
+        """
+        pulumi.set(__self__, "authorization_url", authorization_url)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "token_url", token_url)
+
+    @property
+    @pulumi.getter(name="authorizationUrl")
+    def authorization_url(self) -> str:
+        """
+        The authorizationUrl of the spec authentication
+        """
+        return pulumi.get(self, "authorization_url")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        """
+        The clientId of the spec authentication
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="tokenUrl")
+    def token_url(self) -> str:
+        """
+        The tokenUrl of the spec authentication
+        """
+        return pulumi.get(self, "token_url")
 
 
 @pulumi.output_type
