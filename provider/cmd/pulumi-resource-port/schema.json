@@ -517,6 +517,14 @@
                 "title": {
                     "type": "string",
                     "description": "The step's title (max 25 characters)\n"
+                },
+                "visible": {
+                    "type": "boolean",
+                    "description": "The visibility of the step\n"
+                },
+                "visibleJqQuery": {
+                    "type": "string",
+                    "description": "The visibility condition jq query of the step\n"
                 }
             },
             "type": "object",
@@ -1401,6 +1409,14 @@
                     "type": "string",
                     "description": "The icon of the calculation property\n"
                 },
+                "spec": {
+                    "type": "string",
+                    "description": "The spec of the calculation property\n"
+                },
+                "specAuthentication": {
+                    "$ref": "#/types/port:index/BlueprintCalculationPropertiesSpecAuthentication:BlueprintCalculationPropertiesSpecAuthentication",
+                    "description": "The spec authentication of the calculation property\n"
+                },
                 "title": {
                     "type": "string",
                     "description": "The title of the calculation property\n"
@@ -1414,6 +1430,28 @@
             "required": [
                 "calculation",
                 "type"
+            ]
+        },
+        "port:index/BlueprintCalculationPropertiesSpecAuthentication:BlueprintCalculationPropertiesSpecAuthentication": {
+            "properties": {
+                "authorizationUrl": {
+                    "type": "string",
+                    "description": "The authorizationUrl of the spec authentication\n"
+                },
+                "clientId": {
+                    "type": "string",
+                    "description": "The clientId of the spec authentication\n"
+                },
+                "tokenUrl": {
+                    "type": "string",
+                    "description": "The tokenUrl of the spec authentication\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "authorizationUrl",
+                "clientId",
+                "tokenUrl"
             ]
         },
         "port:index/BlueprintKafkaChangelogDestination:BlueprintKafkaChangelogDestination": {
@@ -2558,6 +2596,14 @@
                     "type": "string",
                     "description": "The icon of the calculation property\n"
                 },
+                "spec": {
+                    "type": "string",
+                    "description": "The spec of the calculation property\n"
+                },
+                "specAuthentication": {
+                    "$ref": "#/types/port:index/SystemBlueprintCalculationPropertiesSpecAuthentication:SystemBlueprintCalculationPropertiesSpecAuthentication",
+                    "description": "The spec authentication of the calculation property\n"
+                },
                 "title": {
                     "type": "string",
                     "description": "The title of the calculation property\n"
@@ -2571,6 +2617,28 @@
             "required": [
                 "calculation",
                 "type"
+            ]
+        },
+        "port:index/SystemBlueprintCalculationPropertiesSpecAuthentication:SystemBlueprintCalculationPropertiesSpecAuthentication": {
+            "properties": {
+                "authorizationUrl": {
+                    "type": "string",
+                    "description": "The authorizationUrl of the spec authentication\n"
+                },
+                "clientId": {
+                    "type": "string",
+                    "description": "The clientId of the spec authentication\n"
+                },
+                "tokenUrl": {
+                    "type": "string",
+                    "description": "The tokenUrl of the spec authentication\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "authorizationUrl",
+                "clientId",
+                "tokenUrl"
             ]
         },
         "port:index/SystemBlueprintMirrorProperties:SystemBlueprintMirrorProperties": {
@@ -4395,6 +4463,66 @@
                     "webhookChangelogDestination": {
                         "$ref": "#/types/port:index/IntegrationWebhookChangelogDestination:IntegrationWebhookChangelogDestination",
                         "description": "The webhook changelog destination of the integration\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "port:index/organizationSecret:OrganizationSecret": {
+            "description": "Organization secret resource\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the organization secret\n"
+                },
+                "secretName": {
+                    "type": "string",
+                    "description": "The name of the organization secret\n"
+                },
+                "secretValue": {
+                    "type": "string",
+                    "description": "The value of the organization secret\n",
+                    "secret": true
+                }
+            },
+            "required": [
+                "secretName",
+                "secretValue"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the organization secret\n"
+                },
+                "secretName": {
+                    "type": "string",
+                    "description": "The name of the organization secret\n"
+                },
+                "secretValue": {
+                    "type": "string",
+                    "description": "The value of the organization secret\n",
+                    "secret": true
+                }
+            },
+            "requiredInputs": [
+                "secretName",
+                "secretValue"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering OrganizationSecret resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the organization secret\n"
+                    },
+                    "secretName": {
+                        "type": "string",
+                        "description": "The name of the organization secret\n"
+                    },
+                    "secretValue": {
+                        "type": "string",
+                        "description": "The value of the organization secret\n",
+                        "secret": true
                     }
                 },
                 "type": "object"
