@@ -194,6 +194,10 @@ export class Action extends pulumi.CustomResource {
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
+     * Whether members can view the runs of this action
+     */
+    public readonly isViewRunAccess!: pulumi.Output<boolean | undefined>;
+    /**
      * Kafka invocation method
      */
     public readonly kafkaMethod!: pulumi.Output<outputs.ActionKafkaMethod | undefined>;
@@ -245,6 +249,7 @@ export class Action extends pulumi.CustomResource {
             resourceInputs["gitlabMethod"] = state ? state.gitlabMethod : undefined;
             resourceInputs["icon"] = state ? state.icon : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
+            resourceInputs["isViewRunAccess"] = state ? state.isViewRunAccess : undefined;
             resourceInputs["kafkaMethod"] = state ? state.kafkaMethod : undefined;
             resourceInputs["publish"] = state ? state.publish : undefined;
             resourceInputs["requiredApproval"] = state ? state.requiredApproval : undefined;
@@ -267,6 +272,7 @@ export class Action extends pulumi.CustomResource {
             resourceInputs["gitlabMethod"] = args ? args.gitlabMethod : undefined;
             resourceInputs["icon"] = args ? args.icon : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
+            resourceInputs["isViewRunAccess"] = args ? args.isViewRunAccess : undefined;
             resourceInputs["kafkaMethod"] = args ? args.kafkaMethod : undefined;
             resourceInputs["publish"] = args ? args.publish : undefined;
             resourceInputs["requiredApproval"] = args ? args.requiredApproval : undefined;
@@ -326,6 +332,10 @@ export interface ActionState {
      * Identifier
      */
     identifier?: pulumi.Input<string>;
+    /**
+     * Whether members can view the runs of this action
+     */
+    isViewRunAccess?: pulumi.Input<boolean>;
     /**
      * Kafka invocation method
      */
@@ -402,6 +412,10 @@ export interface ActionArgs {
      * Identifier
      */
     identifier: pulumi.Input<string>;
+    /**
+     * Whether members can view the runs of this action
+     */
+    isViewRunAccess?: pulumi.Input<boolean>;
     /**
      * Kafka invocation method
      */

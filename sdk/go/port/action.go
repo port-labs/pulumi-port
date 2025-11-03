@@ -173,6 +173,8 @@ type Action struct {
 	Icon pulumi.StringPtrOutput `pulumi:"icon"`
 	// Identifier
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
+	// Whether members can view the runs of this action
+	IsViewRunAccess pulumi.BoolPtrOutput `pulumi:"isViewRunAccess"`
 	// Kafka invocation method
 	KafkaMethod ActionKafkaMethodPtrOutput `pulumi:"kafkaMethod"`
 	// Publish action
@@ -244,6 +246,8 @@ type actionState struct {
 	Icon *string `pulumi:"icon"`
 	// Identifier
 	Identifier *string `pulumi:"identifier"`
+	// Whether members can view the runs of this action
+	IsViewRunAccess *bool `pulumi:"isViewRunAccess"`
 	// Kafka invocation method
 	KafkaMethod *ActionKafkaMethod `pulumi:"kafkaMethod"`
 	// Publish action
@@ -283,6 +287,8 @@ type ActionState struct {
 	Icon pulumi.StringPtrInput
 	// Identifier
 	Identifier pulumi.StringPtrInput
+	// Whether members can view the runs of this action
+	IsViewRunAccess pulumi.BoolPtrInput
 	// Kafka invocation method
 	KafkaMethod ActionKafkaMethodPtrInput
 	// Publish action
@@ -326,6 +332,8 @@ type actionArgs struct {
 	Icon *string `pulumi:"icon"`
 	// Identifier
 	Identifier string `pulumi:"identifier"`
+	// Whether members can view the runs of this action
+	IsViewRunAccess *bool `pulumi:"isViewRunAccess"`
 	// Kafka invocation method
 	KafkaMethod *ActionKafkaMethod `pulumi:"kafkaMethod"`
 	// Publish action
@@ -366,6 +374,8 @@ type ActionArgs struct {
 	Icon pulumi.StringPtrInput
 	// Identifier
 	Identifier pulumi.StringInput
+	// Whether members can view the runs of this action
+	IsViewRunAccess pulumi.BoolPtrInput
 	// Kafka invocation method
 	KafkaMethod ActionKafkaMethodPtrInput
 	// Publish action
@@ -519,6 +529,11 @@ func (o ActionOutput) Icon() pulumi.StringPtrOutput {
 // Identifier
 func (o ActionOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Whether members can view the runs of this action
+func (o ActionOutput) IsViewRunAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Action) pulumi.BoolPtrOutput { return v.IsViewRunAccess }).(pulumi.BoolPtrOutput)
 }
 
 // Kafka invocation method
