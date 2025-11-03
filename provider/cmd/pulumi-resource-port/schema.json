@@ -3543,6 +3543,10 @@
                     "type": "string",
                     "description": "Identifier\n"
                 },
+                "isViewRunAccess": {
+                    "type": "boolean",
+                    "description": "Whether members can view the runs of this action\n"
+                },
                 "kafkaMethod": {
                     "$ref": "#/types/port:index/ActionKafkaMethod:ActionKafkaMethod",
                     "description": "Kafka invocation method\n"
@@ -3617,6 +3621,10 @@
                 "identifier": {
                     "type": "string",
                     "description": "Identifier\n"
+                },
+                "isViewRunAccess": {
+                    "type": "boolean",
+                    "description": "Whether members can view the runs of this action\n"
                 },
                 "kafkaMethod": {
                     "$ref": "#/types/port:index/ActionKafkaMethod:ActionKafkaMethod",
@@ -3693,6 +3701,10 @@
                     "identifier": {
                         "type": "string",
                         "description": "Identifier\n"
+                    },
+                    "isViewRunAccess": {
+                        "type": "boolean",
+                        "description": "Whether members can view the runs of this action\n"
                     },
                     "kafkaMethod": {
                         "$ref": "#/types/port:index/ActionKafkaMethod:ActionKafkaMethod",
