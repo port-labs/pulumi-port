@@ -376,9 +376,17 @@ export interface ActionSelfServiceTriggerUserPropertiesArrayProps {
      */
     maxItems?: pulumi.Input<number>;
     /**
+     * The max items jq query of the array property
+     */
+    maxItemsJqQuery?: pulumi.Input<string>;
+    /**
      * The min items of the array property
      */
     minItems?: pulumi.Input<number>;
+    /**
+     * The min items jq query of the array property
+     */
+    minItemsJqQuery?: pulumi.Input<string>;
     /**
      * An array of number items within the property
      */
