@@ -634,9 +634,17 @@
                     "type": "integer",
                     "description": "The max items of the array property\n"
                 },
+                "maxItemsJqQuery": {
+                    "type": "string",
+                    "description": "The max items jq query of the array property\n"
+                },
                 "minItems": {
                     "type": "integer",
                     "description": "The min items of the array property\n"
+                },
+                "minItemsJqQuery": {
+                    "type": "string",
+                    "description": "The min items jq query of the array property\n"
                 },
                 "numberItems": {
                     "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems:ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems",
