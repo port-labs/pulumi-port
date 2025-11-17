@@ -376,9 +376,17 @@ export interface ActionSelfServiceTriggerUserPropertiesArrayProps {
      */
     maxItems?: number;
     /**
+     * The max items jq query of the array property
+     */
+    maxItemsJqQuery?: string;
+    /**
      * The min items of the array property
      */
     minItems?: number;
+    /**
+     * The min items jq query of the array property
+     */
+    minItemsJqQuery?: string;
     /**
      * An array of number items within the property
      */
