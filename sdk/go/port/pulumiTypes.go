@@ -3897,8 +3897,12 @@ type ActionSelfServiceTriggerUserPropertiesArrayProps struct {
 	Icon *string `pulumi:"icon"`
 	// The max items of the array property
 	MaxItems *int `pulumi:"maxItems"`
+	// The max items jq query of the array property
+	MaxItemsJqQuery *string `pulumi:"maxItemsJqQuery"`
 	// The min items of the array property
 	MinItems *int `pulumi:"minItems"`
+	// The min items jq query of the array property
+	MinItemsJqQuery *string `pulumi:"minItemsJqQuery"`
 	// An array of number items within the property
 	NumberItems *ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems `pulumi:"numberItems"`
 	// An array of object items within the property
@@ -3945,8 +3949,12 @@ type ActionSelfServiceTriggerUserPropertiesArrayPropsArgs struct {
 	Icon pulumi.StringPtrInput `pulumi:"icon"`
 	// The max items of the array property
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	// The max items jq query of the array property
+	MaxItemsJqQuery pulumi.StringPtrInput `pulumi:"maxItemsJqQuery"`
 	// The min items of the array property
 	MinItems pulumi.IntPtrInput `pulumi:"minItems"`
+	// The min items jq query of the array property
+	MinItemsJqQuery pulumi.StringPtrInput `pulumi:"minItemsJqQuery"`
 	// An array of number items within the property
 	NumberItems ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrInput `pulumi:"numberItems"`
 	// An array of object items within the property
@@ -4058,9 +4066,19 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) MaxItems() pulum
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
+// The max items jq query of the array property
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) MaxItemsJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *string { return v.MaxItemsJqQuery }).(pulumi.StringPtrOutput)
+}
+
 // The min items of the array property
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) MinItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *int { return v.MinItems }).(pulumi.IntPtrOutput)
+}
+
+// The min items jq query of the array property
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) MinItemsJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *string { return v.MinItemsJqQuery }).(pulumi.StringPtrOutput)
 }
 
 // An array of number items within the property

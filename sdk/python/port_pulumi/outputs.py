@@ -1396,8 +1396,12 @@ class ActionSelfServiceTriggerUserPropertiesArrayProps(dict):
             suggest = "disabled_jq_query"
         elif key == "maxItems":
             suggest = "max_items"
+        elif key == "maxItemsJqQuery":
+            suggest = "max_items_jq_query"
         elif key == "minItems":
             suggest = "min_items"
+        elif key == "minItemsJqQuery":
+            suggest = "min_items_jq_query"
         elif key == "numberItems":
             suggest = "number_items"
         elif key == "objectItems":
@@ -1427,7 +1431,9 @@ class ActionSelfServiceTriggerUserPropertiesArrayProps(dict):
                  disabled_jq_query: Optional[str] = None,
                  icon: Optional[str] = None,
                  max_items: Optional[int] = None,
+                 max_items_jq_query: Optional[str] = None,
                  min_items: Optional[int] = None,
+                 min_items_jq_query: Optional[str] = None,
                  number_items: Optional['outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems'] = None,
                  object_items: Optional['outputs.ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItems'] = None,
                  required: Optional[bool] = None,
@@ -1445,7 +1451,9 @@ class ActionSelfServiceTriggerUserPropertiesArrayProps(dict):
         :param str disabled_jq_query: The disabled state jq query of the array property
         :param str icon: The icon of the property
         :param int max_items: The max items of the array property
+        :param str max_items_jq_query: The max items jq query of the array property
         :param int min_items: The min items of the array property
+        :param str min_items_jq_query: The min items jq query of the array property
         :param 'ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs' number_items: An array of number items within the property
         :param 'ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs' object_items: An array of object items within the property
         :param bool required: Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
@@ -1471,8 +1479,12 @@ class ActionSelfServiceTriggerUserPropertiesArrayProps(dict):
             pulumi.set(__self__, "icon", icon)
         if max_items is not None:
             pulumi.set(__self__, "max_items", max_items)
+        if max_items_jq_query is not None:
+            pulumi.set(__self__, "max_items_jq_query", max_items_jq_query)
         if min_items is not None:
             pulumi.set(__self__, "min_items", min_items)
+        if min_items_jq_query is not None:
+            pulumi.set(__self__, "min_items_jq_query", min_items_jq_query)
         if number_items is not None:
             pulumi.set(__self__, "number_items", number_items)
         if object_items is not None:
@@ -1555,12 +1567,28 @@ class ActionSelfServiceTriggerUserPropertiesArrayProps(dict):
         return pulumi.get(self, "max_items")
 
     @property
+    @pulumi.getter(name="maxItemsJqQuery")
+    def max_items_jq_query(self) -> Optional[str]:
+        """
+        The max items jq query of the array property
+        """
+        return pulumi.get(self, "max_items_jq_query")
+
+    @property
     @pulumi.getter(name="minItems")
     def min_items(self) -> Optional[int]:
         """
         The min items of the array property
         """
         return pulumi.get(self, "min_items")
+
+    @property
+    @pulumi.getter(name="minItemsJqQuery")
+    def min_items_jq_query(self) -> Optional[str]:
+        """
+        The min items jq query of the array property
+        """
+        return pulumi.get(self, "min_items_jq_query")
 
     @property
     @pulumi.getter(name="numberItems")

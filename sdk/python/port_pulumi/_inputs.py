@@ -1855,9 +1855,17 @@ if not MYPY:
         """
         The max items of the array property
         """
+        max_items_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The max items jq query of the array property
+        """
         min_items: NotRequired[pulumi.Input[int]]
         """
         The min items of the array property
+        """
+        min_items_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The min items jq query of the array property
         """
         number_items: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgsDict']]
         """
@@ -1905,7 +1913,9 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsArgs:
                  disabled_jq_query: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  max_items: Optional[pulumi.Input[int]] = None,
+                 max_items_jq_query: Optional[pulumi.Input[str]] = None,
                  min_items: Optional[pulumi.Input[int]] = None,
+                 min_items_jq_query: Optional[pulumi.Input[str]] = None,
                  number_items: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs']] = None,
                  object_items: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs']] = None,
                  required: Optional[pulumi.Input[bool]] = None,
@@ -1923,7 +1933,9 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsArgs:
         :param pulumi.Input[str] disabled_jq_query: The disabled state jq query of the array property
         :param pulumi.Input[str] icon: The icon of the property
         :param pulumi.Input[int] max_items: The max items of the array property
+        :param pulumi.Input[str] max_items_jq_query: The max items jq query of the array property
         :param pulumi.Input[int] min_items: The min items of the array property
+        :param pulumi.Input[str] min_items_jq_query: The min items jq query of the array property
         :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs'] number_items: An array of number items within the property
         :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs'] object_items: An array of object items within the property
         :param pulumi.Input[bool] required: Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
@@ -1949,8 +1961,12 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsArgs:
             pulumi.set(__self__, "icon", icon)
         if max_items is not None:
             pulumi.set(__self__, "max_items", max_items)
+        if max_items_jq_query is not None:
+            pulumi.set(__self__, "max_items_jq_query", max_items_jq_query)
         if min_items is not None:
             pulumi.set(__self__, "min_items", min_items)
+        if min_items_jq_query is not None:
+            pulumi.set(__self__, "min_items_jq_query", min_items_jq_query)
         if number_items is not None:
             pulumi.set(__self__, "number_items", number_items)
         if object_items is not None:
@@ -2065,6 +2081,18 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsArgs:
         pulumi.set(self, "max_items", value)
 
     @property
+    @pulumi.getter(name="maxItemsJqQuery")
+    def max_items_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The max items jq query of the array property
+        """
+        return pulumi.get(self, "max_items_jq_query")
+
+    @max_items_jq_query.setter
+    def max_items_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_items_jq_query", value)
+
+    @property
     @pulumi.getter(name="minItems")
     def min_items(self) -> Optional[pulumi.Input[int]]:
         """
@@ -2075,6 +2103,18 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsArgs:
     @min_items.setter
     def min_items(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_items", value)
+
+    @property
+    @pulumi.getter(name="minItemsJqQuery")
+    def min_items_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The min items jq query of the array property
+        """
+        return pulumi.get(self, "min_items_jq_query")
+
+    @min_items_jq_query.setter
+    def min_items_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_items_jq_query", value)
 
     @property
     @pulumi.getter(name="numberItems")
