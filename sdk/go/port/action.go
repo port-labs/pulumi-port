@@ -151,6 +151,8 @@ import (
 type Action struct {
 	pulumi.CustomResourceState
 
+	// Whether members can view the runs of this action
+	AllowAnyoneToViewRuns pulumi.BoolPtrOutput `pulumi:"allowAnyoneToViewRuns"`
 	// The email notification of the approval
 	ApprovalEmailNotification ActionApprovalEmailNotificationPtrOutput `pulumi:"approvalEmailNotification"`
 	// The webhook notification of the approval
@@ -173,8 +175,6 @@ type Action struct {
 	Icon pulumi.StringPtrOutput `pulumi:"icon"`
 	// Identifier
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
-	// Whether members can view the runs of this action
-	IsViewRunAccess pulumi.BoolPtrOutput `pulumi:"isViewRunAccess"`
 	// Kafka invocation method
 	KafkaMethod ActionKafkaMethodPtrOutput `pulumi:"kafkaMethod"`
 	// Publish action
@@ -224,6 +224,8 @@ func GetAction(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Action resources.
 type actionState struct {
+	// Whether members can view the runs of this action
+	AllowAnyoneToViewRuns *bool `pulumi:"allowAnyoneToViewRuns"`
 	// The email notification of the approval
 	ApprovalEmailNotification *ActionApprovalEmailNotification `pulumi:"approvalEmailNotification"`
 	// The webhook notification of the approval
@@ -246,8 +248,6 @@ type actionState struct {
 	Icon *string `pulumi:"icon"`
 	// Identifier
 	Identifier *string `pulumi:"identifier"`
-	// Whether members can view the runs of this action
-	IsViewRunAccess *bool `pulumi:"isViewRunAccess"`
 	// Kafka invocation method
 	KafkaMethod *ActionKafkaMethod `pulumi:"kafkaMethod"`
 	// Publish action
@@ -265,6 +265,8 @@ type actionState struct {
 }
 
 type ActionState struct {
+	// Whether members can view the runs of this action
+	AllowAnyoneToViewRuns pulumi.BoolPtrInput
 	// The email notification of the approval
 	ApprovalEmailNotification ActionApprovalEmailNotificationPtrInput
 	// The webhook notification of the approval
@@ -287,8 +289,6 @@ type ActionState struct {
 	Icon pulumi.StringPtrInput
 	// Identifier
 	Identifier pulumi.StringPtrInput
-	// Whether members can view the runs of this action
-	IsViewRunAccess pulumi.BoolPtrInput
 	// Kafka invocation method
 	KafkaMethod ActionKafkaMethodPtrInput
 	// Publish action
@@ -310,6 +310,8 @@ func (ActionState) ElementType() reflect.Type {
 }
 
 type actionArgs struct {
+	// Whether members can view the runs of this action
+	AllowAnyoneToViewRuns *bool `pulumi:"allowAnyoneToViewRuns"`
 	// The email notification of the approval
 	ApprovalEmailNotification *ActionApprovalEmailNotification `pulumi:"approvalEmailNotification"`
 	// The webhook notification of the approval
@@ -332,8 +334,6 @@ type actionArgs struct {
 	Icon *string `pulumi:"icon"`
 	// Identifier
 	Identifier string `pulumi:"identifier"`
-	// Whether members can view the runs of this action
-	IsViewRunAccess *bool `pulumi:"isViewRunAccess"`
 	// Kafka invocation method
 	KafkaMethod *ActionKafkaMethod `pulumi:"kafkaMethod"`
 	// Publish action
@@ -352,6 +352,8 @@ type actionArgs struct {
 
 // The set of arguments for constructing a Action resource.
 type ActionArgs struct {
+	// Whether members can view the runs of this action
+	AllowAnyoneToViewRuns pulumi.BoolPtrInput
 	// The email notification of the approval
 	ApprovalEmailNotification ActionApprovalEmailNotificationPtrInput
 	// The webhook notification of the approval
@@ -374,8 +376,6 @@ type ActionArgs struct {
 	Icon pulumi.StringPtrInput
 	// Identifier
 	Identifier pulumi.StringInput
-	// Whether members can view the runs of this action
-	IsViewRunAccess pulumi.BoolPtrInput
 	// Kafka invocation method
 	KafkaMethod ActionKafkaMethodPtrInput
 	// Publish action
@@ -479,6 +479,11 @@ func (o ActionOutput) ToActionOutputWithContext(ctx context.Context) ActionOutpu
 	return o
 }
 
+// Whether members can view the runs of this action
+func (o ActionOutput) AllowAnyoneToViewRuns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Action) pulumi.BoolPtrOutput { return v.AllowAnyoneToViewRuns }).(pulumi.BoolPtrOutput)
+}
+
 // The email notification of the approval
 func (o ActionOutput) ApprovalEmailNotification() ActionApprovalEmailNotificationPtrOutput {
 	return o.ApplyT(func(v *Action) ActionApprovalEmailNotificationPtrOutput { return v.ApprovalEmailNotification }).(ActionApprovalEmailNotificationPtrOutput)
@@ -529,11 +534,6 @@ func (o ActionOutput) Icon() pulumi.StringPtrOutput {
 // Identifier
 func (o ActionOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
-}
-
-// Whether members can view the runs of this action
-func (o ActionOutput) IsViewRunAccess() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Action) pulumi.BoolPtrOutput { return v.IsViewRunAccess }).(pulumi.BoolPtrOutput)
 }
 
 // Kafka invocation method

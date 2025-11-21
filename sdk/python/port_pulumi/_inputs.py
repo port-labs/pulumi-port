@@ -1363,6 +1363,10 @@ if not MYPY:
         """
         The operation type of the action
         """
+        action_card_button_text: NotRequired[pulumi.Input[str]]
+        """
+        The text of the button that will be displayed in the self service action card
+        """
         blueprint_identifier: NotRequired[pulumi.Input[str]]
         """
         The ID of the blueprint
@@ -1370,6 +1374,10 @@ if not MYPY:
         condition: NotRequired[pulumi.Input[str]]
         """
         The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
+        """
+        execute_action_button_text: NotRequired[pulumi.Input[str]]
+        """
+        The text of the button that will be displayed for executing the action
         """
         order_properties: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -1398,8 +1406,10 @@ elif False:
 class ActionSelfServiceTriggerArgs:
     def __init__(__self__, *,
                  operation: pulumi.Input[str],
+                 action_card_button_text: Optional[pulumi.Input[str]] = None,
                  blueprint_identifier: Optional[pulumi.Input[str]] = None,
                  condition: Optional[pulumi.Input[str]] = None,
+                 execute_action_button_text: Optional[pulumi.Input[str]] = None,
                  order_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_jq_query: Optional[pulumi.Input[str]] = None,
                  steps: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerStepArgs']]]] = None,
@@ -1407,8 +1417,10 @@ class ActionSelfServiceTriggerArgs:
                  user_properties: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArgs']] = None):
         """
         :param pulumi.Input[str] operation: The operation type of the action
+        :param pulumi.Input[str] action_card_button_text: The text of the button that will be displayed in the self service action card
         :param pulumi.Input[str] blueprint_identifier: The ID of the blueprint
         :param pulumi.Input[str] condition: The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
+        :param pulumi.Input[str] execute_action_button_text: The text of the button that will be displayed for executing the action
         :param pulumi.Input[Sequence[pulumi.Input[str]]] order_properties: Order properties
         :param pulumi.Input[str] required_jq_query: The required jq query of the property
         :param pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerStepArgs']]] steps: The steps of the action
@@ -1416,10 +1428,14 @@ class ActionSelfServiceTriggerArgs:
         :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesArgs'] user_properties: User properties
         """
         pulumi.set(__self__, "operation", operation)
+        if action_card_button_text is not None:
+            pulumi.set(__self__, "action_card_button_text", action_card_button_text)
         if blueprint_identifier is not None:
             pulumi.set(__self__, "blueprint_identifier", blueprint_identifier)
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
+        if execute_action_button_text is not None:
+            pulumi.set(__self__, "execute_action_button_text", execute_action_button_text)
         if order_properties is not None:
             pulumi.set(__self__, "order_properties", order_properties)
         if required_jq_query is not None:
@@ -1444,6 +1460,18 @@ class ActionSelfServiceTriggerArgs:
         pulumi.set(self, "operation", value)
 
     @property
+    @pulumi.getter(name="actionCardButtonText")
+    def action_card_button_text(self) -> Optional[pulumi.Input[str]]:
+        """
+        The text of the button that will be displayed in the self service action card
+        """
+        return pulumi.get(self, "action_card_button_text")
+
+    @action_card_button_text.setter
+    def action_card_button_text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action_card_button_text", value)
+
+    @property
     @pulumi.getter(name="blueprintIdentifier")
     def blueprint_identifier(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1466,6 +1494,18 @@ class ActionSelfServiceTriggerArgs:
     @condition.setter
     def condition(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter(name="executeActionButtonText")
+    def execute_action_button_text(self) -> Optional[pulumi.Input[str]]:
+        """
+        The text of the button that will be displayed for executing the action
+        """
+        return pulumi.get(self, "execute_action_button_text")
+
+    @execute_action_button_text.setter
+    def execute_action_button_text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "execute_action_button_text", value)
 
     @property
     @pulumi.getter(name="orderProperties")
@@ -1855,9 +1895,17 @@ if not MYPY:
         """
         The max items of the array property
         """
+        max_items_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The max items jq query of the array property
+        """
         min_items: NotRequired[pulumi.Input[int]]
         """
         The min items of the array property
+        """
+        min_items_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The min items jq query of the array property
         """
         number_items: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgsDict']]
         """
@@ -1905,7 +1953,9 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsArgs:
                  disabled_jq_query: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  max_items: Optional[pulumi.Input[int]] = None,
+                 max_items_jq_query: Optional[pulumi.Input[str]] = None,
                  min_items: Optional[pulumi.Input[int]] = None,
+                 min_items_jq_query: Optional[pulumi.Input[str]] = None,
                  number_items: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs']] = None,
                  object_items: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs']] = None,
                  required: Optional[pulumi.Input[bool]] = None,
@@ -1923,7 +1973,9 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsArgs:
         :param pulumi.Input[str] disabled_jq_query: The disabled state jq query of the array property
         :param pulumi.Input[str] icon: The icon of the property
         :param pulumi.Input[int] max_items: The max items of the array property
+        :param pulumi.Input[str] max_items_jq_query: The max items jq query of the array property
         :param pulumi.Input[int] min_items: The min items of the array property
+        :param pulumi.Input[str] min_items_jq_query: The min items jq query of the array property
         :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsArgs'] number_items: An array of number items within the property
         :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesArrayPropsObjectItemsArgs'] object_items: An array of object items within the property
         :param pulumi.Input[bool] required: Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
@@ -1949,8 +2001,12 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsArgs:
             pulumi.set(__self__, "icon", icon)
         if max_items is not None:
             pulumi.set(__self__, "max_items", max_items)
+        if max_items_jq_query is not None:
+            pulumi.set(__self__, "max_items_jq_query", max_items_jq_query)
         if min_items is not None:
             pulumi.set(__self__, "min_items", min_items)
+        if min_items_jq_query is not None:
+            pulumi.set(__self__, "min_items_jq_query", min_items_jq_query)
         if number_items is not None:
             pulumi.set(__self__, "number_items", number_items)
         if object_items is not None:
@@ -2065,6 +2121,18 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsArgs:
         pulumi.set(self, "max_items", value)
 
     @property
+    @pulumi.getter(name="maxItemsJqQuery")
+    def max_items_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The max items jq query of the array property
+        """
+        return pulumi.get(self, "max_items_jq_query")
+
+    @max_items_jq_query.setter
+    def max_items_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_items_jq_query", value)
+
+    @property
     @pulumi.getter(name="minItems")
     def min_items(self) -> Optional[pulumi.Input[int]]:
         """
@@ -2075,6 +2143,18 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsArgs:
     @min_items.setter
     def min_items(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_items", value)
+
+    @property
+    @pulumi.getter(name="minItemsJqQuery")
+    def min_items_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The min items jq query of the array property
+        """
+        return pulumi.get(self, "min_items_jq_query")
+
+    @min_items_jq_query.setter
+    def min_items_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_items_jq_query", value)
 
     @property
     @pulumi.getter(name="numberItems")

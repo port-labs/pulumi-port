@@ -22,6 +22,7 @@ __all__ = ['ActionArgs', 'Action']
 class ActionArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[str],
+                 allow_anyone_to_view_runs: Optional[pulumi.Input[bool]] = None,
                  approval_email_notification: Optional[pulumi.Input['ActionApprovalEmailNotificationArgs']] = None,
                  approval_webhook_notification: Optional[pulumi.Input['ActionApprovalWebhookNotificationArgs']] = None,
                  automation_trigger: Optional[pulumi.Input['ActionAutomationTriggerArgs']] = None,
@@ -31,7 +32,6 @@ class ActionArgs:
                  github_method: Optional[pulumi.Input['ActionGithubMethodArgs']] = None,
                  gitlab_method: Optional[pulumi.Input['ActionGitlabMethodArgs']] = None,
                  icon: Optional[pulumi.Input[str]] = None,
-                 is_view_run_access: Optional[pulumi.Input[bool]] = None,
                  kafka_method: Optional[pulumi.Input['ActionKafkaMethodArgs']] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
                  required_approval: Optional[pulumi.Input[str]] = None,
@@ -42,6 +42,7 @@ class ActionArgs:
         """
         The set of arguments for constructing a Action resource.
         :param pulumi.Input[str] identifier: Identifier
+        :param pulumi.Input[bool] allow_anyone_to_view_runs: Whether members can view the runs of this action
         :param pulumi.Input['ActionApprovalEmailNotificationArgs'] approval_email_notification: The email notification of the approval
         :param pulumi.Input['ActionApprovalWebhookNotificationArgs'] approval_webhook_notification: The webhook notification of the approval
         :param pulumi.Input['ActionAutomationTriggerArgs'] automation_trigger: Automation trigger for the action
@@ -51,7 +52,6 @@ class ActionArgs:
         :param pulumi.Input['ActionGithubMethodArgs'] github_method: GitHub invocation method
         :param pulumi.Input['ActionGitlabMethodArgs'] gitlab_method: Gitlab invocation method
         :param pulumi.Input[str] icon: Icon
-        :param pulumi.Input[bool] is_view_run_access: Whether members can view the runs of this action
         :param pulumi.Input['ActionKafkaMethodArgs'] kafka_method: Kafka invocation method
         :param pulumi.Input[bool] publish: Publish action
         :param pulumi.Input[str] required_approval: Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
@@ -61,6 +61,8 @@ class ActionArgs:
         :param pulumi.Input['ActionWebhookMethodArgs'] webhook_method: Webhook invocation method
         """
         pulumi.set(__self__, "identifier", identifier)
+        if allow_anyone_to_view_runs is not None:
+            pulumi.set(__self__, "allow_anyone_to_view_runs", allow_anyone_to_view_runs)
         if approval_email_notification is not None:
             pulumi.set(__self__, "approval_email_notification", approval_email_notification)
         if approval_webhook_notification is not None:
@@ -82,8 +84,6 @@ class ActionArgs:
             pulumi.set(__self__, "gitlab_method", gitlab_method)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
-        if is_view_run_access is not None:
-            pulumi.set(__self__, "is_view_run_access", is_view_run_access)
         if kafka_method is not None:
             pulumi.set(__self__, "kafka_method", kafka_method)
         if publish is not None:
@@ -110,6 +110,18 @@ class ActionArgs:
     @identifier.setter
     def identifier(self, value: pulumi.Input[str]):
         pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter(name="allowAnyoneToViewRuns")
+    def allow_anyone_to_view_runs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether members can view the runs of this action
+        """
+        return pulumi.get(self, "allow_anyone_to_view_runs")
+
+    @allow_anyone_to_view_runs.setter
+    def allow_anyone_to_view_runs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_anyone_to_view_runs", value)
 
     @property
     @pulumi.getter(name="approvalEmailNotification")
@@ -221,18 +233,6 @@ class ActionArgs:
         pulumi.set(self, "icon", value)
 
     @property
-    @pulumi.getter(name="isViewRunAccess")
-    def is_view_run_access(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether members can view the runs of this action
-        """
-        return pulumi.get(self, "is_view_run_access")
-
-    @is_view_run_access.setter
-    def is_view_run_access(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "is_view_run_access", value)
-
-    @property
     @pulumi.getter(name="kafkaMethod")
     def kafka_method(self) -> Optional[pulumi.Input['ActionKafkaMethodArgs']]:
         """
@@ -320,6 +320,7 @@ class ActionArgs:
 @pulumi.input_type
 class _ActionState:
     def __init__(__self__, *,
+                 allow_anyone_to_view_runs: Optional[pulumi.Input[bool]] = None,
                  approval_email_notification: Optional[pulumi.Input['ActionApprovalEmailNotificationArgs']] = None,
                  approval_webhook_notification: Optional[pulumi.Input['ActionApprovalWebhookNotificationArgs']] = None,
                  automation_trigger: Optional[pulumi.Input['ActionAutomationTriggerArgs']] = None,
@@ -330,7 +331,6 @@ class _ActionState:
                  gitlab_method: Optional[pulumi.Input['ActionGitlabMethodArgs']] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
-                 is_view_run_access: Optional[pulumi.Input[bool]] = None,
                  kafka_method: Optional[pulumi.Input['ActionKafkaMethodArgs']] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
                  required_approval: Optional[pulumi.Input[str]] = None,
@@ -340,6 +340,7 @@ class _ActionState:
                  webhook_method: Optional[pulumi.Input['ActionWebhookMethodArgs']] = None):
         """
         Input properties used for looking up and filtering Action resources.
+        :param pulumi.Input[bool] allow_anyone_to_view_runs: Whether members can view the runs of this action
         :param pulumi.Input['ActionApprovalEmailNotificationArgs'] approval_email_notification: The email notification of the approval
         :param pulumi.Input['ActionApprovalWebhookNotificationArgs'] approval_webhook_notification: The webhook notification of the approval
         :param pulumi.Input['ActionAutomationTriggerArgs'] automation_trigger: Automation trigger for the action
@@ -350,7 +351,6 @@ class _ActionState:
         :param pulumi.Input['ActionGitlabMethodArgs'] gitlab_method: Gitlab invocation method
         :param pulumi.Input[str] icon: Icon
         :param pulumi.Input[str] identifier: Identifier
-        :param pulumi.Input[bool] is_view_run_access: Whether members can view the runs of this action
         :param pulumi.Input['ActionKafkaMethodArgs'] kafka_method: Kafka invocation method
         :param pulumi.Input[bool] publish: Publish action
         :param pulumi.Input[str] required_approval: Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
@@ -359,6 +359,8 @@ class _ActionState:
         :param pulumi.Input['ActionUpsertEntityMethodArgs'] upsert_entity_method: Upsert Entity invocation method
         :param pulumi.Input['ActionWebhookMethodArgs'] webhook_method: Webhook invocation method
         """
+        if allow_anyone_to_view_runs is not None:
+            pulumi.set(__self__, "allow_anyone_to_view_runs", allow_anyone_to_view_runs)
         if approval_email_notification is not None:
             pulumi.set(__self__, "approval_email_notification", approval_email_notification)
         if approval_webhook_notification is not None:
@@ -382,8 +384,6 @@ class _ActionState:
             pulumi.set(__self__, "icon", icon)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
-        if is_view_run_access is not None:
-            pulumi.set(__self__, "is_view_run_access", is_view_run_access)
         if kafka_method is not None:
             pulumi.set(__self__, "kafka_method", kafka_method)
         if publish is not None:
@@ -398,6 +398,18 @@ class _ActionState:
             pulumi.set(__self__, "upsert_entity_method", upsert_entity_method)
         if webhook_method is not None:
             pulumi.set(__self__, "webhook_method", webhook_method)
+
+    @property
+    @pulumi.getter(name="allowAnyoneToViewRuns")
+    def allow_anyone_to_view_runs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether members can view the runs of this action
+        """
+        return pulumi.get(self, "allow_anyone_to_view_runs")
+
+    @allow_anyone_to_view_runs.setter
+    def allow_anyone_to_view_runs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_anyone_to_view_runs", value)
 
     @property
     @pulumi.getter(name="approvalEmailNotification")
@@ -521,18 +533,6 @@ class _ActionState:
         pulumi.set(self, "identifier", value)
 
     @property
-    @pulumi.getter(name="isViewRunAccess")
-    def is_view_run_access(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether members can view the runs of this action
-        """
-        return pulumi.get(self, "is_view_run_access")
-
-    @is_view_run_access.setter
-    def is_view_run_access(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "is_view_run_access", value)
-
-    @property
     @pulumi.getter(name="kafkaMethod")
     def kafka_method(self) -> Optional[pulumi.Input['ActionKafkaMethodArgs']]:
         """
@@ -622,6 +622,7 @@ class Action(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_anyone_to_view_runs: Optional[pulumi.Input[bool]] = None,
                  approval_email_notification: Optional[pulumi.Input[Union['ActionApprovalEmailNotificationArgs', 'ActionApprovalEmailNotificationArgsDict']]] = None,
                  approval_webhook_notification: Optional[pulumi.Input[Union['ActionApprovalWebhookNotificationArgs', 'ActionApprovalWebhookNotificationArgsDict']]] = None,
                  automation_trigger: Optional[pulumi.Input[Union['ActionAutomationTriggerArgs', 'ActionAutomationTriggerArgsDict']]] = None,
@@ -632,7 +633,6 @@ class Action(pulumi.CustomResource):
                  gitlab_method: Optional[pulumi.Input[Union['ActionGitlabMethodArgs', 'ActionGitlabMethodArgsDict']]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
-                 is_view_run_access: Optional[pulumi.Input[bool]] = None,
                  kafka_method: Optional[pulumi.Input[Union['ActionKafkaMethodArgs', 'ActionKafkaMethodArgsDict']]] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
                  required_approval: Optional[pulumi.Input[str]] = None,
@@ -760,6 +760,7 @@ class Action(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_anyone_to_view_runs: Whether members can view the runs of this action
         :param pulumi.Input[Union['ActionApprovalEmailNotificationArgs', 'ActionApprovalEmailNotificationArgsDict']] approval_email_notification: The email notification of the approval
         :param pulumi.Input[Union['ActionApprovalWebhookNotificationArgs', 'ActionApprovalWebhookNotificationArgsDict']] approval_webhook_notification: The webhook notification of the approval
         :param pulumi.Input[Union['ActionAutomationTriggerArgs', 'ActionAutomationTriggerArgsDict']] automation_trigger: Automation trigger for the action
@@ -770,7 +771,6 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[Union['ActionGitlabMethodArgs', 'ActionGitlabMethodArgsDict']] gitlab_method: Gitlab invocation method
         :param pulumi.Input[str] icon: Icon
         :param pulumi.Input[str] identifier: Identifier
-        :param pulumi.Input[bool] is_view_run_access: Whether members can view the runs of this action
         :param pulumi.Input[Union['ActionKafkaMethodArgs', 'ActionKafkaMethodArgsDict']] kafka_method: Kafka invocation method
         :param pulumi.Input[bool] publish: Publish action
         :param pulumi.Input[str] required_approval: Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
@@ -917,6 +917,7 @@ class Action(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_anyone_to_view_runs: Optional[pulumi.Input[bool]] = None,
                  approval_email_notification: Optional[pulumi.Input[Union['ActionApprovalEmailNotificationArgs', 'ActionApprovalEmailNotificationArgsDict']]] = None,
                  approval_webhook_notification: Optional[pulumi.Input[Union['ActionApprovalWebhookNotificationArgs', 'ActionApprovalWebhookNotificationArgsDict']]] = None,
                  automation_trigger: Optional[pulumi.Input[Union['ActionAutomationTriggerArgs', 'ActionAutomationTriggerArgsDict']]] = None,
@@ -927,7 +928,6 @@ class Action(pulumi.CustomResource):
                  gitlab_method: Optional[pulumi.Input[Union['ActionGitlabMethodArgs', 'ActionGitlabMethodArgsDict']]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
-                 is_view_run_access: Optional[pulumi.Input[bool]] = None,
                  kafka_method: Optional[pulumi.Input[Union['ActionKafkaMethodArgs', 'ActionKafkaMethodArgsDict']]] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
                  required_approval: Optional[pulumi.Input[str]] = None,
@@ -944,6 +944,7 @@ class Action(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ActionArgs.__new__(ActionArgs)
 
+            __props__.__dict__["allow_anyone_to_view_runs"] = allow_anyone_to_view_runs
             __props__.__dict__["approval_email_notification"] = approval_email_notification
             __props__.__dict__["approval_webhook_notification"] = approval_webhook_notification
             __props__.__dict__["automation_trigger"] = automation_trigger
@@ -956,7 +957,6 @@ class Action(pulumi.CustomResource):
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
-            __props__.__dict__["is_view_run_access"] = is_view_run_access
             __props__.__dict__["kafka_method"] = kafka_method
             __props__.__dict__["publish"] = publish
             __props__.__dict__["required_approval"] = required_approval
@@ -974,6 +974,7 @@ class Action(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allow_anyone_to_view_runs: Optional[pulumi.Input[bool]] = None,
             approval_email_notification: Optional[pulumi.Input[Union['ActionApprovalEmailNotificationArgs', 'ActionApprovalEmailNotificationArgsDict']]] = None,
             approval_webhook_notification: Optional[pulumi.Input[Union['ActionApprovalWebhookNotificationArgs', 'ActionApprovalWebhookNotificationArgsDict']]] = None,
             automation_trigger: Optional[pulumi.Input[Union['ActionAutomationTriggerArgs', 'ActionAutomationTriggerArgsDict']]] = None,
@@ -984,7 +985,6 @@ class Action(pulumi.CustomResource):
             gitlab_method: Optional[pulumi.Input[Union['ActionGitlabMethodArgs', 'ActionGitlabMethodArgsDict']]] = None,
             icon: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
-            is_view_run_access: Optional[pulumi.Input[bool]] = None,
             kafka_method: Optional[pulumi.Input[Union['ActionKafkaMethodArgs', 'ActionKafkaMethodArgsDict']]] = None,
             publish: Optional[pulumi.Input[bool]] = None,
             required_approval: Optional[pulumi.Input[str]] = None,
@@ -999,6 +999,7 @@ class Action(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_anyone_to_view_runs: Whether members can view the runs of this action
         :param pulumi.Input[Union['ActionApprovalEmailNotificationArgs', 'ActionApprovalEmailNotificationArgsDict']] approval_email_notification: The email notification of the approval
         :param pulumi.Input[Union['ActionApprovalWebhookNotificationArgs', 'ActionApprovalWebhookNotificationArgsDict']] approval_webhook_notification: The webhook notification of the approval
         :param pulumi.Input[Union['ActionAutomationTriggerArgs', 'ActionAutomationTriggerArgsDict']] automation_trigger: Automation trigger for the action
@@ -1009,7 +1010,6 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[Union['ActionGitlabMethodArgs', 'ActionGitlabMethodArgsDict']] gitlab_method: Gitlab invocation method
         :param pulumi.Input[str] icon: Icon
         :param pulumi.Input[str] identifier: Identifier
-        :param pulumi.Input[bool] is_view_run_access: Whether members can view the runs of this action
         :param pulumi.Input[Union['ActionKafkaMethodArgs', 'ActionKafkaMethodArgsDict']] kafka_method: Kafka invocation method
         :param pulumi.Input[bool] publish: Publish action
         :param pulumi.Input[str] required_approval: Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
@@ -1022,6 +1022,7 @@ class Action(pulumi.CustomResource):
 
         __props__ = _ActionState.__new__(_ActionState)
 
+        __props__.__dict__["allow_anyone_to_view_runs"] = allow_anyone_to_view_runs
         __props__.__dict__["approval_email_notification"] = approval_email_notification
         __props__.__dict__["approval_webhook_notification"] = approval_webhook_notification
         __props__.__dict__["automation_trigger"] = automation_trigger
@@ -1032,7 +1033,6 @@ class Action(pulumi.CustomResource):
         __props__.__dict__["gitlab_method"] = gitlab_method
         __props__.__dict__["icon"] = icon
         __props__.__dict__["identifier"] = identifier
-        __props__.__dict__["is_view_run_access"] = is_view_run_access
         __props__.__dict__["kafka_method"] = kafka_method
         __props__.__dict__["publish"] = publish
         __props__.__dict__["required_approval"] = required_approval
@@ -1041,6 +1041,14 @@ class Action(pulumi.CustomResource):
         __props__.__dict__["upsert_entity_method"] = upsert_entity_method
         __props__.__dict__["webhook_method"] = webhook_method
         return Action(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="allowAnyoneToViewRuns")
+    def allow_anyone_to_view_runs(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether members can view the runs of this action
+        """
+        return pulumi.get(self, "allow_anyone_to_view_runs")
 
     @property
     @pulumi.getter(name="approvalEmailNotification")
@@ -1122,14 +1130,6 @@ class Action(pulumi.CustomResource):
         Identifier
         """
         return pulumi.get(self, "identifier")
-
-    @property
-    @pulumi.getter(name="isViewRunAccess")
-    def is_view_run_access(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether members can view the runs of this action
-        """
-        return pulumi.get(self, "is_view_run_access")
 
     @property
     @pulumi.getter(name="kafkaMethod")
