@@ -152,6 +152,10 @@ export class Action extends pulumi.CustomResource {
     }
 
     /**
+     * Whether members can view the runs of this action
+     */
+    public readonly allowAnyoneToViewRuns!: pulumi.Output<boolean | undefined>;
+    /**
      * The email notification of the approval
      */
     public readonly approvalEmailNotification!: pulumi.Output<outputs.ActionApprovalEmailNotification | undefined>;
@@ -194,10 +198,6 @@ export class Action extends pulumi.CustomResource {
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
-     * Whether members can view the runs of this action
-     */
-    public readonly isViewRunAccess!: pulumi.Output<boolean | undefined>;
-    /**
      * Kafka invocation method
      */
     public readonly kafkaMethod!: pulumi.Output<outputs.ActionKafkaMethod | undefined>;
@@ -239,6 +239,7 @@ export class Action extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ActionState | undefined;
+            resourceInputs["allowAnyoneToViewRuns"] = state ? state.allowAnyoneToViewRuns : undefined;
             resourceInputs["approvalEmailNotification"] = state ? state.approvalEmailNotification : undefined;
             resourceInputs["approvalWebhookNotification"] = state ? state.approvalWebhookNotification : undefined;
             resourceInputs["automationTrigger"] = state ? state.automationTrigger : undefined;
@@ -249,7 +250,6 @@ export class Action extends pulumi.CustomResource {
             resourceInputs["gitlabMethod"] = state ? state.gitlabMethod : undefined;
             resourceInputs["icon"] = state ? state.icon : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["isViewRunAccess"] = state ? state.isViewRunAccess : undefined;
             resourceInputs["kafkaMethod"] = state ? state.kafkaMethod : undefined;
             resourceInputs["publish"] = state ? state.publish : undefined;
             resourceInputs["requiredApproval"] = state ? state.requiredApproval : undefined;
@@ -262,6 +262,7 @@ export class Action extends pulumi.CustomResource {
             if ((!args || args.identifier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
+            resourceInputs["allowAnyoneToViewRuns"] = args ? args.allowAnyoneToViewRuns : undefined;
             resourceInputs["approvalEmailNotification"] = args ? args.approvalEmailNotification : undefined;
             resourceInputs["approvalWebhookNotification"] = args ? args.approvalWebhookNotification : undefined;
             resourceInputs["automationTrigger"] = args ? args.automationTrigger : undefined;
@@ -272,7 +273,6 @@ export class Action extends pulumi.CustomResource {
             resourceInputs["gitlabMethod"] = args ? args.gitlabMethod : undefined;
             resourceInputs["icon"] = args ? args.icon : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["isViewRunAccess"] = args ? args.isViewRunAccess : undefined;
             resourceInputs["kafkaMethod"] = args ? args.kafkaMethod : undefined;
             resourceInputs["publish"] = args ? args.publish : undefined;
             resourceInputs["requiredApproval"] = args ? args.requiredApproval : undefined;
@@ -290,6 +290,10 @@ export class Action extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Action resources.
  */
 export interface ActionState {
+    /**
+     * Whether members can view the runs of this action
+     */
+    allowAnyoneToViewRuns?: pulumi.Input<boolean>;
     /**
      * The email notification of the approval
      */
@@ -333,10 +337,6 @@ export interface ActionState {
      */
     identifier?: pulumi.Input<string>;
     /**
-     * Whether members can view the runs of this action
-     */
-    isViewRunAccess?: pulumi.Input<boolean>;
-    /**
      * Kafka invocation method
      */
     kafkaMethod?: pulumi.Input<inputs.ActionKafkaMethod>;
@@ -370,6 +370,10 @@ export interface ActionState {
  * The set of arguments for constructing a Action resource.
  */
 export interface ActionArgs {
+    /**
+     * Whether members can view the runs of this action
+     */
+    allowAnyoneToViewRuns?: pulumi.Input<boolean>;
     /**
      * The email notification of the approval
      */
@@ -412,10 +416,6 @@ export interface ActionArgs {
      * Identifier
      */
     identifier: pulumi.Input<string>;
-    /**
-     * Whether members can view the runs of this action
-     */
-    isViewRunAccess?: pulumi.Input<boolean>;
     /**
      * Kafka invocation method
      */

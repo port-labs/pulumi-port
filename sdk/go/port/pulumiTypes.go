@@ -3140,10 +3140,14 @@ func (o ActionPermissionsPermissionsExecutePtrOutput) Users() pulumi.StringArray
 }
 
 type ActionSelfServiceTrigger struct {
+	// The text of the button that will be displayed in the self service action card
+	ActionCardButtonText *string `pulumi:"actionCardButtonText"`
 	// The ID of the blueprint
 	BlueprintIdentifier *string `pulumi:"blueprintIdentifier"`
 	// The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
 	Condition *string `pulumi:"condition"`
+	// The text of the button that will be displayed for executing the action
+	ExecuteActionButtonText *string `pulumi:"executeActionButtonText"`
 	// The operation type of the action
 	Operation string `pulumi:"operation"`
 	// Order properties
@@ -3170,10 +3174,14 @@ type ActionSelfServiceTriggerInput interface {
 }
 
 type ActionSelfServiceTriggerArgs struct {
+	// The text of the button that will be displayed in the self service action card
+	ActionCardButtonText pulumi.StringPtrInput `pulumi:"actionCardButtonText"`
 	// The ID of the blueprint
 	BlueprintIdentifier pulumi.StringPtrInput `pulumi:"blueprintIdentifier"`
 	// The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
 	Condition pulumi.StringPtrInput `pulumi:"condition"`
+	// The text of the button that will be displayed for executing the action
+	ExecuteActionButtonText pulumi.StringPtrInput `pulumi:"executeActionButtonText"`
 	// The operation type of the action
 	Operation pulumi.StringInput `pulumi:"operation"`
 	// Order properties
@@ -3265,6 +3273,11 @@ func (o ActionSelfServiceTriggerOutput) ToActionSelfServiceTriggerPtrOutputWithC
 	}).(ActionSelfServiceTriggerPtrOutput)
 }
 
+// The text of the button that will be displayed in the self service action card
+func (o ActionSelfServiceTriggerOutput) ActionCardButtonText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTrigger) *string { return v.ActionCardButtonText }).(pulumi.StringPtrOutput)
+}
+
 // The ID of the blueprint
 func (o ActionSelfServiceTriggerOutput) BlueprintIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTrigger) *string { return v.BlueprintIdentifier }).(pulumi.StringPtrOutput)
@@ -3273,6 +3286,11 @@ func (o ActionSelfServiceTriggerOutput) BlueprintIdentifier() pulumi.StringPtrOu
 // The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
 func (o ActionSelfServiceTriggerOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTrigger) *string { return v.Condition }).(pulumi.StringPtrOutput)
+}
+
+// The text of the button that will be displayed for executing the action
+func (o ActionSelfServiceTriggerOutput) ExecuteActionButtonText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTrigger) *string { return v.ExecuteActionButtonText }).(pulumi.StringPtrOutput)
 }
 
 // The operation type of the action
@@ -3329,6 +3347,16 @@ func (o ActionSelfServiceTriggerPtrOutput) Elem() ActionSelfServiceTriggerOutput
 	}).(ActionSelfServiceTriggerOutput)
 }
 
+// The text of the button that will be displayed in the self service action card
+func (o ActionSelfServiceTriggerPtrOutput) ActionCardButtonText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionCardButtonText
+	}).(pulumi.StringPtrOutput)
+}
+
 // The ID of the blueprint
 func (o ActionSelfServiceTriggerPtrOutput) BlueprintIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionSelfServiceTrigger) *string {
@@ -3346,6 +3374,16 @@ func (o ActionSelfServiceTriggerPtrOutput) Condition() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Condition
+	}).(pulumi.StringPtrOutput)
+}
+
+// The text of the button that will be displayed for executing the action
+func (o ActionSelfServiceTriggerPtrOutput) ExecuteActionButtonText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExecuteActionButtonText
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3897,8 +3935,12 @@ type ActionSelfServiceTriggerUserPropertiesArrayProps struct {
 	Icon *string `pulumi:"icon"`
 	// The max items of the array property
 	MaxItems *int `pulumi:"maxItems"`
+	// The max items jq query of the array property
+	MaxItemsJqQuery *string `pulumi:"maxItemsJqQuery"`
 	// The min items of the array property
 	MinItems *int `pulumi:"minItems"`
+	// The min items jq query of the array property
+	MinItemsJqQuery *string `pulumi:"minItemsJqQuery"`
 	// An array of number items within the property
 	NumberItems *ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItems `pulumi:"numberItems"`
 	// An array of object items within the property
@@ -3945,8 +3987,12 @@ type ActionSelfServiceTriggerUserPropertiesArrayPropsArgs struct {
 	Icon pulumi.StringPtrInput `pulumi:"icon"`
 	// The max items of the array property
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	// The max items jq query of the array property
+	MaxItemsJqQuery pulumi.StringPtrInput `pulumi:"maxItemsJqQuery"`
 	// The min items of the array property
 	MinItems pulumi.IntPtrInput `pulumi:"minItems"`
+	// The min items jq query of the array property
+	MinItemsJqQuery pulumi.StringPtrInput `pulumi:"minItemsJqQuery"`
 	// An array of number items within the property
 	NumberItems ActionSelfServiceTriggerUserPropertiesArrayPropsNumberItemsPtrInput `pulumi:"numberItems"`
 	// An array of object items within the property
@@ -4058,9 +4104,19 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) MaxItems() pulum
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
+// The max items jq query of the array property
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) MaxItemsJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *string { return v.MaxItemsJqQuery }).(pulumi.StringPtrOutput)
+}
+
 // The min items of the array property
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) MinItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *int { return v.MinItems }).(pulumi.IntPtrOutput)
+}
+
+// The min items jq query of the array property
+func (o ActionSelfServiceTriggerUserPropertiesArrayPropsOutput) MinItemsJqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayProps) *string { return v.MinItemsJqQuery }).(pulumi.StringPtrOutput)
 }
 
 // An array of number items within the property

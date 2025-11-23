@@ -248,6 +248,10 @@ export interface ActionPermissionsPermissionsExecute {
 
 export interface ActionSelfServiceTrigger {
     /**
+     * The text of the button that will be displayed in the self service action card
+     */
+    actionCardButtonText?: string;
+    /**
      * The ID of the blueprint
      */
     blueprintIdentifier?: string;
@@ -255,6 +259,10 @@ export interface ActionSelfServiceTrigger {
      * The `condition` field allows you to define rules using Port's [search & query syntax](https://docs.getport.io/search-and-query/#rules) to determine which entities the action will be available for.
      */
     condition?: string;
+    /**
+     * The text of the button that will be displayed for executing the action
+     */
+    executeActionButtonText?: string;
     /**
      * The operation type of the action
      */
@@ -376,9 +384,17 @@ export interface ActionSelfServiceTriggerUserPropertiesArrayProps {
      */
     maxItems?: number;
     /**
+     * The max items jq query of the array property
+     */
+    maxItemsJqQuery?: string;
+    /**
      * The min items of the array property
      */
     minItems?: number;
+    /**
+     * The min items jq query of the array property
+     */
+    minItemsJqQuery?: string;
     /**
      * An array of number items within the property
      */
