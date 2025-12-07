@@ -65,6 +65,10 @@ export class Page extends pulumi.CustomResource {
      */
     public readonly locked!: pulumi.Output<boolean | undefined>;
     /**
+     * The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with 'combinator' and 'rules' array). The rules array can contain any filter type.
+     */
+    public readonly pageFilters!: pulumi.Output<string[] | undefined>;
+    /**
      * The identifier of the folder in which the page is in, default is the root of the sidebar
      */
     public readonly parent!: pulumi.Output<string | undefined>;
@@ -110,6 +114,7 @@ export class Page extends pulumi.CustomResource {
             resourceInputs["icon"] = state ? state.icon : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["locked"] = state ? state.locked : undefined;
+            resourceInputs["pageFilters"] = state ? state.pageFilters : undefined;
             resourceInputs["parent"] = state ? state.parent : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -130,6 +135,7 @@ export class Page extends pulumi.CustomResource {
             resourceInputs["icon"] = args ? args.icon : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["locked"] = args ? args.locked : undefined;
+            resourceInputs["pageFilters"] = args ? args.pageFilters : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
@@ -180,6 +186,10 @@ export interface PageState {
      * Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
      */
     locked?: pulumi.Input<boolean>;
+    /**
+     * The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with 'combinator' and 'rules' array). The rules array can contain any filter type.
+     */
+    pageFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The identifier of the folder in which the page is in, default is the root of the sidebar
      */
@@ -234,6 +244,10 @@ export interface PageArgs {
      * Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
      */
     locked?: pulumi.Input<boolean>;
+    /**
+     * The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with 'combinator' and 'rules' array). The rules array can contain any filter type.
+     */
+    pageFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The identifier of the folder in which the page is in, default is the root of the sidebar
      */
