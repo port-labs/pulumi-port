@@ -49,7 +49,8 @@ type Integration struct {
 	// Integration Config Raw JSON string (use `jsonencode`)
 	Config              pulumi.StringPtrOutput `pulumi:"config"`
 	InstallationAppType pulumi.StringPtrOutput `pulumi:"installationAppType"`
-	InstallationId      pulumi.StringOutput    `pulumi:"installationId"`
+	// The installation ID of the integration. Must start with a lowercase letter, contain only lowercase letters, numbers, and dashes, and end with a lowercase letter or number (pattern: `^[a-z][a-z0-9-]*[a-z0-9]$`).
+	InstallationId pulumi.StringOutput `pulumi:"installationId"`
 	// The changelog destination of the blueprint (just an empty `{}`)
 	KafkaChangelogDestination IntegrationKafkaChangelogDestinationPtrOutput `pulumi:"kafkaChangelogDestination"`
 	Title                     pulumi.StringPtrOutput                        `pulumi:"title"`
@@ -94,7 +95,8 @@ type integrationState struct {
 	// Integration Config Raw JSON string (use `jsonencode`)
 	Config              *string `pulumi:"config"`
 	InstallationAppType *string `pulumi:"installationAppType"`
-	InstallationId      *string `pulumi:"installationId"`
+	// The installation ID of the integration. Must start with a lowercase letter, contain only lowercase letters, numbers, and dashes, and end with a lowercase letter or number (pattern: `^[a-z][a-z0-9-]*[a-z0-9]$`).
+	InstallationId *string `pulumi:"installationId"`
 	// The changelog destination of the blueprint (just an empty `{}`)
 	KafkaChangelogDestination *IntegrationKafkaChangelogDestination `pulumi:"kafkaChangelogDestination"`
 	Title                     *string                               `pulumi:"title"`
@@ -107,7 +109,8 @@ type IntegrationState struct {
 	// Integration Config Raw JSON string (use `jsonencode`)
 	Config              pulumi.StringPtrInput
 	InstallationAppType pulumi.StringPtrInput
-	InstallationId      pulumi.StringPtrInput
+	// The installation ID of the integration. Must start with a lowercase letter, contain only lowercase letters, numbers, and dashes, and end with a lowercase letter or number (pattern: `^[a-z][a-z0-9-]*[a-z0-9]$`).
+	InstallationId pulumi.StringPtrInput
 	// The changelog destination of the blueprint (just an empty `{}`)
 	KafkaChangelogDestination IntegrationKafkaChangelogDestinationPtrInput
 	Title                     pulumi.StringPtrInput
@@ -124,7 +127,8 @@ type integrationArgs struct {
 	// Integration Config Raw JSON string (use `jsonencode`)
 	Config              *string `pulumi:"config"`
 	InstallationAppType *string `pulumi:"installationAppType"`
-	InstallationId      string  `pulumi:"installationId"`
+	// The installation ID of the integration. Must start with a lowercase letter, contain only lowercase letters, numbers, and dashes, and end with a lowercase letter or number (pattern: `^[a-z][a-z0-9-]*[a-z0-9]$`).
+	InstallationId string `pulumi:"installationId"`
 	// The changelog destination of the blueprint (just an empty `{}`)
 	KafkaChangelogDestination *IntegrationKafkaChangelogDestination `pulumi:"kafkaChangelogDestination"`
 	Title                     *string                               `pulumi:"title"`
@@ -138,7 +142,8 @@ type IntegrationArgs struct {
 	// Integration Config Raw JSON string (use `jsonencode`)
 	Config              pulumi.StringPtrInput
 	InstallationAppType pulumi.StringPtrInput
-	InstallationId      pulumi.StringInput
+	// The installation ID of the integration. Must start with a lowercase letter, contain only lowercase letters, numbers, and dashes, and end with a lowercase letter or number (pattern: `^[a-z][a-z0-9-]*[a-z0-9]$`).
+	InstallationId pulumi.StringInput
 	// The changelog destination of the blueprint (just an empty `{}`)
 	KafkaChangelogDestination IntegrationKafkaChangelogDestinationPtrInput
 	Title                     pulumi.StringPtrInput
@@ -243,6 +248,7 @@ func (o IntegrationOutput) InstallationAppType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.InstallationAppType }).(pulumi.StringPtrOutput)
 }
 
+// The installation ID of the integration. Must start with a lowercase letter, contain only lowercase letters, numbers, and dashes, and end with a lowercase letter or number (pattern: `^[a-z][a-z0-9-]*[a-z0-9]$`).
 func (o IntegrationOutput) InstallationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.InstallationId }).(pulumi.StringOutput)
 }

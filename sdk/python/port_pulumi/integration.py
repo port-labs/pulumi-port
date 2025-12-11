@@ -30,6 +30,7 @@ class IntegrationArgs:
                  webhook_changelog_destination: Optional[pulumi.Input['IntegrationWebhookChangelogDestinationArgs']] = None):
         """
         The set of arguments for constructing a Integration resource.
+        :param pulumi.Input[str] installation_id: The installation ID of the integration. Must start with a lowercase letter, contain only lowercase letters, numbers, and dashes, and end with a lowercase letter or number (pattern: `^[a-z][a-z0-9-]*[a-z0-9]$`).
         :param pulumi.Input[str] config: Integration Config Raw JSON string (use `jsonencode`)
         :param pulumi.Input['IntegrationKafkaChangelogDestinationArgs'] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
         :param pulumi.Input['IntegrationWebhookChangelogDestinationArgs'] webhook_changelog_destination: The webhook changelog destination of the integration
@@ -51,6 +52,9 @@ class IntegrationArgs:
     @property
     @pulumi.getter(name="installationId")
     def installation_id(self) -> pulumi.Input[str]:
+        """
+        The installation ID of the integration. Must start with a lowercase letter, contain only lowercase letters, numbers, and dashes, and end with a lowercase letter or number (pattern: `^[a-z][a-z0-9-]*[a-z0-9]$`).
+        """
         return pulumi.get(self, "installation_id")
 
     @installation_id.setter
@@ -134,6 +138,7 @@ class _IntegrationState:
         """
         Input properties used for looking up and filtering Integration resources.
         :param pulumi.Input[str] config: Integration Config Raw JSON string (use `jsonencode`)
+        :param pulumi.Input[str] installation_id: The installation ID of the integration. Must start with a lowercase letter, contain only lowercase letters, numbers, and dashes, and end with a lowercase letter or number (pattern: `^[a-z][a-z0-9-]*[a-z0-9]$`).
         :param pulumi.Input['IntegrationKafkaChangelogDestinationArgs'] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
         :param pulumi.Input['IntegrationWebhookChangelogDestinationArgs'] webhook_changelog_destination: The webhook changelog destination of the integration
         """
@@ -176,6 +181,9 @@ class _IntegrationState:
     @property
     @pulumi.getter(name="installationId")
     def installation_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The installation ID of the integration. Must start with a lowercase letter, contain only lowercase letters, numbers, and dashes, and end with a lowercase letter or number (pattern: `^[a-z][a-z0-9-]*[a-z0-9]$`).
+        """
         return pulumi.get(self, "installation_id")
 
     @installation_id.setter
@@ -281,6 +289,7 @@ class Integration(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config: Integration Config Raw JSON string (use `jsonencode`)
+        :param pulumi.Input[str] installation_id: The installation ID of the integration. Must start with a lowercase letter, contain only lowercase letters, numbers, and dashes, and end with a lowercase letter or number (pattern: `^[a-z][a-z0-9-]*[a-z0-9]$`).
         :param pulumi.Input[Union['IntegrationKafkaChangelogDestinationArgs', 'IntegrationKafkaChangelogDestinationArgsDict']] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
         :param pulumi.Input[Union['IntegrationWebhookChangelogDestinationArgs', 'IntegrationWebhookChangelogDestinationArgsDict']] webhook_changelog_destination: The webhook changelog destination of the integration
         """
@@ -395,6 +404,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config: Integration Config Raw JSON string (use `jsonencode`)
+        :param pulumi.Input[str] installation_id: The installation ID of the integration. Must start with a lowercase letter, contain only lowercase letters, numbers, and dashes, and end with a lowercase letter or number (pattern: `^[a-z][a-z0-9-]*[a-z0-9]$`).
         :param pulumi.Input[Union['IntegrationKafkaChangelogDestinationArgs', 'IntegrationKafkaChangelogDestinationArgsDict']] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
         :param pulumi.Input[Union['IntegrationWebhookChangelogDestinationArgs', 'IntegrationWebhookChangelogDestinationArgsDict']] webhook_changelog_destination: The webhook changelog destination of the integration
         """
@@ -427,6 +437,9 @@ class Integration(pulumi.CustomResource):
     @property
     @pulumi.getter(name="installationId")
     def installation_id(self) -> pulumi.Output[str]:
+        """
+        The installation ID of the integration. Must start with a lowercase letter, contain only lowercase letters, numbers, and dashes, and end with a lowercase letter or number (pattern: `^[a-z][a-z0-9-]*[a-z0-9]$`).
+        """
         return pulumi.get(self, "installation_id")
 
     @property
