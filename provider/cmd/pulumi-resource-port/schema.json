@@ -4416,7 +4416,7 @@
                 },
                 "installationId": {
                     "type": "string",
-                    "description": "The installation ID of the integration. Must start with a lowercase letter, contain only lowercase letters, numbers, and dashes, and end with a lowercase letter or number (pattern: `^[a-z][a-z0-9-]*[a-z0-9]$`).\n"
+                    "description": "The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern: `^[a-z0-9-]+$`).\n"
                 },
                 "kafkaChangelogDestination": {
                     "$ref": "#/types/port:index/IntegrationKafkaChangelogDestination:IntegrationKafkaChangelogDestination",
@@ -4447,7 +4447,7 @@
                 },
                 "installationId": {
                     "type": "string",
-                    "description": "The installation ID of the integration. Must start with a lowercase letter, contain only lowercase letters, numbers, and dashes, and end with a lowercase letter or number (pattern: `^[a-z][a-z0-9-]*[a-z0-9]$`).\n"
+                    "description": "The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern: `^[a-z0-9-]+$`).\n"
                 },
                 "kafkaChangelogDestination": {
                     "$ref": "#/types/port:index/IntegrationKafkaChangelogDestination:IntegrationKafkaChangelogDestination",
@@ -4479,7 +4479,7 @@
                     },
                     "installationId": {
                         "type": "string",
-                        "description": "The installation ID of the integration. Must start with a lowercase letter, contain only lowercase letters, numbers, and dashes, and end with a lowercase letter or number (pattern: `^[a-z][a-z0-9-]*[a-z0-9]$`).\n"
+                        "description": "The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern: `^[a-z0-9-]+$`).\n"
                     },
                     "kafkaChangelogDestination": {
                         "$ref": "#/types/port:index/IntegrationKafkaChangelogDestination:IntegrationKafkaChangelogDestination",
