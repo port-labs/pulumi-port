@@ -80,7 +80,7 @@ export class Integration extends pulumi.CustomResource {
     public readonly config!: pulumi.Output<string | undefined>;
     public readonly installationAppType!: pulumi.Output<string | undefined>;
     /**
-     * The installation ID of the integration. Must start with a lowercase letter, contain only lowercase letters, numbers, and dashes, and end with a lowercase letter or number (pattern: `^[a-z][a-z0-9-]*[a-z0-9]$`).
+     * The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern: `^[a-z0-9-]+$`).
      */
     public readonly installationId!: pulumi.Output<string>;
     /**
@@ -142,7 +142,7 @@ export interface IntegrationState {
     config?: pulumi.Input<string>;
     installationAppType?: pulumi.Input<string>;
     /**
-     * The installation ID of the integration. Must start with a lowercase letter, contain only lowercase letters, numbers, and dashes, and end with a lowercase letter or number (pattern: `^[a-z][a-z0-9-]*[a-z0-9]$`).
+     * The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern: `^[a-z0-9-]+$`).
      */
     installationId?: pulumi.Input<string>;
     /**
@@ -167,7 +167,7 @@ export interface IntegrationArgs {
     config?: pulumi.Input<string>;
     installationAppType?: pulumi.Input<string>;
     /**
-     * The installation ID of the integration. Must start with a lowercase letter, contain only lowercase letters, numbers, and dashes, and end with a lowercase letter or number (pattern: `^[a-z][a-z0-9-]*[a-z0-9]$`).
+     * The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern: `^[a-z0-9-]+$`).
      */
     installationId: pulumi.Input<string>;
     /**
