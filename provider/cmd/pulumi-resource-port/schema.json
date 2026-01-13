@@ -2033,6 +2033,10 @@
                         "type": "string"
                     },
                     "description": "The default of the items\n"
+                },
+                "format": {
+                    "type": "string",
+                    "description": "The format of the object items\n"
                 }
             },
             "type": "object"
@@ -2166,6 +2170,10 @@
                 "description": {
                     "type": "string",
                     "description": "The description of the property\n"
+                },
+                "format": {
+                    "type": "string",
+                    "description": "The format of the object property\n"
                 },
                 "icon": {
                     "type": "string",
@@ -2797,6 +2805,10 @@
                         "type": "string"
                     },
                     "description": "The default of the items\n"
+                },
+                "format": {
+                    "type": "string",
+                    "description": "The format of the object items\n"
                 }
             },
             "type": "object"
@@ -2930,6 +2942,10 @@
                 "description": {
                     "type": "string",
                     "description": "The description of the property\n"
+                },
+                "format": {
+                    "type": "string",
+                    "description": "The format of the object property\n"
                 },
                 "icon": {
                     "type": "string",
