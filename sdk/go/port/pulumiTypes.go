@@ -11449,6 +11449,8 @@ func (o BlueprintPropertiesArrayPropsNumberItemsPtrOutput) Defaults() pulumi.Flo
 type BlueprintPropertiesArrayPropsObjectItems struct {
 	// The default of the items
 	Defaults []string `pulumi:"defaults"`
+	// The format of the object items
+	Format *string `pulumi:"format"`
 }
 
 // BlueprintPropertiesArrayPropsObjectItemsInput is an input type that accepts BlueprintPropertiesArrayPropsObjectItemsArgs and BlueprintPropertiesArrayPropsObjectItemsOutput values.
@@ -11465,6 +11467,8 @@ type BlueprintPropertiesArrayPropsObjectItemsInput interface {
 type BlueprintPropertiesArrayPropsObjectItemsArgs struct {
 	// The default of the items
 	Defaults pulumi.StringArrayInput `pulumi:"defaults"`
+	// The format of the object items
+	Format pulumi.StringPtrInput `pulumi:"format"`
 }
 
 func (BlueprintPropertiesArrayPropsObjectItemsArgs) ElementType() reflect.Type {
@@ -11549,6 +11553,11 @@ func (o BlueprintPropertiesArrayPropsObjectItemsOutput) Defaults() pulumi.String
 	return o.ApplyT(func(v BlueprintPropertiesArrayPropsObjectItems) []string { return v.Defaults }).(pulumi.StringArrayOutput)
 }
 
+// The format of the object items
+func (o BlueprintPropertiesArrayPropsObjectItemsOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesArrayPropsObjectItems) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
 type BlueprintPropertiesArrayPropsObjectItemsPtrOutput struct{ *pulumi.OutputState }
 
 func (BlueprintPropertiesArrayPropsObjectItemsPtrOutput) ElementType() reflect.Type {
@@ -11581,6 +11590,16 @@ func (o BlueprintPropertiesArrayPropsObjectItemsPtrOutput) Defaults() pulumi.Str
 		}
 		return v.Defaults
 	}).(pulumi.StringArrayOutput)
+}
+
+// The format of the object items
+func (o BlueprintPropertiesArrayPropsObjectItemsPtrOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlueprintPropertiesArrayPropsObjectItems) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Format
+	}).(pulumi.StringPtrOutput)
 }
 
 type BlueprintPropertiesArrayPropsStringItems struct {
@@ -12103,6 +12122,8 @@ type BlueprintPropertiesObjectProps struct {
 	Default *string `pulumi:"default"`
 	// The description of the property
 	Description *string `pulumi:"description"`
+	// The format of the object property
+	Format *string `pulumi:"format"`
 	// The icon of the property
 	Icon *string `pulumi:"icon"`
 	// Whether the property is required
@@ -12129,6 +12150,8 @@ type BlueprintPropertiesObjectPropsArgs struct {
 	Default pulumi.StringPtrInput `pulumi:"default"`
 	// The description of the property
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The format of the object property
+	Format pulumi.StringPtrInput `pulumi:"format"`
 	// The icon of the property
 	Icon pulumi.StringPtrInput `pulumi:"icon"`
 	// Whether the property is required
@@ -12198,6 +12221,11 @@ func (o BlueprintPropertiesObjectPropsOutput) Default() pulumi.StringPtrOutput {
 // The description of the property
 func (o BlueprintPropertiesObjectPropsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintPropertiesObjectProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The format of the object property
+func (o BlueprintPropertiesObjectPropsOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesObjectProps) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
 // The icon of the property
@@ -15645,6 +15673,8 @@ func (o SystemBlueprintPropertiesArrayPropsNumberItemsPtrOutput) Defaults() pulu
 type SystemBlueprintPropertiesArrayPropsObjectItems struct {
 	// The default of the items
 	Defaults []string `pulumi:"defaults"`
+	// The format of the object items
+	Format *string `pulumi:"format"`
 }
 
 // SystemBlueprintPropertiesArrayPropsObjectItemsInput is an input type that accepts SystemBlueprintPropertiesArrayPropsObjectItemsArgs and SystemBlueprintPropertiesArrayPropsObjectItemsOutput values.
@@ -15661,6 +15691,8 @@ type SystemBlueprintPropertiesArrayPropsObjectItemsInput interface {
 type SystemBlueprintPropertiesArrayPropsObjectItemsArgs struct {
 	// The default of the items
 	Defaults pulumi.StringArrayInput `pulumi:"defaults"`
+	// The format of the object items
+	Format pulumi.StringPtrInput `pulumi:"format"`
 }
 
 func (SystemBlueprintPropertiesArrayPropsObjectItemsArgs) ElementType() reflect.Type {
@@ -15745,6 +15777,11 @@ func (o SystemBlueprintPropertiesArrayPropsObjectItemsOutput) Defaults() pulumi.
 	return o.ApplyT(func(v SystemBlueprintPropertiesArrayPropsObjectItems) []string { return v.Defaults }).(pulumi.StringArrayOutput)
 }
 
+// The format of the object items
+func (o SystemBlueprintPropertiesArrayPropsObjectItemsOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesArrayPropsObjectItems) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
 type SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput struct{ *pulumi.OutputState }
 
 func (SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput) ElementType() reflect.Type {
@@ -15777,6 +15814,16 @@ func (o SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput) Defaults() pulu
 		}
 		return v.Defaults
 	}).(pulumi.StringArrayOutput)
+}
+
+// The format of the object items
+func (o SystemBlueprintPropertiesArrayPropsObjectItemsPtrOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemBlueprintPropertiesArrayPropsObjectItems) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Format
+	}).(pulumi.StringPtrOutput)
 }
 
 type SystemBlueprintPropertiesArrayPropsStringItems struct {
@@ -16299,6 +16346,8 @@ type SystemBlueprintPropertiesObjectProps struct {
 	Default *string `pulumi:"default"`
 	// The description of the property
 	Description *string `pulumi:"description"`
+	// The format of the object property
+	Format *string `pulumi:"format"`
 	// The icon of the property
 	Icon *string `pulumi:"icon"`
 	// Whether the property is required
@@ -16325,6 +16374,8 @@ type SystemBlueprintPropertiesObjectPropsArgs struct {
 	Default pulumi.StringPtrInput `pulumi:"default"`
 	// The description of the property
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The format of the object property
+	Format pulumi.StringPtrInput `pulumi:"format"`
 	// The icon of the property
 	Icon pulumi.StringPtrInput `pulumi:"icon"`
 	// Whether the property is required
@@ -16394,6 +16445,11 @@ func (o SystemBlueprintPropertiesObjectPropsOutput) Default() pulumi.StringPtrOu
 // The description of the property
 func (o SystemBlueprintPropertiesObjectPropsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemBlueprintPropertiesObjectProps) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The format of the object property
+func (o SystemBlueprintPropertiesObjectPropsOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesObjectProps) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
 // The icon of the property

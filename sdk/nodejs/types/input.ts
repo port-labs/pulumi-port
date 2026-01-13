@@ -1354,6 +1354,10 @@ export interface BlueprintPropertiesArrayPropsObjectItems {
      * The default of the items
      */
     defaults?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The format of the object items
+     */
+    format?: pulumi.Input<string>;
 }
 
 export interface BlueprintPropertiesArrayPropsStringItems {
@@ -1450,6 +1454,10 @@ export interface BlueprintPropertiesObjectProps {
      * The description of the property
      */
     description?: pulumi.Input<string>;
+    /**
+     * The format of the object property
+     */
+    format?: pulumi.Input<string>;
     /**
      * The icon of the property
      */
@@ -1859,6 +1867,10 @@ export interface SystemBlueprintPropertiesArrayPropsObjectItems {
      * The default of the items
      */
     defaults?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The format of the object items
+     */
+    format?: pulumi.Input<string>;
 }
 
 export interface SystemBlueprintPropertiesArrayPropsStringItems {
@@ -1955,6 +1967,10 @@ export interface SystemBlueprintPropertiesObjectProps {
      * The description of the property
      */
     description?: pulumi.Input<string>;
+    /**
+     * The format of the object property
+     */
+    format?: pulumi.Input<string>;
     /**
      * The icon of the property
      */
