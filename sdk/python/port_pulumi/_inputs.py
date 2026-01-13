@@ -6716,18 +6716,26 @@ if not MYPY:
         """
         The default of the items
         """
+        format: NotRequired[pulumi.Input[str]]
+        """
+        The format of the object items
+        """
 elif False:
     BlueprintPropertiesArrayPropsObjectItemsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BlueprintPropertiesArrayPropsObjectItemsArgs:
     def __init__(__self__, *,
-                 defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 format: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] defaults: The default of the items
+        :param pulumi.Input[str] format: The format of the object items
         """
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
 
     @property
     @pulumi.getter
@@ -6740,6 +6748,18 @@ class BlueprintPropertiesArrayPropsObjectItemsArgs:
     @defaults.setter
     def defaults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "defaults", value)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The format of the object items
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "format", value)
 
 
 if not MYPY:
@@ -7168,6 +7188,10 @@ if not MYPY:
         """
         The description of the property
         """
+        format: NotRequired[pulumi.Input[str]]
+        """
+        The format of the object property
+        """
         icon: NotRequired[pulumi.Input[str]]
         """
         The icon of the property
@@ -7192,6 +7216,7 @@ class BlueprintPropertiesObjectPropsArgs:
     def __init__(__self__, *,
                  default: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 format: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  required: Optional[pulumi.Input[bool]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
@@ -7199,6 +7224,7 @@ class BlueprintPropertiesObjectPropsArgs:
         """
         :param pulumi.Input[str] default: The default of the object property
         :param pulumi.Input[str] description: The description of the property
+        :param pulumi.Input[str] format: The format of the object property
         :param pulumi.Input[str] icon: The icon of the property
         :param pulumi.Input[bool] required: Whether the property is required
         :param pulumi.Input[str] spec: The spec of the object property
@@ -7208,6 +7234,8 @@ class BlueprintPropertiesObjectPropsArgs:
             pulumi.set(__self__, "default", default)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
         if required is not None:
@@ -7240,6 +7268,18 @@ class BlueprintPropertiesObjectPropsArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The format of the object property
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "format", value)
 
     @property
     @pulumi.getter
@@ -9167,18 +9207,26 @@ if not MYPY:
         """
         The default of the items
         """
+        format: NotRequired[pulumi.Input[str]]
+        """
+        The format of the object items
+        """
 elif False:
     SystemBlueprintPropertiesArrayPropsObjectItemsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SystemBlueprintPropertiesArrayPropsObjectItemsArgs:
     def __init__(__self__, *,
-                 defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 format: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] defaults: The default of the items
+        :param pulumi.Input[str] format: The format of the object items
         """
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
 
     @property
     @pulumi.getter
@@ -9191,6 +9239,18 @@ class SystemBlueprintPropertiesArrayPropsObjectItemsArgs:
     @defaults.setter
     def defaults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "defaults", value)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The format of the object items
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "format", value)
 
 
 if not MYPY:
@@ -9619,6 +9679,10 @@ if not MYPY:
         """
         The description of the property
         """
+        format: NotRequired[pulumi.Input[str]]
+        """
+        The format of the object property
+        """
         icon: NotRequired[pulumi.Input[str]]
         """
         The icon of the property
@@ -9643,6 +9707,7 @@ class SystemBlueprintPropertiesObjectPropsArgs:
     def __init__(__self__, *,
                  default: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 format: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  required: Optional[pulumi.Input[bool]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
@@ -9650,6 +9715,7 @@ class SystemBlueprintPropertiesObjectPropsArgs:
         """
         :param pulumi.Input[str] default: The default of the object property
         :param pulumi.Input[str] description: The description of the property
+        :param pulumi.Input[str] format: The format of the object property
         :param pulumi.Input[str] icon: The icon of the property
         :param pulumi.Input[bool] required: Whether the property is required
         :param pulumi.Input[str] spec: The spec of the object property
@@ -9659,6 +9725,8 @@ class SystemBlueprintPropertiesObjectPropsArgs:
             pulumi.set(__self__, "default", default)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
         if required is not None:
@@ -9691,6 +9759,18 @@ class SystemBlueprintPropertiesObjectPropsArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The format of the object property
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "format", value)
 
     @property
     @pulumi.getter

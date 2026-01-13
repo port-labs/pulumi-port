@@ -4890,12 +4890,16 @@ class BlueprintPropertiesArrayPropsNumberItems(dict):
 @pulumi.output_type
 class BlueprintPropertiesArrayPropsObjectItems(dict):
     def __init__(__self__, *,
-                 defaults: Optional[Sequence[str]] = None):
+                 defaults: Optional[Sequence[str]] = None,
+                 format: Optional[str] = None):
         """
         :param Sequence[str] defaults: The default of the items
+        :param str format: The format of the object items
         """
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
 
     @property
     @pulumi.getter
@@ -4904,6 +4908,14 @@ class BlueprintPropertiesArrayPropsObjectItems(dict):
         The default of the items
         """
         return pulumi.get(self, "defaults")
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[str]:
+        """
+        The format of the object items
+        """
+        return pulumi.get(self, "format")
 
 
 @pulumi.output_type
@@ -5194,6 +5206,7 @@ class BlueprintPropertiesObjectProps(dict):
     def __init__(__self__, *,
                  default: Optional[str] = None,
                  description: Optional[str] = None,
+                 format: Optional[str] = None,
                  icon: Optional[str] = None,
                  required: Optional[bool] = None,
                  spec: Optional[str] = None,
@@ -5201,6 +5214,7 @@ class BlueprintPropertiesObjectProps(dict):
         """
         :param str default: The default of the object property
         :param str description: The description of the property
+        :param str format: The format of the object property
         :param str icon: The icon of the property
         :param bool required: Whether the property is required
         :param str spec: The spec of the object property
@@ -5210,6 +5224,8 @@ class BlueprintPropertiesObjectProps(dict):
             pulumi.set(__self__, "default", default)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
         if required is not None:
@@ -5234,6 +5250,14 @@ class BlueprintPropertiesObjectProps(dict):
         The description of the property
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[str]:
+        """
+        The format of the object property
+        """
+        return pulumi.get(self, "format")
 
     @property
     @pulumi.getter
@@ -6580,12 +6604,16 @@ class SystemBlueprintPropertiesArrayPropsNumberItems(dict):
 @pulumi.output_type
 class SystemBlueprintPropertiesArrayPropsObjectItems(dict):
     def __init__(__self__, *,
-                 defaults: Optional[Sequence[str]] = None):
+                 defaults: Optional[Sequence[str]] = None,
+                 format: Optional[str] = None):
         """
         :param Sequence[str] defaults: The default of the items
+        :param str format: The format of the object items
         """
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
 
     @property
     @pulumi.getter
@@ -6594,6 +6622,14 @@ class SystemBlueprintPropertiesArrayPropsObjectItems(dict):
         The default of the items
         """
         return pulumi.get(self, "defaults")
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[str]:
+        """
+        The format of the object items
+        """
+        return pulumi.get(self, "format")
 
 
 @pulumi.output_type
@@ -6884,6 +6920,7 @@ class SystemBlueprintPropertiesObjectProps(dict):
     def __init__(__self__, *,
                  default: Optional[str] = None,
                  description: Optional[str] = None,
+                 format: Optional[str] = None,
                  icon: Optional[str] = None,
                  required: Optional[bool] = None,
                  spec: Optional[str] = None,
@@ -6891,6 +6928,7 @@ class SystemBlueprintPropertiesObjectProps(dict):
         """
         :param str default: The default of the object property
         :param str description: The description of the property
+        :param str format: The format of the object property
         :param str icon: The icon of the property
         :param bool required: Whether the property is required
         :param str spec: The spec of the object property
@@ -6900,6 +6938,8 @@ class SystemBlueprintPropertiesObjectProps(dict):
             pulumi.set(__self__, "default", default)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
         if required is not None:
@@ -6924,6 +6964,14 @@ class SystemBlueprintPropertiesObjectProps(dict):
         The description of the property
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[str]:
+        """
+        The format of the object property
+        """
+        return pulumi.get(self, "format")
 
     @property
     @pulumi.getter
