@@ -31,7 +31,8 @@ type Page struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
 	Locked pulumi.BoolPtrOutput `pulumi:"locked"`
-	// The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with 'combinator' and 'rules' array). The rules array can contain any filter type.
+	// The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
+	// 'combinator' and 'rules' array). The rules array can contain any filter type.
 	PageFilters pulumi.StringArrayOutput `pulumi:"pageFilters"`
 	// The identifier of the folder in which the page is in, default is the root of the sidebar
 	Parent pulumi.StringPtrOutput `pulumi:"parent"`
@@ -99,7 +100,8 @@ type pageState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
 	Locked *bool `pulumi:"locked"`
-	// The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with 'combinator' and 'rules' array). The rules array can contain any filter type.
+	// The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
+	// 'combinator' and 'rules' array). The rules array can contain any filter type.
 	PageFilters []string `pulumi:"pageFilters"`
 	// The identifier of the folder in which the page is in, default is the root of the sidebar
 	Parent *string `pulumi:"parent"`
@@ -132,7 +134,8 @@ type PageState struct {
 	Identifier pulumi.StringPtrInput
 	// Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
 	Locked pulumi.BoolPtrInput
-	// The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with 'combinator' and 'rules' array). The rules array can contain any filter type.
+	// The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
+	// 'combinator' and 'rules' array). The rules array can contain any filter type.
 	PageFilters pulumi.StringArrayInput
 	// The identifier of the folder in which the page is in, default is the root of the sidebar
 	Parent pulumi.StringPtrInput
@@ -165,7 +168,8 @@ type pageArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
 	Locked *bool `pulumi:"locked"`
-	// The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with 'combinator' and 'rules' array). The rules array can contain any filter type.
+	// The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
+	// 'combinator' and 'rules' array). The rules array can contain any filter type.
 	PageFilters []string `pulumi:"pageFilters"`
 	// The identifier of the folder in which the page is in, default is the root of the sidebar
 	Parent *string `pulumi:"parent"`
@@ -191,7 +195,8 @@ type PageArgs struct {
 	Identifier pulumi.StringInput
 	// Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
 	Locked pulumi.BoolPtrInput
-	// The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with 'combinator' and 'rules' array). The rules array can contain any filter type.
+	// The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
+	// 'combinator' and 'rules' array). The rules array can contain any filter type.
 	PageFilters pulumi.StringArrayInput
 	// The identifier of the folder in which the page is in, default is the root of the sidebar
 	Parent pulumi.StringPtrInput
@@ -330,7 +335,8 @@ func (o PageOutput) Locked() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Page) pulumi.BoolPtrOutput { return v.Locked }).(pulumi.BoolPtrOutput)
 }
 
-// The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with 'combinator' and 'rules' array). The rules array can contain any filter type.
+// The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
+// 'combinator' and 'rules' array). The rules array can contain any filter type.
 func (o PageOutput) PageFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Page) pulumi.StringArrayOutput { return v.PageFilters }).(pulumi.StringArrayOutput)
 }

@@ -48,7 +48,9 @@ __all__ = [
     'ActionSelfServiceTriggerUserPropertiesBooleanProps',
     'ActionSelfServiceTriggerUserPropertiesNumberProps',
     'ActionSelfServiceTriggerUserPropertiesObjectProps',
+    'ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryption',
     'ActionSelfServiceTriggerUserPropertiesStringProps',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption',
     'ActionSelfServiceTriggerUserPropertiesStringPropsDataset',
     'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule',
     'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue',
@@ -645,7 +647,6 @@ class ActionAzureMethod(dict):
         """
         :param str org: Required when selecting type AZURE. The Azure org that the workflow belongs to
         :param str webhook: Required when selecting type AZURE. The Azure webhook that the workflow belongs to
-        :param str payload: The Azure Devops workflow [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         """
         pulumi.set(__self__, "org", org)
         pulumi.set(__self__, "webhook", webhook)
@@ -671,9 +672,6 @@ class ActionAzureMethod(dict):
     @property
     @pulumi.getter
     def payload(self) -> Optional[str]:
-        """
-        The Azure Devops workflow [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-        """
         return pulumi.get(self, "payload")
 
 
@@ -709,7 +707,6 @@ class ActionGithubMethod(dict):
         :param str repo: Required when selecting type GITHUB. The GitHub repo that the workflow belongs to
         :param str workflow: The GitHub workflow that the action belongs to
         :param str report_workflow_status: Report the workflow status when invoking the action
-        :param str workflow_inputs: The GitHub [workflow inputs](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         """
         pulumi.set(__self__, "org", org)
         pulumi.set(__self__, "repo", repo)
@@ -754,9 +751,6 @@ class ActionGithubMethod(dict):
     @property
     @pulumi.getter(name="workflowInputs")
     def workflow_inputs(self) -> Optional[str]:
-        """
-        The GitHub [workflow inputs](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-        """
         return pulumi.get(self, "workflow_inputs")
 
 
@@ -794,7 +788,6 @@ class ActionGitlabMethod(dict):
         :param str group_name: Required when selecting type GITLAB. The GitLab group name that the workflow belongs to
         :param str project_name: Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
         :param str default_ref: The default ref of the action
-        :param str pipeline_variables: The Gitlab pipeline variables should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         """
         pulumi.set(__self__, "group_name", group_name)
         pulumi.set(__self__, "project_name", project_name)
@@ -830,9 +823,6 @@ class ActionGitlabMethod(dict):
     @property
     @pulumi.getter(name="pipelineVariables")
     def pipeline_variables(self) -> Optional[str]:
-        """
-        The Gitlab pipeline variables should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-        """
         return pulumi.get(self, "pipeline_variables")
 
 
@@ -840,18 +830,12 @@ class ActionGitlabMethod(dict):
 class ActionKafkaMethod(dict):
     def __init__(__self__, *,
                  payload: Optional[str] = None):
-        """
-        :param str payload: The Kafka message [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-        """
         if payload is not None:
             pulumi.set(__self__, "payload", payload)
 
     @property
     @pulumi.getter
     def payload(self) -> Optional[str]:
-        """
-        The Kafka message [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-        """
         return pulumi.get(self, "payload")
 
 
@@ -1838,7 +1822,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems(dict):
                  enums: Optional[Sequence[str]] = None,
                  format: Optional[str] = None):
         """
-        :param str blueprint: The blueprint identifier the action relates to
+        :param str blueprint: The blueprint identifier related to each string item
         :param str dataset: The dataset of the entity-format items
         :param Sequence[str] defaults: The default value of the items
         :param str enum_jq_query: The jq query for the enum of string items
@@ -1862,7 +1846,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems(dict):
     @pulumi.getter
     def blueprint(self) -> Optional[str]:
         """
-        The blueprint identifier the action relates to
+        The blueprint identifier related to each string item
         """
         return pulumi.get(self, "blueprint")
 
@@ -2300,7 +2284,9 @@ class ActionSelfServiceTriggerUserPropertiesObjectProps(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "defaultJqQuery":
+        if key == "clientSideEncryption":
+            suggest = "client_side_encryption"
+        elif key == "defaultJqQuery":
             suggest = "default_jq_query"
         elif key == "dependsOns":
             suggest = "depends_ons"
@@ -2321,6 +2307,7 @@ class ActionSelfServiceTriggerUserPropertiesObjectProps(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 client_side_encryption: Optional['outputs.ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryption'] = None,
                  default: Optional[str] = None,
                  default_jq_query: Optional[str] = None,
                  depends_ons: Optional[Sequence[str]] = None,
@@ -2334,19 +2321,22 @@ class ActionSelfServiceTriggerUserPropertiesObjectProps(dict):
                  visible: Optional[bool] = None,
                  visible_jq_query: Optional[str] = None):
         """
+        :param 'ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgs' client_side_encryption: Client-side encryption configuration for the property. The value will be encrypted on the client side before being sent to Port. Cannot be used with `encryption`.
         :param str default: The default of the object property
         :param str default_jq_query: The default jq query of the object property
         :param Sequence[str] depends_ons: The properties that this property depends on
         :param str description: The description of the property
         :param bool disabled: The disabled state of the object property
         :param str disabled_jq_query: The disabled state jq query of the object property
-        :param str encryption: The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
+        :param str encryption: The algorithm to encrypt the property with for server-side encryption. Accepted value: `aes256-gcm`. Cannot be used with `client_side_encryption`.
         :param str icon: The icon of the property
         :param bool required: Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
         :param str title: The title of the property
         :param bool visible: The visibility of the object property
         :param str visible_jq_query: The visibility condition jq query of the object property
         """
+        if client_side_encryption is not None:
+            pulumi.set(__self__, "client_side_encryption", client_side_encryption)
         if default is not None:
             pulumi.set(__self__, "default", default)
         if default_jq_query is not None:
@@ -2371,6 +2361,14 @@ class ActionSelfServiceTriggerUserPropertiesObjectProps(dict):
             pulumi.set(__self__, "visible", visible)
         if visible_jq_query is not None:
             pulumi.set(__self__, "visible_jq_query", visible_jq_query)
+
+    @property
+    @pulumi.getter(name="clientSideEncryption")
+    def client_side_encryption(self) -> Optional['outputs.ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryption']:
+        """
+        Client-side encryption configuration for the property. The value will be encrypted on the client side before being sent to Port. Cannot be used with `encryption`.
+        """
+        return pulumi.get(self, "client_side_encryption")
 
     @property
     @pulumi.getter
@@ -2424,7 +2422,7 @@ class ActionSelfServiceTriggerUserPropertiesObjectProps(dict):
     @pulumi.getter
     def encryption(self) -> Optional[str]:
         """
-        The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
+        The algorithm to encrypt the property with for server-side encryption. Accepted value: `aes256-gcm`. Cannot be used with `client_side_encryption`.
         """
         return pulumi.get(self, "encryption")
 
@@ -2470,11 +2468,42 @@ class ActionSelfServiceTriggerUserPropertiesObjectProps(dict):
 
 
 @pulumi.output_type
+class ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryption(dict):
+    def __init__(__self__, *,
+                 algorithm: str,
+                 key: str):
+        """
+        :param str algorithm: The encryption algorithm. Accepted value: `client-side`
+        :param str key: The public key (PEM format) to use for encryption
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> str:
+        """
+        The encryption algorithm. Accepted value: `client-side`
+        """
+        return pulumi.get(self, "algorithm")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The public key (PEM format) to use for encryption
+        """
+        return pulumi.get(self, "key")
+
+
+@pulumi.output_type
 class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "defaultJqQuery":
+        if key == "clientSideEncryption":
+            suggest = "client_side_encryption"
+        elif key == "defaultJqQuery":
             suggest = "default_jq_query"
         elif key == "dependsOns":
             suggest = "depends_ons"
@@ -2506,6 +2535,7 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
 
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
+                 client_side_encryption: Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption'] = None,
                  dataset: Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDataset'] = None,
                  default: Optional[str] = None,
                  default_jq_query: Optional[str] = None,
@@ -2530,6 +2560,7 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
                  visible_jq_query: Optional[str] = None):
         """
         :param str blueprint: The blueprint identifier the string property relates to
+        :param 'ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgs' client_side_encryption: Client-side encryption configuration for the property. The value will be encrypted on the client side before being sent to Port. Cannot be used with `encryption`.
         :param 'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs' dataset: The dataset of an the entity-format property
         :param str default: The default of the string property
         :param str default_jq_query: The default jq query of the string property
@@ -2537,7 +2568,7 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
         :param str description: The description of the property
         :param bool disabled: The disabled state of the string property
         :param str disabled_jq_query: The disabled state jq query of the string property
-        :param str encryption: The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
+        :param str encryption: The algorithm to encrypt the property with for server-side encryption. Accepted value: `aes256-gcm`. Cannot be used with `client_side_encryption`.
         :param Mapping[str, str] enum_colors: The enum colors of the string property
         :param str enum_jq_query: The enum jq query of the string property
         :param Sequence[str] enums: The enum of the string property
@@ -2555,6 +2586,8 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
         """
         if blueprint is not None:
             pulumi.set(__self__, "blueprint", blueprint)
+        if client_side_encryption is not None:
+            pulumi.set(__self__, "client_side_encryption", client_side_encryption)
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
         if default is not None:
@@ -2607,6 +2640,14 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
         The blueprint identifier the string property relates to
         """
         return pulumi.get(self, "blueprint")
+
+    @property
+    @pulumi.getter(name="clientSideEncryption")
+    def client_side_encryption(self) -> Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption']:
+        """
+        Client-side encryption configuration for the property. The value will be encrypted on the client side before being sent to Port. Cannot be used with `encryption`.
+        """
+        return pulumi.get(self, "client_side_encryption")
 
     @property
     @pulumi.getter
@@ -2668,7 +2709,7 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
     @pulumi.getter
     def encryption(self) -> Optional[str]:
         """
-        The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
+        The algorithm to encrypt the property with for server-side encryption. Accepted value: `aes256-gcm`. Cannot be used with `client_side_encryption`.
         """
         return pulumi.get(self, "encryption")
 
@@ -2786,6 +2827,35 @@ class ActionSelfServiceTriggerUserPropertiesStringProps(dict):
 
 
 @pulumi.output_type
+class ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption(dict):
+    def __init__(__self__, *,
+                 algorithm: str,
+                 key: str):
+        """
+        :param str algorithm: The encryption algorithm. Accepted value: `client-side`
+        :param str key: The public key (PEM format) to use for encryption
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> str:
+        """
+        The encryption algorithm. Accepted value: `client-side`
+        """
+        return pulumi.get(self, "algorithm")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The public key (PEM format) to use for encryption
+        """
+        return pulumi.get(self, "key")
+
+
+@pulumi.output_type
 class ActionSelfServiceTriggerUserPropertiesStringPropsDataset(dict):
     def __init__(__self__, *,
                  combinator: str,
@@ -2823,7 +2893,7 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule(dict):
                  value: Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue'] = None):
         """
         :param str operator: The operator of the rule
-        :param str blueprint: The blueprint identifier the action relates to
+        :param str blueprint: The blueprint identifier of the rule
         :param str property: The property identifier of the rule
         :param 'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs' value: The value of the rule
         """
@@ -2847,7 +2917,7 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule(dict):
     @pulumi.getter
     def blueprint(self) -> Optional[str]:
         """
-        The blueprint identifier the action relates to
+        The blueprint identifier of the rule
         """
         return pulumi.get(self, "blueprint")
 
@@ -3094,8 +3164,6 @@ class ActionWebhookMethod(dict):
         """
         :param str url: Required when selecting type WEBHOOK. The URL to invoke the action
         :param str agent: Specifies whether to use an agent to invoke the action. This can be a boolean value (`'true''` or `'false'`) or a JQ if dynamic evaluation is needed.
-        :param str body: The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-        :param Mapping[str, str] headers: The HTTP headers for invoking the action. They should be encoded as a key-value object to a string using jsonencode. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         :param str method: The HTTP method to invoke the action
         :param str synchronized: Synchronize the action
         """
@@ -3130,17 +3198,11 @@ class ActionWebhookMethod(dict):
     @property
     @pulumi.getter
     def body(self) -> Optional[str]:
-        """
-        The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-        """
         return pulumi.get(self, "body")
 
     @property
     @pulumi.getter
     def headers(self) -> Optional[Mapping[str, str]]:
-        """
-        The HTTP headers for invoking the action. They should be encoded as a key-value object to a string using jsonencode. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-        """
         return pulumi.get(self, "headers")
 
     @property
@@ -3190,7 +3252,7 @@ class AggregationPropertiesProperties(dict):
                  query: Optional[str] = None,
                  title: Optional[str] = None):
         """
-        :param 'AggregationPropertiesPropertiesMethodArgs' method: The aggregation method to perform on the target blueprint, one of count*entities, average*entities, average*by*property, aggregate*by*property
+        :param 'AggregationPropertiesPropertiesMethodArgs' method: The aggregation method to perform on the target blueprint, one of count_entities, average_entities, average_by_property, aggregate_by_property
         :param str target_blueprint_identifier: The identifier of the blueprint to perform the aggregation on
         :param str description: The description of the aggregation property
         :param str icon: The icon of the aggregation property
@@ -3215,7 +3277,7 @@ class AggregationPropertiesProperties(dict):
     @pulumi.getter
     def method(self) -> 'outputs.AggregationPropertiesPropertiesMethod':
         """
-        The aggregation method to perform on the target blueprint, one of count*entities, average*entities, average*by*property, aggregate*by*property
+        The aggregation method to perform on the target blueprint, one of count_entities, average_entities, average_by_property, aggregate_by_property
         """
         return pulumi.get(self, "method")
 

@@ -134,9 +134,6 @@ export interface ActionAzureMethod {
      * Required when selecting type AZURE. The Azure org that the workflow belongs to
      */
     org: string;
-    /**
-     * The Azure Devops workflow [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-     */
     payload?: string;
     /**
      * Required when selecting type AZURE. The Azure webhook that the workflow belongs to
@@ -161,9 +158,6 @@ export interface ActionGithubMethod {
      * The GitHub workflow that the action belongs to
      */
     workflow: string;
-    /**
-     * The GitHub [workflow inputs](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-     */
     workflowInputs?: string;
 }
 
@@ -176,9 +170,6 @@ export interface ActionGitlabMethod {
      * Required when selecting type GITLAB. The GitLab group name that the workflow belongs to
      */
     groupName: string;
-    /**
-     * The Gitlab pipeline variables should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-     */
     pipelineVariables?: string;
     /**
      * Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
@@ -187,9 +178,6 @@ export interface ActionGitlabMethod {
 }
 
 export interface ActionKafkaMethod {
-    /**
-     * The Kafka message [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-     */
     payload?: string;
 }
 
@@ -471,7 +459,7 @@ export interface ActionSelfServiceTriggerUserPropertiesArrayPropsSort {
 
 export interface ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems {
     /**
-     * The blueprint identifier the action relates to
+     * The blueprint identifier related to each string item
      */
     blueprint?: string;
     /**
@@ -612,6 +600,10 @@ export interface ActionSelfServiceTriggerUserPropertiesNumberProps {
 
 export interface ActionSelfServiceTriggerUserPropertiesObjectProps {
     /**
+     * Client-side encryption configuration for the property. The value will be encrypted on the client side before being sent to Port. Cannot be used with `encryption`.
+     */
+    clientSideEncryption?: outputs.ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryption;
+    /**
      * The default of the object property
      */
     default?: string;
@@ -636,7 +628,7 @@ export interface ActionSelfServiceTriggerUserPropertiesObjectProps {
      */
     disabledJqQuery?: string;
     /**
-     * The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
+     * The algorithm to encrypt the property with for server-side encryption. Accepted value: `aes256-gcm`. Cannot be used with `clientSideEncryption`.
      */
     encryption?: string;
     /**
@@ -661,11 +653,26 @@ export interface ActionSelfServiceTriggerUserPropertiesObjectProps {
     visibleJqQuery?: string;
 }
 
+export interface ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryption {
+    /**
+     * The encryption algorithm. Accepted value: `client-side`
+     */
+    algorithm: string;
+    /**
+     * The public key (PEM format) to use for encryption
+     */
+    key: string;
+}
+
 export interface ActionSelfServiceTriggerUserPropertiesStringProps {
     /**
      * The blueprint identifier the string property relates to
      */
     blueprint?: string;
+    /**
+     * Client-side encryption configuration for the property. The value will be encrypted on the client side before being sent to Port. Cannot be used with `encryption`.
+     */
+    clientSideEncryption?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption;
     /**
      * The dataset of an the entity-format property
      */
@@ -695,7 +702,7 @@ export interface ActionSelfServiceTriggerUserPropertiesStringProps {
      */
     disabledJqQuery?: string;
     /**
-     * The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
+     * The algorithm to encrypt the property with for server-side encryption. Accepted value: `aes256-gcm`. Cannot be used with `clientSideEncryption`.
      */
     encryption?: string;
     /**
@@ -756,6 +763,17 @@ export interface ActionSelfServiceTriggerUserPropertiesStringProps {
     visibleJqQuery?: string;
 }
 
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption {
+    /**
+     * The encryption algorithm. Accepted value: `client-side`
+     */
+    algorithm: string;
+    /**
+     * The public key (PEM format) to use for encryption
+     */
+    key: string;
+}
+
 export interface ActionSelfServiceTriggerUserPropertiesStringPropsDataset {
     /**
      * The combinator of the dataset
@@ -769,7 +787,7 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDataset {
 
 export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule {
     /**
-     * The blueprint identifier the action relates to
+     * The blueprint identifier of the rule
      */
     blueprint?: string;
     /**
@@ -848,13 +866,7 @@ export interface ActionWebhookMethod {
      * Specifies whether to use an agent to invoke the action. This can be a boolean value (`'true''` or `'false'`) or a JQ if dynamic evaluation is needed.
      */
     agent?: string;
-    /**
-     * The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-     */
     body?: string;
-    /**
-     * The HTTP headers for invoking the action. They should be encoded as a key-value object to a string using jsonencode. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-     */
     headers?: {[key: string]: string};
     /**
      * The HTTP method to invoke the action
@@ -880,7 +892,7 @@ export interface AggregationPropertiesProperties {
      */
     icon?: string;
     /**
-     * The aggregation method to perform on the target blueprint, one of count*entities, average*entities, average*by*property, aggregate*by*property
+     * The aggregation method to perform on the target blueprint, one of count_entities, average_entities, average_by_property, aggregate_by_property
      */
     method: outputs.AggregationPropertiesPropertiesMethod;
     /**

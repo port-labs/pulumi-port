@@ -6,9 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Entity resource
- */
 export class Entity extends pulumi.CustomResource {
     /**
      * Get an existing Entity resource's state with the given name, ID, and optional extra

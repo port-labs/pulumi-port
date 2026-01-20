@@ -6,9 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Port System Blueprint Resource. This resource is used to extend system blueprints with additional properties and relations.
- */
 export class SystemBlueprint extends pulumi.CustomResource {
     /**
      * Get an existing SystemBlueprint resource's state with the given name, ID, and optional extra

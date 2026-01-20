@@ -136,8 +136,7 @@ class OrganizationSecret(pulumi.CustomResource):
                  secret_value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Organization secret resource
-
+        Create a OrganizationSecret resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the organization secret
@@ -151,8 +150,7 @@ class OrganizationSecret(pulumi.CustomResource):
                  args: OrganizationSecretArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Organization secret resource
-
+        Create a OrganizationSecret resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param OrganizationSecretArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

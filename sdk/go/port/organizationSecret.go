@@ -12,7 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Organization secret resource
 type OrganizationSecret struct {
 	pulumi.CustomResourceState
 

@@ -11,11 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The search data source allows you to search for entities in Port.
-//
-// See the [Port documentation](https://docs.getport.io/search-and-query/) for more information about the search capabilities in Port.
-//
-// ## Example Usage
 func GetSearch(ctx *pulumi.Context, args *GetSearchArgs, opts ...pulumi.InvokeOption) (*GetSearchResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSearchResult
@@ -28,36 +23,23 @@ func GetSearch(ctx *pulumi.Context, args *GetSearchArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getSearch.
 type GetSearchArgs struct {
-	// Attach title to relation
-	AttachTitleToRelation *bool `pulumi:"attachTitleToRelation"`
-	// Exclude calculated properties
-	ExcludeCalculatedProperties *bool `pulumi:"excludeCalculatedProperties"`
-	// Properties to exclude from the results
-	Excludes []string `pulumi:"excludes"`
-	// Properties to include in the results
-	Includes []string `pulumi:"includes"`
-	// The search query
-	Query string `pulumi:"query"`
+	AttachTitleToRelation       *bool    `pulumi:"attachTitleToRelation"`
+	ExcludeCalculatedProperties *bool    `pulumi:"excludeCalculatedProperties"`
+	Excludes                    []string `pulumi:"excludes"`
+	Includes                    []string `pulumi:"includes"`
+	Query                       string   `pulumi:"query"`
 }
 
 // A collection of values returned by getSearch.
 type GetSearchResult struct {
-	// Attach title to relation
-	AttachTitleToRelation *bool `pulumi:"attachTitleToRelation"`
-	// A list of entities matching the search query
-	Entities []GetSearchEntity `pulumi:"entities"`
-	// Exclude calculated properties
-	ExcludeCalculatedProperties *bool `pulumi:"excludeCalculatedProperties"`
-	// Properties to exclude from the results
-	Excludes []string `pulumi:"excludes"`
-	// The ID of this resource.
-	Id string `pulumi:"id"`
-	// Properties to include in the results
-	Includes []string `pulumi:"includes"`
-	// The matching blueprints for the search query
-	MatchingBlueprints []string `pulumi:"matchingBlueprints"`
-	// The search query
-	Query string `pulumi:"query"`
+	AttachTitleToRelation       *bool             `pulumi:"attachTitleToRelation"`
+	Entities                    []GetSearchEntity `pulumi:"entities"`
+	ExcludeCalculatedProperties *bool             `pulumi:"excludeCalculatedProperties"`
+	Excludes                    []string          `pulumi:"excludes"`
+	Id                          string            `pulumi:"id"`
+	Includes                    []string          `pulumi:"includes"`
+	MatchingBlueprints          []string          `pulumi:"matchingBlueprints"`
+	Query                       string            `pulumi:"query"`
 }
 
 func GetSearchOutput(ctx *pulumi.Context, args GetSearchOutputArgs, opts ...pulumi.InvokeOption) GetSearchResultOutput {
@@ -71,16 +53,11 @@ func GetSearchOutput(ctx *pulumi.Context, args GetSearchOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getSearch.
 type GetSearchOutputArgs struct {
-	// Attach title to relation
-	AttachTitleToRelation pulumi.BoolPtrInput `pulumi:"attachTitleToRelation"`
-	// Exclude calculated properties
-	ExcludeCalculatedProperties pulumi.BoolPtrInput `pulumi:"excludeCalculatedProperties"`
-	// Properties to exclude from the results
-	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
-	// Properties to include in the results
-	Includes pulumi.StringArrayInput `pulumi:"includes"`
-	// The search query
-	Query pulumi.StringInput `pulumi:"query"`
+	AttachTitleToRelation       pulumi.BoolPtrInput     `pulumi:"attachTitleToRelation"`
+	ExcludeCalculatedProperties pulumi.BoolPtrInput     `pulumi:"excludeCalculatedProperties"`
+	Excludes                    pulumi.StringArrayInput `pulumi:"excludes"`
+	Includes                    pulumi.StringArrayInput `pulumi:"includes"`
+	Query                       pulumi.StringInput      `pulumi:"query"`
 }
 
 func (GetSearchOutputArgs) ElementType() reflect.Type {
@@ -102,42 +79,34 @@ func (o GetSearchResultOutput) ToGetSearchResultOutputWithContext(ctx context.Co
 	return o
 }
 
-// Attach title to relation
 func (o GetSearchResultOutput) AttachTitleToRelation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetSearchResult) *bool { return v.AttachTitleToRelation }).(pulumi.BoolPtrOutput)
 }
 
-// A list of entities matching the search query
 func (o GetSearchResultOutput) Entities() GetSearchEntityArrayOutput {
 	return o.ApplyT(func(v GetSearchResult) []GetSearchEntity { return v.Entities }).(GetSearchEntityArrayOutput)
 }
 
-// Exclude calculated properties
 func (o GetSearchResultOutput) ExcludeCalculatedProperties() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetSearchResult) *bool { return v.ExcludeCalculatedProperties }).(pulumi.BoolPtrOutput)
 }
 
-// Properties to exclude from the results
 func (o GetSearchResultOutput) Excludes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSearchResult) []string { return v.Excludes }).(pulumi.StringArrayOutput)
 }
 
-// The ID of this resource.
 func (o GetSearchResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSearchResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Properties to include in the results
 func (o GetSearchResultOutput) Includes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSearchResult) []string { return v.Includes }).(pulumi.StringArrayOutput)
 }
 
-// The matching blueprints for the search query
 func (o GetSearchResultOutput) MatchingBlueprints() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSearchResult) []string { return v.MatchingBlueprints }).(pulumi.StringArrayOutput)
 }
 
-// The search query
 func (o GetSearchResultOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSearchResult) string { return v.Query }).(pulumi.StringOutput)
 }

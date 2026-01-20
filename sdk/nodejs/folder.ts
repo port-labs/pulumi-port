@@ -4,58 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * A full list of the available folder types and their identifiers can be found [here](https://docs.getport.io/customize-pages-dashboards-and-plugins/folder/catalog-folder).
- *
- * > **WARNING**
- * The folder resource is currently in beta and is subject to change in future versions.
- * Use it by setting the Environment Variable `PORT_BETA_FEATURES_ENABLED=true`.
- * If this Environment Variable isn't specified, you won't be able to use the resource.
- *
- * ## Example Usage
- *
- * ### Basic Folder
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as port from "@pulumi/port";
- *
- * const exampleFolder = new port.index.Port_folder("exampleFolder", {
- *     identifier: "example_folder",
- *     title: "Example Folder",
- * });
- * ```
- *
- * ### Folder with Parent
- *
- * Create a folder inside another folder.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as port from "@pulumi/port";
- *
- * const childFolder = new port.index.Port_folder("childFolder", {
- *     identifier: "child_folder",
- *     parent: port_folder.example_folder.identifier,
- *     title: "Child Folder",
- * });
- * ```
- *
- * ### Folder with After
- *
- * Create a folder after another folder.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as port from "@pulumi/port";
- *
- * const anotherFolder = new port.index.Port_folder("anotherFolder", {
- *     identifier: "another_folder",
- *     after: port_folder.example_folder.identifier,
- *     title: "Another Folder",
- * });
- * ```
- */
 export class Folder extends pulumi.CustomResource {
     /**
      * Get an existing Folder resource's state with the given name, ID, and optional extra

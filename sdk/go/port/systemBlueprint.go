@@ -12,7 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Port System Blueprint Resource. This resource is used to extend system blueprints with additional properties and relations.
 type SystemBlueprint struct {
 	pulumi.CustomResourceState
 

@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Organization secret resource
- */
 export class OrganizationSecret extends pulumi.CustomResource {
     /**
      * Get an existing OrganizationSecret resource's state with the given name, ID, and optional extra

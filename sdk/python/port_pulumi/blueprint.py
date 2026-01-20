@@ -40,12 +40,14 @@ class BlueprintArgs:
         :param pulumi.Input[str] identifier: The identifier of the blueprint
         :param pulumi.Input[str] title: The display name of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintCalculationPropertiesArgs']]] calculation_properties: The calculation properties of the blueprint
-        :param pulumi.Input[bool] create_catalog_page: This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
+        :param pulumi.Input[bool] create_catalog_page: This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
+               blueprint
         :param pulumi.Input[str] description: The description of the blueprint
         :param pulumi.Input[str] icon: The icon of the blueprint
         :param pulumi.Input['BlueprintKafkaChangelogDestinationArgs'] kafka_changelog_destination: The changelog destination of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintMirrorPropertiesArgs']]] mirror_properties: The mirror properties of the blueprint
-        :param pulumi.Input['BlueprintOwnershipArgs'] ownership: Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.
+        :param pulumi.Input['BlueprintOwnershipArgs'] ownership: Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+               must be a valid relation identifiers path.
         :param pulumi.Input['BlueprintPropertiesArgs'] properties: The properties of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintRelationsArgs']]] relations: The relations of the blueprint
         :param pulumi.Input['BlueprintTeamInheritanceArgs'] team_inheritance: The team inheritance of the blueprint
@@ -121,7 +123,8 @@ class BlueprintArgs:
     @pulumi.getter(name="createCatalogPage")
     def create_catalog_page(self) -> Optional[pulumi.Input[bool]]:
         """
-        This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
+        This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
+        blueprint
         """
         return pulumi.get(self, "create_catalog_page")
 
@@ -190,7 +193,8 @@ class BlueprintArgs:
     @pulumi.getter
     def ownership(self) -> Optional[pulumi.Input['BlueprintOwnershipArgs']]:
         """
-        Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.
+        Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+        must be a valid relation identifiers path.
         """
         return pulumi.get(self, "ownership")
 
@@ -272,7 +276,8 @@ class _BlueprintState:
         """
         Input properties used for looking up and filtering Blueprint resources.
         :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintCalculationPropertiesArgs']]] calculation_properties: The calculation properties of the blueprint
-        :param pulumi.Input[bool] create_catalog_page: This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
+        :param pulumi.Input[bool] create_catalog_page: This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
+               blueprint
         :param pulumi.Input[str] created_at: The creation date of the blueprint
         :param pulumi.Input[str] created_by: The creator of the blueprint
         :param pulumi.Input[str] description: The description of the blueprint
@@ -280,7 +285,8 @@ class _BlueprintState:
         :param pulumi.Input[str] identifier: The identifier of the blueprint
         :param pulumi.Input['BlueprintKafkaChangelogDestinationArgs'] kafka_changelog_destination: The changelog destination of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintMirrorPropertiesArgs']]] mirror_properties: The mirror properties of the blueprint
-        :param pulumi.Input['BlueprintOwnershipArgs'] ownership: Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.
+        :param pulumi.Input['BlueprintOwnershipArgs'] ownership: Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+               must be a valid relation identifiers path.
         :param pulumi.Input['BlueprintPropertiesArgs'] properties: The properties of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintRelationsArgs']]] relations: The relations of the blueprint
         :param pulumi.Input['BlueprintTeamInheritanceArgs'] team_inheritance: The team inheritance of the blueprint
@@ -345,7 +351,8 @@ class _BlueprintState:
     @pulumi.getter(name="createCatalogPage")
     def create_catalog_page(self) -> Optional[pulumi.Input[bool]]:
         """
-        This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
+        This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
+        blueprint
         """
         return pulumi.get(self, "create_catalog_page")
 
@@ -450,7 +457,8 @@ class _BlueprintState:
     @pulumi.getter
     def ownership(self) -> Optional[pulumi.Input['BlueprintOwnershipArgs']]:
         """
-        Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.
+        Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+        must be a valid relation identifiers path.
         """
         return pulumi.get(self, "ownership")
 
@@ -569,13 +577,15 @@ class Blueprint(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintCalculationPropertiesArgs', 'BlueprintCalculationPropertiesArgsDict']]]] calculation_properties: The calculation properties of the blueprint
-        :param pulumi.Input[bool] create_catalog_page: This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
+        :param pulumi.Input[bool] create_catalog_page: This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
+               blueprint
         :param pulumi.Input[str] description: The description of the blueprint
         :param pulumi.Input[str] icon: The icon of the blueprint
         :param pulumi.Input[str] identifier: The identifier of the blueprint
         :param pulumi.Input[Union['BlueprintKafkaChangelogDestinationArgs', 'BlueprintKafkaChangelogDestinationArgsDict']] kafka_changelog_destination: The changelog destination of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintMirrorPropertiesArgs', 'BlueprintMirrorPropertiesArgsDict']]]] mirror_properties: The mirror properties of the blueprint
-        :param pulumi.Input[Union['BlueprintOwnershipArgs', 'BlueprintOwnershipArgsDict']] ownership: Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.
+        :param pulumi.Input[Union['BlueprintOwnershipArgs', 'BlueprintOwnershipArgsDict']] ownership: Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+               must be a valid relation identifiers path.
         :param pulumi.Input[Union['BlueprintPropertiesArgs', 'BlueprintPropertiesArgsDict']] properties: The properties of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintRelationsArgs', 'BlueprintRelationsArgsDict']]]] relations: The relations of the blueprint
         :param pulumi.Input[Union['BlueprintTeamInheritanceArgs', 'BlueprintTeamInheritanceArgsDict']] team_inheritance: The team inheritance of the blueprint
@@ -686,7 +696,8 @@ class Blueprint(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintCalculationPropertiesArgs', 'BlueprintCalculationPropertiesArgsDict']]]] calculation_properties: The calculation properties of the blueprint
-        :param pulumi.Input[bool] create_catalog_page: This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
+        :param pulumi.Input[bool] create_catalog_page: This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
+               blueprint
         :param pulumi.Input[str] created_at: The creation date of the blueprint
         :param pulumi.Input[str] created_by: The creator of the blueprint
         :param pulumi.Input[str] description: The description of the blueprint
@@ -694,7 +705,8 @@ class Blueprint(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: The identifier of the blueprint
         :param pulumi.Input[Union['BlueprintKafkaChangelogDestinationArgs', 'BlueprintKafkaChangelogDestinationArgsDict']] kafka_changelog_destination: The changelog destination of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintMirrorPropertiesArgs', 'BlueprintMirrorPropertiesArgsDict']]]] mirror_properties: The mirror properties of the blueprint
-        :param pulumi.Input[Union['BlueprintOwnershipArgs', 'BlueprintOwnershipArgsDict']] ownership: Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.
+        :param pulumi.Input[Union['BlueprintOwnershipArgs', 'BlueprintOwnershipArgsDict']] ownership: Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+               must be a valid relation identifiers path.
         :param pulumi.Input[Union['BlueprintPropertiesArgs', 'BlueprintPropertiesArgsDict']] properties: The properties of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintRelationsArgs', 'BlueprintRelationsArgsDict']]]] relations: The relations of the blueprint
         :param pulumi.Input[Union['BlueprintTeamInheritanceArgs', 'BlueprintTeamInheritanceArgsDict']] team_inheritance: The team inheritance of the blueprint
@@ -739,7 +751,8 @@ class Blueprint(pulumi.CustomResource):
     @pulumi.getter(name="createCatalogPage")
     def create_catalog_page(self) -> pulumi.Output[bool]:
         """
-        This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
+        This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
+        blueprint
         """
         return pulumi.get(self, "create_catalog_page")
 
@@ -808,7 +821,8 @@ class Blueprint(pulumi.CustomResource):
     @pulumi.getter
     def ownership(self) -> pulumi.Output[Optional['outputs.BlueprintOwnership']]:
         """
-        Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.
+        Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+        must be a valid relation identifiers path.
         """
         return pulumi.get(self, "ownership")
 

@@ -39,7 +39,8 @@ class PageArgs:
         :param pulumi.Input[str] description: The page description
         :param pulumi.Input[str] icon: The icon of the page
         :param pulumi.Input[bool] locked: Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] page_filters: The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with 'combinator' and 'rules' array). The rules array can contain any filter type.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] page_filters: The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
+               'combinator' and 'rules' array). The rules array can contain any filter type.
         :param pulumi.Input[str] parent: The identifier of the folder in which the page is in, default is the root of the sidebar
         :param pulumi.Input[str] title: The title of the page
         :param pulumi.Input[Sequence[pulumi.Input[str]]] widgets: The widgets of the page
@@ -153,7 +154,8 @@ class PageArgs:
     @pulumi.getter(name="pageFilters")
     def page_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with 'combinator' and 'rules' array). The rules array can contain any filter type.
+        The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
+        'combinator' and 'rules' array). The rules array can contain any filter type.
         """
         return pulumi.get(self, "page_filters")
 
@@ -226,7 +228,8 @@ class _PageState:
         :param pulumi.Input[str] icon: The icon of the page
         :param pulumi.Input[str] identifier: The Identifier of the page
         :param pulumi.Input[bool] locked: Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] page_filters: The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with 'combinator' and 'rules' array). The rules array can contain any filter type.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] page_filters: The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
+               'combinator' and 'rules' array). The rules array can contain any filter type.
         :param pulumi.Input[str] parent: The identifier of the folder in which the page is in, default is the root of the sidebar
         :param pulumi.Input[str] title: The title of the page
         :param pulumi.Input[str] type: The type of the page, can be one of "blueprint-entities", "dashboard" or "home"
@@ -365,7 +368,8 @@ class _PageState:
     @pulumi.getter(name="pageFilters")
     def page_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with 'combinator' and 'rules' array). The rules array can contain any filter type.
+        The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
+        'combinator' and 'rules' array). The rules array can contain any filter type.
         """
         return pulumi.get(self, "page_filters")
 
@@ -473,7 +477,8 @@ class Page(pulumi.CustomResource):
         :param pulumi.Input[str] icon: The icon of the page
         :param pulumi.Input[str] identifier: The Identifier of the page
         :param pulumi.Input[bool] locked: Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] page_filters: The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with 'combinator' and 'rules' array). The rules array can contain any filter type.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] page_filters: The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
+               'combinator' and 'rules' array). The rules array can contain any filter type.
         :param pulumi.Input[str] parent: The identifier of the folder in which the page is in, default is the root of the sidebar
         :param pulumi.Input[str] title: The title of the page
         :param pulumi.Input[str] type: The type of the page, can be one of "blueprint-entities", "dashboard" or "home"
@@ -581,7 +586,8 @@ class Page(pulumi.CustomResource):
         :param pulumi.Input[str] icon: The icon of the page
         :param pulumi.Input[str] identifier: The Identifier of the page
         :param pulumi.Input[bool] locked: Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] page_filters: The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with 'combinator' and 'rules' array). The rules array can contain any filter type.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] page_filters: The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
+               'combinator' and 'rules' array). The rules array can contain any filter type.
         :param pulumi.Input[str] parent: The identifier of the folder in which the page is in, default is the root of the sidebar
         :param pulumi.Input[str] title: The title of the page
         :param pulumi.Input[str] type: The type of the page, can be one of "blueprint-entities", "dashboard" or "home"
@@ -678,7 +684,8 @@ class Page(pulumi.CustomResource):
     @pulumi.getter(name="pageFilters")
     def page_filters(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with 'combinator' and 'rules' array). The rules array can contain any filter type.
+        The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
+        'combinator' and 'rules' array). The rules array can contain any filter type.
         """
         return pulumi.get(self, "page_filters")
 

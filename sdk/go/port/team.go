@@ -12,7 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Team resource
 type Team struct {
 	pulumi.CustomResourceState
 

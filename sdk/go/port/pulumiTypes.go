@@ -1859,8 +1859,7 @@ func (o ActionAutomationTriggerTimerPropertyExpiredEventPtrOutput) PropertyIdent
 
 type ActionAzureMethod struct {
 	// Required when selecting type AZURE. The Azure org that the workflow belongs to
-	Org string `pulumi:"org"`
-	// The Azure Devops workflow [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+	Org     string  `pulumi:"org"`
 	Payload *string `pulumi:"payload"`
 	// Required when selecting type AZURE. The Azure webhook that the workflow belongs to
 	Webhook string `pulumi:"webhook"`
@@ -1879,8 +1878,7 @@ type ActionAzureMethodInput interface {
 
 type ActionAzureMethodArgs struct {
 	// Required when selecting type AZURE. The Azure org that the workflow belongs to
-	Org pulumi.StringInput `pulumi:"org"`
-	// The Azure Devops workflow [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+	Org     pulumi.StringInput    `pulumi:"org"`
 	Payload pulumi.StringPtrInput `pulumi:"payload"`
 	// Required when selecting type AZURE. The Azure webhook that the workflow belongs to
 	Webhook pulumi.StringInput `pulumi:"webhook"`
@@ -1968,7 +1966,6 @@ func (o ActionAzureMethodOutput) Org() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionAzureMethod) string { return v.Org }).(pulumi.StringOutput)
 }
 
-// The Azure Devops workflow [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionAzureMethodOutput) Payload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionAzureMethod) *string { return v.Payload }).(pulumi.StringPtrOutput)
 }
@@ -2012,7 +2009,6 @@ func (o ActionAzureMethodPtrOutput) Org() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Azure Devops workflow [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionAzureMethodPtrOutput) Payload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionAzureMethod) *string {
 		if v == nil {
@@ -2040,8 +2036,7 @@ type ActionGithubMethod struct {
 	// Report the workflow status when invoking the action
 	ReportWorkflowStatus *string `pulumi:"reportWorkflowStatus"`
 	// The GitHub workflow that the action belongs to
-	Workflow string `pulumi:"workflow"`
-	// The GitHub [workflow inputs](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+	Workflow       string  `pulumi:"workflow"`
 	WorkflowInputs *string `pulumi:"workflowInputs"`
 }
 
@@ -2064,8 +2059,7 @@ type ActionGithubMethodArgs struct {
 	// Report the workflow status when invoking the action
 	ReportWorkflowStatus pulumi.StringPtrInput `pulumi:"reportWorkflowStatus"`
 	// The GitHub workflow that the action belongs to
-	Workflow pulumi.StringInput `pulumi:"workflow"`
-	// The GitHub [workflow inputs](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+	Workflow       pulumi.StringInput    `pulumi:"workflow"`
 	WorkflowInputs pulumi.StringPtrInput `pulumi:"workflowInputs"`
 }
 
@@ -2166,7 +2160,6 @@ func (o ActionGithubMethodOutput) Workflow() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionGithubMethod) string { return v.Workflow }).(pulumi.StringOutput)
 }
 
-// The GitHub [workflow inputs](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionGithubMethodOutput) WorkflowInputs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionGithubMethod) *string { return v.WorkflowInputs }).(pulumi.StringPtrOutput)
 }
@@ -2235,7 +2228,6 @@ func (o ActionGithubMethodPtrOutput) Workflow() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The GitHub [workflow inputs](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionGithubMethodPtrOutput) WorkflowInputs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionGithubMethod) *string {
 		if v == nil {
@@ -2249,8 +2241,7 @@ type ActionGitlabMethod struct {
 	// The default ref of the action
 	DefaultRef *string `pulumi:"defaultRef"`
 	// Required when selecting type GITLAB. The GitLab group name that the workflow belongs to
-	GroupName string `pulumi:"groupName"`
-	// The Gitlab pipeline variables should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+	GroupName         string  `pulumi:"groupName"`
 	PipelineVariables *string `pulumi:"pipelineVariables"`
 	// Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
 	ProjectName string `pulumi:"projectName"`
@@ -2271,8 +2262,7 @@ type ActionGitlabMethodArgs struct {
 	// The default ref of the action
 	DefaultRef pulumi.StringPtrInput `pulumi:"defaultRef"`
 	// Required when selecting type GITLAB. The GitLab group name that the workflow belongs to
-	GroupName pulumi.StringInput `pulumi:"groupName"`
-	// The Gitlab pipeline variables should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+	GroupName         pulumi.StringInput    `pulumi:"groupName"`
 	PipelineVariables pulumi.StringPtrInput `pulumi:"pipelineVariables"`
 	// Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
@@ -2365,7 +2355,6 @@ func (o ActionGitlabMethodOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionGitlabMethod) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
-// The Gitlab pipeline variables should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionGitlabMethodOutput) PipelineVariables() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionGitlabMethod) *string { return v.PipelineVariables }).(pulumi.StringPtrOutput)
 }
@@ -2419,7 +2408,6 @@ func (o ActionGitlabMethodPtrOutput) GroupName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Gitlab pipeline variables should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionGitlabMethodPtrOutput) PipelineVariables() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionGitlabMethod) *string {
 		if v == nil {
@@ -2440,7 +2428,6 @@ func (o ActionGitlabMethodPtrOutput) ProjectName() pulumi.StringPtrOutput {
 }
 
 type ActionKafkaMethod struct {
-	// The Kafka message [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 	Payload *string `pulumi:"payload"`
 }
 
@@ -2456,7 +2443,6 @@ type ActionKafkaMethodInput interface {
 }
 
 type ActionKafkaMethodArgs struct {
-	// The Kafka message [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 	Payload pulumi.StringPtrInput `pulumi:"payload"`
 }
 
@@ -2537,7 +2523,6 @@ func (o ActionKafkaMethodOutput) ToActionKafkaMethodPtrOutputWithContext(ctx con
 	}).(ActionKafkaMethodPtrOutput)
 }
 
-// The Kafka message [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionKafkaMethodOutput) Payload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionKafkaMethod) *string { return v.Payload }).(pulumi.StringPtrOutput)
 }
@@ -2566,7 +2551,6 @@ func (o ActionKafkaMethodPtrOutput) Elem() ActionKafkaMethodOutput {
 	}).(ActionKafkaMethodOutput)
 }
 
-// The Kafka message [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionKafkaMethodPtrOutput) Payload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionKafkaMethod) *string {
 		if v == nil {
@@ -4795,7 +4779,7 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsSortPtrOutput) Property(
 }
 
 type ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems struct {
-	// The blueprint identifier the action relates to
+	// The blueprint identifier related to each string item
 	Blueprint *string `pulumi:"blueprint"`
 	// The dataset of the entity-format items
 	Dataset *string `pulumi:"dataset"`
@@ -4821,7 +4805,7 @@ type ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsInput interface 
 }
 
 type ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs struct {
-	// The blueprint identifier the action relates to
+	// The blueprint identifier related to each string item
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// The dataset of the entity-format items
 	Dataset pulumi.StringPtrInput `pulumi:"dataset"`
@@ -4912,7 +4896,7 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput) ToAct
 	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput)
 }
 
-// The blueprint identifier the action relates to
+// The blueprint identifier related to each string item
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput) Blueprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
 }
@@ -4966,7 +4950,7 @@ func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput) El
 	}).(ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsOutput)
 }
 
-// The blueprint identifier the action relates to
+// The blueprint identifier related to each string item
 func (o ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsPtrOutput) Blueprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesArrayPropsStringItems) *string {
 		if v == nil {
@@ -5446,6 +5430,8 @@ func (o ActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput) MapIndex(k p
 }
 
 type ActionSelfServiceTriggerUserPropertiesObjectProps struct {
+	// Client-side encryption configuration for the property. The value will be encrypted on the client side before being sent to Port. Cannot be used with `encryption`.
+	ClientSideEncryption *ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryption `pulumi:"clientSideEncryption"`
 	// The default of the object property
 	Default *string `pulumi:"default"`
 	// The default jq query of the object property
@@ -5458,7 +5444,7 @@ type ActionSelfServiceTriggerUserPropertiesObjectProps struct {
 	Disabled *bool `pulumi:"disabled"`
 	// The disabled state jq query of the object property
 	DisabledJqQuery *string `pulumi:"disabledJqQuery"`
-	// The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
+	// The algorithm to encrypt the property with for server-side encryption. Accepted value: `aes256-gcm`. Cannot be used with `clientSideEncryption`.
 	Encryption *string `pulumi:"encryption"`
 	// The icon of the property
 	Icon *string `pulumi:"icon"`
@@ -5484,6 +5470,8 @@ type ActionSelfServiceTriggerUserPropertiesObjectPropsInput interface {
 }
 
 type ActionSelfServiceTriggerUserPropertiesObjectPropsArgs struct {
+	// Client-side encryption configuration for the property. The value will be encrypted on the client side before being sent to Port. Cannot be used with `encryption`.
+	ClientSideEncryption ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrInput `pulumi:"clientSideEncryption"`
 	// The default of the object property
 	Default pulumi.StringPtrInput `pulumi:"default"`
 	// The default jq query of the object property
@@ -5496,7 +5484,7 @@ type ActionSelfServiceTriggerUserPropertiesObjectPropsArgs struct {
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// The disabled state jq query of the object property
 	DisabledJqQuery pulumi.StringPtrInput `pulumi:"disabledJqQuery"`
-	// The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
+	// The algorithm to encrypt the property with for server-side encryption. Accepted value: `aes256-gcm`. Cannot be used with `clientSideEncryption`.
 	Encryption pulumi.StringPtrInput `pulumi:"encryption"`
 	// The icon of the property
 	Icon pulumi.StringPtrInput `pulumi:"icon"`
@@ -5561,6 +5549,13 @@ func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) ToActionSelfSer
 	return o
 }
 
+// Client-side encryption configuration for the property. The value will be encrypted on the client side before being sent to Port. Cannot be used with `encryption`.
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) ClientSideEncryption() ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesObjectProps) *ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryption {
+		return v.ClientSideEncryption
+	}).(ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput)
+}
+
 // The default of the object property
 func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) Default() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesObjectProps) *string { return v.Default }).(pulumi.StringPtrOutput)
@@ -5591,7 +5586,7 @@ func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) DisabledJqQuery
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesObjectProps) *string { return v.DisabledJqQuery }).(pulumi.StringPtrOutput)
 }
 
-// The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
+// The algorithm to encrypt the property with for server-side encryption. Accepted value: `aes256-gcm`. Cannot be used with `clientSideEncryption`.
 func (o ActionSelfServiceTriggerUserPropertiesObjectPropsOutput) Encryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesObjectProps) *string { return v.Encryption }).(pulumi.StringPtrOutput)
 }
@@ -5641,9 +5636,169 @@ func (o ActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput) MapIndex(k p
 	}).(ActionSelfServiceTriggerUserPropertiesObjectPropsOutput)
 }
 
+type ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryption struct {
+	// The encryption algorithm. Accepted value: `client-side`
+	Algorithm string `pulumi:"algorithm"`
+	// The public key (PEM format) to use for encryption
+	Key string `pulumi:"key"`
+}
+
+// ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgs and ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionInput` via:
+//
+//	ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgs{...}
+type ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionInput interface {
+	pulumi.Input
+
+	ToActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput() ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput
+	ToActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput
+}
+
+type ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgs struct {
+	// The encryption algorithm. Accepted value: `client-side`
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// The public key (PEM format) to use for encryption
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryption)(nil)).Elem()
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgs) ToActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput() ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutputWithContext(context.Background())
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgs) ToActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput)
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgs) ToActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput() ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgs) ToActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput).ToActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutputWithContext(ctx)
+}
+
+// ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgs, ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtr and ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrInput` via:
+//
+//	        ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput() ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput
+	ToActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput
+}
+
+type actionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrType ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgs
+
+func ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtr(v *ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgs) ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrInput {
+	return (*actionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrType)(v)
+}
+
+func (*actionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryption)(nil)).Elem()
+}
+
+func (i *actionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrType) ToActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput() ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *actionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrType) ToActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput struct{ *pulumi.OutputState }
+
+func (ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryption)(nil)).Elem()
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput) ToActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput() ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput) ToActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput) ToActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput() ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput {
+	return o.ToActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput) ToActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryption) *ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryption {
+		return &v
+	}).(ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput)
+}
+
+// The encryption algorithm. Accepted value: `client-side`
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryption) string {
+		return v.Algorithm
+	}).(pulumi.StringOutput)
+}
+
+// The public key (PEM format) to use for encryption
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryption) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryption)(nil)).Elem()
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput) ToActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput() ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput) ToActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput) Elem() ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryption) ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryption
+		return ret
+	}).(ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput)
+}
+
+// The encryption algorithm. Accepted value: `client-side`
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Algorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// The public key (PEM format) to use for encryption
+func (o ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
 type ActionSelfServiceTriggerUserPropertiesStringProps struct {
 	// The blueprint identifier the string property relates to
 	Blueprint *string `pulumi:"blueprint"`
+	// Client-side encryption configuration for the property. The value will be encrypted on the client side before being sent to Port. Cannot be used with `encryption`.
+	ClientSideEncryption *ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption `pulumi:"clientSideEncryption"`
 	// The dataset of an the entity-format property
 	Dataset *ActionSelfServiceTriggerUserPropertiesStringPropsDataset `pulumi:"dataset"`
 	// The default of the string property
@@ -5658,7 +5813,7 @@ type ActionSelfServiceTriggerUserPropertiesStringProps struct {
 	Disabled *bool `pulumi:"disabled"`
 	// The disabled state jq query of the string property
 	DisabledJqQuery *string `pulumi:"disabledJqQuery"`
-	// The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
+	// The algorithm to encrypt the property with for server-side encryption. Accepted value: `aes256-gcm`. Cannot be used with `clientSideEncryption`.
 	Encryption *string `pulumi:"encryption"`
 	// The enum colors of the string property
 	EnumColors map[string]string `pulumi:"enumColors"`
@@ -5704,6 +5859,8 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsInput interface {
 type ActionSelfServiceTriggerUserPropertiesStringPropsArgs struct {
 	// The blueprint identifier the string property relates to
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
+	// Client-side encryption configuration for the property. The value will be encrypted on the client side before being sent to Port. Cannot be used with `encryption`.
+	ClientSideEncryption ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrInput `pulumi:"clientSideEncryption"`
 	// The dataset of an the entity-format property
 	Dataset ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrInput `pulumi:"dataset"`
 	// The default of the string property
@@ -5718,7 +5875,7 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsArgs struct {
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// The disabled state jq query of the string property
 	DisabledJqQuery pulumi.StringPtrInput `pulumi:"disabledJqQuery"`
-	// The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
+	// The algorithm to encrypt the property with for server-side encryption. Accepted value: `aes256-gcm`. Cannot be used with `clientSideEncryption`.
 	Encryption pulumi.StringPtrInput `pulumi:"encryption"`
 	// The enum colors of the string property
 	EnumColors pulumi.StringMapInput `pulumi:"enumColors"`
@@ -5806,6 +5963,13 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Blueprint() pul
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
 }
 
+// Client-side encryption configuration for the property. The value will be encrypted on the client side before being sent to Port. Cannot be used with `encryption`.
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) ClientSideEncryption() ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption {
+		return v.ClientSideEncryption
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput)
+}
+
 // The dataset of an the entity-format property
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Dataset() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *ActionSelfServiceTriggerUserPropertiesStringPropsDataset {
@@ -5843,7 +6007,7 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) DisabledJqQuery
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *string { return v.DisabledJqQuery }).(pulumi.StringPtrOutput)
 }
 
-// The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
+// The algorithm to encrypt the property with for server-side encryption. Accepted value: `aes256-gcm`. Cannot be used with `clientSideEncryption`.
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Encryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *string { return v.Encryption }).(pulumi.StringPtrOutput)
 }
@@ -5938,6 +6102,164 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsMapOutput) MapIndex(k p
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ActionSelfServiceTriggerUserPropertiesStringProps {
 		return vs[0].(map[string]ActionSelfServiceTriggerUserPropertiesStringProps)[vs[1].(string)]
 	}).(ActionSelfServiceTriggerUserPropertiesStringPropsOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption struct {
+	// The encryption algorithm. Accepted value: `client-side`
+	Algorithm string `pulumi:"algorithm"`
+	// The public key (PEM format) to use for encryption
+	Key string `pulumi:"key"`
+}
+
+// ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgs and ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionInput` via:
+//
+//	ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgs{...}
+type ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionInput interface {
+	pulumi.Input
+
+	ToActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput() ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgs struct {
+	// The encryption algorithm. Accepted value: `client-side`
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// The public key (PEM format) to use for encryption
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption)(nil)).Elem()
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput() ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutputWithContext(context.Background())
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput)
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput).ToActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutputWithContext(ctx)
+}
+
+// ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgs, ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtr and ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrInput` via:
+//
+//	        ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput
+}
+
+type actionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrType ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgs
+
+func ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtr(v *ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgs) ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrInput {
+	return (*actionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrType)(v)
+}
+
+func (*actionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption)(nil)).Elem()
+}
+
+func (i *actionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrType) ToActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *actionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrType) ToActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput struct{ *pulumi.OutputState }
+
+func (ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption)(nil)).Elem()
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput() ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput {
+	return o.ToActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption) *ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption {
+		return &v
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput)
+}
+
+// The encryption algorithm. Accepted value: `client-side`
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption) string {
+		return v.Algorithm
+	}).(pulumi.StringOutput)
+}
+
+// The public key (PEM format) to use for encryption
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption)(nil)).Elem()
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput) Elem() ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption) ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption
+		return ret
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput)
+}
+
+// The encryption algorithm. Accepted value: `client-side`
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Algorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// The public key (PEM format) to use for encryption
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
 }
 
 type ActionSelfServiceTriggerUserPropertiesStringPropsDataset struct {
@@ -6099,7 +6421,7 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput) Rules
 }
 
 type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule struct {
-	// The blueprint identifier the action relates to
+	// The blueprint identifier of the rule
 	Blueprint *string `pulumi:"blueprint"`
 	// The operator of the rule
 	Operator string `pulumi:"operator"`
@@ -6121,7 +6443,7 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleInput interface
 }
 
 type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs struct {
-	// The blueprint identifier the action relates to
+	// The blueprint identifier of the rule
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// The operator of the rule
 	Operator pulumi.StringInput `pulumi:"operator"`
@@ -6182,7 +6504,7 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput) ToAc
 	return o
 }
 
-// The blueprint identifier the action relates to
+// The blueprint identifier of the rule
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput) Blueprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
 }
@@ -6922,10 +7244,8 @@ func (o ActionUpsertEntityMethodMappingPtrOutput) TeamsJq() pulumi.StringPtrOutp
 
 type ActionWebhookMethod struct {
 	// Specifies whether to use an agent to invoke the action. This can be a boolean value (`'true''` or `'false'`) or a JQ if dynamic evaluation is needed.
-	Agent *string `pulumi:"agent"`
-	// The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-	Body *string `pulumi:"body"`
-	// The HTTP headers for invoking the action. They should be encoded as a key-value object to a string using jsonencode. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+	Agent   *string           `pulumi:"agent"`
+	Body    *string           `pulumi:"body"`
 	Headers map[string]string `pulumi:"headers"`
 	// The HTTP method to invoke the action
 	Method *string `pulumi:"method"`
@@ -6948,10 +7268,8 @@ type ActionWebhookMethodInput interface {
 
 type ActionWebhookMethodArgs struct {
 	// Specifies whether to use an agent to invoke the action. This can be a boolean value (`'true''` or `'false'`) or a JQ if dynamic evaluation is needed.
-	Agent pulumi.StringPtrInput `pulumi:"agent"`
-	// The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-	Body pulumi.StringPtrInput `pulumi:"body"`
-	// The HTTP headers for invoking the action. They should be encoded as a key-value object to a string using jsonencode. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
+	Agent   pulumi.StringPtrInput `pulumi:"agent"`
+	Body    pulumi.StringPtrInput `pulumi:"body"`
 	Headers pulumi.StringMapInput `pulumi:"headers"`
 	// The HTTP method to invoke the action
 	Method pulumi.StringPtrInput `pulumi:"method"`
@@ -7043,12 +7361,10 @@ func (o ActionWebhookMethodOutput) Agent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionWebhookMethod) *string { return v.Agent }).(pulumi.StringPtrOutput)
 }
 
-// The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionWebhookMethodOutput) Body() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionWebhookMethod) *string { return v.Body }).(pulumi.StringPtrOutput)
 }
 
-// The HTTP headers for invoking the action. They should be encoded as a key-value object to a string using jsonencode. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionWebhookMethodOutput) Headers() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ActionWebhookMethod) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
 }
@@ -7102,7 +7418,6 @@ func (o ActionWebhookMethodPtrOutput) Agent() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionWebhookMethodPtrOutput) Body() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionWebhookMethod) *string {
 		if v == nil {
@@ -7112,7 +7427,6 @@ func (o ActionWebhookMethodPtrOutput) Body() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The HTTP headers for invoking the action. They should be encoded as a key-value object to a string using jsonencode. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
 func (o ActionWebhookMethodPtrOutput) Headers() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ActionWebhookMethod) map[string]string {
 		if v == nil {
@@ -7157,7 +7471,7 @@ type AggregationPropertiesProperties struct {
 	Description *string `pulumi:"description"`
 	// The icon of the aggregation property
 	Icon *string `pulumi:"icon"`
-	// The aggregation method to perform on the target blueprint, one of count*entities, average*entities, average*by*property, aggregate*by*property
+	// The aggregation method to perform on the target blueprint, one of count_entities, average_entities, average_by_property, aggregate_by_property
 	Method AggregationPropertiesPropertiesMethod `pulumi:"method"`
 	// Path filter to filter entities based on relation path
 	PathFilters []AggregationPropertiesPropertiesPathFilter `pulumi:"pathFilters"`
@@ -7185,7 +7499,7 @@ type AggregationPropertiesPropertiesArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The icon of the aggregation property
 	Icon pulumi.StringPtrInput `pulumi:"icon"`
-	// The aggregation method to perform on the target blueprint, one of count*entities, average*entities, average*by*property, aggregate*by*property
+	// The aggregation method to perform on the target blueprint, one of count_entities, average_entities, average_by_property, aggregate_by_property
 	Method AggregationPropertiesPropertiesMethodInput `pulumi:"method"`
 	// Path filter to filter entities based on relation path
 	PathFilters AggregationPropertiesPropertiesPathFilterArrayInput `pulumi:"pathFilters"`
@@ -7258,7 +7572,7 @@ func (o AggregationPropertiesPropertiesOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AggregationPropertiesProperties) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
-// The aggregation method to perform on the target blueprint, one of count*entities, average*entities, average*by*property, aggregate*by*property
+// The aggregation method to perform on the target blueprint, one of count_entities, average_entities, average_by_property, aggregate_by_property
 func (o AggregationPropertiesPropertiesOutput) Method() AggregationPropertiesPropertiesMethodOutput {
 	return o.ApplyT(func(v AggregationPropertiesProperties) AggregationPropertiesPropertiesMethod { return v.Method }).(AggregationPropertiesPropertiesMethodOutput)
 }
@@ -18298,8 +18612,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesNumberPropsMapInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesNumberPropsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesObjectPropsInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesObjectPropsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesObjectPropsMapInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesObjectPropsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsMapInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs{})
@@ -18514,8 +18832,12 @@ func init() {
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesNumberPropsMapOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesObjectPropsOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesObjectPropsMapOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsMapOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput{})
