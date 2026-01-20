@@ -30,7 +30,8 @@ class IntegrationArgs:
                  webhook_changelog_destination: Optional[pulumi.Input['IntegrationWebhookChangelogDestinationArgs']] = None):
         """
         The set of arguments for constructing a Integration resource.
-        :param pulumi.Input[str] installation_id: The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern: `^[a-z0-9-]+$`).
+        :param pulumi.Input[str] installation_id: The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
+               `^[a-z0-9-]+$`).
         :param pulumi.Input[str] config: Integration Config Raw JSON string (use `jsonencode`)
         :param pulumi.Input['IntegrationKafkaChangelogDestinationArgs'] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
         :param pulumi.Input['IntegrationWebhookChangelogDestinationArgs'] webhook_changelog_destination: The webhook changelog destination of the integration
@@ -53,7 +54,8 @@ class IntegrationArgs:
     @pulumi.getter(name="installationId")
     def installation_id(self) -> pulumi.Input[str]:
         """
-        The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern: `^[a-z0-9-]+$`).
+        The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
+        `^[a-z0-9-]+$`).
         """
         return pulumi.get(self, "installation_id")
 
@@ -138,7 +140,8 @@ class _IntegrationState:
         """
         Input properties used for looking up and filtering Integration resources.
         :param pulumi.Input[str] config: Integration Config Raw JSON string (use `jsonencode`)
-        :param pulumi.Input[str] installation_id: The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern: `^[a-z0-9-]+$`).
+        :param pulumi.Input[str] installation_id: The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
+               `^[a-z0-9-]+$`).
         :param pulumi.Input['IntegrationKafkaChangelogDestinationArgs'] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
         :param pulumi.Input['IntegrationWebhookChangelogDestinationArgs'] webhook_changelog_destination: The webhook changelog destination of the integration
         """
@@ -182,7 +185,8 @@ class _IntegrationState:
     @pulumi.getter(name="installationId")
     def installation_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern: `^[a-z0-9-]+$`).
+        The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
+        `^[a-z0-9-]+$`).
         """
         return pulumi.get(self, "installation_id")
 
@@ -247,49 +251,12 @@ class Integration(pulumi.CustomResource):
                  webhook_changelog_destination: Optional[pulumi.Input[Union['IntegrationWebhookChangelogDestinationArgs', 'IntegrationWebhookChangelogDestinationArgsDict']]] = None,
                  __props__=None):
         """
-        **NOTE:** This resource manages existing integration and integration mappings, not for creating new integrations.
-
-        Docs about integrations can be found [here](https://docs.getport.io/integrations-index/).
-
-        Docs about how to import existing integrations and manage their mappings can be found [here](https://docs.getport.io/guides/all/import-and-manage-integration).
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_port as port
-
-        my_custom_integration = port.index.Port_integration("myCustomIntegration",
-            installation_id=my-custom-integration-id,
-            title=My Custom Integration,
-            config=json.dumps({
-                createMissingRelatedEntitiesboolean: True,
-                deleteDependentEntities: True,
-                resources: [{
-                    kind: my-custom-kind,
-                    selector: {
-                        query: .title,
-                    },
-                    port: {
-                        entity: {
-                            mappings: [{
-                                identifier: 'my-identifier',
-                                title: .title,
-                                blueprint: 'my-blueprint',
-                                properties: {
-                                    my_property: 123,
-                                },
-                                relations: {},
-                            }],
-                        },
-                    },
-                }],
-            }))
-        ```
-
+        Create a Integration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config: Integration Config Raw JSON string (use `jsonencode`)
-        :param pulumi.Input[str] installation_id: The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern: `^[a-z0-9-]+$`).
+        :param pulumi.Input[str] installation_id: The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
+               `^[a-z0-9-]+$`).
         :param pulumi.Input[Union['IntegrationKafkaChangelogDestinationArgs', 'IntegrationKafkaChangelogDestinationArgsDict']] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
         :param pulumi.Input[Union['IntegrationWebhookChangelogDestinationArgs', 'IntegrationWebhookChangelogDestinationArgsDict']] webhook_changelog_destination: The webhook changelog destination of the integration
         """
@@ -300,45 +267,7 @@ class Integration(pulumi.CustomResource):
                  args: IntegrationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        **NOTE:** This resource manages existing integration and integration mappings, not for creating new integrations.
-
-        Docs about integrations can be found [here](https://docs.getport.io/integrations-index/).
-
-        Docs about how to import existing integrations and manage their mappings can be found [here](https://docs.getport.io/guides/all/import-and-manage-integration).
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_port as port
-
-        my_custom_integration = port.index.Port_integration("myCustomIntegration",
-            installation_id=my-custom-integration-id,
-            title=My Custom Integration,
-            config=json.dumps({
-                createMissingRelatedEntitiesboolean: True,
-                deleteDependentEntities: True,
-                resources: [{
-                    kind: my-custom-kind,
-                    selector: {
-                        query: .title,
-                    },
-                    port: {
-                        entity: {
-                            mappings: [{
-                                identifier: 'my-identifier',
-                                title: .title,
-                                blueprint: 'my-blueprint',
-                                properties: {
-                                    my_property: 123,
-                                },
-                                relations: {},
-                            }],
-                        },
-                    },
-                }],
-            }))
-        ```
-
+        Create a Integration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -404,7 +333,8 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config: Integration Config Raw JSON string (use `jsonencode`)
-        :param pulumi.Input[str] installation_id: The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern: `^[a-z0-9-]+$`).
+        :param pulumi.Input[str] installation_id: The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
+               `^[a-z0-9-]+$`).
         :param pulumi.Input[Union['IntegrationKafkaChangelogDestinationArgs', 'IntegrationKafkaChangelogDestinationArgsDict']] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
         :param pulumi.Input[Union['IntegrationWebhookChangelogDestinationArgs', 'IntegrationWebhookChangelogDestinationArgsDict']] webhook_changelog_destination: The webhook changelog destination of the integration
         """
@@ -438,7 +368,8 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="installationId")
     def installation_id(self) -> pulumi.Output[str]:
         """
-        The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern: `^[a-z0-9-]+$`).
+        The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
+        `^[a-z0-9-]+$`).
         """
         return pulumi.get(self, "installation_id")
 

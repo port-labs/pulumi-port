@@ -12,7 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Entity resource
 type Entity struct {
 	pulumi.CustomResourceState
 

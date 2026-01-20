@@ -170,54 +170,7 @@ class Folder(pulumi.CustomResource):
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        A full list of the available folder types and their identifiers can be found [here](https://docs.getport.io/customize-pages-dashboards-and-plugins/folder/catalog-folder).
-
-        > **WARNING**
-        The folder resource is currently in beta and is subject to change in future versions.
-        Use it by setting the Environment Variable `PORT_BETA_FEATURES_ENABLED=true`.
-        If this Environment Variable isn't specified, you won't be able to use the resource.
-
-        ## Example Usage
-
-        ### Basic Folder
-
-        ```python
-        import pulumi
-        import pulumi_port as port
-
-        example_folder = port.index.Port_folder("exampleFolder",
-            identifier=example_folder,
-            title=Example Folder)
-        ```
-
-        ### Folder with Parent
-
-        Create a folder inside another folder.
-
-        ```python
-        import pulumi
-        import pulumi_port as port
-
-        child_folder = port.index.Port_folder("childFolder",
-            identifier=child_folder,
-            parent=port_folder.example_folder.identifier,
-            title=Child Folder)
-        ```
-
-        ### Folder with After
-
-        Create a folder after another folder.
-
-        ```python
-        import pulumi
-        import pulumi_port as port
-
-        another_folder = port.index.Port_folder("anotherFolder",
-            identifier=another_folder,
-            after=port_folder.example_folder.identifier,
-            title=Another Folder)
-        ```
-
+        Create a Folder resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] after: The identifier of the folder after which the folder should be placed
@@ -232,54 +185,7 @@ class Folder(pulumi.CustomResource):
                  args: FolderArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A full list of the available folder types and their identifiers can be found [here](https://docs.getport.io/customize-pages-dashboards-and-plugins/folder/catalog-folder).
-
-        > **WARNING**
-        The folder resource is currently in beta and is subject to change in future versions.
-        Use it by setting the Environment Variable `PORT_BETA_FEATURES_ENABLED=true`.
-        If this Environment Variable isn't specified, you won't be able to use the resource.
-
-        ## Example Usage
-
-        ### Basic Folder
-
-        ```python
-        import pulumi
-        import pulumi_port as port
-
-        example_folder = port.index.Port_folder("exampleFolder",
-            identifier=example_folder,
-            title=Example Folder)
-        ```
-
-        ### Folder with Parent
-
-        Create a folder inside another folder.
-
-        ```python
-        import pulumi
-        import pulumi_port as port
-
-        child_folder = port.index.Port_folder("childFolder",
-            identifier=child_folder,
-            parent=port_folder.example_folder.identifier,
-            title=Child Folder)
-        ```
-
-        ### Folder with After
-
-        Create a folder after another folder.
-
-        ```python
-        import pulumi
-        import pulumi_port as port
-
-        another_folder = port.index.Port_folder("anotherFolder",
-            identifier=another_folder,
-            after=port_folder.example_folder.identifier,
-            title=Another Folder)
-        ```
-
+        Create a Folder resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param FolderArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -79,8 +79,12 @@ __all__ = [
     'ActionSelfServiceTriggerUserPropertiesNumberPropsArgsDict',
     'ActionSelfServiceTriggerUserPropertiesObjectPropsArgs',
     'ActionSelfServiceTriggerUserPropertiesObjectPropsArgsDict',
+    'ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgs',
+    'ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgsDict',
     'ActionSelfServiceTriggerUserPropertiesStringPropsArgs',
     'ActionSelfServiceTriggerUserPropertiesStringPropsArgsDict',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgsDict',
     'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs',
     'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgsDict',
     'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs',
@@ -813,9 +817,6 @@ if not MYPY:
         Required when selecting type AZURE. The Azure webhook that the workflow belongs to
         """
         payload: NotRequired[pulumi.Input[str]]
-        """
-        The Azure Devops workflow [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-        """
 elif False:
     ActionAzureMethodArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -828,7 +829,6 @@ class ActionAzureMethodArgs:
         """
         :param pulumi.Input[str] org: Required when selecting type AZURE. The Azure org that the workflow belongs to
         :param pulumi.Input[str] webhook: Required when selecting type AZURE. The Azure webhook that the workflow belongs to
-        :param pulumi.Input[str] payload: The Azure Devops workflow [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         """
         pulumi.set(__self__, "org", org)
         pulumi.set(__self__, "webhook", webhook)
@@ -862,9 +862,6 @@ class ActionAzureMethodArgs:
     @property
     @pulumi.getter
     def payload(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Azure Devops workflow [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-        """
         return pulumi.get(self, "payload")
 
     @payload.setter
@@ -891,9 +888,6 @@ if not MYPY:
         Report the workflow status when invoking the action
         """
         workflow_inputs: NotRequired[pulumi.Input[str]]
-        """
-        The GitHub [workflow inputs](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-        """
 elif False:
     ActionGithubMethodArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -910,7 +904,6 @@ class ActionGithubMethodArgs:
         :param pulumi.Input[str] repo: Required when selecting type GITHUB. The GitHub repo that the workflow belongs to
         :param pulumi.Input[str] workflow: The GitHub workflow that the action belongs to
         :param pulumi.Input[str] report_workflow_status: Report the workflow status when invoking the action
-        :param pulumi.Input[str] workflow_inputs: The GitHub [workflow inputs](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         """
         pulumi.set(__self__, "org", org)
         pulumi.set(__self__, "repo", repo)
@@ -971,9 +964,6 @@ class ActionGithubMethodArgs:
     @property
     @pulumi.getter(name="workflowInputs")
     def workflow_inputs(self) -> Optional[pulumi.Input[str]]:
-        """
-        The GitHub [workflow inputs](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-        """
         return pulumi.get(self, "workflow_inputs")
 
     @workflow_inputs.setter
@@ -996,9 +986,6 @@ if not MYPY:
         The default ref of the action
         """
         pipeline_variables: NotRequired[pulumi.Input[str]]
-        """
-        The Gitlab pipeline variables should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-        """
 elif False:
     ActionGitlabMethodArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1013,7 +1000,6 @@ class ActionGitlabMethodArgs:
         :param pulumi.Input[str] group_name: Required when selecting type GITLAB. The GitLab group name that the workflow belongs to
         :param pulumi.Input[str] project_name: Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
         :param pulumi.Input[str] default_ref: The default ref of the action
-        :param pulumi.Input[str] pipeline_variables: The Gitlab pipeline variables should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         """
         pulumi.set(__self__, "group_name", group_name)
         pulumi.set(__self__, "project_name", project_name)
@@ -1061,9 +1047,6 @@ class ActionGitlabMethodArgs:
     @property
     @pulumi.getter(name="pipelineVariables")
     def pipeline_variables(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Gitlab pipeline variables should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-        """
         return pulumi.get(self, "pipeline_variables")
 
     @pipeline_variables.setter
@@ -1074,9 +1057,6 @@ class ActionGitlabMethodArgs:
 if not MYPY:
     class ActionKafkaMethodArgsDict(TypedDict):
         payload: NotRequired[pulumi.Input[str]]
-        """
-        The Kafka message [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-        """
 elif False:
     ActionKafkaMethodArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1084,18 +1064,12 @@ elif False:
 class ActionKafkaMethodArgs:
     def __init__(__self__, *,
                  payload: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] payload: The Kafka message [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-        """
         if payload is not None:
             pulumi.set(__self__, "payload", payload)
 
     @property
     @pulumi.getter
     def payload(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Kafka message [payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload) should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-        """
         return pulumi.get(self, "payload")
 
     @payload.setter
@@ -2444,7 +2418,7 @@ if not MYPY:
     class ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgsDict(TypedDict):
         blueprint: NotRequired[pulumi.Input[str]]
         """
-        The blueprint identifier the action relates to
+        The blueprint identifier related to each string item
         """
         dataset: NotRequired[pulumi.Input[str]]
         """
@@ -2479,7 +2453,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs:
                  enums: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  format: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] blueprint: The blueprint identifier the action relates to
+        :param pulumi.Input[str] blueprint: The blueprint identifier related to each string item
         :param pulumi.Input[str] dataset: The dataset of the entity-format items
         :param pulumi.Input[Sequence[pulumi.Input[str]]] defaults: The default value of the items
         :param pulumi.Input[str] enum_jq_query: The jq query for the enum of string items
@@ -2503,7 +2477,7 @@ class ActionSelfServiceTriggerUserPropertiesArrayPropsStringItemsArgs:
     @pulumi.getter
     def blueprint(self) -> Optional[pulumi.Input[str]]:
         """
-        The blueprint identifier the action relates to
+        The blueprint identifier related to each string item
         """
         return pulumi.get(self, "blueprint")
 
@@ -3138,6 +3112,10 @@ class ActionSelfServiceTriggerUserPropertiesNumberPropsArgs:
 
 if not MYPY:
     class ActionSelfServiceTriggerUserPropertiesObjectPropsArgsDict(TypedDict):
+        client_side_encryption: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgsDict']]
+        """
+        Client-side encryption configuration for the property. The value will be encrypted on the client side before being sent to Port. Cannot be used with `encryption`.
+        """
         default: NotRequired[pulumi.Input[str]]
         """
         The default of the object property
@@ -3164,7 +3142,7 @@ if not MYPY:
         """
         encryption: NotRequired[pulumi.Input[str]]
         """
-        The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
+        The algorithm to encrypt the property with for server-side encryption. Accepted value: `aes256-gcm`. Cannot be used with `client_side_encryption`.
         """
         icon: NotRequired[pulumi.Input[str]]
         """
@@ -3192,6 +3170,7 @@ elif False:
 @pulumi.input_type
 class ActionSelfServiceTriggerUserPropertiesObjectPropsArgs:
     def __init__(__self__, *,
+                 client_side_encryption: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgs']] = None,
                  default: Optional[pulumi.Input[str]] = None,
                  default_jq_query: Optional[pulumi.Input[str]] = None,
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -3205,19 +3184,22 @@ class ActionSelfServiceTriggerUserPropertiesObjectPropsArgs:
                  visible: Optional[pulumi.Input[bool]] = None,
                  visible_jq_query: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgs'] client_side_encryption: Client-side encryption configuration for the property. The value will be encrypted on the client side before being sent to Port. Cannot be used with `encryption`.
         :param pulumi.Input[str] default: The default of the object property
         :param pulumi.Input[str] default_jq_query: The default jq query of the object property
         :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The properties that this property depends on
         :param pulumi.Input[str] description: The description of the property
         :param pulumi.Input[bool] disabled: The disabled state of the object property
         :param pulumi.Input[str] disabled_jq_query: The disabled state jq query of the object property
-        :param pulumi.Input[str] encryption: The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
+        :param pulumi.Input[str] encryption: The algorithm to encrypt the property with for server-side encryption. Accepted value: `aes256-gcm`. Cannot be used with `client_side_encryption`.
         :param pulumi.Input[str] icon: The icon of the property
         :param pulumi.Input[bool] required: Whether the property is required, by default not required, this property can't be set at the same time if `required_jq_query` is set, and only supports true as value
         :param pulumi.Input[str] title: The title of the property
         :param pulumi.Input[bool] visible: The visibility of the object property
         :param pulumi.Input[str] visible_jq_query: The visibility condition jq query of the object property
         """
+        if client_side_encryption is not None:
+            pulumi.set(__self__, "client_side_encryption", client_side_encryption)
         if default is not None:
             pulumi.set(__self__, "default", default)
         if default_jq_query is not None:
@@ -3242,6 +3224,18 @@ class ActionSelfServiceTriggerUserPropertiesObjectPropsArgs:
             pulumi.set(__self__, "visible", visible)
         if visible_jq_query is not None:
             pulumi.set(__self__, "visible_jq_query", visible_jq_query)
+
+    @property
+    @pulumi.getter(name="clientSideEncryption")
+    def client_side_encryption(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgs']]:
+        """
+        Client-side encryption configuration for the property. The value will be encrypted on the client side before being sent to Port. Cannot be used with `encryption`.
+        """
+        return pulumi.get(self, "client_side_encryption")
+
+    @client_side_encryption.setter
+    def client_side_encryption(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgs']]):
+        pulumi.set(self, "client_side_encryption", value)
 
     @property
     @pulumi.getter
@@ -3319,7 +3313,7 @@ class ActionSelfServiceTriggerUserPropertiesObjectPropsArgs:
     @pulumi.getter
     def encryption(self) -> Optional[pulumi.Input[str]]:
         """
-        The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
+        The algorithm to encrypt the property with for server-side encryption. Accepted value: `aes256-gcm`. Cannot be used with `client_side_encryption`.
         """
         return pulumi.get(self, "encryption")
 
@@ -3389,10 +3383,64 @@ class ActionSelfServiceTriggerUserPropertiesObjectPropsArgs:
 
 
 if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgsDict(TypedDict):
+        algorithm: pulumi.Input[str]
+        """
+        The encryption algorithm. Accepted value: `client-side`
+        """
+        key: pulumi.Input[str]
+        """
+        The public key (PEM format) to use for encryption
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ActionSelfServiceTriggerUserPropertiesObjectPropsClientSideEncryptionArgs:
+    def __init__(__self__, *,
+                 algorithm: pulumi.Input[str],
+                 key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] algorithm: The encryption algorithm. Accepted value: `client-side`
+        :param pulumi.Input[str] key: The public key (PEM format) to use for encryption
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> pulumi.Input[str]:
+        """
+        The encryption algorithm. Accepted value: `client-side`
+        """
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: pulumi.Input[str]):
+        pulumi.set(self, "algorithm", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        The public key (PEM format) to use for encryption
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+
+if not MYPY:
     class ActionSelfServiceTriggerUserPropertiesStringPropsArgsDict(TypedDict):
         blueprint: NotRequired[pulumi.Input[str]]
         """
         The blueprint identifier the string property relates to
+        """
+        client_side_encryption: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgsDict']]
+        """
+        Client-side encryption configuration for the property. The value will be encrypted on the client side before being sent to Port. Cannot be used with `encryption`.
         """
         dataset: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgsDict']]
         """
@@ -3424,7 +3472,7 @@ if not MYPY:
         """
         encryption: NotRequired[pulumi.Input[str]]
         """
-        The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
+        The algorithm to encrypt the property with for server-side encryption. Accepted value: `aes256-gcm`. Cannot be used with `client_side_encryption`.
         """
         enum_colors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
@@ -3489,6 +3537,7 @@ elif False:
 class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
     def __init__(__self__, *,
                  blueprint: Optional[pulumi.Input[str]] = None,
+                 client_side_encryption: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgs']] = None,
                  dataset: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs']] = None,
                  default: Optional[pulumi.Input[str]] = None,
                  default_jq_query: Optional[pulumi.Input[str]] = None,
@@ -3513,6 +3562,7 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
                  visible_jq_query: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] blueprint: The blueprint identifier the string property relates to
+        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgs'] client_side_encryption: Client-side encryption configuration for the property. The value will be encrypted on the client side before being sent to Port. Cannot be used with `encryption`.
         :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs'] dataset: The dataset of an the entity-format property
         :param pulumi.Input[str] default: The default of the string property
         :param pulumi.Input[str] default_jq_query: The default jq query of the string property
@@ -3520,7 +3570,7 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
         :param pulumi.Input[str] description: The description of the property
         :param pulumi.Input[bool] disabled: The disabled state of the string property
         :param pulumi.Input[str] disabled_jq_query: The disabled state jq query of the string property
-        :param pulumi.Input[str] encryption: The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
+        :param pulumi.Input[str] encryption: The algorithm to encrypt the property with for server-side encryption. Accepted value: `aes256-gcm`. Cannot be used with `client_side_encryption`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] enum_colors: The enum colors of the string property
         :param pulumi.Input[str] enum_jq_query: The enum jq query of the string property
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enums: The enum of the string property
@@ -3538,6 +3588,8 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
         """
         if blueprint is not None:
             pulumi.set(__self__, "blueprint", blueprint)
+        if client_side_encryption is not None:
+            pulumi.set(__self__, "client_side_encryption", client_side_encryption)
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
         if default is not None:
@@ -3594,6 +3646,18 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
     @blueprint.setter
     def blueprint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter(name="clientSideEncryption")
+    def client_side_encryption(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgs']]:
+        """
+        Client-side encryption configuration for the property. The value will be encrypted on the client side before being sent to Port. Cannot be used with `encryption`.
+        """
+        return pulumi.get(self, "client_side_encryption")
+
+    @client_side_encryption.setter
+    def client_side_encryption(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgs']]):
+        pulumi.set(self, "client_side_encryption", value)
 
     @property
     @pulumi.getter
@@ -3683,7 +3747,7 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
     @pulumi.getter
     def encryption(self) -> Optional[pulumi.Input[str]]:
         """
-        The algorithm to encrypt the property with. Accepted value: `aes256-gcm`
+        The algorithm to encrypt the property with for server-side encryption. Accepted value: `aes256-gcm`. Cannot be used with `client_side_encryption`.
         """
         return pulumi.get(self, "encryption")
 
@@ -3861,6 +3925,56 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsArgs:
 
 
 if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgsDict(TypedDict):
+        algorithm: pulumi.Input[str]
+        """
+        The encryption algorithm. Accepted value: `client-side`
+        """
+        key: pulumi.Input[str]
+        """
+        The public key (PEM format) to use for encryption
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionArgs:
+    def __init__(__self__, *,
+                 algorithm: pulumi.Input[str],
+                 key: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] algorithm: The encryption algorithm. Accepted value: `client-side`
+        :param pulumi.Input[str] key: The public key (PEM format) to use for encryption
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> pulumi.Input[str]:
+        """
+        The encryption algorithm. Accepted value: `client-side`
+        """
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: pulumi.Input[str]):
+        pulumi.set(self, "algorithm", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        The public key (PEM format) to use for encryption
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+
+if not MYPY:
     class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgsDict(TypedDict):
         combinator: pulumi.Input[str]
         """
@@ -3918,7 +4032,7 @@ if not MYPY:
         """
         blueprint: NotRequired[pulumi.Input[str]]
         """
-        The blueprint identifier the action relates to
+        The blueprint identifier of the rule
         """
         property: NotRequired[pulumi.Input[str]]
         """
@@ -3940,7 +4054,7 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs:
                  value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs']] = None):
         """
         :param pulumi.Input[str] operator: The operator of the rule
-        :param pulumi.Input[str] blueprint: The blueprint identifier the action relates to
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule
         :param pulumi.Input[str] property: The property identifier of the rule
         :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs'] value: The value of the rule
         """
@@ -3968,7 +4082,7 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs:
     @pulumi.getter
     def blueprint(self) -> Optional[pulumi.Input[str]]:
         """
-        The blueprint identifier the action relates to
+        The blueprint identifier of the rule
         """
         return pulumi.get(self, "blueprint")
 
@@ -4288,13 +4402,7 @@ if not MYPY:
         Specifies whether to use an agent to invoke the action. This can be a boolean value (`'true''` or `'false'`) or a JQ if dynamic evaluation is needed.
         """
         body: NotRequired[pulumi.Input[str]]
-        """
-        The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-        """
         headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
-        """
-        The HTTP headers for invoking the action. They should be encoded as a key-value object to a string using jsonencode. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-        """
         method: NotRequired[pulumi.Input[str]]
         """
         The HTTP method to invoke the action
@@ -4318,8 +4426,6 @@ class ActionWebhookMethodArgs:
         """
         :param pulumi.Input[str] url: Required when selecting type WEBHOOK. The URL to invoke the action
         :param pulumi.Input[str] agent: Specifies whether to use an agent to invoke the action. This can be a boolean value (`'true''` or `'false'`) or a JQ if dynamic evaluation is needed.
-        :param pulumi.Input[str] body: The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: The HTTP headers for invoking the action. They should be encoded as a key-value object to a string using jsonencode. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
         :param pulumi.Input[str] method: The HTTP method to invoke the action
         :param pulumi.Input[str] synchronized: Synchronize the action
         """
@@ -4362,9 +4468,6 @@ class ActionWebhookMethodArgs:
     @property
     @pulumi.getter
     def body(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Webhook body should be in `JSON` format, encoded as a string. Use jsonencode to encode arrays or objects. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-        """
         return pulumi.get(self, "body")
 
     @body.setter
@@ -4374,9 +4477,6 @@ class ActionWebhookMethodArgs:
     @property
     @pulumi.getter
     def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The HTTP headers for invoking the action. They should be encoded as a key-value object to a string using jsonencode. Learn about how to [define the action payload](https://docs.getport.io/create-self-service-experiences/setup-backend/#define-the-actions-payload).
-        """
         return pulumi.get(self, "headers")
 
     @headers.setter
@@ -4412,7 +4512,7 @@ if not MYPY:
     class AggregationPropertiesPropertiesArgsDict(TypedDict):
         method: pulumi.Input['AggregationPropertiesPropertiesMethodArgsDict']
         """
-        The aggregation method to perform on the target blueprint, one of count*entities, average*entities, average*by*property, aggregate*by*property
+        The aggregation method to perform on the target blueprint, one of count_entities, average_entities, average_by_property, aggregate_by_property
         """
         target_blueprint_identifier: pulumi.Input[str]
         """
@@ -4452,7 +4552,7 @@ class AggregationPropertiesPropertiesArgs:
                  query: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['AggregationPropertiesPropertiesMethodArgs'] method: The aggregation method to perform on the target blueprint, one of count*entities, average*entities, average*by*property, aggregate*by*property
+        :param pulumi.Input['AggregationPropertiesPropertiesMethodArgs'] method: The aggregation method to perform on the target blueprint, one of count_entities, average_entities, average_by_property, aggregate_by_property
         :param pulumi.Input[str] target_blueprint_identifier: The identifier of the blueprint to perform the aggregation on
         :param pulumi.Input[str] description: The description of the aggregation property
         :param pulumi.Input[str] icon: The icon of the aggregation property
@@ -4477,7 +4577,7 @@ class AggregationPropertiesPropertiesArgs:
     @pulumi.getter
     def method(self) -> pulumi.Input['AggregationPropertiesPropertiesMethodArgs']:
         """
-        The aggregation method to perform on the target blueprint, one of count*entities, average*entities, average*by*property, aggregate*by*property
+        The aggregation method to perform on the target blueprint, one of count_entities, average_entities, average_by_property, aggregate_by_property
         """
         return pulumi.get(self, "method")
 

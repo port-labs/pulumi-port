@@ -56,65 +56,41 @@ class GetSearchResult:
     @property
     @pulumi.getter(name="attachTitleToRelation")
     def attach_title_to_relation(self) -> Optional[bool]:
-        """
-        Attach title to relation
-        """
         return pulumi.get(self, "attach_title_to_relation")
 
     @property
     @pulumi.getter
     def entities(self) -> Sequence['outputs.GetSearchEntityResult']:
-        """
-        A list of entities matching the search query
-        """
         return pulumi.get(self, "entities")
 
     @property
     @pulumi.getter(name="excludeCalculatedProperties")
     def exclude_calculated_properties(self) -> Optional[bool]:
-        """
-        Exclude calculated properties
-        """
         return pulumi.get(self, "exclude_calculated_properties")
 
     @property
     @pulumi.getter
     def excludes(self) -> Optional[Sequence[str]]:
-        """
-        Properties to exclude from the results
-        """
         return pulumi.get(self, "excludes")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def includes(self) -> Optional[Sequence[str]]:
-        """
-        Properties to include in the results
-        """
         return pulumi.get(self, "includes")
 
     @property
     @pulumi.getter(name="matchingBlueprints")
     def matching_blueprints(self) -> Sequence[str]:
-        """
-        The matching blueprints for the search query
-        """
         return pulumi.get(self, "matching_blueprints")
 
     @property
     @pulumi.getter
     def query(self) -> str:
-        """
-        The search query
-        """
         return pulumi.get(self, "query")
 
 
@@ -141,18 +117,7 @@ def get_search(attach_title_to_relation: Optional[bool] = None,
                query: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSearchResult:
     """
-    The search data source allows you to search for entities in Port.
-
-    See the [Port documentation](https://docs.getport.io/search-and-query/) for more information about the search capabilities in Port.
-
-    ## Example Usage
-
-
-    :param bool attach_title_to_relation: Attach title to relation
-    :param bool exclude_calculated_properties: Exclude calculated properties
-    :param Sequence[str] excludes: Properties to exclude from the results
-    :param Sequence[str] includes: Properties to include in the results
-    :param str query: The search query
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['attachTitleToRelation'] = attach_title_to_relation
@@ -179,18 +144,7 @@ def get_search_output(attach_title_to_relation: Optional[pulumi.Input[Optional[b
                       query: Optional[pulumi.Input[str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSearchResult]:
     """
-    The search data source allows you to search for entities in Port.
-
-    See the [Port documentation](https://docs.getport.io/search-and-query/) for more information about the search capabilities in Port.
-
-    ## Example Usage
-
-
-    :param bool attach_title_to_relation: Attach title to relation
-    :param bool exclude_calculated_properties: Exclude calculated properties
-    :param Sequence[str] excludes: Properties to exclude from the results
-    :param Sequence[str] includes: Properties to include in the results
-    :param str query: The search query
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['attachTitleToRelation'] = attach_title_to_relation

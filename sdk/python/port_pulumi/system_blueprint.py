@@ -205,8 +205,7 @@ class SystemBlueprint(pulumi.CustomResource):
                  relations: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SystemBlueprintRelationsArgs', 'SystemBlueprintRelationsArgsDict']]]]] = None,
                  __props__=None):
         """
-        Port System Blueprint Resource. This resource is used to extend system blueprints with additional properties and relations.
-
+        Create a SystemBlueprint resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SystemBlueprintCalculationPropertiesArgs', 'SystemBlueprintCalculationPropertiesArgsDict']]]] calculation_properties: The calculation properties of the blueprint
@@ -222,8 +221,7 @@ class SystemBlueprint(pulumi.CustomResource):
                  args: SystemBlueprintArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Port System Blueprint Resource. This resource is used to extend system blueprints with additional properties and relations.
-
+        Create a SystemBlueprint resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SystemBlueprintArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

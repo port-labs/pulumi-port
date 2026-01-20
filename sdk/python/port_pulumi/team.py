@@ -201,8 +201,7 @@ class Team(pulumi.CustomResource):
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Team resource
-
+        Create a Team resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the team
@@ -216,8 +215,7 @@ class Team(pulumi.CustomResource):
                  args: TeamArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Team resource
-
+        Create a Team resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param TeamArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

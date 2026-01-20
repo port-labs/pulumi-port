@@ -17,7 +17,8 @@ type Blueprint struct {
 
 	// The calculation properties of the blueprint
 	CalculationProperties BlueprintCalculationPropertiesMapOutput `pulumi:"calculationProperties"`
-	// This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
+	// This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
+	// blueprint
 	CreateCatalogPage pulumi.BoolOutput `pulumi:"createCatalogPage"`
 	// The creation date of the blueprint
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
@@ -34,7 +35,8 @@ type Blueprint struct {
 	KafkaChangelogDestination BlueprintKafkaChangelogDestinationPtrOutput `pulumi:"kafkaChangelogDestination"`
 	// The mirror properties of the blueprint
 	MirrorProperties BlueprintMirrorPropertiesMapOutput `pulumi:"mirrorProperties"`
-	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.
+	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+	// must be a valid relation identifiers path.
 	Ownership BlueprintOwnershipPtrOutput `pulumi:"ownership"`
 	// The properties of the blueprint
 	Properties BlueprintPropertiesPtrOutput `pulumi:"properties"`
@@ -92,7 +94,8 @@ func GetBlueprint(ctx *pulumi.Context,
 type blueprintState struct {
 	// The calculation properties of the blueprint
 	CalculationProperties map[string]BlueprintCalculationProperties `pulumi:"calculationProperties"`
-	// This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
+	// This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
+	// blueprint
 	CreateCatalogPage *bool `pulumi:"createCatalogPage"`
 	// The creation date of the blueprint
 	CreatedAt *string `pulumi:"createdAt"`
@@ -109,7 +112,8 @@ type blueprintState struct {
 	KafkaChangelogDestination *BlueprintKafkaChangelogDestination `pulumi:"kafkaChangelogDestination"`
 	// The mirror properties of the blueprint
 	MirrorProperties map[string]BlueprintMirrorProperties `pulumi:"mirrorProperties"`
-	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.
+	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+	// must be a valid relation identifiers path.
 	Ownership *BlueprintOwnership `pulumi:"ownership"`
 	// The properties of the blueprint
 	Properties *BlueprintProperties `pulumi:"properties"`
@@ -132,7 +136,8 @@ type blueprintState struct {
 type BlueprintState struct {
 	// The calculation properties of the blueprint
 	CalculationProperties BlueprintCalculationPropertiesMapInput
-	// This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
+	// This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
+	// blueprint
 	CreateCatalogPage pulumi.BoolPtrInput
 	// The creation date of the blueprint
 	CreatedAt pulumi.StringPtrInput
@@ -149,7 +154,8 @@ type BlueprintState struct {
 	KafkaChangelogDestination BlueprintKafkaChangelogDestinationPtrInput
 	// The mirror properties of the blueprint
 	MirrorProperties BlueprintMirrorPropertiesMapInput
-	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.
+	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+	// must be a valid relation identifiers path.
 	Ownership BlueprintOwnershipPtrInput
 	// The properties of the blueprint
 	Properties BlueprintPropertiesPtrInput
@@ -176,7 +182,8 @@ func (BlueprintState) ElementType() reflect.Type {
 type blueprintArgs struct {
 	// The calculation properties of the blueprint
 	CalculationProperties map[string]BlueprintCalculationProperties `pulumi:"calculationProperties"`
-	// This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
+	// This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
+	// blueprint
 	CreateCatalogPage *bool `pulumi:"createCatalogPage"`
 	// The description of the blueprint
 	Description         *string `pulumi:"description"`
@@ -189,7 +196,8 @@ type blueprintArgs struct {
 	KafkaChangelogDestination *BlueprintKafkaChangelogDestination `pulumi:"kafkaChangelogDestination"`
 	// The mirror properties of the blueprint
 	MirrorProperties map[string]BlueprintMirrorProperties `pulumi:"mirrorProperties"`
-	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.
+	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+	// must be a valid relation identifiers path.
 	Ownership *BlueprintOwnership `pulumi:"ownership"`
 	// The properties of the blueprint
 	Properties *BlueprintProperties `pulumi:"properties"`
@@ -209,7 +217,8 @@ type blueprintArgs struct {
 type BlueprintArgs struct {
 	// The calculation properties of the blueprint
 	CalculationProperties BlueprintCalculationPropertiesMapInput
-	// This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
+	// This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
+	// blueprint
 	CreateCatalogPage pulumi.BoolPtrInput
 	// The description of the blueprint
 	Description         pulumi.StringPtrInput
@@ -222,7 +231,8 @@ type BlueprintArgs struct {
 	KafkaChangelogDestination BlueprintKafkaChangelogDestinationPtrInput
 	// The mirror properties of the blueprint
 	MirrorProperties BlueprintMirrorPropertiesMapInput
-	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.
+	// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+	// must be a valid relation identifiers path.
 	Ownership BlueprintOwnershipPtrInput
 	// The properties of the blueprint
 	Properties BlueprintPropertiesPtrInput
@@ -330,7 +340,8 @@ func (o BlueprintOutput) CalculationProperties() BlueprintCalculationPropertiesM
 	return o.ApplyT(func(v *Blueprint) BlueprintCalculationPropertiesMapOutput { return v.CalculationProperties }).(BlueprintCalculationPropertiesMapOutput)
 }
 
-// This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the blueprint
+// This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
+// blueprint
 func (o BlueprintOutput) CreateCatalogPage() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Blueprint) pulumi.BoolOutput { return v.CreateCatalogPage }).(pulumi.BoolOutput)
 }
@@ -374,7 +385,8 @@ func (o BlueprintOutput) MirrorProperties() BlueprintMirrorPropertiesMapOutput {
 	return o.ApplyT(func(v *Blueprint) BlueprintMirrorPropertiesMapOutput { return v.MirrorProperties }).(BlueprintMirrorPropertiesMapOutput)
 }
 
-// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and must be a valid relation identifiers path.
+// Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
+// must be a valid relation identifiers path.
 func (o BlueprintOutput) Ownership() BlueprintOwnershipPtrOutput {
 	return o.ApplyT(func(v *Blueprint) BlueprintOwnershipPtrOutput { return v.Ownership }).(BlueprintOwnershipPtrOutput)
 }

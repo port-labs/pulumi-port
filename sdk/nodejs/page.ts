@@ -65,7 +65,8 @@ export class Page extends pulumi.CustomResource {
      */
     public readonly locked!: pulumi.Output<boolean | undefined>;
     /**
-     * The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with 'combinator' and 'rules' array). The rules array can contain any filter type.
+     * The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
+     * 'combinator' and 'rules' array). The rules array can contain any filter type.
      */
     public readonly pageFilters!: pulumi.Output<string[] | undefined>;
     /**
@@ -187,7 +188,8 @@ export interface PageState {
      */
     locked?: pulumi.Input<boolean>;
     /**
-     * The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with 'combinator' and 'rules' array). The rules array can contain any filter type.
+     * The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
+     * 'combinator' and 'rules' array). The rules array can contain any filter type.
      */
     pageFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -245,7 +247,8 @@ export interface PageArgs {
      */
     locked?: pulumi.Input<boolean>;
     /**
-     * The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with 'combinator' and 'rules' array). The rules array can contain any filter type.
+     * The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
+     * 'combinator' and 'rules' array). The rules array can contain any filter type.
      */
     pageFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**

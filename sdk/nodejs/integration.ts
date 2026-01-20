@@ -6,46 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * **NOTE:** This resource manages existing integration and integration mappings, not for creating new integrations.
- *
- * Docs about integrations can be found [here](https://docs.getport.io/integrations-index/).
- *
- * Docs about how to import existing integrations and manage their mappings can be found [here](https://docs.getport.io/guides/all/import-and-manage-integration).
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as port from "@pulumi/port";
- *
- * const myCustomIntegration = new port.index.Port_integration("myCustomIntegration", {
- *     installationId: "my-custom-integration-id",
- *     title: "My Custom Integration",
- *     config: JSON.stringify({
- *         createMissingRelatedEntitiesboolean: true,
- *         deleteDependentEntities: true,
- *         resources: [{
- *             kind: "my-custom-kind",
- *             selector: {
- *                 query: ".title",
- *             },
- *             port: {
- *                 entity: {
- *                     mappings: [{
- *                         identifier: "'my-identifier'",
- *                         title: ".title",
- *                         blueprint: "'my-blueprint'",
- *                         properties: {
- *                             my_property: 123,
- *                         },
- *                         relations: {},
- *                     }],
- *                 },
- *             },
- *         }],
- *     }),
- * });
- * ```
- */
 export class Integration extends pulumi.CustomResource {
     /**
      * Get an existing Integration resource's state with the given name, ID, and optional extra
@@ -80,7 +40,8 @@ export class Integration extends pulumi.CustomResource {
     public readonly config!: pulumi.Output<string | undefined>;
     public readonly installationAppType!: pulumi.Output<string | undefined>;
     /**
-     * The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern: `^[a-z0-9-]+$`).
+     * The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
+     * `^[a-z0-9-]+$`).
      */
     public readonly installationId!: pulumi.Output<string>;
     /**
@@ -142,7 +103,8 @@ export interface IntegrationState {
     config?: pulumi.Input<string>;
     installationAppType?: pulumi.Input<string>;
     /**
-     * The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern: `^[a-z0-9-]+$`).
+     * The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
+     * `^[a-z0-9-]+$`).
      */
     installationId?: pulumi.Input<string>;
     /**
@@ -167,7 +129,8 @@ export interface IntegrationArgs {
     config?: pulumi.Input<string>;
     installationAppType?: pulumi.Input<string>;
     /**
-     * The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern: `^[a-z0-9-]+$`).
+     * The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
+     * `^[a-z0-9-]+$`).
      */
     installationId: pulumi.Input<string>;
     /**

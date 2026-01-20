@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Team resource
- */
 export class Team extends pulumi.CustomResource {
     /**
      * Get an existing Team resource's state with the given name, ID, and optional extra
