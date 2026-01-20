@@ -1,13 +1,11 @@
 module github.com/port-labs/pulumi-port/provider/v2
 
-go 1.24
-
-toolchain go1.24.2
+go 1.25
 
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20250124205414-92ccb3765401
 
 require (
-	github.com/port-labs/terraform-provider-port-labs/v2 v2.18.0
+	github.com/port-labs/terraform-provider-port-labs/v2 v2.19.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.49.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.102.0
 	github.com/pulumi/pulumi/sdk/v3 v3.147.0
