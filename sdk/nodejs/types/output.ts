@@ -674,7 +674,7 @@ export interface ActionSelfServiceTriggerUserPropertiesStringProps {
      */
     clientSideEncryption?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption;
     /**
-     * The dataset of an the entity-format property
+     * The dataset of an the entity-format property. Supports nested rules with combinator groups.
      */
     dataset?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDataset;
     /**
@@ -780,7 +780,7 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDataset {
      */
     combinator: string;
     /**
-     * The rules of the dataset
+     * The rules of the dataset. Can be leaf rules (with operator) or group rules (with combinator and nested rules).
      */
     rules: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule[];
 }
@@ -791,9 +791,67 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule {
      */
     blueprint?: string;
     /**
-     * The operator of the rule
+     * The combinator for a group rule (and/or). Used with nested rules instead of operator.
      */
-    operator: string;
+    combinator?: string;
+    /**
+     * The operator of the rule. Required for leaf rules, should not be set for group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule
+     */
+    property?: string;
+    /**
+     * Nested rules for a group rule. Used with combinator for logical grouping.
+     */
+    rules?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule[];
+    /**
+     * The value of the rule
+     */
+    value?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule {
+    /**
+     * The blueprint identifier of the rule
+     */
+    blueprint?: string;
+    /**
+     * The combinator for a group rule (and/or). Used with nested rules instead of operator.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Required for leaf rules, should not be set for group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule
+     */
+    property?: string;
+    /**
+     * Nested rules for a group rule. Used with combinator for logical grouping.
+     */
+    rules?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule[];
+    /**
+     * The value of the rule
+     */
+    value?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule
+     */
+    blueprint?: string;
+    /**
+     * The combinator for a group rule (and/or). Used with nested rules instead of operator.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Required for leaf rules, should not be set for group rules.
+     */
+    operator?: string;
     /**
      * The property identifier of the rule
      */
@@ -801,7 +859,15 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule {
     /**
      * The value of the rule
      */
-    value?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue;
+    value?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue {
+    jqQuery: string;
 }
 
 export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue {

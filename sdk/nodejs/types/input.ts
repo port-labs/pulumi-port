@@ -674,7 +674,7 @@ export interface ActionSelfServiceTriggerUserPropertiesStringProps {
      */
     clientSideEncryption?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption>;
     /**
-     * The dataset of an the entity-format property
+     * The dataset of an the entity-format property. Supports nested rules with combinator groups.
      */
     dataset?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDataset>;
     /**
@@ -780,7 +780,7 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDataset {
      */
     combinator: pulumi.Input<string>;
     /**
-     * The rules of the dataset
+     * The rules of the dataset. Can be leaf rules (with operator) or group rules (with combinator and nested rules).
      */
     rules: pulumi.Input<pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule>[]>;
 }
@@ -791,9 +791,67 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule {
      */
     blueprint?: pulumi.Input<string>;
     /**
-     * The operator of the rule
+     * The combinator for a group rule (and/or). Used with nested rules instead of operator.
      */
-    operator: pulumi.Input<string>;
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Required for leaf rules, should not be set for group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * Nested rules for a group rule. Used with combinator for logical grouping.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule>[]>;
+    /**
+     * The value of the rule
+     */
+    value?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue>;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule {
+    /**
+     * The blueprint identifier of the rule
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * The combinator for a group rule (and/or). Used with nested rules instead of operator.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Required for leaf rules, should not be set for group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * Nested rules for a group rule. Used with combinator for logical grouping.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule>[]>;
+    /**
+     * The value of the rule
+     */
+    value?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue>;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * The combinator for a group rule (and/or). Used with nested rules instead of operator.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Required for leaf rules, should not be set for group rules.
+     */
+    operator?: pulumi.Input<string>;
     /**
      * The property identifier of the rule
      */
@@ -801,7 +859,15 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule {
     /**
      * The value of the rule
      */
-    value?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue>;
+    value?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue>;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
 }
 
 export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue {

@@ -5799,7 +5799,7 @@ type ActionSelfServiceTriggerUserPropertiesStringProps struct {
 	Blueprint *string `pulumi:"blueprint"`
 	// Client-side encryption configuration for the property. The value will be encrypted on the client side before being sent to Port. Cannot be used with `encryption`.
 	ClientSideEncryption *ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryption `pulumi:"clientSideEncryption"`
-	// The dataset of an the entity-format property
+	// The dataset of an the entity-format property. Supports nested rules with combinator groups.
 	Dataset *ActionSelfServiceTriggerUserPropertiesStringPropsDataset `pulumi:"dataset"`
 	// The default of the string property
 	Default *string `pulumi:"default"`
@@ -5861,7 +5861,7 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsArgs struct {
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// Client-side encryption configuration for the property. The value will be encrypted on the client side before being sent to Port. Cannot be used with `encryption`.
 	ClientSideEncryption ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrInput `pulumi:"clientSideEncryption"`
-	// The dataset of an the entity-format property
+	// The dataset of an the entity-format property. Supports nested rules with combinator groups.
 	Dataset ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrInput `pulumi:"dataset"`
 	// The default of the string property
 	Default pulumi.StringPtrInput `pulumi:"default"`
@@ -5970,7 +5970,7 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) ClientSideEncry
 	}).(ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtrOutput)
 }
 
-// The dataset of an the entity-format property
+// The dataset of an the entity-format property. Supports nested rules with combinator groups.
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsOutput) Dataset() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringProps) *ActionSelfServiceTriggerUserPropertiesStringPropsDataset {
 		return v.Dataset
@@ -6265,7 +6265,7 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsClientSideEncryptionPtr
 type ActionSelfServiceTriggerUserPropertiesStringPropsDataset struct {
 	// The combinator of the dataset
 	Combinator string `pulumi:"combinator"`
-	// The rules of the dataset
+	// The rules of the dataset. Can be leaf rules (with operator) or group rules (with combinator and nested rules).
 	Rules []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule `pulumi:"rules"`
 }
 
@@ -6283,7 +6283,7 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetInput interface {
 type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs struct {
 	// The combinator of the dataset
 	Combinator pulumi.StringInput `pulumi:"combinator"`
-	// The rules of the dataset
+	// The rules of the dataset. Can be leaf rules (with operator) or group rules (with combinator and nested rules).
 	Rules ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayInput `pulumi:"rules"`
 }
 
@@ -6369,7 +6369,7 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput) Combinat
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDataset) string { return v.Combinator }).(pulumi.StringOutput)
 }
 
-// The rules of the dataset
+// The rules of the dataset. Can be leaf rules (with operator) or group rules (with combinator and nested rules).
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetOutput) Rules() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDataset) []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule {
 		return v.Rules
@@ -6410,7 +6410,7 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput) Combi
 	}).(pulumi.StringPtrOutput)
 }
 
-// The rules of the dataset
+// The rules of the dataset. Can be leaf rules (with operator) or group rules (with combinator and nested rules).
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput) Rules() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput {
 	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesStringPropsDataset) []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule {
 		if v == nil {
@@ -6423,10 +6423,14 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput) Rules
 type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule struct {
 	// The blueprint identifier of the rule
 	Blueprint *string `pulumi:"blueprint"`
-	// The operator of the rule
-	Operator string `pulumi:"operator"`
+	// The combinator for a group rule (and/or). Used with nested rules instead of operator.
+	Combinator *string `pulumi:"combinator"`
+	// The operator of the rule. Required for leaf rules, should not be set for group rules.
+	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule
 	Property *string `pulumi:"property"`
+	// Nested rules for a group rule. Used with combinator for logical grouping.
+	Rules []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule `pulumi:"rules"`
 	// The value of the rule
 	Value *ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue `pulumi:"value"`
 }
@@ -6445,10 +6449,14 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleInput interface
 type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs struct {
 	// The blueprint identifier of the rule
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
-	// The operator of the rule
-	Operator pulumi.StringInput `pulumi:"operator"`
+	// The combinator for a group rule (and/or). Used with nested rules instead of operator.
+	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The operator of the rule. Required for leaf rules, should not be set for group rules.
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// Nested rules for a group rule. Used with combinator for logical grouping.
+	Rules ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayInput `pulumi:"rules"`
 	// The value of the rule
 	Value ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValuePtrInput `pulumi:"value"`
 }
@@ -6509,14 +6517,26 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput) Blue
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
 }
 
-// The operator of the rule
-func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput) Operator() pulumi.StringOutput {
-	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule) string { return v.Operator }).(pulumi.StringOutput)
+// The combinator for a group rule (and/or). Used with nested rules instead of operator.
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput) Combinator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule) *string { return v.Combinator }).(pulumi.StringPtrOutput)
+}
+
+// The operator of the rule. Required for leaf rules, should not be set for group rules.
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
 // The property identifier of the rule
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule) *string { return v.Property }).(pulumi.StringPtrOutput)
+}
+
+// Nested rules for a group rule. Used with combinator for logical grouping.
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput) Rules() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule) []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule {
+		return v.Rules
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutput)
 }
 
 // The value of the rule
@@ -6544,6 +6564,563 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule {
 		return vs[0].([]ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule)[vs[1].(int)]
 	}).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule struct {
+	// The blueprint identifier of the rule
+	Blueprint *string `pulumi:"blueprint"`
+	// The combinator for a group rule (and/or). Used with nested rules instead of operator.
+	Combinator *string `pulumi:"combinator"`
+	// The operator of the rule. Required for leaf rules, should not be set for group rules.
+	Operator *string `pulumi:"operator"`
+	// The property identifier of the rule
+	Property *string `pulumi:"property"`
+	// Nested rules for a group rule. Used with combinator for logical grouping.
+	Rules []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule `pulumi:"rules"`
+	// The value of the rule
+	Value *ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue `pulumi:"value"`
+}
+
+// ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArgs and ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleInput` via:
+//
+//	ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArgs{...}
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleInput interface {
+	pulumi.Input
+
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArgs struct {
+	// The blueprint identifier of the rule
+	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
+	// The combinator for a group rule (and/or). Used with nested rules instead of operator.
+	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The operator of the rule. Required for leaf rules, should not be set for group rules.
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// The property identifier of the rule
+	Property pulumi.StringPtrInput `pulumi:"property"`
+	// Nested rules for a group rule. Used with combinator for logical grouping.
+	Rules ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayInput `pulumi:"rules"`
+	// The value of the rule
+	Value ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrInput `pulumi:"value"`
+}
+
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule)(nil)).Elem()
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutputWithContext(context.Background())
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput)
+}
+
+// ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArray and ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayInput` via:
+//
+//	ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArray{ ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArgs{...} }
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayInput interface {
+	pulumi.Input
+
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutput
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArray []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleInput
+
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule)(nil)).Elem()
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArray) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArray) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput struct{ *pulumi.OutputState }
+
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule)(nil)).Elem()
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput {
+	return o
+}
+
+// The blueprint identifier of the rule
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput) Blueprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule) *string { return v.Blueprint }).(pulumi.StringPtrOutput)
+}
+
+// The combinator for a group rule (and/or). Used with nested rules instead of operator.
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput) Combinator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule) *string { return v.Combinator }).(pulumi.StringPtrOutput)
+}
+
+// The operator of the rule. Required for leaf rules, should not be set for group rules.
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// The property identifier of the rule
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput) Property() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule) *string { return v.Property }).(pulumi.StringPtrOutput)
+}
+
+// Nested rules for a group rule. Used with combinator for logical grouping.
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput) Rules() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule) []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule {
+		return v.Rules
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutput)
+}
+
+// The value of the rule
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput) Value() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule) *ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue {
+		return v.Value
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule)(nil)).Elem()
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutput) Index(i pulumi.IntInput) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule {
+		return vs[0].([]ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule)[vs[1].(int)]
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule struct {
+	// The blueprint identifier of the rule
+	Blueprint *string `pulumi:"blueprint"`
+	// The combinator for a group rule (and/or). Used with nested rules instead of operator.
+	Combinator *string `pulumi:"combinator"`
+	// The operator of the rule. Required for leaf rules, should not be set for group rules.
+	Operator *string `pulumi:"operator"`
+	// The property identifier of the rule
+	Property *string `pulumi:"property"`
+	// The value of the rule
+	Value *ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue `pulumi:"value"`
+}
+
+// ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArgs and ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleInput` via:
+//
+//	ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArgs{...}
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleInput interface {
+	pulumi.Input
+
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArgs struct {
+	// The blueprint identifier of the rule
+	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
+	// The combinator for a group rule (and/or). Used with nested rules instead of operator.
+	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The operator of the rule. Required for leaf rules, should not be set for group rules.
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// The property identifier of the rule
+	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The value of the rule
+	Value ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrInput `pulumi:"value"`
+}
+
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule)(nil)).Elem()
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutputWithContext(context.Background())
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput)
+}
+
+// ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArray and ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayInput` via:
+//
+//	ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArray{ ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArgs{...} }
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayInput interface {
+	pulumi.Input
+
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutput
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArray []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleInput
+
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule)(nil)).Elem()
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArray) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArray) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput struct{ *pulumi.OutputState }
+
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule)(nil)).Elem()
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput {
+	return o
+}
+
+// The blueprint identifier of the rule
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput) Blueprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule) *string {
+		return v.Blueprint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The combinator for a group rule (and/or). Used with nested rules instead of operator.
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput) Combinator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule) *string {
+		return v.Combinator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The operator of the rule. Required for leaf rules, should not be set for group rules.
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule) *string {
+		return v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property identifier of the rule
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule) *string {
+		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value of the rule
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput) Value() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule) *ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue {
+		return v.Value
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule)(nil)).Elem()
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutput) Index(i pulumi.IntInput) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule {
+		return vs[0].([]ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule)[vs[1].(int)]
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue struct {
+	JqQuery string `pulumi:"jqQuery"`
+}
+
+// ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs and ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueInput` via:
+//
+//	ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs{...}
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueInput interface {
+	pulumi.Input
+
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutput
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs struct {
+	JqQuery pulumi.StringInput `pulumi:"jqQuery"`
+}
+
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue)(nil)).Elem()
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutputWithContext(context.Background())
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutput)
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutputWithContext(context.Background())
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutput).ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutputWithContext(ctx)
+}
+
+// ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs, ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtr and ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrInput` via:
+//
+//	        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrInput interface {
+	pulumi.Input
+
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput
+}
+
+type actionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrType ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs
+
+func ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtr(v *ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrInput {
+	return (*actionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrType)(v)
+}
+
+func (*actionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue)(nil)).Elem()
+}
+
+func (i *actionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrType) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutputWithContext(context.Background())
+}
+
+func (i *actionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrType) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutput struct{ *pulumi.OutputState }
+
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue)(nil)).Elem()
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput {
+	return o.ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutputWithContext(context.Background())
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue) *ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue {
+		return &v
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput)
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutput) JqQuery() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue) string {
+		return v.JqQuery
+	}).(pulumi.StringOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput struct{ *pulumi.OutputState }
+
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue)(nil)).Elem()
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput) Elem() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue {
+		if v != nil {
+			return *v
+		}
+		var ret ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue
+		return ret
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutput)
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput) JqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.JqQuery
+	}).(pulumi.StringPtrOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue struct {
+	JqQuery string `pulumi:"jqQuery"`
+}
+
+// ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueArgs and ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueInput` via:
+//
+//	ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueArgs{...}
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueInput interface {
+	pulumi.Input
+
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutput
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueArgs struct {
+	JqQuery pulumi.StringInput `pulumi:"jqQuery"`
+}
+
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue)(nil)).Elem()
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutputWithContext(context.Background())
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutput)
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutputWithContext(context.Background())
+}
+
+func (i ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueArgs) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutput).ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutputWithContext(ctx)
+}
+
+// ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrInput is an input type that accepts ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueArgs, ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtr and ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput values.
+// You can construct a concrete instance of `ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrInput` via:
+//
+//	        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrInput interface {
+	pulumi.Input
+
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput
+	ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutputWithContext(context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput
+}
+
+type actionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrType ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueArgs
+
+func ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtr(v *ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueArgs) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrInput {
+	return (*actionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrType)(v)
+}
+
+func (*actionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue)(nil)).Elem()
+}
+
+func (i *actionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrType) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput {
+	return i.ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutputWithContext(context.Background())
+}
+
+func (i *actionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrType) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutput struct{ *pulumi.OutputState }
+
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue)(nil)).Elem()
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput {
+	return o.ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutputWithContext(context.Background())
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue) *ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue {
+		return &v
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput)
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutput) JqQuery() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue) string { return v.JqQuery }).(pulumi.StringOutput)
+}
+
+type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput struct{ *pulumi.OutputState }
+
+func (ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue)(nil)).Elem()
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput) ToActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutputWithContext(ctx context.Context) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput {
+	return o
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput) Elem() ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue) ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue {
+		if v != nil {
+			return *v
+		}
+		var ret ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue
+		return ret
+	}).(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutput)
+}
+
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput) JqQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.JqQuery
+	}).(pulumi.StringPtrOutput)
 }
 
 type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue struct {
@@ -18622,6 +19199,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValuePtrInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSelfServiceTriggerUserPropertiesStringPropsSortInput)(nil)).Elem(), ActionSelfServiceTriggerUserPropertiesStringPropsSortArgs{})
@@ -18842,6 +19427,14 @@ func init() {
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetPtrOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArrayOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValuePtrOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueOutput{})
+	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValuePtrOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValuePtrOutput{})
 	pulumi.RegisterOutputType(ActionSelfServiceTriggerUserPropertiesStringPropsSortOutput{})
