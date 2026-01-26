@@ -1013,7 +1013,7 @@
                 },
                 "dataset": {
                     "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDataset:ActionSelfServiceTriggerUserPropertiesStringPropsDataset",
-                    "description": "The dataset of an the entity-format property\n"
+                    "description": "The dataset of an the entity-format property. Supports nested rules with combinator groups.\n"
                 },
                 "default": {
                     "type": "string",
@@ -1139,7 +1139,7 @@
                     "items": {
                         "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule:ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule"
                     },
-                    "description": "The rules of the dataset\n"
+                    "description": "The rules of the dataset. Can be leaf rules (with operator) or group rules (with combinator and nested rules).\n"
                 }
             },
             "type": "object",
@@ -1154,22 +1154,109 @@
                     "type": "string",
                     "description": "The blueprint identifier of the rule\n"
                 },
+                "combinator": {
+                    "type": "string",
+                    "description": "The combinator for a group rule (and/or). Used with nested rules instead of operator.\n"
+                },
                 "operator": {
                     "type": "string",
-                    "description": "The operator of the rule\n"
+                    "description": "The operator of the rule. Required for leaf rules, should not be set for group rules.\n"
                 },
                 "property": {
                     "type": "string",
                     "description": "The property identifier of the rule\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule:ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule"
+                    },
+                    "description": "Nested rules for a group rule. Used with combinator for logical grouping.\n"
                 },
                 "value": {
                     "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue:ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue",
                     "description": "The value of the rule\n"
                 }
             },
+            "type": "object"
+        },
+        "port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule:ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "The combinator for a group rule (and/or). Used with nested rules instead of operator.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Required for leaf rules, should not be set for group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule:ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule"
+                    },
+                    "description": "Nested rules for a group rule. Used with combinator for logical grouping.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue:ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue",
+                    "description": "The value of the rule\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule:ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "The combinator for a group rule (and/or). Used with nested rules instead of operator.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Required for leaf rules, should not be set for group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue:ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue",
+                    "description": "The value of the rule\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue:ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
             "type": "object",
             "required": [
-                "operator"
+                "jqQuery"
+            ]
+        },
+        "port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue:ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
             ]
         },
         "port:index/ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue:ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue": {
