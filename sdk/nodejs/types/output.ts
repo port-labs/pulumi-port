@@ -857,9 +857,257 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRul
      */
     property?: string;
     /**
+     * Nested rules for a group rule. Used with combinator for logical grouping.
+     */
+    rules?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule[];
+    /**
      * The value of the rule
      */
     value?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule
+     */
+    blueprint?: string;
+    /**
+     * The combinator for a group rule (and/or). Used with nested rules instead of operator.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Required for leaf rules, should not be set for group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule
+     */
+    property?: string;
+    /**
+     * Nested rules for a group rule. Used with combinator for logical grouping.
+     */
+    rules?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule[];
+    /**
+     * The value of the rule
+     */
+    value?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule
+     */
+    blueprint?: string;
+    /**
+     * The combinator for a group rule (and/or). Used with nested rules instead of operator.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Required for leaf rules, should not be set for group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule
+     */
+    property?: string;
+    /**
+     * Nested rules for a group rule. Used with combinator for logical grouping.
+     */
+    rules?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule[];
+    /**
+     * The value of the rule
+     */
+    value?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule
+     */
+    blueprint?: string;
+    /**
+     * The combinator for a group rule (and/or). Used with nested rules instead of operator.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Required for leaf rules, should not be set for group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule
+     */
+    property?: string;
+    /**
+     * Nested rules for a group rule. Used with combinator for logical grouping.
+     */
+    rules?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule[];
+    /**
+     * The value of the rule
+     */
+    value?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule
+     */
+    blueprint?: string;
+    /**
+     * The combinator for a group rule (and/or). Used with nested rules instead of operator.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Required for leaf rules, should not be set for group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule
+     */
+    property?: string;
+    /**
+     * Nested rules for a group rule. Used with combinator for logical grouping.
+     */
+    rules?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule[];
+    /**
+     * The value of the rule
+     */
+    value?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule
+     */
+    blueprint?: string;
+    /**
+     * The combinator for a group rule (and/or). Used with nested rules instead of operator.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Required for leaf rules, should not be set for group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule
+     */
+    property?: string;
+    /**
+     * Nested rules for a group rule. Used with combinator for logical grouping.
+     */
+    rules?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule[];
+    /**
+     * The value of the rule
+     */
+    value?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule
+     */
+    blueprint?: string;
+    /**
+     * The combinator for a group rule (and/or). Used with nested rules instead of operator.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Required for leaf rules, should not be set for group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule
+     */
+    property?: string;
+    /**
+     * Nested rules for a group rule. Used with combinator for logical grouping.
+     */
+    rules?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule[];
+    /**
+     * The value of the rule
+     */
+    value?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule
+     */
+    blueprint?: string;
+    /**
+     * The combinator for a group rule (and/or). Used with nested rules instead of operator.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Required for leaf rules, should not be set for group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule
+     */
+    property?: string;
+    /**
+     * Nested rules for a group rule. Used with combinator for logical grouping.
+     */
+    rules?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule[];
+    /**
+     * The value of the rule
+     */
+    value?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule
+     */
+    blueprint?: string;
+    /**
+     * The combinator for a group rule (and/or). Used with nested rules instead of operator.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Required for leaf rules, should not be set for group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule
+     */
+    property?: string;
+    /**
+     * The value of the rule
+     */
+    value?: outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue {
+    jqQuery: string;
 }
 
 export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue {

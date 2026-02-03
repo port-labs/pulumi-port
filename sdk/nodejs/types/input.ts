@@ -857,9 +857,257 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRul
      */
     property?: pulumi.Input<string>;
     /**
+     * Nested rules for a group rule. Used with combinator for logical grouping.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule>[]>;
+    /**
      * The value of the rule
      */
     value?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue>;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * The combinator for a group rule (and/or). Used with nested rules instead of operator.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Required for leaf rules, should not be set for group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * Nested rules for a group rule. Used with combinator for logical grouping.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule>[]>;
+    /**
+     * The value of the rule
+     */
+    value?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue>;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * The combinator for a group rule (and/or). Used with nested rules instead of operator.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Required for leaf rules, should not be set for group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * Nested rules for a group rule. Used with combinator for logical grouping.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule>[]>;
+    /**
+     * The value of the rule
+     */
+    value?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue>;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * The combinator for a group rule (and/or). Used with nested rules instead of operator.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Required for leaf rules, should not be set for group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * Nested rules for a group rule. Used with combinator for logical grouping.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule>[]>;
+    /**
+     * The value of the rule
+     */
+    value?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue>;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * The combinator for a group rule (and/or). Used with nested rules instead of operator.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Required for leaf rules, should not be set for group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * Nested rules for a group rule. Used with combinator for logical grouping.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule>[]>;
+    /**
+     * The value of the rule
+     */
+    value?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue>;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * The combinator for a group rule (and/or). Used with nested rules instead of operator.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Required for leaf rules, should not be set for group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * Nested rules for a group rule. Used with combinator for logical grouping.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule>[]>;
+    /**
+     * The value of the rule
+     */
+    value?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue>;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * The combinator for a group rule (and/or). Used with nested rules instead of operator.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Required for leaf rules, should not be set for group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * Nested rules for a group rule. Used with combinator for logical grouping.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule>[]>;
+    /**
+     * The value of the rule
+     */
+    value?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue>;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * The combinator for a group rule (and/or). Used with nested rules instead of operator.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Required for leaf rules, should not be set for group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * Nested rules for a group rule. Used with combinator for logical grouping.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule>[]>;
+    /**
+     * The value of the rule
+     */
+    value?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue>;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * The combinator for a group rule (and/or). Used with nested rules instead of operator.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Required for leaf rules, should not be set for group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * The value of the rule
+     */
+    value?: pulumi.Input<inputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue>;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
 }
 
 export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue {

@@ -93,6 +93,38 @@ __all__ = [
     'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArgsDict',
     'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArgs',
     'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArgsDict',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgsDict',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgsDict',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgsDict',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgsDict',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgsDict',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgsDict',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgsDict',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgsDict',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs',
+    'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgsDict',
     'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs',
     'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgsDict',
     'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueArgs',
@@ -4314,6 +4346,10 @@ if not MYPY:
         """
         The property identifier of the rule
         """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgsDict']]]]
+        """
+        Nested rules for a group rule. Used with combinator for logical grouping.
+        """
         value: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgsDict']]
         """
         The value of the rule
@@ -4328,13 +4364,1065 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArgs:
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs']]]] = None,
                  value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs']] = None):
         """
         :param pulumi.Input[str] blueprint: The blueprint identifier of the rule
         :param pulumi.Input[str] combinator: The combinator for a group rule (and/or). Used with nested rules instead of operator.
         :param pulumi.Input[str] operator: The operator of the rule. Required for leaf rules, should not be set for group rules.
         :param pulumi.Input[str] property: The property identifier of the rule
+        :param pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs']]] rules: Nested rules for a group rule. Used with combinator for logical grouping.
         :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs'] value: The value of the rule
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Required for leaf rules, should not be set for group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs']]]]:
+        """
+        Nested rules for a group rule. Used with combinator for logical grouping.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs']]:
+        """
+        The value of the rule
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Required for leaf rules, should not be set for group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgsDict']]]]
+        """
+        Nested rules for a group rule. Used with combinator for logical grouping.
+        """
+        value: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgsDict']]
+        """
+        The value of the rule
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs']] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule
+        :param pulumi.Input[str] combinator: The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        :param pulumi.Input[str] operator: The operator of the rule. Required for leaf rules, should not be set for group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule
+        :param pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs']]] rules: Nested rules for a group rule. Used with combinator for logical grouping.
+        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs'] value: The value of the rule
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Required for leaf rules, should not be set for group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs']]]]:
+        """
+        Nested rules for a group rule. Used with combinator for logical grouping.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs']]:
+        """
+        The value of the rule
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Required for leaf rules, should not be set for group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgsDict']]]]
+        """
+        Nested rules for a group rule. Used with combinator for logical grouping.
+        """
+        value: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgsDict']]
+        """
+        The value of the rule
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs']] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule
+        :param pulumi.Input[str] combinator: The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        :param pulumi.Input[str] operator: The operator of the rule. Required for leaf rules, should not be set for group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule
+        :param pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs']]] rules: Nested rules for a group rule. Used with combinator for logical grouping.
+        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs'] value: The value of the rule
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Required for leaf rules, should not be set for group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs']]]]:
+        """
+        Nested rules for a group rule. Used with combinator for logical grouping.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs']]:
+        """
+        The value of the rule
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Required for leaf rules, should not be set for group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
+        """
+        Nested rules for a group rule. Used with combinator for logical grouping.
+        """
+        value: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgsDict']]
+        """
+        The value of the rule
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs']] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule
+        :param pulumi.Input[str] combinator: The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        :param pulumi.Input[str] operator: The operator of the rule. Required for leaf rules, should not be set for group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule
+        :param pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: Nested rules for a group rule. Used with combinator for logical grouping.
+        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs'] value: The value of the rule
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Required for leaf rules, should not be set for group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs']]]]:
+        """
+        Nested rules for a group rule. Used with combinator for logical grouping.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs']]:
+        """
+        The value of the rule
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Required for leaf rules, should not be set for group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
+        """
+        Nested rules for a group rule. Used with combinator for logical grouping.
+        """
+        value: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgsDict']]
+        """
+        The value of the rule
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule
+        :param pulumi.Input[str] combinator: The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        :param pulumi.Input[str] operator: The operator of the rule. Required for leaf rules, should not be set for group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule
+        :param pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: Nested rules for a group rule. Used with combinator for logical grouping.
+        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: The value of the rule
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Required for leaf rules, should not be set for group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]:
+        """
+        Nested rules for a group rule. Used with combinator for logical grouping.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs']]:
+        """
+        The value of the rule
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Required for leaf rules, should not be set for group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
+        """
+        Nested rules for a group rule. Used with combinator for logical grouping.
+        """
+        value: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict']]
+        """
+        The value of the rule
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule
+        :param pulumi.Input[str] combinator: The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        :param pulumi.Input[str] operator: The operator of the rule. Required for leaf rules, should not be set for group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule
+        :param pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: Nested rules for a group rule. Used with combinator for logical grouping.
+        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: The value of the rule
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Required for leaf rules, should not be set for group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]:
+        """
+        Nested rules for a group rule. Used with combinator for logical grouping.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]:
+        """
+        The value of the rule
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Required for leaf rules, should not be set for group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
+        """
+        Nested rules for a group rule. Used with combinator for logical grouping.
+        """
+        value: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict']]
+        """
+        The value of the rule
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule
+        :param pulumi.Input[str] combinator: The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        :param pulumi.Input[str] operator: The operator of the rule. Required for leaf rules, should not be set for group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule
+        :param pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: Nested rules for a group rule. Used with combinator for logical grouping.
+        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: The value of the rule
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Required for leaf rules, should not be set for group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]:
+        """
+        Nested rules for a group rule. Used with combinator for logical grouping.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]:
+        """
+        The value of the rule
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Required for leaf rules, should not be set for group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
+        """
+        Nested rules for a group rule. Used with combinator for logical grouping.
+        """
+        value: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict']]
+        """
+        The value of the rule
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule
+        :param pulumi.Input[str] combinator: The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        :param pulumi.Input[str] operator: The operator of the rule. Required for leaf rules, should not be set for group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule
+        :param pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: Nested rules for a group rule. Used with combinator for logical grouping.
+        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: The value of the rule
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Required for leaf rules, should not be set for group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]:
+        """
+        Nested rules for a group rule. Used with combinator for logical grouping.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]:
+        """
+        The value of the rule
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Required for leaf rules, should not be set for group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule
+        """
+        value: NotRequired[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict']]
+        """
+        The value of the rule
+        """
+elif False:
+    ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule
+        :param pulumi.Input[str] combinator: The combinator for a group rule (and/or). Used with nested rules instead of operator.
+        :param pulumi.Input[str] operator: The operator of the rule. Required for leaf rules, should not be set for group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule
+        :param pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: The value of the rule
         """
         if blueprint is not None:
             pulumi.set(__self__, "blueprint", blueprint)
@@ -4385,14 +5473,14 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArgs:
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs']]:
+    def value(self) -> Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]:
         """
         The value of the rule
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs']]):
+    def value(self, value: Optional[pulumi.Input['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]):
         pulumi.set(self, "value", value)
 
     @property
@@ -4406,6 +5494,182 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArgs:
     @property.setter
     def property(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
 
 
 if not MYPY:
