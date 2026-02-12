@@ -31,6 +31,8 @@ __all__ = [
     'ActionAzureMethod',
     'ActionGithubMethod',
     'ActionGitlabMethod',
+    'ActionIntegrationMethod',
+    'ActionIntegrationMethodIntegrationActionExecutionProperties',
     'ActionKafkaMethod',
     'ActionPermissionsPermissions',
     'ActionPermissionsPermissionsApprove',
@@ -513,23 +515,16 @@ class ActionAutomationTriggerEntityUpdatedEvent(dict):
 @pulumi.output_type
 class ActionAutomationTriggerJqCondition(dict):
     def __init__(__self__, *,
-                 expressions: Sequence[str],
-                 combinator: Optional[str] = None):
+                 combinator: Optional[str] = None,
+                 expressions: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] expressions: The jq expressions of the condition
         :param str combinator: The combinator of the condition
+        :param Sequence[str] expressions: The jq expressions of the condition. Can be an empty array to indicate no conditions.
         """
-        pulumi.set(__self__, "expressions", expressions)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
-
-    @property
-    @pulumi.getter
-    def expressions(self) -> Sequence[str]:
-        """
-        The jq expressions of the condition
-        """
-        return pulumi.get(self, "expressions")
+        if expressions is not None:
+            pulumi.set(__self__, "expressions", expressions)
 
     @property
     @pulumi.getter
@@ -538,6 +533,14 @@ class ActionAutomationTriggerJqCondition(dict):
         The combinator of the condition
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def expressions(self) -> Optional[Sequence[str]]:
+        """
+        The jq expressions of the condition. Can be an empty array to indicate no conditions.
+        """
+        return pulumi.get(self, "expressions")
 
 
 @pulumi.output_type
@@ -844,6 +847,146 @@ class ActionGitlabMethod(dict):
     @pulumi.getter(name="pipelineVariables")
     def pipeline_variables(self) -> Optional[str]:
         return pulumi.get(self, "pipeline_variables")
+
+
+@pulumi.output_type
+class ActionIntegrationMethod(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "installationId":
+            suggest = "installation_id"
+        elif key == "integrationActionExecutionProperties":
+            suggest = "integration_action_execution_properties"
+        elif key == "integrationActionType":
+            suggest = "integration_action_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionIntegrationMethod. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionIntegrationMethod.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionIntegrationMethod.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 installation_id: str,
+                 integration_action_execution_properties: 'outputs.ActionIntegrationMethodIntegrationActionExecutionProperties',
+                 integration_action_type: str):
+        """
+        :param str installation_id: The installation ID of the integration
+        :param 'ActionIntegrationMethodIntegrationActionExecutionPropertiesArgs' integration_action_execution_properties: Execution properties for the integration action
+        :param str integration_action_type: The type of integration action (e.g., 'dispatch_workflow')
+        """
+        pulumi.set(__self__, "installation_id", installation_id)
+        pulumi.set(__self__, "integration_action_execution_properties", integration_action_execution_properties)
+        pulumi.set(__self__, "integration_action_type", integration_action_type)
+
+    @property
+    @pulumi.getter(name="installationId")
+    def installation_id(self) -> str:
+        """
+        The installation ID of the integration
+        """
+        return pulumi.get(self, "installation_id")
+
+    @property
+    @pulumi.getter(name="integrationActionExecutionProperties")
+    def integration_action_execution_properties(self) -> 'outputs.ActionIntegrationMethodIntegrationActionExecutionProperties':
+        """
+        Execution properties for the integration action
+        """
+        return pulumi.get(self, "integration_action_execution_properties")
+
+    @property
+    @pulumi.getter(name="integrationActionType")
+    def integration_action_type(self) -> str:
+        """
+        The type of integration action (e.g., 'dispatch_workflow')
+        """
+        return pulumi.get(self, "integration_action_type")
+
+
+@pulumi.output_type
+class ActionIntegrationMethodIntegrationActionExecutionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "reportWorkflowStatus":
+            suggest = "report_workflow_status"
+        elif key == "workflowInputs":
+            suggest = "workflow_inputs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionIntegrationMethodIntegrationActionExecutionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionIntegrationMethodIntegrationActionExecutionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionIntegrationMethodIntegrationActionExecutionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 org: str,
+                 repo: str,
+                 workflow: str,
+                 report_workflow_status: Optional[str] = None,
+                 workflow_inputs: Optional[str] = None):
+        """
+        :param str org: The organization for the integration action
+        :param str repo: The repository for the integration action
+        :param str workflow: The workflow for the integration action
+        :param str report_workflow_status: Whether to report the workflow status
+        """
+        pulumi.set(__self__, "org", org)
+        pulumi.set(__self__, "repo", repo)
+        pulumi.set(__self__, "workflow", workflow)
+        if report_workflow_status is not None:
+            pulumi.set(__self__, "report_workflow_status", report_workflow_status)
+        if workflow_inputs is not None:
+            pulumi.set(__self__, "workflow_inputs", workflow_inputs)
+
+    @property
+    @pulumi.getter
+    def org(self) -> str:
+        """
+        The organization for the integration action
+        """
+        return pulumi.get(self, "org")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> str:
+        """
+        The repository for the integration action
+        """
+        return pulumi.get(self, "repo")
+
+    @property
+    @pulumi.getter
+    def workflow(self) -> str:
+        """
+        The workflow for the integration action
+        """
+        return pulumi.get(self, "workflow")
+
+    @property
+    @pulumi.getter(name="reportWorkflowStatus")
+    def report_workflow_status(self) -> Optional[str]:
+        """
+        Whether to report the workflow status
+        """
+        return pulumi.get(self, "report_workflow_status")
+
+    @property
+    @pulumi.getter(name="workflowInputs")
+    def workflow_inputs(self) -> Optional[str]:
+        return pulumi.get(self, "workflow_inputs")
 
 
 @pulumi.output_type

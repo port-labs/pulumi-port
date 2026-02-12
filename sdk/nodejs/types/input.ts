@@ -99,9 +99,9 @@ export interface ActionAutomationTriggerJqCondition {
      */
     combinator?: pulumi.Input<string>;
     /**
-     * The jq expressions of the condition
+     * The jq expressions of the condition. Can be an empty array to indicate no conditions.
      */
-    expressions: pulumi.Input<pulumi.Input<string>[]>;
+    expressions?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ActionAutomationTriggerRunCreatedEvent {
@@ -175,6 +175,41 @@ export interface ActionGitlabMethod {
      * Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
      */
     projectName: pulumi.Input<string>;
+}
+
+export interface ActionIntegrationMethod {
+    /**
+     * The installation ID of the integration
+     */
+    installationId: pulumi.Input<string>;
+    /**
+     * Execution properties for the integration action
+     */
+    integrationActionExecutionProperties: pulumi.Input<inputs.ActionIntegrationMethodIntegrationActionExecutionProperties>;
+    /**
+     * The type of integration action (e.g., 'dispatch_workflow')
+     */
+    integrationActionType: pulumi.Input<string>;
+}
+
+export interface ActionIntegrationMethodIntegrationActionExecutionProperties {
+    /**
+     * The organization for the integration action
+     */
+    org: pulumi.Input<string>;
+    /**
+     * The repository for the integration action
+     */
+    repo: pulumi.Input<string>;
+    /**
+     * Whether to report the workflow status
+     */
+    reportWorkflowStatus?: pulumi.Input<string>;
+    /**
+     * The workflow for the integration action
+     */
+    workflow: pulumi.Input<string>;
+    workflowInputs?: pulumi.Input<string>;
 }
 
 export interface ActionKafkaMethod {

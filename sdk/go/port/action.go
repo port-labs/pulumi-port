@@ -39,6 +39,8 @@ type Action struct {
 	Icon pulumi.StringPtrOutput `pulumi:"icon"`
 	// Identifier
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
+	// Integration invocation method (handled by Ocean integrations)
+	IntegrationMethod ActionIntegrationMethodPtrOutput `pulumi:"integrationMethod"`
 	// Kafka invocation method
 	KafkaMethod ActionKafkaMethodPtrOutput `pulumi:"kafkaMethod"`
 	// Publish action
@@ -112,6 +114,8 @@ type actionState struct {
 	Icon *string `pulumi:"icon"`
 	// Identifier
 	Identifier *string `pulumi:"identifier"`
+	// Integration invocation method (handled by Ocean integrations)
+	IntegrationMethod *ActionIntegrationMethod `pulumi:"integrationMethod"`
 	// Kafka invocation method
 	KafkaMethod *ActionKafkaMethod `pulumi:"kafkaMethod"`
 	// Publish action
@@ -153,6 +157,8 @@ type ActionState struct {
 	Icon pulumi.StringPtrInput
 	// Identifier
 	Identifier pulumi.StringPtrInput
+	// Integration invocation method (handled by Ocean integrations)
+	IntegrationMethod ActionIntegrationMethodPtrInput
 	// Kafka invocation method
 	KafkaMethod ActionKafkaMethodPtrInput
 	// Publish action
@@ -198,6 +204,8 @@ type actionArgs struct {
 	Icon *string `pulumi:"icon"`
 	// Identifier
 	Identifier string `pulumi:"identifier"`
+	// Integration invocation method (handled by Ocean integrations)
+	IntegrationMethod *ActionIntegrationMethod `pulumi:"integrationMethod"`
 	// Kafka invocation method
 	KafkaMethod *ActionKafkaMethod `pulumi:"kafkaMethod"`
 	// Publish action
@@ -240,6 +248,8 @@ type ActionArgs struct {
 	Icon pulumi.StringPtrInput
 	// Identifier
 	Identifier pulumi.StringInput
+	// Integration invocation method (handled by Ocean integrations)
+	IntegrationMethod ActionIntegrationMethodPtrInput
 	// Kafka invocation method
 	KafkaMethod ActionKafkaMethodPtrInput
 	// Publish action
@@ -398,6 +408,11 @@ func (o ActionOutput) Icon() pulumi.StringPtrOutput {
 // Identifier
 func (o ActionOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Integration invocation method (handled by Ocean integrations)
+func (o ActionOutput) IntegrationMethod() ActionIntegrationMethodPtrOutput {
+	return o.ApplyT(func(v *Action) ActionIntegrationMethodPtrOutput { return v.IntegrationMethod }).(ActionIntegrationMethodPtrOutput)
 }
 
 // Kafka invocation method

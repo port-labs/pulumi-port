@@ -45,6 +45,10 @@ __all__ = [
     'ActionGithubMethodArgsDict',
     'ActionGitlabMethodArgs',
     'ActionGitlabMethodArgsDict',
+    'ActionIntegrationMethodArgs',
+    'ActionIntegrationMethodArgsDict',
+    'ActionIntegrationMethodIntegrationActionExecutionPropertiesArgs',
+    'ActionIntegrationMethodIntegrationActionExecutionPropertiesArgsDict',
     'ActionKafkaMethodArgs',
     'ActionKafkaMethodArgsDict',
     'ActionPermissionsPermissionsArgs',
@@ -685,13 +689,13 @@ class ActionAutomationTriggerEntityUpdatedEventArgs:
 
 if not MYPY:
     class ActionAutomationTriggerJqConditionArgsDict(TypedDict):
-        expressions: pulumi.Input[Sequence[pulumi.Input[str]]]
-        """
-        The jq expressions of the condition
-        """
         combinator: NotRequired[pulumi.Input[str]]
         """
         The combinator of the condition
+        """
+        expressions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The jq expressions of the condition. Can be an empty array to indicate no conditions.
         """
 elif False:
     ActionAutomationTriggerJqConditionArgsDict: TypeAlias = Mapping[str, Any]
@@ -699,27 +703,16 @@ elif False:
 @pulumi.input_type
 class ActionAutomationTriggerJqConditionArgs:
     def __init__(__self__, *,
-                 expressions: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 combinator: Optional[pulumi.Input[str]] = None):
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 expressions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] expressions: The jq expressions of the condition
         :param pulumi.Input[str] combinator: The combinator of the condition
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] expressions: The jq expressions of the condition. Can be an empty array to indicate no conditions.
         """
-        pulumi.set(__self__, "expressions", expressions)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
-
-    @property
-    @pulumi.getter
-    def expressions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        The jq expressions of the condition
-        """
-        return pulumi.get(self, "expressions")
-
-    @expressions.setter
-    def expressions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "expressions", value)
+        if expressions is not None:
+            pulumi.set(__self__, "expressions", expressions)
 
     @property
     @pulumi.getter
@@ -732,6 +725,18 @@ class ActionAutomationTriggerJqConditionArgs:
     @combinator.setter
     def combinator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def expressions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The jq expressions of the condition. Can be an empty array to indicate no conditions.
+        """
+        return pulumi.get(self, "expressions")
+
+    @expressions.setter
+    def expressions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "expressions", value)
 
 
 if not MYPY:
@@ -1092,6 +1097,177 @@ class ActionGitlabMethodArgs:
     @pipeline_variables.setter
     def pipeline_variables(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pipeline_variables", value)
+
+
+if not MYPY:
+    class ActionIntegrationMethodArgsDict(TypedDict):
+        installation_id: pulumi.Input[str]
+        """
+        The installation ID of the integration
+        """
+        integration_action_execution_properties: pulumi.Input['ActionIntegrationMethodIntegrationActionExecutionPropertiesArgsDict']
+        """
+        Execution properties for the integration action
+        """
+        integration_action_type: pulumi.Input[str]
+        """
+        The type of integration action (e.g., 'dispatch_workflow')
+        """
+elif False:
+    ActionIntegrationMethodArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ActionIntegrationMethodArgs:
+    def __init__(__self__, *,
+                 installation_id: pulumi.Input[str],
+                 integration_action_execution_properties: pulumi.Input['ActionIntegrationMethodIntegrationActionExecutionPropertiesArgs'],
+                 integration_action_type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] installation_id: The installation ID of the integration
+        :param pulumi.Input['ActionIntegrationMethodIntegrationActionExecutionPropertiesArgs'] integration_action_execution_properties: Execution properties for the integration action
+        :param pulumi.Input[str] integration_action_type: The type of integration action (e.g., 'dispatch_workflow')
+        """
+        pulumi.set(__self__, "installation_id", installation_id)
+        pulumi.set(__self__, "integration_action_execution_properties", integration_action_execution_properties)
+        pulumi.set(__self__, "integration_action_type", integration_action_type)
+
+    @property
+    @pulumi.getter(name="installationId")
+    def installation_id(self) -> pulumi.Input[str]:
+        """
+        The installation ID of the integration
+        """
+        return pulumi.get(self, "installation_id")
+
+    @installation_id.setter
+    def installation_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "installation_id", value)
+
+    @property
+    @pulumi.getter(name="integrationActionExecutionProperties")
+    def integration_action_execution_properties(self) -> pulumi.Input['ActionIntegrationMethodIntegrationActionExecutionPropertiesArgs']:
+        """
+        Execution properties for the integration action
+        """
+        return pulumi.get(self, "integration_action_execution_properties")
+
+    @integration_action_execution_properties.setter
+    def integration_action_execution_properties(self, value: pulumi.Input['ActionIntegrationMethodIntegrationActionExecutionPropertiesArgs']):
+        pulumi.set(self, "integration_action_execution_properties", value)
+
+    @property
+    @pulumi.getter(name="integrationActionType")
+    def integration_action_type(self) -> pulumi.Input[str]:
+        """
+        The type of integration action (e.g., 'dispatch_workflow')
+        """
+        return pulumi.get(self, "integration_action_type")
+
+    @integration_action_type.setter
+    def integration_action_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "integration_action_type", value)
+
+
+if not MYPY:
+    class ActionIntegrationMethodIntegrationActionExecutionPropertiesArgsDict(TypedDict):
+        org: pulumi.Input[str]
+        """
+        The organization for the integration action
+        """
+        repo: pulumi.Input[str]
+        """
+        The repository for the integration action
+        """
+        workflow: pulumi.Input[str]
+        """
+        The workflow for the integration action
+        """
+        report_workflow_status: NotRequired[pulumi.Input[str]]
+        """
+        Whether to report the workflow status
+        """
+        workflow_inputs: NotRequired[pulumi.Input[str]]
+elif False:
+    ActionIntegrationMethodIntegrationActionExecutionPropertiesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ActionIntegrationMethodIntegrationActionExecutionPropertiesArgs:
+    def __init__(__self__, *,
+                 org: pulumi.Input[str],
+                 repo: pulumi.Input[str],
+                 workflow: pulumi.Input[str],
+                 report_workflow_status: Optional[pulumi.Input[str]] = None,
+                 workflow_inputs: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] org: The organization for the integration action
+        :param pulumi.Input[str] repo: The repository for the integration action
+        :param pulumi.Input[str] workflow: The workflow for the integration action
+        :param pulumi.Input[str] report_workflow_status: Whether to report the workflow status
+        """
+        pulumi.set(__self__, "org", org)
+        pulumi.set(__self__, "repo", repo)
+        pulumi.set(__self__, "workflow", workflow)
+        if report_workflow_status is not None:
+            pulumi.set(__self__, "report_workflow_status", report_workflow_status)
+        if workflow_inputs is not None:
+            pulumi.set(__self__, "workflow_inputs", workflow_inputs)
+
+    @property
+    @pulumi.getter
+    def org(self) -> pulumi.Input[str]:
+        """
+        The organization for the integration action
+        """
+        return pulumi.get(self, "org")
+
+    @org.setter
+    def org(self, value: pulumi.Input[str]):
+        pulumi.set(self, "org", value)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> pulumi.Input[str]:
+        """
+        The repository for the integration action
+        """
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repo", value)
+
+    @property
+    @pulumi.getter
+    def workflow(self) -> pulumi.Input[str]:
+        """
+        The workflow for the integration action
+        """
+        return pulumi.get(self, "workflow")
+
+    @workflow.setter
+    def workflow(self, value: pulumi.Input[str]):
+        pulumi.set(self, "workflow", value)
+
+    @property
+    @pulumi.getter(name="reportWorkflowStatus")
+    def report_workflow_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to report the workflow status
+        """
+        return pulumi.get(self, "report_workflow_status")
+
+    @report_workflow_status.setter
+    def report_workflow_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "report_workflow_status", value)
+
+    @property
+    @pulumi.getter(name="workflowInputs")
+    def workflow_inputs(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "workflow_inputs")
+
+    @workflow_inputs.setter
+    def workflow_inputs(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workflow_inputs", value)
 
 
 if not MYPY:

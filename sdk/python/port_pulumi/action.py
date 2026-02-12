@@ -32,6 +32,7 @@ class ActionArgs:
                  github_method: Optional[pulumi.Input['ActionGithubMethodArgs']] = None,
                  gitlab_method: Optional[pulumi.Input['ActionGitlabMethodArgs']] = None,
                  icon: Optional[pulumi.Input[str]] = None,
+                 integration_method: Optional[pulumi.Input['ActionIntegrationMethodArgs']] = None,
                  kafka_method: Optional[pulumi.Input['ActionKafkaMethodArgs']] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
                  required_approval: Optional[pulumi.Input[str]] = None,
@@ -52,6 +53,7 @@ class ActionArgs:
         :param pulumi.Input['ActionGithubMethodArgs'] github_method: GitHub invocation method
         :param pulumi.Input['ActionGitlabMethodArgs'] gitlab_method: Gitlab invocation method
         :param pulumi.Input[str] icon: Icon
+        :param pulumi.Input['ActionIntegrationMethodArgs'] integration_method: Integration invocation method (handled by Ocean integrations)
         :param pulumi.Input['ActionKafkaMethodArgs'] kafka_method: Kafka invocation method
         :param pulumi.Input[bool] publish: Publish action
         :param pulumi.Input[str] required_approval: Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
@@ -84,6 +86,8 @@ class ActionArgs:
             pulumi.set(__self__, "gitlab_method", gitlab_method)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
+        if integration_method is not None:
+            pulumi.set(__self__, "integration_method", integration_method)
         if kafka_method is not None:
             pulumi.set(__self__, "kafka_method", kafka_method)
         if publish is not None:
@@ -233,6 +237,18 @@ class ActionArgs:
         pulumi.set(self, "icon", value)
 
     @property
+    @pulumi.getter(name="integrationMethod")
+    def integration_method(self) -> Optional[pulumi.Input['ActionIntegrationMethodArgs']]:
+        """
+        Integration invocation method (handled by Ocean integrations)
+        """
+        return pulumi.get(self, "integration_method")
+
+    @integration_method.setter
+    def integration_method(self, value: Optional[pulumi.Input['ActionIntegrationMethodArgs']]):
+        pulumi.set(self, "integration_method", value)
+
+    @property
     @pulumi.getter(name="kafkaMethod")
     def kafka_method(self) -> Optional[pulumi.Input['ActionKafkaMethodArgs']]:
         """
@@ -331,6 +347,7 @@ class _ActionState:
                  gitlab_method: Optional[pulumi.Input['ActionGitlabMethodArgs']] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 integration_method: Optional[pulumi.Input['ActionIntegrationMethodArgs']] = None,
                  kafka_method: Optional[pulumi.Input['ActionKafkaMethodArgs']] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
                  required_approval: Optional[pulumi.Input[str]] = None,
@@ -351,6 +368,7 @@ class _ActionState:
         :param pulumi.Input['ActionGitlabMethodArgs'] gitlab_method: Gitlab invocation method
         :param pulumi.Input[str] icon: Icon
         :param pulumi.Input[str] identifier: Identifier
+        :param pulumi.Input['ActionIntegrationMethodArgs'] integration_method: Integration invocation method (handled by Ocean integrations)
         :param pulumi.Input['ActionKafkaMethodArgs'] kafka_method: Kafka invocation method
         :param pulumi.Input[bool] publish: Publish action
         :param pulumi.Input[str] required_approval: Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
@@ -384,6 +402,8 @@ class _ActionState:
             pulumi.set(__self__, "icon", icon)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
+        if integration_method is not None:
+            pulumi.set(__self__, "integration_method", integration_method)
         if kafka_method is not None:
             pulumi.set(__self__, "kafka_method", kafka_method)
         if publish is not None:
@@ -533,6 +553,18 @@ class _ActionState:
         pulumi.set(self, "identifier", value)
 
     @property
+    @pulumi.getter(name="integrationMethod")
+    def integration_method(self) -> Optional[pulumi.Input['ActionIntegrationMethodArgs']]:
+        """
+        Integration invocation method (handled by Ocean integrations)
+        """
+        return pulumi.get(self, "integration_method")
+
+    @integration_method.setter
+    def integration_method(self, value: Optional[pulumi.Input['ActionIntegrationMethodArgs']]):
+        pulumi.set(self, "integration_method", value)
+
+    @property
     @pulumi.getter(name="kafkaMethod")
     def kafka_method(self) -> Optional[pulumi.Input['ActionKafkaMethodArgs']]:
         """
@@ -633,6 +665,7 @@ class Action(pulumi.CustomResource):
                  gitlab_method: Optional[pulumi.Input[Union['ActionGitlabMethodArgs', 'ActionGitlabMethodArgsDict']]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 integration_method: Optional[pulumi.Input[Union['ActionIntegrationMethodArgs', 'ActionIntegrationMethodArgsDict']]] = None,
                  kafka_method: Optional[pulumi.Input[Union['ActionKafkaMethodArgs', 'ActionKafkaMethodArgsDict']]] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
                  required_approval: Optional[pulumi.Input[str]] = None,
@@ -656,6 +689,7 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[Union['ActionGitlabMethodArgs', 'ActionGitlabMethodArgsDict']] gitlab_method: Gitlab invocation method
         :param pulumi.Input[str] icon: Icon
         :param pulumi.Input[str] identifier: Identifier
+        :param pulumi.Input[Union['ActionIntegrationMethodArgs', 'ActionIntegrationMethodArgsDict']] integration_method: Integration invocation method (handled by Ocean integrations)
         :param pulumi.Input[Union['ActionKafkaMethodArgs', 'ActionKafkaMethodArgsDict']] kafka_method: Kafka invocation method
         :param pulumi.Input[bool] publish: Publish action
         :param pulumi.Input[str] required_approval: Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
@@ -698,6 +732,7 @@ class Action(pulumi.CustomResource):
                  gitlab_method: Optional[pulumi.Input[Union['ActionGitlabMethodArgs', 'ActionGitlabMethodArgsDict']]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 integration_method: Optional[pulumi.Input[Union['ActionIntegrationMethodArgs', 'ActionIntegrationMethodArgsDict']]] = None,
                  kafka_method: Optional[pulumi.Input[Union['ActionKafkaMethodArgs', 'ActionKafkaMethodArgsDict']]] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
                  required_approval: Optional[pulumi.Input[str]] = None,
@@ -727,6 +762,7 @@ class Action(pulumi.CustomResource):
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
+            __props__.__dict__["integration_method"] = integration_method
             __props__.__dict__["kafka_method"] = kafka_method
             __props__.__dict__["publish"] = publish
             __props__.__dict__["required_approval"] = required_approval
@@ -755,6 +791,7 @@ class Action(pulumi.CustomResource):
             gitlab_method: Optional[pulumi.Input[Union['ActionGitlabMethodArgs', 'ActionGitlabMethodArgsDict']]] = None,
             icon: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
+            integration_method: Optional[pulumi.Input[Union['ActionIntegrationMethodArgs', 'ActionIntegrationMethodArgsDict']]] = None,
             kafka_method: Optional[pulumi.Input[Union['ActionKafkaMethodArgs', 'ActionKafkaMethodArgsDict']]] = None,
             publish: Optional[pulumi.Input[bool]] = None,
             required_approval: Optional[pulumi.Input[str]] = None,
@@ -780,6 +817,7 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[Union['ActionGitlabMethodArgs', 'ActionGitlabMethodArgsDict']] gitlab_method: Gitlab invocation method
         :param pulumi.Input[str] icon: Icon
         :param pulumi.Input[str] identifier: Identifier
+        :param pulumi.Input[Union['ActionIntegrationMethodArgs', 'ActionIntegrationMethodArgsDict']] integration_method: Integration invocation method (handled by Ocean integrations)
         :param pulumi.Input[Union['ActionKafkaMethodArgs', 'ActionKafkaMethodArgsDict']] kafka_method: Kafka invocation method
         :param pulumi.Input[bool] publish: Publish action
         :param pulumi.Input[str] required_approval: Require approval before invoking the action. Can be one of "true", "false", "ANY" or "ALL"
@@ -803,6 +841,7 @@ class Action(pulumi.CustomResource):
         __props__.__dict__["gitlab_method"] = gitlab_method
         __props__.__dict__["icon"] = icon
         __props__.__dict__["identifier"] = identifier
+        __props__.__dict__["integration_method"] = integration_method
         __props__.__dict__["kafka_method"] = kafka_method
         __props__.__dict__["publish"] = publish
         __props__.__dict__["required_approval"] = required_approval
@@ -900,6 +939,14 @@ class Action(pulumi.CustomResource):
         Identifier
         """
         return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter(name="integrationMethod")
+    def integration_method(self) -> pulumi.Output[Optional['outputs.ActionIntegrationMethod']]:
+        """
+        Integration invocation method (handled by Ocean integrations)
+        """
+        return pulumi.get(self, "integration_method")
 
     @property
     @pulumi.getter(name="kafkaMethod")
