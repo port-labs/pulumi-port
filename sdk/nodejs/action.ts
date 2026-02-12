@@ -81,6 +81,10 @@ export class Action extends pulumi.CustomResource {
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
+     * Integration invocation method (handled by Ocean integrations)
+     */
+    public readonly integrationMethod!: pulumi.Output<outputs.ActionIntegrationMethod | undefined>;
+    /**
      * Kafka invocation method
      */
     public readonly kafkaMethod!: pulumi.Output<outputs.ActionKafkaMethod | undefined>;
@@ -133,6 +137,7 @@ export class Action extends pulumi.CustomResource {
             resourceInputs["gitlabMethod"] = state ? state.gitlabMethod : undefined;
             resourceInputs["icon"] = state ? state.icon : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
+            resourceInputs["integrationMethod"] = state ? state.integrationMethod : undefined;
             resourceInputs["kafkaMethod"] = state ? state.kafkaMethod : undefined;
             resourceInputs["publish"] = state ? state.publish : undefined;
             resourceInputs["requiredApproval"] = state ? state.requiredApproval : undefined;
@@ -156,6 +161,7 @@ export class Action extends pulumi.CustomResource {
             resourceInputs["gitlabMethod"] = args ? args.gitlabMethod : undefined;
             resourceInputs["icon"] = args ? args.icon : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
+            resourceInputs["integrationMethod"] = args ? args.integrationMethod : undefined;
             resourceInputs["kafkaMethod"] = args ? args.kafkaMethod : undefined;
             resourceInputs["publish"] = args ? args.publish : undefined;
             resourceInputs["requiredApproval"] = args ? args.requiredApproval : undefined;
@@ -219,6 +225,10 @@ export interface ActionState {
      * Identifier
      */
     identifier?: pulumi.Input<string>;
+    /**
+     * Integration invocation method (handled by Ocean integrations)
+     */
+    integrationMethod?: pulumi.Input<inputs.ActionIntegrationMethod>;
     /**
      * Kafka invocation method
      */
@@ -299,6 +309,10 @@ export interface ActionArgs {
      * Identifier
      */
     identifier: pulumi.Input<string>;
+    /**
+     * Integration invocation method (handled by Ocean integrations)
+     */
+    integrationMethod?: pulumi.Input<inputs.ActionIntegrationMethod>;
     /**
      * Kafka invocation method
      */

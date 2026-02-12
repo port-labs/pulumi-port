@@ -99,9 +99,9 @@ export interface ActionAutomationTriggerJqCondition {
      */
     combinator: string;
     /**
-     * The jq expressions of the condition
+     * The jq expressions of the condition. Can be an empty array to indicate no conditions.
      */
-    expressions: string[];
+    expressions?: string[];
 }
 
 export interface ActionAutomationTriggerRunCreatedEvent {
@@ -175,6 +175,41 @@ export interface ActionGitlabMethod {
      * Required when selecting type GITLAB. The GitLab project name that the workflow belongs to
      */
     projectName: string;
+}
+
+export interface ActionIntegrationMethod {
+    /**
+     * The installation ID of the integration
+     */
+    installationId: string;
+    /**
+     * Execution properties for the integration action
+     */
+    integrationActionExecutionProperties: outputs.ActionIntegrationMethodIntegrationActionExecutionProperties;
+    /**
+     * The type of integration action (e.g., 'dispatch_workflow')
+     */
+    integrationActionType: string;
+}
+
+export interface ActionIntegrationMethodIntegrationActionExecutionProperties {
+    /**
+     * The organization for the integration action
+     */
+    org: string;
+    /**
+     * The repository for the integration action
+     */
+    repo: string;
+    /**
+     * Whether to report the workflow status
+     */
+    reportWorkflowStatus?: string;
+    /**
+     * The workflow for the integration action
+     */
+    workflow: string;
+    workflowInputs?: string;
 }
 
 export interface ActionKafkaMethod {

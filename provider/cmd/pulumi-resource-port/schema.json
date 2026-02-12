@@ -214,18 +214,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The jq expressions of the condition\n"
+                    "description": "The jq expressions of the condition. Can be an empty array to indicate no conditions.\n"
                 }
             },
             "type": "object",
-            "required": [
-                "expressions"
-            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "combinator",
-                        "expressions"
+                        "combinator"
                     ]
                 }
             }
@@ -342,6 +338,57 @@
             "required": [
                 "groupName",
                 "projectName"
+            ]
+        },
+        "port:index/ActionIntegrationMethod:ActionIntegrationMethod": {
+            "properties": {
+                "installationId": {
+                    "type": "string",
+                    "description": "The installation ID of the integration\n"
+                },
+                "integrationActionExecutionProperties": {
+                    "$ref": "#/types/port:index/ActionIntegrationMethodIntegrationActionExecutionProperties:ActionIntegrationMethodIntegrationActionExecutionProperties",
+                    "description": "Execution properties for the integration action\n"
+                },
+                "integrationActionType": {
+                    "type": "string",
+                    "description": "The type of integration action (e.g., 'dispatch_workflow')\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "installationId",
+                "integrationActionExecutionProperties",
+                "integrationActionType"
+            ]
+        },
+        "port:index/ActionIntegrationMethodIntegrationActionExecutionProperties:ActionIntegrationMethodIntegrationActionExecutionProperties": {
+            "properties": {
+                "org": {
+                    "type": "string",
+                    "description": "The organization for the integration action\n"
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The repository for the integration action\n"
+                },
+                "reportWorkflowStatus": {
+                    "type": "string",
+                    "description": "Whether to report the workflow status\n"
+                },
+                "workflow": {
+                    "type": "string",
+                    "description": "The workflow for the integration action\n"
+                },
+                "workflowInputs": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "org",
+                "repo",
+                "workflow"
             ]
         },
         "port:index/ActionKafkaMethod:ActionKafkaMethod": {
@@ -4045,6 +4092,10 @@
                     "type": "string",
                     "description": "Identifier\n"
                 },
+                "integrationMethod": {
+                    "$ref": "#/types/port:index/ActionIntegrationMethod:ActionIntegrationMethod",
+                    "description": "Integration invocation method (handled by Ocean integrations)\n"
+                },
                 "kafkaMethod": {
                     "$ref": "#/types/port:index/ActionKafkaMethod:ActionKafkaMethod",
                     "description": "Kafka invocation method\n"
@@ -4123,6 +4174,10 @@
                 "identifier": {
                     "type": "string",
                     "description": "Identifier\n"
+                },
+                "integrationMethod": {
+                    "$ref": "#/types/port:index/ActionIntegrationMethod:ActionIntegrationMethod",
+                    "description": "Integration invocation method (handled by Ocean integrations)\n"
                 },
                 "kafkaMethod": {
                     "$ref": "#/types/port:index/ActionKafkaMethod:ActionKafkaMethod",
@@ -4203,6 +4258,10 @@
                     "identifier": {
                         "type": "string",
                         "description": "Identifier\n"
+                    },
+                    "integrationMethod": {
+                        "$ref": "#/types/port:index/ActionIntegrationMethod:ActionIntegrationMethod",
+                        "description": "Integration invocation method (handled by Ocean integrations)\n"
                     },
                     "kafkaMethod": {
                         "$ref": "#/types/port:index/ActionKafkaMethod:ActionKafkaMethod",

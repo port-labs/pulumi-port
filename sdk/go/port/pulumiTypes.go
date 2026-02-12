@@ -1274,7 +1274,7 @@ func (o ActionAutomationTriggerEntityUpdatedEventPtrOutput) BlueprintIdentifier(
 type ActionAutomationTriggerJqCondition struct {
 	// The combinator of the condition
 	Combinator *string `pulumi:"combinator"`
-	// The jq expressions of the condition
+	// The jq expressions of the condition. Can be an empty array to indicate no conditions.
 	Expressions []string `pulumi:"expressions"`
 }
 
@@ -1292,7 +1292,7 @@ type ActionAutomationTriggerJqConditionInput interface {
 type ActionAutomationTriggerJqConditionArgs struct {
 	// The combinator of the condition
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
-	// The jq expressions of the condition
+	// The jq expressions of the condition. Can be an empty array to indicate no conditions.
 	Expressions pulumi.StringArrayInput `pulumi:"expressions"`
 }
 
@@ -1378,7 +1378,7 @@ func (o ActionAutomationTriggerJqConditionOutput) Combinator() pulumi.StringPtrO
 	return o.ApplyT(func(v ActionAutomationTriggerJqCondition) *string { return v.Combinator }).(pulumi.StringPtrOutput)
 }
 
-// The jq expressions of the condition
+// The jq expressions of the condition. Can be an empty array to indicate no conditions.
 func (o ActionAutomationTriggerJqConditionOutput) Expressions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ActionAutomationTriggerJqCondition) []string { return v.Expressions }).(pulumi.StringArrayOutput)
 }
@@ -1417,7 +1417,7 @@ func (o ActionAutomationTriggerJqConditionPtrOutput) Combinator() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The jq expressions of the condition
+// The jq expressions of the condition. Can be an empty array to indicate no conditions.
 func (o ActionAutomationTriggerJqConditionPtrOutput) Expressions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ActionAutomationTriggerJqCondition) []string {
 		if v == nil {
@@ -2424,6 +2424,394 @@ func (o ActionGitlabMethodPtrOutput) ProjectName() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.ProjectName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ActionIntegrationMethod struct {
+	// The installation ID of the integration
+	InstallationId string `pulumi:"installationId"`
+	// Execution properties for the integration action
+	IntegrationActionExecutionProperties ActionIntegrationMethodIntegrationActionExecutionProperties `pulumi:"integrationActionExecutionProperties"`
+	// The type of integration action (e.g., 'dispatch_workflow')
+	IntegrationActionType string `pulumi:"integrationActionType"`
+}
+
+// ActionIntegrationMethodInput is an input type that accepts ActionIntegrationMethodArgs and ActionIntegrationMethodOutput values.
+// You can construct a concrete instance of `ActionIntegrationMethodInput` via:
+//
+//	ActionIntegrationMethodArgs{...}
+type ActionIntegrationMethodInput interface {
+	pulumi.Input
+
+	ToActionIntegrationMethodOutput() ActionIntegrationMethodOutput
+	ToActionIntegrationMethodOutputWithContext(context.Context) ActionIntegrationMethodOutput
+}
+
+type ActionIntegrationMethodArgs struct {
+	// The installation ID of the integration
+	InstallationId pulumi.StringInput `pulumi:"installationId"`
+	// Execution properties for the integration action
+	IntegrationActionExecutionProperties ActionIntegrationMethodIntegrationActionExecutionPropertiesInput `pulumi:"integrationActionExecutionProperties"`
+	// The type of integration action (e.g., 'dispatch_workflow')
+	IntegrationActionType pulumi.StringInput `pulumi:"integrationActionType"`
+}
+
+func (ActionIntegrationMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionIntegrationMethod)(nil)).Elem()
+}
+
+func (i ActionIntegrationMethodArgs) ToActionIntegrationMethodOutput() ActionIntegrationMethodOutput {
+	return i.ToActionIntegrationMethodOutputWithContext(context.Background())
+}
+
+func (i ActionIntegrationMethodArgs) ToActionIntegrationMethodOutputWithContext(ctx context.Context) ActionIntegrationMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionIntegrationMethodOutput)
+}
+
+func (i ActionIntegrationMethodArgs) ToActionIntegrationMethodPtrOutput() ActionIntegrationMethodPtrOutput {
+	return i.ToActionIntegrationMethodPtrOutputWithContext(context.Background())
+}
+
+func (i ActionIntegrationMethodArgs) ToActionIntegrationMethodPtrOutputWithContext(ctx context.Context) ActionIntegrationMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionIntegrationMethodOutput).ToActionIntegrationMethodPtrOutputWithContext(ctx)
+}
+
+// ActionIntegrationMethodPtrInput is an input type that accepts ActionIntegrationMethodArgs, ActionIntegrationMethodPtr and ActionIntegrationMethodPtrOutput values.
+// You can construct a concrete instance of `ActionIntegrationMethodPtrInput` via:
+//
+//	        ActionIntegrationMethodArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionIntegrationMethodPtrInput interface {
+	pulumi.Input
+
+	ToActionIntegrationMethodPtrOutput() ActionIntegrationMethodPtrOutput
+	ToActionIntegrationMethodPtrOutputWithContext(context.Context) ActionIntegrationMethodPtrOutput
+}
+
+type actionIntegrationMethodPtrType ActionIntegrationMethodArgs
+
+func ActionIntegrationMethodPtr(v *ActionIntegrationMethodArgs) ActionIntegrationMethodPtrInput {
+	return (*actionIntegrationMethodPtrType)(v)
+}
+
+func (*actionIntegrationMethodPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionIntegrationMethod)(nil)).Elem()
+}
+
+func (i *actionIntegrationMethodPtrType) ToActionIntegrationMethodPtrOutput() ActionIntegrationMethodPtrOutput {
+	return i.ToActionIntegrationMethodPtrOutputWithContext(context.Background())
+}
+
+func (i *actionIntegrationMethodPtrType) ToActionIntegrationMethodPtrOutputWithContext(ctx context.Context) ActionIntegrationMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionIntegrationMethodPtrOutput)
+}
+
+type ActionIntegrationMethodOutput struct{ *pulumi.OutputState }
+
+func (ActionIntegrationMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionIntegrationMethod)(nil)).Elem()
+}
+
+func (o ActionIntegrationMethodOutput) ToActionIntegrationMethodOutput() ActionIntegrationMethodOutput {
+	return o
+}
+
+func (o ActionIntegrationMethodOutput) ToActionIntegrationMethodOutputWithContext(ctx context.Context) ActionIntegrationMethodOutput {
+	return o
+}
+
+func (o ActionIntegrationMethodOutput) ToActionIntegrationMethodPtrOutput() ActionIntegrationMethodPtrOutput {
+	return o.ToActionIntegrationMethodPtrOutputWithContext(context.Background())
+}
+
+func (o ActionIntegrationMethodOutput) ToActionIntegrationMethodPtrOutputWithContext(ctx context.Context) ActionIntegrationMethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionIntegrationMethod) *ActionIntegrationMethod {
+		return &v
+	}).(ActionIntegrationMethodPtrOutput)
+}
+
+// The installation ID of the integration
+func (o ActionIntegrationMethodOutput) InstallationId() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionIntegrationMethod) string { return v.InstallationId }).(pulumi.StringOutput)
+}
+
+// Execution properties for the integration action
+func (o ActionIntegrationMethodOutput) IntegrationActionExecutionProperties() ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput {
+	return o.ApplyT(func(v ActionIntegrationMethod) ActionIntegrationMethodIntegrationActionExecutionProperties {
+		return v.IntegrationActionExecutionProperties
+	}).(ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput)
+}
+
+// The type of integration action (e.g., 'dispatch_workflow')
+func (o ActionIntegrationMethodOutput) IntegrationActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionIntegrationMethod) string { return v.IntegrationActionType }).(pulumi.StringOutput)
+}
+
+type ActionIntegrationMethodPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionIntegrationMethodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionIntegrationMethod)(nil)).Elem()
+}
+
+func (o ActionIntegrationMethodPtrOutput) ToActionIntegrationMethodPtrOutput() ActionIntegrationMethodPtrOutput {
+	return o
+}
+
+func (o ActionIntegrationMethodPtrOutput) ToActionIntegrationMethodPtrOutputWithContext(ctx context.Context) ActionIntegrationMethodPtrOutput {
+	return o
+}
+
+func (o ActionIntegrationMethodPtrOutput) Elem() ActionIntegrationMethodOutput {
+	return o.ApplyT(func(v *ActionIntegrationMethod) ActionIntegrationMethod {
+		if v != nil {
+			return *v
+		}
+		var ret ActionIntegrationMethod
+		return ret
+	}).(ActionIntegrationMethodOutput)
+}
+
+// The installation ID of the integration
+func (o ActionIntegrationMethodPtrOutput) InstallationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionIntegrationMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstallationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Execution properties for the integration action
+func (o ActionIntegrationMethodPtrOutput) IntegrationActionExecutionProperties() ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput {
+	return o.ApplyT(func(v *ActionIntegrationMethod) *ActionIntegrationMethodIntegrationActionExecutionProperties {
+		if v == nil {
+			return nil
+		}
+		return &v.IntegrationActionExecutionProperties
+	}).(ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput)
+}
+
+// The type of integration action (e.g., 'dispatch_workflow')
+func (o ActionIntegrationMethodPtrOutput) IntegrationActionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionIntegrationMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IntegrationActionType
+	}).(pulumi.StringPtrOutput)
+}
+
+type ActionIntegrationMethodIntegrationActionExecutionProperties struct {
+	// The organization for the integration action
+	Org string `pulumi:"org"`
+	// The repository for the integration action
+	Repo string `pulumi:"repo"`
+	// Whether to report the workflow status
+	ReportWorkflowStatus *string `pulumi:"reportWorkflowStatus"`
+	// The workflow for the integration action
+	Workflow       string  `pulumi:"workflow"`
+	WorkflowInputs *string `pulumi:"workflowInputs"`
+}
+
+// ActionIntegrationMethodIntegrationActionExecutionPropertiesInput is an input type that accepts ActionIntegrationMethodIntegrationActionExecutionPropertiesArgs and ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput values.
+// You can construct a concrete instance of `ActionIntegrationMethodIntegrationActionExecutionPropertiesInput` via:
+//
+//	ActionIntegrationMethodIntegrationActionExecutionPropertiesArgs{...}
+type ActionIntegrationMethodIntegrationActionExecutionPropertiesInput interface {
+	pulumi.Input
+
+	ToActionIntegrationMethodIntegrationActionExecutionPropertiesOutput() ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput
+	ToActionIntegrationMethodIntegrationActionExecutionPropertiesOutputWithContext(context.Context) ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput
+}
+
+type ActionIntegrationMethodIntegrationActionExecutionPropertiesArgs struct {
+	// The organization for the integration action
+	Org pulumi.StringInput `pulumi:"org"`
+	// The repository for the integration action
+	Repo pulumi.StringInput `pulumi:"repo"`
+	// Whether to report the workflow status
+	ReportWorkflowStatus pulumi.StringPtrInput `pulumi:"reportWorkflowStatus"`
+	// The workflow for the integration action
+	Workflow       pulumi.StringInput    `pulumi:"workflow"`
+	WorkflowInputs pulumi.StringPtrInput `pulumi:"workflowInputs"`
+}
+
+func (ActionIntegrationMethodIntegrationActionExecutionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionIntegrationMethodIntegrationActionExecutionProperties)(nil)).Elem()
+}
+
+func (i ActionIntegrationMethodIntegrationActionExecutionPropertiesArgs) ToActionIntegrationMethodIntegrationActionExecutionPropertiesOutput() ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput {
+	return i.ToActionIntegrationMethodIntegrationActionExecutionPropertiesOutputWithContext(context.Background())
+}
+
+func (i ActionIntegrationMethodIntegrationActionExecutionPropertiesArgs) ToActionIntegrationMethodIntegrationActionExecutionPropertiesOutputWithContext(ctx context.Context) ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput)
+}
+
+func (i ActionIntegrationMethodIntegrationActionExecutionPropertiesArgs) ToActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput() ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput {
+	return i.ToActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ActionIntegrationMethodIntegrationActionExecutionPropertiesArgs) ToActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutputWithContext(ctx context.Context) ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput).ToActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutputWithContext(ctx)
+}
+
+// ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrInput is an input type that accepts ActionIntegrationMethodIntegrationActionExecutionPropertiesArgs, ActionIntegrationMethodIntegrationActionExecutionPropertiesPtr and ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput values.
+// You can construct a concrete instance of `ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrInput` via:
+//
+//	        ActionIntegrationMethodIntegrationActionExecutionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput() ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput
+	ToActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutputWithContext(context.Context) ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput
+}
+
+type actionIntegrationMethodIntegrationActionExecutionPropertiesPtrType ActionIntegrationMethodIntegrationActionExecutionPropertiesArgs
+
+func ActionIntegrationMethodIntegrationActionExecutionPropertiesPtr(v *ActionIntegrationMethodIntegrationActionExecutionPropertiesArgs) ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrInput {
+	return (*actionIntegrationMethodIntegrationActionExecutionPropertiesPtrType)(v)
+}
+
+func (*actionIntegrationMethodIntegrationActionExecutionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionIntegrationMethodIntegrationActionExecutionProperties)(nil)).Elem()
+}
+
+func (i *actionIntegrationMethodIntegrationActionExecutionPropertiesPtrType) ToActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput() ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput {
+	return i.ToActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *actionIntegrationMethodIntegrationActionExecutionPropertiesPtrType) ToActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutputWithContext(ctx context.Context) ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput)
+}
+
+type ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionIntegrationMethodIntegrationActionExecutionProperties)(nil)).Elem()
+}
+
+func (o ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput) ToActionIntegrationMethodIntegrationActionExecutionPropertiesOutput() ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput {
+	return o
+}
+
+func (o ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput) ToActionIntegrationMethodIntegrationActionExecutionPropertiesOutputWithContext(ctx context.Context) ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput {
+	return o
+}
+
+func (o ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput) ToActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput() ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput {
+	return o.ToActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput) ToActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutputWithContext(ctx context.Context) ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionIntegrationMethodIntegrationActionExecutionProperties) *ActionIntegrationMethodIntegrationActionExecutionProperties {
+		return &v
+	}).(ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput)
+}
+
+// The organization for the integration action
+func (o ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput) Org() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionIntegrationMethodIntegrationActionExecutionProperties) string { return v.Org }).(pulumi.StringOutput)
+}
+
+// The repository for the integration action
+func (o ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput) Repo() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionIntegrationMethodIntegrationActionExecutionProperties) string { return v.Repo }).(pulumi.StringOutput)
+}
+
+// Whether to report the workflow status
+func (o ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput) ReportWorkflowStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionIntegrationMethodIntegrationActionExecutionProperties) *string {
+		return v.ReportWorkflowStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workflow for the integration action
+func (o ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput) Workflow() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionIntegrationMethodIntegrationActionExecutionProperties) string { return v.Workflow }).(pulumi.StringOutput)
+}
+
+func (o ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput) WorkflowInputs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionIntegrationMethodIntegrationActionExecutionProperties) *string { return v.WorkflowInputs }).(pulumi.StringPtrOutput)
+}
+
+type ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionIntegrationMethodIntegrationActionExecutionProperties)(nil)).Elem()
+}
+
+func (o ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput) ToActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput() ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput {
+	return o
+}
+
+func (o ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput) ToActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutputWithContext(ctx context.Context) ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput {
+	return o
+}
+
+func (o ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput) Elem() ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput {
+	return o.ApplyT(func(v *ActionIntegrationMethodIntegrationActionExecutionProperties) ActionIntegrationMethodIntegrationActionExecutionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ActionIntegrationMethodIntegrationActionExecutionProperties
+		return ret
+	}).(ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput)
+}
+
+// The organization for the integration action
+func (o ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput) Org() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionIntegrationMethodIntegrationActionExecutionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Org
+	}).(pulumi.StringPtrOutput)
+}
+
+// The repository for the integration action
+func (o ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionIntegrationMethodIntegrationActionExecutionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to report the workflow status
+func (o ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput) ReportWorkflowStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionIntegrationMethodIntegrationActionExecutionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReportWorkflowStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workflow for the integration action
+func (o ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput) Workflow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionIntegrationMethodIntegrationActionExecutionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Workflow
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput) WorkflowInputs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionIntegrationMethodIntegrationActionExecutionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkflowInputs
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -21467,6 +21855,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionGithubMethodPtrInput)(nil)).Elem(), ActionGithubMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionGitlabMethodInput)(nil)).Elem(), ActionGitlabMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionGitlabMethodPtrInput)(nil)).Elem(), ActionGitlabMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionIntegrationMethodInput)(nil)).Elem(), ActionIntegrationMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionIntegrationMethodPtrInput)(nil)).Elem(), ActionIntegrationMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionIntegrationMethodIntegrationActionExecutionPropertiesInput)(nil)).Elem(), ActionIntegrationMethodIntegrationActionExecutionPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrInput)(nil)).Elem(), ActionIntegrationMethodIntegrationActionExecutionPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionKafkaMethodInput)(nil)).Elem(), ActionKafkaMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionKafkaMethodPtrInput)(nil)).Elem(), ActionKafkaMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionPermissionsPermissionsInput)(nil)).Elem(), ActionPermissionsPermissionsArgs{})
@@ -21727,6 +22119,10 @@ func init() {
 	pulumi.RegisterOutputType(ActionGithubMethodPtrOutput{})
 	pulumi.RegisterOutputType(ActionGitlabMethodOutput{})
 	pulumi.RegisterOutputType(ActionGitlabMethodPtrOutput{})
+	pulumi.RegisterOutputType(ActionIntegrationMethodOutput{})
+	pulumi.RegisterOutputType(ActionIntegrationMethodPtrOutput{})
+	pulumi.RegisterOutputType(ActionIntegrationMethodIntegrationActionExecutionPropertiesOutput{})
+	pulumi.RegisterOutputType(ActionIntegrationMethodIntegrationActionExecutionPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ActionKafkaMethodOutput{})
 	pulumi.RegisterOutputType(ActionKafkaMethodPtrOutput{})
 	pulumi.RegisterOutputType(ActionPermissionsPermissionsOutput{})
