@@ -11,8 +11,7 @@ permissions:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  NPM_REGISTRY_URL: https://registry.npmjs.org
   PROVIDER: port
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
@@ -122,12 +121,9 @@ jobs:
           password: ${{ env.PYPI_PASSWORD }}
           packages_dir: ${{github.workspace}}/sdk/python/bin/dist
       - if: ${{ matrix.language == 'nodejs' && env.PUBLISH_NPM == 'true' }}
-        uses: JS-DevTools/npm-publish@19c28f1ef146469e409470805ea4279d47c3d35c # tag=v3.1.1
-        with:
-          access: "public"
-          token: ${{ env.NPM_TOKEN }}
-          package: ${{github.workspace}}/sdk/nodejs/bin/package.json
-          provenance: true
+        name: Publish package to npm
+        working-directory: ${{github.workspace}}/sdk/nodejs/bin
+        run: npm publish --access public --provenance
     strategy:
       fail-fast: false
       matrix:
