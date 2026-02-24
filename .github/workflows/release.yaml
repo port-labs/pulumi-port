@@ -112,6 +112,7 @@ jobs:
               git diff
               exit 1
           fi
+
       - if: ${{ matrix.language == 'python' && env.PUBLISH_PYPI == 'true' }}
         name: Publish package to PyPI
         uses: pypa/gh-action-pypi-publish@76f52bc884231f62b9a034ebfe128415bbaabdfc # tag=v1.12.4
@@ -119,10 +120,16 @@ jobs:
           user: ${{ env.PYPI_USERNAME }}
           password: ${{ env.PYPI_PASSWORD }}
           packages_dir: ${{github.workspace}}/sdk/python/bin/dist
+
+      - if: ${{ matrix.language == 'nodejs' && env.PUBLISH_NPM == 'true' }}
+        name: Setup npm registry
+        run: echo "//registry.npmjs.org/:_authToken=" > ~/.npmrc
+  
       - if: ${{ matrix.language == 'nodejs' && env.PUBLISH_NPM == 'true' }}
         name: Publish package to npm
         working-directory: ${{github.workspace}}/sdk/nodejs/bin
         run: npm publish --provenance
+        
     strategy:
       fail-fast: false
       matrix:
