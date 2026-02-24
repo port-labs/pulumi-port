@@ -122,13 +122,12 @@ jobs:
           packages_dir: ${{github.workspace}}/sdk/python/bin/dist
 
       - if: ${{ matrix.language == 'nodejs' && env.PUBLISH_NPM == 'true' }}
-        name: Setup npm registry
-        run: echo "//registry.npmjs.org/:_authToken=" > ~/.npmrc
-  
+        name: Upgrade npm for OIDC support
+        run: npm install -g npm@latest
       - if: ${{ matrix.language == 'nodejs' && env.PUBLISH_NPM == 'true' }}
         name: Publish package to npm
         working-directory: ${{github.workspace}}/sdk/nodejs/bin
-        run: npm publish --provenance
+        run: npm publish --provenance --access public
         
     strategy:
       fail-fast: false
