@@ -28,6 +28,7 @@ class BlueprintArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  force_delete_entities: Optional[pulumi.Input[bool]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
+                 include_in_global_search: Optional[pulumi.Input[bool]] = None,
                  kafka_changelog_destination: Optional[pulumi.Input['BlueprintKafkaChangelogDestinationArgs']] = None,
                  mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintMirrorPropertiesArgs']]]] = None,
                  ownership: Optional[pulumi.Input['BlueprintOwnershipArgs']] = None,
@@ -44,6 +45,8 @@ class BlueprintArgs:
                blueprint
         :param pulumi.Input[str] description: The description of the blueprint
         :param pulumi.Input[str] icon: The icon of the blueprint
+        :param pulumi.Input[bool] include_in_global_search: Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+               `include_blueprints_in_global_search_by_default` setting applies.
         :param pulumi.Input['BlueprintKafkaChangelogDestinationArgs'] kafka_changelog_destination: The changelog destination of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintMirrorPropertiesArgs']]] mirror_properties: The mirror properties of the blueprint
         :param pulumi.Input['BlueprintOwnershipArgs'] ownership: Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
@@ -65,6 +68,8 @@ class BlueprintArgs:
             pulumi.set(__self__, "force_delete_entities", force_delete_entities)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
+        if include_in_global_search is not None:
+            pulumi.set(__self__, "include_in_global_search", include_in_global_search)
         if kafka_changelog_destination is not None:
             pulumi.set(__self__, "kafka_changelog_destination", kafka_changelog_destination)
         if mirror_properties is not None:
@@ -166,6 +171,19 @@ class BlueprintArgs:
         pulumi.set(self, "icon", value)
 
     @property
+    @pulumi.getter(name="includeInGlobalSearch")
+    def include_in_global_search(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+        `include_blueprints_in_global_search_by_default` setting applies.
+        """
+        return pulumi.get(self, "include_in_global_search")
+
+    @include_in_global_search.setter
+    def include_in_global_search(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_in_global_search", value)
+
+    @property
     @pulumi.getter(name="kafkaChangelogDestination")
     def kafka_changelog_destination(self) -> Optional[pulumi.Input['BlueprintKafkaChangelogDestinationArgs']]:
         """
@@ -263,6 +281,7 @@ class _BlueprintState:
                  force_delete_entities: Optional[pulumi.Input[bool]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 include_in_global_search: Optional[pulumi.Input[bool]] = None,
                  kafka_changelog_destination: Optional[pulumi.Input['BlueprintKafkaChangelogDestinationArgs']] = None,
                  mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintMirrorPropertiesArgs']]]] = None,
                  ownership: Optional[pulumi.Input['BlueprintOwnershipArgs']] = None,
@@ -283,6 +302,8 @@ class _BlueprintState:
         :param pulumi.Input[str] description: The description of the blueprint
         :param pulumi.Input[str] icon: The icon of the blueprint
         :param pulumi.Input[str] identifier: The identifier of the blueprint
+        :param pulumi.Input[bool] include_in_global_search: Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+               `include_blueprints_in_global_search_by_default` setting applies.
         :param pulumi.Input['BlueprintKafkaChangelogDestinationArgs'] kafka_changelog_destination: The changelog destination of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintMirrorPropertiesArgs']]] mirror_properties: The mirror properties of the blueprint
         :param pulumi.Input['BlueprintOwnershipArgs'] ownership: Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
@@ -311,6 +332,8 @@ class _BlueprintState:
             pulumi.set(__self__, "icon", icon)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
+        if include_in_global_search is not None:
+            pulumi.set(__self__, "include_in_global_search", include_in_global_search)
         if kafka_changelog_destination is not None:
             pulumi.set(__self__, "kafka_changelog_destination", kafka_changelog_destination)
         if mirror_properties is not None:
@@ -428,6 +451,19 @@ class _BlueprintState:
     @identifier.setter
     def identifier(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter(name="includeInGlobalSearch")
+    def include_in_global_search(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+        `include_blueprints_in_global_search_by_default` setting applies.
+        """
+        return pulumi.get(self, "include_in_global_search")
+
+    @include_in_global_search.setter
+    def include_in_global_search(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_in_global_search", value)
 
     @property
     @pulumi.getter(name="kafkaChangelogDestination")
@@ -563,6 +599,7 @@ class Blueprint(pulumi.CustomResource):
                  force_delete_entities: Optional[pulumi.Input[bool]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 include_in_global_search: Optional[pulumi.Input[bool]] = None,
                  kafka_changelog_destination: Optional[pulumi.Input[Union['BlueprintKafkaChangelogDestinationArgs', 'BlueprintKafkaChangelogDestinationArgsDict']]] = None,
                  mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintMirrorPropertiesArgs', 'BlueprintMirrorPropertiesArgsDict']]]]] = None,
                  ownership: Optional[pulumi.Input[Union['BlueprintOwnershipArgs', 'BlueprintOwnershipArgsDict']]] = None,
@@ -582,6 +619,8 @@ class Blueprint(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the blueprint
         :param pulumi.Input[str] icon: The icon of the blueprint
         :param pulumi.Input[str] identifier: The identifier of the blueprint
+        :param pulumi.Input[bool] include_in_global_search: Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+               `include_blueprints_in_global_search_by_default` setting applies.
         :param pulumi.Input[Union['BlueprintKafkaChangelogDestinationArgs', 'BlueprintKafkaChangelogDestinationArgsDict']] kafka_changelog_destination: The changelog destination of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintMirrorPropertiesArgs', 'BlueprintMirrorPropertiesArgsDict']]]] mirror_properties: The mirror properties of the blueprint
         :param pulumi.Input[Union['BlueprintOwnershipArgs', 'BlueprintOwnershipArgsDict']] ownership: Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
@@ -621,6 +660,7 @@ class Blueprint(pulumi.CustomResource):
                  force_delete_entities: Optional[pulumi.Input[bool]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 include_in_global_search: Optional[pulumi.Input[bool]] = None,
                  kafka_changelog_destination: Optional[pulumi.Input[Union['BlueprintKafkaChangelogDestinationArgs', 'BlueprintKafkaChangelogDestinationArgsDict']]] = None,
                  mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintMirrorPropertiesArgs', 'BlueprintMirrorPropertiesArgsDict']]]]] = None,
                  ownership: Optional[pulumi.Input[Union['BlueprintOwnershipArgs', 'BlueprintOwnershipArgsDict']]] = None,
@@ -646,6 +686,7 @@ class Blueprint(pulumi.CustomResource):
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
+            __props__.__dict__["include_in_global_search"] = include_in_global_search
             __props__.__dict__["kafka_changelog_destination"] = kafka_changelog_destination
             __props__.__dict__["mirror_properties"] = mirror_properties
             __props__.__dict__["ownership"] = ownership
@@ -678,6 +719,7 @@ class Blueprint(pulumi.CustomResource):
             force_delete_entities: Optional[pulumi.Input[bool]] = None,
             icon: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
+            include_in_global_search: Optional[pulumi.Input[bool]] = None,
             kafka_changelog_destination: Optional[pulumi.Input[Union['BlueprintKafkaChangelogDestinationArgs', 'BlueprintKafkaChangelogDestinationArgsDict']]] = None,
             mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintMirrorPropertiesArgs', 'BlueprintMirrorPropertiesArgsDict']]]]] = None,
             ownership: Optional[pulumi.Input[Union['BlueprintOwnershipArgs', 'BlueprintOwnershipArgsDict']]] = None,
@@ -703,6 +745,8 @@ class Blueprint(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the blueprint
         :param pulumi.Input[str] icon: The icon of the blueprint
         :param pulumi.Input[str] identifier: The identifier of the blueprint
+        :param pulumi.Input[bool] include_in_global_search: Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+               `include_blueprints_in_global_search_by_default` setting applies.
         :param pulumi.Input[Union['BlueprintKafkaChangelogDestinationArgs', 'BlueprintKafkaChangelogDestinationArgsDict']] kafka_changelog_destination: The changelog destination of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintMirrorPropertiesArgs', 'BlueprintMirrorPropertiesArgsDict']]]] mirror_properties: The mirror properties of the blueprint
         :param pulumi.Input[Union['BlueprintOwnershipArgs', 'BlueprintOwnershipArgsDict']] ownership: Optional ownership field for Blueprint. 'type' can be Inherited or Direct. If 'Inherited', then 'path' is required and
@@ -727,6 +771,7 @@ class Blueprint(pulumi.CustomResource):
         __props__.__dict__["force_delete_entities"] = force_delete_entities
         __props__.__dict__["icon"] = icon
         __props__.__dict__["identifier"] = identifier
+        __props__.__dict__["include_in_global_search"] = include_in_global_search
         __props__.__dict__["kafka_changelog_destination"] = kafka_changelog_destination
         __props__.__dict__["mirror_properties"] = mirror_properties
         __props__.__dict__["ownership"] = ownership
@@ -800,6 +845,15 @@ class Blueprint(pulumi.CustomResource):
         The identifier of the blueprint
         """
         return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter(name="includeInGlobalSearch")
+    def include_in_global_search(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+        `include_blueprints_in_global_search_by_default` setting applies.
+        """
+        return pulumi.get(self, "include_in_global_search")
 
     @property
     @pulumi.getter(name="kafkaChangelogDestination")
