@@ -23,6 +23,7 @@ class SystemBlueprintArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[str],
                  calculation_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input['SystemBlueprintCalculationPropertiesArgs']]]] = None,
+                 include_in_global_search: Optional[pulumi.Input[bool]] = None,
                  mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input['SystemBlueprintMirrorPropertiesArgs']]]] = None,
                  properties: Optional[pulumi.Input['SystemBlueprintPropertiesArgs']] = None,
                  relations: Optional[pulumi.Input[Mapping[str, pulumi.Input['SystemBlueprintRelationsArgs']]]] = None):
@@ -30,6 +31,8 @@ class SystemBlueprintArgs:
         The set of arguments for constructing a SystemBlueprint resource.
         :param pulumi.Input[str] identifier: Identifier of the system blueprint.
         :param pulumi.Input[Mapping[str, pulumi.Input['SystemBlueprintCalculationPropertiesArgs']]] calculation_properties: The calculation properties of the blueprint
+        :param pulumi.Input[bool] include_in_global_search: Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+               `include_blueprints_in_global_search_by_default` setting applies.
         :param pulumi.Input[Mapping[str, pulumi.Input['SystemBlueprintMirrorPropertiesArgs']]] mirror_properties: The mirror properties of the blueprint
         :param pulumi.Input['SystemBlueprintPropertiesArgs'] properties: The properties of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input['SystemBlueprintRelationsArgs']]] relations: The relations of the blueprint
@@ -37,6 +40,8 @@ class SystemBlueprintArgs:
         pulumi.set(__self__, "identifier", identifier)
         if calculation_properties is not None:
             pulumi.set(__self__, "calculation_properties", calculation_properties)
+        if include_in_global_search is not None:
+            pulumi.set(__self__, "include_in_global_search", include_in_global_search)
         if mirror_properties is not None:
             pulumi.set(__self__, "mirror_properties", mirror_properties)
         if properties is not None:
@@ -67,6 +72,19 @@ class SystemBlueprintArgs:
     @calculation_properties.setter
     def calculation_properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SystemBlueprintCalculationPropertiesArgs']]]]):
         pulumi.set(self, "calculation_properties", value)
+
+    @property
+    @pulumi.getter(name="includeInGlobalSearch")
+    def include_in_global_search(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+        `include_blueprints_in_global_search_by_default` setting applies.
+        """
+        return pulumi.get(self, "include_in_global_search")
+
+    @include_in_global_search.setter
+    def include_in_global_search(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_in_global_search", value)
 
     @property
     @pulumi.getter(name="mirrorProperties")
@@ -110,6 +128,7 @@ class _SystemBlueprintState:
     def __init__(__self__, *,
                  calculation_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input['SystemBlueprintCalculationPropertiesArgs']]]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 include_in_global_search: Optional[pulumi.Input[bool]] = None,
                  mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input['SystemBlueprintMirrorPropertiesArgs']]]] = None,
                  properties: Optional[pulumi.Input['SystemBlueprintPropertiesArgs']] = None,
                  relations: Optional[pulumi.Input[Mapping[str, pulumi.Input['SystemBlueprintRelationsArgs']]]] = None):
@@ -117,6 +136,8 @@ class _SystemBlueprintState:
         Input properties used for looking up and filtering SystemBlueprint resources.
         :param pulumi.Input[Mapping[str, pulumi.Input['SystemBlueprintCalculationPropertiesArgs']]] calculation_properties: The calculation properties of the blueprint
         :param pulumi.Input[str] identifier: Identifier of the system blueprint.
+        :param pulumi.Input[bool] include_in_global_search: Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+               `include_blueprints_in_global_search_by_default` setting applies.
         :param pulumi.Input[Mapping[str, pulumi.Input['SystemBlueprintMirrorPropertiesArgs']]] mirror_properties: The mirror properties of the blueprint
         :param pulumi.Input['SystemBlueprintPropertiesArgs'] properties: The properties of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input['SystemBlueprintRelationsArgs']]] relations: The relations of the blueprint
@@ -125,6 +146,8 @@ class _SystemBlueprintState:
             pulumi.set(__self__, "calculation_properties", calculation_properties)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
+        if include_in_global_search is not None:
+            pulumi.set(__self__, "include_in_global_search", include_in_global_search)
         if mirror_properties is not None:
             pulumi.set(__self__, "mirror_properties", mirror_properties)
         if properties is not None:
@@ -155,6 +178,19 @@ class _SystemBlueprintState:
     @identifier.setter
     def identifier(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter(name="includeInGlobalSearch")
+    def include_in_global_search(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+        `include_blueprints_in_global_search_by_default` setting applies.
+        """
+        return pulumi.get(self, "include_in_global_search")
+
+    @include_in_global_search.setter
+    def include_in_global_search(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_in_global_search", value)
 
     @property
     @pulumi.getter(name="mirrorProperties")
@@ -200,6 +236,7 @@ class SystemBlueprint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  calculation_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SystemBlueprintCalculationPropertiesArgs', 'SystemBlueprintCalculationPropertiesArgsDict']]]]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 include_in_global_search: Optional[pulumi.Input[bool]] = None,
                  mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SystemBlueprintMirrorPropertiesArgs', 'SystemBlueprintMirrorPropertiesArgsDict']]]]] = None,
                  properties: Optional[pulumi.Input[Union['SystemBlueprintPropertiesArgs', 'SystemBlueprintPropertiesArgsDict']]] = None,
                  relations: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SystemBlueprintRelationsArgs', 'SystemBlueprintRelationsArgsDict']]]]] = None,
@@ -210,6 +247,8 @@ class SystemBlueprint(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SystemBlueprintCalculationPropertiesArgs', 'SystemBlueprintCalculationPropertiesArgsDict']]]] calculation_properties: The calculation properties of the blueprint
         :param pulumi.Input[str] identifier: Identifier of the system blueprint.
+        :param pulumi.Input[bool] include_in_global_search: Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+               `include_blueprints_in_global_search_by_default` setting applies.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SystemBlueprintMirrorPropertiesArgs', 'SystemBlueprintMirrorPropertiesArgsDict']]]] mirror_properties: The mirror properties of the blueprint
         :param pulumi.Input[Union['SystemBlueprintPropertiesArgs', 'SystemBlueprintPropertiesArgsDict']] properties: The properties of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SystemBlueprintRelationsArgs', 'SystemBlueprintRelationsArgsDict']]]] relations: The relations of the blueprint
@@ -239,6 +278,7 @@ class SystemBlueprint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  calculation_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SystemBlueprintCalculationPropertiesArgs', 'SystemBlueprintCalculationPropertiesArgsDict']]]]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 include_in_global_search: Optional[pulumi.Input[bool]] = None,
                  mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SystemBlueprintMirrorPropertiesArgs', 'SystemBlueprintMirrorPropertiesArgsDict']]]]] = None,
                  properties: Optional[pulumi.Input[Union['SystemBlueprintPropertiesArgs', 'SystemBlueprintPropertiesArgsDict']]] = None,
                  relations: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SystemBlueprintRelationsArgs', 'SystemBlueprintRelationsArgsDict']]]]] = None,
@@ -255,6 +295,7 @@ class SystemBlueprint(pulumi.CustomResource):
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
+            __props__.__dict__["include_in_global_search"] = include_in_global_search
             __props__.__dict__["mirror_properties"] = mirror_properties
             __props__.__dict__["properties"] = properties
             __props__.__dict__["relations"] = relations
@@ -270,6 +311,7 @@ class SystemBlueprint(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             calculation_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SystemBlueprintCalculationPropertiesArgs', 'SystemBlueprintCalculationPropertiesArgsDict']]]]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
+            include_in_global_search: Optional[pulumi.Input[bool]] = None,
             mirror_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SystemBlueprintMirrorPropertiesArgs', 'SystemBlueprintMirrorPropertiesArgsDict']]]]] = None,
             properties: Optional[pulumi.Input[Union['SystemBlueprintPropertiesArgs', 'SystemBlueprintPropertiesArgsDict']]] = None,
             relations: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SystemBlueprintRelationsArgs', 'SystemBlueprintRelationsArgsDict']]]]] = None) -> 'SystemBlueprint':
@@ -282,6 +324,8 @@ class SystemBlueprint(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SystemBlueprintCalculationPropertiesArgs', 'SystemBlueprintCalculationPropertiesArgsDict']]]] calculation_properties: The calculation properties of the blueprint
         :param pulumi.Input[str] identifier: Identifier of the system blueprint.
+        :param pulumi.Input[bool] include_in_global_search: Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+               `include_blueprints_in_global_search_by_default` setting applies.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SystemBlueprintMirrorPropertiesArgs', 'SystemBlueprintMirrorPropertiesArgsDict']]]] mirror_properties: The mirror properties of the blueprint
         :param pulumi.Input[Union['SystemBlueprintPropertiesArgs', 'SystemBlueprintPropertiesArgsDict']] properties: The properties of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SystemBlueprintRelationsArgs', 'SystemBlueprintRelationsArgsDict']]]] relations: The relations of the blueprint
@@ -292,6 +336,7 @@ class SystemBlueprint(pulumi.CustomResource):
 
         __props__.__dict__["calculation_properties"] = calculation_properties
         __props__.__dict__["identifier"] = identifier
+        __props__.__dict__["include_in_global_search"] = include_in_global_search
         __props__.__dict__["mirror_properties"] = mirror_properties
         __props__.__dict__["properties"] = properties
         __props__.__dict__["relations"] = relations
@@ -312,6 +357,15 @@ class SystemBlueprint(pulumi.CustomResource):
         Identifier of the system blueprint.
         """
         return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter(name="includeInGlobalSearch")
+    def include_in_global_search(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+        `include_blueprints_in_global_search_by_default` setting applies.
+        """
+        return pulumi.get(self, "include_in_global_search")
 
     @property
     @pulumi.getter(name="mirrorProperties")

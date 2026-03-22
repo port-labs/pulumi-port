@@ -43,6 +43,11 @@ export class SystemBlueprint extends pulumi.CustomResource {
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
+     * Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+     * `includeBlueprintsInGlobalSearchByDefault` setting applies.
+     */
+    public readonly includeInGlobalSearch!: pulumi.Output<boolean | undefined>;
+    /**
      * The mirror properties of the blueprint
      */
     public readonly mirrorProperties!: pulumi.Output<{[key: string]: outputs.SystemBlueprintMirrorProperties} | undefined>;
@@ -70,6 +75,7 @@ export class SystemBlueprint extends pulumi.CustomResource {
             const state = argsOrState as SystemBlueprintState | undefined;
             resourceInputs["calculationProperties"] = state ? state.calculationProperties : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
+            resourceInputs["includeInGlobalSearch"] = state ? state.includeInGlobalSearch : undefined;
             resourceInputs["mirrorProperties"] = state ? state.mirrorProperties : undefined;
             resourceInputs["properties"] = state ? state.properties : undefined;
             resourceInputs["relations"] = state ? state.relations : undefined;
@@ -80,6 +86,7 @@ export class SystemBlueprint extends pulumi.CustomResource {
             }
             resourceInputs["calculationProperties"] = args ? args.calculationProperties : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
+            resourceInputs["includeInGlobalSearch"] = args ? args.includeInGlobalSearch : undefined;
             resourceInputs["mirrorProperties"] = args ? args.mirrorProperties : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["relations"] = args ? args.relations : undefined;
@@ -101,6 +108,11 @@ export interface SystemBlueprintState {
      * Identifier of the system blueprint.
      */
     identifier?: pulumi.Input<string>;
+    /**
+     * Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+     * `includeBlueprintsInGlobalSearchByDefault` setting applies.
+     */
+    includeInGlobalSearch?: pulumi.Input<boolean>;
     /**
      * The mirror properties of the blueprint
      */
@@ -127,6 +139,11 @@ export interface SystemBlueprintArgs {
      * Identifier of the system blueprint.
      */
     identifier: pulumi.Input<string>;
+    /**
+     * Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+     * `includeBlueprintsInGlobalSearchByDefault` setting applies.
+     */
+    includeInGlobalSearch?: pulumi.Input<boolean>;
     /**
      * The mirror properties of the blueprint
      */

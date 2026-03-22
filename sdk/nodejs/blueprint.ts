@@ -65,6 +65,11 @@ export class Blueprint extends pulumi.CustomResource {
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
+     * Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+     * `includeBlueprintsInGlobalSearchByDefault` setting applies.
+     */
+    public readonly includeInGlobalSearch!: pulumi.Output<boolean | undefined>;
+    /**
      * The changelog destination of the blueprint
      */
     public readonly kafkaChangelogDestination!: pulumi.Output<outputs.BlueprintKafkaChangelogDestination | undefined>;
@@ -129,6 +134,7 @@ export class Blueprint extends pulumi.CustomResource {
             resourceInputs["forceDeleteEntities"] = state ? state.forceDeleteEntities : undefined;
             resourceInputs["icon"] = state ? state.icon : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
+            resourceInputs["includeInGlobalSearch"] = state ? state.includeInGlobalSearch : undefined;
             resourceInputs["kafkaChangelogDestination"] = state ? state.kafkaChangelogDestination : undefined;
             resourceInputs["mirrorProperties"] = state ? state.mirrorProperties : undefined;
             resourceInputs["ownership"] = state ? state.ownership : undefined;
@@ -153,6 +159,7 @@ export class Blueprint extends pulumi.CustomResource {
             resourceInputs["forceDeleteEntities"] = args ? args.forceDeleteEntities : undefined;
             resourceInputs["icon"] = args ? args.icon : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
+            resourceInputs["includeInGlobalSearch"] = args ? args.includeInGlobalSearch : undefined;
             resourceInputs["kafkaChangelogDestination"] = args ? args.kafkaChangelogDestination : undefined;
             resourceInputs["mirrorProperties"] = args ? args.mirrorProperties : undefined;
             resourceInputs["ownership"] = args ? args.ownership : undefined;
@@ -205,6 +212,11 @@ export interface BlueprintState {
      * The identifier of the blueprint
      */
     identifier?: pulumi.Input<string>;
+    /**
+     * Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+     * `includeBlueprintsInGlobalSearchByDefault` setting applies.
+     */
+    includeInGlobalSearch?: pulumi.Input<boolean>;
     /**
      * The changelog destination of the blueprint
      */
@@ -276,6 +288,11 @@ export interface BlueprintArgs {
      * The identifier of the blueprint
      */
     identifier: pulumi.Input<string>;
+    /**
+     * Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+     * `includeBlueprintsInGlobalSearchByDefault` setting applies.
+     */
+    includeInGlobalSearch?: pulumi.Input<boolean>;
     /**
      * The changelog destination of the blueprint
      */
