@@ -4443,6 +4443,10 @@
                     "type": "string",
                     "description": "The identifier of the blueprint\n"
                 },
+                "includeInGlobalSearch": {
+                    "type": "boolean",
+                    "description": "Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's\n`include_blueprints_in_global_search_by_default` setting applies.\n"
+                },
                 "kafkaChangelogDestination": {
                     "$ref": "#/types/port:index/BlueprintKafkaChangelogDestination:BlueprintKafkaChangelogDestination",
                     "description": "The changelog destination of the blueprint\n"
@@ -4528,6 +4532,10 @@
                     "type": "string",
                     "description": "The identifier of the blueprint\n"
                 },
+                "includeInGlobalSearch": {
+                    "type": "boolean",
+                    "description": "Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's\n`include_blueprints_in_global_search_by_default` setting applies.\n"
+                },
                 "kafkaChangelogDestination": {
                     "$ref": "#/types/port:index/BlueprintKafkaChangelogDestination:BlueprintKafkaChangelogDestination",
                     "description": "The changelog destination of the blueprint\n"
@@ -4608,6 +4616,10 @@
                     "identifier": {
                         "type": "string",
                         "description": "The identifier of the blueprint\n"
+                    },
+                    "includeInGlobalSearch": {
+                        "type": "boolean",
+                        "description": "Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's\n`include_blueprints_in_global_search_by_default` setting applies.\n"
                     },
                     "kafkaChangelogDestination": {
                         "$ref": "#/types/port:index/BlueprintKafkaChangelogDestination:BlueprintKafkaChangelogDestination",
@@ -5031,6 +5043,33 @@
                     "webhookChangelogDestination": {
                         "$ref": "#/types/port:index/IntegrationWebhookChangelogDestination:IntegrationWebhookChangelogDestination",
                         "description": "The webhook changelog destination of the integration\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "port:index/organization:Organization": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the organization\n"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the organization\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Organization resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the organization\n"
                     }
                 },
                 "type": "object"
@@ -5505,6 +5544,10 @@
                     "type": "string",
                     "description": "Identifier of the system blueprint.\n"
                 },
+                "includeInGlobalSearch": {
+                    "type": "boolean",
+                    "description": "Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's\n`include_blueprints_in_global_search_by_default` setting applies.\n"
+                },
                 "mirrorProperties": {
                     "type": "object",
                     "additionalProperties": {
@@ -5538,6 +5581,10 @@
                 "identifier": {
                     "type": "string",
                     "description": "Identifier of the system blueprint.\n"
+                },
+                "includeInGlobalSearch": {
+                    "type": "boolean",
+                    "description": "Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's\n`include_blueprints_in_global_search_by_default` setting applies.\n"
                 },
                 "mirrorProperties": {
                     "type": "object",
@@ -5574,6 +5621,10 @@
                     "identifier": {
                         "type": "string",
                         "description": "Identifier of the system blueprint.\n"
+                    },
+                    "includeInGlobalSearch": {
+                        "type": "boolean",
+                        "description": "Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's\n`include_blueprints_in_global_search_by_default` setting applies.\n"
                     },
                     "mirrorProperties": {
                         "type": "object",
