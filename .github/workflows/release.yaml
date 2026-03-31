@@ -10,7 +10,7 @@ permissions:
   id-token: write
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.PORT_MACHINE_USER_GITHUB_TOKEN }}
   NPM_REGISTRY_URL: https://registry.npmjs.org
   PROVIDER: port
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
@@ -35,7 +35,7 @@ jobs:
       - name: Setup mise
         uses: jdx/mise-action@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PORT_MACHINE_USER_GITHUB_TOKEN }}
           cache_key: "mise-{{platform}}-{{file_hash}}"
           # only saving the cache in the prerequisites job
           cache_save: false
@@ -93,7 +93,7 @@ jobs:
       - name: Setup mise
         uses: jdx/mise-action@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PORT_MACHINE_USER_GITHUB_TOKEN }}
           cache_key: "mise-{{platform}}-{{file_hash}}"
           # only saving the cache in the prerequisites job
           cache_save: false
