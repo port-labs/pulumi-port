@@ -50,6 +50,11 @@ export type Integration = import("./integration").Integration;
 export const Integration: typeof import("./integration").Integration = null as any;
 utilities.lazyLoad(exports, ["Integration"], () => require("./integration"));
 
+export { OrganizationArgs, OrganizationState } from "./organization";
+export type Organization = import("./organization").Organization;
+export const Organization: typeof import("./organization").Organization = null as any;
+utilities.lazyLoad(exports, ["Organization"], () => require("./organization"));
+
 export { OrganizationSecretArgs, OrganizationSecretState } from "./organizationSecret";
 export type OrganizationSecret = import("./organizationSecret").OrganizationSecret;
 export const OrganizationSecret: typeof import("./organizationSecret").OrganizationSecret = null as any;
@@ -120,6 +125,8 @@ const _module = {
                 return new Folder(name, <any>undefined, { urn })
             case "port:index/integration:Integration":
                 return new Integration(name, <any>undefined, { urn })
+            case "port:index/organization:Organization":
+                return new Organization(name, <any>undefined, { urn })
             case "port:index/organizationSecret:OrganizationSecret":
                 return new OrganizationSecret(name, <any>undefined, { urn })
             case "port:index/page:Page":
@@ -147,6 +154,7 @@ pulumi.runtime.registerResourceModule("port", "index/blueprintPermissions", _mod
 pulumi.runtime.registerResourceModule("port", "index/entity", _module)
 pulumi.runtime.registerResourceModule("port", "index/folder", _module)
 pulumi.runtime.registerResourceModule("port", "index/integration", _module)
+pulumi.runtime.registerResourceModule("port", "index/organization", _module)
 pulumi.runtime.registerResourceModule("port", "index/organizationSecret", _module)
 pulumi.runtime.registerResourceModule("port", "index/page", _module)
 pulumi.runtime.registerResourceModule("port", "index/pagePermissions", _module)

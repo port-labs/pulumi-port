@@ -14,6 +14,7 @@ from .entity import *
 from .folder import *
 from .get_search import *
 from .integration import *
+from .organization import *
 from .organization_secret import *
 from .page import *
 from .page_permissions import *
@@ -97,6 +98,14 @@ _utilities.register(
   "fqn": "port_pulumi",
   "classes": {
    "port:index/integration:Integration": "Integration"
+  }
+ },
+ {
+  "pkg": "port",
+  "mod": "index/organization",
+  "fqn": "port_pulumi",
+  "classes": {
+   "port:index/organization:Organization": "Organization"
   }
  },
  {

@@ -258,7 +258,7 @@ class Folder(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def after(self) -> pulumi.Output[Optional[str]]:
+    def after(self) -> pulumi.Output[str]:
         """
         The identifier of the folder after which the folder should be placed
         """
