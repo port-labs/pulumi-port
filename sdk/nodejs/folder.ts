@@ -35,7 +35,7 @@ export class Folder extends pulumi.CustomResource {
     /**
      * The identifier of the folder after which the folder should be placed
      */
-    public readonly after!: pulumi.Output<string | undefined>;
+    public readonly after!: pulumi.Output<string>;
     /**
      * The identifier of the folder
      */

@@ -31,6 +31,9 @@ type Blueprint struct {
 	Icon pulumi.StringPtrOutput `pulumi:"icon"`
 	// The identifier of the blueprint
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
+	// Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+	// `includeBlueprintsInGlobalSearchByDefault` setting applies.
+	IncludeInGlobalSearch pulumi.BoolPtrOutput `pulumi:"includeInGlobalSearch"`
 	// The changelog destination of the blueprint
 	KafkaChangelogDestination BlueprintKafkaChangelogDestinationPtrOutput `pulumi:"kafkaChangelogDestination"`
 	// The mirror properties of the blueprint
@@ -108,6 +111,9 @@ type blueprintState struct {
 	Icon *string `pulumi:"icon"`
 	// The identifier of the blueprint
 	Identifier *string `pulumi:"identifier"`
+	// Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+	// `includeBlueprintsInGlobalSearchByDefault` setting applies.
+	IncludeInGlobalSearch *bool `pulumi:"includeInGlobalSearch"`
 	// The changelog destination of the blueprint
 	KafkaChangelogDestination *BlueprintKafkaChangelogDestination `pulumi:"kafkaChangelogDestination"`
 	// The mirror properties of the blueprint
@@ -150,6 +156,9 @@ type BlueprintState struct {
 	Icon pulumi.StringPtrInput
 	// The identifier of the blueprint
 	Identifier pulumi.StringPtrInput
+	// Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+	// `includeBlueprintsInGlobalSearchByDefault` setting applies.
+	IncludeInGlobalSearch pulumi.BoolPtrInput
 	// The changelog destination of the blueprint
 	KafkaChangelogDestination BlueprintKafkaChangelogDestinationPtrInput
 	// The mirror properties of the blueprint
@@ -192,6 +201,9 @@ type blueprintArgs struct {
 	Icon *string `pulumi:"icon"`
 	// The identifier of the blueprint
 	Identifier string `pulumi:"identifier"`
+	// Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+	// `includeBlueprintsInGlobalSearchByDefault` setting applies.
+	IncludeInGlobalSearch *bool `pulumi:"includeInGlobalSearch"`
 	// The changelog destination of the blueprint
 	KafkaChangelogDestination *BlueprintKafkaChangelogDestination `pulumi:"kafkaChangelogDestination"`
 	// The mirror properties of the blueprint
@@ -227,6 +239,9 @@ type BlueprintArgs struct {
 	Icon pulumi.StringPtrInput
 	// The identifier of the blueprint
 	Identifier pulumi.StringInput
+	// Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+	// `includeBlueprintsInGlobalSearchByDefault` setting applies.
+	IncludeInGlobalSearch pulumi.BoolPtrInput
 	// The changelog destination of the blueprint
 	KafkaChangelogDestination BlueprintKafkaChangelogDestinationPtrInput
 	// The mirror properties of the blueprint
@@ -373,6 +388,12 @@ func (o BlueprintOutput) Icon() pulumi.StringPtrOutput {
 // The identifier of the blueprint
 func (o BlueprintOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Blueprint) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+// `includeBlueprintsInGlobalSearchByDefault` setting applies.
+func (o BlueprintOutput) IncludeInGlobalSearch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Blueprint) pulumi.BoolPtrOutput { return v.IncludeInGlobalSearch }).(pulumi.BoolPtrOutput)
 }
 
 // The changelog destination of the blueprint

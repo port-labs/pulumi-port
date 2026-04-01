@@ -16,7 +16,7 @@ type Folder struct {
 	pulumi.CustomResourceState
 
 	// The identifier of the folder after which the folder should be placed
-	After pulumi.StringPtrOutput `pulumi:"after"`
+	After pulumi.StringOutput `pulumi:"after"`
 	// The identifier of the folder
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// The identifier of the parent folder
@@ -194,8 +194,8 @@ func (o FolderOutput) ToFolderOutputWithContext(ctx context.Context) FolderOutpu
 }
 
 // The identifier of the folder after which the folder should be placed
-func (o FolderOutput) After() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Folder) pulumi.StringPtrOutput { return v.After }).(pulumi.StringPtrOutput)
+func (o FolderOutput) After() pulumi.StringOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.After }).(pulumi.StringOutput)
 }
 
 // The identifier of the folder
