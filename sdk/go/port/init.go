@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Folder{}
 	case "port:index/integration:Integration":
 		r = &Integration{}
+	case "port:index/organization:Organization":
+		r = &Organization{}
 	case "port:index/organizationSecret:OrganizationSecret":
 		r = &OrganizationSecret{}
 	case "port:index/page:Page":
@@ -120,6 +122,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"port",
 		"index/integration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"port",
+		"index/organization",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

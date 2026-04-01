@@ -19,6 +19,9 @@ type SystemBlueprint struct {
 	CalculationProperties SystemBlueprintCalculationPropertiesMapOutput `pulumi:"calculationProperties"`
 	// Identifier of the system blueprint.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
+	// Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+	// `includeBlueprintsInGlobalSearchByDefault` setting applies.
+	IncludeInGlobalSearch pulumi.BoolPtrOutput `pulumi:"includeInGlobalSearch"`
 	// The mirror properties of the blueprint
 	MirrorProperties SystemBlueprintMirrorPropertiesMapOutput `pulumi:"mirrorProperties"`
 	// The properties of the blueprint
@@ -64,6 +67,9 @@ type systemBlueprintState struct {
 	CalculationProperties map[string]SystemBlueprintCalculationProperties `pulumi:"calculationProperties"`
 	// Identifier of the system blueprint.
 	Identifier *string `pulumi:"identifier"`
+	// Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+	// `includeBlueprintsInGlobalSearchByDefault` setting applies.
+	IncludeInGlobalSearch *bool `pulumi:"includeInGlobalSearch"`
 	// The mirror properties of the blueprint
 	MirrorProperties map[string]SystemBlueprintMirrorProperties `pulumi:"mirrorProperties"`
 	// The properties of the blueprint
@@ -77,6 +83,9 @@ type SystemBlueprintState struct {
 	CalculationProperties SystemBlueprintCalculationPropertiesMapInput
 	// Identifier of the system blueprint.
 	Identifier pulumi.StringPtrInput
+	// Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+	// `includeBlueprintsInGlobalSearchByDefault` setting applies.
+	IncludeInGlobalSearch pulumi.BoolPtrInput
 	// The mirror properties of the blueprint
 	MirrorProperties SystemBlueprintMirrorPropertiesMapInput
 	// The properties of the blueprint
@@ -94,6 +103,9 @@ type systemBlueprintArgs struct {
 	CalculationProperties map[string]SystemBlueprintCalculationProperties `pulumi:"calculationProperties"`
 	// Identifier of the system blueprint.
 	Identifier string `pulumi:"identifier"`
+	// Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+	// `includeBlueprintsInGlobalSearchByDefault` setting applies.
+	IncludeInGlobalSearch *bool `pulumi:"includeInGlobalSearch"`
 	// The mirror properties of the blueprint
 	MirrorProperties map[string]SystemBlueprintMirrorProperties `pulumi:"mirrorProperties"`
 	// The properties of the blueprint
@@ -108,6 +120,9 @@ type SystemBlueprintArgs struct {
 	CalculationProperties SystemBlueprintCalculationPropertiesMapInput
 	// Identifier of the system blueprint.
 	Identifier pulumi.StringInput
+	// Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+	// `includeBlueprintsInGlobalSearchByDefault` setting applies.
+	IncludeInGlobalSearch pulumi.BoolPtrInput
 	// The mirror properties of the blueprint
 	MirrorProperties SystemBlueprintMirrorPropertiesMapInput
 	// The properties of the blueprint
@@ -211,6 +226,12 @@ func (o SystemBlueprintOutput) CalculationProperties() SystemBlueprintCalculatio
 // Identifier of the system blueprint.
 func (o SystemBlueprintOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *SystemBlueprint) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
+// `includeBlueprintsInGlobalSearchByDefault` setting applies.
+func (o SystemBlueprintOutput) IncludeInGlobalSearch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SystemBlueprint) pulumi.BoolPtrOutput { return v.IncludeInGlobalSearch }).(pulumi.BoolPtrOutput)
 }
 
 // The mirror properties of the blueprint
