@@ -10,7 +10,7 @@ permissions:
   id-token: write
 
 env:
-  GITHUB_TOKEN: ${{ secrets.PORT_MACHINE_USER_GITHUB_TOKEN }}
+  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
   NPM_REGISTRY_URL: https://registry.npmjs.org
   PROVIDER: port
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
