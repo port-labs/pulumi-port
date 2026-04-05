@@ -17,7 +17,7 @@ env:
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
   PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
   PYPI_USERNAME: "__token__"
-  PUBLISH_PYPI: false
+  PUBLISH_PYPI: true
   PUBLISH_NPM: true
 jobs:
   publish_binary:
@@ -98,6 +98,10 @@ jobs:
           cache_key: "mise-{{platform}}-{{file_hash}}"
           # only saving the cache in the prerequisites job
           cache_save: false
+      - name: Setup Python
+        uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # tag=v5.4.0
+        with:
+          python-version: ${{matrix.pythonversion}}
       - name: Build SDK
         run: make build_${{ matrix.language }}
       - name: Check worktree clean
@@ -110,20 +114,32 @@ jobs:
               exit 1
           fi
 
+      - if: ${{ matrix.language == 'python' && env.PUBLISH_PYPI == 'true' }}
+        name: Publish package to PyPI
+        uses: pypa/gh-action-pypi-publish@76f52bc884231f62b9a034ebfe128415bbaabdfc # tag=v1.12.4
+        with:
+          user: ${{ env.PYPI_USERNAME }}
+          password: ${{ env.PYPI_PASSWORD }}
+          packages_dir: ${{github.workspace}}/sdk/python/bin/dist
+
       - if: ${{ matrix.language == 'nodejs' && env.PUBLISH_NPM == 'true' }}
         name: Upgrade npm for OIDC support
         run: npm install -g npm@10.9.4
       - if: ${{ matrix.language == 'nodejs' && env.PUBLISH_NPM == 'true' }}
         name: Publish package to npm
         working-directory: ${{github.workspace}}/sdk/nodejs/bin
-        run: npm publish --provenance --access public --dry-run
+        run: npm publish --provenance --access public
         
     strategy:
       fail-fast: false
       matrix:
         language:
           - nodejs
+          - python
+          - go
         nodeversion:
           - 22.x
+        pythonversion:
+          - "3.9"
         goversion:
           - '1.23'
