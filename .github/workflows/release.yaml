@@ -4,13 +4,6 @@ on:
     tags:
       - v*.*.*
   workflow_dispatch:
-    inputs:
-      dry_run:
-        description: >-
-          If true (default): build Node.js SDK and npm publish --dry-run only — no GoReleaser, no new tags, no PyPI/npm upload.
-          Uncheck to run the full release (use only with a version tag / when you intend to publish).
-        type: boolean
-        default: true
 
 permissions:
   contents: write
@@ -28,7 +21,6 @@ env:
   PUBLISH_NPM: true
 jobs:
   publish_binary:
-    if: ${{ github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.dry_run != 'true') }}
     name: publish
     runs-on: ubuntu-latest
     steps:
@@ -76,7 +68,6 @@ jobs:
         goversion:
           - '1.23'
   publish_sdk:
-    if: ${{ github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.dry_run != 'true') }}
     name: Publish SDKs
     runs-on: ubuntu-latest
     needs: publish_binary
@@ -152,50 +143,3 @@ jobs:
           - "3.9"
         goversion:
           - '1.23'
-
-  validate_release:
-    if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.dry_run == 'true' }}
-    name: Validate release (dry run)
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # tag=v4.2.2
-      - name: Unshallow clone for tags
-        run: git fetch --prune --unshallow --tags
-      - name: Install Go
-        uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34 # tag=v5.3.0
-        with:
-          go-version: '1.23'
-      - name: Install pulumictl
-        uses: jaxxstorm/action-install-gh-release@25d5e2dd555cd74f1fab9ac1e6ea117acde2c0c4 # tag=v1.12.0
-        with:
-          repo: pulumi/pulumictl
-      - name: Install Pulumi CLI
-        uses: pulumi/action-install-pulumi-cli@b374ceb6168550de27c6eba92e01c1a774040e11 # tag=v2.0.0
-      - name: Setup Node
-        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # tag=v4.2.0
-        with:
-          node-version: 22.x
-          registry-url: 'https://registry.npmjs.org'
-      - name: Setup mise
-        uses: jdx/mise-action@v3
-        with:
-          github_token: ${{ secrets.PORT_MACHINE_USER_GITHUB_TOKEN }}
-          cache_key: "mise-{{platform}}-{{file_hash}}"
-          cache_save: false
-      - name: Build Node.js SDK
-        run: make build_nodejs
-      - name: Check worktree clean
-        run: |
-          git update-index -q --refresh
-          if ! git diff-files --quiet; then
-              >&2 echo "error: working tree is not clean, aborting!"
-              git status
-              git diff
-              exit 1
-          fi
-      - name: Upgrade npm for OIDC support
-        run: npm install -g npm@10.9.4
-      - name: Publish package to npm (dry run)
-        working-directory: ${{github.workspace}}/sdk/nodejs/bin
-        run: npm publish --provenance --access public --dry-run
