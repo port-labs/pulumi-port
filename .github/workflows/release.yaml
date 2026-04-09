@@ -47,7 +47,17 @@ jobs:
         run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic)" >> $GITHUB_ENV
       - uses: sigstore/cosign-installer@dc72c7d5c4d10cd6bcb8cf6e3fd625a9e5e537da # v3.7.0
       - uses: anchore/sbom-action/download-syft@f325610c9f50a54015d37c8d16cb3b0e2c8f4de0 # v0.18.0
+      - name: Check if release exists
+        id: check_release
+        run: |
+          if gh release view "${{ github.ref_name }}" &>/dev/null; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "Release ${{ github.ref_name }} already exists, skipping GoReleaser..."
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
       - name: Run GoReleaser
+        if: steps.check_release.outputs.exists != 'true'
         uses: goreleaser/goreleaser-action@9ed2f89a662bf1735a48bc8557fd212fa902bebf # tag=v6.1.0
         with:
           args: -p 3 release --clean
@@ -56,14 +66,22 @@ jobs:
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # tag=v7.0.1
         with:
           script: |
-            github.rest.git.createRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: 'refs/tags/sdk/${{ github.ref_name }}',
-              sha: context.sha
-            })
+            try {
+              await github.rest.git.createRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: 'refs/tags/sdk/${{ github.ref_name }}',
+                sha: context.sha
+              })
+            } catch (error) {
+              if (error.status === 422 && error.message.includes('Reference already exists')) {
+                console.log('Tag sdk/${{ github.ref_name }} already exists, skipping...')
+              } else {
+                throw error
+              }
+            }
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         goversion:
           - '1.23'
@@ -121,6 +139,7 @@ jobs:
           user: ${{ env.PYPI_USERNAME }}
           password: ${{ env.PYPI_PASSWORD }}
           packages_dir: ${{github.workspace}}/sdk/python/bin/dist
+          skip-existing: true
 
       - if: ${{ matrix.language == 'nodejs' && env.PUBLISH_NPM == 'true' }}
         name: Upgrade npm for OIDC support
@@ -128,7 +147,16 @@ jobs:
       - if: ${{ matrix.language == 'nodejs' && env.PUBLISH_NPM == 'true' }}
         name: Publish package to npm
         working-directory: ${{github.workspace}}/sdk/nodejs/bin
-        run: npm publish --provenance --access public
+        run: |
+          if ! npm publish --provenance --access public 2>&1 | tee npm-publish.log; then
+            if grep -q "You cannot publish over the previously published versions" npm-publish.log; then
+              echo "Version already exists on npm, skipping..."
+            else
+              echo "npm publish failed"
+              cat npm-publish.log
+              exit 1
+            fi
+          fi
         
     strategy:
       fail-fast: false
