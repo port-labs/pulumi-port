@@ -4,16 +4,6 @@ on:
     tags:
       - v*.*.*
   workflow_dispatch:
-    inputs:
-      npm_only:
-        description: 'Publish only the NPM package (skip binary release)'
-        required: false
-        default: false
-        type: boolean
-      version_tag:
-        description: 'Version tag to publish (e.g., v1.2.3). Required when npm_only is true.'
-        required: false
-        type: string
 
 permissions:
   contents: write
@@ -33,7 +23,6 @@ jobs:
   publish_binary:
     name: publish
     runs-on: ubuntu-latest
-    if: ${{ !inputs.npm_only }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # tag=v4.2.2
@@ -82,45 +71,27 @@ jobs:
     name: Publish SDKs
     runs-on: ubuntu-latest
     needs: publish_binary
-    if: ${{ !cancelled() && (needs.publish_binary.result == 'success' || inputs.npm_only) }}
     steps:
-      - name: Validate inputs
-        if: ${{ inputs.npm_only && !inputs.version_tag }}
-        run: |
-          echo "Error: version_tag is required when npm_only is true"
-          exit 1
-      - name: Skip non-nodejs in npm_only mode
-        if: ${{ inputs.npm_only && matrix.language != 'nodejs' }}
-        run: echo "Skipping ${{ matrix.language }} build - npm_only mode enabled"
       - name: Checkout Repo
-        if: ${{ !inputs.npm_only || matrix.language == 'nodejs' }}
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # tag=v4.2.2
-        with:
-          ref: ${{ inputs.version_tag || github.ref }}
       - name: Unshallow clone for tags
-        if: ${{ !inputs.npm_only || matrix.language == 'nodejs' }}
         run: git fetch --prune --unshallow --tags
       - name: Install Go
-        if: ${{ !inputs.npm_only || matrix.language == 'nodejs' }}
         uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34 # tag=v5.3.0
         with:
           go-version: ${{ matrix.goversion }}
       - name: Install pulumictl
-        if: ${{ !inputs.npm_only || matrix.language == 'nodejs' }}
         uses: jaxxstorm/action-install-gh-release@25d5e2dd555cd74f1fab9ac1e6ea117acde2c0c4 # tag=v1.12.0
         with:
           repo: pulumi/pulumictl
       - name: Install Pulumi CLI
-        if: ${{ !inputs.npm_only || matrix.language == 'nodejs' }}
         uses: pulumi/action-install-pulumi-cli@b374ceb6168550de27c6eba92e01c1a774040e11 # tag=v2.0.0
       - name: Setup Node
-        if: ${{ !inputs.npm_only || matrix.language == 'nodejs' }}
         uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # tag=v4.2.0
         with:
           node-version: ${{matrix.nodeversion}}
           registry-url: ${{ env.NPM_REGISTRY_URL }}
       - name: Setup mise
-        if: ${{ !inputs.npm_only || matrix.language == 'nodejs' }}
         uses: jdx/mise-action@v3
         with:
           github_token: ${{ secrets.PORT_MACHINE_USER_GITHUB_TOKEN }}
@@ -128,15 +99,12 @@ jobs:
           # only saving the cache in the prerequisites job
           cache_save: false
       - name: Setup Python
-        if: ${{ !inputs.npm_only }}
         uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # tag=v5.4.0
         with:
           python-version: ${{matrix.pythonversion}}
       - name: Build SDK
-        if: ${{ !inputs.npm_only || matrix.language == 'nodejs' }}
         run: make build_${{ matrix.language }}
       - name: Check worktree clean
-        if: ${{ !inputs.npm_only || matrix.language == 'nodejs' }}
         run: |
           git update-index -q --refresh
           if ! git diff-files --quiet; then
@@ -146,7 +114,7 @@ jobs:
               exit 1
           fi
 
-      - if: ${{ matrix.language == 'python' && env.PUBLISH_PYPI == 'true' && !inputs.npm_only }}
+      - if: ${{ matrix.language == 'python' && env.PUBLISH_PYPI == 'true' }}
         name: Publish package to PyPI
         uses: pypa/gh-action-pypi-publish@76f52bc884231f62b9a034ebfe128415bbaabdfc # tag=v1.12.4
         with:
