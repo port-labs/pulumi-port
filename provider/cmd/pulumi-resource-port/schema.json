@@ -1927,6 +1927,10 @@
                     },
                     "description": "The colors of the calculation property\n"
                 },
+                "dateFormat": {
+                    "type": "string",
+                    "description": "Display format for `date-time` calculation properties (for example `24-hour`)\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "The description of the calculation property\n"
@@ -2717,6 +2721,10 @@
         },
         "port:index/BlueprintPropertiesStringProps:BlueprintPropertiesStringProps": {
             "properties": {
+                "dateFormat": {
+                    "type": "string",
+                    "description": "Display format for `date-time` string properties (for example `24-hour`)\n"
+                },
                 "default": {
                     "type": "string",
                     "description": "The default of the string property\n"
@@ -3122,6 +3130,10 @@
                     },
                     "description": "The colors of the calculation property\n"
                 },
+                "dateFormat": {
+                    "type": "string",
+                    "description": "Display format for `date-time` calculation properties (for example `24-hour`)\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "The description of the calculation property\n"
@@ -3489,6 +3501,10 @@
         },
         "port:index/SystemBlueprintPropertiesStringProps:SystemBlueprintPropertiesStringProps": {
             "properties": {
+                "dateFormat": {
+                    "type": "string",
+                    "description": "Display format for `date-time` string properties (for example `24-hour`)\n"
+                },
                 "default": {
                     "type": "string",
                     "description": "The default of the string property\n"

@@ -1343,6 +1343,10 @@ export interface BlueprintCalculationProperties {
      */
     colors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Display format for `date-time` calculation properties (for example `24-hour`)
+     */
+    dateFormat?: pulumi.Input<string>;
+    /**
      * The description of the calculation property
      */
     description?: pulumi.Input<string>;
@@ -1839,6 +1843,10 @@ export interface BlueprintPropertiesObjectProps {
 
 export interface BlueprintPropertiesStringProps {
     /**
+     * Display format for `date-time` string properties (for example `24-hour`)
+     */
+    dateFormat?: pulumi.Input<string>;
+    /**
      * The default of the string property
      */
     default?: pulumi.Input<string>;
@@ -2087,6 +2095,10 @@ export interface SystemBlueprintCalculationProperties {
      * The colors of the calculation property
      */
     colors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Display format for `date-time` calculation properties (for example `24-hour`)
+     */
+    dateFormat?: pulumi.Input<string>;
     /**
      * The description of the calculation property
      */
@@ -2351,6 +2363,10 @@ export interface SystemBlueprintPropertiesObjectProps {
 }
 
 export interface SystemBlueprintPropertiesStringProps {
+    /**
+     * Display format for `date-time` string properties (for example `24-hour`)
+     */
+    dateFormat?: pulumi.Input<string>;
     /**
      * The default of the string property
      */

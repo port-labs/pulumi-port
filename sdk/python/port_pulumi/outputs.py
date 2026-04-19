@@ -4854,7 +4854,9 @@ class BlueprintCalculationProperties(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "specAuthentication":
+        if key == "dateFormat":
+            suggest = "date_format"
+        elif key == "specAuthentication":
             suggest = "spec_authentication"
 
         if suggest:
@@ -4873,6 +4875,7 @@ class BlueprintCalculationProperties(dict):
                  type: str,
                  colorized: Optional[bool] = None,
                  colors: Optional[Mapping[str, str]] = None,
+                 date_format: Optional[str] = None,
                  description: Optional[str] = None,
                  format: Optional[str] = None,
                  icon: Optional[str] = None,
@@ -4884,6 +4887,7 @@ class BlueprintCalculationProperties(dict):
         :param str type: The type of the calculation property
         :param bool colorized: The colorized of the calculation property
         :param Mapping[str, str] colors: The colors of the calculation property
+        :param str date_format: Display format for `date-time` calculation properties (for example `24-hour`)
         :param str description: The description of the calculation property
         :param str format: The format of the calculation property
         :param str icon: The icon of the calculation property
@@ -4897,6 +4901,8 @@ class BlueprintCalculationProperties(dict):
             pulumi.set(__self__, "colorized", colorized)
         if colors is not None:
             pulumi.set(__self__, "colors", colors)
+        if date_format is not None:
+            pulumi.set(__self__, "date_format", date_format)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if format is not None:
@@ -4941,6 +4947,14 @@ class BlueprintCalculationProperties(dict):
         The colors of the calculation property
         """
         return pulumi.get(self, "colors")
+
+    @property
+    @pulumi.getter(name="dateFormat")
+    def date_format(self) -> Optional[str]:
+        """
+        Display format for `date-time` calculation properties (for example `24-hour`)
+        """
+        return pulumi.get(self, "date_format")
 
     @property
     @pulumi.getter
@@ -6615,7 +6629,9 @@ class BlueprintPropertiesStringProps(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "enumColors":
+        if key == "dateFormat":
+            suggest = "date_format"
+        elif key == "enumColors":
             suggest = "enum_colors"
         elif key == "maxLength":
             suggest = "max_length"
@@ -6636,6 +6652,7 @@ class BlueprintPropertiesStringProps(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 date_format: Optional[str] = None,
                  default: Optional[str] = None,
                  description: Optional[str] = None,
                  enum_colors: Optional[Mapping[str, str]] = None,
@@ -6650,6 +6667,7 @@ class BlueprintPropertiesStringProps(dict):
                  spec_authentication: Optional['outputs.BlueprintPropertiesStringPropsSpecAuthentication'] = None,
                  title: Optional[str] = None):
         """
+        :param str date_format: Display format for `date-time` string properties (for example `24-hour`)
         :param str default: The default of the string property
         :param str description: The description of the property
         :param Mapping[str, str] enum_colors: The enum colors of the string property
@@ -6664,6 +6682,8 @@ class BlueprintPropertiesStringProps(dict):
         :param 'BlueprintPropertiesStringPropsSpecAuthenticationArgs' spec_authentication: The spec authentication of the string property
         :param str title: The title of the property
         """
+        if date_format is not None:
+            pulumi.set(__self__, "date_format", date_format)
         if default is not None:
             pulumi.set(__self__, "default", default)
         if description is not None:
@@ -6690,6 +6710,14 @@ class BlueprintPropertiesStringProps(dict):
             pulumi.set(__self__, "spec_authentication", spec_authentication)
         if title is not None:
             pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="dateFormat")
+    def date_format(self) -> Optional[str]:
+        """
+        Display format for `date-time` string properties (for example `24-hour`)
+        """
+        return pulumi.get(self, "date_format")
 
     @property
     @pulumi.getter
@@ -7407,7 +7435,9 @@ class SystemBlueprintCalculationProperties(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "specAuthentication":
+        if key == "dateFormat":
+            suggest = "date_format"
+        elif key == "specAuthentication":
             suggest = "spec_authentication"
 
         if suggest:
@@ -7426,6 +7456,7 @@ class SystemBlueprintCalculationProperties(dict):
                  type: str,
                  colorized: Optional[bool] = None,
                  colors: Optional[Mapping[str, str]] = None,
+                 date_format: Optional[str] = None,
                  description: Optional[str] = None,
                  format: Optional[str] = None,
                  icon: Optional[str] = None,
@@ -7437,6 +7468,7 @@ class SystemBlueprintCalculationProperties(dict):
         :param str type: The type of the calculation property
         :param bool colorized: The colorized of the calculation property
         :param Mapping[str, str] colors: The colors of the calculation property
+        :param str date_format: Display format for `date-time` calculation properties (for example `24-hour`)
         :param str description: The description of the calculation property
         :param str format: The format of the calculation property
         :param str icon: The icon of the calculation property
@@ -7450,6 +7482,8 @@ class SystemBlueprintCalculationProperties(dict):
             pulumi.set(__self__, "colorized", colorized)
         if colors is not None:
             pulumi.set(__self__, "colors", colors)
+        if date_format is not None:
+            pulumi.set(__self__, "date_format", date_format)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if format is not None:
@@ -7494,6 +7528,14 @@ class SystemBlueprintCalculationProperties(dict):
         The colors of the calculation property
         """
         return pulumi.get(self, "colors")
+
+    @property
+    @pulumi.getter(name="dateFormat")
+    def date_format(self) -> Optional[str]:
+        """
+        Display format for `date-time` calculation properties (for example `24-hour`)
+        """
+        return pulumi.get(self, "date_format")
 
     @property
     @pulumi.getter
@@ -8329,7 +8371,9 @@ class SystemBlueprintPropertiesStringProps(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "enumColors":
+        if key == "dateFormat":
+            suggest = "date_format"
+        elif key == "enumColors":
             suggest = "enum_colors"
         elif key == "maxLength":
             suggest = "max_length"
@@ -8350,6 +8394,7 @@ class SystemBlueprintPropertiesStringProps(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 date_format: Optional[str] = None,
                  default: Optional[str] = None,
                  description: Optional[str] = None,
                  enum_colors: Optional[Mapping[str, str]] = None,
@@ -8364,6 +8409,7 @@ class SystemBlueprintPropertiesStringProps(dict):
                  spec_authentication: Optional['outputs.SystemBlueprintPropertiesStringPropsSpecAuthentication'] = None,
                  title: Optional[str] = None):
         """
+        :param str date_format: Display format for `date-time` string properties (for example `24-hour`)
         :param str default: The default of the string property
         :param str description: The description of the property
         :param Mapping[str, str] enum_colors: The enum colors of the string property
@@ -8378,6 +8424,8 @@ class SystemBlueprintPropertiesStringProps(dict):
         :param 'SystemBlueprintPropertiesStringPropsSpecAuthenticationArgs' spec_authentication: The spec authentication of the string property
         :param str title: The title of the property
         """
+        if date_format is not None:
+            pulumi.set(__self__, "date_format", date_format)
         if default is not None:
             pulumi.set(__self__, "default", default)
         if description is not None:
@@ -8404,6 +8452,14 @@ class SystemBlueprintPropertiesStringProps(dict):
             pulumi.set(__self__, "spec_authentication", spec_authentication)
         if title is not None:
             pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="dateFormat")
+    def date_format(self) -> Optional[str]:
+        """
+        Display format for `date-time` string properties (for example `24-hour`)
+        """
+        return pulumi.get(self, "date_format")
 
     @property
     @pulumi.getter

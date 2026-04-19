@@ -1343,6 +1343,10 @@ export interface BlueprintCalculationProperties {
      */
     colors?: {[key: string]: string};
     /**
+     * Display format for `date-time` calculation properties (for example `24-hour`)
+     */
+    dateFormat?: string;
+    /**
      * The description of the calculation property
      */
     description?: string;
@@ -1839,6 +1843,10 @@ export interface BlueprintPropertiesObjectProps {
 
 export interface BlueprintPropertiesStringProps {
     /**
+     * Display format for `date-time` string properties (for example `24-hour`)
+     */
+    dateFormat?: string;
+    /**
      * The default of the string property
      */
     default?: string;
@@ -2195,6 +2203,10 @@ export interface SystemBlueprintCalculationProperties {
      */
     colors?: {[key: string]: string};
     /**
+     * Display format for `date-time` calculation properties (for example `24-hour`)
+     */
+    dateFormat?: string;
+    /**
      * The description of the calculation property
      */
     description?: string;
@@ -2458,6 +2470,10 @@ export interface SystemBlueprintPropertiesObjectProps {
 }
 
 export interface SystemBlueprintPropertiesStringProps {
+    /**
+     * Display format for `date-time` string properties (for example `24-hour`)
+     */
+    dateFormat?: string;
     /**
      * The default of the string property
      */
