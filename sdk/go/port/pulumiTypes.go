@@ -11581,6 +11581,8 @@ type BlueprintCalculationProperties struct {
 	Colorized *bool `pulumi:"colorized"`
 	// The colors of the calculation property
 	Colors map[string]string `pulumi:"colors"`
+	// Display format for `date-time` calculation properties (for example `24-hour`)
+	DateFormat *string `pulumi:"dateFormat"`
 	// The description of the calculation property
 	Description *string `pulumi:"description"`
 	// The format of the calculation property
@@ -11615,6 +11617,8 @@ type BlueprintCalculationPropertiesArgs struct {
 	Colorized pulumi.BoolPtrInput `pulumi:"colorized"`
 	// The colors of the calculation property
 	Colors pulumi.StringMapInput `pulumi:"colors"`
+	// Display format for `date-time` calculation properties (for example `24-hour`)
+	DateFormat pulumi.StringPtrInput `pulumi:"dateFormat"`
 	// The description of the calculation property
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The format of the calculation property
@@ -11695,6 +11699,11 @@ func (o BlueprintCalculationPropertiesOutput) Colorized() pulumi.BoolPtrOutput {
 // The colors of the calculation property
 func (o BlueprintCalculationPropertiesOutput) Colors() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BlueprintCalculationProperties) map[string]string { return v.Colors }).(pulumi.StringMapOutput)
+}
+
+// Display format for `date-time` calculation properties (for example `24-hour`)
+func (o BlueprintCalculationPropertiesOutput) DateFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintCalculationProperties) *string { return v.DateFormat }).(pulumi.StringPtrOutput)
 }
 
 // The description of the calculation property
@@ -15860,6 +15869,8 @@ func (o BlueprintPropertiesObjectPropsMapOutput) MapIndex(k pulumi.StringInput) 
 }
 
 type BlueprintPropertiesStringProps struct {
+	// Display format for `date-time` string properties (for example `24-hour`)
+	DateFormat *string `pulumi:"dateFormat"`
 	// The default of the string property
 	Default *string `pulumi:"default"`
 	// The description of the property
@@ -15900,6 +15911,8 @@ type BlueprintPropertiesStringPropsInput interface {
 }
 
 type BlueprintPropertiesStringPropsArgs struct {
+	// Display format for `date-time` string properties (for example `24-hour`)
+	DateFormat pulumi.StringPtrInput `pulumi:"dateFormat"`
 	// The default of the string property
 	Default pulumi.StringPtrInput `pulumi:"default"`
 	// The description of the property
@@ -15977,6 +15990,11 @@ func (o BlueprintPropertiesStringPropsOutput) ToBlueprintPropertiesStringPropsOu
 
 func (o BlueprintPropertiesStringPropsOutput) ToBlueprintPropertiesStringPropsOutputWithContext(ctx context.Context) BlueprintPropertiesStringPropsOutput {
 	return o
+}
+
+// Display format for `date-time` string properties (for example `24-hour`)
+func (o BlueprintPropertiesStringPropsOutput) DateFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintPropertiesStringProps) *string { return v.DateFormat }).(pulumi.StringPtrOutput)
 }
 
 // The default of the string property
@@ -18126,6 +18144,8 @@ type SystemBlueprintCalculationProperties struct {
 	Colorized *bool `pulumi:"colorized"`
 	// The colors of the calculation property
 	Colors map[string]string `pulumi:"colors"`
+	// Display format for `date-time` calculation properties (for example `24-hour`)
+	DateFormat *string `pulumi:"dateFormat"`
 	// The description of the calculation property
 	Description *string `pulumi:"description"`
 	// The format of the calculation property
@@ -18160,6 +18180,8 @@ type SystemBlueprintCalculationPropertiesArgs struct {
 	Colorized pulumi.BoolPtrInput `pulumi:"colorized"`
 	// The colors of the calculation property
 	Colors pulumi.StringMapInput `pulumi:"colors"`
+	// Display format for `date-time` calculation properties (for example `24-hour`)
+	DateFormat pulumi.StringPtrInput `pulumi:"dateFormat"`
 	// The description of the calculation property
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The format of the calculation property
@@ -18240,6 +18262,11 @@ func (o SystemBlueprintCalculationPropertiesOutput) Colorized() pulumi.BoolPtrOu
 // The colors of the calculation property
 func (o SystemBlueprintCalculationPropertiesOutput) Colors() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SystemBlueprintCalculationProperties) map[string]string { return v.Colors }).(pulumi.StringMapOutput)
+}
+
+// Display format for `date-time` calculation properties (for example `24-hour`)
+func (o SystemBlueprintCalculationPropertiesOutput) DateFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintCalculationProperties) *string { return v.DateFormat }).(pulumi.StringPtrOutput)
 }
 
 // The description of the calculation property
@@ -20084,6 +20111,8 @@ func (o SystemBlueprintPropertiesObjectPropsMapOutput) MapIndex(k pulumi.StringI
 }
 
 type SystemBlueprintPropertiesStringProps struct {
+	// Display format for `date-time` string properties (for example `24-hour`)
+	DateFormat *string `pulumi:"dateFormat"`
 	// The default of the string property
 	Default *string `pulumi:"default"`
 	// The description of the property
@@ -20124,6 +20153,8 @@ type SystemBlueprintPropertiesStringPropsInput interface {
 }
 
 type SystemBlueprintPropertiesStringPropsArgs struct {
+	// Display format for `date-time` string properties (for example `24-hour`)
+	DateFormat pulumi.StringPtrInput `pulumi:"dateFormat"`
 	// The default of the string property
 	Default pulumi.StringPtrInput `pulumi:"default"`
 	// The description of the property
@@ -20201,6 +20232,11 @@ func (o SystemBlueprintPropertiesStringPropsOutput) ToSystemBlueprintPropertiesS
 
 func (o SystemBlueprintPropertiesStringPropsOutput) ToSystemBlueprintPropertiesStringPropsOutputWithContext(ctx context.Context) SystemBlueprintPropertiesStringPropsOutput {
 	return o
+}
+
+// Display format for `date-time` string properties (for example `24-hour`)
+func (o SystemBlueprintPropertiesStringPropsOutput) DateFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintPropertiesStringProps) *string { return v.DateFormat }).(pulumi.StringPtrOutput)
 }
 
 // The default of the string property
