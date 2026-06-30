@@ -37,7 +37,7 @@ export class Page extends pulumi.CustomResource {
      */
     public readonly after!: pulumi.Output<string | undefined>;
     /**
-     * The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
+     * The blueprint for which the page is created, relevant for pages of type "blueprint-entities" and "entity"
      */
     public readonly blueprint!: pulumi.Output<string | undefined>;
     /**
@@ -78,7 +78,7 @@ export class Page extends pulumi.CustomResource {
      */
     public readonly title!: pulumi.Output<string | undefined>;
     /**
-     * The type of the page, can be one of "blueprint-entities", "dashboard" or "home"
+     * The type of the page, can be one of "blueprint-entities", "dashboard", "home" or "entity"
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -160,7 +160,7 @@ export interface PageState {
      */
     after?: pulumi.Input<string>;
     /**
-     * The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
+     * The blueprint for which the page is created, relevant for pages of type "blueprint-entities" and "entity"
      */
     blueprint?: pulumi.Input<string>;
     /**
@@ -201,7 +201,7 @@ export interface PageState {
      */
     title?: pulumi.Input<string>;
     /**
-     * The type of the page, can be one of "blueprint-entities", "dashboard" or "home"
+     * The type of the page, can be one of "blueprint-entities", "dashboard", "home" or "entity"
      */
     type?: pulumi.Input<string>;
     /**
@@ -227,7 +227,7 @@ export interface PageArgs {
      */
     after?: pulumi.Input<string>;
     /**
-     * The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
+     * The blueprint for which the page is created, relevant for pages of type "blueprint-entities" and "entity"
      */
     blueprint?: pulumi.Input<string>;
     /**
@@ -260,7 +260,7 @@ export interface PageArgs {
      */
     title?: pulumi.Input<string>;
     /**
-     * The type of the page, can be one of "blueprint-entities", "dashboard" or "home"
+     * The type of the page, can be one of "blueprint-entities", "dashboard", "home" or "entity"
      */
     type: pulumi.Input<string>;
     /**

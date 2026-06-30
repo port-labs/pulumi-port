@@ -33,9 +33,9 @@ class PageArgs:
         """
         The set of arguments for constructing a Page resource.
         :param pulumi.Input[str] identifier: The Identifier of the page
-        :param pulumi.Input[str] type: The type of the page, can be one of "blueprint-entities", "dashboard" or "home"
+        :param pulumi.Input[str] type: The type of the page, can be one of "blueprint-entities", "dashboard", "home" or "entity"
         :param pulumi.Input[str] after: The identifier of the page/folder after which the page should be placed
-        :param pulumi.Input[str] blueprint: The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
+        :param pulumi.Input[str] blueprint: The blueprint for which the page is created, relevant for pages of type "blueprint-entities" and "entity"
         :param pulumi.Input[str] description: The page description
         :param pulumi.Input[str] icon: The icon of the page
         :param pulumi.Input[bool] locked: Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
@@ -82,7 +82,7 @@ class PageArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The type of the page, can be one of "blueprint-entities", "dashboard" or "home"
+        The type of the page, can be one of "blueprint-entities", "dashboard", "home" or "entity"
         """
         return pulumi.get(self, "type")
 
@@ -106,7 +106,7 @@ class PageArgs:
     @pulumi.getter
     def blueprint(self) -> Optional[pulumi.Input[str]]:
         """
-        The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
+        The blueprint for which the page is created, relevant for pages of type "blueprint-entities" and "entity"
         """
         return pulumi.get(self, "blueprint")
 
@@ -221,7 +221,7 @@ class _PageState:
         """
         Input properties used for looking up and filtering Page resources.
         :param pulumi.Input[str] after: The identifier of the page/folder after which the page should be placed
-        :param pulumi.Input[str] blueprint: The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
+        :param pulumi.Input[str] blueprint: The blueprint for which the page is created, relevant for pages of type "blueprint-entities" and "entity"
         :param pulumi.Input[str] created_at: The creation date of the page
         :param pulumi.Input[str] created_by: The creator of the page
         :param pulumi.Input[str] description: The page description
@@ -232,7 +232,7 @@ class _PageState:
                'combinator' and 'rules' array). The rules array can contain any filter type.
         :param pulumi.Input[str] parent: The identifier of the folder in which the page is in, default is the root of the sidebar
         :param pulumi.Input[str] title: The title of the page
-        :param pulumi.Input[str] type: The type of the page, can be one of "blueprint-entities", "dashboard" or "home"
+        :param pulumi.Input[str] type: The type of the page, can be one of "blueprint-entities", "dashboard", "home" or "entity"
         :param pulumi.Input[str] updated_at: The last update date of the page
         :param pulumi.Input[str] updated_by: The last updater of the page
         :param pulumi.Input[Sequence[pulumi.Input[str]]] widgets: The widgets of the page
@@ -284,7 +284,7 @@ class _PageState:
     @pulumi.getter
     def blueprint(self) -> Optional[pulumi.Input[str]]:
         """
-        The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
+        The blueprint for which the page is created, relevant for pages of type "blueprint-entities" and "entity"
         """
         return pulumi.get(self, "blueprint")
 
@@ -405,7 +405,7 @@ class _PageState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the page, can be one of "blueprint-entities", "dashboard" or "home"
+        The type of the page, can be one of "blueprint-entities", "dashboard", "home" or "entity"
         """
         return pulumi.get(self, "type")
 
@@ -472,7 +472,7 @@ class Page(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] after: The identifier of the page/folder after which the page should be placed
-        :param pulumi.Input[str] blueprint: The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
+        :param pulumi.Input[str] blueprint: The blueprint for which the page is created, relevant for pages of type "blueprint-entities" and "entity"
         :param pulumi.Input[str] description: The page description
         :param pulumi.Input[str] icon: The icon of the page
         :param pulumi.Input[str] identifier: The Identifier of the page
@@ -481,7 +481,7 @@ class Page(pulumi.CustomResource):
                'combinator' and 'rules' array). The rules array can contain any filter type.
         :param pulumi.Input[str] parent: The identifier of the folder in which the page is in, default is the root of the sidebar
         :param pulumi.Input[str] title: The title of the page
-        :param pulumi.Input[str] type: The type of the page, can be one of "blueprint-entities", "dashboard" or "home"
+        :param pulumi.Input[str] type: The type of the page, can be one of "blueprint-entities", "dashboard", "home" or "entity"
         :param pulumi.Input[Sequence[pulumi.Input[str]]] widgets: The widgets of the page
         """
         ...
@@ -579,7 +579,7 @@ class Page(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] after: The identifier of the page/folder after which the page should be placed
-        :param pulumi.Input[str] blueprint: The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
+        :param pulumi.Input[str] blueprint: The blueprint for which the page is created, relevant for pages of type "blueprint-entities" and "entity"
         :param pulumi.Input[str] created_at: The creation date of the page
         :param pulumi.Input[str] created_by: The creator of the page
         :param pulumi.Input[str] description: The page description
@@ -590,7 +590,7 @@ class Page(pulumi.CustomResource):
                'combinator' and 'rules' array). The rules array can contain any filter type.
         :param pulumi.Input[str] parent: The identifier of the folder in which the page is in, default is the root of the sidebar
         :param pulumi.Input[str] title: The title of the page
-        :param pulumi.Input[str] type: The type of the page, can be one of "blueprint-entities", "dashboard" or "home"
+        :param pulumi.Input[str] type: The type of the page, can be one of "blueprint-entities", "dashboard", "home" or "entity"
         :param pulumi.Input[str] updated_at: The last update date of the page
         :param pulumi.Input[str] updated_by: The last updater of the page
         :param pulumi.Input[Sequence[pulumi.Input[str]]] widgets: The widgets of the page
@@ -628,7 +628,7 @@ class Page(pulumi.CustomResource):
     @pulumi.getter
     def blueprint(self) -> pulumi.Output[Optional[str]]:
         """
-        The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
+        The blueprint for which the page is created, relevant for pages of type "blueprint-entities" and "entity"
         """
         return pulumi.get(self, "blueprint")
 
@@ -709,7 +709,7 @@ class Page(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The type of the page, can be one of "blueprint-entities", "dashboard" or "home"
+        The type of the page, can be one of "blueprint-entities", "dashboard", "home" or "entity"
         """
         return pulumi.get(self, "type")
 

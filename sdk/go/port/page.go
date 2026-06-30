@@ -17,7 +17,7 @@ type Page struct {
 
 	// The identifier of the page/folder after which the page should be placed
 	After pulumi.StringPtrOutput `pulumi:"after"`
-	// The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
+	// The blueprint for which the page is created, relevant for pages of type "blueprint-entities" and "entity"
 	Blueprint pulumi.StringPtrOutput `pulumi:"blueprint"`
 	// The creation date of the page
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
@@ -38,7 +38,7 @@ type Page struct {
 	Parent pulumi.StringPtrOutput `pulumi:"parent"`
 	// The title of the page
 	Title pulumi.StringPtrOutput `pulumi:"title"`
-	// The type of the page, can be one of "blueprint-entities", "dashboard" or "home"
+	// The type of the page, can be one of "blueprint-entities", "dashboard", "home" or "entity"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The last update date of the page
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -86,7 +86,7 @@ func GetPage(ctx *pulumi.Context,
 type pageState struct {
 	// The identifier of the page/folder after which the page should be placed
 	After *string `pulumi:"after"`
-	// The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
+	// The blueprint for which the page is created, relevant for pages of type "blueprint-entities" and "entity"
 	Blueprint *string `pulumi:"blueprint"`
 	// The creation date of the page
 	CreatedAt *string `pulumi:"createdAt"`
@@ -107,7 +107,7 @@ type pageState struct {
 	Parent *string `pulumi:"parent"`
 	// The title of the page
 	Title *string `pulumi:"title"`
-	// The type of the page, can be one of "blueprint-entities", "dashboard" or "home"
+	// The type of the page, can be one of "blueprint-entities", "dashboard", "home" or "entity"
 	Type *string `pulumi:"type"`
 	// The last update date of the page
 	UpdatedAt *string `pulumi:"updatedAt"`
@@ -120,7 +120,7 @@ type pageState struct {
 type PageState struct {
 	// The identifier of the page/folder after which the page should be placed
 	After pulumi.StringPtrInput
-	// The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
+	// The blueprint for which the page is created, relevant for pages of type "blueprint-entities" and "entity"
 	Blueprint pulumi.StringPtrInput
 	// The creation date of the page
 	CreatedAt pulumi.StringPtrInput
@@ -141,7 +141,7 @@ type PageState struct {
 	Parent pulumi.StringPtrInput
 	// The title of the page
 	Title pulumi.StringPtrInput
-	// The type of the page, can be one of "blueprint-entities", "dashboard" or "home"
+	// The type of the page, can be one of "blueprint-entities", "dashboard", "home" or "entity"
 	Type pulumi.StringPtrInput
 	// The last update date of the page
 	UpdatedAt pulumi.StringPtrInput
@@ -158,7 +158,7 @@ func (PageState) ElementType() reflect.Type {
 type pageArgs struct {
 	// The identifier of the page/folder after which the page should be placed
 	After *string `pulumi:"after"`
-	// The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
+	// The blueprint for which the page is created, relevant for pages of type "blueprint-entities" and "entity"
 	Blueprint *string `pulumi:"blueprint"`
 	// The page description
 	Description *string `pulumi:"description"`
@@ -175,7 +175,7 @@ type pageArgs struct {
 	Parent *string `pulumi:"parent"`
 	// The title of the page
 	Title *string `pulumi:"title"`
-	// The type of the page, can be one of "blueprint-entities", "dashboard" or "home"
+	// The type of the page, can be one of "blueprint-entities", "dashboard", "home" or "entity"
 	Type string `pulumi:"type"`
 	// The widgets of the page
 	Widgets []string `pulumi:"widgets"`
@@ -185,7 +185,7 @@ type pageArgs struct {
 type PageArgs struct {
 	// The identifier of the page/folder after which the page should be placed
 	After pulumi.StringPtrInput
-	// The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
+	// The blueprint for which the page is created, relevant for pages of type "blueprint-entities" and "entity"
 	Blueprint pulumi.StringPtrInput
 	// The page description
 	Description pulumi.StringPtrInput
@@ -202,7 +202,7 @@ type PageArgs struct {
 	Parent pulumi.StringPtrInput
 	// The title of the page
 	Title pulumi.StringPtrInput
-	// The type of the page, can be one of "blueprint-entities", "dashboard" or "home"
+	// The type of the page, can be one of "blueprint-entities", "dashboard", "home" or "entity"
 	Type pulumi.StringInput
 	// The widgets of the page
 	Widgets pulumi.StringArrayInput
@@ -300,7 +300,7 @@ func (o PageOutput) After() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Page) pulumi.StringPtrOutput { return v.After }).(pulumi.StringPtrOutput)
 }
 
-// The blueprint for which the page is created, relevant only for pages of type "blueprint-entities"
+// The blueprint for which the page is created, relevant for pages of type "blueprint-entities" and "entity"
 func (o PageOutput) Blueprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Page) pulumi.StringPtrOutput { return v.Blueprint }).(pulumi.StringPtrOutput)
 }
@@ -351,7 +351,7 @@ func (o PageOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Page) pulumi.StringPtrOutput { return v.Title }).(pulumi.StringPtrOutput)
 }
 
-// The type of the page, can be one of "blueprint-entities", "dashboard" or "home"
+// The type of the page, can be one of "blueprint-entities", "dashboard", "home" or "entity"
 func (o PageOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Page) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

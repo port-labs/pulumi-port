@@ -39,7 +39,8 @@ export class Action extends pulumi.CustomResource {
      */
     public readonly allowAnyoneToViewRuns!: pulumi.Output<boolean | undefined>;
     /**
-     * The email notification of the approval
+     * The email notification of the approval. This is a presence-based block — defining it enables email notifications for
+     * approval; no nested attributes are required.
      */
     public readonly approvalEmailNotification!: pulumi.Output<outputs.ActionApprovalEmailNotification | undefined>;
     /**
@@ -184,7 +185,8 @@ export interface ActionState {
      */
     allowAnyoneToViewRuns?: pulumi.Input<boolean>;
     /**
-     * The email notification of the approval
+     * The email notification of the approval. This is a presence-based block — defining it enables email notifications for
+     * approval; no nested attributes are required.
      */
     approvalEmailNotification?: pulumi.Input<inputs.ActionApprovalEmailNotification>;
     /**
@@ -268,7 +270,8 @@ export interface ActionArgs {
      */
     allowAnyoneToViewRuns?: pulumi.Input<boolean>;
     /**
-     * The email notification of the approval
+     * The email notification of the approval. This is a presence-based block — defining it enables email notifications for
+     * approval; no nested attributes are required.
      */
     approvalEmailNotification?: pulumi.Input<inputs.ActionApprovalEmailNotification>;
     /**
