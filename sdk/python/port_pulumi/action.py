@@ -44,7 +44,8 @@ class ActionArgs:
         The set of arguments for constructing a Action resource.
         :param pulumi.Input[str] identifier: Identifier
         :param pulumi.Input[bool] allow_anyone_to_view_runs: Whether members can view the runs of this action
-        :param pulumi.Input['ActionApprovalEmailNotificationArgs'] approval_email_notification: The email notification of the approval
+        :param pulumi.Input['ActionApprovalEmailNotificationArgs'] approval_email_notification: The email notification of the approval. This is a presence-based block — defining it enables email notifications for
+               approval; no nested attributes are required.
         :param pulumi.Input['ActionApprovalWebhookNotificationArgs'] approval_webhook_notification: The webhook notification of the approval
         :param pulumi.Input['ActionAutomationTriggerArgs'] automation_trigger: Automation trigger for the action
         :param pulumi.Input['ActionAzureMethodArgs'] azure_method: Azure DevOps invocation method
@@ -131,7 +132,8 @@ class ActionArgs:
     @pulumi.getter(name="approvalEmailNotification")
     def approval_email_notification(self) -> Optional[pulumi.Input['ActionApprovalEmailNotificationArgs']]:
         """
-        The email notification of the approval
+        The email notification of the approval. This is a presence-based block — defining it enables email notifications for
+        approval; no nested attributes are required.
         """
         return pulumi.get(self, "approval_email_notification")
 
@@ -358,7 +360,8 @@ class _ActionState:
         """
         Input properties used for looking up and filtering Action resources.
         :param pulumi.Input[bool] allow_anyone_to_view_runs: Whether members can view the runs of this action
-        :param pulumi.Input['ActionApprovalEmailNotificationArgs'] approval_email_notification: The email notification of the approval
+        :param pulumi.Input['ActionApprovalEmailNotificationArgs'] approval_email_notification: The email notification of the approval. This is a presence-based block — defining it enables email notifications for
+               approval; no nested attributes are required.
         :param pulumi.Input['ActionApprovalWebhookNotificationArgs'] approval_webhook_notification: The webhook notification of the approval
         :param pulumi.Input['ActionAutomationTriggerArgs'] automation_trigger: Automation trigger for the action
         :param pulumi.Input['ActionAzureMethodArgs'] azure_method: Azure DevOps invocation method
@@ -435,7 +438,8 @@ class _ActionState:
     @pulumi.getter(name="approvalEmailNotification")
     def approval_email_notification(self) -> Optional[pulumi.Input['ActionApprovalEmailNotificationArgs']]:
         """
-        The email notification of the approval
+        The email notification of the approval. This is a presence-based block — defining it enables email notifications for
+        approval; no nested attributes are required.
         """
         return pulumi.get(self, "approval_email_notification")
 
@@ -679,7 +683,8 @@ class Action(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_anyone_to_view_runs: Whether members can view the runs of this action
-        :param pulumi.Input[Union['ActionApprovalEmailNotificationArgs', 'ActionApprovalEmailNotificationArgsDict']] approval_email_notification: The email notification of the approval
+        :param pulumi.Input[Union['ActionApprovalEmailNotificationArgs', 'ActionApprovalEmailNotificationArgsDict']] approval_email_notification: The email notification of the approval. This is a presence-based block — defining it enables email notifications for
+               approval; no nested attributes are required.
         :param pulumi.Input[Union['ActionApprovalWebhookNotificationArgs', 'ActionApprovalWebhookNotificationArgsDict']] approval_webhook_notification: The webhook notification of the approval
         :param pulumi.Input[Union['ActionAutomationTriggerArgs', 'ActionAutomationTriggerArgsDict']] automation_trigger: Automation trigger for the action
         :param pulumi.Input[Union['ActionAzureMethodArgs', 'ActionAzureMethodArgsDict']] azure_method: Azure DevOps invocation method
@@ -807,7 +812,8 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_anyone_to_view_runs: Whether members can view the runs of this action
-        :param pulumi.Input[Union['ActionApprovalEmailNotificationArgs', 'ActionApprovalEmailNotificationArgsDict']] approval_email_notification: The email notification of the approval
+        :param pulumi.Input[Union['ActionApprovalEmailNotificationArgs', 'ActionApprovalEmailNotificationArgsDict']] approval_email_notification: The email notification of the approval. This is a presence-based block — defining it enables email notifications for
+               approval; no nested attributes are required.
         :param pulumi.Input[Union['ActionApprovalWebhookNotificationArgs', 'ActionApprovalWebhookNotificationArgsDict']] approval_webhook_notification: The webhook notification of the approval
         :param pulumi.Input[Union['ActionAutomationTriggerArgs', 'ActionAutomationTriggerArgsDict']] automation_trigger: Automation trigger for the action
         :param pulumi.Input[Union['ActionAzureMethodArgs', 'ActionAzureMethodArgsDict']] azure_method: Azure DevOps invocation method
@@ -863,7 +869,8 @@ class Action(pulumi.CustomResource):
     @pulumi.getter(name="approvalEmailNotification")
     def approval_email_notification(self) -> pulumi.Output[Optional['outputs.ActionApprovalEmailNotification']]:
         """
-        The email notification of the approval
+        The email notification of the approval. This is a presence-based block — defining it enables email notifications for
+        approval; no nested attributes are required.
         """
         return pulumi.get(self, "approval_email_notification")
 

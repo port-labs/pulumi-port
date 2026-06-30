@@ -4069,7 +4069,7 @@
                 },
                 "approvalEmailNotification": {
                     "$ref": "#/types/port:index/ActionApprovalEmailNotification:ActionApprovalEmailNotification",
-                    "description": "The email notification of the approval\n"
+                    "description": "The email notification of the approval. This is a presence-based block — defining it enables email notifications for\napproval; no nested attributes are required.\n"
                 },
                 "approvalWebhookNotification": {
                     "$ref": "#/types/port:index/ActionApprovalWebhookNotification:ActionApprovalWebhookNotification",
@@ -4152,7 +4152,7 @@
                 },
                 "approvalEmailNotification": {
                     "$ref": "#/types/port:index/ActionApprovalEmailNotification:ActionApprovalEmailNotification",
-                    "description": "The email notification of the approval\n"
+                    "description": "The email notification of the approval. This is a presence-based block — defining it enables email notifications for\napproval; no nested attributes are required.\n"
                 },
                 "approvalWebhookNotification": {
                     "$ref": "#/types/port:index/ActionApprovalWebhookNotification:ActionApprovalWebhookNotification",
@@ -4236,7 +4236,7 @@
                     },
                     "approvalEmailNotification": {
                         "$ref": "#/types/port:index/ActionApprovalEmailNotification:ActionApprovalEmailNotification",
-                        "description": "The email notification of the approval\n"
+                        "description": "The email notification of the approval. This is a presence-based block — defining it enables email notifications for\napproval; no nested attributes are required.\n"
                     },
                     "approvalWebhookNotification": {
                         "$ref": "#/types/port:index/ActionApprovalWebhookNotification:ActionApprovalWebhookNotification",
@@ -5159,7 +5159,7 @@
                 },
                 "blueprint": {
                     "type": "string",
-                    "description": "The blueprint for which the page is created, relevant only for pages of type \"blueprint-entities\"\n"
+                    "description": "The blueprint for which the page is created, relevant for pages of type \"blueprint-entities\" and \"entity\"\n"
                 },
                 "createdAt": {
                     "type": "string",
@@ -5202,7 +5202,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the page, can be one of \"blueprint-entities\", \"dashboard\" or \"home\"\n"
+                    "description": "The type of the page, can be one of \"blueprint-entities\", \"dashboard\", \"home\" or \"entity\"\n"
                 },
                 "updatedAt": {
                     "type": "string",
@@ -5235,7 +5235,7 @@
                 },
                 "blueprint": {
                     "type": "string",
-                    "description": "The blueprint for which the page is created, relevant only for pages of type \"blueprint-entities\"\n"
+                    "description": "The blueprint for which the page is created, relevant for pages of type \"blueprint-entities\" and \"entity\"\n"
                 },
                 "description": {
                     "type": "string",
@@ -5270,7 +5270,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the page, can be one of \"blueprint-entities\", \"dashboard\" or \"home\"\n"
+                    "description": "The type of the page, can be one of \"blueprint-entities\", \"dashboard\", \"home\" or \"entity\"\n"
                 },
                 "widgets": {
                     "type": "array",
@@ -5293,7 +5293,7 @@
                     },
                     "blueprint": {
                         "type": "string",
-                        "description": "The blueprint for which the page is created, relevant only for pages of type \"blueprint-entities\"\n"
+                        "description": "The blueprint for which the page is created, relevant for pages of type \"blueprint-entities\" and \"entity\"\n"
                     },
                     "createdAt": {
                         "type": "string",
@@ -5336,7 +5336,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The type of the page, can be one of \"blueprint-entities\", \"dashboard\" or \"home\"\n"
+                        "description": "The type of the page, can be one of \"blueprint-entities\", \"dashboard\", \"home\" or \"entity\"\n"
                     },
                     "updatedAt": {
                         "type": "string",

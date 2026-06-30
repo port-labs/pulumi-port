@@ -17,7 +17,8 @@ type Action struct {
 
 	// Whether members can view the runs of this action
 	AllowAnyoneToViewRuns pulumi.BoolPtrOutput `pulumi:"allowAnyoneToViewRuns"`
-	// The email notification of the approval
+	// The email notification of the approval. This is a presence-based block — defining it enables email notifications for
+	// approval; no nested attributes are required.
 	ApprovalEmailNotification ActionApprovalEmailNotificationPtrOutput `pulumi:"approvalEmailNotification"`
 	// The webhook notification of the approval
 	ApprovalWebhookNotification ActionApprovalWebhookNotificationPtrOutput `pulumi:"approvalWebhookNotification"`
@@ -92,7 +93,8 @@ func GetAction(ctx *pulumi.Context,
 type actionState struct {
 	// Whether members can view the runs of this action
 	AllowAnyoneToViewRuns *bool `pulumi:"allowAnyoneToViewRuns"`
-	// The email notification of the approval
+	// The email notification of the approval. This is a presence-based block — defining it enables email notifications for
+	// approval; no nested attributes are required.
 	ApprovalEmailNotification *ActionApprovalEmailNotification `pulumi:"approvalEmailNotification"`
 	// The webhook notification of the approval
 	ApprovalWebhookNotification *ActionApprovalWebhookNotification `pulumi:"approvalWebhookNotification"`
@@ -135,7 +137,8 @@ type actionState struct {
 type ActionState struct {
 	// Whether members can view the runs of this action
 	AllowAnyoneToViewRuns pulumi.BoolPtrInput
-	// The email notification of the approval
+	// The email notification of the approval. This is a presence-based block — defining it enables email notifications for
+	// approval; no nested attributes are required.
 	ApprovalEmailNotification ActionApprovalEmailNotificationPtrInput
 	// The webhook notification of the approval
 	ApprovalWebhookNotification ActionApprovalWebhookNotificationPtrInput
@@ -182,7 +185,8 @@ func (ActionState) ElementType() reflect.Type {
 type actionArgs struct {
 	// Whether members can view the runs of this action
 	AllowAnyoneToViewRuns *bool `pulumi:"allowAnyoneToViewRuns"`
-	// The email notification of the approval
+	// The email notification of the approval. This is a presence-based block — defining it enables email notifications for
+	// approval; no nested attributes are required.
 	ApprovalEmailNotification *ActionApprovalEmailNotification `pulumi:"approvalEmailNotification"`
 	// The webhook notification of the approval
 	ApprovalWebhookNotification *ActionApprovalWebhookNotification `pulumi:"approvalWebhookNotification"`
@@ -226,7 +230,8 @@ type actionArgs struct {
 type ActionArgs struct {
 	// Whether members can view the runs of this action
 	AllowAnyoneToViewRuns pulumi.BoolPtrInput
-	// The email notification of the approval
+	// The email notification of the approval. This is a presence-based block — defining it enables email notifications for
+	// approval; no nested attributes are required.
 	ApprovalEmailNotification ActionApprovalEmailNotificationPtrInput
 	// The webhook notification of the approval
 	ApprovalWebhookNotification ActionApprovalWebhookNotificationPtrInput
@@ -358,7 +363,8 @@ func (o ActionOutput) AllowAnyoneToViewRuns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Action) pulumi.BoolPtrOutput { return v.AllowAnyoneToViewRuns }).(pulumi.BoolPtrOutput)
 }
 
-// The email notification of the approval
+// The email notification of the approval. This is a presence-based block — defining it enables email notifications for
+// approval; no nested attributes are required.
 func (o ActionOutput) ApprovalEmailNotification() ActionApprovalEmailNotificationPtrOutput {
 	return o.ApplyT(func(v *Action) ActionApprovalEmailNotificationPtrOutput { return v.ApprovalEmailNotification }).(ActionApprovalEmailNotificationPtrOutput)
 }
