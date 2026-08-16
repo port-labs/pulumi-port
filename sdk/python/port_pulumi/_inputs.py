@@ -167,6 +167,8 @@ __all__ = [
     'BlueprintOwnershipArgsDict',
     'BlueprintPermissionsEntitiesArgs',
     'BlueprintPermissionsEntitiesArgsDict',
+    'BlueprintPermissionsEntitiesReadArgs',
+    'BlueprintPermissionsEntitiesReadArgsDict',
     'BlueprintPermissionsEntitiesRegisterArgs',
     'BlueprintPermissionsEntitiesRegisterArgsDict',
     'BlueprintPermissionsEntitiesUnregisterArgs',
@@ -273,6 +275,218 @@ __all__ = [
     'WebhookMappingOperationArgsDict',
     'WebhookSecurityArgs',
     'WebhookSecurityArgsDict',
+    'WorkflowConnectionArgs',
+    'WorkflowConnectionArgsDict',
+    'WorkflowNodeArgs',
+    'WorkflowNodeArgsDict',
+    'WorkflowNodeAiArgs',
+    'WorkflowNodeAiArgsDict',
+    'WorkflowNodeAiAgentArgs',
+    'WorkflowNodeAiAgentArgsDict',
+    'WorkflowNodeAiMcpServerArgs',
+    'WorkflowNodeAiMcpServerArgsDict',
+    'WorkflowNodeConditionArgs',
+    'WorkflowNodeConditionArgsDict',
+    'WorkflowNodeConditionOutletArgs',
+    'WorkflowNodeConditionOutletArgsDict',
+    'WorkflowNodeConditionOutletStatusLabelArgs',
+    'WorkflowNodeConditionOutletStatusLabelArgsDict',
+    'WorkflowNodeConditionOutletWorkflowStatusLabelArgs',
+    'WorkflowNodeConditionOutletWorkflowStatusLabelArgsDict',
+    'WorkflowNodeEventTriggerArgs',
+    'WorkflowNodeEventTriggerArgsDict',
+    'WorkflowNodeEventTriggerConditionArgs',
+    'WorkflowNodeEventTriggerConditionArgsDict',
+    'WorkflowNodeInputArgs',
+    'WorkflowNodeInputArgsDict',
+    'WorkflowNodeInputNotificationArgs',
+    'WorkflowNodeInputNotificationArgsDict',
+    'WorkflowNodeInputNotificationFieldArgs',
+    'WorkflowNodeInputNotificationFieldArgsDict',
+    'WorkflowNodeInputOutletArgs',
+    'WorkflowNodeInputOutletArgsDict',
+    'WorkflowNodeInputOutletStatusLabelArgs',
+    'WorkflowNodeInputOutletStatusLabelArgsDict',
+    'WorkflowNodeInputOutletWorkflowStatusLabelArgs',
+    'WorkflowNodeInputOutletWorkflowStatusLabelArgsDict',
+    'WorkflowNodeInputRespondersArgs',
+    'WorkflowNodeInputRespondersArgsDict',
+    'WorkflowNodeInputUserInputsArgs',
+    'WorkflowNodeInputUserInputsArgsDict',
+    'WorkflowNodeInputUserInputsButtonArgs',
+    'WorkflowNodeInputUserInputsButtonArgsDict',
+    'WorkflowNodeInputUserInputsStepArgs',
+    'WorkflowNodeInputUserInputsStepArgsDict',
+    'WorkflowNodeInputUserInputsStepValidationArgs',
+    'WorkflowNodeInputUserInputsStepValidationArgsDict',
+    'WorkflowNodeInputUserInputsTitlesArgs',
+    'WorkflowNodeInputUserInputsTitlesArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesArrayPropsArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesArrayPropsArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesArrayPropsNumberItemsArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesArrayPropsNumberItemsArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItemsArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItemsArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesArrayPropsSortArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesArrayPropsSortArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesArrayPropsStringItemsArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesArrayPropsStringItemsArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesBooleanPropsArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesBooleanPropsArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesNumberPropsArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesNumberPropsArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesObjectPropsArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesObjectPropsArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleValueArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleValueArgsDict',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsSortArgs',
+    'WorkflowNodeInputUserInputsUserPropertiesStringPropsSortArgsDict',
+    'WorkflowNodeInputUserInputsValidationArgs',
+    'WorkflowNodeInputUserInputsValidationArgsDict',
+    'WorkflowNodeIntegrationActionArgs',
+    'WorkflowNodeIntegrationActionArgsDict',
+    'WorkflowNodeKafkaArgs',
+    'WorkflowNodeKafkaArgsDict',
+    'WorkflowNodeScheduleTriggerArgs',
+    'WorkflowNodeScheduleTriggerArgsDict',
+    'WorkflowNodeSelfServeTriggerArgs',
+    'WorkflowNodeSelfServeTriggerArgsDict',
+    'WorkflowNodeSelfServeTriggerContextArgs',
+    'WorkflowNodeSelfServeTriggerContextArgsDict',
+    'WorkflowNodeSelfServeTriggerPermissionsArgs',
+    'WorkflowNodeSelfServeTriggerPermissionsArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsStepArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsStepArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsStepValidationArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsStepValidationArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsTitlesArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsTitlesArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsNumberItemsArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsNumberItemsArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItemsArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItemsArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsSortArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsSortArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsStringItemsArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsStringItemsArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesBooleanPropsArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesBooleanPropsArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesNumberPropsArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesNumberPropsArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectPropsArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectPropsArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleValueArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleValueArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsSortArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsSortArgsDict',
+    'WorkflowNodeSelfServeTriggerUserInputsValidationArgs',
+    'WorkflowNodeSelfServeTriggerUserInputsValidationArgsDict',
+    'WorkflowNodeUpsertEntityArgs',
+    'WorkflowNodeUpsertEntityArgsDict',
+    'WorkflowNodeUpsertEntityMappingArgs',
+    'WorkflowNodeUpsertEntityMappingArgsDict',
+    'WorkflowNodeWebhookArgs',
+    'WorkflowNodeWebhookArgsDict',
 ]
 
 MYPY = False
@@ -7197,6 +7411,10 @@ if not MYPY:
         Manage permissions to update entities of the blueprint
         """
         update_metadata_properties: pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesArgsDict']
+        read: NotRequired[pulumi.Input['BlueprintPermissionsEntitiesReadArgsDict']]
+        """
+        Manage permissions to read entities of the blueprint
+        """
         update_properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdatePropertiesArgsDict']]]]
         """
         Manage permissions to update the entity properties
@@ -7215,12 +7433,14 @@ class BlueprintPermissionsEntitiesArgs:
                  unregister: pulumi.Input['BlueprintPermissionsEntitiesUnregisterArgs'],
                  update: pulumi.Input['BlueprintPermissionsEntitiesUpdateArgs'],
                  update_metadata_properties: pulumi.Input['BlueprintPermissionsEntitiesUpdateMetadataPropertiesArgs'],
+                 read: Optional[pulumi.Input['BlueprintPermissionsEntitiesReadArgs']] = None,
                  update_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdatePropertiesArgs']]]] = None,
                  update_relations: Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdateRelationsArgs']]]] = None):
         """
         :param pulumi.Input['BlueprintPermissionsEntitiesRegisterArgs'] register: Manage permissions to register entities of the blueprint
         :param pulumi.Input['BlueprintPermissionsEntitiesUnregisterArgs'] unregister: Manage permissions to unregister entities of the blueprint
         :param pulumi.Input['BlueprintPermissionsEntitiesUpdateArgs'] update: Manage permissions to update entities of the blueprint
+        :param pulumi.Input['BlueprintPermissionsEntitiesReadArgs'] read: Manage permissions to read entities of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdatePropertiesArgs']]] update_properties: Manage permissions to update the entity properties
         :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdateRelationsArgs']]] update_relations: Manage permissions to update the entity relations
         """
@@ -7228,6 +7448,8 @@ class BlueprintPermissionsEntitiesArgs:
         pulumi.set(__self__, "unregister", unregister)
         pulumi.set(__self__, "update", update)
         pulumi.set(__self__, "update_metadata_properties", update_metadata_properties)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
         if update_properties is not None:
             pulumi.set(__self__, "update_properties", update_properties)
         if update_relations is not None:
@@ -7279,6 +7501,18 @@ class BlueprintPermissionsEntitiesArgs:
         pulumi.set(self, "update_metadata_properties", value)
 
     @property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input['BlueprintPermissionsEntitiesReadArgs']]:
+        """
+        Manage permissions to read entities of the blueprint
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input['BlueprintPermissionsEntitiesReadArgs']]):
+        pulumi.set(self, "read", value)
+
+    @property
     @pulumi.getter(name="updateProperties")
     def update_properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['BlueprintPermissionsEntitiesUpdatePropertiesArgs']]]]:
         """
@@ -7304,11 +7538,117 @@ class BlueprintPermissionsEntitiesArgs:
 
 
 if not MYPY:
+    class BlueprintPermissionsEntitiesReadArgsDict(TypedDict):
+        owned_by_team: NotRequired[pulumi.Input[bool]]
+        """
+        Owned by team
+        """
+        policy: NotRequired[pulumi.Input[str]]
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Roles with read permissions
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Teams with read permissions
+        """
+        users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Users with read permissions
+        """
+elif False:
+    BlueprintPermissionsEntitiesReadArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BlueprintPermissionsEntitiesReadArgs:
+    def __init__(__self__, *,
+                 owned_by_team: Optional[pulumi.Input[bool]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] owned_by_team: Owned by team
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: Roles with read permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Teams with read permissions
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Users with read permissions
+        """
+        if owned_by_team is not None:
+            pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="ownedByTeam")
+    def owned_by_team(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Owned by team
+        """
+        return pulumi.get(self, "owned_by_team")
+
+    @owned_by_team.setter
+    def owned_by_team(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "owned_by_team", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Roles with read permissions
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Teams with read permissions
+        """
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Users with read permissions
+        """
+        return pulumi.get(self, "users")
+
+    @users.setter
+    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "users", value)
+
+
+if not MYPY:
     class BlueprintPermissionsEntitiesRegisterArgsDict(TypedDict):
         owned_by_team: NotRequired[pulumi.Input[bool]]
         """
         Owned by team
         """
+        policy: NotRequired[pulumi.Input[str]]
         roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         Roles with register permissions
@@ -7328,6 +7668,7 @@ elif False:
 class BlueprintPermissionsEntitiesRegisterArgs:
     def __init__(__self__, *,
                  owned_by_team: Optional[pulumi.Input[bool]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -7339,6 +7680,8 @@ class BlueprintPermissionsEntitiesRegisterArgs:
         """
         if owned_by_team is not None:
             pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
         if roles is not None:
             pulumi.set(__self__, "roles", roles)
         if teams is not None:
@@ -7357,6 +7700,15 @@ class BlueprintPermissionsEntitiesRegisterArgs:
     @owned_by_team.setter
     def owned_by_team(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "owned_by_team", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy", value)
 
     @property
     @pulumi.getter
@@ -7401,6 +7753,7 @@ if not MYPY:
         """
         Owned by team
         """
+        policy: NotRequired[pulumi.Input[str]]
         roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         Roles with unregister permissions
@@ -7420,6 +7773,7 @@ elif False:
 class BlueprintPermissionsEntitiesUnregisterArgs:
     def __init__(__self__, *,
                  owned_by_team: Optional[pulumi.Input[bool]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -7431,6 +7785,8 @@ class BlueprintPermissionsEntitiesUnregisterArgs:
         """
         if owned_by_team is not None:
             pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
         if roles is not None:
             pulumi.set(__self__, "roles", roles)
         if teams is not None:
@@ -7449,6 +7805,15 @@ class BlueprintPermissionsEntitiesUnregisterArgs:
     @owned_by_team.setter
     def owned_by_team(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "owned_by_team", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy", value)
 
     @property
     @pulumi.getter
@@ -7493,6 +7858,7 @@ if not MYPY:
         """
         Owned by team
         """
+        policy: NotRequired[pulumi.Input[str]]
         roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         Roles with update permissions
@@ -7512,6 +7878,7 @@ elif False:
 class BlueprintPermissionsEntitiesUpdateArgs:
     def __init__(__self__, *,
                  owned_by_team: Optional[pulumi.Input[bool]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -7523,6 +7890,8 @@ class BlueprintPermissionsEntitiesUpdateArgs:
         """
         if owned_by_team is not None:
             pulumi.set(__self__, "owned_by_team", owned_by_team)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
         if roles is not None:
             pulumi.set(__self__, "roles", roles)
         if teams is not None:
@@ -7541,6 +7910,15 @@ class BlueprintPermissionsEntitiesUpdateArgs:
     @owned_by_team.setter
     def owned_by_team(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "owned_by_team", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy", value)
 
     @property
     @pulumi.getter
@@ -12632,5 +13010,12360 @@ class WebhookSecurityArgs:
     @signature_prefix.setter
     def signature_prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "signature_prefix", value)
+
+
+if not MYPY:
+    class WorkflowConnectionArgsDict(TypedDict):
+        source_identifier: pulumi.Input[str]
+        """
+        The identifier of the source node
+        """
+        target_identifier: pulumi.Input[str]
+        """
+        The identifier of the target node
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the connection
+        """
+        fallback: NotRequired[pulumi.Input[bool]]
+        """
+        Marks this connection as the fallback branch of a `condition` node, taken when no outlet matches. Cannot be combined with `source_outlet_identifier`.
+        """
+        source_outlet_identifier: NotRequired[pulumi.Input[str]]
+        """
+        The outlet of the source node this connection leaves from. Required for `condition` and `input` nodes, and not allowed for any other node type.
+        """
+elif False:
+    WorkflowConnectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowConnectionArgs:
+    def __init__(__self__, *,
+                 source_identifier: pulumi.Input[str],
+                 target_identifier: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 fallback: Optional[pulumi.Input[bool]] = None,
+                 source_outlet_identifier: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] source_identifier: The identifier of the source node
+        :param pulumi.Input[str] target_identifier: The identifier of the target node
+        :param pulumi.Input[str] description: The description of the connection
+        :param pulumi.Input[bool] fallback: Marks this connection as the fallback branch of a `condition` node, taken when no outlet matches. Cannot be combined with `source_outlet_identifier`.
+        :param pulumi.Input[str] source_outlet_identifier: The outlet of the source node this connection leaves from. Required for `condition` and `input` nodes, and not allowed for any other node type.
+        """
+        pulumi.set(__self__, "source_identifier", source_identifier)
+        pulumi.set(__self__, "target_identifier", target_identifier)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if fallback is not None:
+            pulumi.set(__self__, "fallback", fallback)
+        if source_outlet_identifier is not None:
+            pulumi.set(__self__, "source_outlet_identifier", source_outlet_identifier)
+
+    @property
+    @pulumi.getter(name="sourceIdentifier")
+    def source_identifier(self) -> pulumi.Input[str]:
+        """
+        The identifier of the source node
+        """
+        return pulumi.get(self, "source_identifier")
+
+    @source_identifier.setter
+    def source_identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_identifier", value)
+
+    @property
+    @pulumi.getter(name="targetIdentifier")
+    def target_identifier(self) -> pulumi.Input[str]:
+        """
+        The identifier of the target node
+        """
+        return pulumi.get(self, "target_identifier")
+
+    @target_identifier.setter
+    def target_identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_identifier", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the connection
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def fallback(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Marks this connection as the fallback branch of a `condition` node, taken when no outlet matches. Cannot be combined with `source_outlet_identifier`.
+        """
+        return pulumi.get(self, "fallback")
+
+    @fallback.setter
+    def fallback(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "fallback", value)
+
+    @property
+    @pulumi.getter(name="sourceOutletIdentifier")
+    def source_outlet_identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The outlet of the source node this connection leaves from. Required for `condition` and `input` nodes, and not allowed for any other node type.
+        """
+        return pulumi.get(self, "source_outlet_identifier")
+
+    @source_outlet_identifier.setter
+    def source_outlet_identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_outlet_identifier", value)
+
+
+if not MYPY:
+    class WorkflowNodeArgsDict(TypedDict):
+        identifier: pulumi.Input[str]
+        """
+        The identifier of the node
+        """
+        ai: NotRequired[pulumi.Input['WorkflowNodeAiArgsDict']]
+        """
+        An AI node that runs a prompt through Port AI.
+        """
+        ai_agent: NotRequired[pulumi.Input['WorkflowNodeAiAgentArgsDict']]
+        """
+        An AI agent node that invokes a configured Port AI agent.
+        """
+        condition: NotRequired[pulumi.Input['WorkflowNodeConditionArgsDict']]
+        """
+        A condition node that branches the workflow based on JQ expressions. Connections leaving this node must set `source_outlet_identifier` or `fallback`.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the node
+        """
+        event_trigger: NotRequired[pulumi.Input['WorkflowNodeEventTriggerArgsDict']]
+        """
+        An event trigger node that starts the workflow when an entity event occurs.
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the node
+        """
+        input: NotRequired[pulumi.Input['WorkflowNodeInputArgsDict']]
+        """
+        An input node that pauses the workflow and waits for a human response. Connections leaving this node must set `source_outlet_identifier`.
+        """
+        integration_action: NotRequired[pulumi.Input['WorkflowNodeIntegrationActionArgsDict']]
+        """
+        An integration action node that invokes an installed integration.
+        """
+        kafka: NotRequired[pulumi.Input['WorkflowNodeKafkaArgsDict']]
+        """
+        A Kafka node that publishes a message to the organization's Kafka topic.
+        """
+        links: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Link templates (supporting `{{ .result.field }}` interpolation) evaluated when the node run completes (max 3)
+        """
+        schedule_trigger: NotRequired[pulumi.Input['WorkflowNodeScheduleTriggerArgsDict']]
+        """
+        A schedule trigger node that starts the workflow on a cron schedule.
+        """
+        self_serve_trigger: NotRequired[pulumi.Input['WorkflowNodeSelfServeTriggerArgsDict']]
+        """
+        A self service trigger node that starts the workflow from a user submitted form.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the node
+        """
+        upsert_entity: NotRequired[pulumi.Input['WorkflowNodeUpsertEntityArgsDict']]
+        """
+        An upsert entity node that creates or updates an entity in the catalog.
+        """
+        variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Named expressions made available to the node at run time
+        """
+        verbose: NotRequired[pulumi.Input[bool]]
+        """
+        When true, the workflow service writes extended per-node run logs
+        """
+        webhook: NotRequired[pulumi.Input['WorkflowNodeWebhookArgsDict']]
+        """
+        A webhook node that sends an HTTP request.
+        """
+elif False:
+    WorkflowNodeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeArgs:
+    def __init__(__self__, *,
+                 identifier: pulumi.Input[str],
+                 ai: Optional[pulumi.Input['WorkflowNodeAiArgs']] = None,
+                 ai_agent: Optional[pulumi.Input['WorkflowNodeAiAgentArgs']] = None,
+                 condition: Optional[pulumi.Input['WorkflowNodeConditionArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 event_trigger: Optional[pulumi.Input['WorkflowNodeEventTriggerArgs']] = None,
+                 icon: Optional[pulumi.Input[str]] = None,
+                 input: Optional[pulumi.Input['WorkflowNodeInputArgs']] = None,
+                 integration_action: Optional[pulumi.Input['WorkflowNodeIntegrationActionArgs']] = None,
+                 kafka: Optional[pulumi.Input['WorkflowNodeKafkaArgs']] = None,
+                 links: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 schedule_trigger: Optional[pulumi.Input['WorkflowNodeScheduleTriggerArgs']] = None,
+                 self_serve_trigger: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerArgs']] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 upsert_entity: Optional[pulumi.Input['WorkflowNodeUpsertEntityArgs']] = None,
+                 variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 verbose: Optional[pulumi.Input[bool]] = None,
+                 webhook: Optional[pulumi.Input['WorkflowNodeWebhookArgs']] = None):
+        """
+        :param pulumi.Input[str] identifier: The identifier of the node
+        :param pulumi.Input['WorkflowNodeAiArgs'] ai: An AI node that runs a prompt through Port AI.
+        :param pulumi.Input['WorkflowNodeAiAgentArgs'] ai_agent: An AI agent node that invokes a configured Port AI agent.
+        :param pulumi.Input['WorkflowNodeConditionArgs'] condition: A condition node that branches the workflow based on JQ expressions. Connections leaving this node must set `source_outlet_identifier` or `fallback`.
+        :param pulumi.Input[str] description: The description of the node
+        :param pulumi.Input['WorkflowNodeEventTriggerArgs'] event_trigger: An event trigger node that starts the workflow when an entity event occurs.
+        :param pulumi.Input[str] icon: The icon of the node
+        :param pulumi.Input['WorkflowNodeInputArgs'] input: An input node that pauses the workflow and waits for a human response. Connections leaving this node must set `source_outlet_identifier`.
+        :param pulumi.Input['WorkflowNodeIntegrationActionArgs'] integration_action: An integration action node that invokes an installed integration.
+        :param pulumi.Input['WorkflowNodeKafkaArgs'] kafka: A Kafka node that publishes a message to the organization's Kafka topic.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] links: Link templates (supporting `{{ .result.field }}` interpolation) evaluated when the node run completes (max 3)
+        :param pulumi.Input['WorkflowNodeScheduleTriggerArgs'] schedule_trigger: A schedule trigger node that starts the workflow on a cron schedule.
+        :param pulumi.Input['WorkflowNodeSelfServeTriggerArgs'] self_serve_trigger: A self service trigger node that starts the workflow from a user submitted form.
+        :param pulumi.Input[str] title: The title of the node
+        :param pulumi.Input['WorkflowNodeUpsertEntityArgs'] upsert_entity: An upsert entity node that creates or updates an entity in the catalog.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] variables: Named expressions made available to the node at run time
+        :param pulumi.Input[bool] verbose: When true, the workflow service writes extended per-node run logs
+        :param pulumi.Input['WorkflowNodeWebhookArgs'] webhook: A webhook node that sends an HTTP request.
+        """
+        pulumi.set(__self__, "identifier", identifier)
+        if ai is not None:
+            pulumi.set(__self__, "ai", ai)
+        if ai_agent is not None:
+            pulumi.set(__self__, "ai_agent", ai_agent)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if event_trigger is not None:
+            pulumi.set(__self__, "event_trigger", event_trigger)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if input is not None:
+            pulumi.set(__self__, "input", input)
+        if integration_action is not None:
+            pulumi.set(__self__, "integration_action", integration_action)
+        if kafka is not None:
+            pulumi.set(__self__, "kafka", kafka)
+        if links is not None:
+            pulumi.set(__self__, "links", links)
+        if schedule_trigger is not None:
+            pulumi.set(__self__, "schedule_trigger", schedule_trigger)
+        if self_serve_trigger is not None:
+            pulumi.set(__self__, "self_serve_trigger", self_serve_trigger)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+        if upsert_entity is not None:
+            pulumi.set(__self__, "upsert_entity", upsert_entity)
+        if variables is not None:
+            pulumi.set(__self__, "variables", variables)
+        if verbose is not None:
+            pulumi.set(__self__, "verbose", verbose)
+        if webhook is not None:
+            pulumi.set(__self__, "webhook", webhook)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[str]:
+        """
+        The identifier of the node
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter
+    def ai(self) -> Optional[pulumi.Input['WorkflowNodeAiArgs']]:
+        """
+        An AI node that runs a prompt through Port AI.
+        """
+        return pulumi.get(self, "ai")
+
+    @ai.setter
+    def ai(self, value: Optional[pulumi.Input['WorkflowNodeAiArgs']]):
+        pulumi.set(self, "ai", value)
+
+    @property
+    @pulumi.getter(name="aiAgent")
+    def ai_agent(self) -> Optional[pulumi.Input['WorkflowNodeAiAgentArgs']]:
+        """
+        An AI agent node that invokes a configured Port AI agent.
+        """
+        return pulumi.get(self, "ai_agent")
+
+    @ai_agent.setter
+    def ai_agent(self, value: Optional[pulumi.Input['WorkflowNodeAiAgentArgs']]):
+        pulumi.set(self, "ai_agent", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['WorkflowNodeConditionArgs']]:
+        """
+        A condition node that branches the workflow based on JQ expressions. Connections leaving this node must set `source_outlet_identifier` or `fallback`.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['WorkflowNodeConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the node
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="eventTrigger")
+    def event_trigger(self) -> Optional[pulumi.Input['WorkflowNodeEventTriggerArgs']]:
+        """
+        An event trigger node that starts the workflow when an entity event occurs.
+        """
+        return pulumi.get(self, "event_trigger")
+
+    @event_trigger.setter
+    def event_trigger(self, value: Optional[pulumi.Input['WorkflowNodeEventTriggerArgs']]):
+        pulumi.set(self, "event_trigger", value)
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[pulumi.Input[str]]:
+        """
+        The icon of the node
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "icon", value)
+
+    @property
+    @pulumi.getter
+    def input(self) -> Optional[pulumi.Input['WorkflowNodeInputArgs']]:
+        """
+        An input node that pauses the workflow and waits for a human response. Connections leaving this node must set `source_outlet_identifier`.
+        """
+        return pulumi.get(self, "input")
+
+    @input.setter
+    def input(self, value: Optional[pulumi.Input['WorkflowNodeInputArgs']]):
+        pulumi.set(self, "input", value)
+
+    @property
+    @pulumi.getter(name="integrationAction")
+    def integration_action(self) -> Optional[pulumi.Input['WorkflowNodeIntegrationActionArgs']]:
+        """
+        An integration action node that invokes an installed integration.
+        """
+        return pulumi.get(self, "integration_action")
+
+    @integration_action.setter
+    def integration_action(self, value: Optional[pulumi.Input['WorkflowNodeIntegrationActionArgs']]):
+        pulumi.set(self, "integration_action", value)
+
+    @property
+    @pulumi.getter
+    def kafka(self) -> Optional[pulumi.Input['WorkflowNodeKafkaArgs']]:
+        """
+        A Kafka node that publishes a message to the organization's Kafka topic.
+        """
+        return pulumi.get(self, "kafka")
+
+    @kafka.setter
+    def kafka(self, value: Optional[pulumi.Input['WorkflowNodeKafkaArgs']]):
+        pulumi.set(self, "kafka", value)
+
+    @property
+    @pulumi.getter
+    def links(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Link templates (supporting `{{ .result.field }}` interpolation) evaluated when the node run completes (max 3)
+        """
+        return pulumi.get(self, "links")
+
+    @links.setter
+    def links(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "links", value)
+
+    @property
+    @pulumi.getter(name="scheduleTrigger")
+    def schedule_trigger(self) -> Optional[pulumi.Input['WorkflowNodeScheduleTriggerArgs']]:
+        """
+        A schedule trigger node that starts the workflow on a cron schedule.
+        """
+        return pulumi.get(self, "schedule_trigger")
+
+    @schedule_trigger.setter
+    def schedule_trigger(self, value: Optional[pulumi.Input['WorkflowNodeScheduleTriggerArgs']]):
+        pulumi.set(self, "schedule_trigger", value)
+
+    @property
+    @pulumi.getter(name="selfServeTrigger")
+    def self_serve_trigger(self) -> Optional[pulumi.Input['WorkflowNodeSelfServeTriggerArgs']]:
+        """
+        A self service trigger node that starts the workflow from a user submitted form.
+        """
+        return pulumi.get(self, "self_serve_trigger")
+
+    @self_serve_trigger.setter
+    def self_serve_trigger(self, value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerArgs']]):
+        pulumi.set(self, "self_serve_trigger", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of the node
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter(name="upsertEntity")
+    def upsert_entity(self) -> Optional[pulumi.Input['WorkflowNodeUpsertEntityArgs']]:
+        """
+        An upsert entity node that creates or updates an entity in the catalog.
+        """
+        return pulumi.get(self, "upsert_entity")
+
+    @upsert_entity.setter
+    def upsert_entity(self, value: Optional[pulumi.Input['WorkflowNodeUpsertEntityArgs']]):
+        pulumi.set(self, "upsert_entity", value)
+
+    @property
+    @pulumi.getter
+    def variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Named expressions made available to the node at run time
+        """
+        return pulumi.get(self, "variables")
+
+    @variables.setter
+    def variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "variables", value)
+
+    @property
+    @pulumi.getter
+    def verbose(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, the workflow service writes extended per-node run logs
+        """
+        return pulumi.get(self, "verbose")
+
+    @verbose.setter
+    def verbose(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "verbose", value)
+
+    @property
+    @pulumi.getter
+    def webhook(self) -> Optional[pulumi.Input['WorkflowNodeWebhookArgs']]:
+        """
+        A webhook node that sends an HTTP request.
+        """
+        return pulumi.get(self, "webhook")
+
+    @webhook.setter
+    def webhook(self, value: Optional[pulumi.Input['WorkflowNodeWebhookArgs']]):
+        pulumi.set(self, "webhook", value)
+
+
+if not MYPY:
+    class WorkflowNodeAiArgsDict(TypedDict):
+        mcp_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeAiMcpServerArgsDict']]]]
+        """
+        The MCP servers available to the AI node (max 5).
+        """
+        model: NotRequired[pulumi.Input[str]]
+        """
+        The AI model to use. Must be set together with `provider`.
+        """
+        output_schema: NotRequired[pulumi.Input[str]]
+        """
+        A JSON schema, encoded as a JSON string, the AI response is validated against.
+        """
+        provider: NotRequired[pulumi.Input[str]]
+        """
+        The AI provider to use. Must be set together with `model`.
+        """
+        system_prompt: NotRequired[pulumi.Input[str]]
+        """
+        Instructions describing the AI's role and operational rules.
+        """
+        tools: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Regex patterns matched against the available tool names.
+        """
+        user_prompt: NotRequired[pulumi.Input[str]]
+        """
+        The message or query processed by Port AI.
+        """
+elif False:
+    WorkflowNodeAiArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeAiArgs:
+    def __init__(__self__, *,
+                 mcp_servers: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeAiMcpServerArgs']]]] = None,
+                 model: Optional[pulumi.Input[str]] = None,
+                 output_schema: Optional[pulumi.Input[str]] = None,
+                 provider: Optional[pulumi.Input[str]] = None,
+                 system_prompt: Optional[pulumi.Input[str]] = None,
+                 tools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 user_prompt: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeAiMcpServerArgs']]] mcp_servers: The MCP servers available to the AI node (max 5).
+        :param pulumi.Input[str] model: The AI model to use. Must be set together with `provider`.
+        :param pulumi.Input[str] output_schema: A JSON schema, encoded as a JSON string, the AI response is validated against.
+        :param pulumi.Input[str] provider: The AI provider to use. Must be set together with `model`.
+        :param pulumi.Input[str] system_prompt: Instructions describing the AI's role and operational rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tools: Regex patterns matched against the available tool names.
+        :param pulumi.Input[str] user_prompt: The message or query processed by Port AI.
+        """
+        if mcp_servers is not None:
+            pulumi.set(__self__, "mcp_servers", mcp_servers)
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+        if output_schema is not None:
+            pulumi.set(__self__, "output_schema", output_schema)
+        if provider is not None:
+            pulumi.set(__self__, "provider", provider)
+        if system_prompt is not None:
+            pulumi.set(__self__, "system_prompt", system_prompt)
+        if tools is not None:
+            pulumi.set(__self__, "tools", tools)
+        if user_prompt is not None:
+            pulumi.set(__self__, "user_prompt", user_prompt)
+
+    @property
+    @pulumi.getter(name="mcpServers")
+    def mcp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeAiMcpServerArgs']]]]:
+        """
+        The MCP servers available to the AI node (max 5).
+        """
+        return pulumi.get(self, "mcp_servers")
+
+    @mcp_servers.setter
+    def mcp_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeAiMcpServerArgs']]]]):
+        pulumi.set(self, "mcp_servers", value)
+
+    @property
+    @pulumi.getter
+    def model(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AI model to use. Must be set together with `provider`.
+        """
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "model", value)
+
+    @property
+    @pulumi.getter(name="outputSchema")
+    def output_schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        A JSON schema, encoded as a JSON string, the AI response is validated against.
+        """
+        return pulumi.get(self, "output_schema")
+
+    @output_schema.setter
+    def output_schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "output_schema", value)
+
+    @property
+    @pulumi.getter
+    def provider(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AI provider to use. Must be set together with `model`.
+        """
+        return pulumi.get(self, "provider")
+
+    @provider.setter
+    def provider(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provider", value)
+
+    @property
+    @pulumi.getter(name="systemPrompt")
+    def system_prompt(self) -> Optional[pulumi.Input[str]]:
+        """
+        Instructions describing the AI's role and operational rules.
+        """
+        return pulumi.get(self, "system_prompt")
+
+    @system_prompt.setter
+    def system_prompt(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "system_prompt", value)
+
+    @property
+    @pulumi.getter
+    def tools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Regex patterns matched against the available tool names.
+        """
+        return pulumi.get(self, "tools")
+
+    @tools.setter
+    def tools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tools", value)
+
+    @property
+    @pulumi.getter(name="userPrompt")
+    def user_prompt(self) -> Optional[pulumi.Input[str]]:
+        """
+        The message or query processed by Port AI.
+        """
+        return pulumi.get(self, "user_prompt")
+
+    @user_prompt.setter
+    def user_prompt(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_prompt", value)
+
+
+if not MYPY:
+    class WorkflowNodeAiAgentArgsDict(TypedDict):
+        agent_identifier: NotRequired[pulumi.Input[str]]
+        """
+        The identifier of the agent to invoke.
+        """
+        model: NotRequired[pulumi.Input[str]]
+        """
+        The AI model to use. Must be set together with `provider`.
+        """
+        output_schema: NotRequired[pulumi.Input[str]]
+        """
+        A JSON schema, encoded as a JSON string, the agent response is validated against.
+        """
+        provider: NotRequired[pulumi.Input[str]]
+        """
+        The AI provider to use. Must be set together with `model`.
+        """
+        user_prompt: NotRequired[pulumi.Input[str]]
+        """
+        The message or query processed by the agent.
+        """
+elif False:
+    WorkflowNodeAiAgentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeAiAgentArgs:
+    def __init__(__self__, *,
+                 agent_identifier: Optional[pulumi.Input[str]] = None,
+                 model: Optional[pulumi.Input[str]] = None,
+                 output_schema: Optional[pulumi.Input[str]] = None,
+                 provider: Optional[pulumi.Input[str]] = None,
+                 user_prompt: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] agent_identifier: The identifier of the agent to invoke.
+        :param pulumi.Input[str] model: The AI model to use. Must be set together with `provider`.
+        :param pulumi.Input[str] output_schema: A JSON schema, encoded as a JSON string, the agent response is validated against.
+        :param pulumi.Input[str] provider: The AI provider to use. Must be set together with `model`.
+        :param pulumi.Input[str] user_prompt: The message or query processed by the agent.
+        """
+        if agent_identifier is not None:
+            pulumi.set(__self__, "agent_identifier", agent_identifier)
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+        if output_schema is not None:
+            pulumi.set(__self__, "output_schema", output_schema)
+        if provider is not None:
+            pulumi.set(__self__, "provider", provider)
+        if user_prompt is not None:
+            pulumi.set(__self__, "user_prompt", user_prompt)
+
+    @property
+    @pulumi.getter(name="agentIdentifier")
+    def agent_identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of the agent to invoke.
+        """
+        return pulumi.get(self, "agent_identifier")
+
+    @agent_identifier.setter
+    def agent_identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "agent_identifier", value)
+
+    @property
+    @pulumi.getter
+    def model(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AI model to use. Must be set together with `provider`.
+        """
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "model", value)
+
+    @property
+    @pulumi.getter(name="outputSchema")
+    def output_schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        A JSON schema, encoded as a JSON string, the agent response is validated against.
+        """
+        return pulumi.get(self, "output_schema")
+
+    @output_schema.setter
+    def output_schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "output_schema", value)
+
+    @property
+    @pulumi.getter
+    def provider(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AI provider to use. Must be set together with `model`.
+        """
+        return pulumi.get(self, "provider")
+
+    @provider.setter
+    def provider(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provider", value)
+
+    @property
+    @pulumi.getter(name="userPrompt")
+    def user_prompt(self) -> Optional[pulumi.Input[str]]:
+        """
+        The message or query processed by the agent.
+        """
+        return pulumi.get(self, "user_prompt")
+
+    @user_prompt.setter
+    def user_prompt(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_prompt", value)
+
+
+if not MYPY:
+    class WorkflowNodeAiMcpServerArgsDict(TypedDict):
+        identifier: pulumi.Input[str]
+        """
+        The identifier of the MCP server.
+        """
+elif False:
+    WorkflowNodeAiMcpServerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeAiMcpServerArgs:
+    def __init__(__self__, *,
+                 identifier: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] identifier: The identifier of the MCP server.
+        """
+        pulumi.set(__self__, "identifier", identifier)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[str]:
+        """
+        The identifier of the MCP server.
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identifier", value)
+
+
+if not MYPY:
+    class WorkflowNodeConditionArgsDict(TypedDict):
+        outlets: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeConditionOutletArgsDict']]]]
+        """
+        The branches of the condition, evaluated in order.
+        """
+elif False:
+    WorkflowNodeConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeConditionArgs:
+    def __init__(__self__, *,
+                 outlets: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeConditionOutletArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeConditionOutletArgs']]] outlets: The branches of the condition, evaluated in order.
+        """
+        if outlets is not None:
+            pulumi.set(__self__, "outlets", outlets)
+
+    @property
+    @pulumi.getter
+    def outlets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeConditionOutletArgs']]]]:
+        """
+        The branches of the condition, evaluated in order.
+        """
+        return pulumi.get(self, "outlets")
+
+    @outlets.setter
+    def outlets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeConditionOutletArgs']]]]):
+        pulumi.set(self, "outlets", value)
+
+
+if not MYPY:
+    class WorkflowNodeConditionOutletArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        The JQ expression that selects this outlet.
+        """
+        identifier: pulumi.Input[str]
+        """
+        The identifier of the outlet, referenced by a connection's `source_outlet_identifier`.
+        """
+        status_label: NotRequired[pulumi.Input['WorkflowNodeConditionOutletStatusLabelArgsDict']]
+        """
+        A custom status label displayed on the node run.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the outlet.
+        """
+        workflow_status_label: NotRequired[pulumi.Input['WorkflowNodeConditionOutletWorkflowStatusLabelArgsDict']]
+        """
+        A custom status label displayed on the workflow run.
+        """
+elif False:
+    WorkflowNodeConditionOutletArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeConditionOutletArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 identifier: pulumi.Input[str],
+                 status_label: Optional[pulumi.Input['WorkflowNodeConditionOutletStatusLabelArgs']] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 workflow_status_label: Optional[pulumi.Input['WorkflowNodeConditionOutletWorkflowStatusLabelArgs']] = None):
+        """
+        :param pulumi.Input[str] expression: The JQ expression that selects this outlet.
+        :param pulumi.Input[str] identifier: The identifier of the outlet, referenced by a connection's `source_outlet_identifier`.
+        :param pulumi.Input['WorkflowNodeConditionOutletStatusLabelArgs'] status_label: A custom status label displayed on the node run.
+        :param pulumi.Input[str] title: The title of the outlet.
+        :param pulumi.Input['WorkflowNodeConditionOutletWorkflowStatusLabelArgs'] workflow_status_label: A custom status label displayed on the workflow run.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "identifier", identifier)
+        if status_label is not None:
+            pulumi.set(__self__, "status_label", status_label)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+        if workflow_status_label is not None:
+            pulumi.set(__self__, "workflow_status_label", workflow_status_label)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        """
+        The JQ expression that selects this outlet.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[str]:
+        """
+        The identifier of the outlet, referenced by a connection's `source_outlet_identifier`.
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter(name="statusLabel")
+    def status_label(self) -> Optional[pulumi.Input['WorkflowNodeConditionOutletStatusLabelArgs']]:
+        """
+        A custom status label displayed on the node run.
+        """
+        return pulumi.get(self, "status_label")
+
+    @status_label.setter
+    def status_label(self, value: Optional[pulumi.Input['WorkflowNodeConditionOutletStatusLabelArgs']]):
+        pulumi.set(self, "status_label", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of the outlet.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter(name="workflowStatusLabel")
+    def workflow_status_label(self) -> Optional[pulumi.Input['WorkflowNodeConditionOutletWorkflowStatusLabelArgs']]:
+        """
+        A custom status label displayed on the workflow run.
+        """
+        return pulumi.get(self, "workflow_status_label")
+
+    @workflow_status_label.setter
+    def workflow_status_label(self, value: Optional[pulumi.Input['WorkflowNodeConditionOutletWorkflowStatusLabelArgs']]):
+        pulumi.set(self, "workflow_status_label", value)
+
+
+if not MYPY:
+    class WorkflowNodeConditionOutletStatusLabelArgsDict(TypedDict):
+        text: NotRequired[pulumi.Input[str]]
+        """
+        The label text. Supports JQ expressions for dynamic content.
+        """
+        variant: NotRequired[pulumi.Input[str]]
+        """
+        Semantic variant controlling the label color/style. One of `success`, `alert`.
+        """
+elif False:
+    WorkflowNodeConditionOutletStatusLabelArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeConditionOutletStatusLabelArgs:
+    def __init__(__self__, *,
+                 text: Optional[pulumi.Input[str]] = None,
+                 variant: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] text: The label text. Supports JQ expressions for dynamic content.
+        :param pulumi.Input[str] variant: Semantic variant controlling the label color/style. One of `success`, `alert`.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if variant is not None:
+            pulumi.set(__self__, "variant", variant)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[str]]:
+        """
+        The label text. Supports JQ expressions for dynamic content.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text", value)
+
+    @property
+    @pulumi.getter
+    def variant(self) -> Optional[pulumi.Input[str]]:
+        """
+        Semantic variant controlling the label color/style. One of `success`, `alert`.
+        """
+        return pulumi.get(self, "variant")
+
+    @variant.setter
+    def variant(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "variant", value)
+
+
+if not MYPY:
+    class WorkflowNodeConditionOutletWorkflowStatusLabelArgsDict(TypedDict):
+        text: NotRequired[pulumi.Input[str]]
+        """
+        The label text. Supports JQ expressions for dynamic content.
+        """
+        variant: NotRequired[pulumi.Input[str]]
+        """
+        Semantic variant controlling the label color/style. One of `success`, `alert`.
+        """
+elif False:
+    WorkflowNodeConditionOutletWorkflowStatusLabelArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeConditionOutletWorkflowStatusLabelArgs:
+    def __init__(__self__, *,
+                 text: Optional[pulumi.Input[str]] = None,
+                 variant: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] text: The label text. Supports JQ expressions for dynamic content.
+        :param pulumi.Input[str] variant: Semantic variant controlling the label color/style. One of `success`, `alert`.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if variant is not None:
+            pulumi.set(__self__, "variant", variant)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[str]]:
+        """
+        The label text. Supports JQ expressions for dynamic content.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text", value)
+
+    @property
+    @pulumi.getter
+    def variant(self) -> Optional[pulumi.Input[str]]:
+        """
+        Semantic variant controlling the label color/style. One of `success`, `alert`.
+        """
+        return pulumi.get(self, "variant")
+
+    @variant.setter
+    def variant(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "variant", value)
+
+
+if not MYPY:
+    class WorkflowNodeEventTriggerArgsDict(TypedDict):
+        blueprint_identifier: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier the event relates to.
+        """
+        condition: NotRequired[pulumi.Input['WorkflowNodeEventTriggerConditionArgsDict']]
+        """
+        A JQ condition gating whether the event starts the workflow.
+        """
+        property_identifier: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier the timer event relates to. Required for the `TIMER_EXPIRED` event type.
+        """
+        published: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the trigger is published.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The event type that triggers the workflow. One of `ENTITY_CREATED`, `ENTITY_UPDATED`, `ENTITY_DELETED`, `TIMER_EXPIRED`, `ANY_ENTITY_CHANGE`.
+        """
+elif False:
+    WorkflowNodeEventTriggerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeEventTriggerArgs:
+    def __init__(__self__, *,
+                 blueprint_identifier: Optional[pulumi.Input[str]] = None,
+                 condition: Optional[pulumi.Input['WorkflowNodeEventTriggerConditionArgs']] = None,
+                 property_identifier: Optional[pulumi.Input[str]] = None,
+                 published: Optional[pulumi.Input[bool]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint_identifier: The blueprint identifier the event relates to.
+        :param pulumi.Input['WorkflowNodeEventTriggerConditionArgs'] condition: A JQ condition gating whether the event starts the workflow.
+        :param pulumi.Input[str] property_identifier: The property identifier the timer event relates to. Required for the `TIMER_EXPIRED` event type.
+        :param pulumi.Input[bool] published: Whether the trigger is published.
+        :param pulumi.Input[str] type: The event type that triggers the workflow. One of `ENTITY_CREATED`, `ENTITY_UPDATED`, `ENTITY_DELETED`, `TIMER_EXPIRED`, `ANY_ENTITY_CHANGE`.
+        """
+        if blueprint_identifier is not None:
+            pulumi.set(__self__, "blueprint_identifier", blueprint_identifier)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if property_identifier is not None:
+            pulumi.set(__self__, "property_identifier", property_identifier)
+        if published is not None:
+            pulumi.set(__self__, "published", published)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="blueprintIdentifier")
+    def blueprint_identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier the event relates to.
+        """
+        return pulumi.get(self, "blueprint_identifier")
+
+    @blueprint_identifier.setter
+    def blueprint_identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint_identifier", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['WorkflowNodeEventTriggerConditionArgs']]:
+        """
+        A JQ condition gating whether the event starts the workflow.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['WorkflowNodeEventTriggerConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter(name="propertyIdentifier")
+    def property_identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier the timer event relates to. Required for the `TIMER_EXPIRED` event type.
+        """
+        return pulumi.get(self, "property_identifier")
+
+    @property_identifier.setter
+    def property_identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property_identifier", value)
+
+    @property
+    @pulumi.getter
+    def published(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the trigger is published.
+        """
+        return pulumi.get(self, "published")
+
+    @published.setter
+    def published(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "published", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The event type that triggers the workflow. One of `ENTITY_CREATED`, `ENTITY_UPDATED`, `ENTITY_DELETED`, `TIMER_EXPIRED`, `ANY_ENTITY_CHANGE`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class WorkflowNodeEventTriggerConditionArgsDict(TypedDict):
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the expressions are combined. One of `and`, `or`.
+        """
+        expressions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The JQ expressions evaluated against the event.
+        """
+elif False:
+    WorkflowNodeEventTriggerConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeEventTriggerConditionArgs:
+    def __init__(__self__, *,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 expressions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] combinator: How the expressions are combined. One of `and`, `or`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] expressions: The JQ expressions evaluated against the event.
+        """
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if expressions is not None:
+            pulumi.set(__self__, "expressions", expressions)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the expressions are combined. One of `and`, `or`.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def expressions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The JQ expressions evaluated against the event.
+        """
+        return pulumi.get(self, "expressions")
+
+    @expressions.setter
+    def expressions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "expressions", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description shown on the response form.
+        """
+        notifications: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputNotificationArgsDict']]]]
+        """
+        Notifications sent when the input node starts waiting.
+        """
+        outlets: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputOutletArgsDict']]]]
+        """
+        The branches of the input node, each bound to a button.
+        """
+        responders: NotRequired[pulumi.Input['WorkflowNodeInputRespondersArgsDict']]
+        """
+        Who is allowed to respond to this input node.
+        """
+        user_inputs: NotRequired[pulumi.Input['WorkflowNodeInputUserInputsArgsDict']]
+        """
+        The form presented to the responders.
+        """
+elif False:
+    WorkflowNodeInputArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputNotificationArgs']]]] = None,
+                 outlets: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputOutletArgs']]]] = None,
+                 responders: Optional[pulumi.Input['WorkflowNodeInputRespondersArgs']] = None,
+                 user_inputs: Optional[pulumi.Input['WorkflowNodeInputUserInputsArgs']] = None):
+        """
+        :param pulumi.Input[str] description: The description shown on the response form.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputNotificationArgs']]] notifications: Notifications sent when the input node starts waiting.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputOutletArgs']]] outlets: The branches of the input node, each bound to a button.
+        :param pulumi.Input['WorkflowNodeInputRespondersArgs'] responders: Who is allowed to respond to this input node.
+        :param pulumi.Input['WorkflowNodeInputUserInputsArgs'] user_inputs: The form presented to the responders.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if notifications is not None:
+            pulumi.set(__self__, "notifications", notifications)
+        if outlets is not None:
+            pulumi.set(__self__, "outlets", outlets)
+        if responders is not None:
+            pulumi.set(__self__, "responders", responders)
+        if user_inputs is not None:
+            pulumi.set(__self__, "user_inputs", user_inputs)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description shown on the response form.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def notifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputNotificationArgs']]]]:
+        """
+        Notifications sent when the input node starts waiting.
+        """
+        return pulumi.get(self, "notifications")
+
+    @notifications.setter
+    def notifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputNotificationArgs']]]]):
+        pulumi.set(self, "notifications", value)
+
+    @property
+    @pulumi.getter
+    def outlets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputOutletArgs']]]]:
+        """
+        The branches of the input node, each bound to a button.
+        """
+        return pulumi.get(self, "outlets")
+
+    @outlets.setter
+    def outlets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputOutletArgs']]]]):
+        pulumi.set(self, "outlets", value)
+
+    @property
+    @pulumi.getter
+    def responders(self) -> Optional[pulumi.Input['WorkflowNodeInputRespondersArgs']]:
+        """
+        Who is allowed to respond to this input node.
+        """
+        return pulumi.get(self, "responders")
+
+    @responders.setter
+    def responders(self, value: Optional[pulumi.Input['WorkflowNodeInputRespondersArgs']]):
+        pulumi.set(self, "responders", value)
+
+    @property
+    @pulumi.getter(name="userInputs")
+    def user_inputs(self) -> Optional[pulumi.Input['WorkflowNodeInputUserInputsArgs']]:
+        """
+        The form presented to the responders.
+        """
+        return pulumi.get(self, "user_inputs")
+
+    @user_inputs.setter
+    def user_inputs(self, value: Optional[pulumi.Input['WorkflowNodeInputUserInputsArgs']]):
+        pulumi.set(self, "user_inputs", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputNotificationArgsDict(TypedDict):
+        target: pulumi.Input[str]
+        """
+        The notification target. One of `email`, `webhook`.
+        """
+        agent: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the webhook is routed through the Port agent.
+        """
+        body: NotRequired[pulumi.Input[str]]
+        """
+        The webhook body as a JSON encoded string.
+        """
+        fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputNotificationFieldArgsDict']]]]
+        """
+        The fields rendered in the email notification. Only valid when `target` is `email`.
+        """
+        headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The webhook headers.
+        """
+        method: NotRequired[pulumi.Input[str]]
+        """
+        The webhook HTTP method. One of `GET`, `POST`, `PUT`, `PATCH`, `DELETE`.
+        """
+        url: NotRequired[pulumi.Input[str]]
+        """
+        The webhook URL. Required when `target` is `webhook`.
+        """
+elif False:
+    WorkflowNodeInputNotificationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputNotificationArgs:
+    def __init__(__self__, *,
+                 target: pulumi.Input[str],
+                 agent: Optional[pulumi.Input[bool]] = None,
+                 body: Optional[pulumi.Input[str]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputNotificationFieldArgs']]]] = None,
+                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 method: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] target: The notification target. One of `email`, `webhook`.
+        :param pulumi.Input[bool] agent: Whether the webhook is routed through the Port agent.
+        :param pulumi.Input[str] body: The webhook body as a JSON encoded string.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputNotificationFieldArgs']]] fields: The fields rendered in the email notification. Only valid when `target` is `email`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: The webhook headers.
+        :param pulumi.Input[str] method: The webhook HTTP method. One of `GET`, `POST`, `PUT`, `PATCH`, `DELETE`.
+        :param pulumi.Input[str] url: The webhook URL. Required when `target` is `webhook`.
+        """
+        pulumi.set(__self__, "target", target)
+        if agent is not None:
+            pulumi.set(__self__, "agent", agent)
+        if body is not None:
+            pulumi.set(__self__, "body", body)
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def target(self) -> pulumi.Input[str]:
+        """
+        The notification target. One of `email`, `webhook`.
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target", value)
+
+    @property
+    @pulumi.getter
+    def agent(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the webhook is routed through the Port agent.
+        """
+        return pulumi.get(self, "agent")
+
+    @agent.setter
+    def agent(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "agent", value)
+
+    @property
+    @pulumi.getter
+    def body(self) -> Optional[pulumi.Input[str]]:
+        """
+        The webhook body as a JSON encoded string.
+        """
+        return pulumi.get(self, "body")
+
+    @body.setter
+    def body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "body", value)
+
+    @property
+    @pulumi.getter
+    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputNotificationFieldArgs']]]]:
+        """
+        The fields rendered in the email notification. Only valid when `target` is `email`.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputNotificationFieldArgs']]]]):
+        pulumi.set(self, "fields", value)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The webhook headers.
+        """
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "headers", value)
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The webhook HTTP method. One of `GET`, `POST`, `PUT`, `PATCH`, `DELETE`.
+        """
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "method", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The webhook URL. Required when `target` is `webhook`.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputNotificationFieldArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        """
+        The label of the field.
+        """
+        value: pulumi.Input[str]
+        """
+        The value of the field.
+        """
+elif False:
+    WorkflowNodeInputNotificationFieldArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputNotificationFieldArgs:
+    def __init__(__self__, *,
+                 label: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] label: The label of the field.
+        :param pulumi.Input[str] value: The value of the field.
+        """
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[str]:
+        """
+        The label of the field.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[str]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        The value of the field.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputOutletArgsDict(TypedDict):
+        identifier: pulumi.Input[str]
+        """
+        The identifier of the outlet. Must match a button identifier.
+        """
+        num_of_responders: pulumi.Input[int]
+        """
+        How many responders must press the button before the workflow continues.
+        """
+        status_label: NotRequired[pulumi.Input['WorkflowNodeInputOutletStatusLabelArgsDict']]
+        """
+        A custom status label displayed on the node run.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the outlet.
+        """
+        workflow_status_label: NotRequired[pulumi.Input['WorkflowNodeInputOutletWorkflowStatusLabelArgsDict']]
+        """
+        A custom status label displayed on the workflow run.
+        """
+elif False:
+    WorkflowNodeInputOutletArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputOutletArgs:
+    def __init__(__self__, *,
+                 identifier: pulumi.Input[str],
+                 num_of_responders: pulumi.Input[int],
+                 status_label: Optional[pulumi.Input['WorkflowNodeInputOutletStatusLabelArgs']] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 workflow_status_label: Optional[pulumi.Input['WorkflowNodeInputOutletWorkflowStatusLabelArgs']] = None):
+        """
+        :param pulumi.Input[str] identifier: The identifier of the outlet. Must match a button identifier.
+        :param pulumi.Input[int] num_of_responders: How many responders must press the button before the workflow continues.
+        :param pulumi.Input['WorkflowNodeInputOutletStatusLabelArgs'] status_label: A custom status label displayed on the node run.
+        :param pulumi.Input[str] title: The title of the outlet.
+        :param pulumi.Input['WorkflowNodeInputOutletWorkflowStatusLabelArgs'] workflow_status_label: A custom status label displayed on the workflow run.
+        """
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "num_of_responders", num_of_responders)
+        if status_label is not None:
+            pulumi.set(__self__, "status_label", status_label)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+        if workflow_status_label is not None:
+            pulumi.set(__self__, "workflow_status_label", workflow_status_label)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[str]:
+        """
+        The identifier of the outlet. Must match a button identifier.
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter(name="numOfResponders")
+    def num_of_responders(self) -> pulumi.Input[int]:
+        """
+        How many responders must press the button before the workflow continues.
+        """
+        return pulumi.get(self, "num_of_responders")
+
+    @num_of_responders.setter
+    def num_of_responders(self, value: pulumi.Input[int]):
+        pulumi.set(self, "num_of_responders", value)
+
+    @property
+    @pulumi.getter(name="statusLabel")
+    def status_label(self) -> Optional[pulumi.Input['WorkflowNodeInputOutletStatusLabelArgs']]:
+        """
+        A custom status label displayed on the node run.
+        """
+        return pulumi.get(self, "status_label")
+
+    @status_label.setter
+    def status_label(self, value: Optional[pulumi.Input['WorkflowNodeInputOutletStatusLabelArgs']]):
+        pulumi.set(self, "status_label", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of the outlet.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter(name="workflowStatusLabel")
+    def workflow_status_label(self) -> Optional[pulumi.Input['WorkflowNodeInputOutletWorkflowStatusLabelArgs']]:
+        """
+        A custom status label displayed on the workflow run.
+        """
+        return pulumi.get(self, "workflow_status_label")
+
+    @workflow_status_label.setter
+    def workflow_status_label(self, value: Optional[pulumi.Input['WorkflowNodeInputOutletWorkflowStatusLabelArgs']]):
+        pulumi.set(self, "workflow_status_label", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputOutletStatusLabelArgsDict(TypedDict):
+        text: NotRequired[pulumi.Input[str]]
+        """
+        The label text. Supports JQ expressions for dynamic content.
+        """
+        variant: NotRequired[pulumi.Input[str]]
+        """
+        Semantic variant controlling the label color/style. One of `success`, `alert`.
+        """
+elif False:
+    WorkflowNodeInputOutletStatusLabelArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputOutletStatusLabelArgs:
+    def __init__(__self__, *,
+                 text: Optional[pulumi.Input[str]] = None,
+                 variant: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] text: The label text. Supports JQ expressions for dynamic content.
+        :param pulumi.Input[str] variant: Semantic variant controlling the label color/style. One of `success`, `alert`.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if variant is not None:
+            pulumi.set(__self__, "variant", variant)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[str]]:
+        """
+        The label text. Supports JQ expressions for dynamic content.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text", value)
+
+    @property
+    @pulumi.getter
+    def variant(self) -> Optional[pulumi.Input[str]]:
+        """
+        Semantic variant controlling the label color/style. One of `success`, `alert`.
+        """
+        return pulumi.get(self, "variant")
+
+    @variant.setter
+    def variant(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "variant", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputOutletWorkflowStatusLabelArgsDict(TypedDict):
+        text: NotRequired[pulumi.Input[str]]
+        """
+        The label text. Supports JQ expressions for dynamic content.
+        """
+        variant: NotRequired[pulumi.Input[str]]
+        """
+        Semantic variant controlling the label color/style. One of `success`, `alert`.
+        """
+elif False:
+    WorkflowNodeInputOutletWorkflowStatusLabelArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputOutletWorkflowStatusLabelArgs:
+    def __init__(__self__, *,
+                 text: Optional[pulumi.Input[str]] = None,
+                 variant: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] text: The label text. Supports JQ expressions for dynamic content.
+        :param pulumi.Input[str] variant: Semantic variant controlling the label color/style. One of `success`, `alert`.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if variant is not None:
+            pulumi.set(__self__, "variant", variant)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[str]]:
+        """
+        The label text. Supports JQ expressions for dynamic content.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text", value)
+
+    @property
+    @pulumi.getter
+    def variant(self) -> Optional[pulumi.Input[str]]:
+        """
+        Semantic variant controlling the label color/style. One of `success`, `alert`.
+        """
+        return pulumi.get(self, "variant")
+
+    @variant.setter
+    def variant(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "variant", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputRespondersArgsDict(TypedDict):
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The roles allowed to respond.
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The identifiers of the teams allowed to respond. They must exist in the organization.
+        """
+        users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The emails of the users allowed to respond. They must exist in the organization.
+        """
+        users_query: NotRequired[pulumi.Input[str]]
+        """
+        A JSON encoded entity search query, run against the `_user` blueprint, resolving additional responders.
+        """
+elif False:
+    WorkflowNodeInputRespondersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputRespondersArgs:
+    def __init__(__self__, *,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 users_query: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The roles allowed to respond.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The identifiers of the teams allowed to respond. They must exist in the organization.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: The emails of the users allowed to respond. They must exist in the organization.
+        :param pulumi.Input[str] users_query: A JSON encoded entity search query, run against the `_user` blueprint, resolving additional responders.
+        """
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+        if users_query is not None:
+            pulumi.set(__self__, "users_query", users_query)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The roles allowed to respond.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The identifiers of the teams allowed to respond. They must exist in the organization.
+        """
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The emails of the users allowed to respond. They must exist in the organization.
+        """
+        return pulumi.get(self, "users")
+
+    @users.setter
+    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "users", value)
+
+    @property
+    @pulumi.getter(name="usersQuery")
+    def users_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        A JSON encoded entity search query, run against the `_user` blueprint, resolving additional responders.
+        """
+        return pulumi.get(self, "users_query")
+
+    @users_query.setter
+    def users_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "users_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsArgsDict(TypedDict):
+        buttons: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsButtonArgsDict']]]]
+        """
+        The buttons rendered on the response form. Each outlet must reference one of these identifiers.
+        """
+        order_properties: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The order the inputs are rendered in. Cannot be combined with `steps`.
+        """
+        required_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        A jq query resolving which inputs are required.
+        """
+        steps: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsStepArgsDict']]]]
+        """
+        Splits the form into steps. Cannot be combined with `order_properties`.
+        """
+        titles: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsTitlesArgsDict']]]]
+        """
+        Static titles rendered between the inputs of the form.
+        """
+        user_properties: NotRequired[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArgsDict']]
+        """
+        The user inputs the form collects.
+        """
+        validations: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsValidationArgsDict']]]]
+        """
+        Validation rules evaluated against the whole form when it is submitted. Cannot be combined with `steps`, add the rules to the individual steps instead. Up to 10 rules are allowed.
+        """
+elif False:
+    WorkflowNodeInputUserInputsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsArgs:
+    def __init__(__self__, *,
+                 buttons: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsButtonArgs']]]] = None,
+                 order_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 required_jq_query: Optional[pulumi.Input[str]] = None,
+                 steps: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsStepArgs']]]] = None,
+                 titles: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsTitlesArgs']]]] = None,
+                 user_properties: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArgs']] = None,
+                 validations: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsValidationArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsButtonArgs']]] buttons: The buttons rendered on the response form. Each outlet must reference one of these identifiers.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] order_properties: The order the inputs are rendered in. Cannot be combined with `steps`.
+        :param pulumi.Input[str] required_jq_query: A jq query resolving which inputs are required.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsStepArgs']]] steps: Splits the form into steps. Cannot be combined with `order_properties`.
+        :param pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsTitlesArgs']]] titles: Static titles rendered between the inputs of the form.
+        :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArgs'] user_properties: The user inputs the form collects.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsValidationArgs']]] validations: Validation rules evaluated against the whole form when it is submitted. Cannot be combined with `steps`, add the rules to the individual steps instead. Up to 10 rules are allowed.
+        """
+        if buttons is not None:
+            pulumi.set(__self__, "buttons", buttons)
+        if order_properties is not None:
+            pulumi.set(__self__, "order_properties", order_properties)
+        if required_jq_query is not None:
+            pulumi.set(__self__, "required_jq_query", required_jq_query)
+        if steps is not None:
+            pulumi.set(__self__, "steps", steps)
+        if titles is not None:
+            pulumi.set(__self__, "titles", titles)
+        if user_properties is not None:
+            pulumi.set(__self__, "user_properties", user_properties)
+        if validations is not None:
+            pulumi.set(__self__, "validations", validations)
+
+    @property
+    @pulumi.getter
+    def buttons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsButtonArgs']]]]:
+        """
+        The buttons rendered on the response form. Each outlet must reference one of these identifiers.
+        """
+        return pulumi.get(self, "buttons")
+
+    @buttons.setter
+    def buttons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsButtonArgs']]]]):
+        pulumi.set(self, "buttons", value)
+
+    @property
+    @pulumi.getter(name="orderProperties")
+    def order_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The order the inputs are rendered in. Cannot be combined with `steps`.
+        """
+        return pulumi.get(self, "order_properties")
+
+    @order_properties.setter
+    def order_properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "order_properties", value)
+
+    @property
+    @pulumi.getter(name="requiredJqQuery")
+    def required_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        A jq query resolving which inputs are required.
+        """
+        return pulumi.get(self, "required_jq_query")
+
+    @required_jq_query.setter
+    def required_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "required_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsStepArgs']]]]:
+        """
+        Splits the form into steps. Cannot be combined with `order_properties`.
+        """
+        return pulumi.get(self, "steps")
+
+    @steps.setter
+    def steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsStepArgs']]]]):
+        pulumi.set(self, "steps", value)
+
+    @property
+    @pulumi.getter
+    def titles(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsTitlesArgs']]]]:
+        """
+        Static titles rendered between the inputs of the form.
+        """
+        return pulumi.get(self, "titles")
+
+    @titles.setter
+    def titles(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsTitlesArgs']]]]):
+        pulumi.set(self, "titles", value)
+
+    @property
+    @pulumi.getter(name="userProperties")
+    def user_properties(self) -> Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArgs']]:
+        """
+        The user inputs the form collects.
+        """
+        return pulumi.get(self, "user_properties")
+
+    @user_properties.setter
+    def user_properties(self, value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArgs']]):
+        pulumi.set(self, "user_properties", value)
+
+    @property
+    @pulumi.getter
+    def validations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsValidationArgs']]]]:
+        """
+        Validation rules evaluated against the whole form when it is submitted. Cannot be combined with `steps`, add the rules to the individual steps instead. Up to 10 rules are allowed.
+        """
+        return pulumi.get(self, "validations")
+
+    @validations.setter
+    def validations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsValidationArgs']]]]):
+        pulumi.set(self, "validations", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsButtonArgsDict(TypedDict):
+        identifier: pulumi.Input[str]
+        """
+        The identifier of the button.
+        """
+        label: pulumi.Input[str]
+        """
+        The label of the button.
+        """
+        variant: pulumi.Input[str]
+        """
+        The button variant. One of `PRIMARY`, `SECONDARY`, `DANGER`.
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the button.
+        """
+elif False:
+    WorkflowNodeInputUserInputsButtonArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsButtonArgs:
+    def __init__(__self__, *,
+                 identifier: pulumi.Input[str],
+                 label: pulumi.Input[str],
+                 variant: pulumi.Input[str],
+                 icon: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] identifier: The identifier of the button.
+        :param pulumi.Input[str] label: The label of the button.
+        :param pulumi.Input[str] variant: The button variant. One of `PRIMARY`, `SECONDARY`, `DANGER`.
+        :param pulumi.Input[str] icon: The icon of the button.
+        """
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "variant", variant)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[str]:
+        """
+        The identifier of the button.
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[str]:
+        """
+        The label of the button.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[str]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def variant(self) -> pulumi.Input[str]:
+        """
+        The button variant. One of `PRIMARY`, `SECONDARY`, `DANGER`.
+        """
+        return pulumi.get(self, "variant")
+
+    @variant.setter
+    def variant(self, value: pulumi.Input[str]):
+        pulumi.set(self, "variant", value)
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[pulumi.Input[str]]:
+        """
+        The icon of the button.
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "icon", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsStepArgsDict(TypedDict):
+        orders: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The order of the inputs in this step.
+        """
+        title: pulumi.Input[str]
+        """
+        The step's title (max 25 characters).
+        """
+        validations: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsStepValidationArgsDict']]]]
+        """
+        Validation rules evaluated when the step is submitted. Up to 10 rules are allowed.
+        """
+        visible: NotRequired[pulumi.Input[bool]]
+        """
+        The visibility of the step.
+        """
+        visible_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The visibility condition jq query of the step.
+        """
+elif False:
+    WorkflowNodeInputUserInputsStepArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsStepArgs:
+    def __init__(__self__, *,
+                 orders: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 title: pulumi.Input[str],
+                 validations: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsStepValidationArgs']]]] = None,
+                 visible: Optional[pulumi.Input[bool]] = None,
+                 visible_jq_query: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] orders: The order of the inputs in this step.
+        :param pulumi.Input[str] title: The step's title (max 25 characters).
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsStepValidationArgs']]] validations: Validation rules evaluated when the step is submitted. Up to 10 rules are allowed.
+        :param pulumi.Input[bool] visible: The visibility of the step.
+        :param pulumi.Input[str] visible_jq_query: The visibility condition jq query of the step.
+        """
+        pulumi.set(__self__, "orders", orders)
+        pulumi.set(__self__, "title", title)
+        if validations is not None:
+            pulumi.set(__self__, "validations", validations)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
+
+    @property
+    @pulumi.getter
+    def orders(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The order of the inputs in this step.
+        """
+        return pulumi.get(self, "orders")
+
+    @orders.setter
+    def orders(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "orders", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        The step's title (max 25 characters).
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def validations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsStepValidationArgs']]]]:
+        """
+        Validation rules evaluated when the step is submitted. Up to 10 rules are allowed.
+        """
+        return pulumi.get(self, "validations")
+
+    @validations.setter
+    def validations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsStepValidationArgs']]]]):
+        pulumi.set(self, "validations", value)
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The visibility of the step.
+        """
+        return pulumi.get(self, "visible")
+
+    @visible.setter
+    def visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "visible", value)
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility condition jq query of the step.
+        """
+        return pulumi.get(self, "visible_jq_query")
+
+    @visible_jq_query.setter
+    def visible_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visible_jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsStepValidationArgsDict(TypedDict):
+        constraint: pulumi.Input[str]
+        """
+        A jq expression that has to evaluate to `true` for the form to be valid.
+        """
+        message: pulumi.Input[str]
+        """
+        The error message shown when the constraint evaluates to `false` (max 100 characters).
+        """
+elif False:
+    WorkflowNodeInputUserInputsStepValidationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsStepValidationArgs:
+    def __init__(__self__, *,
+                 constraint: pulumi.Input[str],
+                 message: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] constraint: A jq expression that has to evaluate to `true` for the form to be valid.
+        :param pulumi.Input[str] message: The error message shown when the constraint evaluates to `false` (max 100 characters).
+        """
+        pulumi.set(__self__, "constraint", constraint)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def constraint(self) -> pulumi.Input[str]:
+        """
+        A jq expression that has to evaluate to `true` for the form to be valid.
+        """
+        return pulumi.get(self, "constraint")
+
+    @constraint.setter
+    def constraint(self, value: pulumi.Input[str]):
+        pulumi.set(self, "constraint", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> pulumi.Input[str]:
+        """
+        The error message shown when the constraint evaluates to `false` (max 100 characters).
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: pulumi.Input[str]):
+        pulumi.set(self, "message", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsTitlesArgsDict(TypedDict):
+        title: pulumi.Input[str]
+        """
+        The title text.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The title description.
+        """
+        visible: NotRequired[pulumi.Input[bool]]
+        """
+        The visibility of the title.
+        """
+        visible_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The visibility condition jq query of the title.
+        """
+elif False:
+    WorkflowNodeInputUserInputsTitlesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsTitlesArgs:
+    def __init__(__self__, *,
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 visible: Optional[pulumi.Input[bool]] = None,
+                 visible_jq_query: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] title: The title text.
+        :param pulumi.Input[str] description: The title description.
+        :param pulumi.Input[bool] visible: The visibility of the title.
+        :param pulumi.Input[str] visible_jq_query: The visibility condition jq query of the title.
+        """
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        The title text.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The visibility of the title.
+        """
+        return pulumi.get(self, "visible")
+
+    @visible.setter
+    def visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "visible", value)
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility condition jq query of the title.
+        """
+        return pulumi.get(self, "visible_jq_query")
+
+    @visible_jq_query.setter
+    def visible_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visible_jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesArgsDict(TypedDict):
+        array_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsArgsDict']]]]
+        """
+        The array inputs of the form.
+        """
+        boolean_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesBooleanPropsArgsDict']]]]
+        """
+        The boolean inputs of the form.
+        """
+        number_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesNumberPropsArgsDict']]]]
+        """
+        The number inputs of the form.
+        """
+        object_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesObjectPropsArgsDict']]]]
+        """
+        The object inputs of the form.
+        """
+        string_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsArgsDict']]]]
+        """
+        The string inputs of the form.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesArgs:
+    def __init__(__self__, *,
+                 array_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsArgs']]]] = None,
+                 boolean_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesBooleanPropsArgs']]]] = None,
+                 number_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesNumberPropsArgs']]]] = None,
+                 object_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesObjectPropsArgs']]]] = None,
+                 string_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsArgs']]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsArgs']]] array_props: The array inputs of the form.
+        :param pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesBooleanPropsArgs']]] boolean_props: The boolean inputs of the form.
+        :param pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesNumberPropsArgs']]] number_props: The number inputs of the form.
+        :param pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesObjectPropsArgs']]] object_props: The object inputs of the form.
+        :param pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsArgs']]] string_props: The string inputs of the form.
+        """
+        if array_props is not None:
+            pulumi.set(__self__, "array_props", array_props)
+        if boolean_props is not None:
+            pulumi.set(__self__, "boolean_props", boolean_props)
+        if number_props is not None:
+            pulumi.set(__self__, "number_props", number_props)
+        if object_props is not None:
+            pulumi.set(__self__, "object_props", object_props)
+        if string_props is not None:
+            pulumi.set(__self__, "string_props", string_props)
+
+    @property
+    @pulumi.getter(name="arrayProps")
+    def array_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsArgs']]]]:
+        """
+        The array inputs of the form.
+        """
+        return pulumi.get(self, "array_props")
+
+    @array_props.setter
+    def array_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsArgs']]]]):
+        pulumi.set(self, "array_props", value)
+
+    @property
+    @pulumi.getter(name="booleanProps")
+    def boolean_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesBooleanPropsArgs']]]]:
+        """
+        The boolean inputs of the form.
+        """
+        return pulumi.get(self, "boolean_props")
+
+    @boolean_props.setter
+    def boolean_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesBooleanPropsArgs']]]]):
+        pulumi.set(self, "boolean_props", value)
+
+    @property
+    @pulumi.getter(name="numberProps")
+    def number_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesNumberPropsArgs']]]]:
+        """
+        The number inputs of the form.
+        """
+        return pulumi.get(self, "number_props")
+
+    @number_props.setter
+    def number_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesNumberPropsArgs']]]]):
+        pulumi.set(self, "number_props", value)
+
+    @property
+    @pulumi.getter(name="objectProps")
+    def object_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesObjectPropsArgs']]]]:
+        """
+        The object inputs of the form.
+        """
+        return pulumi.get(self, "object_props")
+
+    @object_props.setter
+    def object_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesObjectPropsArgs']]]]):
+        pulumi.set(self, "object_props", value)
+
+    @property
+    @pulumi.getter(name="stringProps")
+    def string_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsArgs']]]]:
+        """
+        The string inputs of the form.
+        """
+        return pulumi.get(self, "string_props")
+
+    @string_props.setter
+    def string_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsArgs']]]]):
+        pulumi.set(self, "string_props", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesArrayPropsArgsDict(TypedDict):
+        default_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The default jq query of the array input.
+        """
+        depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The inputs this input depends on.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the array input.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        Greys out the array input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        """
+        disabled_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The disabled condition jq query of the array input.
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the array input.
+        """
+        max_items: NotRequired[pulumi.Input[int]]
+        """
+        The max items of the array input.
+        """
+        max_items_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The max items jq query of the array input.
+        """
+        min_items: NotRequired[pulumi.Input[int]]
+        """
+        The min items of the array input.
+        """
+        min_items_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The min items jq query of the array input.
+        """
+        number_items: NotRequired[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsNumberItemsArgsDict']]
+        """
+        The number items of the array input.
+        """
+        object_items: NotRequired[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItemsArgsDict']]
+        """
+        The object items of the array input.
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Shows the value of the array input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        """
+        read_only_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The read only condition jq query of the array input.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        """
+        sort: NotRequired[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsSortArgsDict']]
+        """
+        How the entities are sorted in the form.
+        """
+        string_items: NotRequired[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsStringItemsArgsDict']]
+        """
+        The string items of the array input.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the array input.
+        """
+        unique_items: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the values of the array have to be unique.
+        """
+        visible: NotRequired[pulumi.Input[bool]]
+        """
+        The visibility of the array input.
+        """
+        visible_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The visibility condition jq query of the array input.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesArrayPropsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesArrayPropsArgs:
+    def __init__(__self__, *,
+                 default_jq_query: Optional[pulumi.Input[str]] = None,
+                 depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 disabled_jq_query: Optional[pulumi.Input[str]] = None,
+                 icon: Optional[pulumi.Input[str]] = None,
+                 max_items: Optional[pulumi.Input[int]] = None,
+                 max_items_jq_query: Optional[pulumi.Input[str]] = None,
+                 min_items: Optional[pulumi.Input[int]] = None,
+                 min_items_jq_query: Optional[pulumi.Input[str]] = None,
+                 number_items: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsNumberItemsArgs']] = None,
+                 object_items: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItemsArgs']] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 read_only_jq_query: Optional[pulumi.Input[str]] = None,
+                 required: Optional[pulumi.Input[bool]] = None,
+                 sort: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsSortArgs']] = None,
+                 string_items: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsStringItemsArgs']] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 unique_items: Optional[pulumi.Input[bool]] = None,
+                 visible: Optional[pulumi.Input[bool]] = None,
+                 visible_jq_query: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] default_jq_query: The default jq query of the array input.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The inputs this input depends on.
+        :param pulumi.Input[str] description: The description of the array input.
+        :param pulumi.Input[bool] disabled: Greys out the array input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        :param pulumi.Input[str] disabled_jq_query: The disabled condition jq query of the array input.
+        :param pulumi.Input[str] icon: The icon of the array input.
+        :param pulumi.Input[int] max_items: The max items of the array input.
+        :param pulumi.Input[str] max_items_jq_query: The max items jq query of the array input.
+        :param pulumi.Input[int] min_items: The min items of the array input.
+        :param pulumi.Input[str] min_items_jq_query: The min items jq query of the array input.
+        :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsNumberItemsArgs'] number_items: The number items of the array input.
+        :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItemsArgs'] object_items: The object items of the array input.
+        :param pulumi.Input[bool] read_only: Shows the value of the array input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        :param pulumi.Input[str] read_only_jq_query: The read only condition jq query of the array input.
+        :param pulumi.Input[bool] required: Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsSortArgs'] sort: How the entities are sorted in the form.
+        :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsStringItemsArgs'] string_items: The string items of the array input.
+        :param pulumi.Input[str] title: The title of the array input.
+        :param pulumi.Input[bool] unique_items: Whether the values of the array have to be unique.
+        :param pulumi.Input[bool] visible: The visibility of the array input.
+        :param pulumi.Input[str] visible_jq_query: The visibility condition jq query of the array input.
+        """
+        if default_jq_query is not None:
+            pulumi.set(__self__, "default_jq_query", default_jq_query)
+        if depends_ons is not None:
+            pulumi.set(__self__, "depends_ons", depends_ons)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if disabled_jq_query is not None:
+            pulumi.set(__self__, "disabled_jq_query", disabled_jq_query)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if max_items is not None:
+            pulumi.set(__self__, "max_items", max_items)
+        if max_items_jq_query is not None:
+            pulumi.set(__self__, "max_items_jq_query", max_items_jq_query)
+        if min_items is not None:
+            pulumi.set(__self__, "min_items", min_items)
+        if min_items_jq_query is not None:
+            pulumi.set(__self__, "min_items_jq_query", min_items_jq_query)
+        if number_items is not None:
+            pulumi.set(__self__, "number_items", number_items)
+        if object_items is not None:
+            pulumi.set(__self__, "object_items", object_items)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if read_only_jq_query is not None:
+            pulumi.set(__self__, "read_only_jq_query", read_only_jq_query)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if sort is not None:
+            pulumi.set(__self__, "sort", sort)
+        if string_items is not None:
+            pulumi.set(__self__, "string_items", string_items)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+        if unique_items is not None:
+            pulumi.set(__self__, "unique_items", unique_items)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
+
+    @property
+    @pulumi.getter(name="defaultJqQuery")
+    def default_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default jq query of the array input.
+        """
+        return pulumi.get(self, "default_jq_query")
+
+    @default_jq_query.setter
+    def default_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_jq_query", value)
+
+    @property
+    @pulumi.getter(name="dependsOns")
+    def depends_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The inputs this input depends on.
+        """
+        return pulumi.get(self, "depends_ons")
+
+    @depends_ons.setter
+    def depends_ons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "depends_ons", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the array input.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Greys out the array input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="disabledJqQuery")
+    def disabled_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disabled condition jq query of the array input.
+        """
+        return pulumi.get(self, "disabled_jq_query")
+
+    @disabled_jq_query.setter
+    def disabled_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disabled_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[pulumi.Input[str]]:
+        """
+        The icon of the array input.
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "icon", value)
+
+    @property
+    @pulumi.getter(name="maxItems")
+    def max_items(self) -> Optional[pulumi.Input[int]]:
+        """
+        The max items of the array input.
+        """
+        return pulumi.get(self, "max_items")
+
+    @max_items.setter
+    def max_items(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_items", value)
+
+    @property
+    @pulumi.getter(name="maxItemsJqQuery")
+    def max_items_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The max items jq query of the array input.
+        """
+        return pulumi.get(self, "max_items_jq_query")
+
+    @max_items_jq_query.setter
+    def max_items_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_items_jq_query", value)
+
+    @property
+    @pulumi.getter(name="minItems")
+    def min_items(self) -> Optional[pulumi.Input[int]]:
+        """
+        The min items of the array input.
+        """
+        return pulumi.get(self, "min_items")
+
+    @min_items.setter
+    def min_items(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_items", value)
+
+    @property
+    @pulumi.getter(name="minItemsJqQuery")
+    def min_items_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The min items jq query of the array input.
+        """
+        return pulumi.get(self, "min_items_jq_query")
+
+    @min_items_jq_query.setter
+    def min_items_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_items_jq_query", value)
+
+    @property
+    @pulumi.getter(name="numberItems")
+    def number_items(self) -> Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsNumberItemsArgs']]:
+        """
+        The number items of the array input.
+        """
+        return pulumi.get(self, "number_items")
+
+    @number_items.setter
+    def number_items(self, value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsNumberItemsArgs']]):
+        pulumi.set(self, "number_items", value)
+
+    @property
+    @pulumi.getter(name="objectItems")
+    def object_items(self) -> Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItemsArgs']]:
+        """
+        The object items of the array input.
+        """
+        return pulumi.get(self, "object_items")
+
+    @object_items.setter
+    def object_items(self, value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItemsArgs']]):
+        pulumi.set(self, "object_items", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Shows the value of the array input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="readOnlyJqQuery")
+    def read_only_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The read only condition jq query of the array input.
+        """
+        return pulumi.get(self, "read_only_jq_query")
+
+    @read_only_jq_query.setter
+    def read_only_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read_only_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter
+    def sort(self) -> Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsSortArgs']]:
+        """
+        How the entities are sorted in the form.
+        """
+        return pulumi.get(self, "sort")
+
+    @sort.setter
+    def sort(self, value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsSortArgs']]):
+        pulumi.set(self, "sort", value)
+
+    @property
+    @pulumi.getter(name="stringItems")
+    def string_items(self) -> Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsStringItemsArgs']]:
+        """
+        The string items of the array input.
+        """
+        return pulumi.get(self, "string_items")
+
+    @string_items.setter
+    def string_items(self, value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesArrayPropsStringItemsArgs']]):
+        pulumi.set(self, "string_items", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of the array input.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter(name="uniqueItems")
+    def unique_items(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the values of the array have to be unique.
+        """
+        return pulumi.get(self, "unique_items")
+
+    @unique_items.setter
+    def unique_items(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "unique_items", value)
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The visibility of the array input.
+        """
+        return pulumi.get(self, "visible")
+
+    @visible.setter
+    def visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "visible", value)
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility condition jq query of the array input.
+        """
+        return pulumi.get(self, "visible_jq_query")
+
+    @visible_jq_query.setter
+    def visible_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visible_jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesArrayPropsNumberItemsArgsDict(TypedDict):
+        defaults: NotRequired[pulumi.Input[Sequence[pulumi.Input[float]]]]
+        """
+        The default value of the items.
+        """
+        enum_colors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The colors of the enum values.
+        """
+        enum_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        A jq query resolving the values the user can pick from.
+        """
+        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[float]]]]
+        """
+        The values the user can pick from.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesArrayPropsNumberItemsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesArrayPropsNumberItemsArgs:
+    def __init__(__self__, *,
+                 defaults: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]] = None,
+                 enum_colors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 enum_jq_query: Optional[pulumi.Input[str]] = None,
+                 enums: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[float]]] defaults: The default value of the items.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] enum_colors: The colors of the enum values.
+        :param pulumi.Input[str] enum_jq_query: A jq query resolving the values the user can pick from.
+        :param pulumi.Input[Sequence[pulumi.Input[float]]] enums: The values the user can pick from.
+        """
+        if defaults is not None:
+            pulumi.set(__self__, "defaults", defaults)
+        if enum_colors is not None:
+            pulumi.set(__self__, "enum_colors", enum_colors)
+        if enum_jq_query is not None:
+            pulumi.set(__self__, "enum_jq_query", enum_jq_query)
+        if enums is not None:
+            pulumi.set(__self__, "enums", enums)
+
+    @property
+    @pulumi.getter
+    def defaults(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[float]]]]:
+        """
+        The default value of the items.
+        """
+        return pulumi.get(self, "defaults")
+
+    @defaults.setter
+    def defaults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]]):
+        pulumi.set(self, "defaults", value)
+
+    @property
+    @pulumi.getter(name="enumColors")
+    def enum_colors(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The colors of the enum values.
+        """
+        return pulumi.get(self, "enum_colors")
+
+    @enum_colors.setter
+    def enum_colors(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "enum_colors", value)
+
+    @property
+    @pulumi.getter(name="enumJqQuery")
+    def enum_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        A jq query resolving the values the user can pick from.
+        """
+        return pulumi.get(self, "enum_jq_query")
+
+    @enum_jq_query.setter
+    def enum_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enum_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def enums(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[float]]]]:
+        """
+        The values the user can pick from.
+        """
+        return pulumi.get(self, "enums")
+
+    @enums.setter
+    def enums(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]]):
+        pulumi.set(self, "enums", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItemsArgsDict(TypedDict):
+        defaults: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]
+        """
+        The default value of the items.
+        """
+        format: NotRequired[pulumi.Input[str]]
+        """
+        The format of each item.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItemsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItemsArgs:
+    def __init__(__self__, *,
+                 defaults: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 format: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] defaults: The default value of the items.
+        :param pulumi.Input[str] format: The format of each item.
+        """
+        if defaults is not None:
+            pulumi.set(__self__, "defaults", defaults)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+
+    @property
+    @pulumi.getter
+    def defaults(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+        """
+        The default value of the items.
+        """
+        return pulumi.get(self, "defaults")
+
+    @defaults.setter
+    def defaults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+        pulumi.set(self, "defaults", value)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The format of each item.
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "format", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesArrayPropsSortArgsDict(TypedDict):
+        property: pulumi.Input[str]
+        """
+        The property to sort the entities by.
+        """
+        order: NotRequired[pulumi.Input[str]]
+        """
+        The order to sort the entities in.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesArrayPropsSortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesArrayPropsSortArgs:
+    def __init__(__self__, *,
+                 property: pulumi.Input[str],
+                 order: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] property: The property to sort the entities by.
+        :param pulumi.Input[str] order: The order to sort the entities in.
+        """
+        pulumi.set(__self__, "property", property)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+
+    @property
+    @pulumi.getter
+    def order(self) -> Optional[pulumi.Input[str]]:
+        """
+        The order to sort the entities in.
+        """
+        return pulumi.get(self, "order")
+
+    @order.setter
+    def order(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "order", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> pulumi.Input[str]:
+        """
+        The property to sort the entities by.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: pulumi.Input[str]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesArrayPropsStringItemsArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint the entities are taken from. Required when `format` is `entity`.
+        """
+        dataset: NotRequired[pulumi.Input[str]]
+        """
+        The dataset filtering the entities of the items, as a JSON encoded string.
+        """
+        defaults: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The default value of the items.
+        """
+        enum_colors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The colors of the enum values.
+        """
+        enum_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        A jq query resolving the values the user can pick from.
+        """
+        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The values the user can pick from.
+        """
+        format: NotRequired[pulumi.Input[str]]
+        """
+        The format of each item.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesArrayPropsStringItemsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesArrayPropsStringItemsArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 dataset: Optional[pulumi.Input[str]] = None,
+                 defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 enum_colors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 enum_jq_query: Optional[pulumi.Input[str]] = None,
+                 enums: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 format: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint the entities are taken from. Required when `format` is `entity`.
+        :param pulumi.Input[str] dataset: The dataset filtering the entities of the items, as a JSON encoded string.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] defaults: The default value of the items.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] enum_colors: The colors of the enum values.
+        :param pulumi.Input[str] enum_jq_query: A jq query resolving the values the user can pick from.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enums: The values the user can pick from.
+        :param pulumi.Input[str] format: The format of each item.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if dataset is not None:
+            pulumi.set(__self__, "dataset", dataset)
+        if defaults is not None:
+            pulumi.set(__self__, "defaults", defaults)
+        if enum_colors is not None:
+            pulumi.set(__self__, "enum_colors", enum_colors)
+        if enum_jq_query is not None:
+            pulumi.set(__self__, "enum_jq_query", enum_jq_query)
+        if enums is not None:
+            pulumi.set(__self__, "enums", enums)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint the entities are taken from. Required when `format` is `entity`.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> Optional[pulumi.Input[str]]:
+        """
+        The dataset filtering the entities of the items, as a JSON encoded string.
+        """
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter
+    def defaults(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The default value of the items.
+        """
+        return pulumi.get(self, "defaults")
+
+    @defaults.setter
+    def defaults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "defaults", value)
+
+    @property
+    @pulumi.getter(name="enumColors")
+    def enum_colors(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The colors of the enum values.
+        """
+        return pulumi.get(self, "enum_colors")
+
+    @enum_colors.setter
+    def enum_colors(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "enum_colors", value)
+
+    @property
+    @pulumi.getter(name="enumJqQuery")
+    def enum_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        A jq query resolving the values the user can pick from.
+        """
+        return pulumi.get(self, "enum_jq_query")
+
+    @enum_jq_query.setter
+    def enum_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enum_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def enums(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The values the user can pick from.
+        """
+        return pulumi.get(self, "enums")
+
+    @enums.setter
+    def enums(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "enums", value)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The format of each item.
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "format", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesBooleanPropsArgsDict(TypedDict):
+        default: NotRequired[pulumi.Input[bool]]
+        """
+        The default of the boolean input.
+        """
+        default_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The default jq query of the boolean input.
+        """
+        depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The inputs this input depends on.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the boolean input.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        Greys out the boolean input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        """
+        disabled_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The disabled condition jq query of the boolean input.
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the boolean input.
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Shows the value of the boolean input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        """
+        read_only_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The read only condition jq query of the boolean input.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the boolean input.
+        """
+        visible: NotRequired[pulumi.Input[bool]]
+        """
+        The visibility of the boolean input.
+        """
+        visible_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The visibility condition jq query of the boolean input.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesBooleanPropsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesBooleanPropsArgs:
+    def __init__(__self__, *,
+                 default: Optional[pulumi.Input[bool]] = None,
+                 default_jq_query: Optional[pulumi.Input[str]] = None,
+                 depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 disabled_jq_query: Optional[pulumi.Input[str]] = None,
+                 icon: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 read_only_jq_query: Optional[pulumi.Input[str]] = None,
+                 required: Optional[pulumi.Input[bool]] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 visible: Optional[pulumi.Input[bool]] = None,
+                 visible_jq_query: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] default: The default of the boolean input.
+        :param pulumi.Input[str] default_jq_query: The default jq query of the boolean input.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The inputs this input depends on.
+        :param pulumi.Input[str] description: The description of the boolean input.
+        :param pulumi.Input[bool] disabled: Greys out the boolean input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        :param pulumi.Input[str] disabled_jq_query: The disabled condition jq query of the boolean input.
+        :param pulumi.Input[str] icon: The icon of the boolean input.
+        :param pulumi.Input[bool] read_only: Shows the value of the boolean input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        :param pulumi.Input[str] read_only_jq_query: The read only condition jq query of the boolean input.
+        :param pulumi.Input[bool] required: Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        :param pulumi.Input[str] title: The title of the boolean input.
+        :param pulumi.Input[bool] visible: The visibility of the boolean input.
+        :param pulumi.Input[str] visible_jq_query: The visibility condition jq query of the boolean input.
+        """
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if default_jq_query is not None:
+            pulumi.set(__self__, "default_jq_query", default_jq_query)
+        if depends_ons is not None:
+            pulumi.set(__self__, "depends_ons", depends_ons)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if disabled_jq_query is not None:
+            pulumi.set(__self__, "disabled_jq_query", disabled_jq_query)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if read_only_jq_query is not None:
+            pulumi.set(__self__, "read_only_jq_query", read_only_jq_query)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The default of the boolean input.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "default", value)
+
+    @property
+    @pulumi.getter(name="defaultJqQuery")
+    def default_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default jq query of the boolean input.
+        """
+        return pulumi.get(self, "default_jq_query")
+
+    @default_jq_query.setter
+    def default_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_jq_query", value)
+
+    @property
+    @pulumi.getter(name="dependsOns")
+    def depends_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The inputs this input depends on.
+        """
+        return pulumi.get(self, "depends_ons")
+
+    @depends_ons.setter
+    def depends_ons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "depends_ons", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the boolean input.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Greys out the boolean input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="disabledJqQuery")
+    def disabled_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disabled condition jq query of the boolean input.
+        """
+        return pulumi.get(self, "disabled_jq_query")
+
+    @disabled_jq_query.setter
+    def disabled_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disabled_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[pulumi.Input[str]]:
+        """
+        The icon of the boolean input.
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "icon", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Shows the value of the boolean input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="readOnlyJqQuery")
+    def read_only_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The read only condition jq query of the boolean input.
+        """
+        return pulumi.get(self, "read_only_jq_query")
+
+    @read_only_jq_query.setter
+    def read_only_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read_only_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of the boolean input.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The visibility of the boolean input.
+        """
+        return pulumi.get(self, "visible")
+
+    @visible.setter
+    def visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "visible", value)
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility condition jq query of the boolean input.
+        """
+        return pulumi.get(self, "visible_jq_query")
+
+    @visible_jq_query.setter
+    def visible_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visible_jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesNumberPropsArgsDict(TypedDict):
+        default: NotRequired[pulumi.Input[float]]
+        """
+        The default of the number input.
+        """
+        default_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The default jq query of the number input.
+        """
+        depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The inputs this input depends on.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the number input.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        Greys out the number input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        """
+        disabled_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The disabled condition jq query of the number input.
+        """
+        enum_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        A jq query resolving the values the user can pick from.
+        """
+        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[float]]]]
+        """
+        The values the user can pick from.
+        """
+        exclusive_maximum: NotRequired[pulumi.Input[float]]
+        """
+        The value the input has to be strictly smaller than.
+        """
+        exclusive_minimum: NotRequired[pulumi.Input[float]]
+        """
+        The value the input has to be strictly greater than.
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the number input.
+        """
+        maximum: NotRequired[pulumi.Input[float]]
+        """
+        The largest value the input accepts.
+        """
+        minimum: NotRequired[pulumi.Input[float]]
+        """
+        The smallest value the input accepts.
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Shows the value of the number input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        """
+        read_only_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The read only condition jq query of the number input.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the number input.
+        """
+        visible: NotRequired[pulumi.Input[bool]]
+        """
+        The visibility of the number input.
+        """
+        visible_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The visibility condition jq query of the number input.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesNumberPropsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesNumberPropsArgs:
+    def __init__(__self__, *,
+                 default: Optional[pulumi.Input[float]] = None,
+                 default_jq_query: Optional[pulumi.Input[str]] = None,
+                 depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 disabled_jq_query: Optional[pulumi.Input[str]] = None,
+                 enum_jq_query: Optional[pulumi.Input[str]] = None,
+                 enums: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]] = None,
+                 exclusive_maximum: Optional[pulumi.Input[float]] = None,
+                 exclusive_minimum: Optional[pulumi.Input[float]] = None,
+                 icon: Optional[pulumi.Input[str]] = None,
+                 maximum: Optional[pulumi.Input[float]] = None,
+                 minimum: Optional[pulumi.Input[float]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 read_only_jq_query: Optional[pulumi.Input[str]] = None,
+                 required: Optional[pulumi.Input[bool]] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 visible: Optional[pulumi.Input[bool]] = None,
+                 visible_jq_query: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[float] default: The default of the number input.
+        :param pulumi.Input[str] default_jq_query: The default jq query of the number input.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The inputs this input depends on.
+        :param pulumi.Input[str] description: The description of the number input.
+        :param pulumi.Input[bool] disabled: Greys out the number input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        :param pulumi.Input[str] disabled_jq_query: The disabled condition jq query of the number input.
+        :param pulumi.Input[str] enum_jq_query: A jq query resolving the values the user can pick from.
+        :param pulumi.Input[Sequence[pulumi.Input[float]]] enums: The values the user can pick from.
+        :param pulumi.Input[float] exclusive_maximum: The value the input has to be strictly smaller than.
+        :param pulumi.Input[float] exclusive_minimum: The value the input has to be strictly greater than.
+        :param pulumi.Input[str] icon: The icon of the number input.
+        :param pulumi.Input[float] maximum: The largest value the input accepts.
+        :param pulumi.Input[float] minimum: The smallest value the input accepts.
+        :param pulumi.Input[bool] read_only: Shows the value of the number input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        :param pulumi.Input[str] read_only_jq_query: The read only condition jq query of the number input.
+        :param pulumi.Input[bool] required: Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        :param pulumi.Input[str] title: The title of the number input.
+        :param pulumi.Input[bool] visible: The visibility of the number input.
+        :param pulumi.Input[str] visible_jq_query: The visibility condition jq query of the number input.
+        """
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if default_jq_query is not None:
+            pulumi.set(__self__, "default_jq_query", default_jq_query)
+        if depends_ons is not None:
+            pulumi.set(__self__, "depends_ons", depends_ons)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if disabled_jq_query is not None:
+            pulumi.set(__self__, "disabled_jq_query", disabled_jq_query)
+        if enum_jq_query is not None:
+            pulumi.set(__self__, "enum_jq_query", enum_jq_query)
+        if enums is not None:
+            pulumi.set(__self__, "enums", enums)
+        if exclusive_maximum is not None:
+            pulumi.set(__self__, "exclusive_maximum", exclusive_maximum)
+        if exclusive_minimum is not None:
+            pulumi.set(__self__, "exclusive_minimum", exclusive_minimum)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if maximum is not None:
+            pulumi.set(__self__, "maximum", maximum)
+        if minimum is not None:
+            pulumi.set(__self__, "minimum", minimum)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if read_only_jq_query is not None:
+            pulumi.set(__self__, "read_only_jq_query", read_only_jq_query)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[pulumi.Input[float]]:
+        """
+        The default of the number input.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "default", value)
+
+    @property
+    @pulumi.getter(name="defaultJqQuery")
+    def default_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default jq query of the number input.
+        """
+        return pulumi.get(self, "default_jq_query")
+
+    @default_jq_query.setter
+    def default_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_jq_query", value)
+
+    @property
+    @pulumi.getter(name="dependsOns")
+    def depends_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The inputs this input depends on.
+        """
+        return pulumi.get(self, "depends_ons")
+
+    @depends_ons.setter
+    def depends_ons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "depends_ons", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the number input.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Greys out the number input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="disabledJqQuery")
+    def disabled_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disabled condition jq query of the number input.
+        """
+        return pulumi.get(self, "disabled_jq_query")
+
+    @disabled_jq_query.setter
+    def disabled_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disabled_jq_query", value)
+
+    @property
+    @pulumi.getter(name="enumJqQuery")
+    def enum_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        A jq query resolving the values the user can pick from.
+        """
+        return pulumi.get(self, "enum_jq_query")
+
+    @enum_jq_query.setter
+    def enum_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enum_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def enums(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[float]]]]:
+        """
+        The values the user can pick from.
+        """
+        return pulumi.get(self, "enums")
+
+    @enums.setter
+    def enums(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]]):
+        pulumi.set(self, "enums", value)
+
+    @property
+    @pulumi.getter(name="exclusiveMaximum")
+    def exclusive_maximum(self) -> Optional[pulumi.Input[float]]:
+        """
+        The value the input has to be strictly smaller than.
+        """
+        return pulumi.get(self, "exclusive_maximum")
+
+    @exclusive_maximum.setter
+    def exclusive_maximum(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "exclusive_maximum", value)
+
+    @property
+    @pulumi.getter(name="exclusiveMinimum")
+    def exclusive_minimum(self) -> Optional[pulumi.Input[float]]:
+        """
+        The value the input has to be strictly greater than.
+        """
+        return pulumi.get(self, "exclusive_minimum")
+
+    @exclusive_minimum.setter
+    def exclusive_minimum(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "exclusive_minimum", value)
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[pulumi.Input[str]]:
+        """
+        The icon of the number input.
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "icon", value)
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> Optional[pulumi.Input[float]]:
+        """
+        The largest value the input accepts.
+        """
+        return pulumi.get(self, "maximum")
+
+    @maximum.setter
+    def maximum(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "maximum", value)
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> Optional[pulumi.Input[float]]:
+        """
+        The smallest value the input accepts.
+        """
+        return pulumi.get(self, "minimum")
+
+    @minimum.setter
+    def minimum(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "minimum", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Shows the value of the number input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="readOnlyJqQuery")
+    def read_only_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The read only condition jq query of the number input.
+        """
+        return pulumi.get(self, "read_only_jq_query")
+
+    @read_only_jq_query.setter
+    def read_only_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read_only_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of the number input.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The visibility of the number input.
+        """
+        return pulumi.get(self, "visible")
+
+    @visible.setter
+    def visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "visible", value)
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility condition jq query of the number input.
+        """
+        return pulumi.get(self, "visible_jq_query")
+
+    @visible_jq_query.setter
+    def visible_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visible_jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesObjectPropsArgsDict(TypedDict):
+        default: NotRequired[pulumi.Input[str]]
+        """
+        The default of the object input, as a JSON encoded string.
+        """
+        default_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The default jq query of the object input.
+        """
+        depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The inputs this input depends on.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the object input.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        Greys out the object input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        """
+        disabled_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The disabled condition jq query of the object input.
+        """
+        format: NotRequired[pulumi.Input[str]]
+        """
+        The format of the object input. `labeled-url` renders a url with a display text. Leave it out for a free form object.
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the object input.
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Shows the value of the object input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        """
+        read_only_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The read only condition jq query of the object input.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the object input.
+        """
+        visible: NotRequired[pulumi.Input[bool]]
+        """
+        The visibility of the object input.
+        """
+        visible_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The visibility condition jq query of the object input.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesObjectPropsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesObjectPropsArgs:
+    def __init__(__self__, *,
+                 default: Optional[pulumi.Input[str]] = None,
+                 default_jq_query: Optional[pulumi.Input[str]] = None,
+                 depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 disabled_jq_query: Optional[pulumi.Input[str]] = None,
+                 format: Optional[pulumi.Input[str]] = None,
+                 icon: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 read_only_jq_query: Optional[pulumi.Input[str]] = None,
+                 required: Optional[pulumi.Input[bool]] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 visible: Optional[pulumi.Input[bool]] = None,
+                 visible_jq_query: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] default: The default of the object input, as a JSON encoded string.
+        :param pulumi.Input[str] default_jq_query: The default jq query of the object input.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The inputs this input depends on.
+        :param pulumi.Input[str] description: The description of the object input.
+        :param pulumi.Input[bool] disabled: Greys out the object input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        :param pulumi.Input[str] disabled_jq_query: The disabled condition jq query of the object input.
+        :param pulumi.Input[str] format: The format of the object input. `labeled-url` renders a url with a display text. Leave it out for a free form object.
+        :param pulumi.Input[str] icon: The icon of the object input.
+        :param pulumi.Input[bool] read_only: Shows the value of the object input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        :param pulumi.Input[str] read_only_jq_query: The read only condition jq query of the object input.
+        :param pulumi.Input[bool] required: Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        :param pulumi.Input[str] title: The title of the object input.
+        :param pulumi.Input[bool] visible: The visibility of the object input.
+        :param pulumi.Input[str] visible_jq_query: The visibility condition jq query of the object input.
+        """
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if default_jq_query is not None:
+            pulumi.set(__self__, "default_jq_query", default_jq_query)
+        if depends_ons is not None:
+            pulumi.set(__self__, "depends_ons", depends_ons)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if disabled_jq_query is not None:
+            pulumi.set(__self__, "disabled_jq_query", disabled_jq_query)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if read_only_jq_query is not None:
+            pulumi.set(__self__, "read_only_jq_query", read_only_jq_query)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default of the object input, as a JSON encoded string.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default", value)
+
+    @property
+    @pulumi.getter(name="defaultJqQuery")
+    def default_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default jq query of the object input.
+        """
+        return pulumi.get(self, "default_jq_query")
+
+    @default_jq_query.setter
+    def default_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_jq_query", value)
+
+    @property
+    @pulumi.getter(name="dependsOns")
+    def depends_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The inputs this input depends on.
+        """
+        return pulumi.get(self, "depends_ons")
+
+    @depends_ons.setter
+    def depends_ons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "depends_ons", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the object input.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Greys out the object input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="disabledJqQuery")
+    def disabled_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disabled condition jq query of the object input.
+        """
+        return pulumi.get(self, "disabled_jq_query")
+
+    @disabled_jq_query.setter
+    def disabled_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disabled_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The format of the object input. `labeled-url` renders a url with a display text. Leave it out for a free form object.
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[pulumi.Input[str]]:
+        """
+        The icon of the object input.
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "icon", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Shows the value of the object input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="readOnlyJqQuery")
+    def read_only_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The read only condition jq query of the object input.
+        """
+        return pulumi.get(self, "read_only_jq_query")
+
+    @read_only_jq_query.setter
+    def read_only_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read_only_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of the object input.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The visibility of the object input.
+        """
+        return pulumi.get(self, "visible")
+
+    @visible.setter
+    def visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "visible", value)
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility condition jq query of the object input.
+        """
+        return pulumi.get(self, "visible_jq_query")
+
+    @visible_jq_query.setter
+    def visible_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visible_jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint the entities are taken from. Required when `format` is `entity`.
+        """
+        dataset: NotRequired[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetArgsDict']]
+        """
+        The dataset filtering the entities the user can pick from.
+        """
+        default: NotRequired[pulumi.Input[str]]
+        """
+        The default of the string input.
+        """
+        default_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The default jq query of the string input.
+        """
+        depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The inputs this input depends on.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the string input.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        Greys out the string input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        """
+        disabled_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The disabled condition jq query of the string input.
+        """
+        enum_colors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The colors of the enum values.
+        """
+        enum_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        A jq query resolving the values the user can pick from.
+        """
+        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The values the user can pick from.
+        """
+        format: NotRequired[pulumi.Input[str]]
+        """
+        The format of the string input.
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the string input.
+        """
+        max_length: NotRequired[pulumi.Input[int]]
+        """
+        The max length of the string input.
+        """
+        min_length: NotRequired[pulumi.Input[int]]
+        """
+        The min length of the string input.
+        """
+        pattern: NotRequired[pulumi.Input[str]]
+        """
+        The regex pattern the value has to match.
+        """
+        pattern_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        A jq query resolving the pattern of the string input, either a regex string or a list of allowed values.
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Shows the value of the string input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        """
+        read_only_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The read only condition jq query of the string input.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        """
+        sort: NotRequired[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsSortArgsDict']]
+        """
+        How the entities are sorted in the form.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the string input.
+        """
+        visible: NotRequired[pulumi.Input[bool]]
+        """
+        The visibility of the string input.
+        """
+        visible_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The visibility condition jq query of the string input.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 dataset: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetArgs']] = None,
+                 default: Optional[pulumi.Input[str]] = None,
+                 default_jq_query: Optional[pulumi.Input[str]] = None,
+                 depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 disabled_jq_query: Optional[pulumi.Input[str]] = None,
+                 enum_colors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 enum_jq_query: Optional[pulumi.Input[str]] = None,
+                 enums: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 format: Optional[pulumi.Input[str]] = None,
+                 icon: Optional[pulumi.Input[str]] = None,
+                 max_length: Optional[pulumi.Input[int]] = None,
+                 min_length: Optional[pulumi.Input[int]] = None,
+                 pattern: Optional[pulumi.Input[str]] = None,
+                 pattern_jq_query: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 read_only_jq_query: Optional[pulumi.Input[str]] = None,
+                 required: Optional[pulumi.Input[bool]] = None,
+                 sort: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsSortArgs']] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 visible: Optional[pulumi.Input[bool]] = None,
+                 visible_jq_query: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint the entities are taken from. Required when `format` is `entity`.
+        :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetArgs'] dataset: The dataset filtering the entities the user can pick from.
+        :param pulumi.Input[str] default: The default of the string input.
+        :param pulumi.Input[str] default_jq_query: The default jq query of the string input.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The inputs this input depends on.
+        :param pulumi.Input[str] description: The description of the string input.
+        :param pulumi.Input[bool] disabled: Greys out the string input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        :param pulumi.Input[str] disabled_jq_query: The disabled condition jq query of the string input.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] enum_colors: The colors of the enum values.
+        :param pulumi.Input[str] enum_jq_query: A jq query resolving the values the user can pick from.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enums: The values the user can pick from.
+        :param pulumi.Input[str] format: The format of the string input.
+        :param pulumi.Input[str] icon: The icon of the string input.
+        :param pulumi.Input[int] max_length: The max length of the string input.
+        :param pulumi.Input[int] min_length: The min length of the string input.
+        :param pulumi.Input[str] pattern: The regex pattern the value has to match.
+        :param pulumi.Input[str] pattern_jq_query: A jq query resolving the pattern of the string input, either a regex string or a list of allowed values.
+        :param pulumi.Input[bool] read_only: Shows the value of the string input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        :param pulumi.Input[str] read_only_jq_query: The read only condition jq query of the string input.
+        :param pulumi.Input[bool] required: Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsSortArgs'] sort: How the entities are sorted in the form.
+        :param pulumi.Input[str] title: The title of the string input.
+        :param pulumi.Input[bool] visible: The visibility of the string input.
+        :param pulumi.Input[str] visible_jq_query: The visibility condition jq query of the string input.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if dataset is not None:
+            pulumi.set(__self__, "dataset", dataset)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if default_jq_query is not None:
+            pulumi.set(__self__, "default_jq_query", default_jq_query)
+        if depends_ons is not None:
+            pulumi.set(__self__, "depends_ons", depends_ons)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if disabled_jq_query is not None:
+            pulumi.set(__self__, "disabled_jq_query", disabled_jq_query)
+        if enum_colors is not None:
+            pulumi.set(__self__, "enum_colors", enum_colors)
+        if enum_jq_query is not None:
+            pulumi.set(__self__, "enum_jq_query", enum_jq_query)
+        if enums is not None:
+            pulumi.set(__self__, "enums", enums)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if max_length is not None:
+            pulumi.set(__self__, "max_length", max_length)
+        if min_length is not None:
+            pulumi.set(__self__, "min_length", min_length)
+        if pattern is not None:
+            pulumi.set(__self__, "pattern", pattern)
+        if pattern_jq_query is not None:
+            pulumi.set(__self__, "pattern_jq_query", pattern_jq_query)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if read_only_jq_query is not None:
+            pulumi.set(__self__, "read_only_jq_query", read_only_jq_query)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if sort is not None:
+            pulumi.set(__self__, "sort", sort)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint the entities are taken from. Required when `format` is `entity`.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetArgs']]:
+        """
+        The dataset filtering the entities the user can pick from.
+        """
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetArgs']]):
+        pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default of the string input.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default", value)
+
+    @property
+    @pulumi.getter(name="defaultJqQuery")
+    def default_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default jq query of the string input.
+        """
+        return pulumi.get(self, "default_jq_query")
+
+    @default_jq_query.setter
+    def default_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_jq_query", value)
+
+    @property
+    @pulumi.getter(name="dependsOns")
+    def depends_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The inputs this input depends on.
+        """
+        return pulumi.get(self, "depends_ons")
+
+    @depends_ons.setter
+    def depends_ons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "depends_ons", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the string input.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Greys out the string input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="disabledJqQuery")
+    def disabled_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disabled condition jq query of the string input.
+        """
+        return pulumi.get(self, "disabled_jq_query")
+
+    @disabled_jq_query.setter
+    def disabled_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disabled_jq_query", value)
+
+    @property
+    @pulumi.getter(name="enumColors")
+    def enum_colors(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The colors of the enum values.
+        """
+        return pulumi.get(self, "enum_colors")
+
+    @enum_colors.setter
+    def enum_colors(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "enum_colors", value)
+
+    @property
+    @pulumi.getter(name="enumJqQuery")
+    def enum_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        A jq query resolving the values the user can pick from.
+        """
+        return pulumi.get(self, "enum_jq_query")
+
+    @enum_jq_query.setter
+    def enum_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enum_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def enums(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The values the user can pick from.
+        """
+        return pulumi.get(self, "enums")
+
+    @enums.setter
+    def enums(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "enums", value)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The format of the string input.
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[pulumi.Input[str]]:
+        """
+        The icon of the string input.
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "icon", value)
+
+    @property
+    @pulumi.getter(name="maxLength")
+    def max_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        The max length of the string input.
+        """
+        return pulumi.get(self, "max_length")
+
+    @max_length.setter
+    def max_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_length", value)
+
+    @property
+    @pulumi.getter(name="minLength")
+    def min_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        The min length of the string input.
+        """
+        return pulumi.get(self, "min_length")
+
+    @min_length.setter
+    def min_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_length", value)
+
+    @property
+    @pulumi.getter
+    def pattern(self) -> Optional[pulumi.Input[str]]:
+        """
+        The regex pattern the value has to match.
+        """
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pattern", value)
+
+    @property
+    @pulumi.getter(name="patternJqQuery")
+    def pattern_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        A jq query resolving the pattern of the string input, either a regex string or a list of allowed values.
+        """
+        return pulumi.get(self, "pattern_jq_query")
+
+    @pattern_jq_query.setter
+    def pattern_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pattern_jq_query", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Shows the value of the string input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="readOnlyJqQuery")
+    def read_only_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The read only condition jq query of the string input.
+        """
+        return pulumi.get(self, "read_only_jq_query")
+
+    @read_only_jq_query.setter
+    def read_only_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read_only_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter
+    def sort(self) -> Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsSortArgs']]:
+        """
+        How the entities are sorted in the form.
+        """
+        return pulumi.get(self, "sort")
+
+    @sort.setter
+    def sort(self, value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsSortArgs']]):
+        pulumi.set(self, "sort", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of the string input.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The visibility of the string input.
+        """
+        return pulumi.get(self, "visible")
+
+    @visible.setter
+    def visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "visible", value)
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility condition jq query of the string input.
+        """
+        return pulumi.get(self, "visible_jq_query")
+
+    @visible_jq_query.setter
+    def visible_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visible_jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetArgsDict(TypedDict):
+        combinator: pulumi.Input[str]
+        """
+        How the rules are combined.
+        """
+        rules: pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleArgsDict']]]
+        """
+        The rules of the dataset. A rule either filters on a property or groups nested rules under a combinator.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetArgs:
+    def __init__(__self__, *,
+                 combinator: pulumi.Input[str],
+                 rules: pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleArgs']]]):
+        """
+        :param pulumi.Input[str] combinator: How the rules are combined.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleArgs']]] rules: The rules of the dataset. A rule either filters on a property or groups nested rules under a combinator.
+        """
+        pulumi.set(__self__, "combinator", combinator)
+        pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> pulumi.Input[str]:
+        """
+        How the rules are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleArgs']]]:
+        """
+        The rules of the dataset. A rule either filters on a property or groups nested rules under a combinator.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleArgs']]]):
+        pulumi.set(self, "rules", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule.
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the nested rules of a group rule are combined.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArgsDict']]]]
+        """
+        The nested rules of a group rule.
+        """
+        value: NotRequired[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleValueArgsDict']]
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        value_json: NotRequired[pulumi.Input[str]]
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleValueArgs']] = None,
+                 value_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule.
+        :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
+        :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs']]] rules: The nested rules of a group rule.
+        :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
+        :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_json is not None:
+            pulumi.set(__self__, "value_json", value_json)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the nested rules of a group rule are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs']]]]:
+        """
+        The nested rules of a group rule.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleValueArgs']]:
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_json", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule.
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the nested rules of a group rule are combined.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgsDict']]]]
+        """
+        The nested rules of a group rule.
+        """
+        value: NotRequired[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgsDict']]
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        value_json: NotRequired[pulumi.Input[str]]
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgs']] = None,
+                 value_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule.
+        :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
+        :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
+        :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
+        :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_json is not None:
+            pulumi.set(__self__, "value_json", value_json)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the nested rules of a group rule are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgs']]]]:
+        """
+        The nested rules of a group rule.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgs']]:
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_json", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule.
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the nested rules of a group rule are combined.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgsDict']]]]
+        """
+        The nested rules of a group rule.
+        """
+        value: NotRequired[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgsDict']]
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        value_json: NotRequired[pulumi.Input[str]]
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs']] = None,
+                 value_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule.
+        :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
+        :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
+        :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
+        :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_json is not None:
+            pulumi.set(__self__, "value_json", value_json)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the nested rules of a group rule are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs']]]]:
+        """
+        The nested rules of a group rule.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs']]:
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_json", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule.
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the nested rules of a group rule are combined.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgsDict']]]]
+        """
+        The nested rules of a group rule.
+        """
+        value: NotRequired[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgsDict']]
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        value_json: NotRequired[pulumi.Input[str]]
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs']] = None,
+                 value_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule.
+        :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
+        :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
+        :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
+        :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_json is not None:
+            pulumi.set(__self__, "value_json", value_json)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the nested rules of a group rule are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs']]]]:
+        """
+        The nested rules of a group rule.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs']]:
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_json", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule.
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the nested rules of a group rule are combined.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgsDict']]]]
+        """
+        The nested rules of a group rule.
+        """
+        value: NotRequired[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgsDict']]
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        value_json: NotRequired[pulumi.Input[str]]
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs']] = None,
+                 value_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule.
+        :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
+        :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
+        :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
+        :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_json is not None:
+            pulumi.set(__self__, "value_json", value_json)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the nested rules of a group rule are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs']]]]:
+        """
+        The nested rules of a group rule.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs']]:
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_json", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule.
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the nested rules of a group rule are combined.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
+        """
+        The nested rules of a group rule.
+        """
+        value: NotRequired[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgsDict']]
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        value_json: NotRequired[pulumi.Input[str]]
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs']] = None,
+                 value_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule.
+        :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
+        :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
+        :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
+        :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_json is not None:
+            pulumi.set(__self__, "value_json", value_json)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the nested rules of a group rule are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs']]]]:
+        """
+        The nested rules of a group rule.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs']]:
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_json", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule.
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the nested rules of a group rule are combined.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
+        """
+        The nested rules of a group rule.
+        """
+        value: NotRequired[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgsDict']]
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        value_json: NotRequired[pulumi.Input[str]]
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None,
+                 value_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule.
+        :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
+        :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
+        :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
+        :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_json is not None:
+            pulumi.set(__self__, "value_json", value_json)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the nested rules of a group rule are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]:
+        """
+        The nested rules of a group rule.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs']]:
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_json", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule.
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the nested rules of a group rule are combined.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
+        """
+        The nested rules of a group rule.
+        """
+        value: NotRequired[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict']]
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        value_json: NotRequired[pulumi.Input[str]]
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None,
+                 value_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule.
+        :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
+        :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
+        :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
+        :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_json is not None:
+            pulumi.set(__self__, "value_json", value_json)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the nested rules of a group rule are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]:
+        """
+        The nested rules of a group rule.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]:
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_json", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule.
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the nested rules of a group rule are combined.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
+        """
+        The nested rules of a group rule.
+        """
+        value: NotRequired[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict']]
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        value_json: NotRequired[pulumi.Input[str]]
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None,
+                 value_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule.
+        :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
+        :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
+        :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
+        :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_json is not None:
+            pulumi.set(__self__, "value_json", value_json)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the nested rules of a group rule are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]:
+        """
+        The nested rules of a group rule.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]:
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_json", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule.
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the nested rules of a group rule are combined.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
+        """
+        The nested rules of a group rule.
+        """
+        value: NotRequired[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict']]
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        value_json: NotRequired[pulumi.Input[str]]
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None,
+                 value_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule.
+        :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
+        :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
+        :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
+        :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_json is not None:
+            pulumi.set(__self__, "value_json", value_json)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the nested rules of a group rule are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]:
+        """
+        The nested rules of a group rule.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]:
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_json", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule.
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the nested rules of a group rule are combined.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule.
+        """
+        value: NotRequired[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict']]
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        value_json: NotRequired[pulumi.Input[str]]
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None,
+                 value_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule.
+        :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
+        :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
+        :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_json is not None:
+            pulumi.set(__self__, "value_json", value_json)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the nested rules of a group rule are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]:
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_json", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsUserPropertiesStringPropsSortArgsDict(TypedDict):
+        property: pulumi.Input[str]
+        """
+        The property to sort the entities by.
+        """
+        order: NotRequired[pulumi.Input[str]]
+        """
+        The order to sort the entities in.
+        """
+elif False:
+    WorkflowNodeInputUserInputsUserPropertiesStringPropsSortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsUserPropertiesStringPropsSortArgs:
+    def __init__(__self__, *,
+                 property: pulumi.Input[str],
+                 order: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] property: The property to sort the entities by.
+        :param pulumi.Input[str] order: The order to sort the entities in.
+        """
+        pulumi.set(__self__, "property", property)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+
+    @property
+    @pulumi.getter
+    def order(self) -> Optional[pulumi.Input[str]]:
+        """
+        The order to sort the entities in.
+        """
+        return pulumi.get(self, "order")
+
+    @order.setter
+    def order(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "order", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> pulumi.Input[str]:
+        """
+        The property to sort the entities by.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: pulumi.Input[str]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeInputUserInputsValidationArgsDict(TypedDict):
+        constraint: pulumi.Input[str]
+        """
+        A jq expression that has to evaluate to `true` for the form to be valid.
+        """
+        message: pulumi.Input[str]
+        """
+        The error message shown when the constraint evaluates to `false` (max 100 characters).
+        """
+elif False:
+    WorkflowNodeInputUserInputsValidationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeInputUserInputsValidationArgs:
+    def __init__(__self__, *,
+                 constraint: pulumi.Input[str],
+                 message: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] constraint: A jq expression that has to evaluate to `true` for the form to be valid.
+        :param pulumi.Input[str] message: The error message shown when the constraint evaluates to `false` (max 100 characters).
+        """
+        pulumi.set(__self__, "constraint", constraint)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def constraint(self) -> pulumi.Input[str]:
+        """
+        A jq expression that has to evaluate to `true` for the form to be valid.
+        """
+        return pulumi.get(self, "constraint")
+
+    @constraint.setter
+    def constraint(self, value: pulumi.Input[str]):
+        pulumi.set(self, "constraint", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> pulumi.Input[str]:
+        """
+        The error message shown when the constraint evaluates to `false` (max 100 characters).
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: pulumi.Input[str]):
+        pulumi.set(self, "message", value)
+
+
+if not MYPY:
+    class WorkflowNodeIntegrationActionArgsDict(TypedDict):
+        execution_properties: NotRequired[pulumi.Input[str]]
+        """
+        The integration action execution properties as a JSON encoded string.
+        """
+        installation_id: NotRequired[pulumi.Input[str]]
+        """
+        The installation id of the integration.
+        """
+        integration_invocation_type: NotRequired[pulumi.Input[str]]
+        """
+        The invocation type of the integration action.
+        """
+        integration_provider: NotRequired[pulumi.Input[str]]
+        """
+        The provider of the integration action.
+        """
+        on_failure: NotRequired[pulumi.Input[str]]
+        """
+        The action to take if the node fails. One of `continue`, `terminate`.
+        """
+elif False:
+    WorkflowNodeIntegrationActionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeIntegrationActionArgs:
+    def __init__(__self__, *,
+                 execution_properties: Optional[pulumi.Input[str]] = None,
+                 installation_id: Optional[pulumi.Input[str]] = None,
+                 integration_invocation_type: Optional[pulumi.Input[str]] = None,
+                 integration_provider: Optional[pulumi.Input[str]] = None,
+                 on_failure: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] execution_properties: The integration action execution properties as a JSON encoded string.
+        :param pulumi.Input[str] installation_id: The installation id of the integration.
+        :param pulumi.Input[str] integration_invocation_type: The invocation type of the integration action.
+        :param pulumi.Input[str] integration_provider: The provider of the integration action.
+        :param pulumi.Input[str] on_failure: The action to take if the node fails. One of `continue`, `terminate`.
+        """
+        if execution_properties is not None:
+            pulumi.set(__self__, "execution_properties", execution_properties)
+        if installation_id is not None:
+            pulumi.set(__self__, "installation_id", installation_id)
+        if integration_invocation_type is not None:
+            pulumi.set(__self__, "integration_invocation_type", integration_invocation_type)
+        if integration_provider is not None:
+            pulumi.set(__self__, "integration_provider", integration_provider)
+        if on_failure is not None:
+            pulumi.set(__self__, "on_failure", on_failure)
+
+    @property
+    @pulumi.getter(name="executionProperties")
+    def execution_properties(self) -> Optional[pulumi.Input[str]]:
+        """
+        The integration action execution properties as a JSON encoded string.
+        """
+        return pulumi.get(self, "execution_properties")
+
+    @execution_properties.setter
+    def execution_properties(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "execution_properties", value)
+
+    @property
+    @pulumi.getter(name="installationId")
+    def installation_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The installation id of the integration.
+        """
+        return pulumi.get(self, "installation_id")
+
+    @installation_id.setter
+    def installation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "installation_id", value)
+
+    @property
+    @pulumi.getter(name="integrationInvocationType")
+    def integration_invocation_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The invocation type of the integration action.
+        """
+        return pulumi.get(self, "integration_invocation_type")
+
+    @integration_invocation_type.setter
+    def integration_invocation_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "integration_invocation_type", value)
+
+    @property
+    @pulumi.getter(name="integrationProvider")
+    def integration_provider(self) -> Optional[pulumi.Input[str]]:
+        """
+        The provider of the integration action.
+        """
+        return pulumi.get(self, "integration_provider")
+
+    @integration_provider.setter
+    def integration_provider(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "integration_provider", value)
+
+    @property
+    @pulumi.getter(name="onFailure")
+    def on_failure(self) -> Optional[pulumi.Input[str]]:
+        """
+        The action to take if the node fails. One of `continue`, `terminate`.
+        """
+        return pulumi.get(self, "on_failure")
+
+    @on_failure.setter
+    def on_failure(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "on_failure", value)
+
+
+if not MYPY:
+    class WorkflowNodeKafkaArgsDict(TypedDict):
+        on_failure: NotRequired[pulumi.Input[str]]
+        """
+        The action to take if the node fails. One of `continue`, `terminate`.
+        """
+        payload: NotRequired[pulumi.Input[str]]
+        """
+        The Kafka message payload as a JSON encoded string.
+        """
+elif False:
+    WorkflowNodeKafkaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeKafkaArgs:
+    def __init__(__self__, *,
+                 on_failure: Optional[pulumi.Input[str]] = None,
+                 payload: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] on_failure: The action to take if the node fails. One of `continue`, `terminate`.
+        :param pulumi.Input[str] payload: The Kafka message payload as a JSON encoded string.
+        """
+        if on_failure is not None:
+            pulumi.set(__self__, "on_failure", on_failure)
+        if payload is not None:
+            pulumi.set(__self__, "payload", payload)
+
+    @property
+    @pulumi.getter(name="onFailure")
+    def on_failure(self) -> Optional[pulumi.Input[str]]:
+        """
+        The action to take if the node fails. One of `continue`, `terminate`.
+        """
+        return pulumi.get(self, "on_failure")
+
+    @on_failure.setter
+    def on_failure(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "on_failure", value)
+
+    @property
+    @pulumi.getter
+    def payload(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Kafka message payload as a JSON encoded string.
+        """
+        return pulumi.get(self, "payload")
+
+    @payload.setter
+    def payload(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payload", value)
+
+
+if not MYPY:
+    class WorkflowNodeScheduleTriggerArgsDict(TypedDict):
+        cron: NotRequired[pulumi.Input[str]]
+        """
+        The cron expression defining when the workflow triggers (e.g. `0 9 * * 1-5`), evaluated in UTC.
+        """
+        published: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the trigger is published.
+        """
+elif False:
+    WorkflowNodeScheduleTriggerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeScheduleTriggerArgs:
+    def __init__(__self__, *,
+                 cron: Optional[pulumi.Input[str]] = None,
+                 published: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] cron: The cron expression defining when the workflow triggers (e.g. `0 9 * * 1-5`), evaluated in UTC.
+        :param pulumi.Input[bool] published: Whether the trigger is published.
+        """
+        if cron is not None:
+            pulumi.set(__self__, "cron", cron)
+        if published is not None:
+            pulumi.set(__self__, "published", published)
+
+    @property
+    @pulumi.getter
+    def cron(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cron expression defining when the workflow triggers (e.g. `0 9 * * 1-5`), evaluated in UTC.
+        """
+        return pulumi.get(self, "cron")
+
+    @cron.setter
+    def cron(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cron", value)
+
+    @property
+    @pulumi.getter
+    def published(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the trigger is published.
+        """
+        return pulumi.get(self, "published")
+
+    @published.setter
+    def published(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "published", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerArgsDict(TypedDict):
+        action_card_button_text: NotRequired[pulumi.Input[str]]
+        """
+        The text of the button displayed on the self service card (max 15 characters).
+        """
+        contexts: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerContextArgsDict']]]]
+        """
+        Where the trigger is surfaced in the UI.
+        """
+        execute_action_button_text: NotRequired[pulumi.Input[str]]
+        """
+        The text of the button that executes the workflow (max 15 characters).
+        """
+        permissions: NotRequired[pulumi.Input['WorkflowNodeSelfServeTriggerPermissionsArgsDict']]
+        """
+        Who is allowed to execute this trigger.
+        """
+        published: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the trigger is published.
+        """
+        user_inputs: NotRequired[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsArgsDict']]
+        """
+        The form presented to the user when triggering the workflow.
+        """
+        variant: NotRequired[pulumi.Input[str]]
+        """
+        The trigger variant. One of `DEFAULT`, `ALERT`.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerArgs:
+    def __init__(__self__, *,
+                 action_card_button_text: Optional[pulumi.Input[str]] = None,
+                 contexts: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerContextArgs']]]] = None,
+                 execute_action_button_text: Optional[pulumi.Input[str]] = None,
+                 permissions: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerPermissionsArgs']] = None,
+                 published: Optional[pulumi.Input[bool]] = None,
+                 user_inputs: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsArgs']] = None,
+                 variant: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] action_card_button_text: The text of the button displayed on the self service card (max 15 characters).
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerContextArgs']]] contexts: Where the trigger is surfaced in the UI.
+        :param pulumi.Input[str] execute_action_button_text: The text of the button that executes the workflow (max 15 characters).
+        :param pulumi.Input['WorkflowNodeSelfServeTriggerPermissionsArgs'] permissions: Who is allowed to execute this trigger.
+        :param pulumi.Input[bool] published: Whether the trigger is published.
+        :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsArgs'] user_inputs: The form presented to the user when triggering the workflow.
+        :param pulumi.Input[str] variant: The trigger variant. One of `DEFAULT`, `ALERT`.
+        """
+        if action_card_button_text is not None:
+            pulumi.set(__self__, "action_card_button_text", action_card_button_text)
+        if contexts is not None:
+            pulumi.set(__self__, "contexts", contexts)
+        if execute_action_button_text is not None:
+            pulumi.set(__self__, "execute_action_button_text", execute_action_button_text)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
+        if published is not None:
+            pulumi.set(__self__, "published", published)
+        if user_inputs is not None:
+            pulumi.set(__self__, "user_inputs", user_inputs)
+        if variant is not None:
+            pulumi.set(__self__, "variant", variant)
+
+    @property
+    @pulumi.getter(name="actionCardButtonText")
+    def action_card_button_text(self) -> Optional[pulumi.Input[str]]:
+        """
+        The text of the button displayed on the self service card (max 15 characters).
+        """
+        return pulumi.get(self, "action_card_button_text")
+
+    @action_card_button_text.setter
+    def action_card_button_text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action_card_button_text", value)
+
+    @property
+    @pulumi.getter
+    def contexts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerContextArgs']]]]:
+        """
+        Where the trigger is surfaced in the UI.
+        """
+        return pulumi.get(self, "contexts")
+
+    @contexts.setter
+    def contexts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerContextArgs']]]]):
+        pulumi.set(self, "contexts", value)
+
+    @property
+    @pulumi.getter(name="executeActionButtonText")
+    def execute_action_button_text(self) -> Optional[pulumi.Input[str]]:
+        """
+        The text of the button that executes the workflow (max 15 characters).
+        """
+        return pulumi.get(self, "execute_action_button_text")
+
+    @execute_action_button_text.setter
+    def execute_action_button_text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "execute_action_button_text", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Optional[pulumi.Input['WorkflowNodeSelfServeTriggerPermissionsArgs']]:
+        """
+        Who is allowed to execute this trigger.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerPermissionsArgs']]):
+        pulumi.set(self, "permissions", value)
+
+    @property
+    @pulumi.getter
+    def published(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the trigger is published.
+        """
+        return pulumi.get(self, "published")
+
+    @published.setter
+    def published(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "published", value)
+
+    @property
+    @pulumi.getter(name="userInputs")
+    def user_inputs(self) -> Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsArgs']]:
+        """
+        The form presented to the user when triggering the workflow.
+        """
+        return pulumi.get(self, "user_inputs")
+
+    @user_inputs.setter
+    def user_inputs(self, value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsArgs']]):
+        pulumi.set(self, "user_inputs", value)
+
+    @property
+    @pulumi.getter
+    def variant(self) -> Optional[pulumi.Input[str]]:
+        """
+        The trigger variant. One of `DEFAULT`, `ALERT`.
+        """
+        return pulumi.get(self, "variant")
+
+    @variant.setter
+    def variant(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "variant", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerContextArgsDict(TypedDict):
+        on: pulumi.Input[str]
+        """
+        The context type. One of `CREATE_ENTITY`, `ENTITY`.
+        """
+        blueprint_identifier: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint the trigger creates an entity for. Required when `on` is `CREATE_ENTITY`.
+        """
+        user_input: NotRequired[pulumi.Input[str]]
+        """
+        The user input the trigger is bound to. Required when `on` is `ENTITY`.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerContextArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerContextArgs:
+    def __init__(__self__, *,
+                 on: pulumi.Input[str],
+                 blueprint_identifier: Optional[pulumi.Input[str]] = None,
+                 user_input: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] on: The context type. One of `CREATE_ENTITY`, `ENTITY`.
+        :param pulumi.Input[str] blueprint_identifier: The blueprint the trigger creates an entity for. Required when `on` is `CREATE_ENTITY`.
+        :param pulumi.Input[str] user_input: The user input the trigger is bound to. Required when `on` is `ENTITY`.
+        """
+        pulumi.set(__self__, "on", on)
+        if blueprint_identifier is not None:
+            pulumi.set(__self__, "blueprint_identifier", blueprint_identifier)
+        if user_input is not None:
+            pulumi.set(__self__, "user_input", user_input)
+
+    @property
+    @pulumi.getter
+    def on(self) -> pulumi.Input[str]:
+        """
+        The context type. One of `CREATE_ENTITY`, `ENTITY`.
+        """
+        return pulumi.get(self, "on")
+
+    @on.setter
+    def on(self, value: pulumi.Input[str]):
+        pulumi.set(self, "on", value)
+
+    @property
+    @pulumi.getter(name="blueprintIdentifier")
+    def blueprint_identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint the trigger creates an entity for. Required when `on` is `CREATE_ENTITY`.
+        """
+        return pulumi.get(self, "blueprint_identifier")
+
+    @blueprint_identifier.setter
+    def blueprint_identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint_identifier", value)
+
+    @property
+    @pulumi.getter(name="userInput")
+    def user_input(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user input the trigger is bound to. Required when `on` is `ENTITY`.
+        """
+        return pulumi.get(self, "user_input")
+
+    @user_input.setter
+    def user_input(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_input", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerPermissionsArgsDict(TypedDict):
+        policy: NotRequired[pulumi.Input[str]]
+        """
+        A JSON encoded RBAC query that dynamically resolves who is permitted, of the form `{"combinator":"and","rules":[{"property":{"context":"user","property":"department"},"operator":"=","value":"engineering"}]}`. `context` is one of `user`, `userTeams`, `form`, `workflowRun`.
+        """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The roles the permission applies to.
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The identifiers of the teams the permission applies to. They must exist in the organization.
+        """
+        users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The emails of the users the permission applies to. They must exist in the organization.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerPermissionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerPermissionsArgs:
+    def __init__(__self__, *,
+                 policy: Optional[pulumi.Input[str]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] policy: A JSON encoded RBAC query that dynamically resolves who is permitted, of the form `{"combinator":"and","rules":[{"property":{"context":"user","property":"department"},"operator":"=","value":"engineering"}]}`. `context` is one of `user`, `userTeams`, `form`, `workflowRun`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The roles the permission applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The identifiers of the teams the permission applies to. They must exist in the organization.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: The emails of the users the permission applies to. They must exist in the organization.
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        A JSON encoded RBAC query that dynamically resolves who is permitted, of the form `{"combinator":"and","rules":[{"property":{"context":"user","property":"department"},"operator":"=","value":"engineering"}]}`. `context` is one of `user`, `userTeams`, `form`, `workflowRun`.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The roles the permission applies to.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The identifiers of the teams the permission applies to. They must exist in the organization.
+        """
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The emails of the users the permission applies to. They must exist in the organization.
+        """
+        return pulumi.get(self, "users")
+
+    @users.setter
+    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "users", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsArgsDict(TypedDict):
+        order_properties: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The order the inputs are rendered in. Cannot be combined with `steps`.
+        """
+        required_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        A jq query resolving which inputs are required.
+        """
+        steps: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsStepArgsDict']]]]
+        """
+        Splits the form into steps. Cannot be combined with `order_properties`.
+        """
+        titles: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsTitlesArgsDict']]]]
+        """
+        Static titles rendered between the inputs of the form.
+        """
+        user_properties: NotRequired[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArgsDict']]
+        """
+        The user inputs the form collects.
+        """
+        validations: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsValidationArgsDict']]]]
+        """
+        Validation rules evaluated against the whole form when it is submitted. Cannot be combined with `steps`, add the rules to the individual steps instead. Up to 10 rules are allowed.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsArgs:
+    def __init__(__self__, *,
+                 order_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 required_jq_query: Optional[pulumi.Input[str]] = None,
+                 steps: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsStepArgs']]]] = None,
+                 titles: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsTitlesArgs']]]] = None,
+                 user_properties: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArgs']] = None,
+                 validations: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsValidationArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] order_properties: The order the inputs are rendered in. Cannot be combined with `steps`.
+        :param pulumi.Input[str] required_jq_query: A jq query resolving which inputs are required.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsStepArgs']]] steps: Splits the form into steps. Cannot be combined with `order_properties`.
+        :param pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsTitlesArgs']]] titles: Static titles rendered between the inputs of the form.
+        :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArgs'] user_properties: The user inputs the form collects.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsValidationArgs']]] validations: Validation rules evaluated against the whole form when it is submitted. Cannot be combined with `steps`, add the rules to the individual steps instead. Up to 10 rules are allowed.
+        """
+        if order_properties is not None:
+            pulumi.set(__self__, "order_properties", order_properties)
+        if required_jq_query is not None:
+            pulumi.set(__self__, "required_jq_query", required_jq_query)
+        if steps is not None:
+            pulumi.set(__self__, "steps", steps)
+        if titles is not None:
+            pulumi.set(__self__, "titles", titles)
+        if user_properties is not None:
+            pulumi.set(__self__, "user_properties", user_properties)
+        if validations is not None:
+            pulumi.set(__self__, "validations", validations)
+
+    @property
+    @pulumi.getter(name="orderProperties")
+    def order_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The order the inputs are rendered in. Cannot be combined with `steps`.
+        """
+        return pulumi.get(self, "order_properties")
+
+    @order_properties.setter
+    def order_properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "order_properties", value)
+
+    @property
+    @pulumi.getter(name="requiredJqQuery")
+    def required_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        A jq query resolving which inputs are required.
+        """
+        return pulumi.get(self, "required_jq_query")
+
+    @required_jq_query.setter
+    def required_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "required_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsStepArgs']]]]:
+        """
+        Splits the form into steps. Cannot be combined with `order_properties`.
+        """
+        return pulumi.get(self, "steps")
+
+    @steps.setter
+    def steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsStepArgs']]]]):
+        pulumi.set(self, "steps", value)
+
+    @property
+    @pulumi.getter
+    def titles(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsTitlesArgs']]]]:
+        """
+        Static titles rendered between the inputs of the form.
+        """
+        return pulumi.get(self, "titles")
+
+    @titles.setter
+    def titles(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsTitlesArgs']]]]):
+        pulumi.set(self, "titles", value)
+
+    @property
+    @pulumi.getter(name="userProperties")
+    def user_properties(self) -> Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArgs']]:
+        """
+        The user inputs the form collects.
+        """
+        return pulumi.get(self, "user_properties")
+
+    @user_properties.setter
+    def user_properties(self, value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArgs']]):
+        pulumi.set(self, "user_properties", value)
+
+    @property
+    @pulumi.getter
+    def validations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsValidationArgs']]]]:
+        """
+        Validation rules evaluated against the whole form when it is submitted. Cannot be combined with `steps`, add the rules to the individual steps instead. Up to 10 rules are allowed.
+        """
+        return pulumi.get(self, "validations")
+
+    @validations.setter
+    def validations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsValidationArgs']]]]):
+        pulumi.set(self, "validations", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsStepArgsDict(TypedDict):
+        orders: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The order of the inputs in this step.
+        """
+        title: pulumi.Input[str]
+        """
+        The step's title (max 25 characters).
+        """
+        validations: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsStepValidationArgsDict']]]]
+        """
+        Validation rules evaluated when the step is submitted. Up to 10 rules are allowed.
+        """
+        visible: NotRequired[pulumi.Input[bool]]
+        """
+        The visibility of the step.
+        """
+        visible_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The visibility condition jq query of the step.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsStepArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsStepArgs:
+    def __init__(__self__, *,
+                 orders: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 title: pulumi.Input[str],
+                 validations: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsStepValidationArgs']]]] = None,
+                 visible: Optional[pulumi.Input[bool]] = None,
+                 visible_jq_query: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] orders: The order of the inputs in this step.
+        :param pulumi.Input[str] title: The step's title (max 25 characters).
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsStepValidationArgs']]] validations: Validation rules evaluated when the step is submitted. Up to 10 rules are allowed.
+        :param pulumi.Input[bool] visible: The visibility of the step.
+        :param pulumi.Input[str] visible_jq_query: The visibility condition jq query of the step.
+        """
+        pulumi.set(__self__, "orders", orders)
+        pulumi.set(__self__, "title", title)
+        if validations is not None:
+            pulumi.set(__self__, "validations", validations)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
+
+    @property
+    @pulumi.getter
+    def orders(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The order of the inputs in this step.
+        """
+        return pulumi.get(self, "orders")
+
+    @orders.setter
+    def orders(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "orders", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        The step's title (max 25 characters).
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def validations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsStepValidationArgs']]]]:
+        """
+        Validation rules evaluated when the step is submitted. Up to 10 rules are allowed.
+        """
+        return pulumi.get(self, "validations")
+
+    @validations.setter
+    def validations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsStepValidationArgs']]]]):
+        pulumi.set(self, "validations", value)
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The visibility of the step.
+        """
+        return pulumi.get(self, "visible")
+
+    @visible.setter
+    def visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "visible", value)
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility condition jq query of the step.
+        """
+        return pulumi.get(self, "visible_jq_query")
+
+    @visible_jq_query.setter
+    def visible_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visible_jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsStepValidationArgsDict(TypedDict):
+        constraint: pulumi.Input[str]
+        """
+        A jq expression that has to evaluate to `true` for the form to be valid.
+        """
+        message: pulumi.Input[str]
+        """
+        The error message shown when the constraint evaluates to `false` (max 100 characters).
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsStepValidationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsStepValidationArgs:
+    def __init__(__self__, *,
+                 constraint: pulumi.Input[str],
+                 message: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] constraint: A jq expression that has to evaluate to `true` for the form to be valid.
+        :param pulumi.Input[str] message: The error message shown when the constraint evaluates to `false` (max 100 characters).
+        """
+        pulumi.set(__self__, "constraint", constraint)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def constraint(self) -> pulumi.Input[str]:
+        """
+        A jq expression that has to evaluate to `true` for the form to be valid.
+        """
+        return pulumi.get(self, "constraint")
+
+    @constraint.setter
+    def constraint(self, value: pulumi.Input[str]):
+        pulumi.set(self, "constraint", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> pulumi.Input[str]:
+        """
+        The error message shown when the constraint evaluates to `false` (max 100 characters).
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: pulumi.Input[str]):
+        pulumi.set(self, "message", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsTitlesArgsDict(TypedDict):
+        title: pulumi.Input[str]
+        """
+        The title text.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The title description.
+        """
+        visible: NotRequired[pulumi.Input[bool]]
+        """
+        The visibility of the title.
+        """
+        visible_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The visibility condition jq query of the title.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsTitlesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsTitlesArgs:
+    def __init__(__self__, *,
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 visible: Optional[pulumi.Input[bool]] = None,
+                 visible_jq_query: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] title: The title text.
+        :param pulumi.Input[str] description: The title description.
+        :param pulumi.Input[bool] visible: The visibility of the title.
+        :param pulumi.Input[str] visible_jq_query: The visibility condition jq query of the title.
+        """
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        The title text.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The visibility of the title.
+        """
+        return pulumi.get(self, "visible")
+
+    @visible.setter
+    def visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "visible", value)
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility condition jq query of the title.
+        """
+        return pulumi.get(self, "visible_jq_query")
+
+    @visible_jq_query.setter
+    def visible_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visible_jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArgsDict(TypedDict):
+        array_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsArgsDict']]]]
+        """
+        The array inputs of the form.
+        """
+        boolean_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesBooleanPropsArgsDict']]]]
+        """
+        The boolean inputs of the form.
+        """
+        number_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesNumberPropsArgsDict']]]]
+        """
+        The number inputs of the form.
+        """
+        object_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectPropsArgsDict']]]]
+        """
+        The object inputs of the form.
+        """
+        string_props: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsArgsDict']]]]
+        """
+        The string inputs of the form.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArgs:
+    def __init__(__self__, *,
+                 array_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsArgs']]]] = None,
+                 boolean_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesBooleanPropsArgs']]]] = None,
+                 number_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesNumberPropsArgs']]]] = None,
+                 object_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectPropsArgs']]]] = None,
+                 string_props: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsArgs']]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsArgs']]] array_props: The array inputs of the form.
+        :param pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesBooleanPropsArgs']]] boolean_props: The boolean inputs of the form.
+        :param pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesNumberPropsArgs']]] number_props: The number inputs of the form.
+        :param pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectPropsArgs']]] object_props: The object inputs of the form.
+        :param pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsArgs']]] string_props: The string inputs of the form.
+        """
+        if array_props is not None:
+            pulumi.set(__self__, "array_props", array_props)
+        if boolean_props is not None:
+            pulumi.set(__self__, "boolean_props", boolean_props)
+        if number_props is not None:
+            pulumi.set(__self__, "number_props", number_props)
+        if object_props is not None:
+            pulumi.set(__self__, "object_props", object_props)
+        if string_props is not None:
+            pulumi.set(__self__, "string_props", string_props)
+
+    @property
+    @pulumi.getter(name="arrayProps")
+    def array_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsArgs']]]]:
+        """
+        The array inputs of the form.
+        """
+        return pulumi.get(self, "array_props")
+
+    @array_props.setter
+    def array_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsArgs']]]]):
+        pulumi.set(self, "array_props", value)
+
+    @property
+    @pulumi.getter(name="booleanProps")
+    def boolean_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesBooleanPropsArgs']]]]:
+        """
+        The boolean inputs of the form.
+        """
+        return pulumi.get(self, "boolean_props")
+
+    @boolean_props.setter
+    def boolean_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesBooleanPropsArgs']]]]):
+        pulumi.set(self, "boolean_props", value)
+
+    @property
+    @pulumi.getter(name="numberProps")
+    def number_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesNumberPropsArgs']]]]:
+        """
+        The number inputs of the form.
+        """
+        return pulumi.get(self, "number_props")
+
+    @number_props.setter
+    def number_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesNumberPropsArgs']]]]):
+        pulumi.set(self, "number_props", value)
+
+    @property
+    @pulumi.getter(name="objectProps")
+    def object_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectPropsArgs']]]]:
+        """
+        The object inputs of the form.
+        """
+        return pulumi.get(self, "object_props")
+
+    @object_props.setter
+    def object_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectPropsArgs']]]]):
+        pulumi.set(self, "object_props", value)
+
+    @property
+    @pulumi.getter(name="stringProps")
+    def string_props(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsArgs']]]]:
+        """
+        The string inputs of the form.
+        """
+        return pulumi.get(self, "string_props")
+
+    @string_props.setter
+    def string_props(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsArgs']]]]):
+        pulumi.set(self, "string_props", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsArgsDict(TypedDict):
+        default_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The default jq query of the array input.
+        """
+        depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The inputs this input depends on.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the array input.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        Greys out the array input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        """
+        disabled_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The disabled condition jq query of the array input.
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the array input.
+        """
+        max_items: NotRequired[pulumi.Input[int]]
+        """
+        The max items of the array input.
+        """
+        max_items_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The max items jq query of the array input.
+        """
+        min_items: NotRequired[pulumi.Input[int]]
+        """
+        The min items of the array input.
+        """
+        min_items_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The min items jq query of the array input.
+        """
+        number_items: NotRequired[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsNumberItemsArgsDict']]
+        """
+        The number items of the array input.
+        """
+        object_items: NotRequired[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItemsArgsDict']]
+        """
+        The object items of the array input.
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Shows the value of the array input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        """
+        read_only_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The read only condition jq query of the array input.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        """
+        sort: NotRequired[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsSortArgsDict']]
+        """
+        How the entities are sorted in the form.
+        """
+        string_items: NotRequired[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsStringItemsArgsDict']]
+        """
+        The string items of the array input.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the array input.
+        """
+        unique_items: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the values of the array have to be unique.
+        """
+        visible: NotRequired[pulumi.Input[bool]]
+        """
+        The visibility of the array input.
+        """
+        visible_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The visibility condition jq query of the array input.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsArgs:
+    def __init__(__self__, *,
+                 default_jq_query: Optional[pulumi.Input[str]] = None,
+                 depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 disabled_jq_query: Optional[pulumi.Input[str]] = None,
+                 icon: Optional[pulumi.Input[str]] = None,
+                 max_items: Optional[pulumi.Input[int]] = None,
+                 max_items_jq_query: Optional[pulumi.Input[str]] = None,
+                 min_items: Optional[pulumi.Input[int]] = None,
+                 min_items_jq_query: Optional[pulumi.Input[str]] = None,
+                 number_items: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsNumberItemsArgs']] = None,
+                 object_items: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItemsArgs']] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 read_only_jq_query: Optional[pulumi.Input[str]] = None,
+                 required: Optional[pulumi.Input[bool]] = None,
+                 sort: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsSortArgs']] = None,
+                 string_items: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsStringItemsArgs']] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 unique_items: Optional[pulumi.Input[bool]] = None,
+                 visible: Optional[pulumi.Input[bool]] = None,
+                 visible_jq_query: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] default_jq_query: The default jq query of the array input.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The inputs this input depends on.
+        :param pulumi.Input[str] description: The description of the array input.
+        :param pulumi.Input[bool] disabled: Greys out the array input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        :param pulumi.Input[str] disabled_jq_query: The disabled condition jq query of the array input.
+        :param pulumi.Input[str] icon: The icon of the array input.
+        :param pulumi.Input[int] max_items: The max items of the array input.
+        :param pulumi.Input[str] max_items_jq_query: The max items jq query of the array input.
+        :param pulumi.Input[int] min_items: The min items of the array input.
+        :param pulumi.Input[str] min_items_jq_query: The min items jq query of the array input.
+        :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsNumberItemsArgs'] number_items: The number items of the array input.
+        :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItemsArgs'] object_items: The object items of the array input.
+        :param pulumi.Input[bool] read_only: Shows the value of the array input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        :param pulumi.Input[str] read_only_jq_query: The read only condition jq query of the array input.
+        :param pulumi.Input[bool] required: Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsSortArgs'] sort: How the entities are sorted in the form.
+        :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsStringItemsArgs'] string_items: The string items of the array input.
+        :param pulumi.Input[str] title: The title of the array input.
+        :param pulumi.Input[bool] unique_items: Whether the values of the array have to be unique.
+        :param pulumi.Input[bool] visible: The visibility of the array input.
+        :param pulumi.Input[str] visible_jq_query: The visibility condition jq query of the array input.
+        """
+        if default_jq_query is not None:
+            pulumi.set(__self__, "default_jq_query", default_jq_query)
+        if depends_ons is not None:
+            pulumi.set(__self__, "depends_ons", depends_ons)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if disabled_jq_query is not None:
+            pulumi.set(__self__, "disabled_jq_query", disabled_jq_query)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if max_items is not None:
+            pulumi.set(__self__, "max_items", max_items)
+        if max_items_jq_query is not None:
+            pulumi.set(__self__, "max_items_jq_query", max_items_jq_query)
+        if min_items is not None:
+            pulumi.set(__self__, "min_items", min_items)
+        if min_items_jq_query is not None:
+            pulumi.set(__self__, "min_items_jq_query", min_items_jq_query)
+        if number_items is not None:
+            pulumi.set(__self__, "number_items", number_items)
+        if object_items is not None:
+            pulumi.set(__self__, "object_items", object_items)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if read_only_jq_query is not None:
+            pulumi.set(__self__, "read_only_jq_query", read_only_jq_query)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if sort is not None:
+            pulumi.set(__self__, "sort", sort)
+        if string_items is not None:
+            pulumi.set(__self__, "string_items", string_items)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+        if unique_items is not None:
+            pulumi.set(__self__, "unique_items", unique_items)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
+
+    @property
+    @pulumi.getter(name="defaultJqQuery")
+    def default_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default jq query of the array input.
+        """
+        return pulumi.get(self, "default_jq_query")
+
+    @default_jq_query.setter
+    def default_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_jq_query", value)
+
+    @property
+    @pulumi.getter(name="dependsOns")
+    def depends_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The inputs this input depends on.
+        """
+        return pulumi.get(self, "depends_ons")
+
+    @depends_ons.setter
+    def depends_ons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "depends_ons", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the array input.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Greys out the array input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="disabledJqQuery")
+    def disabled_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disabled condition jq query of the array input.
+        """
+        return pulumi.get(self, "disabled_jq_query")
+
+    @disabled_jq_query.setter
+    def disabled_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disabled_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[pulumi.Input[str]]:
+        """
+        The icon of the array input.
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "icon", value)
+
+    @property
+    @pulumi.getter(name="maxItems")
+    def max_items(self) -> Optional[pulumi.Input[int]]:
+        """
+        The max items of the array input.
+        """
+        return pulumi.get(self, "max_items")
+
+    @max_items.setter
+    def max_items(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_items", value)
+
+    @property
+    @pulumi.getter(name="maxItemsJqQuery")
+    def max_items_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The max items jq query of the array input.
+        """
+        return pulumi.get(self, "max_items_jq_query")
+
+    @max_items_jq_query.setter
+    def max_items_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_items_jq_query", value)
+
+    @property
+    @pulumi.getter(name="minItems")
+    def min_items(self) -> Optional[pulumi.Input[int]]:
+        """
+        The min items of the array input.
+        """
+        return pulumi.get(self, "min_items")
+
+    @min_items.setter
+    def min_items(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_items", value)
+
+    @property
+    @pulumi.getter(name="minItemsJqQuery")
+    def min_items_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The min items jq query of the array input.
+        """
+        return pulumi.get(self, "min_items_jq_query")
+
+    @min_items_jq_query.setter
+    def min_items_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_items_jq_query", value)
+
+    @property
+    @pulumi.getter(name="numberItems")
+    def number_items(self) -> Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsNumberItemsArgs']]:
+        """
+        The number items of the array input.
+        """
+        return pulumi.get(self, "number_items")
+
+    @number_items.setter
+    def number_items(self, value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsNumberItemsArgs']]):
+        pulumi.set(self, "number_items", value)
+
+    @property
+    @pulumi.getter(name="objectItems")
+    def object_items(self) -> Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItemsArgs']]:
+        """
+        The object items of the array input.
+        """
+        return pulumi.get(self, "object_items")
+
+    @object_items.setter
+    def object_items(self, value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItemsArgs']]):
+        pulumi.set(self, "object_items", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Shows the value of the array input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="readOnlyJqQuery")
+    def read_only_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The read only condition jq query of the array input.
+        """
+        return pulumi.get(self, "read_only_jq_query")
+
+    @read_only_jq_query.setter
+    def read_only_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read_only_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter
+    def sort(self) -> Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsSortArgs']]:
+        """
+        How the entities are sorted in the form.
+        """
+        return pulumi.get(self, "sort")
+
+    @sort.setter
+    def sort(self, value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsSortArgs']]):
+        pulumi.set(self, "sort", value)
+
+    @property
+    @pulumi.getter(name="stringItems")
+    def string_items(self) -> Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsStringItemsArgs']]:
+        """
+        The string items of the array input.
+        """
+        return pulumi.get(self, "string_items")
+
+    @string_items.setter
+    def string_items(self, value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsStringItemsArgs']]):
+        pulumi.set(self, "string_items", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of the array input.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter(name="uniqueItems")
+    def unique_items(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the values of the array have to be unique.
+        """
+        return pulumi.get(self, "unique_items")
+
+    @unique_items.setter
+    def unique_items(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "unique_items", value)
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The visibility of the array input.
+        """
+        return pulumi.get(self, "visible")
+
+    @visible.setter
+    def visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "visible", value)
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility condition jq query of the array input.
+        """
+        return pulumi.get(self, "visible_jq_query")
+
+    @visible_jq_query.setter
+    def visible_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visible_jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsNumberItemsArgsDict(TypedDict):
+        defaults: NotRequired[pulumi.Input[Sequence[pulumi.Input[float]]]]
+        """
+        The default value of the items.
+        """
+        enum_colors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The colors of the enum values.
+        """
+        enum_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        A jq query resolving the values the user can pick from.
+        """
+        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[float]]]]
+        """
+        The values the user can pick from.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsNumberItemsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsNumberItemsArgs:
+    def __init__(__self__, *,
+                 defaults: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]] = None,
+                 enum_colors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 enum_jq_query: Optional[pulumi.Input[str]] = None,
+                 enums: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[float]]] defaults: The default value of the items.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] enum_colors: The colors of the enum values.
+        :param pulumi.Input[str] enum_jq_query: A jq query resolving the values the user can pick from.
+        :param pulumi.Input[Sequence[pulumi.Input[float]]] enums: The values the user can pick from.
+        """
+        if defaults is not None:
+            pulumi.set(__self__, "defaults", defaults)
+        if enum_colors is not None:
+            pulumi.set(__self__, "enum_colors", enum_colors)
+        if enum_jq_query is not None:
+            pulumi.set(__self__, "enum_jq_query", enum_jq_query)
+        if enums is not None:
+            pulumi.set(__self__, "enums", enums)
+
+    @property
+    @pulumi.getter
+    def defaults(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[float]]]]:
+        """
+        The default value of the items.
+        """
+        return pulumi.get(self, "defaults")
+
+    @defaults.setter
+    def defaults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]]):
+        pulumi.set(self, "defaults", value)
+
+    @property
+    @pulumi.getter(name="enumColors")
+    def enum_colors(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The colors of the enum values.
+        """
+        return pulumi.get(self, "enum_colors")
+
+    @enum_colors.setter
+    def enum_colors(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "enum_colors", value)
+
+    @property
+    @pulumi.getter(name="enumJqQuery")
+    def enum_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        A jq query resolving the values the user can pick from.
+        """
+        return pulumi.get(self, "enum_jq_query")
+
+    @enum_jq_query.setter
+    def enum_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enum_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def enums(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[float]]]]:
+        """
+        The values the user can pick from.
+        """
+        return pulumi.get(self, "enums")
+
+    @enums.setter
+    def enums(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]]):
+        pulumi.set(self, "enums", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItemsArgsDict(TypedDict):
+        defaults: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]
+        """
+        The default value of the items.
+        """
+        format: NotRequired[pulumi.Input[str]]
+        """
+        The format of each item.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItemsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItemsArgs:
+    def __init__(__self__, *,
+                 defaults: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 format: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] defaults: The default value of the items.
+        :param pulumi.Input[str] format: The format of each item.
+        """
+        if defaults is not None:
+            pulumi.set(__self__, "defaults", defaults)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+
+    @property
+    @pulumi.getter
+    def defaults(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+        """
+        The default value of the items.
+        """
+        return pulumi.get(self, "defaults")
+
+    @defaults.setter
+    def defaults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+        pulumi.set(self, "defaults", value)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The format of each item.
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "format", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsSortArgsDict(TypedDict):
+        property: pulumi.Input[str]
+        """
+        The property to sort the entities by.
+        """
+        order: NotRequired[pulumi.Input[str]]
+        """
+        The order to sort the entities in.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsSortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsSortArgs:
+    def __init__(__self__, *,
+                 property: pulumi.Input[str],
+                 order: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] property: The property to sort the entities by.
+        :param pulumi.Input[str] order: The order to sort the entities in.
+        """
+        pulumi.set(__self__, "property", property)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+
+    @property
+    @pulumi.getter
+    def order(self) -> Optional[pulumi.Input[str]]:
+        """
+        The order to sort the entities in.
+        """
+        return pulumi.get(self, "order")
+
+    @order.setter
+    def order(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "order", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> pulumi.Input[str]:
+        """
+        The property to sort the entities by.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: pulumi.Input[str]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsStringItemsArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint the entities are taken from. Required when `format` is `entity`.
+        """
+        dataset: NotRequired[pulumi.Input[str]]
+        """
+        The dataset filtering the entities of the items, as a JSON encoded string.
+        """
+        defaults: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The default value of the items.
+        """
+        enum_colors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The colors of the enum values.
+        """
+        enum_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        A jq query resolving the values the user can pick from.
+        """
+        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The values the user can pick from.
+        """
+        format: NotRequired[pulumi.Input[str]]
+        """
+        The format of each item.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsStringItemsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsStringItemsArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 dataset: Optional[pulumi.Input[str]] = None,
+                 defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 enum_colors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 enum_jq_query: Optional[pulumi.Input[str]] = None,
+                 enums: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 format: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint the entities are taken from. Required when `format` is `entity`.
+        :param pulumi.Input[str] dataset: The dataset filtering the entities of the items, as a JSON encoded string.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] defaults: The default value of the items.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] enum_colors: The colors of the enum values.
+        :param pulumi.Input[str] enum_jq_query: A jq query resolving the values the user can pick from.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enums: The values the user can pick from.
+        :param pulumi.Input[str] format: The format of each item.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if dataset is not None:
+            pulumi.set(__self__, "dataset", dataset)
+        if defaults is not None:
+            pulumi.set(__self__, "defaults", defaults)
+        if enum_colors is not None:
+            pulumi.set(__self__, "enum_colors", enum_colors)
+        if enum_jq_query is not None:
+            pulumi.set(__self__, "enum_jq_query", enum_jq_query)
+        if enums is not None:
+            pulumi.set(__self__, "enums", enums)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint the entities are taken from. Required when `format` is `entity`.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> Optional[pulumi.Input[str]]:
+        """
+        The dataset filtering the entities of the items, as a JSON encoded string.
+        """
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter
+    def defaults(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The default value of the items.
+        """
+        return pulumi.get(self, "defaults")
+
+    @defaults.setter
+    def defaults(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "defaults", value)
+
+    @property
+    @pulumi.getter(name="enumColors")
+    def enum_colors(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The colors of the enum values.
+        """
+        return pulumi.get(self, "enum_colors")
+
+    @enum_colors.setter
+    def enum_colors(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "enum_colors", value)
+
+    @property
+    @pulumi.getter(name="enumJqQuery")
+    def enum_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        A jq query resolving the values the user can pick from.
+        """
+        return pulumi.get(self, "enum_jq_query")
+
+    @enum_jq_query.setter
+    def enum_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enum_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def enums(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The values the user can pick from.
+        """
+        return pulumi.get(self, "enums")
+
+    @enums.setter
+    def enums(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "enums", value)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The format of each item.
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "format", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesBooleanPropsArgsDict(TypedDict):
+        default: NotRequired[pulumi.Input[bool]]
+        """
+        The default of the boolean input.
+        """
+        default_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The default jq query of the boolean input.
+        """
+        depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The inputs this input depends on.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the boolean input.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        Greys out the boolean input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        """
+        disabled_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The disabled condition jq query of the boolean input.
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the boolean input.
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Shows the value of the boolean input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        """
+        read_only_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The read only condition jq query of the boolean input.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the boolean input.
+        """
+        visible: NotRequired[pulumi.Input[bool]]
+        """
+        The visibility of the boolean input.
+        """
+        visible_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The visibility condition jq query of the boolean input.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesBooleanPropsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesBooleanPropsArgs:
+    def __init__(__self__, *,
+                 default: Optional[pulumi.Input[bool]] = None,
+                 default_jq_query: Optional[pulumi.Input[str]] = None,
+                 depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 disabled_jq_query: Optional[pulumi.Input[str]] = None,
+                 icon: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 read_only_jq_query: Optional[pulumi.Input[str]] = None,
+                 required: Optional[pulumi.Input[bool]] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 visible: Optional[pulumi.Input[bool]] = None,
+                 visible_jq_query: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] default: The default of the boolean input.
+        :param pulumi.Input[str] default_jq_query: The default jq query of the boolean input.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The inputs this input depends on.
+        :param pulumi.Input[str] description: The description of the boolean input.
+        :param pulumi.Input[bool] disabled: Greys out the boolean input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        :param pulumi.Input[str] disabled_jq_query: The disabled condition jq query of the boolean input.
+        :param pulumi.Input[str] icon: The icon of the boolean input.
+        :param pulumi.Input[bool] read_only: Shows the value of the boolean input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        :param pulumi.Input[str] read_only_jq_query: The read only condition jq query of the boolean input.
+        :param pulumi.Input[bool] required: Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        :param pulumi.Input[str] title: The title of the boolean input.
+        :param pulumi.Input[bool] visible: The visibility of the boolean input.
+        :param pulumi.Input[str] visible_jq_query: The visibility condition jq query of the boolean input.
+        """
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if default_jq_query is not None:
+            pulumi.set(__self__, "default_jq_query", default_jq_query)
+        if depends_ons is not None:
+            pulumi.set(__self__, "depends_ons", depends_ons)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if disabled_jq_query is not None:
+            pulumi.set(__self__, "disabled_jq_query", disabled_jq_query)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if read_only_jq_query is not None:
+            pulumi.set(__self__, "read_only_jq_query", read_only_jq_query)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The default of the boolean input.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "default", value)
+
+    @property
+    @pulumi.getter(name="defaultJqQuery")
+    def default_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default jq query of the boolean input.
+        """
+        return pulumi.get(self, "default_jq_query")
+
+    @default_jq_query.setter
+    def default_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_jq_query", value)
+
+    @property
+    @pulumi.getter(name="dependsOns")
+    def depends_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The inputs this input depends on.
+        """
+        return pulumi.get(self, "depends_ons")
+
+    @depends_ons.setter
+    def depends_ons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "depends_ons", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the boolean input.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Greys out the boolean input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="disabledJqQuery")
+    def disabled_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disabled condition jq query of the boolean input.
+        """
+        return pulumi.get(self, "disabled_jq_query")
+
+    @disabled_jq_query.setter
+    def disabled_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disabled_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[pulumi.Input[str]]:
+        """
+        The icon of the boolean input.
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "icon", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Shows the value of the boolean input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="readOnlyJqQuery")
+    def read_only_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The read only condition jq query of the boolean input.
+        """
+        return pulumi.get(self, "read_only_jq_query")
+
+    @read_only_jq_query.setter
+    def read_only_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read_only_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of the boolean input.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The visibility of the boolean input.
+        """
+        return pulumi.get(self, "visible")
+
+    @visible.setter
+    def visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "visible", value)
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility condition jq query of the boolean input.
+        """
+        return pulumi.get(self, "visible_jq_query")
+
+    @visible_jq_query.setter
+    def visible_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visible_jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesNumberPropsArgsDict(TypedDict):
+        default: NotRequired[pulumi.Input[float]]
+        """
+        The default of the number input.
+        """
+        default_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The default jq query of the number input.
+        """
+        depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The inputs this input depends on.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the number input.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        Greys out the number input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        """
+        disabled_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The disabled condition jq query of the number input.
+        """
+        enum_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        A jq query resolving the values the user can pick from.
+        """
+        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[float]]]]
+        """
+        The values the user can pick from.
+        """
+        exclusive_maximum: NotRequired[pulumi.Input[float]]
+        """
+        The value the input has to be strictly smaller than.
+        """
+        exclusive_minimum: NotRequired[pulumi.Input[float]]
+        """
+        The value the input has to be strictly greater than.
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the number input.
+        """
+        maximum: NotRequired[pulumi.Input[float]]
+        """
+        The largest value the input accepts.
+        """
+        minimum: NotRequired[pulumi.Input[float]]
+        """
+        The smallest value the input accepts.
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Shows the value of the number input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        """
+        read_only_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The read only condition jq query of the number input.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the number input.
+        """
+        visible: NotRequired[pulumi.Input[bool]]
+        """
+        The visibility of the number input.
+        """
+        visible_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The visibility condition jq query of the number input.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesNumberPropsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesNumberPropsArgs:
+    def __init__(__self__, *,
+                 default: Optional[pulumi.Input[float]] = None,
+                 default_jq_query: Optional[pulumi.Input[str]] = None,
+                 depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 disabled_jq_query: Optional[pulumi.Input[str]] = None,
+                 enum_jq_query: Optional[pulumi.Input[str]] = None,
+                 enums: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]] = None,
+                 exclusive_maximum: Optional[pulumi.Input[float]] = None,
+                 exclusive_minimum: Optional[pulumi.Input[float]] = None,
+                 icon: Optional[pulumi.Input[str]] = None,
+                 maximum: Optional[pulumi.Input[float]] = None,
+                 minimum: Optional[pulumi.Input[float]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 read_only_jq_query: Optional[pulumi.Input[str]] = None,
+                 required: Optional[pulumi.Input[bool]] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 visible: Optional[pulumi.Input[bool]] = None,
+                 visible_jq_query: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[float] default: The default of the number input.
+        :param pulumi.Input[str] default_jq_query: The default jq query of the number input.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The inputs this input depends on.
+        :param pulumi.Input[str] description: The description of the number input.
+        :param pulumi.Input[bool] disabled: Greys out the number input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        :param pulumi.Input[str] disabled_jq_query: The disabled condition jq query of the number input.
+        :param pulumi.Input[str] enum_jq_query: A jq query resolving the values the user can pick from.
+        :param pulumi.Input[Sequence[pulumi.Input[float]]] enums: The values the user can pick from.
+        :param pulumi.Input[float] exclusive_maximum: The value the input has to be strictly smaller than.
+        :param pulumi.Input[float] exclusive_minimum: The value the input has to be strictly greater than.
+        :param pulumi.Input[str] icon: The icon of the number input.
+        :param pulumi.Input[float] maximum: The largest value the input accepts.
+        :param pulumi.Input[float] minimum: The smallest value the input accepts.
+        :param pulumi.Input[bool] read_only: Shows the value of the number input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        :param pulumi.Input[str] read_only_jq_query: The read only condition jq query of the number input.
+        :param pulumi.Input[bool] required: Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        :param pulumi.Input[str] title: The title of the number input.
+        :param pulumi.Input[bool] visible: The visibility of the number input.
+        :param pulumi.Input[str] visible_jq_query: The visibility condition jq query of the number input.
+        """
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if default_jq_query is not None:
+            pulumi.set(__self__, "default_jq_query", default_jq_query)
+        if depends_ons is not None:
+            pulumi.set(__self__, "depends_ons", depends_ons)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if disabled_jq_query is not None:
+            pulumi.set(__self__, "disabled_jq_query", disabled_jq_query)
+        if enum_jq_query is not None:
+            pulumi.set(__self__, "enum_jq_query", enum_jq_query)
+        if enums is not None:
+            pulumi.set(__self__, "enums", enums)
+        if exclusive_maximum is not None:
+            pulumi.set(__self__, "exclusive_maximum", exclusive_maximum)
+        if exclusive_minimum is not None:
+            pulumi.set(__self__, "exclusive_minimum", exclusive_minimum)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if maximum is not None:
+            pulumi.set(__self__, "maximum", maximum)
+        if minimum is not None:
+            pulumi.set(__self__, "minimum", minimum)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if read_only_jq_query is not None:
+            pulumi.set(__self__, "read_only_jq_query", read_only_jq_query)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[pulumi.Input[float]]:
+        """
+        The default of the number input.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "default", value)
+
+    @property
+    @pulumi.getter(name="defaultJqQuery")
+    def default_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default jq query of the number input.
+        """
+        return pulumi.get(self, "default_jq_query")
+
+    @default_jq_query.setter
+    def default_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_jq_query", value)
+
+    @property
+    @pulumi.getter(name="dependsOns")
+    def depends_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The inputs this input depends on.
+        """
+        return pulumi.get(self, "depends_ons")
+
+    @depends_ons.setter
+    def depends_ons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "depends_ons", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the number input.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Greys out the number input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="disabledJqQuery")
+    def disabled_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disabled condition jq query of the number input.
+        """
+        return pulumi.get(self, "disabled_jq_query")
+
+    @disabled_jq_query.setter
+    def disabled_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disabled_jq_query", value)
+
+    @property
+    @pulumi.getter(name="enumJqQuery")
+    def enum_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        A jq query resolving the values the user can pick from.
+        """
+        return pulumi.get(self, "enum_jq_query")
+
+    @enum_jq_query.setter
+    def enum_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enum_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def enums(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[float]]]]:
+        """
+        The values the user can pick from.
+        """
+        return pulumi.get(self, "enums")
+
+    @enums.setter
+    def enums(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]]):
+        pulumi.set(self, "enums", value)
+
+    @property
+    @pulumi.getter(name="exclusiveMaximum")
+    def exclusive_maximum(self) -> Optional[pulumi.Input[float]]:
+        """
+        The value the input has to be strictly smaller than.
+        """
+        return pulumi.get(self, "exclusive_maximum")
+
+    @exclusive_maximum.setter
+    def exclusive_maximum(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "exclusive_maximum", value)
+
+    @property
+    @pulumi.getter(name="exclusiveMinimum")
+    def exclusive_minimum(self) -> Optional[pulumi.Input[float]]:
+        """
+        The value the input has to be strictly greater than.
+        """
+        return pulumi.get(self, "exclusive_minimum")
+
+    @exclusive_minimum.setter
+    def exclusive_minimum(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "exclusive_minimum", value)
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[pulumi.Input[str]]:
+        """
+        The icon of the number input.
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "icon", value)
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> Optional[pulumi.Input[float]]:
+        """
+        The largest value the input accepts.
+        """
+        return pulumi.get(self, "maximum")
+
+    @maximum.setter
+    def maximum(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "maximum", value)
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> Optional[pulumi.Input[float]]:
+        """
+        The smallest value the input accepts.
+        """
+        return pulumi.get(self, "minimum")
+
+    @minimum.setter
+    def minimum(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "minimum", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Shows the value of the number input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="readOnlyJqQuery")
+    def read_only_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The read only condition jq query of the number input.
+        """
+        return pulumi.get(self, "read_only_jq_query")
+
+    @read_only_jq_query.setter
+    def read_only_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read_only_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of the number input.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The visibility of the number input.
+        """
+        return pulumi.get(self, "visible")
+
+    @visible.setter
+    def visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "visible", value)
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility condition jq query of the number input.
+        """
+        return pulumi.get(self, "visible_jq_query")
+
+    @visible_jq_query.setter
+    def visible_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visible_jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectPropsArgsDict(TypedDict):
+        default: NotRequired[pulumi.Input[str]]
+        """
+        The default of the object input, as a JSON encoded string.
+        """
+        default_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The default jq query of the object input.
+        """
+        depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The inputs this input depends on.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the object input.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        Greys out the object input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        """
+        disabled_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The disabled condition jq query of the object input.
+        """
+        format: NotRequired[pulumi.Input[str]]
+        """
+        The format of the object input. `labeled-url` renders a url with a display text. Leave it out for a free form object.
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the object input.
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Shows the value of the object input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        """
+        read_only_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The read only condition jq query of the object input.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the object input.
+        """
+        visible: NotRequired[pulumi.Input[bool]]
+        """
+        The visibility of the object input.
+        """
+        visible_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The visibility condition jq query of the object input.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectPropsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectPropsArgs:
+    def __init__(__self__, *,
+                 default: Optional[pulumi.Input[str]] = None,
+                 default_jq_query: Optional[pulumi.Input[str]] = None,
+                 depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 disabled_jq_query: Optional[pulumi.Input[str]] = None,
+                 format: Optional[pulumi.Input[str]] = None,
+                 icon: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 read_only_jq_query: Optional[pulumi.Input[str]] = None,
+                 required: Optional[pulumi.Input[bool]] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 visible: Optional[pulumi.Input[bool]] = None,
+                 visible_jq_query: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] default: The default of the object input, as a JSON encoded string.
+        :param pulumi.Input[str] default_jq_query: The default jq query of the object input.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The inputs this input depends on.
+        :param pulumi.Input[str] description: The description of the object input.
+        :param pulumi.Input[bool] disabled: Greys out the object input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        :param pulumi.Input[str] disabled_jq_query: The disabled condition jq query of the object input.
+        :param pulumi.Input[str] format: The format of the object input. `labeled-url` renders a url with a display text. Leave it out for a free form object.
+        :param pulumi.Input[str] icon: The icon of the object input.
+        :param pulumi.Input[bool] read_only: Shows the value of the object input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        :param pulumi.Input[str] read_only_jq_query: The read only condition jq query of the object input.
+        :param pulumi.Input[bool] required: Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        :param pulumi.Input[str] title: The title of the object input.
+        :param pulumi.Input[bool] visible: The visibility of the object input.
+        :param pulumi.Input[str] visible_jq_query: The visibility condition jq query of the object input.
+        """
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if default_jq_query is not None:
+            pulumi.set(__self__, "default_jq_query", default_jq_query)
+        if depends_ons is not None:
+            pulumi.set(__self__, "depends_ons", depends_ons)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if disabled_jq_query is not None:
+            pulumi.set(__self__, "disabled_jq_query", disabled_jq_query)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if read_only_jq_query is not None:
+            pulumi.set(__self__, "read_only_jq_query", read_only_jq_query)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default of the object input, as a JSON encoded string.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default", value)
+
+    @property
+    @pulumi.getter(name="defaultJqQuery")
+    def default_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default jq query of the object input.
+        """
+        return pulumi.get(self, "default_jq_query")
+
+    @default_jq_query.setter
+    def default_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_jq_query", value)
+
+    @property
+    @pulumi.getter(name="dependsOns")
+    def depends_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The inputs this input depends on.
+        """
+        return pulumi.get(self, "depends_ons")
+
+    @depends_ons.setter
+    def depends_ons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "depends_ons", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the object input.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Greys out the object input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="disabledJqQuery")
+    def disabled_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disabled condition jq query of the object input.
+        """
+        return pulumi.get(self, "disabled_jq_query")
+
+    @disabled_jq_query.setter
+    def disabled_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disabled_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The format of the object input. `labeled-url` renders a url with a display text. Leave it out for a free form object.
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[pulumi.Input[str]]:
+        """
+        The icon of the object input.
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "icon", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Shows the value of the object input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="readOnlyJqQuery")
+    def read_only_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The read only condition jq query of the object input.
+        """
+        return pulumi.get(self, "read_only_jq_query")
+
+    @read_only_jq_query.setter
+    def read_only_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read_only_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of the object input.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The visibility of the object input.
+        """
+        return pulumi.get(self, "visible")
+
+    @visible.setter
+    def visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "visible", value)
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility condition jq query of the object input.
+        """
+        return pulumi.get(self, "visible_jq_query")
+
+    @visible_jq_query.setter
+    def visible_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visible_jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint the entities are taken from. Required when `format` is `entity`.
+        """
+        dataset: NotRequired[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetArgsDict']]
+        """
+        The dataset filtering the entities the user can pick from.
+        """
+        default: NotRequired[pulumi.Input[str]]
+        """
+        The default of the string input.
+        """
+        default_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The default jq query of the string input.
+        """
+        depends_ons: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The inputs this input depends on.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the string input.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        Greys out the string input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        """
+        disabled_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The disabled condition jq query of the string input.
+        """
+        enum_colors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The colors of the enum values.
+        """
+        enum_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        A jq query resolving the values the user can pick from.
+        """
+        enums: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The values the user can pick from.
+        """
+        format: NotRequired[pulumi.Input[str]]
+        """
+        The format of the string input.
+        """
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the string input.
+        """
+        max_length: NotRequired[pulumi.Input[int]]
+        """
+        The max length of the string input.
+        """
+        min_length: NotRequired[pulumi.Input[int]]
+        """
+        The min length of the string input.
+        """
+        pattern: NotRequired[pulumi.Input[str]]
+        """
+        The regex pattern the value has to match.
+        """
+        pattern_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        A jq query resolving the pattern of the string input, either a regex string or a list of allowed values.
+        """
+        read_only: NotRequired[pulumi.Input[bool]]
+        """
+        Shows the value of the string input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        """
+        read_only_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The read only condition jq query of the string input.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        """
+        sort: NotRequired[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsSortArgsDict']]
+        """
+        How the entities are sorted in the form.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the string input.
+        """
+        visible: NotRequired[pulumi.Input[bool]]
+        """
+        The visibility of the string input.
+        """
+        visible_jq_query: NotRequired[pulumi.Input[str]]
+        """
+        The visibility condition jq query of the string input.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 dataset: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetArgs']] = None,
+                 default: Optional[pulumi.Input[str]] = None,
+                 default_jq_query: Optional[pulumi.Input[str]] = None,
+                 depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 disabled_jq_query: Optional[pulumi.Input[str]] = None,
+                 enum_colors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 enum_jq_query: Optional[pulumi.Input[str]] = None,
+                 enums: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 format: Optional[pulumi.Input[str]] = None,
+                 icon: Optional[pulumi.Input[str]] = None,
+                 max_length: Optional[pulumi.Input[int]] = None,
+                 min_length: Optional[pulumi.Input[int]] = None,
+                 pattern: Optional[pulumi.Input[str]] = None,
+                 pattern_jq_query: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 read_only_jq_query: Optional[pulumi.Input[str]] = None,
+                 required: Optional[pulumi.Input[bool]] = None,
+                 sort: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsSortArgs']] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 visible: Optional[pulumi.Input[bool]] = None,
+                 visible_jq_query: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint the entities are taken from. Required when `format` is `entity`.
+        :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetArgs'] dataset: The dataset filtering the entities the user can pick from.
+        :param pulumi.Input[str] default: The default of the string input.
+        :param pulumi.Input[str] default_jq_query: The default jq query of the string input.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The inputs this input depends on.
+        :param pulumi.Input[str] description: The description of the string input.
+        :param pulumi.Input[bool] disabled: Greys out the string input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        :param pulumi.Input[str] disabled_jq_query: The disabled condition jq query of the string input.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] enum_colors: The colors of the enum values.
+        :param pulumi.Input[str] enum_jq_query: A jq query resolving the values the user can pick from.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enums: The values the user can pick from.
+        :param pulumi.Input[str] format: The format of the string input.
+        :param pulumi.Input[str] icon: The icon of the string input.
+        :param pulumi.Input[int] max_length: The max length of the string input.
+        :param pulumi.Input[int] min_length: The min length of the string input.
+        :param pulumi.Input[str] pattern: The regex pattern the value has to match.
+        :param pulumi.Input[str] pattern_jq_query: A jq query resolving the pattern of the string input, either a regex string or a list of allowed values.
+        :param pulumi.Input[bool] read_only: Shows the value of the string input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        :param pulumi.Input[str] read_only_jq_query: The read only condition jq query of the string input.
+        :param pulumi.Input[bool] required: Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsSortArgs'] sort: How the entities are sorted in the form.
+        :param pulumi.Input[str] title: The title of the string input.
+        :param pulumi.Input[bool] visible: The visibility of the string input.
+        :param pulumi.Input[str] visible_jq_query: The visibility condition jq query of the string input.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if dataset is not None:
+            pulumi.set(__self__, "dataset", dataset)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if default_jq_query is not None:
+            pulumi.set(__self__, "default_jq_query", default_jq_query)
+        if depends_ons is not None:
+            pulumi.set(__self__, "depends_ons", depends_ons)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if disabled_jq_query is not None:
+            pulumi.set(__self__, "disabled_jq_query", disabled_jq_query)
+        if enum_colors is not None:
+            pulumi.set(__self__, "enum_colors", enum_colors)
+        if enum_jq_query is not None:
+            pulumi.set(__self__, "enum_jq_query", enum_jq_query)
+        if enums is not None:
+            pulumi.set(__self__, "enums", enums)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if max_length is not None:
+            pulumi.set(__self__, "max_length", max_length)
+        if min_length is not None:
+            pulumi.set(__self__, "min_length", min_length)
+        if pattern is not None:
+            pulumi.set(__self__, "pattern", pattern)
+        if pattern_jq_query is not None:
+            pulumi.set(__self__, "pattern_jq_query", pattern_jq_query)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if read_only_jq_query is not None:
+            pulumi.set(__self__, "read_only_jq_query", read_only_jq_query)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if sort is not None:
+            pulumi.set(__self__, "sort", sort)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
+        if visible_jq_query is not None:
+            pulumi.set(__self__, "visible_jq_query", visible_jq_query)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint the entities are taken from. Required when `format` is `entity`.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetArgs']]:
+        """
+        The dataset filtering the entities the user can pick from.
+        """
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetArgs']]):
+        pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter
+    def default(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default of the string input.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default", value)
+
+    @property
+    @pulumi.getter(name="defaultJqQuery")
+    def default_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default jq query of the string input.
+        """
+        return pulumi.get(self, "default_jq_query")
+
+    @default_jq_query.setter
+    def default_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_jq_query", value)
+
+    @property
+    @pulumi.getter(name="dependsOns")
+    def depends_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The inputs this input depends on.
+        """
+        return pulumi.get(self, "depends_ons")
+
+    @depends_ons.setter
+    def depends_ons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "depends_ons", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the string input.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Greys out the string input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="disabledJqQuery")
+    def disabled_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disabled condition jq query of the string input.
+        """
+        return pulumi.get(self, "disabled_jq_query")
+
+    @disabled_jq_query.setter
+    def disabled_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disabled_jq_query", value)
+
+    @property
+    @pulumi.getter(name="enumColors")
+    def enum_colors(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The colors of the enum values.
+        """
+        return pulumi.get(self, "enum_colors")
+
+    @enum_colors.setter
+    def enum_colors(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "enum_colors", value)
+
+    @property
+    @pulumi.getter(name="enumJqQuery")
+    def enum_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        A jq query resolving the values the user can pick from.
+        """
+        return pulumi.get(self, "enum_jq_query")
+
+    @enum_jq_query.setter
+    def enum_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enum_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def enums(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The values the user can pick from.
+        """
+        return pulumi.get(self, "enums")
+
+    @enums.setter
+    def enums(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "enums", value)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The format of the string input.
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[pulumi.Input[str]]:
+        """
+        The icon of the string input.
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "icon", value)
+
+    @property
+    @pulumi.getter(name="maxLength")
+    def max_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        The max length of the string input.
+        """
+        return pulumi.get(self, "max_length")
+
+    @max_length.setter
+    def max_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_length", value)
+
+    @property
+    @pulumi.getter(name="minLength")
+    def min_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        The min length of the string input.
+        """
+        return pulumi.get(self, "min_length")
+
+    @min_length.setter
+    def min_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_length", value)
+
+    @property
+    @pulumi.getter
+    def pattern(self) -> Optional[pulumi.Input[str]]:
+        """
+        The regex pattern the value has to match.
+        """
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pattern", value)
+
+    @property
+    @pulumi.getter(name="patternJqQuery")
+    def pattern_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        A jq query resolving the pattern of the string input, either a regex string or a list of allowed values.
+        """
+        return pulumi.get(self, "pattern_jq_query")
+
+    @pattern_jq_query.setter
+    def pattern_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pattern_jq_query", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Shows the value of the string input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="readOnlyJqQuery")
+    def read_only_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The read only condition jq query of the string input.
+        """
+        return pulumi.get(self, "read_only_jq_query")
+
+    @read_only_jq_query.setter
+    def read_only_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read_only_jq_query", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter
+    def sort(self) -> Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsSortArgs']]:
+        """
+        How the entities are sorted in the form.
+        """
+        return pulumi.get(self, "sort")
+
+    @sort.setter
+    def sort(self, value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsSortArgs']]):
+        pulumi.set(self, "sort", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of the string input.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The visibility of the string input.
+        """
+        return pulumi.get(self, "visible")
+
+    @visible.setter
+    def visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "visible", value)
+
+    @property
+    @pulumi.getter(name="visibleJqQuery")
+    def visible_jq_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility condition jq query of the string input.
+        """
+        return pulumi.get(self, "visible_jq_query")
+
+    @visible_jq_query.setter
+    def visible_jq_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visible_jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetArgsDict(TypedDict):
+        combinator: pulumi.Input[str]
+        """
+        How the rules are combined.
+        """
+        rules: pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleArgsDict']]]
+        """
+        The rules of the dataset. A rule either filters on a property or groups nested rules under a combinator.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetArgs:
+    def __init__(__self__, *,
+                 combinator: pulumi.Input[str],
+                 rules: pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleArgs']]]):
+        """
+        :param pulumi.Input[str] combinator: How the rules are combined.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleArgs']]] rules: The rules of the dataset. A rule either filters on a property or groups nested rules under a combinator.
+        """
+        pulumi.set(__self__, "combinator", combinator)
+        pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> pulumi.Input[str]:
+        """
+        How the rules are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleArgs']]]:
+        """
+        The rules of the dataset. A rule either filters on a property or groups nested rules under a combinator.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleArgs']]]):
+        pulumi.set(self, "rules", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule.
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the nested rules of a group rule are combined.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleArgsDict']]]]
+        """
+        The nested rules of a group rule.
+        """
+        value: NotRequired[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleValueArgsDict']]
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        value_json: NotRequired[pulumi.Input[str]]
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleValueArgs']] = None,
+                 value_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule.
+        :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
+        :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs']]] rules: The nested rules of a group rule.
+        :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
+        :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_json is not None:
+            pulumi.set(__self__, "value_json", value_json)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the nested rules of a group rule are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs']]]]:
+        """
+        The nested rules of a group rule.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleValueArgs']]:
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_json", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule.
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the nested rules of a group rule are combined.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgsDict']]]]
+        """
+        The nested rules of a group rule.
+        """
+        value: NotRequired[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgsDict']]
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        value_json: NotRequired[pulumi.Input[str]]
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgs']] = None,
+                 value_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule.
+        :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
+        :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
+        :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
+        :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_json is not None:
+            pulumi.set(__self__, "value_json", value_json)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the nested rules of a group rule are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgs']]]]:
+        """
+        The nested rules of a group rule.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgs']]:
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_json", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule.
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the nested rules of a group rule are combined.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgsDict']]]]
+        """
+        The nested rules of a group rule.
+        """
+        value: NotRequired[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgsDict']]
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        value_json: NotRequired[pulumi.Input[str]]
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs']] = None,
+                 value_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule.
+        :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
+        :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
+        :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
+        :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_json is not None:
+            pulumi.set(__self__, "value_json", value_json)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the nested rules of a group rule are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs']]]]:
+        """
+        The nested rules of a group rule.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs']]:
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_json", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule.
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the nested rules of a group rule are combined.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgsDict']]]]
+        """
+        The nested rules of a group rule.
+        """
+        value: NotRequired[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgsDict']]
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        value_json: NotRequired[pulumi.Input[str]]
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs']] = None,
+                 value_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule.
+        :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
+        :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
+        :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
+        :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_json is not None:
+            pulumi.set(__self__, "value_json", value_json)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the nested rules of a group rule are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs']]]]:
+        """
+        The nested rules of a group rule.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs']]:
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_json", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule.
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the nested rules of a group rule are combined.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgsDict']]]]
+        """
+        The nested rules of a group rule.
+        """
+        value: NotRequired[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgsDict']]
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        value_json: NotRequired[pulumi.Input[str]]
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs']] = None,
+                 value_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule.
+        :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
+        :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
+        :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
+        :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_json is not None:
+            pulumi.set(__self__, "value_json", value_json)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the nested rules of a group rule are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs']]]]:
+        """
+        The nested rules of a group rule.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs']]:
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_json", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule.
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the nested rules of a group rule are combined.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
+        """
+        The nested rules of a group rule.
+        """
+        value: NotRequired[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgsDict']]
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        value_json: NotRequired[pulumi.Input[str]]
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs']] = None,
+                 value_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule.
+        :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
+        :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
+        :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
+        :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_json is not None:
+            pulumi.set(__self__, "value_json", value_json)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the nested rules of a group rule are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs']]]]:
+        """
+        The nested rules of a group rule.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs']]:
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_json", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule.
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the nested rules of a group rule are combined.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
+        """
+        The nested rules of a group rule.
+        """
+        value: NotRequired[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgsDict']]
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        value_json: NotRequired[pulumi.Input[str]]
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None,
+                 value_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule.
+        :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
+        :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
+        :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
+        :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_json is not None:
+            pulumi.set(__self__, "value_json", value_json)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the nested rules of a group rule are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]:
+        """
+        The nested rules of a group rule.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs']]:
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_json", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule.
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the nested rules of a group rule are combined.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
+        """
+        The nested rules of a group rule.
+        """
+        value: NotRequired[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict']]
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        value_json: NotRequired[pulumi.Input[str]]
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None,
+                 value_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule.
+        :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
+        :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
+        :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
+        :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_json is not None:
+            pulumi.set(__self__, "value_json", value_json)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the nested rules of a group rule are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]:
+        """
+        The nested rules of a group rule.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]:
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_json", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule.
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the nested rules of a group rule are combined.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
+        """
+        The nested rules of a group rule.
+        """
+        value: NotRequired[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict']]
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        value_json: NotRequired[pulumi.Input[str]]
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None,
+                 value_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule.
+        :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
+        :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
+        :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
+        :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_json is not None:
+            pulumi.set(__self__, "value_json", value_json)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the nested rules of a group rule are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]:
+        """
+        The nested rules of a group rule.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]:
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_json", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule.
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the nested rules of a group rule are combined.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
+        """
+        The nested rules of a group rule.
+        """
+        value: NotRequired[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict']]
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        value_json: NotRequired[pulumi.Input[str]]
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
+                 value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None,
+                 value_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule.
+        :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
+        :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
+        :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
+        :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_json is not None:
+            pulumi.set(__self__, "value_json", value_json)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the nested rules of a group rule are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]:
+        """
+        The nested rules of a group rule.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]:
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_json", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict(TypedDict):
+        blueprint: NotRequired[pulumi.Input[str]]
+        """
+        The blueprint identifier of the rule.
+        """
+        combinator: NotRequired[pulumi.Input[str]]
+        """
+        How the nested rules of a group rule are combined.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        property: NotRequired[pulumi.Input[str]]
+        """
+        The property identifier of the rule.
+        """
+        value: NotRequired[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict']]
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        value_json: NotRequired[pulumi.Input[str]]
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs:
+    def __init__(__self__, *,
+                 blueprint: Optional[pulumi.Input[str]] = None,
+                 combinator: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 property: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None,
+                 value_json: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint: The blueprint identifier of the rule.
+        :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
+        :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
+        :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
+        :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        if blueprint is not None:
+            pulumi.set(__self__, "blueprint", blueprint)
+        if combinator is not None:
+            pulumi.set(__self__, "combinator", combinator)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if property is not None:
+            pulumi.set(__self__, "property", property)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_json is not None:
+            pulumi.set(__self__, "value_json", value_json)
+
+    @property
+    @pulumi.getter
+    def blueprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The blueprint identifier of the rule.
+        """
+        return pulumi.get(self, "blueprint")
+
+    @blueprint.setter
+    def blueprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint", value)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> Optional[pulumi.Input[str]]:
+        """
+        How the nested rules of a group rule are combined.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operator of the rule. Set on filtering rules and left out on group rules.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]:
+        """
+        A value resolved from the form or the trigger when the form is rendered.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueJson")
+    def value_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+        """
+        return pulumi.get(self, "value_json")
+
+    @value_json.setter
+    def value_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_json", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property identifier of the rule.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleValueArgsDict(TypedDict):
+        jq_query: pulumi.Input[str]
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleValueArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleValueArgs:
+    def __init__(__self__, *,
+                 jq_query: pulumi.Input[str]):
+        pulumi.set(__self__, "jq_query", jq_query)
+
+    @property
+    @pulumi.getter(name="jqQuery")
+    def jq_query(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jq_query")
+
+    @jq_query.setter
+    def jq_query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jq_query", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsSortArgsDict(TypedDict):
+        property: pulumi.Input[str]
+        """
+        The property to sort the entities by.
+        """
+        order: NotRequired[pulumi.Input[str]]
+        """
+        The order to sort the entities in.
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsSortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsSortArgs:
+    def __init__(__self__, *,
+                 property: pulumi.Input[str],
+                 order: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] property: The property to sort the entities by.
+        :param pulumi.Input[str] order: The order to sort the entities in.
+        """
+        pulumi.set(__self__, "property", property)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+
+    @property
+    @pulumi.getter
+    def order(self) -> Optional[pulumi.Input[str]]:
+        """
+        The order to sort the entities in.
+        """
+        return pulumi.get(self, "order")
+
+    @order.setter
+    def order(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "order", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> pulumi.Input[str]:
+        """
+        The property to sort the entities by.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: pulumi.Input[str]):
+        pulumi.set(self, "property", value)
+
+
+if not MYPY:
+    class WorkflowNodeSelfServeTriggerUserInputsValidationArgsDict(TypedDict):
+        constraint: pulumi.Input[str]
+        """
+        A jq expression that has to evaluate to `true` for the form to be valid.
+        """
+        message: pulumi.Input[str]
+        """
+        The error message shown when the constraint evaluates to `false` (max 100 characters).
+        """
+elif False:
+    WorkflowNodeSelfServeTriggerUserInputsValidationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeSelfServeTriggerUserInputsValidationArgs:
+    def __init__(__self__, *,
+                 constraint: pulumi.Input[str],
+                 message: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] constraint: A jq expression that has to evaluate to `true` for the form to be valid.
+        :param pulumi.Input[str] message: The error message shown when the constraint evaluates to `false` (max 100 characters).
+        """
+        pulumi.set(__self__, "constraint", constraint)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def constraint(self) -> pulumi.Input[str]:
+        """
+        A jq expression that has to evaluate to `true` for the form to be valid.
+        """
+        return pulumi.get(self, "constraint")
+
+    @constraint.setter
+    def constraint(self, value: pulumi.Input[str]):
+        pulumi.set(self, "constraint", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> pulumi.Input[str]:
+        """
+        The error message shown when the constraint evaluates to `false` (max 100 characters).
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: pulumi.Input[str]):
+        pulumi.set(self, "message", value)
+
+
+if not MYPY:
+    class WorkflowNodeUpsertEntityArgsDict(TypedDict):
+        blueprint_identifier: NotRequired[pulumi.Input[str]]
+        """
+        The identifier of the blueprint to upsert into.
+        """
+        mapping: NotRequired[pulumi.Input['WorkflowNodeUpsertEntityMappingArgsDict']]
+        """
+        The entity fields to upsert.
+        """
+        on_failure: NotRequired[pulumi.Input[str]]
+        """
+        The action to take if the node fails. One of `continue`, `terminate`.
+        """
+elif False:
+    WorkflowNodeUpsertEntityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeUpsertEntityArgs:
+    def __init__(__self__, *,
+                 blueprint_identifier: Optional[pulumi.Input[str]] = None,
+                 mapping: Optional[pulumi.Input['WorkflowNodeUpsertEntityMappingArgs']] = None,
+                 on_failure: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] blueprint_identifier: The identifier of the blueprint to upsert into.
+        :param pulumi.Input['WorkflowNodeUpsertEntityMappingArgs'] mapping: The entity fields to upsert.
+        :param pulumi.Input[str] on_failure: The action to take if the node fails. One of `continue`, `terminate`.
+        """
+        if blueprint_identifier is not None:
+            pulumi.set(__self__, "blueprint_identifier", blueprint_identifier)
+        if mapping is not None:
+            pulumi.set(__self__, "mapping", mapping)
+        if on_failure is not None:
+            pulumi.set(__self__, "on_failure", on_failure)
+
+    @property
+    @pulumi.getter(name="blueprintIdentifier")
+    def blueprint_identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of the blueprint to upsert into.
+        """
+        return pulumi.get(self, "blueprint_identifier")
+
+    @blueprint_identifier.setter
+    def blueprint_identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "blueprint_identifier", value)
+
+    @property
+    @pulumi.getter
+    def mapping(self) -> Optional[pulumi.Input['WorkflowNodeUpsertEntityMappingArgs']]:
+        """
+        The entity fields to upsert.
+        """
+        return pulumi.get(self, "mapping")
+
+    @mapping.setter
+    def mapping(self, value: Optional[pulumi.Input['WorkflowNodeUpsertEntityMappingArgs']]):
+        pulumi.set(self, "mapping", value)
+
+    @property
+    @pulumi.getter(name="onFailure")
+    def on_failure(self) -> Optional[pulumi.Input[str]]:
+        """
+        The action to take if the node fails. One of `continue`, `terminate`.
+        """
+        return pulumi.get(self, "on_failure")
+
+    @on_failure.setter
+    def on_failure(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "on_failure", value)
+
+
+if not MYPY:
+    class WorkflowNodeUpsertEntityMappingArgsDict(TypedDict):
+        icon: NotRequired[pulumi.Input[str]]
+        """
+        The icon of the entity to upsert.
+        """
+        identifier: NotRequired[pulumi.Input[str]]
+        """
+        The identifier of the entity to upsert.
+        """
+        properties: NotRequired[pulumi.Input[str]]
+        """
+        The properties of the entity as a JSON encoded string.
+        """
+        relations: NotRequired[pulumi.Input[str]]
+        """
+        The relations of the entity as a JSON encoded string.
+        """
+        teams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The teams of the entity to upsert. Values may contain `{{ }}` template expressions that are resolved when the node runs.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        The title of the entity to upsert.
+        """
+elif False:
+    WorkflowNodeUpsertEntityMappingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeUpsertEntityMappingArgs:
+    def __init__(__self__, *,
+                 icon: Optional[pulumi.Input[str]] = None,
+                 identifier: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[str]] = None,
+                 relations: Optional[pulumi.Input[str]] = None,
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] icon: The icon of the entity to upsert.
+        :param pulumi.Input[str] identifier: The identifier of the entity to upsert.
+        :param pulumi.Input[str] properties: The properties of the entity as a JSON encoded string.
+        :param pulumi.Input[str] relations: The relations of the entity as a JSON encoded string.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: The teams of the entity to upsert. Values may contain `{{ }}` template expressions that are resolved when the node runs.
+        :param pulumi.Input[str] title: The title of the entity to upsert.
+        """
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if identifier is not None:
+            pulumi.set(__self__, "identifier", identifier)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if relations is not None:
+            pulumi.set(__self__, "relations", relations)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[pulumi.Input[str]]:
+        """
+        The icon of the entity to upsert.
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "icon", value)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of the entity to upsert.
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[str]]:
+        """
+        The properties of the entity as a JSON encoded string.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter
+    def relations(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relations of the entity as a JSON encoded string.
+        """
+        return pulumi.get(self, "relations")
+
+    @relations.setter
+    def relations(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relations", value)
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The teams of the entity to upsert. Values may contain `{{ }}` template expressions that are resolved when the node runs.
+        """
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of the entity to upsert.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+
+if not MYPY:
+    class WorkflowNodeWebhookArgsDict(TypedDict):
+        agent: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the request is routed through the Port agent.
+        """
+        body: NotRequired[pulumi.Input[str]]
+        """
+        The request body as a JSON encoded string.
+        """
+        headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The HTTP headers of the request.
+        """
+        method: NotRequired[pulumi.Input[str]]
+        """
+        The HTTP method. One of `GET`, `POST`, `PUT`, `PATCH`, `DELETE`.
+        """
+        on_failure: NotRequired[pulumi.Input[str]]
+        """
+        The action to take if the node fails. One of `continue`, `terminate`.
+        """
+        on_timeout: NotRequired[pulumi.Input[str]]
+        """
+        The action to take if the webhook times out. One of `fail`, `continue`.
+        """
+        synchronized: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the request is sent synchronously.
+        """
+        url: NotRequired[pulumi.Input[str]]
+        """
+        The URL of the webhook.
+        """
+elif False:
+    WorkflowNodeWebhookArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeWebhookArgs:
+    def __init__(__self__, *,
+                 agent: Optional[pulumi.Input[bool]] = None,
+                 body: Optional[pulumi.Input[str]] = None,
+                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 method: Optional[pulumi.Input[str]] = None,
+                 on_failure: Optional[pulumi.Input[str]] = None,
+                 on_timeout: Optional[pulumi.Input[str]] = None,
+                 synchronized: Optional[pulumi.Input[bool]] = None,
+                 url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] agent: Whether the request is routed through the Port agent.
+        :param pulumi.Input[str] body: The request body as a JSON encoded string.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: The HTTP headers of the request.
+        :param pulumi.Input[str] method: The HTTP method. One of `GET`, `POST`, `PUT`, `PATCH`, `DELETE`.
+        :param pulumi.Input[str] on_failure: The action to take if the node fails. One of `continue`, `terminate`.
+        :param pulumi.Input[str] on_timeout: The action to take if the webhook times out. One of `fail`, `continue`.
+        :param pulumi.Input[bool] synchronized: Whether the request is sent synchronously.
+        :param pulumi.Input[str] url: The URL of the webhook.
+        """
+        if agent is not None:
+            pulumi.set(__self__, "agent", agent)
+        if body is not None:
+            pulumi.set(__self__, "body", body)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+        if on_failure is not None:
+            pulumi.set(__self__, "on_failure", on_failure)
+        if on_timeout is not None:
+            pulumi.set(__self__, "on_timeout", on_timeout)
+        if synchronized is not None:
+            pulumi.set(__self__, "synchronized", synchronized)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def agent(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the request is routed through the Port agent.
+        """
+        return pulumi.get(self, "agent")
+
+    @agent.setter
+    def agent(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "agent", value)
+
+    @property
+    @pulumi.getter
+    def body(self) -> Optional[pulumi.Input[str]]:
+        """
+        The request body as a JSON encoded string.
+        """
+        return pulumi.get(self, "body")
+
+    @body.setter
+    def body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "body", value)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The HTTP headers of the request.
+        """
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "headers", value)
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The HTTP method. One of `GET`, `POST`, `PUT`, `PATCH`, `DELETE`.
+        """
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "method", value)
+
+    @property
+    @pulumi.getter(name="onFailure")
+    def on_failure(self) -> Optional[pulumi.Input[str]]:
+        """
+        The action to take if the node fails. One of `continue`, `terminate`.
+        """
+        return pulumi.get(self, "on_failure")
+
+    @on_failure.setter
+    def on_failure(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "on_failure", value)
+
+    @property
+    @pulumi.getter(name="onTimeout")
+    def on_timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        The action to take if the webhook times out. One of `fail`, `continue`.
+        """
+        return pulumi.get(self, "on_timeout")
+
+    @on_timeout.setter
+    def on_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "on_timeout", value)
+
+    @property
+    @pulumi.getter
+    def synchronized(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the request is sent synchronously.
+        """
+        return pulumi.get(self, "synchronized")
+
+    @synchronized.setter
+    def synchronized(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "synchronized", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the webhook.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
 
 

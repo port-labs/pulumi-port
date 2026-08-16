@@ -37,6 +37,7 @@
         "types/input.ts",
         "types/output.ts",
         "utilities.ts",
-        "webhook.ts"
+        "webhook.ts",
+        "workflow.ts"
     ]
 }

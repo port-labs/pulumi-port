@@ -23,6 +23,7 @@ from .scorecard import *
 from .system_blueprint import *
 from .team import *
 from .webhook import *
+from .workflow import *
 from ._inputs import *
 from . import outputs
 
@@ -162,6 +163,14 @@ _utilities.register(
   "fqn": "port_pulumi",
   "classes": {
    "port:index/webhook:Webhook": "Webhook"
+  }
+ },
+ {
+  "pkg": "port",
+  "mod": "index/workflow",
+  "fqn": "port_pulumi",
+  "classes": {
+   "port:index/workflow:Workflow": "Workflow"
   }
  }
 ]

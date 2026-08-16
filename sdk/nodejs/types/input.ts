@@ -1422,6 +1422,10 @@ export interface BlueprintOwnership {
 
 export interface BlueprintPermissionsEntities {
     /**
+     * Manage permissions to read entities of the blueprint
+     */
+    read?: pulumi.Input<inputs.BlueprintPermissionsEntitiesRead>;
+    /**
      * Manage permissions to register entities of the blueprint
      */
     register: pulumi.Input<inputs.BlueprintPermissionsEntitiesRegister>;
@@ -1444,11 +1448,32 @@ export interface BlueprintPermissionsEntities {
     updateRelations?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintPermissionsEntitiesUpdateRelations>}>;
 }
 
+export interface BlueprintPermissionsEntitiesRead {
+    /**
+     * Owned by team
+     */
+    ownedByTeam?: pulumi.Input<boolean>;
+    policy?: pulumi.Input<string>;
+    /**
+     * Roles with read permissions
+     */
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Teams with read permissions
+     */
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Users with read permissions
+     */
+    users?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface BlueprintPermissionsEntitiesRegister {
     /**
      * Owned by team
      */
     ownedByTeam?: pulumi.Input<boolean>;
+    policy?: pulumi.Input<string>;
     /**
      * Roles with register permissions
      */
@@ -1468,6 +1493,7 @@ export interface BlueprintPermissionsEntitiesUnregister {
      * Owned by team
      */
     ownedByTeam?: pulumi.Input<boolean>;
+    policy?: pulumi.Input<string>;
     /**
      * Roles with unregister permissions
      */
@@ -1487,6 +1513,7 @@ export interface BlueprintPermissionsEntitiesUpdate {
      * Owned by team
      */
     ownedByTeam?: pulumi.Input<boolean>;
+    policy?: pulumi.Input<string>;
     /**
      * Roles with update permissions
      */
@@ -2541,4 +2568,2524 @@ export interface WebhookSecurity {
      * The signature prefix of the webhook
      */
     signaturePrefix?: pulumi.Input<string>;
+}
+
+export interface WorkflowConnection {
+    /**
+     * The description of the connection
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Marks this connection as the fallback branch of a `condition` node, taken when no outlet matches. Cannot be combined with `sourceOutletIdentifier`.
+     */
+    fallback?: pulumi.Input<boolean>;
+    /**
+     * The identifier of the source node
+     */
+    sourceIdentifier: pulumi.Input<string>;
+    /**
+     * The outlet of the source node this connection leaves from. Required for `condition` and `input` nodes, and not allowed for any other node type.
+     */
+    sourceOutletIdentifier?: pulumi.Input<string>;
+    /**
+     * The identifier of the target node
+     */
+    targetIdentifier: pulumi.Input<string>;
+}
+
+export interface WorkflowNode {
+    /**
+     * An AI node that runs a prompt through Port AI.
+     */
+    ai?: pulumi.Input<inputs.WorkflowNodeAi>;
+    /**
+     * An AI agent node that invokes a configured Port AI agent.
+     */
+    aiAgent?: pulumi.Input<inputs.WorkflowNodeAiAgent>;
+    /**
+     * A condition node that branches the workflow based on JQ expressions. Connections leaving this node must set `sourceOutletIdentifier` or `fallback`.
+     */
+    condition?: pulumi.Input<inputs.WorkflowNodeCondition>;
+    /**
+     * The description of the node
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * An event trigger node that starts the workflow when an entity event occurs.
+     */
+    eventTrigger?: pulumi.Input<inputs.WorkflowNodeEventTrigger>;
+    /**
+     * The icon of the node
+     */
+    icon?: pulumi.Input<string>;
+    /**
+     * The identifier of the node
+     */
+    identifier: pulumi.Input<string>;
+    /**
+     * An input node that pauses the workflow and waits for a human response. Connections leaving this node must set `sourceOutletIdentifier`.
+     */
+    input?: pulumi.Input<inputs.WorkflowNodeInput>;
+    /**
+     * An integration action node that invokes an installed integration.
+     */
+    integrationAction?: pulumi.Input<inputs.WorkflowNodeIntegrationAction>;
+    /**
+     * A Kafka node that publishes a message to the organization's Kafka topic.
+     */
+    kafka?: pulumi.Input<inputs.WorkflowNodeKafka>;
+    /**
+     * Link templates (supporting `{{ .result.field }}` interpolation) evaluated when the node run completes (max 3)
+     */
+    links?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A schedule trigger node that starts the workflow on a cron schedule.
+     */
+    scheduleTrigger?: pulumi.Input<inputs.WorkflowNodeScheduleTrigger>;
+    /**
+     * A self service trigger node that starts the workflow from a user submitted form.
+     */
+    selfServeTrigger?: pulumi.Input<inputs.WorkflowNodeSelfServeTrigger>;
+    /**
+     * The title of the node
+     */
+    title?: pulumi.Input<string>;
+    /**
+     * An upsert entity node that creates or updates an entity in the catalog.
+     */
+    upsertEntity?: pulumi.Input<inputs.WorkflowNodeUpsertEntity>;
+    /**
+     * Named expressions made available to the node at run time
+     */
+    variables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * When true, the workflow service writes extended per-node run logs
+     */
+    verbose?: pulumi.Input<boolean>;
+    /**
+     * A webhook node that sends an HTTP request.
+     */
+    webhook?: pulumi.Input<inputs.WorkflowNodeWebhook>;
+}
+
+export interface WorkflowNodeAi {
+    /**
+     * The MCP servers available to the AI node (max 5).
+     */
+    mcpServers?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeAiMcpServer>[]>;
+    /**
+     * The AI model to use. Must be set together with `provider`.
+     */
+    model?: pulumi.Input<string>;
+    /**
+     * A JSON schema, encoded as a JSON string, the AI response is validated against.
+     */
+    outputSchema?: pulumi.Input<string>;
+    /**
+     * The AI provider to use. Must be set together with `model`.
+     */
+    provider?: pulumi.Input<string>;
+    /**
+     * Instructions describing the AI's role and operational rules.
+     */
+    systemPrompt?: pulumi.Input<string>;
+    /**
+     * Regex patterns matched against the available tool names.
+     */
+    tools?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The message or query processed by Port AI.
+     */
+    userPrompt?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeAiAgent {
+    /**
+     * The identifier of the agent to invoke.
+     */
+    agentIdentifier?: pulumi.Input<string>;
+    /**
+     * The AI model to use. Must be set together with `provider`.
+     */
+    model?: pulumi.Input<string>;
+    /**
+     * A JSON schema, encoded as a JSON string, the agent response is validated against.
+     */
+    outputSchema?: pulumi.Input<string>;
+    /**
+     * The AI provider to use. Must be set together with `model`.
+     */
+    provider?: pulumi.Input<string>;
+    /**
+     * The message or query processed by the agent.
+     */
+    userPrompt?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeAiMcpServer {
+    /**
+     * The identifier of the MCP server.
+     */
+    identifier: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeCondition {
+    /**
+     * The branches of the condition, evaluated in order.
+     */
+    outlets?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeConditionOutlet>[]>;
+}
+
+export interface WorkflowNodeConditionOutlet {
+    /**
+     * The JQ expression that selects this outlet.
+     */
+    expression: pulumi.Input<string>;
+    /**
+     * The identifier of the outlet, referenced by a connection's `sourceOutletIdentifier`.
+     */
+    identifier: pulumi.Input<string>;
+    /**
+     * A custom status label displayed on the node run.
+     */
+    statusLabel?: pulumi.Input<inputs.WorkflowNodeConditionOutletStatusLabel>;
+    /**
+     * The title of the outlet.
+     */
+    title?: pulumi.Input<string>;
+    /**
+     * A custom status label displayed on the workflow run.
+     */
+    workflowStatusLabel?: pulumi.Input<inputs.WorkflowNodeConditionOutletWorkflowStatusLabel>;
+}
+
+export interface WorkflowNodeConditionOutletStatusLabel {
+    /**
+     * The label text. Supports JQ expressions for dynamic content.
+     */
+    text?: pulumi.Input<string>;
+    /**
+     * Semantic variant controlling the label color/style. One of `success`, `alert`.
+     */
+    variant?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeConditionOutletWorkflowStatusLabel {
+    /**
+     * The label text. Supports JQ expressions for dynamic content.
+     */
+    text?: pulumi.Input<string>;
+    /**
+     * Semantic variant controlling the label color/style. One of `success`, `alert`.
+     */
+    variant?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeEventTrigger {
+    /**
+     * The blueprint identifier the event relates to.
+     */
+    blueprintIdentifier?: pulumi.Input<string>;
+    /**
+     * A JQ condition gating whether the event starts the workflow.
+     */
+    condition?: pulumi.Input<inputs.WorkflowNodeEventTriggerCondition>;
+    /**
+     * The property identifier the timer event relates to. Required for the `TIMER_EXPIRED` event type.
+     */
+    propertyIdentifier?: pulumi.Input<string>;
+    /**
+     * Whether the trigger is published.
+     */
+    published?: pulumi.Input<boolean>;
+    /**
+     * The event type that triggers the workflow. One of `ENTITY_CREATED`, `ENTITY_UPDATED`, `ENTITY_DELETED`, `TIMER_EXPIRED`, `ANY_ENTITY_CHANGE`.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeEventTriggerCondition {
+    /**
+     * How the expressions are combined. One of `and`, `or`.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The JQ expressions evaluated against the event.
+     */
+    expressions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface WorkflowNodeInput {
+    /**
+     * The description shown on the response form.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Notifications sent when the input node starts waiting.
+     */
+    notifications?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputNotification>[]>;
+    /**
+     * The branches of the input node, each bound to a button.
+     */
+    outlets?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputOutlet>[]>;
+    /**
+     * Who is allowed to respond to this input node.
+     */
+    responders?: pulumi.Input<inputs.WorkflowNodeInputResponders>;
+    /**
+     * The form presented to the responders.
+     */
+    userInputs?: pulumi.Input<inputs.WorkflowNodeInputUserInputs>;
+}
+
+export interface WorkflowNodeInputNotification {
+    /**
+     * Whether the webhook is routed through the Port agent.
+     */
+    agent?: pulumi.Input<boolean>;
+    /**
+     * The webhook body as a JSON encoded string.
+     */
+    body?: pulumi.Input<string>;
+    /**
+     * The fields rendered in the email notification. Only valid when `target` is `email`.
+     */
+    fields?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputNotificationField>[]>;
+    /**
+     * The webhook headers.
+     */
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The webhook HTTP method. One of `GET`, `POST`, `PUT`, `PATCH`, `DELETE`.
+     */
+    method?: pulumi.Input<string>;
+    /**
+     * The notification target. One of `email`, `webhook`.
+     */
+    target: pulumi.Input<string>;
+    /**
+     * The webhook URL. Required when `target` is `webhook`.
+     */
+    url?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputNotificationField {
+    /**
+     * The label of the field.
+     */
+    label: pulumi.Input<string>;
+    /**
+     * The value of the field.
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputOutlet {
+    /**
+     * The identifier of the outlet. Must match a button identifier.
+     */
+    identifier: pulumi.Input<string>;
+    /**
+     * How many responders must press the button before the workflow continues.
+     */
+    numOfResponders: pulumi.Input<number>;
+    /**
+     * A custom status label displayed on the node run.
+     */
+    statusLabel?: pulumi.Input<inputs.WorkflowNodeInputOutletStatusLabel>;
+    /**
+     * The title of the outlet.
+     */
+    title?: pulumi.Input<string>;
+    /**
+     * A custom status label displayed on the workflow run.
+     */
+    workflowStatusLabel?: pulumi.Input<inputs.WorkflowNodeInputOutletWorkflowStatusLabel>;
+}
+
+export interface WorkflowNodeInputOutletStatusLabel {
+    /**
+     * The label text. Supports JQ expressions for dynamic content.
+     */
+    text?: pulumi.Input<string>;
+    /**
+     * Semantic variant controlling the label color/style. One of `success`, `alert`.
+     */
+    variant?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputOutletWorkflowStatusLabel {
+    /**
+     * The label text. Supports JQ expressions for dynamic content.
+     */
+    text?: pulumi.Input<string>;
+    /**
+     * Semantic variant controlling the label color/style. One of `success`, `alert`.
+     */
+    variant?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputResponders {
+    /**
+     * The roles allowed to respond.
+     */
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The identifiers of the teams allowed to respond. They must exist in the organization.
+     */
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The emails of the users allowed to respond. They must exist in the organization.
+     */
+    users?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A JSON encoded entity search query, run against the `_user` blueprint, resolving additional responders.
+     */
+    usersQuery?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputs {
+    /**
+     * The buttons rendered on the response form. Each outlet must reference one of these identifiers.
+     */
+    buttons?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputUserInputsButton>[]>;
+    /**
+     * The order the inputs are rendered in. Cannot be combined with `steps`.
+     */
+    orderProperties?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A jq query resolving which inputs are required.
+     */
+    requiredJqQuery?: pulumi.Input<string>;
+    /**
+     * Splits the form into steps. Cannot be combined with `orderProperties`.
+     */
+    steps?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputUserInputsStep>[]>;
+    /**
+     * Static titles rendered between the inputs of the form.
+     */
+    titles?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkflowNodeInputUserInputsTitles>}>;
+    /**
+     * The user inputs the form collects.
+     */
+    userProperties?: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserProperties>;
+    /**
+     * Validation rules evaluated against the whole form when it is submitted. Cannot be combined with `steps`, add the rules to the individual steps instead. Up to 10 rules are allowed.
+     */
+    validations?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputUserInputsValidation>[]>;
+}
+
+export interface WorkflowNodeInputUserInputsButton {
+    /**
+     * The icon of the button.
+     */
+    icon?: pulumi.Input<string>;
+    /**
+     * The identifier of the button.
+     */
+    identifier: pulumi.Input<string>;
+    /**
+     * The label of the button.
+     */
+    label: pulumi.Input<string>;
+    /**
+     * The button variant. One of `PRIMARY`, `SECONDARY`, `DANGER`.
+     */
+    variant: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsStep {
+    /**
+     * The order of the inputs in this step.
+     */
+    orders: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The step's title (max 25 characters).
+     */
+    title: pulumi.Input<string>;
+    /**
+     * Validation rules evaluated when the step is submitted. Up to 10 rules are allowed.
+     */
+    validations?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputUserInputsStepValidation>[]>;
+    /**
+     * The visibility of the step.
+     */
+    visible?: pulumi.Input<boolean>;
+    /**
+     * The visibility condition jq query of the step.
+     */
+    visibleJqQuery?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsStepValidation {
+    /**
+     * A jq expression that has to evaluate to `true` for the form to be valid.
+     */
+    constraint: pulumi.Input<string>;
+    /**
+     * The error message shown when the constraint evaluates to `false` (max 100 characters).
+     */
+    message: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsTitles {
+    /**
+     * The title description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The title text.
+     */
+    title: pulumi.Input<string>;
+    /**
+     * The visibility of the title.
+     */
+    visible?: pulumi.Input<boolean>;
+    /**
+     * The visibility condition jq query of the title.
+     */
+    visibleJqQuery?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserProperties {
+    /**
+     * The array inputs of the form.
+     */
+    arrayProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesArrayProps>}>;
+    /**
+     * The boolean inputs of the form.
+     */
+    booleanProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesBooleanProps>}>;
+    /**
+     * The number inputs of the form.
+     */
+    numberProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesNumberProps>}>;
+    /**
+     * The object inputs of the form.
+     */
+    objectProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesObjectProps>}>;
+    /**
+     * The string inputs of the form.
+     */
+    stringProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringProps>}>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesArrayProps {
+    /**
+     * The default jq query of the array input.
+     */
+    defaultJqQuery?: pulumi.Input<string>;
+    /**
+     * The inputs this input depends on.
+     */
+    dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The description of the array input.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Greys out the array input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `readOnly` to keep the value in the submission.
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * The disabled condition jq query of the array input.
+     */
+    disabledJqQuery?: pulumi.Input<string>;
+    /**
+     * The icon of the array input.
+     */
+    icon?: pulumi.Input<string>;
+    /**
+     * The max items of the array input.
+     */
+    maxItems?: pulumi.Input<number>;
+    /**
+     * The max items jq query of the array input.
+     */
+    maxItemsJqQuery?: pulumi.Input<string>;
+    /**
+     * The min items of the array input.
+     */
+    minItems?: pulumi.Input<number>;
+    /**
+     * The min items jq query of the array input.
+     */
+    minItemsJqQuery?: pulumi.Input<string>;
+    /**
+     * The number items of the array input.
+     */
+    numberItems?: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesArrayPropsNumberItems>;
+    /**
+     * The object items of the array input.
+     */
+    objectItems?: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItems>;
+    /**
+     * Shows the value of the array input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * The read only condition jq query of the array input.
+     */
+    readOnlyJqQuery?: pulumi.Input<string>;
+    /**
+     * Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `requiredJqQuery`.
+     */
+    required?: pulumi.Input<boolean>;
+    /**
+     * How the entities are sorted in the form.
+     */
+    sort?: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesArrayPropsSort>;
+    /**
+     * The string items of the array input.
+     */
+    stringItems?: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesArrayPropsStringItems>;
+    /**
+     * The title of the array input.
+     */
+    title?: pulumi.Input<string>;
+    /**
+     * Whether the values of the array have to be unique.
+     */
+    uniqueItems?: pulumi.Input<boolean>;
+    /**
+     * The visibility of the array input.
+     */
+    visible?: pulumi.Input<boolean>;
+    /**
+     * The visibility condition jq query of the array input.
+     */
+    visibleJqQuery?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesArrayPropsNumberItems {
+    /**
+     * The default value of the items.
+     */
+    defaults?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The colors of the enum values.
+     */
+    enumColors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A jq query resolving the values the user can pick from.
+     */
+    enumJqQuery?: pulumi.Input<string>;
+    /**
+     * The values the user can pick from.
+     */
+    enums?: pulumi.Input<pulumi.Input<number>[]>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItems {
+    /**
+     * The default value of the items.
+     */
+    defaults?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    /**
+     * The format of each item.
+     */
+    format?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesArrayPropsSort {
+    /**
+     * The order to sort the entities in.
+     */
+    order?: pulumi.Input<string>;
+    /**
+     * The property to sort the entities by.
+     */
+    property: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesArrayPropsStringItems {
+    /**
+     * The blueprint the entities are taken from. Required when `format` is `entity`.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * The dataset filtering the entities of the items, as a JSON encoded string.
+     */
+    dataset?: pulumi.Input<string>;
+    /**
+     * The default value of the items.
+     */
+    defaults?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The colors of the enum values.
+     */
+    enumColors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A jq query resolving the values the user can pick from.
+     */
+    enumJqQuery?: pulumi.Input<string>;
+    /**
+     * The values the user can pick from.
+     */
+    enums?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The format of each item.
+     */
+    format?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesBooleanProps {
+    /**
+     * The default of the boolean input.
+     */
+    default?: pulumi.Input<boolean>;
+    /**
+     * The default jq query of the boolean input.
+     */
+    defaultJqQuery?: pulumi.Input<string>;
+    /**
+     * The inputs this input depends on.
+     */
+    dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The description of the boolean input.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Greys out the boolean input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `readOnly` to keep the value in the submission.
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * The disabled condition jq query of the boolean input.
+     */
+    disabledJqQuery?: pulumi.Input<string>;
+    /**
+     * The icon of the boolean input.
+     */
+    icon?: pulumi.Input<string>;
+    /**
+     * Shows the value of the boolean input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * The read only condition jq query of the boolean input.
+     */
+    readOnlyJqQuery?: pulumi.Input<string>;
+    /**
+     * Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `requiredJqQuery`.
+     */
+    required?: pulumi.Input<boolean>;
+    /**
+     * The title of the boolean input.
+     */
+    title?: pulumi.Input<string>;
+    /**
+     * The visibility of the boolean input.
+     */
+    visible?: pulumi.Input<boolean>;
+    /**
+     * The visibility condition jq query of the boolean input.
+     */
+    visibleJqQuery?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesNumberProps {
+    /**
+     * The default of the number input.
+     */
+    default?: pulumi.Input<number>;
+    /**
+     * The default jq query of the number input.
+     */
+    defaultJqQuery?: pulumi.Input<string>;
+    /**
+     * The inputs this input depends on.
+     */
+    dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The description of the number input.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Greys out the number input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `readOnly` to keep the value in the submission.
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * The disabled condition jq query of the number input.
+     */
+    disabledJqQuery?: pulumi.Input<string>;
+    /**
+     * A jq query resolving the values the user can pick from.
+     */
+    enumJqQuery?: pulumi.Input<string>;
+    /**
+     * The values the user can pick from.
+     */
+    enums?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The value the input has to be strictly smaller than.
+     */
+    exclusiveMaximum?: pulumi.Input<number>;
+    /**
+     * The value the input has to be strictly greater than.
+     */
+    exclusiveMinimum?: pulumi.Input<number>;
+    /**
+     * The icon of the number input.
+     */
+    icon?: pulumi.Input<string>;
+    /**
+     * The largest value the input accepts.
+     */
+    maximum?: pulumi.Input<number>;
+    /**
+     * The smallest value the input accepts.
+     */
+    minimum?: pulumi.Input<number>;
+    /**
+     * Shows the value of the number input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * The read only condition jq query of the number input.
+     */
+    readOnlyJqQuery?: pulumi.Input<string>;
+    /**
+     * Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `requiredJqQuery`.
+     */
+    required?: pulumi.Input<boolean>;
+    /**
+     * The title of the number input.
+     */
+    title?: pulumi.Input<string>;
+    /**
+     * The visibility of the number input.
+     */
+    visible?: pulumi.Input<boolean>;
+    /**
+     * The visibility condition jq query of the number input.
+     */
+    visibleJqQuery?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesObjectProps {
+    /**
+     * The default of the object input, as a JSON encoded string.
+     */
+    default?: pulumi.Input<string>;
+    /**
+     * The default jq query of the object input.
+     */
+    defaultJqQuery?: pulumi.Input<string>;
+    /**
+     * The inputs this input depends on.
+     */
+    dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The description of the object input.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Greys out the object input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `readOnly` to keep the value in the submission.
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * The disabled condition jq query of the object input.
+     */
+    disabledJqQuery?: pulumi.Input<string>;
+    /**
+     * The format of the object input. `labeled-url` renders a url with a display text. Leave it out for a free form object.
+     */
+    format?: pulumi.Input<string>;
+    /**
+     * The icon of the object input.
+     */
+    icon?: pulumi.Input<string>;
+    /**
+     * Shows the value of the object input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * The read only condition jq query of the object input.
+     */
+    readOnlyJqQuery?: pulumi.Input<string>;
+    /**
+     * Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `requiredJqQuery`.
+     */
+    required?: pulumi.Input<boolean>;
+    /**
+     * The title of the object input.
+     */
+    title?: pulumi.Input<string>;
+    /**
+     * The visibility of the object input.
+     */
+    visible?: pulumi.Input<boolean>;
+    /**
+     * The visibility condition jq query of the object input.
+     */
+    visibleJqQuery?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringProps {
+    /**
+     * The blueprint the entities are taken from. Required when `format` is `entity`.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * The dataset filtering the entities the user can pick from.
+     */
+    dataset?: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDataset>;
+    /**
+     * The default of the string input.
+     */
+    default?: pulumi.Input<string>;
+    /**
+     * The default jq query of the string input.
+     */
+    defaultJqQuery?: pulumi.Input<string>;
+    /**
+     * The inputs this input depends on.
+     */
+    dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The description of the string input.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Greys out the string input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `readOnly` to keep the value in the submission.
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * The disabled condition jq query of the string input.
+     */
+    disabledJqQuery?: pulumi.Input<string>;
+    /**
+     * The colors of the enum values.
+     */
+    enumColors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A jq query resolving the values the user can pick from.
+     */
+    enumJqQuery?: pulumi.Input<string>;
+    /**
+     * The values the user can pick from.
+     */
+    enums?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The format of the string input.
+     */
+    format?: pulumi.Input<string>;
+    /**
+     * The icon of the string input.
+     */
+    icon?: pulumi.Input<string>;
+    /**
+     * The max length of the string input.
+     */
+    maxLength?: pulumi.Input<number>;
+    /**
+     * The min length of the string input.
+     */
+    minLength?: pulumi.Input<number>;
+    /**
+     * The regex pattern the value has to match.
+     */
+    pattern?: pulumi.Input<string>;
+    /**
+     * A jq query resolving the pattern of the string input, either a regex string or a list of allowed values.
+     */
+    patternJqQuery?: pulumi.Input<string>;
+    /**
+     * Shows the value of the string input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * The read only condition jq query of the string input.
+     */
+    readOnlyJqQuery?: pulumi.Input<string>;
+    /**
+     * Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `requiredJqQuery`.
+     */
+    required?: pulumi.Input<boolean>;
+    /**
+     * How the entities are sorted in the form.
+     */
+    sort?: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsSort>;
+    /**
+     * The title of the string input.
+     */
+    title?: pulumi.Input<string>;
+    /**
+     * The visibility of the string input.
+     */
+    visible?: pulumi.Input<boolean>;
+    /**
+     * The visibility condition jq query of the string input.
+     */
+    visibleJqQuery?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDataset {
+    /**
+     * How the rules are combined.
+     */
+    combinator: pulumi.Input<string>;
+    /**
+     * The rules of the dataset. A rule either filters on a property or groups nested rules under a combinator.
+     */
+    rules: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule>[]>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule>[]>;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleValue>;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule>[]>;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleValue>;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule>[]>;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValue>;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule>[]>;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue>;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule>[]>;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue>;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule>[]>;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue>;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule>[]>;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue>;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule>[]>;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue>;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule>[]>;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue>;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule>[]>;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue>;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue>;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsSort {
+    /**
+     * The order to sort the entities in.
+     */
+    order?: pulumi.Input<string>;
+    /**
+     * The property to sort the entities by.
+     */
+    property: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeInputUserInputsValidation {
+    /**
+     * A jq expression that has to evaluate to `true` for the form to be valid.
+     */
+    constraint: pulumi.Input<string>;
+    /**
+     * The error message shown when the constraint evaluates to `false` (max 100 characters).
+     */
+    message: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeIntegrationAction {
+    /**
+     * The integration action execution properties as a JSON encoded string.
+     */
+    executionProperties?: pulumi.Input<string>;
+    /**
+     * The installation id of the integration.
+     */
+    installationId?: pulumi.Input<string>;
+    /**
+     * The invocation type of the integration action.
+     */
+    integrationInvocationType?: pulumi.Input<string>;
+    /**
+     * The provider of the integration action.
+     */
+    integrationProvider?: pulumi.Input<string>;
+    /**
+     * The action to take if the node fails. One of `continue`, `terminate`.
+     */
+    onFailure?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeKafka {
+    /**
+     * The action to take if the node fails. One of `continue`, `terminate`.
+     */
+    onFailure?: pulumi.Input<string>;
+    /**
+     * The Kafka message payload as a JSON encoded string.
+     */
+    payload?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeScheduleTrigger {
+    /**
+     * The cron expression defining when the workflow triggers (e.g. `0 9 * * 1-5`), evaluated in UTC.
+     */
+    cron?: pulumi.Input<string>;
+    /**
+     * Whether the trigger is published.
+     */
+    published?: pulumi.Input<boolean>;
+}
+
+export interface WorkflowNodeSelfServeTrigger {
+    /**
+     * The text of the button displayed on the self service card (max 15 characters).
+     */
+    actionCardButtonText?: pulumi.Input<string>;
+    /**
+     * Where the trigger is surfaced in the UI.
+     */
+    contexts?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeSelfServeTriggerContext>[]>;
+    /**
+     * The text of the button that executes the workflow (max 15 characters).
+     */
+    executeActionButtonText?: pulumi.Input<string>;
+    /**
+     * Who is allowed to execute this trigger.
+     */
+    permissions?: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerPermissions>;
+    /**
+     * Whether the trigger is published.
+     */
+    published?: pulumi.Input<boolean>;
+    /**
+     * The form presented to the user when triggering the workflow.
+     */
+    userInputs?: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputs>;
+    /**
+     * The trigger variant. One of `DEFAULT`, `ALERT`.
+     */
+    variant?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerContext {
+    /**
+     * The blueprint the trigger creates an entity for. Required when `on` is `CREATE_ENTITY`.
+     */
+    blueprintIdentifier?: pulumi.Input<string>;
+    /**
+     * The context type. One of `CREATE_ENTITY`, `ENTITY`.
+     */
+    on: pulumi.Input<string>;
+    /**
+     * The user input the trigger is bound to. Required when `on` is `ENTITY`.
+     */
+    userInput?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerPermissions {
+    /**
+     * A JSON encoded RBAC query that dynamically resolves who is permitted, of the form `{"combinator":"and","rules":[{"property":{"context":"user","property":"department"},"operator":"=","value":"engineering"}]}`. `context` is one of `user`, `userTeams`, `form`, `workflowRun`.
+     */
+    policy?: pulumi.Input<string>;
+    /**
+     * The roles the permission applies to.
+     */
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The identifiers of the teams the permission applies to. They must exist in the organization.
+     */
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The emails of the users the permission applies to. They must exist in the organization.
+     */
+    users?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputs {
+    /**
+     * The order the inputs are rendered in. Cannot be combined with `steps`.
+     */
+    orderProperties?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A jq query resolving which inputs are required.
+     */
+    requiredJqQuery?: pulumi.Input<string>;
+    /**
+     * Splits the form into steps. Cannot be combined with `orderProperties`.
+     */
+    steps?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsStep>[]>;
+    /**
+     * Static titles rendered between the inputs of the form.
+     */
+    titles?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsTitles>}>;
+    /**
+     * The user inputs the form collects.
+     */
+    userProperties?: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserProperties>;
+    /**
+     * Validation rules evaluated against the whole form when it is submitted. Cannot be combined with `steps`, add the rules to the individual steps instead. Up to 10 rules are allowed.
+     */
+    validations?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsValidation>[]>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsStep {
+    /**
+     * The order of the inputs in this step.
+     */
+    orders: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The step's title (max 25 characters).
+     */
+    title: pulumi.Input<string>;
+    /**
+     * Validation rules evaluated when the step is submitted. Up to 10 rules are allowed.
+     */
+    validations?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsStepValidation>[]>;
+    /**
+     * The visibility of the step.
+     */
+    visible?: pulumi.Input<boolean>;
+    /**
+     * The visibility condition jq query of the step.
+     */
+    visibleJqQuery?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsStepValidation {
+    /**
+     * A jq expression that has to evaluate to `true` for the form to be valid.
+     */
+    constraint: pulumi.Input<string>;
+    /**
+     * The error message shown when the constraint evaluates to `false` (max 100 characters).
+     */
+    message: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsTitles {
+    /**
+     * The title description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The title text.
+     */
+    title: pulumi.Input<string>;
+    /**
+     * The visibility of the title.
+     */
+    visible?: pulumi.Input<boolean>;
+    /**
+     * The visibility condition jq query of the title.
+     */
+    visibleJqQuery?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserProperties {
+    /**
+     * The array inputs of the form.
+     */
+    arrayProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayProps>}>;
+    /**
+     * The boolean inputs of the form.
+     */
+    booleanProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesBooleanProps>}>;
+    /**
+     * The number inputs of the form.
+     */
+    numberProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesNumberProps>}>;
+    /**
+     * The object inputs of the form.
+     */
+    objectProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectProps>}>;
+    /**
+     * The string inputs of the form.
+     */
+    stringProps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps>}>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayProps {
+    /**
+     * The default jq query of the array input.
+     */
+    defaultJqQuery?: pulumi.Input<string>;
+    /**
+     * The inputs this input depends on.
+     */
+    dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The description of the array input.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Greys out the array input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `readOnly` to keep the value in the submission.
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * The disabled condition jq query of the array input.
+     */
+    disabledJqQuery?: pulumi.Input<string>;
+    /**
+     * The icon of the array input.
+     */
+    icon?: pulumi.Input<string>;
+    /**
+     * The max items of the array input.
+     */
+    maxItems?: pulumi.Input<number>;
+    /**
+     * The max items jq query of the array input.
+     */
+    maxItemsJqQuery?: pulumi.Input<string>;
+    /**
+     * The min items of the array input.
+     */
+    minItems?: pulumi.Input<number>;
+    /**
+     * The min items jq query of the array input.
+     */
+    minItemsJqQuery?: pulumi.Input<string>;
+    /**
+     * The number items of the array input.
+     */
+    numberItems?: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsNumberItems>;
+    /**
+     * The object items of the array input.
+     */
+    objectItems?: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItems>;
+    /**
+     * Shows the value of the array input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * The read only condition jq query of the array input.
+     */
+    readOnlyJqQuery?: pulumi.Input<string>;
+    /**
+     * Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `requiredJqQuery`.
+     */
+    required?: pulumi.Input<boolean>;
+    /**
+     * How the entities are sorted in the form.
+     */
+    sort?: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsSort>;
+    /**
+     * The string items of the array input.
+     */
+    stringItems?: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsStringItems>;
+    /**
+     * The title of the array input.
+     */
+    title?: pulumi.Input<string>;
+    /**
+     * Whether the values of the array have to be unique.
+     */
+    uniqueItems?: pulumi.Input<boolean>;
+    /**
+     * The visibility of the array input.
+     */
+    visible?: pulumi.Input<boolean>;
+    /**
+     * The visibility condition jq query of the array input.
+     */
+    visibleJqQuery?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsNumberItems {
+    /**
+     * The default value of the items.
+     */
+    defaults?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The colors of the enum values.
+     */
+    enumColors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A jq query resolving the values the user can pick from.
+     */
+    enumJqQuery?: pulumi.Input<string>;
+    /**
+     * The values the user can pick from.
+     */
+    enums?: pulumi.Input<pulumi.Input<number>[]>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItems {
+    /**
+     * The default value of the items.
+     */
+    defaults?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    /**
+     * The format of each item.
+     */
+    format?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsSort {
+    /**
+     * The order to sort the entities in.
+     */
+    order?: pulumi.Input<string>;
+    /**
+     * The property to sort the entities by.
+     */
+    property: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsStringItems {
+    /**
+     * The blueprint the entities are taken from. Required when `format` is `entity`.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * The dataset filtering the entities of the items, as a JSON encoded string.
+     */
+    dataset?: pulumi.Input<string>;
+    /**
+     * The default value of the items.
+     */
+    defaults?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The colors of the enum values.
+     */
+    enumColors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A jq query resolving the values the user can pick from.
+     */
+    enumJqQuery?: pulumi.Input<string>;
+    /**
+     * The values the user can pick from.
+     */
+    enums?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The format of each item.
+     */
+    format?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesBooleanProps {
+    /**
+     * The default of the boolean input.
+     */
+    default?: pulumi.Input<boolean>;
+    /**
+     * The default jq query of the boolean input.
+     */
+    defaultJqQuery?: pulumi.Input<string>;
+    /**
+     * The inputs this input depends on.
+     */
+    dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The description of the boolean input.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Greys out the boolean input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `readOnly` to keep the value in the submission.
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * The disabled condition jq query of the boolean input.
+     */
+    disabledJqQuery?: pulumi.Input<string>;
+    /**
+     * The icon of the boolean input.
+     */
+    icon?: pulumi.Input<string>;
+    /**
+     * Shows the value of the boolean input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * The read only condition jq query of the boolean input.
+     */
+    readOnlyJqQuery?: pulumi.Input<string>;
+    /**
+     * Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `requiredJqQuery`.
+     */
+    required?: pulumi.Input<boolean>;
+    /**
+     * The title of the boolean input.
+     */
+    title?: pulumi.Input<string>;
+    /**
+     * The visibility of the boolean input.
+     */
+    visible?: pulumi.Input<boolean>;
+    /**
+     * The visibility condition jq query of the boolean input.
+     */
+    visibleJqQuery?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesNumberProps {
+    /**
+     * The default of the number input.
+     */
+    default?: pulumi.Input<number>;
+    /**
+     * The default jq query of the number input.
+     */
+    defaultJqQuery?: pulumi.Input<string>;
+    /**
+     * The inputs this input depends on.
+     */
+    dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The description of the number input.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Greys out the number input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `readOnly` to keep the value in the submission.
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * The disabled condition jq query of the number input.
+     */
+    disabledJqQuery?: pulumi.Input<string>;
+    /**
+     * A jq query resolving the values the user can pick from.
+     */
+    enumJqQuery?: pulumi.Input<string>;
+    /**
+     * The values the user can pick from.
+     */
+    enums?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The value the input has to be strictly smaller than.
+     */
+    exclusiveMaximum?: pulumi.Input<number>;
+    /**
+     * The value the input has to be strictly greater than.
+     */
+    exclusiveMinimum?: pulumi.Input<number>;
+    /**
+     * The icon of the number input.
+     */
+    icon?: pulumi.Input<string>;
+    /**
+     * The largest value the input accepts.
+     */
+    maximum?: pulumi.Input<number>;
+    /**
+     * The smallest value the input accepts.
+     */
+    minimum?: pulumi.Input<number>;
+    /**
+     * Shows the value of the number input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * The read only condition jq query of the number input.
+     */
+    readOnlyJqQuery?: pulumi.Input<string>;
+    /**
+     * Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `requiredJqQuery`.
+     */
+    required?: pulumi.Input<boolean>;
+    /**
+     * The title of the number input.
+     */
+    title?: pulumi.Input<string>;
+    /**
+     * The visibility of the number input.
+     */
+    visible?: pulumi.Input<boolean>;
+    /**
+     * The visibility condition jq query of the number input.
+     */
+    visibleJqQuery?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectProps {
+    /**
+     * The default of the object input, as a JSON encoded string.
+     */
+    default?: pulumi.Input<string>;
+    /**
+     * The default jq query of the object input.
+     */
+    defaultJqQuery?: pulumi.Input<string>;
+    /**
+     * The inputs this input depends on.
+     */
+    dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The description of the object input.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Greys out the object input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `readOnly` to keep the value in the submission.
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * The disabled condition jq query of the object input.
+     */
+    disabledJqQuery?: pulumi.Input<string>;
+    /**
+     * The format of the object input. `labeled-url` renders a url with a display text. Leave it out for a free form object.
+     */
+    format?: pulumi.Input<string>;
+    /**
+     * The icon of the object input.
+     */
+    icon?: pulumi.Input<string>;
+    /**
+     * Shows the value of the object input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * The read only condition jq query of the object input.
+     */
+    readOnlyJqQuery?: pulumi.Input<string>;
+    /**
+     * Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `requiredJqQuery`.
+     */
+    required?: pulumi.Input<boolean>;
+    /**
+     * The title of the object input.
+     */
+    title?: pulumi.Input<string>;
+    /**
+     * The visibility of the object input.
+     */
+    visible?: pulumi.Input<boolean>;
+    /**
+     * The visibility condition jq query of the object input.
+     */
+    visibleJqQuery?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps {
+    /**
+     * The blueprint the entities are taken from. Required when `format` is `entity`.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * The dataset filtering the entities the user can pick from.
+     */
+    dataset?: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDataset>;
+    /**
+     * The default of the string input.
+     */
+    default?: pulumi.Input<string>;
+    /**
+     * The default jq query of the string input.
+     */
+    defaultJqQuery?: pulumi.Input<string>;
+    /**
+     * The inputs this input depends on.
+     */
+    dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The description of the string input.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Greys out the string input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `readOnly` to keep the value in the submission.
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * The disabled condition jq query of the string input.
+     */
+    disabledJqQuery?: pulumi.Input<string>;
+    /**
+     * The colors of the enum values.
+     */
+    enumColors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A jq query resolving the values the user can pick from.
+     */
+    enumJqQuery?: pulumi.Input<string>;
+    /**
+     * The values the user can pick from.
+     */
+    enums?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The format of the string input.
+     */
+    format?: pulumi.Input<string>;
+    /**
+     * The icon of the string input.
+     */
+    icon?: pulumi.Input<string>;
+    /**
+     * The max length of the string input.
+     */
+    maxLength?: pulumi.Input<number>;
+    /**
+     * The min length of the string input.
+     */
+    minLength?: pulumi.Input<number>;
+    /**
+     * The regex pattern the value has to match.
+     */
+    pattern?: pulumi.Input<string>;
+    /**
+     * A jq query resolving the pattern of the string input, either a regex string or a list of allowed values.
+     */
+    patternJqQuery?: pulumi.Input<string>;
+    /**
+     * Shows the value of the string input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * The read only condition jq query of the string input.
+     */
+    readOnlyJqQuery?: pulumi.Input<string>;
+    /**
+     * Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `requiredJqQuery`.
+     */
+    required?: pulumi.Input<boolean>;
+    /**
+     * How the entities are sorted in the form.
+     */
+    sort?: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsSort>;
+    /**
+     * The title of the string input.
+     */
+    title?: pulumi.Input<string>;
+    /**
+     * The visibility of the string input.
+     */
+    visible?: pulumi.Input<boolean>;
+    /**
+     * The visibility condition jq query of the string input.
+     */
+    visibleJqQuery?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDataset {
+    /**
+     * How the rules are combined.
+     */
+    combinator: pulumi.Input<string>;
+    /**
+     * The rules of the dataset. A rule either filters on a property or groups nested rules under a combinator.
+     */
+    rules: pulumi.Input<pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule>[]>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRule>[]>;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleValue>;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRule>[]>;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleValue>;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule>[]>;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValue>;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule>[]>;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue>;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule>[]>;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue>;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule>[]>;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue>;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule>[]>;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue>;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule>[]>;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue>;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule>[]>;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue>;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule>[]>;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue>;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: pulumi.Input<string>;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: pulumi.Input<string>;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: pulumi.Input<string>;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: pulumi.Input<string>;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue>;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleValue {
+    jqQuery: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsSort {
+    /**
+     * The order to sort the entities in.
+     */
+    order?: pulumi.Input<string>;
+    /**
+     * The property to sort the entities by.
+     */
+    property: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsValidation {
+    /**
+     * A jq expression that has to evaluate to `true` for the form to be valid.
+     */
+    constraint: pulumi.Input<string>;
+    /**
+     * The error message shown when the constraint evaluates to `false` (max 100 characters).
+     */
+    message: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeUpsertEntity {
+    /**
+     * The identifier of the blueprint to upsert into.
+     */
+    blueprintIdentifier?: pulumi.Input<string>;
+    /**
+     * The entity fields to upsert.
+     */
+    mapping?: pulumi.Input<inputs.WorkflowNodeUpsertEntityMapping>;
+    /**
+     * The action to take if the node fails. One of `continue`, `terminate`.
+     */
+    onFailure?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeUpsertEntityMapping {
+    /**
+     * The icon of the entity to upsert.
+     */
+    icon?: pulumi.Input<string>;
+    /**
+     * The identifier of the entity to upsert.
+     */
+    identifier?: pulumi.Input<string>;
+    /**
+     * The properties of the entity as a JSON encoded string.
+     */
+    properties?: pulumi.Input<string>;
+    /**
+     * The relations of the entity as a JSON encoded string.
+     */
+    relations?: pulumi.Input<string>;
+    /**
+     * The teams of the entity to upsert. Values may contain `{{ }}` template expressions that are resolved when the node runs.
+     */
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The title of the entity to upsert.
+     */
+    title?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeWebhook {
+    /**
+     * Whether the request is routed through the Port agent.
+     */
+    agent?: pulumi.Input<boolean>;
+    /**
+     * The request body as a JSON encoded string.
+     */
+    body?: pulumi.Input<string>;
+    /**
+     * The HTTP headers of the request.
+     */
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The HTTP method. One of `GET`, `POST`, `PUT`, `PATCH`, `DELETE`.
+     */
+    method?: pulumi.Input<string>;
+    /**
+     * The action to take if the node fails. One of `continue`, `terminate`.
+     */
+    onFailure?: pulumi.Input<string>;
+    /**
+     * The action to take if the webhook times out. One of `fail`, `continue`.
+     */
+    onTimeout?: pulumi.Input<string>;
+    /**
+     * Whether the request is sent synchronously.
+     */
+    synchronized?: pulumi.Input<boolean>;
+    /**
+     * The URL of the webhook.
+     */
+    url?: pulumi.Input<string>;
 }
