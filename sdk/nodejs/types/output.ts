@@ -1422,6 +1422,10 @@ export interface BlueprintOwnership {
 
 export interface BlueprintPermissionsEntities {
     /**
+     * Manage permissions to read entities of the blueprint
+     */
+    read?: outputs.BlueprintPermissionsEntitiesRead;
+    /**
      * Manage permissions to register entities of the blueprint
      */
     register: outputs.BlueprintPermissionsEntitiesRegister;
@@ -1444,11 +1448,32 @@ export interface BlueprintPermissionsEntities {
     updateRelations?: {[key: string]: outputs.BlueprintPermissionsEntitiesUpdateRelations};
 }
 
+export interface BlueprintPermissionsEntitiesRead {
+    /**
+     * Owned by team
+     */
+    ownedByTeam: boolean;
+    policy?: string;
+    /**
+     * Roles with read permissions
+     */
+    roles?: string[];
+    /**
+     * Teams with read permissions
+     */
+    teams?: string[];
+    /**
+     * Users with read permissions
+     */
+    users?: string[];
+}
+
 export interface BlueprintPermissionsEntitiesRegister {
     /**
      * Owned by team
      */
     ownedByTeam: boolean;
+    policy?: string;
     /**
      * Roles with register permissions
      */
@@ -1468,6 +1493,7 @@ export interface BlueprintPermissionsEntitiesUnregister {
      * Owned by team
      */
     ownedByTeam: boolean;
+    policy?: string;
     /**
      * Roles with unregister permissions
      */
@@ -1487,6 +1513,7 @@ export interface BlueprintPermissionsEntitiesUpdate {
      * Owned by team
      */
     ownedByTeam: boolean;
+    policy?: string;
     /**
      * Roles with update permissions
      */
@@ -2648,5 +2675,2525 @@ export interface WebhookSecurity {
      * The signature prefix of the webhook
      */
     signaturePrefix?: string;
+}
+
+export interface WorkflowConnection {
+    /**
+     * The description of the connection
+     */
+    description?: string;
+    /**
+     * Marks this connection as the fallback branch of a `condition` node, taken when no outlet matches. Cannot be combined with `sourceOutletIdentifier`.
+     */
+    fallback?: boolean;
+    /**
+     * The identifier of the source node
+     */
+    sourceIdentifier: string;
+    /**
+     * The outlet of the source node this connection leaves from. Required for `condition` and `input` nodes, and not allowed for any other node type.
+     */
+    sourceOutletIdentifier?: string;
+    /**
+     * The identifier of the target node
+     */
+    targetIdentifier: string;
+}
+
+export interface WorkflowNode {
+    /**
+     * An AI node that runs a prompt through Port AI.
+     */
+    ai?: outputs.WorkflowNodeAi;
+    /**
+     * An AI agent node that invokes a configured Port AI agent.
+     */
+    aiAgent?: outputs.WorkflowNodeAiAgent;
+    /**
+     * A condition node that branches the workflow based on JQ expressions. Connections leaving this node must set `sourceOutletIdentifier` or `fallback`.
+     */
+    condition?: outputs.WorkflowNodeCondition;
+    /**
+     * The description of the node
+     */
+    description?: string;
+    /**
+     * An event trigger node that starts the workflow when an entity event occurs.
+     */
+    eventTrigger?: outputs.WorkflowNodeEventTrigger;
+    /**
+     * The icon of the node
+     */
+    icon?: string;
+    /**
+     * The identifier of the node
+     */
+    identifier: string;
+    /**
+     * An input node that pauses the workflow and waits for a human response. Connections leaving this node must set `sourceOutletIdentifier`.
+     */
+    input?: outputs.WorkflowNodeInput;
+    /**
+     * An integration action node that invokes an installed integration.
+     */
+    integrationAction?: outputs.WorkflowNodeIntegrationAction;
+    /**
+     * A Kafka node that publishes a message to the organization's Kafka topic.
+     */
+    kafka?: outputs.WorkflowNodeKafka;
+    /**
+     * Link templates (supporting `{{ .result.field }}` interpolation) evaluated when the node run completes (max 3)
+     */
+    links?: string[];
+    /**
+     * A schedule trigger node that starts the workflow on a cron schedule.
+     */
+    scheduleTrigger?: outputs.WorkflowNodeScheduleTrigger;
+    /**
+     * A self service trigger node that starts the workflow from a user submitted form.
+     */
+    selfServeTrigger?: outputs.WorkflowNodeSelfServeTrigger;
+    /**
+     * The title of the node
+     */
+    title?: string;
+    /**
+     * An upsert entity node that creates or updates an entity in the catalog.
+     */
+    upsertEntity?: outputs.WorkflowNodeUpsertEntity;
+    /**
+     * Named expressions made available to the node at run time
+     */
+    variables?: {[key: string]: string};
+    /**
+     * When true, the workflow service writes extended per-node run logs
+     */
+    verbose: boolean;
+    /**
+     * A webhook node that sends an HTTP request.
+     */
+    webhook?: outputs.WorkflowNodeWebhook;
+}
+
+export interface WorkflowNodeAi {
+    /**
+     * The MCP servers available to the AI node (max 5).
+     */
+    mcpServers?: outputs.WorkflowNodeAiMcpServer[];
+    /**
+     * The AI model to use. Must be set together with `provider`.
+     */
+    model?: string;
+    /**
+     * A JSON schema, encoded as a JSON string, the AI response is validated against.
+     */
+    outputSchema?: string;
+    /**
+     * The AI provider to use. Must be set together with `model`.
+     */
+    provider?: string;
+    /**
+     * Instructions describing the AI's role and operational rules.
+     */
+    systemPrompt: string;
+    /**
+     * Regex patterns matched against the available tool names.
+     */
+    tools?: string[];
+    /**
+     * The message or query processed by Port AI.
+     */
+    userPrompt?: string;
+}
+
+export interface WorkflowNodeAiAgent {
+    /**
+     * The identifier of the agent to invoke.
+     */
+    agentIdentifier?: string;
+    /**
+     * The AI model to use. Must be set together with `provider`.
+     */
+    model?: string;
+    /**
+     * A JSON schema, encoded as a JSON string, the agent response is validated against.
+     */
+    outputSchema?: string;
+    /**
+     * The AI provider to use. Must be set together with `model`.
+     */
+    provider?: string;
+    /**
+     * The message or query processed by the agent.
+     */
+    userPrompt?: string;
+}
+
+export interface WorkflowNodeAiMcpServer {
+    /**
+     * The identifier of the MCP server.
+     */
+    identifier: string;
+}
+
+export interface WorkflowNodeCondition {
+    /**
+     * The branches of the condition, evaluated in order.
+     */
+    outlets?: outputs.WorkflowNodeConditionOutlet[];
+}
+
+export interface WorkflowNodeConditionOutlet {
+    /**
+     * The JQ expression that selects this outlet.
+     */
+    expression: string;
+    /**
+     * The identifier of the outlet, referenced by a connection's `sourceOutletIdentifier`.
+     */
+    identifier: string;
+    /**
+     * A custom status label displayed on the node run.
+     */
+    statusLabel?: outputs.WorkflowNodeConditionOutletStatusLabel;
+    /**
+     * The title of the outlet.
+     */
+    title: string;
+    /**
+     * A custom status label displayed on the workflow run.
+     */
+    workflowStatusLabel?: outputs.WorkflowNodeConditionOutletWorkflowStatusLabel;
+}
+
+export interface WorkflowNodeConditionOutletStatusLabel {
+    /**
+     * The label text. Supports JQ expressions for dynamic content.
+     */
+    text?: string;
+    /**
+     * Semantic variant controlling the label color/style. One of `success`, `alert`.
+     */
+    variant?: string;
+}
+
+export interface WorkflowNodeConditionOutletWorkflowStatusLabel {
+    /**
+     * The label text. Supports JQ expressions for dynamic content.
+     */
+    text?: string;
+    /**
+     * Semantic variant controlling the label color/style. One of `success`, `alert`.
+     */
+    variant?: string;
+}
+
+export interface WorkflowNodeEventTrigger {
+    /**
+     * The blueprint identifier the event relates to.
+     */
+    blueprintIdentifier?: string;
+    /**
+     * A JQ condition gating whether the event starts the workflow.
+     */
+    condition?: outputs.WorkflowNodeEventTriggerCondition;
+    /**
+     * The property identifier the timer event relates to. Required for the `TIMER_EXPIRED` event type.
+     */
+    propertyIdentifier?: string;
+    /**
+     * Whether the trigger is published.
+     */
+    published: boolean;
+    /**
+     * The event type that triggers the workflow. One of `ENTITY_CREATED`, `ENTITY_UPDATED`, `ENTITY_DELETED`, `TIMER_EXPIRED`, `ANY_ENTITY_CHANGE`.
+     */
+    type?: string;
+}
+
+export interface WorkflowNodeEventTriggerCondition {
+    /**
+     * How the expressions are combined. One of `and`, `or`.
+     */
+    combinator?: string;
+    /**
+     * The JQ expressions evaluated against the event.
+     */
+    expressions?: string[];
+}
+
+export interface WorkflowNodeInput {
+    /**
+     * The description shown on the response form.
+     */
+    description?: string;
+    /**
+     * Notifications sent when the input node starts waiting.
+     */
+    notifications?: outputs.WorkflowNodeInputNotification[];
+    /**
+     * The branches of the input node, each bound to a button.
+     */
+    outlets?: outputs.WorkflowNodeInputOutlet[];
+    /**
+     * Who is allowed to respond to this input node.
+     */
+    responders?: outputs.WorkflowNodeInputResponders;
+    /**
+     * The form presented to the responders.
+     */
+    userInputs?: outputs.WorkflowNodeInputUserInputs;
+}
+
+export interface WorkflowNodeInputNotification {
+    /**
+     * Whether the webhook is routed through the Port agent.
+     */
+    agent?: boolean;
+    /**
+     * The webhook body as a JSON encoded string.
+     */
+    body?: string;
+    /**
+     * The fields rendered in the email notification. Only valid when `target` is `email`.
+     */
+    fields?: outputs.WorkflowNodeInputNotificationField[];
+    /**
+     * The webhook headers.
+     */
+    headers?: {[key: string]: string};
+    /**
+     * The webhook HTTP method. One of `GET`, `POST`, `PUT`, `PATCH`, `DELETE`.
+     */
+    method?: string;
+    /**
+     * The notification target. One of `email`, `webhook`.
+     */
+    target: string;
+    /**
+     * The webhook URL. Required when `target` is `webhook`.
+     */
+    url?: string;
+}
+
+export interface WorkflowNodeInputNotificationField {
+    /**
+     * The label of the field.
+     */
+    label: string;
+    /**
+     * The value of the field.
+     */
+    value: string;
+}
+
+export interface WorkflowNodeInputOutlet {
+    /**
+     * The identifier of the outlet. Must match a button identifier.
+     */
+    identifier: string;
+    /**
+     * How many responders must press the button before the workflow continues.
+     */
+    numOfResponders: number;
+    /**
+     * A custom status label displayed on the node run.
+     */
+    statusLabel?: outputs.WorkflowNodeInputOutletStatusLabel;
+    /**
+     * The title of the outlet.
+     */
+    title: string;
+    /**
+     * A custom status label displayed on the workflow run.
+     */
+    workflowStatusLabel?: outputs.WorkflowNodeInputOutletWorkflowStatusLabel;
+}
+
+export interface WorkflowNodeInputOutletStatusLabel {
+    /**
+     * The label text. Supports JQ expressions for dynamic content.
+     */
+    text?: string;
+    /**
+     * Semantic variant controlling the label color/style. One of `success`, `alert`.
+     */
+    variant?: string;
+}
+
+export interface WorkflowNodeInputOutletWorkflowStatusLabel {
+    /**
+     * The label text. Supports JQ expressions for dynamic content.
+     */
+    text?: string;
+    /**
+     * Semantic variant controlling the label color/style. One of `success`, `alert`.
+     */
+    variant?: string;
+}
+
+export interface WorkflowNodeInputResponders {
+    /**
+     * The roles allowed to respond.
+     */
+    roles?: string[];
+    /**
+     * The identifiers of the teams allowed to respond. They must exist in the organization.
+     */
+    teams?: string[];
+    /**
+     * The emails of the users allowed to respond. They must exist in the organization.
+     */
+    users?: string[];
+    /**
+     * A JSON encoded entity search query, run against the `_user` blueprint, resolving additional responders.
+     */
+    usersQuery?: string;
+}
+
+export interface WorkflowNodeInputUserInputs {
+    /**
+     * The buttons rendered on the response form. Each outlet must reference one of these identifiers.
+     */
+    buttons?: outputs.WorkflowNodeInputUserInputsButton[];
+    /**
+     * The order the inputs are rendered in. Cannot be combined with `steps`.
+     */
+    orderProperties?: string[];
+    /**
+     * A jq query resolving which inputs are required.
+     */
+    requiredJqQuery?: string;
+    /**
+     * Splits the form into steps. Cannot be combined with `orderProperties`.
+     */
+    steps?: outputs.WorkflowNodeInputUserInputsStep[];
+    /**
+     * Static titles rendered between the inputs of the form.
+     */
+    titles?: {[key: string]: outputs.WorkflowNodeInputUserInputsTitles};
+    /**
+     * The user inputs the form collects.
+     */
+    userProperties?: outputs.WorkflowNodeInputUserInputsUserProperties;
+    /**
+     * Validation rules evaluated against the whole form when it is submitted. Cannot be combined with `steps`, add the rules to the individual steps instead. Up to 10 rules are allowed.
+     */
+    validations?: outputs.WorkflowNodeInputUserInputsValidation[];
+}
+
+export interface WorkflowNodeInputUserInputsButton {
+    /**
+     * The icon of the button.
+     */
+    icon?: string;
+    /**
+     * The identifier of the button.
+     */
+    identifier: string;
+    /**
+     * The label of the button.
+     */
+    label: string;
+    /**
+     * The button variant. One of `PRIMARY`, `SECONDARY`, `DANGER`.
+     */
+    variant: string;
+}
+
+export interface WorkflowNodeInputUserInputsStep {
+    /**
+     * The order of the inputs in this step.
+     */
+    orders: string[];
+    /**
+     * The step's title (max 25 characters).
+     */
+    title: string;
+    /**
+     * Validation rules evaluated when the step is submitted. Up to 10 rules are allowed.
+     */
+    validations?: outputs.WorkflowNodeInputUserInputsStepValidation[];
+    /**
+     * The visibility of the step.
+     */
+    visible?: boolean;
+    /**
+     * The visibility condition jq query of the step.
+     */
+    visibleJqQuery?: string;
+}
+
+export interface WorkflowNodeInputUserInputsStepValidation {
+    /**
+     * A jq expression that has to evaluate to `true` for the form to be valid.
+     */
+    constraint: string;
+    /**
+     * The error message shown when the constraint evaluates to `false` (max 100 characters).
+     */
+    message: string;
+}
+
+export interface WorkflowNodeInputUserInputsTitles {
+    /**
+     * The title description.
+     */
+    description?: string;
+    /**
+     * The title text.
+     */
+    title: string;
+    /**
+     * The visibility of the title.
+     */
+    visible?: boolean;
+    /**
+     * The visibility condition jq query of the title.
+     */
+    visibleJqQuery?: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserProperties {
+    /**
+     * The array inputs of the form.
+     */
+    arrayProps?: {[key: string]: outputs.WorkflowNodeInputUserInputsUserPropertiesArrayProps};
+    /**
+     * The boolean inputs of the form.
+     */
+    booleanProps?: {[key: string]: outputs.WorkflowNodeInputUserInputsUserPropertiesBooleanProps};
+    /**
+     * The number inputs of the form.
+     */
+    numberProps?: {[key: string]: outputs.WorkflowNodeInputUserInputsUserPropertiesNumberProps};
+    /**
+     * The object inputs of the form.
+     */
+    objectProps?: {[key: string]: outputs.WorkflowNodeInputUserInputsUserPropertiesObjectProps};
+    /**
+     * The string inputs of the form.
+     */
+    stringProps?: {[key: string]: outputs.WorkflowNodeInputUserInputsUserPropertiesStringProps};
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesArrayProps {
+    /**
+     * The default jq query of the array input.
+     */
+    defaultJqQuery?: string;
+    /**
+     * The inputs this input depends on.
+     */
+    dependsOns?: string[];
+    /**
+     * The description of the array input.
+     */
+    description?: string;
+    /**
+     * Greys out the array input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `readOnly` to keep the value in the submission.
+     */
+    disabled?: boolean;
+    /**
+     * The disabled condition jq query of the array input.
+     */
+    disabledJqQuery?: string;
+    /**
+     * The icon of the array input.
+     */
+    icon?: string;
+    /**
+     * The max items of the array input.
+     */
+    maxItems?: number;
+    /**
+     * The max items jq query of the array input.
+     */
+    maxItemsJqQuery?: string;
+    /**
+     * The min items of the array input.
+     */
+    minItems?: number;
+    /**
+     * The min items jq query of the array input.
+     */
+    minItemsJqQuery?: string;
+    /**
+     * The number items of the array input.
+     */
+    numberItems?: outputs.WorkflowNodeInputUserInputsUserPropertiesArrayPropsNumberItems;
+    /**
+     * The object items of the array input.
+     */
+    objectItems?: outputs.WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItems;
+    /**
+     * Shows the value of the array input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+     */
+    readOnly?: boolean;
+    /**
+     * The read only condition jq query of the array input.
+     */
+    readOnlyJqQuery?: string;
+    /**
+     * Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `requiredJqQuery`.
+     */
+    required?: boolean;
+    /**
+     * How the entities are sorted in the form.
+     */
+    sort?: outputs.WorkflowNodeInputUserInputsUserPropertiesArrayPropsSort;
+    /**
+     * The string items of the array input.
+     */
+    stringItems?: outputs.WorkflowNodeInputUserInputsUserPropertiesArrayPropsStringItems;
+    /**
+     * The title of the array input.
+     */
+    title?: string;
+    /**
+     * Whether the values of the array have to be unique.
+     */
+    uniqueItems?: boolean;
+    /**
+     * The visibility of the array input.
+     */
+    visible?: boolean;
+    /**
+     * The visibility condition jq query of the array input.
+     */
+    visibleJqQuery?: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesArrayPropsNumberItems {
+    /**
+     * The default value of the items.
+     */
+    defaults?: number[];
+    /**
+     * The colors of the enum values.
+     */
+    enumColors?: {[key: string]: string};
+    /**
+     * A jq query resolving the values the user can pick from.
+     */
+    enumJqQuery?: string;
+    /**
+     * The values the user can pick from.
+     */
+    enums?: number[];
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItems {
+    /**
+     * The default value of the items.
+     */
+    defaults?: {[key: string]: string}[];
+    /**
+     * The format of each item.
+     */
+    format?: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesArrayPropsSort {
+    /**
+     * The order to sort the entities in.
+     */
+    order: string;
+    /**
+     * The property to sort the entities by.
+     */
+    property: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesArrayPropsStringItems {
+    /**
+     * The blueprint the entities are taken from. Required when `format` is `entity`.
+     */
+    blueprint?: string;
+    /**
+     * The dataset filtering the entities of the items, as a JSON encoded string.
+     */
+    dataset?: string;
+    /**
+     * The default value of the items.
+     */
+    defaults?: string[];
+    /**
+     * The colors of the enum values.
+     */
+    enumColors?: {[key: string]: string};
+    /**
+     * A jq query resolving the values the user can pick from.
+     */
+    enumJqQuery?: string;
+    /**
+     * The values the user can pick from.
+     */
+    enums?: string[];
+    /**
+     * The format of each item.
+     */
+    format?: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesBooleanProps {
+    /**
+     * The default of the boolean input.
+     */
+    default?: boolean;
+    /**
+     * The default jq query of the boolean input.
+     */
+    defaultJqQuery?: string;
+    /**
+     * The inputs this input depends on.
+     */
+    dependsOns?: string[];
+    /**
+     * The description of the boolean input.
+     */
+    description?: string;
+    /**
+     * Greys out the boolean input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `readOnly` to keep the value in the submission.
+     */
+    disabled?: boolean;
+    /**
+     * The disabled condition jq query of the boolean input.
+     */
+    disabledJqQuery?: string;
+    /**
+     * The icon of the boolean input.
+     */
+    icon?: string;
+    /**
+     * Shows the value of the boolean input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+     */
+    readOnly?: boolean;
+    /**
+     * The read only condition jq query of the boolean input.
+     */
+    readOnlyJqQuery?: string;
+    /**
+     * Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `requiredJqQuery`.
+     */
+    required?: boolean;
+    /**
+     * The title of the boolean input.
+     */
+    title?: string;
+    /**
+     * The visibility of the boolean input.
+     */
+    visible?: boolean;
+    /**
+     * The visibility condition jq query of the boolean input.
+     */
+    visibleJqQuery?: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesNumberProps {
+    /**
+     * The default of the number input.
+     */
+    default?: number;
+    /**
+     * The default jq query of the number input.
+     */
+    defaultJqQuery?: string;
+    /**
+     * The inputs this input depends on.
+     */
+    dependsOns?: string[];
+    /**
+     * The description of the number input.
+     */
+    description?: string;
+    /**
+     * Greys out the number input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `readOnly` to keep the value in the submission.
+     */
+    disabled?: boolean;
+    /**
+     * The disabled condition jq query of the number input.
+     */
+    disabledJqQuery?: string;
+    /**
+     * A jq query resolving the values the user can pick from.
+     */
+    enumJqQuery?: string;
+    /**
+     * The values the user can pick from.
+     */
+    enums?: number[];
+    /**
+     * The value the input has to be strictly smaller than.
+     */
+    exclusiveMaximum?: number;
+    /**
+     * The value the input has to be strictly greater than.
+     */
+    exclusiveMinimum?: number;
+    /**
+     * The icon of the number input.
+     */
+    icon?: string;
+    /**
+     * The largest value the input accepts.
+     */
+    maximum?: number;
+    /**
+     * The smallest value the input accepts.
+     */
+    minimum?: number;
+    /**
+     * Shows the value of the number input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+     */
+    readOnly?: boolean;
+    /**
+     * The read only condition jq query of the number input.
+     */
+    readOnlyJqQuery?: string;
+    /**
+     * Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `requiredJqQuery`.
+     */
+    required?: boolean;
+    /**
+     * The title of the number input.
+     */
+    title?: string;
+    /**
+     * The visibility of the number input.
+     */
+    visible?: boolean;
+    /**
+     * The visibility condition jq query of the number input.
+     */
+    visibleJqQuery?: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesObjectProps {
+    /**
+     * The default of the object input, as a JSON encoded string.
+     */
+    default?: string;
+    /**
+     * The default jq query of the object input.
+     */
+    defaultJqQuery?: string;
+    /**
+     * The inputs this input depends on.
+     */
+    dependsOns?: string[];
+    /**
+     * The description of the object input.
+     */
+    description?: string;
+    /**
+     * Greys out the object input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `readOnly` to keep the value in the submission.
+     */
+    disabled?: boolean;
+    /**
+     * The disabled condition jq query of the object input.
+     */
+    disabledJqQuery?: string;
+    /**
+     * The format of the object input. `labeled-url` renders a url with a display text. Leave it out for a free form object.
+     */
+    format?: string;
+    /**
+     * The icon of the object input.
+     */
+    icon?: string;
+    /**
+     * Shows the value of the object input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+     */
+    readOnly?: boolean;
+    /**
+     * The read only condition jq query of the object input.
+     */
+    readOnlyJqQuery?: string;
+    /**
+     * Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `requiredJqQuery`.
+     */
+    required?: boolean;
+    /**
+     * The title of the object input.
+     */
+    title?: string;
+    /**
+     * The visibility of the object input.
+     */
+    visible?: boolean;
+    /**
+     * The visibility condition jq query of the object input.
+     */
+    visibleJqQuery?: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringProps {
+    /**
+     * The blueprint the entities are taken from. Required when `format` is `entity`.
+     */
+    blueprint?: string;
+    /**
+     * The dataset filtering the entities the user can pick from.
+     */
+    dataset?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDataset;
+    /**
+     * The default of the string input.
+     */
+    default?: string;
+    /**
+     * The default jq query of the string input.
+     */
+    defaultJqQuery?: string;
+    /**
+     * The inputs this input depends on.
+     */
+    dependsOns?: string[];
+    /**
+     * The description of the string input.
+     */
+    description?: string;
+    /**
+     * Greys out the string input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `readOnly` to keep the value in the submission.
+     */
+    disabled?: boolean;
+    /**
+     * The disabled condition jq query of the string input.
+     */
+    disabledJqQuery?: string;
+    /**
+     * The colors of the enum values.
+     */
+    enumColors?: {[key: string]: string};
+    /**
+     * A jq query resolving the values the user can pick from.
+     */
+    enumJqQuery?: string;
+    /**
+     * The values the user can pick from.
+     */
+    enums?: string[];
+    /**
+     * The format of the string input.
+     */
+    format?: string;
+    /**
+     * The icon of the string input.
+     */
+    icon?: string;
+    /**
+     * The max length of the string input.
+     */
+    maxLength?: number;
+    /**
+     * The min length of the string input.
+     */
+    minLength?: number;
+    /**
+     * The regex pattern the value has to match.
+     */
+    pattern?: string;
+    /**
+     * A jq query resolving the pattern of the string input, either a regex string or a list of allowed values.
+     */
+    patternJqQuery?: string;
+    /**
+     * Shows the value of the string input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+     */
+    readOnly?: boolean;
+    /**
+     * The read only condition jq query of the string input.
+     */
+    readOnlyJqQuery?: string;
+    /**
+     * Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `requiredJqQuery`.
+     */
+    required?: boolean;
+    /**
+     * How the entities are sorted in the form.
+     */
+    sort?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsSort;
+    /**
+     * The title of the string input.
+     */
+    title?: string;
+    /**
+     * The visibility of the string input.
+     */
+    visible?: boolean;
+    /**
+     * The visibility condition jq query of the string input.
+     */
+    visibleJqQuery?: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDataset {
+    /**
+     * How the rules are combined.
+     */
+    combinator: string;
+    /**
+     * The rules of the dataset. A rule either filters on a property or groups nested rules under a combinator.
+     */
+    rules: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule[];
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: string;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: string;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule[];
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleValue;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: string;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: string;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule[];
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleValue;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: string;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: string;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule[];
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValue;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: string;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: string;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule[];
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: string;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: string;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule[];
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: string;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: string;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule[];
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: string;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: string;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule[];
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: string;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: string;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule[];
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: string;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: string;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule[];
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: string;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: string;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule[];
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: string;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: string;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleValue {
+    jqQuery: string;
+}
+
+export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsSort {
+    /**
+     * The order to sort the entities in.
+     */
+    order: string;
+    /**
+     * The property to sort the entities by.
+     */
+    property: string;
+}
+
+export interface WorkflowNodeInputUserInputsValidation {
+    /**
+     * A jq expression that has to evaluate to `true` for the form to be valid.
+     */
+    constraint: string;
+    /**
+     * The error message shown when the constraint evaluates to `false` (max 100 characters).
+     */
+    message: string;
+}
+
+export interface WorkflowNodeIntegrationAction {
+    /**
+     * The integration action execution properties as a JSON encoded string.
+     */
+    executionProperties?: string;
+    /**
+     * The installation id of the integration.
+     */
+    installationId?: string;
+    /**
+     * The invocation type of the integration action.
+     */
+    integrationInvocationType?: string;
+    /**
+     * The provider of the integration action.
+     */
+    integrationProvider?: string;
+    /**
+     * The action to take if the node fails. One of `continue`, `terminate`.
+     */
+    onFailure: string;
+}
+
+export interface WorkflowNodeKafka {
+    /**
+     * The action to take if the node fails. One of `continue`, `terminate`.
+     */
+    onFailure: string;
+    /**
+     * The Kafka message payload as a JSON encoded string.
+     */
+    payload?: string;
+}
+
+export interface WorkflowNodeScheduleTrigger {
+    /**
+     * The cron expression defining when the workflow triggers (e.g. `0 9 * * 1-5`), evaluated in UTC.
+     */
+    cron?: string;
+    /**
+     * Whether the trigger is published.
+     */
+    published: boolean;
+}
+
+export interface WorkflowNodeSelfServeTrigger {
+    /**
+     * The text of the button displayed on the self service card (max 15 characters).
+     */
+    actionCardButtonText?: string;
+    /**
+     * Where the trigger is surfaced in the UI.
+     */
+    contexts?: outputs.WorkflowNodeSelfServeTriggerContext[];
+    /**
+     * The text of the button that executes the workflow (max 15 characters).
+     */
+    executeActionButtonText?: string;
+    /**
+     * Who is allowed to execute this trigger.
+     */
+    permissions?: outputs.WorkflowNodeSelfServeTriggerPermissions;
+    /**
+     * Whether the trigger is published.
+     */
+    published: boolean;
+    /**
+     * The form presented to the user when triggering the workflow.
+     */
+    userInputs?: outputs.WorkflowNodeSelfServeTriggerUserInputs;
+    /**
+     * The trigger variant. One of `DEFAULT`, `ALERT`.
+     */
+    variant?: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerContext {
+    /**
+     * The blueprint the trigger creates an entity for. Required when `on` is `CREATE_ENTITY`.
+     */
+    blueprintIdentifier?: string;
+    /**
+     * The context type. One of `CREATE_ENTITY`, `ENTITY`.
+     */
+    on: string;
+    /**
+     * The user input the trigger is bound to. Required when `on` is `ENTITY`.
+     */
+    userInput?: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerPermissions {
+    /**
+     * A JSON encoded RBAC query that dynamically resolves who is permitted, of the form `{"combinator":"and","rules":[{"property":{"context":"user","property":"department"},"operator":"=","value":"engineering"}]}`. `context` is one of `user`, `userTeams`, `form`, `workflowRun`.
+     */
+    policy?: string;
+    /**
+     * The roles the permission applies to.
+     */
+    roles?: string[];
+    /**
+     * The identifiers of the teams the permission applies to. They must exist in the organization.
+     */
+    teams?: string[];
+    /**
+     * The emails of the users the permission applies to. They must exist in the organization.
+     */
+    users?: string[];
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputs {
+    /**
+     * The order the inputs are rendered in. Cannot be combined with `steps`.
+     */
+    orderProperties?: string[];
+    /**
+     * A jq query resolving which inputs are required.
+     */
+    requiredJqQuery?: string;
+    /**
+     * Splits the form into steps. Cannot be combined with `orderProperties`.
+     */
+    steps?: outputs.WorkflowNodeSelfServeTriggerUserInputsStep[];
+    /**
+     * Static titles rendered between the inputs of the form.
+     */
+    titles?: {[key: string]: outputs.WorkflowNodeSelfServeTriggerUserInputsTitles};
+    /**
+     * The user inputs the form collects.
+     */
+    userProperties?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserProperties;
+    /**
+     * Validation rules evaluated against the whole form when it is submitted. Cannot be combined with `steps`, add the rules to the individual steps instead. Up to 10 rules are allowed.
+     */
+    validations?: outputs.WorkflowNodeSelfServeTriggerUserInputsValidation[];
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsStep {
+    /**
+     * The order of the inputs in this step.
+     */
+    orders: string[];
+    /**
+     * The step's title (max 25 characters).
+     */
+    title: string;
+    /**
+     * Validation rules evaluated when the step is submitted. Up to 10 rules are allowed.
+     */
+    validations?: outputs.WorkflowNodeSelfServeTriggerUserInputsStepValidation[];
+    /**
+     * The visibility of the step.
+     */
+    visible?: boolean;
+    /**
+     * The visibility condition jq query of the step.
+     */
+    visibleJqQuery?: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsStepValidation {
+    /**
+     * A jq expression that has to evaluate to `true` for the form to be valid.
+     */
+    constraint: string;
+    /**
+     * The error message shown when the constraint evaluates to `false` (max 100 characters).
+     */
+    message: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsTitles {
+    /**
+     * The title description.
+     */
+    description?: string;
+    /**
+     * The title text.
+     */
+    title: string;
+    /**
+     * The visibility of the title.
+     */
+    visible?: boolean;
+    /**
+     * The visibility condition jq query of the title.
+     */
+    visibleJqQuery?: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserProperties {
+    /**
+     * The array inputs of the form.
+     */
+    arrayProps?: {[key: string]: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayProps};
+    /**
+     * The boolean inputs of the form.
+     */
+    booleanProps?: {[key: string]: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesBooleanProps};
+    /**
+     * The number inputs of the form.
+     */
+    numberProps?: {[key: string]: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesNumberProps};
+    /**
+     * The object inputs of the form.
+     */
+    objectProps?: {[key: string]: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectProps};
+    /**
+     * The string inputs of the form.
+     */
+    stringProps?: {[key: string]: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps};
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayProps {
+    /**
+     * The default jq query of the array input.
+     */
+    defaultJqQuery?: string;
+    /**
+     * The inputs this input depends on.
+     */
+    dependsOns?: string[];
+    /**
+     * The description of the array input.
+     */
+    description?: string;
+    /**
+     * Greys out the array input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `readOnly` to keep the value in the submission.
+     */
+    disabled?: boolean;
+    /**
+     * The disabled condition jq query of the array input.
+     */
+    disabledJqQuery?: string;
+    /**
+     * The icon of the array input.
+     */
+    icon?: string;
+    /**
+     * The max items of the array input.
+     */
+    maxItems?: number;
+    /**
+     * The max items jq query of the array input.
+     */
+    maxItemsJqQuery?: string;
+    /**
+     * The min items of the array input.
+     */
+    minItems?: number;
+    /**
+     * The min items jq query of the array input.
+     */
+    minItemsJqQuery?: string;
+    /**
+     * The number items of the array input.
+     */
+    numberItems?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsNumberItems;
+    /**
+     * The object items of the array input.
+     */
+    objectItems?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItems;
+    /**
+     * Shows the value of the array input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+     */
+    readOnly?: boolean;
+    /**
+     * The read only condition jq query of the array input.
+     */
+    readOnlyJqQuery?: string;
+    /**
+     * Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `requiredJqQuery`.
+     */
+    required?: boolean;
+    /**
+     * How the entities are sorted in the form.
+     */
+    sort?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsSort;
+    /**
+     * The string items of the array input.
+     */
+    stringItems?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsStringItems;
+    /**
+     * The title of the array input.
+     */
+    title?: string;
+    /**
+     * Whether the values of the array have to be unique.
+     */
+    uniqueItems?: boolean;
+    /**
+     * The visibility of the array input.
+     */
+    visible?: boolean;
+    /**
+     * The visibility condition jq query of the array input.
+     */
+    visibleJqQuery?: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsNumberItems {
+    /**
+     * The default value of the items.
+     */
+    defaults?: number[];
+    /**
+     * The colors of the enum values.
+     */
+    enumColors?: {[key: string]: string};
+    /**
+     * A jq query resolving the values the user can pick from.
+     */
+    enumJqQuery?: string;
+    /**
+     * The values the user can pick from.
+     */
+    enums?: number[];
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItems {
+    /**
+     * The default value of the items.
+     */
+    defaults?: {[key: string]: string}[];
+    /**
+     * The format of each item.
+     */
+    format?: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsSort {
+    /**
+     * The order to sort the entities in.
+     */
+    order: string;
+    /**
+     * The property to sort the entities by.
+     */
+    property: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsStringItems {
+    /**
+     * The blueprint the entities are taken from. Required when `format` is `entity`.
+     */
+    blueprint?: string;
+    /**
+     * The dataset filtering the entities of the items, as a JSON encoded string.
+     */
+    dataset?: string;
+    /**
+     * The default value of the items.
+     */
+    defaults?: string[];
+    /**
+     * The colors of the enum values.
+     */
+    enumColors?: {[key: string]: string};
+    /**
+     * A jq query resolving the values the user can pick from.
+     */
+    enumJqQuery?: string;
+    /**
+     * The values the user can pick from.
+     */
+    enums?: string[];
+    /**
+     * The format of each item.
+     */
+    format?: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesBooleanProps {
+    /**
+     * The default of the boolean input.
+     */
+    default?: boolean;
+    /**
+     * The default jq query of the boolean input.
+     */
+    defaultJqQuery?: string;
+    /**
+     * The inputs this input depends on.
+     */
+    dependsOns?: string[];
+    /**
+     * The description of the boolean input.
+     */
+    description?: string;
+    /**
+     * Greys out the boolean input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `readOnly` to keep the value in the submission.
+     */
+    disabled?: boolean;
+    /**
+     * The disabled condition jq query of the boolean input.
+     */
+    disabledJqQuery?: string;
+    /**
+     * The icon of the boolean input.
+     */
+    icon?: string;
+    /**
+     * Shows the value of the boolean input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+     */
+    readOnly?: boolean;
+    /**
+     * The read only condition jq query of the boolean input.
+     */
+    readOnlyJqQuery?: string;
+    /**
+     * Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `requiredJqQuery`.
+     */
+    required?: boolean;
+    /**
+     * The title of the boolean input.
+     */
+    title?: string;
+    /**
+     * The visibility of the boolean input.
+     */
+    visible?: boolean;
+    /**
+     * The visibility condition jq query of the boolean input.
+     */
+    visibleJqQuery?: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesNumberProps {
+    /**
+     * The default of the number input.
+     */
+    default?: number;
+    /**
+     * The default jq query of the number input.
+     */
+    defaultJqQuery?: string;
+    /**
+     * The inputs this input depends on.
+     */
+    dependsOns?: string[];
+    /**
+     * The description of the number input.
+     */
+    description?: string;
+    /**
+     * Greys out the number input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `readOnly` to keep the value in the submission.
+     */
+    disabled?: boolean;
+    /**
+     * The disabled condition jq query of the number input.
+     */
+    disabledJqQuery?: string;
+    /**
+     * A jq query resolving the values the user can pick from.
+     */
+    enumJqQuery?: string;
+    /**
+     * The values the user can pick from.
+     */
+    enums?: number[];
+    /**
+     * The value the input has to be strictly smaller than.
+     */
+    exclusiveMaximum?: number;
+    /**
+     * The value the input has to be strictly greater than.
+     */
+    exclusiveMinimum?: number;
+    /**
+     * The icon of the number input.
+     */
+    icon?: string;
+    /**
+     * The largest value the input accepts.
+     */
+    maximum?: number;
+    /**
+     * The smallest value the input accepts.
+     */
+    minimum?: number;
+    /**
+     * Shows the value of the number input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+     */
+    readOnly?: boolean;
+    /**
+     * The read only condition jq query of the number input.
+     */
+    readOnlyJqQuery?: string;
+    /**
+     * Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `requiredJqQuery`.
+     */
+    required?: boolean;
+    /**
+     * The title of the number input.
+     */
+    title?: string;
+    /**
+     * The visibility of the number input.
+     */
+    visible?: boolean;
+    /**
+     * The visibility condition jq query of the number input.
+     */
+    visibleJqQuery?: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectProps {
+    /**
+     * The default of the object input, as a JSON encoded string.
+     */
+    default?: string;
+    /**
+     * The default jq query of the object input.
+     */
+    defaultJqQuery?: string;
+    /**
+     * The inputs this input depends on.
+     */
+    dependsOns?: string[];
+    /**
+     * The description of the object input.
+     */
+    description?: string;
+    /**
+     * Greys out the object input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `readOnly` to keep the value in the submission.
+     */
+    disabled?: boolean;
+    /**
+     * The disabled condition jq query of the object input.
+     */
+    disabledJqQuery?: string;
+    /**
+     * The format of the object input. `labeled-url` renders a url with a display text. Leave it out for a free form object.
+     */
+    format?: string;
+    /**
+     * The icon of the object input.
+     */
+    icon?: string;
+    /**
+     * Shows the value of the object input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+     */
+    readOnly?: boolean;
+    /**
+     * The read only condition jq query of the object input.
+     */
+    readOnlyJqQuery?: string;
+    /**
+     * Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `requiredJqQuery`.
+     */
+    required?: boolean;
+    /**
+     * The title of the object input.
+     */
+    title?: string;
+    /**
+     * The visibility of the object input.
+     */
+    visible?: boolean;
+    /**
+     * The visibility condition jq query of the object input.
+     */
+    visibleJqQuery?: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps {
+    /**
+     * The blueprint the entities are taken from. Required when `format` is `entity`.
+     */
+    blueprint?: string;
+    /**
+     * The dataset filtering the entities the user can pick from.
+     */
+    dataset?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDataset;
+    /**
+     * The default of the string input.
+     */
+    default?: string;
+    /**
+     * The default jq query of the string input.
+     */
+    defaultJqQuery?: string;
+    /**
+     * The inputs this input depends on.
+     */
+    dependsOns?: string[];
+    /**
+     * The description of the string input.
+     */
+    description?: string;
+    /**
+     * Greys out the string input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `readOnly` to keep the value in the submission.
+     */
+    disabled?: boolean;
+    /**
+     * The disabled condition jq query of the string input.
+     */
+    disabledJqQuery?: string;
+    /**
+     * The colors of the enum values.
+     */
+    enumColors?: {[key: string]: string};
+    /**
+     * A jq query resolving the values the user can pick from.
+     */
+    enumJqQuery?: string;
+    /**
+     * The values the user can pick from.
+     */
+    enums?: string[];
+    /**
+     * The format of the string input.
+     */
+    format?: string;
+    /**
+     * The icon of the string input.
+     */
+    icon?: string;
+    /**
+     * The max length of the string input.
+     */
+    maxLength?: number;
+    /**
+     * The min length of the string input.
+     */
+    minLength?: number;
+    /**
+     * The regex pattern the value has to match.
+     */
+    pattern?: string;
+    /**
+     * A jq query resolving the pattern of the string input, either a regex string or a list of allowed values.
+     */
+    patternJqQuery?: string;
+    /**
+     * Shows the value of the string input without letting the user change it. The value is still submitted with the form, unlike `disabled`.
+     */
+    readOnly?: boolean;
+    /**
+     * The read only condition jq query of the string input.
+     */
+    readOnlyJqQuery?: string;
+    /**
+     * Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `requiredJqQuery`.
+     */
+    required?: boolean;
+    /**
+     * How the entities are sorted in the form.
+     */
+    sort?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsSort;
+    /**
+     * The title of the string input.
+     */
+    title?: string;
+    /**
+     * The visibility of the string input.
+     */
+    visible?: boolean;
+    /**
+     * The visibility condition jq query of the string input.
+     */
+    visibleJqQuery?: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDataset {
+    /**
+     * How the rules are combined.
+     */
+    combinator: string;
+    /**
+     * The rules of the dataset. A rule either filters on a property or groups nested rules under a combinator.
+     */
+    rules: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule[];
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: string;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: string;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRule[];
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleValue;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: string;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: string;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRule[];
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleValue;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: string;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: string;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule[];
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValue;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: string;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: string;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule[];
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: string;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: string;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule[];
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: string;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: string;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule[];
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: string;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: string;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule[];
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: string;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: string;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule[];
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: string;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: string;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule[];
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: string;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: string;
+    /**
+     * The nested rules of a group rule.
+     */
+    rules?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule[];
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule {
+    /**
+     * The blueprint identifier of the rule.
+     */
+    blueprint?: string;
+    /**
+     * How the nested rules of a group rule are combined.
+     */
+    combinator?: string;
+    /**
+     * The operator of the rule. Set on filtering rules and left out on group rules.
+     */
+    operator?: string;
+    /**
+     * The property identifier of the rule.
+     */
+    property?: string;
+    /**
+     * A value resolved from the form or the trigger when the form is rendered.
+     */
+    value?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue;
+    /**
+     * A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
+     */
+    valueJson?: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleValue {
+    jqQuery: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleValue {
+    jqQuery: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsSort {
+    /**
+     * The order to sort the entities in.
+     */
+    order: string;
+    /**
+     * The property to sort the entities by.
+     */
+    property: string;
+}
+
+export interface WorkflowNodeSelfServeTriggerUserInputsValidation {
+    /**
+     * A jq expression that has to evaluate to `true` for the form to be valid.
+     */
+    constraint: string;
+    /**
+     * The error message shown when the constraint evaluates to `false` (max 100 characters).
+     */
+    message: string;
+}
+
+export interface WorkflowNodeUpsertEntity {
+    /**
+     * The identifier of the blueprint to upsert into.
+     */
+    blueprintIdentifier?: string;
+    /**
+     * The entity fields to upsert.
+     */
+    mapping?: outputs.WorkflowNodeUpsertEntityMapping;
+    /**
+     * The action to take if the node fails. One of `continue`, `terminate`.
+     */
+    onFailure: string;
+}
+
+export interface WorkflowNodeUpsertEntityMapping {
+    /**
+     * The icon of the entity to upsert.
+     */
+    icon?: string;
+    /**
+     * The identifier of the entity to upsert.
+     */
+    identifier?: string;
+    /**
+     * The properties of the entity as a JSON encoded string.
+     */
+    properties?: string;
+    /**
+     * The relations of the entity as a JSON encoded string.
+     */
+    relations?: string;
+    /**
+     * The teams of the entity to upsert. Values may contain `{{ }}` template expressions that are resolved when the node runs.
+     */
+    teams?: string[];
+    /**
+     * The title of the entity to upsert.
+     */
+    title?: string;
+}
+
+export interface WorkflowNodeWebhook {
+    /**
+     * Whether the request is routed through the Port agent.
+     */
+    agent: boolean;
+    /**
+     * The request body as a JSON encoded string.
+     */
+    body?: string;
+    /**
+     * The HTTP headers of the request.
+     */
+    headers?: {[key: string]: string};
+    /**
+     * The HTTP method. One of `GET`, `POST`, `PUT`, `PATCH`, `DELETE`.
+     */
+    method: string;
+    /**
+     * The action to take if the node fails. One of `continue`, `terminate`.
+     */
+    onFailure: string;
+    /**
+     * The action to take if the webhook times out. One of `fail`, `continue`.
+     */
+    onTimeout: string;
+    /**
+     * Whether the request is sent synchronously.
+     */
+    synchronized: boolean;
+    /**
+     * The URL of the webhook.
+     */
+    url?: string;
 }
 

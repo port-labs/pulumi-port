@@ -53,6 +53,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Team{}
 	case "port:index/webhook:Webhook":
 		r = &Webhook{}
+	case "port:index/workflow:Workflow":
+		r = &Workflow{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -162,6 +164,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"port",
 		"index/webhook",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"port",
+		"index/workflow",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

@@ -2029,6 +2029,10 @@
         },
         "port:index/BlueprintPermissionsEntities:BlueprintPermissionsEntities": {
             "properties": {
+                "read": {
+                    "$ref": "#/types/port:index/BlueprintPermissionsEntitiesRead:BlueprintPermissionsEntitiesRead",
+                    "description": "Manage permissions to read entities of the blueprint\n"
+                },
                 "register": {
                     "$ref": "#/types/port:index/BlueprintPermissionsEntitiesRegister:BlueprintPermissionsEntitiesRegister",
                     "description": "Manage permissions to register entities of the blueprint\n"
@@ -2067,11 +2071,54 @@
                 "updateMetadataProperties"
             ]
         },
+        "port:index/BlueprintPermissionsEntitiesRead:BlueprintPermissionsEntitiesRead": {
+            "properties": {
+                "ownedByTeam": {
+                    "type": "boolean",
+                    "description": "Owned by team\n"
+                },
+                "policy": {
+                    "type": "string"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Roles with read permissions\n"
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Teams with read permissions\n"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Users with read permissions\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "ownedByTeam"
+                    ]
+                }
+            }
+        },
         "port:index/BlueprintPermissionsEntitiesRegister:BlueprintPermissionsEntitiesRegister": {
             "properties": {
                 "ownedByTeam": {
                     "type": "boolean",
                     "description": "Owned by team\n"
+                },
+                "policy": {
+                    "type": "string"
                 },
                 "roles": {
                     "type": "array",
@@ -2110,6 +2157,9 @@
                     "type": "boolean",
                     "description": "Owned by team\n"
                 },
+                "policy": {
+                    "type": "string"
+                },
                 "roles": {
                     "type": "array",
                     "items": {
@@ -2146,6 +2196,9 @@
                 "ownedByTeam": {
                     "type": "boolean",
                     "description": "Owned by team\n"
+                },
+                "policy": {
+                    "type": "string"
                 },
                 "roles": {
                     "type": "array",
@@ -3739,6 +3792,3337 @@
                 }
             },
             "type": "object"
+        },
+        "port:index/WorkflowConnection:WorkflowConnection": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the connection\n"
+                },
+                "fallback": {
+                    "type": "boolean",
+                    "description": "Marks this connection as the fallback branch of a `condition` node, taken when no outlet matches. Cannot be combined with `source_outlet_identifier`.\n"
+                },
+                "sourceIdentifier": {
+                    "type": "string",
+                    "description": "The identifier of the source node\n"
+                },
+                "sourceOutletIdentifier": {
+                    "type": "string",
+                    "description": "The outlet of the source node this connection leaves from. Required for `condition` and `input` nodes, and not allowed for any other node type.\n"
+                },
+                "targetIdentifier": {
+                    "type": "string",
+                    "description": "The identifier of the target node\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "sourceIdentifier",
+                "targetIdentifier"
+            ]
+        },
+        "port:index/WorkflowNode:WorkflowNode": {
+            "properties": {
+                "ai": {
+                    "$ref": "#/types/port:index/WorkflowNodeAi:WorkflowNodeAi",
+                    "description": "An AI node that runs a prompt through Port AI.\n"
+                },
+                "aiAgent": {
+                    "$ref": "#/types/port:index/WorkflowNodeAiAgent:WorkflowNodeAiAgent",
+                    "description": "An AI agent node that invokes a configured Port AI agent.\n"
+                },
+                "condition": {
+                    "$ref": "#/types/port:index/WorkflowNodeCondition:WorkflowNodeCondition",
+                    "description": "A condition node that branches the workflow based on JQ expressions. Connections leaving this node must set `source_outlet_identifier` or `fallback`.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the node\n"
+                },
+                "eventTrigger": {
+                    "$ref": "#/types/port:index/WorkflowNodeEventTrigger:WorkflowNodeEventTrigger",
+                    "description": "An event trigger node that starts the workflow when an entity event occurs.\n"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of the node\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the node\n"
+                },
+                "input": {
+                    "$ref": "#/types/port:index/WorkflowNodeInput:WorkflowNodeInput",
+                    "description": "An input node that pauses the workflow and waits for a human response. Connections leaving this node must set `source_outlet_identifier`.\n"
+                },
+                "integrationAction": {
+                    "$ref": "#/types/port:index/WorkflowNodeIntegrationAction:WorkflowNodeIntegrationAction",
+                    "description": "An integration action node that invokes an installed integration.\n"
+                },
+                "kafka": {
+                    "$ref": "#/types/port:index/WorkflowNodeKafka:WorkflowNodeKafka",
+                    "description": "A Kafka node that publishes a message to the organization's Kafka topic.\n"
+                },
+                "links": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Link templates (supporting `{{ .result.field }}` interpolation) evaluated when the node run completes (max 3)\n"
+                },
+                "scheduleTrigger": {
+                    "$ref": "#/types/port:index/WorkflowNodeScheduleTrigger:WorkflowNodeScheduleTrigger",
+                    "description": "A schedule trigger node that starts the workflow on a cron schedule.\n"
+                },
+                "selfServeTrigger": {
+                    "$ref": "#/types/port:index/WorkflowNodeSelfServeTrigger:WorkflowNodeSelfServeTrigger",
+                    "description": "A self service trigger node that starts the workflow from a user submitted form.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the node\n"
+                },
+                "upsertEntity": {
+                    "$ref": "#/types/port:index/WorkflowNodeUpsertEntity:WorkflowNodeUpsertEntity",
+                    "description": "An upsert entity node that creates or updates an entity in the catalog.\n"
+                },
+                "variables": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Named expressions made available to the node at run time\n"
+                },
+                "verbose": {
+                    "type": "boolean",
+                    "description": "When true, the workflow service writes extended per-node run logs\n"
+                },
+                "webhook": {
+                    "$ref": "#/types/port:index/WorkflowNodeWebhook:WorkflowNodeWebhook",
+                    "description": "A webhook node that sends an HTTP request.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "identifier"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "identifier",
+                        "verbose"
+                    ]
+                }
+            }
+        },
+        "port:index/WorkflowNodeAi:WorkflowNodeAi": {
+            "properties": {
+                "mcpServers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeAiMcpServer:WorkflowNodeAiMcpServer"
+                    },
+                    "description": "The MCP servers available to the AI node (max 5).\n"
+                },
+                "model": {
+                    "type": "string",
+                    "description": "The AI model to use. Must be set together with `provider`.\n"
+                },
+                "outputSchema": {
+                    "type": "string",
+                    "description": "A JSON schema, encoded as a JSON string, the AI response is validated against.\n"
+                },
+                "provider": {
+                    "type": "string",
+                    "description": "The AI provider to use. Must be set together with `model`.\n"
+                },
+                "systemPrompt": {
+                    "type": "string",
+                    "description": "Instructions describing the AI's role and operational rules.\n"
+                },
+                "tools": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Regex patterns matched against the available tool names.\n"
+                },
+                "userPrompt": {
+                    "type": "string",
+                    "description": "The message or query processed by Port AI.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "systemPrompt"
+                    ]
+                }
+            }
+        },
+        "port:index/WorkflowNodeAiAgent:WorkflowNodeAiAgent": {
+            "properties": {
+                "agentIdentifier": {
+                    "type": "string",
+                    "description": "The identifier of the agent to invoke.\n"
+                },
+                "model": {
+                    "type": "string",
+                    "description": "The AI model to use. Must be set together with `provider`.\n"
+                },
+                "outputSchema": {
+                    "type": "string",
+                    "description": "A JSON schema, encoded as a JSON string, the agent response is validated against.\n"
+                },
+                "provider": {
+                    "type": "string",
+                    "description": "The AI provider to use. Must be set together with `model`.\n"
+                },
+                "userPrompt": {
+                    "type": "string",
+                    "description": "The message or query processed by the agent.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeAiMcpServer:WorkflowNodeAiMcpServer": {
+            "properties": {
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the MCP server.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "identifier"
+            ]
+        },
+        "port:index/WorkflowNodeCondition:WorkflowNodeCondition": {
+            "properties": {
+                "outlets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeConditionOutlet:WorkflowNodeConditionOutlet"
+                    },
+                    "description": "The branches of the condition, evaluated in order.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeConditionOutlet:WorkflowNodeConditionOutlet": {
+            "properties": {
+                "expression": {
+                    "type": "string",
+                    "description": "The JQ expression that selects this outlet.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the outlet, referenced by a connection's `source_outlet_identifier`.\n"
+                },
+                "statusLabel": {
+                    "$ref": "#/types/port:index/WorkflowNodeConditionOutletStatusLabel:WorkflowNodeConditionOutletStatusLabel",
+                    "description": "A custom status label displayed on the node run.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the outlet.\n"
+                },
+                "workflowStatusLabel": {
+                    "$ref": "#/types/port:index/WorkflowNodeConditionOutletWorkflowStatusLabel:WorkflowNodeConditionOutletWorkflowStatusLabel",
+                    "description": "A custom status label displayed on the workflow run.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "expression",
+                "identifier"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "expression",
+                        "identifier",
+                        "title"
+                    ]
+                }
+            }
+        },
+        "port:index/WorkflowNodeConditionOutletStatusLabel:WorkflowNodeConditionOutletStatusLabel": {
+            "properties": {
+                "text": {
+                    "type": "string",
+                    "description": "The label text. Supports JQ expressions for dynamic content.\n"
+                },
+                "variant": {
+                    "type": "string",
+                    "description": "Semantic variant controlling the label color/style. One of `success`, `alert`.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeConditionOutletWorkflowStatusLabel:WorkflowNodeConditionOutletWorkflowStatusLabel": {
+            "properties": {
+                "text": {
+                    "type": "string",
+                    "description": "The label text. Supports JQ expressions for dynamic content.\n"
+                },
+                "variant": {
+                    "type": "string",
+                    "description": "Semantic variant controlling the label color/style. One of `success`, `alert`.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeEventTrigger:WorkflowNodeEventTrigger": {
+            "properties": {
+                "blueprintIdentifier": {
+                    "type": "string",
+                    "description": "The blueprint identifier the event relates to.\n"
+                },
+                "condition": {
+                    "$ref": "#/types/port:index/WorkflowNodeEventTriggerCondition:WorkflowNodeEventTriggerCondition",
+                    "description": "A JQ condition gating whether the event starts the workflow.\n"
+                },
+                "propertyIdentifier": {
+                    "type": "string",
+                    "description": "The property identifier the timer event relates to. Required for the `TIMER_EXPIRED` event type.\n"
+                },
+                "published": {
+                    "type": "boolean",
+                    "description": "Whether the trigger is published.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The event type that triggers the workflow. One of `ENTITY_CREATED`, `ENTITY_UPDATED`, `ENTITY_DELETED`, `TIMER_EXPIRED`, `ANY_ENTITY_CHANGE`.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "published"
+                    ]
+                }
+            }
+        },
+        "port:index/WorkflowNodeEventTriggerCondition:WorkflowNodeEventTriggerCondition": {
+            "properties": {
+                "combinator": {
+                    "type": "string",
+                    "description": "How the expressions are combined. One of `and`, `or`.\n"
+                },
+                "expressions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The JQ expressions evaluated against the event.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInput:WorkflowNodeInput": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description shown on the response form.\n"
+                },
+                "notifications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputNotification:WorkflowNodeInputNotification"
+                    },
+                    "description": "Notifications sent when the input node starts waiting.\n"
+                },
+                "outlets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputOutlet:WorkflowNodeInputOutlet"
+                    },
+                    "description": "The branches of the input node, each bound to a button.\n"
+                },
+                "responders": {
+                    "$ref": "#/types/port:index/WorkflowNodeInputResponders:WorkflowNodeInputResponders",
+                    "description": "Who is allowed to respond to this input node.\n"
+                },
+                "userInputs": {
+                    "$ref": "#/types/port:index/WorkflowNodeInputUserInputs:WorkflowNodeInputUserInputs",
+                    "description": "The form presented to the responders.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputNotification:WorkflowNodeInputNotification": {
+            "properties": {
+                "agent": {
+                    "type": "boolean",
+                    "description": "Whether the webhook is routed through the Port agent.\n"
+                },
+                "body": {
+                    "type": "string",
+                    "description": "The webhook body as a JSON encoded string.\n"
+                },
+                "fields": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputNotificationField:WorkflowNodeInputNotificationField"
+                    },
+                    "description": "The fields rendered in the email notification. Only valid when `target` is `email`.\n"
+                },
+                "headers": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The webhook headers.\n"
+                },
+                "method": {
+                    "type": "string",
+                    "description": "The webhook HTTP method. One of `GET`, `POST`, `PUT`, `PATCH`, `DELETE`.\n"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "The notification target. One of `email`, `webhook`.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The webhook URL. Required when `target` is `webhook`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "target"
+            ]
+        },
+        "port:index/WorkflowNodeInputNotificationField:WorkflowNodeInputNotificationField": {
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "description": "The label of the field.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the field.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "label",
+                "value"
+            ]
+        },
+        "port:index/WorkflowNodeInputOutlet:WorkflowNodeInputOutlet": {
+            "properties": {
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the outlet. Must match a button identifier.\n"
+                },
+                "numOfResponders": {
+                    "type": "integer",
+                    "description": "How many responders must press the button before the workflow continues.\n"
+                },
+                "statusLabel": {
+                    "$ref": "#/types/port:index/WorkflowNodeInputOutletStatusLabel:WorkflowNodeInputOutletStatusLabel",
+                    "description": "A custom status label displayed on the node run.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the outlet.\n"
+                },
+                "workflowStatusLabel": {
+                    "$ref": "#/types/port:index/WorkflowNodeInputOutletWorkflowStatusLabel:WorkflowNodeInputOutletWorkflowStatusLabel",
+                    "description": "A custom status label displayed on the workflow run.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "identifier",
+                "numOfResponders"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "identifier",
+                        "numOfResponders",
+                        "title"
+                    ]
+                }
+            }
+        },
+        "port:index/WorkflowNodeInputOutletStatusLabel:WorkflowNodeInputOutletStatusLabel": {
+            "properties": {
+                "text": {
+                    "type": "string",
+                    "description": "The label text. Supports JQ expressions for dynamic content.\n"
+                },
+                "variant": {
+                    "type": "string",
+                    "description": "Semantic variant controlling the label color/style. One of `success`, `alert`.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputOutletWorkflowStatusLabel:WorkflowNodeInputOutletWorkflowStatusLabel": {
+            "properties": {
+                "text": {
+                    "type": "string",
+                    "description": "The label text. Supports JQ expressions for dynamic content.\n"
+                },
+                "variant": {
+                    "type": "string",
+                    "description": "Semantic variant controlling the label color/style. One of `success`, `alert`.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputResponders:WorkflowNodeInputResponders": {
+            "properties": {
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The roles allowed to respond.\n"
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The identifiers of the teams allowed to respond. They must exist in the organization.\n"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The emails of the users allowed to respond. They must exist in the organization.\n"
+                },
+                "usersQuery": {
+                    "type": "string",
+                    "description": "A JSON encoded entity search query, run against the `_user` blueprint, resolving additional responders.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputUserInputs:WorkflowNodeInputUserInputs": {
+            "properties": {
+                "buttons": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputUserInputsButton:WorkflowNodeInputUserInputsButton"
+                    },
+                    "description": "The buttons rendered on the response form. Each outlet must reference one of these identifiers.\n"
+                },
+                "orderProperties": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The order the inputs are rendered in. Cannot be combined with `steps`.\n"
+                },
+                "requiredJqQuery": {
+                    "type": "string",
+                    "description": "A jq query resolving which inputs are required.\n"
+                },
+                "steps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputUserInputsStep:WorkflowNodeInputUserInputsStep"
+                    },
+                    "description": "Splits the form into steps. Cannot be combined with `order_properties`.\n"
+                },
+                "titles": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputUserInputsTitles:WorkflowNodeInputUserInputsTitles"
+                    },
+                    "description": "Static titles rendered between the inputs of the form.\n"
+                },
+                "userProperties": {
+                    "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserProperties:WorkflowNodeInputUserInputsUserProperties",
+                    "description": "The user inputs the form collects.\n"
+                },
+                "validations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputUserInputsValidation:WorkflowNodeInputUserInputsValidation"
+                    },
+                    "description": "Validation rules evaluated against the whole form when it is submitted. Cannot be combined with `steps`, add the rules to the individual steps instead. Up to 10 rules are allowed.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputUserInputsButton:WorkflowNodeInputUserInputsButton": {
+            "properties": {
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of the button.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the button.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The label of the button.\n"
+                },
+                "variant": {
+                    "type": "string",
+                    "description": "The button variant. One of `PRIMARY`, `SECONDARY`, `DANGER`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "identifier",
+                "label",
+                "variant"
+            ]
+        },
+        "port:index/WorkflowNodeInputUserInputsStep:WorkflowNodeInputUserInputsStep": {
+            "properties": {
+                "orders": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The order of the inputs in this step.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The step's title (max 25 characters).\n"
+                },
+                "validations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputUserInputsStepValidation:WorkflowNodeInputUserInputsStepValidation"
+                    },
+                    "description": "Validation rules evaluated when the step is submitted. Up to 10 rules are allowed.\n"
+                },
+                "visible": {
+                    "type": "boolean",
+                    "description": "The visibility of the step.\n"
+                },
+                "visibleJqQuery": {
+                    "type": "string",
+                    "description": "The visibility condition jq query of the step.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "orders",
+                "title"
+            ]
+        },
+        "port:index/WorkflowNodeInputUserInputsStepValidation:WorkflowNodeInputUserInputsStepValidation": {
+            "properties": {
+                "constraint": {
+                    "type": "string",
+                    "description": "A jq expression that has to evaluate to `true` for the form to be valid.\n"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "The error message shown when the constraint evaluates to `false` (max 100 characters).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "constraint",
+                "message"
+            ]
+        },
+        "port:index/WorkflowNodeInputUserInputsTitles:WorkflowNodeInputUserInputsTitles": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The title description.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title text.\n"
+                },
+                "visible": {
+                    "type": "boolean",
+                    "description": "The visibility of the title.\n"
+                },
+                "visibleJqQuery": {
+                    "type": "string",
+                    "description": "The visibility condition jq query of the title.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "title"
+            ]
+        },
+        "port:index/WorkflowNodeInputUserInputsUserProperties:WorkflowNodeInputUserInputsUserProperties": {
+            "properties": {
+                "arrayProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesArrayProps:WorkflowNodeInputUserInputsUserPropertiesArrayProps"
+                    },
+                    "description": "The array inputs of the form.\n"
+                },
+                "booleanProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesBooleanProps:WorkflowNodeInputUserInputsUserPropertiesBooleanProps"
+                    },
+                    "description": "The boolean inputs of the form.\n"
+                },
+                "numberProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesNumberProps:WorkflowNodeInputUserInputsUserPropertiesNumberProps"
+                    },
+                    "description": "The number inputs of the form.\n"
+                },
+                "objectProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesObjectProps:WorkflowNodeInputUserInputsUserPropertiesObjectProps"
+                    },
+                    "description": "The object inputs of the form.\n"
+                },
+                "stringProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringProps:WorkflowNodeInputUserInputsUserPropertiesStringProps"
+                    },
+                    "description": "The string inputs of the form.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesArrayProps:WorkflowNodeInputUserInputsUserPropertiesArrayProps": {
+            "properties": {
+                "defaultJqQuery": {
+                    "type": "string",
+                    "description": "The default jq query of the array input.\n"
+                },
+                "dependsOns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The inputs this input depends on.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the array input.\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Greys out the array input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.\n"
+                },
+                "disabledJqQuery": {
+                    "type": "string",
+                    "description": "The disabled condition jq query of the array input.\n"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of the array input.\n"
+                },
+                "maxItems": {
+                    "type": "integer",
+                    "description": "The max items of the array input.\n"
+                },
+                "maxItemsJqQuery": {
+                    "type": "string",
+                    "description": "The max items jq query of the array input.\n"
+                },
+                "minItems": {
+                    "type": "integer",
+                    "description": "The min items of the array input.\n"
+                },
+                "minItemsJqQuery": {
+                    "type": "string",
+                    "description": "The min items jq query of the array input.\n"
+                },
+                "numberItems": {
+                    "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesArrayPropsNumberItems:WorkflowNodeInputUserInputsUserPropertiesArrayPropsNumberItems",
+                    "description": "The number items of the array input.\n"
+                },
+                "objectItems": {
+                    "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItems:WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItems",
+                    "description": "The object items of the array input.\n"
+                },
+                "readOnly": {
+                    "type": "boolean",
+                    "description": "Shows the value of the array input without letting the user change it. The value is still submitted with the form, unlike `disabled`.\n"
+                },
+                "readOnlyJqQuery": {
+                    "type": "string",
+                    "description": "The read only condition jq query of the array input.\n"
+                },
+                "required": {
+                    "type": "boolean",
+                    "description": "Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.\n"
+                },
+                "sort": {
+                    "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesArrayPropsSort:WorkflowNodeInputUserInputsUserPropertiesArrayPropsSort",
+                    "description": "How the entities are sorted in the form.\n"
+                },
+                "stringItems": {
+                    "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesArrayPropsStringItems:WorkflowNodeInputUserInputsUserPropertiesArrayPropsStringItems",
+                    "description": "The string items of the array input.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the array input.\n"
+                },
+                "uniqueItems": {
+                    "type": "boolean",
+                    "description": "Whether the values of the array have to be unique.\n"
+                },
+                "visible": {
+                    "type": "boolean",
+                    "description": "The visibility of the array input.\n"
+                },
+                "visibleJqQuery": {
+                    "type": "string",
+                    "description": "The visibility condition jq query of the array input.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesArrayPropsNumberItems:WorkflowNodeInputUserInputsUserPropertiesArrayPropsNumberItems": {
+            "properties": {
+                "defaults": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "description": "The default value of the items.\n"
+                },
+                "enumColors": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The colors of the enum values.\n"
+                },
+                "enumJqQuery": {
+                    "type": "string",
+                    "description": "A jq query resolving the values the user can pick from.\n"
+                },
+                "enums": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "description": "The values the user can pick from.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItems:WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItems": {
+            "properties": {
+                "defaults": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "description": "The default value of the items.\n"
+                },
+                "format": {
+                    "type": "string",
+                    "description": "The format of each item.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesArrayPropsSort:WorkflowNodeInputUserInputsUserPropertiesArrayPropsSort": {
+            "properties": {
+                "order": {
+                    "type": "string",
+                    "description": "The order to sort the entities in.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property to sort the entities by.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "property"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "order",
+                        "property"
+                    ]
+                }
+            }
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesArrayPropsStringItems:WorkflowNodeInputUserInputsUserPropertiesArrayPropsStringItems": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint the entities are taken from. Required when `format` is `entity`.\n"
+                },
+                "dataset": {
+                    "type": "string",
+                    "description": "The dataset filtering the entities of the items, as a JSON encoded string.\n"
+                },
+                "defaults": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The default value of the items.\n"
+                },
+                "enumColors": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The colors of the enum values.\n"
+                },
+                "enumJqQuery": {
+                    "type": "string",
+                    "description": "A jq query resolving the values the user can pick from.\n"
+                },
+                "enums": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The values the user can pick from.\n"
+                },
+                "format": {
+                    "type": "string",
+                    "description": "The format of each item.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesBooleanProps:WorkflowNodeInputUserInputsUserPropertiesBooleanProps": {
+            "properties": {
+                "default": {
+                    "type": "boolean",
+                    "description": "The default of the boolean input.\n"
+                },
+                "defaultJqQuery": {
+                    "type": "string",
+                    "description": "The default jq query of the boolean input.\n"
+                },
+                "dependsOns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The inputs this input depends on.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the boolean input.\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Greys out the boolean input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.\n"
+                },
+                "disabledJqQuery": {
+                    "type": "string",
+                    "description": "The disabled condition jq query of the boolean input.\n"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of the boolean input.\n"
+                },
+                "readOnly": {
+                    "type": "boolean",
+                    "description": "Shows the value of the boolean input without letting the user change it. The value is still submitted with the form, unlike `disabled`.\n"
+                },
+                "readOnlyJqQuery": {
+                    "type": "string",
+                    "description": "The read only condition jq query of the boolean input.\n"
+                },
+                "required": {
+                    "type": "boolean",
+                    "description": "Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the boolean input.\n"
+                },
+                "visible": {
+                    "type": "boolean",
+                    "description": "The visibility of the boolean input.\n"
+                },
+                "visibleJqQuery": {
+                    "type": "string",
+                    "description": "The visibility condition jq query of the boolean input.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesNumberProps:WorkflowNodeInputUserInputsUserPropertiesNumberProps": {
+            "properties": {
+                "default": {
+                    "type": "number",
+                    "description": "The default of the number input.\n"
+                },
+                "defaultJqQuery": {
+                    "type": "string",
+                    "description": "The default jq query of the number input.\n"
+                },
+                "dependsOns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The inputs this input depends on.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the number input.\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Greys out the number input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.\n"
+                },
+                "disabledJqQuery": {
+                    "type": "string",
+                    "description": "The disabled condition jq query of the number input.\n"
+                },
+                "enumJqQuery": {
+                    "type": "string",
+                    "description": "A jq query resolving the values the user can pick from.\n"
+                },
+                "enums": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "description": "The values the user can pick from.\n"
+                },
+                "exclusiveMaximum": {
+                    "type": "number",
+                    "description": "The value the input has to be strictly smaller than.\n"
+                },
+                "exclusiveMinimum": {
+                    "type": "number",
+                    "description": "The value the input has to be strictly greater than.\n"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of the number input.\n"
+                },
+                "maximum": {
+                    "type": "number",
+                    "description": "The largest value the input accepts.\n"
+                },
+                "minimum": {
+                    "type": "number",
+                    "description": "The smallest value the input accepts.\n"
+                },
+                "readOnly": {
+                    "type": "boolean",
+                    "description": "Shows the value of the number input without letting the user change it. The value is still submitted with the form, unlike `disabled`.\n"
+                },
+                "readOnlyJqQuery": {
+                    "type": "string",
+                    "description": "The read only condition jq query of the number input.\n"
+                },
+                "required": {
+                    "type": "boolean",
+                    "description": "Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the number input.\n"
+                },
+                "visible": {
+                    "type": "boolean",
+                    "description": "The visibility of the number input.\n"
+                },
+                "visibleJqQuery": {
+                    "type": "string",
+                    "description": "The visibility condition jq query of the number input.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesObjectProps:WorkflowNodeInputUserInputsUserPropertiesObjectProps": {
+            "properties": {
+                "default": {
+                    "type": "string",
+                    "description": "The default of the object input, as a JSON encoded string.\n"
+                },
+                "defaultJqQuery": {
+                    "type": "string",
+                    "description": "The default jq query of the object input.\n"
+                },
+                "dependsOns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The inputs this input depends on.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the object input.\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Greys out the object input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.\n"
+                },
+                "disabledJqQuery": {
+                    "type": "string",
+                    "description": "The disabled condition jq query of the object input.\n"
+                },
+                "format": {
+                    "type": "string",
+                    "description": "The format of the object input. `labeled-url` renders a url with a display text. Leave it out for a free form object.\n"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of the object input.\n"
+                },
+                "readOnly": {
+                    "type": "boolean",
+                    "description": "Shows the value of the object input without letting the user change it. The value is still submitted with the form, unlike `disabled`.\n"
+                },
+                "readOnlyJqQuery": {
+                    "type": "string",
+                    "description": "The read only condition jq query of the object input.\n"
+                },
+                "required": {
+                    "type": "boolean",
+                    "description": "Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the object input.\n"
+                },
+                "visible": {
+                    "type": "boolean",
+                    "description": "The visibility of the object input.\n"
+                },
+                "visibleJqQuery": {
+                    "type": "string",
+                    "description": "The visibility condition jq query of the object input.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringProps:WorkflowNodeInputUserInputsUserPropertiesStringProps": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint the entities are taken from. Required when `format` is `entity`.\n"
+                },
+                "dataset": {
+                    "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDataset:WorkflowNodeInputUserInputsUserPropertiesStringPropsDataset",
+                    "description": "The dataset filtering the entities the user can pick from.\n"
+                },
+                "default": {
+                    "type": "string",
+                    "description": "The default of the string input.\n"
+                },
+                "defaultJqQuery": {
+                    "type": "string",
+                    "description": "The default jq query of the string input.\n"
+                },
+                "dependsOns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The inputs this input depends on.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the string input.\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Greys out the string input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.\n"
+                },
+                "disabledJqQuery": {
+                    "type": "string",
+                    "description": "The disabled condition jq query of the string input.\n"
+                },
+                "enumColors": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The colors of the enum values.\n"
+                },
+                "enumJqQuery": {
+                    "type": "string",
+                    "description": "A jq query resolving the values the user can pick from.\n"
+                },
+                "enums": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The values the user can pick from.\n"
+                },
+                "format": {
+                    "type": "string",
+                    "description": "The format of the string input.\n"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of the string input.\n"
+                },
+                "maxLength": {
+                    "type": "integer",
+                    "description": "The max length of the string input.\n"
+                },
+                "minLength": {
+                    "type": "integer",
+                    "description": "The min length of the string input.\n"
+                },
+                "pattern": {
+                    "type": "string",
+                    "description": "The regex pattern the value has to match.\n"
+                },
+                "patternJqQuery": {
+                    "type": "string",
+                    "description": "A jq query resolving the pattern of the string input, either a regex string or a list of allowed values.\n"
+                },
+                "readOnly": {
+                    "type": "boolean",
+                    "description": "Shows the value of the string input without letting the user change it. The value is still submitted with the form, unlike `disabled`.\n"
+                },
+                "readOnlyJqQuery": {
+                    "type": "string",
+                    "description": "The read only condition jq query of the string input.\n"
+                },
+                "required": {
+                    "type": "boolean",
+                    "description": "Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.\n"
+                },
+                "sort": {
+                    "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsSort:WorkflowNodeInputUserInputsUserPropertiesStringPropsSort",
+                    "description": "How the entities are sorted in the form.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the string input.\n"
+                },
+                "visible": {
+                    "type": "boolean",
+                    "description": "The visibility of the string input.\n"
+                },
+                "visibleJqQuery": {
+                    "type": "string",
+                    "description": "The visibility condition jq query of the string input.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDataset:WorkflowNodeInputUserInputsUserPropertiesStringPropsDataset": {
+            "properties": {
+                "combinator": {
+                    "type": "string",
+                    "description": "How the rules are combined.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule"
+                    },
+                    "description": "The rules of the dataset. A rule either filters on a property or groups nested rules under a combinator.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "combinator",
+                "rules"
+            ]
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule.\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule"
+                    },
+                    "description": "The nested rules of a group rule.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleValue:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleValue",
+                    "description": "A value resolved from the form or the trigger when the form is rendered.\n"
+                },
+                "valueJson": {
+                    "type": "string",
+                    "description": "A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule.\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule"
+                    },
+                    "description": "The nested rules of a group rule.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleValue:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleValue",
+                    "description": "A value resolved from the form or the trigger when the form is rendered.\n"
+                },
+                "valueJson": {
+                    "type": "string",
+                    "description": "A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule.\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule"
+                    },
+                    "description": "The nested rules of a group rule.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValue:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValue",
+                    "description": "A value resolved from the form or the trigger when the form is rendered.\n"
+                },
+                "valueJson": {
+                    "type": "string",
+                    "description": "A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule.\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule"
+                    },
+                    "description": "The nested rules of a group rule.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue",
+                    "description": "A value resolved from the form or the trigger when the form is rendered.\n"
+                },
+                "valueJson": {
+                    "type": "string",
+                    "description": "A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule.\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule"
+                    },
+                    "description": "The nested rules of a group rule.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue",
+                    "description": "A value resolved from the form or the trigger when the form is rendered.\n"
+                },
+                "valueJson": {
+                    "type": "string",
+                    "description": "A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule.\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule"
+                    },
+                    "description": "The nested rules of a group rule.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue",
+                    "description": "A value resolved from the form or the trigger when the form is rendered.\n"
+                },
+                "valueJson": {
+                    "type": "string",
+                    "description": "A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule.\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule"
+                    },
+                    "description": "The nested rules of a group rule.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue",
+                    "description": "A value resolved from the form or the trigger when the form is rendered.\n"
+                },
+                "valueJson": {
+                    "type": "string",
+                    "description": "A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule.\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule"
+                    },
+                    "description": "The nested rules of a group rule.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue",
+                    "description": "A value resolved from the form or the trigger when the form is rendered.\n"
+                },
+                "valueJson": {
+                    "type": "string",
+                    "description": "A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule.\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule"
+                    },
+                    "description": "The nested rules of a group rule.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue",
+                    "description": "A value resolved from the form or the trigger when the form is rendered.\n"
+                },
+                "valueJson": {
+                    "type": "string",
+                    "description": "A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule.\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule"
+                    },
+                    "description": "The nested rules of a group rule.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue",
+                    "description": "A value resolved from the form or the trigger when the form is rendered.\n"
+                },
+                "valueJson": {
+                    "type": "string",
+                    "description": "A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule.\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue",
+                    "description": "A value resolved from the form or the trigger when the form is rendered.\n"
+                },
+                "valueJson": {
+                    "type": "string",
+                    "description": "A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValue:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleValue:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleValue:WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
+        "port:index/WorkflowNodeInputUserInputsUserPropertiesStringPropsSort:WorkflowNodeInputUserInputsUserPropertiesStringPropsSort": {
+            "properties": {
+                "order": {
+                    "type": "string",
+                    "description": "The order to sort the entities in.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property to sort the entities by.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "property"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "order",
+                        "property"
+                    ]
+                }
+            }
+        },
+        "port:index/WorkflowNodeInputUserInputsValidation:WorkflowNodeInputUserInputsValidation": {
+            "properties": {
+                "constraint": {
+                    "type": "string",
+                    "description": "A jq expression that has to evaluate to `true` for the form to be valid.\n"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "The error message shown when the constraint evaluates to `false` (max 100 characters).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "constraint",
+                "message"
+            ]
+        },
+        "port:index/WorkflowNodeIntegrationAction:WorkflowNodeIntegrationAction": {
+            "properties": {
+                "executionProperties": {
+                    "type": "string",
+                    "description": "The integration action execution properties as a JSON encoded string.\n"
+                },
+                "installationId": {
+                    "type": "string",
+                    "description": "The installation id of the integration.\n"
+                },
+                "integrationInvocationType": {
+                    "type": "string",
+                    "description": "The invocation type of the integration action.\n"
+                },
+                "integrationProvider": {
+                    "type": "string",
+                    "description": "The provider of the integration action.\n"
+                },
+                "onFailure": {
+                    "type": "string",
+                    "description": "The action to take if the node fails. One of `continue`, `terminate`.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "onFailure"
+                    ]
+                }
+            }
+        },
+        "port:index/WorkflowNodeKafka:WorkflowNodeKafka": {
+            "properties": {
+                "onFailure": {
+                    "type": "string",
+                    "description": "The action to take if the node fails. One of `continue`, `terminate`.\n"
+                },
+                "payload": {
+                    "type": "string",
+                    "description": "The Kafka message payload as a JSON encoded string.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "onFailure"
+                    ]
+                }
+            }
+        },
+        "port:index/WorkflowNodeScheduleTrigger:WorkflowNodeScheduleTrigger": {
+            "properties": {
+                "cron": {
+                    "type": "string",
+                    "description": "The cron expression defining when the workflow triggers (e.g. `0 9 * * 1-5`), evaluated in UTC.\n"
+                },
+                "published": {
+                    "type": "boolean",
+                    "description": "Whether the trigger is published.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "published"
+                    ]
+                }
+            }
+        },
+        "port:index/WorkflowNodeSelfServeTrigger:WorkflowNodeSelfServeTrigger": {
+            "properties": {
+                "actionCardButtonText": {
+                    "type": "string",
+                    "description": "The text of the button displayed on the self service card (max 15 characters).\n"
+                },
+                "contexts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerContext:WorkflowNodeSelfServeTriggerContext"
+                    },
+                    "description": "Where the trigger is surfaced in the UI.\n"
+                },
+                "executeActionButtonText": {
+                    "type": "string",
+                    "description": "The text of the button that executes the workflow (max 15 characters).\n"
+                },
+                "permissions": {
+                    "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerPermissions:WorkflowNodeSelfServeTriggerPermissions",
+                    "description": "Who is allowed to execute this trigger.\n"
+                },
+                "published": {
+                    "type": "boolean",
+                    "description": "Whether the trigger is published.\n"
+                },
+                "userInputs": {
+                    "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputs:WorkflowNodeSelfServeTriggerUserInputs",
+                    "description": "The form presented to the user when triggering the workflow.\n"
+                },
+                "variant": {
+                    "type": "string",
+                    "description": "The trigger variant. One of `DEFAULT`, `ALERT`.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "published"
+                    ]
+                }
+            }
+        },
+        "port:index/WorkflowNodeSelfServeTriggerContext:WorkflowNodeSelfServeTriggerContext": {
+            "properties": {
+                "blueprintIdentifier": {
+                    "type": "string",
+                    "description": "The blueprint the trigger creates an entity for. Required when `on` is `CREATE_ENTITY`.\n"
+                },
+                "on": {
+                    "type": "string",
+                    "description": "The context type. One of `CREATE_ENTITY`, `ENTITY`.\n"
+                },
+                "userInput": {
+                    "type": "string",
+                    "description": "The user input the trigger is bound to. Required when `on` is `ENTITY`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "on"
+            ]
+        },
+        "port:index/WorkflowNodeSelfServeTriggerPermissions:WorkflowNodeSelfServeTriggerPermissions": {
+            "properties": {
+                "policy": {
+                    "type": "string",
+                    "description": "A JSON encoded RBAC query that dynamically resolves who is permitted, of the form `{\"combinator\":\"and\",\"rules\":[{\"property\":{\"context\":\"user\",\"property\":\"department\"},\"operator\":\"=\",\"value\":\"engineering\"}]}`. `context` is one of `user`, `userTeams`, `form`, `workflowRun`.\n"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The roles the permission applies to.\n"
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The identifiers of the teams the permission applies to. They must exist in the organization.\n"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The emails of the users the permission applies to. They must exist in the organization.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputs:WorkflowNodeSelfServeTriggerUserInputs": {
+            "properties": {
+                "orderProperties": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The order the inputs are rendered in. Cannot be combined with `steps`.\n"
+                },
+                "requiredJqQuery": {
+                    "type": "string",
+                    "description": "A jq query resolving which inputs are required.\n"
+                },
+                "steps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsStep:WorkflowNodeSelfServeTriggerUserInputsStep"
+                    },
+                    "description": "Splits the form into steps. Cannot be combined with `order_properties`.\n"
+                },
+                "titles": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsTitles:WorkflowNodeSelfServeTriggerUserInputsTitles"
+                    },
+                    "description": "Static titles rendered between the inputs of the form.\n"
+                },
+                "userProperties": {
+                    "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserProperties:WorkflowNodeSelfServeTriggerUserInputsUserProperties",
+                    "description": "The user inputs the form collects.\n"
+                },
+                "validations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsValidation:WorkflowNodeSelfServeTriggerUserInputsValidation"
+                    },
+                    "description": "Validation rules evaluated against the whole form when it is submitted. Cannot be combined with `steps`, add the rules to the individual steps instead. Up to 10 rules are allowed.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsStep:WorkflowNodeSelfServeTriggerUserInputsStep": {
+            "properties": {
+                "orders": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The order of the inputs in this step.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The step's title (max 25 characters).\n"
+                },
+                "validations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsStepValidation:WorkflowNodeSelfServeTriggerUserInputsStepValidation"
+                    },
+                    "description": "Validation rules evaluated when the step is submitted. Up to 10 rules are allowed.\n"
+                },
+                "visible": {
+                    "type": "boolean",
+                    "description": "The visibility of the step.\n"
+                },
+                "visibleJqQuery": {
+                    "type": "string",
+                    "description": "The visibility condition jq query of the step.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "orders",
+                "title"
+            ]
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsStepValidation:WorkflowNodeSelfServeTriggerUserInputsStepValidation": {
+            "properties": {
+                "constraint": {
+                    "type": "string",
+                    "description": "A jq expression that has to evaluate to `true` for the form to be valid.\n"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "The error message shown when the constraint evaluates to `false` (max 100 characters).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "constraint",
+                "message"
+            ]
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsTitles:WorkflowNodeSelfServeTriggerUserInputsTitles": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The title description.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title text.\n"
+                },
+                "visible": {
+                    "type": "boolean",
+                    "description": "The visibility of the title.\n"
+                },
+                "visibleJqQuery": {
+                    "type": "string",
+                    "description": "The visibility condition jq query of the title.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "title"
+            ]
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserProperties:WorkflowNodeSelfServeTriggerUserInputsUserProperties": {
+            "properties": {
+                "arrayProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayProps:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayProps"
+                    },
+                    "description": "The array inputs of the form.\n"
+                },
+                "booleanProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesBooleanProps:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesBooleanProps"
+                    },
+                    "description": "The boolean inputs of the form.\n"
+                },
+                "numberProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesNumberProps:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesNumberProps"
+                    },
+                    "description": "The number inputs of the form.\n"
+                },
+                "objectProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectProps:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectProps"
+                    },
+                    "description": "The object inputs of the form.\n"
+                },
+                "stringProps": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps"
+                    },
+                    "description": "The string inputs of the form.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayProps:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayProps": {
+            "properties": {
+                "defaultJqQuery": {
+                    "type": "string",
+                    "description": "The default jq query of the array input.\n"
+                },
+                "dependsOns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The inputs this input depends on.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the array input.\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Greys out the array input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.\n"
+                },
+                "disabledJqQuery": {
+                    "type": "string",
+                    "description": "The disabled condition jq query of the array input.\n"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of the array input.\n"
+                },
+                "maxItems": {
+                    "type": "integer",
+                    "description": "The max items of the array input.\n"
+                },
+                "maxItemsJqQuery": {
+                    "type": "string",
+                    "description": "The max items jq query of the array input.\n"
+                },
+                "minItems": {
+                    "type": "integer",
+                    "description": "The min items of the array input.\n"
+                },
+                "minItemsJqQuery": {
+                    "type": "string",
+                    "description": "The min items jq query of the array input.\n"
+                },
+                "numberItems": {
+                    "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsNumberItems:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsNumberItems",
+                    "description": "The number items of the array input.\n"
+                },
+                "objectItems": {
+                    "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItems:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItems",
+                    "description": "The object items of the array input.\n"
+                },
+                "readOnly": {
+                    "type": "boolean",
+                    "description": "Shows the value of the array input without letting the user change it. The value is still submitted with the form, unlike `disabled`.\n"
+                },
+                "readOnlyJqQuery": {
+                    "type": "string",
+                    "description": "The read only condition jq query of the array input.\n"
+                },
+                "required": {
+                    "type": "boolean",
+                    "description": "Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.\n"
+                },
+                "sort": {
+                    "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsSort:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsSort",
+                    "description": "How the entities are sorted in the form.\n"
+                },
+                "stringItems": {
+                    "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsStringItems:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsStringItems",
+                    "description": "The string items of the array input.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the array input.\n"
+                },
+                "uniqueItems": {
+                    "type": "boolean",
+                    "description": "Whether the values of the array have to be unique.\n"
+                },
+                "visible": {
+                    "type": "boolean",
+                    "description": "The visibility of the array input.\n"
+                },
+                "visibleJqQuery": {
+                    "type": "string",
+                    "description": "The visibility condition jq query of the array input.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsNumberItems:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsNumberItems": {
+            "properties": {
+                "defaults": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "description": "The default value of the items.\n"
+                },
+                "enumColors": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The colors of the enum values.\n"
+                },
+                "enumJqQuery": {
+                    "type": "string",
+                    "description": "A jq query resolving the values the user can pick from.\n"
+                },
+                "enums": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "description": "The values the user can pick from.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItems:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItems": {
+            "properties": {
+                "defaults": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "description": "The default value of the items.\n"
+                },
+                "format": {
+                    "type": "string",
+                    "description": "The format of each item.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsSort:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsSort": {
+            "properties": {
+                "order": {
+                    "type": "string",
+                    "description": "The order to sort the entities in.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property to sort the entities by.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "property"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "order",
+                        "property"
+                    ]
+                }
+            }
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsStringItems:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsStringItems": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint the entities are taken from. Required when `format` is `entity`.\n"
+                },
+                "dataset": {
+                    "type": "string",
+                    "description": "The dataset filtering the entities of the items, as a JSON encoded string.\n"
+                },
+                "defaults": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The default value of the items.\n"
+                },
+                "enumColors": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The colors of the enum values.\n"
+                },
+                "enumJqQuery": {
+                    "type": "string",
+                    "description": "A jq query resolving the values the user can pick from.\n"
+                },
+                "enums": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The values the user can pick from.\n"
+                },
+                "format": {
+                    "type": "string",
+                    "description": "The format of each item.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesBooleanProps:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesBooleanProps": {
+            "properties": {
+                "default": {
+                    "type": "boolean",
+                    "description": "The default of the boolean input.\n"
+                },
+                "defaultJqQuery": {
+                    "type": "string",
+                    "description": "The default jq query of the boolean input.\n"
+                },
+                "dependsOns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The inputs this input depends on.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the boolean input.\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Greys out the boolean input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.\n"
+                },
+                "disabledJqQuery": {
+                    "type": "string",
+                    "description": "The disabled condition jq query of the boolean input.\n"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of the boolean input.\n"
+                },
+                "readOnly": {
+                    "type": "boolean",
+                    "description": "Shows the value of the boolean input without letting the user change it. The value is still submitted with the form, unlike `disabled`.\n"
+                },
+                "readOnlyJqQuery": {
+                    "type": "string",
+                    "description": "The read only condition jq query of the boolean input.\n"
+                },
+                "required": {
+                    "type": "boolean",
+                    "description": "Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the boolean input.\n"
+                },
+                "visible": {
+                    "type": "boolean",
+                    "description": "The visibility of the boolean input.\n"
+                },
+                "visibleJqQuery": {
+                    "type": "string",
+                    "description": "The visibility condition jq query of the boolean input.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesNumberProps:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesNumberProps": {
+            "properties": {
+                "default": {
+                    "type": "number",
+                    "description": "The default of the number input.\n"
+                },
+                "defaultJqQuery": {
+                    "type": "string",
+                    "description": "The default jq query of the number input.\n"
+                },
+                "dependsOns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The inputs this input depends on.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the number input.\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Greys out the number input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.\n"
+                },
+                "disabledJqQuery": {
+                    "type": "string",
+                    "description": "The disabled condition jq query of the number input.\n"
+                },
+                "enumJqQuery": {
+                    "type": "string",
+                    "description": "A jq query resolving the values the user can pick from.\n"
+                },
+                "enums": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "description": "The values the user can pick from.\n"
+                },
+                "exclusiveMaximum": {
+                    "type": "number",
+                    "description": "The value the input has to be strictly smaller than.\n"
+                },
+                "exclusiveMinimum": {
+                    "type": "number",
+                    "description": "The value the input has to be strictly greater than.\n"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of the number input.\n"
+                },
+                "maximum": {
+                    "type": "number",
+                    "description": "The largest value the input accepts.\n"
+                },
+                "minimum": {
+                    "type": "number",
+                    "description": "The smallest value the input accepts.\n"
+                },
+                "readOnly": {
+                    "type": "boolean",
+                    "description": "Shows the value of the number input without letting the user change it. The value is still submitted with the form, unlike `disabled`.\n"
+                },
+                "readOnlyJqQuery": {
+                    "type": "string",
+                    "description": "The read only condition jq query of the number input.\n"
+                },
+                "required": {
+                    "type": "boolean",
+                    "description": "Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the number input.\n"
+                },
+                "visible": {
+                    "type": "boolean",
+                    "description": "The visibility of the number input.\n"
+                },
+                "visibleJqQuery": {
+                    "type": "string",
+                    "description": "The visibility condition jq query of the number input.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectProps:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectProps": {
+            "properties": {
+                "default": {
+                    "type": "string",
+                    "description": "The default of the object input, as a JSON encoded string.\n"
+                },
+                "defaultJqQuery": {
+                    "type": "string",
+                    "description": "The default jq query of the object input.\n"
+                },
+                "dependsOns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The inputs this input depends on.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the object input.\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Greys out the object input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.\n"
+                },
+                "disabledJqQuery": {
+                    "type": "string",
+                    "description": "The disabled condition jq query of the object input.\n"
+                },
+                "format": {
+                    "type": "string",
+                    "description": "The format of the object input. `labeled-url` renders a url with a display text. Leave it out for a free form object.\n"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of the object input.\n"
+                },
+                "readOnly": {
+                    "type": "boolean",
+                    "description": "Shows the value of the object input without letting the user change it. The value is still submitted with the form, unlike `disabled`.\n"
+                },
+                "readOnlyJqQuery": {
+                    "type": "string",
+                    "description": "The read only condition jq query of the object input.\n"
+                },
+                "required": {
+                    "type": "boolean",
+                    "description": "Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the object input.\n"
+                },
+                "visible": {
+                    "type": "boolean",
+                    "description": "The visibility of the object input.\n"
+                },
+                "visibleJqQuery": {
+                    "type": "string",
+                    "description": "The visibility condition jq query of the object input.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint the entities are taken from. Required when `format` is `entity`.\n"
+                },
+                "dataset": {
+                    "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDataset:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDataset",
+                    "description": "The dataset filtering the entities the user can pick from.\n"
+                },
+                "default": {
+                    "type": "string",
+                    "description": "The default of the string input.\n"
+                },
+                "defaultJqQuery": {
+                    "type": "string",
+                    "description": "The default jq query of the string input.\n"
+                },
+                "dependsOns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The inputs this input depends on.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the string input.\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Greys out the string input. A disabled input is excluded from the submitted data and from `required` validation, which makes it a way to drop an input from the form based on the other answers. Use `read_only` to keep the value in the submission.\n"
+                },
+                "disabledJqQuery": {
+                    "type": "string",
+                    "description": "The disabled condition jq query of the string input.\n"
+                },
+                "enumColors": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The colors of the enum values.\n"
+                },
+                "enumJqQuery": {
+                    "type": "string",
+                    "description": "A jq query resolving the values the user can pick from.\n"
+                },
+                "enums": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The values the user can pick from.\n"
+                },
+                "format": {
+                    "type": "string",
+                    "description": "The format of the string input.\n"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of the string input.\n"
+                },
+                "maxLength": {
+                    "type": "integer",
+                    "description": "The max length of the string input.\n"
+                },
+                "minLength": {
+                    "type": "integer",
+                    "description": "The min length of the string input.\n"
+                },
+                "pattern": {
+                    "type": "string",
+                    "description": "The regex pattern the value has to match.\n"
+                },
+                "patternJqQuery": {
+                    "type": "string",
+                    "description": "A jq query resolving the pattern of the string input, either a regex string or a list of allowed values.\n"
+                },
+                "readOnly": {
+                    "type": "boolean",
+                    "description": "Shows the value of the string input without letting the user change it. The value is still submitted with the form, unlike `disabled`.\n"
+                },
+                "readOnlyJqQuery": {
+                    "type": "string",
+                    "description": "The read only condition jq query of the string input.\n"
+                },
+                "required": {
+                    "type": "boolean",
+                    "description": "Whether the input has to be filled in. Only `true` is accepted, and it cannot be combined with `required_jq_query`.\n"
+                },
+                "sort": {
+                    "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsSort:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsSort",
+                    "description": "How the entities are sorted in the form.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the string input.\n"
+                },
+                "visible": {
+                    "type": "boolean",
+                    "description": "The visibility of the string input.\n"
+                },
+                "visibleJqQuery": {
+                    "type": "string",
+                    "description": "The visibility condition jq query of the string input.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDataset:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDataset": {
+            "properties": {
+                "combinator": {
+                    "type": "string",
+                    "description": "How the rules are combined.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule"
+                    },
+                    "description": "The rules of the dataset. A rule either filters on a property or groups nested rules under a combinator.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "combinator",
+                "rules"
+            ]
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule.\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRule:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRule"
+                    },
+                    "description": "The nested rules of a group rule.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleValue:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleValue",
+                    "description": "A value resolved from the form or the trigger when the form is rendered.\n"
+                },
+                "valueJson": {
+                    "type": "string",
+                    "description": "A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRule:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule.\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRule:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRule"
+                    },
+                    "description": "The nested rules of a group rule.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleValue:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleValue",
+                    "description": "A value resolved from the form or the trigger when the form is rendered.\n"
+                },
+                "valueJson": {
+                    "type": "string",
+                    "description": "A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRule:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule.\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule"
+                    },
+                    "description": "The nested rules of a group rule.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValue:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValue",
+                    "description": "A value resolved from the form or the trigger when the form is rendered.\n"
+                },
+                "valueJson": {
+                    "type": "string",
+                    "description": "A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule.\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule"
+                    },
+                    "description": "The nested rules of a group rule.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue",
+                    "description": "A value resolved from the form or the trigger when the form is rendered.\n"
+                },
+                "valueJson": {
+                    "type": "string",
+                    "description": "A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule.\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule"
+                    },
+                    "description": "The nested rules of a group rule.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue",
+                    "description": "A value resolved from the form or the trigger when the form is rendered.\n"
+                },
+                "valueJson": {
+                    "type": "string",
+                    "description": "A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule.\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule"
+                    },
+                    "description": "The nested rules of a group rule.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue",
+                    "description": "A value resolved from the form or the trigger when the form is rendered.\n"
+                },
+                "valueJson": {
+                    "type": "string",
+                    "description": "A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule.\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule"
+                    },
+                    "description": "The nested rules of a group rule.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue",
+                    "description": "A value resolved from the form or the trigger when the form is rendered.\n"
+                },
+                "valueJson": {
+                    "type": "string",
+                    "description": "A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule.\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule"
+                    },
+                    "description": "The nested rules of a group rule.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue",
+                    "description": "A value resolved from the form or the trigger when the form is rendered.\n"
+                },
+                "valueJson": {
+                    "type": "string",
+                    "description": "A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule.\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule"
+                    },
+                    "description": "The nested rules of a group rule.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue",
+                    "description": "A value resolved from the form or the trigger when the form is rendered.\n"
+                },
+                "valueJson": {
+                    "type": "string",
+                    "description": "A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule.\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule"
+                    },
+                    "description": "The nested rules of a group rule.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue",
+                    "description": "A value resolved from the form or the trigger when the form is rendered.\n"
+                },
+                "valueJson": {
+                    "type": "string",
+                    "description": "A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The blueprint identifier of the rule.\n"
+                },
+                "combinator": {
+                    "type": "string",
+                    "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property identifier of the rule.\n"
+                },
+                "value": {
+                    "$ref": "#/types/port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue",
+                    "description": "A value resolved from the form or the trigger when the form is rendered.\n"
+                },
+                "valueJson": {
+                    "type": "string",
+                    "description": "A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValue:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleValue:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleValue:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleValue": {
+            "properties": {
+                "jqQuery": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "jqQuery"
+            ]
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsSort:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsSort": {
+            "properties": {
+                "order": {
+                    "type": "string",
+                    "description": "The order to sort the entities in.\n"
+                },
+                "property": {
+                    "type": "string",
+                    "description": "The property to sort the entities by.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "property"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "order",
+                        "property"
+                    ]
+                }
+            }
+        },
+        "port:index/WorkflowNodeSelfServeTriggerUserInputsValidation:WorkflowNodeSelfServeTriggerUserInputsValidation": {
+            "properties": {
+                "constraint": {
+                    "type": "string",
+                    "description": "A jq expression that has to evaluate to `true` for the form to be valid.\n"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "The error message shown when the constraint evaluates to `false` (max 100 characters).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "constraint",
+                "message"
+            ]
+        },
+        "port:index/WorkflowNodeUpsertEntity:WorkflowNodeUpsertEntity": {
+            "properties": {
+                "blueprintIdentifier": {
+                    "type": "string",
+                    "description": "The identifier of the blueprint to upsert into.\n"
+                },
+                "mapping": {
+                    "$ref": "#/types/port:index/WorkflowNodeUpsertEntityMapping:WorkflowNodeUpsertEntityMapping",
+                    "description": "The entity fields to upsert.\n"
+                },
+                "onFailure": {
+                    "type": "string",
+                    "description": "The action to take if the node fails. One of `continue`, `terminate`.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "onFailure"
+                    ]
+                }
+            }
+        },
+        "port:index/WorkflowNodeUpsertEntityMapping:WorkflowNodeUpsertEntityMapping": {
+            "properties": {
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of the entity to upsert.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the entity to upsert.\n"
+                },
+                "properties": {
+                    "type": "string",
+                    "description": "The properties of the entity as a JSON encoded string.\n"
+                },
+                "relations": {
+                    "type": "string",
+                    "description": "The relations of the entity as a JSON encoded string.\n"
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The teams of the entity to upsert. Values may contain `{{ }}` template expressions that are resolved when the node runs.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the entity to upsert.\n"
+                }
+            },
+            "type": "object"
+        },
+        "port:index/WorkflowNodeWebhook:WorkflowNodeWebhook": {
+            "properties": {
+                "agent": {
+                    "type": "boolean",
+                    "description": "Whether the request is routed through the Port agent.\n"
+                },
+                "body": {
+                    "type": "string",
+                    "description": "The request body as a JSON encoded string.\n"
+                },
+                "headers": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The HTTP headers of the request.\n"
+                },
+                "method": {
+                    "type": "string",
+                    "description": "The HTTP method. One of `GET`, `POST`, `PUT`, `PATCH`, `DELETE`.\n"
+                },
+                "onFailure": {
+                    "type": "string",
+                    "description": "The action to take if the node fails. One of `continue`, `terminate`.\n"
+                },
+                "onTimeout": {
+                    "type": "string",
+                    "description": "The action to take if the webhook times out. One of `fail`, `continue`.\n"
+                },
+                "synchronized": {
+                    "type": "boolean",
+                    "description": "Whether the request is sent synchronously.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL of the webhook.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "agent",
+                        "method",
+                        "onFailure",
+                        "onTimeout",
+                        "synchronized"
+                    ]
+                }
+            }
         },
         "port:index/getSearchEntity:getSearchEntity": {
             "properties": {
@@ -5922,6 +9306,139 @@
                     "webhookKey": {
                         "type": "string",
                         "description": "The webhook key of the webhook\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "port:index/workflow:Workflow": {
+            "properties": {
+                "allowAnyoneToViewRuns": {
+                    "type": "boolean",
+                    "description": "Whether any user can view this workflow's runs\n"
+                },
+                "category": {
+                    "type": "string",
+                    "description": "A free-form category used to group the workflow (max 40 characters)\n"
+                },
+                "connections": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowConnection:WorkflowConnection"
+                    },
+                    "description": "A directed connection between two nodes\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the workflow\n"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of the workflow\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the workflow\n"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNode:WorkflowNode"
+                    },
+                    "description": "A node of the workflow graph. Exactly one node config block must be set.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the workflow\n"
+                }
+            },
+            "required": [
+                "allowAnyoneToViewRuns",
+                "identifier"
+            ],
+            "inputProperties": {
+                "allowAnyoneToViewRuns": {
+                    "type": "boolean",
+                    "description": "Whether any user can view this workflow's runs\n"
+                },
+                "category": {
+                    "type": "string",
+                    "description": "A free-form category used to group the workflow (max 40 characters)\n"
+                },
+                "connections": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowConnection:WorkflowConnection"
+                    },
+                    "description": "A directed connection between two nodes\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the workflow\n"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "The icon of the workflow\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the workflow\n"
+                },
+                "nodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/WorkflowNode:WorkflowNode"
+                    },
+                    "description": "A node of the workflow graph. Exactly one node config block must be set.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the workflow\n"
+                }
+            },
+            "requiredInputs": [
+                "identifier"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Workflow resources.\n",
+                "properties": {
+                    "allowAnyoneToViewRuns": {
+                        "type": "boolean",
+                        "description": "Whether any user can view this workflow's runs\n"
+                    },
+                    "category": {
+                        "type": "string",
+                        "description": "A free-form category used to group the workflow (max 40 characters)\n"
+                    },
+                    "connections": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/port:index/WorkflowConnection:WorkflowConnection"
+                        },
+                        "description": "A directed connection between two nodes\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the workflow\n"
+                    },
+                    "icon": {
+                        "type": "string",
+                        "description": "The icon of the workflow\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "The identifier of the workflow\n"
+                    },
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/port:index/WorkflowNode:WorkflowNode"
+                        },
+                        "description": "A node of the workflow graph. Exactly one node config block must be set.\n"
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "The title of the workflow\n"
                     }
                 },
                 "type": "object"
