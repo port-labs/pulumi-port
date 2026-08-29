@@ -3098,6 +3098,184 @@
                 "conditions"
             ]
         },
+        "port:index/ScorecardGroupFilters:ScorecardGroupFilters": {
+            "properties": {
+                "combinator": {
+                    "type": "string",
+                    "description": "The combinator of the query.\n"
+                },
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The conditions of the query. Each condition object should be encoded to a string.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "combinator",
+                "conditions"
+            ]
+        },
+        "port:index/ScorecardGroupLevel:ScorecardGroupLevel": {
+            "properties": {
+                "color": {
+                    "type": "string",
+                    "description": "The color of the level\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the level\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "color",
+                "title"
+            ]
+        },
+        "port:index/ScorecardGroupRule:ScorecardGroupRule": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the rule\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the rule\n"
+                },
+                "level": {
+                    "type": "string",
+                    "description": "The level of the rule\n"
+                },
+                "query": {
+                    "$ref": "#/types/port:index/ScorecardGroupRuleQuery:ScorecardGroupRuleQuery",
+                    "description": "The query of the rule\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the rule\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "identifier",
+                "level",
+                "query",
+                "title"
+            ]
+        },
+        "port:index/ScorecardGroupRuleQuery:ScorecardGroupRuleQuery": {
+            "properties": {
+                "combinator": {
+                    "type": "string",
+                    "description": "The combinator of the query\n"
+                },
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The conditions of the query. Each condition object should be encoded to a string\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "combinator",
+                "conditions"
+            ]
+        },
+        "port:index/ScorecardGroupScorecards:ScorecardGroupScorecards": {
+            "properties": {
+                "filter": {
+                    "$ref": "#/types/port:index/ScorecardGroupScorecardsFilter:ScorecardGroupScorecardsFilter",
+                    "description": "An optional set of conditions to filter entities evaluated by this member scorecard.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/ScorecardGroupScorecardsRule:ScorecardGroupScorecardsRule"
+                    },
+                    "description": "The rules that define this member scorecard.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "rules"
+            ]
+        },
+        "port:index/ScorecardGroupScorecardsFilter:ScorecardGroupScorecardsFilter": {
+            "properties": {
+                "combinator": {
+                    "type": "string",
+                    "description": "The combinator of the query.\n"
+                },
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The conditions of the query. Each condition object should be encoded to a string.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "combinator",
+                "conditions"
+            ]
+        },
+        "port:index/ScorecardGroupScorecardsRule:ScorecardGroupScorecardsRule": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the rule\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the rule\n"
+                },
+                "level": {
+                    "type": "string",
+                    "description": "The level of the rule\n"
+                },
+                "query": {
+                    "$ref": "#/types/port:index/ScorecardGroupScorecardsRuleQuery:ScorecardGroupScorecardsRuleQuery",
+                    "description": "The query of the rule\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the rule\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "identifier",
+                "level",
+                "query",
+                "title"
+            ]
+        },
+        "port:index/ScorecardGroupScorecardsRuleQuery:ScorecardGroupScorecardsRuleQuery": {
+            "properties": {
+                "combinator": {
+                    "type": "string",
+                    "description": "The combinator of the query\n"
+                },
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The conditions of the query. Each condition object should be encoded to a string\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "combinator",
+                "conditions"
+            ]
+        },
         "port:index/ScorecardLevel:ScorecardLevel": {
             "properties": {
                 "color": {
@@ -8927,6 +9105,191 @@
                     "updatedBy": {
                         "type": "string",
                         "description": "The last updater of the scorecard\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "port:index/scorecardGroup:ScorecardGroup": {
+            "properties": {
+                "blueprints": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Blueprint identifiers that share the same rules (and optional filters). Use this for shared-rules mode. Conflicts with\n`scorecards`.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The creation date of the scorecard group.\n"
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "The creator of the scorecard group.\n"
+                },
+                "filters": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/ScorecardGroupFilters:ScorecardGroupFilters"
+                    },
+                    "description": "Optional filters per blueprint in shared-rules mode, keyed by blueprint identifier. Conflicts with `scorecards`.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "A unique identifier for the scorecard group.\n"
+                },
+                "levels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/ScorecardGroupLevel:ScorecardGroupLevel"
+                    },
+                    "description": "The available levels of the scorecard group, shared by all members.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/ScorecardGroupRule:ScorecardGroupRule"
+                    },
+                    "description": "The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.\n"
+                },
+                "scorecards": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/ScorecardGroupScorecards:ScorecardGroupScorecards"
+                    },
+                    "description": "Map of blueprint identifier to member scorecard filter/rules. Use this for per-blueprint mode. Conflicts with\n`blueprints`, `rules`, and `filters`.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the scorecard group (applied to all member scorecards).\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The last update date of the scorecard group.\n"
+                },
+                "updatedBy": {
+                    "type": "string",
+                    "description": "The last updater of the scorecard group.\n"
+                }
+            },
+            "required": [
+                "createdAt",
+                "createdBy",
+                "identifier",
+                "title",
+                "updatedAt",
+                "updatedBy"
+            ],
+            "inputProperties": {
+                "blueprints": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Blueprint identifiers that share the same rules (and optional filters). Use this for shared-rules mode. Conflicts with\n`scorecards`.\n"
+                },
+                "filters": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/ScorecardGroupFilters:ScorecardGroupFilters"
+                    },
+                    "description": "Optional filters per blueprint in shared-rules mode, keyed by blueprint identifier. Conflicts with `scorecards`.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "A unique identifier for the scorecard group.\n"
+                },
+                "levels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/ScorecardGroupLevel:ScorecardGroupLevel"
+                    },
+                    "description": "The available levels of the scorecard group, shared by all members.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/port:index/ScorecardGroupRule:ScorecardGroupRule"
+                    },
+                    "description": "The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.\n"
+                },
+                "scorecards": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/ScorecardGroupScorecards:ScorecardGroupScorecards"
+                    },
+                    "description": "Map of blueprint identifier to member scorecard filter/rules. Use this for per-blueprint mode. Conflicts with\n`blueprints`, `rules`, and `filters`.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the scorecard group (applied to all member scorecards).\n"
+                }
+            },
+            "requiredInputs": [
+                "identifier",
+                "title"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ScorecardGroup resources.\n",
+                "properties": {
+                    "blueprints": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Blueprint identifiers that share the same rules (and optional filters). Use this for shared-rules mode. Conflicts with\n`scorecards`.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The creation date of the scorecard group.\n"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "description": "The creator of the scorecard group.\n"
+                    },
+                    "filters": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/port:index/ScorecardGroupFilters:ScorecardGroupFilters"
+                        },
+                        "description": "Optional filters per blueprint in shared-rules mode, keyed by blueprint identifier. Conflicts with `scorecards`.\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "A unique identifier for the scorecard group.\n"
+                    },
+                    "levels": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/port:index/ScorecardGroupLevel:ScorecardGroupLevel"
+                        },
+                        "description": "The available levels of the scorecard group, shared by all members.\n"
+                    },
+                    "rules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/port:index/ScorecardGroupRule:ScorecardGroupRule"
+                        },
+                        "description": "The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.\n"
+                    },
+                    "scorecards": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/port:index/ScorecardGroupScorecards:ScorecardGroupScorecards"
+                        },
+                        "description": "Map of blueprint identifier to member scorecard filter/rules. Use this for per-blueprint mode. Conflicts with\n`blueprints`, `rules`, and `filters`.\n"
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "The title of the scorecard group (applied to all member scorecards).\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "The last update date of the scorecard group.\n"
+                    },
+                    "updatedBy": {
+                        "type": "string",
+                        "description": "The last updater of the scorecard group.\n"
                     }
                 },
                 "type": "object"
