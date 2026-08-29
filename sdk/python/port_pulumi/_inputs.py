@@ -231,6 +231,22 @@ __all__ = [
     'PagePermissionsReadArgsDict',
     'ScorecardFilterArgs',
     'ScorecardFilterArgsDict',
+    'ScorecardGroupFiltersArgs',
+    'ScorecardGroupFiltersArgsDict',
+    'ScorecardGroupLevelArgs',
+    'ScorecardGroupLevelArgsDict',
+    'ScorecardGroupRuleArgs',
+    'ScorecardGroupRuleArgsDict',
+    'ScorecardGroupRuleQueryArgs',
+    'ScorecardGroupRuleQueryArgsDict',
+    'ScorecardGroupScorecardsArgs',
+    'ScorecardGroupScorecardsArgsDict',
+    'ScorecardGroupScorecardsFilterArgs',
+    'ScorecardGroupScorecardsFilterArgsDict',
+    'ScorecardGroupScorecardsRuleArgs',
+    'ScorecardGroupScorecardsRuleArgsDict',
+    'ScorecardGroupScorecardsRuleQueryArgs',
+    'ScorecardGroupScorecardsRuleQueryArgsDict',
     'ScorecardLevelArgs',
     'ScorecardLevelArgsDict',
     'ScorecardRuleArgs',
@@ -10562,6 +10578,523 @@ class ScorecardFilterArgs:
     def conditions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The conditions of the filter. Each condition object should be encoded to a string
+        """
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "conditions", value)
+
+
+if not MYPY:
+    class ScorecardGroupFiltersArgsDict(TypedDict):
+        combinator: pulumi.Input[str]
+        """
+        The combinator of the query.
+        """
+        conditions: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The conditions of the query. Each condition object should be encoded to a string.
+        """
+elif False:
+    ScorecardGroupFiltersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ScorecardGroupFiltersArgs:
+    def __init__(__self__, *,
+                 combinator: pulumi.Input[str],
+                 conditions: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[str] combinator: The combinator of the query.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] conditions: The conditions of the query. Each condition object should be encoded to a string.
+        """
+        pulumi.set(__self__, "combinator", combinator)
+        pulumi.set(__self__, "conditions", conditions)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> pulumi.Input[str]:
+        """
+        The combinator of the query.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The conditions of the query. Each condition object should be encoded to a string.
+        """
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "conditions", value)
+
+
+if not MYPY:
+    class ScorecardGroupLevelArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        """
+        The color of the level
+        """
+        title: pulumi.Input[str]
+        """
+        The title of the level
+        """
+elif False:
+    ScorecardGroupLevelArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ScorecardGroupLevelArgs:
+    def __init__(__self__, *,
+                 color: pulumi.Input[str],
+                 title: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] color: The color of the level
+        :param pulumi.Input[str] title: The title of the level
+        """
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def color(self) -> pulumi.Input[str]:
+        """
+        The color of the level
+        """
+        return pulumi.get(self, "color")
+
+    @color.setter
+    def color(self, value: pulumi.Input[str]):
+        pulumi.set(self, "color", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        The title of the level
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+
+if not MYPY:
+    class ScorecardGroupRuleArgsDict(TypedDict):
+        identifier: pulumi.Input[str]
+        """
+        The identifier of the rule
+        """
+        level: pulumi.Input[str]
+        """
+        The level of the rule
+        """
+        query: pulumi.Input['ScorecardGroupRuleQueryArgsDict']
+        """
+        The query of the rule
+        """
+        title: pulumi.Input[str]
+        """
+        The title of the rule
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the rule
+        """
+elif False:
+    ScorecardGroupRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ScorecardGroupRuleArgs:
+    def __init__(__self__, *,
+                 identifier: pulumi.Input[str],
+                 level: pulumi.Input[str],
+                 query: pulumi.Input['ScorecardGroupRuleQueryArgs'],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] identifier: The identifier of the rule
+        :param pulumi.Input[str] level: The level of the rule
+        :param pulumi.Input['ScorecardGroupRuleQueryArgs'] query: The query of the rule
+        :param pulumi.Input[str] title: The title of the rule
+        :param pulumi.Input[str] description: The description of the rule
+        """
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "level", level)
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[str]:
+        """
+        The identifier of the rule
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter
+    def level(self) -> pulumi.Input[str]:
+        """
+        The level of the rule
+        """
+        return pulumi.get(self, "level")
+
+    @level.setter
+    def level(self, value: pulumi.Input[str]):
+        pulumi.set(self, "level", value)
+
+    @property
+    @pulumi.getter
+    def query(self) -> pulumi.Input['ScorecardGroupRuleQueryArgs']:
+        """
+        The query of the rule
+        """
+        return pulumi.get(self, "query")
+
+    @query.setter
+    def query(self, value: pulumi.Input['ScorecardGroupRuleQueryArgs']):
+        pulumi.set(self, "query", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        The title of the rule
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the rule
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class ScorecardGroupRuleQueryArgsDict(TypedDict):
+        combinator: pulumi.Input[str]
+        """
+        The combinator of the query
+        """
+        conditions: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The conditions of the query. Each condition object should be encoded to a string
+        """
+elif False:
+    ScorecardGroupRuleQueryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ScorecardGroupRuleQueryArgs:
+    def __init__(__self__, *,
+                 combinator: pulumi.Input[str],
+                 conditions: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[str] combinator: The combinator of the query
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] conditions: The conditions of the query. Each condition object should be encoded to a string
+        """
+        pulumi.set(__self__, "combinator", combinator)
+        pulumi.set(__self__, "conditions", conditions)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> pulumi.Input[str]:
+        """
+        The combinator of the query
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The conditions of the query. Each condition object should be encoded to a string
+        """
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "conditions", value)
+
+
+if not MYPY:
+    class ScorecardGroupScorecardsArgsDict(TypedDict):
+        rules: pulumi.Input[Sequence[pulumi.Input['ScorecardGroupScorecardsRuleArgsDict']]]
+        """
+        The rules that define this member scorecard.
+        """
+        filter: NotRequired[pulumi.Input['ScorecardGroupScorecardsFilterArgsDict']]
+        """
+        An optional set of conditions to filter entities evaluated by this member scorecard.
+        """
+elif False:
+    ScorecardGroupScorecardsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ScorecardGroupScorecardsArgs:
+    def __init__(__self__, *,
+                 rules: pulumi.Input[Sequence[pulumi.Input['ScorecardGroupScorecardsRuleArgs']]],
+                 filter: Optional[pulumi.Input['ScorecardGroupScorecardsFilterArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ScorecardGroupScorecardsRuleArgs']]] rules: The rules that define this member scorecard.
+        :param pulumi.Input['ScorecardGroupScorecardsFilterArgs'] filter: An optional set of conditions to filter entities evaluated by this member scorecard.
+        """
+        pulumi.set(__self__, "rules", rules)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['ScorecardGroupScorecardsRuleArgs']]]:
+        """
+        The rules that define this member scorecard.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['ScorecardGroupScorecardsRuleArgs']]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input['ScorecardGroupScorecardsFilterArgs']]:
+        """
+        An optional set of conditions to filter entities evaluated by this member scorecard.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input['ScorecardGroupScorecardsFilterArgs']]):
+        pulumi.set(self, "filter", value)
+
+
+if not MYPY:
+    class ScorecardGroupScorecardsFilterArgsDict(TypedDict):
+        combinator: pulumi.Input[str]
+        """
+        The combinator of the query.
+        """
+        conditions: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The conditions of the query. Each condition object should be encoded to a string.
+        """
+elif False:
+    ScorecardGroupScorecardsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ScorecardGroupScorecardsFilterArgs:
+    def __init__(__self__, *,
+                 combinator: pulumi.Input[str],
+                 conditions: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[str] combinator: The combinator of the query.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] conditions: The conditions of the query. Each condition object should be encoded to a string.
+        """
+        pulumi.set(__self__, "combinator", combinator)
+        pulumi.set(__self__, "conditions", conditions)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> pulumi.Input[str]:
+        """
+        The combinator of the query.
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The conditions of the query. Each condition object should be encoded to a string.
+        """
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "conditions", value)
+
+
+if not MYPY:
+    class ScorecardGroupScorecardsRuleArgsDict(TypedDict):
+        identifier: pulumi.Input[str]
+        """
+        The identifier of the rule
+        """
+        level: pulumi.Input[str]
+        """
+        The level of the rule
+        """
+        query: pulumi.Input['ScorecardGroupScorecardsRuleQueryArgsDict']
+        """
+        The query of the rule
+        """
+        title: pulumi.Input[str]
+        """
+        The title of the rule
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the rule
+        """
+elif False:
+    ScorecardGroupScorecardsRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ScorecardGroupScorecardsRuleArgs:
+    def __init__(__self__, *,
+                 identifier: pulumi.Input[str],
+                 level: pulumi.Input[str],
+                 query: pulumi.Input['ScorecardGroupScorecardsRuleQueryArgs'],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] identifier: The identifier of the rule
+        :param pulumi.Input[str] level: The level of the rule
+        :param pulumi.Input['ScorecardGroupScorecardsRuleQueryArgs'] query: The query of the rule
+        :param pulumi.Input[str] title: The title of the rule
+        :param pulumi.Input[str] description: The description of the rule
+        """
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "level", level)
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[str]:
+        """
+        The identifier of the rule
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter
+    def level(self) -> pulumi.Input[str]:
+        """
+        The level of the rule
+        """
+        return pulumi.get(self, "level")
+
+    @level.setter
+    def level(self, value: pulumi.Input[str]):
+        pulumi.set(self, "level", value)
+
+    @property
+    @pulumi.getter
+    def query(self) -> pulumi.Input['ScorecardGroupScorecardsRuleQueryArgs']:
+        """
+        The query of the rule
+        """
+        return pulumi.get(self, "query")
+
+    @query.setter
+    def query(self, value: pulumi.Input['ScorecardGroupScorecardsRuleQueryArgs']):
+        pulumi.set(self, "query", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        The title of the rule
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the rule
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class ScorecardGroupScorecardsRuleQueryArgsDict(TypedDict):
+        combinator: pulumi.Input[str]
+        """
+        The combinator of the query
+        """
+        conditions: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The conditions of the query. Each condition object should be encoded to a string
+        """
+elif False:
+    ScorecardGroupScorecardsRuleQueryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ScorecardGroupScorecardsRuleQueryArgs:
+    def __init__(__self__, *,
+                 combinator: pulumi.Input[str],
+                 conditions: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[str] combinator: The combinator of the query
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] conditions: The conditions of the query. Each condition object should be encoded to a string
+        """
+        pulumi.set(__self__, "combinator", combinator)
+        pulumi.set(__self__, "conditions", conditions)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> pulumi.Input[str]:
+        """
+        The combinator of the query
+        """
+        return pulumi.get(self, "combinator")
+
+    @combinator.setter
+    def combinator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "combinator", value)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The conditions of the query. Each condition object should be encoded to a string
         """
         return pulumi.get(self, "conditions")
 

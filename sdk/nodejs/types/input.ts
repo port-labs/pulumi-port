@@ -2064,6 +2064,118 @@ export interface ScorecardFilter {
     conditions: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface ScorecardGroupFilters {
+    /**
+     * The combinator of the query.
+     */
+    combinator: pulumi.Input<string>;
+    /**
+     * The conditions of the query. Each condition object should be encoded to a string.
+     */
+    conditions: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ScorecardGroupLevel {
+    /**
+     * The color of the level
+     */
+    color: pulumi.Input<string>;
+    /**
+     * The title of the level
+     */
+    title: pulumi.Input<string>;
+}
+
+export interface ScorecardGroupRule {
+    /**
+     * The description of the rule
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The identifier of the rule
+     */
+    identifier: pulumi.Input<string>;
+    /**
+     * The level of the rule
+     */
+    level: pulumi.Input<string>;
+    /**
+     * The query of the rule
+     */
+    query: pulumi.Input<inputs.ScorecardGroupRuleQuery>;
+    /**
+     * The title of the rule
+     */
+    title: pulumi.Input<string>;
+}
+
+export interface ScorecardGroupRuleQuery {
+    /**
+     * The combinator of the query
+     */
+    combinator: pulumi.Input<string>;
+    /**
+     * The conditions of the query. Each condition object should be encoded to a string
+     */
+    conditions: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ScorecardGroupScorecards {
+    /**
+     * An optional set of conditions to filter entities evaluated by this member scorecard.
+     */
+    filter?: pulumi.Input<inputs.ScorecardGroupScorecardsFilter>;
+    /**
+     * The rules that define this member scorecard.
+     */
+    rules: pulumi.Input<pulumi.Input<inputs.ScorecardGroupScorecardsRule>[]>;
+}
+
+export interface ScorecardGroupScorecardsFilter {
+    /**
+     * The combinator of the query.
+     */
+    combinator: pulumi.Input<string>;
+    /**
+     * The conditions of the query. Each condition object should be encoded to a string.
+     */
+    conditions: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ScorecardGroupScorecardsRule {
+    /**
+     * The description of the rule
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The identifier of the rule
+     */
+    identifier: pulumi.Input<string>;
+    /**
+     * The level of the rule
+     */
+    level: pulumi.Input<string>;
+    /**
+     * The query of the rule
+     */
+    query: pulumi.Input<inputs.ScorecardGroupScorecardsRuleQuery>;
+    /**
+     * The title of the rule
+     */
+    title: pulumi.Input<string>;
+}
+
+export interface ScorecardGroupScorecardsRuleQuery {
+    /**
+     * The combinator of the query
+     */
+    combinator: pulumi.Input<string>;
+    /**
+     * The conditions of the query. Each condition object should be encoded to a string
+     */
+    conditions: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface ScorecardLevel {
     /**
      * The color of the level

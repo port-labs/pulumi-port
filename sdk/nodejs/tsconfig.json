@@ -31,6 +31,7 @@
         "pagePermissions.ts",
         "provider.ts",
         "scorecard.ts",
+        "scorecardGroup.ts",
         "systemBlueprint.ts",
         "team.ts",
         "types/index.ts",
