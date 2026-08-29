@@ -18110,6 +18110,868 @@ func (o ScorecardFilterPtrOutput) Conditions() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+type ScorecardGroupFilters struct {
+	// The combinator of the query.
+	Combinator string `pulumi:"combinator"`
+	// The conditions of the query. Each condition object should be encoded to a string.
+	Conditions []string `pulumi:"conditions"`
+}
+
+// ScorecardGroupFiltersInput is an input type that accepts ScorecardGroupFiltersArgs and ScorecardGroupFiltersOutput values.
+// You can construct a concrete instance of `ScorecardGroupFiltersInput` via:
+//
+//	ScorecardGroupFiltersArgs{...}
+type ScorecardGroupFiltersInput interface {
+	pulumi.Input
+
+	ToScorecardGroupFiltersOutput() ScorecardGroupFiltersOutput
+	ToScorecardGroupFiltersOutputWithContext(context.Context) ScorecardGroupFiltersOutput
+}
+
+type ScorecardGroupFiltersArgs struct {
+	// The combinator of the query.
+	Combinator pulumi.StringInput `pulumi:"combinator"`
+	// The conditions of the query. Each condition object should be encoded to a string.
+	Conditions pulumi.StringArrayInput `pulumi:"conditions"`
+}
+
+func (ScorecardGroupFiltersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardGroupFilters)(nil)).Elem()
+}
+
+func (i ScorecardGroupFiltersArgs) ToScorecardGroupFiltersOutput() ScorecardGroupFiltersOutput {
+	return i.ToScorecardGroupFiltersOutputWithContext(context.Background())
+}
+
+func (i ScorecardGroupFiltersArgs) ToScorecardGroupFiltersOutputWithContext(ctx context.Context) ScorecardGroupFiltersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardGroupFiltersOutput)
+}
+
+// ScorecardGroupFiltersMapInput is an input type that accepts ScorecardGroupFiltersMap and ScorecardGroupFiltersMapOutput values.
+// You can construct a concrete instance of `ScorecardGroupFiltersMapInput` via:
+//
+//	ScorecardGroupFiltersMap{ "key": ScorecardGroupFiltersArgs{...} }
+type ScorecardGroupFiltersMapInput interface {
+	pulumi.Input
+
+	ToScorecardGroupFiltersMapOutput() ScorecardGroupFiltersMapOutput
+	ToScorecardGroupFiltersMapOutputWithContext(context.Context) ScorecardGroupFiltersMapOutput
+}
+
+type ScorecardGroupFiltersMap map[string]ScorecardGroupFiltersInput
+
+func (ScorecardGroupFiltersMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ScorecardGroupFilters)(nil)).Elem()
+}
+
+func (i ScorecardGroupFiltersMap) ToScorecardGroupFiltersMapOutput() ScorecardGroupFiltersMapOutput {
+	return i.ToScorecardGroupFiltersMapOutputWithContext(context.Background())
+}
+
+func (i ScorecardGroupFiltersMap) ToScorecardGroupFiltersMapOutputWithContext(ctx context.Context) ScorecardGroupFiltersMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardGroupFiltersMapOutput)
+}
+
+type ScorecardGroupFiltersOutput struct{ *pulumi.OutputState }
+
+func (ScorecardGroupFiltersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardGroupFilters)(nil)).Elem()
+}
+
+func (o ScorecardGroupFiltersOutput) ToScorecardGroupFiltersOutput() ScorecardGroupFiltersOutput {
+	return o
+}
+
+func (o ScorecardGroupFiltersOutput) ToScorecardGroupFiltersOutputWithContext(ctx context.Context) ScorecardGroupFiltersOutput {
+	return o
+}
+
+// The combinator of the query.
+func (o ScorecardGroupFiltersOutput) Combinator() pulumi.StringOutput {
+	return o.ApplyT(func(v ScorecardGroupFilters) string { return v.Combinator }).(pulumi.StringOutput)
+}
+
+// The conditions of the query. Each condition object should be encoded to a string.
+func (o ScorecardGroupFiltersOutput) Conditions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ScorecardGroupFilters) []string { return v.Conditions }).(pulumi.StringArrayOutput)
+}
+
+type ScorecardGroupFiltersMapOutput struct{ *pulumi.OutputState }
+
+func (ScorecardGroupFiltersMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ScorecardGroupFilters)(nil)).Elem()
+}
+
+func (o ScorecardGroupFiltersMapOutput) ToScorecardGroupFiltersMapOutput() ScorecardGroupFiltersMapOutput {
+	return o
+}
+
+func (o ScorecardGroupFiltersMapOutput) ToScorecardGroupFiltersMapOutputWithContext(ctx context.Context) ScorecardGroupFiltersMapOutput {
+	return o
+}
+
+func (o ScorecardGroupFiltersMapOutput) MapIndex(k pulumi.StringInput) ScorecardGroupFiltersOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ScorecardGroupFilters {
+		return vs[0].(map[string]ScorecardGroupFilters)[vs[1].(string)]
+	}).(ScorecardGroupFiltersOutput)
+}
+
+type ScorecardGroupLevel struct {
+	// The color of the level
+	Color string `pulumi:"color"`
+	// The title of the level
+	Title string `pulumi:"title"`
+}
+
+// ScorecardGroupLevelInput is an input type that accepts ScorecardGroupLevelArgs and ScorecardGroupLevelOutput values.
+// You can construct a concrete instance of `ScorecardGroupLevelInput` via:
+//
+//	ScorecardGroupLevelArgs{...}
+type ScorecardGroupLevelInput interface {
+	pulumi.Input
+
+	ToScorecardGroupLevelOutput() ScorecardGroupLevelOutput
+	ToScorecardGroupLevelOutputWithContext(context.Context) ScorecardGroupLevelOutput
+}
+
+type ScorecardGroupLevelArgs struct {
+	// The color of the level
+	Color pulumi.StringInput `pulumi:"color"`
+	// The title of the level
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ScorecardGroupLevelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardGroupLevel)(nil)).Elem()
+}
+
+func (i ScorecardGroupLevelArgs) ToScorecardGroupLevelOutput() ScorecardGroupLevelOutput {
+	return i.ToScorecardGroupLevelOutputWithContext(context.Background())
+}
+
+func (i ScorecardGroupLevelArgs) ToScorecardGroupLevelOutputWithContext(ctx context.Context) ScorecardGroupLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardGroupLevelOutput)
+}
+
+// ScorecardGroupLevelArrayInput is an input type that accepts ScorecardGroupLevelArray and ScorecardGroupLevelArrayOutput values.
+// You can construct a concrete instance of `ScorecardGroupLevelArrayInput` via:
+//
+//	ScorecardGroupLevelArray{ ScorecardGroupLevelArgs{...} }
+type ScorecardGroupLevelArrayInput interface {
+	pulumi.Input
+
+	ToScorecardGroupLevelArrayOutput() ScorecardGroupLevelArrayOutput
+	ToScorecardGroupLevelArrayOutputWithContext(context.Context) ScorecardGroupLevelArrayOutput
+}
+
+type ScorecardGroupLevelArray []ScorecardGroupLevelInput
+
+func (ScorecardGroupLevelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScorecardGroupLevel)(nil)).Elem()
+}
+
+func (i ScorecardGroupLevelArray) ToScorecardGroupLevelArrayOutput() ScorecardGroupLevelArrayOutput {
+	return i.ToScorecardGroupLevelArrayOutputWithContext(context.Background())
+}
+
+func (i ScorecardGroupLevelArray) ToScorecardGroupLevelArrayOutputWithContext(ctx context.Context) ScorecardGroupLevelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardGroupLevelArrayOutput)
+}
+
+type ScorecardGroupLevelOutput struct{ *pulumi.OutputState }
+
+func (ScorecardGroupLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardGroupLevel)(nil)).Elem()
+}
+
+func (o ScorecardGroupLevelOutput) ToScorecardGroupLevelOutput() ScorecardGroupLevelOutput {
+	return o
+}
+
+func (o ScorecardGroupLevelOutput) ToScorecardGroupLevelOutputWithContext(ctx context.Context) ScorecardGroupLevelOutput {
+	return o
+}
+
+// The color of the level
+func (o ScorecardGroupLevelOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v ScorecardGroupLevel) string { return v.Color }).(pulumi.StringOutput)
+}
+
+// The title of the level
+func (o ScorecardGroupLevelOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ScorecardGroupLevel) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ScorecardGroupLevelArrayOutput struct{ *pulumi.OutputState }
+
+func (ScorecardGroupLevelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScorecardGroupLevel)(nil)).Elem()
+}
+
+func (o ScorecardGroupLevelArrayOutput) ToScorecardGroupLevelArrayOutput() ScorecardGroupLevelArrayOutput {
+	return o
+}
+
+func (o ScorecardGroupLevelArrayOutput) ToScorecardGroupLevelArrayOutputWithContext(ctx context.Context) ScorecardGroupLevelArrayOutput {
+	return o
+}
+
+func (o ScorecardGroupLevelArrayOutput) Index(i pulumi.IntInput) ScorecardGroupLevelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScorecardGroupLevel {
+		return vs[0].([]ScorecardGroupLevel)[vs[1].(int)]
+	}).(ScorecardGroupLevelOutput)
+}
+
+type ScorecardGroupRule struct {
+	// The description of the rule
+	Description *string `pulumi:"description"`
+	// The identifier of the rule
+	Identifier string `pulumi:"identifier"`
+	// The level of the rule
+	Level string `pulumi:"level"`
+	// The query of the rule
+	Query ScorecardGroupRuleQuery `pulumi:"query"`
+	// The title of the rule
+	Title string `pulumi:"title"`
+}
+
+// ScorecardGroupRuleInput is an input type that accepts ScorecardGroupRuleArgs and ScorecardGroupRuleOutput values.
+// You can construct a concrete instance of `ScorecardGroupRuleInput` via:
+//
+//	ScorecardGroupRuleArgs{...}
+type ScorecardGroupRuleInput interface {
+	pulumi.Input
+
+	ToScorecardGroupRuleOutput() ScorecardGroupRuleOutput
+	ToScorecardGroupRuleOutputWithContext(context.Context) ScorecardGroupRuleOutput
+}
+
+type ScorecardGroupRuleArgs struct {
+	// The description of the rule
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The identifier of the rule
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// The level of the rule
+	Level pulumi.StringInput `pulumi:"level"`
+	// The query of the rule
+	Query ScorecardGroupRuleQueryInput `pulumi:"query"`
+	// The title of the rule
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ScorecardGroupRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardGroupRule)(nil)).Elem()
+}
+
+func (i ScorecardGroupRuleArgs) ToScorecardGroupRuleOutput() ScorecardGroupRuleOutput {
+	return i.ToScorecardGroupRuleOutputWithContext(context.Background())
+}
+
+func (i ScorecardGroupRuleArgs) ToScorecardGroupRuleOutputWithContext(ctx context.Context) ScorecardGroupRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardGroupRuleOutput)
+}
+
+// ScorecardGroupRuleArrayInput is an input type that accepts ScorecardGroupRuleArray and ScorecardGroupRuleArrayOutput values.
+// You can construct a concrete instance of `ScorecardGroupRuleArrayInput` via:
+//
+//	ScorecardGroupRuleArray{ ScorecardGroupRuleArgs{...} }
+type ScorecardGroupRuleArrayInput interface {
+	pulumi.Input
+
+	ToScorecardGroupRuleArrayOutput() ScorecardGroupRuleArrayOutput
+	ToScorecardGroupRuleArrayOutputWithContext(context.Context) ScorecardGroupRuleArrayOutput
+}
+
+type ScorecardGroupRuleArray []ScorecardGroupRuleInput
+
+func (ScorecardGroupRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScorecardGroupRule)(nil)).Elem()
+}
+
+func (i ScorecardGroupRuleArray) ToScorecardGroupRuleArrayOutput() ScorecardGroupRuleArrayOutput {
+	return i.ToScorecardGroupRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ScorecardGroupRuleArray) ToScorecardGroupRuleArrayOutputWithContext(ctx context.Context) ScorecardGroupRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardGroupRuleArrayOutput)
+}
+
+type ScorecardGroupRuleOutput struct{ *pulumi.OutputState }
+
+func (ScorecardGroupRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardGroupRule)(nil)).Elem()
+}
+
+func (o ScorecardGroupRuleOutput) ToScorecardGroupRuleOutput() ScorecardGroupRuleOutput {
+	return o
+}
+
+func (o ScorecardGroupRuleOutput) ToScorecardGroupRuleOutputWithContext(ctx context.Context) ScorecardGroupRuleOutput {
+	return o
+}
+
+// The description of the rule
+func (o ScorecardGroupRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScorecardGroupRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The identifier of the rule
+func (o ScorecardGroupRuleOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v ScorecardGroupRule) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// The level of the rule
+func (o ScorecardGroupRuleOutput) Level() pulumi.StringOutput {
+	return o.ApplyT(func(v ScorecardGroupRule) string { return v.Level }).(pulumi.StringOutput)
+}
+
+// The query of the rule
+func (o ScorecardGroupRuleOutput) Query() ScorecardGroupRuleQueryOutput {
+	return o.ApplyT(func(v ScorecardGroupRule) ScorecardGroupRuleQuery { return v.Query }).(ScorecardGroupRuleQueryOutput)
+}
+
+// The title of the rule
+func (o ScorecardGroupRuleOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ScorecardGroupRule) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ScorecardGroupRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ScorecardGroupRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScorecardGroupRule)(nil)).Elem()
+}
+
+func (o ScorecardGroupRuleArrayOutput) ToScorecardGroupRuleArrayOutput() ScorecardGroupRuleArrayOutput {
+	return o
+}
+
+func (o ScorecardGroupRuleArrayOutput) ToScorecardGroupRuleArrayOutputWithContext(ctx context.Context) ScorecardGroupRuleArrayOutput {
+	return o
+}
+
+func (o ScorecardGroupRuleArrayOutput) Index(i pulumi.IntInput) ScorecardGroupRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScorecardGroupRule {
+		return vs[0].([]ScorecardGroupRule)[vs[1].(int)]
+	}).(ScorecardGroupRuleOutput)
+}
+
+type ScorecardGroupRuleQuery struct {
+	// The combinator of the query
+	Combinator string `pulumi:"combinator"`
+	// The conditions of the query. Each condition object should be encoded to a string
+	Conditions []string `pulumi:"conditions"`
+}
+
+// ScorecardGroupRuleQueryInput is an input type that accepts ScorecardGroupRuleQueryArgs and ScorecardGroupRuleQueryOutput values.
+// You can construct a concrete instance of `ScorecardGroupRuleQueryInput` via:
+//
+//	ScorecardGroupRuleQueryArgs{...}
+type ScorecardGroupRuleQueryInput interface {
+	pulumi.Input
+
+	ToScorecardGroupRuleQueryOutput() ScorecardGroupRuleQueryOutput
+	ToScorecardGroupRuleQueryOutputWithContext(context.Context) ScorecardGroupRuleQueryOutput
+}
+
+type ScorecardGroupRuleQueryArgs struct {
+	// The combinator of the query
+	Combinator pulumi.StringInput `pulumi:"combinator"`
+	// The conditions of the query. Each condition object should be encoded to a string
+	Conditions pulumi.StringArrayInput `pulumi:"conditions"`
+}
+
+func (ScorecardGroupRuleQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardGroupRuleQuery)(nil)).Elem()
+}
+
+func (i ScorecardGroupRuleQueryArgs) ToScorecardGroupRuleQueryOutput() ScorecardGroupRuleQueryOutput {
+	return i.ToScorecardGroupRuleQueryOutputWithContext(context.Background())
+}
+
+func (i ScorecardGroupRuleQueryArgs) ToScorecardGroupRuleQueryOutputWithContext(ctx context.Context) ScorecardGroupRuleQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardGroupRuleQueryOutput)
+}
+
+type ScorecardGroupRuleQueryOutput struct{ *pulumi.OutputState }
+
+func (ScorecardGroupRuleQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardGroupRuleQuery)(nil)).Elem()
+}
+
+func (o ScorecardGroupRuleQueryOutput) ToScorecardGroupRuleQueryOutput() ScorecardGroupRuleQueryOutput {
+	return o
+}
+
+func (o ScorecardGroupRuleQueryOutput) ToScorecardGroupRuleQueryOutputWithContext(ctx context.Context) ScorecardGroupRuleQueryOutput {
+	return o
+}
+
+// The combinator of the query
+func (o ScorecardGroupRuleQueryOutput) Combinator() pulumi.StringOutput {
+	return o.ApplyT(func(v ScorecardGroupRuleQuery) string { return v.Combinator }).(pulumi.StringOutput)
+}
+
+// The conditions of the query. Each condition object should be encoded to a string
+func (o ScorecardGroupRuleQueryOutput) Conditions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ScorecardGroupRuleQuery) []string { return v.Conditions }).(pulumi.StringArrayOutput)
+}
+
+type ScorecardGroupScorecards struct {
+	// An optional set of conditions to filter entities evaluated by this member scorecard.
+	Filter *ScorecardGroupScorecardsFilter `pulumi:"filter"`
+	// The rules that define this member scorecard.
+	Rules []ScorecardGroupScorecardsRule `pulumi:"rules"`
+}
+
+// ScorecardGroupScorecardsInput is an input type that accepts ScorecardGroupScorecardsArgs and ScorecardGroupScorecardsOutput values.
+// You can construct a concrete instance of `ScorecardGroupScorecardsInput` via:
+//
+//	ScorecardGroupScorecardsArgs{...}
+type ScorecardGroupScorecardsInput interface {
+	pulumi.Input
+
+	ToScorecardGroupScorecardsOutput() ScorecardGroupScorecardsOutput
+	ToScorecardGroupScorecardsOutputWithContext(context.Context) ScorecardGroupScorecardsOutput
+}
+
+type ScorecardGroupScorecardsArgs struct {
+	// An optional set of conditions to filter entities evaluated by this member scorecard.
+	Filter ScorecardGroupScorecardsFilterPtrInput `pulumi:"filter"`
+	// The rules that define this member scorecard.
+	Rules ScorecardGroupScorecardsRuleArrayInput `pulumi:"rules"`
+}
+
+func (ScorecardGroupScorecardsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardGroupScorecards)(nil)).Elem()
+}
+
+func (i ScorecardGroupScorecardsArgs) ToScorecardGroupScorecardsOutput() ScorecardGroupScorecardsOutput {
+	return i.ToScorecardGroupScorecardsOutputWithContext(context.Background())
+}
+
+func (i ScorecardGroupScorecardsArgs) ToScorecardGroupScorecardsOutputWithContext(ctx context.Context) ScorecardGroupScorecardsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardGroupScorecardsOutput)
+}
+
+// ScorecardGroupScorecardsMapInput is an input type that accepts ScorecardGroupScorecardsMap and ScorecardGroupScorecardsMapOutput values.
+// You can construct a concrete instance of `ScorecardGroupScorecardsMapInput` via:
+//
+//	ScorecardGroupScorecardsMap{ "key": ScorecardGroupScorecardsArgs{...} }
+type ScorecardGroupScorecardsMapInput interface {
+	pulumi.Input
+
+	ToScorecardGroupScorecardsMapOutput() ScorecardGroupScorecardsMapOutput
+	ToScorecardGroupScorecardsMapOutputWithContext(context.Context) ScorecardGroupScorecardsMapOutput
+}
+
+type ScorecardGroupScorecardsMap map[string]ScorecardGroupScorecardsInput
+
+func (ScorecardGroupScorecardsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ScorecardGroupScorecards)(nil)).Elem()
+}
+
+func (i ScorecardGroupScorecardsMap) ToScorecardGroupScorecardsMapOutput() ScorecardGroupScorecardsMapOutput {
+	return i.ToScorecardGroupScorecardsMapOutputWithContext(context.Background())
+}
+
+func (i ScorecardGroupScorecardsMap) ToScorecardGroupScorecardsMapOutputWithContext(ctx context.Context) ScorecardGroupScorecardsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardGroupScorecardsMapOutput)
+}
+
+type ScorecardGroupScorecardsOutput struct{ *pulumi.OutputState }
+
+func (ScorecardGroupScorecardsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardGroupScorecards)(nil)).Elem()
+}
+
+func (o ScorecardGroupScorecardsOutput) ToScorecardGroupScorecardsOutput() ScorecardGroupScorecardsOutput {
+	return o
+}
+
+func (o ScorecardGroupScorecardsOutput) ToScorecardGroupScorecardsOutputWithContext(ctx context.Context) ScorecardGroupScorecardsOutput {
+	return o
+}
+
+// An optional set of conditions to filter entities evaluated by this member scorecard.
+func (o ScorecardGroupScorecardsOutput) Filter() ScorecardGroupScorecardsFilterPtrOutput {
+	return o.ApplyT(func(v ScorecardGroupScorecards) *ScorecardGroupScorecardsFilter { return v.Filter }).(ScorecardGroupScorecardsFilterPtrOutput)
+}
+
+// The rules that define this member scorecard.
+func (o ScorecardGroupScorecardsOutput) Rules() ScorecardGroupScorecardsRuleArrayOutput {
+	return o.ApplyT(func(v ScorecardGroupScorecards) []ScorecardGroupScorecardsRule { return v.Rules }).(ScorecardGroupScorecardsRuleArrayOutput)
+}
+
+type ScorecardGroupScorecardsMapOutput struct{ *pulumi.OutputState }
+
+func (ScorecardGroupScorecardsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ScorecardGroupScorecards)(nil)).Elem()
+}
+
+func (o ScorecardGroupScorecardsMapOutput) ToScorecardGroupScorecardsMapOutput() ScorecardGroupScorecardsMapOutput {
+	return o
+}
+
+func (o ScorecardGroupScorecardsMapOutput) ToScorecardGroupScorecardsMapOutputWithContext(ctx context.Context) ScorecardGroupScorecardsMapOutput {
+	return o
+}
+
+func (o ScorecardGroupScorecardsMapOutput) MapIndex(k pulumi.StringInput) ScorecardGroupScorecardsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ScorecardGroupScorecards {
+		return vs[0].(map[string]ScorecardGroupScorecards)[vs[1].(string)]
+	}).(ScorecardGroupScorecardsOutput)
+}
+
+type ScorecardGroupScorecardsFilter struct {
+	// The combinator of the query.
+	Combinator string `pulumi:"combinator"`
+	// The conditions of the query. Each condition object should be encoded to a string.
+	Conditions []string `pulumi:"conditions"`
+}
+
+// ScorecardGroupScorecardsFilterInput is an input type that accepts ScorecardGroupScorecardsFilterArgs and ScorecardGroupScorecardsFilterOutput values.
+// You can construct a concrete instance of `ScorecardGroupScorecardsFilterInput` via:
+//
+//	ScorecardGroupScorecardsFilterArgs{...}
+type ScorecardGroupScorecardsFilterInput interface {
+	pulumi.Input
+
+	ToScorecardGroupScorecardsFilterOutput() ScorecardGroupScorecardsFilterOutput
+	ToScorecardGroupScorecardsFilterOutputWithContext(context.Context) ScorecardGroupScorecardsFilterOutput
+}
+
+type ScorecardGroupScorecardsFilterArgs struct {
+	// The combinator of the query.
+	Combinator pulumi.StringInput `pulumi:"combinator"`
+	// The conditions of the query. Each condition object should be encoded to a string.
+	Conditions pulumi.StringArrayInput `pulumi:"conditions"`
+}
+
+func (ScorecardGroupScorecardsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardGroupScorecardsFilter)(nil)).Elem()
+}
+
+func (i ScorecardGroupScorecardsFilterArgs) ToScorecardGroupScorecardsFilterOutput() ScorecardGroupScorecardsFilterOutput {
+	return i.ToScorecardGroupScorecardsFilterOutputWithContext(context.Background())
+}
+
+func (i ScorecardGroupScorecardsFilterArgs) ToScorecardGroupScorecardsFilterOutputWithContext(ctx context.Context) ScorecardGroupScorecardsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardGroupScorecardsFilterOutput)
+}
+
+func (i ScorecardGroupScorecardsFilterArgs) ToScorecardGroupScorecardsFilterPtrOutput() ScorecardGroupScorecardsFilterPtrOutput {
+	return i.ToScorecardGroupScorecardsFilterPtrOutputWithContext(context.Background())
+}
+
+func (i ScorecardGroupScorecardsFilterArgs) ToScorecardGroupScorecardsFilterPtrOutputWithContext(ctx context.Context) ScorecardGroupScorecardsFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardGroupScorecardsFilterOutput).ToScorecardGroupScorecardsFilterPtrOutputWithContext(ctx)
+}
+
+// ScorecardGroupScorecardsFilterPtrInput is an input type that accepts ScorecardGroupScorecardsFilterArgs, ScorecardGroupScorecardsFilterPtr and ScorecardGroupScorecardsFilterPtrOutput values.
+// You can construct a concrete instance of `ScorecardGroupScorecardsFilterPtrInput` via:
+//
+//	        ScorecardGroupScorecardsFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScorecardGroupScorecardsFilterPtrInput interface {
+	pulumi.Input
+
+	ToScorecardGroupScorecardsFilterPtrOutput() ScorecardGroupScorecardsFilterPtrOutput
+	ToScorecardGroupScorecardsFilterPtrOutputWithContext(context.Context) ScorecardGroupScorecardsFilterPtrOutput
+}
+
+type scorecardGroupScorecardsFilterPtrType ScorecardGroupScorecardsFilterArgs
+
+func ScorecardGroupScorecardsFilterPtr(v *ScorecardGroupScorecardsFilterArgs) ScorecardGroupScorecardsFilterPtrInput {
+	return (*scorecardGroupScorecardsFilterPtrType)(v)
+}
+
+func (*scorecardGroupScorecardsFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScorecardGroupScorecardsFilter)(nil)).Elem()
+}
+
+func (i *scorecardGroupScorecardsFilterPtrType) ToScorecardGroupScorecardsFilterPtrOutput() ScorecardGroupScorecardsFilterPtrOutput {
+	return i.ToScorecardGroupScorecardsFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *scorecardGroupScorecardsFilterPtrType) ToScorecardGroupScorecardsFilterPtrOutputWithContext(ctx context.Context) ScorecardGroupScorecardsFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardGroupScorecardsFilterPtrOutput)
+}
+
+type ScorecardGroupScorecardsFilterOutput struct{ *pulumi.OutputState }
+
+func (ScorecardGroupScorecardsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardGroupScorecardsFilter)(nil)).Elem()
+}
+
+func (o ScorecardGroupScorecardsFilterOutput) ToScorecardGroupScorecardsFilterOutput() ScorecardGroupScorecardsFilterOutput {
+	return o
+}
+
+func (o ScorecardGroupScorecardsFilterOutput) ToScorecardGroupScorecardsFilterOutputWithContext(ctx context.Context) ScorecardGroupScorecardsFilterOutput {
+	return o
+}
+
+func (o ScorecardGroupScorecardsFilterOutput) ToScorecardGroupScorecardsFilterPtrOutput() ScorecardGroupScorecardsFilterPtrOutput {
+	return o.ToScorecardGroupScorecardsFilterPtrOutputWithContext(context.Background())
+}
+
+func (o ScorecardGroupScorecardsFilterOutput) ToScorecardGroupScorecardsFilterPtrOutputWithContext(ctx context.Context) ScorecardGroupScorecardsFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScorecardGroupScorecardsFilter) *ScorecardGroupScorecardsFilter {
+		return &v
+	}).(ScorecardGroupScorecardsFilterPtrOutput)
+}
+
+// The combinator of the query.
+func (o ScorecardGroupScorecardsFilterOutput) Combinator() pulumi.StringOutput {
+	return o.ApplyT(func(v ScorecardGroupScorecardsFilter) string { return v.Combinator }).(pulumi.StringOutput)
+}
+
+// The conditions of the query. Each condition object should be encoded to a string.
+func (o ScorecardGroupScorecardsFilterOutput) Conditions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ScorecardGroupScorecardsFilter) []string { return v.Conditions }).(pulumi.StringArrayOutput)
+}
+
+type ScorecardGroupScorecardsFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (ScorecardGroupScorecardsFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScorecardGroupScorecardsFilter)(nil)).Elem()
+}
+
+func (o ScorecardGroupScorecardsFilterPtrOutput) ToScorecardGroupScorecardsFilterPtrOutput() ScorecardGroupScorecardsFilterPtrOutput {
+	return o
+}
+
+func (o ScorecardGroupScorecardsFilterPtrOutput) ToScorecardGroupScorecardsFilterPtrOutputWithContext(ctx context.Context) ScorecardGroupScorecardsFilterPtrOutput {
+	return o
+}
+
+func (o ScorecardGroupScorecardsFilterPtrOutput) Elem() ScorecardGroupScorecardsFilterOutput {
+	return o.ApplyT(func(v *ScorecardGroupScorecardsFilter) ScorecardGroupScorecardsFilter {
+		if v != nil {
+			return *v
+		}
+		var ret ScorecardGroupScorecardsFilter
+		return ret
+	}).(ScorecardGroupScorecardsFilterOutput)
+}
+
+// The combinator of the query.
+func (o ScorecardGroupScorecardsFilterPtrOutput) Combinator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScorecardGroupScorecardsFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Combinator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The conditions of the query. Each condition object should be encoded to a string.
+func (o ScorecardGroupScorecardsFilterPtrOutput) Conditions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ScorecardGroupScorecardsFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(pulumi.StringArrayOutput)
+}
+
+type ScorecardGroupScorecardsRule struct {
+	// The description of the rule
+	Description *string `pulumi:"description"`
+	// The identifier of the rule
+	Identifier string `pulumi:"identifier"`
+	// The level of the rule
+	Level string `pulumi:"level"`
+	// The query of the rule
+	Query ScorecardGroupScorecardsRuleQuery `pulumi:"query"`
+	// The title of the rule
+	Title string `pulumi:"title"`
+}
+
+// ScorecardGroupScorecardsRuleInput is an input type that accepts ScorecardGroupScorecardsRuleArgs and ScorecardGroupScorecardsRuleOutput values.
+// You can construct a concrete instance of `ScorecardGroupScorecardsRuleInput` via:
+//
+//	ScorecardGroupScorecardsRuleArgs{...}
+type ScorecardGroupScorecardsRuleInput interface {
+	pulumi.Input
+
+	ToScorecardGroupScorecardsRuleOutput() ScorecardGroupScorecardsRuleOutput
+	ToScorecardGroupScorecardsRuleOutputWithContext(context.Context) ScorecardGroupScorecardsRuleOutput
+}
+
+type ScorecardGroupScorecardsRuleArgs struct {
+	// The description of the rule
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The identifier of the rule
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// The level of the rule
+	Level pulumi.StringInput `pulumi:"level"`
+	// The query of the rule
+	Query ScorecardGroupScorecardsRuleQueryInput `pulumi:"query"`
+	// The title of the rule
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ScorecardGroupScorecardsRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardGroupScorecardsRule)(nil)).Elem()
+}
+
+func (i ScorecardGroupScorecardsRuleArgs) ToScorecardGroupScorecardsRuleOutput() ScorecardGroupScorecardsRuleOutput {
+	return i.ToScorecardGroupScorecardsRuleOutputWithContext(context.Background())
+}
+
+func (i ScorecardGroupScorecardsRuleArgs) ToScorecardGroupScorecardsRuleOutputWithContext(ctx context.Context) ScorecardGroupScorecardsRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardGroupScorecardsRuleOutput)
+}
+
+// ScorecardGroupScorecardsRuleArrayInput is an input type that accepts ScorecardGroupScorecardsRuleArray and ScorecardGroupScorecardsRuleArrayOutput values.
+// You can construct a concrete instance of `ScorecardGroupScorecardsRuleArrayInput` via:
+//
+//	ScorecardGroupScorecardsRuleArray{ ScorecardGroupScorecardsRuleArgs{...} }
+type ScorecardGroupScorecardsRuleArrayInput interface {
+	pulumi.Input
+
+	ToScorecardGroupScorecardsRuleArrayOutput() ScorecardGroupScorecardsRuleArrayOutput
+	ToScorecardGroupScorecardsRuleArrayOutputWithContext(context.Context) ScorecardGroupScorecardsRuleArrayOutput
+}
+
+type ScorecardGroupScorecardsRuleArray []ScorecardGroupScorecardsRuleInput
+
+func (ScorecardGroupScorecardsRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScorecardGroupScorecardsRule)(nil)).Elem()
+}
+
+func (i ScorecardGroupScorecardsRuleArray) ToScorecardGroupScorecardsRuleArrayOutput() ScorecardGroupScorecardsRuleArrayOutput {
+	return i.ToScorecardGroupScorecardsRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ScorecardGroupScorecardsRuleArray) ToScorecardGroupScorecardsRuleArrayOutputWithContext(ctx context.Context) ScorecardGroupScorecardsRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardGroupScorecardsRuleArrayOutput)
+}
+
+type ScorecardGroupScorecardsRuleOutput struct{ *pulumi.OutputState }
+
+func (ScorecardGroupScorecardsRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardGroupScorecardsRule)(nil)).Elem()
+}
+
+func (o ScorecardGroupScorecardsRuleOutput) ToScorecardGroupScorecardsRuleOutput() ScorecardGroupScorecardsRuleOutput {
+	return o
+}
+
+func (o ScorecardGroupScorecardsRuleOutput) ToScorecardGroupScorecardsRuleOutputWithContext(ctx context.Context) ScorecardGroupScorecardsRuleOutput {
+	return o
+}
+
+// The description of the rule
+func (o ScorecardGroupScorecardsRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScorecardGroupScorecardsRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The identifier of the rule
+func (o ScorecardGroupScorecardsRuleOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v ScorecardGroupScorecardsRule) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// The level of the rule
+func (o ScorecardGroupScorecardsRuleOutput) Level() pulumi.StringOutput {
+	return o.ApplyT(func(v ScorecardGroupScorecardsRule) string { return v.Level }).(pulumi.StringOutput)
+}
+
+// The query of the rule
+func (o ScorecardGroupScorecardsRuleOutput) Query() ScorecardGroupScorecardsRuleQueryOutput {
+	return o.ApplyT(func(v ScorecardGroupScorecardsRule) ScorecardGroupScorecardsRuleQuery { return v.Query }).(ScorecardGroupScorecardsRuleQueryOutput)
+}
+
+// The title of the rule
+func (o ScorecardGroupScorecardsRuleOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ScorecardGroupScorecardsRule) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ScorecardGroupScorecardsRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ScorecardGroupScorecardsRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScorecardGroupScorecardsRule)(nil)).Elem()
+}
+
+func (o ScorecardGroupScorecardsRuleArrayOutput) ToScorecardGroupScorecardsRuleArrayOutput() ScorecardGroupScorecardsRuleArrayOutput {
+	return o
+}
+
+func (o ScorecardGroupScorecardsRuleArrayOutput) ToScorecardGroupScorecardsRuleArrayOutputWithContext(ctx context.Context) ScorecardGroupScorecardsRuleArrayOutput {
+	return o
+}
+
+func (o ScorecardGroupScorecardsRuleArrayOutput) Index(i pulumi.IntInput) ScorecardGroupScorecardsRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScorecardGroupScorecardsRule {
+		return vs[0].([]ScorecardGroupScorecardsRule)[vs[1].(int)]
+	}).(ScorecardGroupScorecardsRuleOutput)
+}
+
+type ScorecardGroupScorecardsRuleQuery struct {
+	// The combinator of the query
+	Combinator string `pulumi:"combinator"`
+	// The conditions of the query. Each condition object should be encoded to a string
+	Conditions []string `pulumi:"conditions"`
+}
+
+// ScorecardGroupScorecardsRuleQueryInput is an input type that accepts ScorecardGroupScorecardsRuleQueryArgs and ScorecardGroupScorecardsRuleQueryOutput values.
+// You can construct a concrete instance of `ScorecardGroupScorecardsRuleQueryInput` via:
+//
+//	ScorecardGroupScorecardsRuleQueryArgs{...}
+type ScorecardGroupScorecardsRuleQueryInput interface {
+	pulumi.Input
+
+	ToScorecardGroupScorecardsRuleQueryOutput() ScorecardGroupScorecardsRuleQueryOutput
+	ToScorecardGroupScorecardsRuleQueryOutputWithContext(context.Context) ScorecardGroupScorecardsRuleQueryOutput
+}
+
+type ScorecardGroupScorecardsRuleQueryArgs struct {
+	// The combinator of the query
+	Combinator pulumi.StringInput `pulumi:"combinator"`
+	// The conditions of the query. Each condition object should be encoded to a string
+	Conditions pulumi.StringArrayInput `pulumi:"conditions"`
+}
+
+func (ScorecardGroupScorecardsRuleQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardGroupScorecardsRuleQuery)(nil)).Elem()
+}
+
+func (i ScorecardGroupScorecardsRuleQueryArgs) ToScorecardGroupScorecardsRuleQueryOutput() ScorecardGroupScorecardsRuleQueryOutput {
+	return i.ToScorecardGroupScorecardsRuleQueryOutputWithContext(context.Background())
+}
+
+func (i ScorecardGroupScorecardsRuleQueryArgs) ToScorecardGroupScorecardsRuleQueryOutputWithContext(ctx context.Context) ScorecardGroupScorecardsRuleQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardGroupScorecardsRuleQueryOutput)
+}
+
+type ScorecardGroupScorecardsRuleQueryOutput struct{ *pulumi.OutputState }
+
+func (ScorecardGroupScorecardsRuleQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardGroupScorecardsRuleQuery)(nil)).Elem()
+}
+
+func (o ScorecardGroupScorecardsRuleQueryOutput) ToScorecardGroupScorecardsRuleQueryOutput() ScorecardGroupScorecardsRuleQueryOutput {
+	return o
+}
+
+func (o ScorecardGroupScorecardsRuleQueryOutput) ToScorecardGroupScorecardsRuleQueryOutputWithContext(ctx context.Context) ScorecardGroupScorecardsRuleQueryOutput {
+	return o
+}
+
+// The combinator of the query
+func (o ScorecardGroupScorecardsRuleQueryOutput) Combinator() pulumi.StringOutput {
+	return o.ApplyT(func(v ScorecardGroupScorecardsRuleQuery) string { return v.Combinator }).(pulumi.StringOutput)
+}
+
+// The conditions of the query. Each condition object should be encoded to a string
+func (o ScorecardGroupScorecardsRuleQueryOutput) Conditions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ScorecardGroupScorecardsRuleQuery) []string { return v.Conditions }).(pulumi.StringArrayOutput)
+}
+
 type ScorecardLevel struct {
 	// The color of the level
 	Color string `pulumi:"color"`
@@ -40456,6 +41318,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PagePermissionsReadPtrInput)(nil)).Elem(), PagePermissionsReadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardFilterInput)(nil)).Elem(), ScorecardFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardFilterPtrInput)(nil)).Elem(), ScorecardFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardGroupFiltersInput)(nil)).Elem(), ScorecardGroupFiltersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardGroupFiltersMapInput)(nil)).Elem(), ScorecardGroupFiltersMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardGroupLevelInput)(nil)).Elem(), ScorecardGroupLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardGroupLevelArrayInput)(nil)).Elem(), ScorecardGroupLevelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardGroupRuleInput)(nil)).Elem(), ScorecardGroupRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardGroupRuleArrayInput)(nil)).Elem(), ScorecardGroupRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardGroupRuleQueryInput)(nil)).Elem(), ScorecardGroupRuleQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardGroupScorecardsInput)(nil)).Elem(), ScorecardGroupScorecardsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardGroupScorecardsMapInput)(nil)).Elem(), ScorecardGroupScorecardsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardGroupScorecardsFilterInput)(nil)).Elem(), ScorecardGroupScorecardsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardGroupScorecardsFilterPtrInput)(nil)).Elem(), ScorecardGroupScorecardsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardGroupScorecardsRuleInput)(nil)).Elem(), ScorecardGroupScorecardsRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardGroupScorecardsRuleArrayInput)(nil)).Elem(), ScorecardGroupScorecardsRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardGroupScorecardsRuleQueryInput)(nil)).Elem(), ScorecardGroupScorecardsRuleQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardLevelInput)(nil)).Elem(), ScorecardLevelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardLevelArrayInput)(nil)).Elem(), ScorecardLevelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardRuleInput)(nil)).Elem(), ScorecardRuleArgs{})
@@ -40934,6 +41810,20 @@ func init() {
 	pulumi.RegisterOutputType(PagePermissionsReadPtrOutput{})
 	pulumi.RegisterOutputType(ScorecardFilterOutput{})
 	pulumi.RegisterOutputType(ScorecardFilterPtrOutput{})
+	pulumi.RegisterOutputType(ScorecardGroupFiltersOutput{})
+	pulumi.RegisterOutputType(ScorecardGroupFiltersMapOutput{})
+	pulumi.RegisterOutputType(ScorecardGroupLevelOutput{})
+	pulumi.RegisterOutputType(ScorecardGroupLevelArrayOutput{})
+	pulumi.RegisterOutputType(ScorecardGroupRuleOutput{})
+	pulumi.RegisterOutputType(ScorecardGroupRuleArrayOutput{})
+	pulumi.RegisterOutputType(ScorecardGroupRuleQueryOutput{})
+	pulumi.RegisterOutputType(ScorecardGroupScorecardsOutput{})
+	pulumi.RegisterOutputType(ScorecardGroupScorecardsMapOutput{})
+	pulumi.RegisterOutputType(ScorecardGroupScorecardsFilterOutput{})
+	pulumi.RegisterOutputType(ScorecardGroupScorecardsFilterPtrOutput{})
+	pulumi.RegisterOutputType(ScorecardGroupScorecardsRuleOutput{})
+	pulumi.RegisterOutputType(ScorecardGroupScorecardsRuleArrayOutput{})
+	pulumi.RegisterOutputType(ScorecardGroupScorecardsRuleQueryOutput{})
 	pulumi.RegisterOutputType(ScorecardLevelOutput{})
 	pulumi.RegisterOutputType(ScorecardLevelArrayOutput{})
 	pulumi.RegisterOutputType(ScorecardRuleOutput{})

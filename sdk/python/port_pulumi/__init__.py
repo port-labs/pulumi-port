@@ -20,6 +20,7 @@ from .page import *
 from .page_permissions import *
 from .provider import *
 from .scorecard import *
+from .scorecard_group import *
 from .system_blueprint import *
 from .team import *
 from .webhook import *
@@ -139,6 +140,14 @@ _utilities.register(
   "fqn": "port_pulumi",
   "classes": {
    "port:index/scorecard:Scorecard": "Scorecard"
+  }
+ },
+ {
+  "pkg": "port",
+  "mod": "index/scorecardGroup",
+  "fqn": "port_pulumi",
+  "classes": {
+   "port:index/scorecardGroup:ScorecardGroup": "ScorecardGroup"
   }
  },
  {

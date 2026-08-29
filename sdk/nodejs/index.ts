@@ -80,6 +80,11 @@ export type Scorecard = import("./scorecard").Scorecard;
 export const Scorecard: typeof import("./scorecard").Scorecard = null as any;
 utilities.lazyLoad(exports, ["Scorecard"], () => require("./scorecard"));
 
+export { ScorecardGroupArgs, ScorecardGroupState } from "./scorecardGroup";
+export type ScorecardGroup = import("./scorecardGroup").ScorecardGroup;
+export const ScorecardGroup: typeof import("./scorecardGroup").ScorecardGroup = null as any;
+utilities.lazyLoad(exports, ["ScorecardGroup"], () => require("./scorecardGroup"));
+
 export { SystemBlueprintArgs, SystemBlueprintState } from "./systemBlueprint";
 export type SystemBlueprint = import("./systemBlueprint").SystemBlueprint;
 export const SystemBlueprint: typeof import("./systemBlueprint").SystemBlueprint = null as any;
@@ -140,6 +145,8 @@ const _module = {
                 return new PagePermissions(name, <any>undefined, { urn })
             case "port:index/scorecard:Scorecard":
                 return new Scorecard(name, <any>undefined, { urn })
+            case "port:index/scorecardGroup:ScorecardGroup":
+                return new ScorecardGroup(name, <any>undefined, { urn })
             case "port:index/systemBlueprint:SystemBlueprint":
                 return new SystemBlueprint(name, <any>undefined, { urn })
             case "port:index/team:Team":
@@ -166,6 +173,7 @@ pulumi.runtime.registerResourceModule("port", "index/organizationSecret", _modul
 pulumi.runtime.registerResourceModule("port", "index/page", _module)
 pulumi.runtime.registerResourceModule("port", "index/pagePermissions", _module)
 pulumi.runtime.registerResourceModule("port", "index/scorecard", _module)
+pulumi.runtime.registerResourceModule("port", "index/scorecardGroup", _module)
 pulumi.runtime.registerResourceModule("port", "index/systemBlueprint", _module)
 pulumi.runtime.registerResourceModule("port", "index/team", _module)
 pulumi.runtime.registerResourceModule("port", "index/webhook", _module)

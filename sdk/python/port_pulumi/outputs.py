@@ -124,6 +124,14 @@ __all__ = [
     'IntegrationWebhookChangelogDestination',
     'PagePermissionsRead',
     'ScorecardFilter',
+    'ScorecardGroupFilters',
+    'ScorecardGroupLevel',
+    'ScorecardGroupRule',
+    'ScorecardGroupRuleQuery',
+    'ScorecardGroupScorecards',
+    'ScorecardGroupScorecardsFilter',
+    'ScorecardGroupScorecardsRule',
+    'ScorecardGroupScorecardsRuleQuery',
     'ScorecardLevel',
     'ScorecardRule',
     'ScorecardRuleQuery',
@@ -7528,6 +7536,307 @@ class ScorecardFilter(dict):
     def conditions(self) -> Sequence[str]:
         """
         The conditions of the filter. Each condition object should be encoded to a string
+        """
+        return pulumi.get(self, "conditions")
+
+
+@pulumi.output_type
+class ScorecardGroupFilters(dict):
+    def __init__(__self__, *,
+                 combinator: str,
+                 conditions: Sequence[str]):
+        """
+        :param str combinator: The combinator of the query.
+        :param Sequence[str] conditions: The conditions of the query. Each condition object should be encoded to a string.
+        """
+        pulumi.set(__self__, "combinator", combinator)
+        pulumi.set(__self__, "conditions", conditions)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> str:
+        """
+        The combinator of the query.
+        """
+        return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Sequence[str]:
+        """
+        The conditions of the query. Each condition object should be encoded to a string.
+        """
+        return pulumi.get(self, "conditions")
+
+
+@pulumi.output_type
+class ScorecardGroupLevel(dict):
+    def __init__(__self__, *,
+                 color: str,
+                 title: str):
+        """
+        :param str color: The color of the level
+        :param str title: The title of the level
+        """
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def color(self) -> str:
+        """
+        The color of the level
+        """
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        The title of the level
+        """
+        return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class ScorecardGroupRule(dict):
+    def __init__(__self__, *,
+                 identifier: str,
+                 level: str,
+                 query: 'outputs.ScorecardGroupRuleQuery',
+                 title: str,
+                 description: Optional[str] = None):
+        """
+        :param str identifier: The identifier of the rule
+        :param str level: The level of the rule
+        :param 'ScorecardGroupRuleQueryArgs' query: The query of the rule
+        :param str title: The title of the rule
+        :param str description: The description of the rule
+        """
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "level", level)
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> str:
+        """
+        The identifier of the rule
+        """
+        return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter
+    def level(self) -> str:
+        """
+        The level of the rule
+        """
+        return pulumi.get(self, "level")
+
+    @property
+    @pulumi.getter
+    def query(self) -> 'outputs.ScorecardGroupRuleQuery':
+        """
+        The query of the rule
+        """
+        return pulumi.get(self, "query")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        The title of the rule
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the rule
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class ScorecardGroupRuleQuery(dict):
+    def __init__(__self__, *,
+                 combinator: str,
+                 conditions: Sequence[str]):
+        """
+        :param str combinator: The combinator of the query
+        :param Sequence[str] conditions: The conditions of the query. Each condition object should be encoded to a string
+        """
+        pulumi.set(__self__, "combinator", combinator)
+        pulumi.set(__self__, "conditions", conditions)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> str:
+        """
+        The combinator of the query
+        """
+        return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Sequence[str]:
+        """
+        The conditions of the query. Each condition object should be encoded to a string
+        """
+        return pulumi.get(self, "conditions")
+
+
+@pulumi.output_type
+class ScorecardGroupScorecards(dict):
+    def __init__(__self__, *,
+                 rules: Sequence['outputs.ScorecardGroupScorecardsRule'],
+                 filter: Optional['outputs.ScorecardGroupScorecardsFilter'] = None):
+        """
+        :param Sequence['ScorecardGroupScorecardsRuleArgs'] rules: The rules that define this member scorecard.
+        :param 'ScorecardGroupScorecardsFilterArgs' filter: An optional set of conditions to filter entities evaluated by this member scorecard.
+        """
+        pulumi.set(__self__, "rules", rules)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.ScorecardGroupScorecardsRule']:
+        """
+        The rules that define this member scorecard.
+        """
+        return pulumi.get(self, "rules")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional['outputs.ScorecardGroupScorecardsFilter']:
+        """
+        An optional set of conditions to filter entities evaluated by this member scorecard.
+        """
+        return pulumi.get(self, "filter")
+
+
+@pulumi.output_type
+class ScorecardGroupScorecardsFilter(dict):
+    def __init__(__self__, *,
+                 combinator: str,
+                 conditions: Sequence[str]):
+        """
+        :param str combinator: The combinator of the query.
+        :param Sequence[str] conditions: The conditions of the query. Each condition object should be encoded to a string.
+        """
+        pulumi.set(__self__, "combinator", combinator)
+        pulumi.set(__self__, "conditions", conditions)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> str:
+        """
+        The combinator of the query.
+        """
+        return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Sequence[str]:
+        """
+        The conditions of the query. Each condition object should be encoded to a string.
+        """
+        return pulumi.get(self, "conditions")
+
+
+@pulumi.output_type
+class ScorecardGroupScorecardsRule(dict):
+    def __init__(__self__, *,
+                 identifier: str,
+                 level: str,
+                 query: 'outputs.ScorecardGroupScorecardsRuleQuery',
+                 title: str,
+                 description: Optional[str] = None):
+        """
+        :param str identifier: The identifier of the rule
+        :param str level: The level of the rule
+        :param 'ScorecardGroupScorecardsRuleQueryArgs' query: The query of the rule
+        :param str title: The title of the rule
+        :param str description: The description of the rule
+        """
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "level", level)
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def identifier(self) -> str:
+        """
+        The identifier of the rule
+        """
+        return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter
+    def level(self) -> str:
+        """
+        The level of the rule
+        """
+        return pulumi.get(self, "level")
+
+    @property
+    @pulumi.getter
+    def query(self) -> 'outputs.ScorecardGroupScorecardsRuleQuery':
+        """
+        The query of the rule
+        """
+        return pulumi.get(self, "query")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        The title of the rule
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the rule
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class ScorecardGroupScorecardsRuleQuery(dict):
+    def __init__(__self__, *,
+                 combinator: str,
+                 conditions: Sequence[str]):
+        """
+        :param str combinator: The combinator of the query
+        :param Sequence[str] conditions: The conditions of the query. Each condition object should be encoded to a string
+        """
+        pulumi.set(__self__, "combinator", combinator)
+        pulumi.set(__self__, "conditions", conditions)
+
+    @property
+    @pulumi.getter
+    def combinator(self) -> str:
+        """
+        The combinator of the query
+        """
+        return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Sequence[str]:
+        """
+        The conditions of the query. Each condition object should be encoded to a string
         """
         return pulumi.get(self, "conditions")
 

@@ -2171,6 +2171,118 @@ export interface ScorecardFilter {
     conditions: string[];
 }
 
+export interface ScorecardGroupFilters {
+    /**
+     * The combinator of the query.
+     */
+    combinator: string;
+    /**
+     * The conditions of the query. Each condition object should be encoded to a string.
+     */
+    conditions: string[];
+}
+
+export interface ScorecardGroupLevel {
+    /**
+     * The color of the level
+     */
+    color: string;
+    /**
+     * The title of the level
+     */
+    title: string;
+}
+
+export interface ScorecardGroupRule {
+    /**
+     * The description of the rule
+     */
+    description?: string;
+    /**
+     * The identifier of the rule
+     */
+    identifier: string;
+    /**
+     * The level of the rule
+     */
+    level: string;
+    /**
+     * The query of the rule
+     */
+    query: outputs.ScorecardGroupRuleQuery;
+    /**
+     * The title of the rule
+     */
+    title: string;
+}
+
+export interface ScorecardGroupRuleQuery {
+    /**
+     * The combinator of the query
+     */
+    combinator: string;
+    /**
+     * The conditions of the query. Each condition object should be encoded to a string
+     */
+    conditions: string[];
+}
+
+export interface ScorecardGroupScorecards {
+    /**
+     * An optional set of conditions to filter entities evaluated by this member scorecard.
+     */
+    filter?: outputs.ScorecardGroupScorecardsFilter;
+    /**
+     * The rules that define this member scorecard.
+     */
+    rules: outputs.ScorecardGroupScorecardsRule[];
+}
+
+export interface ScorecardGroupScorecardsFilter {
+    /**
+     * The combinator of the query.
+     */
+    combinator: string;
+    /**
+     * The conditions of the query. Each condition object should be encoded to a string.
+     */
+    conditions: string[];
+}
+
+export interface ScorecardGroupScorecardsRule {
+    /**
+     * The description of the rule
+     */
+    description?: string;
+    /**
+     * The identifier of the rule
+     */
+    identifier: string;
+    /**
+     * The level of the rule
+     */
+    level: string;
+    /**
+     * The query of the rule
+     */
+    query: outputs.ScorecardGroupScorecardsRuleQuery;
+    /**
+     * The title of the rule
+     */
+    title: string;
+}
+
+export interface ScorecardGroupScorecardsRuleQuery {
+    /**
+     * The combinator of the query
+     */
+    combinator: string;
+    /**
+     * The conditions of the query. Each condition object should be encoded to a string
+     */
+    conditions: string[];
+}
+
 export interface ScorecardLevel {
     /**
      * The color of the level
