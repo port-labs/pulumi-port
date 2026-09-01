@@ -8291,6 +8291,116 @@
                 "type": "object"
             }
         },
+        "port:index/blueprintRelation:BlueprintRelation": {
+            "properties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The identifier of the blueprint the relation belongs to\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the relation. Port does not accept an empty value for this field, so removing it from the\nconfiguration leaves the existing description in place rather than clearing it.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the relation\n"
+                },
+                "many": {
+                    "type": "boolean",
+                    "description": "Whether the relation points at many entities\n"
+                },
+                "required": {
+                    "type": "boolean",
+                    "description": "Whether the relation is required. Port rejects a required relation whose target blueprint already has a required\nrelation back to this one, so at most one direction of a circular pair can be required.\n"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "The identifier of the blueprint the relation points at\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the relation. Port does not accept an empty value for this field, so removing it from the configuration\nleaves the existing title in place rather than clearing it.\n"
+                }
+            },
+            "required": [
+                "blueprint",
+                "description",
+                "identifier",
+                "many",
+                "required",
+                "target",
+                "title"
+            ],
+            "inputProperties": {
+                "blueprint": {
+                    "type": "string",
+                    "description": "The identifier of the blueprint the relation belongs to\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the relation. Port does not accept an empty value for this field, so removing it from the\nconfiguration leaves the existing description in place rather than clearing it.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the relation\n"
+                },
+                "many": {
+                    "type": "boolean",
+                    "description": "Whether the relation points at many entities\n"
+                },
+                "required": {
+                    "type": "boolean",
+                    "description": "Whether the relation is required. Port rejects a required relation whose target blueprint already has a required\nrelation back to this one, so at most one direction of a circular pair can be required.\n"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "The identifier of the blueprint the relation points at\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the relation. Port does not accept an empty value for this field, so removing it from the configuration\nleaves the existing title in place rather than clearing it.\n"
+                }
+            },
+            "requiredInputs": [
+                "blueprint",
+                "identifier",
+                "target"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering BlueprintRelation resources.\n",
+                "properties": {
+                    "blueprint": {
+                        "type": "string",
+                        "description": "The identifier of the blueprint the relation belongs to\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the relation. Port does not accept an empty value for this field, so removing it from the\nconfiguration leaves the existing description in place rather than clearing it.\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "The identifier of the relation\n"
+                    },
+                    "many": {
+                        "type": "boolean",
+                        "description": "Whether the relation points at many entities\n"
+                    },
+                    "required": {
+                        "type": "boolean",
+                        "description": "Whether the relation is required. Port rejects a required relation whose target blueprint already has a required\nrelation back to this one, so at most one direction of a circular pair can be required.\n"
+                    },
+                    "target": {
+                        "type": "string",
+                        "description": "The identifier of the blueprint the relation points at\n"
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "The title of the relation. Port does not accept an empty value for this field, so removing it from the configuration\nleaves the existing title in place rather than clearing it.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "port:index/entity:Entity": {
             "properties": {
                 "blueprint": {
@@ -9145,6 +9255,10 @@
                     },
                     "description": "The available levels of the scorecard group, shared by all members.\n"
                 },
+                "properties": {
+                    "type": "string",
+                    "description": "Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.\nProperty keys must match custom properties you added to the `_scorecard` blueprint.\n"
+                },
                 "rules": {
                     "type": "array",
                     "items": {
@@ -9206,6 +9320,10 @@
                     },
                     "description": "The available levels of the scorecard group, shared by all members.\n"
                 },
+                "properties": {
+                    "type": "string",
+                    "description": "Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.\nProperty keys must match custom properties you added to the `_scorecard` blueprint.\n"
+                },
                 "rules": {
                     "type": "array",
                     "items": {
@@ -9264,6 +9382,10 @@
                             "$ref": "#/types/port:index/ScorecardGroupLevel:ScorecardGroupLevel"
                         },
                         "description": "The available levels of the scorecard group, shared by all members.\n"
+                    },
+                    "properties": {
+                        "type": "string",
+                        "description": "Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.\nProperty keys must match custom properties you added to the `_scorecard` blueprint.\n"
                     },
                     "rules": {
                         "type": "array",

@@ -60,6 +60,11 @@ export class ScorecardGroup extends pulumi.CustomResource {
      */
     public readonly levels!: pulumi.Output<outputs.ScorecardGroupLevel[] | undefined>;
     /**
+     * Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+     * Property keys must match custom properties you added to the `_scorecard` blueprint.
+     */
+    public readonly properties!: pulumi.Output<string | undefined>;
+    /**
      * The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
      */
     public readonly rules!: pulumi.Output<outputs.ScorecardGroupRule[] | undefined>;
@@ -100,6 +105,7 @@ export class ScorecardGroup extends pulumi.CustomResource {
             resourceInputs["filters"] = state ? state.filters : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["levels"] = state ? state.levels : undefined;
+            resourceInputs["properties"] = state ? state.properties : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
             resourceInputs["scorecards"] = state ? state.scorecards : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
@@ -117,6 +123,7 @@ export class ScorecardGroup extends pulumi.CustomResource {
             resourceInputs["filters"] = args ? args.filters : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["levels"] = args ? args.levels : undefined;
+            resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["scorecards"] = args ? args.scorecards : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
@@ -159,6 +166,11 @@ export interface ScorecardGroupState {
      * The available levels of the scorecard group, shared by all members.
      */
     levels?: pulumi.Input<pulumi.Input<inputs.ScorecardGroupLevel>[]>;
+    /**
+     * Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+     * Property keys must match custom properties you added to the `_scorecard` blueprint.
+     */
+    properties?: pulumi.Input<string>;
     /**
      * The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
      */
@@ -203,6 +215,11 @@ export interface ScorecardGroupArgs {
      * The available levels of the scorecard group, shared by all members.
      */
     levels?: pulumi.Input<pulumi.Input<inputs.ScorecardGroupLevel>[]>;
+    /**
+     * Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+     * Property keys must match custom properties you added to the `_scorecard` blueprint.
+     */
+    properties?: pulumi.Input<string>;
     /**
      * The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
      */

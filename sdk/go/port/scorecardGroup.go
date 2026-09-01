@@ -28,6 +28,9 @@ type ScorecardGroup struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// The available levels of the scorecard group, shared by all members.
 	Levels ScorecardGroupLevelArrayOutput `pulumi:"levels"`
+	// Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+	// Property keys must match custom properties you added to the `_scorecard` blueprint.
+	Properties pulumi.StringPtrOutput `pulumi:"properties"`
 	// The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
 	Rules ScorecardGroupRuleArrayOutput `pulumi:"rules"`
 	// Map of blueprint identifier to member scorecard filter/rules. Use this for per-blueprint mode. Conflicts with
@@ -90,6 +93,9 @@ type scorecardGroupState struct {
 	Identifier *string `pulumi:"identifier"`
 	// The available levels of the scorecard group, shared by all members.
 	Levels []ScorecardGroupLevel `pulumi:"levels"`
+	// Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+	// Property keys must match custom properties you added to the `_scorecard` blueprint.
+	Properties *string `pulumi:"properties"`
 	// The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
 	Rules []ScorecardGroupRule `pulumi:"rules"`
 	// Map of blueprint identifier to member scorecard filter/rules. Use this for per-blueprint mode. Conflicts with
@@ -117,6 +123,9 @@ type ScorecardGroupState struct {
 	Identifier pulumi.StringPtrInput
 	// The available levels of the scorecard group, shared by all members.
 	Levels ScorecardGroupLevelArrayInput
+	// Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+	// Property keys must match custom properties you added to the `_scorecard` blueprint.
+	Properties pulumi.StringPtrInput
 	// The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
 	Rules ScorecardGroupRuleArrayInput
 	// Map of blueprint identifier to member scorecard filter/rules. Use this for per-blueprint mode. Conflicts with
@@ -144,6 +153,9 @@ type scorecardGroupArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// The available levels of the scorecard group, shared by all members.
 	Levels []ScorecardGroupLevel `pulumi:"levels"`
+	// Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+	// Property keys must match custom properties you added to the `_scorecard` blueprint.
+	Properties *string `pulumi:"properties"`
 	// The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
 	Rules []ScorecardGroupRule `pulumi:"rules"`
 	// Map of blueprint identifier to member scorecard filter/rules. Use this for per-blueprint mode. Conflicts with
@@ -164,6 +176,9 @@ type ScorecardGroupArgs struct {
 	Identifier pulumi.StringInput
 	// The available levels of the scorecard group, shared by all members.
 	Levels ScorecardGroupLevelArrayInput
+	// Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+	// Property keys must match custom properties you added to the `_scorecard` blueprint.
+	Properties pulumi.StringPtrInput
 	// The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
 	Rules ScorecardGroupRuleArrayInput
 	// Map of blueprint identifier to member scorecard filter/rules. Use this for per-blueprint mode. Conflicts with
@@ -289,6 +304,12 @@ func (o ScorecardGroupOutput) Identifier() pulumi.StringOutput {
 // The available levels of the scorecard group, shared by all members.
 func (o ScorecardGroupOutput) Levels() ScorecardGroupLevelArrayOutput {
 	return o.ApplyT(func(v *ScorecardGroup) ScorecardGroupLevelArrayOutput { return v.Levels }).(ScorecardGroupLevelArrayOutput)
+}
+
+// Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+// Property keys must match custom properties you added to the `_scorecard` blueprint.
+func (o ScorecardGroupOutput) Properties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScorecardGroup) pulumi.StringPtrOutput { return v.Properties }).(pulumi.StringPtrOutput)
 }
 
 // The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
