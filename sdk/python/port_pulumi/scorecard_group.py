@@ -26,6 +26,7 @@ class ScorecardGroupArgs:
                  blueprints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  filters: Optional[pulumi.Input[Mapping[str, pulumi.Input['ScorecardGroupFiltersArgs']]]] = None,
                  levels: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardGroupLevelArgs']]]] = None,
+                 properties: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardGroupRuleArgs']]]] = None,
                  scorecards: Optional[pulumi.Input[Mapping[str, pulumi.Input['ScorecardGroupScorecardsArgs']]]] = None):
         """
@@ -36,6 +37,8 @@ class ScorecardGroupArgs:
                `scorecards`.
         :param pulumi.Input[Mapping[str, pulumi.Input['ScorecardGroupFiltersArgs']]] filters: Optional filters per blueprint in shared-rules mode, keyed by blueprint identifier. Conflicts with `scorecards`.
         :param pulumi.Input[Sequence[pulumi.Input['ScorecardGroupLevelArgs']]] levels: The available levels of the scorecard group, shared by all members.
+        :param pulumi.Input[str] properties: Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+               Property keys must match custom properties you added to the `_scorecard` blueprint.
         :param pulumi.Input[Sequence[pulumi.Input['ScorecardGroupRuleArgs']]] rules: The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
         :param pulumi.Input[Mapping[str, pulumi.Input['ScorecardGroupScorecardsArgs']]] scorecards: Map of blueprint identifier to member scorecard filter/rules. Use this for per-blueprint mode. Conflicts with
                `blueprints`, `rules`, and `filters`.
@@ -48,6 +51,8 @@ class ScorecardGroupArgs:
             pulumi.set(__self__, "filters", filters)
         if levels is not None:
             pulumi.set(__self__, "levels", levels)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if scorecards is not None:
@@ -116,6 +121,19 @@ class ScorecardGroupArgs:
 
     @property
     @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+        Property keys must match custom properties you added to the `_scorecard` blueprint.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardGroupRuleArgs']]]]:
         """
         The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
@@ -149,6 +167,7 @@ class _ScorecardGroupState:
                  filters: Optional[pulumi.Input[Mapping[str, pulumi.Input['ScorecardGroupFiltersArgs']]]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  levels: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardGroupLevelArgs']]]] = None,
+                 properties: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardGroupRuleArgs']]]] = None,
                  scorecards: Optional[pulumi.Input[Mapping[str, pulumi.Input['ScorecardGroupScorecardsArgs']]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -163,6 +182,8 @@ class _ScorecardGroupState:
         :param pulumi.Input[Mapping[str, pulumi.Input['ScorecardGroupFiltersArgs']]] filters: Optional filters per blueprint in shared-rules mode, keyed by blueprint identifier. Conflicts with `scorecards`.
         :param pulumi.Input[str] identifier: A unique identifier for the scorecard group.
         :param pulumi.Input[Sequence[pulumi.Input['ScorecardGroupLevelArgs']]] levels: The available levels of the scorecard group, shared by all members.
+        :param pulumi.Input[str] properties: Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+               Property keys must match custom properties you added to the `_scorecard` blueprint.
         :param pulumi.Input[Sequence[pulumi.Input['ScorecardGroupRuleArgs']]] rules: The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
         :param pulumi.Input[Mapping[str, pulumi.Input['ScorecardGroupScorecardsArgs']]] scorecards: Map of blueprint identifier to member scorecard filter/rules. Use this for per-blueprint mode. Conflicts with
                `blueprints`, `rules`, and `filters`.
@@ -182,6 +203,8 @@ class _ScorecardGroupState:
             pulumi.set(__self__, "identifier", identifier)
         if levels is not None:
             pulumi.set(__self__, "levels", levels)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if scorecards is not None:
@@ -268,6 +291,19 @@ class _ScorecardGroupState:
 
     @property
     @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+        Property keys must match custom properties you added to the `_scorecard` blueprint.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardGroupRuleArgs']]]]:
         """
         The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
@@ -337,6 +373,7 @@ class ScorecardGroup(pulumi.CustomResource):
                  filters: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ScorecardGroupFiltersArgs', 'ScorecardGroupFiltersArgsDict']]]]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardGroupLevelArgs', 'ScorecardGroupLevelArgsDict']]]]] = None,
+                 properties: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardGroupRuleArgs', 'ScorecardGroupRuleArgsDict']]]]] = None,
                  scorecards: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ScorecardGroupScorecardsArgs', 'ScorecardGroupScorecardsArgsDict']]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -350,6 +387,8 @@ class ScorecardGroup(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['ScorecardGroupFiltersArgs', 'ScorecardGroupFiltersArgsDict']]]] filters: Optional filters per blueprint in shared-rules mode, keyed by blueprint identifier. Conflicts with `scorecards`.
         :param pulumi.Input[str] identifier: A unique identifier for the scorecard group.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScorecardGroupLevelArgs', 'ScorecardGroupLevelArgsDict']]]] levels: The available levels of the scorecard group, shared by all members.
+        :param pulumi.Input[str] properties: Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+               Property keys must match custom properties you added to the `_scorecard` blueprint.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScorecardGroupRuleArgs', 'ScorecardGroupRuleArgsDict']]]] rules: The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['ScorecardGroupScorecardsArgs', 'ScorecardGroupScorecardsArgsDict']]]] scorecards: Map of blueprint identifier to member scorecard filter/rules. Use this for per-blueprint mode. Conflicts with
                `blueprints`, `rules`, and `filters`.
@@ -382,6 +421,7 @@ class ScorecardGroup(pulumi.CustomResource):
                  filters: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ScorecardGroupFiltersArgs', 'ScorecardGroupFiltersArgsDict']]]]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardGroupLevelArgs', 'ScorecardGroupLevelArgsDict']]]]] = None,
+                 properties: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardGroupRuleArgs', 'ScorecardGroupRuleArgsDict']]]]] = None,
                  scorecards: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ScorecardGroupScorecardsArgs', 'ScorecardGroupScorecardsArgsDict']]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -400,6 +440,7 @@ class ScorecardGroup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["levels"] = levels
+            __props__.__dict__["properties"] = properties
             __props__.__dict__["rules"] = rules
             __props__.__dict__["scorecards"] = scorecards
             if title is None and not opts.urn:
@@ -425,6 +466,7 @@ class ScorecardGroup(pulumi.CustomResource):
             filters: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ScorecardGroupFiltersArgs', 'ScorecardGroupFiltersArgsDict']]]]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardGroupLevelArgs', 'ScorecardGroupLevelArgsDict']]]]] = None,
+            properties: Optional[pulumi.Input[str]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardGroupRuleArgs', 'ScorecardGroupRuleArgsDict']]]]] = None,
             scorecards: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ScorecardGroupScorecardsArgs', 'ScorecardGroupScorecardsArgsDict']]]]] = None,
             title: Optional[pulumi.Input[str]] = None,
@@ -444,6 +486,8 @@ class ScorecardGroup(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['ScorecardGroupFiltersArgs', 'ScorecardGroupFiltersArgsDict']]]] filters: Optional filters per blueprint in shared-rules mode, keyed by blueprint identifier. Conflicts with `scorecards`.
         :param pulumi.Input[str] identifier: A unique identifier for the scorecard group.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScorecardGroupLevelArgs', 'ScorecardGroupLevelArgsDict']]]] levels: The available levels of the scorecard group, shared by all members.
+        :param pulumi.Input[str] properties: Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+               Property keys must match custom properties you added to the `_scorecard` blueprint.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScorecardGroupRuleArgs', 'ScorecardGroupRuleArgsDict']]]] rules: The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['ScorecardGroupScorecardsArgs', 'ScorecardGroupScorecardsArgsDict']]]] scorecards: Map of blueprint identifier to member scorecard filter/rules. Use this for per-blueprint mode. Conflicts with
                `blueprints`, `rules`, and `filters`.
@@ -461,6 +505,7 @@ class ScorecardGroup(pulumi.CustomResource):
         __props__.__dict__["filters"] = filters
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["levels"] = levels
+        __props__.__dict__["properties"] = properties
         __props__.__dict__["rules"] = rules
         __props__.__dict__["scorecards"] = scorecards
         __props__.__dict__["title"] = title
@@ -516,6 +561,15 @@ class ScorecardGroup(pulumi.CustomResource):
         The available levels of the scorecard group, shared by all members.
         """
         return pulumi.get(self, "levels")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> pulumi.Output[Optional[str]]:
+        """
+        Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+        Property keys must match custom properties you added to the `_scorecard` blueprint.
+        """
+        return pulumi.get(self, "properties")
 
     @property
     @pulumi.getter

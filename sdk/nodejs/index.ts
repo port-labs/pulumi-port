@@ -30,6 +30,11 @@ export type BlueprintPermissions = import("./blueprintPermissions").BlueprintPer
 export const BlueprintPermissions: typeof import("./blueprintPermissions").BlueprintPermissions = null as any;
 utilities.lazyLoad(exports, ["BlueprintPermissions"], () => require("./blueprintPermissions"));
 
+export { BlueprintRelationArgs, BlueprintRelationState } from "./blueprintRelation";
+export type BlueprintRelation = import("./blueprintRelation").BlueprintRelation;
+export const BlueprintRelation: typeof import("./blueprintRelation").BlueprintRelation = null as any;
+utilities.lazyLoad(exports, ["BlueprintRelation"], () => require("./blueprintRelation"));
+
 export { EntityArgs, EntityState } from "./entity";
 export type Entity = import("./entity").Entity;
 export const Entity: typeof import("./entity").Entity = null as any;
@@ -129,6 +134,8 @@ const _module = {
                 return new Blueprint(name, <any>undefined, { urn })
             case "port:index/blueprintPermissions:BlueprintPermissions":
                 return new BlueprintPermissions(name, <any>undefined, { urn })
+            case "port:index/blueprintRelation:BlueprintRelation":
+                return new BlueprintRelation(name, <any>undefined, { urn })
             case "port:index/entity:Entity":
                 return new Entity(name, <any>undefined, { urn })
             case "port:index/folder:Folder":
@@ -165,6 +172,7 @@ pulumi.runtime.registerResourceModule("port", "index/actionPermissions", _module
 pulumi.runtime.registerResourceModule("port", "index/aggregationProperties", _module)
 pulumi.runtime.registerResourceModule("port", "index/blueprint", _module)
 pulumi.runtime.registerResourceModule("port", "index/blueprintPermissions", _module)
+pulumi.runtime.registerResourceModule("port", "index/blueprintRelation", _module)
 pulumi.runtime.registerResourceModule("port", "index/entity", _module)
 pulumi.runtime.registerResourceModule("port", "index/folder", _module)
 pulumi.runtime.registerResourceModule("port", "index/integration", _module)
