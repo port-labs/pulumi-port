@@ -1359,6 +1359,10 @@ export interface BlueprintCalculationProperties {
      */
     icon?: pulumi.Input<string>;
     /**
+     * The items of an `array` calculation property
+     */
+    items?: pulumi.Input<inputs.BlueprintCalculationPropertiesItems>;
+    /**
      * The spec of the calculation property
      */
     spec?: pulumi.Input<string>;
@@ -1374,6 +1378,17 @@ export interface BlueprintCalculationProperties {
      * The type of the calculation property
      */
     type: pulumi.Input<string>;
+}
+
+export interface BlueprintCalculationPropertiesItems {
+    /**
+     * The format of the items
+     */
+    format?: pulumi.Input<string>;
+    /**
+     * The type of the items
+     */
+    type?: pulumi.Input<string>;
 }
 
 export interface BlueprintCalculationPropertiesSpecAuthentication {
@@ -2251,6 +2266,10 @@ export interface SystemBlueprintCalculationProperties {
      */
     icon?: pulumi.Input<string>;
     /**
+     * The items of an `array` calculation property
+     */
+    items?: pulumi.Input<inputs.SystemBlueprintCalculationPropertiesItems>;
+    /**
      * The spec of the calculation property
      */
     spec?: pulumi.Input<string>;
@@ -2266,6 +2285,17 @@ export interface SystemBlueprintCalculationProperties {
      * The type of the calculation property
      */
     type: pulumi.Input<string>;
+}
+
+export interface SystemBlueprintCalculationPropertiesItems {
+    /**
+     * The format of the items
+     */
+    format?: pulumi.Input<string>;
+    /**
+     * The type of the items
+     */
+    type?: pulumi.Input<string>;
 }
 
 export interface SystemBlueprintCalculationPropertiesSpecAuthentication {
@@ -3662,6 +3692,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     property?: pulumi.Input<string>;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: pulumi.Input<string>;
+    /**
      * The nested rules of a group rule.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule>[]>;
@@ -3692,6 +3726,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      * The property identifier of the rule.
      */
     property?: pulumi.Input<string>;
+    /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: pulumi.Input<string>;
     /**
      * The nested rules of a group rule.
      */
@@ -3724,6 +3762,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     property?: pulumi.Input<string>;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: pulumi.Input<string>;
+    /**
      * The nested rules of a group rule.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule>[]>;
@@ -3754,6 +3796,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      * The property identifier of the rule.
      */
     property?: pulumi.Input<string>;
+    /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: pulumi.Input<string>;
     /**
      * The nested rules of a group rule.
      */
@@ -3786,6 +3832,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     property?: pulumi.Input<string>;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: pulumi.Input<string>;
+    /**
      * The nested rules of a group rule.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule>[]>;
@@ -3816,6 +3866,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      * The property identifier of the rule.
      */
     property?: pulumi.Input<string>;
+    /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: pulumi.Input<string>;
     /**
      * The nested rules of a group rule.
      */
@@ -3848,6 +3902,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     property?: pulumi.Input<string>;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: pulumi.Input<string>;
+    /**
      * The nested rules of a group rule.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule>[]>;
@@ -3878,6 +3936,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      * The property identifier of the rule.
      */
     property?: pulumi.Input<string>;
+    /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: pulumi.Input<string>;
     /**
      * The nested rules of a group rule.
      */
@@ -3910,6 +3972,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     property?: pulumi.Input<string>;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: pulumi.Input<string>;
+    /**
      * The nested rules of a group rule.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule>[]>;
@@ -3941,6 +4007,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     property?: pulumi.Input<string>;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: pulumi.Input<string>;
+    /**
      * The nested rules of a group rule.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule>[]>;
@@ -3971,6 +4041,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      * The property identifier of the rule.
      */
     property?: pulumi.Input<string>;
+    /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: pulumi.Input<string>;
     /**
      * A value resolved from the form or the trigger when the form is rendered.
      */
@@ -4740,6 +4814,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     property?: pulumi.Input<string>;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: pulumi.Input<string>;
+    /**
      * The nested rules of a group rule.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRule>[]>;
@@ -4770,6 +4848,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      * The property identifier of the rule.
      */
     property?: pulumi.Input<string>;
+    /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: pulumi.Input<string>;
     /**
      * The nested rules of a group rule.
      */
@@ -4802,6 +4884,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     property?: pulumi.Input<string>;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: pulumi.Input<string>;
+    /**
      * The nested rules of a group rule.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule>[]>;
@@ -4832,6 +4918,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      * The property identifier of the rule.
      */
     property?: pulumi.Input<string>;
+    /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: pulumi.Input<string>;
     /**
      * The nested rules of a group rule.
      */
@@ -4864,6 +4954,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     property?: pulumi.Input<string>;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: pulumi.Input<string>;
+    /**
      * The nested rules of a group rule.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule>[]>;
@@ -4894,6 +4988,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      * The property identifier of the rule.
      */
     property?: pulumi.Input<string>;
+    /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: pulumi.Input<string>;
     /**
      * The nested rules of a group rule.
      */
@@ -4926,6 +5024,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     property?: pulumi.Input<string>;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: pulumi.Input<string>;
+    /**
      * The nested rules of a group rule.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule>[]>;
@@ -4956,6 +5058,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      * The property identifier of the rule.
      */
     property?: pulumi.Input<string>;
+    /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: pulumi.Input<string>;
     /**
      * The nested rules of a group rule.
      */
@@ -4988,6 +5094,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     property?: pulumi.Input<string>;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: pulumi.Input<string>;
+    /**
      * The nested rules of a group rule.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule>[]>;
@@ -5019,6 +5129,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     property?: pulumi.Input<string>;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: pulumi.Input<string>;
+    /**
      * The nested rules of a group rule.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule>[]>;
@@ -5049,6 +5163,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      * The property identifier of the rule.
      */
     property?: pulumi.Input<string>;
+    /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: pulumi.Input<string>;
     /**
      * A value resolved from the form or the trigger when the form is rendered.
      */

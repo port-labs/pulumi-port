@@ -16,17 +16,19 @@ type Integration struct {
 	pulumi.CustomResourceState
 
 	// Integration Config Raw JSON string (use `jsonencode`)
-	Config              pulumi.StringPtrOutput `pulumi:"config"`
+	Config pulumi.StringPtrOutput `pulumi:"config"`
+	// Deprecated. The integrated tool name for catalog integration types (e.g. `GitHub`, `GitLab`, `K8S EXPORTER`). Custom
+	// integrations can omit this field. Cannot be changed after creation.
 	InstallationAppType pulumi.StringPtrOutput `pulumi:"installationAppType"`
 	// The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
-	// `^[a-z0-9-]+$`).
+	// `^[a-z0-9-]+$`). Cannot be changed after creation.
 	InstallationId pulumi.StringOutput `pulumi:"installationId"`
 	// The changelog destination of the blueprint (just an empty `{}`)
-	KafkaChangelogDestination IntegrationKafkaChangelogDestinationPtrOutput `pulumi:"kafkaChangelogDestination"`
-	Title                     pulumi.StringPtrOutput                        `pulumi:"title"`
-	Version                   pulumi.StringOutput                           `pulumi:"version"`
+	KafkaChangelogDestination IntegrationKafkaChangelogDestinationOutput `pulumi:"kafkaChangelogDestination"`
+	Title                     pulumi.StringPtrOutput                     `pulumi:"title"`
+	Version                   pulumi.StringOutput                        `pulumi:"version"`
 	// The webhook changelog destination of the integration
-	WebhookChangelogDestination IntegrationWebhookChangelogDestinationPtrOutput `pulumi:"webhookChangelogDestination"`
+	WebhookChangelogDestination IntegrationWebhookChangelogDestinationOutput `pulumi:"webhookChangelogDestination"`
 }
 
 // NewIntegration registers a new resource with the given unique name, arguments, and options.
@@ -63,10 +65,12 @@ func GetIntegration(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Integration resources.
 type integrationState struct {
 	// Integration Config Raw JSON string (use `jsonencode`)
-	Config              *string `pulumi:"config"`
+	Config *string `pulumi:"config"`
+	// Deprecated. The integrated tool name for catalog integration types (e.g. `GitHub`, `GitLab`, `K8S EXPORTER`). Custom
+	// integrations can omit this field. Cannot be changed after creation.
 	InstallationAppType *string `pulumi:"installationAppType"`
 	// The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
-	// `^[a-z0-9-]+$`).
+	// `^[a-z0-9-]+$`). Cannot be changed after creation.
 	InstallationId *string `pulumi:"installationId"`
 	// The changelog destination of the blueprint (just an empty `{}`)
 	KafkaChangelogDestination *IntegrationKafkaChangelogDestination `pulumi:"kafkaChangelogDestination"`
@@ -78,10 +82,12 @@ type integrationState struct {
 
 type IntegrationState struct {
 	// Integration Config Raw JSON string (use `jsonencode`)
-	Config              pulumi.StringPtrInput
+	Config pulumi.StringPtrInput
+	// Deprecated. The integrated tool name for catalog integration types (e.g. `GitHub`, `GitLab`, `K8S EXPORTER`). Custom
+	// integrations can omit this field. Cannot be changed after creation.
 	InstallationAppType pulumi.StringPtrInput
 	// The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
-	// `^[a-z0-9-]+$`).
+	// `^[a-z0-9-]+$`). Cannot be changed after creation.
 	InstallationId pulumi.StringPtrInput
 	// The changelog destination of the blueprint (just an empty `{}`)
 	KafkaChangelogDestination IntegrationKafkaChangelogDestinationPtrInput
@@ -97,10 +103,12 @@ func (IntegrationState) ElementType() reflect.Type {
 
 type integrationArgs struct {
 	// Integration Config Raw JSON string (use `jsonencode`)
-	Config              *string `pulumi:"config"`
+	Config *string `pulumi:"config"`
+	// Deprecated. The integrated tool name for catalog integration types (e.g. `GitHub`, `GitLab`, `K8S EXPORTER`). Custom
+	// integrations can omit this field. Cannot be changed after creation.
 	InstallationAppType *string `pulumi:"installationAppType"`
 	// The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
-	// `^[a-z0-9-]+$`).
+	// `^[a-z0-9-]+$`). Cannot be changed after creation.
 	InstallationId string `pulumi:"installationId"`
 	// The changelog destination of the blueprint (just an empty `{}`)
 	KafkaChangelogDestination *IntegrationKafkaChangelogDestination `pulumi:"kafkaChangelogDestination"`
@@ -113,10 +121,12 @@ type integrationArgs struct {
 // The set of arguments for constructing a Integration resource.
 type IntegrationArgs struct {
 	// Integration Config Raw JSON string (use `jsonencode`)
-	Config              pulumi.StringPtrInput
+	Config pulumi.StringPtrInput
+	// Deprecated. The integrated tool name for catalog integration types (e.g. `GitHub`, `GitLab`, `K8S EXPORTER`). Custom
+	// integrations can omit this field. Cannot be changed after creation.
 	InstallationAppType pulumi.StringPtrInput
 	// The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
-	// `^[a-z0-9-]+$`).
+	// `^[a-z0-9-]+$`). Cannot be changed after creation.
 	InstallationId pulumi.StringInput
 	// The changelog destination of the blueprint (just an empty `{}`)
 	KafkaChangelogDestination IntegrationKafkaChangelogDestinationPtrInput
@@ -218,19 +228,21 @@ func (o IntegrationOutput) Config() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.Config }).(pulumi.StringPtrOutput)
 }
 
+// Deprecated. The integrated tool name for catalog integration types (e.g. `GitHub`, `GitLab`, `K8S EXPORTER`). Custom
+// integrations can omit this field. Cannot be changed after creation.
 func (o IntegrationOutput) InstallationAppType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.InstallationAppType }).(pulumi.StringPtrOutput)
 }
 
 // The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
-// `^[a-z0-9-]+$`).
+// `^[a-z0-9-]+$`). Cannot be changed after creation.
 func (o IntegrationOutput) InstallationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.InstallationId }).(pulumi.StringOutput)
 }
 
 // The changelog destination of the blueprint (just an empty `{}`)
-func (o IntegrationOutput) KafkaChangelogDestination() IntegrationKafkaChangelogDestinationPtrOutput {
-	return o.ApplyT(func(v *Integration) IntegrationKafkaChangelogDestinationPtrOutput { return v.KafkaChangelogDestination }).(IntegrationKafkaChangelogDestinationPtrOutput)
+func (o IntegrationOutput) KafkaChangelogDestination() IntegrationKafkaChangelogDestinationOutput {
+	return o.ApplyT(func(v *Integration) IntegrationKafkaChangelogDestinationOutput { return v.KafkaChangelogDestination }).(IntegrationKafkaChangelogDestinationOutput)
 }
 
 func (o IntegrationOutput) Title() pulumi.StringPtrOutput {
@@ -242,10 +254,10 @@ func (o IntegrationOutput) Version() pulumi.StringOutput {
 }
 
 // The webhook changelog destination of the integration
-func (o IntegrationOutput) WebhookChangelogDestination() IntegrationWebhookChangelogDestinationPtrOutput {
-	return o.ApplyT(func(v *Integration) IntegrationWebhookChangelogDestinationPtrOutput {
+func (o IntegrationOutput) WebhookChangelogDestination() IntegrationWebhookChangelogDestinationOutput {
+	return o.ApplyT(func(v *Integration) IntegrationWebhookChangelogDestinationOutput {
 		return v.WebhookChangelogDestination
-	}).(IntegrationWebhookChangelogDestinationPtrOutput)
+	}).(IntegrationWebhookChangelogDestinationOutput)
 }
 
 type IntegrationArrayOutput struct{ *pulumi.OutputState }

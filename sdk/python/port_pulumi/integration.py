@@ -31,8 +31,10 @@ class IntegrationArgs:
         """
         The set of arguments for constructing a Integration resource.
         :param pulumi.Input[str] installation_id: The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
-               `^[a-z0-9-]+$`).
+               `^[a-z0-9-]+$`). Cannot be changed after creation.
         :param pulumi.Input[str] config: Integration Config Raw JSON string (use `jsonencode`)
+        :param pulumi.Input[str] installation_app_type: Deprecated. The integrated tool name for catalog integration types (e.g. `GitHub`, `GitLab`, `K8S EXPORTER`). Custom
+               integrations can omit this field. Cannot be changed after creation.
         :param pulumi.Input['IntegrationKafkaChangelogDestinationArgs'] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
         :param pulumi.Input['IntegrationWebhookChangelogDestinationArgs'] webhook_changelog_destination: The webhook changelog destination of the integration
         """
@@ -55,7 +57,7 @@ class IntegrationArgs:
     def installation_id(self) -> pulumi.Input[str]:
         """
         The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
-        `^[a-z0-9-]+$`).
+        `^[a-z0-9-]+$`). Cannot be changed after creation.
         """
         return pulumi.get(self, "installation_id")
 
@@ -78,6 +80,10 @@ class IntegrationArgs:
     @property
     @pulumi.getter(name="installationAppType")
     def installation_app_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deprecated. The integrated tool name for catalog integration types (e.g. `GitHub`, `GitLab`, `K8S EXPORTER`). Custom
+        integrations can omit this field. Cannot be changed after creation.
+        """
         return pulumi.get(self, "installation_app_type")
 
     @installation_app_type.setter
@@ -140,8 +146,10 @@ class _IntegrationState:
         """
         Input properties used for looking up and filtering Integration resources.
         :param pulumi.Input[str] config: Integration Config Raw JSON string (use `jsonencode`)
+        :param pulumi.Input[str] installation_app_type: Deprecated. The integrated tool name for catalog integration types (e.g. `GitHub`, `GitLab`, `K8S EXPORTER`). Custom
+               integrations can omit this field. Cannot be changed after creation.
         :param pulumi.Input[str] installation_id: The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
-               `^[a-z0-9-]+$`).
+               `^[a-z0-9-]+$`). Cannot be changed after creation.
         :param pulumi.Input['IntegrationKafkaChangelogDestinationArgs'] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
         :param pulumi.Input['IntegrationWebhookChangelogDestinationArgs'] webhook_changelog_destination: The webhook changelog destination of the integration
         """
@@ -175,6 +183,10 @@ class _IntegrationState:
     @property
     @pulumi.getter(name="installationAppType")
     def installation_app_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deprecated. The integrated tool name for catalog integration types (e.g. `GitHub`, `GitLab`, `K8S EXPORTER`). Custom
+        integrations can omit this field. Cannot be changed after creation.
+        """
         return pulumi.get(self, "installation_app_type")
 
     @installation_app_type.setter
@@ -186,7 +198,7 @@ class _IntegrationState:
     def installation_id(self) -> Optional[pulumi.Input[str]]:
         """
         The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
-        `^[a-z0-9-]+$`).
+        `^[a-z0-9-]+$`). Cannot be changed after creation.
         """
         return pulumi.get(self, "installation_id")
 
@@ -255,8 +267,10 @@ class Integration(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config: Integration Config Raw JSON string (use `jsonencode`)
+        :param pulumi.Input[str] installation_app_type: Deprecated. The integrated tool name for catalog integration types (e.g. `GitHub`, `GitLab`, `K8S EXPORTER`). Custom
+               integrations can omit this field. Cannot be changed after creation.
         :param pulumi.Input[str] installation_id: The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
-               `^[a-z0-9-]+$`).
+               `^[a-z0-9-]+$`). Cannot be changed after creation.
         :param pulumi.Input[Union['IntegrationKafkaChangelogDestinationArgs', 'IntegrationKafkaChangelogDestinationArgsDict']] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
         :param pulumi.Input[Union['IntegrationWebhookChangelogDestinationArgs', 'IntegrationWebhookChangelogDestinationArgsDict']] webhook_changelog_destination: The webhook changelog destination of the integration
         """
@@ -333,8 +347,10 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config: Integration Config Raw JSON string (use `jsonencode`)
+        :param pulumi.Input[str] installation_app_type: Deprecated. The integrated tool name for catalog integration types (e.g. `GitHub`, `GitLab`, `K8S EXPORTER`). Custom
+               integrations can omit this field. Cannot be changed after creation.
         :param pulumi.Input[str] installation_id: The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
-               `^[a-z0-9-]+$`).
+               `^[a-z0-9-]+$`). Cannot be changed after creation.
         :param pulumi.Input[Union['IntegrationKafkaChangelogDestinationArgs', 'IntegrationKafkaChangelogDestinationArgsDict']] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
         :param pulumi.Input[Union['IntegrationWebhookChangelogDestinationArgs', 'IntegrationWebhookChangelogDestinationArgsDict']] webhook_changelog_destination: The webhook changelog destination of the integration
         """
@@ -362,6 +378,10 @@ class Integration(pulumi.CustomResource):
     @property
     @pulumi.getter(name="installationAppType")
     def installation_app_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Deprecated. The integrated tool name for catalog integration types (e.g. `GitHub`, `GitLab`, `K8S EXPORTER`). Custom
+        integrations can omit this field. Cannot be changed after creation.
+        """
         return pulumi.get(self, "installation_app_type")
 
     @property
@@ -369,13 +389,13 @@ class Integration(pulumi.CustomResource):
     def installation_id(self) -> pulumi.Output[str]:
         """
         The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
-        `^[a-z0-9-]+$`).
+        `^[a-z0-9-]+$`). Cannot be changed after creation.
         """
         return pulumi.get(self, "installation_id")
 
     @property
     @pulumi.getter(name="kafkaChangelogDestination")
-    def kafka_changelog_destination(self) -> pulumi.Output[Optional['outputs.IntegrationKafkaChangelogDestination']]:
+    def kafka_changelog_destination(self) -> pulumi.Output['outputs.IntegrationKafkaChangelogDestination']:
         """
         The changelog destination of the blueprint (just an empty `{}`)
         """
@@ -393,7 +413,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="webhookChangelogDestination")
-    def webhook_changelog_destination(self) -> pulumi.Output[Optional['outputs.IntegrationWebhookChangelogDestination']]:
+    def webhook_changelog_destination(self) -> pulumi.Output['outputs.IntegrationWebhookChangelogDestination']:
         """
         The webhook changelog destination of the integration
         """

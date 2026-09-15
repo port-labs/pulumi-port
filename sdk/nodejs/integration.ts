@@ -38,22 +38,26 @@ export class Integration extends pulumi.CustomResource {
      * Integration Config Raw JSON string (use `jsonencode`)
      */
     public readonly config!: pulumi.Output<string | undefined>;
+    /**
+     * Deprecated. The integrated tool name for catalog integration types (e.g. `GitHub`, `GitLab`, `K8S EXPORTER`). Custom
+     * integrations can omit this field. Cannot be changed after creation.
+     */
     public readonly installationAppType!: pulumi.Output<string | undefined>;
     /**
      * The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
-     * `^[a-z0-9-]+$`).
+     * `^[a-z0-9-]+$`). Cannot be changed after creation.
      */
     public readonly installationId!: pulumi.Output<string>;
     /**
      * The changelog destination of the blueprint (just an empty `{}`)
      */
-    public readonly kafkaChangelogDestination!: pulumi.Output<outputs.IntegrationKafkaChangelogDestination | undefined>;
+    public readonly kafkaChangelogDestination!: pulumi.Output<outputs.IntegrationKafkaChangelogDestination>;
     public readonly title!: pulumi.Output<string | undefined>;
     public readonly version!: pulumi.Output<string>;
     /**
      * The webhook changelog destination of the integration
      */
-    public readonly webhookChangelogDestination!: pulumi.Output<outputs.IntegrationWebhookChangelogDestination | undefined>;
+    public readonly webhookChangelogDestination!: pulumi.Output<outputs.IntegrationWebhookChangelogDestination>;
 
     /**
      * Create a Integration resource with the given unique name, arguments, and options.
@@ -101,10 +105,14 @@ export interface IntegrationState {
      * Integration Config Raw JSON string (use `jsonencode`)
      */
     config?: pulumi.Input<string>;
+    /**
+     * Deprecated. The integrated tool name for catalog integration types (e.g. `GitHub`, `GitLab`, `K8S EXPORTER`). Custom
+     * integrations can omit this field. Cannot be changed after creation.
+     */
     installationAppType?: pulumi.Input<string>;
     /**
      * The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
-     * `^[a-z0-9-]+$`).
+     * `^[a-z0-9-]+$`). Cannot be changed after creation.
      */
     installationId?: pulumi.Input<string>;
     /**
@@ -127,10 +135,14 @@ export interface IntegrationArgs {
      * Integration Config Raw JSON string (use `jsonencode`)
      */
     config?: pulumi.Input<string>;
+    /**
+     * Deprecated. The integrated tool name for catalog integration types (e.g. `GitHub`, `GitLab`, `K8S EXPORTER`). Custom
+     * integrations can omit this field. Cannot be changed after creation.
+     */
     installationAppType?: pulumi.Input<string>;
     /**
      * The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
-     * `^[a-z0-9-]+$`).
+     * `^[a-z0-9-]+$`). Cannot be changed after creation.
      */
     installationId: pulumi.Input<string>;
     /**

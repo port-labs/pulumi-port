@@ -157,6 +157,8 @@ __all__ = [
     'AggregationPropertiesPropertiesPathFilterArgsDict',
     'BlueprintCalculationPropertiesArgs',
     'BlueprintCalculationPropertiesArgsDict',
+    'BlueprintCalculationPropertiesItemsArgs',
+    'BlueprintCalculationPropertiesItemsArgsDict',
     'BlueprintCalculationPropertiesSpecAuthenticationArgs',
     'BlueprintCalculationPropertiesSpecAuthenticationArgsDict',
     'BlueprintKafkaChangelogDestinationArgs',
@@ -255,6 +257,8 @@ __all__ = [
     'ScorecardRuleQueryArgsDict',
     'SystemBlueprintCalculationPropertiesArgs',
     'SystemBlueprintCalculationPropertiesArgsDict',
+    'SystemBlueprintCalculationPropertiesItemsArgs',
+    'SystemBlueprintCalculationPropertiesItemsArgsDict',
     'SystemBlueprintCalculationPropertiesSpecAuthenticationArgs',
     'SystemBlueprintCalculationPropertiesSpecAuthenticationArgsDict',
     'SystemBlueprintMirrorPropertiesArgs',
@@ -7013,6 +7017,10 @@ if not MYPY:
         """
         The icon of the calculation property
         """
+        items: NotRequired[pulumi.Input['BlueprintCalculationPropertiesItemsArgsDict']]
+        """
+        The items of an `array` calculation property
+        """
         spec: NotRequired[pulumi.Input[str]]
         """
         The spec of the calculation property
@@ -7039,6 +7047,7 @@ class BlueprintCalculationPropertiesArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
+                 items: Optional[pulumi.Input['BlueprintCalculationPropertiesItemsArgs']] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  spec_authentication: Optional[pulumi.Input['BlueprintCalculationPropertiesSpecAuthenticationArgs']] = None,
                  title: Optional[pulumi.Input[str]] = None):
@@ -7051,6 +7060,7 @@ class BlueprintCalculationPropertiesArgs:
         :param pulumi.Input[str] description: The description of the calculation property
         :param pulumi.Input[str] format: The format of the calculation property
         :param pulumi.Input[str] icon: The icon of the calculation property
+        :param pulumi.Input['BlueprintCalculationPropertiesItemsArgs'] items: The items of an `array` calculation property
         :param pulumi.Input[str] spec: The spec of the calculation property
         :param pulumi.Input['BlueprintCalculationPropertiesSpecAuthenticationArgs'] spec_authentication: The spec authentication of the calculation property
         :param pulumi.Input[str] title: The title of the calculation property
@@ -7069,6 +7079,8 @@ class BlueprintCalculationPropertiesArgs:
             pulumi.set(__self__, "format", format)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
+        if items is not None:
+            pulumi.set(__self__, "items", items)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
         if spec_authentication is not None:
@@ -7174,6 +7186,18 @@ class BlueprintCalculationPropertiesArgs:
 
     @property
     @pulumi.getter
+    def items(self) -> Optional[pulumi.Input['BlueprintCalculationPropertiesItemsArgs']]:
+        """
+        The items of an `array` calculation property
+        """
+        return pulumi.get(self, "items")
+
+    @items.setter
+    def items(self, value: Optional[pulumi.Input['BlueprintCalculationPropertiesItemsArgs']]):
+        pulumi.set(self, "items", value)
+
+    @property
+    @pulumi.getter
     def spec(self) -> Optional[pulumi.Input[str]]:
         """
         The spec of the calculation property
@@ -7207,6 +7231,58 @@ class BlueprintCalculationPropertiesArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+if not MYPY:
+    class BlueprintCalculationPropertiesItemsArgsDict(TypedDict):
+        format: NotRequired[pulumi.Input[str]]
+        """
+        The format of the items
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the items
+        """
+elif False:
+    BlueprintCalculationPropertiesItemsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BlueprintCalculationPropertiesItemsArgs:
+    def __init__(__self__, *,
+                 format: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] format: The format of the items
+        :param pulumi.Input[str] type: The type of the items
+        """
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The format of the items
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the items
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 if not MYPY:
@@ -11345,6 +11421,10 @@ if not MYPY:
         """
         The icon of the calculation property
         """
+        items: NotRequired[pulumi.Input['SystemBlueprintCalculationPropertiesItemsArgsDict']]
+        """
+        The items of an `array` calculation property
+        """
         spec: NotRequired[pulumi.Input[str]]
         """
         The spec of the calculation property
@@ -11371,6 +11451,7 @@ class SystemBlueprintCalculationPropertiesArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
+                 items: Optional[pulumi.Input['SystemBlueprintCalculationPropertiesItemsArgs']] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  spec_authentication: Optional[pulumi.Input['SystemBlueprintCalculationPropertiesSpecAuthenticationArgs']] = None,
                  title: Optional[pulumi.Input[str]] = None):
@@ -11383,6 +11464,7 @@ class SystemBlueprintCalculationPropertiesArgs:
         :param pulumi.Input[str] description: The description of the calculation property
         :param pulumi.Input[str] format: The format of the calculation property
         :param pulumi.Input[str] icon: The icon of the calculation property
+        :param pulumi.Input['SystemBlueprintCalculationPropertiesItemsArgs'] items: The items of an `array` calculation property
         :param pulumi.Input[str] spec: The spec of the calculation property
         :param pulumi.Input['SystemBlueprintCalculationPropertiesSpecAuthenticationArgs'] spec_authentication: The spec authentication of the calculation property
         :param pulumi.Input[str] title: The title of the calculation property
@@ -11401,6 +11483,8 @@ class SystemBlueprintCalculationPropertiesArgs:
             pulumi.set(__self__, "format", format)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
+        if items is not None:
+            pulumi.set(__self__, "items", items)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
         if spec_authentication is not None:
@@ -11506,6 +11590,18 @@ class SystemBlueprintCalculationPropertiesArgs:
 
     @property
     @pulumi.getter
+    def items(self) -> Optional[pulumi.Input['SystemBlueprintCalculationPropertiesItemsArgs']]:
+        """
+        The items of an `array` calculation property
+        """
+        return pulumi.get(self, "items")
+
+    @items.setter
+    def items(self, value: Optional[pulumi.Input['SystemBlueprintCalculationPropertiesItemsArgs']]):
+        pulumi.set(self, "items", value)
+
+    @property
+    @pulumi.getter
     def spec(self) -> Optional[pulumi.Input[str]]:
         """
         The spec of the calculation property
@@ -11539,6 +11635,58 @@ class SystemBlueprintCalculationPropertiesArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+if not MYPY:
+    class SystemBlueprintCalculationPropertiesItemsArgsDict(TypedDict):
+        format: NotRequired[pulumi.Input[str]]
+        """
+        The format of the items
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the items
+        """
+elif False:
+    SystemBlueprintCalculationPropertiesItemsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SystemBlueprintCalculationPropertiesItemsArgs:
+    def __init__(__self__, *,
+                 format: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] format: The format of the items
+        :param pulumi.Input[str] type: The type of the items
+        """
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The format of the items
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the items
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 if not MYPY:
@@ -18249,6 +18397,10 @@ if not MYPY:
         """
         The property identifier of the rule.
         """
+        relation: NotRequired[pulumi.Input[str]]
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArgsDict']]]]
         """
         The nested rules of a group rule.
@@ -18271,6 +18423,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleArgs:
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 relation: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs']]]] = None,
                  value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleValueArgs']] = None,
                  value_json: Optional[pulumi.Input[str]] = None):
@@ -18279,6 +18432,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleArgs:
         :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
         :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[str] relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs']]] rules: The nested rules of a group rule.
         :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
         :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -18291,6 +18445,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleArgs:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -18333,6 +18489,18 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleArgs:
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def relation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relation", value)
 
     @property
     @pulumi.getter
@@ -18401,6 +18569,10 @@ if not MYPY:
         """
         The property identifier of the rule.
         """
+        relation: NotRequired[pulumi.Input[str]]
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgsDict']]]]
         """
         The nested rules of a group rule.
@@ -18423,6 +18595,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs:
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 relation: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgs']]]] = None,
                  value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgs']] = None,
                  value_json: Optional[pulumi.Input[str]] = None):
@@ -18431,6 +18604,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs:
         :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
         :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[str] relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
         :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
         :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -18443,6 +18617,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -18485,6 +18661,18 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs:
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def relation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relation", value)
 
     @property
     @pulumi.getter
@@ -18553,6 +18741,10 @@ if not MYPY:
         """
         The property identifier of the rule.
         """
+        relation: NotRequired[pulumi.Input[str]]
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgsDict']]]]
         """
         The nested rules of a group rule.
@@ -18575,6 +18767,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArg
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 relation: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs']]]] = None,
                  value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs']] = None,
                  value_json: Optional[pulumi.Input[str]] = None):
@@ -18583,6 +18776,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArg
         :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
         :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[str] relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
         :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
         :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -18595,6 +18789,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArg
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -18637,6 +18833,18 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArg
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def relation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relation", value)
 
     @property
     @pulumi.getter
@@ -18705,6 +18913,10 @@ if not MYPY:
         """
         The property identifier of the rule.
         """
+        relation: NotRequired[pulumi.Input[str]]
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgsDict']]]]
         """
         The nested rules of a group rule.
@@ -18727,6 +18939,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 relation: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs']]]] = None,
                  value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs']] = None,
                  value_json: Optional[pulumi.Input[str]] = None):
@@ -18735,6 +18948,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
         :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[str] relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
         :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
         :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -18747,6 +18961,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -18789,6 +19005,18 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def relation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relation", value)
 
     @property
     @pulumi.getter
@@ -18857,6 +19085,10 @@ if not MYPY:
         """
         The property identifier of the rule.
         """
+        relation: NotRequired[pulumi.Input[str]]
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgsDict']]]]
         """
         The nested rules of a group rule.
@@ -18879,6 +19111,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 relation: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs']]]] = None,
                  value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs']] = None,
                  value_json: Optional[pulumi.Input[str]] = None):
@@ -18887,6 +19120,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
         :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[str] relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
         :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
         :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -18899,6 +19133,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -18941,6 +19177,18 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def relation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relation", value)
 
     @property
     @pulumi.getter
@@ -19009,6 +19257,10 @@ if not MYPY:
         """
         The property identifier of the rule.
         """
+        relation: NotRequired[pulumi.Input[str]]
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
         """
         The nested rules of a group rule.
@@ -19031,6 +19283,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 relation: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
                  value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs']] = None,
                  value_json: Optional[pulumi.Input[str]] = None):
@@ -19039,6 +19292,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
         :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[str] relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
         :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
         :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -19051,6 +19305,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -19093,6 +19349,18 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def relation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relation", value)
 
     @property
     @pulumi.getter
@@ -19161,6 +19429,10 @@ if not MYPY:
         """
         The property identifier of the rule.
         """
+        relation: NotRequired[pulumi.Input[str]]
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
         """
         The nested rules of a group rule.
@@ -19183,6 +19455,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 relation: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
                  value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None,
                  value_json: Optional[pulumi.Input[str]] = None):
@@ -19191,6 +19464,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
         :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[str] relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
         :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
         :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -19203,6 +19477,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -19245,6 +19521,18 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def relation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relation", value)
 
     @property
     @pulumi.getter
@@ -19313,6 +19601,10 @@ if not MYPY:
         """
         The property identifier of the rule.
         """
+        relation: NotRequired[pulumi.Input[str]]
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
         """
         The nested rules of a group rule.
@@ -19335,6 +19627,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 relation: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
                  value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None,
                  value_json: Optional[pulumi.Input[str]] = None):
@@ -19343,6 +19636,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
         :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[str] relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
         :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
         :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -19355,6 +19649,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -19397,6 +19693,18 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def relation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relation", value)
 
     @property
     @pulumi.getter
@@ -19465,6 +19773,10 @@ if not MYPY:
         """
         The property identifier of the rule.
         """
+        relation: NotRequired[pulumi.Input[str]]
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
         """
         The nested rules of a group rule.
@@ -19487,6 +19799,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 relation: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
                  value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None,
                  value_json: Optional[pulumi.Input[str]] = None):
@@ -19495,6 +19808,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
         :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[str] relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
         :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
         :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -19507,6 +19821,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -19549,6 +19865,18 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def relation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relation", value)
 
     @property
     @pulumi.getter
@@ -19617,6 +19945,10 @@ if not MYPY:
         """
         The property identifier of the rule.
         """
+        relation: NotRequired[pulumi.Input[str]]
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
         """
         The nested rules of a group rule.
@@ -19639,6 +19971,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 relation: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
                  value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None,
                  value_json: Optional[pulumi.Input[str]] = None):
@@ -19647,6 +19980,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
         :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[str] relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
         :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
         :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -19659,6 +19993,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -19701,6 +20037,18 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def relation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relation", value)
 
     @property
     @pulumi.getter
@@ -19769,6 +20117,10 @@ if not MYPY:
         """
         The property identifier of the rule.
         """
+        relation: NotRequired[pulumi.Input[str]]
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
         value: NotRequired[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict']]
         """
         A value resolved from the form or the trigger when the form is rendered.
@@ -19787,6 +20139,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 relation: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None,
                  value_json: Optional[pulumi.Input[str]] = None):
         """
@@ -19794,6 +20147,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
         :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[str] relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param pulumi.Input['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
         :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
         """
@@ -19805,6 +20159,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
         if value is not None:
             pulumi.set(__self__, "value", value)
         if value_json is not None:
@@ -19845,6 +20201,18 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def relation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relation", value)
 
     @property
     @pulumi.getter
@@ -23547,6 +23915,10 @@ if not MYPY:
         """
         The property identifier of the rule.
         """
+        relation: NotRequired[pulumi.Input[str]]
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleArgsDict']]]]
         """
         The nested rules of a group rule.
@@ -23569,6 +23941,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 relation: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs']]]] = None,
                  value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleValueArgs']] = None,
                  value_json: Optional[pulumi.Input[str]] = None):
@@ -23577,6 +23950,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
         :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[str] relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs']]] rules: The nested rules of a group rule.
         :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
         :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -23589,6 +23963,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -23631,6 +24007,18 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def relation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relation", value)
 
     @property
     @pulumi.getter
@@ -23699,6 +24087,10 @@ if not MYPY:
         """
         The property identifier of the rule.
         """
+        relation: NotRequired[pulumi.Input[str]]
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgsDict']]]]
         """
         The nested rules of a group rule.
@@ -23721,6 +24113,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 relation: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgs']]]] = None,
                  value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgs']] = None,
                  value_json: Optional[pulumi.Input[str]] = None):
@@ -23729,6 +24122,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
         :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[str] relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
         :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
         :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -23741,6 +24135,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -23783,6 +24179,18 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def relation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relation", value)
 
     @property
     @pulumi.getter
@@ -23851,6 +24259,10 @@ if not MYPY:
         """
         The property identifier of the rule.
         """
+        relation: NotRequired[pulumi.Input[str]]
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgsDict']]]]
         """
         The nested rules of a group rule.
@@ -23873,6 +24285,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 relation: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs']]]] = None,
                  value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs']] = None,
                  value_json: Optional[pulumi.Input[str]] = None):
@@ -23881,6 +24294,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
         :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[str] relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
         :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
         :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -23893,6 +24307,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -23935,6 +24351,18 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def relation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relation", value)
 
     @property
     @pulumi.getter
@@ -24003,6 +24431,10 @@ if not MYPY:
         """
         The property identifier of the rule.
         """
+        relation: NotRequired[pulumi.Input[str]]
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgsDict']]]]
         """
         The nested rules of a group rule.
@@ -24025,6 +24457,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 relation: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs']]]] = None,
                  value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs']] = None,
                  value_json: Optional[pulumi.Input[str]] = None):
@@ -24033,6 +24466,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
         :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[str] relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
         :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
         :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -24045,6 +24479,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -24087,6 +24523,18 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def relation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relation", value)
 
     @property
     @pulumi.getter
@@ -24155,6 +24603,10 @@ if not MYPY:
         """
         The property identifier of the rule.
         """
+        relation: NotRequired[pulumi.Input[str]]
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgsDict']]]]
         """
         The nested rules of a group rule.
@@ -24177,6 +24629,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 relation: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs']]]] = None,
                  value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs']] = None,
                  value_json: Optional[pulumi.Input[str]] = None):
@@ -24185,6 +24638,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
         :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[str] relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
         :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
         :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -24197,6 +24651,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -24239,6 +24695,18 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def relation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relation", value)
 
     @property
     @pulumi.getter
@@ -24307,6 +24775,10 @@ if not MYPY:
         """
         The property identifier of the rule.
         """
+        relation: NotRequired[pulumi.Input[str]]
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
         """
         The nested rules of a group rule.
@@ -24329,6 +24801,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 relation: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
                  value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs']] = None,
                  value_json: Optional[pulumi.Input[str]] = None):
@@ -24337,6 +24810,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
         :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[str] relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
         :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
         :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -24349,6 +24823,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -24391,6 +24867,18 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def relation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relation", value)
 
     @property
     @pulumi.getter
@@ -24459,6 +24947,10 @@ if not MYPY:
         """
         The property identifier of the rule.
         """
+        relation: NotRequired[pulumi.Input[str]]
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
         """
         The nested rules of a group rule.
@@ -24481,6 +24973,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 relation: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
                  value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None,
                  value_json: Optional[pulumi.Input[str]] = None):
@@ -24489,6 +24982,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
         :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[str] relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
         :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
         :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -24501,6 +24995,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -24543,6 +25039,18 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def relation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relation", value)
 
     @property
     @pulumi.getter
@@ -24611,6 +25119,10 @@ if not MYPY:
         """
         The property identifier of the rule.
         """
+        relation: NotRequired[pulumi.Input[str]]
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
         """
         The nested rules of a group rule.
@@ -24633,6 +25145,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 relation: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
                  value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None,
                  value_json: Optional[pulumi.Input[str]] = None):
@@ -24641,6 +25154,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
         :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[str] relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
         :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
         :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -24653,6 +25167,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -24695,6 +25211,18 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def relation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relation", value)
 
     @property
     @pulumi.getter
@@ -24763,6 +25291,10 @@ if not MYPY:
         """
         The property identifier of the rule.
         """
+        relation: NotRequired[pulumi.Input[str]]
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
         """
         The nested rules of a group rule.
@@ -24785,6 +25317,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 relation: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
                  value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None,
                  value_json: Optional[pulumi.Input[str]] = None):
@@ -24793,6 +25326,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
         :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[str] relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
         :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
         :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -24805,6 +25339,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -24847,6 +25383,18 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def relation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relation", value)
 
     @property
     @pulumi.getter
@@ -24915,6 +25463,10 @@ if not MYPY:
         """
         The property identifier of the rule.
         """
+        relation: NotRequired[pulumi.Input[str]]
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgsDict']]]]
         """
         The nested rules of a group rule.
@@ -24937,6 +25489,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 relation: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]]] = None,
                  value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None,
                  value_json: Optional[pulumi.Input[str]] = None):
@@ -24945,6 +25498,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
         :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[str] relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs']]] rules: The nested rules of a group rule.
         :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
         :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -24957,6 +25511,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -24999,6 +25555,18 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def relation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relation", value)
 
     @property
     @pulumi.getter
@@ -25067,6 +25635,10 @@ if not MYPY:
         """
         The property identifier of the rule.
         """
+        relation: NotRequired[pulumi.Input[str]]
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
         value: NotRequired[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgsDict']]
         """
         A value resolved from the form or the trigger when the form is rendered.
@@ -25085,6 +25657,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
                  combinator: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  property: Optional[pulumi.Input[str]] = None,
+                 relation: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs']] = None,
                  value_json: Optional[pulumi.Input[str]] = None):
         """
@@ -25092,6 +25665,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         :param pulumi.Input[str] combinator: How the nested rules of a group rule are combined.
         :param pulumi.Input[str] operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param pulumi.Input[str] property: The property identifier of the rule.
+        :param pulumi.Input[str] relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param pulumi.Input['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs'] value: A value resolved from the form or the trigger when the form is rendered.
         :param pulumi.Input[str] value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
         """
@@ -25103,6 +25677,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
         if value is not None:
             pulumi.set(__self__, "value", value)
         if value_json is not None:
@@ -25143,6 +25719,18 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def relation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relation identifier of the rule. Use instead of `property` to filter on a relation.
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relation", value)
 
     @property
     @pulumi.getter
