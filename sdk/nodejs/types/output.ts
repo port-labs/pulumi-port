@@ -3791,6 +3791,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     combinator?: string;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: string;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: string;
@@ -3825,6 +3829,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      * How the nested rules of a group rule are combined.
      */
     combinator?: string;
+    /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: string;
     /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
@@ -3861,6 +3869,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     combinator?: string;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: string;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: string;
@@ -3895,6 +3907,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      * How the nested rules of a group rule are combined.
      */
     combinator?: string;
+    /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: string;
     /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
@@ -3931,6 +3947,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     combinator?: string;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: string;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: string;
@@ -3965,6 +3985,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      * How the nested rules of a group rule are combined.
      */
     combinator?: string;
+    /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: string;
     /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
@@ -4001,6 +4025,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     combinator?: string;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: string;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: string;
@@ -4035,6 +4063,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      * How the nested rules of a group rule are combined.
      */
     combinator?: string;
+    /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: string;
     /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
@@ -4071,6 +4103,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     combinator?: string;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: string;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: string;
@@ -4106,6 +4142,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     combinator?: string;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: string;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: string;
@@ -4140,6 +4180,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      * How the nested rules of a group rule are combined.
      */
     combinator?: string;
+    /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: string;
     /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
@@ -4913,6 +4957,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     combinator?: string;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: string;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: string;
@@ -4947,6 +4995,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      * How the nested rules of a group rule are combined.
      */
     combinator?: string;
+    /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: string;
     /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
@@ -4983,6 +5035,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     combinator?: string;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: string;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: string;
@@ -5017,6 +5073,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      * How the nested rules of a group rule are combined.
      */
     combinator?: string;
+    /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: string;
     /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
@@ -5053,6 +5113,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     combinator?: string;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: string;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: string;
@@ -5087,6 +5151,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      * How the nested rules of a group rule are combined.
      */
     combinator?: string;
+    /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: string;
     /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
@@ -5123,6 +5191,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     combinator?: string;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: string;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: string;
@@ -5157,6 +5229,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      * How the nested rules of a group rule are combined.
      */
     combinator?: string;
+    /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: string;
     /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
@@ -5193,6 +5269,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     combinator?: string;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: string;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: string;
@@ -5228,6 +5308,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     combinator?: string;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: string;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: string;
@@ -5262,6 +5346,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      * How the nested rules of a group rule are combined.
      */
     combinator?: string;
+    /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: string;
     /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */

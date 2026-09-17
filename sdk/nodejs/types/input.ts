@@ -3684,6 +3684,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     combinator?: pulumi.Input<string>;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: pulumi.Input<string>;
@@ -3718,6 +3722,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      * How the nested rules of a group rule are combined.
      */
     combinator?: pulumi.Input<string>;
+    /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: pulumi.Input<string>;
     /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
@@ -3754,6 +3762,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     combinator?: pulumi.Input<string>;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: pulumi.Input<string>;
@@ -3788,6 +3800,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      * How the nested rules of a group rule are combined.
      */
     combinator?: pulumi.Input<string>;
+    /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: pulumi.Input<string>;
     /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
@@ -3824,6 +3840,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     combinator?: pulumi.Input<string>;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: pulumi.Input<string>;
@@ -3858,6 +3878,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      * How the nested rules of a group rule are combined.
      */
     combinator?: pulumi.Input<string>;
+    /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: pulumi.Input<string>;
     /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
@@ -3894,6 +3918,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     combinator?: pulumi.Input<string>;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: pulumi.Input<string>;
@@ -3928,6 +3956,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      * How the nested rules of a group rule are combined.
      */
     combinator?: pulumi.Input<string>;
+    /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: pulumi.Input<string>;
     /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
@@ -3964,6 +3996,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     combinator?: pulumi.Input<string>;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: pulumi.Input<string>;
@@ -3999,6 +4035,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     combinator?: pulumi.Input<string>;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: pulumi.Input<string>;
@@ -4033,6 +4073,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      * How the nested rules of a group rule are combined.
      */
     combinator?: pulumi.Input<string>;
+    /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: pulumi.Input<string>;
     /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
@@ -4806,6 +4850,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     combinator?: pulumi.Input<string>;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: pulumi.Input<string>;
@@ -4840,6 +4888,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      * How the nested rules of a group rule are combined.
      */
     combinator?: pulumi.Input<string>;
+    /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: pulumi.Input<string>;
     /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
@@ -4876,6 +4928,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     combinator?: pulumi.Input<string>;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: pulumi.Input<string>;
@@ -4910,6 +4966,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      * How the nested rules of a group rule are combined.
      */
     combinator?: pulumi.Input<string>;
+    /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: pulumi.Input<string>;
     /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
@@ -4946,6 +5006,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     combinator?: pulumi.Input<string>;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: pulumi.Input<string>;
@@ -4980,6 +5044,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      * How the nested rules of a group rule are combined.
      */
     combinator?: pulumi.Input<string>;
+    /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: pulumi.Input<string>;
     /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
@@ -5016,6 +5084,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     combinator?: pulumi.Input<string>;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: pulumi.Input<string>;
@@ -5050,6 +5122,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      * How the nested rules of a group rule are combined.
      */
     combinator?: pulumi.Input<string>;
+    /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: pulumi.Input<string>;
     /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
@@ -5086,6 +5162,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     combinator?: pulumi.Input<string>;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: pulumi.Input<string>;
@@ -5121,6 +5201,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     combinator?: pulumi.Input<string>;
     /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */
     operator?: pulumi.Input<string>;
@@ -5155,6 +5239,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      * How the nested rules of a group rule are combined.
      */
     combinator?: pulumi.Input<string>;
+    /**
+     * The direction of the relation the rule filters on. Set alongside `relation`.
+     */
+    direction?: pulumi.Input<string>;
     /**
      * The operator of the rule. Set on filtering rules and left out on group rules.
      */

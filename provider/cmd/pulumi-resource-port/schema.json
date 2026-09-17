@@ -5267,6 +5267,10 @@
                     "type": "string",
                     "description": "How the nested rules of a group rule are combined.\n"
                 },
+                "direction": {
+                    "type": "string",
+                    "description": "The direction of the relation the rule filters on. Set alongside `relation`.\n"
+                },
                 "operator": {
                     "type": "string",
                     "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
@@ -5306,6 +5310,10 @@
                 "combinator": {
                     "type": "string",
                     "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "direction": {
+                    "type": "string",
+                    "description": "The direction of the relation the rule filters on. Set alongside `relation`.\n"
                 },
                 "operator": {
                     "type": "string",
@@ -5347,6 +5355,10 @@
                     "type": "string",
                     "description": "How the nested rules of a group rule are combined.\n"
                 },
+                "direction": {
+                    "type": "string",
+                    "description": "The direction of the relation the rule filters on. Set alongside `relation`.\n"
+                },
                 "operator": {
                     "type": "string",
                     "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
@@ -5386,6 +5398,10 @@
                 "combinator": {
                     "type": "string",
                     "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "direction": {
+                    "type": "string",
+                    "description": "The direction of the relation the rule filters on. Set alongside `relation`.\n"
                 },
                 "operator": {
                     "type": "string",
@@ -5427,6 +5443,10 @@
                     "type": "string",
                     "description": "How the nested rules of a group rule are combined.\n"
                 },
+                "direction": {
+                    "type": "string",
+                    "description": "The direction of the relation the rule filters on. Set alongside `relation`.\n"
+                },
                 "operator": {
                     "type": "string",
                     "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
@@ -5466,6 +5486,10 @@
                 "combinator": {
                     "type": "string",
                     "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "direction": {
+                    "type": "string",
+                    "description": "The direction of the relation the rule filters on. Set alongside `relation`.\n"
                 },
                 "operator": {
                     "type": "string",
@@ -5507,6 +5531,10 @@
                     "type": "string",
                     "description": "How the nested rules of a group rule are combined.\n"
                 },
+                "direction": {
+                    "type": "string",
+                    "description": "The direction of the relation the rule filters on. Set alongside `relation`.\n"
+                },
                 "operator": {
                     "type": "string",
                     "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
@@ -5546,6 +5574,10 @@
                 "combinator": {
                     "type": "string",
                     "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "direction": {
+                    "type": "string",
+                    "description": "The direction of the relation the rule filters on. Set alongside `relation`.\n"
                 },
                 "operator": {
                     "type": "string",
@@ -5587,6 +5619,10 @@
                     "type": "string",
                     "description": "How the nested rules of a group rule are combined.\n"
                 },
+                "direction": {
+                    "type": "string",
+                    "description": "The direction of the relation the rule filters on. Set alongside `relation`.\n"
+                },
                 "operator": {
                     "type": "string",
                     "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
@@ -5627,6 +5663,10 @@
                     "type": "string",
                     "description": "How the nested rules of a group rule are combined.\n"
                 },
+                "direction": {
+                    "type": "string",
+                    "description": "The direction of the relation the rule filters on. Set alongside `relation`.\n"
+                },
                 "operator": {
                     "type": "string",
                     "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
@@ -5666,6 +5706,10 @@
                 "combinator": {
                     "type": "string",
                     "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "direction": {
+                    "type": "string",
+                    "description": "The direction of the relation the rule filters on. Set alongside `relation`.\n"
                 },
                 "operator": {
                     "type": "string",
@@ -6732,6 +6776,10 @@
                     "type": "string",
                     "description": "How the nested rules of a group rule are combined.\n"
                 },
+                "direction": {
+                    "type": "string",
+                    "description": "The direction of the relation the rule filters on. Set alongside `relation`.\n"
+                },
                 "operator": {
                     "type": "string",
                     "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
@@ -6771,6 +6819,10 @@
                 "combinator": {
                     "type": "string",
                     "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "direction": {
+                    "type": "string",
+                    "description": "The direction of the relation the rule filters on. Set alongside `relation`.\n"
                 },
                 "operator": {
                     "type": "string",
@@ -6812,6 +6864,10 @@
                     "type": "string",
                     "description": "How the nested rules of a group rule are combined.\n"
                 },
+                "direction": {
+                    "type": "string",
+                    "description": "The direction of the relation the rule filters on. Set alongside `relation`.\n"
+                },
                 "operator": {
                     "type": "string",
                     "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
@@ -6851,6 +6907,10 @@
                 "combinator": {
                     "type": "string",
                     "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "direction": {
+                    "type": "string",
+                    "description": "The direction of the relation the rule filters on. Set alongside `relation`.\n"
                 },
                 "operator": {
                     "type": "string",
@@ -6892,6 +6952,10 @@
                     "type": "string",
                     "description": "How the nested rules of a group rule are combined.\n"
                 },
+                "direction": {
+                    "type": "string",
+                    "description": "The direction of the relation the rule filters on. Set alongside `relation`.\n"
+                },
                 "operator": {
                     "type": "string",
                     "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
@@ -6931,6 +6995,10 @@
                 "combinator": {
                     "type": "string",
                     "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "direction": {
+                    "type": "string",
+                    "description": "The direction of the relation the rule filters on. Set alongside `relation`.\n"
                 },
                 "operator": {
                     "type": "string",
@@ -6972,6 +7040,10 @@
                     "type": "string",
                     "description": "How the nested rules of a group rule are combined.\n"
                 },
+                "direction": {
+                    "type": "string",
+                    "description": "The direction of the relation the rule filters on. Set alongside `relation`.\n"
+                },
                 "operator": {
                     "type": "string",
                     "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
@@ -7011,6 +7083,10 @@
                 "combinator": {
                     "type": "string",
                     "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "direction": {
+                    "type": "string",
+                    "description": "The direction of the relation the rule filters on. Set alongside `relation`.\n"
                 },
                 "operator": {
                     "type": "string",
@@ -7052,6 +7128,10 @@
                     "type": "string",
                     "description": "How the nested rules of a group rule are combined.\n"
                 },
+                "direction": {
+                    "type": "string",
+                    "description": "The direction of the relation the rule filters on. Set alongside `relation`.\n"
+                },
                 "operator": {
                     "type": "string",
                     "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
@@ -7092,6 +7172,10 @@
                     "type": "string",
                     "description": "How the nested rules of a group rule are combined.\n"
                 },
+                "direction": {
+                    "type": "string",
+                    "description": "The direction of the relation the rule filters on. Set alongside `relation`.\n"
+                },
                 "operator": {
                     "type": "string",
                     "description": "The operator of the rule. Set on filtering rules and left out on group rules.\n"
@@ -7131,6 +7215,10 @@
                 "combinator": {
                     "type": "string",
                     "description": "How the nested rules of a group rule are combined.\n"
+                },
+                "direction": {
+                    "type": "string",
+                    "description": "The direction of the relation the rule filters on. Set alongside `relation`.\n"
                 },
                 "operator": {
                     "type": "string",
