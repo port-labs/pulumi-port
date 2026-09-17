@@ -28870,6 +28870,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule struct {
 	Blueprint *string `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator *string `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -28900,6 +28902,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleArgs struct 
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -28975,6 +28979,11 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleOutput) C
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule) *string { return v.Combinator }).(pulumi.StringPtrOutput)
 }
 
+// The direction of the relation the rule filters on. Set alongside `relation`.
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
 // The operator of the rule. Set on filtering rules and left out on group rules.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule) *string { return v.Operator }).(pulumi.StringPtrOutput)
@@ -29034,6 +29043,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule struct 
 	Blueprint *string `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator *string `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -29064,6 +29075,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs str
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -29143,6 +29156,13 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the relation the rule filters on. Set alongside `relation`.
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule) *string {
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // The operator of the rule. Set on filtering rules and left out on group rules.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule) *string { return v.Operator }).(pulumi.StringPtrOutput)
@@ -29204,6 +29224,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule str
 	Blueprint *string `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator *string `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -29234,6 +29256,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgs
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -29313,6 +29337,13 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleO
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the relation the rule filters on. Set alongside `relation`.
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule) *string {
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // The operator of the rule. Set on filtering rules and left out on group rules.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule) *string {
@@ -29380,6 +29411,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Blueprint *string `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator *string `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -29410,6 +29443,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -29489,6 +29524,13 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the relation the rule filters on. Set alongside `relation`.
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule) *string {
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // The operator of the rule. Set on filtering rules and left out on group rules.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule) *string {
@@ -29556,6 +29598,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Blueprint *string `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator *string `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -29586,6 +29630,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -29665,6 +29711,13 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the relation the rule filters on. Set alongside `relation`.
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule) *string {
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // The operator of the rule. Set on filtering rules and left out on group rules.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule) *string {
@@ -29732,6 +29785,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Blueprint *string `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator *string `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -29762,6 +29817,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -29841,6 +29898,13 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the relation the rule filters on. Set alongside `relation`.
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule) *string {
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // The operator of the rule. Set on filtering rules and left out on group rules.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule) *string {
@@ -29908,6 +29972,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Blueprint *string `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator *string `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -29938,6 +30004,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -30017,6 +30085,13 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the relation the rule filters on. Set alongside `relation`.
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // The operator of the rule. Set on filtering rules and left out on group rules.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule) *string {
@@ -30084,6 +30159,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Blueprint *string `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator *string `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -30114,6 +30191,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -30193,6 +30272,13 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the relation the rule filters on. Set alongside `relation`.
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // The operator of the rule. Set on filtering rules and left out on group rules.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule) *string {
@@ -30260,6 +30346,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Blueprint *string `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator *string `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -30290,6 +30378,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -30369,6 +30459,13 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the relation the rule filters on. Set alongside `relation`.
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // The operator of the rule. Set on filtering rules and left out on group rules.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
@@ -30436,6 +30533,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Blueprint *string `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator *string `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -30466,6 +30565,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -30545,6 +30646,13 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the relation the rule filters on. Set alongside `relation`.
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // The operator of the rule. Set on filtering rules and left out on group rules.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
@@ -30612,6 +30720,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Blueprint *string `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator *string `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -30640,6 +30750,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -30714,6 +30826,13 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Combinator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
 		return v.Combinator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The direction of the relation the rule filters on. Set alongside `relation`.
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.Direction
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -36701,6 +36820,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule 
 	Blueprint *string `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator *string `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -36731,6 +36852,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleA
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -36810,6 +36933,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the relation the rule filters on. Set alongside `relation`.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule) *string {
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // The operator of the rule. Set on filtering rules and left out on group rules.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule) *string {
@@ -36877,6 +37007,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Blueprint *string `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator *string `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -36907,6 +37039,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -36986,6 +37120,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the relation the rule filters on. Set alongside `relation`.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRule) *string {
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // The operator of the rule. Set on filtering rules and left out on group rules.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRule) *string {
@@ -37053,6 +37194,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Blueprint *string `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator *string `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -37083,6 +37226,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -37162,6 +37307,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the relation the rule filters on. Set alongside `relation`.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRule) *string {
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // The operator of the rule. Set on filtering rules and left out on group rules.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRule) *string {
@@ -37229,6 +37381,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Blueprint *string `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator *string `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -37259,6 +37413,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -37338,6 +37494,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the relation the rule filters on. Set alongside `relation`.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule) *string {
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // The operator of the rule. Set on filtering rules and left out on group rules.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule) *string {
@@ -37405,6 +37568,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Blueprint *string `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator *string `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -37435,6 +37600,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -37514,6 +37681,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the relation the rule filters on. Set alongside `relation`.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule) *string {
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // The operator of the rule. Set on filtering rules and left out on group rules.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule) *string {
@@ -37581,6 +37755,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Blueprint *string `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator *string `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -37611,6 +37787,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -37690,6 +37868,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the relation the rule filters on. Set alongside `relation`.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule) *string {
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // The operator of the rule. Set on filtering rules and left out on group rules.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule) *string {
@@ -37757,6 +37942,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Blueprint *string `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator *string `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -37787,6 +37974,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -37866,6 +38055,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the relation the rule filters on. Set alongside `relation`.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // The operator of the rule. Set on filtering rules and left out on group rules.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule) *string {
@@ -37933,6 +38129,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Blueprint *string `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator *string `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -37963,6 +38161,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -38042,6 +38242,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the relation the rule filters on. Set alongside `relation`.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // The operator of the rule. Set on filtering rules and left out on group rules.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule) *string {
@@ -38109,6 +38316,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Blueprint *string `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator *string `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -38139,6 +38348,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -38218,6 +38429,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the relation the rule filters on. Set alongside `relation`.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // The operator of the rule. Set on filtering rules and left out on group rules.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
@@ -38285,6 +38503,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Blueprint *string `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator *string `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -38315,6 +38535,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -38394,6 +38616,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The direction of the relation the rule filters on. Set alongside `relation`.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
 // The operator of the rule. Set on filtering rules and left out on group rules.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
@@ -38461,6 +38690,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Blueprint *string `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator *string `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -38489,6 +38720,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Blueprint pulumi.StringPtrInput `pulumi:"blueprint"`
 	// How the nested rules of a group rule are combined.
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
+	// The direction of the relation the rule filters on. Set alongside `relation`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
@@ -38563,6 +38796,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Combinator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
 		return v.Combinator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The direction of the relation the rule filters on. Set alongside `relation`.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.Direction
 	}).(pulumi.StringPtrOutput)
 }
 

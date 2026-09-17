@@ -12898,6 +12898,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule(dict):
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
+                 direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
                  relation: Optional[str] = None,
@@ -12907,6 +12908,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule(dict):
         """
         :param str blueprint: The blueprint identifier of the rule.
         :param str combinator: How the nested rules of a group rule are combined.
+        :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param str property: The property identifier of the rule.
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -12918,6 +12920,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule(dict):
             pulumi.set(__self__, "blueprint", blueprint)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
@@ -12946,6 +12950,14 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule(dict):
         How the nested rules of a group rule are combined.
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of the relation the rule filters on. Set alongside `relation`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -13018,6 +13030,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule(dict):
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
+                 direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
                  relation: Optional[str] = None,
@@ -13027,6 +13040,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule(dict):
         """
         :param str blueprint: The blueprint identifier of the rule.
         :param str combinator: How the nested rules of a group rule are combined.
+        :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param str property: The property identifier of the rule.
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -13038,6 +13052,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule(dict):
             pulumi.set(__self__, "blueprint", blueprint)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
@@ -13066,6 +13082,14 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule(dict):
         How the nested rules of a group rule are combined.
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of the relation the rule filters on. Set alongside `relation`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -13138,6 +13162,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule(di
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
+                 direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
                  relation: Optional[str] = None,
@@ -13147,6 +13172,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule(di
         """
         :param str blueprint: The blueprint identifier of the rule.
         :param str combinator: How the nested rules of a group rule are combined.
+        :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param str property: The property identifier of the rule.
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -13158,6 +13184,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule(di
             pulumi.set(__self__, "blueprint", blueprint)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
@@ -13186,6 +13214,14 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule(di
         How the nested rules of a group rule are combined.
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of the relation the rule filters on. Set alongside `relation`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -13258,6 +13294,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
+                 direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
                  relation: Optional[str] = None,
@@ -13267,6 +13304,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         """
         :param str blueprint: The blueprint identifier of the rule.
         :param str combinator: How the nested rules of a group rule are combined.
+        :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param str property: The property identifier of the rule.
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -13278,6 +13316,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "blueprint", blueprint)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
@@ -13306,6 +13346,14 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         How the nested rules of a group rule are combined.
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of the relation the rule filters on. Set alongside `relation`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -13378,6 +13426,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
+                 direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
                  relation: Optional[str] = None,
@@ -13387,6 +13436,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         """
         :param str blueprint: The blueprint identifier of the rule.
         :param str combinator: How the nested rules of a group rule are combined.
+        :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param str property: The property identifier of the rule.
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -13398,6 +13448,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "blueprint", blueprint)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
@@ -13426,6 +13478,14 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         How the nested rules of a group rule are combined.
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of the relation the rule filters on. Set alongside `relation`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -13498,6 +13558,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
+                 direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
                  relation: Optional[str] = None,
@@ -13507,6 +13568,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         """
         :param str blueprint: The blueprint identifier of the rule.
         :param str combinator: How the nested rules of a group rule are combined.
+        :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param str property: The property identifier of the rule.
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -13518,6 +13580,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "blueprint", blueprint)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
@@ -13546,6 +13610,14 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         How the nested rules of a group rule are combined.
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of the relation the rule filters on. Set alongside `relation`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -13618,6 +13690,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
+                 direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
                  relation: Optional[str] = None,
@@ -13627,6 +13700,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         """
         :param str blueprint: The blueprint identifier of the rule.
         :param str combinator: How the nested rules of a group rule are combined.
+        :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param str property: The property identifier of the rule.
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -13638,6 +13712,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "blueprint", blueprint)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
@@ -13666,6 +13742,14 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         How the nested rules of a group rule are combined.
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of the relation the rule filters on. Set alongside `relation`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -13738,6 +13822,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
+                 direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
                  relation: Optional[str] = None,
@@ -13747,6 +13832,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         """
         :param str blueprint: The blueprint identifier of the rule.
         :param str combinator: How the nested rules of a group rule are combined.
+        :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param str property: The property identifier of the rule.
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -13758,6 +13844,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "blueprint", blueprint)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
@@ -13786,6 +13874,14 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         How the nested rules of a group rule are combined.
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of the relation the rule filters on. Set alongside `relation`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -13858,6 +13954,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
+                 direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
                  relation: Optional[str] = None,
@@ -13867,6 +13964,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         """
         :param str blueprint: The blueprint identifier of the rule.
         :param str combinator: How the nested rules of a group rule are combined.
+        :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param str property: The property identifier of the rule.
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -13878,6 +13976,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "blueprint", blueprint)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
@@ -13906,6 +14006,14 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         How the nested rules of a group rule are combined.
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of the relation the rule filters on. Set alongside `relation`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -13978,6 +14086,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
+                 direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
                  relation: Optional[str] = None,
@@ -13987,6 +14096,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         """
         :param str blueprint: The blueprint identifier of the rule.
         :param str combinator: How the nested rules of a group rule are combined.
+        :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param str property: The property identifier of the rule.
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -13998,6 +14108,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "blueprint", blueprint)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
@@ -14026,6 +14138,14 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         How the nested rules of a group rule are combined.
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of the relation the rule filters on. Set alongside `relation`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -14098,6 +14218,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
+                 direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
                  relation: Optional[str] = None,
@@ -14106,6 +14227,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         """
         :param str blueprint: The blueprint identifier of the rule.
         :param str combinator: How the nested rules of a group rule are combined.
+        :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param str property: The property identifier of the rule.
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -14116,6 +14238,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "blueprint", blueprint)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
@@ -14142,6 +14266,14 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         How the nested rules of a group rule are combined.
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of the relation the rule filters on. Set alongside `relation`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -16925,6 +17057,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
+                 direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
                  relation: Optional[str] = None,
@@ -16934,6 +17067,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         """
         :param str blueprint: The blueprint identifier of the rule.
         :param str combinator: How the nested rules of a group rule are combined.
+        :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param str property: The property identifier of the rule.
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -16945,6 +17079,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "blueprint", blueprint)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
@@ -16973,6 +17109,14 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         How the nested rules of a group rule are combined.
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of the relation the rule filters on. Set alongside `relation`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -17045,6 +17189,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
+                 direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
                  relation: Optional[str] = None,
@@ -17054,6 +17199,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         """
         :param str blueprint: The blueprint identifier of the rule.
         :param str combinator: How the nested rules of a group rule are combined.
+        :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param str property: The property identifier of the rule.
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -17065,6 +17211,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "blueprint", blueprint)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
@@ -17093,6 +17241,14 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         How the nested rules of a group rule are combined.
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of the relation the rule filters on. Set alongside `relation`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -17165,6 +17321,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
+                 direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
                  relation: Optional[str] = None,
@@ -17174,6 +17331,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         """
         :param str blueprint: The blueprint identifier of the rule.
         :param str combinator: How the nested rules of a group rule are combined.
+        :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param str property: The property identifier of the rule.
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -17185,6 +17343,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "blueprint", blueprint)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
@@ -17213,6 +17373,14 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         How the nested rules of a group rule are combined.
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of the relation the rule filters on. Set alongside `relation`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -17285,6 +17453,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
+                 direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
                  relation: Optional[str] = None,
@@ -17294,6 +17463,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         """
         :param str blueprint: The blueprint identifier of the rule.
         :param str combinator: How the nested rules of a group rule are combined.
+        :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param str property: The property identifier of the rule.
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -17305,6 +17475,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "blueprint", blueprint)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
@@ -17333,6 +17505,14 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         How the nested rules of a group rule are combined.
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of the relation the rule filters on. Set alongside `relation`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -17405,6 +17585,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
+                 direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
                  relation: Optional[str] = None,
@@ -17414,6 +17595,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         """
         :param str blueprint: The blueprint identifier of the rule.
         :param str combinator: How the nested rules of a group rule are combined.
+        :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param str property: The property identifier of the rule.
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -17425,6 +17607,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "blueprint", blueprint)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
@@ -17453,6 +17637,14 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         How the nested rules of a group rule are combined.
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of the relation the rule filters on. Set alongside `relation`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -17525,6 +17717,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
+                 direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
                  relation: Optional[str] = None,
@@ -17534,6 +17727,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         """
         :param str blueprint: The blueprint identifier of the rule.
         :param str combinator: How the nested rules of a group rule are combined.
+        :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param str property: The property identifier of the rule.
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -17545,6 +17739,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "blueprint", blueprint)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
@@ -17573,6 +17769,14 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         How the nested rules of a group rule are combined.
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of the relation the rule filters on. Set alongside `relation`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -17645,6 +17849,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
+                 direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
                  relation: Optional[str] = None,
@@ -17654,6 +17859,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         """
         :param str blueprint: The blueprint identifier of the rule.
         :param str combinator: How the nested rules of a group rule are combined.
+        :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param str property: The property identifier of the rule.
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -17665,6 +17871,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "blueprint", blueprint)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
@@ -17693,6 +17901,14 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         How the nested rules of a group rule are combined.
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of the relation the rule filters on. Set alongside `relation`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -17765,6 +17981,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
+                 direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
                  relation: Optional[str] = None,
@@ -17774,6 +17991,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         """
         :param str blueprint: The blueprint identifier of the rule.
         :param str combinator: How the nested rules of a group rule are combined.
+        :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param str property: The property identifier of the rule.
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -17785,6 +18003,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "blueprint", blueprint)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
@@ -17813,6 +18033,14 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         How the nested rules of a group rule are combined.
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of the relation the rule filters on. Set alongside `relation`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -17885,6 +18113,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
+                 direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
                  relation: Optional[str] = None,
@@ -17894,6 +18123,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         """
         :param str blueprint: The blueprint identifier of the rule.
         :param str combinator: How the nested rules of a group rule are combined.
+        :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param str property: The property identifier of the rule.
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -17905,6 +18135,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "blueprint", blueprint)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
@@ -17933,6 +18165,14 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         How the nested rules of a group rule are combined.
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of the relation the rule filters on. Set alongside `relation`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -18005,6 +18245,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
+                 direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
                  relation: Optional[str] = None,
@@ -18014,6 +18255,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         """
         :param str blueprint: The blueprint identifier of the rule.
         :param str combinator: How the nested rules of a group rule are combined.
+        :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param str property: The property identifier of the rule.
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -18025,6 +18267,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "blueprint", blueprint)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
@@ -18053,6 +18297,14 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         How the nested rules of a group rule are combined.
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of the relation the rule filters on. Set alongside `relation`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -18125,6 +18377,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
+                 direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
                  relation: Optional[str] = None,
@@ -18133,6 +18386,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         """
         :param str blueprint: The blueprint identifier of the rule.
         :param str combinator: How the nested rules of a group rule are combined.
+        :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
         :param str property: The property identifier of the rule.
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -18143,6 +18397,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "blueprint", blueprint)
         if combinator is not None:
             pulumi.set(__self__, "combinator", combinator)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
         if property is not None:
@@ -18169,6 +18425,14 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         How the nested rules of a group rule are combined.
         """
         return pulumi.get(self, "combinator")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction of the relation the rule filters on. Set alongside `relation`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
