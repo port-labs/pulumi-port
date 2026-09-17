@@ -11589,6 +11589,8 @@ type BlueprintCalculationProperties struct {
 	Format *string `pulumi:"format"`
 	// The icon of the calculation property
 	Icon *string `pulumi:"icon"`
+	// The items of an `array` calculation property
+	Items *BlueprintCalculationPropertiesItems `pulumi:"items"`
 	// The spec of the calculation property
 	Spec *string `pulumi:"spec"`
 	// The spec authentication of the calculation property
@@ -11625,6 +11627,8 @@ type BlueprintCalculationPropertiesArgs struct {
 	Format pulumi.StringPtrInput `pulumi:"format"`
 	// The icon of the calculation property
 	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// The items of an `array` calculation property
+	Items BlueprintCalculationPropertiesItemsPtrInput `pulumi:"items"`
 	// The spec of the calculation property
 	Spec pulumi.StringPtrInput `pulumi:"spec"`
 	// The spec authentication of the calculation property
@@ -11721,6 +11725,11 @@ func (o BlueprintCalculationPropertiesOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintCalculationProperties) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
+// The items of an `array` calculation property
+func (o BlueprintCalculationPropertiesOutput) Items() BlueprintCalculationPropertiesItemsPtrOutput {
+	return o.ApplyT(func(v BlueprintCalculationProperties) *BlueprintCalculationPropertiesItems { return v.Items }).(BlueprintCalculationPropertiesItemsPtrOutput)
+}
+
 // The spec of the calculation property
 func (o BlueprintCalculationPropertiesOutput) Spec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlueprintCalculationProperties) *string { return v.Spec }).(pulumi.StringPtrOutput)
@@ -11761,6 +11770,162 @@ func (o BlueprintCalculationPropertiesMapOutput) MapIndex(k pulumi.StringInput) 
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BlueprintCalculationProperties {
 		return vs[0].(map[string]BlueprintCalculationProperties)[vs[1].(string)]
 	}).(BlueprintCalculationPropertiesOutput)
+}
+
+type BlueprintCalculationPropertiesItems struct {
+	// The format of the items
+	Format *string `pulumi:"format"`
+	// The type of the items
+	Type *string `pulumi:"type"`
+}
+
+// BlueprintCalculationPropertiesItemsInput is an input type that accepts BlueprintCalculationPropertiesItemsArgs and BlueprintCalculationPropertiesItemsOutput values.
+// You can construct a concrete instance of `BlueprintCalculationPropertiesItemsInput` via:
+//
+//	BlueprintCalculationPropertiesItemsArgs{...}
+type BlueprintCalculationPropertiesItemsInput interface {
+	pulumi.Input
+
+	ToBlueprintCalculationPropertiesItemsOutput() BlueprintCalculationPropertiesItemsOutput
+	ToBlueprintCalculationPropertiesItemsOutputWithContext(context.Context) BlueprintCalculationPropertiesItemsOutput
+}
+
+type BlueprintCalculationPropertiesItemsArgs struct {
+	// The format of the items
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	// The type of the items
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (BlueprintCalculationPropertiesItemsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintCalculationPropertiesItems)(nil)).Elem()
+}
+
+func (i BlueprintCalculationPropertiesItemsArgs) ToBlueprintCalculationPropertiesItemsOutput() BlueprintCalculationPropertiesItemsOutput {
+	return i.ToBlueprintCalculationPropertiesItemsOutputWithContext(context.Background())
+}
+
+func (i BlueprintCalculationPropertiesItemsArgs) ToBlueprintCalculationPropertiesItemsOutputWithContext(ctx context.Context) BlueprintCalculationPropertiesItemsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintCalculationPropertiesItemsOutput)
+}
+
+func (i BlueprintCalculationPropertiesItemsArgs) ToBlueprintCalculationPropertiesItemsPtrOutput() BlueprintCalculationPropertiesItemsPtrOutput {
+	return i.ToBlueprintCalculationPropertiesItemsPtrOutputWithContext(context.Background())
+}
+
+func (i BlueprintCalculationPropertiesItemsArgs) ToBlueprintCalculationPropertiesItemsPtrOutputWithContext(ctx context.Context) BlueprintCalculationPropertiesItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintCalculationPropertiesItemsOutput).ToBlueprintCalculationPropertiesItemsPtrOutputWithContext(ctx)
+}
+
+// BlueprintCalculationPropertiesItemsPtrInput is an input type that accepts BlueprintCalculationPropertiesItemsArgs, BlueprintCalculationPropertiesItemsPtr and BlueprintCalculationPropertiesItemsPtrOutput values.
+// You can construct a concrete instance of `BlueprintCalculationPropertiesItemsPtrInput` via:
+//
+//	        BlueprintCalculationPropertiesItemsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BlueprintCalculationPropertiesItemsPtrInput interface {
+	pulumi.Input
+
+	ToBlueprintCalculationPropertiesItemsPtrOutput() BlueprintCalculationPropertiesItemsPtrOutput
+	ToBlueprintCalculationPropertiesItemsPtrOutputWithContext(context.Context) BlueprintCalculationPropertiesItemsPtrOutput
+}
+
+type blueprintCalculationPropertiesItemsPtrType BlueprintCalculationPropertiesItemsArgs
+
+func BlueprintCalculationPropertiesItemsPtr(v *BlueprintCalculationPropertiesItemsArgs) BlueprintCalculationPropertiesItemsPtrInput {
+	return (*blueprintCalculationPropertiesItemsPtrType)(v)
+}
+
+func (*blueprintCalculationPropertiesItemsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintCalculationPropertiesItems)(nil)).Elem()
+}
+
+func (i *blueprintCalculationPropertiesItemsPtrType) ToBlueprintCalculationPropertiesItemsPtrOutput() BlueprintCalculationPropertiesItemsPtrOutput {
+	return i.ToBlueprintCalculationPropertiesItemsPtrOutputWithContext(context.Background())
+}
+
+func (i *blueprintCalculationPropertiesItemsPtrType) ToBlueprintCalculationPropertiesItemsPtrOutputWithContext(ctx context.Context) BlueprintCalculationPropertiesItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BlueprintCalculationPropertiesItemsPtrOutput)
+}
+
+type BlueprintCalculationPropertiesItemsOutput struct{ *pulumi.OutputState }
+
+func (BlueprintCalculationPropertiesItemsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BlueprintCalculationPropertiesItems)(nil)).Elem()
+}
+
+func (o BlueprintCalculationPropertiesItemsOutput) ToBlueprintCalculationPropertiesItemsOutput() BlueprintCalculationPropertiesItemsOutput {
+	return o
+}
+
+func (o BlueprintCalculationPropertiesItemsOutput) ToBlueprintCalculationPropertiesItemsOutputWithContext(ctx context.Context) BlueprintCalculationPropertiesItemsOutput {
+	return o
+}
+
+func (o BlueprintCalculationPropertiesItemsOutput) ToBlueprintCalculationPropertiesItemsPtrOutput() BlueprintCalculationPropertiesItemsPtrOutput {
+	return o.ToBlueprintCalculationPropertiesItemsPtrOutputWithContext(context.Background())
+}
+
+func (o BlueprintCalculationPropertiesItemsOutput) ToBlueprintCalculationPropertiesItemsPtrOutputWithContext(ctx context.Context) BlueprintCalculationPropertiesItemsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BlueprintCalculationPropertiesItems) *BlueprintCalculationPropertiesItems {
+		return &v
+	}).(BlueprintCalculationPropertiesItemsPtrOutput)
+}
+
+// The format of the items
+func (o BlueprintCalculationPropertiesItemsOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintCalculationPropertiesItems) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+// The type of the items
+func (o BlueprintCalculationPropertiesItemsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BlueprintCalculationPropertiesItems) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type BlueprintCalculationPropertiesItemsPtrOutput struct{ *pulumi.OutputState }
+
+func (BlueprintCalculationPropertiesItemsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BlueprintCalculationPropertiesItems)(nil)).Elem()
+}
+
+func (o BlueprintCalculationPropertiesItemsPtrOutput) ToBlueprintCalculationPropertiesItemsPtrOutput() BlueprintCalculationPropertiesItemsPtrOutput {
+	return o
+}
+
+func (o BlueprintCalculationPropertiesItemsPtrOutput) ToBlueprintCalculationPropertiesItemsPtrOutputWithContext(ctx context.Context) BlueprintCalculationPropertiesItemsPtrOutput {
+	return o
+}
+
+func (o BlueprintCalculationPropertiesItemsPtrOutput) Elem() BlueprintCalculationPropertiesItemsOutput {
+	return o.ApplyT(func(v *BlueprintCalculationPropertiesItems) BlueprintCalculationPropertiesItems {
+		if v != nil {
+			return *v
+		}
+		var ret BlueprintCalculationPropertiesItems
+		return ret
+	}).(BlueprintCalculationPropertiesItemsOutput)
+}
+
+// The format of the items
+func (o BlueprintCalculationPropertiesItemsPtrOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlueprintCalculationPropertiesItems) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Format
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the items
+func (o BlueprintCalculationPropertiesItemsPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BlueprintCalculationPropertiesItems) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type BlueprintCalculationPropertiesSpecAuthentication struct {
@@ -19287,6 +19452,8 @@ type SystemBlueprintCalculationProperties struct {
 	Format *string `pulumi:"format"`
 	// The icon of the calculation property
 	Icon *string `pulumi:"icon"`
+	// The items of an `array` calculation property
+	Items *SystemBlueprintCalculationPropertiesItems `pulumi:"items"`
 	// The spec of the calculation property
 	Spec *string `pulumi:"spec"`
 	// The spec authentication of the calculation property
@@ -19323,6 +19490,8 @@ type SystemBlueprintCalculationPropertiesArgs struct {
 	Format pulumi.StringPtrInput `pulumi:"format"`
 	// The icon of the calculation property
 	Icon pulumi.StringPtrInput `pulumi:"icon"`
+	// The items of an `array` calculation property
+	Items SystemBlueprintCalculationPropertiesItemsPtrInput `pulumi:"items"`
 	// The spec of the calculation property
 	Spec pulumi.StringPtrInput `pulumi:"spec"`
 	// The spec authentication of the calculation property
@@ -19419,6 +19588,13 @@ func (o SystemBlueprintCalculationPropertiesOutput) Icon() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v SystemBlueprintCalculationProperties) *string { return v.Icon }).(pulumi.StringPtrOutput)
 }
 
+// The items of an `array` calculation property
+func (o SystemBlueprintCalculationPropertiesOutput) Items() SystemBlueprintCalculationPropertiesItemsPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintCalculationProperties) *SystemBlueprintCalculationPropertiesItems {
+		return v.Items
+	}).(SystemBlueprintCalculationPropertiesItemsPtrOutput)
+}
+
 // The spec of the calculation property
 func (o SystemBlueprintCalculationPropertiesOutput) Spec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemBlueprintCalculationProperties) *string { return v.Spec }).(pulumi.StringPtrOutput)
@@ -19459,6 +19635,162 @@ func (o SystemBlueprintCalculationPropertiesMapOutput) MapIndex(k pulumi.StringI
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SystemBlueprintCalculationProperties {
 		return vs[0].(map[string]SystemBlueprintCalculationProperties)[vs[1].(string)]
 	}).(SystemBlueprintCalculationPropertiesOutput)
+}
+
+type SystemBlueprintCalculationPropertiesItems struct {
+	// The format of the items
+	Format *string `pulumi:"format"`
+	// The type of the items
+	Type *string `pulumi:"type"`
+}
+
+// SystemBlueprintCalculationPropertiesItemsInput is an input type that accepts SystemBlueprintCalculationPropertiesItemsArgs and SystemBlueprintCalculationPropertiesItemsOutput values.
+// You can construct a concrete instance of `SystemBlueprintCalculationPropertiesItemsInput` via:
+//
+//	SystemBlueprintCalculationPropertiesItemsArgs{...}
+type SystemBlueprintCalculationPropertiesItemsInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintCalculationPropertiesItemsOutput() SystemBlueprintCalculationPropertiesItemsOutput
+	ToSystemBlueprintCalculationPropertiesItemsOutputWithContext(context.Context) SystemBlueprintCalculationPropertiesItemsOutput
+}
+
+type SystemBlueprintCalculationPropertiesItemsArgs struct {
+	// The format of the items
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	// The type of the items
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (SystemBlueprintCalculationPropertiesItemsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintCalculationPropertiesItems)(nil)).Elem()
+}
+
+func (i SystemBlueprintCalculationPropertiesItemsArgs) ToSystemBlueprintCalculationPropertiesItemsOutput() SystemBlueprintCalculationPropertiesItemsOutput {
+	return i.ToSystemBlueprintCalculationPropertiesItemsOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintCalculationPropertiesItemsArgs) ToSystemBlueprintCalculationPropertiesItemsOutputWithContext(ctx context.Context) SystemBlueprintCalculationPropertiesItemsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintCalculationPropertiesItemsOutput)
+}
+
+func (i SystemBlueprintCalculationPropertiesItemsArgs) ToSystemBlueprintCalculationPropertiesItemsPtrOutput() SystemBlueprintCalculationPropertiesItemsPtrOutput {
+	return i.ToSystemBlueprintCalculationPropertiesItemsPtrOutputWithContext(context.Background())
+}
+
+func (i SystemBlueprintCalculationPropertiesItemsArgs) ToSystemBlueprintCalculationPropertiesItemsPtrOutputWithContext(ctx context.Context) SystemBlueprintCalculationPropertiesItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintCalculationPropertiesItemsOutput).ToSystemBlueprintCalculationPropertiesItemsPtrOutputWithContext(ctx)
+}
+
+// SystemBlueprintCalculationPropertiesItemsPtrInput is an input type that accepts SystemBlueprintCalculationPropertiesItemsArgs, SystemBlueprintCalculationPropertiesItemsPtr and SystemBlueprintCalculationPropertiesItemsPtrOutput values.
+// You can construct a concrete instance of `SystemBlueprintCalculationPropertiesItemsPtrInput` via:
+//
+//	        SystemBlueprintCalculationPropertiesItemsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SystemBlueprintCalculationPropertiesItemsPtrInput interface {
+	pulumi.Input
+
+	ToSystemBlueprintCalculationPropertiesItemsPtrOutput() SystemBlueprintCalculationPropertiesItemsPtrOutput
+	ToSystemBlueprintCalculationPropertiesItemsPtrOutputWithContext(context.Context) SystemBlueprintCalculationPropertiesItemsPtrOutput
+}
+
+type systemBlueprintCalculationPropertiesItemsPtrType SystemBlueprintCalculationPropertiesItemsArgs
+
+func SystemBlueprintCalculationPropertiesItemsPtr(v *SystemBlueprintCalculationPropertiesItemsArgs) SystemBlueprintCalculationPropertiesItemsPtrInput {
+	return (*systemBlueprintCalculationPropertiesItemsPtrType)(v)
+}
+
+func (*systemBlueprintCalculationPropertiesItemsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemBlueprintCalculationPropertiesItems)(nil)).Elem()
+}
+
+func (i *systemBlueprintCalculationPropertiesItemsPtrType) ToSystemBlueprintCalculationPropertiesItemsPtrOutput() SystemBlueprintCalculationPropertiesItemsPtrOutput {
+	return i.ToSystemBlueprintCalculationPropertiesItemsPtrOutputWithContext(context.Background())
+}
+
+func (i *systemBlueprintCalculationPropertiesItemsPtrType) ToSystemBlueprintCalculationPropertiesItemsPtrOutputWithContext(ctx context.Context) SystemBlueprintCalculationPropertiesItemsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemBlueprintCalculationPropertiesItemsPtrOutput)
+}
+
+type SystemBlueprintCalculationPropertiesItemsOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintCalculationPropertiesItemsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemBlueprintCalculationPropertiesItems)(nil)).Elem()
+}
+
+func (o SystemBlueprintCalculationPropertiesItemsOutput) ToSystemBlueprintCalculationPropertiesItemsOutput() SystemBlueprintCalculationPropertiesItemsOutput {
+	return o
+}
+
+func (o SystemBlueprintCalculationPropertiesItemsOutput) ToSystemBlueprintCalculationPropertiesItemsOutputWithContext(ctx context.Context) SystemBlueprintCalculationPropertiesItemsOutput {
+	return o
+}
+
+func (o SystemBlueprintCalculationPropertiesItemsOutput) ToSystemBlueprintCalculationPropertiesItemsPtrOutput() SystemBlueprintCalculationPropertiesItemsPtrOutput {
+	return o.ToSystemBlueprintCalculationPropertiesItemsPtrOutputWithContext(context.Background())
+}
+
+func (o SystemBlueprintCalculationPropertiesItemsOutput) ToSystemBlueprintCalculationPropertiesItemsPtrOutputWithContext(ctx context.Context) SystemBlueprintCalculationPropertiesItemsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemBlueprintCalculationPropertiesItems) *SystemBlueprintCalculationPropertiesItems {
+		return &v
+	}).(SystemBlueprintCalculationPropertiesItemsPtrOutput)
+}
+
+// The format of the items
+func (o SystemBlueprintCalculationPropertiesItemsOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintCalculationPropertiesItems) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+// The type of the items
+func (o SystemBlueprintCalculationPropertiesItemsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemBlueprintCalculationPropertiesItems) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type SystemBlueprintCalculationPropertiesItemsPtrOutput struct{ *pulumi.OutputState }
+
+func (SystemBlueprintCalculationPropertiesItemsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemBlueprintCalculationPropertiesItems)(nil)).Elem()
+}
+
+func (o SystemBlueprintCalculationPropertiesItemsPtrOutput) ToSystemBlueprintCalculationPropertiesItemsPtrOutput() SystemBlueprintCalculationPropertiesItemsPtrOutput {
+	return o
+}
+
+func (o SystemBlueprintCalculationPropertiesItemsPtrOutput) ToSystemBlueprintCalculationPropertiesItemsPtrOutputWithContext(ctx context.Context) SystemBlueprintCalculationPropertiesItemsPtrOutput {
+	return o
+}
+
+func (o SystemBlueprintCalculationPropertiesItemsPtrOutput) Elem() SystemBlueprintCalculationPropertiesItemsOutput {
+	return o.ApplyT(func(v *SystemBlueprintCalculationPropertiesItems) SystemBlueprintCalculationPropertiesItems {
+		if v != nil {
+			return *v
+		}
+		var ret SystemBlueprintCalculationPropertiesItems
+		return ret
+	}).(SystemBlueprintCalculationPropertiesItemsOutput)
+}
+
+// The format of the items
+func (o SystemBlueprintCalculationPropertiesItemsPtrOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemBlueprintCalculationPropertiesItems) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Format
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the items
+func (o SystemBlueprintCalculationPropertiesItemsPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemBlueprintCalculationPropertiesItems) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type SystemBlueprintCalculationPropertiesSpecAuthentication struct {
@@ -28542,6 +28874,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule struct {
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property *string `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules []WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -28570,6 +28904,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleArgs struct 
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArrayInput `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -28649,6 +28985,11 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleOutput) P
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule) *string { return v.Property }).(pulumi.StringPtrOutput)
 }
 
+// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule) *string { return v.Relation }).(pulumi.StringPtrOutput)
+}
+
 // The nested rules of a group rule.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleOutput) Rules() WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule) []WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule {
@@ -28697,6 +29038,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule struct 
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property *string `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules []WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -28725,6 +29068,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs str
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArrayInput `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -28808,6 +29153,11 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleOutpu
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule) *string { return v.Property }).(pulumi.StringPtrOutput)
 }
 
+// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule) *string { return v.Relation }).(pulumi.StringPtrOutput)
+}
+
 // The nested rules of a group rule.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleOutput) Rules() WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule) []WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule {
@@ -28858,6 +29208,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule str
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property *string `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules []WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -28886,6 +29238,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgs
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -28973,6 +29327,13 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleO
 	}).(pulumi.StringPtrOutput)
 }
 
+// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule) *string {
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
 // The nested rules of a group rule.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleOutput) Rules() WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule) []WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule {
@@ -29023,6 +29384,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property *string `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules []WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -29051,6 +29414,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -29138,6 +29503,13 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 	}).(pulumi.StringPtrOutput)
 }
 
+// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule) *string {
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
 // The nested rules of a group rule.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleOutput) Rules() WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule) []WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule {
@@ -29188,6 +29560,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property *string `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules []WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -29216,6 +29590,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -29303,6 +29679,13 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 	}).(pulumi.StringPtrOutput)
 }
 
+// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule) *string {
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
 // The nested rules of a group rule.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleOutput) Rules() WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule) []WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule {
@@ -29353,6 +29736,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property *string `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules []WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -29381,6 +29766,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -29468,6 +29855,13 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 	}).(pulumi.StringPtrOutput)
 }
 
+// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule) *string {
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
 // The nested rules of a group rule.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleOutput) Rules() WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule) []WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule {
@@ -29518,6 +29912,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property *string `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules []WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -29546,6 +29942,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -29633,6 +30031,13 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 	}).(pulumi.StringPtrOutput)
 }
 
+// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
 // The nested rules of a group rule.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleOutput) Rules() WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule) []WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule {
@@ -29683,6 +30088,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property *string `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules []WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -29711,6 +30118,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -29798,6 +30207,13 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 	}).(pulumi.StringPtrOutput)
 }
 
+// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
 // The nested rules of a group rule.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleOutput) Rules() WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule) []WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule {
@@ -29848,6 +30264,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property *string `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules []WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -29876,6 +30294,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -29963,6 +30383,13 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 	}).(pulumi.StringPtrOutput)
 }
 
+// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
 // The nested rules of a group rule.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Rules() WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule) []WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule {
@@ -30013,6 +30440,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property *string `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules []WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -30041,6 +30470,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -30128,6 +30559,13 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 	}).(pulumi.StringPtrOutput)
 }
 
+// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
 // The nested rules of a group rule.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Rules() WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) []WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule {
@@ -30178,6 +30616,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property *string `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation *string `pulumi:"relation"`
 	// A value resolved from the form or the trigger when the form is rendered.
 	Value *WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue `pulumi:"value"`
 	// A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -30204,6 +30644,8 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// A value resolved from the form or the trigger when the form is rendered.
 	Value WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValuePtrInput `pulumi:"value"`
 	// A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -30286,6 +30728,13 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.Relation
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -36256,6 +36705,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule 
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property *string `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules []WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRule `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -36284,6 +36735,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleA
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleArrayInput `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -36371,6 +36824,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule) *string {
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
 // The nested rules of a group rule.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleOutput) Rules() WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule) []WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRule {
@@ -36421,6 +36881,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property *string `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules []WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRule `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -36449,6 +36911,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArrayInput `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -36536,6 +37000,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRule) *string {
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
 // The nested rules of a group rule.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleOutput) Rules() WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRule) []WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRule {
@@ -36586,6 +37057,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property *string `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules []WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -36614,6 +37087,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -36701,6 +37176,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRule) *string {
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
 // The nested rules of a group rule.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleOutput) Rules() WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRule) []WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule {
@@ -36751,6 +37233,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property *string `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules []WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -36779,6 +37263,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -36866,6 +37352,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule) *string {
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
 // The nested rules of a group rule.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleOutput) Rules() WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule) []WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule {
@@ -36916,6 +37409,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property *string `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules []WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -36944,6 +37439,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -37031,6 +37528,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule) *string {
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
 // The nested rules of a group rule.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleOutput) Rules() WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule) []WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule {
@@ -37081,6 +37585,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property *string `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules []WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -37109,6 +37615,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -37196,6 +37704,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule) *string {
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
 // The nested rules of a group rule.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleOutput) Rules() WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule) []WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule {
@@ -37246,6 +37761,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property *string `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules []WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -37274,6 +37791,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -37361,6 +37880,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
 // The nested rules of a group rule.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleOutput) Rules() WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule) []WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule {
@@ -37411,6 +37937,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property *string `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules []WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -37439,6 +37967,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -37526,6 +38056,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
 // The nested rules of a group rule.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleOutput) Rules() WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule) []WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule {
@@ -37576,6 +38113,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property *string `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules []WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -37604,6 +38143,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -37691,6 +38232,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
 // The nested rules of a group rule.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Rules() WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule) []WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule {
@@ -37741,6 +38289,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property *string `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules []WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -37769,6 +38319,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
 	Rules WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -37856,6 +38408,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
 // The nested rules of a group rule.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Rules() WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) []WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule {
@@ -37906,6 +38465,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Operator *string `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property *string `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation *string `pulumi:"relation"`
 	// A value resolved from the form or the trigger when the form is rendered.
 	Value *WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue `pulumi:"value"`
 	// A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -37932,6 +38493,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The property identifier of the rule.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// A value resolved from the form or the trigger when the form is rendered.
 	Value WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValuePtrInput `pulumi:"value"`
 	// A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -38014,6 +38577,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The relation identifier of the rule. Use instead of `property` to filter on a relation.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.Relation
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -41244,6 +41814,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregationPropertiesPropertiesPathFilterArrayInput)(nil)).Elem(), AggregationPropertiesPropertiesPathFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintCalculationPropertiesInput)(nil)).Elem(), BlueprintCalculationPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintCalculationPropertiesMapInput)(nil)).Elem(), BlueprintCalculationPropertiesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintCalculationPropertiesItemsInput)(nil)).Elem(), BlueprintCalculationPropertiesItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintCalculationPropertiesItemsPtrInput)(nil)).Elem(), BlueprintCalculationPropertiesItemsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintCalculationPropertiesSpecAuthenticationInput)(nil)).Elem(), BlueprintCalculationPropertiesSpecAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintCalculationPropertiesSpecAuthenticationPtrInput)(nil)).Elem(), BlueprintCalculationPropertiesSpecAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BlueprintKafkaChangelogDestinationInput)(nil)).Elem(), BlueprintKafkaChangelogDestinationArgs{})
@@ -41339,6 +41911,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ScorecardRuleQueryInput)(nil)).Elem(), ScorecardRuleQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintCalculationPropertiesInput)(nil)).Elem(), SystemBlueprintCalculationPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintCalculationPropertiesMapInput)(nil)).Elem(), SystemBlueprintCalculationPropertiesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintCalculationPropertiesItemsInput)(nil)).Elem(), SystemBlueprintCalculationPropertiesItemsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintCalculationPropertiesItemsPtrInput)(nil)).Elem(), SystemBlueprintCalculationPropertiesItemsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintCalculationPropertiesSpecAuthenticationInput)(nil)).Elem(), SystemBlueprintCalculationPropertiesSpecAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintCalculationPropertiesSpecAuthenticationPtrInput)(nil)).Elem(), SystemBlueprintCalculationPropertiesSpecAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SystemBlueprintMirrorPropertiesInput)(nil)).Elem(), SystemBlueprintMirrorPropertiesArgs{})
@@ -41736,6 +42310,8 @@ func init() {
 	pulumi.RegisterOutputType(AggregationPropertiesPropertiesPathFilterArrayOutput{})
 	pulumi.RegisterOutputType(BlueprintCalculationPropertiesOutput{})
 	pulumi.RegisterOutputType(BlueprintCalculationPropertiesMapOutput{})
+	pulumi.RegisterOutputType(BlueprintCalculationPropertiesItemsOutput{})
+	pulumi.RegisterOutputType(BlueprintCalculationPropertiesItemsPtrOutput{})
 	pulumi.RegisterOutputType(BlueprintCalculationPropertiesSpecAuthenticationOutput{})
 	pulumi.RegisterOutputType(BlueprintCalculationPropertiesSpecAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(BlueprintKafkaChangelogDestinationOutput{})
@@ -41831,6 +42407,8 @@ func init() {
 	pulumi.RegisterOutputType(ScorecardRuleQueryOutput{})
 	pulumi.RegisterOutputType(SystemBlueprintCalculationPropertiesOutput{})
 	pulumi.RegisterOutputType(SystemBlueprintCalculationPropertiesMapOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintCalculationPropertiesItemsOutput{})
+	pulumi.RegisterOutputType(SystemBlueprintCalculationPropertiesItemsPtrOutput{})
 	pulumi.RegisterOutputType(SystemBlueprintCalculationPropertiesSpecAuthenticationOutput{})
 	pulumi.RegisterOutputType(SystemBlueprintCalculationPropertiesSpecAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(SystemBlueprintMirrorPropertiesOutput{})

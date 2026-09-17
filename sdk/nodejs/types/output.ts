@@ -1359,6 +1359,10 @@ export interface BlueprintCalculationProperties {
      */
     icon?: string;
     /**
+     * The items of an `array` calculation property
+     */
+    items?: outputs.BlueprintCalculationPropertiesItems;
+    /**
      * The spec of the calculation property
      */
     spec?: string;
@@ -1374,6 +1378,17 @@ export interface BlueprintCalculationProperties {
      * The type of the calculation property
      */
     type: string;
+}
+
+export interface BlueprintCalculationPropertiesItems {
+    /**
+     * The format of the items
+     */
+    format?: string;
+    /**
+     * The type of the items
+     */
+    type?: string;
 }
 
 export interface BlueprintCalculationPropertiesSpecAuthentication {
@@ -2358,6 +2373,10 @@ export interface SystemBlueprintCalculationProperties {
      */
     icon?: string;
     /**
+     * The items of an `array` calculation property
+     */
+    items?: outputs.SystemBlueprintCalculationPropertiesItems;
+    /**
      * The spec of the calculation property
      */
     spec?: string;
@@ -2373,6 +2392,17 @@ export interface SystemBlueprintCalculationProperties {
      * The type of the calculation property
      */
     type: string;
+}
+
+export interface SystemBlueprintCalculationPropertiesItems {
+    /**
+     * The format of the items
+     */
+    format?: string;
+    /**
+     * The type of the items
+     */
+    type?: string;
 }
 
 export interface SystemBlueprintCalculationPropertiesSpecAuthentication {
@@ -3769,6 +3799,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     property?: string;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: string;
+    /**
      * The nested rules of a group rule.
      */
     rules?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule[];
@@ -3799,6 +3833,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      * The property identifier of the rule.
      */
     property?: string;
+    /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: string;
     /**
      * The nested rules of a group rule.
      */
@@ -3831,6 +3869,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     property?: string;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: string;
+    /**
      * The nested rules of a group rule.
      */
     rules?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule[];
@@ -3861,6 +3903,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      * The property identifier of the rule.
      */
     property?: string;
+    /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: string;
     /**
      * The nested rules of a group rule.
      */
@@ -3893,6 +3939,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     property?: string;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: string;
+    /**
      * The nested rules of a group rule.
      */
     rules?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule[];
@@ -3923,6 +3973,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      * The property identifier of the rule.
      */
     property?: string;
+    /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: string;
     /**
      * The nested rules of a group rule.
      */
@@ -3955,6 +4009,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     property?: string;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: string;
+    /**
      * The nested rules of a group rule.
      */
     rules?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule[];
@@ -3985,6 +4043,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      * The property identifier of the rule.
      */
     property?: string;
+    /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: string;
     /**
      * The nested rules of a group rule.
      */
@@ -4017,6 +4079,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     property?: string;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: string;
+    /**
      * The nested rules of a group rule.
      */
     rules?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule[];
@@ -4048,6 +4114,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     property?: string;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: string;
+    /**
      * The nested rules of a group rule.
      */
     rules?: outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule[];
@@ -4078,6 +4148,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      * The property identifier of the rule.
      */
     property?: string;
+    /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: string;
     /**
      * A value resolved from the form or the trigger when the form is rendered.
      */
@@ -4847,6 +4921,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     property?: string;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: string;
+    /**
      * The nested rules of a group rule.
      */
     rules?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRule[];
@@ -4877,6 +4955,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      * The property identifier of the rule.
      */
     property?: string;
+    /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: string;
     /**
      * The nested rules of a group rule.
      */
@@ -4909,6 +4991,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     property?: string;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: string;
+    /**
      * The nested rules of a group rule.
      */
     rules?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule[];
@@ -4939,6 +5025,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      * The property identifier of the rule.
      */
     property?: string;
+    /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: string;
     /**
      * The nested rules of a group rule.
      */
@@ -4971,6 +5061,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     property?: string;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: string;
+    /**
      * The nested rules of a group rule.
      */
     rules?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule[];
@@ -5001,6 +5095,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      * The property identifier of the rule.
      */
     property?: string;
+    /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: string;
     /**
      * The nested rules of a group rule.
      */
@@ -5033,6 +5131,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     property?: string;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: string;
+    /**
      * The nested rules of a group rule.
      */
     rules?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule[];
@@ -5063,6 +5165,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      * The property identifier of the rule.
      */
     property?: string;
+    /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: string;
     /**
      * The nested rules of a group rule.
      */
@@ -5095,6 +5201,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     property?: string;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: string;
+    /**
      * The nested rules of a group rule.
      */
     rules?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule[];
@@ -5126,6 +5236,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     property?: string;
     /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: string;
+    /**
      * The nested rules of a group rule.
      */
     rules?: outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule[];
@@ -5156,6 +5270,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      * The property identifier of the rule.
      */
     property?: string;
+    /**
+     * The relation identifier of the rule. Use instead of `property` to filter on a relation.
+     */
+    relation?: string;
     /**
      * A value resolved from the form or the trigger when the form is rendered.
      */
