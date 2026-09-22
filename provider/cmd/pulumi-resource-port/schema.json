@@ -8856,20 +8856,35 @@
         "port:index/integration:Integration": {
             "properties": {
                 "config": {
+                    "type": "string"
+                },
+                "createPortResourcesOrigin": {
                     "type": "string",
-                    "description": "Integration Config Raw JSON string (use `jsonencode`)\n"
+                    "description": "Controls whether Port creates default blueprints and mappings when the integration is created. Use `Empty` to skip\ndefault resource creation. Use `Port` to create default resources via Port. If omitted, default resources are created.\nCan only be set on creation.\n"
                 },
                 "installationAppType": {
                     "type": "string",
-                    "description": "Deprecated. The integrated tool name for catalog integration types (e.g. `GitHub`, `GitLab`, `K8S EXPORTER`). Custom\nintegrations can omit this field. Cannot be changed after creation.\n"
+                    "description": "The integrated tool name for catalog integration types (e.g. `github-ocean`, `gitlab`, `pagerduty`). Cannot be changed\nafter creation.\n"
                 },
                 "installationId": {
                     "type": "string",
                     "description": "The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:\n`^[a-z0-9-]+$`). Cannot be changed after creation.\n"
                 },
+                "installationType": {
+                    "type": "string",
+                    "description": "The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to\n`OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after\ncreation.\n"
+                },
                 "kafkaChangelogDestination": {
                     "$ref": "#/types/port:index/IntegrationKafkaChangelogDestination:IntegrationKafkaChangelogDestination",
                     "description": "The changelog destination of the blueprint (just an empty `{}`)\n"
+                },
+                "spec": {
+                    "type": "string",
+                    "description": "Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installation_type` is `Saas`**\n— must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`\n(credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).\nSensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are\nomitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match\nthe UI behavior.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The provisioning status of the integration (e.g. `Creating`, `Running`, `Updating`, `Error`). Relevant for Port Hosted\nintegrations that provision asynchronously.\n"
                 },
                 "title": {
                     "type": "string"
@@ -8883,27 +8898,42 @@
                 }
             },
             "required": [
+                "config",
                 "installationId",
+                "installationType",
                 "kafkaChangelogDestination",
+                "spec",
+                "status",
                 "version",
                 "webhookChangelogDestination"
             ],
             "inputProperties": {
                 "config": {
+                    "type": "string"
+                },
+                "createPortResourcesOrigin": {
                     "type": "string",
-                    "description": "Integration Config Raw JSON string (use `jsonencode`)\n"
+                    "description": "Controls whether Port creates default blueprints and mappings when the integration is created. Use `Empty` to skip\ndefault resource creation. Use `Port` to create default resources via Port. If omitted, default resources are created.\nCan only be set on creation.\n"
                 },
                 "installationAppType": {
                     "type": "string",
-                    "description": "Deprecated. The integrated tool name for catalog integration types (e.g. `GitHub`, `GitLab`, `K8S EXPORTER`). Custom\nintegrations can omit this field. Cannot be changed after creation.\n"
+                    "description": "The integrated tool name for catalog integration types (e.g. `github-ocean`, `gitlab`, `pagerduty`). Cannot be changed\nafter creation.\n"
                 },
                 "installationId": {
                     "type": "string",
                     "description": "The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:\n`^[a-z0-9-]+$`). Cannot be changed after creation.\n"
                 },
+                "installationType": {
+                    "type": "string",
+                    "description": "The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to\n`OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after\ncreation.\n"
+                },
                 "kafkaChangelogDestination": {
                     "$ref": "#/types/port:index/IntegrationKafkaChangelogDestination:IntegrationKafkaChangelogDestination",
                     "description": "The changelog destination of the blueprint (just an empty `{}`)\n"
+                },
+                "spec": {
+                    "type": "string",
+                    "description": "Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installation_type` is `Saas`**\n— must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`\n(credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).\nSensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are\nomitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match\nthe UI behavior.\n"
                 },
                 "title": {
                     "type": "string"
@@ -8923,20 +8953,35 @@
                 "description": "Input properties used for looking up and filtering Integration resources.\n",
                 "properties": {
                     "config": {
+                        "type": "string"
+                    },
+                    "createPortResourcesOrigin": {
                         "type": "string",
-                        "description": "Integration Config Raw JSON string (use `jsonencode`)\n"
+                        "description": "Controls whether Port creates default blueprints and mappings when the integration is created. Use `Empty` to skip\ndefault resource creation. Use `Port` to create default resources via Port. If omitted, default resources are created.\nCan only be set on creation.\n"
                     },
                     "installationAppType": {
                         "type": "string",
-                        "description": "Deprecated. The integrated tool name for catalog integration types (e.g. `GitHub`, `GitLab`, `K8S EXPORTER`). Custom\nintegrations can omit this field. Cannot be changed after creation.\n"
+                        "description": "The integrated tool name for catalog integration types (e.g. `github-ocean`, `gitlab`, `pagerduty`). Cannot be changed\nafter creation.\n"
                     },
                     "installationId": {
                         "type": "string",
                         "description": "The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:\n`^[a-z0-9-]+$`). Cannot be changed after creation.\n"
                     },
+                    "installationType": {
+                        "type": "string",
+                        "description": "The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to\n`OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after\ncreation.\n"
+                    },
                     "kafkaChangelogDestination": {
                         "$ref": "#/types/port:index/IntegrationKafkaChangelogDestination:IntegrationKafkaChangelogDestination",
                         "description": "The changelog destination of the blueprint (just an empty `{}`)\n"
+                    },
+                    "spec": {
+                        "type": "string",
+                        "description": "Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installation_type` is `Saas`**\n— must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`\n(credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).\nSensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are\nomitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match\nthe UI behavior.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The provisioning status of the integration (e.g. `Creating`, `Running`, `Updating`, `Error`). Relevant for Port Hosted\nintegrations that provision asynchronously.\n"
                     },
                     "title": {
                         "type": "string"
@@ -9459,6 +9504,14 @@
                     },
                     "description": "Optional filters per blueprint in shared-rules mode, keyed by blueprint identifier. Conflicts with `scorecards`.\n"
                 },
+                "groupProperties": {
+                    "type": "string",
+                    "description": "Additional `_scorecard_group` blueprint properties applied to the scorecard group entity, as a JSON encoded string.\nProperty keys must match custom properties you added to the `_scorecard_group` blueprint.\n"
+                },
+                "groupRelations": {
+                    "type": "string",
+                    "description": "Additional `_scorecard_group` blueprint relations applied to the scorecard group entity, as a JSON encoded string.\nRelation values can be a string, an array of strings, or `null` to clear a relation.\n"
+                },
                 "identifier": {
                     "type": "string",
                     "description": "A unique identifier for the scorecard group.\n"
@@ -9470,16 +9523,20 @@
                     },
                     "description": "The available levels of the scorecard group, shared by all members.\n"
                 },
-                "properties": {
-                    "type": "string",
-                    "description": "Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.\nProperty keys must match custom properties you added to the `_scorecard` blueprint.\n"
-                },
                 "rules": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/port:index/ScorecardGroupRule:ScorecardGroupRule"
                     },
                     "description": "The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.\n"
+                },
+                "scorecardProperties": {
+                    "type": "string",
+                    "description": "Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.\nProperty keys must match custom properties you added to the `_scorecard` blueprint.\n"
+                },
+                "scorecardRelations": {
+                    "type": "string",
+                    "description": "Additional `_scorecard` blueprint relations applied to every member scorecard in the group, as a JSON encoded string.\nRelation values can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by\nPort and cannot be set here.\n"
                 },
                 "scorecards": {
                     "type": "object",
@@ -9524,6 +9581,14 @@
                     },
                     "description": "Optional filters per blueprint in shared-rules mode, keyed by blueprint identifier. Conflicts with `scorecards`.\n"
                 },
+                "groupProperties": {
+                    "type": "string",
+                    "description": "Additional `_scorecard_group` blueprint properties applied to the scorecard group entity, as a JSON encoded string.\nProperty keys must match custom properties you added to the `_scorecard_group` blueprint.\n"
+                },
+                "groupRelations": {
+                    "type": "string",
+                    "description": "Additional `_scorecard_group` blueprint relations applied to the scorecard group entity, as a JSON encoded string.\nRelation values can be a string, an array of strings, or `null` to clear a relation.\n"
+                },
                 "identifier": {
                     "type": "string",
                     "description": "A unique identifier for the scorecard group.\n"
@@ -9535,16 +9600,20 @@
                     },
                     "description": "The available levels of the scorecard group, shared by all members.\n"
                 },
-                "properties": {
-                    "type": "string",
-                    "description": "Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.\nProperty keys must match custom properties you added to the `_scorecard` blueprint.\n"
-                },
                 "rules": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/port:index/ScorecardGroupRule:ScorecardGroupRule"
                     },
                     "description": "The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.\n"
+                },
+                "scorecardProperties": {
+                    "type": "string",
+                    "description": "Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.\nProperty keys must match custom properties you added to the `_scorecard` blueprint.\n"
+                },
+                "scorecardRelations": {
+                    "type": "string",
+                    "description": "Additional `_scorecard` blueprint relations applied to every member scorecard in the group, as a JSON encoded string.\nRelation values can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by\nPort and cannot be set here.\n"
                 },
                 "scorecards": {
                     "type": "object",
@@ -9587,6 +9656,14 @@
                         },
                         "description": "Optional filters per blueprint in shared-rules mode, keyed by blueprint identifier. Conflicts with `scorecards`.\n"
                     },
+                    "groupProperties": {
+                        "type": "string",
+                        "description": "Additional `_scorecard_group` blueprint properties applied to the scorecard group entity, as a JSON encoded string.\nProperty keys must match custom properties you added to the `_scorecard_group` blueprint.\n"
+                    },
+                    "groupRelations": {
+                        "type": "string",
+                        "description": "Additional `_scorecard_group` blueprint relations applied to the scorecard group entity, as a JSON encoded string.\nRelation values can be a string, an array of strings, or `null` to clear a relation.\n"
+                    },
                     "identifier": {
                         "type": "string",
                         "description": "A unique identifier for the scorecard group.\n"
@@ -9598,16 +9675,20 @@
                         },
                         "description": "The available levels of the scorecard group, shared by all members.\n"
                     },
-                    "properties": {
-                        "type": "string",
-                        "description": "Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.\nProperty keys must match custom properties you added to the `_scorecard` blueprint.\n"
-                    },
                     "rules": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/port:index/ScorecardGroupRule:ScorecardGroupRule"
                         },
                         "description": "The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.\n"
+                    },
+                    "scorecardProperties": {
+                        "type": "string",
+                        "description": "Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.\nProperty keys must match custom properties you added to the `_scorecard` blueprint.\n"
+                    },
+                    "scorecardRelations": {
+                        "type": "string",
+                        "description": "Additional `_scorecard` blueprint relations applied to every member scorecard in the group, as a JSON encoded string.\nRelation values can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by\nPort and cannot be set here.\n"
                     },
                     "scorecards": {
                         "type": "object",

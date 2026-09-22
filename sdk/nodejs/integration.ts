@@ -34,13 +34,16 @@ export class Integration extends pulumi.CustomResource {
         return obj['__pulumiType'] === Integration.__pulumiType;
     }
 
+    public readonly config!: pulumi.Output<string>;
     /**
-     * Integration Config Raw JSON string (use `jsonencode`)
+     * Controls whether Port creates default blueprints and mappings when the integration is created. Use `Empty` to skip
+     * default resource creation. Use `Port` to create default resources via Port. If omitted, default resources are created.
+     * Can only be set on creation.
      */
-    public readonly config!: pulumi.Output<string | undefined>;
+    public readonly createPortResourcesOrigin!: pulumi.Output<string | undefined>;
     /**
-     * Deprecated. The integrated tool name for catalog integration types (e.g. `GitHub`, `GitLab`, `K8S EXPORTER`). Custom
-     * integrations can omit this field. Cannot be changed after creation.
+     * The integrated tool name for catalog integration types (e.g. `github-ocean`, `gitlab`, `pagerduty`). Cannot be changed
+     * after creation.
      */
     public readonly installationAppType!: pulumi.Output<string | undefined>;
     /**
@@ -49,9 +52,29 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly installationId!: pulumi.Output<string>;
     /**
+     * The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to
+     * `OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after
+     * creation.
+     */
+    public readonly installationType!: pulumi.Output<string>;
+    /**
      * The changelog destination of the blueprint (just an empty `{}`)
      */
     public readonly kafkaChangelogDestination!: pulumi.Output<outputs.IntegrationKafkaChangelogDestination>;
+    /**
+     * Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installationType` is `Saas`**
+     * — must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`
+     * (credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).
+     * Sensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are
+     * omitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match
+     * the UI behavior.
+     */
+    public readonly spec!: pulumi.Output<string>;
+    /**
+     * The provisioning status of the integration (e.g. `Creating`, `Running`, `Updating`, `Error`). Relevant for Port Hosted
+     * integrations that provision asynchronously.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
     public readonly title!: pulumi.Output<string | undefined>;
     public readonly version!: pulumi.Output<string>;
     /**
@@ -73,9 +96,13 @@ export class Integration extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as IntegrationState | undefined;
             resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["createPortResourcesOrigin"] = state ? state.createPortResourcesOrigin : undefined;
             resourceInputs["installationAppType"] = state ? state.installationAppType : undefined;
             resourceInputs["installationId"] = state ? state.installationId : undefined;
+            resourceInputs["installationType"] = state ? state.installationType : undefined;
             resourceInputs["kafkaChangelogDestination"] = state ? state.kafkaChangelogDestination : undefined;
+            resourceInputs["spec"] = state ? state.spec : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
             resourceInputs["webhookChangelogDestination"] = state ? state.webhookChangelogDestination : undefined;
@@ -85,12 +112,16 @@ export class Integration extends pulumi.CustomResource {
                 throw new Error("Missing required property 'installationId'");
             }
             resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["createPortResourcesOrigin"] = args ? args.createPortResourcesOrigin : undefined;
             resourceInputs["installationAppType"] = args ? args.installationAppType : undefined;
             resourceInputs["installationId"] = args ? args.installationId : undefined;
+            resourceInputs["installationType"] = args ? args.installationType : undefined;
             resourceInputs["kafkaChangelogDestination"] = args ? args.kafkaChangelogDestination : undefined;
+            resourceInputs["spec"] = args ? args.spec : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["webhookChangelogDestination"] = args ? args.webhookChangelogDestination : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Integration.__pulumiType, name, resourceInputs, opts);
@@ -101,13 +132,16 @@ export class Integration extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Integration resources.
  */
 export interface IntegrationState {
-    /**
-     * Integration Config Raw JSON string (use `jsonencode`)
-     */
     config?: pulumi.Input<string>;
     /**
-     * Deprecated. The integrated tool name for catalog integration types (e.g. `GitHub`, `GitLab`, `K8S EXPORTER`). Custom
-     * integrations can omit this field. Cannot be changed after creation.
+     * Controls whether Port creates default blueprints and mappings when the integration is created. Use `Empty` to skip
+     * default resource creation. Use `Port` to create default resources via Port. If omitted, default resources are created.
+     * Can only be set on creation.
+     */
+    createPortResourcesOrigin?: pulumi.Input<string>;
+    /**
+     * The integrated tool name for catalog integration types (e.g. `github-ocean`, `gitlab`, `pagerduty`). Cannot be changed
+     * after creation.
      */
     installationAppType?: pulumi.Input<string>;
     /**
@@ -116,9 +150,29 @@ export interface IntegrationState {
      */
     installationId?: pulumi.Input<string>;
     /**
+     * The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to
+     * `OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after
+     * creation.
+     */
+    installationType?: pulumi.Input<string>;
+    /**
      * The changelog destination of the blueprint (just an empty `{}`)
      */
     kafkaChangelogDestination?: pulumi.Input<inputs.IntegrationKafkaChangelogDestination>;
+    /**
+     * Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installationType` is `Saas`**
+     * — must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`
+     * (credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).
+     * Sensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are
+     * omitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match
+     * the UI behavior.
+     */
+    spec?: pulumi.Input<string>;
+    /**
+     * The provisioning status of the integration (e.g. `Creating`, `Running`, `Updating`, `Error`). Relevant for Port Hosted
+     * integrations that provision asynchronously.
+     */
+    status?: pulumi.Input<string>;
     title?: pulumi.Input<string>;
     version?: pulumi.Input<string>;
     /**
@@ -131,13 +185,16 @@ export interface IntegrationState {
  * The set of arguments for constructing a Integration resource.
  */
 export interface IntegrationArgs {
-    /**
-     * Integration Config Raw JSON string (use `jsonencode`)
-     */
     config?: pulumi.Input<string>;
     /**
-     * Deprecated. The integrated tool name for catalog integration types (e.g. `GitHub`, `GitLab`, `K8S EXPORTER`). Custom
-     * integrations can omit this field. Cannot be changed after creation.
+     * Controls whether Port creates default blueprints and mappings when the integration is created. Use `Empty` to skip
+     * default resource creation. Use `Port` to create default resources via Port. If omitted, default resources are created.
+     * Can only be set on creation.
+     */
+    createPortResourcesOrigin?: pulumi.Input<string>;
+    /**
+     * The integrated tool name for catalog integration types (e.g. `github-ocean`, `gitlab`, `pagerduty`). Cannot be changed
+     * after creation.
      */
     installationAppType?: pulumi.Input<string>;
     /**
@@ -146,9 +203,24 @@ export interface IntegrationArgs {
      */
     installationId: pulumi.Input<string>;
     /**
+     * The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to
+     * `OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after
+     * creation.
+     */
+    installationType?: pulumi.Input<string>;
+    /**
      * The changelog destination of the blueprint (just an empty `{}`)
      */
     kafkaChangelogDestination?: pulumi.Input<inputs.IntegrationKafkaChangelogDestination>;
+    /**
+     * Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installationType` is `Saas`**
+     * — must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`
+     * (credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).
+     * Sensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are
+     * omitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match
+     * the UI behavior.
+     */
+    spec?: pulumi.Input<string>;
     title?: pulumi.Input<string>;
     version?: pulumi.Input<string>;
     /**

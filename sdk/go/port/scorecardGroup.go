@@ -24,15 +24,25 @@ type ScorecardGroup struct {
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// Optional filters per blueprint in shared-rules mode, keyed by blueprint identifier. Conflicts with `scorecards`.
 	Filters ScorecardGroupFiltersMapOutput `pulumi:"filters"`
+	// Additional `_scorecard_group` blueprint properties applied to the scorecard group entity, as a JSON encoded string.
+	// Property keys must match custom properties you added to the `_scorecard_group` blueprint.
+	GroupProperties pulumi.StringPtrOutput `pulumi:"groupProperties"`
+	// Additional `_scorecard_group` blueprint relations applied to the scorecard group entity, as a JSON encoded string.
+	// Relation values can be a string, an array of strings, or `null` to clear a relation.
+	GroupRelations pulumi.StringPtrOutput `pulumi:"groupRelations"`
 	// A unique identifier for the scorecard group.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// The available levels of the scorecard group, shared by all members.
 	Levels ScorecardGroupLevelArrayOutput `pulumi:"levels"`
-	// Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
-	// Property keys must match custom properties you added to the `_scorecard` blueprint.
-	Properties pulumi.StringPtrOutput `pulumi:"properties"`
 	// The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
 	Rules ScorecardGroupRuleArrayOutput `pulumi:"rules"`
+	// Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+	// Property keys must match custom properties you added to the `_scorecard` blueprint.
+	ScorecardProperties pulumi.StringPtrOutput `pulumi:"scorecardProperties"`
+	// Additional `_scorecard` blueprint relations applied to every member scorecard in the group, as a JSON encoded string.
+	// Relation values can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by
+	// Port and cannot be set here.
+	ScorecardRelations pulumi.StringPtrOutput `pulumi:"scorecardRelations"`
 	// Map of blueprint identifier to member scorecard filter/rules. Use this for per-blueprint mode. Conflicts with
 	// `blueprints`, `rules`, and `filters`.
 	Scorecards ScorecardGroupScorecardsMapOutput `pulumi:"scorecards"`
@@ -89,15 +99,25 @@ type scorecardGroupState struct {
 	CreatedBy *string `pulumi:"createdBy"`
 	// Optional filters per blueprint in shared-rules mode, keyed by blueprint identifier. Conflicts with `scorecards`.
 	Filters map[string]ScorecardGroupFilters `pulumi:"filters"`
+	// Additional `_scorecard_group` blueprint properties applied to the scorecard group entity, as a JSON encoded string.
+	// Property keys must match custom properties you added to the `_scorecard_group` blueprint.
+	GroupProperties *string `pulumi:"groupProperties"`
+	// Additional `_scorecard_group` blueprint relations applied to the scorecard group entity, as a JSON encoded string.
+	// Relation values can be a string, an array of strings, or `null` to clear a relation.
+	GroupRelations *string `pulumi:"groupRelations"`
 	// A unique identifier for the scorecard group.
 	Identifier *string `pulumi:"identifier"`
 	// The available levels of the scorecard group, shared by all members.
 	Levels []ScorecardGroupLevel `pulumi:"levels"`
-	// Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
-	// Property keys must match custom properties you added to the `_scorecard` blueprint.
-	Properties *string `pulumi:"properties"`
 	// The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
 	Rules []ScorecardGroupRule `pulumi:"rules"`
+	// Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+	// Property keys must match custom properties you added to the `_scorecard` blueprint.
+	ScorecardProperties *string `pulumi:"scorecardProperties"`
+	// Additional `_scorecard` blueprint relations applied to every member scorecard in the group, as a JSON encoded string.
+	// Relation values can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by
+	// Port and cannot be set here.
+	ScorecardRelations *string `pulumi:"scorecardRelations"`
 	// Map of blueprint identifier to member scorecard filter/rules. Use this for per-blueprint mode. Conflicts with
 	// `blueprints`, `rules`, and `filters`.
 	Scorecards map[string]ScorecardGroupScorecards `pulumi:"scorecards"`
@@ -119,15 +139,25 @@ type ScorecardGroupState struct {
 	CreatedBy pulumi.StringPtrInput
 	// Optional filters per blueprint in shared-rules mode, keyed by blueprint identifier. Conflicts with `scorecards`.
 	Filters ScorecardGroupFiltersMapInput
+	// Additional `_scorecard_group` blueprint properties applied to the scorecard group entity, as a JSON encoded string.
+	// Property keys must match custom properties you added to the `_scorecard_group` blueprint.
+	GroupProperties pulumi.StringPtrInput
+	// Additional `_scorecard_group` blueprint relations applied to the scorecard group entity, as a JSON encoded string.
+	// Relation values can be a string, an array of strings, or `null` to clear a relation.
+	GroupRelations pulumi.StringPtrInput
 	// A unique identifier for the scorecard group.
 	Identifier pulumi.StringPtrInput
 	// The available levels of the scorecard group, shared by all members.
 	Levels ScorecardGroupLevelArrayInput
-	// Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
-	// Property keys must match custom properties you added to the `_scorecard` blueprint.
-	Properties pulumi.StringPtrInput
 	// The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
 	Rules ScorecardGroupRuleArrayInput
+	// Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+	// Property keys must match custom properties you added to the `_scorecard` blueprint.
+	ScorecardProperties pulumi.StringPtrInput
+	// Additional `_scorecard` blueprint relations applied to every member scorecard in the group, as a JSON encoded string.
+	// Relation values can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by
+	// Port and cannot be set here.
+	ScorecardRelations pulumi.StringPtrInput
 	// Map of blueprint identifier to member scorecard filter/rules. Use this for per-blueprint mode. Conflicts with
 	// `blueprints`, `rules`, and `filters`.
 	Scorecards ScorecardGroupScorecardsMapInput
@@ -149,15 +179,25 @@ type scorecardGroupArgs struct {
 	Blueprints []string `pulumi:"blueprints"`
 	// Optional filters per blueprint in shared-rules mode, keyed by blueprint identifier. Conflicts with `scorecards`.
 	Filters map[string]ScorecardGroupFilters `pulumi:"filters"`
+	// Additional `_scorecard_group` blueprint properties applied to the scorecard group entity, as a JSON encoded string.
+	// Property keys must match custom properties you added to the `_scorecard_group` blueprint.
+	GroupProperties *string `pulumi:"groupProperties"`
+	// Additional `_scorecard_group` blueprint relations applied to the scorecard group entity, as a JSON encoded string.
+	// Relation values can be a string, an array of strings, or `null` to clear a relation.
+	GroupRelations *string `pulumi:"groupRelations"`
 	// A unique identifier for the scorecard group.
 	Identifier string `pulumi:"identifier"`
 	// The available levels of the scorecard group, shared by all members.
 	Levels []ScorecardGroupLevel `pulumi:"levels"`
-	// Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
-	// Property keys must match custom properties you added to the `_scorecard` blueprint.
-	Properties *string `pulumi:"properties"`
 	// The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
 	Rules []ScorecardGroupRule `pulumi:"rules"`
+	// Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+	// Property keys must match custom properties you added to the `_scorecard` blueprint.
+	ScorecardProperties *string `pulumi:"scorecardProperties"`
+	// Additional `_scorecard` blueprint relations applied to every member scorecard in the group, as a JSON encoded string.
+	// Relation values can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by
+	// Port and cannot be set here.
+	ScorecardRelations *string `pulumi:"scorecardRelations"`
 	// Map of blueprint identifier to member scorecard filter/rules. Use this for per-blueprint mode. Conflicts with
 	// `blueprints`, `rules`, and `filters`.
 	Scorecards map[string]ScorecardGroupScorecards `pulumi:"scorecards"`
@@ -172,15 +212,25 @@ type ScorecardGroupArgs struct {
 	Blueprints pulumi.StringArrayInput
 	// Optional filters per blueprint in shared-rules mode, keyed by blueprint identifier. Conflicts with `scorecards`.
 	Filters ScorecardGroupFiltersMapInput
+	// Additional `_scorecard_group` blueprint properties applied to the scorecard group entity, as a JSON encoded string.
+	// Property keys must match custom properties you added to the `_scorecard_group` blueprint.
+	GroupProperties pulumi.StringPtrInput
+	// Additional `_scorecard_group` blueprint relations applied to the scorecard group entity, as a JSON encoded string.
+	// Relation values can be a string, an array of strings, or `null` to clear a relation.
+	GroupRelations pulumi.StringPtrInput
 	// A unique identifier for the scorecard group.
 	Identifier pulumi.StringInput
 	// The available levels of the scorecard group, shared by all members.
 	Levels ScorecardGroupLevelArrayInput
-	// Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
-	// Property keys must match custom properties you added to the `_scorecard` blueprint.
-	Properties pulumi.StringPtrInput
 	// The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
 	Rules ScorecardGroupRuleArrayInput
+	// Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+	// Property keys must match custom properties you added to the `_scorecard` blueprint.
+	ScorecardProperties pulumi.StringPtrInput
+	// Additional `_scorecard` blueprint relations applied to every member scorecard in the group, as a JSON encoded string.
+	// Relation values can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by
+	// Port and cannot be set here.
+	ScorecardRelations pulumi.StringPtrInput
 	// Map of blueprint identifier to member scorecard filter/rules. Use this for per-blueprint mode. Conflicts with
 	// `blueprints`, `rules`, and `filters`.
 	Scorecards ScorecardGroupScorecardsMapInput
@@ -296,6 +346,18 @@ func (o ScorecardGroupOutput) Filters() ScorecardGroupFiltersMapOutput {
 	return o.ApplyT(func(v *ScorecardGroup) ScorecardGroupFiltersMapOutput { return v.Filters }).(ScorecardGroupFiltersMapOutput)
 }
 
+// Additional `_scorecard_group` blueprint properties applied to the scorecard group entity, as a JSON encoded string.
+// Property keys must match custom properties you added to the `_scorecard_group` blueprint.
+func (o ScorecardGroupOutput) GroupProperties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScorecardGroup) pulumi.StringPtrOutput { return v.GroupProperties }).(pulumi.StringPtrOutput)
+}
+
+// Additional `_scorecard_group` blueprint relations applied to the scorecard group entity, as a JSON encoded string.
+// Relation values can be a string, an array of strings, or `null` to clear a relation.
+func (o ScorecardGroupOutput) GroupRelations() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScorecardGroup) pulumi.StringPtrOutput { return v.GroupRelations }).(pulumi.StringPtrOutput)
+}
+
 // A unique identifier for the scorecard group.
 func (o ScorecardGroupOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScorecardGroup) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
@@ -306,15 +368,22 @@ func (o ScorecardGroupOutput) Levels() ScorecardGroupLevelArrayOutput {
 	return o.ApplyT(func(v *ScorecardGroup) ScorecardGroupLevelArrayOutput { return v.Levels }).(ScorecardGroupLevelArrayOutput)
 }
 
-// Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
-// Property keys must match custom properties you added to the `_scorecard` blueprint.
-func (o ScorecardGroupOutput) Properties() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScorecardGroup) pulumi.StringPtrOutput { return v.Properties }).(pulumi.StringPtrOutput)
-}
-
 // The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
 func (o ScorecardGroupOutput) Rules() ScorecardGroupRuleArrayOutput {
 	return o.ApplyT(func(v *ScorecardGroup) ScorecardGroupRuleArrayOutput { return v.Rules }).(ScorecardGroupRuleArrayOutput)
+}
+
+// Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+// Property keys must match custom properties you added to the `_scorecard` blueprint.
+func (o ScorecardGroupOutput) ScorecardProperties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScorecardGroup) pulumi.StringPtrOutput { return v.ScorecardProperties }).(pulumi.StringPtrOutput)
+}
+
+// Additional `_scorecard` blueprint relations applied to every member scorecard in the group, as a JSON encoded string.
+// Relation values can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by
+// Port and cannot be set here.
+func (o ScorecardGroupOutput) ScorecardRelations() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScorecardGroup) pulumi.StringPtrOutput { return v.ScorecardRelations }).(pulumi.StringPtrOutput)
 }
 
 // Map of blueprint identifier to member scorecard filter/rules. Use this for per-blueprint mode. Conflicts with

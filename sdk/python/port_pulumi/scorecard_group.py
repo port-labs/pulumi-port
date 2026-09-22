@@ -25,9 +25,12 @@ class ScorecardGroupArgs:
                  title: pulumi.Input[str],
                  blueprints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  filters: Optional[pulumi.Input[Mapping[str, pulumi.Input['ScorecardGroupFiltersArgs']]]] = None,
+                 group_properties: Optional[pulumi.Input[str]] = None,
+                 group_relations: Optional[pulumi.Input[str]] = None,
                  levels: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardGroupLevelArgs']]]] = None,
-                 properties: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardGroupRuleArgs']]]] = None,
+                 scorecard_properties: Optional[pulumi.Input[str]] = None,
+                 scorecard_relations: Optional[pulumi.Input[str]] = None,
                  scorecards: Optional[pulumi.Input[Mapping[str, pulumi.Input['ScorecardGroupScorecardsArgs']]]] = None):
         """
         The set of arguments for constructing a ScorecardGroup resource.
@@ -36,10 +39,17 @@ class ScorecardGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blueprints: Blueprint identifiers that share the same rules (and optional filters). Use this for shared-rules mode. Conflicts with
                `scorecards`.
         :param pulumi.Input[Mapping[str, pulumi.Input['ScorecardGroupFiltersArgs']]] filters: Optional filters per blueprint in shared-rules mode, keyed by blueprint identifier. Conflicts with `scorecards`.
+        :param pulumi.Input[str] group_properties: Additional `_scorecard_group` blueprint properties applied to the scorecard group entity, as a JSON encoded string.
+               Property keys must match custom properties you added to the `_scorecard_group` blueprint.
+        :param pulumi.Input[str] group_relations: Additional `_scorecard_group` blueprint relations applied to the scorecard group entity, as a JSON encoded string.
+               Relation values can be a string, an array of strings, or `null` to clear a relation.
         :param pulumi.Input[Sequence[pulumi.Input['ScorecardGroupLevelArgs']]] levels: The available levels of the scorecard group, shared by all members.
-        :param pulumi.Input[str] properties: Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
-               Property keys must match custom properties you added to the `_scorecard` blueprint.
         :param pulumi.Input[Sequence[pulumi.Input['ScorecardGroupRuleArgs']]] rules: The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
+        :param pulumi.Input[str] scorecard_properties: Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+               Property keys must match custom properties you added to the `_scorecard` blueprint.
+        :param pulumi.Input[str] scorecard_relations: Additional `_scorecard` blueprint relations applied to every member scorecard in the group, as a JSON encoded string.
+               Relation values can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by
+               Port and cannot be set here.
         :param pulumi.Input[Mapping[str, pulumi.Input['ScorecardGroupScorecardsArgs']]] scorecards: Map of blueprint identifier to member scorecard filter/rules. Use this for per-blueprint mode. Conflicts with
                `blueprints`, `rules`, and `filters`.
         """
@@ -49,12 +59,18 @@ class ScorecardGroupArgs:
             pulumi.set(__self__, "blueprints", blueprints)
         if filters is not None:
             pulumi.set(__self__, "filters", filters)
+        if group_properties is not None:
+            pulumi.set(__self__, "group_properties", group_properties)
+        if group_relations is not None:
+            pulumi.set(__self__, "group_relations", group_relations)
         if levels is not None:
             pulumi.set(__self__, "levels", levels)
-        if properties is not None:
-            pulumi.set(__self__, "properties", properties)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
+        if scorecard_properties is not None:
+            pulumi.set(__self__, "scorecard_properties", scorecard_properties)
+        if scorecard_relations is not None:
+            pulumi.set(__self__, "scorecard_relations", scorecard_relations)
         if scorecards is not None:
             pulumi.set(__self__, "scorecards", scorecards)
 
@@ -108,6 +124,32 @@ class ScorecardGroupArgs:
         pulumi.set(self, "filters", value)
 
     @property
+    @pulumi.getter(name="groupProperties")
+    def group_properties(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional `_scorecard_group` blueprint properties applied to the scorecard group entity, as a JSON encoded string.
+        Property keys must match custom properties you added to the `_scorecard_group` blueprint.
+        """
+        return pulumi.get(self, "group_properties")
+
+    @group_properties.setter
+    def group_properties(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_properties", value)
+
+    @property
+    @pulumi.getter(name="groupRelations")
+    def group_relations(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional `_scorecard_group` blueprint relations applied to the scorecard group entity, as a JSON encoded string.
+        Relation values can be a string, an array of strings, or `null` to clear a relation.
+        """
+        return pulumi.get(self, "group_relations")
+
+    @group_relations.setter
+    def group_relations(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_relations", value)
+
+    @property
     @pulumi.getter
     def levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardGroupLevelArgs']]]]:
         """
@@ -121,19 +163,6 @@ class ScorecardGroupArgs:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[str]]:
-        """
-        Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
-        Property keys must match custom properties you added to the `_scorecard` blueprint.
-        """
-        return pulumi.get(self, "properties")
-
-    @properties.setter
-    def properties(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "properties", value)
-
-    @property
-    @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardGroupRuleArgs']]]]:
         """
         The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
@@ -143,6 +172,33 @@ class ScorecardGroupArgs:
     @rules.setter
     def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardGroupRuleArgs']]]]):
         pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter(name="scorecardProperties")
+    def scorecard_properties(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+        Property keys must match custom properties you added to the `_scorecard` blueprint.
+        """
+        return pulumi.get(self, "scorecard_properties")
+
+    @scorecard_properties.setter
+    def scorecard_properties(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scorecard_properties", value)
+
+    @property
+    @pulumi.getter(name="scorecardRelations")
+    def scorecard_relations(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional `_scorecard` blueprint relations applied to every member scorecard in the group, as a JSON encoded string.
+        Relation values can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by
+        Port and cannot be set here.
+        """
+        return pulumi.get(self, "scorecard_relations")
+
+    @scorecard_relations.setter
+    def scorecard_relations(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scorecard_relations", value)
 
     @property
     @pulumi.getter
@@ -165,10 +221,13 @@ class _ScorecardGroupState:
                  created_at: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  filters: Optional[pulumi.Input[Mapping[str, pulumi.Input['ScorecardGroupFiltersArgs']]]] = None,
+                 group_properties: Optional[pulumi.Input[str]] = None,
+                 group_relations: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  levels: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardGroupLevelArgs']]]] = None,
-                 properties: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardGroupRuleArgs']]]] = None,
+                 scorecard_properties: Optional[pulumi.Input[str]] = None,
+                 scorecard_relations: Optional[pulumi.Input[str]] = None,
                  scorecards: Optional[pulumi.Input[Mapping[str, pulumi.Input['ScorecardGroupScorecardsArgs']]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
@@ -180,11 +239,18 @@ class _ScorecardGroupState:
         :param pulumi.Input[str] created_at: The creation date of the scorecard group.
         :param pulumi.Input[str] created_by: The creator of the scorecard group.
         :param pulumi.Input[Mapping[str, pulumi.Input['ScorecardGroupFiltersArgs']]] filters: Optional filters per blueprint in shared-rules mode, keyed by blueprint identifier. Conflicts with `scorecards`.
+        :param pulumi.Input[str] group_properties: Additional `_scorecard_group` blueprint properties applied to the scorecard group entity, as a JSON encoded string.
+               Property keys must match custom properties you added to the `_scorecard_group` blueprint.
+        :param pulumi.Input[str] group_relations: Additional `_scorecard_group` blueprint relations applied to the scorecard group entity, as a JSON encoded string.
+               Relation values can be a string, an array of strings, or `null` to clear a relation.
         :param pulumi.Input[str] identifier: A unique identifier for the scorecard group.
         :param pulumi.Input[Sequence[pulumi.Input['ScorecardGroupLevelArgs']]] levels: The available levels of the scorecard group, shared by all members.
-        :param pulumi.Input[str] properties: Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
-               Property keys must match custom properties you added to the `_scorecard` blueprint.
         :param pulumi.Input[Sequence[pulumi.Input['ScorecardGroupRuleArgs']]] rules: The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
+        :param pulumi.Input[str] scorecard_properties: Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+               Property keys must match custom properties you added to the `_scorecard` blueprint.
+        :param pulumi.Input[str] scorecard_relations: Additional `_scorecard` blueprint relations applied to every member scorecard in the group, as a JSON encoded string.
+               Relation values can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by
+               Port and cannot be set here.
         :param pulumi.Input[Mapping[str, pulumi.Input['ScorecardGroupScorecardsArgs']]] scorecards: Map of blueprint identifier to member scorecard filter/rules. Use this for per-blueprint mode. Conflicts with
                `blueprints`, `rules`, and `filters`.
         :param pulumi.Input[str] title: The title of the scorecard group (applied to all member scorecards).
@@ -199,14 +265,20 @@ class _ScorecardGroupState:
             pulumi.set(__self__, "created_by", created_by)
         if filters is not None:
             pulumi.set(__self__, "filters", filters)
+        if group_properties is not None:
+            pulumi.set(__self__, "group_properties", group_properties)
+        if group_relations is not None:
+            pulumi.set(__self__, "group_relations", group_relations)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if levels is not None:
             pulumi.set(__self__, "levels", levels)
-        if properties is not None:
-            pulumi.set(__self__, "properties", properties)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
+        if scorecard_properties is not None:
+            pulumi.set(__self__, "scorecard_properties", scorecard_properties)
+        if scorecard_relations is not None:
+            pulumi.set(__self__, "scorecard_relations", scorecard_relations)
         if scorecards is not None:
             pulumi.set(__self__, "scorecards", scorecards)
         if title is not None:
@@ -266,6 +338,32 @@ class _ScorecardGroupState:
         pulumi.set(self, "filters", value)
 
     @property
+    @pulumi.getter(name="groupProperties")
+    def group_properties(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional `_scorecard_group` blueprint properties applied to the scorecard group entity, as a JSON encoded string.
+        Property keys must match custom properties you added to the `_scorecard_group` blueprint.
+        """
+        return pulumi.get(self, "group_properties")
+
+    @group_properties.setter
+    def group_properties(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_properties", value)
+
+    @property
+    @pulumi.getter(name="groupRelations")
+    def group_relations(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional `_scorecard_group` blueprint relations applied to the scorecard group entity, as a JSON encoded string.
+        Relation values can be a string, an array of strings, or `null` to clear a relation.
+        """
+        return pulumi.get(self, "group_relations")
+
+    @group_relations.setter
+    def group_relations(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_relations", value)
+
+    @property
     @pulumi.getter
     def identifier(self) -> Optional[pulumi.Input[str]]:
         """
@@ -291,19 +389,6 @@ class _ScorecardGroupState:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[str]]:
-        """
-        Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
-        Property keys must match custom properties you added to the `_scorecard` blueprint.
-        """
-        return pulumi.get(self, "properties")
-
-    @properties.setter
-    def properties(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "properties", value)
-
-    @property
-    @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardGroupRuleArgs']]]]:
         """
         The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
@@ -313,6 +398,33 @@ class _ScorecardGroupState:
     @rules.setter
     def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardGroupRuleArgs']]]]):
         pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter(name="scorecardProperties")
+    def scorecard_properties(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+        Property keys must match custom properties you added to the `_scorecard` blueprint.
+        """
+        return pulumi.get(self, "scorecard_properties")
+
+    @scorecard_properties.setter
+    def scorecard_properties(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scorecard_properties", value)
+
+    @property
+    @pulumi.getter(name="scorecardRelations")
+    def scorecard_relations(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional `_scorecard` blueprint relations applied to every member scorecard in the group, as a JSON encoded string.
+        Relation values can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by
+        Port and cannot be set here.
+        """
+        return pulumi.get(self, "scorecard_relations")
+
+    @scorecard_relations.setter
+    def scorecard_relations(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scorecard_relations", value)
 
     @property
     @pulumi.getter
@@ -371,10 +483,13 @@ class ScorecardGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blueprints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  filters: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ScorecardGroupFiltersArgs', 'ScorecardGroupFiltersArgsDict']]]]] = None,
+                 group_properties: Optional[pulumi.Input[str]] = None,
+                 group_relations: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardGroupLevelArgs', 'ScorecardGroupLevelArgsDict']]]]] = None,
-                 properties: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardGroupRuleArgs', 'ScorecardGroupRuleArgsDict']]]]] = None,
+                 scorecard_properties: Optional[pulumi.Input[str]] = None,
+                 scorecard_relations: Optional[pulumi.Input[str]] = None,
                  scorecards: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ScorecardGroupScorecardsArgs', 'ScorecardGroupScorecardsArgsDict']]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -385,11 +500,18 @@ class ScorecardGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blueprints: Blueprint identifiers that share the same rules (and optional filters). Use this for shared-rules mode. Conflicts with
                `scorecards`.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['ScorecardGroupFiltersArgs', 'ScorecardGroupFiltersArgsDict']]]] filters: Optional filters per blueprint in shared-rules mode, keyed by blueprint identifier. Conflicts with `scorecards`.
+        :param pulumi.Input[str] group_properties: Additional `_scorecard_group` blueprint properties applied to the scorecard group entity, as a JSON encoded string.
+               Property keys must match custom properties you added to the `_scorecard_group` blueprint.
+        :param pulumi.Input[str] group_relations: Additional `_scorecard_group` blueprint relations applied to the scorecard group entity, as a JSON encoded string.
+               Relation values can be a string, an array of strings, or `null` to clear a relation.
         :param pulumi.Input[str] identifier: A unique identifier for the scorecard group.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScorecardGroupLevelArgs', 'ScorecardGroupLevelArgsDict']]]] levels: The available levels of the scorecard group, shared by all members.
-        :param pulumi.Input[str] properties: Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
-               Property keys must match custom properties you added to the `_scorecard` blueprint.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScorecardGroupRuleArgs', 'ScorecardGroupRuleArgsDict']]]] rules: The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
+        :param pulumi.Input[str] scorecard_properties: Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+               Property keys must match custom properties you added to the `_scorecard` blueprint.
+        :param pulumi.Input[str] scorecard_relations: Additional `_scorecard` blueprint relations applied to every member scorecard in the group, as a JSON encoded string.
+               Relation values can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by
+               Port and cannot be set here.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['ScorecardGroupScorecardsArgs', 'ScorecardGroupScorecardsArgsDict']]]] scorecards: Map of blueprint identifier to member scorecard filter/rules. Use this for per-blueprint mode. Conflicts with
                `blueprints`, `rules`, and `filters`.
         :param pulumi.Input[str] title: The title of the scorecard group (applied to all member scorecards).
@@ -419,10 +541,13 @@ class ScorecardGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blueprints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  filters: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ScorecardGroupFiltersArgs', 'ScorecardGroupFiltersArgsDict']]]]] = None,
+                 group_properties: Optional[pulumi.Input[str]] = None,
+                 group_relations: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardGroupLevelArgs', 'ScorecardGroupLevelArgsDict']]]]] = None,
-                 properties: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardGroupRuleArgs', 'ScorecardGroupRuleArgsDict']]]]] = None,
+                 scorecard_properties: Optional[pulumi.Input[str]] = None,
+                 scorecard_relations: Optional[pulumi.Input[str]] = None,
                  scorecards: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ScorecardGroupScorecardsArgs', 'ScorecardGroupScorecardsArgsDict']]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -436,12 +561,15 @@ class ScorecardGroup(pulumi.CustomResource):
 
             __props__.__dict__["blueprints"] = blueprints
             __props__.__dict__["filters"] = filters
+            __props__.__dict__["group_properties"] = group_properties
+            __props__.__dict__["group_relations"] = group_relations
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["levels"] = levels
-            __props__.__dict__["properties"] = properties
             __props__.__dict__["rules"] = rules
+            __props__.__dict__["scorecard_properties"] = scorecard_properties
+            __props__.__dict__["scorecard_relations"] = scorecard_relations
             __props__.__dict__["scorecards"] = scorecards
             if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
@@ -464,10 +592,13 @@ class ScorecardGroup(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[str]] = None,
             created_by: Optional[pulumi.Input[str]] = None,
             filters: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ScorecardGroupFiltersArgs', 'ScorecardGroupFiltersArgsDict']]]]] = None,
+            group_properties: Optional[pulumi.Input[str]] = None,
+            group_relations: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardGroupLevelArgs', 'ScorecardGroupLevelArgsDict']]]]] = None,
-            properties: Optional[pulumi.Input[str]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardGroupRuleArgs', 'ScorecardGroupRuleArgsDict']]]]] = None,
+            scorecard_properties: Optional[pulumi.Input[str]] = None,
+            scorecard_relations: Optional[pulumi.Input[str]] = None,
             scorecards: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ScorecardGroupScorecardsArgs', 'ScorecardGroupScorecardsArgsDict']]]]] = None,
             title: Optional[pulumi.Input[str]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
@@ -484,11 +615,18 @@ class ScorecardGroup(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: The creation date of the scorecard group.
         :param pulumi.Input[str] created_by: The creator of the scorecard group.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['ScorecardGroupFiltersArgs', 'ScorecardGroupFiltersArgsDict']]]] filters: Optional filters per blueprint in shared-rules mode, keyed by blueprint identifier. Conflicts with `scorecards`.
+        :param pulumi.Input[str] group_properties: Additional `_scorecard_group` blueprint properties applied to the scorecard group entity, as a JSON encoded string.
+               Property keys must match custom properties you added to the `_scorecard_group` blueprint.
+        :param pulumi.Input[str] group_relations: Additional `_scorecard_group` blueprint relations applied to the scorecard group entity, as a JSON encoded string.
+               Relation values can be a string, an array of strings, or `null` to clear a relation.
         :param pulumi.Input[str] identifier: A unique identifier for the scorecard group.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScorecardGroupLevelArgs', 'ScorecardGroupLevelArgsDict']]]] levels: The available levels of the scorecard group, shared by all members.
-        :param pulumi.Input[str] properties: Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
-               Property keys must match custom properties you added to the `_scorecard` blueprint.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScorecardGroupRuleArgs', 'ScorecardGroupRuleArgsDict']]]] rules: The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
+        :param pulumi.Input[str] scorecard_properties: Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+               Property keys must match custom properties you added to the `_scorecard` blueprint.
+        :param pulumi.Input[str] scorecard_relations: Additional `_scorecard` blueprint relations applied to every member scorecard in the group, as a JSON encoded string.
+               Relation values can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by
+               Port and cannot be set here.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['ScorecardGroupScorecardsArgs', 'ScorecardGroupScorecardsArgsDict']]]] scorecards: Map of blueprint identifier to member scorecard filter/rules. Use this for per-blueprint mode. Conflicts with
                `blueprints`, `rules`, and `filters`.
         :param pulumi.Input[str] title: The title of the scorecard group (applied to all member scorecards).
@@ -503,10 +641,13 @@ class ScorecardGroup(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
         __props__.__dict__["filters"] = filters
+        __props__.__dict__["group_properties"] = group_properties
+        __props__.__dict__["group_relations"] = group_relations
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["levels"] = levels
-        __props__.__dict__["properties"] = properties
         __props__.__dict__["rules"] = rules
+        __props__.__dict__["scorecard_properties"] = scorecard_properties
+        __props__.__dict__["scorecard_relations"] = scorecard_relations
         __props__.__dict__["scorecards"] = scorecards
         __props__.__dict__["title"] = title
         __props__.__dict__["updated_at"] = updated_at
@@ -547,6 +688,24 @@ class ScorecardGroup(pulumi.CustomResource):
         return pulumi.get(self, "filters")
 
     @property
+    @pulumi.getter(name="groupProperties")
+    def group_properties(self) -> pulumi.Output[Optional[str]]:
+        """
+        Additional `_scorecard_group` blueprint properties applied to the scorecard group entity, as a JSON encoded string.
+        Property keys must match custom properties you added to the `_scorecard_group` blueprint.
+        """
+        return pulumi.get(self, "group_properties")
+
+    @property
+    @pulumi.getter(name="groupRelations")
+    def group_relations(self) -> pulumi.Output[Optional[str]]:
+        """
+        Additional `_scorecard_group` blueprint relations applied to the scorecard group entity, as a JSON encoded string.
+        Relation values can be a string, an array of strings, or `null` to clear a relation.
+        """
+        return pulumi.get(self, "group_relations")
+
+    @property
     @pulumi.getter
     def identifier(self) -> pulumi.Output[str]:
         """
@@ -564,20 +723,30 @@ class ScorecardGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def properties(self) -> pulumi.Output[Optional[str]]:
-        """
-        Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
-        Property keys must match custom properties you added to the `_scorecard` blueprint.
-        """
-        return pulumi.get(self, "properties")
-
-    @property
-    @pulumi.getter
     def rules(self) -> pulumi.Output[Optional[Sequence['outputs.ScorecardGroupRule']]]:
         """
         The rules applied to every blueprint in shared-rules mode. Conflicts with `scorecards`.
         """
         return pulumi.get(self, "rules")
+
+    @property
+    @pulumi.getter(name="scorecardProperties")
+    def scorecard_properties(self) -> pulumi.Output[Optional[str]]:
+        """
+        Additional `_scorecard` blueprint properties applied to every member scorecard in the group, as a JSON encoded string.
+        Property keys must match custom properties you added to the `_scorecard` blueprint.
+        """
+        return pulumi.get(self, "scorecard_properties")
+
+    @property
+    @pulumi.getter(name="scorecardRelations")
+    def scorecard_relations(self) -> pulumi.Output[Optional[str]]:
+        """
+        Additional `_scorecard` blueprint relations applied to every member scorecard in the group, as a JSON encoded string.
+        Relation values can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by
+        Port and cannot be set here.
+        """
+        return pulumi.get(self, "scorecard_relations")
 
     @property
     @pulumi.getter
