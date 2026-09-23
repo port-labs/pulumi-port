@@ -1,0 +1,106 @@
+name: Create provider release
+
+run-name: Create provider release ${{ inputs.version }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Provider version (e.g. v2.26.0)
+        required: true
+        type: string
+      port_run_id:
+        description: Port run ID (optional, set by the SSA)
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: create-release-${{ github.workflow }}-${{ inputs.version }}
+  cancel-in-progress: false
+
+jobs:
+  wait_for_terraform_registry:
+    name: Wait for Terraform Registry
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Skip registry wait until SSA publishes
+        run: echo "Registry wait is disabled until create-release publishes instead of creating an unpublished GitHub release."
+
+      - name: Poll Terraform Registry for version
+        # Enable when create-release publishes instead of creating an unpublished GitHub release.
+        if: false
+        env:
+          RAW_VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          VERSION="${RAW_VERSION#v}"
+          URL="https://registry.terraform.io/v1/providers/port-labs/port-labs/${VERSION}"
+          echo "Waiting for ${URL}"
+          for _ in $(seq 1 60); do
+            if curl -fsS "$URL" >/dev/null; then
+              echo "Found ${VERSION} on the Terraform Registry"
+              exit 0
+            fi
+            echo "Not published yet, retrying in 30s..."
+            sleep 30
+          done
+          echo "::error::Timed out waiting for terraform-provider-port-labs ${VERSION} on the Terraform Registry"
+          exit 1
+
+  upgrade_provider:
+    name: Upgrade TF provider
+    needs: wait_for_terraform_registry
+    uses: ./.github/workflows/upgrade-provider-only.yaml
+    secrets: inherit
+    permissions:
+      contents: write
+
+  create_release:
+    name: Create GitHub release
+    needs: [wait_for_terraform_registry, upgrade_provider]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Normalize version
+        id: normalize
+        env:
+          RAW_VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          VERSION="${RAW_VERSION#v}"
+          if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Version must be X.Y.Z or vX.Y.Z, got: ${RAW_VERSION}"
+            exit 1
+          fi
+          VERSION="v${VERSION}"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "Using version ${VERSION}"
+
+      - name: Fail if tag already exists
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.normalize.outputs.version }}
+        run: |
+          set -euo pipefail
+          if gh api "repos/${GITHUB_REPOSITORY}/git/refs/tags/${VERSION}" --silent >/dev/null 2>&1; then
+            echo "::error::Tag ${VERSION} already exists in ${GITHUB_REPOSITORY}"
+            exit 1
+          fi
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.normalize.outputs.version }}
+        run: |
+          set -euo pipefail
+          # Keep --draft until this SSA publishes. Drop the flag when flipping to publish.
+          gh release create "$VERSION" \
+            --draft \
+            --generate-notes \
+            --title "$VERSION" \
+            --target "${{ github.event.repository.default_branch }}"
+          echo "Created GitHub release ${VERSION}"
