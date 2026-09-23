@@ -2,6 +2,11 @@ name: Create provider release
 
 run-name: Create provider release ${{ inputs.version }}
 
+# Temporarily pinned to this branch for pre-merge testing. After merge, retarget
+# gh release --target to the default branch.
+env:
+  RELEASE_REF: task_tdscp0/automate_the_process_of_tf_provider_and_pulumi_releases
+
 on:
   workflow_dispatch:
     inputs:
@@ -13,6 +18,19 @@ on:
         description: Port run ID (optional, set by the SSA)
         required: false
         type: string
+  workflow_call:
+    inputs:
+      version:
+        description: Provider version (e.g. v2.26.0)
+        required: true
+        type: string
+      port_run_id:
+        description: Port run ID (optional, set by the SSA)
+        required: false
+        type: string
+    secrets:
+      PORT_MACHINE_USER_GITHUB_TOKEN:
+        required: true
 
 permissions:
   contents: write
@@ -102,5 +120,5 @@ jobs:
             --draft \
             --generate-notes \
             --title "$VERSION" \
-            --target "${{ github.event.repository.default_branch }}"
-          echo "Created GitHub release ${VERSION}"
+            --target "$RELEASE_REF"
+          echo "Created GitHub release ${VERSION} on ${RELEASE_REF}"
