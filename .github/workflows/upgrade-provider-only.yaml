@@ -33,6 +33,16 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.ref_name }}
 
+      # upgrade-provider runs `git show main:provider/go.mod`. Checkout of a
+      # non-default branch does not create a local main ref.
+      - name: Fetch main for upgrade-provider
+        run: |
+          set -euo pipefail
+          git fetch origin refs/heads/main:refs/remotes/origin/main
+          if [[ "$(git rev-parse --abbrev-ref HEAD)" != "main" ]]; then
+            git branch -f main origin/main
+          fi
+
       - name: Setup mise
         uses: jdx/mise-action@v3
         with:
