@@ -75,7 +75,10 @@ jobs:
     name: Upgrade TF provider
     needs: wait_for_terraform_registry
     uses: ./.github/workflows/upgrade-provider-only.yaml
-    secrets: inherit
+    with:
+      version: ${{ inputs.version }}
+    secrets:
+      PORT_MACHINE_USER_GITHUB_TOKEN: ${{ secrets.PORT_MACHINE_USER_GITHUB_TOKEN }}
     permissions:
       contents: write
 
@@ -84,10 +87,15 @@ jobs:
     needs: [wait_for_terraform_registry, upgrade_provider]
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ secrets.PORT_MACHINE_USER_GITHUB_TOKEN }}
+      GH_REPO: port-labs/pulumi-port
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          repository: port-labs/pulumi-port
+          token: ${{ secrets.PORT_MACHINE_USER_GITHUB_TOKEN }}
           fetch-depth: 0
           ref: ${{ env.RELEASE_REF }}
 
@@ -108,23 +116,22 @@ jobs:
 
       - name: Fail if tag already exists
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: ${{ steps.normalize.outputs.version }}
         run: |
           set -euo pipefail
-          if gh api "repos/${GITHUB_REPOSITORY}/git/refs/tags/${VERSION}" --silent >/dev/null 2>&1; then
-            echo "::error::Tag ${VERSION} already exists in ${GITHUB_REPOSITORY}"
+          if gh api "repos/${GH_REPO}/git/refs/tags/${VERSION}" --silent >/dev/null 2>&1; then
+            echo "::error::Tag ${VERSION} already exists in ${GH_REPO}"
             exit 1
           fi
 
       - name: Create GitHub release
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: ${{ steps.normalize.outputs.version }}
         run: |
           set -euo pipefail
           # Keep --draft until this SSA publishes. Drop the flag when flipping to publish.
           gh release create "$VERSION" \
+            --repo "$GH_REPO" \
             --draft \
             --generate-notes \
             --title "$VERSION" \
