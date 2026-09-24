@@ -47,14 +47,21 @@ jobs:
         run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic)" >> $GITHUB_ENV
       - uses: sigstore/cosign-installer@dc72c7d5c4d10cd6bcb8cf6e3fd625a9e5e537da # v3.7.0
       - uses: anchore/sbom-action/download-syft@f325610c9f50a54015d37c8d16cb3b0e2c8f4de0 # v0.18.0
-      - name: Check if release exists
+      - name: Check if published release already has binaries
         id: check_release
         run: |
-          if gh release view "${{ github.ref_name }}" &>/dev/null; then
-            echo "exists=true" >> $GITHUB_OUTPUT
-            echo "Release ${{ github.ref_name }} already exists, skipping GoReleaser..."
+          TAG="${{ github.ref_name }}"
+          if ! gh release view "$TAG" &>/dev/null; then
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          IS_DRAFT=$(gh release view "$TAG" --json isDraft --jq .isDraft)
+          ASSET_COUNT=$(gh release view "$TAG" --json assets --jq '.assets | length')
+          if [[ "$IS_DRAFT" == "false" && "$ASSET_COUNT" -gt 0 ]]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "Published release ${TAG} already has assets, skipping GoReleaser..."
           else
-            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "exists=false" >> "$GITHUB_OUTPUT"
           fi
       - name: Run GoReleaser
         if: steps.check_release.outputs.exists != 'true'

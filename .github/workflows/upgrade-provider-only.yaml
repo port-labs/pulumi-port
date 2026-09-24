@@ -1,27 +1,86 @@
+name: Upgrade the TF provider only
+
+on:
+  workflow_dispatch: {}
+  workflow_call:
+    inputs:
+      version:
+        description: Upstream Terraform provider version (e.g. v2.26.0)
+        required: false
+        type: string
+        default: ""
+    secrets:
+      PORT_MACHINE_USER_GITHUB_TOKEN:
+        required: true
+
+permissions:
+  contents: write
+
 env:
   GH_TOKEN: ${{ secrets.PORT_MACHINE_USER_GITHUB_TOKEN }}
+  PULUMI_PROVIDER_REPO: port-labs/pulumi-port
+
 jobs:
   upgrade_provider:
     name: upgrade-provider
     runs-on: ubuntu-latest
     steps:
-    - name: Setup mise
-      uses: jdx/mise-action@v3
-      with:
-        github_token: ${{ secrets.PORT_MACHINE_USER_GITHUB_TOKEN }}
-        cache_key: "mise-{{platform}}-{{file_hash}}"
-        # only saving the cache in the prerequisites job
-        cache_save: false
-    - name: Call upgrade provider action
-      uses: pulumi/pulumi-upgrade-provider-action@f399a75a5350242c291cc720eece1c72cb6ea712 # v0.0.12
-      with:
-        kind: provider
-        email: getport.io
-        username: pulumi-port-bot
-name: Upgrade the TF provider only
+      - name: Checkout pulumi-port
+        uses: actions/checkout@v4
+        with:
+          repository: port-labs/pulumi-port
+          token: ${{ secrets.PORT_MACHINE_USER_GITHUB_TOKEN }}
+          fetch-depth: 0
+          ref: main
 
-permissions:
-  contents: write
+      - name: Setup mise
+        uses: jdx/mise-action@v3
+        with:
+          github_token: ${{ secrets.PORT_MACHINE_USER_GITHUB_TOKEN }}
+          cache_key: "mise-{{platform}}-{{file_hash}}"
+          cache_save: false
 
-on:
-  workflow_dispatch: {}
+      - name: Install Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: provider/go.mod
+          cache-dependency-path: provider/go.sum
+
+      - name: Install Pulumi CLI
+        uses: pulumi/actions@v4
+
+      - name: Install upgrade-provider
+        run: go install github.com/pulumi/upgrade-provider@main
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "7.6"
+
+      - name: Set up git identity
+        run: |
+          git config --global user.name 'pulumi-port-bot'
+          git config --global user.email 'getport.io'
+
+      - name: Run upgrade-provider
+        env:
+          RAW_VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          extra=()
+          if [[ -n "${RAW_VERSION}" ]]; then
+            extra+=(--target-version "${RAW_VERSION#v}")
+          fi
+          upgrade-provider "$PULUMI_PROVIDER_REPO" \
+            --kind=provider \
+            --repo-path=. \
+            --no-submit \
+            --target-bridge-version=latest \
+            "${extra[@]}"
+
+      - name: Push upgrade to main
+        run: |
+          set -euo pipefail
+          git status
+          git log -5 --oneline
+          git push origin HEAD:main

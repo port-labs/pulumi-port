@@ -1,11 +1,6 @@
 name: Create provider release
 
-# Stub on the default branch so GitHub will accept workflow_dispatch and
-# workflow_call of create-release.yaml from other refs. The Terraform
-# create-release workflow calls this file via uses:. Replace this stub by
-# merging the real create-release workflow.
-
-permissions: {}
+run-name: Create provider release ${{ inputs.version }}
 
 on:
   workflow_dispatch:
@@ -32,13 +27,100 @@ on:
       PORT_MACHINE_USER_GITHUB_TOKEN:
         required: true
 
+permissions:
+  contents: write
+
+# Distinct from terraform-provider-port-labs create-release. Nested reusable
+# workflows that share a concurrency group deadlock in the caller repo.
+concurrency:
+  group: pulumi-port-create-release-${{ inputs.version }}
+  cancel-in-progress: false
+
 jobs:
-  refuse:
-    name: Stub only
+  wait_for_terraform_registry:
+    name: Wait for Terraform Registry
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 45
     steps:
-      - name: Refuse default-branch runs
+      - name: Poll Terraform Registry for version
+        env:
+          RAW_VERSION: ${{ inputs.version }}
         run: |
-          echo "::error::create-release.yaml on the default branch is a GitHub dispatch stub. Dispatch task_tdscp0/automate_the_process_of_tf_provider_and_pulumi_releases."
+          set -euo pipefail
+          VERSION="${RAW_VERSION#v}"
+          URL="https://registry.terraform.io/v1/providers/port-labs/port-labs/${VERSION}"
+          echo "Waiting for ${URL}"
+          for _ in $(seq 1 60); do
+            if curl -fsS "$URL" >/dev/null; then
+              echo "Found ${VERSION} on the Terraform Registry"
+              exit 0
+            fi
+            echo "Not published yet, retrying in 30s..."
+            sleep 30
+          done
+          echo "::error::Timed out waiting for terraform-provider-port-labs ${VERSION} on the Terraform Registry"
           exit 1
+
+  upgrade_provider:
+    name: Upgrade TF provider
+    needs: wait_for_terraform_registry
+    uses: ./.github/workflows/upgrade-provider-only.yaml
+    with:
+      version: ${{ inputs.version }}
+    secrets:
+      PORT_MACHINE_USER_GITHUB_TOKEN: ${{ secrets.PORT_MACHINE_USER_GITHUB_TOKEN }}
+    permissions:
+      contents: write
+
+  create_release:
+    name: Create GitHub release
+    needs: [wait_for_terraform_registry, upgrade_provider]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ secrets.PORT_MACHINE_USER_GITHUB_TOKEN }}
+      GH_REPO: port-labs/pulumi-port
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          repository: port-labs/pulumi-port
+          token: ${{ secrets.PORT_MACHINE_USER_GITHUB_TOKEN }}
+          fetch-depth: 0
+          ref: main
+
+      - name: Normalize version
+        id: normalize
+        env:
+          RAW_VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          VERSION="${RAW_VERSION#v}"
+          if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Version must be X.Y.Z or vX.Y.Z, got: ${RAW_VERSION}"
+            exit 1
+          fi
+          VERSION="v${VERSION}"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "Using version ${VERSION}"
+
+      - name: Fail if tag already exists
+        env:
+          VERSION: ${{ steps.normalize.outputs.version }}
+        run: |
+          set -euo pipefail
+          if gh api "repos/${GH_REPO}/git/refs/tags/${VERSION}" --silent >/dev/null 2>&1; then
+            echo "::error::Tag ${VERSION} already exists in ${GH_REPO}"
+            exit 1
+          fi
+
+      - name: Create GitHub release
+        env:
+          VERSION: ${{ steps.normalize.outputs.version }}
+        run: |
+          set -euo pipefail
+          gh release create "$VERSION" \
+            --repo "$GH_REPO" \
+            --generate-notes \
+            --title "$VERSION"
+          echo "Created GitHub release ${VERSION}"
