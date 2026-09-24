@@ -124,3 +124,54 @@ jobs:
             --generate-notes \
             --title "$VERSION"
           echo "Created GitHub release ${VERSION}"
+
+  wait_for_packages:
+    name: Wait for Go, npm, and PyPI packages
+    needs: create_release
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Poll Go, npm, and PyPI for version
+        env:
+          RAW_VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          VERSION="${RAW_VERSION#v}"
+          GO_URL="https://pkg.go.dev/github.com/port-labs/terraform-provider-port-labs/v2@v${VERSION}/provider"
+          NPM_URL="https://registry.npmjs.org/@port-labs/port/${VERSION}"
+          PYPI_URL="https://pypi.org/pypi/port-pulumi/${VERSION}/json"
+          echo "Waiting up to 30 minutes for:"
+          echo "  Go   ${GO_URL}"
+          echo "  npm  https://www.npmjs.com/package/@port-labs/port"
+          echo "  PyPI https://pypi.org/project/port-pulumi/${VERSION}/"
+
+          published() {
+            curl -fsS -o /dev/null "$1"
+          }
+
+          for _ in $(seq 1 60); do
+            missing=()
+            if published "$GO_URL"; then
+              echo "Found Go module terraform-provider-port-labs/v2@v${VERSION}"
+            else
+              missing+=("Go")
+            fi
+            if published "$NPM_URL"; then
+              echo "Found npm @port-labs/port@${VERSION}"
+            else
+              missing+=("npm")
+            fi
+            if published "$PYPI_URL"; then
+              echo "Found PyPI port-pulumi ${VERSION}"
+            else
+              missing+=("PyPI")
+            fi
+            if [[ ${#missing[@]} -eq 0 ]]; then
+              echo "Go, npm, and PyPI packages are published"
+              exit 0
+            fi
+            echo "Still waiting on: ${missing[*]}. Retrying in 30s..."
+            sleep 30
+          done
+          echo "::error::Timed out waiting 30 minutes for Go, npm, and/or PyPI packages at ${VERSION}"
+          exit 1
