@@ -43,8 +43,8 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v5
         with:
-          go-version-file: go.mod
-          cache: true
+          go-version-file: provider/go.mod
+          cache-dependency-path: provider/go.sum
 
       - name: Install Pulumi CLI
         uses: pulumi/actions@v4
