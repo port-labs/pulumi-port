@@ -40,7 +40,7 @@ jobs:
   wait_for_terraform_registry:
     name: Wait for Terraform Registry
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 70
     steps:
       - name: Poll Terraform Registry for version
         env:
@@ -49,8 +49,8 @@ jobs:
           set -euo pipefail
           VERSION="${RAW_VERSION#v}"
           URL="https://registry.terraform.io/v1/providers/port-labs/port-labs/${VERSION}"
-          echo "Waiting for ${URL}"
-          for _ in $(seq 1 60); do
+          echo "Waiting up to 1 hour for ${URL}"
+          for _ in $(seq 1 120); do
             if curl -fsS "$URL" >/dev/null; then
               echo "Found ${VERSION} on the Terraform Registry"
               exit 0
@@ -58,7 +58,7 @@ jobs:
             echo "Not published yet, retrying in 30s..."
             sleep 30
           done
-          echo "::error::Timed out waiting for terraform-provider-port-labs ${VERSION} on the Terraform Registry"
+          echo "::error::Timed out waiting 1 hour for terraform-provider-port-labs ${VERSION} on the Terraform Registry"
           exit 1
 
   upgrade_provider:
