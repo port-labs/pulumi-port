@@ -1,8 +1,9 @@
 name: Create provider release
 
-# Stub on the default branch so GitHub will accept workflow_dispatch of
-# create-release.yaml from other refs. Replace this file by merging the real
-# create-release workflow.
+# Stub on the default branch so GitHub will accept workflow_dispatch and
+# workflow_call of create-release.yaml from other refs. The Terraform
+# create-release workflow calls this file via uses:. Replace this stub by
+# merging the real create-release workflow.
 
 permissions: {}
 
@@ -17,6 +18,19 @@ on:
         description: Port run ID (optional, set by the SSA)
         required: false
         type: string
+  workflow_call:
+    inputs:
+      version:
+        description: Provider version (e.g. v2.26.0)
+        required: true
+        type: string
+      port_run_id:
+        description: Port run ID (optional, set by the SSA)
+        required: false
+        type: string
+    secrets:
+      PORT_MACHINE_USER_GITHUB_TOKEN:
+        required: true
 
 jobs:
   refuse:
