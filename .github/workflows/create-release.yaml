@@ -2,11 +2,6 @@ name: Create provider release
 
 run-name: Create provider release ${{ inputs.version }}
 
-# Temporarily pinned to this branch for pre-merge testing. After merge, retarget
-# gh release --target to the default branch.
-env:
-  RELEASE_REF: task_tdscp0/automate_the_process_of_tf_provider_and_pulumi_releases
-
 on:
   workflow_dispatch:
     inputs:
@@ -47,12 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
-      - name: Skip registry wait until SSA publishes
-        run: echo "Registry wait is disabled until create-release publishes instead of creating an unpublished GitHub release."
-
       - name: Poll Terraform Registry for version
-        # Enable when create-release publishes instead of creating an unpublished GitHub release.
-        if: false
         env:
           RAW_VERSION: ${{ inputs.version }}
         run: |
@@ -97,7 +87,7 @@ jobs:
           repository: port-labs/pulumi-port
           token: ${{ secrets.PORT_MACHINE_USER_GITHUB_TOKEN }}
           fetch-depth: 0
-          ref: ${{ env.RELEASE_REF }}
+          ref: main
 
       - name: Normalize version
         id: normalize
@@ -129,11 +119,8 @@ jobs:
           VERSION: ${{ steps.normalize.outputs.version }}
         run: |
           set -euo pipefail
-          # Keep --draft until this SSA publishes. Drop the flag when flipping to publish.
           gh release create "$VERSION" \
             --repo "$GH_REPO" \
-            --draft \
             --generate-notes \
-            --title "$VERSION" \
-            --target "$RELEASE_REF"
-          echo "Created GitHub release ${VERSION} on ${RELEASE_REF}"
+            --title "$VERSION"
+          echo "Created GitHub release ${VERSION}"

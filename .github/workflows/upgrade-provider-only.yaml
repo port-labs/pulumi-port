@@ -31,17 +31,7 @@ jobs:
           repository: port-labs/pulumi-port
           token: ${{ secrets.PORT_MACHINE_USER_GITHUB_TOKEN }}
           fetch-depth: 0
-          ref: ${{ github.ref_name }}
-
-      # upgrade-provider runs `git show main:provider/go.mod`. Checkout of a
-      # non-default branch does not create a local main ref.
-      - name: Fetch main for upgrade-provider
-        run: |
-          set -euo pipefail
-          git fetch origin refs/heads/main:refs/remotes/origin/main
-          if [[ "$(git rev-parse --abbrev-ref HEAD)" != "main" ]]; then
-            git branch -f main origin/main
-          fi
+          ref: main
 
       - name: Setup mise
         uses: jdx/mise-action@v3
@@ -84,5 +74,13 @@ jobs:
           upgrade-provider "$PULUMI_PROVIDER_REPO" \
             --kind=provider \
             --repo-path=. \
+            --no-submit \
             --target-bridge-version=latest \
             "${extra[@]}"
+
+      - name: Push upgrade to main
+        run: |
+          set -euo pipefail
+          git status
+          git log -5 --oneline
+          git push origin HEAD:main
