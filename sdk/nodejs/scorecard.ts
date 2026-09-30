@@ -59,6 +59,17 @@ export class Scorecard extends pulumi.CustomResource {
      */
     public readonly levels!: pulumi.Output<outputs.ScorecardLevel[] | undefined>;
     /**
+     * Additional `_scorecard` blueprint properties applied to the scorecard entity, as a JSON encoded string. Property keys
+     * must match custom properties you added to the `_scorecard` blueprint.
+     */
+    public readonly properties!: pulumi.Output<string | undefined>;
+    /**
+     * Additional `_scorecard` blueprint relations applied to the scorecard entity, as a JSON encoded string. Relation values
+     * can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by Port and cannot
+     * be set here.
+     */
+    public readonly relations!: pulumi.Output<string | undefined>;
+    /**
      * The rules of the scorecard
      */
     public readonly rules!: pulumi.Output<outputs.ScorecardRule[]>;
@@ -94,6 +105,8 @@ export class Scorecard extends pulumi.CustomResource {
             resourceInputs["filter"] = state ? state.filter : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["levels"] = state ? state.levels : undefined;
+            resourceInputs["properties"] = state ? state.properties : undefined;
+            resourceInputs["relations"] = state ? state.relations : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
@@ -116,6 +129,8 @@ export class Scorecard extends pulumi.CustomResource {
             resourceInputs["filter"] = args ? args.filter : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["levels"] = args ? args.levels : undefined;
+            resourceInputs["properties"] = args ? args.properties : undefined;
+            resourceInputs["relations"] = args ? args.relations : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
@@ -157,6 +172,17 @@ export interface ScorecardState {
      */
     levels?: pulumi.Input<pulumi.Input<inputs.ScorecardLevel>[]>;
     /**
+     * Additional `_scorecard` blueprint properties applied to the scorecard entity, as a JSON encoded string. Property keys
+     * must match custom properties you added to the `_scorecard` blueprint.
+     */
+    properties?: pulumi.Input<string>;
+    /**
+     * Additional `_scorecard` blueprint relations applied to the scorecard entity, as a JSON encoded string. Relation values
+     * can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by Port and cannot
+     * be set here.
+     */
+    relations?: pulumi.Input<string>;
+    /**
      * The rules of the scorecard
      */
     rules?: pulumi.Input<pulumi.Input<inputs.ScorecardRule>[]>;
@@ -194,6 +220,17 @@ export interface ScorecardArgs {
      * The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
      */
     levels?: pulumi.Input<pulumi.Input<inputs.ScorecardLevel>[]>;
+    /**
+     * Additional `_scorecard` blueprint properties applied to the scorecard entity, as a JSON encoded string. Property keys
+     * must match custom properties you added to the `_scorecard` blueprint.
+     */
+    properties?: pulumi.Input<string>;
+    /**
+     * Additional `_scorecard` blueprint relations applied to the scorecard entity, as a JSON encoded string. Relation values
+     * can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by Port and cannot
+     * be set here.
+     */
+    relations?: pulumi.Input<string>;
     /**
      * The rules of the scorecard
      */

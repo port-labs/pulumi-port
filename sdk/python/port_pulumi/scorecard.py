@@ -26,7 +26,9 @@ class ScorecardArgs:
                  rules: pulumi.Input[Sequence[pulumi.Input['ScorecardRuleArgs']]],
                  title: pulumi.Input[str],
                  filter: Optional[pulumi.Input['ScorecardFilterArgs']] = None,
-                 levels: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardLevelArgs']]]] = None):
+                 levels: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardLevelArgs']]]] = None,
+                 properties: Optional[pulumi.Input[str]] = None,
+                 relations: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Scorecard resource.
         :param pulumi.Input[str] blueprint: The blueprint of the scorecard
@@ -35,6 +37,11 @@ class ScorecardArgs:
         :param pulumi.Input[str] title: The title of the scorecard
         :param pulumi.Input['ScorecardFilterArgs'] filter: The filter to apply on the entities before calculating the scorecard
         :param pulumi.Input[Sequence[pulumi.Input['ScorecardLevelArgs']]] levels: The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
+        :param pulumi.Input[str] properties: Additional `_scorecard` blueprint properties applied to the scorecard entity, as a JSON encoded string. Property keys
+               must match custom properties you added to the `_scorecard` blueprint.
+        :param pulumi.Input[str] relations: Additional `_scorecard` blueprint relations applied to the scorecard entity, as a JSON encoded string. Relation values
+               can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by Port and cannot
+               be set here.
         """
         pulumi.set(__self__, "blueprint", blueprint)
         pulumi.set(__self__, "identifier", identifier)
@@ -44,6 +51,10 @@ class ScorecardArgs:
             pulumi.set(__self__, "filter", filter)
         if levels is not None:
             pulumi.set(__self__, "levels", levels)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if relations is not None:
+            pulumi.set(__self__, "relations", relations)
 
     @property
     @pulumi.getter
@@ -117,6 +128,33 @@ class ScorecardArgs:
     def levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardLevelArgs']]]]):
         pulumi.set(self, "levels", value)
 
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional `_scorecard` blueprint properties applied to the scorecard entity, as a JSON encoded string. Property keys
+        must match custom properties you added to the `_scorecard` blueprint.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter
+    def relations(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional `_scorecard` blueprint relations applied to the scorecard entity, as a JSON encoded string. Relation values
+        can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by Port and cannot
+        be set here.
+        """
+        return pulumi.get(self, "relations")
+
+    @relations.setter
+    def relations(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relations", value)
+
 
 @pulumi.input_type
 class _ScorecardState:
@@ -127,6 +165,8 @@ class _ScorecardState:
                  filter: Optional[pulumi.Input['ScorecardFilterArgs']] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  levels: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardLevelArgs']]]] = None,
+                 properties: Optional[pulumi.Input[str]] = None,
+                 relations: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardRuleArgs']]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
@@ -139,6 +179,11 @@ class _ScorecardState:
         :param pulumi.Input['ScorecardFilterArgs'] filter: The filter to apply on the entities before calculating the scorecard
         :param pulumi.Input[str] identifier: The identifier of the scorecard
         :param pulumi.Input[Sequence[pulumi.Input['ScorecardLevelArgs']]] levels: The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
+        :param pulumi.Input[str] properties: Additional `_scorecard` blueprint properties applied to the scorecard entity, as a JSON encoded string. Property keys
+               must match custom properties you added to the `_scorecard` blueprint.
+        :param pulumi.Input[str] relations: Additional `_scorecard` blueprint relations applied to the scorecard entity, as a JSON encoded string. Relation values
+               can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by Port and cannot
+               be set here.
         :param pulumi.Input[Sequence[pulumi.Input['ScorecardRuleArgs']]] rules: The rules of the scorecard
         :param pulumi.Input[str] title: The title of the scorecard
         :param pulumi.Input[str] updated_at: The last update date of the scorecard
@@ -156,6 +201,10 @@ class _ScorecardState:
             pulumi.set(__self__, "identifier", identifier)
         if levels is not None:
             pulumi.set(__self__, "levels", levels)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if relations is not None:
+            pulumi.set(__self__, "relations", relations)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if title is not None:
@@ -239,6 +288,33 @@ class _ScorecardState:
 
     @property
     @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional `_scorecard` blueprint properties applied to the scorecard entity, as a JSON encoded string. Property keys
+        must match custom properties you added to the `_scorecard` blueprint.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter
+    def relations(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional `_scorecard` blueprint relations applied to the scorecard entity, as a JSON encoded string. Relation values
+        can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by Port and cannot
+        be set here.
+        """
+        return pulumi.get(self, "relations")
+
+    @relations.setter
+    def relations(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relations", value)
+
+    @property
+    @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScorecardRuleArgs']]]]:
         """
         The rules of the scorecard
@@ -295,6 +371,8 @@ class Scorecard(pulumi.CustomResource):
                  filter: Optional[pulumi.Input[Union['ScorecardFilterArgs', 'ScorecardFilterArgsDict']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardLevelArgs', 'ScorecardLevelArgsDict']]]]] = None,
+                 properties: Optional[pulumi.Input[str]] = None,
+                 relations: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardRuleArgs', 'ScorecardRuleArgsDict']]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -306,6 +384,11 @@ class Scorecard(pulumi.CustomResource):
         :param pulumi.Input[Union['ScorecardFilterArgs', 'ScorecardFilterArgsDict']] filter: The filter to apply on the entities before calculating the scorecard
         :param pulumi.Input[str] identifier: The identifier of the scorecard
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScorecardLevelArgs', 'ScorecardLevelArgsDict']]]] levels: The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
+        :param pulumi.Input[str] properties: Additional `_scorecard` blueprint properties applied to the scorecard entity, as a JSON encoded string. Property keys
+               must match custom properties you added to the `_scorecard` blueprint.
+        :param pulumi.Input[str] relations: Additional `_scorecard` blueprint relations applied to the scorecard entity, as a JSON encoded string. Relation values
+               can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by Port and cannot
+               be set here.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScorecardRuleArgs', 'ScorecardRuleArgsDict']]]] rules: The rules of the scorecard
         :param pulumi.Input[str] title: The title of the scorecard
         """
@@ -336,6 +419,8 @@ class Scorecard(pulumi.CustomResource):
                  filter: Optional[pulumi.Input[Union['ScorecardFilterArgs', 'ScorecardFilterArgsDict']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardLevelArgs', 'ScorecardLevelArgsDict']]]]] = None,
+                 properties: Optional[pulumi.Input[str]] = None,
+                 relations: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardRuleArgs', 'ScorecardRuleArgsDict']]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -355,6 +440,8 @@ class Scorecard(pulumi.CustomResource):
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["levels"] = levels
+            __props__.__dict__["properties"] = properties
+            __props__.__dict__["relations"] = relations
             if rules is None and not opts.urn:
                 raise TypeError("Missing required property 'rules'")
             __props__.__dict__["rules"] = rules
@@ -381,6 +468,8 @@ class Scorecard(pulumi.CustomResource):
             filter: Optional[pulumi.Input[Union['ScorecardFilterArgs', 'ScorecardFilterArgsDict']]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardLevelArgs', 'ScorecardLevelArgsDict']]]]] = None,
+            properties: Optional[pulumi.Input[str]] = None,
+            relations: Optional[pulumi.Input[str]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScorecardRuleArgs', 'ScorecardRuleArgsDict']]]]] = None,
             title: Optional[pulumi.Input[str]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
@@ -398,6 +487,11 @@ class Scorecard(pulumi.CustomResource):
         :param pulumi.Input[Union['ScorecardFilterArgs', 'ScorecardFilterArgsDict']] filter: The filter to apply on the entities before calculating the scorecard
         :param pulumi.Input[str] identifier: The identifier of the scorecard
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScorecardLevelArgs', 'ScorecardLevelArgsDict']]]] levels: The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
+        :param pulumi.Input[str] properties: Additional `_scorecard` blueprint properties applied to the scorecard entity, as a JSON encoded string. Property keys
+               must match custom properties you added to the `_scorecard` blueprint.
+        :param pulumi.Input[str] relations: Additional `_scorecard` blueprint relations applied to the scorecard entity, as a JSON encoded string. Relation values
+               can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by Port and cannot
+               be set here.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScorecardRuleArgs', 'ScorecardRuleArgsDict']]]] rules: The rules of the scorecard
         :param pulumi.Input[str] title: The title of the scorecard
         :param pulumi.Input[str] updated_at: The last update date of the scorecard
@@ -413,6 +507,8 @@ class Scorecard(pulumi.CustomResource):
         __props__.__dict__["filter"] = filter
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["levels"] = levels
+        __props__.__dict__["properties"] = properties
+        __props__.__dict__["relations"] = relations
         __props__.__dict__["rules"] = rules
         __props__.__dict__["title"] = title
         __props__.__dict__["updated_at"] = updated_at
@@ -466,6 +562,25 @@ class Scorecard(pulumi.CustomResource):
         The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
         """
         return pulumi.get(self, "levels")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> pulumi.Output[Optional[str]]:
+        """
+        Additional `_scorecard` blueprint properties applied to the scorecard entity, as a JSON encoded string. Property keys
+        must match custom properties you added to the `_scorecard` blueprint.
+        """
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter
+    def relations(self) -> pulumi.Output[Optional[str]]:
+        """
+        Additional `_scorecard` blueprint relations applied to the scorecard entity, as a JSON encoded string. Relation values
+        can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by Port and cannot
+        be set here.
+        """
+        return pulumi.get(self, "relations")
 
     @property
     @pulumi.getter

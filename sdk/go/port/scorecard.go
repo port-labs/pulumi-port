@@ -27,6 +27,13 @@ type Scorecard struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
 	Levels ScorecardLevelArrayOutput `pulumi:"levels"`
+	// Additional `_scorecard` blueprint properties applied to the scorecard entity, as a JSON encoded string. Property keys
+	// must match custom properties you added to the `_scorecard` blueprint.
+	Properties pulumi.StringPtrOutput `pulumi:"properties"`
+	// Additional `_scorecard` blueprint relations applied to the scorecard entity, as a JSON encoded string. Relation values
+	// can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by Port and cannot
+	// be set here.
+	Relations pulumi.StringPtrOutput `pulumi:"relations"`
 	// The rules of the scorecard
 	Rules ScorecardRuleArrayOutput `pulumi:"rules"`
 	// The title of the scorecard
@@ -91,6 +98,13 @@ type scorecardState struct {
 	Identifier *string `pulumi:"identifier"`
 	// The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
 	Levels []ScorecardLevel `pulumi:"levels"`
+	// Additional `_scorecard` blueprint properties applied to the scorecard entity, as a JSON encoded string. Property keys
+	// must match custom properties you added to the `_scorecard` blueprint.
+	Properties *string `pulumi:"properties"`
+	// Additional `_scorecard` blueprint relations applied to the scorecard entity, as a JSON encoded string. Relation values
+	// can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by Port and cannot
+	// be set here.
+	Relations *string `pulumi:"relations"`
 	// The rules of the scorecard
 	Rules []ScorecardRule `pulumi:"rules"`
 	// The title of the scorecard
@@ -114,6 +128,13 @@ type ScorecardState struct {
 	Identifier pulumi.StringPtrInput
 	// The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
 	Levels ScorecardLevelArrayInput
+	// Additional `_scorecard` blueprint properties applied to the scorecard entity, as a JSON encoded string. Property keys
+	// must match custom properties you added to the `_scorecard` blueprint.
+	Properties pulumi.StringPtrInput
+	// Additional `_scorecard` blueprint relations applied to the scorecard entity, as a JSON encoded string. Relation values
+	// can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by Port and cannot
+	// be set here.
+	Relations pulumi.StringPtrInput
 	// The rules of the scorecard
 	Rules ScorecardRuleArrayInput
 	// The title of the scorecard
@@ -137,6 +158,13 @@ type scorecardArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
 	Levels []ScorecardLevel `pulumi:"levels"`
+	// Additional `_scorecard` blueprint properties applied to the scorecard entity, as a JSON encoded string. Property keys
+	// must match custom properties you added to the `_scorecard` blueprint.
+	Properties *string `pulumi:"properties"`
+	// Additional `_scorecard` blueprint relations applied to the scorecard entity, as a JSON encoded string. Relation values
+	// can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by Port and cannot
+	// be set here.
+	Relations *string `pulumi:"relations"`
 	// The rules of the scorecard
 	Rules []ScorecardRule `pulumi:"rules"`
 	// The title of the scorecard
@@ -153,6 +181,13 @@ type ScorecardArgs struct {
 	Identifier pulumi.StringInput
 	// The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
 	Levels ScorecardLevelArrayInput
+	// Additional `_scorecard` blueprint properties applied to the scorecard entity, as a JSON encoded string. Property keys
+	// must match custom properties you added to the `_scorecard` blueprint.
+	Properties pulumi.StringPtrInput
+	// Additional `_scorecard` blueprint relations applied to the scorecard entity, as a JSON encoded string. Relation values
+	// can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by Port and cannot
+	// be set here.
+	Relations pulumi.StringPtrInput
 	// The rules of the scorecard
 	Rules ScorecardRuleArrayInput
 	// The title of the scorecard
@@ -274,6 +309,19 @@ func (o ScorecardOutput) Identifier() pulumi.StringOutput {
 // The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided
 func (o ScorecardOutput) Levels() ScorecardLevelArrayOutput {
 	return o.ApplyT(func(v *Scorecard) ScorecardLevelArrayOutput { return v.Levels }).(ScorecardLevelArrayOutput)
+}
+
+// Additional `_scorecard` blueprint properties applied to the scorecard entity, as a JSON encoded string. Property keys
+// must match custom properties you added to the `_scorecard` blueprint.
+func (o ScorecardOutput) Properties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Scorecard) pulumi.StringPtrOutput { return v.Properties }).(pulumi.StringPtrOutput)
+}
+
+// Additional `_scorecard` blueprint relations applied to the scorecard entity, as a JSON encoded string. Relation values
+// can be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by Port and cannot
+// be set here.
+func (o ScorecardOutput) Relations() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Scorecard) pulumi.StringPtrOutput { return v.Relations }).(pulumi.StringPtrOutput)
 }
 
 // The rules of the scorecard
