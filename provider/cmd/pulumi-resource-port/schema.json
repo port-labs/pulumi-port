@@ -9358,6 +9358,14 @@
                     },
                     "description": "The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided\n"
                 },
+                "properties": {
+                    "type": "string",
+                    "description": "Additional `_scorecard` blueprint properties applied to the scorecard entity, as a JSON encoded string. Property keys\nmust match custom properties you added to the `_scorecard` blueprint.\n"
+                },
+                "relations": {
+                    "type": "string",
+                    "description": "Additional `_scorecard` blueprint relations applied to the scorecard entity, as a JSON encoded string. Relation values\ncan be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by Port and cannot\nbe set here.\n"
+                },
                 "rules": {
                     "type": "array",
                     "items": {
@@ -9408,6 +9416,14 @@
                     },
                     "description": "The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided\n"
                 },
+                "properties": {
+                    "type": "string",
+                    "description": "Additional `_scorecard` blueprint properties applied to the scorecard entity, as a JSON encoded string. Property keys\nmust match custom properties you added to the `_scorecard` blueprint.\n"
+                },
+                "relations": {
+                    "type": "string",
+                    "description": "Additional `_scorecard` blueprint relations applied to the scorecard entity, as a JSON encoded string. Relation values\ncan be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by Port and cannot\nbe set here.\n"
+                },
                 "rules": {
                     "type": "array",
                     "items": {
@@ -9455,6 +9471,14 @@
                             "$ref": "#/types/port:index/ScorecardLevel:ScorecardLevel"
                         },
                         "description": "The levels of the scorecard. This overrides the default levels (Basic, Bronze, Silver, Gold) if provided\n"
+                    },
+                    "properties": {
+                        "type": "string",
+                        "description": "Additional `_scorecard` blueprint properties applied to the scorecard entity, as a JSON encoded string. Property keys\nmust match custom properties you added to the `_scorecard` blueprint.\n"
+                    },
+                    "relations": {
+                        "type": "string",
+                        "description": "Additional `_scorecard` blueprint relations applied to the scorecard entity, as a JSON encoded string. Relation values\ncan be a string, an array of strings, or `null` to clear a relation. The `group` relation is managed by Port and cannot\nbe set here.\n"
                     },
                     "rules": {
                         "type": "array",
