@@ -4396,7 +4396,7 @@
                 },
                 "target": {
                     "type": "string",
-                    "description": "The notification target. One of `email`, `webhook`.\n"
+                    "description": "The notification target. One of `email`, `webhook`, `slack`. A `slack` notification takes no other attributes: the Port Slack app sends a direct message to each of the node's responders. Slack delivery requires the Port Slack app to be installed in the organization, and responders who have not connected their Slack account are skipped. An input node can have at most one `slack` notification.\n"
                 },
                 "url": {
                     "type": "string",
@@ -8206,7 +8206,7 @@
                 },
                 "createCatalogPage": {
                     "type": "boolean",
-                    "description": "This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the\nblueprint\n"
+                    "description": "This flag is only relevant for blueprint creation. If not set, the parameter is omitted and Port's API default applies\n"
                 },
                 "createdAt": {
                     "type": "string",
@@ -8284,7 +8284,6 @@
                 }
             },
             "required": [
-                "createCatalogPage",
                 "createdAt",
                 "createdBy",
                 "forceDeleteEntities",
@@ -8303,7 +8302,7 @@
                 },
                 "createCatalogPage": {
                     "type": "boolean",
-                    "description": "This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the\nblueprint\n"
+                    "description": "This flag is only relevant for blueprint creation. If not set, the parameter is omitted and Port's API default applies\n"
                 },
                 "description": {
                     "type": "string",
@@ -8380,7 +8379,7 @@
                     },
                     "createCatalogPage": {
                         "type": "boolean",
-                        "description": "This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the\nblueprint\n"
+                        "description": "This flag is only relevant for blueprint creation. If not set, the parameter is omitted and Port's API default applies\n"
                     },
                     "createdAt": {
                         "type": "string",
