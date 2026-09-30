@@ -39,10 +39,9 @@ export class Blueprint extends pulumi.CustomResource {
      */
     public readonly calculationProperties!: pulumi.Output<{[key: string]: outputs.BlueprintCalculationProperties} | undefined>;
     /**
-     * This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
-     * blueprint
+     * This flag is only relevant for blueprint creation. If not set, the parameter is omitted and Port's API default applies
      */
-    public readonly createCatalogPage!: pulumi.Output<boolean>;
+    public readonly createCatalogPage!: pulumi.Output<boolean | undefined>;
     /**
      * The creation date of the blueprint
      */
@@ -187,8 +186,7 @@ export interface BlueprintState {
      */
     calculationProperties?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintCalculationProperties>}>;
     /**
-     * This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
-     * blueprint
+     * This flag is only relevant for blueprint creation. If not set, the parameter is omitted and Port's API default applies
      */
     createCatalogPage?: pulumi.Input<boolean>;
     /**
@@ -271,8 +269,7 @@ export interface BlueprintArgs {
      */
     calculationProperties?: pulumi.Input<{[key: string]: pulumi.Input<inputs.BlueprintCalculationProperties>}>;
     /**
-     * This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
-     * blueprint
+     * This flag is only relevant for blueprint creation. If not set, the parameter is omitted and Port's API default applies
      */
     createCatalogPage?: pulumi.Input<boolean>;
     /**

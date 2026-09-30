@@ -17,9 +17,8 @@ type Blueprint struct {
 
 	// The calculation properties of the blueprint
 	CalculationProperties BlueprintCalculationPropertiesMapOutput `pulumi:"calculationProperties"`
-	// This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
-	// blueprint
-	CreateCatalogPage pulumi.BoolOutput `pulumi:"createCatalogPage"`
+	// This flag is only relevant for blueprint creation. If not set, the parameter is omitted and Port's API default applies
+	CreateCatalogPage pulumi.BoolPtrOutput `pulumi:"createCatalogPage"`
 	// The creation date of the blueprint
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The creator of the blueprint
@@ -97,8 +96,7 @@ func GetBlueprint(ctx *pulumi.Context,
 type blueprintState struct {
 	// The calculation properties of the blueprint
 	CalculationProperties map[string]BlueprintCalculationProperties `pulumi:"calculationProperties"`
-	// This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
-	// blueprint
+	// This flag is only relevant for blueprint creation. If not set, the parameter is omitted and Port's API default applies
 	CreateCatalogPage *bool `pulumi:"createCatalogPage"`
 	// The creation date of the blueprint
 	CreatedAt *string `pulumi:"createdAt"`
@@ -142,8 +140,7 @@ type blueprintState struct {
 type BlueprintState struct {
 	// The calculation properties of the blueprint
 	CalculationProperties BlueprintCalculationPropertiesMapInput
-	// This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
-	// blueprint
+	// This flag is only relevant for blueprint creation. If not set, the parameter is omitted and Port's API default applies
 	CreateCatalogPage pulumi.BoolPtrInput
 	// The creation date of the blueprint
 	CreatedAt pulumi.StringPtrInput
@@ -191,8 +188,7 @@ func (BlueprintState) ElementType() reflect.Type {
 type blueprintArgs struct {
 	// The calculation properties of the blueprint
 	CalculationProperties map[string]BlueprintCalculationProperties `pulumi:"calculationProperties"`
-	// This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
-	// blueprint
+	// This flag is only relevant for blueprint creation. If not set, the parameter is omitted and Port's API default applies
 	CreateCatalogPage *bool `pulumi:"createCatalogPage"`
 	// The description of the blueprint
 	Description         *string `pulumi:"description"`
@@ -229,8 +225,7 @@ type blueprintArgs struct {
 type BlueprintArgs struct {
 	// The calculation properties of the blueprint
 	CalculationProperties BlueprintCalculationPropertiesMapInput
-	// This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
-	// blueprint
+	// This flag is only relevant for blueprint creation. If not set, the parameter is omitted and Port's API default applies
 	CreateCatalogPage pulumi.BoolPtrInput
 	// The description of the blueprint
 	Description         pulumi.StringPtrInput
@@ -355,10 +350,9 @@ func (o BlueprintOutput) CalculationProperties() BlueprintCalculationPropertiesM
 	return o.ApplyT(func(v *Blueprint) BlueprintCalculationPropertiesMapOutput { return v.CalculationProperties }).(BlueprintCalculationPropertiesMapOutput)
 }
 
-// This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
-// blueprint
-func (o BlueprintOutput) CreateCatalogPage() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Blueprint) pulumi.BoolOutput { return v.CreateCatalogPage }).(pulumi.BoolOutput)
+// This flag is only relevant for blueprint creation. If not set, the parameter is omitted and Port's API default applies
+func (o BlueprintOutput) CreateCatalogPage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Blueprint) pulumi.BoolPtrOutput { return v.CreateCatalogPage }).(pulumi.BoolPtrOutput)
 }
 
 // The creation date of the blueprint

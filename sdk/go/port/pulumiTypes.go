@@ -24821,7 +24821,7 @@ type WorkflowNodeInputNotification struct {
 	Headers map[string]string `pulumi:"headers"`
 	// The webhook HTTP method. One of `GET`, `POST`, `PUT`, `PATCH`, `DELETE`.
 	Method *string `pulumi:"method"`
-	// The notification target. One of `email`, `webhook`.
+	// The notification target. One of `email`, `webhook`, `slack`. A `slack` notification takes no other attributes: the Port Slack app sends a direct message to each of the node's responders. Slack delivery requires the Port Slack app to be installed in the organization, and responders who have not connected their Slack account are skipped. An input node can have at most one `slack` notification.
 	Target string `pulumi:"target"`
 	// The webhook URL. Required when `target` is `webhook`.
 	Url *string `pulumi:"url"`
@@ -24849,7 +24849,7 @@ type WorkflowNodeInputNotificationArgs struct {
 	Headers pulumi.StringMapInput `pulumi:"headers"`
 	// The webhook HTTP method. One of `GET`, `POST`, `PUT`, `PATCH`, `DELETE`.
 	Method pulumi.StringPtrInput `pulumi:"method"`
-	// The notification target. One of `email`, `webhook`.
+	// The notification target. One of `email`, `webhook`, `slack`. A `slack` notification takes no other attributes: the Port Slack app sends a direct message to each of the node's responders. Slack delivery requires the Port Slack app to be installed in the organization, and responders who have not connected their Slack account are skipped. An input node can have at most one `slack` notification.
 	Target pulumi.StringInput `pulumi:"target"`
 	// The webhook URL. Required when `target` is `webhook`.
 	Url pulumi.StringPtrInput `pulumi:"url"`
@@ -24931,7 +24931,7 @@ func (o WorkflowNodeInputNotificationOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputNotification) *string { return v.Method }).(pulumi.StringPtrOutput)
 }
 
-// The notification target. One of `email`, `webhook`.
+// The notification target. One of `email`, `webhook`, `slack`. A `slack` notification takes no other attributes: the Port Slack app sends a direct message to each of the node's responders. Slack delivery requires the Port Slack app to be installed in the organization, and responders who have not connected their Slack account are skipped. An input node can have at most one `slack` notification.
 func (o WorkflowNodeInputNotificationOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkflowNodeInputNotification) string { return v.Target }).(pulumi.StringOutput)
 }

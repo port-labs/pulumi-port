@@ -41,8 +41,7 @@ class BlueprintArgs:
         :param pulumi.Input[str] identifier: The identifier of the blueprint
         :param pulumi.Input[str] title: The display name of the blueprint
         :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintCalculationPropertiesArgs']]] calculation_properties: The calculation properties of the blueprint
-        :param pulumi.Input[bool] create_catalog_page: This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
-               blueprint
+        :param pulumi.Input[bool] create_catalog_page: This flag is only relevant for blueprint creation. If not set, the parameter is omitted and Port's API default applies
         :param pulumi.Input[str] description: The description of the blueprint
         :param pulumi.Input[str] icon: The icon of the blueprint
         :param pulumi.Input[bool] include_in_global_search: Whether to include this blueprint's entities in global search (Spotlight). When not set, the organization's
@@ -128,8 +127,7 @@ class BlueprintArgs:
     @pulumi.getter(name="createCatalogPage")
     def create_catalog_page(self) -> Optional[pulumi.Input[bool]]:
         """
-        This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
-        blueprint
+        This flag is only relevant for blueprint creation. If not set, the parameter is omitted and Port's API default applies
         """
         return pulumi.get(self, "create_catalog_page")
 
@@ -295,8 +293,7 @@ class _BlueprintState:
         """
         Input properties used for looking up and filtering Blueprint resources.
         :param pulumi.Input[Mapping[str, pulumi.Input['BlueprintCalculationPropertiesArgs']]] calculation_properties: The calculation properties of the blueprint
-        :param pulumi.Input[bool] create_catalog_page: This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
-               blueprint
+        :param pulumi.Input[bool] create_catalog_page: This flag is only relevant for blueprint creation. If not set, the parameter is omitted and Port's API default applies
         :param pulumi.Input[str] created_at: The creation date of the blueprint
         :param pulumi.Input[str] created_by: The creator of the blueprint
         :param pulumi.Input[str] description: The description of the blueprint
@@ -374,8 +371,7 @@ class _BlueprintState:
     @pulumi.getter(name="createCatalogPage")
     def create_catalog_page(self) -> Optional[pulumi.Input[bool]]:
         """
-        This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
-        blueprint
+        This flag is only relevant for blueprint creation. If not set, the parameter is omitted and Port's API default applies
         """
         return pulumi.get(self, "create_catalog_page")
 
@@ -614,8 +610,7 @@ class Blueprint(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintCalculationPropertiesArgs', 'BlueprintCalculationPropertiesArgsDict']]]] calculation_properties: The calculation properties of the blueprint
-        :param pulumi.Input[bool] create_catalog_page: This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
-               blueprint
+        :param pulumi.Input[bool] create_catalog_page: This flag is only relevant for blueprint creation. If not set, the parameter is omitted and Port's API default applies
         :param pulumi.Input[str] description: The description of the blueprint
         :param pulumi.Input[str] icon: The icon of the blueprint
         :param pulumi.Input[str] identifier: The identifier of the blueprint
@@ -738,8 +733,7 @@ class Blueprint(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['BlueprintCalculationPropertiesArgs', 'BlueprintCalculationPropertiesArgsDict']]]] calculation_properties: The calculation properties of the blueprint
-        :param pulumi.Input[bool] create_catalog_page: This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
-               blueprint
+        :param pulumi.Input[bool] create_catalog_page: This flag is only relevant for blueprint creation. If not set, the parameter is omitted and Port's API default applies
         :param pulumi.Input[str] created_at: The creation date of the blueprint
         :param pulumi.Input[str] created_by: The creator of the blueprint
         :param pulumi.Input[str] description: The description of the blueprint
@@ -794,10 +788,9 @@ class Blueprint(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createCatalogPage")
-    def create_catalog_page(self) -> pulumi.Output[bool]:
+    def create_catalog_page(self) -> pulumi.Output[Optional[bool]]:
         """
-        This flag is only relevant for blueprint creation, by default if not set, a catalog page will be created for the
-        blueprint
+        This flag is only relevant for blueprint creation. If not set, the parameter is omitted and Port's API default applies
         """
         return pulumi.get(self, "create_catalog_page")
 

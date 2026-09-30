@@ -14995,7 +14995,7 @@ if not MYPY:
     class WorkflowNodeInputNotificationArgsDict(TypedDict):
         target: pulumi.Input[str]
         """
-        The notification target. One of `email`, `webhook`.
+        The notification target. One of `email`, `webhook`, `slack`. A `slack` notification takes no other attributes: the Port Slack app sends a direct message to each of the node's responders. Slack delivery requires the Port Slack app to be installed in the organization, and responders who have not connected their Slack account are skipped. An input node can have at most one `slack` notification.
         """
         agent: NotRequired[pulumi.Input[bool]]
         """
@@ -15035,7 +15035,7 @@ class WorkflowNodeInputNotificationArgs:
                  method: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] target: The notification target. One of `email`, `webhook`.
+        :param pulumi.Input[str] target: The notification target. One of `email`, `webhook`, `slack`. A `slack` notification takes no other attributes: the Port Slack app sends a direct message to each of the node's responders. Slack delivery requires the Port Slack app to be installed in the organization, and responders who have not connected their Slack account are skipped. An input node can have at most one `slack` notification.
         :param pulumi.Input[bool] agent: Whether the webhook is routed through the Port agent.
         :param pulumi.Input[str] body: The webhook body as a JSON encoded string.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputNotificationFieldArgs']]] fields: The fields rendered in the email notification. Only valid when `target` is `email`.
@@ -15061,7 +15061,7 @@ class WorkflowNodeInputNotificationArgs:
     @pulumi.getter
     def target(self) -> pulumi.Input[str]:
         """
-        The notification target. One of `email`, `webhook`.
+        The notification target. One of `email`, `webhook`, `slack`. A `slack` notification takes no other attributes: the Port Slack app sends a direct message to each of the node's responders. Slack delivery requires the Port Slack app to be installed in the organization, and responders who have not connected their Slack account are skipped. An input node can have at most one `slack` notification.
         """
         return pulumi.get(self, "target")
 

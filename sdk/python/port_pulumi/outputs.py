@@ -10542,7 +10542,7 @@ class WorkflowNodeInputNotification(dict):
                  method: Optional[str] = None,
                  url: Optional[str] = None):
         """
-        :param str target: The notification target. One of `email`, `webhook`.
+        :param str target: The notification target. One of `email`, `webhook`, `slack`. A `slack` notification takes no other attributes: the Port Slack app sends a direct message to each of the node's responders. Slack delivery requires the Port Slack app to be installed in the organization, and responders who have not connected their Slack account are skipped. An input node can have at most one `slack` notification.
         :param bool agent: Whether the webhook is routed through the Port agent.
         :param str body: The webhook body as a JSON encoded string.
         :param Sequence['WorkflowNodeInputNotificationFieldArgs'] fields: The fields rendered in the email notification. Only valid when `target` is `email`.
@@ -10568,7 +10568,7 @@ class WorkflowNodeInputNotification(dict):
     @pulumi.getter
     def target(self) -> str:
         """
-        The notification target. One of `email`, `webhook`.
+        The notification target. One of `email`, `webhook`, `slack`. A `slack` notification takes no other attributes: the Port Slack app sends a direct message to each of the node's responders. Slack delivery requires the Port Slack app to be installed in the organization, and responders who have not connected their Slack account are skipped. An input node can have at most one `slack` notification.
         """
         return pulumi.get(self, "target")
 
