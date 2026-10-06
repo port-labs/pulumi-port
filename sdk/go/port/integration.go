@@ -25,20 +25,11 @@ type Integration struct {
 	InstallationAppType pulumi.StringPtrOutput `pulumi:"installationAppType"`
 	// The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
 	// `^[a-z0-9-]+$`). Cannot be changed after creation.
-	InstallationId pulumi.StringOutput `pulumi:"installationId"`
-	// The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to
-	// `OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after
-	// creation.
+	InstallationId   pulumi.StringOutput `pulumi:"installationId"`
 	InstallationType pulumi.StringOutput `pulumi:"installationType"`
 	// The changelog destination of the blueprint (just an empty `{}`)
 	KafkaChangelogDestination IntegrationKafkaChangelogDestinationOutput `pulumi:"kafkaChangelogDestination"`
-	// Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installationType` is `Saas`**
-	// — must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`
-	// (credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).
-	// Sensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are
-	// omitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match
-	// the UI behavior.
-	Spec pulumi.StringOutput `pulumi:"spec"`
+	Spec                      pulumi.StringOutput                        `pulumi:"spec"`
 	// The provisioning status of the integration (e.g. `Creating`, `Running`, `Updating`, `Error`). Relevant for Port Hosted
 	// integrations that provision asynchronously.
 	Status  pulumi.StringOutput    `pulumi:"status"`
@@ -91,20 +82,11 @@ type integrationState struct {
 	InstallationAppType *string `pulumi:"installationAppType"`
 	// The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
 	// `^[a-z0-9-]+$`). Cannot be changed after creation.
-	InstallationId *string `pulumi:"installationId"`
-	// The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to
-	// `OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after
-	// creation.
+	InstallationId   *string `pulumi:"installationId"`
 	InstallationType *string `pulumi:"installationType"`
 	// The changelog destination of the blueprint (just an empty `{}`)
 	KafkaChangelogDestination *IntegrationKafkaChangelogDestination `pulumi:"kafkaChangelogDestination"`
-	// Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installationType` is `Saas`**
-	// — must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`
-	// (credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).
-	// Sensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are
-	// omitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match
-	// the UI behavior.
-	Spec *string `pulumi:"spec"`
+	Spec                      *string                               `pulumi:"spec"`
 	// The provisioning status of the integration (e.g. `Creating`, `Running`, `Updating`, `Error`). Relevant for Port Hosted
 	// integrations that provision asynchronously.
 	Status  *string `pulumi:"status"`
@@ -125,20 +107,11 @@ type IntegrationState struct {
 	InstallationAppType pulumi.StringPtrInput
 	// The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
 	// `^[a-z0-9-]+$`). Cannot be changed after creation.
-	InstallationId pulumi.StringPtrInput
-	// The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to
-	// `OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after
-	// creation.
+	InstallationId   pulumi.StringPtrInput
 	InstallationType pulumi.StringPtrInput
 	// The changelog destination of the blueprint (just an empty `{}`)
 	KafkaChangelogDestination IntegrationKafkaChangelogDestinationPtrInput
-	// Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installationType` is `Saas`**
-	// — must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`
-	// (credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).
-	// Sensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are
-	// omitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match
-	// the UI behavior.
-	Spec pulumi.StringPtrInput
+	Spec                      pulumi.StringPtrInput
 	// The provisioning status of the integration (e.g. `Creating`, `Running`, `Updating`, `Error`). Relevant for Port Hosted
 	// integrations that provision asynchronously.
 	Status  pulumi.StringPtrInput
@@ -163,22 +136,13 @@ type integrationArgs struct {
 	InstallationAppType *string `pulumi:"installationAppType"`
 	// The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
 	// `^[a-z0-9-]+$`). Cannot be changed after creation.
-	InstallationId string `pulumi:"installationId"`
-	// The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to
-	// `OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after
-	// creation.
+	InstallationId   string  `pulumi:"installationId"`
 	InstallationType *string `pulumi:"installationType"`
 	// The changelog destination of the blueprint (just an empty `{}`)
 	KafkaChangelogDestination *IntegrationKafkaChangelogDestination `pulumi:"kafkaChangelogDestination"`
-	// Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installationType` is `Saas`**
-	// — must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`
-	// (credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).
-	// Sensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are
-	// omitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match
-	// the UI behavior.
-	Spec    *string `pulumi:"spec"`
-	Title   *string `pulumi:"title"`
-	Version *string `pulumi:"version"`
+	Spec                      *string                               `pulumi:"spec"`
+	Title                     *string                               `pulumi:"title"`
+	Version                   *string                               `pulumi:"version"`
 	// The webhook changelog destination of the integration
 	WebhookChangelogDestination *IntegrationWebhookChangelogDestination `pulumi:"webhookChangelogDestination"`
 }
@@ -195,22 +159,13 @@ type IntegrationArgs struct {
 	InstallationAppType pulumi.StringPtrInput
 	// The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
 	// `^[a-z0-9-]+$`). Cannot be changed after creation.
-	InstallationId pulumi.StringInput
-	// The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to
-	// `OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after
-	// creation.
+	InstallationId   pulumi.StringInput
 	InstallationType pulumi.StringPtrInput
 	// The changelog destination of the blueprint (just an empty `{}`)
 	KafkaChangelogDestination IntegrationKafkaChangelogDestinationPtrInput
-	// Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installationType` is `Saas`**
-	// — must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`
-	// (credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).
-	// Sensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are
-	// omitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match
-	// the UI behavior.
-	Spec    pulumi.StringPtrInput
-	Title   pulumi.StringPtrInput
-	Version pulumi.StringPtrInput
+	Spec                      pulumi.StringPtrInput
+	Title                     pulumi.StringPtrInput
+	Version                   pulumi.StringPtrInput
 	// The webhook changelog destination of the integration
 	WebhookChangelogDestination IntegrationWebhookChangelogDestinationPtrInput
 }
@@ -325,9 +280,6 @@ func (o IntegrationOutput) InstallationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.InstallationId }).(pulumi.StringOutput)
 }
 
-// The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to
-// `OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after
-// creation.
 func (o IntegrationOutput) InstallationType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.InstallationType }).(pulumi.StringOutput)
 }
@@ -337,12 +289,6 @@ func (o IntegrationOutput) KafkaChangelogDestination() IntegrationKafkaChangelog
 	return o.ApplyT(func(v *Integration) IntegrationKafkaChangelogDestinationOutput { return v.KafkaChangelogDestination }).(IntegrationKafkaChangelogDestinationOutput)
 }
 
-// Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installationType` is `Saas`**
-// — must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`
-// (credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).
-// Sensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are
-// omitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match
-// the UI behavior.
 func (o IntegrationOutput) Spec() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.Spec }).(pulumi.StringOutput)
 }

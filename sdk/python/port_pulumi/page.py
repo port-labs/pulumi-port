@@ -26,6 +26,7 @@ class PageArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
+                 page_filter_presets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  page_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -39,6 +40,10 @@ class PageArgs:
         :param pulumi.Input[str] description: The page description
         :param pulumi.Input[str] icon: The icon of the page
         :param pulumi.Input[bool] locked: Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] page_filter_presets: The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array
+               of page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).
+               Preset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters
+               are not allowed in presets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] page_filters: The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
                'combinator' and 'rules' array). The rules array can contain any filter type.
         :param pulumi.Input[str] parent: The identifier of the folder in which the page is in, default is the root of the sidebar
@@ -57,6 +62,8 @@ class PageArgs:
             pulumi.set(__self__, "icon", icon)
         if locked is not None:
             pulumi.set(__self__, "locked", locked)
+        if page_filter_presets is not None:
+            pulumi.set(__self__, "page_filter_presets", page_filter_presets)
         if page_filters is not None:
             pulumi.set(__self__, "page_filters", page_filters)
         if parent is not None:
@@ -151,6 +158,21 @@ class PageArgs:
         pulumi.set(self, "locked", value)
 
     @property
+    @pulumi.getter(name="pageFilterPresets")
+    def page_filter_presets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array
+        of page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).
+        Preset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters
+        are not allowed in presets.
+        """
+        return pulumi.get(self, "page_filter_presets")
+
+    @page_filter_presets.setter
+    def page_filter_presets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "page_filter_presets", value)
+
+    @property
     @pulumi.getter(name="pageFilters")
     def page_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -211,6 +233,7 @@ class _PageState:
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
+                 page_filter_presets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  page_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -228,6 +251,10 @@ class _PageState:
         :param pulumi.Input[str] icon: The icon of the page
         :param pulumi.Input[str] identifier: The Identifier of the page
         :param pulumi.Input[bool] locked: Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] page_filter_presets: The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array
+               of page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).
+               Preset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters
+               are not allowed in presets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] page_filters: The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
                'combinator' and 'rules' array). The rules array can contain any filter type.
         :param pulumi.Input[str] parent: The identifier of the folder in which the page is in, default is the root of the sidebar
@@ -253,6 +280,8 @@ class _PageState:
             pulumi.set(__self__, "identifier", identifier)
         if locked is not None:
             pulumi.set(__self__, "locked", locked)
+        if page_filter_presets is not None:
+            pulumi.set(__self__, "page_filter_presets", page_filter_presets)
         if page_filters is not None:
             pulumi.set(__self__, "page_filters", page_filters)
         if parent is not None:
@@ -365,6 +394,21 @@ class _PageState:
         pulumi.set(self, "locked", value)
 
     @property
+    @pulumi.getter(name="pageFilterPresets")
+    def page_filter_presets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array
+        of page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).
+        Preset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters
+        are not allowed in presets.
+        """
+        return pulumi.get(self, "page_filter_presets")
+
+    @page_filter_presets.setter
+    def page_filter_presets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "page_filter_presets", value)
+
+    @property
     @pulumi.getter(name="pageFilters")
     def page_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -461,6 +505,7 @@ class Page(pulumi.CustomResource):
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
+                 page_filter_presets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  page_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -477,6 +522,10 @@ class Page(pulumi.CustomResource):
         :param pulumi.Input[str] icon: The icon of the page
         :param pulumi.Input[str] identifier: The Identifier of the page
         :param pulumi.Input[bool] locked: Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] page_filter_presets: The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array
+               of page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).
+               Preset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters
+               are not allowed in presets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] page_filters: The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
                'combinator' and 'rules' array). The rules array can contain any filter type.
         :param pulumi.Input[str] parent: The identifier of the folder in which the page is in, default is the root of the sidebar
@@ -513,6 +562,7 @@ class Page(pulumi.CustomResource):
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
+                 page_filter_presets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  page_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -535,6 +585,7 @@ class Page(pulumi.CustomResource):
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["locked"] = locked
+            __props__.__dict__["page_filter_presets"] = page_filter_presets
             __props__.__dict__["page_filters"] = page_filters
             __props__.__dict__["parent"] = parent
             __props__.__dict__["title"] = title
@@ -564,6 +615,7 @@ class Page(pulumi.CustomResource):
             icon: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             locked: Optional[pulumi.Input[bool]] = None,
+            page_filter_presets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             page_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             title: Optional[pulumi.Input[str]] = None,
@@ -586,6 +638,10 @@ class Page(pulumi.CustomResource):
         :param pulumi.Input[str] icon: The icon of the page
         :param pulumi.Input[str] identifier: The Identifier of the page
         :param pulumi.Input[bool] locked: Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] page_filter_presets: The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array
+               of page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).
+               Preset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters
+               are not allowed in presets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] page_filters: The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
                'combinator' and 'rules' array). The rules array can contain any filter type.
         :param pulumi.Input[str] parent: The identifier of the folder in which the page is in, default is the root of the sidebar
@@ -607,6 +663,7 @@ class Page(pulumi.CustomResource):
         __props__.__dict__["icon"] = icon
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["locked"] = locked
+        __props__.__dict__["page_filter_presets"] = page_filter_presets
         __props__.__dict__["page_filters"] = page_filters
         __props__.__dict__["parent"] = parent
         __props__.__dict__["title"] = title
@@ -679,6 +736,17 @@ class Page(pulumi.CustomResource):
         Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
         """
         return pulumi.get(self, "locked")
+
+    @property
+    @pulumi.getter(name="pageFilterPresets")
+    def page_filter_presets(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array
+        of page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).
+        Preset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters
+        are not allowed in presets.
+        """
+        return pulumi.get(self, "page_filter_presets")
 
     @property
     @pulumi.getter(name="pageFilters")

@@ -40,16 +40,7 @@ class IntegrationArgs:
                Can only be set on creation.
         :param pulumi.Input[str] installation_app_type: The integrated tool name for catalog integration types (e.g. `github-ocean`, `gitlab`, `pagerduty`). Cannot be changed
                after creation.
-        :param pulumi.Input[str] installation_type: The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to
-               `OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after
-               creation.
         :param pulumi.Input['IntegrationKafkaChangelogDestinationArgs'] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
-        :param pulumi.Input[str] spec: Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installation_type` is `Saas`**
-               — must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`
-               (credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).
-               Sensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are
-               omitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match
-               the UI behavior.
         :param pulumi.Input['IntegrationWebhookChangelogDestinationArgs'] webhook_changelog_destination: The webhook changelog destination of the integration
         """
         pulumi.set(__self__, "installation_id", installation_id)
@@ -124,11 +115,6 @@ class IntegrationArgs:
     @property
     @pulumi.getter(name="installationType")
     def installation_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to
-        `OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after
-        creation.
-        """
         return pulumi.get(self, "installation_type")
 
     @installation_type.setter
@@ -150,14 +136,6 @@ class IntegrationArgs:
     @property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input[str]]:
-        """
-        Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installation_type` is `Saas`**
-        — must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`
-        (credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).
-        Sensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are
-        omitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match
-        the UI behavior.
-        """
         return pulumi.get(self, "spec")
 
     @spec.setter
@@ -218,16 +196,7 @@ class _IntegrationState:
                after creation.
         :param pulumi.Input[str] installation_id: The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
                `^[a-z0-9-]+$`). Cannot be changed after creation.
-        :param pulumi.Input[str] installation_type: The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to
-               `OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after
-               creation.
         :param pulumi.Input['IntegrationKafkaChangelogDestinationArgs'] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
-        :param pulumi.Input[str] spec: Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installation_type` is `Saas`**
-               — must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`
-               (credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).
-               Sensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are
-               omitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match
-               the UI behavior.
         :param pulumi.Input[str] status: The provisioning status of the integration (e.g. `Creating`, `Running`, `Updating`, `Error`). Relevant for Port Hosted
                integrations that provision asynchronously.
         :param pulumi.Input['IntegrationWebhookChangelogDestinationArgs'] webhook_changelog_destination: The webhook changelog destination of the integration
@@ -307,11 +276,6 @@ class _IntegrationState:
     @property
     @pulumi.getter(name="installationType")
     def installation_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to
-        `OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after
-        creation.
-        """
         return pulumi.get(self, "installation_type")
 
     @installation_type.setter
@@ -333,14 +297,6 @@ class _IntegrationState:
     @property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input[str]]:
-        """
-        Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installation_type` is `Saas`**
-        — must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`
-        (credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).
-        Sensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are
-        omitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match
-        the UI behavior.
-        """
         return pulumi.get(self, "spec")
 
     @spec.setter
@@ -418,16 +374,7 @@ class Integration(pulumi.CustomResource):
                after creation.
         :param pulumi.Input[str] installation_id: The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
                `^[a-z0-9-]+$`). Cannot be changed after creation.
-        :param pulumi.Input[str] installation_type: The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to
-               `OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after
-               creation.
         :param pulumi.Input[Union['IntegrationKafkaChangelogDestinationArgs', 'IntegrationKafkaChangelogDestinationArgsDict']] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
-        :param pulumi.Input[str] spec: Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installation_type` is `Saas`**
-               — must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`
-               (credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).
-               Sensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are
-               omitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match
-               the UI behavior.
         :param pulumi.Input[Union['IntegrationWebhookChangelogDestinationArgs', 'IntegrationWebhookChangelogDestinationArgsDict']] webhook_changelog_destination: The webhook changelog destination of the integration
         """
         ...
@@ -520,16 +467,7 @@ class Integration(pulumi.CustomResource):
                after creation.
         :param pulumi.Input[str] installation_id: The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
                `^[a-z0-9-]+$`). Cannot be changed after creation.
-        :param pulumi.Input[str] installation_type: The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to
-               `OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after
-               creation.
         :param pulumi.Input[Union['IntegrationKafkaChangelogDestinationArgs', 'IntegrationKafkaChangelogDestinationArgsDict']] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
-        :param pulumi.Input[str] spec: Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installation_type` is `Saas`**
-               — must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`
-               (credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).
-               Sensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are
-               omitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match
-               the UI behavior.
         :param pulumi.Input[str] status: The provisioning status of the integration (e.g. `Creating`, `Running`, `Updating`, `Error`). Relevant for Port Hosted
                integrations that provision asynchronously.
         :param pulumi.Input[Union['IntegrationWebhookChangelogDestinationArgs', 'IntegrationWebhookChangelogDestinationArgsDict']] webhook_changelog_destination: The webhook changelog destination of the integration
@@ -587,11 +525,6 @@ class Integration(pulumi.CustomResource):
     @property
     @pulumi.getter(name="installationType")
     def installation_type(self) -> pulumi.Output[str]:
-        """
-        The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to
-        `OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after
-        creation.
-        """
         return pulumi.get(self, "installation_type")
 
     @property
@@ -605,14 +538,6 @@ class Integration(pulumi.CustomResource):
     @property
     @pulumi.getter
     def spec(self) -> pulumi.Output[str]:
-        """
-        Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installation_type` is `Saas`**
-        — must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`
-        (credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).
-        Sensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are
-        omitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match
-        the UI behavior.
-        """
         return pulumi.get(self, "spec")
 
     @property

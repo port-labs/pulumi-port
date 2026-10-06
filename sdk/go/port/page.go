@@ -31,6 +31,11 @@ type Page struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
 	Locked pulumi.BoolPtrOutput `pulumi:"locked"`
+	// The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array
+	// of page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).
+	// Preset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters
+	// are not allowed in presets.
+	PageFilterPresets pulumi.StringArrayOutput `pulumi:"pageFilterPresets"`
 	// The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
 	// 'combinator' and 'rules' array). The rules array can contain any filter type.
 	PageFilters pulumi.StringArrayOutput `pulumi:"pageFilters"`
@@ -100,6 +105,11 @@ type pageState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
 	Locked *bool `pulumi:"locked"`
+	// The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array
+	// of page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).
+	// Preset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters
+	// are not allowed in presets.
+	PageFilterPresets []string `pulumi:"pageFilterPresets"`
 	// The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
 	// 'combinator' and 'rules' array). The rules array can contain any filter type.
 	PageFilters []string `pulumi:"pageFilters"`
@@ -134,6 +144,11 @@ type PageState struct {
 	Identifier pulumi.StringPtrInput
 	// Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
 	Locked pulumi.BoolPtrInput
+	// The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array
+	// of page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).
+	// Preset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters
+	// are not allowed in presets.
+	PageFilterPresets pulumi.StringArrayInput
 	// The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
 	// 'combinator' and 'rules' array). The rules array can contain any filter type.
 	PageFilters pulumi.StringArrayInput
@@ -168,6 +183,11 @@ type pageArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
 	Locked *bool `pulumi:"locked"`
+	// The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array
+	// of page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).
+	// Preset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters
+	// are not allowed in presets.
+	PageFilterPresets []string `pulumi:"pageFilterPresets"`
 	// The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
 	// 'combinator' and 'rules' array). The rules array can contain any filter type.
 	PageFilters []string `pulumi:"pageFilters"`
@@ -195,6 +215,11 @@ type PageArgs struct {
 	Identifier pulumi.StringInput
 	// Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
 	Locked pulumi.BoolPtrInput
+	// The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array
+	// of page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).
+	// Preset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters
+	// are not allowed in presets.
+	PageFilterPresets pulumi.StringArrayInput
 	// The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
 	// 'combinator' and 'rules' array). The rules array can contain any filter type.
 	PageFilters pulumi.StringArrayInput
@@ -333,6 +358,14 @@ func (o PageOutput) Identifier() pulumi.StringOutput {
 // Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
 func (o PageOutput) Locked() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Page) pulumi.BoolPtrOutput { return v.Locked }).(pulumi.BoolPtrOutput)
+}
+
+// The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array
+// of page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).
+// Preset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters
+// are not allowed in presets.
+func (o PageOutput) PageFilterPresets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Page) pulumi.StringArrayOutput { return v.PageFilterPresets }).(pulumi.StringArrayOutput)
 }
 
 // The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with

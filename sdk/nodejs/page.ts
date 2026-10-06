@@ -65,6 +65,13 @@ export class Page extends pulumi.CustomResource {
      */
     public readonly locked!: pulumi.Output<boolean | undefined>;
     /**
+     * The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array
+     * of page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).
+     * Preset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters
+     * are not allowed in presets.
+     */
+    public readonly pageFilterPresets!: pulumi.Output<string[] | undefined>;
+    /**
      * The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
      * 'combinator' and 'rules' array). The rules array can contain any filter type.
      */
@@ -115,6 +122,7 @@ export class Page extends pulumi.CustomResource {
             resourceInputs["icon"] = state ? state.icon : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["locked"] = state ? state.locked : undefined;
+            resourceInputs["pageFilterPresets"] = state ? state.pageFilterPresets : undefined;
             resourceInputs["pageFilters"] = state ? state.pageFilters : undefined;
             resourceInputs["parent"] = state ? state.parent : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
@@ -136,6 +144,7 @@ export class Page extends pulumi.CustomResource {
             resourceInputs["icon"] = args ? args.icon : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["locked"] = args ? args.locked : undefined;
+            resourceInputs["pageFilterPresets"] = args ? args.pageFilterPresets : undefined;
             resourceInputs["pageFilters"] = args ? args.pageFilters : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
@@ -187,6 +196,13 @@ export interface PageState {
      * Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
      */
     locked?: pulumi.Input<boolean>;
+    /**
+     * The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array
+     * of page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).
+     * Preset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters
+     * are not allowed in presets.
+     */
+    pageFilterPresets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
      * 'combinator' and 'rules' array). The rules array can contain any filter type.
@@ -246,6 +262,13 @@ export interface PageArgs {
      * Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
      */
     locked?: pulumi.Input<boolean>;
+    /**
+     * The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array
+     * of page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).
+     * Preset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters
+     * are not allowed in presets.
+     */
+    pageFilterPresets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The page filters. Each filter is a JSON object with 'identifier' (string), 'title' (string), and 'query' (object with
      * 'combinator' and 'rules' array). The rules array can contain any filter type.

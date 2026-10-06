@@ -51,24 +51,11 @@ export class Integration extends pulumi.CustomResource {
      * `^[a-z0-9-]+$`). Cannot be changed after creation.
      */
     public readonly installationId!: pulumi.Output<string>;
-    /**
-     * The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to
-     * `OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after
-     * creation.
-     */
     public readonly installationType!: pulumi.Output<string>;
     /**
      * The changelog destination of the blueprint (just an empty `{}`)
      */
     public readonly kafkaChangelogDestination!: pulumi.Output<outputs.IntegrationKafkaChangelogDestination>;
-    /**
-     * Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installationType` is `Saas`**
-     * — must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`
-     * (credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).
-     * Sensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are
-     * omitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match
-     * the UI behavior.
-     */
     public readonly spec!: pulumi.Output<string>;
     /**
      * The provisioning status of the integration (e.g. `Creating`, `Running`, `Updating`, `Error`). Relevant for Port Hosted
@@ -149,24 +136,11 @@ export interface IntegrationState {
      * `^[a-z0-9-]+$`). Cannot be changed after creation.
      */
     installationId?: pulumi.Input<string>;
-    /**
-     * The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to
-     * `OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after
-     * creation.
-     */
     installationType?: pulumi.Input<string>;
     /**
      * The changelog destination of the blueprint (just an empty `{}`)
      */
     kafkaChangelogDestination?: pulumi.Input<inputs.IntegrationKafkaChangelogDestination>;
-    /**
-     * Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installationType` is `Saas`**
-     * — must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`
-     * (credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).
-     * Sensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are
-     * omitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match
-     * the UI behavior.
-     */
     spec?: pulumi.Input<string>;
     /**
      * The provisioning status of the integration (e.g. `Creating`, `Running`, `Updating`, `Error`). Relevant for Port Hosted
@@ -202,24 +176,11 @@ export interface IntegrationArgs {
      * `^[a-z0-9-]+$`). Cannot be changed after creation.
      */
     installationId: pulumi.Input<string>;
-    /**
-     * The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to
-     * `OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after
-     * creation.
-     */
     installationType?: pulumi.Input<string>;
     /**
      * The changelog destination of the blueprint (just an empty `{}`)
      */
     kafkaChangelogDestination?: pulumi.Input<inputs.IntegrationKafkaChangelogDestination>;
-    /**
-     * Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installationType` is `Saas`**
-     * — must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`
-     * (credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).
-     * Sensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are
-     * omitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match
-     * the UI behavior.
-     */
     spec?: pulumi.Input<string>;
     title?: pulumi.Input<string>;
     version?: pulumi.Input<string>;
