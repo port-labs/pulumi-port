@@ -8870,16 +8870,14 @@
                     "description": "The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:\n`^[a-z0-9-]+$`). Cannot be changed after creation.\n"
                 },
                 "installationType": {
-                    "type": "string",
-                    "description": "The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to\n`OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after\ncreation.\n"
+                    "type": "string"
                 },
                 "kafkaChangelogDestination": {
                     "$ref": "#/types/port:index/IntegrationKafkaChangelogDestination:IntegrationKafkaChangelogDestination",
                     "description": "The changelog destination of the blueprint (just an empty `{}`)\n"
                 },
                 "spec": {
-                    "type": "string",
-                    "description": "Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installation_type` is `Saas`**\n— must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`\n(credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).\nSensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are\nomitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match\nthe UI behavior.\n"
+                    "type": "string"
                 },
                 "status": {
                     "type": "string",
@@ -8923,16 +8921,14 @@
                     "description": "The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:\n`^[a-z0-9-]+$`). Cannot be changed after creation.\n"
                 },
                 "installationType": {
-                    "type": "string",
-                    "description": "The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to\n`OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after\ncreation.\n"
+                    "type": "string"
                 },
                 "kafkaChangelogDestination": {
                     "$ref": "#/types/port:index/IntegrationKafkaChangelogDestination:IntegrationKafkaChangelogDestination",
                     "description": "The changelog destination of the blueprint (just an empty `{}`)\n"
                 },
                 "spec": {
-                    "type": "string",
-                    "description": "Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installation_type` is `Saas`**\n— must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`\n(credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).\nSensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are\nomitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match\nthe UI behavior.\n"
+                    "type": "string"
                 },
                 "title": {
                     "type": "string"
@@ -8967,16 +8963,14 @@
                         "description": "The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:\n`^[a-z0-9-]+$`). Cannot be changed after creation.\n"
                     },
                     "installationType": {
-                        "type": "string",
-                        "description": "The installation type of the integration. Use `Saas` for Port Hosted integrations (requires `spec`). Defaults to\n`OnPrem` for self-hosted integrations. Only `OnPrem` and `Saas` are supported by this resource. Cannot be changed after\ncreation.\n"
+                        "type": "string"
                     },
                     "kafkaChangelogDestination": {
                         "$ref": "#/types/port:index/IntegrationKafkaChangelogDestination:IntegrationKafkaChangelogDestination",
                         "description": "The changelog destination of the blueprint (just an empty `{}`)\n"
                     },
                     "spec": {
-                        "type": "string",
-                        "description": "Port Hosted integration spec as a JSON string (use `jsonencode`). **Only supported when `installation_type` is `Saas`**\n— must not be set for self-hosted integrations. Required for Port Hosted integrations. Contains `integrationSpec`\n(credentials/settings) and optionally `appSpec` (feature toggles like `liveEventsEnabled`, `sendRawDataExamples`, etc.).\nSensitive `integrationSpec` values (org secret references) are preserved from your HCL on read. If `appSpec` fields are\nomitted, Port applies its own defaults — which may differ from Port UI defaults. Declare `appSpec` explicitly to match\nthe UI behavior.\n"
+                        "type": "string"
                     },
                     "status": {
                         "type": "string",
@@ -9116,6 +9110,13 @@
                     "type": "boolean",
                     "description": "Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters\n"
                 },
+                "pageFilterPresets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array\nof page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).\nPreset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters\nare not allowed in presets.\n"
+                },
                 "pageFilters": {
                     "type": "array",
                     "items": {
@@ -9184,6 +9185,13 @@
                     "type": "boolean",
                     "description": "Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters\n"
                 },
+                "pageFilterPresets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array\nof page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).\nPreset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters\nare not allowed in presets.\n"
+                },
                 "pageFilters": {
                     "type": "array",
                     "items": {
@@ -9249,6 +9257,13 @@
                     "locked": {
                         "type": "boolean",
                         "description": "Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters\n"
+                    },
+                    "pageFilterPresets": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array\nof page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).\nPreset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters\nare not allowed in presets.\n"
                     },
                     "pageFilters": {
                         "type": "array",
