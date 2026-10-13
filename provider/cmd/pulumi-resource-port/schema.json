@@ -3166,9 +3166,17 @@
                     "type": "string",
                     "description": "The level of the rule\n"
                 },
+                "properties": {
+                    "type": "string",
+                    "description": "Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.\n"
+                },
                 "query": {
                     "$ref": "#/types/port:index/ScorecardGroupRuleQuery:ScorecardGroupRuleQuery",
                     "description": "The query of the rule\n"
+                },
+                "relations": {
+                    "type": "string",
+                    "description": "Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.\n"
                 },
                 "title": {
                     "type": "string",
@@ -3256,9 +3264,17 @@
                     "type": "string",
                     "description": "The level of the rule\n"
                 },
+                "properties": {
+                    "type": "string",
+                    "description": "Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.\n"
+                },
                 "query": {
                     "$ref": "#/types/port:index/ScorecardGroupScorecardsRuleQuery:ScorecardGroupScorecardsRuleQuery",
                     "description": "The query of the rule\n"
+                },
+                "relations": {
+                    "type": "string",
+                    "description": "Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.\n"
                 },
                 "title": {
                     "type": "string",
@@ -3324,9 +3340,17 @@
                     "type": "string",
                     "description": "The level of the rule\n"
                 },
+                "properties": {
+                    "type": "string",
+                    "description": "Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.\n"
+                },
                 "query": {
                     "$ref": "#/types/port:index/ScorecardRuleQuery:ScorecardRuleQuery",
                     "description": "The query of the rule\n"
+                },
+                "relations": {
+                    "type": "string",
+                    "description": "Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.\n"
                 },
                 "title": {
                     "type": "string",
