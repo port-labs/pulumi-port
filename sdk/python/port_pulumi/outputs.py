@@ -7650,13 +7650,17 @@ class ScorecardGroupRule(dict):
                  level: str,
                  query: 'outputs.ScorecardGroupRuleQuery',
                  title: str,
-                 description: Optional[str] = None):
+                 description: Optional[str] = None,
+                 properties: Optional[str] = None,
+                 relations: Optional[str] = None):
         """
         :param str identifier: The identifier of the rule
         :param str level: The level of the rule
         :param 'ScorecardGroupRuleQueryArgs' query: The query of the rule
         :param str title: The title of the rule
         :param str description: The description of the rule
+        :param str properties: Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+        :param str relations: Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "level", level)
@@ -7664,6 +7668,10 @@ class ScorecardGroupRule(dict):
         pulumi.set(__self__, "title", title)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if relations is not None:
+            pulumi.set(__self__, "relations", relations)
 
     @property
     @pulumi.getter
@@ -7704,6 +7712,22 @@ class ScorecardGroupRule(dict):
         The description of the rule
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[str]:
+        """
+        Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+        """
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter
+    def relations(self) -> Optional[str]:
+        """
+        Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+        """
+        return pulumi.get(self, "relations")
 
 
 @pulumi.output_type
@@ -7801,13 +7825,17 @@ class ScorecardGroupScorecardsRule(dict):
                  level: str,
                  query: 'outputs.ScorecardGroupScorecardsRuleQuery',
                  title: str,
-                 description: Optional[str] = None):
+                 description: Optional[str] = None,
+                 properties: Optional[str] = None,
+                 relations: Optional[str] = None):
         """
         :param str identifier: The identifier of the rule
         :param str level: The level of the rule
         :param 'ScorecardGroupScorecardsRuleQueryArgs' query: The query of the rule
         :param str title: The title of the rule
         :param str description: The description of the rule
+        :param str properties: Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+        :param str relations: Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "level", level)
@@ -7815,6 +7843,10 @@ class ScorecardGroupScorecardsRule(dict):
         pulumi.set(__self__, "title", title)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if relations is not None:
+            pulumi.set(__self__, "relations", relations)
 
     @property
     @pulumi.getter
@@ -7855,6 +7887,22 @@ class ScorecardGroupScorecardsRule(dict):
         The description of the rule
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[str]:
+        """
+        Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+        """
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter
+    def relations(self) -> Optional[str]:
+        """
+        Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+        """
+        return pulumi.get(self, "relations")
 
 
 @pulumi.output_type
@@ -7922,13 +7970,17 @@ class ScorecardRule(dict):
                  level: str,
                  query: 'outputs.ScorecardRuleQuery',
                  title: str,
-                 description: Optional[str] = None):
+                 description: Optional[str] = None,
+                 properties: Optional[str] = None,
+                 relations: Optional[str] = None):
         """
         :param str identifier: The identifier of the rule
         :param str level: The level of the rule
         :param 'ScorecardRuleQueryArgs' query: The query of the rule
         :param str title: The title of the rule
         :param str description: The description of the rule
+        :param str properties: Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+        :param str relations: Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "level", level)
@@ -7936,6 +7988,10 @@ class ScorecardRule(dict):
         pulumi.set(__self__, "title", title)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if relations is not None:
+            pulumi.set(__self__, "relations", relations)
 
     @property
     @pulumi.getter
@@ -7976,6 +8032,22 @@ class ScorecardRule(dict):
         The description of the rule
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[str]:
+        """
+        Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+        """
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter
+    def relations(self) -> Optional[str]:
+        """
+        Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+        """
+        return pulumi.get(self, "relations")
 
 
 @pulumi.output_type

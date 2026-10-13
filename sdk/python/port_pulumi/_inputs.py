@@ -10784,6 +10784,14 @@ if not MYPY:
         """
         The description of the rule
         """
+        properties: NotRequired[pulumi.Input[str]]
+        """
+        Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+        """
+        relations: NotRequired[pulumi.Input[str]]
+        """
+        Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+        """
 elif False:
     ScorecardGroupRuleArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -10794,13 +10802,17 @@ class ScorecardGroupRuleArgs:
                  level: pulumi.Input[str],
                  query: pulumi.Input['ScorecardGroupRuleQueryArgs'],
                  title: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None):
+                 description: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[str]] = None,
+                 relations: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] identifier: The identifier of the rule
         :param pulumi.Input[str] level: The level of the rule
         :param pulumi.Input['ScorecardGroupRuleQueryArgs'] query: The query of the rule
         :param pulumi.Input[str] title: The title of the rule
         :param pulumi.Input[str] description: The description of the rule
+        :param pulumi.Input[str] properties: Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+        :param pulumi.Input[str] relations: Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "level", level)
@@ -10808,6 +10820,10 @@ class ScorecardGroupRuleArgs:
         pulumi.set(__self__, "title", title)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if relations is not None:
+            pulumi.set(__self__, "relations", relations)
 
     @property
     @pulumi.getter
@@ -10868,6 +10884,30 @@ class ScorecardGroupRuleArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter
+    def relations(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+        """
+        return pulumi.get(self, "relations")
+
+    @relations.setter
+    def relations(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relations", value)
 
 
 if not MYPY:
@@ -11043,6 +11083,14 @@ if not MYPY:
         """
         The description of the rule
         """
+        properties: NotRequired[pulumi.Input[str]]
+        """
+        Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+        """
+        relations: NotRequired[pulumi.Input[str]]
+        """
+        Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+        """
 elif False:
     ScorecardGroupScorecardsRuleArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -11053,13 +11101,17 @@ class ScorecardGroupScorecardsRuleArgs:
                  level: pulumi.Input[str],
                  query: pulumi.Input['ScorecardGroupScorecardsRuleQueryArgs'],
                  title: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None):
+                 description: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[str]] = None,
+                 relations: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] identifier: The identifier of the rule
         :param pulumi.Input[str] level: The level of the rule
         :param pulumi.Input['ScorecardGroupScorecardsRuleQueryArgs'] query: The query of the rule
         :param pulumi.Input[str] title: The title of the rule
         :param pulumi.Input[str] description: The description of the rule
+        :param pulumi.Input[str] properties: Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+        :param pulumi.Input[str] relations: Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "level", level)
@@ -11067,6 +11119,10 @@ class ScorecardGroupScorecardsRuleArgs:
         pulumi.set(__self__, "title", title)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if relations is not None:
+            pulumi.set(__self__, "relations", relations)
 
     @property
     @pulumi.getter
@@ -11127,6 +11183,30 @@ class ScorecardGroupScorecardsRuleArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter
+    def relations(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+        """
+        return pulumi.get(self, "relations")
+
+    @relations.setter
+    def relations(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relations", value)
 
 
 if not MYPY:
@@ -11251,6 +11331,14 @@ if not MYPY:
         """
         The description of the rule
         """
+        properties: NotRequired[pulumi.Input[str]]
+        """
+        Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+        """
+        relations: NotRequired[pulumi.Input[str]]
+        """
+        Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+        """
 elif False:
     ScorecardRuleArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -11261,13 +11349,17 @@ class ScorecardRuleArgs:
                  level: pulumi.Input[str],
                  query: pulumi.Input['ScorecardRuleQueryArgs'],
                  title: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None):
+                 description: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[str]] = None,
+                 relations: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] identifier: The identifier of the rule
         :param pulumi.Input[str] level: The level of the rule
         :param pulumi.Input['ScorecardRuleQueryArgs'] query: The query of the rule
         :param pulumi.Input[str] title: The title of the rule
         :param pulumi.Input[str] description: The description of the rule
+        :param pulumi.Input[str] properties: Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+        :param pulumi.Input[str] relations: Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "level", level)
@@ -11275,6 +11367,10 @@ class ScorecardRuleArgs:
         pulumi.set(__self__, "title", title)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if relations is not None:
+            pulumi.set(__self__, "relations", relations)
 
     @property
     @pulumi.getter
@@ -11335,6 +11431,30 @@ class ScorecardRuleArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter
+    def relations(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+        """
+        return pulumi.get(self, "relations")
+
+    @relations.setter
+    def relations(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relations", value)
 
 
 if not MYPY:

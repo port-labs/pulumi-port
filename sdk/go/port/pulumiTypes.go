@@ -18494,8 +18494,12 @@ type ScorecardGroupRule struct {
 	Identifier string `pulumi:"identifier"`
 	// The level of the rule
 	Level string `pulumi:"level"`
+	// Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+	Properties *string `pulumi:"properties"`
 	// The query of the rule
 	Query ScorecardGroupRuleQuery `pulumi:"query"`
+	// Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+	Relations *string `pulumi:"relations"`
 	// The title of the rule
 	Title string `pulumi:"title"`
 }
@@ -18518,8 +18522,12 @@ type ScorecardGroupRuleArgs struct {
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// The level of the rule
 	Level pulumi.StringInput `pulumi:"level"`
+	// Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+	Properties pulumi.StringPtrInput `pulumi:"properties"`
 	// The query of the rule
 	Query ScorecardGroupRuleQueryInput `pulumi:"query"`
+	// Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+	Relations pulumi.StringPtrInput `pulumi:"relations"`
 	// The title of the rule
 	Title pulumi.StringInput `pulumi:"title"`
 }
@@ -18590,9 +18598,19 @@ func (o ScorecardGroupRuleOutput) Level() pulumi.StringOutput {
 	return o.ApplyT(func(v ScorecardGroupRule) string { return v.Level }).(pulumi.StringOutput)
 }
 
+// Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+func (o ScorecardGroupRuleOutput) Properties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScorecardGroupRule) *string { return v.Properties }).(pulumi.StringPtrOutput)
+}
+
 // The query of the rule
 func (o ScorecardGroupRuleOutput) Query() ScorecardGroupRuleQueryOutput {
 	return o.ApplyT(func(v ScorecardGroupRule) ScorecardGroupRuleQuery { return v.Query }).(ScorecardGroupRuleQueryOutput)
+}
+
+// Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+func (o ScorecardGroupRuleOutput) Relations() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScorecardGroupRule) *string { return v.Relations }).(pulumi.StringPtrOutput)
 }
 
 // The title of the rule
@@ -18950,8 +18968,12 @@ type ScorecardGroupScorecardsRule struct {
 	Identifier string `pulumi:"identifier"`
 	// The level of the rule
 	Level string `pulumi:"level"`
+	// Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+	Properties *string `pulumi:"properties"`
 	// The query of the rule
 	Query ScorecardGroupScorecardsRuleQuery `pulumi:"query"`
+	// Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+	Relations *string `pulumi:"relations"`
 	// The title of the rule
 	Title string `pulumi:"title"`
 }
@@ -18974,8 +18996,12 @@ type ScorecardGroupScorecardsRuleArgs struct {
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// The level of the rule
 	Level pulumi.StringInput `pulumi:"level"`
+	// Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+	Properties pulumi.StringPtrInput `pulumi:"properties"`
 	// The query of the rule
 	Query ScorecardGroupScorecardsRuleQueryInput `pulumi:"query"`
+	// Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+	Relations pulumi.StringPtrInput `pulumi:"relations"`
 	// The title of the rule
 	Title pulumi.StringInput `pulumi:"title"`
 }
@@ -19046,9 +19072,19 @@ func (o ScorecardGroupScorecardsRuleOutput) Level() pulumi.StringOutput {
 	return o.ApplyT(func(v ScorecardGroupScorecardsRule) string { return v.Level }).(pulumi.StringOutput)
 }
 
+// Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+func (o ScorecardGroupScorecardsRuleOutput) Properties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScorecardGroupScorecardsRule) *string { return v.Properties }).(pulumi.StringPtrOutput)
+}
+
 // The query of the rule
 func (o ScorecardGroupScorecardsRuleOutput) Query() ScorecardGroupScorecardsRuleQueryOutput {
 	return o.ApplyT(func(v ScorecardGroupScorecardsRule) ScorecardGroupScorecardsRuleQuery { return v.Query }).(ScorecardGroupScorecardsRuleQueryOutput)
+}
+
+// Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+func (o ScorecardGroupScorecardsRuleOutput) Relations() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScorecardGroupScorecardsRule) *string { return v.Relations }).(pulumi.StringPtrOutput)
 }
 
 // The title of the rule
@@ -19250,8 +19286,12 @@ type ScorecardRule struct {
 	Identifier string `pulumi:"identifier"`
 	// The level of the rule
 	Level string `pulumi:"level"`
+	// Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+	Properties *string `pulumi:"properties"`
 	// The query of the rule
 	Query ScorecardRuleQuery `pulumi:"query"`
+	// Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+	Relations *string `pulumi:"relations"`
 	// The title of the rule
 	Title string `pulumi:"title"`
 }
@@ -19274,8 +19314,12 @@ type ScorecardRuleArgs struct {
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// The level of the rule
 	Level pulumi.StringInput `pulumi:"level"`
+	// Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+	Properties pulumi.StringPtrInput `pulumi:"properties"`
 	// The query of the rule
 	Query ScorecardRuleQueryInput `pulumi:"query"`
+	// Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+	Relations pulumi.StringPtrInput `pulumi:"relations"`
 	// The title of the rule
 	Title pulumi.StringInput `pulumi:"title"`
 }
@@ -19346,9 +19390,19 @@ func (o ScorecardRuleOutput) Level() pulumi.StringOutput {
 	return o.ApplyT(func(v ScorecardRule) string { return v.Level }).(pulumi.StringOutput)
 }
 
+// Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+func (o ScorecardRuleOutput) Properties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScorecardRule) *string { return v.Properties }).(pulumi.StringPtrOutput)
+}
+
 // The query of the rule
 func (o ScorecardRuleOutput) Query() ScorecardRuleQueryOutput {
 	return o.ApplyT(func(v ScorecardRule) ScorecardRuleQuery { return v.Query }).(ScorecardRuleQueryOutput)
+}
+
+// Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+func (o ScorecardRuleOutput) Relations() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScorecardRule) *string { return v.Relations }).(pulumi.StringPtrOutput)
 }
 
 // The title of the rule

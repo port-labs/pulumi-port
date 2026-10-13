@@ -2222,9 +2222,17 @@ export interface ScorecardGroupRule {
      */
     level: string;
     /**
+     * Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+     */
+    properties?: string;
+    /**
      * The query of the rule
      */
     query: outputs.ScorecardGroupRuleQuery;
+    /**
+     * Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+     */
+    relations?: string;
     /**
      * The title of the rule
      */
@@ -2278,9 +2286,17 @@ export interface ScorecardGroupScorecardsRule {
      */
     level: string;
     /**
+     * Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+     */
+    properties?: string;
+    /**
      * The query of the rule
      */
     query: outputs.ScorecardGroupScorecardsRuleQuery;
+    /**
+     * Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+     */
+    relations?: string;
     /**
      * The title of the rule
      */
@@ -2323,9 +2339,17 @@ export interface ScorecardRule {
      */
     level: string;
     /**
+     * Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+     */
+    properties?: string;
+    /**
      * The query of the rule
      */
     query: outputs.ScorecardRuleQuery;
+    /**
+     * Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+     */
+    relations?: string;
     /**
      * The title of the rule
      */

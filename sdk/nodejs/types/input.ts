@@ -2115,9 +2115,17 @@ export interface ScorecardGroupRule {
      */
     level: pulumi.Input<string>;
     /**
+     * Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+     */
+    properties?: pulumi.Input<string>;
+    /**
      * The query of the rule
      */
     query: pulumi.Input<inputs.ScorecardGroupRuleQuery>;
+    /**
+     * Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+     */
+    relations?: pulumi.Input<string>;
     /**
      * The title of the rule
      */
@@ -2171,9 +2179,17 @@ export interface ScorecardGroupScorecardsRule {
      */
     level: pulumi.Input<string>;
     /**
+     * Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+     */
+    properties?: pulumi.Input<string>;
+    /**
      * The query of the rule
      */
     query: pulumi.Input<inputs.ScorecardGroupScorecardsRuleQuery>;
+    /**
+     * Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+     */
+    relations?: pulumi.Input<string>;
     /**
      * The title of the rule
      */
@@ -2216,9 +2232,17 @@ export interface ScorecardRule {
      */
     level: pulumi.Input<string>;
     /**
+     * Additional `_rule` blueprint properties applied to this rule, as a JSON encoded string. Property keys must match custom properties you added to the `_rule` blueprint. On update, omitted keys are cleared.
+     */
+    properties?: pulumi.Input<string>;
+    /**
      * The query of the rule
      */
     query: pulumi.Input<inputs.ScorecardRuleQuery>;
+    /**
+     * Additional `_rule` blueprint relations applied to this rule, as a JSON encoded string. Relation values can be a string, an array of strings, or `null` to clear a relation. The `scorecard` relation is managed by Port and cannot be set here. On update, omitted keys are cleared.
+     */
+    relations?: pulumi.Input<string>;
     /**
      * The title of the rule
      */
