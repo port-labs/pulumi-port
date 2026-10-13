@@ -21306,7 +21306,7 @@ if not MYPY:
     class WorkflowNodeSelfServeTriggerContextArgsDict(TypedDict):
         on: pulumi.Input[str]
         """
-        The context type. One of `CREATE_ENTITY`, `ENTITY`.
+        The context type. One of `CREATE_ENTITY`, `ENTITY`, `SELF_SERVICE_HUB`.
         """
         blueprint_identifier: NotRequired[pulumi.Input[str]]
         """
@@ -21316,6 +21316,10 @@ if not MYPY:
         """
         The user input the trigger is bound to. Required when `on` is `ENTITY`.
         """
+        visible: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the trigger is shown in the Self-Service Hub. Required when `on` is `SELF_SERVICE_HUB`. A trigger without a `SELF_SERVICE_HUB` context is shown. A hidden trigger stays published and can still be run from entity pages, dashboards, links, the API and AI agents; this is not an access control.
+        """
 elif False:
     WorkflowNodeSelfServeTriggerContextArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -21324,23 +21328,27 @@ class WorkflowNodeSelfServeTriggerContextArgs:
     def __init__(__self__, *,
                  on: pulumi.Input[str],
                  blueprint_identifier: Optional[pulumi.Input[str]] = None,
-                 user_input: Optional[pulumi.Input[str]] = None):
+                 user_input: Optional[pulumi.Input[str]] = None,
+                 visible: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] on: The context type. One of `CREATE_ENTITY`, `ENTITY`.
+        :param pulumi.Input[str] on: The context type. One of `CREATE_ENTITY`, `ENTITY`, `SELF_SERVICE_HUB`.
         :param pulumi.Input[str] blueprint_identifier: The blueprint the trigger creates an entity for. Required when `on` is `CREATE_ENTITY`.
         :param pulumi.Input[str] user_input: The user input the trigger is bound to. Required when `on` is `ENTITY`.
+        :param pulumi.Input[bool] visible: Whether the trigger is shown in the Self-Service Hub. Required when `on` is `SELF_SERVICE_HUB`. A trigger without a `SELF_SERVICE_HUB` context is shown. A hidden trigger stays published and can still be run from entity pages, dashboards, links, the API and AI agents; this is not an access control.
         """
         pulumi.set(__self__, "on", on)
         if blueprint_identifier is not None:
             pulumi.set(__self__, "blueprint_identifier", blueprint_identifier)
         if user_input is not None:
             pulumi.set(__self__, "user_input", user_input)
+        if visible is not None:
+            pulumi.set(__self__, "visible", visible)
 
     @property
     @pulumi.getter
     def on(self) -> pulumi.Input[str]:
         """
-        The context type. One of `CREATE_ENTITY`, `ENTITY`.
+        The context type. One of `CREATE_ENTITY`, `ENTITY`, `SELF_SERVICE_HUB`.
         """
         return pulumi.get(self, "on")
 
@@ -21371,6 +21379,18 @@ class WorkflowNodeSelfServeTriggerContextArgs:
     @user_input.setter
     def user_input(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_input", value)
+
+    @property
+    @pulumi.getter
+    def visible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the trigger is shown in the Self-Service Hub. Required when `on` is `SELF_SERVICE_HUB`. A trigger without a `SELF_SERVICE_HUB` context is shown. A hidden trigger stays published and can still be run from entity pages, dashboards, links, the API and AI agents; this is not an access control.
+        """
+        return pulumi.get(self, "visible")
+
+    @visible.setter
+    def visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "visible", value)
 
 
 if not MYPY:

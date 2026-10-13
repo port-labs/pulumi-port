@@ -33469,10 +33469,12 @@ func (o WorkflowNodeSelfServeTriggerPtrOutput) Variant() pulumi.StringPtrOutput 
 type WorkflowNodeSelfServeTriggerContext struct {
 	// The blueprint the trigger creates an entity for. Required when `on` is `CREATE_ENTITY`.
 	BlueprintIdentifier *string `pulumi:"blueprintIdentifier"`
-	// The context type. One of `CREATE_ENTITY`, `ENTITY`.
+	// The context type. One of `CREATE_ENTITY`, `ENTITY`, `SELF_SERVICE_HUB`.
 	On string `pulumi:"on"`
 	// The user input the trigger is bound to. Required when `on` is `ENTITY`.
 	UserInput *string `pulumi:"userInput"`
+	// Whether the trigger is shown in the Self-Service Hub. Required when `on` is `SELF_SERVICE_HUB`. A trigger without a `SELF_SERVICE_HUB` context is shown. A hidden trigger stays published and can still be run from entity pages, dashboards, links, the API and AI agents; this is not an access control.
+	Visible *bool `pulumi:"visible"`
 }
 
 // WorkflowNodeSelfServeTriggerContextInput is an input type that accepts WorkflowNodeSelfServeTriggerContextArgs and WorkflowNodeSelfServeTriggerContextOutput values.
@@ -33489,10 +33491,12 @@ type WorkflowNodeSelfServeTriggerContextInput interface {
 type WorkflowNodeSelfServeTriggerContextArgs struct {
 	// The blueprint the trigger creates an entity for. Required when `on` is `CREATE_ENTITY`.
 	BlueprintIdentifier pulumi.StringPtrInput `pulumi:"blueprintIdentifier"`
-	// The context type. One of `CREATE_ENTITY`, `ENTITY`.
+	// The context type. One of `CREATE_ENTITY`, `ENTITY`, `SELF_SERVICE_HUB`.
 	On pulumi.StringInput `pulumi:"on"`
 	// The user input the trigger is bound to. Required when `on` is `ENTITY`.
 	UserInput pulumi.StringPtrInput `pulumi:"userInput"`
+	// Whether the trigger is shown in the Self-Service Hub. Required when `on` is `SELF_SERVICE_HUB`. A trigger without a `SELF_SERVICE_HUB` context is shown. A hidden trigger stays published and can still be run from entity pages, dashboards, links, the API and AI agents; this is not an access control.
+	Visible pulumi.BoolPtrInput `pulumi:"visible"`
 }
 
 func (WorkflowNodeSelfServeTriggerContextArgs) ElementType() reflect.Type {
@@ -33551,7 +33555,7 @@ func (o WorkflowNodeSelfServeTriggerContextOutput) BlueprintIdentifier() pulumi.
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerContext) *string { return v.BlueprintIdentifier }).(pulumi.StringPtrOutput)
 }
 
-// The context type. One of `CREATE_ENTITY`, `ENTITY`.
+// The context type. One of `CREATE_ENTITY`, `ENTITY`, `SELF_SERVICE_HUB`.
 func (o WorkflowNodeSelfServeTriggerContextOutput) On() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerContext) string { return v.On }).(pulumi.StringOutput)
 }
@@ -33559,6 +33563,11 @@ func (o WorkflowNodeSelfServeTriggerContextOutput) On() pulumi.StringOutput {
 // The user input the trigger is bound to. Required when `on` is `ENTITY`.
 func (o WorkflowNodeSelfServeTriggerContextOutput) UserInput() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerContext) *string { return v.UserInput }).(pulumi.StringPtrOutput)
+}
+
+// Whether the trigger is shown in the Self-Service Hub. Required when `on` is `SELF_SERVICE_HUB`. A trigger without a `SELF_SERVICE_HUB` context is shown. A hidden trigger stays published and can still be run from entity pages, dashboards, links, the API and AI agents; this is not an access control.
+func (o WorkflowNodeSelfServeTriggerContextOutput) Visible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerContext) *bool { return v.Visible }).(pulumi.BoolPtrOutput)
 }
 
 type WorkflowNodeSelfServeTriggerContextArrayOutput struct{ *pulumi.OutputState }

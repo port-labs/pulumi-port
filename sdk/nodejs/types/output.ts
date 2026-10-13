@@ -4378,13 +4378,17 @@ export interface WorkflowNodeSelfServeTriggerContext {
      */
     blueprintIdentifier?: string;
     /**
-     * The context type. One of `CREATE_ENTITY`, `ENTITY`.
+     * The context type. One of `CREATE_ENTITY`, `ENTITY`, `SELF_SERVICE_HUB`.
      */
     on: string;
     /**
      * The user input the trigger is bound to. Required when `on` is `ENTITY`.
      */
     userInput?: string;
+    /**
+     * Whether the trigger is shown in the Self-Service Hub. Required when `on` is `SELF_SERVICE_HUB`. A trigger without a `SELF_SERVICE_HUB` context is shown. A hidden trigger stays published and can still be run from entity pages, dashboards, links, the API and AI agents; this is not an access control.
+     */
+    visible?: boolean;
 }
 
 export interface WorkflowNodeSelfServeTriggerPermissions {
