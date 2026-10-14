@@ -129,19 +129,40 @@ jobs:
     name: Wait for Go, npm, and PyPI packages
     needs: create_release
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 95
     steps:
+      - name: Set up Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: stable
+          cache: false
+
+      - name: Prime Go proxy and trigger pkg.go.dev discovery
+        env:
+          RAW_VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          VERSION="${RAW_VERSION#v}"
+          MODULE=github.com/port-labs/terraform-provider-port-labs/v2
+          echo "Priming ${MODULE}@v${VERSION} on proxy.golang.org"
+          curl -fsS "https://proxy.golang.org/${MODULE}/@v/v${VERSION}.info"
+          curl -fsS "https://proxy.golang.org/${MODULE}/@v/v${VERSION}.mod"
+          GOPROXY=https://proxy.golang.org GO111MODULE=on go get "${MODULE}@v${VERSION}"
+          echo "Module is on the Go proxy; waiting for pkg.go.dev to index the version"
+
       - name: Poll Go, npm, and PyPI for version
         env:
           RAW_VERSION: ${{ inputs.version }}
         run: |
           set -euo pipefail
           VERSION="${RAW_VERSION#v}"
-          GO_URL="https://pkg.go.dev/github.com/port-labs/terraform-provider-port-labs/v2@v${VERSION}/provider"
+          GO_MODULE=github.com/port-labs/terraform-provider-port-labs/v2
+          GO_VERSIONS_URL="https://pkg.go.dev/v1/versions/github.com/port-labs/terraform-provider-port-labs%2Fv2"
+          GO_DOCS_URL="https://pkg.go.dev/${GO_MODULE}@v${VERSION}/provider"
           NPM_URL="https://registry.npmjs.org/@port-labs/port/${VERSION}"
           PYPI_URL="https://pypi.org/pypi/port-pulumi/${VERSION}/json"
-          echo "Waiting up to 30 minutes for:"
-          echo "  Go   ${GO_URL}"
+          echo "Waiting up to 90 minutes for:"
+          echo "  Go   ${GO_DOCS_URL} (indexed via ${GO_VERSIONS_URL})"
           echo "  npm  https://www.npmjs.com/package/@port-labs/port"
           echo "  PyPI https://pypi.org/project/port-pulumi/${VERSION}/"
 
@@ -149,12 +170,22 @@ jobs:
             curl -fsS -o /dev/null "$1"
           }
 
-          for _ in $(seq 1 60); do
+          go_on_pkg_go_dev() {
+            curl -fsSL "$GO_VERSIONS_URL" \
+              | jq -e --arg v "v${VERSION}" '.items[] | select(.version == $v)' >/dev/null
+          }
+
+          for attempt in $(seq 1 180); do
             missing=()
-            if published "$GO_URL"; then
-              echo "Found Go module terraform-provider-port-labs/v2@v${VERSION}"
+            if go_on_pkg_go_dev; then
+              echo "Found Go module ${GO_MODULE}@v${VERSION} on pkg.go.dev"
             else
               missing+=("Go")
+              if [[ "$attempt" == "1" || "$((attempt % 10))" == "0" ]]; then
+                echo "Re-priming Go proxy to encourage pkg.go.dev indexing (attempt ${attempt})"
+                curl -fsS "https://proxy.golang.org/${GO_MODULE}/@v/v${VERSION}.info" || true
+                GOPROXY=https://proxy.golang.org GO111MODULE=on go get "${GO_MODULE}@v${VERSION}" || true
+              fi
             fi
             if published "$NPM_URL"; then
               echo "Found npm @port-labs/port@${VERSION}"
@@ -173,5 +204,5 @@ jobs:
             echo "Still waiting on: ${missing[*]}. Retrying in 30s..."
             sleep 30
           done
-          echo "::error::Timed out waiting 30 minutes for Go, npm, and/or PyPI packages at ${VERSION}"
+          echo "::error::Timed out waiting 90 minutes for Go, npm, and/or PyPI packages at ${VERSION}"
           exit 1
