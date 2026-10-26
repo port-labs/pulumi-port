@@ -19,13 +19,31 @@ __all__ = ['OrganizationArgs', 'Organization']
 @pulumi.input_type
 class OrganizationArgs:
     def __init__(__self__, *,
+                 hidden_global_search_tabs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Organization resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hidden_global_search_tabs: Spotlight tabs to hide from global search. Allowed values: `all`, `blueprint`, `page`, `action`, `workflow`, `entity`,
+               `markdown`. At least one content tab must remain visible, and `all` cannot be the only visible tab.
         :param pulumi.Input[str] name: The name of the organization
         """
+        if hidden_global_search_tabs is not None:
+            pulumi.set(__self__, "hidden_global_search_tabs", hidden_global_search_tabs)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="hiddenGlobalSearchTabs")
+    def hidden_global_search_tabs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Spotlight tabs to hide from global search. Allowed values: `all`, `blueprint`, `page`, `action`, `workflow`, `entity`,
+        `markdown`. At least one content tab must remain visible, and `all` cannot be the only visible tab.
+        """
+        return pulumi.get(self, "hidden_global_search_tabs")
+
+    @hidden_global_search_tabs.setter
+    def hidden_global_search_tabs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "hidden_global_search_tabs", value)
 
     @property
     @pulumi.getter
@@ -43,13 +61,31 @@ class OrganizationArgs:
 @pulumi.input_type
 class _OrganizationState:
     def __init__(__self__, *,
+                 hidden_global_search_tabs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Organization resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hidden_global_search_tabs: Spotlight tabs to hide from global search. Allowed values: `all`, `blueprint`, `page`, `action`, `workflow`, `entity`,
+               `markdown`. At least one content tab must remain visible, and `all` cannot be the only visible tab.
         :param pulumi.Input[str] name: The name of the organization
         """
+        if hidden_global_search_tabs is not None:
+            pulumi.set(__self__, "hidden_global_search_tabs", hidden_global_search_tabs)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="hiddenGlobalSearchTabs")
+    def hidden_global_search_tabs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Spotlight tabs to hide from global search. Allowed values: `all`, `blueprint`, `page`, `action`, `workflow`, `entity`,
+        `markdown`. At least one content tab must remain visible, and `all` cannot be the only visible tab.
+        """
+        return pulumi.get(self, "hidden_global_search_tabs")
+
+    @hidden_global_search_tabs.setter
+    def hidden_global_search_tabs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "hidden_global_search_tabs", value)
 
     @property
     @pulumi.getter
@@ -69,12 +105,15 @@ class Organization(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 hidden_global_search_tabs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Create a Organization resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hidden_global_search_tabs: Spotlight tabs to hide from global search. Allowed values: `all`, `blueprint`, `page`, `action`, `workflow`, `entity`,
+               `markdown`. At least one content tab must remain visible, and `all` cannot be the only visible tab.
         :param pulumi.Input[str] name: The name of the organization
         """
         ...
@@ -100,6 +139,7 @@ class Organization(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 hidden_global_search_tabs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -110,6 +150,7 @@ class Organization(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationArgs.__new__(OrganizationArgs)
 
+            __props__.__dict__["hidden_global_search_tabs"] = hidden_global_search_tabs
             __props__.__dict__["name"] = name
         super(Organization, __self__).__init__(
             'port:index/organization:Organization',
@@ -121,6 +162,7 @@ class Organization(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            hidden_global_search_tabs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'Organization':
         """
         Get an existing Organization resource's state with the given name, id, and optional extra
@@ -129,14 +171,26 @@ class Organization(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hidden_global_search_tabs: Spotlight tabs to hide from global search. Allowed values: `all`, `blueprint`, `page`, `action`, `workflow`, `entity`,
+               `markdown`. At least one content tab must remain visible, and `all` cannot be the only visible tab.
         :param pulumi.Input[str] name: The name of the organization
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _OrganizationState.__new__(_OrganizationState)
 
+        __props__.__dict__["hidden_global_search_tabs"] = hidden_global_search_tabs
         __props__.__dict__["name"] = name
         return Organization(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="hiddenGlobalSearchTabs")
+    def hidden_global_search_tabs(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Spotlight tabs to hide from global search. Allowed values: `all`, `blueprint`, `page`, `action`, `workflow`, `entity`,
+        `markdown`. At least one content tab must remain visible, and `all` cannot be the only visible tab.
+        """
+        return pulumi.get(self, "hidden_global_search_tabs")
 
     @property
     @pulumi.getter

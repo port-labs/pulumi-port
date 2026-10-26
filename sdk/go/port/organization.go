@@ -14,6 +14,9 @@ import (
 type Organization struct {
 	pulumi.CustomResourceState
 
+	// Spotlight tabs to hide from global search. Allowed values: `all`, `blueprint`, `page`, `action`, `workflow`, `entity`,
+	// `markdown`. At least one content tab must remain visible, and `all` cannot be the only visible tab.
+	HiddenGlobalSearchTabs pulumi.StringArrayOutput `pulumi:"hiddenGlobalSearchTabs"`
 	// The name of the organization
 	Name pulumi.StringOutput `pulumi:"name"`
 }
@@ -48,11 +51,17 @@ func GetOrganization(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Organization resources.
 type organizationState struct {
+	// Spotlight tabs to hide from global search. Allowed values: `all`, `blueprint`, `page`, `action`, `workflow`, `entity`,
+	// `markdown`. At least one content tab must remain visible, and `all` cannot be the only visible tab.
+	HiddenGlobalSearchTabs []string `pulumi:"hiddenGlobalSearchTabs"`
 	// The name of the organization
 	Name *string `pulumi:"name"`
 }
 
 type OrganizationState struct {
+	// Spotlight tabs to hide from global search. Allowed values: `all`, `blueprint`, `page`, `action`, `workflow`, `entity`,
+	// `markdown`. At least one content tab must remain visible, and `all` cannot be the only visible tab.
+	HiddenGlobalSearchTabs pulumi.StringArrayInput
 	// The name of the organization
 	Name pulumi.StringPtrInput
 }
@@ -62,12 +71,18 @@ func (OrganizationState) ElementType() reflect.Type {
 }
 
 type organizationArgs struct {
+	// Spotlight tabs to hide from global search. Allowed values: `all`, `blueprint`, `page`, `action`, `workflow`, `entity`,
+	// `markdown`. At least one content tab must remain visible, and `all` cannot be the only visible tab.
+	HiddenGlobalSearchTabs []string `pulumi:"hiddenGlobalSearchTabs"`
 	// The name of the organization
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a Organization resource.
 type OrganizationArgs struct {
+	// Spotlight tabs to hide from global search. Allowed values: `all`, `blueprint`, `page`, `action`, `workflow`, `entity`,
+	// `markdown`. At least one content tab must remain visible, and `all` cannot be the only visible tab.
+	HiddenGlobalSearchTabs pulumi.StringArrayInput
 	// The name of the organization
 	Name pulumi.StringPtrInput
 }
@@ -157,6 +172,12 @@ func (o OrganizationOutput) ToOrganizationOutput() OrganizationOutput {
 
 func (o OrganizationOutput) ToOrganizationOutputWithContext(ctx context.Context) OrganizationOutput {
 	return o
+}
+
+// Spotlight tabs to hide from global search. Allowed values: `all`, `blueprint`, `page`, `action`, `workflow`, `entity`,
+// `markdown`. At least one content tab must remain visible, and `all` cannot be the only visible tab.
+func (o OrganizationOutput) HiddenGlobalSearchTabs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringArrayOutput { return v.HiddenGlobalSearchTabs }).(pulumi.StringArrayOutput)
 }
 
 // The name of the organization

@@ -33,6 +33,11 @@ export class Organization extends pulumi.CustomResource {
     }
 
     /**
+     * Spotlight tabs to hide from global search. Allowed values: `all`, `blueprint`, `page`, `action`, `workflow`, `entity`,
+     * `markdown`. At least one content tab must remain visible, and `all` cannot be the only visible tab.
+     */
+    public readonly hiddenGlobalSearchTabs!: pulumi.Output<string[]>;
+    /**
      * The name of the organization
      */
     public readonly name!: pulumi.Output<string>;
@@ -50,9 +55,11 @@ export class Organization extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationState | undefined;
+            resourceInputs["hiddenGlobalSearchTabs"] = state ? state.hiddenGlobalSearchTabs : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as OrganizationArgs | undefined;
+            resourceInputs["hiddenGlobalSearchTabs"] = args ? args.hiddenGlobalSearchTabs : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -65,6 +72,11 @@ export class Organization extends pulumi.CustomResource {
  */
 export interface OrganizationState {
     /**
+     * Spotlight tabs to hide from global search. Allowed values: `all`, `blueprint`, `page`, `action`, `workflow`, `entity`,
+     * `markdown`. At least one content tab must remain visible, and `all` cannot be the only visible tab.
+     */
+    hiddenGlobalSearchTabs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The name of the organization
      */
     name?: pulumi.Input<string>;
@@ -74,6 +86,11 @@ export interface OrganizationState {
  * The set of arguments for constructing a Organization resource.
  */
 export interface OrganizationArgs {
+    /**
+     * Spotlight tabs to hide from global search. Allowed values: `all`, `blueprint`, `page`, `action`, `workflow`, `entity`,
+     * `markdown`. At least one content tab must remain visible, and `all` cannot be the only visible tab.
+     */
+    hiddenGlobalSearchTabs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the organization
      */
