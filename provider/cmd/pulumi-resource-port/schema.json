@@ -9020,15 +9020,30 @@
         },
         "port:index/organization:Organization": {
             "properties": {
+                "hiddenGlobalSearchTabs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Spotlight tabs to hide from global search. Allowed values: `all`, `blueprint`, `page`, `action`, `workflow`, `entity`,\n`markdown`. At least one content tab must remain visible, and `all` cannot be the only visible tab.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the organization\n"
                 }
             },
             "required": [
+                "hiddenGlobalSearchTabs",
                 "name"
             ],
             "inputProperties": {
+                "hiddenGlobalSearchTabs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Spotlight tabs to hide from global search. Allowed values: `all`, `blueprint`, `page`, `action`, `workflow`, `entity`,\n`markdown`. At least one content tab must remain visible, and `all` cannot be the only visible tab.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the organization\n"
@@ -9037,6 +9052,13 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Organization resources.\n",
                 "properties": {
+                    "hiddenGlobalSearchTabs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Spotlight tabs to hide from global search. Allowed values: `all`, `blueprint`, `page`, `action`, `workflow`, `entity`,\n`markdown`. At least one content tab must remain visible, and `all` cannot be the only visible tab.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The name of the organization\n"
