@@ -131,6 +131,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 95
     steps:
+      - name: Checkout terraform-provider-port-labs
+        uses: actions/checkout@v4
+        with:
+          repository: port-labs/terraform-provider-port-labs
+          persist-credentials: false
+
       - name: Set up Go
         uses: actions/setup-go@v6
         with:
@@ -147,7 +153,8 @@ jobs:
           echo "Priming ${MODULE}@v${VERSION} on proxy.golang.org"
           curl -fsS "https://proxy.golang.org/${MODULE}/@v/v${VERSION}.info"
           curl -fsS "https://proxy.golang.org/${MODULE}/@v/v${VERSION}.mod"
-          GOPROXY=https://proxy.golang.org GO111MODULE=on go get "${MODULE}@v${VERSION}"
+          # go get cannot request a version of the module checked out here.
+          GOPROXY=https://proxy.golang.org GO111MODULE=on go list -m "${MODULE}@v${VERSION}"
           echo "Module is on the Go proxy; waiting for pkg.go.dev to index the version"
 
       - name: Poll Go, npm, and PyPI for version
@@ -184,7 +191,7 @@ jobs:
               if [[ "$attempt" == "1" || "$((attempt % 10))" == "0" ]]; then
                 echo "Re-priming Go proxy to encourage pkg.go.dev indexing (attempt ${attempt})"
                 curl -fsS "https://proxy.golang.org/${GO_MODULE}/@v/v${VERSION}.info" || true
-                GOPROXY=https://proxy.golang.org GO111MODULE=on go get "${GO_MODULE}@v${VERSION}" || true
+                GOPROXY=https://proxy.golang.org GO111MODULE=on go list -m "${GO_MODULE}@v${VERSION}" || true
               fi
             fi
             if published "$NPM_URL"; then
