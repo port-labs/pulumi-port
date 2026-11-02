@@ -3053,6 +3053,18 @@
         "port:index/IntegrationKafkaChangelogDestination:IntegrationKafkaChangelogDestination": {
             "type": "object"
         },
+        "port:index/IntegrationNotificationChannels:IntegrationNotificationChannels": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether this channel sends integration notifications.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ]
+        },
         "port:index/IntegrationWebhookChangelogDestination:IntegrationWebhookChangelogDestination": {
             "properties": {
                 "agent": {
@@ -4012,7 +4024,8 @@
                 },
                 "secret": {
                     "type": "string",
-                    "description": "The secret of the webhook\n"
+                    "description": "The secret of the webhook\n",
+                    "secret": true
                 },
                 "signatureAlgorithm": {
                     "type": "string",
@@ -8904,6 +8917,13 @@
                     "$ref": "#/types/port:index/IntegrationKafkaChangelogDestination:IntegrationKafkaChangelogDestination",
                     "description": "The changelog destination of the blueprint (just an empty `{}`)\n"
                 },
+                "notificationChannels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/IntegrationNotificationChannels:IntegrationNotificationChannels"
+                    },
+                    "description": "Whether each notification channel is enabled, keyed by channel name (`email` or `slack`). Only supported when\n`installation_type` is `Saas` or `SaasOAuth2`. Channels left out of this map are not changed. Recipient emails and teams\nalready saved in Port are kept when `enabled` is updated.\n"
+                },
                 "spec": {
                     "type": "string"
                 },
@@ -8955,6 +8975,13 @@
                     "$ref": "#/types/port:index/IntegrationKafkaChangelogDestination:IntegrationKafkaChangelogDestination",
                     "description": "The changelog destination of the blueprint (just an empty `{}`)\n"
                 },
+                "notificationChannels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/port:index/IntegrationNotificationChannels:IntegrationNotificationChannels"
+                    },
+                    "description": "Whether each notification channel is enabled, keyed by channel name (`email` or `slack`). Only supported when\n`installation_type` is `Saas` or `SaasOAuth2`. Channels left out of this map are not changed. Recipient emails and teams\nalready saved in Port are kept when `enabled` is updated.\n"
+                },
                 "spec": {
                     "type": "string"
                 },
@@ -8996,6 +9023,13 @@
                     "kafkaChangelogDestination": {
                         "$ref": "#/types/port:index/IntegrationKafkaChangelogDestination:IntegrationKafkaChangelogDestination",
                         "description": "The changelog destination of the blueprint (just an empty `{}`)\n"
+                    },
+                    "notificationChannels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/port:index/IntegrationNotificationChannels:IntegrationNotificationChannels"
+                        },
+                        "description": "Whether each notification channel is enabled, keyed by channel name (`email` or `slack`). Only supported when\n`installation_type` is `Saas` or `SaasOAuth2`. Channels left out of this map are not changed. Recipient emails and teams\nalready saved in Port are kept when `enabled` is updated.\n"
                     },
                     "spec": {
                         "type": "string"
