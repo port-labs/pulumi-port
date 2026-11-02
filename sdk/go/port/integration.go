@@ -29,7 +29,11 @@ type Integration struct {
 	InstallationType pulumi.StringOutput `pulumi:"installationType"`
 	// The changelog destination of the blueprint (just an empty `{}`)
 	KafkaChangelogDestination IntegrationKafkaChangelogDestinationOutput `pulumi:"kafkaChangelogDestination"`
-	Spec                      pulumi.StringOutput                        `pulumi:"spec"`
+	// Whether each notification channel is enabled, keyed by channel name (`email` or `slack`). Only supported when
+	// `installationType` is `Saas` or `SaasOAuth2`. Channels left out of this map are not changed. Recipient emails and teams
+	// already saved in Port are kept when `enabled` is updated.
+	NotificationChannels IntegrationNotificationChannelsMapOutput `pulumi:"notificationChannels"`
+	Spec                 pulumi.StringOutput                      `pulumi:"spec"`
 	// The provisioning status of the integration (e.g. `Creating`, `Running`, `Updating`, `Error`). Relevant for Port Hosted
 	// integrations that provision asynchronously.
 	Status  pulumi.StringOutput    `pulumi:"status"`
@@ -86,7 +90,11 @@ type integrationState struct {
 	InstallationType *string `pulumi:"installationType"`
 	// The changelog destination of the blueprint (just an empty `{}`)
 	KafkaChangelogDestination *IntegrationKafkaChangelogDestination `pulumi:"kafkaChangelogDestination"`
-	Spec                      *string                               `pulumi:"spec"`
+	// Whether each notification channel is enabled, keyed by channel name (`email` or `slack`). Only supported when
+	// `installationType` is `Saas` or `SaasOAuth2`. Channels left out of this map are not changed. Recipient emails and teams
+	// already saved in Port are kept when `enabled` is updated.
+	NotificationChannels map[string]IntegrationNotificationChannels `pulumi:"notificationChannels"`
+	Spec                 *string                                    `pulumi:"spec"`
 	// The provisioning status of the integration (e.g. `Creating`, `Running`, `Updating`, `Error`). Relevant for Port Hosted
 	// integrations that provision asynchronously.
 	Status  *string `pulumi:"status"`
@@ -111,7 +119,11 @@ type IntegrationState struct {
 	InstallationType pulumi.StringPtrInput
 	// The changelog destination of the blueprint (just an empty `{}`)
 	KafkaChangelogDestination IntegrationKafkaChangelogDestinationPtrInput
-	Spec                      pulumi.StringPtrInput
+	// Whether each notification channel is enabled, keyed by channel name (`email` or `slack`). Only supported when
+	// `installationType` is `Saas` or `SaasOAuth2`. Channels left out of this map are not changed. Recipient emails and teams
+	// already saved in Port are kept when `enabled` is updated.
+	NotificationChannels IntegrationNotificationChannelsMapInput
+	Spec                 pulumi.StringPtrInput
 	// The provisioning status of the integration (e.g. `Creating`, `Running`, `Updating`, `Error`). Relevant for Port Hosted
 	// integrations that provision asynchronously.
 	Status  pulumi.StringPtrInput
@@ -140,9 +152,13 @@ type integrationArgs struct {
 	InstallationType *string `pulumi:"installationType"`
 	// The changelog destination of the blueprint (just an empty `{}`)
 	KafkaChangelogDestination *IntegrationKafkaChangelogDestination `pulumi:"kafkaChangelogDestination"`
-	Spec                      *string                               `pulumi:"spec"`
-	Title                     *string                               `pulumi:"title"`
-	Version                   *string                               `pulumi:"version"`
+	// Whether each notification channel is enabled, keyed by channel name (`email` or `slack`). Only supported when
+	// `installationType` is `Saas` or `SaasOAuth2`. Channels left out of this map are not changed. Recipient emails and teams
+	// already saved in Port are kept when `enabled` is updated.
+	NotificationChannels map[string]IntegrationNotificationChannels `pulumi:"notificationChannels"`
+	Spec                 *string                                    `pulumi:"spec"`
+	Title                *string                                    `pulumi:"title"`
+	Version              *string                                    `pulumi:"version"`
 	// The webhook changelog destination of the integration
 	WebhookChangelogDestination *IntegrationWebhookChangelogDestination `pulumi:"webhookChangelogDestination"`
 }
@@ -163,9 +179,13 @@ type IntegrationArgs struct {
 	InstallationType pulumi.StringPtrInput
 	// The changelog destination of the blueprint (just an empty `{}`)
 	KafkaChangelogDestination IntegrationKafkaChangelogDestinationPtrInput
-	Spec                      pulumi.StringPtrInput
-	Title                     pulumi.StringPtrInput
-	Version                   pulumi.StringPtrInput
+	// Whether each notification channel is enabled, keyed by channel name (`email` or `slack`). Only supported when
+	// `installationType` is `Saas` or `SaasOAuth2`. Channels left out of this map are not changed. Recipient emails and teams
+	// already saved in Port are kept when `enabled` is updated.
+	NotificationChannels IntegrationNotificationChannelsMapInput
+	Spec                 pulumi.StringPtrInput
+	Title                pulumi.StringPtrInput
+	Version              pulumi.StringPtrInput
 	// The webhook changelog destination of the integration
 	WebhookChangelogDestination IntegrationWebhookChangelogDestinationPtrInput
 }
@@ -287,6 +307,13 @@ func (o IntegrationOutput) InstallationType() pulumi.StringOutput {
 // The changelog destination of the blueprint (just an empty `{}`)
 func (o IntegrationOutput) KafkaChangelogDestination() IntegrationKafkaChangelogDestinationOutput {
 	return o.ApplyT(func(v *Integration) IntegrationKafkaChangelogDestinationOutput { return v.KafkaChangelogDestination }).(IntegrationKafkaChangelogDestinationOutput)
+}
+
+// Whether each notification channel is enabled, keyed by channel name (`email` or `slack`). Only supported when
+// `installationType` is `Saas` or `SaasOAuth2`. Channels left out of this map are not changed. Recipient emails and teams
+// already saved in Port are kept when `enabled` is updated.
+func (o IntegrationOutput) NotificationChannels() IntegrationNotificationChannelsMapOutput {
+	return o.ApplyT(func(v *Integration) IntegrationNotificationChannelsMapOutput { return v.NotificationChannels }).(IntegrationNotificationChannelsMapOutput)
 }
 
 func (o IntegrationOutput) Spec() pulumi.StringOutput {

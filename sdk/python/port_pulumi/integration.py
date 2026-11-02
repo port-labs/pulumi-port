@@ -27,6 +27,7 @@ class IntegrationArgs:
                  installation_app_type: Optional[pulumi.Input[str]] = None,
                  installation_type: Optional[pulumi.Input[str]] = None,
                  kafka_changelog_destination: Optional[pulumi.Input['IntegrationKafkaChangelogDestinationArgs']] = None,
+                 notification_channels: Optional[pulumi.Input[Mapping[str, pulumi.Input['IntegrationNotificationChannelsArgs']]]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -41,6 +42,9 @@ class IntegrationArgs:
         :param pulumi.Input[str] installation_app_type: The integrated tool name for catalog integration types (e.g. `github-ocean`, `gitlab`, `pagerduty`). Cannot be changed
                after creation.
         :param pulumi.Input['IntegrationKafkaChangelogDestinationArgs'] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
+        :param pulumi.Input[Mapping[str, pulumi.Input['IntegrationNotificationChannelsArgs']]] notification_channels: Whether each notification channel is enabled, keyed by channel name (`email` or `slack`). Only supported when
+               `installation_type` is `Saas` or `SaasOAuth2`. Channels left out of this map are not changed. Recipient emails and teams
+               already saved in Port are kept when `enabled` is updated.
         :param pulumi.Input['IntegrationWebhookChangelogDestinationArgs'] webhook_changelog_destination: The webhook changelog destination of the integration
         """
         pulumi.set(__self__, "installation_id", installation_id)
@@ -54,6 +58,8 @@ class IntegrationArgs:
             pulumi.set(__self__, "installation_type", installation_type)
         if kafka_changelog_destination is not None:
             pulumi.set(__self__, "kafka_changelog_destination", kafka_changelog_destination)
+        if notification_channels is not None:
+            pulumi.set(__self__, "notification_channels", notification_channels)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
         if title is not None:
@@ -134,6 +140,20 @@ class IntegrationArgs:
         pulumi.set(self, "kafka_changelog_destination", value)
 
     @property
+    @pulumi.getter(name="notificationChannels")
+    def notification_channels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['IntegrationNotificationChannelsArgs']]]]:
+        """
+        Whether each notification channel is enabled, keyed by channel name (`email` or `slack`). Only supported when
+        `installation_type` is `Saas` or `SaasOAuth2`. Channels left out of this map are not changed. Recipient emails and teams
+        already saved in Port are kept when `enabled` is updated.
+        """
+        return pulumi.get(self, "notification_channels")
+
+    @notification_channels.setter
+    def notification_channels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['IntegrationNotificationChannelsArgs']]]]):
+        pulumi.set(self, "notification_channels", value)
+
+    @property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "spec")
@@ -182,6 +202,7 @@ class _IntegrationState:
                  installation_id: Optional[pulumi.Input[str]] = None,
                  installation_type: Optional[pulumi.Input[str]] = None,
                  kafka_changelog_destination: Optional[pulumi.Input['IntegrationKafkaChangelogDestinationArgs']] = None,
+                 notification_channels: Optional[pulumi.Input[Mapping[str, pulumi.Input['IntegrationNotificationChannelsArgs']]]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -197,6 +218,9 @@ class _IntegrationState:
         :param pulumi.Input[str] installation_id: The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
                `^[a-z0-9-]+$`). Cannot be changed after creation.
         :param pulumi.Input['IntegrationKafkaChangelogDestinationArgs'] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
+        :param pulumi.Input[Mapping[str, pulumi.Input['IntegrationNotificationChannelsArgs']]] notification_channels: Whether each notification channel is enabled, keyed by channel name (`email` or `slack`). Only supported when
+               `installation_type` is `Saas` or `SaasOAuth2`. Channels left out of this map are not changed. Recipient emails and teams
+               already saved in Port are kept when `enabled` is updated.
         :param pulumi.Input[str] status: The provisioning status of the integration (e.g. `Creating`, `Running`, `Updating`, `Error`). Relevant for Port Hosted
                integrations that provision asynchronously.
         :param pulumi.Input['IntegrationWebhookChangelogDestinationArgs'] webhook_changelog_destination: The webhook changelog destination of the integration
@@ -213,6 +237,8 @@ class _IntegrationState:
             pulumi.set(__self__, "installation_type", installation_type)
         if kafka_changelog_destination is not None:
             pulumi.set(__self__, "kafka_changelog_destination", kafka_changelog_destination)
+        if notification_channels is not None:
+            pulumi.set(__self__, "notification_channels", notification_channels)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
         if status is not None:
@@ -295,6 +321,20 @@ class _IntegrationState:
         pulumi.set(self, "kafka_changelog_destination", value)
 
     @property
+    @pulumi.getter(name="notificationChannels")
+    def notification_channels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['IntegrationNotificationChannelsArgs']]]]:
+        """
+        Whether each notification channel is enabled, keyed by channel name (`email` or `slack`). Only supported when
+        `installation_type` is `Saas` or `SaasOAuth2`. Channels left out of this map are not changed. Recipient emails and teams
+        already saved in Port are kept when `enabled` is updated.
+        """
+        return pulumi.get(self, "notification_channels")
+
+    @notification_channels.setter
+    def notification_channels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['IntegrationNotificationChannelsArgs']]]]):
+        pulumi.set(self, "notification_channels", value)
+
+    @property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "spec")
@@ -358,6 +398,7 @@ class Integration(pulumi.CustomResource):
                  installation_id: Optional[pulumi.Input[str]] = None,
                  installation_type: Optional[pulumi.Input[str]] = None,
                  kafka_changelog_destination: Optional[pulumi.Input[Union['IntegrationKafkaChangelogDestinationArgs', 'IntegrationKafkaChangelogDestinationArgsDict']]] = None,
+                 notification_channels: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['IntegrationNotificationChannelsArgs', 'IntegrationNotificationChannelsArgsDict']]]]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -375,6 +416,9 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] installation_id: The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
                `^[a-z0-9-]+$`). Cannot be changed after creation.
         :param pulumi.Input[Union['IntegrationKafkaChangelogDestinationArgs', 'IntegrationKafkaChangelogDestinationArgsDict']] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['IntegrationNotificationChannelsArgs', 'IntegrationNotificationChannelsArgsDict']]]] notification_channels: Whether each notification channel is enabled, keyed by channel name (`email` or `slack`). Only supported when
+               `installation_type` is `Saas` or `SaasOAuth2`. Channels left out of this map are not changed. Recipient emails and teams
+               already saved in Port are kept when `enabled` is updated.
         :param pulumi.Input[Union['IntegrationWebhookChangelogDestinationArgs', 'IntegrationWebhookChangelogDestinationArgsDict']] webhook_changelog_destination: The webhook changelog destination of the integration
         """
         ...
@@ -406,6 +450,7 @@ class Integration(pulumi.CustomResource):
                  installation_id: Optional[pulumi.Input[str]] = None,
                  installation_type: Optional[pulumi.Input[str]] = None,
                  kafka_changelog_destination: Optional[pulumi.Input[Union['IntegrationKafkaChangelogDestinationArgs', 'IntegrationKafkaChangelogDestinationArgsDict']]] = None,
+                 notification_channels: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['IntegrationNotificationChannelsArgs', 'IntegrationNotificationChannelsArgsDict']]]]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -427,6 +472,7 @@ class Integration(pulumi.CustomResource):
             __props__.__dict__["installation_id"] = installation_id
             __props__.__dict__["installation_type"] = installation_type
             __props__.__dict__["kafka_changelog_destination"] = kafka_changelog_destination
+            __props__.__dict__["notification_channels"] = notification_channels
             __props__.__dict__["spec"] = spec
             __props__.__dict__["title"] = title
             __props__.__dict__["version"] = version
@@ -448,6 +494,7 @@ class Integration(pulumi.CustomResource):
             installation_id: Optional[pulumi.Input[str]] = None,
             installation_type: Optional[pulumi.Input[str]] = None,
             kafka_changelog_destination: Optional[pulumi.Input[Union['IntegrationKafkaChangelogDestinationArgs', 'IntegrationKafkaChangelogDestinationArgsDict']]] = None,
+            notification_channels: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['IntegrationNotificationChannelsArgs', 'IntegrationNotificationChannelsArgsDict']]]]] = None,
             spec: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             title: Optional[pulumi.Input[str]] = None,
@@ -468,6 +515,9 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] installation_id: The installation ID of the integration. Must contain only lowercase letters, numbers, and dashes (pattern:
                `^[a-z0-9-]+$`). Cannot be changed after creation.
         :param pulumi.Input[Union['IntegrationKafkaChangelogDestinationArgs', 'IntegrationKafkaChangelogDestinationArgsDict']] kafka_changelog_destination: The changelog destination of the blueprint (just an empty `{}`)
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['IntegrationNotificationChannelsArgs', 'IntegrationNotificationChannelsArgsDict']]]] notification_channels: Whether each notification channel is enabled, keyed by channel name (`email` or `slack`). Only supported when
+               `installation_type` is `Saas` or `SaasOAuth2`. Channels left out of this map are not changed. Recipient emails and teams
+               already saved in Port are kept when `enabled` is updated.
         :param pulumi.Input[str] status: The provisioning status of the integration (e.g. `Creating`, `Running`, `Updating`, `Error`). Relevant for Port Hosted
                integrations that provision asynchronously.
         :param pulumi.Input[Union['IntegrationWebhookChangelogDestinationArgs', 'IntegrationWebhookChangelogDestinationArgsDict']] webhook_changelog_destination: The webhook changelog destination of the integration
@@ -482,6 +532,7 @@ class Integration(pulumi.CustomResource):
         __props__.__dict__["installation_id"] = installation_id
         __props__.__dict__["installation_type"] = installation_type
         __props__.__dict__["kafka_changelog_destination"] = kafka_changelog_destination
+        __props__.__dict__["notification_channels"] = notification_channels
         __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
         __props__.__dict__["title"] = title
@@ -534,6 +585,16 @@ class Integration(pulumi.CustomResource):
         The changelog destination of the blueprint (just an empty `{}`)
         """
         return pulumi.get(self, "kafka_changelog_destination")
+
+    @property
+    @pulumi.getter(name="notificationChannels")
+    def notification_channels(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.IntegrationNotificationChannels']]]:
+        """
+        Whether each notification channel is enabled, keyed by channel name (`email` or `slack`). Only supported when
+        `installation_type` is `Saas` or `SaasOAuth2`. Channels left out of this map are not changed. Recipient emails and teams
+        already saved in Port are kept when `enabled` is updated.
+        """
+        return pulumi.get(self, "notification_channels")
 
     @property
     @pulumi.getter

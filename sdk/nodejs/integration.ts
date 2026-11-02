@@ -56,6 +56,12 @@ export class Integration extends pulumi.CustomResource {
      * The changelog destination of the blueprint (just an empty `{}`)
      */
     public readonly kafkaChangelogDestination!: pulumi.Output<outputs.IntegrationKafkaChangelogDestination>;
+    /**
+     * Whether each notification channel is enabled, keyed by channel name (`email` or `slack`). Only supported when
+     * `installationType` is `Saas` or `SaasOAuth2`. Channels left out of this map are not changed. Recipient emails and teams
+     * already saved in Port are kept when `enabled` is updated.
+     */
+    public readonly notificationChannels!: pulumi.Output<{[key: string]: outputs.IntegrationNotificationChannels} | undefined>;
     public readonly spec!: pulumi.Output<string>;
     /**
      * The provisioning status of the integration (e.g. `Creating`, `Running`, `Updating`, `Error`). Relevant for Port Hosted
@@ -88,6 +94,7 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["installationId"] = state ? state.installationId : undefined;
             resourceInputs["installationType"] = state ? state.installationType : undefined;
             resourceInputs["kafkaChangelogDestination"] = state ? state.kafkaChangelogDestination : undefined;
+            resourceInputs["notificationChannels"] = state ? state.notificationChannels : undefined;
             resourceInputs["spec"] = state ? state.spec : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
@@ -104,6 +111,7 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["installationId"] = args ? args.installationId : undefined;
             resourceInputs["installationType"] = args ? args.installationType : undefined;
             resourceInputs["kafkaChangelogDestination"] = args ? args.kafkaChangelogDestination : undefined;
+            resourceInputs["notificationChannels"] = args ? args.notificationChannels : undefined;
             resourceInputs["spec"] = args ? args.spec : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
@@ -141,6 +149,12 @@ export interface IntegrationState {
      * The changelog destination of the blueprint (just an empty `{}`)
      */
     kafkaChangelogDestination?: pulumi.Input<inputs.IntegrationKafkaChangelogDestination>;
+    /**
+     * Whether each notification channel is enabled, keyed by channel name (`email` or `slack`). Only supported when
+     * `installationType` is `Saas` or `SaasOAuth2`. Channels left out of this map are not changed. Recipient emails and teams
+     * already saved in Port are kept when `enabled` is updated.
+     */
+    notificationChannels?: pulumi.Input<{[key: string]: pulumi.Input<inputs.IntegrationNotificationChannels>}>;
     spec?: pulumi.Input<string>;
     /**
      * The provisioning status of the integration (e.g. `Creating`, `Running`, `Updating`, `Error`). Relevant for Port Hosted
@@ -181,6 +195,12 @@ export interface IntegrationArgs {
      * The changelog destination of the blueprint (just an empty `{}`)
      */
     kafkaChangelogDestination?: pulumi.Input<inputs.IntegrationKafkaChangelogDestination>;
+    /**
+     * Whether each notification channel is enabled, keyed by channel name (`email` or `slack`). Only supported when
+     * `installationType` is `Saas` or `SaasOAuth2`. Channels left out of this map are not changed. Recipient emails and teams
+     * already saved in Port are kept when `enabled` is updated.
+     */
+    notificationChannels?: pulumi.Input<{[key: string]: pulumi.Input<inputs.IntegrationNotificationChannels>}>;
     spec?: pulumi.Input<string>;
     title?: pulumi.Input<string>;
     version?: pulumi.Input<string>;

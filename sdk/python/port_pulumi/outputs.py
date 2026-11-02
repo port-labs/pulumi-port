@@ -122,6 +122,7 @@ __all__ = [
     'EntityPropertiesArrayProps',
     'EntityRelations',
     'IntegrationKafkaChangelogDestination',
+    'IntegrationNotificationChannels',
     'IntegrationWebhookChangelogDestination',
     'PagePermissionsRead',
     'ScorecardFilter',
@@ -7481,6 +7482,24 @@ class EntityRelations(dict):
 class IntegrationKafkaChangelogDestination(dict):
     def __init__(__self__):
         pass
+
+
+@pulumi.output_type
+class IntegrationNotificationChannels(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Whether this channel sends integration notifications.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether this channel sends integration notifications.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

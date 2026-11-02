@@ -17788,6 +17788,103 @@ func (o IntegrationKafkaChangelogDestinationPtrOutput) Elem() IntegrationKafkaCh
 	}).(IntegrationKafkaChangelogDestinationOutput)
 }
 
+type IntegrationNotificationChannels struct {
+	// Whether this channel sends integration notifications.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// IntegrationNotificationChannelsInput is an input type that accepts IntegrationNotificationChannelsArgs and IntegrationNotificationChannelsOutput values.
+// You can construct a concrete instance of `IntegrationNotificationChannelsInput` via:
+//
+//	IntegrationNotificationChannelsArgs{...}
+type IntegrationNotificationChannelsInput interface {
+	pulumi.Input
+
+	ToIntegrationNotificationChannelsOutput() IntegrationNotificationChannelsOutput
+	ToIntegrationNotificationChannelsOutputWithContext(context.Context) IntegrationNotificationChannelsOutput
+}
+
+type IntegrationNotificationChannelsArgs struct {
+	// Whether this channel sends integration notifications.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (IntegrationNotificationChannelsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationNotificationChannels)(nil)).Elem()
+}
+
+func (i IntegrationNotificationChannelsArgs) ToIntegrationNotificationChannelsOutput() IntegrationNotificationChannelsOutput {
+	return i.ToIntegrationNotificationChannelsOutputWithContext(context.Background())
+}
+
+func (i IntegrationNotificationChannelsArgs) ToIntegrationNotificationChannelsOutputWithContext(ctx context.Context) IntegrationNotificationChannelsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationNotificationChannelsOutput)
+}
+
+// IntegrationNotificationChannelsMapInput is an input type that accepts IntegrationNotificationChannelsMap and IntegrationNotificationChannelsMapOutput values.
+// You can construct a concrete instance of `IntegrationNotificationChannelsMapInput` via:
+//
+//	IntegrationNotificationChannelsMap{ "key": IntegrationNotificationChannelsArgs{...} }
+type IntegrationNotificationChannelsMapInput interface {
+	pulumi.Input
+
+	ToIntegrationNotificationChannelsMapOutput() IntegrationNotificationChannelsMapOutput
+	ToIntegrationNotificationChannelsMapOutputWithContext(context.Context) IntegrationNotificationChannelsMapOutput
+}
+
+type IntegrationNotificationChannelsMap map[string]IntegrationNotificationChannelsInput
+
+func (IntegrationNotificationChannelsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]IntegrationNotificationChannels)(nil)).Elem()
+}
+
+func (i IntegrationNotificationChannelsMap) ToIntegrationNotificationChannelsMapOutput() IntegrationNotificationChannelsMapOutput {
+	return i.ToIntegrationNotificationChannelsMapOutputWithContext(context.Background())
+}
+
+func (i IntegrationNotificationChannelsMap) ToIntegrationNotificationChannelsMapOutputWithContext(ctx context.Context) IntegrationNotificationChannelsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationNotificationChannelsMapOutput)
+}
+
+type IntegrationNotificationChannelsOutput struct{ *pulumi.OutputState }
+
+func (IntegrationNotificationChannelsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationNotificationChannels)(nil)).Elem()
+}
+
+func (o IntegrationNotificationChannelsOutput) ToIntegrationNotificationChannelsOutput() IntegrationNotificationChannelsOutput {
+	return o
+}
+
+func (o IntegrationNotificationChannelsOutput) ToIntegrationNotificationChannelsOutputWithContext(ctx context.Context) IntegrationNotificationChannelsOutput {
+	return o
+}
+
+// Whether this channel sends integration notifications.
+func (o IntegrationNotificationChannelsOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v IntegrationNotificationChannels) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type IntegrationNotificationChannelsMapOutput struct{ *pulumi.OutputState }
+
+func (IntegrationNotificationChannelsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]IntegrationNotificationChannels)(nil)).Elem()
+}
+
+func (o IntegrationNotificationChannelsMapOutput) ToIntegrationNotificationChannelsMapOutput() IntegrationNotificationChannelsMapOutput {
+	return o
+}
+
+func (o IntegrationNotificationChannelsMapOutput) ToIntegrationNotificationChannelsMapOutputWithContext(ctx context.Context) IntegrationNotificationChannelsMapOutput {
+	return o
+}
+
+func (o IntegrationNotificationChannelsMapOutput) MapIndex(k pulumi.StringInput) IntegrationNotificationChannelsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IntegrationNotificationChannels {
+		return vs[0].(map[string]IntegrationNotificationChannels)[vs[1].(string)]
+	}).(IntegrationNotificationChannelsOutput)
+}
+
 type IntegrationWebhookChangelogDestination struct {
 	// The agent of the webhook changelog destination
 	Agent *bool `pulumi:"agent"`
@@ -42187,6 +42284,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityRelationsPtrInput)(nil)).Elem(), EntityRelationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationKafkaChangelogDestinationInput)(nil)).Elem(), IntegrationKafkaChangelogDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationKafkaChangelogDestinationPtrInput)(nil)).Elem(), IntegrationKafkaChangelogDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationNotificationChannelsInput)(nil)).Elem(), IntegrationNotificationChannelsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationNotificationChannelsMapInput)(nil)).Elem(), IntegrationNotificationChannelsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationWebhookChangelogDestinationInput)(nil)).Elem(), IntegrationWebhookChangelogDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationWebhookChangelogDestinationPtrInput)(nil)).Elem(), IntegrationWebhookChangelogDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagePermissionsReadInput)(nil)).Elem(), PagePermissionsReadArgs{})
@@ -42683,6 +42782,8 @@ func init() {
 	pulumi.RegisterOutputType(EntityRelationsPtrOutput{})
 	pulumi.RegisterOutputType(IntegrationKafkaChangelogDestinationOutput{})
 	pulumi.RegisterOutputType(IntegrationKafkaChangelogDestinationPtrOutput{})
+	pulumi.RegisterOutputType(IntegrationNotificationChannelsOutput{})
+	pulumi.RegisterOutputType(IntegrationNotificationChannelsMapOutput{})
 	pulumi.RegisterOutputType(IntegrationWebhookChangelogDestinationOutput{})
 	pulumi.RegisterOutputType(IntegrationWebhookChangelogDestinationPtrOutput{})
 	pulumi.RegisterOutputType(PagePermissionsReadOutput{})

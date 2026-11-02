@@ -2042,6 +2042,13 @@ export interface EntityRelations {
 export interface IntegrationKafkaChangelogDestination {
 }
 
+export interface IntegrationNotificationChannels {
+    /**
+     * Whether this channel sends integration notifications.
+     */
+    enabled: pulumi.Input<boolean>;
+}
+
 export interface IntegrationWebhookChangelogDestination {
     /**
      * The agent of the webhook changelog destination

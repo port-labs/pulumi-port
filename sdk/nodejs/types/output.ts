@@ -2149,6 +2149,13 @@ export interface GetSearchEntityScorecardsRule {
 export interface IntegrationKafkaChangelogDestination {
 }
 
+export interface IntegrationNotificationChannels {
+    /**
+     * Whether this channel sends integration notifications.
+     */
+    enabled: boolean;
+}
+
 export interface IntegrationWebhookChangelogDestination {
     /**
      * The agent of the webhook changelog destination

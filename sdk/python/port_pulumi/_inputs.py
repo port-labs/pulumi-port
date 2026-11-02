@@ -227,6 +227,8 @@ __all__ = [
     'EntityRelationsArgsDict',
     'IntegrationKafkaChangelogDestinationArgs',
     'IntegrationKafkaChangelogDestinationArgsDict',
+    'IntegrationNotificationChannelsArgs',
+    'IntegrationNotificationChannelsArgsDict',
     'IntegrationWebhookChangelogDestinationArgs',
     'IntegrationWebhookChangelogDestinationArgsDict',
     'PagePermissionsReadArgs',
@@ -10487,6 +10489,37 @@ elif False:
 class IntegrationKafkaChangelogDestinationArgs:
     def __init__(__self__):
         pass
+
+
+if not MYPY:
+    class IntegrationNotificationChannelsArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether this channel sends integration notifications.
+        """
+elif False:
+    IntegrationNotificationChannelsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class IntegrationNotificationChannelsArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Whether this channel sends integration notifications.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether this channel sends integration notifications.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:
