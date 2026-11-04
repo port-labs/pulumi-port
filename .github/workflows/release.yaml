@@ -125,7 +125,8 @@ jobs:
           cache_key: "mise-{{platform}}-{{file_hash}}"
           # only saving the cache in the prerequisites job
           cache_save: false
-      - name: Setup Python
+      - if: matrix.language == 'python'
+        name: Setup Python
         uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # tag=v5.4.0
         with:
           python-version: ${{matrix.pythonversion}}
@@ -183,6 +184,6 @@ jobs:
         nodeversion:
           - 22.x
         pythonversion:
-          - "3.9"
+          - "3.12"
         goversion:
           - '1.23'
