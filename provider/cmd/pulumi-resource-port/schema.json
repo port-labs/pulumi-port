@@ -4190,6 +4190,10 @@
                     "type": "string",
                     "description": "Instructions describing the AI's role and operational rules.\n"
                 },
+                "timeoutMinutes": {
+                    "type": "integer",
+                    "description": "The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.\n"
+                },
                 "tools": {
                     "type": "array",
                     "items": {
@@ -4206,7 +4210,8 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "systemPrompt"
+                        "systemPrompt",
+                        "timeoutMinutes"
                     ]
                 }
             }
@@ -4229,12 +4234,23 @@
                     "type": "string",
                     "description": "The AI provider to use. Must be set together with `model`.\n"
                 },
+                "timeoutMinutes": {
+                    "type": "integer",
+                    "description": "The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.\n"
+                },
                 "userPrompt": {
                     "type": "string",
                     "description": "The message or query processed by the agent.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "timeoutMinutes"
+                    ]
+                }
+            }
         },
         "port:index/WorkflowNodeAiMcpServer:WorkflowNodeAiMcpServer": {
             "properties": {
@@ -4256,9 +4272,20 @@
                         "$ref": "#/types/port:index/WorkflowNodeConditionOutlet:WorkflowNodeConditionOutlet"
                     },
                     "description": "The branches of the condition, evaluated in order.\n"
+                },
+                "timeoutMinutes": {
+                    "type": "integer",
+                    "description": "The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "timeoutMinutes"
+                    ]
+                }
+            }
         },
         "port:index/WorkflowNodeConditionOutlet:WorkflowNodeConditionOutlet": {
             "properties": {
@@ -4396,12 +4423,23 @@
                     "$ref": "#/types/port:index/WorkflowNodeInputResponders:WorkflowNodeInputResponders",
                     "description": "Who is allowed to respond to this input node.\n"
                 },
+                "timeoutMinutes": {
+                    "type": "integer",
+                    "description": "The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.\n"
+                },
                 "userInputs": {
                     "$ref": "#/types/port:index/WorkflowNodeInputUserInputs:WorkflowNodeInputUserInputs",
                     "description": "The form presented to the responders.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "timeoutMinutes"
+                    ]
+                }
+            }
         },
         "port:index/WorkflowNodeInputNotification:WorkflowNodeInputNotification": {
             "properties": {
@@ -4870,6 +4908,10 @@
         },
         "port:index/WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItems:WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItems": {
             "properties": {
+                "additionalProperties": {
+                    "type": "string",
+                    "description": "JSON Schema `additionalProperties` for each object item, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.\n"
+                },
                 "defaults": {
                     "type": "array",
                     "items": {
@@ -5102,6 +5144,10 @@
         },
         "port:index/WorkflowNodeInputUserInputsUserPropertiesObjectProps:WorkflowNodeInputUserInputsUserPropertiesObjectProps": {
             "properties": {
+                "additionalProperties": {
+                    "type": "string",
+                    "description": "JSON Schema `additionalProperties` for the object input, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.\n"
+                },
                 "default": {
                     "type": "string",
                     "description": "The default of the object input, as a JSON encoded string.\n"
@@ -5954,6 +6000,10 @@
                 "onFailure": {
                     "type": "string",
                     "description": "The action to take if the node fails. One of `continue`, `terminate`.\n"
+                },
+                "timeoutMinutes": {
+                    "type": "integer",
+                    "description": "The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default per run: `4320` for every `cursor-cloud-agents` action, `1440` otherwise.\n"
                 }
             },
             "type": "object",
@@ -5974,13 +6024,18 @@
                 "payload": {
                     "type": "string",
                     "description": "The Kafka message payload as a JSON encoded string.\n"
+                },
+                "timeoutMinutes": {
+                    "type": "integer",
+                    "description": "The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "onFailure"
+                        "onFailure",
+                        "timeoutMinutes"
                     ]
                 }
             }
@@ -6383,6 +6438,10 @@
         },
         "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItems:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItems": {
             "properties": {
+                "additionalProperties": {
+                    "type": "string",
+                    "description": "JSON Schema `additionalProperties` for each object item, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.\n"
+                },
                 "defaults": {
                     "type": "array",
                     "items": {
@@ -6615,6 +6674,10 @@
         },
         "port:index/WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectProps:WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectProps": {
             "properties": {
+                "additionalProperties": {
+                    "type": "string",
+                    "description": "JSON Schema `additionalProperties` for the object input, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.\n"
+                },
                 "default": {
                     "type": "string",
                     "description": "The default of the object input, as a JSON encoded string.\n"
@@ -7459,13 +7522,18 @@
                 "onFailure": {
                     "type": "string",
                     "description": "The action to take if the node fails. One of `continue`, `terminate`.\n"
+                },
+                "timeoutMinutes": {
+                    "type": "integer",
+                    "description": "The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "onFailure"
+                        "onFailure",
+                        "timeoutMinutes"
                     ]
                 }
             }
@@ -7534,6 +7602,10 @@
                 "synchronized": {
                     "type": "boolean",
                     "description": "Whether the request is sent synchronously.\n"
+                },
+                "timeoutMinutes": {
+                    "type": "integer",
+                    "description": "The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default per run: `1440` when `agent` is true or `synchronized` is false, `60` otherwise.\n"
                 },
                 "url": {
                     "type": "string",
