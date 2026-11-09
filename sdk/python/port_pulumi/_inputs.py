@@ -14349,6 +14349,10 @@ if not MYPY:
         """
         Instructions describing the AI's role and operational rules.
         """
+        timeout_minutes: NotRequired[pulumi.Input[int]]
+        """
+        The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+        """
         tools: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         Regex patterns matched against the available tool names.
@@ -14368,6 +14372,7 @@ class WorkflowNodeAiArgs:
                  output_schema: Optional[pulumi.Input[str]] = None,
                  provider: Optional[pulumi.Input[str]] = None,
                  system_prompt: Optional[pulumi.Input[str]] = None,
+                 timeout_minutes: Optional[pulumi.Input[int]] = None,
                  tools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_prompt: Optional[pulumi.Input[str]] = None):
         """
@@ -14376,6 +14381,7 @@ class WorkflowNodeAiArgs:
         :param pulumi.Input[str] output_schema: A JSON schema, encoded as a JSON string, the AI response is validated against.
         :param pulumi.Input[str] provider: The AI provider to use. Must be set together with `model`.
         :param pulumi.Input[str] system_prompt: Instructions describing the AI's role and operational rules.
+        :param pulumi.Input[int] timeout_minutes: The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tools: Regex patterns matched against the available tool names.
         :param pulumi.Input[str] user_prompt: The message or query processed by Port AI.
         """
@@ -14389,6 +14395,8 @@ class WorkflowNodeAiArgs:
             pulumi.set(__self__, "provider", provider)
         if system_prompt is not None:
             pulumi.set(__self__, "system_prompt", system_prompt)
+        if timeout_minutes is not None:
+            pulumi.set(__self__, "timeout_minutes", timeout_minutes)
         if tools is not None:
             pulumi.set(__self__, "tools", tools)
         if user_prompt is not None:
@@ -14455,6 +14463,18 @@ class WorkflowNodeAiArgs:
         pulumi.set(self, "system_prompt", value)
 
     @property
+    @pulumi.getter(name="timeoutMinutes")
+    def timeout_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+        """
+        return pulumi.get(self, "timeout_minutes")
+
+    @timeout_minutes.setter
+    def timeout_minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_minutes", value)
+
+    @property
     @pulumi.getter
     def tools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -14497,6 +14517,10 @@ if not MYPY:
         """
         The AI provider to use. Must be set together with `model`.
         """
+        timeout_minutes: NotRequired[pulumi.Input[int]]
+        """
+        The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+        """
         user_prompt: NotRequired[pulumi.Input[str]]
         """
         The message or query processed by the agent.
@@ -14511,12 +14535,14 @@ class WorkflowNodeAiAgentArgs:
                  model: Optional[pulumi.Input[str]] = None,
                  output_schema: Optional[pulumi.Input[str]] = None,
                  provider: Optional[pulumi.Input[str]] = None,
+                 timeout_minutes: Optional[pulumi.Input[int]] = None,
                  user_prompt: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] agent_identifier: The identifier of the agent to invoke.
         :param pulumi.Input[str] model: The AI model to use. Must be set together with `provider`.
         :param pulumi.Input[str] output_schema: A JSON schema, encoded as a JSON string, the agent response is validated against.
         :param pulumi.Input[str] provider: The AI provider to use. Must be set together with `model`.
+        :param pulumi.Input[int] timeout_minutes: The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
         :param pulumi.Input[str] user_prompt: The message or query processed by the agent.
         """
         if agent_identifier is not None:
@@ -14527,6 +14553,8 @@ class WorkflowNodeAiAgentArgs:
             pulumi.set(__self__, "output_schema", output_schema)
         if provider is not None:
             pulumi.set(__self__, "provider", provider)
+        if timeout_minutes is not None:
+            pulumi.set(__self__, "timeout_minutes", timeout_minutes)
         if user_prompt is not None:
             pulumi.set(__self__, "user_prompt", user_prompt)
 
@@ -14579,6 +14607,18 @@ class WorkflowNodeAiAgentArgs:
         pulumi.set(self, "provider", value)
 
     @property
+    @pulumi.getter(name="timeoutMinutes")
+    def timeout_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+        """
+        return pulumi.get(self, "timeout_minutes")
+
+    @timeout_minutes.setter
+    def timeout_minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_minutes", value)
+
+    @property
     @pulumi.getter(name="userPrompt")
     def user_prompt(self) -> Optional[pulumi.Input[str]]:
         """
@@ -14628,18 +14668,26 @@ if not MYPY:
         """
         The branches of the condition, evaluated in order.
         """
+        timeout_minutes: NotRequired[pulumi.Input[int]]
+        """
+        The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+        """
 elif False:
     WorkflowNodeConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkflowNodeConditionArgs:
     def __init__(__self__, *,
-                 outlets: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeConditionOutletArgs']]]] = None):
+                 outlets: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeConditionOutletArgs']]]] = None,
+                 timeout_minutes: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeConditionOutletArgs']]] outlets: The branches of the condition, evaluated in order.
+        :param pulumi.Input[int] timeout_minutes: The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
         """
         if outlets is not None:
             pulumi.set(__self__, "outlets", outlets)
+        if timeout_minutes is not None:
+            pulumi.set(__self__, "timeout_minutes", timeout_minutes)
 
     @property
     @pulumi.getter
@@ -14652,6 +14700,18 @@ class WorkflowNodeConditionArgs:
     @outlets.setter
     def outlets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeConditionOutletArgs']]]]):
         pulumi.set(self, "outlets", value)
+
+    @property
+    @pulumi.getter(name="timeoutMinutes")
+    def timeout_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+        """
+        return pulumi.get(self, "timeout_minutes")
+
+    @timeout_minutes.setter
+    def timeout_minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_minutes", value)
 
 
 if not MYPY:
@@ -15050,6 +15110,10 @@ if not MYPY:
         """
         Who is allowed to respond to this input node.
         """
+        timeout_minutes: NotRequired[pulumi.Input[int]]
+        """
+        The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+        """
         user_inputs: NotRequired[pulumi.Input['WorkflowNodeInputUserInputsArgsDict']]
         """
         The form presented to the responders.
@@ -15064,12 +15128,14 @@ class WorkflowNodeInputArgs:
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputNotificationArgs']]]] = None,
                  outlets: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputOutletArgs']]]] = None,
                  responders: Optional[pulumi.Input['WorkflowNodeInputRespondersArgs']] = None,
+                 timeout_minutes: Optional[pulumi.Input[int]] = None,
                  user_inputs: Optional[pulumi.Input['WorkflowNodeInputUserInputsArgs']] = None):
         """
         :param pulumi.Input[str] description: The description shown on the response form.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputNotificationArgs']]] notifications: Notifications sent when the input node starts waiting.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowNodeInputOutletArgs']]] outlets: The branches of the input node, each bound to a button.
         :param pulumi.Input['WorkflowNodeInputRespondersArgs'] responders: Who is allowed to respond to this input node.
+        :param pulumi.Input[int] timeout_minutes: The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
         :param pulumi.Input['WorkflowNodeInputUserInputsArgs'] user_inputs: The form presented to the responders.
         """
         if description is not None:
@@ -15080,6 +15146,8 @@ class WorkflowNodeInputArgs:
             pulumi.set(__self__, "outlets", outlets)
         if responders is not None:
             pulumi.set(__self__, "responders", responders)
+        if timeout_minutes is not None:
+            pulumi.set(__self__, "timeout_minutes", timeout_minutes)
         if user_inputs is not None:
             pulumi.set(__self__, "user_inputs", user_inputs)
 
@@ -15130,6 +15198,18 @@ class WorkflowNodeInputArgs:
     @responders.setter
     def responders(self, value: Optional[pulumi.Input['WorkflowNodeInputRespondersArgs']]):
         pulumi.set(self, "responders", value)
+
+    @property
+    @pulumi.getter(name="timeoutMinutes")
+    def timeout_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+        """
+        return pulumi.get(self, "timeout_minutes")
+
+    @timeout_minutes.setter
+    def timeout_minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_minutes", value)
 
     @property
     @pulumi.getter(name="userInputs")
@@ -16781,6 +16861,10 @@ class WorkflowNodeInputUserInputsUserPropertiesArrayPropsNumberItemsArgs:
 
 if not MYPY:
     class WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItemsArgsDict(TypedDict):
+        additional_properties: NotRequired[pulumi.Input[str]]
+        """
+        JSON Schema `additionalProperties` for each object item, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+        """
         defaults: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]
         """
         The default value of the items.
@@ -16795,16 +16879,32 @@ elif False:
 @pulumi.input_type
 class WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItemsArgs:
     def __init__(__self__, *,
+                 additional_properties: Optional[pulumi.Input[str]] = None,
                  defaults: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  format: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] additional_properties: JSON Schema `additionalProperties` for each object item, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] defaults: The default value of the items.
         :param pulumi.Input[str] format: The format of each item.
         """
+        if additional_properties is not None:
+            pulumi.set(__self__, "additional_properties", additional_properties)
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
         if format is not None:
             pulumi.set(__self__, "format", format)
+
+    @property
+    @pulumi.getter(name="additionalProperties")
+    def additional_properties(self) -> Optional[pulumi.Input[str]]:
+        """
+        JSON Schema `additionalProperties` for each object item, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+        """
+        return pulumi.get(self, "additional_properties")
+
+    @additional_properties.setter
+    def additional_properties(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "additional_properties", value)
 
     @property
     @pulumi.getter
@@ -17700,6 +17800,10 @@ class WorkflowNodeInputUserInputsUserPropertiesNumberPropsArgs:
 
 if not MYPY:
     class WorkflowNodeInputUserInputsUserPropertiesObjectPropsArgsDict(TypedDict):
+        additional_properties: NotRequired[pulumi.Input[str]]
+        """
+        JSON Schema `additionalProperties` for the object input, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+        """
         default: NotRequired[pulumi.Input[str]]
         """
         The default of the object input, as a JSON encoded string.
@@ -17762,6 +17866,7 @@ elif False:
 @pulumi.input_type
 class WorkflowNodeInputUserInputsUserPropertiesObjectPropsArgs:
     def __init__(__self__, *,
+                 additional_properties: Optional[pulumi.Input[str]] = None,
                  default: Optional[pulumi.Input[str]] = None,
                  default_jq_query: Optional[pulumi.Input[str]] = None,
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -17777,6 +17882,7 @@ class WorkflowNodeInputUserInputsUserPropertiesObjectPropsArgs:
                  visible: Optional[pulumi.Input[bool]] = None,
                  visible_jq_query: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] additional_properties: JSON Schema `additionalProperties` for the object input, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
         :param pulumi.Input[str] default: The default of the object input, as a JSON encoded string.
         :param pulumi.Input[str] default_jq_query: The default jq query of the object input.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The inputs this input depends on.
@@ -17792,6 +17898,8 @@ class WorkflowNodeInputUserInputsUserPropertiesObjectPropsArgs:
         :param pulumi.Input[bool] visible: The visibility of the object input.
         :param pulumi.Input[str] visible_jq_query: The visibility condition jq query of the object input.
         """
+        if additional_properties is not None:
+            pulumi.set(__self__, "additional_properties", additional_properties)
         if default is not None:
             pulumi.set(__self__, "default", default)
         if default_jq_query is not None:
@@ -17820,6 +17928,18 @@ class WorkflowNodeInputUserInputsUserPropertiesObjectPropsArgs:
             pulumi.set(__self__, "visible", visible)
         if visible_jq_query is not None:
             pulumi.set(__self__, "visible_jq_query", visible_jq_query)
+
+    @property
+    @pulumi.getter(name="additionalProperties")
+    def additional_properties(self) -> Optional[pulumi.Input[str]]:
+        """
+        JSON Schema `additionalProperties` for the object input, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+        """
+        return pulumi.get(self, "additional_properties")
+
+    @additional_properties.setter
+    def additional_properties(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "additional_properties", value)
 
     @property
     @pulumi.getter
@@ -20989,6 +21109,10 @@ if not MYPY:
         """
         The action to take if the node fails. One of `continue`, `terminate`.
         """
+        timeout_minutes: NotRequired[pulumi.Input[int]]
+        """
+        The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default per run: `4320` for every `cursor-cloud-agents` action, `1440` otherwise.
+        """
 elif False:
     WorkflowNodeIntegrationActionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -20999,13 +21123,15 @@ class WorkflowNodeIntegrationActionArgs:
                  installation_id: Optional[pulumi.Input[str]] = None,
                  integration_invocation_type: Optional[pulumi.Input[str]] = None,
                  integration_provider: Optional[pulumi.Input[str]] = None,
-                 on_failure: Optional[pulumi.Input[str]] = None):
+                 on_failure: Optional[pulumi.Input[str]] = None,
+                 timeout_minutes: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] execution_properties: The integration action execution properties as a JSON encoded string.
         :param pulumi.Input[str] installation_id: The installation id of the integration.
         :param pulumi.Input[str] integration_invocation_type: The invocation type of the integration action.
         :param pulumi.Input[str] integration_provider: The provider of the integration action.
         :param pulumi.Input[str] on_failure: The action to take if the node fails. One of `continue`, `terminate`.
+        :param pulumi.Input[int] timeout_minutes: The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default per run: `4320` for every `cursor-cloud-agents` action, `1440` otherwise.
         """
         if execution_properties is not None:
             pulumi.set(__self__, "execution_properties", execution_properties)
@@ -21017,6 +21143,8 @@ class WorkflowNodeIntegrationActionArgs:
             pulumi.set(__self__, "integration_provider", integration_provider)
         if on_failure is not None:
             pulumi.set(__self__, "on_failure", on_failure)
+        if timeout_minutes is not None:
+            pulumi.set(__self__, "timeout_minutes", timeout_minutes)
 
     @property
     @pulumi.getter(name="executionProperties")
@@ -21078,6 +21206,18 @@ class WorkflowNodeIntegrationActionArgs:
     def on_failure(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "on_failure", value)
 
+    @property
+    @pulumi.getter(name="timeoutMinutes")
+    def timeout_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default per run: `4320` for every `cursor-cloud-agents` action, `1440` otherwise.
+        """
+        return pulumi.get(self, "timeout_minutes")
+
+    @timeout_minutes.setter
+    def timeout_minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_minutes", value)
+
 
 if not MYPY:
     class WorkflowNodeKafkaArgsDict(TypedDict):
@@ -21089,6 +21229,10 @@ if not MYPY:
         """
         The Kafka message payload as a JSON encoded string.
         """
+        timeout_minutes: NotRequired[pulumi.Input[int]]
+        """
+        The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+        """
 elif False:
     WorkflowNodeKafkaArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -21096,15 +21240,19 @@ elif False:
 class WorkflowNodeKafkaArgs:
     def __init__(__self__, *,
                  on_failure: Optional[pulumi.Input[str]] = None,
-                 payload: Optional[pulumi.Input[str]] = None):
+                 payload: Optional[pulumi.Input[str]] = None,
+                 timeout_minutes: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] on_failure: The action to take if the node fails. One of `continue`, `terminate`.
         :param pulumi.Input[str] payload: The Kafka message payload as a JSON encoded string.
+        :param pulumi.Input[int] timeout_minutes: The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
         """
         if on_failure is not None:
             pulumi.set(__self__, "on_failure", on_failure)
         if payload is not None:
             pulumi.set(__self__, "payload", payload)
+        if timeout_minutes is not None:
+            pulumi.set(__self__, "timeout_minutes", timeout_minutes)
 
     @property
     @pulumi.getter(name="onFailure")
@@ -21129,6 +21277,18 @@ class WorkflowNodeKafkaArgs:
     @payload.setter
     def payload(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "payload", value)
+
+    @property
+    @pulumi.getter(name="timeoutMinutes")
+    def timeout_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+        """
+        return pulumi.get(self, "timeout_minutes")
+
+    @timeout_minutes.setter
+    def timeout_minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_minutes", value)
 
 
 if not MYPY:
@@ -22539,6 +22699,10 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsNumberItemsA
 
 if not MYPY:
     class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItemsArgsDict(TypedDict):
+        additional_properties: NotRequired[pulumi.Input[str]]
+        """
+        JSON Schema `additionalProperties` for each object item, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+        """
         defaults: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]
         """
         The default value of the items.
@@ -22553,16 +22717,32 @@ elif False:
 @pulumi.input_type
 class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItemsArgs:
     def __init__(__self__, *,
+                 additional_properties: Optional[pulumi.Input[str]] = None,
                  defaults: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  format: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] additional_properties: JSON Schema `additionalProperties` for each object item, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] defaults: The default value of the items.
         :param pulumi.Input[str] format: The format of each item.
         """
+        if additional_properties is not None:
+            pulumi.set(__self__, "additional_properties", additional_properties)
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
         if format is not None:
             pulumi.set(__self__, "format", format)
+
+    @property
+    @pulumi.getter(name="additionalProperties")
+    def additional_properties(self) -> Optional[pulumi.Input[str]]:
+        """
+        JSON Schema `additionalProperties` for each object item, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+        """
+        return pulumi.get(self, "additional_properties")
+
+    @additional_properties.setter
+    def additional_properties(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "additional_properties", value)
 
     @property
     @pulumi.getter
@@ -23458,6 +23638,10 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesNumberPropsArgs:
 
 if not MYPY:
     class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectPropsArgsDict(TypedDict):
+        additional_properties: NotRequired[pulumi.Input[str]]
+        """
+        JSON Schema `additionalProperties` for the object input, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+        """
         default: NotRequired[pulumi.Input[str]]
         """
         The default of the object input, as a JSON encoded string.
@@ -23520,6 +23704,7 @@ elif False:
 @pulumi.input_type
 class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectPropsArgs:
     def __init__(__self__, *,
+                 additional_properties: Optional[pulumi.Input[str]] = None,
                  default: Optional[pulumi.Input[str]] = None,
                  default_jq_query: Optional[pulumi.Input[str]] = None,
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -23535,6 +23720,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectPropsArgs:
                  visible: Optional[pulumi.Input[bool]] = None,
                  visible_jq_query: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] additional_properties: JSON Schema `additionalProperties` for the object input, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
         :param pulumi.Input[str] default: The default of the object input, as a JSON encoded string.
         :param pulumi.Input[str] default_jq_query: The default jq query of the object input.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: The inputs this input depends on.
@@ -23550,6 +23736,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectPropsArgs:
         :param pulumi.Input[bool] visible: The visibility of the object input.
         :param pulumi.Input[str] visible_jq_query: The visibility condition jq query of the object input.
         """
+        if additional_properties is not None:
+            pulumi.set(__self__, "additional_properties", additional_properties)
         if default is not None:
             pulumi.set(__self__, "default", default)
         if default_jq_query is not None:
@@ -23578,6 +23766,18 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectPropsArgs:
             pulumi.set(__self__, "visible", visible)
         if visible_jq_query is not None:
             pulumi.set(__self__, "visible_jq_query", visible_jq_query)
+
+    @property
+    @pulumi.getter(name="additionalProperties")
+    def additional_properties(self) -> Optional[pulumi.Input[str]]:
+        """
+        JSON Schema `additionalProperties` for the object input, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+        """
+        return pulumi.get(self, "additional_properties")
+
+    @additional_properties.setter
+    def additional_properties(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "additional_properties", value)
 
     @property
     @pulumi.getter
@@ -26739,6 +26939,10 @@ if not MYPY:
         """
         The action to take if the node fails. One of `continue`, `terminate`.
         """
+        timeout_minutes: NotRequired[pulumi.Input[int]]
+        """
+        The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+        """
 elif False:
     WorkflowNodeUpsertEntityArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -26747,11 +26951,13 @@ class WorkflowNodeUpsertEntityArgs:
     def __init__(__self__, *,
                  blueprint_identifier: Optional[pulumi.Input[str]] = None,
                  mapping: Optional[pulumi.Input['WorkflowNodeUpsertEntityMappingArgs']] = None,
-                 on_failure: Optional[pulumi.Input[str]] = None):
+                 on_failure: Optional[pulumi.Input[str]] = None,
+                 timeout_minutes: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] blueprint_identifier: The identifier of the blueprint to upsert into.
         :param pulumi.Input['WorkflowNodeUpsertEntityMappingArgs'] mapping: The entity fields to upsert.
         :param pulumi.Input[str] on_failure: The action to take if the node fails. One of `continue`, `terminate`.
+        :param pulumi.Input[int] timeout_minutes: The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
         """
         if blueprint_identifier is not None:
             pulumi.set(__self__, "blueprint_identifier", blueprint_identifier)
@@ -26759,6 +26965,8 @@ class WorkflowNodeUpsertEntityArgs:
             pulumi.set(__self__, "mapping", mapping)
         if on_failure is not None:
             pulumi.set(__self__, "on_failure", on_failure)
+        if timeout_minutes is not None:
+            pulumi.set(__self__, "timeout_minutes", timeout_minutes)
 
     @property
     @pulumi.getter(name="blueprintIdentifier")
@@ -26795,6 +27003,18 @@ class WorkflowNodeUpsertEntityArgs:
     @on_failure.setter
     def on_failure(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "on_failure", value)
+
+    @property
+    @pulumi.getter(name="timeoutMinutes")
+    def timeout_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+        """
+        return pulumi.get(self, "timeout_minutes")
+
+    @timeout_minutes.setter
+    def timeout_minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_minutes", value)
 
 
 if not MYPY:
@@ -26959,6 +27179,10 @@ if not MYPY:
         """
         Whether the request is sent synchronously.
         """
+        timeout_minutes: NotRequired[pulumi.Input[int]]
+        """
+        The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default per run: `1440` when `agent` is true or `synchronized` is false, `60` otherwise.
+        """
         url: NotRequired[pulumi.Input[str]]
         """
         The URL of the webhook.
@@ -26976,6 +27200,7 @@ class WorkflowNodeWebhookArgs:
                  on_failure: Optional[pulumi.Input[str]] = None,
                  on_timeout: Optional[pulumi.Input[str]] = None,
                  synchronized: Optional[pulumi.Input[bool]] = None,
+                 timeout_minutes: Optional[pulumi.Input[int]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] agent: Whether the request is routed through the Port agent.
@@ -26985,6 +27210,7 @@ class WorkflowNodeWebhookArgs:
         :param pulumi.Input[str] on_failure: The action to take if the node fails. One of `continue`, `terminate`.
         :param pulumi.Input[str] on_timeout: The action to take if the webhook times out. One of `fail`, `continue`.
         :param pulumi.Input[bool] synchronized: Whether the request is sent synchronously.
+        :param pulumi.Input[int] timeout_minutes: The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default per run: `1440` when `agent` is true or `synchronized` is false, `60` otherwise.
         :param pulumi.Input[str] url: The URL of the webhook.
         """
         if agent is not None:
@@ -27001,6 +27227,8 @@ class WorkflowNodeWebhookArgs:
             pulumi.set(__self__, "on_timeout", on_timeout)
         if synchronized is not None:
             pulumi.set(__self__, "synchronized", synchronized)
+        if timeout_minutes is not None:
+            pulumi.set(__self__, "timeout_minutes", timeout_minutes)
         if url is not None:
             pulumi.set(__self__, "url", url)
 
@@ -27087,6 +27315,18 @@ class WorkflowNodeWebhookArgs:
     @synchronized.setter
     def synchronized(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "synchronized", value)
+
+    @property
+    @pulumi.getter(name="timeoutMinutes")
+    def timeout_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default per run: `1440` when `agent` is true or `synchronized` is false, `60` otherwise.
+        """
+        return pulumi.get(self, "timeout_minutes")
+
+    @timeout_minutes.setter
+    def timeout_minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_minutes", value)
 
     @property
     @pulumi.getter

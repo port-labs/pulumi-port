@@ -23245,6 +23245,8 @@ type WorkflowNodeAi struct {
 	Provider *string `pulumi:"provider"`
 	// Instructions describing the AI's role and operational rules.
 	SystemPrompt *string `pulumi:"systemPrompt"`
+	// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+	TimeoutMinutes *int `pulumi:"timeoutMinutes"`
 	// Regex patterns matched against the available tool names.
 	Tools []string `pulumi:"tools"`
 	// The message or query processed by Port AI.
@@ -23273,6 +23275,8 @@ type WorkflowNodeAiArgs struct {
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
 	// Instructions describing the AI's role and operational rules.
 	SystemPrompt pulumi.StringPtrInput `pulumi:"systemPrompt"`
+	// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+	TimeoutMinutes pulumi.IntPtrInput `pulumi:"timeoutMinutes"`
 	// Regex patterns matched against the available tool names.
 	Tools pulumi.StringArrayInput `pulumi:"tools"`
 	// The message or query processed by Port AI.
@@ -23381,6 +23385,11 @@ func (o WorkflowNodeAiOutput) SystemPrompt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeAi) *string { return v.SystemPrompt }).(pulumi.StringPtrOutput)
 }
 
+// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+func (o WorkflowNodeAiOutput) TimeoutMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeAi) *int { return v.TimeoutMinutes }).(pulumi.IntPtrOutput)
+}
+
 // Regex patterns matched against the available tool names.
 func (o WorkflowNodeAiOutput) Tools() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeAi) []string { return v.Tools }).(pulumi.StringArrayOutput)
@@ -23465,6 +23474,16 @@ func (o WorkflowNodeAiPtrOutput) SystemPrompt() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+func (o WorkflowNodeAiPtrOutput) TimeoutMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowNodeAi) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
 // Regex patterns matched against the available tool names.
 func (o WorkflowNodeAiPtrOutput) Tools() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowNodeAi) []string {
@@ -23494,6 +23513,8 @@ type WorkflowNodeAiAgent struct {
 	OutputSchema *string `pulumi:"outputSchema"`
 	// The AI provider to use. Must be set together with `model`.
 	Provider *string `pulumi:"provider"`
+	// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+	TimeoutMinutes *int `pulumi:"timeoutMinutes"`
 	// The message or query processed by the agent.
 	UserPrompt *string `pulumi:"userPrompt"`
 }
@@ -23518,6 +23539,8 @@ type WorkflowNodeAiAgentArgs struct {
 	OutputSchema pulumi.StringPtrInput `pulumi:"outputSchema"`
 	// The AI provider to use. Must be set together with `model`.
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
+	// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+	TimeoutMinutes pulumi.IntPtrInput `pulumi:"timeoutMinutes"`
 	// The message or query processed by the agent.
 	UserPrompt pulumi.StringPtrInput `pulumi:"userPrompt"`
 }
@@ -23619,6 +23642,11 @@ func (o WorkflowNodeAiAgentOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeAiAgent) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
 
+// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+func (o WorkflowNodeAiAgentOutput) TimeoutMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeAiAgent) *int { return v.TimeoutMinutes }).(pulumi.IntPtrOutput)
+}
+
 // The message or query processed by the agent.
 func (o WorkflowNodeAiAgentOutput) UserPrompt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeAiAgent) *string { return v.UserPrompt }).(pulumi.StringPtrOutput)
@@ -23686,6 +23714,16 @@ func (o WorkflowNodeAiAgentPtrOutput) Provider() pulumi.StringPtrOutput {
 		}
 		return v.Provider
 	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+func (o WorkflowNodeAiAgentPtrOutput) TimeoutMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowNodeAiAgent) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutMinutes
+	}).(pulumi.IntPtrOutput)
 }
 
 // The message or query processed by the agent.
@@ -23798,6 +23836,8 @@ func (o WorkflowNodeAiMcpServerArrayOutput) Index(i pulumi.IntInput) WorkflowNod
 type WorkflowNodeCondition struct {
 	// The branches of the condition, evaluated in order.
 	Outlets []WorkflowNodeConditionOutlet `pulumi:"outlets"`
+	// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+	TimeoutMinutes *int `pulumi:"timeoutMinutes"`
 }
 
 // WorkflowNodeConditionInput is an input type that accepts WorkflowNodeConditionArgs and WorkflowNodeConditionOutput values.
@@ -23814,6 +23854,8 @@ type WorkflowNodeConditionInput interface {
 type WorkflowNodeConditionArgs struct {
 	// The branches of the condition, evaluated in order.
 	Outlets WorkflowNodeConditionOutletArrayInput `pulumi:"outlets"`
+	// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+	TimeoutMinutes pulumi.IntPtrInput `pulumi:"timeoutMinutes"`
 }
 
 func (WorkflowNodeConditionArgs) ElementType() reflect.Type {
@@ -23898,6 +23940,11 @@ func (o WorkflowNodeConditionOutput) Outlets() WorkflowNodeConditionOutletArrayO
 	return o.ApplyT(func(v WorkflowNodeCondition) []WorkflowNodeConditionOutlet { return v.Outlets }).(WorkflowNodeConditionOutletArrayOutput)
 }
 
+// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+func (o WorkflowNodeConditionOutput) TimeoutMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeCondition) *int { return v.TimeoutMinutes }).(pulumi.IntPtrOutput)
+}
+
 type WorkflowNodeConditionPtrOutput struct{ *pulumi.OutputState }
 
 func (WorkflowNodeConditionPtrOutput) ElementType() reflect.Type {
@@ -23930,6 +23977,16 @@ func (o WorkflowNodeConditionPtrOutput) Outlets() WorkflowNodeConditionOutletArr
 		}
 		return v.Outlets
 	}).(WorkflowNodeConditionOutletArrayOutput)
+}
+
+// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+func (o WorkflowNodeConditionPtrOutput) TimeoutMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowNodeCondition) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutMinutes
+	}).(pulumi.IntPtrOutput)
 }
 
 type WorkflowNodeConditionOutlet struct {
@@ -24757,6 +24814,8 @@ type WorkflowNodeInputType struct {
 	Outlets []WorkflowNodeInputOutlet `pulumi:"outlets"`
 	// Who is allowed to respond to this input node.
 	Responders *WorkflowNodeInputResponders `pulumi:"responders"`
+	// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+	TimeoutMinutes *int `pulumi:"timeoutMinutes"`
 	// The form presented to the responders.
 	UserInputs *WorkflowNodeInputUserInputs `pulumi:"userInputs"`
 }
@@ -24781,6 +24840,8 @@ type WorkflowNodeInputTypeArgs struct {
 	Outlets WorkflowNodeInputOutletArrayInput `pulumi:"outlets"`
 	// Who is allowed to respond to this input node.
 	Responders WorkflowNodeInputRespondersPtrInput `pulumi:"responders"`
+	// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+	TimeoutMinutes pulumi.IntPtrInput `pulumi:"timeoutMinutes"`
 	// The form presented to the responders.
 	UserInputs WorkflowNodeInputUserInputsPtrInput `pulumi:"userInputs"`
 }
@@ -24882,6 +24943,11 @@ func (o WorkflowNodeInputTypeOutput) Responders() WorkflowNodeInputRespondersPtr
 	return o.ApplyT(func(v WorkflowNodeInputType) *WorkflowNodeInputResponders { return v.Responders }).(WorkflowNodeInputRespondersPtrOutput)
 }
 
+// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+func (o WorkflowNodeInputTypeOutput) TimeoutMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputType) *int { return v.TimeoutMinutes }).(pulumi.IntPtrOutput)
+}
+
 // The form presented to the responders.
 func (o WorkflowNodeInputTypeOutput) UserInputs() WorkflowNodeInputUserInputsPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputType) *WorkflowNodeInputUserInputs { return v.UserInputs }).(WorkflowNodeInputUserInputsPtrOutput)
@@ -24949,6 +25015,16 @@ func (o WorkflowNodeInputTypePtrOutput) Responders() WorkflowNodeInputResponders
 		}
 		return v.Responders
 	}).(WorkflowNodeInputRespondersPtrOutput)
+}
+
+// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+func (o WorkflowNodeInputTypePtrOutput) TimeoutMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowNodeInputType) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutMinutes
+	}).(pulumi.IntPtrOutput)
 }
 
 // The form presented to the responders.
@@ -27306,6 +27382,8 @@ func (o WorkflowNodeInputUserInputsUserPropertiesArrayPropsNumberItemsPtrOutput)
 }
 
 type WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItems struct {
+	// JSON Schema `additionalProperties` for each object item, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+	AdditionalProperties *string `pulumi:"additionalProperties"`
 	// The default value of the items.
 	Defaults []map[string]string `pulumi:"defaults"`
 	// The format of each item.
@@ -27324,6 +27402,8 @@ type WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItemsInput interfa
 }
 
 type WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItemsArgs struct {
+	// JSON Schema `additionalProperties` for each object item, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+	AdditionalProperties pulumi.StringPtrInput `pulumi:"additionalProperties"`
 	// The default value of the items.
 	Defaults pulumi.StringMapArrayInput `pulumi:"defaults"`
 	// The format of each item.
@@ -27407,6 +27487,13 @@ func (o WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItemsOutput) To
 	}).(WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItemsPtrOutput)
 }
 
+// JSON Schema `additionalProperties` for each object item, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+func (o WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItemsOutput) AdditionalProperties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItems) *string {
+		return v.AdditionalProperties
+	}).(pulumi.StringPtrOutput)
+}
+
 // The default value of the items.
 func (o WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItemsOutput) Defaults() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItems) []map[string]string {
@@ -27441,6 +27528,16 @@ func (o WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItemsPtrOutput)
 		var ret WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItems
 		return ret
 	}).(WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItemsOutput)
+}
+
+// JSON Schema `additionalProperties` for each object item, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+func (o WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItemsPtrOutput) AdditionalProperties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItems) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalProperties
+	}).(pulumi.StringPtrOutput)
 }
 
 // The default value of the items.
@@ -28337,6 +28434,8 @@ func (o WorkflowNodeInputUserInputsUserPropertiesNumberPropsMapOutput) MapIndex(
 }
 
 type WorkflowNodeInputUserInputsUserPropertiesObjectProps struct {
+	// JSON Schema `additionalProperties` for the object input, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+	AdditionalProperties *string `pulumi:"additionalProperties"`
 	// The default of the object input, as a JSON encoded string.
 	Default *string `pulumi:"default"`
 	// The default jq query of the object input.
@@ -28379,6 +28478,8 @@ type WorkflowNodeInputUserInputsUserPropertiesObjectPropsInput interface {
 }
 
 type WorkflowNodeInputUserInputsUserPropertiesObjectPropsArgs struct {
+	// JSON Schema `additionalProperties` for the object input, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+	AdditionalProperties pulumi.StringPtrInput `pulumi:"additionalProperties"`
 	// The default of the object input, as a JSON encoded string.
 	Default pulumi.StringPtrInput `pulumi:"default"`
 	// The default jq query of the object input.
@@ -28458,6 +28559,11 @@ func (o WorkflowNodeInputUserInputsUserPropertiesObjectPropsOutput) ToWorkflowNo
 
 func (o WorkflowNodeInputUserInputsUserPropertiesObjectPropsOutput) ToWorkflowNodeInputUserInputsUserPropertiesObjectPropsOutputWithContext(ctx context.Context) WorkflowNodeInputUserInputsUserPropertiesObjectPropsOutput {
 	return o
+}
+
+// JSON Schema `additionalProperties` for the object input, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+func (o WorkflowNodeInputUserInputsUserPropertiesObjectPropsOutput) AdditionalProperties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesObjectProps) *string { return v.AdditionalProperties }).(pulumi.StringPtrOutput)
 }
 
 // The default of the object input, as a JSON encoded string.
@@ -32798,6 +32904,8 @@ type WorkflowNodeIntegrationAction struct {
 	IntegrationProvider *string `pulumi:"integrationProvider"`
 	// The action to take if the node fails. One of `continue`, `terminate`.
 	OnFailure *string `pulumi:"onFailure"`
+	// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default per run: `4320` for every `cursor-cloud-agents` action, `1440` otherwise.
+	TimeoutMinutes *int `pulumi:"timeoutMinutes"`
 }
 
 // WorkflowNodeIntegrationActionInput is an input type that accepts WorkflowNodeIntegrationActionArgs and WorkflowNodeIntegrationActionOutput values.
@@ -32822,6 +32930,8 @@ type WorkflowNodeIntegrationActionArgs struct {
 	IntegrationProvider pulumi.StringPtrInput `pulumi:"integrationProvider"`
 	// The action to take if the node fails. One of `continue`, `terminate`.
 	OnFailure pulumi.StringPtrInput `pulumi:"onFailure"`
+	// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default per run: `4320` for every `cursor-cloud-agents` action, `1440` otherwise.
+	TimeoutMinutes pulumi.IntPtrInput `pulumi:"timeoutMinutes"`
 }
 
 func (WorkflowNodeIntegrationActionArgs) ElementType() reflect.Type {
@@ -32926,6 +33036,11 @@ func (o WorkflowNodeIntegrationActionOutput) OnFailure() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v WorkflowNodeIntegrationAction) *string { return v.OnFailure }).(pulumi.StringPtrOutput)
 }
 
+// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default per run: `4320` for every `cursor-cloud-agents` action, `1440` otherwise.
+func (o WorkflowNodeIntegrationActionOutput) TimeoutMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeIntegrationAction) *int { return v.TimeoutMinutes }).(pulumi.IntPtrOutput)
+}
+
 type WorkflowNodeIntegrationActionPtrOutput struct{ *pulumi.OutputState }
 
 func (WorkflowNodeIntegrationActionPtrOutput) ElementType() reflect.Type {
@@ -33000,11 +33115,23 @@ func (o WorkflowNodeIntegrationActionPtrOutput) OnFailure() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default per run: `4320` for every `cursor-cloud-agents` action, `1440` otherwise.
+func (o WorkflowNodeIntegrationActionPtrOutput) TimeoutMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowNodeIntegrationAction) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
 type WorkflowNodeKafka struct {
 	// The action to take if the node fails. One of `continue`, `terminate`.
 	OnFailure *string `pulumi:"onFailure"`
 	// The Kafka message payload as a JSON encoded string.
 	Payload *string `pulumi:"payload"`
+	// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+	TimeoutMinutes *int `pulumi:"timeoutMinutes"`
 }
 
 // WorkflowNodeKafkaInput is an input type that accepts WorkflowNodeKafkaArgs and WorkflowNodeKafkaOutput values.
@@ -33023,6 +33150,8 @@ type WorkflowNodeKafkaArgs struct {
 	OnFailure pulumi.StringPtrInput `pulumi:"onFailure"`
 	// The Kafka message payload as a JSON encoded string.
 	Payload pulumi.StringPtrInput `pulumi:"payload"`
+	// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+	TimeoutMinutes pulumi.IntPtrInput `pulumi:"timeoutMinutes"`
 }
 
 func (WorkflowNodeKafkaArgs) ElementType() reflect.Type {
@@ -33112,6 +33241,11 @@ func (o WorkflowNodeKafkaOutput) Payload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeKafka) *string { return v.Payload }).(pulumi.StringPtrOutput)
 }
 
+// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+func (o WorkflowNodeKafkaOutput) TimeoutMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeKafka) *int { return v.TimeoutMinutes }).(pulumi.IntPtrOutput)
+}
+
 type WorkflowNodeKafkaPtrOutput struct{ *pulumi.OutputState }
 
 func (WorkflowNodeKafkaPtrOutput) ElementType() reflect.Type {
@@ -33154,6 +33288,16 @@ func (o WorkflowNodeKafkaPtrOutput) Payload() pulumi.StringPtrOutput {
 		}
 		return v.Payload
 	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+func (o WorkflowNodeKafkaPtrOutput) TimeoutMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowNodeKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutMinutes
+	}).(pulumi.IntPtrOutput)
 }
 
 type WorkflowNodeScheduleTrigger struct {
@@ -35209,6 +35353,8 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsNumberItem
 }
 
 type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItems struct {
+	// JSON Schema `additionalProperties` for each object item, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+	AdditionalProperties *string `pulumi:"additionalProperties"`
 	// The default value of the items.
 	Defaults []map[string]string `pulumi:"defaults"`
 	// The format of each item.
@@ -35227,6 +35373,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItemsIn
 }
 
 type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItemsArgs struct {
+	// JSON Schema `additionalProperties` for each object item, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+	AdditionalProperties pulumi.StringPtrInput `pulumi:"additionalProperties"`
 	// The default value of the items.
 	Defaults pulumi.StringMapArrayInput `pulumi:"defaults"`
 	// The format of each item.
@@ -35310,6 +35458,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItem
 	}).(WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItemsPtrOutput)
 }
 
+// JSON Schema `additionalProperties` for each object item, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItemsOutput) AdditionalProperties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItems) *string {
+		return v.AdditionalProperties
+	}).(pulumi.StringPtrOutput)
+}
+
 // The default value of the items.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItemsOutput) Defaults() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItems) []map[string]string {
@@ -35346,6 +35501,16 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItem
 		var ret WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItems
 		return ret
 	}).(WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItemsOutput)
+}
+
+// JSON Schema `additionalProperties` for each object item, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItemsPtrOutput) AdditionalProperties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItems) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalProperties
+	}).(pulumi.StringPtrOutput)
 }
 
 // The default value of the items.
@@ -36274,6 +36439,8 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesNumberPropsMapOutput
 }
 
 type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectProps struct {
+	// JSON Schema `additionalProperties` for the object input, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+	AdditionalProperties *string `pulumi:"additionalProperties"`
 	// The default of the object input, as a JSON encoded string.
 	Default *string `pulumi:"default"`
 	// The default jq query of the object input.
@@ -36316,6 +36483,8 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectPropsInput interf
 }
 
 type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectPropsArgs struct {
+	// JSON Schema `additionalProperties` for the object input, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+	AdditionalProperties pulumi.StringPtrInput `pulumi:"additionalProperties"`
 	// The default of the object input, as a JSON encoded string.
 	Default pulumi.StringPtrInput `pulumi:"default"`
 	// The default jq query of the object input.
@@ -36395,6 +36564,13 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectPropsOutput) T
 
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectPropsOutput) ToWorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectPropsOutputWithContext(ctx context.Context) WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectPropsOutput {
 	return o
+}
+
+// JSON Schema `additionalProperties` for the object input, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectPropsOutput) AdditionalProperties() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectProps) *string {
+		return v.AdditionalProperties
+	}).(pulumi.StringPtrOutput)
 }
 
 // The default of the object input, as a JSON encoded string.
@@ -40775,6 +40951,8 @@ type WorkflowNodeUpsertEntity struct {
 	Mapping *WorkflowNodeUpsertEntityMapping `pulumi:"mapping"`
 	// The action to take if the node fails. One of `continue`, `terminate`.
 	OnFailure *string `pulumi:"onFailure"`
+	// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+	TimeoutMinutes *int `pulumi:"timeoutMinutes"`
 }
 
 // WorkflowNodeUpsertEntityInput is an input type that accepts WorkflowNodeUpsertEntityArgs and WorkflowNodeUpsertEntityOutput values.
@@ -40795,6 +40973,8 @@ type WorkflowNodeUpsertEntityArgs struct {
 	Mapping WorkflowNodeUpsertEntityMappingPtrInput `pulumi:"mapping"`
 	// The action to take if the node fails. One of `continue`, `terminate`.
 	OnFailure pulumi.StringPtrInput `pulumi:"onFailure"`
+	// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+	TimeoutMinutes pulumi.IntPtrInput `pulumi:"timeoutMinutes"`
 }
 
 func (WorkflowNodeUpsertEntityArgs) ElementType() reflect.Type {
@@ -40889,6 +41069,11 @@ func (o WorkflowNodeUpsertEntityOutput) OnFailure() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeUpsertEntity) *string { return v.OnFailure }).(pulumi.StringPtrOutput)
 }
 
+// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+func (o WorkflowNodeUpsertEntityOutput) TimeoutMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeUpsertEntity) *int { return v.TimeoutMinutes }).(pulumi.IntPtrOutput)
+}
+
 type WorkflowNodeUpsertEntityPtrOutput struct{ *pulumi.OutputState }
 
 func (WorkflowNodeUpsertEntityPtrOutput) ElementType() reflect.Type {
@@ -40941,6 +41126,16 @@ func (o WorkflowNodeUpsertEntityPtrOutput) OnFailure() pulumi.StringPtrOutput {
 		}
 		return v.OnFailure
 	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+func (o WorkflowNodeUpsertEntityPtrOutput) TimeoutMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowNodeUpsertEntity) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutMinutes
+	}).(pulumi.IntPtrOutput)
 }
 
 type WorkflowNodeUpsertEntityMapping struct {
@@ -41190,6 +41385,8 @@ type WorkflowNodeWebhook struct {
 	OnTimeout *string `pulumi:"onTimeout"`
 	// Whether the request is sent synchronously.
 	Synchronized *bool `pulumi:"synchronized"`
+	// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default per run: `1440` when `agent` is true or `synchronized` is false, `60` otherwise.
+	TimeoutMinutes *int `pulumi:"timeoutMinutes"`
 	// The URL of the webhook.
 	Url *string `pulumi:"url"`
 }
@@ -41220,6 +41417,8 @@ type WorkflowNodeWebhookArgs struct {
 	OnTimeout pulumi.StringPtrInput `pulumi:"onTimeout"`
 	// Whether the request is sent synchronously.
 	Synchronized pulumi.BoolPtrInput `pulumi:"synchronized"`
+	// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default per run: `1440` when `agent` is true or `synchronized` is false, `60` otherwise.
+	TimeoutMinutes pulumi.IntPtrInput `pulumi:"timeoutMinutes"`
 	// The URL of the webhook.
 	Url pulumi.StringPtrInput `pulumi:"url"`
 }
@@ -41336,6 +41535,11 @@ func (o WorkflowNodeWebhookOutput) Synchronized() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeWebhook) *bool { return v.Synchronized }).(pulumi.BoolPtrOutput)
 }
 
+// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default per run: `1440` when `agent` is true or `synchronized` is false, `60` otherwise.
+func (o WorkflowNodeWebhookOutput) TimeoutMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeWebhook) *int { return v.TimeoutMinutes }).(pulumi.IntPtrOutput)
+}
+
 // The URL of the webhook.
 func (o WorkflowNodeWebhookOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeWebhook) *string { return v.Url }).(pulumi.StringPtrOutput)
@@ -41433,6 +41637,16 @@ func (o WorkflowNodeWebhookPtrOutput) Synchronized() pulumi.BoolPtrOutput {
 		}
 		return v.Synchronized
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default per run: `1440` when `agent` is true or `synchronized` is false, `60` otherwise.
+func (o WorkflowNodeWebhookPtrOutput) TimeoutMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowNodeWebhook) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutMinutes
+	}).(pulumi.IntPtrOutput)
 }
 
 // The URL of the webhook.

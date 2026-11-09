@@ -2863,6 +2863,10 @@ export interface WorkflowNodeAi {
      */
     systemPrompt?: pulumi.Input<string>;
     /**
+     * The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+     */
+    timeoutMinutes?: pulumi.Input<number>;
+    /**
      * Regex patterns matched against the available tool names.
      */
     tools?: pulumi.Input<pulumi.Input<string>[]>;
@@ -2890,6 +2894,10 @@ export interface WorkflowNodeAiAgent {
      */
     provider?: pulumi.Input<string>;
     /**
+     * The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+     */
+    timeoutMinutes?: pulumi.Input<number>;
+    /**
      * The message or query processed by the agent.
      */
     userPrompt?: pulumi.Input<string>;
@@ -2907,6 +2915,10 @@ export interface WorkflowNodeCondition {
      * The branches of the condition, evaluated in order.
      */
     outlets?: pulumi.Input<pulumi.Input<inputs.WorkflowNodeConditionOutlet>[]>;
+    /**
+     * The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+     */
+    timeoutMinutes?: pulumi.Input<number>;
 }
 
 export interface WorkflowNodeConditionOutlet {
@@ -3005,6 +3017,10 @@ export interface WorkflowNodeInput {
      * Who is allowed to respond to this input node.
      */
     responders?: pulumi.Input<inputs.WorkflowNodeInputResponders>;
+    /**
+     * The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+     */
+    timeoutMinutes?: pulumi.Input<number>;
     /**
      * The form presented to the responders.
      */
@@ -3351,6 +3367,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesArrayPropsNumberItems 
 
 export interface WorkflowNodeInputUserInputsUserPropertiesArrayPropsObjectItems {
     /**
+     * JSON Schema `additionalProperties` for each object item, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+     */
+    additionalProperties?: pulumi.Input<string>;
+    /**
      * The default value of the items.
      */
     defaults?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
@@ -3537,6 +3557,10 @@ export interface WorkflowNodeInputUserInputsUserPropertiesNumberProps {
 }
 
 export interface WorkflowNodeInputUserInputsUserPropertiesObjectProps {
+    /**
+     * JSON Schema `additionalProperties` for the object input, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+     */
+    additionalProperties?: pulumi.Input<string>;
     /**
      * The default of the object input, as a JSON encoded string.
      */
@@ -4217,6 +4241,10 @@ export interface WorkflowNodeIntegrationAction {
      * The action to take if the node fails. One of `continue`, `terminate`.
      */
     onFailure?: pulumi.Input<string>;
+    /**
+     * The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default per run: `4320` for every `cursor-cloud-agents` action, `1440` otherwise.
+     */
+    timeoutMinutes?: pulumi.Input<number>;
 }
 
 export interface WorkflowNodeKafka {
@@ -4228,6 +4256,10 @@ export interface WorkflowNodeKafka {
      * The Kafka message payload as a JSON encoded string.
      */
     payload?: pulumi.Input<string>;
+    /**
+     * The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+     */
+    timeoutMinutes?: pulumi.Input<number>;
 }
 
 export interface WorkflowNodeScheduleTrigger {
@@ -4521,6 +4553,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsN
 
 export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesArrayPropsObjectItems {
     /**
+     * JSON Schema `additionalProperties` for each object item, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+     */
+    additionalProperties?: pulumi.Input<string>;
+    /**
      * The default value of the items.
      */
     defaults?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
@@ -4707,6 +4743,10 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesNumberProps
 }
 
 export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesObjectProps {
+    /**
+     * JSON Schema `additionalProperties` for the object input, as a JSON encoded boolean or schema. `true` allows any extra keys, `false` rejects them, and an object is the schema those keys must match.
+     */
+    additionalProperties?: pulumi.Input<string>;
     /**
      * The default of the object input, as a JSON encoded string.
      */
@@ -5379,6 +5419,10 @@ export interface WorkflowNodeUpsertEntity {
      * The action to take if the node fails. One of `continue`, `terminate`.
      */
     onFailure?: pulumi.Input<string>;
+    /**
+     * The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default for this node type.
+     */
+    timeoutMinutes?: pulumi.Input<number>;
 }
 
 export interface WorkflowNodeUpsertEntityMapping {
@@ -5437,6 +5481,10 @@ export interface WorkflowNodeWebhook {
      * Whether the request is sent synchronously.
      */
     synchronized?: pulumi.Input<boolean>;
+    /**
+     * The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default per run: `1440` when `agent` is true or `synchronized` is false, `60` otherwise.
+     */
+    timeoutMinutes?: pulumi.Input<number>;
     /**
      * The URL of the webhook.
      */
