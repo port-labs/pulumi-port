@@ -4093,6 +4093,10 @@
                     "$ref": "#/types/port:index/WorkflowNodeEventTrigger:WorkflowNodeEventTrigger",
                     "description": "An event trigger node that starts the workflow when an entity event occurs.\n"
                 },
+                "executeWorkflow": {
+                    "$ref": "#/types/port:index/WorkflowNodeExecuteWorkflow:WorkflowNodeExecuteWorkflow",
+                    "description": "An execute workflow node that starts a run of another workflow through one of its `workflow_trigger` nodes. A workflow cannot execute itself, directly or through other workflows: Port fails such a run when it starts.\n"
+                },
                 "icon": {
                     "type": "string",
                     "description": "The icon of the node\n"
@@ -4150,6 +4154,10 @@
                 "webhook": {
                     "$ref": "#/types/port:index/WorkflowNodeWebhook:WorkflowNodeWebhook",
                     "description": "A webhook node that sends an HTTP request.\n"
+                },
+                "workflowTrigger": {
+                    "$ref": "#/types/port:index/WorkflowNodeWorkflowTrigger:WorkflowNodeWorkflowTrigger",
+                    "description": "A workflow trigger node that lets other workflows execute this workflow through an `execute_workflow` node. The input passed by the calling workflow is available as the output of this node.\n"
                 }
             },
             "type": "object",
@@ -4398,6 +4406,44 @@
                 }
             },
             "type": "object"
+        },
+        "port:index/WorkflowNodeExecuteWorkflow:WorkflowNodeExecuteWorkflow": {
+            "properties": {
+                "input": {
+                    "type": "string",
+                    "description": "The input passed to the executed workflow as a JSON encoded object, available as the output of its trigger node. String values support JQ templates. Defaults to `{}`.\n"
+                },
+                "onFailure": {
+                    "type": "string",
+                    "description": "The action to take if the executed workflow run fails. One of `continue`, `terminate`. Can only be set when `wait` is `true`. When omitted, the run terminates.\n"
+                },
+                "timeoutMinutes": {
+                    "type": "integer",
+                    "description": "The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default of `1440` (1 day).\n"
+                },
+                "triggerIdentifier": {
+                    "type": "string",
+                    "description": "The identifier of the `workflow_trigger` node in the executed workflow through which it is run.\n"
+                },
+                "wait": {
+                    "type": "boolean",
+                    "description": "Whether to wait for the executed workflow run to conclude before continuing.\n"
+                },
+                "workflowIdentifier": {
+                    "type": "string",
+                    "description": "The identifier of the workflow to execute.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "input",
+                        "timeoutMinutes",
+                        "wait"
+                    ]
+                }
+            }
         },
         "port:index/WorkflowNodeInput:WorkflowNodeInput": {
             "properties": {
@@ -7621,6 +7667,22 @@
                         "onFailure",
                         "onTimeout",
                         "synchronized"
+                    ]
+                }
+            }
+        },
+        "port:index/WorkflowNodeWorkflowTrigger:WorkflowNodeWorkflowTrigger": {
+            "properties": {
+                "published": {
+                    "type": "boolean",
+                    "description": "Whether the trigger is published. When `false`, other workflows cannot execute this workflow through this trigger.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "published"
                     ]
                 }
             }
