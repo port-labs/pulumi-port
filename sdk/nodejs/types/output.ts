@@ -2895,6 +2895,10 @@ export interface WorkflowNode {
      */
     eventTrigger?: outputs.WorkflowNodeEventTrigger;
     /**
+     * An execute workflow node that starts a run of another workflow through one of its `workflowTrigger` nodes. A workflow cannot execute itself, directly or through other workflows: Port fails such a run when it starts.
+     */
+    executeWorkflow?: outputs.WorkflowNodeExecuteWorkflow;
+    /**
      * The icon of the node
      */
     icon?: string;
@@ -2946,6 +2950,10 @@ export interface WorkflowNode {
      * A webhook node that sends an HTTP request.
      */
     webhook?: outputs.WorkflowNodeWebhook;
+    /**
+     * A workflow trigger node that lets other workflows execute this workflow through an `executeWorkflow` node. The input passed by the calling workflow is available as the output of this node.
+     */
+    workflowTrigger?: outputs.WorkflowNodeWorkflowTrigger;
 }
 
 export interface WorkflowNodeAi {
@@ -3105,6 +3113,33 @@ export interface WorkflowNodeEventTriggerCondition {
      * The JQ expressions evaluated against the event.
      */
     expressions?: string[];
+}
+
+export interface WorkflowNodeExecuteWorkflow {
+    /**
+     * The input passed to the executed workflow as a JSON encoded object, available as the output of its trigger node. String values support JQ templates. Defaults to `{}`.
+     */
+    input: string;
+    /**
+     * The action to take if the executed workflow run fails. One of `continue`, `terminate`. Can only be set when `wait` is `true`. When omitted, the run terminates.
+     */
+    onFailure?: string;
+    /**
+     * The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default of `1440` (1 day).
+     */
+    timeoutMinutes: number;
+    /**
+     * The identifier of the `workflowTrigger` node in the executed workflow through which it is run.
+     */
+    triggerIdentifier?: string;
+    /**
+     * Whether to wait for the executed workflow run to conclude before continuing.
+     */
+    wait: boolean;
+    /**
+     * The identifier of the workflow to execute.
+     */
+    workflowIdentifier?: string;
 }
 
 export interface WorkflowNodeInput {
@@ -5596,5 +5631,12 @@ export interface WorkflowNodeWebhook {
      * The URL of the webhook.
      */
     url?: string;
+}
+
+export interface WorkflowNodeWorkflowTrigger {
+    /**
+     * Whether the trigger is published. When `false`, other workflows cannot execute this workflow through this trigger.
+     */
+    published: boolean;
 }
 

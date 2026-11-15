@@ -22995,6 +22995,8 @@ type WorkflowNode struct {
 	Description *string `pulumi:"description"`
 	// An event trigger node that starts the workflow when an entity event occurs.
 	EventTrigger *WorkflowNodeEventTrigger `pulumi:"eventTrigger"`
+	// An execute workflow node that starts a run of another workflow through one of its `workflowTrigger` nodes. A workflow cannot execute itself, directly or through other workflows: Port fails such a run when it starts.
+	ExecuteWorkflow *WorkflowNodeExecuteWorkflow `pulumi:"executeWorkflow"`
 	// The icon of the node
 	Icon *string `pulumi:"icon"`
 	// The identifier of the node
@@ -23021,6 +23023,8 @@ type WorkflowNode struct {
 	Verbose *bool `pulumi:"verbose"`
 	// A webhook node that sends an HTTP request.
 	Webhook *WorkflowNodeWebhook `pulumi:"webhook"`
+	// A workflow trigger node that lets other workflows execute this workflow through an `executeWorkflow` node. The input passed by the calling workflow is available as the output of this node.
+	WorkflowTrigger *WorkflowNodeWorkflowTrigger `pulumi:"workflowTrigger"`
 }
 
 // WorkflowNodeInput is an input type that accepts WorkflowNodeArgs and WorkflowNodeOutput values.
@@ -23045,6 +23049,8 @@ type WorkflowNodeArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// An event trigger node that starts the workflow when an entity event occurs.
 	EventTrigger WorkflowNodeEventTriggerPtrInput `pulumi:"eventTrigger"`
+	// An execute workflow node that starts a run of another workflow through one of its `workflowTrigger` nodes. A workflow cannot execute itself, directly or through other workflows: Port fails such a run when it starts.
+	ExecuteWorkflow WorkflowNodeExecuteWorkflowPtrInput `pulumi:"executeWorkflow"`
 	// The icon of the node
 	Icon pulumi.StringPtrInput `pulumi:"icon"`
 	// The identifier of the node
@@ -23071,6 +23077,8 @@ type WorkflowNodeArgs struct {
 	Verbose pulumi.BoolPtrInput `pulumi:"verbose"`
 	// A webhook node that sends an HTTP request.
 	Webhook WorkflowNodeWebhookPtrInput `pulumi:"webhook"`
+	// A workflow trigger node that lets other workflows execute this workflow through an `executeWorkflow` node. The input passed by the calling workflow is available as the output of this node.
+	WorkflowTrigger WorkflowNodeWorkflowTriggerPtrInput `pulumi:"workflowTrigger"`
 }
 
 func (WorkflowNodeArgs) ElementType() reflect.Type {
@@ -23149,6 +23157,11 @@ func (o WorkflowNodeOutput) EventTrigger() WorkflowNodeEventTriggerPtrOutput {
 	return o.ApplyT(func(v WorkflowNode) *WorkflowNodeEventTrigger { return v.EventTrigger }).(WorkflowNodeEventTriggerPtrOutput)
 }
 
+// An execute workflow node that starts a run of another workflow through one of its `workflowTrigger` nodes. A workflow cannot execute itself, directly or through other workflows: Port fails such a run when it starts.
+func (o WorkflowNodeOutput) ExecuteWorkflow() WorkflowNodeExecuteWorkflowPtrOutput {
+	return o.ApplyT(func(v WorkflowNode) *WorkflowNodeExecuteWorkflow { return v.ExecuteWorkflow }).(WorkflowNodeExecuteWorkflowPtrOutput)
+}
+
 // The icon of the node
 func (o WorkflowNodeOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNode) *string { return v.Icon }).(pulumi.StringPtrOutput)
@@ -23212,6 +23225,11 @@ func (o WorkflowNodeOutput) Verbose() pulumi.BoolPtrOutput {
 // A webhook node that sends an HTTP request.
 func (o WorkflowNodeOutput) Webhook() WorkflowNodeWebhookPtrOutput {
 	return o.ApplyT(func(v WorkflowNode) *WorkflowNodeWebhook { return v.Webhook }).(WorkflowNodeWebhookPtrOutput)
+}
+
+// A workflow trigger node that lets other workflows execute this workflow through an `executeWorkflow` node. The input passed by the calling workflow is available as the output of this node.
+func (o WorkflowNodeOutput) WorkflowTrigger() WorkflowNodeWorkflowTriggerPtrOutput {
+	return o.ApplyT(func(v WorkflowNode) *WorkflowNodeWorkflowTrigger { return v.WorkflowTrigger }).(WorkflowNodeWorkflowTriggerPtrOutput)
 }
 
 type WorkflowNodeArrayOutput struct{ *pulumi.OutputState }
@@ -24803,6 +24821,238 @@ func (o WorkflowNodeEventTriggerConditionPtrOutput) Expressions() pulumi.StringA
 		}
 		return v.Expressions
 	}).(pulumi.StringArrayOutput)
+}
+
+type WorkflowNodeExecuteWorkflow struct {
+	// The input passed to the executed workflow as a JSON encoded object, available as the output of its trigger node. String values support JQ templates. Defaults to `{}`.
+	Input *string `pulumi:"input"`
+	// The action to take if the executed workflow run fails. One of `continue`, `terminate`. Can only be set when `wait` is `true`. When omitted, the run terminates.
+	OnFailure *string `pulumi:"onFailure"`
+	// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default of `1440` (1 day).
+	TimeoutMinutes *int `pulumi:"timeoutMinutes"`
+	// The identifier of the `workflowTrigger` node in the executed workflow through which it is run.
+	TriggerIdentifier *string `pulumi:"triggerIdentifier"`
+	// Whether to wait for the executed workflow run to conclude before continuing.
+	Wait *bool `pulumi:"wait"`
+	// The identifier of the workflow to execute.
+	WorkflowIdentifier *string `pulumi:"workflowIdentifier"`
+}
+
+// WorkflowNodeExecuteWorkflowInput is an input type that accepts WorkflowNodeExecuteWorkflowArgs and WorkflowNodeExecuteWorkflowOutput values.
+// You can construct a concrete instance of `WorkflowNodeExecuteWorkflowInput` via:
+//
+//	WorkflowNodeExecuteWorkflowArgs{...}
+type WorkflowNodeExecuteWorkflowInput interface {
+	pulumi.Input
+
+	ToWorkflowNodeExecuteWorkflowOutput() WorkflowNodeExecuteWorkflowOutput
+	ToWorkflowNodeExecuteWorkflowOutputWithContext(context.Context) WorkflowNodeExecuteWorkflowOutput
+}
+
+type WorkflowNodeExecuteWorkflowArgs struct {
+	// The input passed to the executed workflow as a JSON encoded object, available as the output of its trigger node. String values support JQ templates. Defaults to `{}`.
+	Input pulumi.StringPtrInput `pulumi:"input"`
+	// The action to take if the executed workflow run fails. One of `continue`, `terminate`. Can only be set when `wait` is `true`. When omitted, the run terminates.
+	OnFailure pulumi.StringPtrInput `pulumi:"onFailure"`
+	// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default of `1440` (1 day).
+	TimeoutMinutes pulumi.IntPtrInput `pulumi:"timeoutMinutes"`
+	// The identifier of the `workflowTrigger` node in the executed workflow through which it is run.
+	TriggerIdentifier pulumi.StringPtrInput `pulumi:"triggerIdentifier"`
+	// Whether to wait for the executed workflow run to conclude before continuing.
+	Wait pulumi.BoolPtrInput `pulumi:"wait"`
+	// The identifier of the workflow to execute.
+	WorkflowIdentifier pulumi.StringPtrInput `pulumi:"workflowIdentifier"`
+}
+
+func (WorkflowNodeExecuteWorkflowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowNodeExecuteWorkflow)(nil)).Elem()
+}
+
+func (i WorkflowNodeExecuteWorkflowArgs) ToWorkflowNodeExecuteWorkflowOutput() WorkflowNodeExecuteWorkflowOutput {
+	return i.ToWorkflowNodeExecuteWorkflowOutputWithContext(context.Background())
+}
+
+func (i WorkflowNodeExecuteWorkflowArgs) ToWorkflowNodeExecuteWorkflowOutputWithContext(ctx context.Context) WorkflowNodeExecuteWorkflowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowNodeExecuteWorkflowOutput)
+}
+
+func (i WorkflowNodeExecuteWorkflowArgs) ToWorkflowNodeExecuteWorkflowPtrOutput() WorkflowNodeExecuteWorkflowPtrOutput {
+	return i.ToWorkflowNodeExecuteWorkflowPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowNodeExecuteWorkflowArgs) ToWorkflowNodeExecuteWorkflowPtrOutputWithContext(ctx context.Context) WorkflowNodeExecuteWorkflowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowNodeExecuteWorkflowOutput).ToWorkflowNodeExecuteWorkflowPtrOutputWithContext(ctx)
+}
+
+// WorkflowNodeExecuteWorkflowPtrInput is an input type that accepts WorkflowNodeExecuteWorkflowArgs, WorkflowNodeExecuteWorkflowPtr and WorkflowNodeExecuteWorkflowPtrOutput values.
+// You can construct a concrete instance of `WorkflowNodeExecuteWorkflowPtrInput` via:
+//
+//	        WorkflowNodeExecuteWorkflowArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowNodeExecuteWorkflowPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowNodeExecuteWorkflowPtrOutput() WorkflowNodeExecuteWorkflowPtrOutput
+	ToWorkflowNodeExecuteWorkflowPtrOutputWithContext(context.Context) WorkflowNodeExecuteWorkflowPtrOutput
+}
+
+type workflowNodeExecuteWorkflowPtrType WorkflowNodeExecuteWorkflowArgs
+
+func WorkflowNodeExecuteWorkflowPtr(v *WorkflowNodeExecuteWorkflowArgs) WorkflowNodeExecuteWorkflowPtrInput {
+	return (*workflowNodeExecuteWorkflowPtrType)(v)
+}
+
+func (*workflowNodeExecuteWorkflowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowNodeExecuteWorkflow)(nil)).Elem()
+}
+
+func (i *workflowNodeExecuteWorkflowPtrType) ToWorkflowNodeExecuteWorkflowPtrOutput() WorkflowNodeExecuteWorkflowPtrOutput {
+	return i.ToWorkflowNodeExecuteWorkflowPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowNodeExecuteWorkflowPtrType) ToWorkflowNodeExecuteWorkflowPtrOutputWithContext(ctx context.Context) WorkflowNodeExecuteWorkflowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowNodeExecuteWorkflowPtrOutput)
+}
+
+type WorkflowNodeExecuteWorkflowOutput struct{ *pulumi.OutputState }
+
+func (WorkflowNodeExecuteWorkflowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowNodeExecuteWorkflow)(nil)).Elem()
+}
+
+func (o WorkflowNodeExecuteWorkflowOutput) ToWorkflowNodeExecuteWorkflowOutput() WorkflowNodeExecuteWorkflowOutput {
+	return o
+}
+
+func (o WorkflowNodeExecuteWorkflowOutput) ToWorkflowNodeExecuteWorkflowOutputWithContext(ctx context.Context) WorkflowNodeExecuteWorkflowOutput {
+	return o
+}
+
+func (o WorkflowNodeExecuteWorkflowOutput) ToWorkflowNodeExecuteWorkflowPtrOutput() WorkflowNodeExecuteWorkflowPtrOutput {
+	return o.ToWorkflowNodeExecuteWorkflowPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowNodeExecuteWorkflowOutput) ToWorkflowNodeExecuteWorkflowPtrOutputWithContext(ctx context.Context) WorkflowNodeExecuteWorkflowPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowNodeExecuteWorkflow) *WorkflowNodeExecuteWorkflow {
+		return &v
+	}).(WorkflowNodeExecuteWorkflowPtrOutput)
+}
+
+// The input passed to the executed workflow as a JSON encoded object, available as the output of its trigger node. String values support JQ templates. Defaults to `{}`.
+func (o WorkflowNodeExecuteWorkflowOutput) Input() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeExecuteWorkflow) *string { return v.Input }).(pulumi.StringPtrOutput)
+}
+
+// The action to take if the executed workflow run fails. One of `continue`, `terminate`. Can only be set when `wait` is `true`. When omitted, the run terminates.
+func (o WorkflowNodeExecuteWorkflowOutput) OnFailure() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeExecuteWorkflow) *string { return v.OnFailure }).(pulumi.StringPtrOutput)
+}
+
+// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default of `1440` (1 day).
+func (o WorkflowNodeExecuteWorkflowOutput) TimeoutMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeExecuteWorkflow) *int { return v.TimeoutMinutes }).(pulumi.IntPtrOutput)
+}
+
+// The identifier of the `workflowTrigger` node in the executed workflow through which it is run.
+func (o WorkflowNodeExecuteWorkflowOutput) TriggerIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeExecuteWorkflow) *string { return v.TriggerIdentifier }).(pulumi.StringPtrOutput)
+}
+
+// Whether to wait for the executed workflow run to conclude before continuing.
+func (o WorkflowNodeExecuteWorkflowOutput) Wait() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeExecuteWorkflow) *bool { return v.Wait }).(pulumi.BoolPtrOutput)
+}
+
+// The identifier of the workflow to execute.
+func (o WorkflowNodeExecuteWorkflowOutput) WorkflowIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeExecuteWorkflow) *string { return v.WorkflowIdentifier }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowNodeExecuteWorkflowPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowNodeExecuteWorkflowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowNodeExecuteWorkflow)(nil)).Elem()
+}
+
+func (o WorkflowNodeExecuteWorkflowPtrOutput) ToWorkflowNodeExecuteWorkflowPtrOutput() WorkflowNodeExecuteWorkflowPtrOutput {
+	return o
+}
+
+func (o WorkflowNodeExecuteWorkflowPtrOutput) ToWorkflowNodeExecuteWorkflowPtrOutputWithContext(ctx context.Context) WorkflowNodeExecuteWorkflowPtrOutput {
+	return o
+}
+
+func (o WorkflowNodeExecuteWorkflowPtrOutput) Elem() WorkflowNodeExecuteWorkflowOutput {
+	return o.ApplyT(func(v *WorkflowNodeExecuteWorkflow) WorkflowNodeExecuteWorkflow {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowNodeExecuteWorkflow
+		return ret
+	}).(WorkflowNodeExecuteWorkflowOutput)
+}
+
+// The input passed to the executed workflow as a JSON encoded object, available as the output of its trigger node. String values support JQ templates. Defaults to `{}`.
+func (o WorkflowNodeExecuteWorkflowPtrOutput) Input() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowNodeExecuteWorkflow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Input
+	}).(pulumi.StringPtrOutput)
+}
+
+// The action to take if the executed workflow run fails. One of `continue`, `terminate`. Can only be set when `wait` is `true`. When omitted, the run terminates.
+func (o WorkflowNodeExecuteWorkflowPtrOutput) OnFailure() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowNodeExecuteWorkflow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OnFailure
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default of `1440` (1 day).
+func (o WorkflowNodeExecuteWorkflowPtrOutput) TimeoutMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowNodeExecuteWorkflow) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The identifier of the `workflowTrigger` node in the executed workflow through which it is run.
+func (o WorkflowNodeExecuteWorkflowPtrOutput) TriggerIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowNodeExecuteWorkflow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TriggerIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to wait for the executed workflow run to conclude before continuing.
+func (o WorkflowNodeExecuteWorkflowPtrOutput) Wait() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowNodeExecuteWorkflow) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Wait
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The identifier of the workflow to execute.
+func (o WorkflowNodeExecuteWorkflowPtrOutput) WorkflowIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowNodeExecuteWorkflow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkflowIdentifier
+	}).(pulumi.StringPtrOutput)
 }
 
 type WorkflowNodeInputType struct {
@@ -41659,6 +41909,143 @@ func (o WorkflowNodeWebhookPtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkflowNodeWorkflowTrigger struct {
+	// Whether the trigger is published. When `false`, other workflows cannot execute this workflow through this trigger.
+	Published *bool `pulumi:"published"`
+}
+
+// WorkflowNodeWorkflowTriggerInput is an input type that accepts WorkflowNodeWorkflowTriggerArgs and WorkflowNodeWorkflowTriggerOutput values.
+// You can construct a concrete instance of `WorkflowNodeWorkflowTriggerInput` via:
+//
+//	WorkflowNodeWorkflowTriggerArgs{...}
+type WorkflowNodeWorkflowTriggerInput interface {
+	pulumi.Input
+
+	ToWorkflowNodeWorkflowTriggerOutput() WorkflowNodeWorkflowTriggerOutput
+	ToWorkflowNodeWorkflowTriggerOutputWithContext(context.Context) WorkflowNodeWorkflowTriggerOutput
+}
+
+type WorkflowNodeWorkflowTriggerArgs struct {
+	// Whether the trigger is published. When `false`, other workflows cannot execute this workflow through this trigger.
+	Published pulumi.BoolPtrInput `pulumi:"published"`
+}
+
+func (WorkflowNodeWorkflowTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowNodeWorkflowTrigger)(nil)).Elem()
+}
+
+func (i WorkflowNodeWorkflowTriggerArgs) ToWorkflowNodeWorkflowTriggerOutput() WorkflowNodeWorkflowTriggerOutput {
+	return i.ToWorkflowNodeWorkflowTriggerOutputWithContext(context.Background())
+}
+
+func (i WorkflowNodeWorkflowTriggerArgs) ToWorkflowNodeWorkflowTriggerOutputWithContext(ctx context.Context) WorkflowNodeWorkflowTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowNodeWorkflowTriggerOutput)
+}
+
+func (i WorkflowNodeWorkflowTriggerArgs) ToWorkflowNodeWorkflowTriggerPtrOutput() WorkflowNodeWorkflowTriggerPtrOutput {
+	return i.ToWorkflowNodeWorkflowTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowNodeWorkflowTriggerArgs) ToWorkflowNodeWorkflowTriggerPtrOutputWithContext(ctx context.Context) WorkflowNodeWorkflowTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowNodeWorkflowTriggerOutput).ToWorkflowNodeWorkflowTriggerPtrOutputWithContext(ctx)
+}
+
+// WorkflowNodeWorkflowTriggerPtrInput is an input type that accepts WorkflowNodeWorkflowTriggerArgs, WorkflowNodeWorkflowTriggerPtr and WorkflowNodeWorkflowTriggerPtrOutput values.
+// You can construct a concrete instance of `WorkflowNodeWorkflowTriggerPtrInput` via:
+//
+//	        WorkflowNodeWorkflowTriggerArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowNodeWorkflowTriggerPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowNodeWorkflowTriggerPtrOutput() WorkflowNodeWorkflowTriggerPtrOutput
+	ToWorkflowNodeWorkflowTriggerPtrOutputWithContext(context.Context) WorkflowNodeWorkflowTriggerPtrOutput
+}
+
+type workflowNodeWorkflowTriggerPtrType WorkflowNodeWorkflowTriggerArgs
+
+func WorkflowNodeWorkflowTriggerPtr(v *WorkflowNodeWorkflowTriggerArgs) WorkflowNodeWorkflowTriggerPtrInput {
+	return (*workflowNodeWorkflowTriggerPtrType)(v)
+}
+
+func (*workflowNodeWorkflowTriggerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowNodeWorkflowTrigger)(nil)).Elem()
+}
+
+func (i *workflowNodeWorkflowTriggerPtrType) ToWorkflowNodeWorkflowTriggerPtrOutput() WorkflowNodeWorkflowTriggerPtrOutput {
+	return i.ToWorkflowNodeWorkflowTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowNodeWorkflowTriggerPtrType) ToWorkflowNodeWorkflowTriggerPtrOutputWithContext(ctx context.Context) WorkflowNodeWorkflowTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowNodeWorkflowTriggerPtrOutput)
+}
+
+type WorkflowNodeWorkflowTriggerOutput struct{ *pulumi.OutputState }
+
+func (WorkflowNodeWorkflowTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowNodeWorkflowTrigger)(nil)).Elem()
+}
+
+func (o WorkflowNodeWorkflowTriggerOutput) ToWorkflowNodeWorkflowTriggerOutput() WorkflowNodeWorkflowTriggerOutput {
+	return o
+}
+
+func (o WorkflowNodeWorkflowTriggerOutput) ToWorkflowNodeWorkflowTriggerOutputWithContext(ctx context.Context) WorkflowNodeWorkflowTriggerOutput {
+	return o
+}
+
+func (o WorkflowNodeWorkflowTriggerOutput) ToWorkflowNodeWorkflowTriggerPtrOutput() WorkflowNodeWorkflowTriggerPtrOutput {
+	return o.ToWorkflowNodeWorkflowTriggerPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowNodeWorkflowTriggerOutput) ToWorkflowNodeWorkflowTriggerPtrOutputWithContext(ctx context.Context) WorkflowNodeWorkflowTriggerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowNodeWorkflowTrigger) *WorkflowNodeWorkflowTrigger {
+		return &v
+	}).(WorkflowNodeWorkflowTriggerPtrOutput)
+}
+
+// Whether the trigger is published. When `false`, other workflows cannot execute this workflow through this trigger.
+func (o WorkflowNodeWorkflowTriggerOutput) Published() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeWorkflowTrigger) *bool { return v.Published }).(pulumi.BoolPtrOutput)
+}
+
+type WorkflowNodeWorkflowTriggerPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowNodeWorkflowTriggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowNodeWorkflowTrigger)(nil)).Elem()
+}
+
+func (o WorkflowNodeWorkflowTriggerPtrOutput) ToWorkflowNodeWorkflowTriggerPtrOutput() WorkflowNodeWorkflowTriggerPtrOutput {
+	return o
+}
+
+func (o WorkflowNodeWorkflowTriggerPtrOutput) ToWorkflowNodeWorkflowTriggerPtrOutputWithContext(ctx context.Context) WorkflowNodeWorkflowTriggerPtrOutput {
+	return o
+}
+
+func (o WorkflowNodeWorkflowTriggerPtrOutput) Elem() WorkflowNodeWorkflowTriggerOutput {
+	return o.ApplyT(func(v *WorkflowNodeWorkflowTrigger) WorkflowNodeWorkflowTrigger {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowNodeWorkflowTrigger
+		return ret
+	}).(WorkflowNodeWorkflowTriggerOutput)
+}
+
+// Whether the trigger is published. When `false`, other workflows cannot execute this workflow through this trigger.
+func (o WorkflowNodeWorkflowTriggerPtrOutput) Published() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowNodeWorkflowTrigger) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Published
+	}).(pulumi.BoolPtrOutput)
+}
+
 type GetSearchEntity struct {
 	// The blueprint identifier the entity relates to
 	Blueprint string `pulumi:"blueprint"`
@@ -42586,6 +42973,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowNodeEventTriggerPtrInput)(nil)).Elem(), WorkflowNodeEventTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowNodeEventTriggerConditionInput)(nil)).Elem(), WorkflowNodeEventTriggerConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowNodeEventTriggerConditionPtrInput)(nil)).Elem(), WorkflowNodeEventTriggerConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowNodeExecuteWorkflowInput)(nil)).Elem(), WorkflowNodeExecuteWorkflowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowNodeExecuteWorkflowPtrInput)(nil)).Elem(), WorkflowNodeExecuteWorkflowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowNodeInputTypeInput)(nil)).Elem(), WorkflowNodeInputTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowNodeInputTypePtrInput)(nil)).Elem(), WorkflowNodeInputTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowNodeInputNotificationInput)(nil)).Elem(), WorkflowNodeInputNotificationArgs{})
@@ -42776,6 +43165,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowNodeUpsertEntityMappingPtrInput)(nil)).Elem(), WorkflowNodeUpsertEntityMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowNodeWebhookInput)(nil)).Elem(), WorkflowNodeWebhookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowNodeWebhookPtrInput)(nil)).Elem(), WorkflowNodeWebhookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowNodeWorkflowTriggerInput)(nil)).Elem(), WorkflowNodeWorkflowTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowNodeWorkflowTriggerPtrInput)(nil)).Elem(), WorkflowNodeWorkflowTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSearchEntityInput)(nil)).Elem(), GetSearchEntityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSearchEntityArrayInput)(nil)).Elem(), GetSearchEntityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSearchEntityPropertiesInput)(nil)).Elem(), GetSearchEntityPropertiesArgs{})
@@ -43084,6 +43475,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowNodeEventTriggerPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowNodeEventTriggerConditionOutput{})
 	pulumi.RegisterOutputType(WorkflowNodeEventTriggerConditionPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowNodeExecuteWorkflowOutput{})
+	pulumi.RegisterOutputType(WorkflowNodeExecuteWorkflowPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowNodeInputTypeOutput{})
 	pulumi.RegisterOutputType(WorkflowNodeInputTypePtrOutput{})
 	pulumi.RegisterOutputType(WorkflowNodeInputNotificationOutput{})
@@ -43274,6 +43667,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowNodeUpsertEntityMappingPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowNodeWebhookOutput{})
 	pulumi.RegisterOutputType(WorkflowNodeWebhookPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowNodeWorkflowTriggerOutput{})
+	pulumi.RegisterOutputType(WorkflowNodeWorkflowTriggerPtrOutput{})
 	pulumi.RegisterOutputType(GetSearchEntityOutput{})
 	pulumi.RegisterOutputType(GetSearchEntityArrayOutput{})
 	pulumi.RegisterOutputType(GetSearchEntityPropertiesOutput{})

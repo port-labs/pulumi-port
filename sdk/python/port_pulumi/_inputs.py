@@ -319,6 +319,8 @@ __all__ = [
     'WorkflowNodeEventTriggerArgsDict',
     'WorkflowNodeEventTriggerConditionArgs',
     'WorkflowNodeEventTriggerConditionArgsDict',
+    'WorkflowNodeExecuteWorkflowArgs',
+    'WorkflowNodeExecuteWorkflowArgsDict',
     'WorkflowNodeInputArgs',
     'WorkflowNodeInputArgsDict',
     'WorkflowNodeInputNotificationArgs',
@@ -509,6 +511,8 @@ __all__ = [
     'WorkflowNodeUpsertEntityMappingArgsDict',
     'WorkflowNodeWebhookArgs',
     'WorkflowNodeWebhookArgsDict',
+    'WorkflowNodeWorkflowTriggerArgs',
+    'WorkflowNodeWorkflowTriggerArgsDict',
 ]
 
 MYPY = False
@@ -13982,6 +13986,10 @@ if not MYPY:
         """
         An event trigger node that starts the workflow when an entity event occurs.
         """
+        execute_workflow: NotRequired[pulumi.Input['WorkflowNodeExecuteWorkflowArgsDict']]
+        """
+        An execute workflow node that starts a run of another workflow through one of its `workflow_trigger` nodes. A workflow cannot execute itself, directly or through other workflows: Port fails such a run when it starts.
+        """
         icon: NotRequired[pulumi.Input[str]]
         """
         The icon of the node
@@ -14030,6 +14038,10 @@ if not MYPY:
         """
         A webhook node that sends an HTTP request.
         """
+        workflow_trigger: NotRequired[pulumi.Input['WorkflowNodeWorkflowTriggerArgsDict']]
+        """
+        A workflow trigger node that lets other workflows execute this workflow through an `execute_workflow` node. The input passed by the calling workflow is available as the output of this node.
+        """
 elif False:
     WorkflowNodeArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -14042,6 +14054,7 @@ class WorkflowNodeArgs:
                  condition: Optional[pulumi.Input['WorkflowNodeConditionArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  event_trigger: Optional[pulumi.Input['WorkflowNodeEventTriggerArgs']] = None,
+                 execute_workflow: Optional[pulumi.Input['WorkflowNodeExecuteWorkflowArgs']] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  input: Optional[pulumi.Input['WorkflowNodeInputArgs']] = None,
                  integration_action: Optional[pulumi.Input['WorkflowNodeIntegrationActionArgs']] = None,
@@ -14053,7 +14066,8 @@ class WorkflowNodeArgs:
                  upsert_entity: Optional[pulumi.Input['WorkflowNodeUpsertEntityArgs']] = None,
                  variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  verbose: Optional[pulumi.Input[bool]] = None,
-                 webhook: Optional[pulumi.Input['WorkflowNodeWebhookArgs']] = None):
+                 webhook: Optional[pulumi.Input['WorkflowNodeWebhookArgs']] = None,
+                 workflow_trigger: Optional[pulumi.Input['WorkflowNodeWorkflowTriggerArgs']] = None):
         """
         :param pulumi.Input[str] identifier: The identifier of the node
         :param pulumi.Input['WorkflowNodeAiArgs'] ai: An AI node that runs a prompt through Port AI.
@@ -14061,6 +14075,7 @@ class WorkflowNodeArgs:
         :param pulumi.Input['WorkflowNodeConditionArgs'] condition: A condition node that branches the workflow based on JQ expressions. Connections leaving this node must set `source_outlet_identifier` or `fallback`.
         :param pulumi.Input[str] description: The description of the node
         :param pulumi.Input['WorkflowNodeEventTriggerArgs'] event_trigger: An event trigger node that starts the workflow when an entity event occurs.
+        :param pulumi.Input['WorkflowNodeExecuteWorkflowArgs'] execute_workflow: An execute workflow node that starts a run of another workflow through one of its `workflow_trigger` nodes. A workflow cannot execute itself, directly or through other workflows: Port fails such a run when it starts.
         :param pulumi.Input[str] icon: The icon of the node
         :param pulumi.Input['WorkflowNodeInputArgs'] input: An input node that pauses the workflow and waits for a human response. Connections leaving this node must set `source_outlet_identifier`.
         :param pulumi.Input['WorkflowNodeIntegrationActionArgs'] integration_action: An integration action node that invokes an installed integration.
@@ -14073,6 +14088,7 @@ class WorkflowNodeArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] variables: Named expressions made available to the node at run time
         :param pulumi.Input[bool] verbose: When true, the workflow service writes extended per-node run logs
         :param pulumi.Input['WorkflowNodeWebhookArgs'] webhook: A webhook node that sends an HTTP request.
+        :param pulumi.Input['WorkflowNodeWorkflowTriggerArgs'] workflow_trigger: A workflow trigger node that lets other workflows execute this workflow through an `execute_workflow` node. The input passed by the calling workflow is available as the output of this node.
         """
         pulumi.set(__self__, "identifier", identifier)
         if ai is not None:
@@ -14085,6 +14101,8 @@ class WorkflowNodeArgs:
             pulumi.set(__self__, "description", description)
         if event_trigger is not None:
             pulumi.set(__self__, "event_trigger", event_trigger)
+        if execute_workflow is not None:
+            pulumi.set(__self__, "execute_workflow", execute_workflow)
         if icon is not None:
             pulumi.set(__self__, "icon", icon)
         if input is not None:
@@ -14109,6 +14127,8 @@ class WorkflowNodeArgs:
             pulumi.set(__self__, "verbose", verbose)
         if webhook is not None:
             pulumi.set(__self__, "webhook", webhook)
+        if workflow_trigger is not None:
+            pulumi.set(__self__, "workflow_trigger", workflow_trigger)
 
     @property
     @pulumi.getter
@@ -14181,6 +14201,18 @@ class WorkflowNodeArgs:
     @event_trigger.setter
     def event_trigger(self, value: Optional[pulumi.Input['WorkflowNodeEventTriggerArgs']]):
         pulumi.set(self, "event_trigger", value)
+
+    @property
+    @pulumi.getter(name="executeWorkflow")
+    def execute_workflow(self) -> Optional[pulumi.Input['WorkflowNodeExecuteWorkflowArgs']]:
+        """
+        An execute workflow node that starts a run of another workflow through one of its `workflow_trigger` nodes. A workflow cannot execute itself, directly or through other workflows: Port fails such a run when it starts.
+        """
+        return pulumi.get(self, "execute_workflow")
+
+    @execute_workflow.setter
+    def execute_workflow(self, value: Optional[pulumi.Input['WorkflowNodeExecuteWorkflowArgs']]):
+        pulumi.set(self, "execute_workflow", value)
 
     @property
     @pulumi.getter
@@ -14325,6 +14357,18 @@ class WorkflowNodeArgs:
     @webhook.setter
     def webhook(self, value: Optional[pulumi.Input['WorkflowNodeWebhookArgs']]):
         pulumi.set(self, "webhook", value)
+
+    @property
+    @pulumi.getter(name="workflowTrigger")
+    def workflow_trigger(self) -> Optional[pulumi.Input['WorkflowNodeWorkflowTriggerArgs']]:
+        """
+        A workflow trigger node that lets other workflows execute this workflow through an `execute_workflow` node. The input passed by the calling workflow is available as the output of this node.
+        """
+        return pulumi.get(self, "workflow_trigger")
+
+    @workflow_trigger.setter
+    def workflow_trigger(self, value: Optional[pulumi.Input['WorkflowNodeWorkflowTriggerArgs']]):
+        pulumi.set(self, "workflow_trigger", value)
 
 
 if not MYPY:
@@ -15090,6 +15134,138 @@ class WorkflowNodeEventTriggerConditionArgs:
     @expressions.setter
     def expressions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "expressions", value)
+
+
+if not MYPY:
+    class WorkflowNodeExecuteWorkflowArgsDict(TypedDict):
+        input: NotRequired[pulumi.Input[str]]
+        """
+        The input passed to the executed workflow as a JSON encoded object, available as the output of its trigger node. String values support JQ templates. Defaults to `{}`.
+        """
+        on_failure: NotRequired[pulumi.Input[str]]
+        """
+        The action to take if the executed workflow run fails. One of `continue`, `terminate`. Can only be set when `wait` is `true`. When omitted, the run terminates.
+        """
+        timeout_minutes: NotRequired[pulumi.Input[int]]
+        """
+        The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default of `1440` (1 day).
+        """
+        trigger_identifier: NotRequired[pulumi.Input[str]]
+        """
+        The identifier of the `workflow_trigger` node in the executed workflow through which it is run.
+        """
+        wait: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to wait for the executed workflow run to conclude before continuing.
+        """
+        workflow_identifier: NotRequired[pulumi.Input[str]]
+        """
+        The identifier of the workflow to execute.
+        """
+elif False:
+    WorkflowNodeExecuteWorkflowArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeExecuteWorkflowArgs:
+    def __init__(__self__, *,
+                 input: Optional[pulumi.Input[str]] = None,
+                 on_failure: Optional[pulumi.Input[str]] = None,
+                 timeout_minutes: Optional[pulumi.Input[int]] = None,
+                 trigger_identifier: Optional[pulumi.Input[str]] = None,
+                 wait: Optional[pulumi.Input[bool]] = None,
+                 workflow_identifier: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] input: The input passed to the executed workflow as a JSON encoded object, available as the output of its trigger node. String values support JQ templates. Defaults to `{}`.
+        :param pulumi.Input[str] on_failure: The action to take if the executed workflow run fails. One of `continue`, `terminate`. Can only be set when `wait` is `true`. When omitted, the run terminates.
+        :param pulumi.Input[int] timeout_minutes: The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default of `1440` (1 day).
+        :param pulumi.Input[str] trigger_identifier: The identifier of the `workflow_trigger` node in the executed workflow through which it is run.
+        :param pulumi.Input[bool] wait: Whether to wait for the executed workflow run to conclude before continuing.
+        :param pulumi.Input[str] workflow_identifier: The identifier of the workflow to execute.
+        """
+        if input is not None:
+            pulumi.set(__self__, "input", input)
+        if on_failure is not None:
+            pulumi.set(__self__, "on_failure", on_failure)
+        if timeout_minutes is not None:
+            pulumi.set(__self__, "timeout_minutes", timeout_minutes)
+        if trigger_identifier is not None:
+            pulumi.set(__self__, "trigger_identifier", trigger_identifier)
+        if wait is not None:
+            pulumi.set(__self__, "wait", wait)
+        if workflow_identifier is not None:
+            pulumi.set(__self__, "workflow_identifier", workflow_identifier)
+
+    @property
+    @pulumi.getter
+    def input(self) -> Optional[pulumi.Input[str]]:
+        """
+        The input passed to the executed workflow as a JSON encoded object, available as the output of its trigger node. String values support JQ templates. Defaults to `{}`.
+        """
+        return pulumi.get(self, "input")
+
+    @input.setter
+    def input(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "input", value)
+
+    @property
+    @pulumi.getter(name="onFailure")
+    def on_failure(self) -> Optional[pulumi.Input[str]]:
+        """
+        The action to take if the executed workflow run fails. One of `continue`, `terminate`. Can only be set when `wait` is `true`. When omitted, the run terminates.
+        """
+        return pulumi.get(self, "on_failure")
+
+    @on_failure.setter
+    def on_failure(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "on_failure", value)
+
+    @property
+    @pulumi.getter(name="timeoutMinutes")
+    def timeout_minutes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default of `1440` (1 day).
+        """
+        return pulumi.get(self, "timeout_minutes")
+
+    @timeout_minutes.setter
+    def timeout_minutes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_minutes", value)
+
+    @property
+    @pulumi.getter(name="triggerIdentifier")
+    def trigger_identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of the `workflow_trigger` node in the executed workflow through which it is run.
+        """
+        return pulumi.get(self, "trigger_identifier")
+
+    @trigger_identifier.setter
+    def trigger_identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "trigger_identifier", value)
+
+    @property
+    @pulumi.getter
+    def wait(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to wait for the executed workflow run to conclude before continuing.
+        """
+        return pulumi.get(self, "wait")
+
+    @wait.setter
+    def wait(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wait", value)
+
+    @property
+    @pulumi.getter(name="workflowIdentifier")
+    def workflow_identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of the workflow to execute.
+        """
+        return pulumi.get(self, "workflow_identifier")
+
+    @workflow_identifier.setter
+    def workflow_identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workflow_identifier", value)
 
 
 if not MYPY:
@@ -27339,5 +27515,37 @@ class WorkflowNodeWebhookArgs:
     @url.setter
     def url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url", value)
+
+
+if not MYPY:
+    class WorkflowNodeWorkflowTriggerArgsDict(TypedDict):
+        published: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the trigger is published. When `false`, other workflows cannot execute this workflow through this trigger.
+        """
+elif False:
+    WorkflowNodeWorkflowTriggerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkflowNodeWorkflowTriggerArgs:
+    def __init__(__self__, *,
+                 published: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] published: Whether the trigger is published. When `false`, other workflows cannot execute this workflow through this trigger.
+        """
+        if published is not None:
+            pulumi.set(__self__, "published", published)
+
+    @property
+    @pulumi.getter
+    def published(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the trigger is published. When `false`, other workflows cannot execute this workflow through this trigger.
+        """
+        return pulumi.get(self, "published")
+
+    @published.setter
+    def published(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "published", value)
 
 

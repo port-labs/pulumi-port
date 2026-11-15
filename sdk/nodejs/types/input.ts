@@ -2788,6 +2788,10 @@ export interface WorkflowNode {
      */
     eventTrigger?: pulumi.Input<inputs.WorkflowNodeEventTrigger>;
     /**
+     * An execute workflow node that starts a run of another workflow through one of its `workflowTrigger` nodes. A workflow cannot execute itself, directly or through other workflows: Port fails such a run when it starts.
+     */
+    executeWorkflow?: pulumi.Input<inputs.WorkflowNodeExecuteWorkflow>;
+    /**
      * The icon of the node
      */
     icon?: pulumi.Input<string>;
@@ -2839,6 +2843,10 @@ export interface WorkflowNode {
      * A webhook node that sends an HTTP request.
      */
     webhook?: pulumi.Input<inputs.WorkflowNodeWebhook>;
+    /**
+     * A workflow trigger node that lets other workflows execute this workflow through an `executeWorkflow` node. The input passed by the calling workflow is available as the output of this node.
+     */
+    workflowTrigger?: pulumi.Input<inputs.WorkflowNodeWorkflowTrigger>;
 }
 
 export interface WorkflowNodeAi {
@@ -2998,6 +3006,33 @@ export interface WorkflowNodeEventTriggerCondition {
      * The JQ expressions evaluated against the event.
      */
     expressions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface WorkflowNodeExecuteWorkflow {
+    /**
+     * The input passed to the executed workflow as a JSON encoded object, available as the output of its trigger node. String values support JQ templates. Defaults to `{}`.
+     */
+    input?: pulumi.Input<string>;
+    /**
+     * The action to take if the executed workflow run fails. One of `continue`, `terminate`. Can only be set when `wait` is `true`. When omitted, the run terminates.
+     */
+    onFailure?: pulumi.Input<string>;
+    /**
+     * The maximum time in minutes a run of this node may stay open before it times out. Between `60` and `43200` (30 days). When omitted, Port applies its default of `1440` (1 day).
+     */
+    timeoutMinutes?: pulumi.Input<number>;
+    /**
+     * The identifier of the `workflowTrigger` node in the executed workflow through which it is run.
+     */
+    triggerIdentifier?: pulumi.Input<string>;
+    /**
+     * Whether to wait for the executed workflow run to conclude before continuing.
+     */
+    wait?: pulumi.Input<boolean>;
+    /**
+     * The identifier of the workflow to execute.
+     */
+    workflowIdentifier?: pulumi.Input<string>;
 }
 
 export interface WorkflowNodeInput {
@@ -5489,4 +5524,11 @@ export interface WorkflowNodeWebhook {
      * The URL of the webhook.
      */
     url?: pulumi.Input<string>;
+}
+
+export interface WorkflowNodeWorkflowTrigger {
+    /**
+     * Whether the trigger is published. When `false`, other workflows cannot execute this workflow through this trigger.
+     */
+    published?: pulumi.Input<boolean>;
 }
