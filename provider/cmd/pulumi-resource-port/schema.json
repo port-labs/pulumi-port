@@ -9328,6 +9328,10 @@
                     "type": "boolean",
                     "description": "Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters\n"
                 },
+                "pageDateFilter": {
+                    "type": "string",
+                    "description": "The date range filter of the page, as a JSON object with a 'range' object. The 'range' has a 'type' that is one of\n'quickRange' (with 'quickRange': 'today', 'yesterday', '7d', '30d', '3m', '6m' or '12m'), 'fixed' (with 'from' and 'to'\ndates in YYYY-MM-DD format), 'since' (with a 'from' date), 'last' or 'next' (with 'amount', 'unit' of 'day', 'week',\n'month' or 'quarter', and an optional 'offset'), or 'periodToDate' (with 'period' of 'day', 'week', 'month', 'quarter'\nor 'year'). On entity pages, the filter applies to all entities of the blueprint. Widgets choose which date property is\nfiltered with their 'dashboardDateProperty' setting.\n"
+                },
                 "pageFilterPresets": {
                     "type": "array",
                     "items": {
@@ -9403,6 +9407,10 @@
                     "type": "boolean",
                     "description": "Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters\n"
                 },
+                "pageDateFilter": {
+                    "type": "string",
+                    "description": "The date range filter of the page, as a JSON object with a 'range' object. The 'range' has a 'type' that is one of\n'quickRange' (with 'quickRange': 'today', 'yesterday', '7d', '30d', '3m', '6m' or '12m'), 'fixed' (with 'from' and 'to'\ndates in YYYY-MM-DD format), 'since' (with a 'from' date), 'last' or 'next' (with 'amount', 'unit' of 'day', 'week',\n'month' or 'quarter', and an optional 'offset'), or 'periodToDate' (with 'period' of 'day', 'week', 'month', 'quarter'\nor 'year'). On entity pages, the filter applies to all entities of the blueprint. Widgets choose which date property is\nfiltered with their 'dashboardDateProperty' setting.\n"
+                },
                 "pageFilterPresets": {
                     "type": "array",
                     "items": {
@@ -9475,6 +9483,10 @@
                     "locked": {
                         "type": "boolean",
                         "description": "Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters\n"
+                    },
+                    "pageDateFilter": {
+                        "type": "string",
+                        "description": "The date range filter of the page, as a JSON object with a 'range' object. The 'range' has a 'type' that is one of\n'quickRange' (with 'quickRange': 'today', 'yesterday', '7d', '30d', '3m', '6m' or '12m'), 'fixed' (with 'from' and 'to'\ndates in YYYY-MM-DD format), 'since' (with a 'from' date), 'last' or 'next' (with 'amount', 'unit' of 'day', 'week',\n'month' or 'quarter', and an optional 'offset'), or 'periodToDate' (with 'period' of 'day', 'week', 'month', 'quarter'\nor 'year'). On entity pages, the filter applies to all entities of the blueprint. Widgets choose which date property is\nfiltered with their 'dashboardDateProperty' setting.\n"
                     },
                     "pageFilterPresets": {
                         "type": "array",
