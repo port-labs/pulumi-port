@@ -26,6 +26,7 @@ class PageArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
+                 page_date_filter: Optional[pulumi.Input[str]] = None,
                  page_filter_presets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  page_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -40,6 +41,12 @@ class PageArgs:
         :param pulumi.Input[str] description: The page description
         :param pulumi.Input[str] icon: The icon of the page
         :param pulumi.Input[bool] locked: Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
+        :param pulumi.Input[str] page_date_filter: The date range filter of the page, as a JSON object with a 'range' object. The 'range' has a 'type' that is one of
+               'quickRange' (with 'quickRange': 'today', 'yesterday', '7d', '30d', '3m', '6m' or '12m'), 'fixed' (with 'from' and 'to'
+               dates in YYYY-MM-DD format), 'since' (with a 'from' date), 'last' or 'next' (with 'amount', 'unit' of 'day', 'week',
+               'month' or 'quarter', and an optional 'offset'), or 'periodToDate' (with 'period' of 'day', 'week', 'month', 'quarter'
+               or 'year'). On entity pages, the filter applies to all entities of the blueprint. Widgets choose which date property is
+               filtered with their 'dashboardDateProperty' setting.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] page_filter_presets: The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array
                of page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).
                Preset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters
@@ -62,6 +69,8 @@ class PageArgs:
             pulumi.set(__self__, "icon", icon)
         if locked is not None:
             pulumi.set(__self__, "locked", locked)
+        if page_date_filter is not None:
+            pulumi.set(__self__, "page_date_filter", page_date_filter)
         if page_filter_presets is not None:
             pulumi.set(__self__, "page_filter_presets", page_filter_presets)
         if page_filters is not None:
@@ -158,6 +167,23 @@ class PageArgs:
         pulumi.set(self, "locked", value)
 
     @property
+    @pulumi.getter(name="pageDateFilter")
+    def page_date_filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date range filter of the page, as a JSON object with a 'range' object. The 'range' has a 'type' that is one of
+        'quickRange' (with 'quickRange': 'today', 'yesterday', '7d', '30d', '3m', '6m' or '12m'), 'fixed' (with 'from' and 'to'
+        dates in YYYY-MM-DD format), 'since' (with a 'from' date), 'last' or 'next' (with 'amount', 'unit' of 'day', 'week',
+        'month' or 'quarter', and an optional 'offset'), or 'periodToDate' (with 'period' of 'day', 'week', 'month', 'quarter'
+        or 'year'). On entity pages, the filter applies to all entities of the blueprint. Widgets choose which date property is
+        filtered with their 'dashboardDateProperty' setting.
+        """
+        return pulumi.get(self, "page_date_filter")
+
+    @page_date_filter.setter
+    def page_date_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "page_date_filter", value)
+
+    @property
     @pulumi.getter(name="pageFilterPresets")
     def page_filter_presets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -233,6 +259,7 @@ class _PageState:
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
+                 page_date_filter: Optional[pulumi.Input[str]] = None,
                  page_filter_presets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  page_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -251,6 +278,12 @@ class _PageState:
         :param pulumi.Input[str] icon: The icon of the page
         :param pulumi.Input[str] identifier: The Identifier of the page
         :param pulumi.Input[bool] locked: Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
+        :param pulumi.Input[str] page_date_filter: The date range filter of the page, as a JSON object with a 'range' object. The 'range' has a 'type' that is one of
+               'quickRange' (with 'quickRange': 'today', 'yesterday', '7d', '30d', '3m', '6m' or '12m'), 'fixed' (with 'from' and 'to'
+               dates in YYYY-MM-DD format), 'since' (with a 'from' date), 'last' or 'next' (with 'amount', 'unit' of 'day', 'week',
+               'month' or 'quarter', and an optional 'offset'), or 'periodToDate' (with 'period' of 'day', 'week', 'month', 'quarter'
+               or 'year'). On entity pages, the filter applies to all entities of the blueprint. Widgets choose which date property is
+               filtered with their 'dashboardDateProperty' setting.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] page_filter_presets: The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array
                of page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).
                Preset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters
@@ -280,6 +313,8 @@ class _PageState:
             pulumi.set(__self__, "identifier", identifier)
         if locked is not None:
             pulumi.set(__self__, "locked", locked)
+        if page_date_filter is not None:
+            pulumi.set(__self__, "page_date_filter", page_date_filter)
         if page_filter_presets is not None:
             pulumi.set(__self__, "page_filter_presets", page_filter_presets)
         if page_filters is not None:
@@ -394,6 +429,23 @@ class _PageState:
         pulumi.set(self, "locked", value)
 
     @property
+    @pulumi.getter(name="pageDateFilter")
+    def page_date_filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date range filter of the page, as a JSON object with a 'range' object. The 'range' has a 'type' that is one of
+        'quickRange' (with 'quickRange': 'today', 'yesterday', '7d', '30d', '3m', '6m' or '12m'), 'fixed' (with 'from' and 'to'
+        dates in YYYY-MM-DD format), 'since' (with a 'from' date), 'last' or 'next' (with 'amount', 'unit' of 'day', 'week',
+        'month' or 'quarter', and an optional 'offset'), or 'periodToDate' (with 'period' of 'day', 'week', 'month', 'quarter'
+        or 'year'). On entity pages, the filter applies to all entities of the blueprint. Widgets choose which date property is
+        filtered with their 'dashboardDateProperty' setting.
+        """
+        return pulumi.get(self, "page_date_filter")
+
+    @page_date_filter.setter
+    def page_date_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "page_date_filter", value)
+
+    @property
     @pulumi.getter(name="pageFilterPresets")
     def page_filter_presets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -505,6 +557,7 @@ class Page(pulumi.CustomResource):
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
+                 page_date_filter: Optional[pulumi.Input[str]] = None,
                  page_filter_presets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  page_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -522,6 +575,12 @@ class Page(pulumi.CustomResource):
         :param pulumi.Input[str] icon: The icon of the page
         :param pulumi.Input[str] identifier: The Identifier of the page
         :param pulumi.Input[bool] locked: Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
+        :param pulumi.Input[str] page_date_filter: The date range filter of the page, as a JSON object with a 'range' object. The 'range' has a 'type' that is one of
+               'quickRange' (with 'quickRange': 'today', 'yesterday', '7d', '30d', '3m', '6m' or '12m'), 'fixed' (with 'from' and 'to'
+               dates in YYYY-MM-DD format), 'since' (with a 'from' date), 'last' or 'next' (with 'amount', 'unit' of 'day', 'week',
+               'month' or 'quarter', and an optional 'offset'), or 'periodToDate' (with 'period' of 'day', 'week', 'month', 'quarter'
+               or 'year'). On entity pages, the filter applies to all entities of the blueprint. Widgets choose which date property is
+               filtered with their 'dashboardDateProperty' setting.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] page_filter_presets: The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array
                of page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).
                Preset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters
@@ -562,6 +621,7 @@ class Page(pulumi.CustomResource):
                  icon: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
+                 page_date_filter: Optional[pulumi.Input[str]] = None,
                  page_filter_presets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  page_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -585,6 +645,7 @@ class Page(pulumi.CustomResource):
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["locked"] = locked
+            __props__.__dict__["page_date_filter"] = page_date_filter
             __props__.__dict__["page_filter_presets"] = page_filter_presets
             __props__.__dict__["page_filters"] = page_filters
             __props__.__dict__["parent"] = parent
@@ -615,6 +676,7 @@ class Page(pulumi.CustomResource):
             icon: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             locked: Optional[pulumi.Input[bool]] = None,
+            page_date_filter: Optional[pulumi.Input[str]] = None,
             page_filter_presets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             page_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             parent: Optional[pulumi.Input[str]] = None,
@@ -638,6 +700,12 @@ class Page(pulumi.CustomResource):
         :param pulumi.Input[str] icon: The icon of the page
         :param pulumi.Input[str] identifier: The Identifier of the page
         :param pulumi.Input[bool] locked: Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
+        :param pulumi.Input[str] page_date_filter: The date range filter of the page, as a JSON object with a 'range' object. The 'range' has a 'type' that is one of
+               'quickRange' (with 'quickRange': 'today', 'yesterday', '7d', '30d', '3m', '6m' or '12m'), 'fixed' (with 'from' and 'to'
+               dates in YYYY-MM-DD format), 'since' (with a 'from' date), 'last' or 'next' (with 'amount', 'unit' of 'day', 'week',
+               'month' or 'quarter', and an optional 'offset'), or 'periodToDate' (with 'period' of 'day', 'week', 'month', 'quarter'
+               or 'year'). On entity pages, the filter applies to all entities of the blueprint. Widgets choose which date property is
+               filtered with their 'dashboardDateProperty' setting.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] page_filter_presets: The page filter presets. Each preset is a JSON object with 'identifier' (string), 'title' (string), and 'filters' (array
                of page filters). Each filter has 'identifier', 'title', and 'query' (object with 'combinator' and 'rules' array).
                Preset identifiers must be unique on the page, and filter identifiers must be unique within a preset. Contextual filters
@@ -663,6 +731,7 @@ class Page(pulumi.CustomResource):
         __props__.__dict__["icon"] = icon
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["locked"] = locked
+        __props__.__dict__["page_date_filter"] = page_date_filter
         __props__.__dict__["page_filter_presets"] = page_filter_presets
         __props__.__dict__["page_filters"] = page_filters
         __props__.__dict__["parent"] = parent
@@ -736,6 +805,19 @@ class Page(pulumi.CustomResource):
         Whether the page is locked, if true, viewers will not be able to edit the page widgets and filters
         """
         return pulumi.get(self, "locked")
+
+    @property
+    @pulumi.getter(name="pageDateFilter")
+    def page_date_filter(self) -> pulumi.Output[Optional[str]]:
+        """
+        The date range filter of the page, as a JSON object with a 'range' object. The 'range' has a 'type' that is one of
+        'quickRange' (with 'quickRange': 'today', 'yesterday', '7d', '30d', '3m', '6m' or '12m'), 'fixed' (with 'from' and 'to'
+        dates in YYYY-MM-DD format), 'since' (with a 'from' date), 'last' or 'next' (with 'amount', 'unit' of 'day', 'week',
+        'month' or 'quarter', and an optional 'offset'), or 'periodToDate' (with 'period' of 'day', 'week', 'month', 'quarter'
+        or 'year'). On entity pages, the filter applies to all entities of the blueprint. Widgets choose which date property is
+        filtered with their 'dashboardDateProperty' setting.
+        """
+        return pulumi.get(self, "page_date_filter")
 
     @property
     @pulumi.getter(name="pageFilterPresets")
