@@ -3169,18 +3169,37 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDataset(dict):
 
 @pulumi.output_type
 class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "propertyJson":
+            suggest = "property_json"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  rules: Optional[Sequence['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule']] = None,
                  value: Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValue'] = None):
         """
         :param str blueprint: The blueprint identifier of the rule
         :param str combinator: The combinator for a group rule (and/or). Used with nested rules instead of operator.
         :param str operator: The operator of the rule. Required for leaf rules, should not be set for group rules.
-        :param str property: The property identifier of the rule
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param Sequence['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArgs'] rules: Nested rules for a group rule. Used with combinator for logical grouping.
         :param 'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleValueArgs' value: The value of the rule
         """
@@ -3192,6 +3211,8 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule(dict):
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -3220,6 +3241,14 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule(dict):
         The operator of the rule. Required for leaf rules, should not be set for group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -3241,25 +3270,44 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule(dict):
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
 
 @pulumi.output_type
 class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "propertyJson":
+            suggest = "property_json"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  rules: Optional[Sequence['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule']] = None,
                  value: Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValue'] = None):
         """
         :param str blueprint: The blueprint identifier of the rule
         :param str combinator: The combinator for a group rule (and/or). Used with nested rules instead of operator.
         :param str operator: The operator of the rule. Required for leaf rules, should not be set for group rules.
-        :param str property: The property identifier of the rule
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param Sequence['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArgs'] rules: Nested rules for a group rule. Used with combinator for logical grouping.
         :param 'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleValueArgs' value: The value of the rule
         """
@@ -3271,6 +3319,8 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule(dict):
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -3299,6 +3349,14 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule(dict):
         The operator of the rule. Required for leaf rules, should not be set for group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -3320,25 +3378,44 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule(dict):
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
 
 @pulumi.output_type
 class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "propertyJson":
+            suggest = "property_json"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  rules: Optional[Sequence['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule']] = None,
                  value: Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValue'] = None):
         """
         :param str blueprint: The blueprint identifier of the rule
         :param str combinator: The combinator for a group rule (and/or). Used with nested rules instead of operator.
         :param str operator: The operator of the rule. Required for leaf rules, should not be set for group rules.
-        :param str property: The property identifier of the rule
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param Sequence['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs'] rules: Nested rules for a group rule. Used with combinator for logical grouping.
         :param 'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs' value: The value of the rule
         """
@@ -3350,6 +3427,8 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule(dict)
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -3378,6 +3457,14 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule(dict)
         The operator of the rule. Required for leaf rules, should not be set for group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -3399,25 +3486,44 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule(dict)
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
 
 @pulumi.output_type
 class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "propertyJson":
+            suggest = "property_json"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  rules: Optional[Sequence['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule']] = None,
                  value: Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue'] = None):
         """
         :param str blueprint: The blueprint identifier of the rule
         :param str combinator: The combinator for a group rule (and/or). Used with nested rules instead of operator.
         :param str operator: The operator of the rule. Required for leaf rules, should not be set for group rules.
-        :param str property: The property identifier of the rule
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param Sequence['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs'] rules: Nested rules for a group rule. Used with combinator for logical grouping.
         :param 'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs' value: The value of the rule
         """
@@ -3429,6 +3535,8 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule(d
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -3457,6 +3565,14 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule(d
         The operator of the rule. Required for leaf rules, should not be set for group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -3478,25 +3594,44 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule(d
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
 
 @pulumi.output_type
 class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "propertyJson":
+            suggest = "property_json"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  rules: Optional[Sequence['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule']] = None,
                  value: Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue'] = None):
         """
         :param str blueprint: The blueprint identifier of the rule
         :param str combinator: The combinator for a group rule (and/or). Used with nested rules instead of operator.
         :param str operator: The operator of the rule. Required for leaf rules, should not be set for group rules.
-        :param str property: The property identifier of the rule
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param Sequence['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs'] rules: Nested rules for a group rule. Used with combinator for logical grouping.
         :param 'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs' value: The value of the rule
         """
@@ -3508,6 +3643,8 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRu
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -3536,6 +3673,14 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRu
         The operator of the rule. Required for leaf rules, should not be set for group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -3557,25 +3702,44 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRu
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
 
 @pulumi.output_type
 class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "propertyJson":
+            suggest = "property_json"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  rules: Optional[Sequence['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule']] = None,
                  value: Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue'] = None):
         """
         :param str blueprint: The blueprint identifier of the rule
         :param str combinator: The combinator for a group rule (and/or). Used with nested rules instead of operator.
         :param str operator: The operator of the rule. Required for leaf rules, should not be set for group rules.
-        :param str property: The property identifier of the rule
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param Sequence['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs'] rules: Nested rules for a group rule. Used with combinator for logical grouping.
         :param 'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs' value: The value of the rule
         """
@@ -3587,6 +3751,8 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRu
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -3615,6 +3781,14 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRu
         The operator of the rule. Required for leaf rules, should not be set for group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -3636,25 +3810,44 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRu
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
 
 @pulumi.output_type
 class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "propertyJson":
+            suggest = "property_json"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  rules: Optional[Sequence['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule']] = None,
                  value: Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue'] = None):
         """
         :param str blueprint: The blueprint identifier of the rule
         :param str combinator: The combinator for a group rule (and/or). Used with nested rules instead of operator.
         :param str operator: The operator of the rule. Required for leaf rules, should not be set for group rules.
-        :param str property: The property identifier of the rule
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param Sequence['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs'] rules: Nested rules for a group rule. Used with combinator for logical grouping.
         :param 'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs' value: The value of the rule
         """
@@ -3666,6 +3859,8 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRu
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -3694,6 +3889,14 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRu
         The operator of the rule. Required for leaf rules, should not be set for group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -3715,25 +3918,44 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRu
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
 
 @pulumi.output_type
 class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "propertyJson":
+            suggest = "property_json"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  rules: Optional[Sequence['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule']] = None,
                  value: Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue'] = None):
         """
         :param str blueprint: The blueprint identifier of the rule
         :param str combinator: The combinator for a group rule (and/or). Used with nested rules instead of operator.
         :param str operator: The operator of the rule. Required for leaf rules, should not be set for group rules.
-        :param str property: The property identifier of the rule
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param Sequence['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs'] rules: Nested rules for a group rule. Used with combinator for logical grouping.
         :param 'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs' value: The value of the rule
         """
@@ -3745,6 +3967,8 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRu
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -3773,6 +3997,14 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRu
         The operator of the rule. Required for leaf rules, should not be set for group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -3794,25 +4026,44 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRu
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
 
 @pulumi.output_type
 class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "propertyJson":
+            suggest = "property_json"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  rules: Optional[Sequence['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule']] = None,
                  value: Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue'] = None):
         """
         :param str blueprint: The blueprint identifier of the rule
         :param str combinator: The combinator for a group rule (and/or). Used with nested rules instead of operator.
         :param str operator: The operator of the rule. Required for leaf rules, should not be set for group rules.
-        :param str property: The property identifier of the rule
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param Sequence['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs'] rules: Nested rules for a group rule. Used with combinator for logical grouping.
         :param 'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs' value: The value of the rule
         """
@@ -3824,6 +4075,8 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRu
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -3852,6 +4105,14 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRu
         The operator of the rule. Required for leaf rules, should not be set for group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -3873,25 +4134,44 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRu
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
 
 @pulumi.output_type
 class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "propertyJson":
+            suggest = "property_json"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  rules: Optional[Sequence['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule']] = None,
                  value: Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue'] = None):
         """
         :param str blueprint: The blueprint identifier of the rule
         :param str combinator: The combinator for a group rule (and/or). Used with nested rules instead of operator.
         :param str operator: The operator of the rule. Required for leaf rules, should not be set for group rules.
-        :param str property: The property identifier of the rule
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param Sequence['ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs'] rules: Nested rules for a group rule. Used with combinator for logical grouping.
         :param 'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs' value: The value of the rule
         """
@@ -3903,6 +4183,8 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRu
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if value is not None:
@@ -3933,6 +4215,14 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRu
         return pulumi.get(self, "operator")
 
     @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
+
+    @property
     @pulumi.getter
     def rules(self) -> Optional[Sequence['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule']]:
         """
@@ -3952,24 +4242,43 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRu
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
 
 @pulumi.output_type
 class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "propertyJson":
+            suggest = "property_json"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  blueprint: Optional[str] = None,
                  combinator: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  value: Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue'] = None):
         """
         :param str blueprint: The blueprint identifier of the rule
         :param str combinator: The combinator for a group rule (and/or). Used with nested rules instead of operator.
         :param str operator: The operator of the rule. Required for leaf rules, should not be set for group rules.
-        :param str property: The property identifier of the rule
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param 'ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs' value: The value of the rule
         """
         if blueprint is not None:
@@ -3980,6 +4289,8 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRu
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
@@ -4008,6 +4319,14 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRu
         return pulumi.get(self, "operator")
 
     @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
+
+    @property
     @pulumi.getter
     def value(self) -> Optional['outputs.ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue']:
         """
@@ -4019,7 +4338,7 @@ class ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRu
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
@@ -13218,7 +13537,9 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "valueJson":
+        if key == "propertyJson":
+            suggest = "property_json"
+        elif key == "valueJson":
             suggest = "value_json"
 
         if suggest:
@@ -13238,6 +13559,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule(dict):
                  direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  relation: Optional[str] = None,
                  rules: Optional[Sequence['outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule']] = None,
                  value: Optional['outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleValue'] = None,
@@ -13247,7 +13569,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule(dict):
         :param str combinator: How the nested rules of a group rule are combined.
         :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
-        :param str property: The property identifier of the rule.
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param Sequence['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs'] rules: The nested rules of a group rule.
         :param 'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleValueArgs' value: A value resolved from the form or the trigger when the form is rendered.
@@ -13263,6 +13586,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule(dict):
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if relation is not None:
             pulumi.set(__self__, "relation", relation)
         if rules is not None:
@@ -13303,6 +13628,14 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule(dict):
         The operator of the rule. Set on filtering rules and left out on group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -13340,7 +13673,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule(dict):
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule.
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
@@ -13350,7 +13683,9 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "valueJson":
+        if key == "propertyJson":
+            suggest = "property_json"
+        elif key == "valueJson":
             suggest = "value_json"
 
         if suggest:
@@ -13370,6 +13705,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule(dict):
                  direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  relation: Optional[str] = None,
                  rules: Optional[Sequence['outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule']] = None,
                  value: Optional['outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleValue'] = None,
@@ -13379,7 +13715,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule(dict):
         :param str combinator: How the nested rules of a group rule are combined.
         :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
-        :param str property: The property identifier of the rule.
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param Sequence['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgs'] rules: The nested rules of a group rule.
         :param 'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgs' value: A value resolved from the form or the trigger when the form is rendered.
@@ -13395,6 +13732,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule(dict):
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if relation is not None:
             pulumi.set(__self__, "relation", relation)
         if rules is not None:
@@ -13435,6 +13774,14 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule(dict):
         The operator of the rule. Set on filtering rules and left out on group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -13472,7 +13819,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule(dict):
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule.
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
@@ -13482,7 +13829,9 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule(di
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "valueJson":
+        if key == "propertyJson":
+            suggest = "property_json"
+        elif key == "valueJson":
             suggest = "value_json"
 
         if suggest:
@@ -13502,6 +13851,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule(di
                  direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  relation: Optional[str] = None,
                  rules: Optional[Sequence['outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule']] = None,
                  value: Optional['outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValue'] = None,
@@ -13511,7 +13861,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule(di
         :param str combinator: How the nested rules of a group rule are combined.
         :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
-        :param str property: The property identifier of the rule.
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param Sequence['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs'] rules: The nested rules of a group rule.
         :param 'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs' value: A value resolved from the form or the trigger when the form is rendered.
@@ -13527,6 +13878,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule(di
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if relation is not None:
             pulumi.set(__self__, "relation", relation)
         if rules is not None:
@@ -13567,6 +13920,14 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule(di
         The operator of the rule. Set on filtering rules and left out on group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -13604,7 +13965,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule(di
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule.
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
@@ -13614,7 +13975,9 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "valueJson":
+        if key == "propertyJson":
+            suggest = "property_json"
+        elif key == "valueJson":
             suggest = "value_json"
 
         if suggest:
@@ -13634,6 +13997,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
                  direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  relation: Optional[str] = None,
                  rules: Optional[Sequence['outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule']] = None,
                  value: Optional['outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue'] = None,
@@ -13643,7 +14007,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         :param str combinator: How the nested rules of a group rule are combined.
         :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
-        :param str property: The property identifier of the rule.
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param Sequence['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs'] rules: The nested rules of a group rule.
         :param 'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs' value: A value resolved from the form or the trigger when the form is rendered.
@@ -13659,6 +14024,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if relation is not None:
             pulumi.set(__self__, "relation", relation)
         if rules is not None:
@@ -13699,6 +14066,14 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         The operator of the rule. Set on filtering rules and left out on group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -13736,7 +14111,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule.
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
@@ -13746,7 +14121,9 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "valueJson":
+        if key == "propertyJson":
+            suggest = "property_json"
+        elif key == "valueJson":
             suggest = "value_json"
 
         if suggest:
@@ -13766,6 +14143,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
                  direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  relation: Optional[str] = None,
                  rules: Optional[Sequence['outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule']] = None,
                  value: Optional['outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue'] = None,
@@ -13775,7 +14153,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         :param str combinator: How the nested rules of a group rule are combined.
         :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
-        :param str property: The property identifier of the rule.
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param Sequence['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs'] rules: The nested rules of a group rule.
         :param 'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs' value: A value resolved from the form or the trigger when the form is rendered.
@@ -13791,6 +14170,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if relation is not None:
             pulumi.set(__self__, "relation", relation)
         if rules is not None:
@@ -13831,6 +14212,14 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         The operator of the rule. Set on filtering rules and left out on group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -13868,7 +14257,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule.
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
@@ -13878,7 +14267,9 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "valueJson":
+        if key == "propertyJson":
+            suggest = "property_json"
+        elif key == "valueJson":
             suggest = "value_json"
 
         if suggest:
@@ -13898,6 +14289,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
                  direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  relation: Optional[str] = None,
                  rules: Optional[Sequence['outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule']] = None,
                  value: Optional['outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue'] = None,
@@ -13907,7 +14299,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         :param str combinator: How the nested rules of a group rule are combined.
         :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
-        :param str property: The property identifier of the rule.
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param Sequence['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs'] rules: The nested rules of a group rule.
         :param 'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs' value: A value resolved from the form or the trigger when the form is rendered.
@@ -13923,6 +14316,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if relation is not None:
             pulumi.set(__self__, "relation", relation)
         if rules is not None:
@@ -13963,6 +14358,14 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         The operator of the rule. Set on filtering rules and left out on group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -14000,7 +14403,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule.
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
@@ -14010,7 +14413,9 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "valueJson":
+        if key == "propertyJson":
+            suggest = "property_json"
+        elif key == "valueJson":
             suggest = "value_json"
 
         if suggest:
@@ -14030,6 +14435,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
                  direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  relation: Optional[str] = None,
                  rules: Optional[Sequence['outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule']] = None,
                  value: Optional['outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue'] = None,
@@ -14039,7 +14445,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         :param str combinator: How the nested rules of a group rule are combined.
         :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
-        :param str property: The property identifier of the rule.
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param Sequence['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs'] rules: The nested rules of a group rule.
         :param 'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs' value: A value resolved from the form or the trigger when the form is rendered.
@@ -14055,6 +14462,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if relation is not None:
             pulumi.set(__self__, "relation", relation)
         if rules is not None:
@@ -14095,6 +14504,14 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         The operator of the rule. Set on filtering rules and left out on group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -14132,7 +14549,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule.
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
@@ -14142,7 +14559,9 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "valueJson":
+        if key == "propertyJson":
+            suggest = "property_json"
+        elif key == "valueJson":
             suggest = "value_json"
 
         if suggest:
@@ -14162,6 +14581,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
                  direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  relation: Optional[str] = None,
                  rules: Optional[Sequence['outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule']] = None,
                  value: Optional['outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue'] = None,
@@ -14171,7 +14591,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         :param str combinator: How the nested rules of a group rule are combined.
         :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
-        :param str property: The property identifier of the rule.
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param Sequence['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs'] rules: The nested rules of a group rule.
         :param 'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs' value: A value resolved from the form or the trigger when the form is rendered.
@@ -14187,6 +14608,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if relation is not None:
             pulumi.set(__self__, "relation", relation)
         if rules is not None:
@@ -14227,6 +14650,14 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         The operator of the rule. Set on filtering rules and left out on group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -14264,7 +14695,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule.
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
@@ -14274,7 +14705,9 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "valueJson":
+        if key == "propertyJson":
+            suggest = "property_json"
+        elif key == "valueJson":
             suggest = "value_json"
 
         if suggest:
@@ -14294,6 +14727,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
                  direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  relation: Optional[str] = None,
                  rules: Optional[Sequence['outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule']] = None,
                  value: Optional['outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue'] = None,
@@ -14303,7 +14737,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         :param str combinator: How the nested rules of a group rule are combined.
         :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
-        :param str property: The property identifier of the rule.
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param Sequence['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs'] rules: The nested rules of a group rule.
         :param 'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs' value: A value resolved from the form or the trigger when the form is rendered.
@@ -14319,6 +14754,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if relation is not None:
             pulumi.set(__self__, "relation", relation)
         if rules is not None:
@@ -14359,6 +14796,14 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         The operator of the rule. Set on filtering rules and left out on group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -14396,7 +14841,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule.
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
@@ -14406,7 +14851,9 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "valueJson":
+        if key == "propertyJson":
+            suggest = "property_json"
+        elif key == "valueJson":
             suggest = "value_json"
 
         if suggest:
@@ -14426,6 +14873,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
                  direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  relation: Optional[str] = None,
                  rules: Optional[Sequence['outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule']] = None,
                  value: Optional['outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue'] = None,
@@ -14435,7 +14883,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         :param str combinator: How the nested rules of a group rule are combined.
         :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
-        :param str property: The property identifier of the rule.
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param Sequence['WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs'] rules: The nested rules of a group rule.
         :param 'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs' value: A value resolved from the form or the trigger when the form is rendered.
@@ -14451,6 +14900,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if relation is not None:
             pulumi.set(__self__, "relation", relation)
         if rules is not None:
@@ -14493,6 +14944,14 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         return pulumi.get(self, "operator")
 
     @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
+
+    @property
     @pulumi.getter
     def relation(self) -> Optional[str]:
         """
@@ -14528,7 +14987,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule.
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
@@ -14538,7 +14997,9 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "valueJson":
+        if key == "propertyJson":
+            suggest = "property_json"
+        elif key == "valueJson":
             suggest = "value_json"
 
         if suggest:
@@ -14558,6 +15019,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
                  direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  relation: Optional[str] = None,
                  value: Optional['outputs.WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue'] = None,
                  value_json: Optional[str] = None):
@@ -14566,7 +15028,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         :param str combinator: How the nested rules of a group rule are combined.
         :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
-        :param str property: The property identifier of the rule.
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param 'WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs' value: A value resolved from the form or the trigger when the form is rendered.
         :param str value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -14581,6 +15044,8 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if relation is not None:
             pulumi.set(__self__, "relation", relation)
         if value is not None:
@@ -14621,6 +15086,14 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
         return pulumi.get(self, "operator")
 
     @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
+
+    @property
     @pulumi.getter
     def relation(self) -> Optional[str]:
         """
@@ -14648,7 +15121,7 @@ class WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRul
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule.
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
@@ -17460,7 +17933,9 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "valueJson":
+        if key == "propertyJson":
+            suggest = "property_json"
+        elif key == "valueJson":
             suggest = "value_json"
 
         if suggest:
@@ -17480,6 +17955,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
                  direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  relation: Optional[str] = None,
                  rules: Optional[Sequence['outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRule']] = None,
                  value: Optional['outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleValue'] = None,
@@ -17489,7 +17965,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         :param str combinator: How the nested rules of a group rule are combined.
         :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
-        :param str property: The property identifier of the rule.
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param Sequence['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs'] rules: The nested rules of a group rule.
         :param 'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleValueArgs' value: A value resolved from the form or the trigger when the form is rendered.
@@ -17505,6 +17982,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if relation is not None:
             pulumi.set(__self__, "relation", relation)
         if rules is not None:
@@ -17545,6 +18024,14 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         The operator of the rule. Set on filtering rules and left out on group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -17582,7 +18069,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule.
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
@@ -17592,7 +18079,9 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "valueJson":
+        if key == "propertyJson":
+            suggest = "property_json"
+        elif key == "valueJson":
             suggest = "value_json"
 
         if suggest:
@@ -17612,6 +18101,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
                  direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  relation: Optional[str] = None,
                  rules: Optional[Sequence['outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRule']] = None,
                  value: Optional['outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleValue'] = None,
@@ -17621,7 +18111,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         :param str combinator: How the nested rules of a group rule are combined.
         :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
-        :param str property: The property identifier of the rule.
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param Sequence['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgs'] rules: The nested rules of a group rule.
         :param 'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleValueArgs' value: A value resolved from the form or the trigger when the form is rendered.
@@ -17637,6 +18128,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if relation is not None:
             pulumi.set(__self__, "relation", relation)
         if rules is not None:
@@ -17677,6 +18170,14 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         The operator of the rule. Set on filtering rules and left out on group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -17714,7 +18215,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule.
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
@@ -17724,7 +18225,9 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "valueJson":
+        if key == "propertyJson":
+            suggest = "property_json"
+        elif key == "valueJson":
             suggest = "value_json"
 
         if suggest:
@@ -17744,6 +18247,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
                  direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  relation: Optional[str] = None,
                  rules: Optional[Sequence['outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule']] = None,
                  value: Optional['outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValue'] = None,
@@ -17753,7 +18257,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         :param str combinator: How the nested rules of a group rule are combined.
         :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
-        :param str property: The property identifier of the rule.
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param Sequence['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleArgs'] rules: The nested rules of a group rule.
         :param 'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleValueArgs' value: A value resolved from the form or the trigger when the form is rendered.
@@ -17769,6 +18274,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if relation is not None:
             pulumi.set(__self__, "relation", relation)
         if rules is not None:
@@ -17809,6 +18316,14 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         The operator of the rule. Set on filtering rules and left out on group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -17846,7 +18361,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule.
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
@@ -17856,7 +18371,9 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "valueJson":
+        if key == "propertyJson":
+            suggest = "property_json"
+        elif key == "valueJson":
             suggest = "value_json"
 
         if suggest:
@@ -17876,6 +18393,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
                  direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  relation: Optional[str] = None,
                  rules: Optional[Sequence['outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule']] = None,
                  value: Optional['outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValue'] = None,
@@ -17885,7 +18403,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         :param str combinator: How the nested rules of a group rule are combined.
         :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
-        :param str property: The property identifier of the rule.
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param Sequence['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArgs'] rules: The nested rules of a group rule.
         :param 'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleValueArgs' value: A value resolved from the form or the trigger when the form is rendered.
@@ -17901,6 +18420,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if relation is not None:
             pulumi.set(__self__, "relation", relation)
         if rules is not None:
@@ -17941,6 +18462,14 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         The operator of the rule. Set on filtering rules and left out on group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -17978,7 +18507,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule.
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
@@ -17988,7 +18517,9 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "valueJson":
+        if key == "propertyJson":
+            suggest = "property_json"
+        elif key == "valueJson":
             suggest = "value_json"
 
         if suggest:
@@ -18008,6 +18539,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
                  direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  relation: Optional[str] = None,
                  rules: Optional[Sequence['outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule']] = None,
                  value: Optional['outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValue'] = None,
@@ -18017,7 +18549,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         :param str combinator: How the nested rules of a group rule are combined.
         :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
-        :param str property: The property identifier of the rule.
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param Sequence['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArgs'] rules: The nested rules of a group rule.
         :param 'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleValueArgs' value: A value resolved from the form or the trigger when the form is rendered.
@@ -18033,6 +18566,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if relation is not None:
             pulumi.set(__self__, "relation", relation)
         if rules is not None:
@@ -18073,6 +18608,14 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         The operator of the rule. Set on filtering rules and left out on group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -18110,7 +18653,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule.
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
@@ -18120,7 +18663,9 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "valueJson":
+        if key == "propertyJson":
+            suggest = "property_json"
+        elif key == "valueJson":
             suggest = "value_json"
 
         if suggest:
@@ -18140,6 +18685,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
                  direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  relation: Optional[str] = None,
                  rules: Optional[Sequence['outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule']] = None,
                  value: Optional['outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValue'] = None,
@@ -18149,7 +18695,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         :param str combinator: How the nested rules of a group rule are combined.
         :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
-        :param str property: The property identifier of the rule.
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param Sequence['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArgs'] rules: The nested rules of a group rule.
         :param 'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleValueArgs' value: A value resolved from the form or the trigger when the form is rendered.
@@ -18165,6 +18712,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if relation is not None:
             pulumi.set(__self__, "relation", relation)
         if rules is not None:
@@ -18205,6 +18754,14 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         The operator of the rule. Set on filtering rules and left out on group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -18242,7 +18799,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule.
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
@@ -18252,7 +18809,9 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "valueJson":
+        if key == "propertyJson":
+            suggest = "property_json"
+        elif key == "valueJson":
             suggest = "value_json"
 
         if suggest:
@@ -18272,6 +18831,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
                  direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  relation: Optional[str] = None,
                  rules: Optional[Sequence['outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule']] = None,
                  value: Optional['outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValue'] = None,
@@ -18281,7 +18841,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         :param str combinator: How the nested rules of a group rule are combined.
         :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
-        :param str property: The property identifier of the rule.
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param Sequence['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArgs'] rules: The nested rules of a group rule.
         :param 'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleValueArgs' value: A value resolved from the form or the trigger when the form is rendered.
@@ -18297,6 +18858,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if relation is not None:
             pulumi.set(__self__, "relation", relation)
         if rules is not None:
@@ -18337,6 +18900,14 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         The operator of the rule. Set on filtering rules and left out on group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -18374,7 +18945,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule.
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
@@ -18384,7 +18955,9 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "valueJson":
+        if key == "propertyJson":
+            suggest = "property_json"
+        elif key == "valueJson":
             suggest = "value_json"
 
         if suggest:
@@ -18404,6 +18977,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
                  direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  relation: Optional[str] = None,
                  rules: Optional[Sequence['outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule']] = None,
                  value: Optional['outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValue'] = None,
@@ -18413,7 +18987,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         :param str combinator: How the nested rules of a group rule are combined.
         :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
-        :param str property: The property identifier of the rule.
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param Sequence['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs'] rules: The nested rules of a group rule.
         :param 'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleValueArgs' value: A value resolved from the form or the trigger when the form is rendered.
@@ -18429,6 +19004,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if relation is not None:
             pulumi.set(__self__, "relation", relation)
         if rules is not None:
@@ -18469,6 +19046,14 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         The operator of the rule. Set on filtering rules and left out on group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -18506,7 +19091,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule.
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
@@ -18516,7 +19101,9 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "valueJson":
+        if key == "propertyJson":
+            suggest = "property_json"
+        elif key == "valueJson":
             suggest = "value_json"
 
         if suggest:
@@ -18536,6 +19123,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
                  direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  relation: Optional[str] = None,
                  rules: Optional[Sequence['outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule']] = None,
                  value: Optional['outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValue'] = None,
@@ -18545,7 +19133,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         :param str combinator: How the nested rules of a group rule are combined.
         :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
-        :param str property: The property identifier of the rule.
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param Sequence['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs'] rules: The nested rules of a group rule.
         :param 'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs' value: A value resolved from the form or the trigger when the form is rendered.
@@ -18561,6 +19150,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if relation is not None:
             pulumi.set(__self__, "relation", relation)
         if rules is not None:
@@ -18601,6 +19192,14 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         The operator of the rule. Set on filtering rules and left out on group rules.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
 
     @property
     @pulumi.getter
@@ -18638,7 +19237,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule.
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
@@ -18648,7 +19247,9 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "valueJson":
+        if key == "propertyJson":
+            suggest = "property_json"
+        elif key == "valueJson":
             suggest = "value_json"
 
         if suggest:
@@ -18668,6 +19269,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
                  direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  relation: Optional[str] = None,
                  rules: Optional[Sequence['outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule']] = None,
                  value: Optional['outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue'] = None,
@@ -18677,7 +19279,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         :param str combinator: How the nested rules of a group rule are combined.
         :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
-        :param str property: The property identifier of the rule.
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param Sequence['WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArgs'] rules: The nested rules of a group rule.
         :param 'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs' value: A value resolved from the form or the trigger when the form is rendered.
@@ -18693,6 +19296,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if relation is not None:
             pulumi.set(__self__, "relation", relation)
         if rules is not None:
@@ -18735,6 +19340,14 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         return pulumi.get(self, "operator")
 
     @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
+
+    @property
     @pulumi.getter
     def relation(self) -> Optional[str]:
         """
@@ -18770,7 +19383,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule.
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 
@@ -18780,7 +19393,9 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "valueJson":
+        if key == "propertyJson":
+            suggest = "property_json"
+        elif key == "valueJson":
             suggest = "value_json"
 
         if suggest:
@@ -18800,6 +19415,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
                  direction: Optional[str] = None,
                  operator: Optional[str] = None,
                  property: Optional[str] = None,
+                 property_json: Optional[str] = None,
                  relation: Optional[str] = None,
                  value: Optional['outputs.WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue'] = None,
                  value_json: Optional[str] = None):
@@ -18808,7 +19424,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         :param str combinator: How the nested rules of a group rule are combined.
         :param str direction: The direction of the relation the rule filters on. Set alongside `relation`.
         :param str operator: The operator of the rule. Set on filtering rules and left out on group rules.
-        :param str property: The property identifier of the rule.
+        :param str property: The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
+        :param str property_json: The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
         :param str relation: The relation identifier of the rule. Use instead of `property` to filter on a relation.
         :param 'WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValueArgs' value: A value resolved from the form or the trigger when the form is rendered.
         :param str value_json: A fixed value, as a JSON encoded string. Use `value` for a value resolved by a jq query.
@@ -18823,6 +19440,8 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
             pulumi.set(__self__, "operator", operator)
         if property is not None:
             pulumi.set(__self__, "property", property)
+        if property_json is not None:
+            pulumi.set(__self__, "property_json", property_json)
         if relation is not None:
             pulumi.set(__self__, "relation", relation)
         if value is not None:
@@ -18863,6 +19482,14 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
         return pulumi.get(self, "operator")
 
     @property
+    @pulumi.getter(name="propertyJson")
+    def property_json(self) -> Optional[str]:
+        """
+        The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "port_role"}`) and path rules (`{"path": ["team_memberships", "team"], "fromBlueprint": "person"}`).
+        """
+        return pulumi.get(self, "property_json")
+
+    @property
     @pulumi.getter
     def relation(self) -> Optional[str]:
         """
@@ -18890,7 +19517,7 @@ class WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule
     @pulumi.getter
     def property(self) -> Optional[str]:
         """
-        The property identifier of the rule.
+        The property identifier of the rule. For a contextual or path rule, use `property_json` instead: a JSON object passed here is sent as a plain string.
         """
         return pulumi.get(self, "property")
 

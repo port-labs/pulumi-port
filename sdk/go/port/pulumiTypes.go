@@ -6815,8 +6815,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule struct {
 	Combinator *string `pulumi:"combinator"`
 	// The operator of the rule. Required for leaf rules, should not be set for group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// Nested rules for a group rule. Used with combinator for logical grouping.
 	Rules []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule `pulumi:"rules"`
 	// The value of the rule
@@ -6841,8 +6843,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleArgs struct {
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
 	// The operator of the rule. Required for leaf rules, should not be set for group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// Nested rules for a group rule. Used with combinator for logical grouping.
 	Rules ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArrayInput `pulumi:"rules"`
 	// The value of the rule
@@ -6915,9 +6919,14 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput) Oper
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule) *string { return v.Property }).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule) *string { return v.PropertyJson }).(pulumi.StringPtrOutput)
 }
 
 // Nested rules for a group rule. Used with combinator for logical grouping.
@@ -6961,8 +6970,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule struct {
 	Combinator *string `pulumi:"combinator"`
 	// The operator of the rule. Required for leaf rules, should not be set for group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// Nested rules for a group rule. Used with combinator for logical grouping.
 	Rules []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule `pulumi:"rules"`
 	// The value of the rule
@@ -6987,8 +6998,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleArgs struct
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
 	// The operator of the rule. Required for leaf rules, should not be set for group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// Nested rules for a group rule. Used with combinator for logical grouping.
 	Rules ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArrayInput `pulumi:"rules"`
 	// The value of the rule
@@ -7061,9 +7074,16 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput) 
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule) *string { return v.Property }).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRule) *string {
+		return v.PropertyJson
+	}).(pulumi.StringPtrOutput)
 }
 
 // Nested rules for a group rule. Used with combinator for logical grouping.
@@ -7107,8 +7127,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule struct
 	Combinator *string `pulumi:"combinator"`
 	// The operator of the rule. Required for leaf rules, should not be set for group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// Nested rules for a group rule. Used with combinator for logical grouping.
 	Rules []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule `pulumi:"rules"`
 	// The value of the rule
@@ -7133,8 +7155,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleArgs st
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
 	// The operator of the rule. Required for leaf rules, should not be set for group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// Nested rules for a group rule. Used with combinator for logical grouping.
 	Rules ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// The value of the rule
@@ -7213,10 +7237,17 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7261,8 +7292,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule st
 	Combinator *string `pulumi:"combinator"`
 	// The operator of the rule. Required for leaf rules, should not be set for group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// Nested rules for a group rule. Used with combinator for logical grouping.
 	Rules []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule `pulumi:"rules"`
 	// The value of the rule
@@ -7287,8 +7320,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleArg
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
 	// The operator of the rule. Required for leaf rules, should not be set for group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// Nested rules for a group rule. Used with combinator for logical grouping.
 	Rules ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// The value of the rule
@@ -7367,10 +7402,17 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7415,8 +7457,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRul
 	Combinator *string `pulumi:"combinator"`
 	// The operator of the rule. Required for leaf rules, should not be set for group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// Nested rules for a group rule. Used with combinator for logical grouping.
 	Rules []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule `pulumi:"rules"`
 	// The value of the rule
@@ -7441,8 +7485,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRul
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
 	// The operator of the rule. Required for leaf rules, should not be set for group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// Nested rules for a group rule. Used with combinator for logical grouping.
 	Rules ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// The value of the rule
@@ -7521,10 +7567,17 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7569,8 +7622,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRul
 	Combinator *string `pulumi:"combinator"`
 	// The operator of the rule. Required for leaf rules, should not be set for group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// Nested rules for a group rule. Used with combinator for logical grouping.
 	Rules []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule `pulumi:"rules"`
 	// The value of the rule
@@ -7595,8 +7650,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRul
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
 	// The operator of the rule. Required for leaf rules, should not be set for group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// Nested rules for a group rule. Used with combinator for logical grouping.
 	Rules ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// The value of the rule
@@ -7675,10 +7732,17 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7723,8 +7787,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRul
 	Combinator *string `pulumi:"combinator"`
 	// The operator of the rule. Required for leaf rules, should not be set for group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// Nested rules for a group rule. Used with combinator for logical grouping.
 	Rules []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule `pulumi:"rules"`
 	// The value of the rule
@@ -7749,8 +7815,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRul
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
 	// The operator of the rule. Required for leaf rules, should not be set for group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// Nested rules for a group rule. Used with combinator for logical grouping.
 	Rules ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// The value of the rule
@@ -7829,10 +7897,17 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7877,8 +7952,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRul
 	Combinator *string `pulumi:"combinator"`
 	// The operator of the rule. Required for leaf rules, should not be set for group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// Nested rules for a group rule. Used with combinator for logical grouping.
 	Rules []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule `pulumi:"rules"`
 	// The value of the rule
@@ -7903,8 +7980,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRul
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
 	// The operator of the rule. Required for leaf rules, should not be set for group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// Nested rules for a group rule. Used with combinator for logical grouping.
 	Rules ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// The value of the rule
@@ -7983,10 +8062,17 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8031,8 +8117,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRul
 	Combinator *string `pulumi:"combinator"`
 	// The operator of the rule. Required for leaf rules, should not be set for group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// Nested rules for a group rule. Used with combinator for logical grouping.
 	Rules []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule `pulumi:"rules"`
 	// The value of the rule
@@ -8057,8 +8145,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRul
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
 	// The operator of the rule. Required for leaf rules, should not be set for group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// Nested rules for a group rule. Used with combinator for logical grouping.
 	Rules ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// The value of the rule
@@ -8137,10 +8227,17 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8185,8 +8282,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRul
 	Combinator *string `pulumi:"combinator"`
 	// The operator of the rule. Required for leaf rules, should not be set for group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// Nested rules for a group rule. Used with combinator for logical grouping.
 	Rules []ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule `pulumi:"rules"`
 	// The value of the rule
@@ -8211,8 +8310,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRul
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
 	// The operator of the rule. Required for leaf rules, should not be set for group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// Nested rules for a group rule. Used with combinator for logical grouping.
 	Rules ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleArrayInput `pulumi:"rules"`
 	// The value of the rule
@@ -8291,10 +8392,17 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8339,8 +8447,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRul
 	Combinator *string `pulumi:"combinator"`
 	// The operator of the rule. Required for leaf rules, should not be set for group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The value of the rule
 	Value *ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValue `pulumi:"value"`
 }
@@ -8363,8 +8473,10 @@ type ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRul
 	Combinator pulumi.StringPtrInput `pulumi:"combinator"`
 	// The operator of the rule. Required for leaf rules, should not be set for group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The value of the rule
 	Value ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleValuePtrInput `pulumi:"value"`
 }
@@ -8441,10 +8553,17 @@ func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -29381,8 +29500,10 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule struct {
 	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -29413,8 +29534,10 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleArgs struct 
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -29496,9 +29619,14 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleOutput) O
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule.
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule) *string { return v.Property }).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule) *string { return v.PropertyJson }).(pulumi.StringPtrOutput)
 }
 
 // The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -29554,8 +29682,10 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule struct 
 	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -29586,8 +29716,10 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleArgs str
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -29675,9 +29807,16 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleOutpu
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule.
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule) *string { return v.Property }).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRule) *string {
+		return v.PropertyJson
+	}).(pulumi.StringPtrOutput)
 }
 
 // The relation identifier of the rule. Use instead of `property` to filter on a relation.
@@ -29735,8 +29874,10 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule str
 	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -29767,8 +29908,10 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleArgs
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -29858,10 +30001,17 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleO
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule.
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -29922,8 +30072,10 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -29954,8 +30106,10 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -30045,10 +30199,17 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule.
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -30109,8 +30270,10 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -30141,8 +30304,10 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -30232,10 +30397,17 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule.
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -30296,8 +30468,10 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -30328,8 +30502,10 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -30419,10 +30595,17 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule.
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -30483,8 +30666,10 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -30515,8 +30700,10 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -30606,10 +30793,17 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule.
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -30670,8 +30864,10 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -30702,8 +30898,10 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -30793,10 +30991,17 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule.
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -30857,8 +31062,10 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -30889,8 +31096,10 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -30980,10 +31189,17 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule.
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -31044,8 +31260,10 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -31076,8 +31294,10 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -31167,10 +31387,17 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule.
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -31231,8 +31458,10 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation *string `pulumi:"relation"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -31261,8 +31490,10 @@ type WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -31350,10 +31581,17 @@ func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleR
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule.
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -37410,8 +37648,10 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule 
 	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -37442,8 +37682,10 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleA
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -37533,10 +37775,17 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule.
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -37597,8 +37846,10 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -37629,8 +37880,10 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -37720,10 +37973,17 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule.
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -37784,8 +38044,10 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -37816,8 +38078,10 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -37907,10 +38171,17 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule.
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -37971,8 +38242,10 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -38003,8 +38276,10 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -38094,10 +38369,17 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule.
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -38158,8 +38440,10 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -38190,8 +38474,10 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -38281,10 +38567,17 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule.
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -38345,8 +38638,10 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -38377,8 +38672,10 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -38468,10 +38765,17 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule.
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -38532,8 +38836,10 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -38564,8 +38870,10 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -38655,10 +38963,17 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule.
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -38719,8 +39034,10 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -38751,8 +39068,10 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -38842,10 +39161,17 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule.
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -38906,8 +39232,10 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -38938,8 +39266,10 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -39029,10 +39359,17 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule.
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -39093,8 +39430,10 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation *string `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -39125,8 +39464,10 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// The nested rules of a group rule.
@@ -39216,10 +39557,17 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule.
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -39280,8 +39628,10 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Direction *string `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator *string `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property *string `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson *string `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation *string `pulumi:"relation"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -39310,8 +39660,10 @@ type WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleR
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The operator of the rule. Set on filtering rules and left out on group rules.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The property identifier of the rule.
+	// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+	PropertyJson pulumi.StringPtrInput `pulumi:"propertyJson"`
 	// The relation identifier of the rule. Use instead of `property` to filter on a relation.
 	Relation pulumi.StringPtrInput `pulumi:"relation"`
 	// A value resolved from the form or the trigger when the form is rendered.
@@ -39399,10 +39751,17 @@ func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The property identifier of the rule.
+// The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
 func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) Property() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
 		return v.Property
+	}).(pulumi.StringPtrOutput)
+}
+
+// The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+func (o WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleOutput) PropertyJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringPropsDatasetRuleRuleRuleRuleRuleRuleRuleRuleRuleRuleRule) *string {
+		return v.PropertyJson
 	}).(pulumi.StringPtrOutput)
 }
 

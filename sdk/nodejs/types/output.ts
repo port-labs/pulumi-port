@@ -834,9 +834,13 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRule {
      */
     operator?: string;
     /**
-     * The property identifier of the rule
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * Nested rules for a group rule. Used with combinator for logical grouping.
      */
@@ -861,9 +865,13 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRul
      */
     operator?: string;
     /**
-     * The property identifier of the rule
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * Nested rules for a group rule. Used with combinator for logical grouping.
      */
@@ -888,9 +896,13 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRul
      */
     operator?: string;
     /**
-     * The property identifier of the rule
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * Nested rules for a group rule. Used with combinator for logical grouping.
      */
@@ -915,9 +927,13 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRul
      */
     operator?: string;
     /**
-     * The property identifier of the rule
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * Nested rules for a group rule. Used with combinator for logical grouping.
      */
@@ -942,9 +958,13 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRul
      */
     operator?: string;
     /**
-     * The property identifier of the rule
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * Nested rules for a group rule. Used with combinator for logical grouping.
      */
@@ -969,9 +989,13 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRul
      */
     operator?: string;
     /**
-     * The property identifier of the rule
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * Nested rules for a group rule. Used with combinator for logical grouping.
      */
@@ -996,9 +1020,13 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRul
      */
     operator?: string;
     /**
-     * The property identifier of the rule
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * Nested rules for a group rule. Used with combinator for logical grouping.
      */
@@ -1023,9 +1051,13 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRul
      */
     operator?: string;
     /**
-     * The property identifier of the rule
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * Nested rules for a group rule. Used with combinator for logical grouping.
      */
@@ -1050,9 +1082,13 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRul
      */
     operator?: string;
     /**
-     * The property identifier of the rule
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * Nested rules for a group rule. Used with combinator for logical grouping.
      */
@@ -1077,9 +1113,13 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRul
      */
     operator?: string;
     /**
-     * The property identifier of the rule
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * Nested rules for a group rule. Used with combinator for logical grouping.
      */
@@ -1104,9 +1144,13 @@ export interface ActionSelfServiceTriggerUserPropertiesStringPropsDatasetRuleRul
      */
     operator?: string;
     /**
-     * The property identifier of the rule
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The value of the rule
      */
@@ -3889,9 +3933,13 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     operator?: string;
     /**
-     * The property identifier of the rule.
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The relation identifier of the rule. Use instead of `property` to filter on a relation.
      */
@@ -3928,9 +3976,13 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     operator?: string;
     /**
-     * The property identifier of the rule.
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The relation identifier of the rule. Use instead of `property` to filter on a relation.
      */
@@ -3967,9 +4019,13 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     operator?: string;
     /**
-     * The property identifier of the rule.
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The relation identifier of the rule. Use instead of `property` to filter on a relation.
      */
@@ -4006,9 +4062,13 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     operator?: string;
     /**
-     * The property identifier of the rule.
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The relation identifier of the rule. Use instead of `property` to filter on a relation.
      */
@@ -4045,9 +4105,13 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     operator?: string;
     /**
-     * The property identifier of the rule.
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The relation identifier of the rule. Use instead of `property` to filter on a relation.
      */
@@ -4084,9 +4148,13 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     operator?: string;
     /**
-     * The property identifier of the rule.
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The relation identifier of the rule. Use instead of `property` to filter on a relation.
      */
@@ -4123,9 +4191,13 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     operator?: string;
     /**
-     * The property identifier of the rule.
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The relation identifier of the rule. Use instead of `property` to filter on a relation.
      */
@@ -4162,9 +4234,13 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     operator?: string;
     /**
-     * The property identifier of the rule.
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The relation identifier of the rule. Use instead of `property` to filter on a relation.
      */
@@ -4201,9 +4277,13 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     operator?: string;
     /**
-     * The property identifier of the rule.
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The relation identifier of the rule. Use instead of `property` to filter on a relation.
      */
@@ -4240,9 +4320,13 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     operator?: string;
     /**
-     * The property identifier of the rule.
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The relation identifier of the rule. Use instead of `property` to filter on a relation.
      */
@@ -4279,9 +4363,13 @@ export interface WorkflowNodeInputUserInputsUserPropertiesStringPropsDatasetRule
      */
     operator?: string;
     /**
-     * The property identifier of the rule.
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The relation identifier of the rule. Use instead of `property` to filter on a relation.
      */
@@ -5075,9 +5163,13 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     operator?: string;
     /**
-     * The property identifier of the rule.
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The relation identifier of the rule. Use instead of `property` to filter on a relation.
      */
@@ -5114,9 +5206,13 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     operator?: string;
     /**
-     * The property identifier of the rule.
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The relation identifier of the rule. Use instead of `property` to filter on a relation.
      */
@@ -5153,9 +5249,13 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     operator?: string;
     /**
-     * The property identifier of the rule.
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The relation identifier of the rule. Use instead of `property` to filter on a relation.
      */
@@ -5192,9 +5292,13 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     operator?: string;
     /**
-     * The property identifier of the rule.
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The relation identifier of the rule. Use instead of `property` to filter on a relation.
      */
@@ -5231,9 +5335,13 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     operator?: string;
     /**
-     * The property identifier of the rule.
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The relation identifier of the rule. Use instead of `property` to filter on a relation.
      */
@@ -5270,9 +5378,13 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     operator?: string;
     /**
-     * The property identifier of the rule.
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The relation identifier of the rule. Use instead of `property` to filter on a relation.
      */
@@ -5309,9 +5421,13 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     operator?: string;
     /**
-     * The property identifier of the rule.
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The relation identifier of the rule. Use instead of `property` to filter on a relation.
      */
@@ -5348,9 +5464,13 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     operator?: string;
     /**
-     * The property identifier of the rule.
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The relation identifier of the rule. Use instead of `property` to filter on a relation.
      */
@@ -5387,9 +5507,13 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     operator?: string;
     /**
-     * The property identifier of the rule.
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The relation identifier of the rule. Use instead of `property` to filter on a relation.
      */
@@ -5426,9 +5550,13 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     operator?: string;
     /**
-     * The property identifier of the rule.
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The relation identifier of the rule. Use instead of `property` to filter on a relation.
      */
@@ -5465,9 +5593,13 @@ export interface WorkflowNodeSelfServeTriggerUserInputsUserPropertiesStringProps
      */
     operator?: string;
     /**
-     * The property identifier of the rule.
+     * The property identifier of the rule. For a contextual or path rule, use `propertyJson` instead: a JSON object passed here is sent as a plain string.
      */
     property?: string;
+    /**
+     * The property of the rule as a JSON encoded object, for contextual rules (`{"context": "user", "property": "portRole"}`) and path rules (`{"path": ["teamMemberships", "team"], "fromBlueprint": "person"}`).
+     */
+    propertyJson?: string;
     /**
      * The relation identifier of the rule. Use instead of `property` to filter on a relation.
      */
